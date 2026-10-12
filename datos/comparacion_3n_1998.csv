@@ -1,0 +1,121 @@
+estacion,producto,mes,observado_mm,estimado_mm,diferencia_mm
+Jayanca (La Viña),PISCOp v3.0,1998-01,348.3,289.334,-58.966
+Jayanca (La Viña),PISCOp v3.0,1998-02,466.3,418.56,-47.74
+Jayanca (La Viña),PISCOp v3.0,1998-03,539.1,519.932,-19.168
+Jayanca (La Viña),PISCOp v3.0,1998-04,61.5,59.247,-2.253
+Jayanca (La Viña),PISCOp v3.0,1998-05,10.0,6.14,-3.86
+Jayanca (La Viña),PISCOp v3.0,1998-06,0.4,0.47,0.07
+Jayanca (La Viña),PISCOp v3.0,1998-07,0.0,0.0,0.0
+Jayanca (La Viña),PISCOp v3.0,1998-08,0.0,0.009,0.009
+Jayanca (La Viña),PISCOp v3.0,1998-09,2.1,2.188,0.088
+Jayanca (La Viña),PISCOp v3.0,1998-10,0.0,0.2,0.2
+Jayanca (La Viña),PISCOp v3.0,1998-11,0.0,0.065,0.065
+Jayanca (La Viña),PISCOp v3.0,1998-12,0.3,0.563,0.263
+Jayanca (La Viña),ERA5-Seamless,1998-01,348.3,1866.5,1518.2
+Jayanca (La Viña),ERA5-Seamless,1998-02,466.3,1844.8,1378.5
+Jayanca (La Viña),ERA5-Seamless,1998-03,539.1,2908.6,2369.5
+Jayanca (La Viña),ERA5-Seamless,1998-04,61.5,770.8,709.3
+Jayanca (La Viña),ERA5-Seamless,1998-05,10.0,113.8,103.8
+Jayanca (La Viña),ERA5-Seamless,1998-06,0.4,16.2,15.8
+Jayanca (La Viña),ERA5-Seamless,1998-07,0.0,0.3,0.3
+Jayanca (La Viña),ERA5-Seamless,1998-08,0.0,1.0,1.0
+Jayanca (La Viña),ERA5-Seamless,1998-09,2.1,6.4,4.3
+Jayanca (La Viña),ERA5-Seamless,1998-10,0.0,22.0,22.0
+Jayanca (La Viña),ERA5-Seamless,1998-11,0.0,12.6,12.6
+Jayanca (La Viña),ERA5-Seamless,1998-12,0.3,40.9,40.6
+Cayaltí,PISCOp v3.0,1998-01,58.28,82.517,24.237
+Cayaltí,PISCOp v3.0,1998-02,292.33,323.77,31.44
+Cayaltí,PISCOp v3.0,1998-03,174.87,242.48,67.61
+Cayaltí,PISCOp v3.0,1998-04,26.31,30.63,4.32
+Cayaltí,PISCOp v3.0,1998-05,0.03,1.662,1.632
+Cayaltí,PISCOp v3.0,1998-06,2.11,1.346,-0.764
+Cayaltí,PISCOp v3.0,1998-07,0.0,0.0,0.0
+Cayaltí,PISCOp v3.0,1998-08,0.02,0.039,0.019
+Cayaltí,PISCOp v3.0,1998-09,0.03,0.0,-0.03
+Cayaltí,PISCOp v3.0,1998-10,4.51,2.516,-1.994
+Cayaltí,PISCOp v3.0,1998-11,0.0,0.0,0.0
+Cayaltí,PISCOp v3.0,1998-12,0.01,0.599,0.589
+Cayaltí,ERA5-Seamless,1998-01,58.28,147.1,88.82
+Cayaltí,ERA5-Seamless,1998-02,292.33,375.2,82.87
+Cayaltí,ERA5-Seamless,1998-03,174.87,633.5,458.63
+Cayaltí,ERA5-Seamless,1998-04,26.31,151.7,125.39
+Cayaltí,ERA5-Seamless,1998-05,0.03,8.8,8.77
+Cayaltí,ERA5-Seamless,1998-06,2.11,0.6000000000000001,-1.51
+Cayaltí,ERA5-Seamless,1998-07,0.0,0.0,0.0
+Cayaltí,ERA5-Seamless,1998-08,0.02,1.2000000000000002,1.18
+Cayaltí,ERA5-Seamless,1998-09,0.03,1.6,1.57
+Cayaltí,ERA5-Seamless,1998-10,4.51,6.5,1.99
+Cayaltí,ERA5-Seamless,1998-11,0.0,4.9,4.9
+Cayaltí,ERA5-Seamless,1998-12,0.01,4.5,4.49
+Reque,PISCOp v3.0,1998-01,19.51,21.891,2.381
+Reque,PISCOp v3.0,1998-02,111.7,109.162,-2.538
+Reque,PISCOp v3.0,1998-03,96.6,104.971,8.371
+Reque,PISCOp v3.0,1998-04,5.01,7.346,2.336
+Reque,PISCOp v3.0,1998-05,0.0,0.77,0.77
+Reque,PISCOp v3.0,1998-06,0.0,0.027,0.027
+Reque,PISCOp v3.0,1998-07,0.0,0.0,0.0
+Reque,PISCOp v3.0,1998-08,0.0,0.0,0.0
+Reque,PISCOp v3.0,1998-09,0.0,0.268,0.268
+Reque,PISCOp v3.0,1998-10,0.0,0.439,0.439
+Reque,PISCOp v3.0,1998-11,0.0,0.003,0.003
+Reque,PISCOp v3.0,1998-12,0.0,0.588,0.588
+Reque,ERA5-Seamless,1998-01,19.51,93.0,73.49
+Reque,ERA5-Seamless,1998-02,111.7,262.7,151.0
+Reque,ERA5-Seamless,1998-03,96.6,431.5,334.9
+Reque,ERA5-Seamless,1998-04,5.01,48.7,43.69
+Reque,ERA5-Seamless,1998-05,0.0,2.7,2.7
+Reque,ERA5-Seamless,1998-06,0.0,0.2,0.2
+Reque,ERA5-Seamless,1998-07,0.0,0.0,0.0
+Reque,ERA5-Seamless,1998-08,0.0,0.0,0.0
+Reque,ERA5-Seamless,1998-09,0.0,1.2000000000000002,1.2
+Reque,ERA5-Seamless,1998-10,0.0,2.4000000000000004,2.4
+Reque,ERA5-Seamless,1998-11,0.0,1.7000000000000002,1.7
+Reque,ERA5-Seamless,1998-12,0.0,2.3000000000000003,2.3
+Lambayeque,PISCOp v3.0,1998-01,42.14,43.17,1.03
+Lambayeque,PISCOp v3.0,1998-02,110.02,96.926,-13.094
+Lambayeque,PISCOp v3.0,1998-03,116.22,135.006,18.786
+Lambayeque,PISCOp v3.0,1998-04,7.25,9.282,2.032
+Lambayeque,PISCOp v3.0,1998-05,2.0,1.269,-0.731
+Lambayeque,PISCOp v3.0,1998-06,0.01,0.03,0.02
+Lambayeque,PISCOp v3.0,1998-07,0.0,0.0,0.0
+Lambayeque,PISCOp v3.0,1998-08,0.0,0.0,0.0
+Lambayeque,PISCOp v3.0,1998-09,0.0,0.0,0.0
+Lambayeque,PISCOp v3.0,1998-10,0.54,0.573,0.033
+Lambayeque,PISCOp v3.0,1998-11,0.2,0.158,-0.042
+Lambayeque,PISCOp v3.0,1998-12,1.23,1.816,0.586
+Lambayeque,ERA5-Seamless,1998-01,42.14,322.8,280.66
+Lambayeque,ERA5-Seamless,1998-02,110.02,316.3,206.28
+Lambayeque,ERA5-Seamless,1998-03,116.22,561.6,445.38
+Lambayeque,ERA5-Seamless,1998-04,7.25,55.6,48.35
+Lambayeque,ERA5-Seamless,1998-05,2.0,5.5,3.5
+Lambayeque,ERA5-Seamless,1998-06,0.01,1.2999999999999998,1.29
+Lambayeque,ERA5-Seamless,1998-07,0.0,0.0,0.0
+Lambayeque,ERA5-Seamless,1998-08,0.0,0.0,0.0
+Lambayeque,ERA5-Seamless,1998-09,0.0,0.0,0.0
+Lambayeque,ERA5-Seamless,1998-10,0.54,2.3,1.76
+Lambayeque,ERA5-Seamless,1998-11,0.2,2.0,1.8
+Lambayeque,ERA5-Seamless,1998-12,1.23,2.8,1.57
+Cueva Blanca,PISCOp v3.0,1998-01,45.3,116.825,71.525
+Cueva Blanca,PISCOp v3.0,1998-02,149.6,253.344,103.744
+Cueva Blanca,PISCOp v3.0,1998-03,231.3,302.857,71.557
+Cueva Blanca,PISCOp v3.0,1998-04,172.0,181.594,9.594
+Cueva Blanca,PISCOp v3.0,1998-05,83.5,80.818,-2.682
+Cueva Blanca,PISCOp v3.0,1998-06,33.4,1.629,-31.771
+Cueva Blanca,PISCOp v3.0,1998-07,0.0,0.797,0.797
+Cueva Blanca,PISCOp v3.0,1998-08,11.8,5.263,-6.537
+Cueva Blanca,PISCOp v3.0,1998-09,64.0,31.944,-32.056
+Cueva Blanca,PISCOp v3.0,1998-10,97.9,28.218,-69.682
+Cueva Blanca,PISCOp v3.0,1998-11,45.0,3.468,-41.532
+Cueva Blanca,PISCOp v3.0,1998-12,35.4,37.474,2.074
+Cueva Blanca,ERA5-Seamless,1998-01,45.3,1862.1,1816.8
+Cueva Blanca,ERA5-Seamless,1998-02,149.6,1995.3999999999999,1845.8
+Cueva Blanca,ERA5-Seamless,1998-03,231.3,3141.2,2909.9
+Cueva Blanca,ERA5-Seamless,1998-04,172.0,1004.5,832.5
+Cueva Blanca,ERA5-Seamless,1998-05,83.5,195.3,111.8
+Cueva Blanca,ERA5-Seamless,1998-06,33.4,29.3,-4.1
+Cueva Blanca,ERA5-Seamless,1998-07,0.0,0.6,0.6
+Cueva Blanca,ERA5-Seamless,1998-08,11.8,2.2,-9.6
+Cueva Blanca,ERA5-Seamless,1998-09,64.0,12.3,-51.7
+Cueva Blanca,ERA5-Seamless,1998-10,97.9,63.7,-34.2
+Cueva Blanca,ERA5-Seamless,1998-11,45.0,62.699999999999996,17.7
+Cueva Blanca,ERA5-Seamless,1998-12,35.4,82.1,46.7
