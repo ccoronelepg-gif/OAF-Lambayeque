@@ -1,0 +1,56 @@
+name: OAF fase 3R consolidar sensibilidad 1996-2015
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/consolidar_sensibilidad_3r.yml'
+      - 'scripts/consolidar_sensibilidad_3r.py'
+      - 'datos/estado_3r_*.json'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-consolidacion-espacial-3r
+  cancel-in-progress: true
+jobs:
+  consolidar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verificar cuatro bloques
+        id: validar
+        shell: bash
+        run: |
+          for b in 1996_2000 2001_2005 2006_2010 2011_2015; do
+            if [ ! -f "datos/sensibilidad_3r_mensual_$b.csv" ]; then
+              echo "listo=no" >> "$GITHUB_OUTPUT"
+              echo "Aún no disponible: $b"
+              exit 0
+            fi
+          done
+          echo "listo=si" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        if: steps.validar.outputs.listo == 'si'
+        with:
+          python-version: '3.11'
+      - name: Instalar NumPy y pandas
+        if: steps.validar.outputs.listo == 'si'
+        run: python -m pip install --disable-pip-version-check pandas numpy
+      - name: Reproducir control geográfico y estadístico
+        if: steps.validar.outputs.listo == 'si'
+        run: python -u scripts/consolidar_sensibilidad_3r.py
+      - name: Guardar consolidado aprobado
+        if: steps.validar.outputs.listo == 'si'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f SENSIBILIDAD_3R_MULTIANUAL.md datos/estado_3r_1996_2015.json datos/sensibilidad_3r_1996_2015.csv datos/metricas_sensibilidad_3r_1996_2015.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Consolidar sensibilidad geografica completa de cinco estaciones 1996-2015"
+            git pull --rebase origin main
+            git push origin main
+          fi
