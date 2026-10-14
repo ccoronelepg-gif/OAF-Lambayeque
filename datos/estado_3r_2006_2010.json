@@ -1,0 +1,11 @@
+{
+  "fase": "3R_multianual",
+  "bloque": "2006-2010",
+  "meses_calendario_con_observacion": 60,
+  "meses_estacion_validos_senamhi": 284,
+  "meses_estacion_comparados": 284,
+  "filas_pixel": 568,
+  "raster_descargas_fallidas": [],
+  "identidad_instrumental_confirmada": false,
+  "las_coordenadas_alternativas_son_candidatas": true
+}
