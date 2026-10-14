@@ -1,0 +1,25 @@
+{
+  "fase": "3R",
+  "periodo": "1996-2015",
+  "meses_estacion_validos": 1109,
+  "extracciones_pixel": 2218,
+  "num_estaciones": 5,
+  "meses_por_estacion": {
+    "Cayaltí": 235,
+    "Cueva Blanca": 218,
+    "Jayanca (La Viña)": 219,
+    "Lambayeque": 204,
+    "Reque": 233
+  },
+  "bloques_completos": [
+    "1996_2000",
+    "2001_2005",
+    "2006_2010",
+    "2011_2015"
+  ],
+  "incidencias_en_bloques": 0,
+  "coincidencia_con_chirps_3q_verificada": true,
+  "coincidencia_piloto_1998_2000_verificada": true,
+  "identidad_geografica_historica_certificada": false,
+  "cubre_climatologia_1996_2025": false
+}
