@@ -1,0 +1,200 @@
+[
+  {
+    "estacion": "Jayanca (La Viña)",
+    "modelo": "era5_land",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.2999954,
+    "lon_celda": -79.799995,
+    "daily_n_total": 10,
+    "daily_n_nulos": 10,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 240,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 0,
+    "hourly_muestra": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "estado": "OK"
+  },
+  {
+    "estacion": "Jayanca (La Viña)",
+    "modelo": "era5",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.25,
+    "lon_celda": -79.75,
+    "daily_n_total": 10,
+    "daily_n_nulos": 0,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      19.1,
+      37.8,
+      89.7,
+      54.7,
+      100.0,
+      40.3
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 0,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 51,
+    "hourly_muestra": [
+      7.0,
+      4.2,
+      1.9,
+      1.1,
+      0.0,
+      0.0
+    ],
+    "estado": "OK"
+  },
+  {
+    "estacion": "Jayanca (La Viña)",
+    "modelo": "era5_seamless",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.2999954,
+    "lon_celda": -79.799995,
+    "daily_n_total": 10,
+    "daily_n_nulos": 0,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      19.1,
+      37.8,
+      89.7,
+      54.7,
+      100.0,
+      40.3
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 0,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 51,
+    "hourly_muestra": [
+      7.0,
+      4.2,
+      1.9,
+      1.1,
+      0.0,
+      0.0
+    ],
+    "estado": "OK"
+  },
+  {
+    "estacion": "Cueva Blanca",
+    "modelo": "era5_land",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.0999985,
+    "lon_celda": -79.4,
+    "daily_n_total": 10,
+    "daily_n_nulos": 10,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 240,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 0,
+    "hourly_muestra": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "estado": "OK"
+  },
+  {
+    "estacion": "Cueva Blanca",
+    "modelo": "era5",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.25,
+    "lon_celda": -79.5,
+    "daily_n_total": 10,
+    "daily_n_nulos": 0,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      20.8,
+      41.3,
+      84.2,
+      75.0,
+      106.8,
+      54.9
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 0,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 43,
+    "hourly_muestra": [
+      6.0,
+      2.2,
+      2.0,
+      1.6,
+      0.0,
+      0.0
+    ],
+    "estado": "OK"
+  },
+  {
+    "estacion": "Cueva Blanca",
+    "modelo": "era5_seamless",
+    "inicio": "1998-02-01",
+    "fin": "1998-02-10",
+    "lat_celda": -6.0999985,
+    "lon_celda": -79.4,
+    "daily_n_total": 10,
+    "daily_n_nulos": 0,
+    "daily_n_negativos": 0,
+    "daily_n_cero": 0,
+    "daily_muestra": [
+      20.8,
+      41.3,
+      84.2,
+      75.0,
+      106.8,
+      54.9
+    ],
+    "hourly_n_total": 240,
+    "hourly_n_nulos": 0,
+    "hourly_n_negativos": 0,
+    "hourly_n_cero": 43,
+    "hourly_muestra": [
+      6.0,
+      2.2,
+      2.0,
+      1.6,
+      0.0,
+      0.0
+    ],
+    "estado": "OK"
+  }
+]
