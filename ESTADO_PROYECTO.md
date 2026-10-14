@@ -345,3 +345,22 @@ Se descargó y auditó directamente el conjunto de estaciones automáticas GBON/
 **Invariante de integridad:** los **1 109 meses-estación** históricos validados de 1996–2015 siguen sin alteraciones; **0 nuevos meses diarios certificados** 2016–2025. Los boletines son evidencia observada resumida, no prueba de independencia frente a PISCOp/CHIRPS/ERA5.
 
 **Siguiente etapa 3Y:** ampliar con cautela el catálogo documental de boletines DZ2 por año/mes si se dispone de PDF y controles de transcripción; gestionar fichas y TXT diarios originales de SENAMHI; reconstruir la continuidad instrumental verificable, comparar estaciones y píxeles coincidentes sin reemplazar datos reales con grillas; comenzar modelos de riesgo sanitario solo con observaciones de campo fechadas y georreferenciadas. Continuar sin cuestionarios ni ejercicios.
+
+## Fase 3Y — ampliación preliminar de boletines climáticos SENAMHI DZ2 · 14/10/2026
+
+**Resultado científico-documental:** se identificó el compendio institucional que publica los **12 boletines climáticos mensuales del año 2025** de la Dirección Zonal 2 de SENAMHI: https://www.gob.pe/institucion/senamhi/informes-publicaciones/6490504-boletin-climatico-regional-dz2-2025. Su existencia NO garantiza una tabla completa ni una misma estación instrumental en todos los meses.
+
+Se ampliaron los **3 meses documentales** iniciales de fase 3X con **4 meses adicionales** de tablas PP observada indexadas, con fuentes PDF específicas:
+- **Septiembre 2024**: `03601SENA-146.pdf` (Jayanca 2,3; Cayaltí **Traza**; Reque 0; Lambayeque 0; Cueva Blanca 30,1 mm).
+- **Enero 2025**: `03601SENA-150.pdf` (12,4; 19,0; 9,5; 4,5; 117,2 mm respectivamente).
+- **Marzo 2025**: `03601SENA-152.pdf` (33,5; 6,55; 3,9; 11,2; 205,1 mm).
+- **Junio 2025**: `03601SENA-155.pdf` (0; 1,4; 0,31; 0; 48,7 mm).
+Los datos de **julio y octubre 2024 y febrero 2025** se conservaron idénticos desde fase 3X. Se registran ahora **7 meses documentales, 35 observaciones estación-mes, 33 valores numéricos, 2 Traza y 10 ceros reales**. El control Python comprueba 35 filas, consistencia de enlaces y meses, preservación de las 15 filas originales y distinción entre traza y cero. **Año 2025: 4/12 meses transcritos; 8 pendientes**. NO se completan faltantes con lluvia cero, interpolación o modelos.
+
+**Limitación principal:** los nuevos valores provienen de tablas del texto indexado de los PDF originales; el entorno no pudo recuperar/renderizar todas las páginas PDF para cotejo visual, lo que permanece registrado explícitamente como **pendiente**. Esto permite un catálogo preliminar **no** una base instrumental certificada. El código histórico, coordenadas, posibles cambios de instrumento, horario de medición e independencia frente a PISCOp/CHIRPS siguen sin acreditarse. **0 nuevos meses diarios instrumentales certificados 2016–2025**; los **1 109 meses-estación 1996–2015** conservan su integridad.
+
+**Reproducibilidad en GitHub:** `scripts/actualizar_boletines_3y.py`, `.github/workflows/ampliar_boletines_3y.yml`, `datos/observaciones_documentales_dz2_3y.csv`, `datos/matriz_boletines_2025_3y.csv`, `datos/estado_3y.json`, `BOLETINES_DZ2_3Y.md`. El programa se ejecutó en GitHub Actions con resultado correcto y datos cotejados estructuralmente contra los 15 anteriores.
+
+**Observatorio público:** `index.html` actualizado a **v1.8**, nuevo módulo `#boletines3y` para explorar los meses documentados de 2024 y 2025, con enlaces a fuentes y advertencias de incertidumbre. **Comprobar el despliegue GitHub Pages** antes de declararlo finalizado. El autor y contacto permanecen sin alteraciones.
+
+**Punto de continuidad:** seguir extrayendo solo tablas verificables de los **8 boletines restantes de 2025** (y eventualmente 2024) con revisión visual e identificación instrumental; en paralelo tramitar acceso autorizado a registros diarios completos SENAMHI. Solo entonces estudiar su emparejamiento con PISCOp, CHIRPS y ERA5, señalando debidamente la posible dependencia de pluviómetros. No iniciar predicciones ni alertas de enfermedades de arándano sin observaciones de campo georreferenciadas.
