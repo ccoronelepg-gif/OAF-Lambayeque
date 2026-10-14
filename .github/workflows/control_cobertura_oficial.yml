@@ -1,0 +1,40 @@
+name: OAF regla de años completos SENAMHI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/control_cobertura_oficial.yml'
+      - 'scripts/control_anios_completos.py'
+      - 'datos/senamhi_mensual_completo_1996_2015.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-control-completitud
+  cancel-in-progress: false
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verificar sintaxis y regla no imputación
+        run: |
+          python -m compileall -q scripts/control_anios_completos.py
+          python -u scripts/control_anios_completos.py
+      - name: Guardar solo acumulados anuales de años completos
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f RESULTADO_COBERTURA_OFICIAL.md datos/cobertura_anual_oficial.csv datos/acumulados_anuales_completos.csv datos/ultimo_anio_completo_por_estacion.csv datos/estado_cobertura_oficial.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar años completos de SENAMHI sin relleno ni imputación"
+            git pull --rebase origin main
+            git push origin main
+          fi
