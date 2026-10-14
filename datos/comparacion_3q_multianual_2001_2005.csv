@@ -1,0 +1,868 @@
+estacion,mes,observado_mm,estimado_mm,producto,diferencia_mm
+Cayaltí,2001-01,1.44,3.1775,CHIRPS v3,1.7375
+Cayaltí,2001-01,1.44,57.2,ERA5-Seamless,55.76
+Cayaltí,2001-01,1.44,2.404,PISCOp v3.0,0.964
+Cayaltí,2001-02,1.01,0.5369,CHIRPS v3,-0.4731
+Cayaltí,2001-02,1.01,64.0,ERA5-Seamless,62.99
+Cayaltí,2001-02,1.01,1.056,PISCOp v3.0,0.046
+Cayaltí,2001-03,30.23,50.8695,CHIRPS v3,20.6395
+Cayaltí,2001-03,30.23,146.4,ERA5-Seamless,116.17
+Cayaltí,2001-03,30.23,45.816,PISCOp v3.0,15.586
+Cayaltí,2001-04,15.02,9.4005,CHIRPS v3,-5.6195
+Cayaltí,2001-04,15.02,27.3,ERA5-Seamless,12.28
+Cayaltí,2001-04,15.02,17.976,PISCOp v3.0,2.956
+Cayaltí,2001-05,0.03,0.5909,CHIRPS v3,0.5609
+Cayaltí,2001-05,0.03,3.1,ERA5-Seamless,3.07
+Cayaltí,2001-05,0.03,0.312,PISCOp v3.0,0.282
+Cayaltí,2001-06,0.01,0.6336,CHIRPS v3,0.6236
+Cayaltí,2001-06,0.01,1.8,ERA5-Seamless,1.79
+Cayaltí,2001-06,0.01,0.333,PISCOp v3.0,0.323
+Cayaltí,2001-07,0.0,1.0292,CHIRPS v3,1.0292
+Cayaltí,2001-07,0.0,0.2,ERA5-Seamless,0.2
+Cayaltí,2001-07,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2001-08,0.0,0.8834,CHIRPS v3,0.8834
+Cayaltí,2001-08,0.0,0.0,ERA5-Seamless,0.0
+Cayaltí,2001-08,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2001-09,3.41,8.4185,CHIRPS v3,5.0085
+Cayaltí,2001-09,3.41,4.6,ERA5-Seamless,1.19
+Cayaltí,2001-09,3.41,2.658,PISCOp v3.0,-0.752
+Cayaltí,2001-10,0.04,0.2287,CHIRPS v3,0.1887
+Cayaltí,2001-10,0.04,0.7,ERA5-Seamless,0.66
+Cayaltí,2001-10,0.04,0.095,PISCOp v3.0,0.055
+Cayaltí,2001-11,0.03,1.1589,CHIRPS v3,1.1289
+Cayaltí,2001-11,0.03,1.1,ERA5-Seamless,1.07
+Cayaltí,2001-11,0.03,0.436,PISCOp v3.0,0.406
+Cayaltí,2001-12,1.04,0.0,CHIRPS v3,-1.04
+Cayaltí,2001-12,1.04,2.6,ERA5-Seamless,1.56
+Cayaltí,2001-12,1.04,1.938,PISCOp v3.0,0.898
+Cayaltí,2002-01,0.01,0.0,CHIRPS v3,-0.01
+Cayaltí,2002-01,0.01,0.2,ERA5-Seamless,0.19
+Cayaltí,2002-01,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2002-02,12.53,47.1804,CHIRPS v3,34.6504
+Cayaltí,2002-02,12.53,59.3,ERA5-Seamless,46.77
+Cayaltí,2002-02,12.53,19.515,PISCOp v3.0,6.985
+Cayaltí,2002-03,14.22,24.0613,CHIRPS v3,9.8413
+Cayaltí,2002-03,14.22,69.1,ERA5-Seamless,54.88
+Cayaltí,2002-03,14.22,29.863,PISCOp v3.0,15.643
+Cayaltí,2002-04,8.83,18.0608,CHIRPS v3,9.2308
+Cayaltí,2002-04,8.83,78.2,ERA5-Seamless,69.37
+Cayaltí,2002-04,8.83,15.98,PISCOp v3.0,7.15
+Cayaltí,2002-05,0.01,0.0,CHIRPS v3,-0.01
+Cayaltí,2002-05,0.01,0.9,ERA5-Seamless,0.89
+Cayaltí,2002-05,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2002-06,0.01,0.1129,CHIRPS v3,0.1029
+Cayaltí,2002-06,0.01,2.4,ERA5-Seamless,2.39
+Cayaltí,2002-06,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2002-07,0.01,0.9594,CHIRPS v3,0.9494
+Cayaltí,2002-07,0.01,0.6,ERA5-Seamless,0.59
+Cayaltí,2002-07,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2002-08,0.0,0.8573,CHIRPS v3,0.8573
+Cayaltí,2002-08,0.0,0.0,ERA5-Seamless,0.0
+Cayaltí,2002-08,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2002-09,0.01,0.0,CHIRPS v3,-0.01
+Cayaltí,2002-09,0.01,0.6,ERA5-Seamless,0.59
+Cayaltí,2002-09,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2002-10,0.64,1.99,CHIRPS v3,1.35
+Cayaltí,2002-10,0.64,3.6,ERA5-Seamless,2.96
+Cayaltí,2002-10,0.64,0.411,PISCOp v3.0,-0.229
+Cayaltí,2002-11,5.62,3.3584,CHIRPS v3,-2.2616
+Cayaltí,2002-11,5.62,1.2,ERA5-Seamless,-4.42
+Cayaltí,2002-11,5.62,4.589,PISCOp v3.0,-1.031
+Cayaltí,2002-12,5.3,0.0,CHIRPS v3,-5.3
+Cayaltí,2002-12,5.3,9.6,ERA5-Seamless,4.3
+Cayaltí,2002-12,5.3,3.693,PISCOp v3.0,-1.607
+Cayaltí,2003-01,2.73,5.1276,CHIRPS v3,2.3976
+Cayaltí,2003-01,2.73,40.4,ERA5-Seamless,37.67
+Cayaltí,2003-01,2.73,2.654,PISCOp v3.0,-0.076
+Cayaltí,2003-02,10.5,0.0,CHIRPS v3,-10.5
+Cayaltí,2003-02,10.5,30.3,ERA5-Seamless,19.8
+Cayaltí,2003-02,10.5,7.403,PISCOp v3.0,-3.097
+Cayaltí,2003-03,0.71,0.1829,CHIRPS v3,-0.5271
+Cayaltí,2003-03,0.71,22.4,ERA5-Seamless,21.69
+Cayaltí,2003-03,0.71,0.168,PISCOp v3.0,-0.542
+Cayaltí,2003-04,1.33,0.069,CHIRPS v3,-1.261
+Cayaltí,2003-04,1.33,8.9,ERA5-Seamless,7.57
+Cayaltí,2003-04,1.33,2.069,PISCOp v3.0,0.739
+Cayaltí,2003-05,0.82,0.0,CHIRPS v3,-0.82
+Cayaltí,2003-05,0.82,2.3,ERA5-Seamless,1.48
+Cayaltí,2003-05,0.82,0.459,PISCOp v3.0,-0.361
+Cayaltí,2003-06,1.1,0.6475,CHIRPS v3,-0.4525
+Cayaltí,2003-06,1.1,2.4,ERA5-Seamless,1.3
+Cayaltí,2003-06,1.1,1.321,PISCOp v3.0,0.221
+Cayaltí,2003-07,0.01,0.985,CHIRPS v3,0.975
+Cayaltí,2003-07,0.01,0.0,ERA5-Seamless,-0.01
+Cayaltí,2003-07,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2003-08,0.0,0.8469,CHIRPS v3,0.8469
+Cayaltí,2003-08,0.0,0.7,ERA5-Seamless,0.7
+Cayaltí,2003-08,0.0,0.008,PISCOp v3.0,0.008
+Cayaltí,2003-09,0.03,0.0,CHIRPS v3,-0.03
+Cayaltí,2003-09,0.03,0.5,ERA5-Seamless,0.47
+Cayaltí,2003-09,0.03,0.019,PISCOp v3.0,-0.011
+Cayaltí,2003-10,0.02,0.0,CHIRPS v3,-0.02
+Cayaltí,2003-10,0.02,1.1,ERA5-Seamless,1.08
+Cayaltí,2003-10,0.02,0.0,PISCOp v3.0,-0.02
+Cayaltí,2003-11,2.14,1.0856,CHIRPS v3,-1.0544
+Cayaltí,2003-11,2.14,4.4,ERA5-Seamless,2.26
+Cayaltí,2003-11,2.14,2.798,PISCOp v3.0,0.658
+Cayaltí,2003-12,1.92,9.1678,CHIRPS v3,7.2478
+Cayaltí,2003-12,1.92,3.7,ERA5-Seamless,1.78
+Cayaltí,2003-12,1.92,3.988,PISCOp v3.0,2.068
+Cayaltí,2004-01,1.21,0.0,CHIRPS v3,-1.21
+Cayaltí,2004-01,1.21,8.7,ERA5-Seamless,7.49
+Cayaltí,2004-01,1.21,0.28,PISCOp v3.0,-0.93
+Cayaltí,2004-02,1.64,10.0916,CHIRPS v3,8.4516
+Cayaltí,2004-02,1.64,44.6,ERA5-Seamless,42.96
+Cayaltí,2004-02,1.64,1.794,PISCOp v3.0,0.154
+Cayaltí,2004-03,5.04,0.0,CHIRPS v3,-5.04
+Cayaltí,2004-03,5.04,32.0,ERA5-Seamless,26.96
+Cayaltí,2004-03,5.04,5.637,PISCOp v3.0,0.597
+Cayaltí,2004-04,0.45,0.0,CHIRPS v3,-0.45
+Cayaltí,2004-04,0.45,5.4,ERA5-Seamless,4.95
+Cayaltí,2004-04,0.45,0.65,PISCOp v3.0,0.2
+Cayaltí,2004-05,0.05,0.0,CHIRPS v3,-0.05
+Cayaltí,2004-05,0.05,1.1,ERA5-Seamless,1.05
+Cayaltí,2004-05,0.05,0.287,PISCOp v3.0,0.237
+Cayaltí,2004-06,0.01,0.1245,CHIRPS v3,0.1145
+Cayaltí,2004-06,0.01,0.0,ERA5-Seamless,-0.01
+Cayaltí,2004-06,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2004-07,0.54,1.0373,CHIRPS v3,0.4973
+Cayaltí,2004-07,0.54,2.0,ERA5-Seamless,1.46
+Cayaltí,2004-07,0.54,0.294,PISCOp v3.0,-0.246
+Cayaltí,2004-08,0.0,0.8105,CHIRPS v3,0.8105
+Cayaltí,2004-08,0.0,0.0,ERA5-Seamless,0.0
+Cayaltí,2004-08,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2004-09,3.53,3.089,CHIRPS v3,-0.441
+Cayaltí,2004-09,3.53,7.5,ERA5-Seamless,3.97
+Cayaltí,2004-09,3.53,2.218,PISCOp v3.0,-1.312
+Cayaltí,2004-10,3.47,8.4659,CHIRPS v3,4.9959
+Cayaltí,2004-10,3.47,8.9,ERA5-Seamless,5.43
+Cayaltí,2004-10,3.47,3.363,PISCOp v3.0,-0.107
+Cayaltí,2004-11,0.61,0.0,CHIRPS v3,-0.61
+Cayaltí,2004-11,0.61,4.0,ERA5-Seamless,3.39
+Cayaltí,2004-11,0.61,0.38,PISCOp v3.0,-0.23
+Cayaltí,2004-12,6.71,9.5383,CHIRPS v3,2.8283
+Cayaltí,2004-12,6.71,3.3,ERA5-Seamless,-3.41
+Cayaltí,2004-12,6.71,7.549,PISCOp v3.0,0.839
+Cayaltí,2005-01,1.61,0.0,CHIRPS v3,-1.61
+Cayaltí,2005-01,1.61,8.5,ERA5-Seamless,6.89
+Cayaltí,2005-01,1.61,1.495,PISCOp v3.0,-0.115
+Cayaltí,2005-02,1.89,0.0,CHIRPS v3,-1.89
+Cayaltí,2005-02,1.89,31.8,ERA5-Seamless,29.91
+Cayaltí,2005-02,1.89,2.358,PISCOp v3.0,0.468
+Cayaltí,2005-03,1.96,6.9427,CHIRPS v3,4.9827
+Cayaltí,2005-03,1.96,37.9,ERA5-Seamless,35.94
+Cayaltí,2005-03,1.96,6.896,PISCOp v3.0,4.936
+Cayaltí,2005-04,1.02,0.0,CHIRPS v3,-1.02
+Cayaltí,2005-04,1.02,0.3,ERA5-Seamless,-0.72
+Cayaltí,2005-04,1.02,1.316,PISCOp v3.0,0.296
+Cayaltí,2005-05,0.7,0.0,CHIRPS v3,-0.7
+Cayaltí,2005-05,0.7,0.8,ERA5-Seamless,0.1
+Cayaltí,2005-05,0.7,0.445,PISCOp v3.0,-0.255
+Cayaltí,2005-06,0.02,0.1212,CHIRPS v3,0.1012
+Cayaltí,2005-06,0.02,0.0,ERA5-Seamless,-0.02
+Cayaltí,2005-06,0.02,0.084,PISCOp v3.0,0.064
+Cayaltí,2005-07,0.01,0.9298,CHIRPS v3,0.9198
+Cayaltí,2005-07,0.01,0.0,ERA5-Seamless,-0.01
+Cayaltí,2005-07,0.01,0.0,PISCOp v3.0,-0.01
+Cayaltí,2005-08,0.0,2.7035,CHIRPS v3,2.7035
+Cayaltí,2005-08,0.0,1.3,ERA5-Seamless,1.3
+Cayaltí,2005-08,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2005-09,0.0,1.6662,CHIRPS v3,1.6662
+Cayaltí,2005-09,0.0,1.4,ERA5-Seamless,1.4
+Cayaltí,2005-09,0.0,0.0,PISCOp v3.0,0.0
+Cayaltí,2005-10,4.35,7.928,CHIRPS v3,3.578
+Cayaltí,2005-10,4.35,2.1,ERA5-Seamless,-2.25
+Cayaltí,2005-10,4.35,3.966,PISCOp v3.0,-0.384
+Cayaltí,2005-11,1.03,5.4005,CHIRPS v3,4.3705
+Cayaltí,2005-11,1.03,0.8,ERA5-Seamless,-0.23
+Cayaltí,2005-11,1.03,1.082,PISCOp v3.0,0.052
+Cayaltí,2005-12,0.51,2.8332,CHIRPS v3,2.3232
+Cayaltí,2005-12,0.51,1.1,ERA5-Seamless,0.59
+Cayaltí,2005-12,0.51,0.425,PISCOp v3.0,-0.085
+Cueva Blanca,2001-01,112.1,13.7683,CHIRPS v3,-98.3317
+Cueva Blanca,2001-01,112.1,516.7,ERA5-Seamless,404.6
+Cueva Blanca,2001-01,112.1,91.977,PISCOp v3.0,-20.123
+Cueva Blanca,2001-02,70.9,92.1049,CHIRPS v3,21.2049
+Cueva Blanca,2001-02,70.9,318.4,ERA5-Seamless,247.5
+Cueva Blanca,2001-02,70.9,134.959,PISCOp v3.0,64.059
+Cueva Blanca,2001-03,144.9,130.2013,CHIRPS v3,-14.6987
+Cueva Blanca,2001-03,144.9,1255.3,ERA5-Seamless,1110.4
+Cueva Blanca,2001-03,144.9,128.109,PISCOp v3.0,-16.791
+Cueva Blanca,2001-04,43.8,65.8489,CHIRPS v3,22.0489
+Cueva Blanca,2001-04,43.8,443.9,ERA5-Seamless,400.1
+Cueva Blanca,2001-04,43.8,74.503,PISCOp v3.0,30.703
+Cueva Blanca,2001-05,37.1,24.6767,CHIRPS v3,-12.4233
+Cueva Blanca,2001-05,37.1,56.2,ERA5-Seamless,19.1
+Cueva Blanca,2001-05,37.1,21.082,PISCOp v3.0,-16.018
+Cueva Blanca,2001-06,6.4,0.0,CHIRPS v3,-6.4
+Cueva Blanca,2001-06,6.4,6.4,ERA5-Seamless,0.0
+Cueva Blanca,2001-06,6.4,0.126,PISCOp v3.0,-6.274
+Cueva Blanca,2001-07,15.7,3.8047,CHIRPS v3,-11.8953
+Cueva Blanca,2001-07,15.7,0.0,ERA5-Seamless,-15.7
+Cueva Blanca,2001-07,15.7,15.342,PISCOp v3.0,-0.358
+Cueva Blanca,2001-08,1.8,4.2759,CHIRPS v3,2.4759
+Cueva Blanca,2001-08,1.8,0.0,ERA5-Seamless,-1.8
+Cueva Blanca,2001-08,1.8,3.623,PISCOp v3.0,1.823
+Cueva Blanca,2001-09,61.5,50.6449,CHIRPS v3,-10.8551
+Cueva Blanca,2001-09,61.5,31.5,ERA5-Seamless,-30.0
+Cueva Blanca,2001-09,61.5,33.622,PISCOp v3.0,-27.878
+Cueva Blanca,2001-10,48.0,17.4299,CHIRPS v3,-30.5701
+Cueva Blanca,2001-10,48.0,41.0,ERA5-Seamless,-7.0
+Cueva Blanca,2001-10,48.0,14.804,PISCOp v3.0,-33.196
+Cueva Blanca,2001-11,113.7,67.9996,CHIRPS v3,-45.7004
+Cueva Blanca,2001-11,113.7,123.9,ERA5-Seamless,10.2
+Cueva Blanca,2001-11,113.7,49.568,PISCOp v3.0,-64.132
+Cueva Blanca,2001-12,79.4,5.0759,CHIRPS v3,-74.3241
+Cueva Blanca,2001-12,79.4,173.6,ERA5-Seamless,94.2
+Cueva Blanca,2001-12,79.4,18.482,PISCOp v3.0,-60.918
+Cueva Blanca,2002-01,49.7,6.7993,CHIRPS v3,-42.9007
+Cueva Blanca,2002-01,49.7,87.8,ERA5-Seamless,38.1
+Cueva Blanca,2002-01,49.7,16.696,PISCOp v3.0,-33.004
+Cueva Blanca,2002-02,143.2,116.0842,CHIRPS v3,-27.1158
+Cueva Blanca,2002-02,143.2,256.6,ERA5-Seamless,113.4
+Cueva Blanca,2002-02,143.2,85.519,PISCOp v3.0,-57.681
+Cueva Blanca,2002-03,98.0,132.0978,CHIRPS v3,34.0978
+Cueva Blanca,2002-03,98.0,1022.5,ERA5-Seamless,924.5
+Cueva Blanca,2002-03,98.0,101.968,PISCOp v3.0,3.968
+Cueva Blanca,2002-04,175.8,178.1948,CHIRPS v3,2.3948
+Cueva Blanca,2002-04,175.8,608.2,ERA5-Seamless,432.4
+Cueva Blanca,2002-04,175.8,168.058,PISCOp v3.0,-7.742
+Cueva Blanca,2002-05,45.4,12.0928,CHIRPS v3,-33.3072
+Cueva Blanca,2002-05,45.4,56.7,ERA5-Seamless,11.3
+Cueva Blanca,2002-05,45.4,18.245,PISCOp v3.0,-27.155
+Cueva Blanca,2002-06,12.6,2.0023,CHIRPS v3,-10.5977
+Cueva Blanca,2002-06,12.6,16.0,ERA5-Seamless,3.4
+Cueva Blanca,2002-06,12.6,2.998,PISCOp v3.0,-9.602
+Cueva Blanca,2002-07,21.7,0.0,CHIRPS v3,-21.7
+Cueva Blanca,2002-07,21.7,0.0,ERA5-Seamless,-21.7
+Cueva Blanca,2002-07,21.7,1.674,PISCOp v3.0,-20.026
+Cueva Blanca,2002-08,0.0,3.7554,CHIRPS v3,3.7554
+Cueva Blanca,2002-08,0.0,0.3,ERA5-Seamless,0.3
+Cueva Blanca,2002-08,0.0,1.621,PISCOp v3.0,1.621
+Cueva Blanca,2002-09,5.2,5.3782,CHIRPS v3,0.1782
+Cueva Blanca,2002-09,5.2,13.4,ERA5-Seamless,8.2
+Cueva Blanca,2002-09,5.2,3.372,PISCOp v3.0,-1.828
+Cueva Blanca,2002-10,102.0,56.2213,CHIRPS v3,-45.7787
+Cueva Blanca,2002-10,102.0,83.5,ERA5-Seamless,-18.5
+Cueva Blanca,2002-10,102.0,30.784,PISCOp v3.0,-71.216
+Cueva Blanca,2002-11,90.1,40.6564,CHIRPS v3,-49.4436
+Cueva Blanca,2002-11,90.1,92.0,ERA5-Seamless,1.9
+Cueva Blanca,2002-11,90.1,38.593,PISCOp v3.0,-51.507
+Cueva Blanca,2002-12,53.3,21.9322,CHIRPS v3,-31.3678
+Cueva Blanca,2002-12,53.3,110.7,ERA5-Seamless,57.4
+Cueva Blanca,2002-12,53.3,26.036,PISCOp v3.0,-27.264
+Cueva Blanca,2003-01,80.0,37.3278,CHIRPS v3,-42.6722
+Cueva Blanca,2003-01,80.0,184.3,ERA5-Seamless,104.3
+Cueva Blanca,2003-01,80.0,90.681,PISCOp v3.0,10.681
+Cueva Blanca,2003-02,116.3,79.0635,CHIRPS v3,-37.2365
+Cueva Blanca,2003-02,116.3,161.2,ERA5-Seamless,44.9
+Cueva Blanca,2003-02,116.3,71.811,PISCOp v3.0,-44.489
+Cueva Blanca,2003-03,92.1,67.3319,CHIRPS v3,-24.7681
+Cueva Blanca,2003-03,92.1,235.6,ERA5-Seamless,143.5
+Cueva Blanca,2003-03,92.1,18.546,PISCOp v3.0,-73.554
+Cueva Blanca,2003-04,29.7,31.4038,CHIRPS v3,1.7038
+Cueva Blanca,2003-04,29.7,168.5,ERA5-Seamless,138.8
+Cueva Blanca,2003-04,29.7,14.269,PISCOp v3.0,-15.431
+Cueva Blanca,2003-05,63.7,9.9408,CHIRPS v3,-53.7592
+Cueva Blanca,2003-05,63.7,16.3,ERA5-Seamless,-47.4
+Cueva Blanca,2003-05,63.7,13.972,PISCOp v3.0,-49.728
+Cueva Blanca,2003-06,38.4,6.1259,CHIRPS v3,-32.2741
+Cueva Blanca,2003-06,38.4,13.9,ERA5-Seamless,-24.5
+Cueva Blanca,2003-06,38.4,30.62,PISCOp v3.0,-7.78
+Cueva Blanca,2003-07,8.4,0.0,CHIRPS v3,-8.4
+Cueva Blanca,2003-07,8.4,0.3,ERA5-Seamless,-8.1
+Cueva Blanca,2003-07,8.4,1.223,PISCOp v3.0,-7.177
+Cueva Blanca,2003-08,4.2,4.234,CHIRPS v3,0.034
+Cueva Blanca,2003-08,4.2,0.4,ERA5-Seamless,-3.8
+Cueva Blanca,2003-08,4.2,2.976,PISCOp v3.0,-1.224
+Cueva Blanca,2003-09,20.9,7.7438,CHIRPS v3,-13.1562
+Cueva Blanca,2003-09,20.9,15.9,ERA5-Seamless,-5.0
+Cueva Blanca,2003-09,20.9,7.25,PISCOp v3.0,-13.65
+Cueva Blanca,2003-10,35.3,31.1351,CHIRPS v3,-4.1649
+Cueva Blanca,2003-10,35.3,53.1,ERA5-Seamless,17.8
+Cueva Blanca,2003-10,35.3,10.578,PISCOp v3.0,-24.722
+Cueva Blanca,2003-11,58.1,23.8673,CHIRPS v3,-34.2327
+Cueva Blanca,2003-11,58.1,82.3,ERA5-Seamless,24.2
+Cueva Blanca,2003-11,58.1,23.144,PISCOp v3.0,-34.956
+Cueva Blanca,2003-12,73.3,54.4427,CHIRPS v3,-18.8573
+Cueva Blanca,2003-12,73.3,61.8,ERA5-Seamless,-11.5
+Cueva Blanca,2003-12,73.3,76.012,PISCOp v3.0,2.712
+Cueva Blanca,2004-01,56.8,18.2869,CHIRPS v3,-38.5131
+Cueva Blanca,2004-01,56.8,65.5,ERA5-Seamless,8.7
+Cueva Blanca,2004-01,56.8,42.411,PISCOp v3.0,-14.389
+Cueva Blanca,2004-02,22.1,32.5366,CHIRPS v3,10.4366
+Cueva Blanca,2004-02,22.1,259.9,ERA5-Seamless,237.8
+Cueva Blanca,2004-02,22.1,16.055,PISCOp v3.0,-6.045
+Cueva Blanca,2004-03,50.9,30.5913,CHIRPS v3,-20.3087
+Cueva Blanca,2004-03,50.9,206.8,ERA5-Seamless,155.9
+Cueva Blanca,2004-03,50.9,41.764,PISCOp v3.0,-9.136
+Cueva Blanca,2004-04,54.7,27.1428,CHIRPS v3,-27.5572
+Cueva Blanca,2004-04,54.7,189.2,ERA5-Seamless,134.5
+Cueva Blanca,2004-04,54.7,21.142,PISCOp v3.0,-33.558
+Cueva Blanca,2004-05,54.3,29.1921,CHIRPS v3,-25.1079
+Cueva Blanca,2004-05,54.3,32.8,ERA5-Seamless,-21.5
+Cueva Blanca,2004-05,54.3,25.342,PISCOp v3.0,-28.958
+Cueva Blanca,2004-06,13.3,0.0,CHIRPS v3,-13.3
+Cueva Blanca,2004-06,13.3,0.0,ERA5-Seamless,-13.3
+Cueva Blanca,2004-06,13.3,0.798,PISCOp v3.0,-12.502
+Cueva Blanca,2004-07,21.6,0.0,CHIRPS v3,-21.6
+Cueva Blanca,2004-07,21.6,0.4,ERA5-Seamless,-21.2
+Cueva Blanca,2004-07,21.6,6.206,PISCOp v3.0,-15.394
+Cueva Blanca,2004-08,1.7,3.5742,CHIRPS v3,1.8742
+Cueva Blanca,2004-08,1.7,0.1,ERA5-Seamless,-1.6
+Cueva Blanca,2004-08,1.7,1.582,PISCOp v3.0,-0.118
+Cueva Blanca,2004-09,41.0,38.7199,CHIRPS v3,-2.2801
+Cueva Blanca,2004-09,41.0,24.3,ERA5-Seamless,-16.7
+Cueva Blanca,2004-09,41.0,32.775,PISCOp v3.0,-8.225
+Cueva Blanca,2004-10,90.6,64.2663,CHIRPS v3,-26.3337
+Cueva Blanca,2004-10,90.6,90.0,ERA5-Seamless,-0.6
+Cueva Blanca,2004-10,90.6,50.795,PISCOp v3.0,-39.805
+Cueva Blanca,2004-11,46.8,28.6159,CHIRPS v3,-18.1841
+Cueva Blanca,2004-11,46.8,128.2,ERA5-Seamless,81.4
+Cueva Blanca,2004-11,46.8,22.726,PISCOp v3.0,-24.074
+Cueva Blanca,2004-12,87.0,69.7988,CHIRPS v3,-17.2012
+Cueva Blanca,2004-12,87.0,155.7,ERA5-Seamless,68.7
+Cueva Blanca,2004-12,87.0,103.554,PISCOp v3.0,16.554
+Cueva Blanca,2005-01,15.1,0.0,CHIRPS v3,-15.1
+Cueva Blanca,2005-01,15.1,115.6,ERA5-Seamless,100.5
+Cueva Blanca,2005-01,15.1,1.344,PISCOp v3.0,-13.756
+Cueva Blanca,2005-02,125.6,31.3517,CHIRPS v3,-94.2483
+Cueva Blanca,2005-02,125.6,266.1,ERA5-Seamless,140.5
+Cueva Blanca,2005-02,125.6,35.492,PISCOp v3.0,-90.108
+Cueva Blanca,2005-03,131.2,182.3495,CHIRPS v3,51.1495
+Cueva Blanca,2005-03,131.2,609.3,ERA5-Seamless,478.1
+Cueva Blanca,2005-03,131.2,125.699,PISCOp v3.0,-5.501
+Cueva Blanca,2005-04,20.3,31.2557,CHIRPS v3,10.9557
+Cueva Blanca,2005-04,20.3,54.3,ERA5-Seamless,34.0
+Cueva Blanca,2005-04,20.3,12.586,PISCOp v3.0,-7.714
+Cueva Blanca,2005-05,11.0,12.5503,CHIRPS v3,1.5503
+Cueva Blanca,2005-05,11.0,22.5,ERA5-Seamless,11.5
+Cueva Blanca,2005-05,11.0,6.479,PISCOp v3.0,-4.521
+Cueva Blanca,2005-06,11.2,0.0,CHIRPS v3,-11.2
+Cueva Blanca,2005-06,11.2,2.5,ERA5-Seamless,-8.7
+Cueva Blanca,2005-06,11.2,0.899,PISCOp v3.0,-10.301
+Cueva Blanca,2005-07,2.4,0.3503,CHIRPS v3,-2.0497
+Cueva Blanca,2005-07,2.4,0.0,ERA5-Seamless,-2.4
+Cueva Blanca,2005-07,2.4,2.327,PISCOp v3.0,-0.073
+Cueva Blanca,2005-08,3.3,4.582,CHIRPS v3,1.282
+Cueva Blanca,2005-08,3.3,0.6,ERA5-Seamless,-2.7
+Cueva Blanca,2005-08,3.3,2.357,PISCOp v3.0,-0.943
+Cueva Blanca,2005-09,5.7,16.2924,CHIRPS v3,10.5924
+Cueva Blanca,2005-09,5.7,12.0,ERA5-Seamless,6.3
+Cueva Blanca,2005-09,5.7,7.063,PISCOp v3.0,1.363
+Cueva Blanca,2005-10,123.8,71.5484,CHIRPS v3,-52.2516
+Cueva Blanca,2005-10,123.8,79.0,ERA5-Seamless,-44.8
+Cueva Blanca,2005-10,123.8,25.636,PISCOp v3.0,-98.164
+Cueva Blanca,2005-11,19.8,17.5566,CHIRPS v3,-2.2434
+Cueva Blanca,2005-11,19.8,54.6,ERA5-Seamless,34.8
+Cueva Blanca,2005-11,19.8,14.749,PISCOp v3.0,-5.051
+Cueva Blanca,2005-12,105.2,48.8232,CHIRPS v3,-56.3768
+Cueva Blanca,2005-12,105.2,105.3,ERA5-Seamless,0.1
+Cueva Blanca,2005-12,105.2,36.628,PISCOp v3.0,-68.572
+Jayanca (La Viña),2001-01,7.7,2.786,CHIRPS v3,-4.914
+Jayanca (La Viña),2001-01,7.7,328.8,ERA5-Seamless,321.1
+Jayanca (La Viña),2001-01,7.7,6.658,PISCOp v3.0,-1.042
+Jayanca (La Viña),2001-02,9.2,32.1529,CHIRPS v3,22.9529
+Jayanca (La Viña),2001-02,9.2,183.3,ERA5-Seamless,174.1
+Jayanca (La Viña),2001-02,9.2,20.188,PISCOp v3.0,10.988
+Jayanca (La Viña),2001-03,175.5,63.9734,CHIRPS v3,-111.5266
+Jayanca (La Viña),2001-03,175.5,914.4,ERA5-Seamless,738.9
+Jayanca (La Viña),2001-03,175.5,135.783,PISCOp v3.0,-39.717
+Jayanca (La Viña),2001-04,21.6,5.8934,CHIRPS v3,-15.7066
+Jayanca (La Viña),2001-04,21.6,311.6,ERA5-Seamless,290.0
+Jayanca (La Viña),2001-04,21.6,13.589,PISCOp v3.0,-8.011
+Jayanca (La Viña),2001-05,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2001-05,0.0,33.6,ERA5-Seamless,33.6
+Jayanca (La Viña),2001-05,0.0,0.054,PISCOp v3.0,0.054
+Jayanca (La Viña),2001-06,0.5,0.0,CHIRPS v3,-0.5
+Jayanca (La Viña),2001-06,0.5,3.9,ERA5-Seamless,3.4
+Jayanca (La Viña),2001-06,0.5,0.425,PISCOp v3.0,-0.075
+Jayanca (La Viña),2001-07,0.6,0.0,CHIRPS v3,-0.6
+Jayanca (La Viña),2001-07,0.6,0.0,ERA5-Seamless,-0.6
+Jayanca (La Viña),2001-07,0.6,0.243,PISCOp v3.0,-0.357
+Jayanca (La Viña),2001-08,0.0,1.1567,CHIRPS v3,1.1567
+Jayanca (La Viña),2001-08,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2001-08,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2001-09,0.0,9.1096,CHIRPS v3,9.1096
+Jayanca (La Viña),2001-09,0.0,9.9,ERA5-Seamless,9.9
+Jayanca (La Viña),2001-09,0.0,0.26,PISCOp v3.0,0.26
+Jayanca (La Viña),2001-10,0.9,0.0,CHIRPS v3,-0.9
+Jayanca (La Viña),2001-10,0.9,9.1,ERA5-Seamless,8.2
+Jayanca (La Viña),2001-10,0.9,0.731,PISCOp v3.0,-0.169
+Jayanca (La Viña),2001-11,1.4,7.6956,CHIRPS v3,6.2956
+Jayanca (La Viña),2001-11,1.4,59.0,ERA5-Seamless,57.6
+Jayanca (La Viña),2001-11,1.4,1.955,PISCOp v3.0,0.555
+Jayanca (La Viña),2001-12,1.4,3.2042,CHIRPS v3,1.8042
+Jayanca (La Viña),2001-12,1.4,56.3,ERA5-Seamless,54.9
+Jayanca (La Viña),2001-12,1.4,1.531,PISCOp v3.0,0.131
+Jayanca (La Viña),2002-01,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-01,0.0,23.1,ERA5-Seamless,23.1
+Jayanca (La Viña),2002-01,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2002-02,26.4,23.2044,CHIRPS v3,-3.1956
+Jayanca (La Viña),2002-02,26.4,159.5,ERA5-Seamless,133.1
+Jayanca (La Viña),2002-02,26.4,13.253,PISCOp v3.0,-13.147
+Jayanca (La Viña),2002-03,96.7,18.1629,CHIRPS v3,-78.5371
+Jayanca (La Viña),2002-03,96.7,781.8,ERA5-Seamless,685.1
+Jayanca (La Viña),2002-03,96.7,72.386,PISCOp v3.0,-24.314
+Jayanca (La Viña),2002-04,69.7,61.4124,CHIRPS v3,-8.2876
+Jayanca (La Viña),2002-04,69.7,454.2,ERA5-Seamless,384.5
+Jayanca (La Viña),2002-04,69.7,55.035,PISCOp v3.0,-14.665
+Jayanca (La Viña),2002-05,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-05,0.0,28.6,ERA5-Seamless,28.6
+Jayanca (La Viña),2002-05,0.0,0.086,PISCOp v3.0,0.086
+Jayanca (La Viña),2002-06,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-06,0.0,9.6,ERA5-Seamless,9.6
+Jayanca (La Viña),2002-06,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2002-07,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-07,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2002-07,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2002-08,0.0,1.1441,CHIRPS v3,1.1441
+Jayanca (La Viña),2002-08,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2002-08,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2002-09,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-09,0.0,2.8,ERA5-Seamless,2.8
+Jayanca (La Viña),2002-09,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2002-10,1.3,11.4165,CHIRPS v3,10.1165
+Jayanca (La Viña),2002-10,1.3,40.8,ERA5-Seamless,39.5
+Jayanca (La Viña),2002-10,1.3,1.774,PISCOp v3.0,0.474
+Jayanca (La Viña),2002-11,8.1,7.3901,CHIRPS v3,-0.7099
+Jayanca (La Viña),2002-11,8.1,48.7,ERA5-Seamless,40.6
+Jayanca (La Viña),2002-11,8.1,7.54,PISCOp v3.0,-0.56
+Jayanca (La Viña),2002-12,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2002-12,0.0,56.5,ERA5-Seamless,56.5
+Jayanca (La Viña),2002-12,0.0,0.204,PISCOp v3.0,0.204
+Jayanca (La Viña),2003-01,3.6,8.4055,CHIRPS v3,4.8055
+Jayanca (La Viña),2003-01,3.6,105.1,ERA5-Seamless,101.5
+Jayanca (La Viña),2003-01,3.6,3.764,PISCOp v3.0,0.164
+Jayanca (La Viña),2003-02,33.1,2.7413,CHIRPS v3,-30.3587
+Jayanca (La Viña),2003-02,33.1,68.4,ERA5-Seamless,35.3
+Jayanca (La Viña),2003-02,33.1,14.72,PISCOp v3.0,-18.38
+Jayanca (La Viña),2003-03,0.0,0.5847,CHIRPS v3,0.5847
+Jayanca (La Viña),2003-03,0.0,110.8,ERA5-Seamless,110.8
+Jayanca (La Viña),2003-03,0.0,0.335,PISCOp v3.0,0.335
+Jayanca (La Viña),2003-04,0.9,0.7147,CHIRPS v3,-0.1853
+Jayanca (La Viña),2003-04,0.9,80.1,ERA5-Seamless,79.2
+Jayanca (La Viña),2003-04,0.9,0.548,PISCOp v3.0,-0.352
+Jayanca (La Viña),2003-05,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2003-05,0.0,8.0,ERA5-Seamless,8.0
+Jayanca (La Viña),2003-05,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2003-06,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2003-06,0.0,9.0,ERA5-Seamless,9.0
+Jayanca (La Viña),2003-06,0.0,0.169,PISCOp v3.0,0.169
+Jayanca (La Viña),2003-07,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2003-07,0.0,0.2,ERA5-Seamless,0.2
+Jayanca (La Viña),2003-07,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2003-08,0.0,1.1674,CHIRPS v3,1.1674
+Jayanca (La Viña),2003-08,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2003-08,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2003-09,1.2,0.0,CHIRPS v3,-1.2
+Jayanca (La Viña),2003-09,1.2,1.9,ERA5-Seamless,0.7
+Jayanca (La Viña),2003-09,1.2,0.799,PISCOp v3.0,-0.401
+Jayanca (La Viña),2003-10,0.0,4.2247,CHIRPS v3,4.2247
+Jayanca (La Viña),2003-10,0.0,9.0,ERA5-Seamless,9.0
+Jayanca (La Viña),2003-10,0.0,0.044,PISCOp v3.0,0.044
+Jayanca (La Viña),2003-11,0.8,2.5345,CHIRPS v3,1.7345
+Jayanca (La Viña),2003-11,0.8,16.9,ERA5-Seamless,16.1
+Jayanca (La Viña),2003-11,0.8,0.991,PISCOp v3.0,0.191
+Jayanca (La Viña),2003-12,3.3,11.226,CHIRPS v3,7.926
+Jayanca (La Viña),2003-12,3.3,25.7,ERA5-Seamless,22.4
+Jayanca (La Viña),2003-12,3.3,3.102,PISCOp v3.0,-0.198
+Jayanca (La Viña),2004-01,0.4,2.7116,CHIRPS v3,2.3116
+Jayanca (La Viña),2004-01,0.4,15.9,ERA5-Seamless,15.5
+Jayanca (La Viña),2004-01,0.4,0.605,PISCOp v3.0,0.205
+Jayanca (La Viña),2004-02,1.6,6.6206,CHIRPS v3,5.0206
+Jayanca (La Viña),2004-02,1.6,148.1,ERA5-Seamless,146.5
+Jayanca (La Viña),2004-02,1.6,1.648,PISCOp v3.0,0.048
+Jayanca (La Viña),2004-04,3.6,2.0502,CHIRPS v3,-1.5498
+Jayanca (La Viña),2004-04,3.6,92.1,ERA5-Seamless,88.5
+Jayanca (La Viña),2004-04,3.6,2.68,PISCOp v3.0,-0.92
+Jayanca (La Viña),2004-06,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2004-06,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2004-06,0.0,0.019,PISCOp v3.0,0.019
+Jayanca (La Viña),2004-07,5.0,0.0,CHIRPS v3,-5.0
+Jayanca (La Viña),2004-07,5.0,0.0,ERA5-Seamless,-5.0
+Jayanca (La Viña),2004-07,5.0,3.626,PISCOp v3.0,-1.374
+Jayanca (La Viña),2004-08,0.0,1.1155,CHIRPS v3,1.1155
+Jayanca (La Viña),2004-08,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2004-08,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2004-09,1.5,6.1164,CHIRPS v3,4.6164
+Jayanca (La Viña),2004-09,1.5,14.6,ERA5-Seamless,13.1
+Jayanca (La Viña),2004-09,1.5,1.191,PISCOp v3.0,-0.309
+Jayanca (La Viña),2004-10,4.5,12.2288,CHIRPS v3,7.7288
+Jayanca (La Viña),2004-10,4.5,29.6,ERA5-Seamless,25.1
+Jayanca (La Viña),2004-10,4.5,4.038,PISCOp v3.0,-0.462
+Jayanca (La Viña),2004-11,0.2,0.9521,CHIRPS v3,0.7521
+Jayanca (La Viña),2004-11,0.2,38.7,ERA5-Seamless,38.5
+Jayanca (La Viña),2004-11,0.2,0.326,PISCOp v3.0,0.126
+Jayanca (La Viña),2004-12,9.4,5.0529,CHIRPS v3,-4.3471
+Jayanca (La Viña),2004-12,9.4,58.6,ERA5-Seamless,49.2
+Jayanca (La Viña),2004-12,9.4,6.971,PISCOp v3.0,-2.429
+Jayanca (La Viña),2005-01,0.6,0.0,CHIRPS v3,-0.6
+Jayanca (La Viña),2005-01,0.6,47.5,ERA5-Seamless,46.9
+Jayanca (La Viña),2005-01,0.6,0.346,PISCOp v3.0,-0.254
+Jayanca (La Viña),2005-02,4.0,0.0,CHIRPS v3,-4.0
+Jayanca (La Viña),2005-02,4.0,114.7,ERA5-Seamless,110.7
+Jayanca (La Viña),2005-02,4.0,3.633,PISCOp v3.0,-0.367
+Jayanca (La Viña),2005-03,19.7,19.3877,CHIRPS v3,-0.3123
+Jayanca (La Viña),2005-03,19.7,366.6,ERA5-Seamless,346.9
+Jayanca (La Viña),2005-03,19.7,22.731,PISCOp v3.0,3.031
+Jayanca (La Viña),2005-04,0.0,5.9173,CHIRPS v3,5.9173
+Jayanca (La Viña),2005-04,0.0,16.7,ERA5-Seamless,16.7
+Jayanca (La Viña),2005-04,0.0,0.399,PISCOp v3.0,0.399
+Jayanca (La Viña),2005-05,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2005-05,0.0,8.8,ERA5-Seamless,8.8
+Jayanca (La Viña),2005-05,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2005-06,0.0,0.0,CHIRPS v3,0.0
+Jayanca (La Viña),2005-06,0.0,1.6,ERA5-Seamless,1.6
+Jayanca (La Viña),2005-06,0.0,0.069,PISCOp v3.0,0.069
+Jayanca (La Viña),2005-07,0.0,0.3614,CHIRPS v3,0.3614
+Jayanca (La Viña),2005-07,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2005-07,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2005-08,0.0,1.1655,CHIRPS v3,1.1655
+Jayanca (La Viña),2005-08,0.0,0.0,ERA5-Seamless,0.0
+Jayanca (La Viña),2005-08,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2005-09,0.0,4.6711,CHIRPS v3,4.6711
+Jayanca (La Viña),2005-09,0.0,1.7,ERA5-Seamless,1.7
+Jayanca (La Viña),2005-09,0.0,0.0,PISCOp v3.0,0.0
+Jayanca (La Viña),2005-10,0.8,2.986,CHIRPS v3,2.186
+Jayanca (La Viña),2005-10,0.8,21.4,ERA5-Seamless,20.6
+Jayanca (La Viña),2005-10,0.8,0.73,PISCOp v3.0,-0.07
+Jayanca (La Viña),2005-11,1.7,6.2439,CHIRPS v3,4.5439
+Jayanca (La Viña),2005-11,1.7,12.2,ERA5-Seamless,10.5
+Jayanca (La Viña),2005-11,1.7,1.872,PISCOp v3.0,0.172
+Jayanca (La Viña),2005-12,0.0,2.4823,CHIRPS v3,2.4823
+Jayanca (La Viña),2005-12,0.0,17.1,ERA5-Seamless,17.1
+Jayanca (La Viña),2005-12,0.0,0.0,PISCOp v3.0,0.0
+Lambayeque,2001-01,0.13,0.0,CHIRPS v3,-0.13
+Lambayeque,2001-01,0.13,27.1,ERA5-Seamless,26.97
+Lambayeque,2001-01,0.13,0.112,PISCOp v3.0,-0.018
+Lambayeque,2001-02,1.63,0.0,CHIRPS v3,-1.63
+Lambayeque,2001-02,1.63,7.8,ERA5-Seamless,6.17
+Lambayeque,2001-02,1.63,0.988,PISCOp v3.0,-0.642
+Lambayeque,2001-03,58.13,28.6207,CHIRPS v3,-29.5093
+Lambayeque,2001-03,58.13,84.4,ERA5-Seamless,26.27
+Lambayeque,2001-03,58.13,50.879,PISCOp v3.0,-7.251
+Lambayeque,2001-04,11.2,7.0994,CHIRPS v3,-4.1006
+Lambayeque,2001-04,11.2,18.0,ERA5-Seamless,6.8
+Lambayeque,2001-04,11.2,10.199,PISCOp v3.0,-1.001
+Lambayeque,2001-05,0.22,0.113,CHIRPS v3,-0.107
+Lambayeque,2001-05,0.22,4.0,ERA5-Seamless,3.78
+Lambayeque,2001-05,0.22,0.222,PISCOp v3.0,0.002
+Lambayeque,2001-06,2.12,0.1074,CHIRPS v3,-2.0126
+Lambayeque,2001-06,2.12,0.3,ERA5-Seamless,-1.82
+Lambayeque,2001-06,2.12,1.476,PISCOp v3.0,-0.644
+Lambayeque,2001-07,0.0,0.3433,CHIRPS v3,0.3433
+Lambayeque,2001-07,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2001-07,0.0,0.009,PISCOp v3.0,0.009
+Lambayeque,2001-08,0.01,1.457,CHIRPS v3,1.447
+Lambayeque,2001-08,0.01,0.0,ERA5-Seamless,-0.01
+Lambayeque,2001-08,0.01,0.0,PISCOp v3.0,-0.01
+Lambayeque,2001-09,0.0,6.0381,CHIRPS v3,6.0381
+Lambayeque,2001-09,0.0,0.9,ERA5-Seamless,0.9
+Lambayeque,2001-09,0.0,0.626,PISCOp v3.0,0.626
+Lambayeque,2001-10,0.7,0.0,CHIRPS v3,-0.7
+Lambayeque,2001-10,0.7,1.5,ERA5-Seamless,0.8
+Lambayeque,2001-10,0.7,0.308,PISCOp v3.0,-0.392
+Lambayeque,2001-11,0.0,2.0747,CHIRPS v3,2.0747
+Lambayeque,2001-11,0.0,2.7,ERA5-Seamless,2.7
+Lambayeque,2001-11,0.0,0.312,PISCOp v3.0,0.312
+Lambayeque,2001-12,2.8,2.281,CHIRPS v3,-0.519
+Lambayeque,2001-12,2.8,1.7,ERA5-Seamless,-1.1
+Lambayeque,2001-12,2.8,2.348,PISCOp v3.0,-0.452
+Lambayeque,2002-01,0.0,0.0,CHIRPS v3,0.0
+Lambayeque,2002-01,0.0,0.8,ERA5-Seamless,0.8
+Lambayeque,2002-01,0.0,0.013,PISCOp v3.0,0.013
+Lambayeque,2002-02,16.01,16.6924,CHIRPS v3,0.6824
+Lambayeque,2002-02,16.01,20.9,ERA5-Seamless,4.89
+Lambayeque,2002-02,16.01,9.0,PISCOp v3.0,-7.01
+Lambayeque,2002-03,17.82,0.0,CHIRPS v3,-17.82
+Lambayeque,2002-03,17.82,58.2,ERA5-Seamless,40.38
+Lambayeque,2002-03,17.82,10.685,PISCOp v3.0,-7.135
+Lambayeque,2002-04,6.23,16.319,CHIRPS v3,10.089
+Lambayeque,2002-04,6.23,56.4,ERA5-Seamless,50.17
+Lambayeque,2002-04,6.23,8.185,PISCOp v3.0,1.955
+Lambayeque,2002-05,0.0,0.1158,CHIRPS v3,0.1158
+Lambayeque,2002-05,0.0,0.2,ERA5-Seamless,0.2
+Lambayeque,2002-05,0.0,0.07,PISCOp v3.0,0.07
+Lambayeque,2002-06,0.0,0.1013,CHIRPS v3,0.1013
+Lambayeque,2002-06,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2002-06,0.0,0.0,PISCOp v3.0,0.0
+Lambayeque,2002-07,0.2,0.3434,CHIRPS v3,0.1434
+Lambayeque,2002-07,0.2,0.0,ERA5-Seamless,-0.2
+Lambayeque,2002-07,0.2,0.136,PISCOp v3.0,-0.064
+Lambayeque,2002-08,0.0,1.4591,CHIRPS v3,1.4591
+Lambayeque,2002-08,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2002-08,0.0,0.01,PISCOp v3.0,0.01
+Lambayeque,2002-09,0.0,0.0,CHIRPS v3,0.0
+Lambayeque,2002-09,0.0,1.4,ERA5-Seamless,1.4
+Lambayeque,2002-09,0.0,0.025,PISCOp v3.0,0.025
+Lambayeque,2002-10,1.23,2.6467,CHIRPS v3,1.4167
+Lambayeque,2002-10,1.23,5.6,ERA5-Seamless,4.37
+Lambayeque,2002-10,1.23,1.239,PISCOp v3.0,0.009
+Lambayeque,2002-11,2.12,3.0319,CHIRPS v3,0.9119
+Lambayeque,2002-11,2.12,6.5,ERA5-Seamless,4.38
+Lambayeque,2002-11,2.12,1.987,PISCOp v3.0,-0.133
+Lambayeque,2002-12,1.91,0.0,CHIRPS v3,-1.91
+Lambayeque,2002-12,1.91,6.6,ERA5-Seamless,4.69
+Lambayeque,2002-12,1.91,1.386,PISCOp v3.0,-0.524
+Lambayeque,2003-01,1.54,4.708,CHIRPS v3,3.168
+Lambayeque,2003-01,1.54,10.4,ERA5-Seamless,8.86
+Lambayeque,2003-01,1.54,2.363,PISCOp v3.0,0.823
+Lambayeque,2003-02,4.81,0.0,CHIRPS v3,-4.81
+Lambayeque,2003-02,4.81,3.8,ERA5-Seamless,-1.01
+Lambayeque,2003-02,4.81,3.48,PISCOp v3.0,-1.33
+Lambayeque,2003-03,0.13,0.0,CHIRPS v3,-0.13
+Lambayeque,2003-03,0.13,4.5,ERA5-Seamless,4.37
+Lambayeque,2003-03,0.13,0.221,PISCOp v3.0,0.091
+Lambayeque,2003-04,0.02,0.0,CHIRPS v3,-0.02
+Lambayeque,2003-04,0.02,5.6,ERA5-Seamless,5.58
+Lambayeque,2003-04,0.02,0.039,PISCOp v3.0,0.019
+Lambayeque,2003-05,0.03,0.1161,CHIRPS v3,0.0861
+Lambayeque,2003-05,0.03,0.0,ERA5-Seamless,-0.03
+Lambayeque,2003-05,0.03,0.048,PISCOp v3.0,0.018
+Lambayeque,2003-06,2.2,0.1208,CHIRPS v3,-2.0792
+Lambayeque,2003-06,2.2,2.6,ERA5-Seamless,0.4
+Lambayeque,2003-06,2.2,1.405,PISCOp v3.0,-0.795
+Lambayeque,2003-07,0.01,0.3416,CHIRPS v3,0.3316
+Lambayeque,2003-07,0.01,0.0,ERA5-Seamless,-0.01
+Lambayeque,2003-07,0.01,0.018,PISCOp v3.0,0.008
+Lambayeque,2003-08,0.0,1.457,CHIRPS v3,1.457
+Lambayeque,2003-08,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2003-08,0.0,0.026,PISCOp v3.0,0.026
+Lambayeque,2003-09,0.0,0.0,CHIRPS v3,0.0
+Lambayeque,2003-09,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2003-09,0.0,0.033,PISCOp v3.0,0.033
+Lambayeque,2003-10,0.01,0.0,CHIRPS v3,-0.01
+Lambayeque,2003-10,0.01,0.0,ERA5-Seamless,-0.01
+Lambayeque,2003-10,0.01,0.009,PISCOp v3.0,-0.001
+Lambayeque,2003-11,14.73,1.3852,CHIRPS v3,-13.3448
+Lambayeque,2003-11,14.73,1.1,ERA5-Seamless,-13.63
+Lambayeque,2003-11,14.73,6.393,PISCOp v3.0,-8.337
+Lambayeque,2003-12,0.05,6.0113,CHIRPS v3,5.9613
+Lambayeque,2003-12,0.05,0.7,ERA5-Seamless,0.65
+Lambayeque,2003-12,0.05,1.868,PISCOp v3.0,1.818
+Lambayeque,2004-01,0.01,0.0,CHIRPS v3,-0.01
+Lambayeque,2004-01,0.01,4.2,ERA5-Seamless,4.19
+Lambayeque,2004-01,0.01,0.033,PISCOp v3.0,0.023
+Lambayeque,2004-02,2.35,3.8101,CHIRPS v3,1.4601
+Lambayeque,2004-02,2.35,3.9,ERA5-Seamless,1.55
+Lambayeque,2004-02,2.35,1.667,PISCOp v3.0,-0.683
+Lambayeque,2004-03,12.1,0.0,CHIRPS v3,-12.1
+Lambayeque,2004-03,12.1,3.5,ERA5-Seamless,-8.6
+Lambayeque,2004-03,12.1,5.797,PISCOp v3.0,-6.303
+Lambayeque,2004-04,0.0,0.0,CHIRPS v3,0.0
+Lambayeque,2004-04,0.0,5.6,ERA5-Seamless,5.6
+Lambayeque,2004-04,0.0,0.0,PISCOp v3.0,0.0
+Lambayeque,2004-05,0.8,0.1226,CHIRPS v3,-0.6774
+Lambayeque,2004-05,0.8,1.4,ERA5-Seamless,0.6
+Lambayeque,2004-05,0.8,0.4,PISCOp v3.0,-0.4
+Lambayeque,2004-06,0.0,0.1013,CHIRPS v3,0.1013
+Lambayeque,2004-06,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2004-06,0.0,0.0,PISCOp v3.0,0.0
+Lambayeque,2004-07,0.43,0.3632,CHIRPS v3,-0.0668
+Lambayeque,2004-07,0.43,0.0,ERA5-Seamless,-0.43
+Lambayeque,2004-07,0.43,0.276,PISCOp v3.0,-0.154
+Lambayeque,2004-08,0.0,1.4563,CHIRPS v3,1.4563
+Lambayeque,2004-08,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2004-08,0.0,0.012,PISCOp v3.0,0.012
+Lambayeque,2004-09,1.33,2.4518,CHIRPS v3,1.1218
+Lambayeque,2004-09,1.33,0.3,ERA5-Seamless,-1.03
+Lambayeque,2004-09,1.33,1.62,PISCOp v3.0,0.29
+Lambayeque,2004-10,2.25,8.2967,CHIRPS v3,6.0467
+Lambayeque,2004-10,2.25,1.1,ERA5-Seamless,-1.15
+Lambayeque,2004-10,2.25,3.473,PISCOp v3.0,1.223
+Lambayeque,2004-11,0.03,0.0,CHIRPS v3,-0.03
+Lambayeque,2004-11,0.03,7.0,ERA5-Seamless,6.97
+Lambayeque,2004-11,0.03,0.0,PISCOp v3.0,-0.03
+Lambayeque,2004-12,0.82,2.1499,CHIRPS v3,1.3299
+Lambayeque,2004-12,0.82,4.6,ERA5-Seamless,3.78
+Lambayeque,2004-12,0.82,1.221,PISCOp v3.0,0.401
+Lambayeque,2005-01,0.32,0.0,CHIRPS v3,-0.32
+Lambayeque,2005-01,0.32,1.8,ERA5-Seamless,1.48
+Lambayeque,2005-01,0.32,0.226,PISCOp v3.0,-0.094
+Lambayeque,2005-02,3.32,0.0,CHIRPS v3,-3.32
+Lambayeque,2005-02,3.32,16.8,ERA5-Seamless,13.48
+Lambayeque,2005-02,3.32,2.19,PISCOp v3.0,-1.13
+Lambayeque,2005-03,1.97,0.8027,CHIRPS v3,-1.1673
+Lambayeque,2005-03,1.97,53.8,ERA5-Seamless,51.83
+Lambayeque,2005-03,1.97,1.762,PISCOp v3.0,-0.208
+Lambayeque,2005-04,0.04,1.3833,CHIRPS v3,1.3433
+Lambayeque,2005-04,0.04,0.0,ERA5-Seamless,-0.04
+Lambayeque,2005-04,0.04,0.111,PISCOp v3.0,0.071
+Lambayeque,2005-05,0.02,0.1181,CHIRPS v3,0.0981
+Lambayeque,2005-05,0.02,3.4,ERA5-Seamless,3.38
+Lambayeque,2005-05,0.02,0.014,PISCOp v3.0,-0.006
+Lambayeque,2005-06,0.0,0.1031,CHIRPS v3,0.1031
+Lambayeque,2005-06,0.0,0.0,ERA5-Seamless,0.0
+Lambayeque,2005-06,0.0,0.043,PISCOp v3.0,0.043
+Reque,2001-01,0.0,0.0,CHIRPS v3,0.0
+Reque,2001-01,0.0,18.3,ERA5-Seamless,18.3
+Reque,2001-01,0.0,0.0,PISCOp v3.0,0.0
+Reque,2001-02,0.0,0.0,CHIRPS v3,0.0
+Reque,2001-02,0.0,22.0,ERA5-Seamless,22.0
+Reque,2001-02,0.0,0.535,PISCOp v3.0,0.535
+Reque,2001-03,9.4,24.9523,CHIRPS v3,15.5523
+Reque,2001-03,9.4,57.6,ERA5-Seamless,48.2
+Reque,2001-03,9.4,27.513,PISCOp v3.0,18.113
+Reque,2001-04,11.1,9.4323,CHIRPS v3,-1.6677
+Reque,2001-04,11.1,14.4,ERA5-Seamless,3.3
+Reque,2001-04,11.1,12.61,PISCOp v3.0,1.51
+Reque,2001-05,0.0,0.6418,CHIRPS v3,0.6418
+Reque,2001-05,0.0,2.3,ERA5-Seamless,2.3
+Reque,2001-05,0.0,0.021,PISCOp v3.0,0.021
+Reque,2001-06,0.0,0.0,CHIRPS v3,0.0
+Reque,2001-06,0.0,0.6,ERA5-Seamless,0.6
+Reque,2001-06,0.0,0.205,PISCOp v3.0,0.205
+Reque,2001-07,0.0,0.1443,CHIRPS v3,0.1443
+Reque,2001-07,0.0,0.0,ERA5-Seamless,0.0
+Reque,2001-07,0.0,0.0,PISCOp v3.0,0.0
+Reque,2001-08,0.0,1.0791,CHIRPS v3,1.0791
+Reque,2001-08,0.0,0.0,ERA5-Seamless,0.0
+Reque,2001-08,0.0,0.01,PISCOp v3.0,0.01
+Reque,2001-09,0.0,4.9146,CHIRPS v3,4.9146
+Reque,2001-09,0.0,0.6,ERA5-Seamless,0.6
+Reque,2001-09,0.0,0.549,PISCOp v3.0,0.549
+Reque,2001-10,0.0,0.4166,CHIRPS v3,0.4166
+Reque,2001-10,0.0,0.4,ERA5-Seamless,0.4
+Reque,2001-10,0.0,0.108,PISCOp v3.0,0.108
+Reque,2001-11,0.0,0.458,CHIRPS v3,0.458
+Reque,2001-11,0.0,0.3,ERA5-Seamless,0.3
+Reque,2001-11,0.0,0.027,PISCOp v3.0,0.027
+Reque,2001-12,0.0,2.2819,CHIRPS v3,2.2819
+Reque,2001-12,0.0,0.5,ERA5-Seamless,0.5
+Reque,2001-12,0.0,1.296,PISCOp v3.0,1.296
+Reque,2002-01,0.0,0.0,CHIRPS v3,0.0
+Reque,2002-01,0.0,0.7,ERA5-Seamless,0.7
+Reque,2002-01,0.0,0.0,PISCOp v3.0,0.0
+Reque,2002-02,5.0,12.8587,CHIRPS v3,7.8587
+Reque,2002-02,5.0,22.2,ERA5-Seamless,17.2
+Reque,2002-02,5.0,12.354,PISCOp v3.0,7.354
+Reque,2002-03,10.8,2.5459,CHIRPS v3,-8.2541
+Reque,2002-03,10.8,27.4,ERA5-Seamless,16.6
+Reque,2002-03,10.8,11.224,PISCOp v3.0,0.424
+Reque,2002-04,0.0,14.2627,CHIRPS v3,14.2627
+Reque,2002-04,0.0,40.0,ERA5-Seamless,40.0
+Reque,2002-04,0.0,6.051,PISCOp v3.0,6.051
+Reque,2002-05,0.0,0.6067,CHIRPS v3,0.6067
+Reque,2002-05,0.0,0.5,ERA5-Seamless,0.5
+Reque,2002-05,0.0,0.042,PISCOp v3.0,0.042
+Reque,2002-06,0.0,0.0,CHIRPS v3,0.0
+Reque,2002-06,0.0,0.4,ERA5-Seamless,0.4
+Reque,2002-06,0.0,0.0,PISCOp v3.0,0.0
+Reque,2002-07,0.0,0.1409,CHIRPS v3,0.1409
+Reque,2002-07,0.0,0.4,ERA5-Seamless,0.4
+Reque,2002-07,0.0,0.013,PISCOp v3.0,0.013
+Reque,2002-08,0.0,1.0659,CHIRPS v3,1.0659
+Reque,2002-08,0.0,0.0,ERA5-Seamless,0.0
+Reque,2002-08,0.0,0.008,PISCOp v3.0,0.008
+Reque,2002-09,0.0,0.0,CHIRPS v3,0.0
+Reque,2002-09,0.0,0.5,ERA5-Seamless,0.5
+Reque,2002-09,0.0,0.008,PISCOp v3.0,0.008
+Reque,2002-10,0.0,4.8033,CHIRPS v3,4.8033
+Reque,2002-10,0.0,0.7,ERA5-Seamless,0.7
+Reque,2002-10,0.0,1.05,PISCOp v3.0,1.05
+Reque,2002-11,1.0,1.5548,CHIRPS v3,0.5548
+Reque,2002-11,1.0,2.9,ERA5-Seamless,1.9
+Reque,2002-11,1.0,0.907,PISCOp v3.0,-0.093
+Reque,2002-12,1.0,0.285,CHIRPS v3,-0.715
+Reque,2002-12,1.0,2.1,ERA5-Seamless,1.1
+Reque,2002-12,1.0,1.58,PISCOp v3.0,0.58
+Reque,2003-01,0.0,8.5987,CHIRPS v3,8.5987
+Reque,2003-01,0.0,20.5,ERA5-Seamless,20.5
+Reque,2003-01,0.0,0.314,PISCOp v3.0,0.314
+Reque,2003-02,1.9,0.0,CHIRPS v3,-1.9
+Reque,2003-02,1.9,12.7,ERA5-Seamless,10.8
+Reque,2003-02,1.9,2.764,PISCOp v3.0,0.864
+Reque,2003-03,0.0,0.0,CHIRPS v3,0.0
+Reque,2003-03,0.0,6.6,ERA5-Seamless,6.6
+Reque,2003-03,0.0,0.0,PISCOp v3.0,0.0
+Reque,2003-04,0.6,0.5749,CHIRPS v3,-0.0251
+Reque,2003-04,0.6,6.8,ERA5-Seamless,6.2
+Reque,2003-04,0.6,0.358,PISCOp v3.0,-0.242
+Reque,2003-05,0.0,0.6553,CHIRPS v3,0.6553
+Reque,2003-05,0.0,0.4,ERA5-Seamless,0.4
+Reque,2003-05,0.0,0.0,PISCOp v3.0,0.0
+Reque,2003-06,3.0,0.0,CHIRPS v3,-3.0
+Reque,2003-06,3.0,0.2,ERA5-Seamless,-2.8
+Reque,2003-06,3.0,1.353,PISCOp v3.0,-1.647
+Reque,2003-07,0.0,0.1417,CHIRPS v3,0.1417
+Reque,2003-07,0.0,0.0,ERA5-Seamless,0.0
+Reque,2003-07,0.0,0.013,PISCOp v3.0,0.013
+Reque,2003-08,0.0,1.0636,CHIRPS v3,1.0636
+Reque,2003-08,0.0,0.0,ERA5-Seamless,0.0
+Reque,2003-08,0.0,0.022,PISCOp v3.0,0.022
+Reque,2003-09,0.0,0.0,CHIRPS v3,0.0
+Reque,2003-09,0.0,0.0,ERA5-Seamless,0.0
+Reque,2003-09,0.0,0.013,PISCOp v3.0,0.013
+Reque,2003-10,0.0,0.0,CHIRPS v3,0.0
+Reque,2003-10,0.0,0.0,ERA5-Seamless,0.0
+Reque,2003-10,0.0,0.011,PISCOp v3.0,0.011
+Reque,2003-11,1.0,0.936,CHIRPS v3,-0.064
+Reque,2003-11,1.0,3.3,ERA5-Seamless,2.3
+Reque,2003-11,1.0,1.639,PISCOp v3.0,0.639
+Reque,2003-12,0.0,5.608,CHIRPS v3,5.608
+Reque,2003-12,0.0,2.0,ERA5-Seamless,2.0
+Reque,2003-12,0.0,1.448,PISCOp v3.0,1.448
+Reque,2004-01,0.0,0.0,CHIRPS v3,0.0
+Reque,2004-01,0.0,4.3,ERA5-Seamless,4.3
+Reque,2004-01,0.0,0.0,PISCOp v3.0,0.0
+Reque,2004-02,0.0,3.337,CHIRPS v3,3.337
+Reque,2004-02,0.0,11.0,ERA5-Seamless,11.0
+Reque,2004-02,0.0,0.973,PISCOp v3.0,0.973
+Reque,2004-03,0.0,0.0,CHIRPS v3,0.0
+Reque,2004-03,0.0,4.3,ERA5-Seamless,4.3
+Reque,2004-03,0.0,1.372,PISCOp v3.0,1.372
+Reque,2004-04,0.0,0.0,CHIRPS v3,0.0
+Reque,2004-04,0.0,3.3,ERA5-Seamless,3.3
+Reque,2004-04,0.0,0.0,PISCOp v3.0,0.0
+Reque,2004-05,0.0,0.6547,CHIRPS v3,0.6547
+Reque,2004-05,0.0,0.2,ERA5-Seamless,0.2
+Reque,2004-05,0.0,0.076,PISCOp v3.0,0.076
+Reque,2004-07,0.0,0.1438,CHIRPS v3,0.1438
+Reque,2004-07,0.0,0.0,ERA5-Seamless,0.0
+Reque,2004-07,0.0,0.074,PISCOp v3.0,0.074
+Reque,2004-08,0.0,1.0459,CHIRPS v3,1.0459
+Reque,2004-08,0.0,0.0,ERA5-Seamless,0.0
+Reque,2004-08,0.0,0.009,PISCOp v3.0,0.009
+Reque,2004-09,14.0,0.6672,CHIRPS v3,-13.3328
+Reque,2004-09,14.0,1.6,ERA5-Seamless,-12.4
+Reque,2004-09,14.0,3.691,PISCOp v3.0,-10.309
+Reque,2004-10,5.7,6.4194,CHIRPS v3,0.7194
+Reque,2004-10,5.7,3.6,ERA5-Seamless,-2.1
+Reque,2004-10,5.7,5.076,PISCOp v3.0,-0.624
+Reque,2004-11,0.0,0.0,CHIRPS v3,0.0
+Reque,2004-11,0.0,2.5,ERA5-Seamless,2.5
+Reque,2004-11,0.0,0.002,PISCOp v3.0,0.002
+Reque,2004-12,0.0,2.6245,CHIRPS v3,2.6245
+Reque,2004-12,0.0,2.8,ERA5-Seamless,2.8
+Reque,2004-12,0.0,0.452,PISCOp v3.0,0.452
+Reque,2005-01,0.0,0.0,CHIRPS v3,0.0
+Reque,2005-01,0.0,0.5,ERA5-Seamless,0.5
+Reque,2005-01,0.0,0.032,PISCOp v3.0,0.032
+Reque,2005-02,0.0,0.0,CHIRPS v3,0.0
+Reque,2005-02,0.0,7.9,ERA5-Seamless,7.9
+Reque,2005-02,0.0,0.472,PISCOp v3.0,0.472
+Reque,2005-03,0.0,2.8454,CHIRPS v3,2.8454
+Reque,2005-03,0.0,20.9,ERA5-Seamless,20.9
+Reque,2005-03,0.0,1.216,PISCOp v3.0,1.216
+Reque,2005-04,0.0,0.9175,CHIRPS v3,0.9175
+Reque,2005-04,0.0,1.4,ERA5-Seamless,1.4
+Reque,2005-04,0.0,0.37,PISCOp v3.0,0.37
+Reque,2005-05,0.0,0.6271,CHIRPS v3,0.6271
+Reque,2005-05,0.0,2.0,ERA5-Seamless,2.0
+Reque,2005-05,0.0,0.049,PISCOp v3.0,0.049
+Reque,2005-06,0.0,0.0,CHIRPS v3,0.0
+Reque,2005-06,0.0,0.0,ERA5-Seamless,0.0
+Reque,2005-06,0.0,0.078,PISCOp v3.0,0.078
+Reque,2005-09,0.0,0.0,CHIRPS v3,0.0
+Reque,2005-09,0.0,0.0,ERA5-Seamless,0.0
+Reque,2005-09,0.0,0.0,PISCOp v3.0,0.0
+Reque,2005-10,3.61,4.1589,CHIRPS v3,0.5489
+Reque,2005-10,3.61,0.0,ERA5-Seamless,-3.61
+Reque,2005-10,3.61,3.551,PISCOp v3.0,-0.059
+Reque,2005-11,0.9,8.5699,CHIRPS v3,7.6699
+Reque,2005-11,0.9,1.1,ERA5-Seamless,0.2
+Reque,2005-11,0.9,1.525,PISCOp v3.0,0.625
+Reque,2005-12,0.0,1.1836,CHIRPS v3,1.1836
+Reque,2005-12,0.0,2.2,ERA5-Seamless,2.2
+Reque,2005-12,0.0,0.222,PISCOp v3.0,0.222

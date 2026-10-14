@@ -1,0 +1,290 @@
+estacion,mes,chirps_mm,latitud_punto,longitud_punto,latitud_pixel,longitud_pixel,distancia_pixel_km,resolucion_x,resolucion_y,sistema_referencia,url_raster
+Cayaltí,2001-01,3.1775,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif
+Cayaltí,2001-02,0.5369,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif
+Cayaltí,2001-03,50.8695,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif
+Cayaltí,2001-04,9.4005,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif
+Cayaltí,2001-05,0.5909,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif
+Cayaltí,2001-06,0.6336,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif
+Cayaltí,2001-07,1.0292,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif
+Cayaltí,2001-08,0.8834,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif
+Cayaltí,2001-09,8.4185,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif
+Cayaltí,2001-10,0.2287,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif
+Cayaltí,2001-11,1.1589,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif
+Cayaltí,2001-12,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif
+Cayaltí,2002-01,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif
+Cayaltí,2002-02,47.1804,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif
+Cayaltí,2002-03,24.0613,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif
+Cayaltí,2002-04,18.0608,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif
+Cayaltí,2002-05,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif
+Cayaltí,2002-06,0.1129,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif
+Cayaltí,2002-07,0.9594,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif
+Cayaltí,2002-08,0.8573,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif
+Cayaltí,2002-09,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif
+Cayaltí,2002-10,1.99,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif
+Cayaltí,2002-11,3.3584,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif
+Cayaltí,2002-12,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif
+Cayaltí,2003-01,5.1276,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif
+Cayaltí,2003-02,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif
+Cayaltí,2003-03,0.1829,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif
+Cayaltí,2003-04,0.069,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif
+Cayaltí,2003-05,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif
+Cayaltí,2003-06,0.6475,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif
+Cayaltí,2003-07,0.985,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif
+Cayaltí,2003-08,0.8469,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif
+Cayaltí,2003-09,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif
+Cayaltí,2003-10,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif
+Cayaltí,2003-11,1.0856,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif
+Cayaltí,2003-12,9.1678,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif
+Cayaltí,2004-01,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif
+Cayaltí,2004-02,10.0916,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif
+Cayaltí,2004-03,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.03.tif
+Cayaltí,2004-04,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif
+Cayaltí,2004-05,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.05.tif
+Cayaltí,2004-06,0.1245,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.06.tif
+Cayaltí,2004-07,1.0373,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif
+Cayaltí,2004-08,0.8105,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif
+Cayaltí,2004-09,3.089,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif
+Cayaltí,2004-10,8.4659,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif
+Cayaltí,2004-11,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif
+Cayaltí,2004-12,9.5383,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif
+Cayaltí,2005-01,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif
+Cayaltí,2005-02,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif
+Cayaltí,2005-03,6.9427,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif
+Cayaltí,2005-04,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif
+Cayaltí,2005-05,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif
+Cayaltí,2005-06,0.1212,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif
+Cayaltí,2005-07,0.9298,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.07.tif
+Cayaltí,2005-08,2.7035,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.08.tif
+Cayaltí,2005-09,1.6662,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.09.tif
+Cayaltí,2005-10,7.928,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.10.tif
+Cayaltí,2005-11,5.4005,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.11.tif
+Cayaltí,2005-12,2.8332,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.12.tif
+Cueva Blanca,2001-01,13.7683,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif
+Cueva Blanca,2001-02,92.1049,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif
+Cueva Blanca,2001-03,130.2013,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif
+Cueva Blanca,2001-04,65.8489,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif
+Cueva Blanca,2001-05,24.6767,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif
+Cueva Blanca,2001-06,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif
+Cueva Blanca,2001-07,3.8047,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif
+Cueva Blanca,2001-08,4.2759,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif
+Cueva Blanca,2001-09,50.6449,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif
+Cueva Blanca,2001-10,17.4299,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif
+Cueva Blanca,2001-11,67.9996,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif
+Cueva Blanca,2001-12,5.0759,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif
+Cueva Blanca,2002-01,6.7993,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif
+Cueva Blanca,2002-02,116.0842,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif
+Cueva Blanca,2002-03,132.0978,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif
+Cueva Blanca,2002-04,178.1948,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif
+Cueva Blanca,2002-05,12.0928,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif
+Cueva Blanca,2002-06,2.0023,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif
+Cueva Blanca,2002-07,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif
+Cueva Blanca,2002-08,3.7554,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif
+Cueva Blanca,2002-09,5.3782,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif
+Cueva Blanca,2002-10,56.2213,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif
+Cueva Blanca,2002-11,40.6564,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif
+Cueva Blanca,2002-12,21.9322,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif
+Cueva Blanca,2003-01,37.3278,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif
+Cueva Blanca,2003-02,79.0635,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif
+Cueva Blanca,2003-03,67.3319,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif
+Cueva Blanca,2003-04,31.4038,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif
+Cueva Blanca,2003-05,9.9408,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif
+Cueva Blanca,2003-06,6.1259,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif
+Cueva Blanca,2003-07,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif
+Cueva Blanca,2003-08,4.234,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif
+Cueva Blanca,2003-09,7.7438,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif
+Cueva Blanca,2003-10,31.1351,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif
+Cueva Blanca,2003-11,23.8673,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif
+Cueva Blanca,2003-12,54.4427,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif
+Cueva Blanca,2004-01,18.2869,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif
+Cueva Blanca,2004-02,32.5366,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif
+Cueva Blanca,2004-03,30.5913,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.03.tif
+Cueva Blanca,2004-04,27.1428,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif
+Cueva Blanca,2004-05,29.1921,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.05.tif
+Cueva Blanca,2004-06,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.06.tif
+Cueva Blanca,2004-07,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif
+Cueva Blanca,2004-08,3.5742,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif
+Cueva Blanca,2004-09,38.7199,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif
+Cueva Blanca,2004-10,64.2663,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif
+Cueva Blanca,2004-11,28.6159,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif
+Cueva Blanca,2004-12,69.7988,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif
+Cueva Blanca,2005-01,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif
+Cueva Blanca,2005-02,31.3517,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif
+Cueva Blanca,2005-03,182.3495,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif
+Cueva Blanca,2005-04,31.2557,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif
+Cueva Blanca,2005-05,12.5503,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif
+Cueva Blanca,2005-06,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif
+Cueva Blanca,2005-07,0.3503,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.07.tif
+Cueva Blanca,2005-08,4.582,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.08.tif
+Cueva Blanca,2005-09,16.2924,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.09.tif
+Cueva Blanca,2005-10,71.5484,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.10.tif
+Cueva Blanca,2005-11,17.5566,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.11.tif
+Cueva Blanca,2005-12,48.8232,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.12.tif
+Jayanca (La Viña),2001-01,2.786,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif
+Jayanca (La Viña),2001-02,32.1529,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif
+Jayanca (La Viña),2001-03,63.9734,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif
+Jayanca (La Viña),2001-04,5.8934,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif
+Jayanca (La Viña),2001-05,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif
+Jayanca (La Viña),2001-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif
+Jayanca (La Viña),2001-07,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif
+Jayanca (La Viña),2001-08,1.1567,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif
+Jayanca (La Viña),2001-09,9.1096,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif
+Jayanca (La Viña),2001-10,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif
+Jayanca (La Viña),2001-11,7.6956,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif
+Jayanca (La Viña),2001-12,3.2042,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif
+Jayanca (La Viña),2002-01,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif
+Jayanca (La Viña),2002-02,23.2044,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif
+Jayanca (La Viña),2002-03,18.1629,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif
+Jayanca (La Viña),2002-04,61.4124,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif
+Jayanca (La Viña),2002-05,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif
+Jayanca (La Viña),2002-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif
+Jayanca (La Viña),2002-07,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif
+Jayanca (La Viña),2002-08,1.1441,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif
+Jayanca (La Viña),2002-09,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif
+Jayanca (La Viña),2002-10,11.4165,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif
+Jayanca (La Viña),2002-11,7.3901,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif
+Jayanca (La Viña),2002-12,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif
+Jayanca (La Viña),2003-01,8.4055,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif
+Jayanca (La Viña),2003-02,2.7413,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif
+Jayanca (La Viña),2003-03,0.5847,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif
+Jayanca (La Viña),2003-04,0.7147,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif
+Jayanca (La Viña),2003-05,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif
+Jayanca (La Viña),2003-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif
+Jayanca (La Viña),2003-07,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif
+Jayanca (La Viña),2003-08,1.1674,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif
+Jayanca (La Viña),2003-09,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif
+Jayanca (La Viña),2003-10,4.2247,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif
+Jayanca (La Viña),2003-11,2.5345,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif
+Jayanca (La Viña),2003-12,11.226,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif
+Jayanca (La Viña),2004-01,2.7116,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif
+Jayanca (La Viña),2004-02,6.6206,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif
+Jayanca (La Viña),2004-04,2.0502,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif
+Jayanca (La Viña),2004-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.06.tif
+Jayanca (La Viña),2004-07,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif
+Jayanca (La Viña),2004-08,1.1155,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif
+Jayanca (La Viña),2004-09,6.1164,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif
+Jayanca (La Viña),2004-10,12.2288,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif
+Jayanca (La Viña),2004-11,0.9521,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif
+Jayanca (La Viña),2004-12,5.0529,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif
+Jayanca (La Viña),2005-01,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif
+Jayanca (La Viña),2005-02,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif
+Jayanca (La Viña),2005-03,19.3877,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif
+Jayanca (La Viña),2005-04,5.9173,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif
+Jayanca (La Viña),2005-05,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif
+Jayanca (La Viña),2005-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif
+Jayanca (La Viña),2005-07,0.3614,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.07.tif
+Jayanca (La Viña),2005-08,1.1655,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.08.tif
+Jayanca (La Viña),2005-09,4.6711,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.09.tif
+Jayanca (La Viña),2005-10,2.986,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.10.tif
+Jayanca (La Viña),2005-11,6.2439,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.11.tif
+Jayanca (La Viña),2005-12,2.4823,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.12.tif
+Lambayeque,2001-01,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif
+Lambayeque,2001-02,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif
+Lambayeque,2001-03,28.6207,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif
+Lambayeque,2001-04,7.0994,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif
+Lambayeque,2001-05,0.113,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif
+Lambayeque,2001-06,0.1074,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif
+Lambayeque,2001-07,0.3433,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif
+Lambayeque,2001-08,1.457,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif
+Lambayeque,2001-09,6.0381,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif
+Lambayeque,2001-10,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif
+Lambayeque,2001-11,2.0747,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif
+Lambayeque,2001-12,2.281,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif
+Lambayeque,2002-01,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif
+Lambayeque,2002-02,16.6924,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif
+Lambayeque,2002-03,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif
+Lambayeque,2002-04,16.319,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif
+Lambayeque,2002-05,0.1158,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif
+Lambayeque,2002-06,0.1013,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif
+Lambayeque,2002-07,0.3434,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif
+Lambayeque,2002-08,1.4591,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif
+Lambayeque,2002-09,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif
+Lambayeque,2002-10,2.6467,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif
+Lambayeque,2002-11,3.0319,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif
+Lambayeque,2002-12,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif
+Lambayeque,2003-01,4.708,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif
+Lambayeque,2003-02,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif
+Lambayeque,2003-03,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif
+Lambayeque,2003-04,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif
+Lambayeque,2003-05,0.1161,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif
+Lambayeque,2003-06,0.1208,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif
+Lambayeque,2003-07,0.3416,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif
+Lambayeque,2003-08,1.457,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif
+Lambayeque,2003-09,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif
+Lambayeque,2003-10,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif
+Lambayeque,2003-11,1.3852,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif
+Lambayeque,2003-12,6.0113,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif
+Lambayeque,2004-01,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif
+Lambayeque,2004-02,3.8101,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif
+Lambayeque,2004-03,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.03.tif
+Lambayeque,2004-04,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif
+Lambayeque,2004-05,0.1226,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.05.tif
+Lambayeque,2004-06,0.1013,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.06.tif
+Lambayeque,2004-07,0.3632,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif
+Lambayeque,2004-08,1.4563,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif
+Lambayeque,2004-09,2.4518,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif
+Lambayeque,2004-10,8.2967,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif
+Lambayeque,2004-11,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif
+Lambayeque,2004-12,2.1499,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif
+Lambayeque,2005-01,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif
+Lambayeque,2005-02,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif
+Lambayeque,2005-03,0.8027,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif
+Lambayeque,2005-04,1.3833,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif
+Lambayeque,2005-05,0.1181,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif
+Lambayeque,2005-06,0.1031,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif
+Reque,2001-01,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif
+Reque,2001-02,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif
+Reque,2001-03,24.9523,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif
+Reque,2001-04,9.4323,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif
+Reque,2001-05,0.6418,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif
+Reque,2001-06,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif
+Reque,2001-07,0.1443,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif
+Reque,2001-08,1.0791,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif
+Reque,2001-09,4.9146,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif
+Reque,2001-10,0.4166,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif
+Reque,2001-11,0.458,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif
+Reque,2001-12,2.2819,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif
+Reque,2002-01,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif
+Reque,2002-02,12.8587,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif
+Reque,2002-03,2.5459,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif
+Reque,2002-04,14.2627,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif
+Reque,2002-05,0.6067,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif
+Reque,2002-06,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif
+Reque,2002-07,0.1409,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif
+Reque,2002-08,1.0659,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif
+Reque,2002-09,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif
+Reque,2002-10,4.8033,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif
+Reque,2002-11,1.5548,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif
+Reque,2002-12,0.285,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif
+Reque,2003-01,8.5987,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif
+Reque,2003-02,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif
+Reque,2003-03,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif
+Reque,2003-04,0.5749,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif
+Reque,2003-05,0.6553,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif
+Reque,2003-06,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif
+Reque,2003-07,0.1417,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif
+Reque,2003-08,1.0636,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif
+Reque,2003-09,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif
+Reque,2003-10,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif
+Reque,2003-11,0.936,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif
+Reque,2003-12,5.608,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif
+Reque,2004-01,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif
+Reque,2004-02,3.337,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif
+Reque,2004-03,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.03.tif
+Reque,2004-04,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif
+Reque,2004-05,0.6547,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.05.tif
+Reque,2004-07,0.1438,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif
+Reque,2004-08,1.0459,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif
+Reque,2004-09,0.6672,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif
+Reque,2004-10,6.4194,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif
+Reque,2004-11,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif
+Reque,2004-12,2.6245,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif
+Reque,2005-01,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif
+Reque,2005-02,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif
+Reque,2005-03,2.8454,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif
+Reque,2005-04,0.9175,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif
+Reque,2005-05,0.6271,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif
+Reque,2005-06,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif
+Reque,2005-09,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.09.tif
+Reque,2005-10,4.1589,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.10.tif
+Reque,2005-11,8.5699,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.11.tif
+Reque,2005-12,1.1836,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.12.tif
