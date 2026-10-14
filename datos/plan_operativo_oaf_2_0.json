@@ -3,7 +3,7 @@
   "actualizado_el": "2026-10-14",
   "orientacion": "vigilancia reciente + pronostico probabilistico + riesgo fitosanitario",
   "responsable": "ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA",
-  "estado_general": "reorganizacion_documentada",
+  "estado_general": "fase_3z_monitoreo_chirps_en_ejecucion",
   "fases_historicas": {
     "identificadores": "3N-3Y",
     "accion": "conservar_sin_alteraciones",
@@ -29,9 +29,9 @@
       "id": "3Z",
       "nombre": "Modernizacion de fuentes y monitoreo reciente",
       "orden": 1,
-      "estado": "siguiente",
+      "estado": "en_progreso",
       "prioridad": "maxima",
-      "producto": "extraccion real trazable y primer panel reciente con sello de tiempo",
+      "producto": "CHIRPS v3 mensual reciente 2025-10 a 2026-08 verificado; conexión ENFEN automática pendiente de acceso",
       "criterio_aceptacion": "fuente descargada; fecha de observacion y consulta; banderas QA; fallos visibles; sin alerta propia"
     },
     {
@@ -71,12 +71,12 @@
     {
       "id": "M1",
       "nombre": "vigilancia_niño_costero",
-      "estado": "sin_ingesta_reciente"
+      "estado": "conexion_enfen_programada_lectura_automatica_sin_verificar_por_dns"
     },
     {
       "id": "M2",
       "nombre": "monitoreo_precipitacion_y_temperatura",
-      "estado": "historico_integrado_reciente_pendiente"
+      "estado": "chirps_v3_mensual_reciente_implementado_no_validado_localmente"
     },
     {
       "id": "M3",
@@ -93,5 +93,16 @@
       "nombre": "comunicacion_y_alertas",
       "estado": "documentado_no_operativo"
     }
-  ]
+  ],
+  "fecha_inicio_3z": "2026-10-14",
+  "resultados_3z_actuales": {
+    "producto_mensual": "CHIRPS v3",
+    "ultimo_mes_verificado": "2026-08",
+    "meses_raster_ok": 11,
+    "meses_no_disponibles": 1,
+    "valoraciones_punto_mes": 55,
+    "consulta_enfen_automatica": "consulta_fallida_dns",
+    "alerta_oaf": false,
+    "pronostico_propio": false
+  }
 }
