@@ -161,3 +161,21 @@ El signo de sesgo se define como **estimado menos observado**. MAE y RMSE por me
 **Siguiente fase 3Q:** extraer **CHIRPS v3 mensual final** para los 1 109 meses-estación completos SENAMHI (1996–2015), auditar posiciones exactas y compararlo en los mismos meses con PISCOp y ERA5. CHIRPS v3 incorpora estaciones en su elaboración. Evitar considerar el producto diario CHIRPS `rnl` independiente de ERA5, ya que lo utiliza para desagregar totales pentadales. Priorizar el producto mensual final y documentación de fuente.
 
 **Regla permanente del usuario:** desarrollar directamente el proyecto; no pedir ejercicios ni pruebas de comprensión.
+
+## Actualización 14/10/2026 — cierre 3P y piloto CHIRPS v3 (3Q)
+
+**Fase 3P: auditoría de grillas y modelos meteorológicos.**
+- Ejecutada en GitHub Actions: 30/45 consultas anuales completas a Open-Meteo. Las 15 no utilizables fueron de ERA5-Land por valores faltantes. Se registró un diagnóstico adicional de valores nulos diarios y horarios (no lluvia cero).
+- Para esta muestra, 180/180 pares mensuales de ERA5-Seamless y ERA5 fueron numéricamente iguales pese a coordenadas de respuesta distintas; 60/60 pares de ERA5-Seamless para land y nearest durante 1998 también fueron iguales. NO está demostrada la causa física/geográfica del sesgo.
+- El análisis estacional multianual, incluso excluyendo 1998, conserva sobreestimaciones en enero–abril para cinco estaciones. Ver `AUDITORIA_3P.md`, `CONCLUSIONES_3P.md`, `DIAGNOSTICO_ESTACIONAL_3P.md` y `METADATOS_GEOGRAFICOS_3P.md`.
+
+**Fase 3Q: piloto CHIRPS v3 mensual de 1998.**
+- Origen oficial: `https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/`. Descargados y procesados los **12 mapas mensuales oficiales** mediante `scripts/validacion_3q_chirps_1998.py` en GitHub Actions. Extractor geográfico de píxel de 0,05° para cada una de las cinco ubicaciones preliminares.
+- Completados **60/60** pares mensuales CHIRPS–SENAMHI, sin incidencias. En 1998, acumulados CHIRPS, en mm: Jayanca **826,757**, Cayaltí **657,559**, Reque **331,993**, Lambayeque **462,126**, Cueva Blanca **1515,965**. Sesgo porcentual anual respectivo: **−42,10 %, +17,74 %, +42,60 %, +65,28 %, +56,41 %**.
+- Comparaciones anuales SENAMHI, PISCOp, CHIRPS y ERA5 disponibles en `CHIRPS_3Q_1998.md` y datos `datos/comparacion_3q_chirps_1998.csv`, `datos/metricas_3q_chirps_1998.csv`, `datos/chirps_3q_pixeles_1998.csv`, `datos/estado_3q_chirps.json`.
+- El portal pasó a **v0.7** con panel interactivo CHIRPS 1998 y tabla de cuatro fuentes, condicionado a desplegarse correctamente en GitHub Pages.
+- **Limitaciones:** un año extremo, ubicaciones históricas sin corroborar, CHIRPS y PISCOp pueden incorporar pluviómetros SENAMHI. Esta prueba NO evalúa capacidad predictiva, independencia ni precisión regional de 30 años.
+
+**Próximo paso 3Q multianual:** ampliar CHIRPS v3 mensual a los **1109 meses-estación completos** de 1996–2015; procesar archivos por bloques anuales o por años con cobertura y guardar métricas comparables exactamente en las mismas fechas para CHIRPS, PISCOp y ERA5. Confirmar coordenadas instrumentales originales antes de interpretar gradientes espaciales. Después integrar análisis CHIRPS de 1996–2025 y, cuando existan observaciones fitosanitarias georreferenciadas, abordar el módulo inicial de arándano.
+
+**Regla:** valores de estaciones faltantes son NaN, no precipitación cero; toda cifra del portal debe indicar observado/estimado/pronosticado y cobertura temporal.
