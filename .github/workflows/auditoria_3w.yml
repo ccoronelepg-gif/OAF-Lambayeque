@@ -1,0 +1,50 @@
+name: OAF 3W auditoria horaria GBON RBON
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/auditoria_3w.yml'
+      - 'scripts/auditar_gbon_rbon_3w.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-3w-gbon-rbon
+  cancel-in-progress: false
+jobs:
+  contar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar cliente de descarga
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Auditar registros GBON RBON sin almacenar observaciones horarias en GitHub
+        id: procesar
+        shell: bash
+        run: |
+          set +e
+          python -u scripts/auditar_gbon_rbon_3w.py
+          codigo=$?
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Publicar únicamente metadatos y estado de calidad
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f AUDITORIA_3W_GBON_RBON.md datos/estado_3w.json datos/estaciones_gbon_rbon_3w.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Guardar auditoría real de cobertura GBON/RBON fase 3W"
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Evaluar resultado
+        shell: bash
+        run: |
+          test "${{ steps.procesar.outputs.codigo }}" = "0" || (echo "CSV o esquema no procesado, revisar estado_3w.json" && exit 1)
