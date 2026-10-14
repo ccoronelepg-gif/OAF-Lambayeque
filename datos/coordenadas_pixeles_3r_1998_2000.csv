@@ -1,0 +1,241 @@
+estacion,variante,estado_documental,mes,chirps_mm,fila_pixel,columna_pixel,latitud_pixel,longitud_pixel,distancia_pixel_km,fuente_raster
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-01,81.8974,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-01,81.8974,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-01,62.5183,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-01,61.0383,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Reque,analisis_3Q,punto utilizado,1998-01,39.1297,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Reque,senamhi_historica,candidato_documental,1998-01,39.1297,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-01,40.3487,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-01,40.3487,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-01,18.1889,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-01,11.3297,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-02,319.8619,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-02,319.8619,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-02,286.1703,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-02,245.6102,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Reque,analisis_3Q,punto utilizado,1998-02,140.0132,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Reque,senamhi_historica,candidato_documental,1998-02,140.0132,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-02,150.7036,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-02,150.7036,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-02,375.531,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-02,390.4477,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-03,341.2267,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-03,341.2267,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-03,265.8166,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-03,262.1467,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Reque,analisis_3Q,punto utilizado,1998-03,137.1438,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Reque,senamhi_historica,candidato_documental,1998-03,137.1438,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-03,246.8804,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-03,246.8804,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-03,691.8609,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-03,736.6467,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-04,64.8457,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-04,64.8457,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-04,30.8806,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-04,31.6958,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Reque,analisis_3Q,punto utilizado,1998-04,6.9004,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Reque,senamhi_historica,candidato_documental,1998-04,6.9004,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-04,16.7536,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-04,16.7536,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-04,173.0552,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-04,216.6204,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-05,11.9757,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-05,11.9757,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-05,3.2289,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-05,3.3666,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Reque,analisis_3Q,punto utilizado,1998-05,0.6603,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Reque,senamhi_historica,candidato_documental,1998-05,0.6603,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-05,0.1427,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-05,0.1427,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-05,66.0301,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-05,75.0415,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-06,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-06,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-06,0.1331,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-06,0.1209,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Reque,analisis_3Q,punto utilizado,1998-06,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Reque,senamhi_historica,candidato_documental,1998-06,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-06,0.1041,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-06,0.1041,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-06,0.0,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-06,0.0,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-07,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-07,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-07,0.9514,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-07,0.7591,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Reque,analisis_3Q,punto utilizado,1998-07,0.141,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Reque,senamhi_historica,candidato_documental,1998-07,0.141,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-07,0.3435,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-07,0.3435,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-07,0.0,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-07,0.0624,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-08,1.2509,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-08,1.2509,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-08,0.8907,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-08,1.0204,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Reque,analisis_3Q,punto utilizado,1998-08,1.0892,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Reque,senamhi_historica,candidato_documental,1998-08,1.0892,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-08,1.4906,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-08,1.4906,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-08,5.3005,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-08,8.9275,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-09,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-09,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-09,0.0,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-09,0.0,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Reque,analisis_3Q,punto utilizado,1998-09,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Reque,senamhi_historica,candidato_documental,1998-09,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-09,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-09,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-09,38.7775,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-09,25.2196,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-10,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-10,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-10,5.3477,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-10,0.0,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Reque,analisis_3Q,punto utilizado,1998-10,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Reque,senamhi_historica,candidato_documental,1998-10,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-10,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-10,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-10,90.0951,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-10,111.9193,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-11,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-11,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-11,0.0,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-11,0.0,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Reque,analisis_3Q,punto utilizado,1998-11,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Reque,senamhi_historica,candidato_documental,1998-11,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-11,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-11,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-11,0.5358,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-11,3.9585,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,1998-12,5.6988,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,1998-12,5.6988,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cayaltí,analisis_3Q,punto utilizado,1998-12,1.6217,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cayaltí,senamhi_historica,candidato_documental,1998-12,3.9463,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Reque,analisis_3Q,punto utilizado,1998-12,6.9156,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Reque,senamhi_historica,candidato_documental,1998-12,6.9156,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Lambayeque,analisis_3Q,punto utilizado,1998-12,5.3585,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,1998-12,5.3585,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cueva Blanca,analisis_3Q,punto utilizado,1998-12,56.5897,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,1998-12,75.5933,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-01,4.034,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-01,4.034,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-01,2.5835,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-01,2.9729,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Reque,analisis_3Q,punto utilizado,2000-01,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Reque,senamhi_historica,candidato_documental,2000-01,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-01,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-01,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-01,0.0,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-01,0.0,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-02,9.7639,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-02,9.7639,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-02,16.0467,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-02,17.3661,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Reque,analisis_3Q,punto utilizado,2000-02,1.0279,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Reque,senamhi_historica,candidato_documental,2000-02,1.0279,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-02,3.5202,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-02,3.5202,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-02,145.6753,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-02,170.4028,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-03,16.6756,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-03,16.6756,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-03,6.2952,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-03,5.3149,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Reque,analisis_3Q,punto utilizado,2000-03,2.3988,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Reque,senamhi_historica,candidato_documental,2000-03,2.3988,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-03,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-03,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-03,187.0198,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-03,193.5783,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-04,21.9526,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-04,21.9526,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-04,15.1453,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-04,13.1556,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Reque,analisis_3Q,punto utilizado,2000-04,0.8124,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Reque,senamhi_historica,candidato_documental,2000-04,0.8124,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-04,2.1407,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-04,2.1407,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-04,113.876,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-04,156.0598,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-05,7.5337,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-05,7.5337,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-05,2.1428,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-05,1.3019,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Reque,analisis_3Q,punto utilizado,2000-05,0.8103,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Reque,senamhi_historica,candidato_documental,2000-05,0.8103,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-05,0.1306,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-05,0.1306,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-05,58.0606,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-05,76.3783,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-06,1.677,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-06,1.677,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-06,2.7845,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-06,2.7055,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Reque,analisis_3Q,punto utilizado,2000-06,1.7911,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Reque,senamhi_historica,candidato_documental,2000-06,1.7911,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-06,0.114,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-06,0.114,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-06,3.698,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-06,0.4811,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-07,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-07,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-07,1.063,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-07,0.8407,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Reque,analisis_3Q,punto utilizado,2000-07,0.5137,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Reque,senamhi_historica,candidato_documental,2000-07,0.5137,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-07,0.3445,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-07,0.3445,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-07,0.0,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-07,0.0722,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-08,1.344,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-08,1.344,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-08,0.9312,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-08,1.0548,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Reque,analisis_3Q,punto utilizado,2000-08,1.0921,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Reque,senamhi_historica,candidato_documental,2000-08,1.0921,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-08,1.4771,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-08,1.4771,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-08,6.2676,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-08,10.7238,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-09,2.8791,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-09,2.8791,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-09,5.1779,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-09,2.5662,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Reque,analisis_3Q,punto utilizado,2000-09,0.0131,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Reque,senamhi_historica,candidato_documental,2000-09,0.0131,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-09,0.7405,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-09,0.7405,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-09,49.9146,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-09,59.7557,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-10,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-10,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-10,0.0,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-10,0.0,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Reque,analisis_3Q,punto utilizado,2000-10,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Reque,senamhi_historica,candidato_documental,2000-10,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-10,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-10,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-10,3.712,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-10,5.8199,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-11,0.0,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-11,0.0,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-11,0.0,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-11,0.0,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Reque,analisis_3Q,punto utilizado,2000-11,0.0,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Reque,senamhi_historica,candidato_documental,2000-11,0.0,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-11,0.0,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-11,0.0,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-11,0.4241,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-11,3.9622,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif
+Jayanca (La Viña),analisis_3Q,punto utilizado,2000-12,1.2496,826,804,-6.3250006,-79.7749994,0.554,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Jayanca (La Viña),senamhi_historica,candidato_documental,2000-12,1.2496,826,804,-6.3250006,-79.7749994,1.141,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Cayaltí,analisis_3Q,punto utilizado,2000-12,1.1132,837,809,-6.8750006,-79.5249994,2.514,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Cayaltí,senamhi_historica,candidato_documental,2000-12,2.0435,837,808,-6.8750006,-79.5749994,3.118,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Reque,analisis_3Q,punto utilizado,2000-12,2.1671,837,803,-6.8750006,-79.8249994,1.696,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Reque,senamhi_historica,candidato_documental,2000-12,2.1671,837,803,-6.8750006,-79.8249994,1.737,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Lambayeque,analisis_3Q,punto utilizado,2000-12,2.7018,834,801,-6.7250006,-79.9249994,1.825,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Lambayeque,catalogo_preliminar,candidato_sin_ficha_primaria,2000-12,2.7018,834,801,-6.7250006,-79.9249994,2.412,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Cueva Blanca,analisis_3Q,punto utilizado,2000-12,5.4489,822,811,-6.1250006,-79.4249994,2.372,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif
+Cueva Blanca,ana_alternativa,candidato_documental_discrepante,2000-12,35.2595,822,812,-6.1250006,-79.3749994,3.842,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif

@@ -1,0 +1,11 @@
+estacion,ano,variante_alternativa,distancia_puntos_km,meses_mismo_pixel,meses,observado_anual_mm,base_anual_mm,alternativo_anual_mm,diferencia_anual_mm,diferencia_anual_pct_respecto_base,mae_base_mm_mes,mae_alternativo_mm_mes,sesgo_base_pct,sesgo_alternativo_pct
+Cayaltí,1998,senamhi_historica,2.415,0,12,558.5,657.559,609.704,-47.855,-7.28,9.616,13.142,17.74,9.17
+Cayaltí,2000,senamhi_historica,2.415,0,12,49.38,53.283,49.322,-3.961,-7.43,3.335,3.568,7.9,-0.12
+Cueva Blanca,1998,ana_alternativa,6.339,0,12,969.2,1515.965,1655.767,139.802,9.22,72.559,83.634,56.41,70.84
+Cueva Blanca,2000,ana_alternativa,6.339,0,12,813.9,574.097,712.494,138.397,24.11,26.087,25.287,-29.46,-12.46
+Jayanca (La Viña),1998,senamhi_historica,1.683,12,12,1428.0,826.757,826.757,0.0,0.0,52.099,52.099,-42.1,-42.1
+Jayanca (La Viña),2000,senamhi_historica,1.683,12,12,58.4,67.109,67.109,0.0,0.0,2.972,2.972,14.91,14.91
+Lambayeque,1998,catalogo_preliminar,3.356,12,12,279.61,462.126,462.126,0.0,0.0,15.941,15.941,65.28,65.28
+Lambayeque,2000,catalogo_preliminar,3.356,12,12,20.41,11.169,11.169,0.0,0.0,1.727,1.727,-45.27,-45.27
+Reque,1998,senamhi_historica,0.042,12,12,232.82,331.993,331.993,0.0,0.0,8.264,8.264,42.6,42.6
+Reque,2000,senamhi_historica,0.042,12,12,18.1,10.627,10.627,0.0,0.0,1.724,1.724,-41.29,-41.29

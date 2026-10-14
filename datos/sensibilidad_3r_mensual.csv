@@ -1,0 +1,121 @@
+mes,base_mm,fila_base,col_base,variante,alternativo_mm,fila_alt,col_alt,observado_mm,estacion,distancia_puntos_km,diferencia_modelo_mm,mismo_pixel
+1998-01,62.5183,837,809,senamhi_historica,61.0383,837,808,58.28,Cayaltí,2.415,-1.48,False
+1998-02,286.1703,837,809,senamhi_historica,245.6102,837,808,292.33,Cayaltí,2.415,-40.5601,False
+1998-03,265.8166,837,809,senamhi_historica,262.1467,837,808,174.87,Cayaltí,2.415,-3.6699,False
+1998-04,30.8806,837,809,senamhi_historica,31.6958,837,808,26.31,Cayaltí,2.415,0.8152,False
+1998-05,3.2289,837,809,senamhi_historica,3.3666,837,808,0.03,Cayaltí,2.415,0.1377,False
+1998-06,0.1331,837,809,senamhi_historica,0.1209,837,808,2.11,Cayaltí,2.415,-0.0122,False
+1998-07,0.9514,837,809,senamhi_historica,0.7591,837,808,0.0,Cayaltí,2.415,-0.1923,False
+1998-08,0.8907,837,809,senamhi_historica,1.0204,837,808,0.02,Cayaltí,2.415,0.1297,False
+1998-09,0.0,837,809,senamhi_historica,0.0,837,808,0.03,Cayaltí,2.415,0.0,False
+1998-10,5.3477,837,809,senamhi_historica,0.0,837,808,4.51,Cayaltí,2.415,-5.3477,False
+1998-11,0.0,837,809,senamhi_historica,0.0,837,808,0.0,Cayaltí,2.415,0.0,False
+1998-12,1.6217,837,809,senamhi_historica,3.9463,837,808,0.01,Cayaltí,2.415,2.3246,False
+2000-01,2.5835,837,809,senamhi_historica,2.9729,837,808,0.92,Cayaltí,2.415,0.3894,False
+2000-02,16.0467,837,809,senamhi_historica,17.3661,837,808,0.54,Cayaltí,2.415,1.3194,False
+2000-03,6.2952,837,809,senamhi_historica,5.3149,837,808,10.13,Cayaltí,2.415,-0.9803,False
+2000-04,15.1453,837,809,senamhi_historica,13.1556,837,808,12.28,Cayaltí,2.415,-1.9897,False
+2000-05,2.1428,837,809,senamhi_historica,1.3019,837,808,7.05,Cayaltí,2.415,-0.8409,False
+2000-06,2.7845,837,809,senamhi_historica,2.7055,837,808,1.92,Cayaltí,2.415,-0.079,False
+2000-07,1.063,837,809,senamhi_historica,0.8407,837,808,0.0,Cayaltí,2.415,-0.2223,False
+2000-08,0.9312,837,809,senamhi_historica,1.0548,837,808,1.83,Cayaltí,2.415,0.1236,False
+2000-09,5.1779,837,809,senamhi_historica,2.5662,837,808,5.34,Cayaltí,2.415,-2.6117,False
+2000-10,0.0,837,809,senamhi_historica,0.0,837,808,0.02,Cayaltí,2.415,0.0,False
+2000-11,0.0,837,809,senamhi_historica,0.0,837,808,0.94,Cayaltí,2.415,0.0,False
+2000-12,1.1132,837,809,senamhi_historica,2.0435,837,808,8.41,Cayaltí,2.415,0.9303,False
+1998-01,18.1889,822,811,ana_alternativa,11.3297,822,812,45.3,Cueva Blanca,6.339,-6.8592,False
+1998-02,375.531,822,811,ana_alternativa,390.4477,822,812,149.6,Cueva Blanca,6.339,14.9167,False
+1998-03,691.8609,822,811,ana_alternativa,736.6467,822,812,231.3,Cueva Blanca,6.339,44.7858,False
+1998-04,173.0552,822,811,ana_alternativa,216.6204,822,812,172.0,Cueva Blanca,6.339,43.5652,False
+1998-05,66.0301,822,811,ana_alternativa,75.0415,822,812,83.5,Cueva Blanca,6.339,9.0114,False
+1998-06,0.0,822,811,ana_alternativa,0.0,822,812,33.4,Cueva Blanca,6.339,0.0,False
+1998-07,0.0,822,811,ana_alternativa,0.0624,822,812,0.0,Cueva Blanca,6.339,0.0624,False
+1998-08,5.3005,822,811,ana_alternativa,8.9275,822,812,11.8,Cueva Blanca,6.339,3.627,False
+1998-09,38.7775,822,811,ana_alternativa,25.2196,822,812,64.0,Cueva Blanca,6.339,-13.5579,False
+1998-10,90.0951,822,811,ana_alternativa,111.9193,822,812,97.9,Cueva Blanca,6.339,21.8242,False
+1998-11,0.5358,822,811,ana_alternativa,3.9585,822,812,45.0,Cueva Blanca,6.339,3.4227,False
+1998-12,56.5897,822,811,ana_alternativa,75.5933,822,812,35.4,Cueva Blanca,6.339,19.0036,False
+2000-01,0.0,822,811,ana_alternativa,0.0,822,812,42.2,Cueva Blanca,6.339,0.0,False
+2000-02,145.6753,822,811,ana_alternativa,170.4028,822,812,147.7,Cueva Blanca,6.339,24.7275,False
+2000-03,187.0198,822,811,ana_alternativa,193.5783,822,812,150.4,Cueva Blanca,6.339,6.5585,False
+2000-04,113.876,822,811,ana_alternativa,156.0598,822,812,134.7,Cueva Blanca,6.339,42.1838,False
+2000-05,58.0606,822,811,ana_alternativa,76.3783,822,812,62.6,Cueva Blanca,6.339,18.3177,False
+2000-06,3.698,822,811,ana_alternativa,0.4811,822,812,49.8,Cueva Blanca,6.339,-3.2169,False
+2000-07,0.0,822,811,ana_alternativa,0.0722,822,812,12.9,Cueva Blanca,6.339,0.0722,False
+2000-08,6.2676,822,811,ana_alternativa,10.7238,822,812,13.7,Cueva Blanca,6.339,4.4562,False
+2000-09,49.9146,822,811,ana_alternativa,59.7557,822,812,73.3,Cueva Blanca,6.339,9.8411,False
+2000-10,3.712,822,811,ana_alternativa,5.8199,822,812,20.5,Cueva Blanca,6.339,2.1079,False
+2000-11,0.4241,822,811,ana_alternativa,3.9622,822,812,21.4,Cueva Blanca,6.339,3.5381,False
+2000-12,5.4489,822,811,ana_alternativa,35.2595,822,812,84.7,Cueva Blanca,6.339,29.8106,False
+1998-01,81.8974,826,804,senamhi_historica,81.8974,826,804,348.3,Jayanca (La Viña),1.683,0.0,True
+1998-02,319.8619,826,804,senamhi_historica,319.8619,826,804,466.3,Jayanca (La Viña),1.683,0.0,True
+1998-03,341.2267,826,804,senamhi_historica,341.2267,826,804,539.1,Jayanca (La Viña),1.683,0.0,True
+1998-04,64.8457,826,804,senamhi_historica,64.8457,826,804,61.5,Jayanca (La Viña),1.683,0.0,True
+1998-05,11.9757,826,804,senamhi_historica,11.9757,826,804,10.0,Jayanca (La Viña),1.683,0.0,True
+1998-06,0.0,826,804,senamhi_historica,0.0,826,804,0.4,Jayanca (La Viña),1.683,0.0,True
+1998-07,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+1998-08,1.2509,826,804,senamhi_historica,1.2509,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+1998-09,0.0,826,804,senamhi_historica,0.0,826,804,2.1,Jayanca (La Viña),1.683,0.0,True
+1998-10,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+1998-11,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+1998-12,5.6988,826,804,senamhi_historica,5.6988,826,804,0.3,Jayanca (La Viña),1.683,0.0,True
+2000-01,4.034,826,804,senamhi_historica,4.034,826,804,2.2,Jayanca (La Viña),1.683,0.0,True
+2000-02,9.7639,826,804,senamhi_historica,9.7639,826,804,1.0,Jayanca (La Viña),1.683,0.0,True
+2000-03,16.6756,826,804,senamhi_historica,16.6756,826,804,27.3,Jayanca (La Viña),1.683,0.0,True
+2000-04,21.9526,826,804,senamhi_historica,21.9526,826,804,21.6,Jayanca (La Viña),1.683,0.0,True
+2000-05,7.5337,826,804,senamhi_historica,7.5337,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+2000-06,1.677,826,804,senamhi_historica,1.677,826,804,1.1,Jayanca (La Viña),1.683,0.0,True
+2000-07,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+2000-08,1.344,826,804,senamhi_historica,1.344,826,804,1.1,Jayanca (La Viña),1.683,0.0,True
+2000-09,2.8791,826,804,senamhi_historica,2.8791,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+2000-10,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+2000-11,0.0,826,804,senamhi_historica,0.0,826,804,0.0,Jayanca (La Viña),1.683,0.0,True
+2000-12,1.2496,826,804,senamhi_historica,1.2496,826,804,4.1,Jayanca (La Viña),1.683,0.0,True
+1998-01,40.3487,834,801,catalogo_preliminar,40.3487,834,801,42.14,Lambayeque,3.356,0.0,True
+1998-02,150.7036,834,801,catalogo_preliminar,150.7036,834,801,110.02,Lambayeque,3.356,0.0,True
+1998-03,246.8804,834,801,catalogo_preliminar,246.8804,834,801,116.22,Lambayeque,3.356,0.0,True
+1998-04,16.7536,834,801,catalogo_preliminar,16.7536,834,801,7.25,Lambayeque,3.356,0.0,True
+1998-05,0.1427,834,801,catalogo_preliminar,0.1427,834,801,2.0,Lambayeque,3.356,0.0,True
+1998-06,0.1041,834,801,catalogo_preliminar,0.1041,834,801,0.01,Lambayeque,3.356,0.0,True
+1998-07,0.3435,834,801,catalogo_preliminar,0.3435,834,801,0.0,Lambayeque,3.356,0.0,True
+1998-08,1.4906,834,801,catalogo_preliminar,1.4906,834,801,0.0,Lambayeque,3.356,0.0,True
+1998-09,0.0,834,801,catalogo_preliminar,0.0,834,801,0.0,Lambayeque,3.356,0.0,True
+1998-10,0.0,834,801,catalogo_preliminar,0.0,834,801,0.54,Lambayeque,3.356,0.0,True
+1998-11,0.0,834,801,catalogo_preliminar,0.0,834,801,0.2,Lambayeque,3.356,0.0,True
+1998-12,5.3585,834,801,catalogo_preliminar,5.3585,834,801,1.23,Lambayeque,3.356,0.0,True
+2000-01,0.0,834,801,catalogo_preliminar,0.0,834,801,0.62,Lambayeque,3.356,0.0,True
+2000-02,3.5202,834,801,catalogo_preliminar,3.5202,834,801,0.46,Lambayeque,3.356,0.0,True
+2000-03,0.0,834,801,catalogo_preliminar,0.0,834,801,3.66,Lambayeque,3.356,0.0,True
+2000-04,2.1407,834,801,catalogo_preliminar,2.1407,834,801,3.82,Lambayeque,3.356,0.0,True
+2000-05,0.1306,834,801,catalogo_preliminar,0.1306,834,801,0.52,Lambayeque,3.356,0.0,True
+2000-06,0.114,834,801,catalogo_preliminar,0.114,834,801,5.83,Lambayeque,3.356,0.0,True
+2000-07,0.3445,834,801,catalogo_preliminar,0.3445,834,801,0.0,Lambayeque,3.356,0.0,True
+2000-08,1.4771,834,801,catalogo_preliminar,1.4771,834,801,0.01,Lambayeque,3.356,0.0,True
+2000-09,0.7405,834,801,catalogo_preliminar,0.7405,834,801,3.15,Lambayeque,3.356,0.0,True
+2000-10,0.0,834,801,catalogo_preliminar,0.0,834,801,0.01,Lambayeque,3.356,0.0,True
+2000-11,0.0,834,801,catalogo_preliminar,0.0,834,801,0.5,Lambayeque,3.356,0.0,True
+2000-12,2.7018,834,801,catalogo_preliminar,2.7018,834,801,1.83,Lambayeque,3.356,0.0,True
+1998-01,39.1297,837,803,senamhi_historica,39.1297,837,803,19.51,Reque,0.042,0.0,True
+1998-02,140.0132,837,803,senamhi_historica,140.0132,837,803,111.7,Reque,0.042,0.0,True
+1998-03,137.1438,837,803,senamhi_historica,137.1438,837,803,96.6,Reque,0.042,0.0,True
+1998-04,6.9004,837,803,senamhi_historica,6.9004,837,803,5.01,Reque,0.042,0.0,True
+1998-05,0.6603,837,803,senamhi_historica,0.6603,837,803,0.0,Reque,0.042,0.0,True
+1998-06,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+1998-07,0.141,837,803,senamhi_historica,0.141,837,803,0.0,Reque,0.042,0.0,True
+1998-08,1.0892,837,803,senamhi_historica,1.0892,837,803,0.0,Reque,0.042,0.0,True
+1998-09,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+1998-10,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+1998-11,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+1998-12,6.9156,837,803,senamhi_historica,6.9156,837,803,0.0,Reque,0.042,0.0,True
+2000-01,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+2000-02,1.0279,837,803,senamhi_historica,1.0279,837,803,0.0,Reque,0.042,0.0,True
+2000-03,2.3988,837,803,senamhi_historica,2.3988,837,803,3.3,Reque,0.042,0.0,True
+2000-04,0.8124,837,803,senamhi_historica,0.8124,837,803,9.2,Reque,0.042,0.0,True
+2000-05,0.8103,837,803,senamhi_historica,0.8103,837,803,3.6,Reque,0.042,0.0,True
+2000-06,1.7911,837,803,senamhi_historica,1.7911,837,803,0.0,Reque,0.042,0.0,True
+2000-07,0.5137,837,803,senamhi_historica,0.5137,837,803,0.0,Reque,0.042,0.0,True
+2000-08,1.0921,837,803,senamhi_historica,1.0921,837,803,0.0,Reque,0.042,0.0,True
+2000-09,0.0131,837,803,senamhi_historica,0.0131,837,803,0.0,Reque,0.042,0.0,True
+2000-10,0.0,837,803,senamhi_historica,0.0,837,803,0.0,Reque,0.042,0.0,True
+2000-11,0.0,837,803,senamhi_historica,0.0,837,803,2.0,Reque,0.042,0.0,True
+2000-12,2.1671,837,803,senamhi_historica,2.1671,837,803,0.0,Reque,0.042,0.0,True

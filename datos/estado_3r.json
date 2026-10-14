@@ -1,0 +1,15 @@
+{
+  "fase": "3R",
+  "anios": [
+    1998,
+    2000
+  ],
+  "rasters_previstos": 24,
+  "rasters_utilizables": 24,
+  "puntos_por_mes": 10,
+  "filas_pixel": 240,
+  "incidencias": [],
+  "identidad_emplazamientos_historicos_confirmada": false,
+  "alcance": "Sensibilidad a candidatos documentales, no validacion de metadatos",
+  "combinaciones_completas": 10
+}
