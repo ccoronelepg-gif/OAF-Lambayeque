@@ -1,0 +1,41 @@
+name: OAF 3X control de boletines DZ2
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/validar_fuentes_3x.py'
+      - 'datos/fuentes_dz2_3x.csv'
+      - 'datos/observaciones_publicadas_dz2_3x.csv'
+      - '.github/workflows/auditoria_3x.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-3x-boletines
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Comprobar sintaxis Python
+        run: python -m compileall -q scripts/validar_fuentes_3x.py
+      - name: Validar conteos y preservación de trazas
+        run: python -u scripts/validar_fuentes_3x.py
+      - name: Guardar estado e informe trazables
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f FUENTES_DZ2_3X.md datos/estado_3x.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Documentar evidencia regional DZ2 para fase 3X"
+            git pull --rebase origin main
+            git push origin main
+          fi
