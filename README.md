@@ -4,6 +4,18 @@
 **Autor:** ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA  
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
+
+## Actualización del portal · 14/10/2026
+
+La página pública [OAF-Lambayeque 2.2](https://ccoronelepg-gif.github.io/OAF-Lambayeque/) incorpora:
+
+- Biblioteca consultable para **arándano y vid**, con nueve enfermedades, variables meteorológicas, rangos publicados, nivel de respaldo y enlaces directos a estudios y guías técnicas.
+- Módulo visible de **boletines ENFEN** con comunicado N.º 17-2026 (verificado al 14/10/2026), acceso a archivos institucionales y al registro de monitoreo automatizado con sus limitaciones.
+- Consulta horaria experimental para **Jayanca, Motupe, Olmos y Chiclayo**, con años completos 2023–2025, usando ERA5-Land (temperatura/HR) y ERA5 (precipitación) a través de Open-Meteo, exportación CSV y tratamiento explícito de fallos y datos faltantes.
+- Conservación de todas las secciones de validación, CHIRPS, SENAMHI y datos históricos existentes.
+
+Los índices no son alertas operativas ni permiten diagnosticar enfermedades. El navegador necesita acceso a la API de terceros para obtener datos horarios.
+
 ## Misión
 
 Desarrollar un sistema regional de **vigilancia agroclimática actualizada, pronóstico probabilístico y alerta temprana experimental** de eventos anómalos —en especial condiciones vinculadas con **El Niño Costero**— y de riesgos fitosanitarios agrícolas. La primera línea de sanidad vegetal se centra en **arándano**, comenzando con condiciones favorables para *Botrytis cinerea*.
