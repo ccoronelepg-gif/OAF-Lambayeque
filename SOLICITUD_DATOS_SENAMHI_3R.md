@@ -42,3 +42,19 @@ Según el servicio oficial de descarga, el acceso al TXT diario requiere registr
 Revisar que nombre, código, variable, unidades, periodo, serie temporal y ubicación correspondan. Guardar copia original sin alterar. Marcar faltantes como tales (no como cero). Crear una nueva versión con procedencia completa y comparar solo meses completos antes de ampliar indicadores al periodo 1996–2025.
 
 **Pendiente:** entrega efectiva de datos y fichas oficiales; este documento no prueba disponibilidad ni exactitud de nuevas estaciones.
+
+## Complemento de la Fase 3X: evidencia documental reciente (no enviado)
+
+La búsqueda en el portal oficial de SENAMHI Lambayeque identificó un mapa de descarga histórica que enumera explícitamente **REQUE, CAYALTI, CUEVA BLANCA, JAYANCA (LA VIÑA)** y **LAMBAYEQUE**: https://www.senamhi.gob.pe/mapas/descarga-datos/map_hist_data.php?dp=lambayeque.
+
+El boletín de febrero de 2025 de la DZ2 publica acumulados de lluvia para las cinco denominaciones: Jayanca 35,6 mm; Cayaltí 19,62 mm; Reque 10,91 mm; Lambayeque 21,5 mm y Cueva Blanca 282,3 mm. Fuente: https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf. La identidad y continuidad de cada instrumento todavía requieren certificación; estos datos transcritos NO sustituyen series diarias.
+
+**Precisiones que conviene incorporar al oficio o solicitud al SENAMHI DZ2:**
+
+- Solicitar **nombre y código oficial que identifica el archivo histórico descargado** de cada una de las cinco estaciones, y el código de la estación utilizada en el boletín de febrero de 2025; confirmar explícitamente si ambos corresponden a la misma instalación.
+- Pedir **precipitación diaria original y sus banderas de calidad**, para los periodos efectivamente observados de 2016–2025, no promedios mensuales climatológicos, junto con el periodo de integración de cada acumulado.
+- Pedir ficha de coordenadas WGS84, elevación, inicio y fin de operación y **historial de cambios de ubicación/instrumento/denominación** que puedan explicar discrepancias observadas, especialmente en Jayanca/La Viña, Cayaltí y Cueva Blanca.
+- Preguntar qué condiciones de licencia y citación permiten **reutilizar estadísticas derivadas** en un observatorio científico público; nunca publicar cuentas, contraseñas ni documentos de identidad del investigador.
+- Identificar si es viable obtener un inventario de estaciones instrumentales de otros distritos de Lambayeque, útil para comparaciones independientes por costa, valle y sierra.
+
+**Vía institucional comprobada:** SENAMHI DZ 2, Chiclayo, teléfono institucional **(074) 225589**, conforme al portal de descarga DZ2. Dirección y horario deben confirmarse antes de acudir, pues distintas páginas institucionales pueden mostrar ubicaciones anteriores. La solicitud sigue siendo un borrador; **no se ha presentado ni se ha iniciado sesión**.
