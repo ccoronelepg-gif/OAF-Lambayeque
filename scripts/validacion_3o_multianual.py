@@ -151,9 +151,27 @@ def main():
                     print(f"  {producto} solicitando {a}..{b}", flush=True)
                     fragmentos.append(metodo(lat, lon, a, b))
                 except Exception as exc:
-                    incidentes.append(dict(estacion=est, producto=producto, ventana=f"{a}..{b}",
-                                           error=f"{type(exc).__name__}: {str(exc)[:250]}"))
-                    print("  ERROR", str(exc)[:250], flush=True)
+                    if producto == "ERA5-Seamless":
+                        print(f"  FALLBACK ERA5: ventana {a}..{b} agotada; consultando intervalos bienales.", flush=True)
+                        fallos = 0
+                        for ano in range(int(a[:4]), int(b[:4]) + 1, 2):
+                            ai, bi = max(a, f"{ano}-01"), min(b, f"{ano+1}-12")
+                            if ai > bi:
+                                continue
+                            try:
+                                fragmentos.append(metodo(lat, lon, ai, bi))
+                                print(f"    Recuperado: {ai}..{bi}", flush=True)
+                            except Exception as sub:
+                                fallos += 1
+                                incidentes.append(dict(estacion=est, producto=producto,
+                                    ventana=f"{ai}..{bi}",
+                                    error=f"{type(sub).__name__}: {str(sub)[:250]}"))
+                        if fallos == 0:
+                            print(f"    Ventana {a}..{b} recuperada íntegramente.", flush=True)
+                    else:
+                        incidentes.append(dict(estacion=est, producto=producto, ventana=f"{a}..{b}",
+                                               error=f"{type(exc).__name__}: {str(exc)[:250]}"))
+                        print("  ERROR", str(exc)[:250], flush=True)
             if not fragmentos:
                 continue
             e = pd.concat(fragmentos, ignore_index=True)
