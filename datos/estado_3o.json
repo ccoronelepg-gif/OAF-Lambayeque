@@ -1,23 +1,16 @@
 {
   "etapa": "3O",
-  "creado_utc": "2026-10-14T15:16:34.169609+00:00",
+  "creado_utc": "2026-10-14T15:21:08.075019+00:00",
   "meses_estacion_observados_completos": 1109,
   "estaciones": 5,
   "productos": [
     "PISCOp v3.0",
     "ERA5-Seamless"
   ],
-  "pares_mensuales": 2104,
+  "pares_mensuales": 2218,
   "combinaciones_obtenidas": 10,
   "combinaciones_esperadas": 10,
-  "incidencias": [
-    {
-      "estacion": "Lambayeque",
-      "producto": "ERA5-Seamless",
-      "ventana": "1996-01..2005-12",
-      "error": "RuntimeError: 3 intentos fallaron: HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=20)"
-    }
-  ],
+  "incidencias": [],
   "coordenadas_preliminares": true,
   "pisco_validacion_independiente": false,
   "datos_fuentes_senamhi": "archivos TXT aportados por el usuario, agregación mensual"
