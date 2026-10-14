@@ -1,0 +1,97 @@
+{
+  "proyecto": "OAF-Lambayeque 2.0",
+  "actualizado_el": "2026-10-14",
+  "orientacion": "vigilancia reciente + pronostico probabilistico + riesgo fitosanitario",
+  "responsable": "ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA",
+  "estado_general": "reorganizacion_documentada",
+  "fases_historicas": {
+    "identificadores": "3N-3Y",
+    "accion": "conservar_sin_alteraciones",
+    "observaciones_senamhi_completas_1996_2015": 1109,
+    "meses_validacion_retrospectiva": 1109,
+    "pares_estacion_producto": 3327,
+    "ultimo_anio_instrumental_compartido_completo": 2012,
+    "nuevos_meses_diarios_verificados_desde_2016": 0
+  },
+  "reglas": {
+    "imputacion_observaciones_prohibida": true,
+    "contexto_oceanico_enfen_es_fuente_oficial": true,
+    "no_confundir_estimacion_con_observacion": true,
+    "no_confundir_reanalisis_con_pronostico": true,
+    "alertas_propias_operativas_habilitadas": false,
+    "indice_fitosanitario_validado": false,
+    "referencia_1996_2025_solo_si_30_anios_completos": true,
+    "referencia_comparativa_omm": "1991-2020",
+    "observacion_actual_sin_exigir_anio_terminado": true
+  },
+  "entregables": [
+    {
+      "id": "3Z",
+      "nombre": "Modernizacion de fuentes y monitoreo reciente",
+      "orden": 1,
+      "estado": "siguiente",
+      "prioridad": "maxima",
+      "producto": "extraccion real trazable y primer panel reciente con sello de tiempo",
+      "criterio_aceptacion": "fuente descargada; fecha de observacion y consulta; banderas QA; fallos visibles; sin alerta propia"
+    },
+    {
+      "id": "4A",
+      "nombre": "Prediccion probabilistica agroclimatica",
+      "orden": 2,
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "producto": "pronosticos prospectivos verificados de lluvias y temperatura",
+      "criterio_aceptacion": "fuente de pronostico y fecha de emision archivadas; validacion fuera de tiempo; mejora vs referencia"
+    },
+    {
+      "id": "4B",
+      "nombre": "Riesgo fitosanitario de arandano",
+      "orden": 3,
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "producto": "indices exploratorios de Botrytis y modelo si hay registros de campo",
+      "criterio_aceptacion": "datos reales de enfermedad con fecha, fenologia, area, confirmacion; validacion independiente"
+    },
+    {
+      "id": "4C",
+      "nombre": "Verificacion prospectiva y alertas",
+      "orden": 4,
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "producto": "auditoria continua de pronosticos y protocolo publico de comunicacion",
+      "criterio_aceptacion": "habilidad demostrada, calibracion, QA, responsable; alertas propias solo si validadas"
+    }
+  ],
+  "modulos": [
+    {
+      "id": "M0",
+      "nombre": "calidad_y_procedencia",
+      "estado": "base_historica_parcial"
+    },
+    {
+      "id": "M1",
+      "nombre": "vigilancia_niño_costero",
+      "estado": "sin_ingesta_reciente"
+    },
+    {
+      "id": "M2",
+      "nombre": "monitoreo_precipitacion_y_temperatura",
+      "estado": "historico_integrado_reciente_pendiente"
+    },
+    {
+      "id": "M3",
+      "nombre": "pronostico_meteorologico",
+      "estado": "no_implementado"
+    },
+    {
+      "id": "M4",
+      "nombre": "riesgo_fitosanitario_arandano",
+      "estado": "no_implementado"
+    },
+    {
+      "id": "M5",
+      "nombre": "comunicacion_y_alertas",
+      "estado": "documentado_no_operativo"
+    }
+  ]
+}
