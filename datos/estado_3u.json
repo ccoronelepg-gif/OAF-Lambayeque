@@ -1,0 +1,32 @@
+{
+  "fase": "3U",
+  "fecha_corte": "2026-10-14",
+  "periodo_objetivo": "2016-2025",
+  "estaciones_analizadas_historicamente": [
+    "Jayanca (La Viña)",
+    "Cayaltí",
+    "Reque",
+    "Lambayeque",
+    "Cueva Blanca"
+  ],
+  "meses_estacion_senamhi_validados_1996_2015": 1109,
+  "pares_productos_con_senamhi_1996_2015": 3327,
+  "archivos_diarios_nuevos_2016_2025_recibidos": 0,
+  "estaciones_con_nueva_serie_importada": 0,
+  "observaciones_nuevas_certificadas": 0,
+  "meses_estacion_nuevos_certificados": 0,
+  "independencia_externa_verificada": false,
+  "etapa_software": "importador_y_pruebas_de_software",
+  "pruebas_con_datos_sinteticos": true,
+  "pruebas_no_representan_observaciones_reales": true,
+  "fuente_oficial_requiere_registro": true,
+  "publicacion_de_datos_diarios_privados": false,
+  "interpretacion": "Cero registros importados es estado del proyecto, NO significa ausencia de lluvia ni cierre de estaciones.",
+  "pendientes": [
+    "recibir TXT oficiales mediante acceso autorizado",
+    "cotejar código y ubicación histórica exactos",
+    "confirmar las reglas de medida y control de calidad de SENAMHI",
+    "verificar licencia y pertenencia de estaciones a productos interpolados",
+    "actualizar validación instrumental hasta 2025 sin imputaciones"
+  ]
+}
