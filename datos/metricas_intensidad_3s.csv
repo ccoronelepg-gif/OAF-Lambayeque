@@ -1,0 +1,145 @@
+estacion,producto,clase,periodo,meses,lluvia_observada_media_mm,lluvia_estim_media_mm,mae_mm_mes,rmse_mm_mes,sesgo_mm_mes,sesgo_total_pct,pearson
+Cayaltí,CHIRPS v3,bajo_1a20,sin_1998,115,5.024,6.151,4.635,6.832,1.127,22.43,0.4974
+Cayaltí,ERA5-Seamless,bajo_1a20,sin_1998,115,5.024,22.276,17.89,28.805,17.252,343.39,0.4858
+Cayaltí,PISCOp v3.0,bajo_1a20,sin_1998,115,5.024,5.486,1.604,2.833,0.462,9.19,0.8782
+Cayaltí,CHIRPS v3,lluvioso_ge20,sin_1998,8,34.524,30.319,10.522,13.014,-4.205,-12.18,0.3871
+Cayaltí,ERA5-Seamless,lluvioso_ge20,sin_1998,8,34.524,89.963,59.666,71.195,55.439,160.58,0.1549
+Cayaltí,PISCOp v3.0,lluvioso_ge20,sin_1998,8,34.524,31.637,11.363,13.428,-2.887,-8.36,-0.1423
+Cayaltí,CHIRPS v3,seco_lt1,sin_1998,100,0.171,1.445,1.397,2.738,1.274,745.65,0.2235
+Cayaltí,ERA5-Seamless,seco_lt1,sin_1998,100,0.171,3.705,3.542,8.678,3.534,2067.93,0.3377
+Cayaltí,PISCOp v3.0,seco_lt1,sin_1998,100,0.171,0.29,0.206,0.462,0.119,69.68,0.5488
+Cayaltí,CHIRPS v3,todos,sin_1998,223,3.906,4.908,3.394,5.789,1.002,25.65,0.7393
+Cayaltí,ERA5-Seamless,todos,sin_1998,223,3.906,16.376,12.954,25.367,12.47,319.26,0.7006
+Cayaltí,PISCOp v3.0,todos,sin_1998,223,3.906,4.094,1.327,3.272,0.188,4.81,0.9002
+Cayaltí,CHIRPS v3,bajo_1a20,todos,117,4.995,6.093,4.58,6.776,1.098,21.98,0.4997
+Cayaltí,ERA5-Seamless,bajo_1a20,todos,117,4.995,21.956,17.614,28.559,16.961,339.58,0.4882
+Cayaltí,PISCOp v3.0,bajo_1a20,todos,117,4.995,5.425,1.6,2.816,0.43,8.62,0.8781
+Cayaltí,CHIRPS v3,intenso_ge50,todos,3,175.16,204.835,33.782,52.685,29.675,16.94,
+Cayaltí,ERA5-Seamless,intenso_ge50,todos,3,175.16,385.433,210.273,274.2,210.273,120.05,
+Cayaltí,PISCOp v3.0,intenso_ge50,todos,3,175.16,216.256,41.096,45.266,41.096,23.46,
+Cayaltí,CHIRPS v3,lluvioso_ge20,todos,12,68.998,73.995,15.841,28.436,4.996,7.24,0.9578
+Cayaltí,ERA5-Seamless,lluvioso_ge20,todos,12,68.998,168.933,102.753,153.217,99.935,144.84,0.7683
+Cayaltí,PISCOp v3.0,lluvioso_ge20,todos,12,68.998,77.708,18.209,25.18,8.709,12.62,0.9811
+Cayaltí,CHIRPS v3,seco_lt1,todos,106,0.162,1.427,1.381,2.685,1.264,780.18,0.2247
+Cayaltí,ERA5-Seamless,seco_lt1,todos,106,0.162,3.693,3.539,8.498,3.531,2178.81,0.3344
+Cayaltí,PISCOp v3.0,seco_lt1,todos,106,0.162,0.295,0.216,0.479,0.133,82.18,0.5192
+Cayaltí,CHIRPS v3,todos,todos,235,6.083,7.455,3.712,8.21,1.372,22.56,0.9557
+Cayaltí,ERA5-Seamless,todos,todos,235,6.083,21.223,15.613,40.465,15.14,248.89,0.831
+Cayaltí,PISCOp v3.0,todos,todos,235,6.083,6.802,1.824,6.035,0.719,11.82,0.9856
+Cueva Blanca,CHIRPS v3,bajo_1a20,sin_1998,43,10.058,5.675,7.026,8.279,-4.383,-43.57,0.2566
+Cueva Blanca,ERA5-Seamless,bajo_1a20,sin_1998,43,10.058,15.605,13.658,23.674,5.547,55.14,0.435
+Cueva Blanca,PISCOp v3.0,bajo_1a20,sin_1998,43,10.058,5.418,5.124,6.475,-4.64,-46.14,0.5332
+Cueva Blanca,CHIRPS v3,intenso_ge50,sin_1998,104,108.452,74.873,42.736,53.639,-33.579,-30.96,0.6952
+Cueva Blanca,ERA5-Seamless,intenso_ge50,sin_1998,104,108.452,265.664,167.12,253.678,157.212,144.96,0.5394
+Cueva Blanca,PISCOp v3.0,intenso_ge50,sin_1998,104,108.452,70.011,45.709,55.231,-38.441,-35.45,0.6746
+Cueva Blanca,CHIRPS v3,lluvioso_ge20,sin_1998,154,84.284,55.912,35.403,46.057,-28.372,-33.66,0.7746
+Cueva Blanca,ERA5-Seamless,lluvioso_ge20,sin_1998,154,84.284,204.918,131.539,215.747,120.634,143.13,0.6363
+Cueva Blanca,PISCOp v3.0,lluvioso_ge20,sin_1998,154,84.284,52.785,36.946,46.94,-31.499,-37.37,0.7682
+Cueva Blanca,CHIRPS v3,seco_lt1,sin_1998,9,0.1,2.625,2.725,4.151,2.525,2524.82,-0.2899
+Cueva Blanca,ERA5-Seamless,seco_lt1,sin_1998,9,0.1,4.7,4.6,8.885,4.6,4600.0,-0.0373
+Cueva Blanca,PISCOp v3.0,seco_lt1,sin_1998,9,0.1,2.642,2.71,4.077,2.542,2542.22,-0.2853
+Cueva Blanca,CHIRPS v3,todos,sin_1998,206,65.112,43.098,28.052,40.01,-22.014,-33.81,0.8141
+Cueva Blanca,ERA5-Seamless,todos,sin_1998,206,65.112,156.653,101.387,186.863,91.541,140.59,0.7131
+Cueva Blanca,PISCOp v3.0,todos,sin_1998,206,65.112,40.707,28.808,40.702,-24.405,-37.48,0.8163
+Cueva Blanca,CHIRPS v3,bajo_1a20,todos,44,10.098,5.667,7.014,8.243,-4.431,-43.88,0.2557
+Cueva Blanca,ERA5-Seamless,bajo_1a20,todos,44,10.098,15.3,13.566,23.448,5.202,51.52,0.4285
+Cueva Blanca,PISCOp v3.0,bajo_1a20,todos,44,10.098,5.414,5.156,6.476,-4.684,-46.38,0.5322
+Cueva Blanca,CHIRPS v3,intenso_ge50,todos,110,109.794,83.838,47.115,71.566,-25.956,-23.64,0.6347
+Cueva Blanca,ERA5-Seamless,intenso_ge50,todos,110,109.794,309.414,210.549,418.71,199.62,181.81,0.5126
+Cueva Blanca,PISCOp v3.0,intenso_ge50,todos,110,109.794,74.181,45.846,55.523,-35.612,-32.44,0.6912
+Cueva Blanca,CHIRPS v3,lluvioso_ge20,todos,164,84.982,61.714,38.513,60.239,-23.268,-27.38,0.6998
+Cueva Blanca,ERA5-Seamless,lluvioso_ge20,todos,164,84.982,243.916,170.271,375.079,158.934,187.02,0.5144
+Cueva Blanca,PISCOp v3.0,lluvioso_ge20,todos,164,84.982,55.897,37.353,47.436,-29.086,-34.23,0.7625
+Cueva Blanca,CHIRPS v3,seco_lt1,todos,10,0.09,2.362,2.452,3.938,2.272,2524.82,-0.251
+Cueva Blanca,ERA5-Seamless,seco_lt1,todos,10,0.09,4.29,4.2,8.431,4.2,4666.67,-0.0178
+Cueva Blanca,PISCOp v3.0,seco_lt1,todos,10,0.09,2.458,2.519,3.876,2.368,2630.78,-0.2581
+Cueva Blanca,CHIRPS v3,todos,todos,218,65.974,47.679,30.502,52.386,-18.294,-27.73,0.7327
+Cueva Blanca,ERA5-Seamless,todos,todos,218,65.974,186.781,131.025,325.5,120.807,183.11,0.5737
+Cueva Blanca,PISCOp v3.0,todos,todos,218,65.974,43.256,29.257,41.255,-22.718,-34.43,0.8063
+Jayanca (La Viña),CHIRPS v3,bajo_1a20,sin_1998,68,5.382,8.185,5.863,7.97,2.802,52.06,0.4266
+Jayanca (La Viña),ERA5-Seamless,bajo_1a20,sin_1998,68,5.382,113.193,107.984,145.236,107.81,2003.03,0.5901
+Jayanca (La Viña),PISCOp v3.0,bajo_1a20,sin_1998,68,5.382,5.21,1.345,2.176,-0.172,-3.19,0.8839
+Jayanca (La Viña),CHIRPS v3,intenso_ge50,sin_1998,12,94.942,40.606,54.336,65.1,-54.336,-57.23,0.3915
+Jayanca (La Viña),ERA5-Seamless,intenso_ge50,sin_1998,12,94.942,437.35,355.408,407.007,342.408,360.65,0.5043
+Jayanca (La Viña),PISCOp v3.0,intenso_ge50,sin_1998,12,94.942,64.608,30.655,37.888,-30.334,-31.95,0.7482
+Jayanca (La Viña),CHIRPS v3,lluvioso_ge20,sin_1998,20,67.13,30.252,38.182,51.514,-36.878,-54.94,0.5502
+Jayanca (La Viña),ERA5-Seamless,lluvioso_ge20,sin_1998,20,67.13,375.17,315.84,364.544,308.04,458.87,0.526
+Jayanca (La Viña),PISCOp v3.0,lluvioso_ge20,sin_1998,20,67.13,46.457,21.334,29.904,-20.673,-30.8,0.867
+Jayanca (La Viña),CHIRPS v3,seco_lt1,sin_1998,119,0.103,1.81,1.825,3.749,1.706,1650.7,0.1043
+Jayanca (La Viña),ERA5-Seamless,seco_lt1,sin_1998,119,0.103,26.577,26.484,47.983,26.474,25613.01,0.1864
+Jayanca (La Viña),PISCOp v3.0,seco_lt1,sin_1998,119,0.103,0.311,0.243,0.916,0.207,200.54,0.3958
+Jayanca (La Viña),CHIRPS v3,todos,sin_1998,207,8.314,6.652,6.664,16.892,-1.662,-19.99,0.7188
+Jayanca (La Viña),ERA5-Seamless,todos,sin_1998,207,8.314,88.711,81.214,145.233,80.398,967.07,0.7519
+Jayanca (La Viña),PISCOp v3.0,todos,sin_1998,207,8.314,6.379,2.643,9.404,-1.935,-23.27,0.9488
+Jayanca (La Viña),CHIRPS v3,bajo_1a20,todos,70,5.401,8.122,5.754,7.862,2.72,50.36,0.4358
+Jayanca (La Viña),ERA5-Seamless,bajo_1a20,todos,70,5.401,111.673,106.44,143.682,106.271,1967.47,0.5898
+Jayanca (La Viña),PISCOp v3.0,bajo_1a20,todos,70,5.401,5.181,1.363,2.194,-0.221,-4.09,0.88
+Jayanca (La Viña),CHIRPS v3,intenso_ge50,todos,16,159.656,80.944,79.131,106.781,-78.712,-49.3,0.9007
+Jayanca (La Viña),ERA5-Seamless,intenso_ge50,todos,16,159.656,789.788,639.881,877.934,630.131,394.68,0.9411
+Jayanca (La Viña),PISCOp v3.0,intenso_ge50,todos,16,159.656,128.898,30.999,38.205,-30.759,-19.27,0.9882
+Jayanca (La Viña),CHIRPS v3,lluvioso_ge20,todos,24,114.908,58.869,57.404,87.715,-56.039,-48.77,0.9083
+Jayanca (La Viña),ERA5-Seamless,lluvioso_ge20,todos,24,114.908,620.492,512.083,736.045,505.583,439.99,0.9377
+Jayanca (La Viña),PISCOp v3.0,lluvioso_ge20,todos,24,114.908,92.342,23.117,31.632,-22.566,-19.64,0.9876
+Jayanca (La Viña),CHIRPS v3,seco_lt1,todos,125,0.104,1.778,1.794,3.691,1.674,1609.89,0.1106
+Jayanca (La Viña),ERA5-Seamless,seco_lt1,todos,125,0.104,26.046,25.951,47.034,25.942,24943.85,0.1893
+Jayanca (La Viña),PISCOp v3.0,seco_lt1,todos,125,0.104,0.306,0.237,0.894,0.202,194.42,0.3975
+Jayanca (La Viña),CHIRPS v3,todos,todos,219,14.379,10.062,9.154,29.508,-4.316,-30.02,0.9197
+Jayanca (La Viña),ERA5-Seamless,todos,todos,219,14.379,118.56,104.953,259.292,104.181,724.56,0.9385
+Jayanca (La Viña),PISCOp v3.0,todos,todos,219,14.379,11.95,3.104,10.566,-2.428,-16.89,0.9886
+Lambayeque,CHIRPS v3,bajo_1a20,sin_1998,60,4.873,3.666,3.653,5.144,-1.208,-24.78,0.3307
+Lambayeque,ERA5-Seamless,bajo_1a20,sin_1998,60,4.873,16.302,12.783,19.668,11.428,234.51,0.2863
+Lambayeque,PISCOp v3.0,bajo_1a20,sin_1998,60,4.873,4.07,1.553,2.505,-0.804,-16.49,0.8466
+Lambayeque,CHIRPS v3,intenso_ge50,sin_1998,1,58.13,28.621,29.509,29.509,-29.509,-50.76,
+Lambayeque,ERA5-Seamless,intenso_ge50,sin_1998,1,58.13,84.4,26.27,26.27,26.27,45.19,
+Lambayeque,PISCOp v3.0,intenso_ge50,sin_1998,1,58.13,50.879,7.251,7.251,-7.251,-12.47,
+Lambayeque,CHIRPS v3,lluvioso_ge20,sin_1998,7,32.02,12.927,19.093,20.75,-19.093,-59.63,0.7416
+Lambayeque,ERA5-Seamless,lluvioso_ge20,sin_1998,7,32.02,55.029,24.443,29.408,23.009,71.86,0.4592
+Lambayeque,PISCOp v3.0,lluvioso_ge20,sin_1998,7,32.02,28.226,7.403,8.277,-3.794,-11.85,0.8139
+Lambayeque,CHIRPS v3,seco_lt1,sin_1998,125,0.102,1.173,1.185,2.553,1.071,1047.3,-0.0236
+Lambayeque,ERA5-Seamless,seco_lt1,sin_1998,125,0.102,3.116,3.034,5.971,3.014,2947.73,0.2597
+Lambayeque,PISCOp v3.0,seco_lt1,sin_1998,125,0.102,0.316,0.243,0.598,0.214,209.2,0.3459
+Lambayeque,CHIRPS v3,todos,sin_1998,192,2.757,2.38,2.609,5.312,-0.376,-13.65,0.6446
+Lambayeque,ERA5-Seamless,todos,sin_1998,192,2.757,9.129,6.861,13.252,6.372,231.14,0.7017
+Lambayeque,PISCOp v3.0,todos,sin_1998,192,2.757,2.507,0.913,2.166,-0.25,-9.08,0.9518
+Lambayeque,CHIRPS v3,bajo_1a20,todos,63,4.808,3.844,3.725,5.193,-0.963,-20.04,0.3312
+Lambayeque,ERA5-Seamless,bajo_1a20,todos,63,4.808,16.521,13.003,20.098,11.713,243.63,0.3058
+Lambayeque,PISCOp v3.0,bajo_1a20,todos,63,4.808,4.072,1.532,2.461,-0.736,-15.3,0.8465
+Lambayeque,CHIRPS v3,intenso_ge50,todos,3,94.79,142.068,66.951,80.825,47.278,49.88,
+Lambayeque,ERA5-Seamless,intenso_ge50,todos,3,94.79,321.167,226.377,284.358,226.377,238.82,
+Lambayeque,PISCOp v3.0,intenso_ge50,todos,3,94.79,94.27,13.044,13.868,-0.52,-0.55,
+Lambayeque,CHIRPS v3,lluvioso_ge20,todos,10,49.252,52.842,30.679,46.631,3.59,7.29,0.9497
+Lambayeque,ERA5-Seamless,lluvioso_ge20,todos,10,49.252,158.71,110.462,180.752,109.458,222.24,0.8501
+Lambayeque,PISCOp v3.0,lluvioso_ge20,todos,10,49.252,47.269,8.473,10.025,-1.983,-4.03,0.9667
+Lambayeque,CHIRPS v3,seco_lt1,todos,131,0.103,1.134,1.151,2.498,1.031,998.03,-0.0285
+Lambayeque,ERA5-Seamless,seco_lt1,todos,131,0.103,3.016,2.932,5.837,2.913,2820.18,0.258
+Lambayeque,PISCOp v3.0,seco_lt1,todos,131,0.103,0.307,0.232,0.584,0.204,197.69,0.3507
+Lambayeque,CHIRPS v3,todos,todos,204,3.965,4.506,3.394,10.905,0.54,13.63,0.8834
+Lambayeque,ERA5-Seamless,todos,todos,204,3.965,14.819,11.313,41.811,10.853,273.7,0.8839
+Lambayeque,PISCOp v3.0,todos,todos,204,3.965,3.772,1.038,2.649,-0.193,-4.87,0.9798
+Reque,CHIRPS v3,bajo_1a20,sin_1998,68,5.165,3.577,4.1,5.641,-1.588,-30.75,0.143
+Reque,ERA5-Seamless,bajo_1a20,sin_1998,68,5.165,11.96,8.559,13.794,6.795,131.55,0.3631
+Reque,PISCOp v3.0,bajo_1a20,sin_1998,68,5.165,4.878,2.056,3.644,-0.287,-5.55,0.6738
+Reque,CHIRPS v3,lluvioso_ge20,sin_1998,5,28.394,7.657,20.737,23.179,-20.737,-73.03,-0.4252
+Reque,ERA5-Seamless,lluvioso_ge20,sin_1998,5,28.394,41.86,22.19,24.249,13.466,47.43,-0.8927
+Reque,PISCOp v3.0,lluvioso_ge20,sin_1998,5,28.394,27.291,6.63,7.857,-1.103,-3.88,0.3118
+Reque,CHIRPS v3,seco_lt1,sin_1998,148,0.095,1.489,1.447,2.906,1.394,1470.4,0.2278
+Reque,ERA5-Seamless,seco_lt1,sin_1998,148,0.095,3.462,3.385,7.954,3.367,3552.17,0.3036
+Reque,PISCOp v3.0,seco_lt1,sin_1998,148,0.095,0.378,0.323,0.816,0.283,298.4,0.3479
+Reque,CHIRPS v3,todos,sin_1998,221,2.295,2.271,2.7,5.254,-0.024,-1.06,0.3229
+Reque,ERA5-Seamless,todos,sin_1998,221,2.295,6.946,5.402,10.687,4.65,202.62,0.5704
+Reque,PISCOp v3.0,todos,sin_1998,221,2.295,2.371,0.999,2.435,0.076,3.32,0.8907
+Reque,CHIRPS v3,bajo_1a20,todos,70,5.368,4.132,4.29,6.038,-1.236,-23.02,0.3766
+Reque,ERA5-Seamless,bajo_1a20,todos,70,5.368,13.636,9.981,16.989,8.268,154.02,0.4907
+Reque,PISCOp v3.0,bajo_1a20,todos,70,5.368,5.157,2.065,3.613,-0.211,-3.94,0.7238
+Reque,CHIRPS v3,intenso_ge50,todos,2,104.15,138.579,34.429,34.967,34.429,33.06,
+Reque,ERA5-Seamless,intenso_ge50,todos,2,104.15,347.35,243.2,260.091,243.2,233.51,
+Reque,PISCOp v3.0,intenso_ge50,todos,2,104.15,107.067,5.455,6.185,2.917,2.8,
+Reque,CHIRPS v3,lluvioso_ge20,todos,7,50.039,45.063,24.649,27.076,-4.975,-9.94,0.9733
+Reque,ERA5-Seamless,lluvioso_ge20,todos,7,50.039,129.143,85.336,140.527,79.104,158.09,0.8813
+Reque,PISCOp v3.0,lluvioso_ge20,todos,7,50.039,50.084,6.294,7.418,0.046,0.09,0.9794
+Reque,CHIRPS v3,seco_lt1,todos,156,0.09,1.469,1.429,2.886,1.379,1533.16,0.2254
+Reque,ERA5-Seamless,seco_lt1,todos,156,0.09,3.352,3.278,7.757,3.262,3627.01,0.3078
+Reque,PISCOp v3.0,seco_lt1,todos,156,0.09,0.372,0.32,0.8,0.282,313.33,0.348
+Reque,CHIRPS v3,todos,todos,233,3.176,3.579,2.986,6.209,0.402,12.67,0.8875
+Reque,ERA5-Seamless,todos,todos,233,3.176,10.221,7.757,26.838,7.044,221.78,0.8782
+Reque,PISCOp v3.0,todos,todos,233,3.176,3.303,1.023,2.45,0.127,3.98,0.975

@@ -1,0 +1,60 @@
+{
+  "fase": "3S",
+  "periodo": "1996-2015",
+  "meses_estacion": 1109,
+  "pares_modelo": 3327,
+  "clasificacion_no_predictiva": true,
+  "clases_descriptivas_no_alertas": true,
+  "independencia_estadistica_no_demostrada": true,
+  "coordenadas_historicas_preliminares": true,
+  "observaciones_2016_2025_disponibles": false,
+  "eventos_20mm": [
+    {
+      "estacion": "Cayaltí",
+      "meses": 235,
+      "seco_lt1": 106,
+      "bajo_1a20": 117,
+      "lluvioso_ge20": 12,
+      "intenso_ge50": 3
+    },
+    {
+      "estacion": "Cueva Blanca",
+      "meses": 218,
+      "seco_lt1": 10,
+      "bajo_1a20": 44,
+      "lluvioso_ge20": 164,
+      "intenso_ge50": 110
+    },
+    {
+      "estacion": "Jayanca (La Viña)",
+      "meses": 219,
+      "seco_lt1": 125,
+      "bajo_1a20": 70,
+      "lluvioso_ge20": 24,
+      "intenso_ge50": 16
+    },
+    {
+      "estacion": "Lambayeque",
+      "meses": 204,
+      "seco_lt1": 131,
+      "bajo_1a20": 63,
+      "lluvioso_ge20": 10,
+      "intenso_ge50": 3
+    },
+    {
+      "estacion": "Reque",
+      "meses": 233,
+      "seco_lt1": 156,
+      "bajo_1a20": 70,
+      "lluvioso_ge20": 7,
+      "intenso_ge50": 2
+    }
+  ],
+  "estratos": [
+    "seco_lt1",
+    "bajo_1a20",
+    "lluvioso_ge20",
+    "intenso_ge50"
+  ],
+  "estrato_intenso_solapa_con_lluvioso": true
+}

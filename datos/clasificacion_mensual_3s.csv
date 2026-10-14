@@ -1,0 +1,61 @@
+estacion,producto,periodo,umbral_mm_mes,meses,eventos_observados,eventos_estimados,verdadero_positivo,verdadero_negativo,falso_positivo,falso_negativo,precision,sensibilidad,especificidad,f1,nota
+Cayaltí,CHIRPS v3,sin_1998,20,223,8,14,7,208,7,1,0.5,0.875,0.9674,0.6364,Clasificación retrospectiva; NO pronóstico
+Cayaltí,ERA5-Seamless,sin_1998,20,223,8,55,7,167,48,1,0.1273,0.875,0.7767,0.2222,Clasificación retrospectiva; NO pronóstico
+Cayaltí,PISCOp v3.0,sin_1998,20,223,8,12,7,210,5,1,0.5833,0.875,0.9767,0.7,Clasificación retrospectiva; NO pronóstico
+Cayaltí,CHIRPS v3,sin_1998,50,223,0,2,0,221,2,0,0.0,,0.991,,Clasificación retrospectiva; NO pronóstico
+Cayaltí,ERA5-Seamless,sin_1998,50,223,0,24,0,199,24,0,0.0,,0.8924,,Clasificación retrospectiva; NO pronóstico
+Cayaltí,PISCOp v3.0,sin_1998,50,223,0,0,0,223,0,0,,,1.0,,Clasificación retrospectiva; NO pronóstico
+Cayaltí,CHIRPS v3,todos,20,235,12,18,11,216,7,1,0.6111,0.9167,0.9686,0.7333,Clasificación retrospectiva; NO pronóstico
+Cayaltí,ERA5-Seamless,todos,20,235,12,59,11,175,48,1,0.1864,0.9167,0.7848,0.3099,Clasificación retrospectiva; NO pronóstico
+Cayaltí,PISCOp v3.0,todos,20,235,12,16,11,218,5,1,0.6875,0.9167,0.9776,0.7857,Clasificación retrospectiva; NO pronóstico
+Cayaltí,CHIRPS v3,todos,50,235,3,5,3,230,2,0,0.6,1.0,0.9914,0.75,Clasificación retrospectiva; NO pronóstico
+Cayaltí,ERA5-Seamless,todos,50,235,3,28,3,207,25,0,0.1071,1.0,0.8922,0.1935,Clasificación retrospectiva; NO pronóstico
+Cayaltí,PISCOp v3.0,todos,50,235,3,3,3,232,0,0,1.0,1.0,1.0,1.0,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,CHIRPS v3,sin_1998,20,206,154,113,112,51,1,42,0.9912,0.7273,0.9808,0.839,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,ERA5-Seamless,sin_1998,20,206,154,148,138,42,10,16,0.9324,0.8961,0.8077,0.9139,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,PISCOp v3.0,sin_1998,20,206,154,110,110,52,0,44,1.0,0.7143,1.0,0.8333,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,CHIRPS v3,sin_1998,50,206,104,61,59,100,2,45,0.9672,0.5673,0.9804,0.7152,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,ERA5-Seamless,sin_1998,50,206,104,127,97,72,30,7,0.7638,0.9327,0.7059,0.8398,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,PISCOp v3.0,sin_1998,50,206,104,57,56,101,1,48,0.9825,0.5385,0.9902,0.6957,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,CHIRPS v3,todos,20,218,164,120,119,53,1,45,0.9917,0.7256,0.9815,0.838,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,ERA5-Seamless,todos,20,218,164,157,147,44,10,17,0.9363,0.8963,0.8148,0.9159,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,PISCOp v3.0,todos,20,218,164,118,118,54,0,46,1.0,0.7195,1.0,0.8369,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,CHIRPS v3,todos,50,218,110,67,64,105,3,46,0.9552,0.5818,0.9722,0.7232,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,ERA5-Seamless,todos,50,218,110,135,102,75,33,8,0.7556,0.9273,0.6944,0.8327,Clasificación retrospectiva; NO pronóstico
+Cueva Blanca,PISCOp v3.0,todos,50,218,110,62,60,106,2,50,0.9677,0.5455,0.9815,0.6977,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),CHIRPS v3,sin_1998,20,207,20,20,11,178,9,9,0.55,0.55,0.9519,0.55,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),ERA5-Seamless,sin_1998,20,207,20,122,20,85,102,0,0.1639,1.0,0.4545,0.2817,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),PISCOp v3.0,sin_1998,20,207,20,17,15,185,2,5,0.8824,0.75,0.9893,0.8108,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),CHIRPS v3,sin_1998,50,207,12,4,4,195,0,8,1.0,0.3333,1.0,0.5,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),ERA5-Seamless,sin_1998,50,207,12,78,11,128,67,1,0.141,0.9167,0.6564,0.2444,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),PISCOp v3.0,sin_1998,50,207,12,7,7,195,0,5,1.0,0.5833,1.0,0.7368,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),CHIRPS v3,todos,20,219,24,24,15,186,9,9,0.625,0.625,0.9538,0.625,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),ERA5-Seamless,todos,20,219,24,129,24,90,105,0,0.186,1.0,0.4615,0.3137,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),PISCOp v3.0,todos,20,219,24,21,19,193,2,5,0.9048,0.7917,0.9897,0.8444,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),CHIRPS v3,todos,50,219,16,8,8,203,0,8,1.0,0.5,1.0,0.6667,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),ERA5-Seamless,todos,50,219,16,83,15,135,68,1,0.1807,0.9375,0.665,0.303,Clasificación retrospectiva; NO pronóstico
+Jayanca (La Viña),PISCOp v3.0,todos,50,219,16,11,11,203,0,5,1.0,0.6875,1.0,0.8148,Clasificación retrospectiva; NO pronóstico
+Lambayeque,CHIRPS v3,sin_1998,20,192,7,2,2,185,0,5,1.0,0.2857,1.0,0.4444,Clasificación retrospectiva; NO pronóstico
+Lambayeque,ERA5-Seamless,sin_1998,20,192,7,28,7,164,21,0,0.25,1.0,0.8865,0.4,Clasificación retrospectiva; NO pronóstico
+Lambayeque,PISCOp v3.0,sin_1998,20,192,7,6,5,184,1,2,0.8333,0.7143,0.9946,0.7692,Clasificación retrospectiva; NO pronóstico
+Lambayeque,CHIRPS v3,sin_1998,50,192,1,0,0,191,0,1,,0.0,1.0,,Clasificación retrospectiva; NO pronóstico
+Lambayeque,ERA5-Seamless,sin_1998,50,192,1,11,1,181,10,0,0.0909,1.0,0.9476,0.1667,Clasificación retrospectiva; NO pronóstico
+Lambayeque,PISCOp v3.0,sin_1998,50,192,1,1,1,191,0,0,1.0,1.0,1.0,1.0,Clasificación retrospectiva; NO pronóstico
+Lambayeque,CHIRPS v3,todos,20,204,10,5,5,194,0,5,1.0,0.5,1.0,0.6667,Clasificación retrospectiva; NO pronóstico
+Lambayeque,ERA5-Seamless,todos,20,204,10,32,10,172,22,0,0.3125,1.0,0.8866,0.4762,Clasificación retrospectiva; NO pronóstico
+Lambayeque,PISCOp v3.0,todos,20,204,10,9,8,193,1,2,0.8889,0.8,0.9948,0.8421,Clasificación retrospectiva; NO pronóstico
+Lambayeque,CHIRPS v3,todos,50,204,3,2,2,201,0,1,1.0,0.6667,1.0,0.8,Clasificación retrospectiva; NO pronóstico
+Lambayeque,ERA5-Seamless,todos,50,204,3,15,3,189,12,0,0.2,1.0,0.9403,0.3333,Clasificación retrospectiva; NO pronóstico
+Lambayeque,PISCOp v3.0,todos,50,204,3,3,3,201,0,0,1.0,1.0,1.0,1.0,Clasificación retrospectiva; NO pronóstico
+Reque,CHIRPS v3,sin_1998,20,221,5,1,0,215,1,5,0.0,0.0,0.9954,,Clasificación retrospectiva; NO pronóstico
+Reque,ERA5-Seamless,sin_1998,20,221,5,25,5,196,20,0,0.2,1.0,0.9074,0.3333,Clasificación retrospectiva; NO pronóstico
+Reque,PISCOp v3.0,sin_1998,20,221,5,6,4,214,2,1,0.6667,0.8,0.9907,0.7273,Clasificación retrospectiva; NO pronóstico
+Reque,CHIRPS v3,sin_1998,50,221,0,0,0,221,0,0,,,1.0,,Clasificación retrospectiva; NO pronóstico
+Reque,ERA5-Seamless,sin_1998,50,221,0,5,0,216,5,0,0.0,,0.9774,,Clasificación retrospectiva; NO pronóstico
+Reque,PISCOp v3.0,sin_1998,50,221,0,0,0,221,0,0,,,1.0,,Clasificación retrospectiva; NO pronóstico
+Reque,CHIRPS v3,todos,20,233,7,4,2,224,2,5,0.5,0.2857,0.9912,0.3636,Clasificación retrospectiva; NO pronóstico
+Reque,ERA5-Seamless,todos,20,233,7,29,7,204,22,0,0.2414,1.0,0.9027,0.3889,Clasificación retrospectiva; NO pronóstico
+Reque,PISCOp v3.0,todos,20,233,7,9,6,223,3,1,0.6667,0.8571,0.9867,0.75,Clasificación retrospectiva; NO pronóstico
+Reque,CHIRPS v3,todos,50,233,2,2,2,231,0,0,1.0,1.0,1.0,1.0,Clasificación retrospectiva; NO pronóstico
+Reque,ERA5-Seamless,todos,50,233,2,8,2,225,6,0,0.25,1.0,0.974,0.4,Clasificación retrospectiva; NO pronóstico
+Reque,PISCOp v3.0,todos,50,233,2,2,2,231,0,0,1.0,1.0,1.0,1.0,Clasificación retrospectiva; NO pronóstico
