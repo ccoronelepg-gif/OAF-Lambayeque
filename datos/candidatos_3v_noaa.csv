@@ -1,0 +1,5 @@
+id_ghcnd,nombre_noaa,latitud,longitud,elevacion_m,distancia_punto_oaf_km,punto_oaf_mas_cercano,inventario_prcp_inicio,inventario_prcp_fin,inventario_abarca_2016_2025,descarga_diaria,dias_prcp_validos_2016_2025,meses_completos_2016_2025,años_con_al_menos_un_mes_completo,error_descarga,url_datos_diarios_noaa
+PEM00084452,CAPT JOSE A  QUINONES GONZALE,-6.787,-79.828,29.6,10.94,Lambayeque,1973,2025,True,ok,263,0,,,https://noaa-ghcn-pds.s3.amazonaws.com/csv/by_station/PEM00084452.csv
+PEM00084472,GEN FAP ARMANDO REVOREDO IGLE,-7.139,-78.489,2676.4,120.24,Cayaltí,1973,2025,True,ok,1487,1,2025,,https://noaa-ghcn-pds.s3.amazonaws.com/csv/by_station/PEM00084472.csv
+PEM00084501,CAPITAN CARLOS MARTINEZ DE PI,-8.081,-79.109,32.3,141.92,Cayaltí,1973,2025,True,ok,159,0,,,https://noaa-ghcn-pds.s3.amazonaws.com/csv/by_station/PEM00084501.csv
+PEM00084401,CAPITAN FAP GUILLERMO CONCHA,-5.206,-80.616,35.4,154.83,Jayanca (La Viña),1973,2025,True,ok,218,1,2017,,https://noaa-ghcn-pds.s3.amazonaws.com/csv/by_station/PEM00084401.csv

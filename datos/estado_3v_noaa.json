@@ -1,0 +1,19 @@
+{
+  "fase": "3V",
+  "estado": "inventario_descargado",
+  "fecha_revision": "2026-10-14",
+  "inventario_estaciones_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt",
+  "inventario_prcp_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt",
+  "fuente": "NOAA GHCN-Daily",
+  "radio_de_busqueda_km": 160,
+  "delimitacion_administrativa_validada": false,
+  "candidatas_geograficas_total": 4,
+  "candidatas_con_intervalo_inventario_PRCP_solapado_2016_2025": 4,
+  "estaciones_con_archivo_diario_consultado": 4,
+  "meses_completos_QC_en_archivos_diarios_NOAA": 2,
+  "errores": [],
+  "nuevas_series_senamhi_originales_incorporadas": 0,
+  "independencia_de_CHIRPS_o_PISCOp_demostrada": false,
+  "estaciones_identificadas_con_los_TT_SENAMHI_del_proyecto": 0,
+  "advertencia": "Búsqueda por distancia, no por límite departamental. NOAA puede reciclar fuentes SENAMHI o GSOD; no certificar independencia ni misma estación por nombre o GPS."
+}
