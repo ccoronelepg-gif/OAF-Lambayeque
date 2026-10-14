@@ -1,0 +1,66 @@
+name: OAF 3Q CHIRPS tramos 2001-2015
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validacion_3q_2001_2015.yml'
+      - 'scripts/validacion_3q_bloques_restantes.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-chirps-2001-2015
+  cancel-in-progress: false
+jobs:
+  bloques:
+    name: CHIRPS bloque
+    runs-on: ubuntu-latest
+    timeout-minutes: 42
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - inicio: 2001
+            fin: 2005
+          - inicio: 2006
+            fin: 2010
+          - inicio: 2011
+            fin: 2015
+    env:
+      OAF_YEAR_START: ${{ matrix.inicio }}
+      OAF_YEAR_END: ${{ matrix.fin }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar bibliotecas GIS
+        run: python -m pip install --disable-pip-version-check pandas numpy rasterio requests
+      - name: Extraer raster CHIRPS, comparar y registrar errores
+        id: analisis
+        shell: bash
+        run: |
+          set +e
+          python -u scripts/validacion_3q_bloques_restantes.py
+          estado=$?
+          echo "codigo=$estado" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Subir datos e informe de este bloque
+        shell: bash
+        run: |
+          suffix="$OAF_YEAR_START"_"$OAF_YEAR_END"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f "VALIDACION_3Q_$suffix.md" "datos/estado_3q_$suffix.json" "datos/chirps_3q_pixeles_$suffix.csv" "datos/comparacion_3q_multianual_$suffix.csv" "datos/metricas_3q_multianual_$suffix.csv"
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar CHIRPS multianual para $OAF_YEAR_START-$OAF_YEAR_END"
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Verificar ejecución
+        shell: bash
+        run: |
+          test "${{ steps.analisis.outputs.codigo }}" = "0" || (echo "No se pudo obtener comparación válida; revisar logs" && exit 1)
