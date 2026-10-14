@@ -1,0 +1,39 @@
+name: OAF Fase 3S intensidad y estacionalidad
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/analisis_3s.yml'
+      - 'scripts/analisis_3s_intensidad.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-intensidad-3s
+  cancel-in-progress: false
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar bibliotecas de análisis
+        run: python -m pip install --disable-pip-version-check pandas numpy
+      - name: Analizar errores con 1, 20 y 50 mm mensuales
+        run: python -u scripts/analisis_3s_intensidad.py
+      - name: Versionar informes y datos calculados
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ANALISIS_3S.md datos/estado_3s.json datos/cobertura_3s.csv datos/metricas_intensidad_3s.csv datos/metricas_estacionales_3s.csv datos/clasificacion_mensual_3s.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar analisis cientifico de intensidad de lluvia OAF Fase 3S"
+            git pull --rebase origin main
+            git push origin main
+          fi
