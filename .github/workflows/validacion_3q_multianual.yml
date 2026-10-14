@@ -1,0 +1,50 @@
+name: OAF 3Q CHIRPS multianual bloque 1996-2000
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validacion_3q_multianual.yml'
+      - 'scripts/validacion_3q_bloque_1996_2000.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-chirps-3q-multianual
+  cancel-in-progress: false
+jobs:
+  comparar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar Python GIS y análisis
+        run: python -m pip install --disable-pip-version-check pandas numpy rasterio requests
+      - name: Descargar CHIRPS y contrastar meses instrumentales
+        id: calcular
+        shell: bash
+        run: |
+          set +e
+          python -u scripts/validacion_3q_bloque_1996_2000.py
+          codigo=$?
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Guardar resultados incluso si hay meses inaccesibles
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f VALIDACION_3Q_MULTIANUAL.md datos/estado_3q_multianual.json datos/chirps_3q_pixeles_1996_2000.csv datos/comparacion_3q_multianual_1996_2000.csv datos/metricas_3q_multianual_1996_2000.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar validación CHIRPS PISCOp ERA5 1996-2000"
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Comprobar finalización
+        shell: bash
+        run: |
+          test "${{ steps.calcular.outputs.codigo }}" = "0" || (echo "Fallo científico o de datos; consultar logs 3Q" && exit 1)
