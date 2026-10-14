@@ -1,0 +1,20 @@
+{
+  "fase": "3Y",
+  "estado": "ampliacion_documental_validada_estructuralmente",
+  "meses_documentales_acumulados": 7,
+  "meses_nuevos_fase_3Y": 4,
+  "meses_2025_documentados": 4,
+  "meses_2025_disponibles_en_indice_oficial": 12,
+  "filas_estacion_mes_documentales": 35,
+  "filas_numericas": 33,
+  "filas_traza_no_numericas": 2,
+  "filas_lluvia_cero_valido": 10,
+  "pdf_descargados_y_revisados_visualmente": 0,
+  "fuentes_consultadas_para_ampliacion": "tablas PP observada en texto indexado de PDFs oficiales",
+  "identidad_instrumental_1996_2015_confirmada": false,
+  "meses_diarios_nuevos_2016_2025_certificados": 0,
+  "comparacion_modelos_2025_efectuada": false,
+  "serie_continua_2025": false,
+  "faltan_meses_documentales_2025": 8,
+  "limitacion": "Los datos son transcripciones documentales preliminares; falta cotejo visual de PDFs e identidad instrumental."
+}

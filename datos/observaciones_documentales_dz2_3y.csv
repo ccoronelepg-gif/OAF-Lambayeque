@@ -1,0 +1,36 @@
+mes,estacion_referencial_oaf,nombre_en_boletin,precipitacion_reportada_texto,precipitacion_mm_numerica,valor_no_numerico,fuente_pdf_oficial,procedencia,verificacion_identidad_instrumental,estado_serie_diaria
+2024-07,Jayanca (La Viña),Jayanca,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-07,Cayaltí,Cayaltí,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-07,Reque,Reque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-07,Lambayeque,Lambayeque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-07,Cueva Blanca,Cueva Blanca,3.3,3.3,,https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-09,Jayanca (La Viña),Jayanca,2.3,2.3,,https://www.senamhi.gob.pe/load/file/03601SENA-146.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-09,Cayaltí,Cayaltí,Traza,,traza,https://www.senamhi.gob.pe/load/file/03601SENA-146.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-09,Reque,Reque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-146.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-09,Lambayeque,Lambayeque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-146.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-09,Cueva Blanca,Cueva Blanca,30.1,30.1,,https://www.senamhi.gob.pe/load/file/03601SENA-146.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-10,Jayanca (La Viña),Jayanca,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-10,Cayaltí,Cayaltí,Traza,,traza,https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-10,Reque,Reque,4.4,4.4,,https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-10,Lambayeque,Lambayeque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2024-10,Cueva Blanca,Cueva Blanca,54.1,54.1,,https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-01,Jayanca (La Viña),Jayanca,12.4,12.4,,https://www.senamhi.gob.pe/load/file/03601SENA-150.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-01,Cayaltí,Cayaltí,19,19,,https://www.senamhi.gob.pe/load/file/03601SENA-150.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-01,Reque,Reque,9.5,9.5,,https://www.senamhi.gob.pe/load/file/03601SENA-150.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-01,Lambayeque,Lambayeque,4.5,4.5,,https://www.senamhi.gob.pe/load/file/03601SENA-150.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-01,Cueva Blanca,Cueva Blanca,117.2,117.2,,https://www.senamhi.gob.pe/load/file/03601SENA-150.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-02,Jayanca (La Viña),Jayanca,35.6,35.6,,https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-02,Cayaltí,Cayaltí,19.62,19.62,,https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-02,Reque,Reque,10.91,10.91,,https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-02,Lambayeque,Lambayeque,21.5,21.5,,https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-02,Cueva Blanca,Cueva Blanca,282.3,282.3,,https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-03,Jayanca (La Viña),Jayanca,33.5,33.5,,https://www.senamhi.gob.pe/load/file/03601SENA-152.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-03,Cayaltí,Cayaltí,6.55,6.55,,https://www.senamhi.gob.pe/load/file/03601SENA-152.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-03,Reque,Reque,3.9,3.9,,https://www.senamhi.gob.pe/load/file/03601SENA-152.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-03,Lambayeque,Lambayeque,11.2,11.2,,https://www.senamhi.gob.pe/load/file/03601SENA-152.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-03,Cueva Blanca,Cueva Blanca,205.1,205.1,,https://www.senamhi.gob.pe/load/file/03601SENA-152.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-06,Jayanca (La Viña),Jayanca,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-155.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-06,Cayaltí,Cayaltí,1.4,1.4,,https://www.senamhi.gob.pe/load/file/03601SENA-155.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-06,Reque,Reque,0.31,0.31,,https://www.senamhi.gob.pe/load/file/03601SENA-155.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-06,Lambayeque,Lambayeque,0,0,,https://www.senamhi.gob.pe/load/file/03601SENA-155.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
+2025-06,Cueva Blanca,Cueva Blanca,48.7,48.7,,https://www.senamhi.gob.pe/load/file/03601SENA-155.pdf,tabla_precipitacion_observada_boletin_DZ2,pendiente_codigo_y_coordenadas,no_recibida_2016_2025
