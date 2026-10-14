@@ -1,0 +1,23 @@
+{
+  "fase": "3Z",
+  "fuente": "ENFEN - Comisión Multisectorial Perú",
+  "tipo_dato": "ESTADO_OFICIAL_ENSO",
+  "fuente_archivo": "https://enfen.imarpe.gob.pe/downloads/comunicados/",
+  "pagina_comunicados": "https://enfen.imarpe.gob.pe/comunicados/",
+  "fecha_consulta_utc": "2026-10-14T23:08:27+00:00",
+  "numero": null,
+  "anio": null,
+  "fecha_emision": null,
+  "titulo": null,
+  "url_comunicado": null,
+  "estado_institucional": null,
+  "verificacion": "consulta_fallida",
+  "edad_comunicado_dias": null,
+  "fuente_publica": true,
+  "prediccion_oaf": false,
+  "alerta_emitida_por_oaf": false,
+  "errores": [
+    "ConnectionError: HTTPSConnectionPool(host='enfen.imarpe.gob.pe', port=443): Max retries exceeded with url: /downloads/comunicados/ (Caused by NameResolutionError(\"HTTPSConnection(host='enfen.imarpe.gob.pe', port=443): Failed to resolve 'enfen.imarpe.gob.pe' ([Errno -3] Temporary failure in name resolution)\"))"
+  ],
+  "nota": "El estado oficial es responsabilidad de ENFEN, nunca una alerta propia del OAF. Se requiere leer fecha y fuente original."
+}
