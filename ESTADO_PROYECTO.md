@@ -197,3 +197,19 @@ El signo de sesgo se define como **estimado menos observado**. MAE y RMSE por me
 - No se ha identificado la causa física completa del fuerte sesgo ERA5 ni desarrollado pronóstico o alerta fitosanitaria validada.
 
 **Siguiente fase 3R:** validar fichas oficiales y códigos de las cinco estaciones y analizar sensibilidad de píxeles a ubicaciones candidatas; buscar estaciones/registros independientes (especialmente 2016–2025) y comparar representatividad agroclimática por costa–valle–sierra; después expandir a series CHIRPS y PISCOp 1996–2025 y comenzar un módulo fitosanitario de arándano solo con observaciones de enfermedad en campo, ubicación y fechas reales. Mantener avances en GitHub, sin preguntas ni ejercicios para el usuario.
+
+## Avance Fase 3R: sensibilidad geografica CHIRPS · 14/10/2026
+
+Se procesó un experimento de **24 mapas mensuales de CHIRPS v3** (1998 y 2000), con **dos coordenadas documentales** de cada una de las cinco estaciones. Se obtuvieron **240 extracciones de píxel**, se corroboró que los resultados del punto previamente consultado reproducían CHIRPS v3 de la fase 3Q, y se generaron **10 comparaciones anuales completas**, **sin incidencias**. Las observaciones SENAMHI originales no se cambiaron.
+
+**Resultado esencial:** coordenadas separadas hasta 3,356 km para Jayanca, Lambayeque y Reque estuvieron en **el mismo píxel CHIRPS** (0,05°), con diferencia anual **0 mm** en 1998 y 2000. Para **Cayaltí**, dos puntos separados **2,415 km** dieron distintos píxeles y cambios de **−47,855 mm (1998)** y **−3,961 mm (2000)**. Para **Cueva Blanca**, candidatos separados **6,339 km** dieron distintos píxeles y cambios **+139,802 mm (1998)** y **+138,397 mm (2000)**. En ambas estaciones la comparación se refiere a píxeles, NO a un traslado demostrado.
+
+**Documentación:** `METADATOS_3R.md`, `SENSIBILIDAD_3R.md`, `datos/catalogo_coordenadas_3r.csv`, `datos/sensibilidad_3r_resumen.csv`, `datos/sensibilidad_3r_mensual.csv`, `datos/coordenadas_pixeles_3r_1998_2000.csv`, `datos/estado_3r.json`, `scripts/sensibilidad_geografica_3r.py`. GitHub Actions `OAF Fase 3R sensibilidad geográfica CHIRPS` ejecutó todos los controles con éxito.
+
+**Hallazgos documentales:** SENAMHI publica coordenadas históricas de Jayanca (La Viña), Cayaltí y Reque. Otra ficha SENAMHI identifica EMA La Viña con distinta altitud, sin equivalencia instrumental demostrada. En el caso Cayaltí, un registro SENAMHI de estación convencional código 000320 describe otra posición y altitud que una tabla histórica SENAMHI. En Cueva Blanca existen documentos con códigos 106060 (INGEMMET/CENEPRED) y 153102 (reproducción de tabla ANA) y ubicaciones discordantes; no asignar uno de ellos al TXT original sin soporte.
+
+**Sitio:** se añadió un módulo interactivo **v1.0** para elegir estación y año (1998 o 2000) y visualizar diferencia de píxel, MAE y precipitación anual en coordenadas candidatas. Verificar el workflow de GitHub Pages antes de declararlo desplegado.
+
+**Pendiente dentro de 3R:** corroborar metadatos y códigos desde la ficha de cada archivo TXT SENAMHI, así como cambios de instrumento y emplazamientos en 1996–2015; explorar sensibilidad multianual de puntos donde cambian píxeles; obtener nuevas series instrumentales 2016–2025 y considerar validación independiente, sin adjudicar años faltantes como cero. El servicio de descarga de SENAMHI puede requerir inscripción personal y contraseña, y los archivos históricos recibidos solo alcanzan 2014/2015. La climatología del proyecto **1996–2025** sigue siendo un objetivo por validar, no un periodo instrumental ya corroborado.
+
+**Preferencias:** avanzar directamente con el proyecto científico, sin cuestionarios ni ejercicios para el usuario.
