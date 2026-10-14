@@ -54,3 +54,4 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
+# Cuatro bloques verificados; iniciar consolidacion 1996-2015.
