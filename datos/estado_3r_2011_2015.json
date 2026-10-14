@@ -1,0 +1,11 @@
+{
+  "fase": "3R_multianual",
+  "bloque": "2011-2015",
+  "meses_calendario_con_observacion": 58,
+  "meses_estacion_validos_senamhi": 236,
+  "meses_estacion_comparados": 236,
+  "filas_pixel": 472,
+  "raster_descargas_fallidas": [],
+  "identidad_instrumental_confirmada": false,
+  "las_coordenadas_alternativas_son_candidatas": true
+}
