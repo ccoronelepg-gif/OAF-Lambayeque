@@ -1,0 +1,151 @@
+{
+  "fase": "3W",
+  "tipo": "verificacion_geografica_nacional",
+  "filas_originales": 408960,
+  "filas_sin_coordenadas_numericas_validas": 0,
+  "estaciones_o_identificadores_unicos": 408960,
+  "departamentos_en_catalogo": {
+    "LIMA": 163584,
+    "AREQUIPA": 163584,
+    "TACNA": 81792
+  },
+  "estaciones_con_departamento_declarado_lambayeque": 0,
+  "estaciones_a_160km_de_puntos_oaf": 0,
+  "doce_estaciones_mas_cercanas": [
+    {
+      "id": "1",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "2",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "3",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "4",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "5",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "6",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "7",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "8",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "9",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "10",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "11",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    },
+    {
+      "id": "12",
+      "nombre": "MATUCANA",
+      "departamento": "LIMA",
+      "latitud": -11.8391,
+      "longitud": -76.378,
+      "red": "GBON",
+      "ubicacion_oaf_mas_cercana": "Cayaltí",
+      "distancia_oaf_min_km": 651.75,
+      "filas_en_csv": 1
+    }
+  ],
+  "no_equivale_a_validacion_independiente": true,
+  "las_coordenadas_oaf_son_provisionales": true,
+  "relevancia": "La red contenida en ESTE CSV, no toda la red SENAMHI ni todas sus estaciones operativas."
+}
