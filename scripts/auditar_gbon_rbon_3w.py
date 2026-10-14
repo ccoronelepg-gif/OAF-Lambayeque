@@ -90,10 +90,10 @@ def main():
                 distances=[(distkm(lat,lon,*xy),point) for point,xy in POINTS.items()]
                 nearest,point=min(distances)
                 if normal(depart)!="lambayeque" and nearest>160:continue
-                key=(ident,name,lat,lon,depart)
+                key=(name,lat,lon,depart,str(row.get("RED") or "").strip())
                 if key not in stations:
                     stations[key]={
-                        "id_publicado":ident,"nombre":name,"departamento":depart,
+                        "id_publicado":"No verificado: ID identifica una fila","nombre":name,"departamento":depart,
                         "provincia":str(row.get("PROVINCIA","") or "").strip(),
                         "distrito":str(row.get("DISTRITO","") or "").strip(),
                         "ubigeo":str(row.get("UBIGEO","") or "").strip(),
@@ -178,7 +178,7 @@ def main():
       "- La cobertura en el archivo puede ser de pocos meses o años aunque aparezca un inventario nacional.",
       "- El archivo utiliza FECHA, HORA, PP; se requiere consultar el diccionario para definir el periodo al que corresponde PP, huso horario y horario de acumulación.",
       "- Se ha contado un día como completo solo con 24 horas distintas y 24 filas con precipitación válida; un mes, solo con todos los días completos. Las fechas con horas duplicadas/ausentes no pasan el control.",
-      "- Que una estación tenga el mismo nombre que otra no demuestra identidad de serie, continuidad histórica, ni independencia de PISCOp o CHIRPS.",
+      "- El campo ID de este CSV enumera registros/filas y NO es el código instrumental; se agruparon estaciones por nombre, coordenadas, red y departamento.\n- Que una estación tenga el mismo nombre que otra no demuestra identidad de serie, continuidad histórica, ni independencia de PISCOp o CHIRPS.",
       "- No se sumó precipitación ni se alteró la validación instrumental 1996–2015; solo se publican conteos y metadatos agregados.",
       "- La pertenencia administrativa se transcribe del campo DEPARTAMENTO, y la búsqueda por 160 km también puede incluir Cajamarca, Piura y La Libertad.",
       "- Fuente: "+CATALOG,
