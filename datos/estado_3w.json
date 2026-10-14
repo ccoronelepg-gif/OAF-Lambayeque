@@ -1,0 +1,38 @@
+{
+  "fase": "3W",
+  "estado": "error_acceso_o_formato",
+  "origen": "https://www.datosabiertos.gob.pe/sites/default/files/Variables%20Meteorologicas%20de%20las%20Estaciones%20autom%C3%A1ticas%20de%20intercambio%20internacional%20-%20%5BServicio%20Nacional%20de%20Meteorolog%C3%ADa%20e%20Hidrolog%C3%ADa%20del%20Per%C3%BA%20-%20SENAMHI%5D.csv",
+  "fuente_catalogo": "https://www.datosabiertos.gob.pe/dataset/variables-meteorologicas-de-las-estaciones-autom%C3%A1ticas-de-intercambio-internacional-servicio",
+  "archivo_verificado_en_prueba_previa": true,
+  "fecha_modificacion_del_catalogo": "2025-09-08",
+  "fecha_del_archivo_no_inferida_por_fecha_catalogo": true,
+  "registros_nuevos_2016_2025_certificados": 0,
+  "estaciones_identificadas_con_cinco_txt_historicos": 0,
+  "independencia_de_productos_probada": false,
+  "errores": [
+    {
+      "error": "ValueError: I/O operation on closed file."
+    }
+  ],
+  "columnas": [
+    "ID",
+    "ESTACION",
+    "FECHA",
+    "HORA",
+    "LONGITUD",
+    "LATITUD",
+    "ALTITUD",
+    "TEMP",
+    "HR",
+    "PP",
+    "RED",
+    "DEPARTAMENTO",
+    "PROVINCIA",
+    "DISTRITO",
+    "UBIGEO",
+    "FECHA_CORTE"
+  ],
+  "filas_csv_examinadas": 408942,
+  "fecha_min_global": "2015-01-01",
+  "fecha_max_global": "2024-04-30"
+}
