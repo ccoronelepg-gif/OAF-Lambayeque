@@ -1,0 +1,48 @@
+name: OAF fase 3P auditoria espacial ERA5
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/auditoria_3p.yml'
+      - 'scripts/auditoria_3p_era5.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-auditoria-3p
+  cancel-in-progress: false
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar bibliotecas
+        run: python -m pip install --quiet pandas requests
+      - name: Auditar modelos y coordenadas realmente devueltas
+        shell: bash
+        run: |
+          set +e
+          python -u scripts/auditoria_3p_era5.py
+          echo "python_status=$?" >> "$GITHUB_ENV"
+          exit 0
+      - name: Versionar resultados y fallos para trazabilidad
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f AUDITORIA_3P.md datos/auditoria_3p_celdas_modelos.csv datos/auditoria_3p_mensual.csv datos/estado_3p.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar auditoria espacial y respuestas ERA5 fase 3P"
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Verificar ejecucion cientifica
+        shell: bash
+        run: |
+          test "$python_status" = "0" || (echo "Hubo errores. Revisar auditoria 3P y registros de GitHub Actions" && exit 1)
