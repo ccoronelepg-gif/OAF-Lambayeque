@@ -1,0 +1,32 @@
+name: OAF 3U pruebas de ingesta SENAMHI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pruebas_3u.yml'
+      - 'scripts/importar_senamhi_3u.py'
+      - 'tests/test_importar_senamhi_3u.py'
+permissions:
+  contents: read
+jobs:
+  pruebas-sinteticas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Comprobar sintaxis Python
+        run: python -m compileall -q scripts/importar_senamhi_3u.py
+      - name: Verificar ingesta con datos sintéticos, no instrumentales
+        run: python -m unittest discover -s tests -p 'test_importar_senamhi_3u.py' -v
+      - name: Verificar que no se subieron series privadas
+        shell: bash
+        run: |
+          if git ls-files 'datos/_privados/**' 'datos/senamhi_originales/**' 'datos/ingesta_3u/**' | grep .; then
+            echo "ERROR: archivos instrumentales privados detectados en repositorio"
+            exit 1
+          fi
+          echo "No hay archivos privados rastreados en directorios protegidos."
