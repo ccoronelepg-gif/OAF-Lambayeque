@@ -179,3 +179,21 @@ El signo de sesgo se define como **estimado menos observado**. MAE y RMSE por me
 **Próximo paso 3Q multianual:** ampliar CHIRPS v3 mensual a los **1109 meses-estación completos** de 1996–2015; procesar archivos por bloques anuales o por años con cobertura y guardar métricas comparables exactamente en las mismas fechas para CHIRPS, PISCOp y ERA5. Confirmar coordenadas instrumentales originales antes de interpretar gradientes espaciales. Después integrar análisis CHIRPS de 1996–2025 y, cuando existan observaciones fitosanitarias georreferenciadas, abordar el módulo inicial de arándano.
 
 **Regla:** valores de estaciones faltantes son NaN, no precipitación cero; toda cifra del portal debe indicar observado/estimado/pronosticado y cobertura temporal.
+
+## Cierre Fase 3Q: CHIRPS 1996–2015 · 14/10/2026
+
+**Hito:** se completó una evaluación retrospectiva equitativa SENAMHI–PISCOp v3.0–CHIRPS v3–ERA5-Seamless para los **1 109 meses-estación completos** de cinco estaciones instrumentales SENAMHI, entre 1996 y 2015. Resultaron **3 327 pares estimación–observación**, con 100 % de cobertura de los meses **válidos**; ello equivale a 92,42 % de los 1 200 meses-estación calendario posibles para este intervalo, NO a 100 % de cobertura temporal total. Se excluyeron 35 meses incompletos y 56 sin registros, sin interpretarlos como lluvia cero. Se verificaron coherencia y fechas mediante script de consolidación.
+
+**Fuentes:** CHIRPS v3 mensual LATAM GeoTIFF de Climate Hazards Center; PISCOp y ERA5 ya archivados de la Fase 3O; registros diarios SENAMHI agregados a meses completos. Extracción CHIRPS por píxel de 0,05° que contiene el punto documental preliminar de cada estación. Se reutilizó 1998 y se procesaron bloques 1996–2000, 2001–2005, 2006–2010 y 2011–2015; **sin fallos de descarga reportados**.
+
+**Resultados MAE mensual (mm) · PISCOp, CHIRPS, ERA5:** Jayanca **3,104; 9,154; 104,953** (219 meses); Cayaltí **1,824; 3,712; 15,613** (235); Reque **1,023; 2,986; 7,757** (233); Lambayeque **1,038; 3,394; 11,313** (204); Cueva Blanca **29,257; 30,502; 131,025** (218). PISCOp menor MAE en las cinco estaciones al incluir todos los meses. Al excluir 1998, CHIRPS menor MAE que PISCOp en Cueva Blanca: **28,052 frente a 28,808 mm/mes**; no equivale a superioridad general.
+
+**Archivos de referencia:** `VALIDACION_3Q_1996_2015.md`, `datos/estado_3q_1996_2015.json`, `datos/comparacion_3q_1996_2015.csv`, `datos/metricas_3q_1996_2015.csv`, `scripts/consolidar_3q_1996_2015.py`, además de cuatro scripts/salidas por bloques y `scripts/validacion_3q_chirps_1998.py`. Sitio web actualizado a **v0.9** con explorador de productos, MAE, RMSE, sesgo porcentual y el estrato sin 1998. Verificar que GitHub Pages finalice el despliegue antes de declarar públicamente v0.9.
+
+**Limitaciones científicas:**
+- La muestra no cubre observaciones SENAMHI de 2016–2025; todavía no se ha validado el periodo climático completo **1996–2025**.
+- La correspondencia espacial y continuidad histórica de los puntos instrumentales tiene coordenadas preliminares, especialmente para Cueva Blanca y pares alternativos de Jayanca, Cayaltí y Lambayeque.
+- PISCOp y CHIRPS incorporan información de estaciones: la evaluación sobre estas estaciones puede ser parcialmente dependiente; no es una prueba independiente en parcelas agrícolas.
+- No se ha identificado la causa física completa del fuerte sesgo ERA5 ni desarrollado pronóstico o alerta fitosanitaria validada.
+
+**Siguiente fase 3R:** validar fichas oficiales y códigos de las cinco estaciones y analizar sensibilidad de píxeles a ubicaciones candidatas; buscar estaciones/registros independientes (especialmente 2016–2025) y comparar representatividad agroclimática por costa–valle–sierra; después expandir a series CHIRPS y PISCOp 1996–2025 y comenzar un módulo fitosanitario de arándano solo con observaciones de enfermedad en campo, ubicación y fechas reales. Mantener avances en GitHub, sin preguntas ni ejercicios para el usuario.
