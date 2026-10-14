@@ -1,0 +1,141 @@
+[
+  {
+    "mes": "2025-10",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.10.tif",
+    "bytes": 4270472,
+    "sha256": "686b11f83bacde4ac0b62dee69bc627439c6281f394f142a59721ecc643e876a",
+    "last_modified_http": "Fri, 14 Nov 2025 21:53:57 GMT",
+    "etag_http": "\"6917a4f5-412988\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2025-11",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.11.tif",
+    "bytes": 4130624,
+    "sha256": "52b4370bda50cb905e96821db69b29e513440be8830b8a915540afc4feaa384f",
+    "last_modified_http": "Thu, 11 Dec 2025 18:54:10 GMT",
+    "etag_http": "\"693b1352-3f0740\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2025-12",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.12.tif",
+    "bytes": 4195766,
+    "sha256": "e8c180c5dd99166cfa7f3e9905ed492c343bac7dab12ab006f620889e11a42ae",
+    "last_modified_http": "Thu, 15 Jan 2026 21:39:58 GMT",
+    "etag_http": "\"69695eae-4005b6\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-01",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.01.tif",
+    "bytes": 4240298,
+    "sha256": "cf1027c6f91ebca5a3b2f0164a6f121bc17e33b182292ba3079961c91435e57c",
+    "last_modified_http": "Fri, 13 Feb 2026 19:54:37 GMT",
+    "etag_http": "\"698f817d-40b3aa\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-02",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.02.tif",
+    "bytes": 4092476,
+    "sha256": "908d9c0ba3c3ad282ca9ddba0ff6ce53c58a5bc7298b9c6ff662ec67a5da4cfc",
+    "last_modified_http": "Sat, 14 Mar 2026 20:15:26 GMT",
+    "etag_http": "\"69b5c1de-3e723c\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-03",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.03.tif",
+    "bytes": 4122580,
+    "sha256": "e446888a720c79d28719c82e71feb5c72d3ecf797f8a9362c6364d642c649096",
+    "last_modified_http": "Fri, 10 Apr 2026 23:09:24 GMT",
+    "etag_http": "\"69d98324-3ee7d4\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-04",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.04.tif",
+    "bytes": 4253234,
+    "sha256": "b21ca2816f1eb38fab10369e87aade591342d6572b552f22fec0a646e7f61922",
+    "last_modified_http": "Fri, 15 May 2026 16:38:47 GMT",
+    "etag_http": "\"6a074c17-40e632\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-05",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.05.tif",
+    "bytes": 4188182,
+    "sha256": "3a435a269b2b3b8db47c2b74d529e3e69631001d4557b404d395f760eb83ccf0",
+    "last_modified_http": "Fri, 12 Jun 2026 23:20:50 GMT",
+    "etag_http": "\"6a2c9452-3fe816\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-06",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.06.tif",
+    "bytes": 4211428,
+    "sha256": "6e9bd645656b1cf382884c27e2f2d414b96c65b0e3c9a9dcd343bdfccc9b433c",
+    "last_modified_http": "Tue, 14 Jul 2026 04:42:19 GMT",
+    "etag_http": "\"6a55be2b-4042e4\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-07",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.07.tif",
+    "bytes": 4187902,
+    "sha256": "168271a8bebc1a69499bcea2ad92a2625b9df739cf200c7b44bd4d85b81a1e13",
+    "last_modified_http": "Fri, 14 Aug 2026 18:23:18 GMT",
+    "etag_http": "\"6a7f5d16-3fe6fe\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-08",
+    "estado": "descargado_y_extraido",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.08.tif",
+    "bytes": 4369274,
+    "sha256": "8a0bdd7a8329be1f9a3bc27ab309114e77ddb29d18cff074563017b9df172f27",
+    "last_modified_http": "Fri, 11 Sep 2026 19:02:30 GMT",
+    "etag_http": "\"6aa45046-42ab7a\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
+  },
+  {
+    "mes": "2026-09",
+    "estado": "no_disponible",
+    "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.09.tif",
+    "estaciones_extraidas": 0,
+    "error": "FileNotFoundError: Archivo no publicado HTTP 404"
+  }
+]
