@@ -18,6 +18,24 @@
 | ID del archivo | Estación | Departamento declarado | Red | Horas válidas 2016–2025 | Meses de 24 horas/día completos (provisionales) |
 |---|---|---|---|---:|---:|
 
+## Verificación nacional del inventario (segunda auditoría)
+
+La comprobación adicional `scripts/inventario_nacional_gbon_3w.py` procesó las mismas **408 960 filas** y agrupó los registros por **nombre, latitud, longitud, departamento y red**, porque el campo `ID` enumera **filas**, no códigos de estación. Se identificaron exactamente **cinco estaciones**, cada una con 81 792 filas:
+
+| Estación del CSV | Departamento | Red | Distancia mínima aproximada a puntos OAF |
+|---|---|---|---:|
+| Matucana | Lima | GBON | 651,75 km |
+| Carania | Lima | GBON | 728,88 km |
+| Imata | Arequipa | RBON | 1 356,80 km |
+| San José de Uzuna | Arequipa | RBON | 1 400,65 km |
+| Candarave | Tacna | RBON | 1 533,56 km |
+
+**No hay estaciones declaradas en Lambayeque ni a 160 km de los cinco puntos de referencia del OAF** en este archivo. Este resultado NO indica ausencia de estaciones operativas SENAMHI en el departamento: solo delimita la cobertura del CSV concreto.
+
+El archivo comienza el **1 de enero de 2015** y termina el **30 de abril de 2024**. La fecha de última modificación de la ficha en 2025 no debe interpretarse como disponibilidad de observaciones de ese año.
+
+**Archivos complementarios auditables:** `datos/inventario_nacional_gbon_3w.csv`, `datos/estado_geografia_3w.json`, `scripts/inventario_nacional_gbon_3w.py`.
+
 ## Límites y próximos pasos
 
 - La fecha de actualización de la ficha del dataset no garantiza que el CSV incluya el año 2025.
