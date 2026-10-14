@@ -1,7 +1,7 @@
 # OAF-Lambayeque — Estado del proyecto y punto de reanudación
 
-**Fecha de cierre:** 11 de octubre de 2026 (Perú)  
-**Estado:** Fase 1, integración histórica concluida; próximo paso: comparación observaciones SENAMHI–PISCOp–ERA5 en coordenadas coincidentes.  
+**Última revisión de la hoja de ruta:** 14 de octubre de 2026 (Perú)  
+**Estado vigente:** Reorganización estratégica OAF 2.0 documentada; **siguiente fase: 3Z (monitoreo agroclimático reciente)**. Los análisis históricos 3N–3Y se conservan y la predicción/alerta propia aún no es operativa.  
 **Proyecto:** Observatorio Agroclimático y Fitosanitario de Lambayeque (OAF-Lambayeque).
 
 ## Objetivo y alcance
@@ -378,3 +378,23 @@ Los datos de **julio y octubre 2024 y febrero 2025** se conservaron idénticos d
 **Portal:** `index.html` actualizado a **v1.9**, con sección `#coberturaoficial` y correcciones de encabezado/indicadores para no comunicar que 1996–2025 es una serie de 30 años observados completa. El explorador parte del **último año anual completo** de la estación elegida, sin prohibir consultar años incompletos debidamente advertidos. El módulo anual solo muestra totales en años completos. Verificar el despliegue GitHub Pages antes de anunciar la actualización publicada. Se preservó nombre del autor y teléfono de contacto.
 
 **Aplicación a fases futuras:** priorizar completar/certificar datos oficiales posteriores a 2013–2015 hasta el año verdaderamente más reciente disponible; no limitar arbitrariamente a 2025 si existen datos completos más actuales. El registro preliminar de boletines de 2024–2025 (fase 3Y) no amplía todavía la cobertura instrumental anual, ni justifica atribuir validez externa de productos climáticos.
+
+## Nueva misión oficial: OAF-Lambayeque 2.0 · 14/10/2026
+
+**Decisión aprobada por el investigador:** reorientar el OAF desde un prototipo centrado en el análisis histórico hacia un **sistema de vigilancia climática reciente, predicción probabilística y alerta temprana experimental agroclimática y fitosanitaria**, enfocado en El Niño Costero y el arándano (primer problema: condiciones favorables para *Botrytis cinerea*). Mantener prioridad de fuentes oficiales, baja inversión y reproducibilidad Python/SIG.
+
+**Fases futuras en orden de prioridad:**
+1. **3Z — Modernizar fuentes de actualidad y monitoreo:** ENFEN (clasificación/escenarios de El Niño Costero), SENAMHI (instrumentos y avisos), CHIRPS v3 (estimaciones), NASA GPM IMERG (estimaciones recientes), fuentes institucionales de pronósticos; sello temporal, QA, coberturas y primera ingesta real. Estado: **pendiente de ejecución**.
+2. **4A — Pronóstico agroclimático probabilístico:** lluvia y temperatura por horizontes días/semanas/meses, con fuente de emisión histórica archivada, datos observados de contraste, hindcast sin filtración y evaluación prospectiva; no confundir ERA5 (reanálisis) con predicción futura. Estado: **no desarrollado**.
+3. **4B — Riesgo fitosanitario en arándano:** empezar por Botrytis y distinguir condiciones meteorológicas propicias de enfermedad diagnosticada; solicitar registros de campo con fechas, incidencia/severidad, GPS, fenología y manejo antes de entrenar un predictor de infección real. Estado: **no desarrollado**.
+4. **4C — Validación prospectiva y alertas:** registrar predicciones antes de los eventos y comprobar habilidad/calibración; no emitir alertas propias sin documentación de independencia y desempeño. Estado: **no desarrollado**.
+
+**Norma de dos relojes:** la climatología histórica y totales anuales requieren periodos completos (12 meses y 365/366 días válidos por estación, sin imputación). **El monitoreo reciente NO debe esperar al fin de año**; puede usar días/pentadas/semanas realmente disponibles, con fecha de medición, control de calidad y denominador de cobertura claros. No rellenar periodos ni presentar estimaciones de satélite como observaciones instrumentales. Para referencia climática, periodo objetivo 1996–2025 solo si existe cobertura completa y homogénea del producto/estación; conservar 1991–2020 para comparación OMM. No afirmar una «normal de 30 años» si no existen 30 años completos.
+
+**Estado heredado, que no se elimina:** 1 109 meses-estación SENAMHI completos 1996–2015; 79 combinaciones estación-año completas; último año completo conjunto 2012; 3 327 pares históricos PISCOp/CHIRPS/ERA5; sensibildad a coordenadas e independencia no verificada; 35 registros de boletines DZ2 de 7 meses documentales 2024–2025, con dos trazas y cotejo visual aún pendiente. Ningún registro instrumental diario nuevo 2016–2025 certificado. No asignar estación por proximidad sin código original.
+
+**Entregables ya guardados en el repositorio:** `PLAN_MAESTRO_OAF_2_0.md` (documento rector), `PROTOCOLO_ESTADOS_Y_ALERTAS_OAF_2_0.md` (gobernanza), `datos/plan_operativo_oaf_2_0.json` (fases y estado), `datos/catalogo_fuentes_operativas_3z.csv` (seis fuentes institucionales, sin afirmar actualización automática), `README.md` (portada actualizada). `scripts/verificar_plan_oaf_2_0.py` y `.github/workflows/verificar_plan_oaf_2_0.yml` verifican coherencia, calidad y ausencia de alertas no validadas; ejecución de GitHub Actions confirmada **correcta**.
+
+**Sitio público:** `index.html` reorganizado para mostrar la **versión 2.0**, sección `#plan20` con misión, cuatro fases, dos criterios de uso temporal y fuentes candidatas. Se conserva el autor profesional y número de contacto previamente publicados; **comprobar el despliegue final de GitHub Pages** antes de informar que está disponible.
+
+**Punto de reanudación exacto:** arrancar la Fase **3Z** con una extracción **real** de fuente oficial de baja latencia verificable, metadatos de tiempo/versión/cobertura y manejo honesto de fallos. Priorizar estado ENFEN fechado y CHIRPS v3 preliminar/IMERG, sin inventar observaciones de estación. Posteriormente implementar pronósticos con evaluaciones temporalmente independientes y Botrytis solo si se consiguen datos sanitarios observados. Avanzar sin preguntas, cuestionarios ni tareas al investigador.
