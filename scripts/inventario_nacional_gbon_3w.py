@@ -26,9 +26,9 @@ def main():
             if lat is None or lon is None or not(-90<=lat<=90 and -180<=lon<=180):
                 missingcoords+=1;continue
             nearest,ref=min((distkm(lat,lon,*coord),label) for label,coord in POINTS.items())
-            key=(sid,name,lat,lon,dept)
+            key=(name,lat,lon,dept,str(x.get("RED") or "").strip())
             if key not in records:
-                records[key]={"id":sid,"nombre":name,"departamento":dept,
+                records[key]={"id_ejemplo_de_fila":sid,"nombre":name,"departamento":dept,
                    "latitud":lat,"longitud":lon,"red":str(x.get("RED") or ""),
                    "ubicacion_oaf_mas_cercana":ref,"distancia_oaf_min_km":round(nearest,2),
                    "filas_en_csv":0}
@@ -38,7 +38,7 @@ def main():
     closest=allstations[:12]
     in_lambayeque=[x for x in allstations if normal(x["departamento"])=="lambayeque"]
     near=[x for x in allstations if x["distancia_oaf_min_km"]<=160]
-    fields=["id","nombre","departamento","latitud","longitud","red",
+    fields=["id_ejemplo_de_fila","nombre","departamento","latitud","longitud","red",
         "ubicacion_oaf_mas_cercana","distancia_oaf_min_km","filas_en_csv"]
     csvwrite("inventario_nacional_gbon_3w.csv",allstations,fields)
     report={
@@ -46,13 +46,14 @@ def main():
         "filas_originales":rows,
         "filas_sin_coordenadas_numericas_validas":missingcoords,
         "estaciones_o_identificadores_unicos":len(allstations),
+        "id_corresponde_a_fila_no_a_estacion":True,
         "departamentos_en_catalogo":dict(departments),
         "estaciones_con_departamento_declarado_lambayeque":len(in_lambayeque),
         "estaciones_a_160km_de_puntos_oaf":len(near),
         "doce_estaciones_mas_cercanas":closest,
         "no_equivale_a_validacion_independiente":True,
         "las_coordenadas_oaf_son_provisionales":True,
-        "relevancia":"La red contenida en ESTE CSV, no toda la red SENAMHI ni todas sus estaciones operativas."
+        "relevancia":"La red contenida en ESTE CSV, no toda la red SENAMHI ni todas sus estaciones operativas. ID se trata como identificador de FILA."
     }
     (DATA/"estado_geografia_3w.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(report,ensure_ascii=False,indent=2),flush=True)
