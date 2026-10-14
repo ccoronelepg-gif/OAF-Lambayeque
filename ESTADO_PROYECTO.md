@@ -213,3 +213,27 @@ Se procesó un experimento de **24 mapas mensuales de CHIRPS v3** (1998 y 2000),
 **Pendiente dentro de 3R:** corroborar metadatos y códigos desde la ficha de cada archivo TXT SENAMHI, así como cambios de instrumento y emplazamientos en 1996–2015; explorar sensibilidad multianual de puntos donde cambian píxeles; obtener nuevas series instrumentales 2016–2025 y considerar validación independiente, sin adjudicar años faltantes como cero. El servicio de descarga de SENAMHI puede requerir inscripción personal y contraseña, y los archivos históricos recibidos solo alcanzan 2014/2015. La climatología del proyecto **1996–2025** sigue siendo un objetivo por validar, no un periodo instrumental ya corroborado.
 
 **Preferencias:** avanzar directamente con el proyecto científico, sin cuestionarios ni ejercicios para el usuario.
+
+## Cierre de sensibilidad multianual 3R · 14/10/2026
+
+**Auditoría final completada:** Fase 3R amplió la comparación geográfica CHIRPS v3 a **1996–2015**, con cuatro bloques quinquenales, 5 estaciones SENAMHI, **1 109 meses-estación** con precipitación observada completa y **2 218 extracciones de píxel** (dos coordenadas por mes-estación). **No hubo fallos de descarga**. Los 1 109 valores CHIRPS de la posición usada en 3Q se reprodujeron exactamente dentro del criterio de redondeo; las 10 comparaciones del piloto 3R de 1998 y 2000 se reprodujeron también.
+
+**Resultados comparativos** (la diferencia de CHIRPS corresponde al total de meses instrumentales disponibles, nunca a 20 años sin faltantes):
+- **Jayanca (219 meses):** 219/219 pares en mismo píxel, cambio acumulado **0 mm**, MAE **9,154 → 9,154 mm/mes**.
+- **Cayaltí (235 meses):** 0/235 pares en mismo píxel, cambio acumulado **−195,714 mm**, MAE **3,712 → 3,651 mm/mes**.
+- **Reque (233 meses):** 233/233 mismos píxeles, cambio **0 mm**, MAE **2,986 → 2,986**.
+- **Lambayeque (204 meses):** 204/204 mismos píxeles, cambio **0 mm**, MAE **3,394 → 3,394**.
+- **Cueva Blanca (218 meses):** 0/218 mismos píxeles, cambio acumulado **+1 981,387 mm**, MAE **30,502 → 27,999 mm/mes**.
+- **Sensibilidad sin 1998:** Cayaltí MAE **3,394 → 3,140** y Cueva Blanca **28,052 → 24,759 mm/mes**. Estas mejoras no demuestran que las coordenadas candidatas sean correctas.
+
+**Archivos:** `SENSIBILIDAD_3R_MULTIANUAL.md`, `datos/estado_3r_1996_2015.json`, `datos/sensibilidad_3r_1996_2015.csv`, `datos/metricas_sensibilidad_3r_1996_2015.csv`, `scripts/sensibilidad_3r_multianual.py`, `scripts/consolidar_sensibilidad_3r.py`, más los cuatro bloques originales y sus controles en GitHub Actions.
+
+**Portal:** código `index.html` actualizado para **v1.1** con módulo dinámico #sensibilidad3r20. Requiere confirmar despliegue GitHub Pages antes de anunciarlo operativo.
+
+**Metadatos y nuevas series:** Se guardó el borrador **`SOLICITUD_DATOS_SENAMHI_3R.md`** dirigido a SENAMHI. NO se envió ninguna solicitud ni se ingresaron credenciales; requiere identidad/registro del investigador. Pedir fichas oficiales de los cinco TXT y registros disponibles para **2016–2025**, con código de estación, historial de emplazamientos y control de calidad. El enlace oficial de descarga diaria en gob.pe exige cuenta registrada y contraseña SENAMHI.
+
+**Conclusión:** las ubicaciones candidatas de Cayaltí y Cueva Blanca afectan las estimaciones de CHIRPS; Jayanca, Reque y Lambayeque no cambian de píxel en el grid de 0,05° evaluado. La selección del punto definitivo NO puede resolverse con menor MAE. La identidad instrumental de las ubicaciones alternativas sigue sin demostrarse y las estimaciones 1996–2025 no son aún una validación instrumental completa.
+
+**Siguiente tarea (3S o continuación 3R):** cotejo oficial de códigos/cambios de estación, incorporar observaciones disponibles 2016–2025, realizar validación espacial con independencia y estratificación geográfica, y posteriormente construir modelos de riesgo fitosanitario de arándano con datos de sanidad georreferenciados reales.
+
+**Regla de trabajo:** continuar sin cuestionarios ni ejercicios para el usuario; documentar límites y fuentes en web pública.
