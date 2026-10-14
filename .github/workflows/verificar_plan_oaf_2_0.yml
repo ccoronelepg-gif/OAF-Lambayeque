@@ -1,0 +1,29 @@
+name: OAF 2.0 verificar plan de vigilancia y alertas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verificar_plan_oaf_2_0.yml'
+      - 'scripts/verificar_plan_oaf_2_0.py'
+      - 'PLAN_MAESTRO_OAF_2_0.md'
+      - 'PROTOCOLO_ESTADOS_Y_ALERTAS_OAF_2_0.md'
+      - 'datos/plan_operativo_oaf_2_0.json'
+      - 'datos/catalogo_fuentes_operativas_3z.csv'
+      - 'README.md'
+      - 'index.html'
+permissions:
+  contents: read
+jobs:
+  coherencia-cientifica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validar sintaxis y coherencia científica del plan 2.0
+        run: |
+          python -m compileall -q scripts/verificar_plan_oaf_2_0.py
+          python -u scripts/verificar_plan_oaf_2_0.py
