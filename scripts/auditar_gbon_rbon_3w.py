@@ -60,10 +60,13 @@ def main():
     invalid=collections.Counter()
     nrows=0;globalmin=None;globalmax=None
     try:
-        with requests.get(URL,timeout=(25,160),stream=True,headers={"User-Agent":"Mozilla/5.0 OAF-Lambayeque/3W Scientific Audit"}) as resp:
+        with requests.get(URL,timeout=(25,160),headers={"User-Agent":"Mozilla/5.0 OAF-Lambayeque/3W Scientific Audit"}) as resp:
             resp.raise_for_status()
-            resp.raw.decode_content=True
-            reader=csv.DictReader(io.TextIOWrapper(resp.raw,encoding="utf-8-sig",errors="replace",newline=""))
+            # El CSV público ocupa ~46 MB: primero cargarlo íntegramente,
+            # y luego analizarlo para evitar cierres prematuros del stream HTTP.
+            payload=resp.content
+            state["bytes_descargados"]=len(payload)
+            reader=csv.DictReader(io.StringIO(payload.decode("utf-8-sig",errors="replace"),newline=""))
             headers=reader.fieldnames
             required={"ID","ESTACION","FECHA","HORA","LONGITUD","LATITUD","PP","RED","DEPARTAMENTO"}
             if not headers or not required.issubset(set(headers)):
