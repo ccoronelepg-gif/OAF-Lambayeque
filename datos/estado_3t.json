@@ -1,0 +1,16 @@
+{
+  "fase": "3T",
+  "periodo": "1996-2015",
+  "meses_estacion_observados": 1109,
+  "pares_producto_obs": 3327,
+  "anos_evaluable_minimo_meses": 9,
+  "anos_estacion_evaluables": 92,
+  "pares_externamente_independientes_confirmados": 0,
+  "pares_independencia_pendiente": 15,
+  "intervalos_remuestreo": "descriptivos por año, no prueba de independencia externa",
+  "bootstrap_semilla": 20261014,
+  "bootstrap_repeticiones": 2000,
+  "coordenadas_historicas_oficiales_comprobadas": false,
+  "observaciones_senamhi_nuevas_2016_2025": false,
+  "superioridad_predictiva_probada": false
+}

@@ -1,0 +1,6 @@
+estacion,anos_evaluables,meses_en_anos_evaluables,anos_piscop_menor_mae,anos_chirps_menor_mae,anos_empate,diferencia_media_pareada_chirps_menos_piscop,rango_remuestreo_2_5,rango_remuestreo_97_5,anios_con_1998,independencia_externa_confirmada
+Cayaltí,20,235,19,1,0,1.888,1.391,2.318,True,False
+Cueva Blanca,18,215,9,9,0,1.193,-2.956,6.569,True,False
+Jayanca (La Viña),18,212,18,0,0,6.161,3.187,11.055,True,False
+Lambayeque,16,191,16,0,0,2.463,1.446,4.063,True,False
+Reque,20,233,20,0,0,1.963,1.404,2.672,True,False
