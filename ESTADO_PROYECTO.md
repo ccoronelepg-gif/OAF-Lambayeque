@@ -1,7 +1,7 @@
 # OAF-Lambayeque — Estado del proyecto y punto de reanudación
 
 **Última revisión de la hoja de ruta:** 14 de octubre de 2026 (Perú)  
-**Estado vigente:** Reorganización estratégica OAF 2.0 documentada; **siguiente fase: 3Z (monitoreo agroclimático reciente)**. Los análisis históricos 3N–3Y se conservan y la predicción/alerta propia aún no es operativa.  
+**Estado vigente:** **Fase 3Z en ejecución**: monitoreo CHIRPS v3 reciente extraído y publicado como estimación satelital; consulta ENFEN automatizada con fallo DNS identificado y pendiente de verificación automática. La predicción/alerta propia aún no es operativa. Los análisis históricos se conservan.  
 **Proyecto:** Observatorio Agroclimático y Fitosanitario de Lambayeque (OAF-Lambayeque).
 
 ## Objetivo y alcance
@@ -398,3 +398,19 @@ Los datos de **julio y octubre 2024 y febrero 2025** se conservaron idénticos d
 **Sitio público:** `index.html` reorganizado para mostrar la **versión 2.0**, sección `#plan20` con misión, cuatro fases, dos criterios de uso temporal y fuentes candidatas. Se conserva el autor profesional y número de contacto previamente publicados; **comprobar el despliegue final de GitHub Pages** antes de informar que está disponible.
 
 **Punto de reanudación exacto:** arrancar la Fase **3Z** con una extracción **real** de fuente oficial de baja latencia verificable, metadatos de tiempo/versión/cobertura y manejo honesto de fallos. Priorizar estado ENFEN fechado y CHIRPS v3 preliminar/IMERG, sin inventar observaciones de estación. Posteriormente implementar pronósticos con evaluaciones temporalmente independientes y Botrytis solo si se consiguen datos sanitarios observados. Avanzar sin preguntas, cuestionarios ni tareas al investigador.
+
+## Fase 3Z — primer monitoreo real CHIRPS y vigilancia documental ENFEN · 14/10/2026
+
+**Implementación realizada, datos verdaderamente obtenidos de fuente oficial CHIRPS:** el workflow `.github/workflows/monitoreo_chirps_reciente_3z.yml` descargó **11 GeoTIFF CHIRPS v3 mensuales** de 2025-10 a **2026-08**, obtuvo **55 valores mensuales estimados de cinco píxeles** en coordenadas provisionales de los puntos de interés del OAF, comprobó resolución 0,05°, precipitación no negativa, CRS y cobertura espacial, y guardó fuente/fecha/SHA256 por raster. Consultó **septiembre de 2026**, pero devolvió **HTTP 404**, registrado como `no_disponible`, SIN reemplazarlo por 0 ni por otro producto. La consulta tuvo lugar el **14 de octubre de 2026 UTC**. El tipo es **ESTIMADO_SATELITAL_GAUGE_BLEND**, no observación instrumental ni pronóstico; no se declara validación independiente ni se extiende el corte anual observado SENAMHI.
+
+**Automatización programada:** workflow CHIRPS cada lunes 15:15 UTC y por ejecución manual; revisa los últimos 12 meses calendario FINALIZADOS, no el mes en curso. La periodicidad de revisión no implica que el producto proveedor haya publicado ya el último mes o que GitHub Pages refresque instantáneamente. Detalle de auditoría en `MONITOREO_CHIRPS_RECIENTE_3Z.md`, `datos/chirps_v3_reciente_3z.csv`, `datos/auditoria_rasters_chirps_3z.json`, `datos/estado_monitoreo_3z.json` y `scripts/monitoreo_chirps_reciente_3z.py`.
+
+**Monitoreo institucional ENFEN:** se creó `scripts/monitoreo_enfen_3z.py` y workflow semanal `.github/workflows/monitoreo_enfen_3z.yml` para ubicar el comunicado oficial más reciente, fecha y estado. La **primera ejecución no pudo resolver DNS de enfen.imarpe.gob.pe** en GitHub Actions y se guardó `verificacion=consulta_fallida`, `estado_institucional=null`, sin fingir aviso oficial actualizado. El enlace de referencia directo permanece https://enfen.imarpe.gob.pe/comunicados/. Web público de ENFEN consultable externamente identificó el comunicado **N.º 17-2026, 28/09/2026**, cuyo rótulo oficial dice «Alerta de El Niño Costero». Eso NO demuestra que la extracción automatizada esté funcionando ni sustituye reconsultar la fuente. Archivos: `MONITOREO_ENFEN_3Z.md`, `datos/estado_enfen_3z.json`.
+
+**Portal OAF 2.1:** `index.html` actualizado, sección `#monitoreo3z`. En el navegador lee de los archivos publicados el CSV/JSON más reciente, presenta el mes CHIRPS realmente disponible, falta de rasters, cinco estimaciones y gráfico por estación referencial, más estado de la consulta ENFEN sin inventar una alerta. Versión **2.1** con autor y teléfono conservados. Comprobar GitHub Pages antes de dar por confirmado su último despliegue.
+
+**QA confirmado en Actions:** `scripts/verificar_monitoreo_3z.py` y `.github/workflows/verificar_monitoreo_3z.yml` pasaron la verificación de 11 meses válidos / 1 no disponible, **55 registros** y ENFEN no verificado. La hoja de ruta `datos/plan_operativo_oaf_2_0.json` marcó `3Z=en_progreso`, y el control estratégico `scripts/verificar_plan_oaf_2_0.py` se adaptó a **v2.1**, con segunda ejecución exitosa tras solucionar que inicialmente esperaba v2.0.
+
+**Siguiente paso dentro de 3Z:** integrar **precipitación más reciente submensual (pentadas o diaria)** de fuente comprobable y/o producto provisional que permita vigilancia de cambios rápidos, y mejorar el respaldo de consulta al estado ENFEN mediante un origen institucional alternativo si la red falla. Luego completar anomalías sobre periodo de referencia realmente completo y diseñar primera verificación prospectiva. No emitir alertas propias ni riesgo de Botrytis cuantificado sin observaciones sanitarias.
+
+**Regla permanente:** dos relojes: observaciones recientes válidas para vigilancia sin esperar año terminado; datos anuales completos 12/12 para climatología, sin imputación. Mantener separados observado instrumental, documental, satelital estimado, reanálisis y pronóstico.
