@@ -1,0 +1,36 @@
+name: OAF diagnostico faltantes ERA5 Land 3P
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnostico_era5_land_3p.yml'
+      - 'scripts/diagnostico_era5_land_3p.py'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-land3p
+  cancel-in-progress: false
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar solicitudes HTTP
+        run: python -m pip install --quiet requests
+      - name: Contar dias y horas faltantes
+        run: python -u scripts/diagnostico_era5_land_3p.py
+      - name: Publicar resultados documentados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f DIAGNOSTICO_ERA5_LAND_3P.md datos/diagnostico_era5_land_3p.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Resultado de disponibilidad diaria y horaria ERA5 Land 1998"
+            git pull --rebase origin main
+            git push origin main
+          fi
