@@ -16,9 +16,9 @@
 
 | Código NOAA | Nombre | Distancia mínima a un punto OAF (km) | PRCP primer año | PRCP último año | Meses completos 2016–2025 | Estado descarga |
 |---|---|---:|---:|---:|---:|---|
-| PEM00084452 | CAPT JOSE A  QUINONES GONZALE | 10.94 | 1973 | 2025 | No comprobado | ok |
+| PEM00084452 | CAPT JOSE A  QUINONES GONZALE | 10.94 | 1973 | 2025 | 0 | ok |
 | PEM00084472 | GEN FAP ARMANDO REVOREDO IGLE | 120.24 | 1973 | 2025 | 1 | ok |
-| PEM00084501 | CAPITAN CARLOS MARTINEZ DE PI | 141.92 | 1973 | 2025 | No comprobado | ok |
+| PEM00084501 | CAPITAN CARLOS MARTINEZ DE PI | 141.92 | 1973 | 2025 | 0 | ok |
 | PEM00084401 | CAPITAN FAP GUILLERMO CONCHA | 154.83 | 1973 | 2025 | 1 | ok |
 
 ## Interpretación técnica
