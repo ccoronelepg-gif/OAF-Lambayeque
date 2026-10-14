@@ -237,3 +237,25 @@ Se procesó un experimento de **24 mapas mensuales de CHIRPS v3** (1998 y 2000),
 **Siguiente tarea (3S o continuación 3R):** cotejo oficial de códigos/cambios de estación, incorporar observaciones disponibles 2016–2025, realizar validación espacial con independencia y estratificación geográfica, y posteriormente construir modelos de riesgo fitosanitario de arándano con datos de sanidad georreferenciados reales.
 
 **Regla de trabajo:** continuar sin cuestionarios ni ejercicios para el usuario; documentar límites y fuentes en web pública.
+
+## Fase 3S — intensidad y estacionalidad de la lluvia · 14/10/2026
+
+**Ejecución verificada en GitHub Actions:** se reutilizaron exactamente **1 109 meses-estación** con lluvia SENAMHI completa y **3 327 pares producto–observación** de 1996–2015 (cinco estaciones, tres productos PISCOp v3.0, CHIRPS v3 y ERA5-Seamless). Se clasificaron exclusivamente según **lluvia OBSERVADA por SENAMHI**: seco **<1 mm/mes**; bajo **1 a <20**; lluvioso **≥20**; intenso **≥50** como SUBGRUPO de lluviosos. Se calculó un segundo estrato excluyendo 1998, estacionalidad de calendario diciembre–abril y mayo–noviembre, MAE, RMSE, sesgo y correlación cuando existía número/variabilidad suficiente. Los umbrales son exploratorios, NO alertas oficiales ni umbrales fitosanitarios.
+
+**Cobertura lluviosa ≥20 mm (sobre meses instrumentales completos):** Cueva Blanca **164/218**, Jayanca **24/219**, Cayaltí **12/235**, Lambayeque **10/204**, Reque **7/233**. Por ello no se debe generalizar la precisión regional con predominancia de meses secos.
+
+**MAE mensual solo en meses observados ≥20 mm — PISCOp/CHIRPS/ERA5 (mm/mes):**
+- Cayaltí: **18,209 / 15,841 / 102,753**, 12 meses; **CHIRPS** menor MAE en ese subconjunto, a diferencia de la conclusión sobre todos los meses.
+- Cueva Blanca: **37,353 / 38,513 / 170,271**, 164 meses.
+- Jayanca: **23,117 / 57,404 / 512,083**, 24 meses.
+- Lambayeque: **8,473 / 30,679 / 110,462**, 10 meses.
+- Reque: **6,294 / 24,649 / 85,336**, 7 meses.
+- Sin 1998 y en meses ≥20 mm, CHIRPS supera ligeramente a PISCOp en Cayaltí (10,522 vs 11,363 mm/mes; 8 meses) y Cueva Blanca (35,403 vs 36,946; 154 meses). Los tamaños y coordenadas instrumentales no permiten declarar superioridad general.
+
+**Clasificación retrospectiva ≥20 y ≥50 mm:** se calcularon VP, VN, FP, FN, precisión, sensibilidad, especificidad y F1, sin confundirse con predicción. Ejemplo: en Cueva Blanca ERA5 F1(≥20)=**0,9159**, aunque su MAE en meses lluviosos es **170,271 mm/mes**: clasificar la presencia de un mes húmedo no equivale a estimar correctamente su precipitación. Se evita comparar F1 donde no hay positivos observados o denominador suficiente.
+
+**Archivos:** `ANALISIS_3S.md`, `scripts/analisis_3s_intensidad.py`, `datos/estado_3s.json`, `datos/cobertura_3s.csv`, `datos/metricas_intensidad_3s.csv`, `datos/metricas_estacionales_3s.csv`, `datos/clasificacion_mensual_3s.csv`. El portal se actualizó en `index.html` a **v1.2**, sección `#intensidad3s`; **verificar el despliegue GitHub Pages antes de anunciarlo como publicado**. El nombre del autor y enlace de contacto previamente solicitados permanecen en cabecera, sección de autoría y pie de página.
+
+**Pendientes científicos (3T):** falta confirmación oficial de identidad y reubicaciones históricas de las cinco estaciones, observaciones instrumentales 2016–2025, evaluación verdaderamente independiente y validación de representatividad por zonas de cultivo. Sin datos de vigilancia de enfermedades de arándano con fecha y localidad NO se puede presentar riesgo fitosanitario operativo. No imputar faltantes como cero. Mantener distinción histórico/estimado/pronosticado.
+
+**Preferencia del usuario:** avanzar directamente en desarrollo, sin cuestionarios ni ejercicios.
