@@ -310,3 +310,20 @@ Se procesó un experimento de **24 mapas mensuales de CHIRPS v3** (1998 y 2000),
 **Portal:** sección exploratoria `#fuentes3v` añadida a `index.html` versión **v1.5**, conservando autor y teléfono. Esperar verificación de despliegue GitHub Pages antes de indicar publicación exitosa.
 
 **Siguiente fase 3W:** investigar GBON/RBON SENAMHI (metadatos y cobertura horaria real sin suponer continuidad), cotejar con fichas instrumentales y verificar fuentes con registros agrarios regionales autorizados; ampliar 2016–2025 solo con estaciones originales completas y trazabilidad. Paralelamente se pueden seguir analizando productos PISCOp/CHIRPS 1996–2025, pero no presentar nuevos años como validados instrumentalmente sin registros.
+
+## Fase 3W — auditoría GBON/RBON SENAMHI: resultado del CSV público · 14/10/2026
+
+Se descargó y auditó directamente el conjunto de estaciones automáticas GBON/RBON de la Plataforma Nacional de Datos Abiertos, SENAMHI. La ficha del catálogo tiene modificación de **septiembre de 2025**, pero el archivo CSV realmente descargado contiene **408 960 filas**, **46 311 291 bytes**, con fechas de observación entre **2015-01-01 y 2024-04-30**, sin registros de 2025. Fuente: https://www.datosabiertos.gob.pe/dataset/variables-meteorologicas-de-las-estaciones-autom%C3%A1ticas-de-intercambio-internacional-servicio
+
+**Hallazgo crucial y comprobación cruzada:** el CSV contiene **cinco estaciones** (cada una con 81 792 filas), no cientos de miles de estaciones. El campo `ID` enumera **filas y NO es código de estación**. Las cinco son: **Matucana** y **Carania** (Lima/GBON); **Imata** y **San José de Uzuna** (Arequipa/RBON); y **Candarave** (Tacna/RBON). Se verificaron nombre, latitud, longitud, departamento y red en auditoría nacional. El punto más próximo al OAF es **Matucana a 651,75 km de Cayaltí**. No hay estaciones declaradas de **Lambayeque** ni dentro de 160 km de los cinco puntos de referencia de este archivo particular. Esto **NO significa que SENAMHI carezca de estaciones operativas en Lambayeque**; solo que NO se publican en el CSV GBON/RBON examinado.
+
+**Procedimiento y artefactos verificados por GitHub Actions:**
+- `scripts/comprobar_acceso_gbon_3w.py`, `datos/estado_3w_acceso.json`: disponibilidad HTTP y encabezado real de 16 campos.
+- `scripts/auditar_gbon_rbon_3w.py`, `datos/estado_3w.json`, `datos/estaciones_gbon_rbon_3w.csv`, `AUDITORIA_3W_GBON_RBON.md`: auditoría de fechas y estaciones cercanas, con informe sin registros originales publicados.
+- `scripts/inventario_nacional_gbon_3w.py`, `datos/inventario_nacional_gbon_3w.csv`, `datos/estado_geografia_3w.json`: auditoría nacional completa y comprobación del uso de `ID`.
+- Workflow de GitHub Actions `OAF 3W auditoria horaria GBON RBON` y `OAF 3W geografia nacional GBON RBON` completados exitosamente después de corregir un cierre prematuro de lectura del CSV y el agrupamiento erróneo inicial por ID.
+- Página actualizada en `index.html` versión **v1.6**, nuevo panel `#gbon3w`, conservando autor y teléfono; comprobar el último despliegue GitHub Pages antes de declararlo publicado.
+
+**Límites científicos:** los 408 960 registros no dan cobertura a Lambayeque para ampliar la validación 2016–2025. **No** se han incorporado nuevas observaciones instrumentales de precipitación verificadas al OAF; siguen los **1 109 meses-estación** históricos completos 1996–2015. No se ha validado independencia de PISCOp/CHIRPS. La fecha de modificación del catálogo no equivale a fecha final de observaciones.
+
+**Siguiente etapa 3X:** pasar de catálogos nacionales poco representativos a acceso oficial local SENAMHI (Dirección Zonal 2, Lambayeque) y fuentes sectoriales agrarias con identidad y calidad documental, gestionar solicitud ya preparada `SOLICITUD_DATOS_SENAMHI_3R.md` de fichas y series 2016–2025. Hasta obtener datos auténticos comparables, se puede desarrollar el módulo climático estimado, etiquetándolo como estimación NO validada instrumentalmente para esos años. No enviar solicitudes institucionales ni incluir credenciales/datos personales por cuenta del usuario.
