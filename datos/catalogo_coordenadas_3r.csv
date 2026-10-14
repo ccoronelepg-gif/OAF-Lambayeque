@@ -1,0 +1,11 @@
+estacion,variante,latitud,longitud,altitud_m,estado_documental,codigo_no_confirmado,fuente,observaciones
+Jayanca (La Viña),analisis_3Q,-6.322,-79.779,,punto utilizado,,VALIDACION_3N.md,Ubicación empleada en validación previa; identidad con serie TXT no acreditada
+Jayanca (La Viña),senamhi_historica,-6.33306,-79.76861,103,candidato_documental,,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf,SENAMHI consigna JAYANCA (LA VIÑA); cotejar ficha diaria histórica
+Cayaltí,analisis_3Q,-6.88079444,-79.54701389,,punto utilizado,,VALIDACION_3N.md,Ubicación usada en validación previa
+Cayaltí,senamhi_historica,-6.89853,-79.55964,102,candidato_documental,,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf,SENAMHI consigna CAYALTI; falta confirmar continuidad durante la serie
+Reque,analisis_3Q,-6.88613,-79.8355,,punto utilizado,,VALIDACION_3N.md,Ubicación usada en validación previa
+Reque,senamhi_historica,-6.88644,-79.83572,21,candidato_documental,,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf,SENAMHI consigna REQUE; diferencia subkilométrica de localización
+Lambayeque,analisis_3Q,-6.73152778,-79.90983611,,punto utilizado,,VALIDACION_3N.md,Ficha documental reproducida; aún sin enlace primario verificado
+Lambayeque,catalogo_preliminar,-6.70361,-79.92139,12,candidato_sin_ficha_primaria,,METADATOS_GEOGRAFICOS_3P.md,Coordenada alternativa archivada en fase 3P; no corroborada en fuente primaria consultada
+Cueva Blanca,analisis_3Q,-6.1313,-79.4045,3300,punto utilizado,106060?,https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca/14262_informe-tecnico-n0-a7022-evaluacion-de-peligros-geologicos-de-la-institucion-educativa-10061-colaya-centro-poblado-colaya-distrito-salas-provincia-lam.pdf,Coordenada INGEMMET para estación PLU; código 106060 en ficha de 2020; no se acredita identidad histórica del TXT
+Cueva Blanca,ana_alternativa,-6.149,-79.35,,candidato_documental_discrepante,153102?,https://es.slideshare.net/slideshow/ana00031271pdf/251920437,Publicación que reproduce tabla ANA con otra ubicación y código 153102. No adjudicar a la misma estación sin ficha.
