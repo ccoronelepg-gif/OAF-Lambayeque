@@ -4,9 +4,9 @@
 > Para series horarias, el número de horas presentes NO certifica automáticamente totales mensuales de lluvia.
 ## Estado de la descarga y cobertura
 
-- Ejecución: error_acceso_o_formato.
+- Ejecución: completo_con_limitaciones.
 - CSV origen: https://www.datosabiertos.gob.pe/sites/default/files/Variables%20Meteorologicas%20de%20las%20Estaciones%20autom%C3%A1ticas%20de%20intercambio%20internacional%20-%20%5BServicio%20Nacional%20de%20Meteorolog%C3%ADa%20e%20Hidrolog%C3%ADa%20del%20Per%C3%BA%20-%20SENAMHI%5D.csv
-- Filas analizadas: 408942.
+- Filas analizadas: 408960.
 - Primer registro fechado: 2015-01-01.
 - Último registro fechado: 2024-04-30.
 - Estaciones candidatas por departamento declarado o radio 160 km: 0.
@@ -30,7 +30,3 @@
 - Fuente: https://www.datosabiertos.gob.pe/dataset/variables-meteorologicas-de-las-estaciones-autom%C3%A1ticas-de-intercambio-internacional-servicio
 - Código reproducible: scripts/auditar_gbon_rbon_3w.py
 
-
-## Incidencias
-
-- {"error": "ValueError: I/O operation on closed file."}
