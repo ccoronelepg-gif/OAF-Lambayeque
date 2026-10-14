@@ -4,7 +4,7 @@
 
 ## Evidencia nueva
 
-La auditoría `scripts/auditoria_3p_era5.py` consultó Open-Meteo para cinco estaciones, años 1998/2000 y modelos ERA5-Seamless, ERA5 y ERA5-Land. Se obtuvieron **30 de 45 consultas anuales previstas**. Las 15 fallidas corresponden a ERA5-Land: la precipitación diaria presentó al menos un valor nulo o negativo que impide formar un acumulado anual completo. **No deben reemplazarse faltantes por lluvia cero.**
+La auditoría `scripts/auditoria_3p_era5.py` consultó Open-Meteo para cinco estaciones, años 1998/2000 y modelos ERA5-Seamless, ERA5 y ERA5-Land. Se obtuvieron **30 de 45 consultas anuales previstas**. Las 15 fallidas corresponden a ERA5-Land: la precipitación diaria no permitió formar un acumulado anual completo. Una comprobación adicional para **1–10 de febrero de 1998**, en Jayanca y Cueva Blanca, comprobó que ERA5-Land devolvía **10/10 valores diarios nulos y 240/240 valores horarios nulos en cada estación**, mientras ERA5 y ERA5-Seamless ofrecían 10/10 días y 240/240 horas con datos. Esto caracteriza la respuesta del servicio para la consulta realizada, **no prueba ausencia de datos en el archivo oficial ECMWF**. **No deben reemplazarse faltantes por lluvia cero.**
 
 La comparación mensual del archivo `datos/auditoria_3p_mensual.csv` estableció:
 
