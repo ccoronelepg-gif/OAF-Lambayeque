@@ -1,0 +1,40 @@
+name: OAF 3Y registro documental de boletines DZ2
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ampliar_boletines_3y.yml'
+      - 'scripts/actualizar_boletines_3y.py'
+      - 'datos/observaciones_publicadas_dz2_3x.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-boletines-3y
+  cancel-in-progress: false
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Control de sintaxis
+        run: python -m compileall -q scripts/actualizar_boletines_3y.py
+      - name: Validar boletines de 2024 y 2025 y conservar las trazas
+        run: python -u scripts/actualizar_boletines_3y.py
+      - name: Registrar base documental y auditoría 3Y
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f BOLETINES_DZ2_3Y.md datos/observaciones_documentales_dz2_3y.csv datos/matriz_boletines_2025_3y.csv datos/estado_3y.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Documentar siete meses DZ2 y cobertura de 12 boletines 2025 fase 3Y"
+            git pull --rebase origin main
+            git push origin main
+          fi
