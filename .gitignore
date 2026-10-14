@@ -1,0 +1,13 @@
+# OAF-Lambayeque — archivos de trabajo locales, NO públicos
+# No subir series originales autorizadas, credenciales ni salidas de ingesta sin revisar licencias.
+datos/_privados/
+datos/senamhi_originales/
+datos/ingesta_3u/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
