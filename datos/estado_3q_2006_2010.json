@@ -1,0 +1,15 @@
+{
+  "fase": "3Q",
+  "bloque": "2006-2010",
+  "meses_calendario": 60,
+  "meses_raster_reutilizados_1998": 0,
+  "meses_raster_descargados": 60,
+  "meses_raster_con_falla": 0,
+  "pares_estacion_mes": 284,
+  "pares_estimacion": 852,
+  "meses_estacion_validos_senamhi": 284,
+  "incidencias": [],
+  "coordenadas_historicas_preliminares": true,
+  "validacion_independiente": false,
+  "ventana_climatica_general": "1996-2025: NO validada en este bloque"
+}
