@@ -1,0 +1,36 @@
+{
+  "fuente_instrumental": "archivos TXT SENAMHI históricos aportados al OAF",
+  "archivo_mensual": "datos/senamhi_mensual_completo_1996_2015.csv",
+  "periodo_fuente": "1996-2015",
+  "meses_estacion_completos": 1109,
+  "estaciones": 5,
+  "combinaciones_estacion_anio_completas": 79,
+  "ultimo_anio_temporalmente_completo_compartido_cinco_estaciones": 2012,
+  "anios_completos_compartidos": [
+    1996,
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2009,
+    2010,
+    2012
+  ],
+  "ultimo_anio_completo_por_estacion": {
+    "Jayanca (La Viña)": 2012,
+    "Cayaltí": 2013,
+    "Reque": 2013,
+    "Lambayeque": 2013,
+    "Cueva Blanca": 2013
+  },
+  "minimo_meses_para_acumulado_anual": 12,
+  "dias_por_anio": "365 o 366, todos válidos",
+  "imputacion_de_faltantes_permitida": false,
+  "serie_continua_2016_2025_certificada": false,
+  "boletines_2024_2025_son_evidencia_documental_no_anual": true,
+  "identidad_instrumental_y_cambios_de_ubicacion_verificados": false,
+  "nota": "Completitud temporal no equivale a certificación del emplazamiento histórico ni a validación independiente de grillas."
+}

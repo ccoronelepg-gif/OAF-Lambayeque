@@ -1,0 +1,101 @@
+estacion,anio,meses_observados_completos,meses_requeridos,dias_en_meses_completos,dias_calendario_anio,anio_completo,acumulado_anual_observado_mm,regla_aplicada
+Jayanca (La Viña),1996,12,12,366,366,true,23.300,sin_imputacion
+Cayaltí,1996,12,12,366,366,true,46.920,sin_imputacion
+Reque,1996,12,12,366,366,true,7.230,sin_imputacion
+Lambayeque,1996,12,12,366,366,true,12.880,sin_imputacion
+Cueva Blanca,1996,12,12,366,366,true,595.100,sin_imputacion
+Jayanca (La Viña),1997,12,12,365,365,true,80.600,sin_imputacion
+Cayaltí,1997,12,12,365,365,true,105.630,sin_imputacion
+Reque,1997,12,12,365,365,true,59.850,sin_imputacion
+Lambayeque,1997,12,12,365,365,true,38.990,sin_imputacion
+Cueva Blanca,1997,12,12,365,365,true,495.900,sin_imputacion
+Jayanca (La Viña),1998,12,12,365,365,true,1428.000,sin_imputacion
+Cayaltí,1998,12,12,365,365,true,558.500,sin_imputacion
+Reque,1998,12,12,365,365,true,232.820,sin_imputacion
+Lambayeque,1998,12,12,365,365,true,279.610,sin_imputacion
+Cueva Blanca,1998,12,12,365,365,true,969.200,sin_imputacion
+Jayanca (La Viña),1999,12,12,365,365,true,168.700,sin_imputacion
+Cayaltí,1999,12,12,365,365,true,85.910,sin_imputacion
+Reque,1999,12,12,365,365,true,23.400,sin_imputacion
+Lambayeque,1999,12,12,365,365,true,56.610,sin_imputacion
+Cueva Blanca,1999,12,12,365,365,true,944.000,sin_imputacion
+Jayanca (La Viña),2000,12,12,366,366,true,58.400,sin_imputacion
+Cayaltí,2000,12,12,366,366,true,49.380,sin_imputacion
+Reque,2000,12,12,366,366,true,18.100,sin_imputacion
+Lambayeque,2000,12,12,366,366,true,20.410,sin_imputacion
+Cueva Blanca,2000,12,12,366,366,true,813.900,sin_imputacion
+Jayanca (La Viña),2001,12,12,365,365,true,218.800,sin_imputacion
+Cayaltí,2001,12,12,365,365,true,52.260,sin_imputacion
+Reque,2001,12,12,365,365,true,20.500,sin_imputacion
+Lambayeque,2001,12,12,365,365,true,76.940,sin_imputacion
+Cueva Blanca,2001,12,12,365,365,true,735.300,sin_imputacion
+Jayanca (La Viña),2002,12,12,365,365,true,202.200,sin_imputacion
+Cayaltí,2002,12,12,365,365,true,47.190,sin_imputacion
+Reque,2002,12,12,365,365,true,17.800,sin_imputacion
+Lambayeque,2002,12,12,365,365,true,45.520,sin_imputacion
+Cueva Blanca,2002,12,12,365,365,true,797.000,sin_imputacion
+Jayanca (La Viña),2003,12,12,365,365,true,42.900,sin_imputacion
+Cayaltí,2003,12,12,365,365,true,21.310,sin_imputacion
+Reque,2003,12,12,365,365,true,6.500,sin_imputacion
+Lambayeque,2003,12,12,365,365,true,23.530,sin_imputacion
+Cueva Blanca,2003,12,12,365,365,true,620.400,sin_imputacion
+Jayanca (La Viña),2004,10,12,304,366,false,,sin_imputacion
+Cayaltí,2004,12,12,366,366,true,23.260,sin_imputacion
+Reque,2004,11,12,336,366,false,,sin_imputacion
+Lambayeque,2004,12,12,366,366,true,20.120,sin_imputacion
+Cueva Blanca,2004,12,12,366,366,true,540.800,sin_imputacion
+Jayanca (La Viña),2005,12,12,365,365,true,26.800,sin_imputacion
+Cayaltí,2005,12,12,365,365,true,13.100,sin_imputacion
+Reque,2005,10,12,303,365,false,,sin_imputacion
+Lambayeque,2005,6,12,181,365,false,,sin_imputacion
+Cueva Blanca,2005,12,12,365,365,true,574.600,sin_imputacion
+Jayanca (La Viña),2006,12,12,365,365,true,76.100,sin_imputacion
+Cayaltí,2006,12,12,365,365,true,33.580,sin_imputacion
+Reque,2006,12,12,365,365,true,22.460,sin_imputacion
+Lambayeque,2006,0,12,0,365,false,,sin_imputacion
+Cueva Blanca,2006,12,12,365,365,true,785.700,sin_imputacion
+Jayanca (La Viña),2007,12,12,365,365,true,20.000,sin_imputacion
+Cayaltí,2007,12,12,365,365,true,23.130,sin_imputacion
+Reque,2007,12,12,365,365,true,27.400,sin_imputacion
+Lambayeque,2007,11,12,334,365,false,,sin_imputacion
+Cueva Blanca,2007,11,12,334,365,false,,sin_imputacion
+Jayanca (La Viña),2008,11,12,335,366,false,,sin_imputacion
+Cayaltí,2008,12,12,366,366,true,63.860,sin_imputacion
+Reque,2008,11,12,336,366,false,,sin_imputacion
+Lambayeque,2008,12,12,366,366,true,39.890,sin_imputacion
+Cueva Blanca,2008,12,12,366,366,true,1057.900,sin_imputacion
+Jayanca (La Viña),2009,12,12,365,365,true,61.600,sin_imputacion
+Cayaltí,2009,12,12,365,365,true,40.780,sin_imputacion
+Reque,2009,12,12,365,365,true,22.190,sin_imputacion
+Lambayeque,2009,12,12,365,365,true,23.050,sin_imputacion
+Cueva Blanca,2009,12,12,365,365,true,731.800,sin_imputacion
+Jayanca (La Viña),2010,12,12,365,365,true,106.800,sin_imputacion
+Cayaltí,2010,12,12,365,365,true,49.230,sin_imputacion
+Reque,2010,12,12,365,365,true,39.580,sin_imputacion
+Lambayeque,2010,12,12,365,365,true,44.740,sin_imputacion
+Cueva Blanca,2010,12,12,365,365,true,891.300,sin_imputacion
+Jayanca (La Viña),2011,12,12,365,365,true,30.200,sin_imputacion
+Cayaltí,2011,10,12,304,365,false,,sin_imputacion
+Reque,2011,12,12,365,365,true,20.090,sin_imputacion
+Lambayeque,2011,12,12,365,365,true,19.760,sin_imputacion
+Cueva Blanca,2011,12,12,365,365,true,870.100,sin_imputacion
+Jayanca (La Viña),2012,12,12,366,366,true,229.100,sin_imputacion
+Cayaltí,2012,12,12,366,366,true,67.080,sin_imputacion
+Reque,2012,12,12,366,366,true,59.360,sin_imputacion
+Lambayeque,2012,12,12,366,366,true,63.290,sin_imputacion
+Cueva Blanca,2012,12,12,366,366,true,1034.800,sin_imputacion
+Jayanca (La Viña),2013,11,12,334,365,false,,sin_imputacion
+Cayaltí,2013,12,12,365,365,true,68.540,sin_imputacion
+Reque,2013,12,12,365,365,true,52.920,sin_imputacion
+Lambayeque,2013,12,12,365,365,true,31.170,sin_imputacion
+Cueva Blanca,2013,12,12,365,365,true,906.300,sin_imputacion
+Jayanca (La Viña),2014,7,12,212,365,false,,sin_imputacion
+Cayaltí,2014,11,12,334,365,false,,sin_imputacion
+Reque,2014,11,12,337,365,false,,sin_imputacion
+Lambayeque,2014,7,12,212,365,false,,sin_imputacion
+Cueva Blanca,2014,3,12,91,365,false,,sin_imputacion
+Jayanca (La Viña),2015,0,12,0,365,false,,sin_imputacion
+Cayaltí,2015,10,12,304,365,false,,sin_imputacion
+Reque,2015,10,12,304,365,false,,sin_imputacion
+Lambayeque,2015,0,12,0,365,false,,sin_imputacion
+Cueva Blanca,2015,0,12,0,365,false,,sin_imputacion
