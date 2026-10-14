@@ -1,0 +1,20 @@
+{
+  "fase": "3X",
+  "estado": "transcripciones_estructuralmente_validadas",
+  "numero_fuentes": 10,
+  "meses_de_boletines": [
+    "2024-07",
+    "2024-10",
+    "2025-02"
+  ],
+  "registros_estacion_mes": 15,
+  "registros_numericos": 14,
+  "trazas_no_numericas": 1,
+  "revision_visual_pdf_pendiente": true,
+  "datos_diarios_nuevos_recibidos": 0,
+  "meses_nuevos_instrumentales_certificados": 0,
+  "identidad_con_series_1996_2015_demostrada": false,
+  "independencia_PISCOp_CHIRPS_demostrada": false,
+  "analisis_directo_con_grillas_modelos_hecho": false,
+  "advertencia": "QA de transcripciones NO verifica contenido visual del PDF ni codigo de estacion"
+}
