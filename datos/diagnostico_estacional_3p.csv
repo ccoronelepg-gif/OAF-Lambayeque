@@ -1,0 +1,61 @@
+estacion,producto,estrato,periodo,meses,observado_total_mm,estimado_total_mm,sesgo_total_pct,sesgo_mensual_mm,mae_mensual_mm,rmse_mensual_mm
+Cayaltí,ERA5-Seamless,1998,ene_abr,4,551.79,1307.5,136.96,188.928,188.927,245.537
+Cayaltí,ERA5-Seamless,1998,may_dic,8,6.71,28.1,318.78,2.674,3.051,4.049
+Cayaltí,ERA5-Seamless,sin_1998,ene_abr,75,604.72,3052.5,404.78,32.637,33.11,43.26
+Cayaltí,ERA5-Seamless,sin_1998,may_dic,148,266.31,599.4,125.08,2.251,2.74,4.608
+Cayaltí,ERA5-Seamless,todos,ene_abr,79,1156.51,4360,277,40.551,41,69.493
+Cayaltí,ERA5-Seamless,todos,may_dic,156,273.02,627.5,129.84,2.272,2.756,4.581
+Cayaltí,PISCOp v3.0,1998,ene_abr,4,551.79,679.397,23.13,31.902,31.902,39.261
+Cayaltí,PISCOp v3.0,1998,may_dic,8,6.71,6.162,-8.17,-0.068,0.629,0.973
+Cayaltí,PISCOp v3.0,sin_1998,ene_abr,75,604.72,674.676,11.57,0.933,2.759,5.141
+Cayaltí,PISCOp v3.0,sin_1998,may_dic,148,266.31,238.274,-10.53,-0.189,0.602,1.653
+Cayaltí,PISCOp v3.0,todos,ene_abr,79,1156.51,1354.073,17.08,2.501,4.235,10.156
+Cayaltí,PISCOp v3.0,todos,may_dic,156,273.02,244.436,-10.47,-0.183,0.603,1.625
+Cueva Blanca,ERA5-Seamless,1998,ene_abr,4,598.2,7999.7,1237.3,1850.375,1850.375,1992.808
+Cueva Blanca,ERA5-Seamless,1998,may_dic,8,371,448,20.75,9.625,34.525,48.606
+Cueva Blanca,ERA5-Seamless,sin_1998,ene_abr,69,7579.9,24062.2,217.45,238.874,239.532,311.104
+Cueva Blanca,ERA5-Seamless,sin_1998,may_dic,137,5833.2,8208.4,40.72,17.337,31.81,61.302
+Cueva Blanca,ERA5-Seamless,todos,ene_abr,73,8178.1,32061.9,292.05,327.175,327.797,555.956
+Cueva Blanca,ERA5-Seamless,todos,may_dic,145,6204.2,8656.4,39.52,16.912,31.96,60.671
+Cueva Blanca,PISCOp v3.0,1998,ene_abr,4,598.2,854.62,42.87,64.105,64.105,72.614
+Cueva Blanca,PISCOp v3.0,1998,may_dic,8,371,189.611,-48.89,-22.674,23.391,32.925
+Cueva Blanca,PISCOp v3.0,sin_1998,ene_abr,69,7579.9,5257.766,-30.64,-33.654,42.373,53.639
+Cueva Blanca,PISCOp v3.0,sin_1998,may_dic,137,5833.2,3127.843,-46.38,-19.747,21.976,32.278
+Cueva Blanca,PISCOp v3.0,todos,ene_abr,73,8178.1,6112.386,-25.26,-28.297,43.564,54.849
+Cueva Blanca,PISCOp v3.0,todos,may_dic,145,6204.2,3317.454,-46.53,-19.909,22.054,32.314
+Jayanca (La Viña),ERA5-Seamless,1998,ene_abr,4,1415.2,7388.4,422.07,1493.3,1493.3,1608.139
+Jayanca (La Viña),ERA5-Seamless,1998,may_dic,8,12.8,213,1564.06,25.025,25.025,40.763
+Jayanca (La Viña),ERA5-Seamless,sin_1998,ene_abr,71,1402.7,14800.7,955.16,188.704,188.704,238.848
+Jayanca (La Viña),ERA5-Seamless,sin_1998,may_dic,136,318.2,3562.5,1019.58,23.855,25.098,48.185
+Jayanca (La Viña),ERA5-Seamless,todos,ene_abr,75,2817.9,22189.1,687.43,258.283,258.283,438.1
+Jayanca (La Viña),ERA5-Seamless,todos,may_dic,144,331,3775.5,1040.63,23.92,25.094,47.803
+Jayanca (La Viña),PISCOp v3.0,1998,ene_abr,4,1415.2,1287.073,-9.05,-32.032,32.032,39.143
+Jayanca (La Viña),PISCOp v3.0,1998,may_dic,8,12.8,9.635,-24.73,-0.396,0.569,1.37
+Jayanca (La Viña),PISCOp v3.0,sin_1998,ene_abr,71,1402.7,1085.192,-22.64,-4.472,6.097,14.073
+Jayanca (La Viña),PISCOp v3.0,sin_1998,may_dic,136,318.2,235.229,-26.08,-0.61,0.84,5.587
+Jayanca (La Viña),PISCOp v3.0,todos,ene_abr,75,2817.9,2372.265,-15.81,-5.942,7.481,16.408
+Jayanca (La Viña),PISCOp v3.0,todos,may_dic,144,331,244.864,-26.02,-0.598,0.825,5.439
+Lambayeque,ERA5-Seamless,1998,ene_abr,4,275.63,1256.3,355.79,245.168,245.167,284.114
+Lambayeque,ERA5-Seamless,1998,may_dic,8,3.98,13.9,249.25,1.24,1.24,1.685
+Lambayeque,ERA5-Seamless,sin_1998,ene_abr,67,400.8,1446.8,260.98,15.612,15.909,21.739
+Lambayeque,ERA5-Seamless,sin_1998,may_dic,125,128.52,306,138.1,1.42,2.011,4.058
+Lambayeque,ERA5-Seamless,todos,ene_abr,71,676.43,2703.1,299.61,28.545,28.825,70.665
+Lambayeque,ERA5-Seamless,todos,may_dic,133,132.5,319.9,141.43,1.409,1.965,3.956
+Lambayeque,PISCOp v3.0,1998,ene_abr,4,275.63,284.384,3.18,2.188,8.735,11.506
+Lambayeque,PISCOp v3.0,1998,may_dic,8,3.98,3.846,-3.37,-0.017,0.177,0.332
+Lambayeque,PISCOp v3.0,sin_1998,ene_abr,67,400.8,363.719,-9.25,-0.553,1.8,3.329
+Lambayeque,PISCOp v3.0,sin_1998,may_dic,125,128.52,117.554,-8.53,-0.088,0.438,1.126
+Lambayeque,PISCOp v3.0,todos,ene_abr,71,676.43,648.103,-4.19,-0.399,2.191,4.233
+Lambayeque,PISCOp v3.0,todos,may_dic,133,132.5,121.4,-8.38,-0.083,0.422,1.094
+Reque,ERA5-Seamless,1998,ene_abr,4,232.82,835.9,259.03,150.77,150.77,188.786
+Reque,ERA5-Seamless,1998,may_dic,8,0,10.5,,1.313,1.313,1.685
+Reque,ERA5-Seamless,sin_1998,ene_abr,74,336.49,1287,282.48,12.845,13.343,18.061
+Reque,ERA5-Seamless,sin_1998,may_dic,147,170.75,248,45.24,0.526,1.405,2.739
+Reque,ERA5-Seamless,todos,ene_abr,78,569.31,2122.9,272.89,19.918,20.391,46.229
+Reque,ERA5-Seamless,todos,may_dic,155,170.75,258.5,51.39,0.566,1.4,2.695
+Reque,PISCOp v3.0,1998,ene_abr,4,232.82,243.37,4.53,2.638,3.907,4.681
+Reque,PISCOp v3.0,1998,may_dic,8,0,2.095,,0.262,0.262,0.388
+Reque,PISCOp v3.0,sin_1998,ene_abr,74,336.49,377.077,12.06,0.548,1.838,3.564
+Reque,PISCOp v3.0,sin_1998,may_dic,147,170.75,147.005,-13.91,-0.162,0.576,1.587
+Reque,PISCOp v3.0,todos,ene_abr,78,569.31,620.447,8.98,0.656,1.945,3.629
+Reque,PISCOp v3.0,todos,may_dic,155,170.75,149.1,-12.68,-0.14,0.56,1.548
