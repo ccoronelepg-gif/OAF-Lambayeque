@@ -218,7 +218,7 @@ def main():
         report.append("| "+str(x["id_ghcnd"])+" | "+str(x["nombre_noaa"])+" | "+str(x["distancia_punto_oaf_km"])+
           " | "+str(x.get("inventario_prcp_inicio","Sin PRCP"))+
           " | "+str(x.get("inventario_prcp_fin","Sin PRCP"))+
-          " | "+str(x["meses_completos_2016_2025"] or "No comprobado")+" | "+
+          " | "+str(x["meses_completos_2016_2025"] if x["meses_completos_2016_2025"] != "" else "No comprobado")+" | "+
           str(x["descarga_diaria"])+" |")
     report+=["","## Interpretación técnica","",
       "- El inventario contiene rangos de años por elemento, que NO implican continuidad diaria ni meses completos.",
