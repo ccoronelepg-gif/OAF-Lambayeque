@@ -1,0 +1,27 @@
+name: OAF 3Z calidad de fuentes actuales
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verificar_monitoreo_3z.yml'
+      - 'scripts/verificar_monitoreo_3z.py'
+      - 'index.html'
+      - 'datos/estado_monitoreo_3z.json'
+      - 'datos/chirps_v3_reciente_3z.csv'
+      - 'datos/estado_enfen_3z.json'
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Asegurar no imputacion, control temporal y estados de aviso
+        run: |
+          python -m compileall -q scripts/verificar_monitoreo_3z.py
+          python -u scripts/verificar_monitoreo_3z.py
