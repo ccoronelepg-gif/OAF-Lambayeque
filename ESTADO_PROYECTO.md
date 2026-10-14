@@ -259,3 +259,19 @@ Se procesó un experimento de **24 mapas mensuales de CHIRPS v3** (1998 y 2000),
 **Pendientes científicos (3T):** falta confirmación oficial de identidad y reubicaciones históricas de las cinco estaciones, observaciones instrumentales 2016–2025, evaluación verdaderamente independiente y validación de representatividad por zonas de cultivo. Sin datos de vigilancia de enfermedades de arándano con fecha y localidad NO se puede presentar riesgo fitosanitario operativo. No imputar faltantes como cero. Mantener distinción histórico/estimado/pronosticado.
 
 **Preferencia del usuario:** avanzar directamente en desarrollo, sin cuestionarios ni ejercicios.
+
+## Fase 3T — robustez temporal y preparación de validación independiente · 14/10/2026
+
+**Avance efectivamente ejecutado y verificado:** 1 109 meses-estación SENAMHI completos; 3 327 pares observación-estimación; 92 combinaciones estación-año con al menos 9 meses válidos para los tres productos. Comparación pareada de MAE entre PISCOp y CHIRPS y exploración por remuestreo de años (2 000 repeticiones, semilla fija). Los resultados son retrospectivos y no prueban independencia externa.
+
+**Años evaluables con menor MAE PISCOp / CHIRPS:** Jayanca **18/0**, Cayaltí **19/1**, Reque **20/0**, Lambayeque **16/0**, Cueva Blanca **9/9**; global **82/10 de 92 casos estación-año**. Los años con solo 9–11 meses son evaluables para error mensual, NO para acumulados anuales completos. En Cueva Blanca el rango exploratorio remuestreado de diferencia media de MAE CHIRPS–PISCOp es **[-2,956; +6,569] mm/mes** y atraviesa cero. No inferir precisión espacial independiente ni superioridad universal.
+
+**La independencia externa todavía está pendiente:** 0 de 15 parejas estación-producto tienen prueba documentada suficiente de no participación en insumos de PISCOp, CHIRPS o ERA5, lo cual NO indica que todas participaran. Coordenadas/códigos y periodos originales de estaciones aún no certificados; nuevas observaciones SENAMHI 2016–2025 aún no recibidas.
+
+**Artefactos:** `AUDITORIA_3T.md`, `PROTOCOLO_3T_VALIDACION_EXTERNA.md`, `scripts/auditoria_3t_robustez.py`, `datos/mae_estacion_anio_3t.csv`, `datos/comparacion_anual_piscop_chirps_3t.csv`, `datos/resumen_robustez_3t.csv`, `datos/trazabilidad_independencia_3t.csv`, `datos/estado_3t.json`. GitHub Actions `OAF 3T robustez temporal y trazabilidad` ejecutó los cálculos exitosamente.
+
+**Portal:** código de la versión **v1.3** en `index.html` contiene `#independencia3t`, con selección de estación, años comparados y rango de remuestreo; pendiente confirmar último despliegue GitHub Pages. Se preservaron el autor profesional y el teléfono de contacto solicitados.
+
+**Siguiente trabajo (Fase 3U):** documentar/obtener fichas SENAMHI con código y georreferencia de cada TXT, verificar participación en productos mediante autores/catálogos, conseguir series diarias 2016–2025 por acceso personal autorizado. Solo entonces presentar verificación independiente y eventualmente pasar a modelos agroclimáticos o riesgo fitosanitario de arándano con datos de campo. Evitar la clasificación operativa sin evidencia.
+
+**Norma de trabajo:** seguir secuencia sin cuestionarios ni ejercicios; distinción entre dato observado, estimado y pronosticado.
