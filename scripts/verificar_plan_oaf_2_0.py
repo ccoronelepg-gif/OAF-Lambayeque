@@ -29,7 +29,7 @@ def run():
         raise ValueError("Fases reordenadas o incompletas")
     if set(x["id"] for x in plan["modulos"]) != MODULES:
         raise ValueError("Se requieren M0 a M5")
-    if any(x["estado"] not in ("siguiente","pendiente") for x in plan["entregables"]):
+    if any(x["estado"] not in ("siguiente","pendiente","en_progreso") for x in plan["entregables"]):
         raise ValueError("El plan no puede proclamar fases implementadas sin informe de validación")
     rules = plan["reglas"]
     for key in ("imputacion_observaciones_prohibida", "no_confundir_estimacion_con_observacion",
@@ -56,7 +56,7 @@ def run():
     readme=README.read_text(encoding="utf-8")
     master=MASTER.read_text(encoding="utf-8")
     protocol=PROTOCOL.read_text(encoding="utf-8")
-    for key in ('id="plan20"','VERSIÓN PÚBLICA · 2.0',"CARLOS ENRIQUE CORONEL GARCÍA","tel:+51929304528",
+    for key in ('id="plan20"','VERSIÓN PÚBLICA · 2.1',"CARLOS ENRIQUE CORONEL GARCÍA","tel:+51929304528",
                 "PLAN_MAESTRO_OAF_2_0.md","PROTOCOLO_ESTADOS_Y_ALERTAS_OAF_2_0.md"):
         if key not in page:
             raise ValueError("Falta bloque esencial en portal: "+key)
