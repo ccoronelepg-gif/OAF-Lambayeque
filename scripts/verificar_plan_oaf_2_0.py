@@ -60,7 +60,7 @@ def run():
                 "PLAN_MAESTRO_OAF_2_0.md","PROTOCOLO_ESTADOS_Y_ALERTAS_OAF_2_0.md"):
         if key not in page:
             raise ValueError("Falta bloque esencial en portal: "+key)
-    for key in ("3Z","4A","4B","4C","2026","no imputan"):
+    for key in ("3Z","4A","4B","4C","2026","No se imputan"):
         if key not in readme:
             raise ValueError("El README no documenta: "+key)
     if "sin alertas propias" not in master.lower() and "no existen todavía alertas" not in protocol.lower():
