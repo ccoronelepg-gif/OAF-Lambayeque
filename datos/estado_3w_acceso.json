@@ -1,0 +1,19 @@
+{
+  "fase": "3W",
+  "archivo_descargado": true,
+  "esquema_verificado": true,
+  "resultados": [
+    {
+      "url": "https://www.datosabiertos.gob.pe/sites/default/files/Variables%20Meteorologicas%20de%20las%20Estaciones%20autom%C3%A1ticas%20de%20intercambio%20internacional%20-%20%5BServicio%20Nacional%20de%20Meteorolog%C3%ADa%20e%20Hidrolog%C3%ADa%20del%20Per%C3%BA%20-%20SENAMHI%5D.csv",
+      "http_status": 200,
+      "tipo": "application/octet-stream",
+      "longitud": "46311291",
+      "url_final": "https://www.datosabiertos.gob.pe/sites/default/files/Variables%20Meteorologicas%20de%20las%20Estaciones%20autom%C3%A1ticas%20de%20intercambio%20internacional%20-%20%5BServicio%20Nacional%20de%20Meteorolog%C3%ADa%20e%20Hidrolog%C3%ADa%20del%20Per%C3%BA%20-%20SENAMHI%5D.csv",
+      "cabecera_csv": "ID,ESTACION,FECHA,HORA,LONGITUD,LATITUD,ALTITUD,TEMP,HR,PP,RED,DEPARTAMENTO,PROVINCIA,DISTRITO,UBIGEO,FECHA_CORTE",
+      "delimitador_sugerido": ","
+    }
+  ],
+  "nuevos_meses_certificados": 0,
+  "observaciones_2016_2025_incorporadas": 0,
+  "url_csv_accesible": "https://www.datosabiertos.gob.pe/sites/default/files/Variables%20Meteorologicas%20de%20las%20Estaciones%20autom%C3%A1ticas%20de%20intercambio%20internacional%20-%20%5BServicio%20Nacional%20de%20Meteorolog%C3%ADa%20e%20Hidrolog%C3%ADa%20del%20Per%C3%BA%20-%20SENAMHI%5D.csv"
+}
