@@ -140,3 +140,24 @@ El signo de sesgo se define como **estimado menos observado**. MAE y RMSE por me
 **Próxima fase 3P:** auditar diferencias de ERA5-Seamless y su representatividad espacial, comprobar metadatos oficiales y, si se dispone de redes independientes, realizar validación externa fuera de muestra; después ampliar cobertura territorial y evaluación del riesgo fitosanitario del arándano.
 
 **Modo de trabajo acordado:** seguir desarrollando el proyecto sin preguntas ni ejercicios de comprobación al usuario.
+
+## Actualización 14/10/2026 — Fase 3P (auditoría modelos y celdas)
+
+**Estado: fase 3P concluida con limitaciones de la fuente ERA5-Land; siguiente fase 3Q, CHIRPS v3 mensual y sensibilidad de coordenadas.**
+
+**Portal:** v0.6 con visor interactivo de modelos/celdas, misma URL pública https://ccoronelepg-gif.github.io/OAF-Lambayeque/.
+
+**Evidencia calculada y conservada en GitHub:**
+- Se recuperaron **30 de 45** combinaciones estación/año/modelo/selección previstas para 1998 y 2000. Las **15 no válidas** corresponden a ERA5-Land. No se imputaron como cero.
+- En **180 de 180 pares mensuales comparables** los valores de precipitación ERA5-Seamless y ERA5 fueron idénticos, aunque las coordenadas declaradas de las celdas difirieron.
+- En **60 de 60 pares mensuales** de 1998, las opciones Open-Meteo `land` y `nearest` dieron los mismos totales para ERA5-Seamless. **No se demuestra que cambiar la celda explique el sesgo.**
+- Diagnóstico puntual 1–10 febrero 1998, Jayanca/Cueva Blanca: respuesta ERA5-Land **10/10 días y 240/240 horas nulos por estación**; ERA5 y Seamless íntegros. Esto es un resultado de esa configuración API, **no concluye que ECMWF carezca de los datos oficiales**.
+- A partir de **2 218 pares** previos se calcularon **60 filas** de indicadores estacionales por estaciones, producto, estrato con/sin 1998, estación temporal enero–abril y mayo–diciembre. Excluyendo 1998 persiste sesgo positivo de ERA5-Seamless en enero–abril de las cinco estaciones.
+- Discrepancias entre coordenadas actualmente utilizadas y metadatos alternativos: Jayanca ~1,68 km; Cayaltí ~2,41 km; Reque ~0,04 km; Lambayeque ~3,36 km. Verificar códigos y posibles traslados, no corregir sin reconsultar.
+- Cueva Blanca ~(-6.131, -79.405), 3300 m, respaldada por boletín SENAMHI 2024, pero continuidad histórica exacta no corroborada.
+
+**Archivos principales:** [CONCLUSIONES_3P.md](CONCLUSIONES_3P.md), [AUDITORIA_3P.md](AUDITORIA_3P.md), [DIAGNOSTICO_ESTACIONAL_3P.md](DIAGNOSTICO_ESTACIONAL_3P.md), [DIAGNOSTICO_ERA5_LAND_3P.md](DIAGNOSTICO_ERA5_LAND_3P.md), [METADATOS_GEOGRAFICOS_3P.md](METADATOS_GEOGRAFICOS_3P.md), y series CSV en `datos/`.
+
+**Siguiente fase 3Q:** extraer **CHIRPS v3 mensual final** para los 1 109 meses-estación completos SENAMHI (1996–2015), auditar posiciones exactas y compararlo en los mismos meses con PISCOp y ERA5. CHIRPS v3 incorpora estaciones en su elaboración. Evitar considerar el producto diario CHIRPS `rnl` independiente de ERA5, ya que lo utiliza para desagregar totales pentadales. Priorizar el producto mensual final y documentación de fuente.
+
+**Regla permanente del usuario:** desarrollar directamente el proyecto; no pedir ejercicios ni pruebas de comprensión.
