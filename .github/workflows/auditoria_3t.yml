@@ -1,0 +1,40 @@
+name: OAF 3T robustez temporal y trazabilidad
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/auditoria_3t.yml'
+      - 'scripts/auditoria_3t_robustez.py'
+      - 'datos/trazabilidad_independencia_3t.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-3t-estabilidad
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependencias
+        run: python -m pip install --disable-pip-version-check pandas numpy
+      - name: Comprobar estabilidad año por año
+        run: python -u scripts/auditoria_3t_robustez.py
+      - name: Guardar indicadores y trazabilidad
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f AUDITORIA_3T.md datos/estado_3t.json datos/mae_estacion_anio_3t.csv datos/comparacion_anual_piscop_chirps_3t.csv datos/resumen_robustez_3t.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Publicar auditoria temporal e independencia pendiente 3T"
+            git pull --rebase origin main
+            git push origin main
+          fi
