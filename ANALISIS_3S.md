@@ -63,6 +63,12 @@ Los archivos incluyen la tabla de verdaderos positivos, falsos positivos, verdad
 Estas estadísticas miden concordancia RETROSPECTIVA, no capacidad de anticipación.
 Cuando hay pocos meses intensos, la incertidumbre es alta y no corresponde generalizar.
 
+## Por qué una buena clasificación no significa una lluvia correctamente estimada
+
+En **Cueva Blanca**, al usar el umbral retrospectivo de **≥20 mm/mes**, ERA5-Seamless presenta un **F1 de 0,9159**, superior al de PISCOp (**0,8369**) y CHIRPS v3 (**0,8380**). Sin embargo, sobre esos mismos **164 meses observados lluviosos**, el **MAE de ERA5-Seamless es 170,271 mm/mes**, frente a 37,353 de PISCOp y 38,513 de CHIRPS. Por lo tanto, **detectar que un mes supera 20 mm no implica reproducir correctamente el volumen de lluvia**. Todos estos indicadores son retrospectivos; no representan habilidad de pronóstico.
+
+En estaciones costeras hay muy pocos meses con ≥50 mm (Cayaltí 3, Reque 2, Lambayeque 3). Se publican los conteos, pero una F1 puntual en esos subgrupos NO es evidencia estable de desempeño.
+
 ## Estaciones climáticas
 
 La partición diciembre–abril versus mayo–noviembre es solo una clasificación de calendario; no define la climatología de todos los pisos altitudinales.
