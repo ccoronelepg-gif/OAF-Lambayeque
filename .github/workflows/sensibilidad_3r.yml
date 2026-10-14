@@ -1,0 +1,50 @@
+name: OAF Fase 3R sensibilidad geográfica CHIRPS
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sensibilidad_3r.yml'
+      - 'scripts/sensibilidad_geografica_3r.py'
+      - 'datos/catalogo_coordenadas_3r.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-sensibilidad-3r
+  cancel-in-progress: false
+jobs:
+  calcular:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar bibliotecas geográficas
+        run: python -m pip install --disable-pip-version-check pandas numpy rasterio requests
+      - name: Comprobar celdas geográficas con y sin desplazamiento
+        id: analisis
+        shell: bash
+        run: |
+          set +e
+          python -u scripts/sensibilidad_geografica_3r.py
+          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Versionar resultados reproducibles y fallos
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f SENSIBILIDAD_3R.md datos/estado_3r.json datos/coordenadas_pixeles_3r_1998_2000.csv datos/sensibilidad_3r_resumen.csv datos/sensibilidad_3r_mensual.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar sensibilidad espacial CHIRPS fase 3R"
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Verificar integridad
+        shell: bash
+        run: |
+          test "${{ steps.analisis.outputs.codigo }}" = "0" || (echo "Faltan meses o resultados. Revisar estado_3r.json" && exit 1)
