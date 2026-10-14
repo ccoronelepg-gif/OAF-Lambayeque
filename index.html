@@ -89,6 +89,7 @@
 <section class="panel" aria-labelledby="tit3p">
  <div class="overline" id="tit3p">Modelos y celdas · Años 1998 y 2000</div>
  <p class="muted sm">Esta auditoría examina un año de lluvias extraordinarias (1998) y otro año de contraste (2000). Las coordenadas documentales de las estaciones son provisionales; la posición de las celdas meteorológicas proviene de las respuestas del modelo. No representa validación operacional.</p>
+ <p class="notice"><b>Hallazgo 3P:</b> 180/180 comparaciones mensuales ERA5 frente a ERA5-Seamless fueron idénticas; 60/60 comparaciones entre <code>nearest</code> y <code>land</code> en 1998 también fueron idénticas. ERA5-Land no devolvió una serie completa: una prueba de disponibilidad registró valores diarios y horarios nulos, no lluvia de 0 mm. <a href="CONCLUSIONES_3P.md">Leer conclusiones y limitaciones</a>.</p>
  <div style="display:flex;flex-wrap:wrap;gap:14px;margin:17px 0;align-items:end">
   <label style="min-width:210px"><b>Estación SENAMHI</b><select id="estacion3p" style="display:block;width:100%;margin-top:6px"><option>Jayanca (La Viña)</option><option>Cayaltí</option><option>Reque</option><option>Lambayeque</option><option>Cueva Blanca</option></select></label>
   <label><b>Año</b><select id="ano3p" style="display:block;width:100%;margin-top:6px"><option value="1998">1998</option><option value="2000">2000</option></select></label>
@@ -97,7 +98,7 @@
  <p class="notice" id="estado3p" aria-live="polite">Consultando los registros auditados...</p>
  <div class="tablewrap"><table aria-label="Modelos ERA5 comparados con registros SENAMHI"><thead><tr><th>Modelo</th><th>Observado</th><th>Estimado</th><th>Sesgo</th><th>Distancia a celda</th><th>Posición de celda</th></tr></thead><tbody id="tabla3p"><tr><td colspan="6">Los resultados se cargan desde GitHub.</td></tr></tbody></table></div>
  <p class="muted sm" style="margin-top:13px"><b>Interpretación:</b> una celda más próxima no garantiza mejor lluvia estimada. Los modelos tienen resoluciones, algoritmos y condiciones orográficas diferentes. La comparación anual de 1998 y 2000 no reemplaza la evaluación multianual.</p>
- <p class="sm"><a href="AUDITORIA_3P.md">Informe completo 3P</a> · <a href="datos/auditoria_3p_celdas_modelos.csv">Resultados de celdas (CSV)</a> · <a href="datos/estado_3p.json">Estado del análisis</a> · <a href="scripts/auditoria_3p_era5.py">Código reproducible</a></p>
+ <p class="sm"><a href="AUDITORIA_3P.md">Informe completo 3P</a> · <a href="METADATOS_GEOGRAFICOS_3P.md">Metadatos de estaciones</a> · <a href="DIAGNOSTICO_ESTACIONAL_3P.md">Diagnóstico estacional sin 1998</a> · <a href="datos/auditoria_3p_celdas_modelos.csv">Resultados de celdas (CSV)</a> · <a href="datos/estado_3p.json">Estado del análisis</a> · <a href="scripts/auditoria_3p_era5.py">Código reproducible</a></p>
  <h3 class="charttitle">Próxima fuente: CHIRPS v3</h3>
  <p class="muted sm">Se integrará una tercera estimación de precipitación con resolución nominal de 0,05° y registros desde 1981. CHIRPS también incorpora observaciones instrumentales, por lo que se documentará la independencia de su evaluación. <a href="https://www.chc.ucsb.edu/data/chirps3" target="_blank" rel="noopener">Fuente oficial CHIRPS</a>.</p>
 </section>
