@@ -1,0 +1,6 @@
+estacion,meses,mae_mensual_mm,rmse_mensual_mm,sesgo_mensual_mm,pearson_mensual,obs_anual_mm,chirps_anual_mm,sesgo_anual_pct
+Jayanca (La Viña),12,52.099,104.729,-50.104,0.9447,1428.0,826.757,-42.1
+Cayaltí,12,9.616,26.406,8.255,0.9728,558.5,657.559,17.74
+Reque,12,8.264,15.501,8.264,0.9947,232.82,331.993,42.6
+Lambayeque,12,15.941,39.627,15.21,0.9645,279.61,462.126,65.28
+Cueva Blanca,12,72.559,149.578,45.564,0.8904,969.2,1515.965,56.41

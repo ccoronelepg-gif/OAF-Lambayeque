@@ -1,0 +1,61 @@
+estacion,mes,chirps_mm,latitud_punto,longitud_punto,latitud_pixel,longitud_pixel,distancia_pixel_km,resolucion_x,resolucion_y,sistema_referencia,url_raster
+Jayanca (La Viña),1998-01,81.8974,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cayaltí,1998-01,62.5183,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Reque,1998-01,39.1297,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Lambayeque,1998-01,40.3487,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Cueva Blanca,1998-01,18.1889,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif
+Jayanca (La Viña),1998-02,319.8619,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cayaltí,1998-02,286.1703,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Reque,1998-02,140.0132,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Lambayeque,1998-02,150.7036,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Cueva Blanca,1998-02,375.531,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif
+Jayanca (La Viña),1998-03,341.2267,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cayaltí,1998-03,265.8166,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Reque,1998-03,137.1438,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Lambayeque,1998-03,246.8804,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Cueva Blanca,1998-03,691.8609,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif
+Jayanca (La Viña),1998-04,64.8457,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cayaltí,1998-04,30.8806,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Reque,1998-04,6.9004,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Lambayeque,1998-04,16.7536,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Cueva Blanca,1998-04,173.0552,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif
+Jayanca (La Viña),1998-05,11.9757,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cayaltí,1998-05,3.2289,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Reque,1998-05,0.6603,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Lambayeque,1998-05,0.1427,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Cueva Blanca,1998-05,66.0301,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif
+Jayanca (La Viña),1998-06,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cayaltí,1998-06,0.1331,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Reque,1998-06,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Lambayeque,1998-06,0.1041,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Cueva Blanca,1998-06,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif
+Jayanca (La Viña),1998-07,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cayaltí,1998-07,0.9514,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Reque,1998-07,0.141,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Lambayeque,1998-07,0.3435,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Cueva Blanca,1998-07,0.0,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif
+Jayanca (La Viña),1998-08,1.2509,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cayaltí,1998-08,0.8907,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Reque,1998-08,1.0892,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Lambayeque,1998-08,1.4906,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Cueva Blanca,1998-08,5.3005,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif
+Jayanca (La Viña),1998-09,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cayaltí,1998-09,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Reque,1998-09,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Lambayeque,1998-09,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Cueva Blanca,1998-09,38.7775,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif
+Jayanca (La Viña),1998-10,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cayaltí,1998-10,5.3477,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Reque,1998-10,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Lambayeque,1998-10,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Cueva Blanca,1998-10,90.0951,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif
+Jayanca (La Viña),1998-11,0.0,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cayaltí,1998-11,0.0,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Reque,1998-11,0.0,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Lambayeque,1998-11,0.0,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Cueva Blanca,1998-11,0.5358,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif
+Jayanca (La Viña),1998-12,5.6988,-6.322,-79.779,-6.3250006,-79.7749994,0.554,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cayaltí,1998-12,1.6217,-6.88079444,-79.54701389,-6.8750006,-79.5249994,2.514,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Reque,1998-12,6.9156,-6.88613,-79.8355,-6.8750006,-79.8249994,1.696,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Lambayeque,1998-12,5.3585,-6.73152778,-79.90983611,-6.7250006,-79.9249994,1.825,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif
+Cueva Blanca,1998-12,56.5897,-6.1313,-79.4045,-6.1250006,-79.4249994,2.372,0.05,0.05,EPSG:4326,https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif

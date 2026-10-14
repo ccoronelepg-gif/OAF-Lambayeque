@@ -1,0 +1,11 @@
+{
+  "version": "3Q-piloto-1998",
+  "meses_previstos": 12,
+  "meses_descargados": 12,
+  "pares_estacion_mes": 60,
+  "esperados": 60,
+  "incidencias": [],
+  "validacion_independiente": false,
+  "coordenadas_estaciones_preliminares": true,
+  "observacion": "Solo calcular totales anuales con 12 meses validos"
+}
