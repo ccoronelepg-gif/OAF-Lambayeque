@@ -1,0 +1,45 @@
+{
+  "periodo": "1996-2015",
+  "meses_senamhi_completos": 1109,
+  "meses_coincidentes_tres_productos": 1109,
+  "pares_estimados": 3327,
+  "cobertura_sobre_validos_pct": 100.0,
+  "meses_por_estacion": {
+    "Cayaltí": 235,
+    "Cueva Blanca": 218,
+    "Jayanca (La Viña)": 219,
+    "Lambayeque": 204,
+    "Reque": 233
+  },
+  "meses_por_ano": {
+    "1996": 60,
+    "1997": 60,
+    "1998": 60,
+    "1999": 60,
+    "2000": 60,
+    "2001": 60,
+    "2002": 60,
+    "2003": 60,
+    "2004": 57,
+    "2005": 52,
+    "2006": 48,
+    "2007": 58,
+    "2008": 58,
+    "2009": 60,
+    "2010": 60,
+    "2011": 58,
+    "2012": 60,
+    "2013": 59,
+    "2014": 39,
+    "2015": 20
+  },
+  "incidencias_por_bloque": {
+    "1996_2000": 0,
+    "2001_2005": 0,
+    "2006_2010": 0,
+    "2011_2015": 0
+  },
+  "ubicaciones_instrumentales_provisionales": true,
+  "validacion_independiente": false,
+  "climatologia_1996_2025_completa": false
+}
