@@ -1,0 +1,11 @@
+{
+  "fase": "3R_multianual",
+  "bloque": "1996-2000",
+  "meses_calendario_con_observacion": 60,
+  "meses_estacion_validos_senamhi": 300,
+  "meses_estacion_comparados": 300,
+  "filas_pixel": 600,
+  "raster_descargas_fallidas": [],
+  "identidad_instrumental_confirmada": false,
+  "las_coordenadas_alternativas_son_candidatas": true
+}
