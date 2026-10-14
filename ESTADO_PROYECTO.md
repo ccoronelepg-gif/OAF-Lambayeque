@@ -102,3 +102,41 @@ Se volvió a comprobar directamente la precipitación diaria de los cinco archiv
 **Portal actualizado** a versión 0.4: añade cuadro de comparación de los tres productos en 1998, selector interactivo de estación, métricas MAE y correcciones cartográficas preliminares. Rama `main` commit `483219446a06aa8dfad498c22552a6360965f222`; comprobar conclusión de despliegue GitHub Pages antes de afirmar sitio actualizado públicamente.
 
 **Punto siguiente:** ampliar contraste a varios años y mensualidad coincidente con cobertura de 100 %, evaluar estaciones de control realmente independientes, confirmar metadatos históricos y auditar causa del sesgo extraordinario de ERA5. Mantener instrucciones del usuario: sin preguntas ni ejercicios, trabajar y publicar avances.
+
+---
+
+## Fase 3O cerrada el 14 de octubre de 2026 — validación multianual
+
+**Resultados instrumentales:** se auditaron cinco archivos TXT SENAMHI y obtuvieron **1 109 meses-estación completos** entre enero de 1996 y octubre de 2015: Jayanca 219, Cayaltí 235, Reque 233, Lambayeque 204, Cueva Blanca 218. Hay 35 meses con observaciones incompletas y 56 meses-estación sin registros dentro de las 1 200 combinaciones 1996–2015. Se mantienen **11 años anuales completos simultáneos**: 1996–2003, 2009, 2010, 2012. Los registros originales no cubren 2016–2025.
+
+**Contraste completo PISCOp v3.0 y ERA5-Seamless:** se obtuvieron **2 218 pares mensuales** y **10/10 combinaciones estación × producto**, sin errores pendientes tras recuperar intervalos ERA5 mediante consultas bienales. Métrica MAE mensual (mm), usando exactamente los mismos meses completos por estación:
+
+| Estación | Meses | MAE PISCOp | MAE ERA5-Seamless | Sesgo acumulado PISCOp | Sesgo acumulado ERA5 |
+|---|---:|---:|---:|---:|---:|
+| Jayanca | 219 | 3,104 | 104,953 | −16,89 % | +724,56 % |
+| Cayaltí | 235 | 1,824 | 15,613 | +11,82 % | +248,89 % |
+| Reque | 233 | 1,023 | 7,757 | +3,98 % | +221,78 % |
+| Lambayeque | 204 | 1,038 | 11,313 | −4,87 % | +273,70 % |
+| Cueva Blanca | 218 | 29,257 | 131,025 | −34,43 % | +183,11 % |
+
+El signo de sesgo se define como **estimado menos observado**. MAE y RMSE por mes son métricas descriptivas del conjunto evaluado. Resultados separados por 1998 y sin 1998 en `datos/metricas_3o_multianual.csv`.
+
+**Principales advertencias:**
+- PISCOp es interpolación climatológica alimentada por estaciones; al compararlo con registros SENAMHI posiblemente empleados en su elaboración, **no se dispone de validación independiente**.
+- Coordenadas documentales de las cinco estaciones son **provisionales**; recuperar códigos y fichas oficiales SENAMHI, verificar cambios históricos de ubicación/altitud antes de una validación publicable.
+- Los acumulados inusualmente elevados de **ERA5-Seamless** requieren auditoría de fuente, celdas, variable/unidades, elevación y contraste con ERA5 puro / ERA5-Land y, cuando sea posible, CHIRPS.
+- Para construir alertas y modelos fitosanitarios se necesitan registros de enfermedades del arándano y observaciones meteorológicas recientes.
+
+**Productos guardados:**
+- Portal web **v0.5**: https://ccoronelepg-gif.github.io/OAF-Lambayeque/ (sección Contraste meteorológico multianual).
+- Informe estadístico: [VALIDACION_3O.md](VALIDACION_3O.md).
+- Auditoría cobertura: [COBERTURA_SENAMHI_3O.md](COBERTURA_SENAMHI_3O.md).
+- Insumo mensual: [datos/senamhi_mensual_completo_1996_2015.csv](datos/senamhi_mensual_completo_1996_2015.csv).
+- Métricas: [datos/metricas_3o_multianual.csv](datos/metricas_3o_multianual.csv).
+- Pares: [datos/comparacion_3o_multianual.csv](datos/comparacion_3o_multianual.csv).
+- Código reproducible: [scripts/validacion_3o_multianual.py](scripts/validacion_3o_multianual.py).
+- Flujo automático: [.github/workflows/validacion_3o.yml](.github/workflows/validacion_3o.yml).
+
+**Próxima fase 3P:** auditar diferencias de ERA5-Seamless y su representatividad espacial, comprobar metadatos oficiales y, si se dispone de redes independientes, realizar validación externa fuera de muestra; después ampliar cobertura territorial y evaluación del riesgo fitosanitario del arándano.
+
+**Modo de trabajo acordado:** seguir desarrollando el proyecto sin preguntas ni ejercicios de comprobación al usuario.
