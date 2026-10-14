@@ -1,0 +1,34 @@
+name: OAF 3W acceso datos horarios SENAMHI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/comprobar_acceso_gbon_3w.py'
+      - '.github/workflows/comprobar_gbon_3w.yml'
+permissions:
+  contents: write
+jobs:
+  revisar-acceso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias
+        run: python -m pip install requests
+      - name: Verificar descarga y esquema sin almacenar observaciones
+        run: python -u scripts/comprobar_acceso_gbon_3w.py
+      - name: Publicar solo metadatos de acceso
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f datos/estado_3w_acceso.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Registrar acceso real al CSV GBON/RBON y estructura disponible"
+            git pull --rebase origin main
+            git push origin main
+          fi
