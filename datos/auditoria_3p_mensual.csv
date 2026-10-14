@@ -1,0 +1,361 @@
+mes,observado_mm,estimado_mm,estacion,ano,modelo,seleccion,diferencia_mm
+1998-01,348.3,1871.0,Jayanca (La Viña),1998,era5_seamless,nearest,1522.7
+1998-02,466.3,1844.9,Jayanca (La Viña),1998,era5_seamless,nearest,1378.6
+1998-03,539.1,2913.8,Jayanca (La Viña),1998,era5_seamless,nearest,2374.7
+1998-04,61.5,758.7,Jayanca (La Viña),1998,era5_seamless,nearest,697.2
+1998-05,10.0,113.6,Jayanca (La Viña),1998,era5_seamless,nearest,103.6
+1998-06,0.4,16.2,Jayanca (La Viña),1998,era5_seamless,nearest,15.8
+1998-07,0.0,0.30000000000000004,Jayanca (La Viña),1998,era5_seamless,nearest,0.3
+1998-08,0.0,1.0,Jayanca (La Viña),1998,era5_seamless,nearest,1.0
+1998-09,2.1,6.4,Jayanca (La Viña),1998,era5_seamless,nearest,4.3
+1998-10,0.0,22.0,Jayanca (La Viña),1998,era5_seamless,nearest,22.0
+1998-11,0.0,12.6,Jayanca (La Viña),1998,era5_seamless,nearest,12.6
+1998-12,0.3,40.9,Jayanca (La Viña),1998,era5_seamless,nearest,40.6
+1998-01,348.3,1871.0,Jayanca (La Viña),1998,era5,nearest,1522.7
+1998-02,466.3,1844.9,Jayanca (La Viña),1998,era5,nearest,1378.6
+1998-03,539.1,2913.8,Jayanca (La Viña),1998,era5,nearest,2374.7
+1998-04,61.5,758.7,Jayanca (La Viña),1998,era5,nearest,697.2
+1998-05,10.0,113.6,Jayanca (La Viña),1998,era5,nearest,103.6
+1998-06,0.4,16.2,Jayanca (La Viña),1998,era5,nearest,15.8
+1998-07,0.0,0.30000000000000004,Jayanca (La Viña),1998,era5,nearest,0.3
+1998-08,0.0,1.0,Jayanca (La Viña),1998,era5,nearest,1.0
+1998-09,2.1,6.4,Jayanca (La Viña),1998,era5,nearest,4.3
+1998-10,0.0,22.0,Jayanca (La Viña),1998,era5,nearest,22.0
+1998-11,0.0,12.6,Jayanca (La Viña),1998,era5,nearest,12.6
+1998-12,0.3,40.9,Jayanca (La Viña),1998,era5,nearest,40.6
+1998-01,348.3,1871.0,Jayanca (La Viña),1998,era5_seamless,land,1522.7
+1998-02,466.3,1844.9,Jayanca (La Viña),1998,era5_seamless,land,1378.6
+1998-03,539.1,2913.8,Jayanca (La Viña),1998,era5_seamless,land,2374.7
+1998-04,61.5,758.7,Jayanca (La Viña),1998,era5_seamless,land,697.2
+1998-05,10.0,113.6,Jayanca (La Viña),1998,era5_seamless,land,103.6
+1998-06,0.4,16.2,Jayanca (La Viña),1998,era5_seamless,land,15.8
+1998-07,0.0,0.30000000000000004,Jayanca (La Viña),1998,era5_seamless,land,0.3
+1998-08,0.0,1.0,Jayanca (La Viña),1998,era5_seamless,land,1.0
+1998-09,2.1,6.4,Jayanca (La Viña),1998,era5_seamless,land,4.3
+1998-10,0.0,22.0,Jayanca (La Viña),1998,era5_seamless,land,22.0
+1998-11,0.0,12.6,Jayanca (La Viña),1998,era5_seamless,land,12.6
+1998-12,0.3,40.9,Jayanca (La Viña),1998,era5_seamless,land,40.6
+1998-01,348.3,1871.0,Jayanca (La Viña),1998,era5,land,1522.7
+1998-02,466.3,1844.9,Jayanca (La Viña),1998,era5,land,1378.6
+1998-03,539.1,2913.8,Jayanca (La Viña),1998,era5,land,2374.7
+1998-04,61.5,758.7,Jayanca (La Viña),1998,era5,land,697.2
+1998-05,10.0,113.6,Jayanca (La Viña),1998,era5,land,103.6
+1998-06,0.4,16.2,Jayanca (La Viña),1998,era5,land,15.8
+1998-07,0.0,0.30000000000000004,Jayanca (La Viña),1998,era5,land,0.3
+1998-08,0.0,1.0,Jayanca (La Viña),1998,era5,land,1.0
+1998-09,2.1,6.4,Jayanca (La Viña),1998,era5,land,4.3
+1998-10,0.0,22.0,Jayanca (La Viña),1998,era5,land,22.0
+1998-11,0.0,12.6,Jayanca (La Viña),1998,era5,land,12.6
+1998-12,0.3,40.9,Jayanca (La Viña),1998,era5,land,40.6
+2000-01,2.2,31.1,Jayanca (La Viña),2000,era5_seamless,nearest,28.9
+2000-02,1.0,214.6,Jayanca (La Viña),2000,era5_seamless,nearest,213.6
+2000-03,27.3,377.8,Jayanca (La Viña),2000,era5_seamless,nearest,350.5
+2000-04,21.6,502.5,Jayanca (La Viña),2000,era5_seamless,nearest,480.9
+2000-05,0.0,120.5,Jayanca (La Viña),2000,era5_seamless,nearest,120.5
+2000-06,1.1,9.0,Jayanca (La Viña),2000,era5_seamless,nearest,7.9
+2000-07,0.0,1.7000000000000002,Jayanca (La Viña),2000,era5_seamless,nearest,1.7
+2000-08,1.1,0.2,Jayanca (La Viña),2000,era5_seamless,nearest,-0.9
+2000-09,0.0,16.5,Jayanca (La Viña),2000,era5_seamless,nearest,16.5
+2000-10,0.0,4.7,Jayanca (La Viña),2000,era5_seamless,nearest,4.7
+2000-11,0.0,17.7,Jayanca (La Viña),2000,era5_seamless,nearest,17.7
+2000-12,4.1,117.9,Jayanca (La Viña),2000,era5_seamless,nearest,113.8
+2000-01,2.2,31.1,Jayanca (La Viña),2000,era5,nearest,28.9
+2000-02,1.0,214.6,Jayanca (La Viña),2000,era5,nearest,213.6
+2000-03,27.3,377.8,Jayanca (La Viña),2000,era5,nearest,350.5
+2000-04,21.6,502.5,Jayanca (La Viña),2000,era5,nearest,480.9
+2000-05,0.0,120.5,Jayanca (La Viña),2000,era5,nearest,120.5
+2000-06,1.1,9.0,Jayanca (La Viña),2000,era5,nearest,7.9
+2000-07,0.0,1.7000000000000002,Jayanca (La Viña),2000,era5,nearest,1.7
+2000-08,1.1,0.2,Jayanca (La Viña),2000,era5,nearest,-0.9
+2000-09,0.0,16.5,Jayanca (La Viña),2000,era5,nearest,16.5
+2000-10,0.0,4.7,Jayanca (La Viña),2000,era5,nearest,4.7
+2000-11,0.0,17.7,Jayanca (La Viña),2000,era5,nearest,17.7
+2000-12,4.1,117.9,Jayanca (La Viña),2000,era5,nearest,113.8
+1998-01,58.28,147.1,Cayaltí,1998,era5_seamless,nearest,88.82
+1998-02,292.33,375.2,Cayaltí,1998,era5_seamless,nearest,82.87
+1998-03,174.87,634.0,Cayaltí,1998,era5_seamless,nearest,459.13
+1998-04,26.31,151.20000000000002,Cayaltí,1998,era5_seamless,nearest,124.89
+1998-05,0.03,8.8,Cayaltí,1998,era5_seamless,nearest,8.77
+1998-06,2.11,0.6000000000000001,Cayaltí,1998,era5_seamless,nearest,-1.51
+1998-07,0.0,0.0,Cayaltí,1998,era5_seamless,nearest,0.0
+1998-08,0.02,1.2,Cayaltí,1998,era5_seamless,nearest,1.18
+1998-09,0.03,1.6,Cayaltí,1998,era5_seamless,nearest,1.57
+1998-10,4.51,6.5,Cayaltí,1998,era5_seamless,nearest,1.99
+1998-11,0.0,4.9,Cayaltí,1998,era5_seamless,nearest,4.9
+1998-12,0.01,4.5,Cayaltí,1998,era5_seamless,nearest,4.49
+1998-01,58.28,147.1,Cayaltí,1998,era5,nearest,88.82
+1998-02,292.33,375.2,Cayaltí,1998,era5,nearest,82.87
+1998-03,174.87,634.0,Cayaltí,1998,era5,nearest,459.13
+1998-04,26.31,151.20000000000002,Cayaltí,1998,era5,nearest,124.89
+1998-05,0.03,8.8,Cayaltí,1998,era5,nearest,8.77
+1998-06,2.11,0.6000000000000001,Cayaltí,1998,era5,nearest,-1.51
+1998-07,0.0,0.0,Cayaltí,1998,era5,nearest,0.0
+1998-08,0.02,1.2,Cayaltí,1998,era5,nearest,1.18
+1998-09,0.03,1.6,Cayaltí,1998,era5,nearest,1.57
+1998-10,4.51,6.5,Cayaltí,1998,era5,nearest,1.99
+1998-11,0.0,4.9,Cayaltí,1998,era5,nearest,4.9
+1998-12,0.01,4.5,Cayaltí,1998,era5,nearest,4.49
+1998-01,58.28,147.1,Cayaltí,1998,era5_seamless,land,88.82
+1998-02,292.33,375.2,Cayaltí,1998,era5_seamless,land,82.87
+1998-03,174.87,634.0,Cayaltí,1998,era5_seamless,land,459.13
+1998-04,26.31,151.20000000000002,Cayaltí,1998,era5_seamless,land,124.89
+1998-05,0.03,8.8,Cayaltí,1998,era5_seamless,land,8.77
+1998-06,2.11,0.6000000000000001,Cayaltí,1998,era5_seamless,land,-1.51
+1998-07,0.0,0.0,Cayaltí,1998,era5_seamless,land,0.0
+1998-08,0.02,1.2,Cayaltí,1998,era5_seamless,land,1.18
+1998-09,0.03,1.6,Cayaltí,1998,era5_seamless,land,1.57
+1998-10,4.51,6.5,Cayaltí,1998,era5_seamless,land,1.99
+1998-11,0.0,4.9,Cayaltí,1998,era5_seamless,land,4.9
+1998-12,0.01,4.5,Cayaltí,1998,era5_seamless,land,4.49
+1998-01,58.28,147.1,Cayaltí,1998,era5,land,88.82
+1998-02,292.33,375.2,Cayaltí,1998,era5,land,82.87
+1998-03,174.87,634.0,Cayaltí,1998,era5,land,459.13
+1998-04,26.31,151.20000000000002,Cayaltí,1998,era5,land,124.89
+1998-05,0.03,8.8,Cayaltí,1998,era5,land,8.77
+1998-06,2.11,0.6000000000000001,Cayaltí,1998,era5,land,-1.51
+1998-07,0.0,0.0,Cayaltí,1998,era5,land,0.0
+1998-08,0.02,1.2,Cayaltí,1998,era5,land,1.18
+1998-09,0.03,1.6,Cayaltí,1998,era5,land,1.57
+1998-10,4.51,6.5,Cayaltí,1998,era5,land,1.99
+1998-11,0.0,4.9,Cayaltí,1998,era5,land,4.9
+1998-12,0.01,4.5,Cayaltí,1998,era5,land,4.49
+2000-01,0.92,5.800000000000001,Cayaltí,2000,era5_seamless,nearest,4.88
+2000-02,0.54,48.8,Cayaltí,2000,era5_seamless,nearest,48.26
+2000-03,10.13,50.0,Cayaltí,2000,era5_seamless,nearest,39.87
+2000-04,12.28,29.4,Cayaltí,2000,era5_seamless,nearest,17.12
+2000-05,7.05,6.8999999999999995,Cayaltí,2000,era5_seamless,nearest,-0.15
+2000-06,1.92,2.8,Cayaltí,2000,era5_seamless,nearest,0.88
+2000-07,0.0,0.0,Cayaltí,2000,era5_seamless,nearest,0.0
+2000-08,1.83,0.6,Cayaltí,2000,era5_seamless,nearest,-1.23
+2000-09,5.34,3.5,Cayaltí,2000,era5_seamless,nearest,-1.84
+2000-10,0.02,3.3,Cayaltí,2000,era5_seamless,nearest,3.28
+2000-11,0.94,14.9,Cayaltí,2000,era5_seamless,nearest,13.96
+2000-12,8.41,18.9,Cayaltí,2000,era5_seamless,nearest,10.49
+2000-01,0.92,5.800000000000001,Cayaltí,2000,era5,nearest,4.88
+2000-02,0.54,48.8,Cayaltí,2000,era5,nearest,48.26
+2000-03,10.13,50.0,Cayaltí,2000,era5,nearest,39.87
+2000-04,12.28,29.4,Cayaltí,2000,era5,nearest,17.12
+2000-05,7.05,6.8999999999999995,Cayaltí,2000,era5,nearest,-0.15
+2000-06,1.92,2.8,Cayaltí,2000,era5,nearest,0.88
+2000-07,0.0,0.0,Cayaltí,2000,era5,nearest,0.0
+2000-08,1.83,0.6,Cayaltí,2000,era5,nearest,-1.23
+2000-09,5.34,3.5,Cayaltí,2000,era5,nearest,-1.84
+2000-10,0.02,3.3,Cayaltí,2000,era5,nearest,3.28
+2000-11,0.94,14.9,Cayaltí,2000,era5,nearest,13.96
+2000-12,8.41,18.9,Cayaltí,2000,era5,nearest,10.49
+1998-01,19.51,93.0,Reque,1998,era5_seamless,nearest,73.49
+1998-02,111.7,262.7,Reque,1998,era5_seamless,nearest,151.0
+1998-03,96.6,432.0,Reque,1998,era5_seamless,nearest,335.4
+1998-04,5.01,48.2,Reque,1998,era5_seamless,nearest,43.19
+1998-05,0.0,2.7,Reque,1998,era5_seamless,nearest,2.7
+1998-06,0.0,0.2,Reque,1998,era5_seamless,nearest,0.2
+1998-07,0.0,0.0,Reque,1998,era5_seamless,nearest,0.0
+1998-08,0.0,0.0,Reque,1998,era5_seamless,nearest,0.0
+1998-09,0.0,1.2,Reque,1998,era5_seamless,nearest,1.2
+1998-10,0.0,2.4000000000000004,Reque,1998,era5_seamless,nearest,2.4
+1998-11,0.0,1.7000000000000002,Reque,1998,era5_seamless,nearest,1.7
+1998-12,0.0,2.3000000000000003,Reque,1998,era5_seamless,nearest,2.3
+1998-01,19.51,93.0,Reque,1998,era5,nearest,73.49
+1998-02,111.7,262.7,Reque,1998,era5,nearest,151.0
+1998-03,96.6,432.0,Reque,1998,era5,nearest,335.4
+1998-04,5.01,48.2,Reque,1998,era5,nearest,43.19
+1998-05,0.0,2.7,Reque,1998,era5,nearest,2.7
+1998-06,0.0,0.2,Reque,1998,era5,nearest,0.2
+1998-07,0.0,0.0,Reque,1998,era5,nearest,0.0
+1998-08,0.0,0.0,Reque,1998,era5,nearest,0.0
+1998-09,0.0,1.2,Reque,1998,era5,nearest,1.2
+1998-10,0.0,2.4000000000000004,Reque,1998,era5,nearest,2.4
+1998-11,0.0,1.7000000000000002,Reque,1998,era5,nearest,1.7
+1998-12,0.0,2.3000000000000003,Reque,1998,era5,nearest,2.3
+1998-01,19.51,93.0,Reque,1998,era5_seamless,land,73.49
+1998-02,111.7,262.7,Reque,1998,era5_seamless,land,151.0
+1998-03,96.6,432.0,Reque,1998,era5_seamless,land,335.4
+1998-04,5.01,48.2,Reque,1998,era5_seamless,land,43.19
+1998-05,0.0,2.7,Reque,1998,era5_seamless,land,2.7
+1998-06,0.0,0.2,Reque,1998,era5_seamless,land,0.2
+1998-07,0.0,0.0,Reque,1998,era5_seamless,land,0.0
+1998-08,0.0,0.0,Reque,1998,era5_seamless,land,0.0
+1998-09,0.0,1.2,Reque,1998,era5_seamless,land,1.2
+1998-10,0.0,2.4000000000000004,Reque,1998,era5_seamless,land,2.4
+1998-11,0.0,1.7000000000000002,Reque,1998,era5_seamless,land,1.7
+1998-12,0.0,2.3000000000000003,Reque,1998,era5_seamless,land,2.3
+1998-01,19.51,93.0,Reque,1998,era5,land,73.49
+1998-02,111.7,262.7,Reque,1998,era5,land,151.0
+1998-03,96.6,432.0,Reque,1998,era5,land,335.4
+1998-04,5.01,48.2,Reque,1998,era5,land,43.19
+1998-05,0.0,2.7,Reque,1998,era5,land,2.7
+1998-06,0.0,0.2,Reque,1998,era5,land,0.2
+1998-07,0.0,0.0,Reque,1998,era5,land,0.0
+1998-08,0.0,0.0,Reque,1998,era5,land,0.0
+1998-09,0.0,1.2,Reque,1998,era5,land,1.2
+1998-10,0.0,2.4000000000000004,Reque,1998,era5,land,2.4
+1998-11,0.0,1.7000000000000002,Reque,1998,era5,land,1.7
+1998-12,0.0,2.3000000000000003,Reque,1998,era5,land,2.3
+2000-01,0.0,3.5,Reque,2000,era5_seamless,nearest,3.5
+2000-02,0.0,13.5,Reque,2000,era5_seamless,nearest,13.5
+2000-03,3.3,23.0,Reque,2000,era5_seamless,nearest,19.7
+2000-04,9.2,18.5,Reque,2000,era5_seamless,nearest,9.3
+2000-05,3.6,7.5,Reque,2000,era5_seamless,nearest,3.9
+2000-06,0.0,0.30000000000000004,Reque,2000,era5_seamless,nearest,0.3
+2000-07,0.0,0.0,Reque,2000,era5_seamless,nearest,0.0
+2000-08,0.0,0.0,Reque,2000,era5_seamless,nearest,0.0
+2000-09,0.0,2.1,Reque,2000,era5_seamless,nearest,2.1
+2000-10,0.0,2.0,Reque,2000,era5_seamless,nearest,2.0
+2000-11,2.0,5.4,Reque,2000,era5_seamless,nearest,3.4
+2000-12,0.0,14.0,Reque,2000,era5_seamless,nearest,14.0
+2000-01,0.0,3.5,Reque,2000,era5,nearest,3.5
+2000-02,0.0,13.5,Reque,2000,era5,nearest,13.5
+2000-03,3.3,23.0,Reque,2000,era5,nearest,19.7
+2000-04,9.2,18.5,Reque,2000,era5,nearest,9.3
+2000-05,3.6,7.5,Reque,2000,era5,nearest,3.9
+2000-06,0.0,0.30000000000000004,Reque,2000,era5,nearest,0.3
+2000-07,0.0,0.0,Reque,2000,era5,nearest,0.0
+2000-08,0.0,0.0,Reque,2000,era5,nearest,0.0
+2000-09,0.0,2.1,Reque,2000,era5,nearest,2.1
+2000-10,0.0,2.0,Reque,2000,era5,nearest,2.0
+2000-11,2.0,5.4,Reque,2000,era5,nearest,3.4
+2000-12,0.0,14.0,Reque,2000,era5,nearest,14.0
+1998-01,42.14,322.8,Lambayeque,1998,era5_seamless,nearest,280.66
+1998-02,110.02,316.5,Lambayeque,1998,era5_seamless,nearest,206.48
+1998-03,116.22,562.6,Lambayeque,1998,era5_seamless,nearest,446.38
+1998-04,7.25,54.4,Lambayeque,1998,era5_seamless,nearest,47.15
+1998-05,2.0,5.5,Lambayeque,1998,era5_seamless,nearest,3.5
+1998-06,0.01,1.2999999999999998,Lambayeque,1998,era5_seamless,nearest,1.29
+1998-07,0.0,0.0,Lambayeque,1998,era5_seamless,nearest,0.0
+1998-08,0.0,0.0,Lambayeque,1998,era5_seamless,nearest,0.0
+1998-09,0.0,0.0,Lambayeque,1998,era5_seamless,nearest,0.0
+1998-10,0.54,2.3,Lambayeque,1998,era5_seamless,nearest,1.76
+1998-11,0.2,2.0,Lambayeque,1998,era5_seamless,nearest,1.8
+1998-12,1.23,2.8,Lambayeque,1998,era5_seamless,nearest,1.57
+1998-01,42.14,322.8,Lambayeque,1998,era5,nearest,280.66
+1998-02,110.02,316.5,Lambayeque,1998,era5,nearest,206.48
+1998-03,116.22,562.6,Lambayeque,1998,era5,nearest,446.38
+1998-04,7.25,54.4,Lambayeque,1998,era5,nearest,47.15
+1998-05,2.0,5.5,Lambayeque,1998,era5,nearest,3.5
+1998-06,0.01,1.2999999999999998,Lambayeque,1998,era5,nearest,1.29
+1998-07,0.0,0.0,Lambayeque,1998,era5,nearest,0.0
+1998-08,0.0,0.0,Lambayeque,1998,era5,nearest,0.0
+1998-09,0.0,0.0,Lambayeque,1998,era5,nearest,0.0
+1998-10,0.54,2.3,Lambayeque,1998,era5,nearest,1.76
+1998-11,0.2,2.0,Lambayeque,1998,era5,nearest,1.8
+1998-12,1.23,2.8,Lambayeque,1998,era5,nearest,1.57
+1998-01,42.14,322.8,Lambayeque,1998,era5_seamless,land,280.66
+1998-02,110.02,316.5,Lambayeque,1998,era5_seamless,land,206.48
+1998-03,116.22,562.6,Lambayeque,1998,era5_seamless,land,446.38
+1998-04,7.25,54.4,Lambayeque,1998,era5_seamless,land,47.15
+1998-05,2.0,5.5,Lambayeque,1998,era5_seamless,land,3.5
+1998-06,0.01,1.2999999999999998,Lambayeque,1998,era5_seamless,land,1.29
+1998-07,0.0,0.0,Lambayeque,1998,era5_seamless,land,0.0
+1998-08,0.0,0.0,Lambayeque,1998,era5_seamless,land,0.0
+1998-09,0.0,0.0,Lambayeque,1998,era5_seamless,land,0.0
+1998-10,0.54,2.3,Lambayeque,1998,era5_seamless,land,1.76
+1998-11,0.2,2.0,Lambayeque,1998,era5_seamless,land,1.8
+1998-12,1.23,2.8,Lambayeque,1998,era5_seamless,land,1.57
+1998-01,42.14,322.8,Lambayeque,1998,era5,land,280.66
+1998-02,110.02,316.5,Lambayeque,1998,era5,land,206.48
+1998-03,116.22,562.6,Lambayeque,1998,era5,land,446.38
+1998-04,7.25,54.4,Lambayeque,1998,era5,land,47.15
+1998-05,2.0,5.5,Lambayeque,1998,era5,land,3.5
+1998-06,0.01,1.2999999999999998,Lambayeque,1998,era5,land,1.29
+1998-07,0.0,0.0,Lambayeque,1998,era5,land,0.0
+1998-08,0.0,0.0,Lambayeque,1998,era5,land,0.0
+1998-09,0.0,0.0,Lambayeque,1998,era5,land,0.0
+1998-10,0.54,2.3,Lambayeque,1998,era5,land,1.76
+1998-11,0.2,2.0,Lambayeque,1998,era5,land,1.8
+1998-12,1.23,2.8,Lambayeque,1998,era5,land,1.57
+2000-01,0.62,4.2,Lambayeque,2000,era5_seamless,nearest,3.58
+2000-02,0.46,13.8,Lambayeque,2000,era5_seamless,nearest,13.34
+2000-03,3.66,41.900000000000006,Lambayeque,2000,era5_seamless,nearest,38.24
+2000-04,3.82,30.1,Lambayeque,2000,era5_seamless,nearest,26.28
+2000-05,0.52,3.9000000000000004,Lambayeque,2000,era5_seamless,nearest,3.38
+2000-06,5.83,1.9000000000000001,Lambayeque,2000,era5_seamless,nearest,-3.93
+2000-07,0.0,0.0,Lambayeque,2000,era5_seamless,nearest,0.0
+2000-08,0.01,0.0,Lambayeque,2000,era5_seamless,nearest,-0.01
+2000-09,3.15,0.6000000000000001,Lambayeque,2000,era5_seamless,nearest,-2.55
+2000-10,0.01,0.0,Lambayeque,2000,era5_seamless,nearest,-0.01
+2000-11,0.5,4.9,Lambayeque,2000,era5_seamless,nearest,4.4
+2000-12,1.83,26.5,Lambayeque,2000,era5_seamless,nearest,24.67
+2000-01,0.62,4.2,Lambayeque,2000,era5,nearest,3.58
+2000-02,0.46,13.8,Lambayeque,2000,era5,nearest,13.34
+2000-03,3.66,41.900000000000006,Lambayeque,2000,era5,nearest,38.24
+2000-04,3.82,30.1,Lambayeque,2000,era5,nearest,26.28
+2000-05,0.52,3.9000000000000004,Lambayeque,2000,era5,nearest,3.38
+2000-06,5.83,1.9000000000000001,Lambayeque,2000,era5,nearest,-3.93
+2000-07,0.0,0.0,Lambayeque,2000,era5,nearest,0.0
+2000-08,0.01,0.0,Lambayeque,2000,era5,nearest,-0.01
+2000-09,3.15,0.6000000000000001,Lambayeque,2000,era5,nearest,-2.55
+2000-10,0.01,0.0,Lambayeque,2000,era5,nearest,-0.01
+2000-11,0.5,4.9,Lambayeque,2000,era5,nearest,4.4
+2000-12,1.83,26.5,Lambayeque,2000,era5,nearest,24.67
+1998-01,45.3,1864.4,Cueva Blanca,1998,era5_seamless,nearest,1819.1
+1998-02,149.6,1997.1000000000001,Cueva Blanca,1998,era5_seamless,nearest,1847.5
+1998-03,231.3,3144.7,Cueva Blanca,1998,era5_seamless,nearest,2913.4
+1998-04,172.0,993.5,Cueva Blanca,1998,era5_seamless,nearest,821.5
+1998-05,83.5,195.1,Cueva Blanca,1998,era5_seamless,nearest,111.6
+1998-06,33.4,29.3,Cueva Blanca,1998,era5_seamless,nearest,-4.1
+1998-07,0.0,0.6,Cueva Blanca,1998,era5_seamless,nearest,0.6
+1998-08,11.8,2.2,Cueva Blanca,1998,era5_seamless,nearest,-9.6
+1998-09,64.0,12.299999999999999,Cueva Blanca,1998,era5_seamless,nearest,-51.7
+1998-10,97.9,63.7,Cueva Blanca,1998,era5_seamless,nearest,-34.2
+1998-11,45.0,62.699999999999996,Cueva Blanca,1998,era5_seamless,nearest,17.7
+1998-12,35.4,82.1,Cueva Blanca,1998,era5_seamless,nearest,46.7
+1998-01,45.3,1864.4,Cueva Blanca,1998,era5,nearest,1819.1
+1998-02,149.6,1997.1000000000001,Cueva Blanca,1998,era5,nearest,1847.5
+1998-03,231.3,3144.7,Cueva Blanca,1998,era5,nearest,2913.4
+1998-04,172.0,993.5,Cueva Blanca,1998,era5,nearest,821.5
+1998-05,83.5,195.1,Cueva Blanca,1998,era5,nearest,111.6
+1998-06,33.4,29.3,Cueva Blanca,1998,era5,nearest,-4.1
+1998-07,0.0,0.6,Cueva Blanca,1998,era5,nearest,0.6
+1998-08,11.8,2.2,Cueva Blanca,1998,era5,nearest,-9.6
+1998-09,64.0,12.299999999999999,Cueva Blanca,1998,era5,nearest,-51.7
+1998-10,97.9,63.7,Cueva Blanca,1998,era5,nearest,-34.2
+1998-11,45.0,62.699999999999996,Cueva Blanca,1998,era5,nearest,17.7
+1998-12,35.4,82.1,Cueva Blanca,1998,era5,nearest,46.7
+1998-01,45.3,1864.4,Cueva Blanca,1998,era5_seamless,land,1819.1
+1998-02,149.6,1997.1000000000001,Cueva Blanca,1998,era5_seamless,land,1847.5
+1998-03,231.3,3144.7,Cueva Blanca,1998,era5_seamless,land,2913.4
+1998-04,172.0,993.5,Cueva Blanca,1998,era5_seamless,land,821.5
+1998-05,83.5,195.1,Cueva Blanca,1998,era5_seamless,land,111.6
+1998-06,33.4,29.3,Cueva Blanca,1998,era5_seamless,land,-4.1
+1998-07,0.0,0.6,Cueva Blanca,1998,era5_seamless,land,0.6
+1998-08,11.8,2.2,Cueva Blanca,1998,era5_seamless,land,-9.6
+1998-09,64.0,12.299999999999999,Cueva Blanca,1998,era5_seamless,land,-51.7
+1998-10,97.9,63.7,Cueva Blanca,1998,era5_seamless,land,-34.2
+1998-11,45.0,62.699999999999996,Cueva Blanca,1998,era5_seamless,land,17.7
+1998-12,35.4,82.1,Cueva Blanca,1998,era5_seamless,land,46.7
+1998-01,45.3,1864.4,Cueva Blanca,1998,era5,land,1819.1
+1998-02,149.6,1997.1000000000001,Cueva Blanca,1998,era5,land,1847.5
+1998-03,231.3,3144.7,Cueva Blanca,1998,era5,land,2913.4
+1998-04,172.0,993.5,Cueva Blanca,1998,era5,land,821.5
+1998-05,83.5,195.1,Cueva Blanca,1998,era5,land,111.6
+1998-06,33.4,29.3,Cueva Blanca,1998,era5,land,-4.1
+1998-07,0.0,0.6,Cueva Blanca,1998,era5,land,0.6
+1998-08,11.8,2.2,Cueva Blanca,1998,era5,land,-9.6
+1998-09,64.0,12.299999999999999,Cueva Blanca,1998,era5,land,-51.7
+1998-10,97.9,63.7,Cueva Blanca,1998,era5,land,-34.2
+1998-11,45.0,62.699999999999996,Cueva Blanca,1998,era5,land,17.7
+1998-12,35.4,82.1,Cueva Blanca,1998,era5,land,46.7
+2000-01,42.2,97.4,Cueva Blanca,2000,era5_seamless,nearest,55.2
+2000-02,147.7,399.3,Cueva Blanca,2000,era5_seamless,nearest,251.6
+2000-03,150.4,589.1,Cueva Blanca,2000,era5_seamless,nearest,438.7
+2000-04,134.7,682.1,Cueva Blanca,2000,era5_seamless,nearest,547.4
+2000-05,62.6,190.1,Cueva Blanca,2000,era5_seamless,nearest,127.5
+2000-06,49.8,15.7,Cueva Blanca,2000,era5_seamless,nearest,-34.1
+2000-07,12.9,2.9000000000000004,Cueva Blanca,2000,era5_seamless,nearest,-10.0
+2000-08,13.7,0.5,Cueva Blanca,2000,era5_seamless,nearest,-13.2
+2000-09,73.3,42.5,Cueva Blanca,2000,era5_seamless,nearest,-30.8
+2000-10,20.5,19.9,Cueva Blanca,2000,era5_seamless,nearest,-0.6
+2000-11,21.4,41.0,Cueva Blanca,2000,era5_seamless,nearest,19.6
+2000-12,84.7,200.8,Cueva Blanca,2000,era5_seamless,nearest,116.1
+2000-01,42.2,97.4,Cueva Blanca,2000,era5,nearest,55.2
+2000-02,147.7,399.3,Cueva Blanca,2000,era5,nearest,251.6
+2000-03,150.4,589.1,Cueva Blanca,2000,era5,nearest,438.7
+2000-04,134.7,682.1,Cueva Blanca,2000,era5,nearest,547.4
+2000-05,62.6,190.1,Cueva Blanca,2000,era5,nearest,127.5
+2000-06,49.8,15.7,Cueva Blanca,2000,era5,nearest,-34.1
+2000-07,12.9,2.9000000000000004,Cueva Blanca,2000,era5,nearest,-10.0
+2000-08,13.7,0.5,Cueva Blanca,2000,era5,nearest,-13.2
+2000-09,73.3,42.5,Cueva Blanca,2000,era5,nearest,-30.8
+2000-10,20.5,19.9,Cueva Blanca,2000,era5,nearest,-0.6
+2000-11,21.4,41.0,Cueva Blanca,2000,era5,nearest,19.6
+2000-12,84.7,200.8,Cueva Blanca,2000,era5,nearest,116.1

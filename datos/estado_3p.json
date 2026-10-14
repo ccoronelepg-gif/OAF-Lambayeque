@@ -1,0 +1,118 @@
+{
+  "fase": "3P",
+  "periodos": [
+    1998,
+    2000
+  ],
+  "esperados": 45,
+  "obtenidos": 30,
+  "incidencias": [
+    {
+      "estacion": "Jayanca (La Viña)",
+      "ano": 1998,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Jayanca (La Viña)",
+      "ano": 1998,
+      "seleccion": "land",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Jayanca (La Viña)",
+      "ano": 2000,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cayaltí",
+      "ano": 1998,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cayaltí",
+      "ano": 1998,
+      "seleccion": "land",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cayaltí",
+      "ano": 2000,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Reque",
+      "ano": 1998,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Reque",
+      "ano": 1998,
+      "seleccion": "land",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Reque",
+      "ano": 2000,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Lambayeque",
+      "ano": 1998,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Lambayeque",
+      "ano": 1998,
+      "seleccion": "land",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Lambayeque",
+      "ano": 2000,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cueva Blanca",
+      "ano": 1998,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cueva Blanca",
+      "ano": 1998,
+      "seleccion": "land",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    },
+    {
+      "estacion": "Cueva Blanca",
+      "ano": 2000,
+      "seleccion": "nearest",
+      "modelo": "era5_land",
+      "error": "RuntimeError: Precipitacion negativa o ausente en un dia"
+    }
+  ],
+  "coordenadas_estaciones_preliminares": true,
+  "no_validacion_independiente": true
+}
