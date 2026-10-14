@@ -16,8 +16,8 @@
 .autor-panel .autor-telefono:hover{background:#bbebe1;text-decoration:underline}
 </style></head>
 <body>
-<header><div class="top"><div class="topinner"><div class="brand"><div class="brandmark">◎</div><span>OAF · LAMBAYEQUE</span></div><nav><a href="#panorama">Panorama</a><a href="#explorador">Explorador histórico</a><a href="#validacion">Validación 1998</a><a href="#multianual">Análisis multianual</a><a href="#auditoria3p">Modelos ERA5</a><a href="#chirps3q">CHIRPS 1998</a><a href="#chirpsmultianual">CHIRPS 1996–2000</a><a href="#validacion20">Validación 1996–2015</a><a href="#sensibilidad3r">Auditoría 1998/2000</a><a href="#sensibilidad3r20">Sensibilidad 1996–2015</a><a href="#intensidad3s">Lluvias intensas</a><a href="#estaciones">Estaciones</a><a href="#progreso">Evolución</a></nav></div></div>
-<div class="hero"><div><div class="eyebrow">Observatorio agroclimático y fitosanitario</div><h1>El clima de Lambayeque, en datos.</h1><p>Seguimiento histórico de las precipitaciones y control de calidad meteorológica para impulsar decisiones agrícolas informadas. Primera aplicación fitosanitaria prevista: <b>arándano</b>.</p><div class="meta"><span>5 estaciones meteorológicas</span><span>Referencia 1996–2025</span><span>Datos observados · SENAMHI</span></div><div class="autoria-hero"><b>Autor del observatorio:</b> <strong>ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA</strong><span class="autor-dato">Contacto: <a href="tel:+51929304528">+51 929 304 528</a></span></div></div><aside class="heroaside"><span class="tag">VERSIÓN PÚBLICA · 1.2</span><h2>Visor histórico</h2><p>Explora estaciones y años disponibles. Las series incompletas se identifican expresamente para evitar interpretaciones erróneas.</p><p style="margin-top:14px"><b>Estado:</b> prototipo de investigación, no servicio operativo de alertas.</p></aside></div></header>
+<header><div class="top"><div class="topinner"><div class="brand"><div class="brandmark">◎</div><span>OAF · LAMBAYEQUE</span></div><nav><a href="#panorama">Panorama</a><a href="#explorador">Explorador histórico</a><a href="#validacion">Validación 1998</a><a href="#multianual">Análisis multianual</a><a href="#auditoria3p">Modelos ERA5</a><a href="#chirps3q">CHIRPS 1998</a><a href="#chirpsmultianual">CHIRPS 1996–2000</a><a href="#validacion20">Validación 1996–2015</a><a href="#sensibilidad3r">Auditoría 1998/2000</a><a href="#sensibilidad3r20">Sensibilidad 1996–2015</a><a href="#intensidad3s">Lluvias intensas</a><a href="#independencia3t">Confiabilidad temporal</a><a href="#estaciones">Estaciones</a><a href="#progreso">Evolución</a></nav></div></div>
+<div class="hero"><div><div class="eyebrow">Observatorio agroclimático y fitosanitario</div><h1>El clima de Lambayeque, en datos.</h1><p>Seguimiento histórico de las precipitaciones y control de calidad meteorológica para impulsar decisiones agrícolas informadas. Primera aplicación fitosanitaria prevista: <b>arándano</b>.</p><div class="meta"><span>5 estaciones meteorológicas</span><span>Referencia 1996–2025</span><span>Datos observados · SENAMHI</span></div><div class="autoria-hero"><b>Autor del observatorio:</b> <strong>ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA</strong><span class="autor-dato">Contacto: <a href="tel:+51929304528">+51 929 304 528</a></span></div></div><aside class="heroaside"><span class="tag">VERSIÓN PÚBLICA · 1.3</span><h2>Visor histórico</h2><p>Explora estaciones y años disponibles. Las series incompletas se identifican expresamente para evitar interpretaciones erróneas.</p><p style="margin-top:14px"><b>Estado:</b> prototipo de investigación, no servicio operativo de alertas.</p></aside></div></header>
 <main class="container">
 <section id="panorama" class="stats" aria-label="Indicadores de avance"><div class="stat"><div class="label">Estaciones integradas</div><strong>5</strong><small>Registros instrumentales</small></div><div class="stat"><div class="label">Años de referencia</div><strong>30</strong><small>1996–2025</small></div><div class="stat"><div class="label">Años completos · 5 estaciones</div><strong>11</strong><small>Simultáneamente disponibles</small></div><div class="stat"><div class="label">Fase del proyecto</div><strong>3O</strong><small>Contraste multianual 1996–2015</small></div></section>
 <div class="sectionhead" id="explorador"><div><div class="overline">Datos y visualizaciones</div><h2>Explorador histórico</h2><p>Selecciona una estación y un año para consultar las observaciones de precipitación y su disponibilidad.</p></div></div>
@@ -427,6 +427,45 @@
   eventBody.innerHTML=e.every(Boolean)?e.map((x,i)=>'<tr><td><b>'+products[i]+'</b></td><td>'+x[4]+'</td><td>'+x[6]+'</td><td>'+x[7]+'</td><td>'+x[8]+'</td><td>'+cv(x[9])+'</td></tr>').join(''):'<tr><td colspan="6">No disponible</td></tr>';
  }
  [sel,cls,period,threshold].forEach(el=>el.addEventListener('change',draw));draw();
+})();
+</script>
+
+
+<div class="sectionhead" id="independencia3t">
+ <div><div class="overline">Fase 3T · Robustez temporal · Validación externa pendiente</div>
+ <h2>¿Se mantiene el desempeño climático a lo largo de los años?</h2>
+ <p>Analizamos 92 combinaciones estación-año con al menos nueve meses completos, comparando PISCOp y CHIRPS sobre los mismos meses medidos por SENAMHI entre 1996 y 2015.</p></div>
+</div>
+<section class="panel" aria-labelledby="t3t">
+ <div class="overline" id="t3t">Concordancia histórica, sin independencia demostrada</div>
+ <p class="notice"><b>Resultado:</b> PISCOp tuvo menor MAE en 82 de 92 combinaciones estación-año evaluables; CHIRPS en las 10 restantes. En Cueva Blanca cada producto tuvo menor error en nueve años. La estabilidad temporal no equivale a validación independiente.</p>
+ <p class="muted sm"><b>Independencia externa pendiente de verificar:</b> 0 de las 15 combinaciones estación-producto tienen hasta ahora documentación suficiente para confirmar que la estación no intervino en su elaboración. Esto no implica que todas participaran. La correspondencia geográfica histórica también está pendiente.</p>
+ <div style="display:flex;gap:18px;align-items:end;flex-wrap:wrap;margin:18px 0">
+   <label><b>Estación de referencia</b><select id="station3t" style="display:block;max-width:100%;width:285px;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+ </div>
+ <p id="caption3t" class="muted sm" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Conteo de años por producto con menor error mensual">
+ <thead><tr><th>Producto</th><th>Años con menor MAE</th><th>Total de años evaluables</th></tr></thead><tbody id="tbl3t"></tbody></table></div>
+ <div id="bar3t" role="img" aria-label="Porcentaje de años en que cada producto tiene menor MAE" style="margin-top:21px"></div>
+ <p id="interval3t" class="muted sm" style="margin-top:13px"></p>
+ <p class="muted sm"><b>Metodología:</b> el MAE anual usa los meses observados disponibles (mínimo nueve), no la precipitación acumulada de un año supuestamente completo. El rango de remuestreo por años muestra sensibilidad temporal, no incertidumbre de validación independiente ni desempeño de pronósticos.</p>
+ <p class="sm"><a href="AUDITORIA_3T.md">Informe de la Fase 3T</a> · <a href="datos/comparacion_anual_piscop_chirps_3t.csv">Resultados año por año</a> · <a href="datos/resumen_robustez_3t.csv">Indicadores por estación</a> · <a href="datos/trazabilidad_independencia_3t.csv">Independencia pendiente por producto</a> · <a href="scripts/auditoria_3t_robustez.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const data=[{"name":"Jayanca (La Viña)","years":18,"months":212,"pisco":18,"chirps":0,"diff":6.161,"low":3.187,"high":11.055},{"name":"Cayaltí","years":20,"months":235,"pisco":19,"chirps":1,"diff":1.888,"low":1.391,"high":2.318},{"name":"Reque","years":20,"months":233,"pisco":20,"chirps":0,"diff":1.963,"low":1.404,"high":2.672},{"name":"Lambayeque","years":16,"months":191,"pisco":16,"chirps":0,"diff":2.463,"low":1.446,"high":4.063},{"name":"Cueva Blanca","years":18,"months":215,"pisco":9,"chirps":9,"diff":1.193,"low":-2.956,"high":6.569}];
+ const select=document.getElementById('station3t'),caption=document.getElementById('caption3t'),table=document.getElementById('tbl3t'),chart=document.getElementById('bar3t'),note=document.getElementById('interval3t');
+ if(!select||!caption||!table||!chart||!note)return;
+ const fmt=(x,d=2)=>Number(x).toLocaleString('es-PE',{minimumFractionDigits:d,maximumFractionDigits:d});
+ function render(){
+  const x=data[Number(select.value)];if(!x)return;
+  caption.textContent=x.name+' · '+x.years+' años evaluables ('+x.months+' meses observados). Cada año tiene al menos nueve meses completos.';
+  table.innerHTML='<tr><td><b>PISCOp v3.0</b></td><td>'+x.pisco+'</td><td>'+x.years+'</td></tr><tr><td><b>CHIRPS v3</b></td><td>'+x.chirps+'</td><td>'+x.years+'</td></tr>';
+  const elements=[['PISCOp v3.0',x.pisco,'#bd8740'],['CHIRPS v3',x.chirps,'#785db0']];
+  chart.innerHTML=elements.map(e=>'<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><b>'+e[0]+'</b><span>'+e[1]+' de '+x.years+' años</span></div><div style="height:22px;border-radius:5px;background:#e9f0ef;overflow:hidden;margin-top:5px"><div style="width:'+(100*e[1]/x.years).toFixed(2)+'%;background:'+e[2]+';height:100%"></div></div></div>').join('');
+  note.textContent='Diferencia media pareada de MAE (CHIRPS menos PISCOp): '+fmt(x.diff,3)+' mm/mes. Rango exploratorio de remuestreo por año: '+fmt(x.low,3)+' a '+fmt(x.high,3)+' mm/mes. Si incluye cero, no hay ventaja temporal consistente en este análisis.';
+ }
+ select.addEventListener('change',render);render();
 })();
 </script>
 
