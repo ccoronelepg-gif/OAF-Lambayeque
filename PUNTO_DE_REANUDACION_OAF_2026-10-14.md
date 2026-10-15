@@ -19,6 +19,25 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance: Fase 7C — Protocolo fitosanitario y control de datos de parcelas (15/10/2026)
+
+**Objetivo científico:** continuar desde 7B (que validó únicamente señales de HR elevada frente a ERA5) hacia una futura **validación biológica real de Botrytis cinerea en arándano**, con observaciones instrumentales y enfermedad diagnosticada. No hay incidencias medidas ni probabilidades calibradas que reportar.
+
+**Entregables ejecutados y guardados:**
+1. `FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md`: unidad de muestreo, fases de floración, síntomas frente a confirmación específica, sensores, privacidad y planificación de validación.
+2. `datos/plantilla_7c_monitoreo_botrytis.csv` (20 columnas, **sin filas reales**) y `datos/plantilla_7c_microclima_horario.csv` (12 columnas, **sin filas reales**). La primera diferencia síntomas sospechosos de confirmación específica; la segunda registra temperatura, HR en dosel y medición de humectación foliar **real** 0/1/sin dato, con huso UTC-05 y estado de calibración.
+3. `modelos/validar_campo_botrytis_7c.py` más workflow `.github/workflows/oaf_botrytis_7c_calidad_campo.yml` ejecutado con **success**. Superó autopruebas de coherencia de numerador/denominador, diagnóstico molecular conservador, fechas, duplicados, sensores, privacidad y registro vacío. Los casos sintéticos de prueba no se guardan como datos científicos.
+4. `datos/estado_campo_botrytis_7c.json`: primera salida real `sin_datos_campo`, `hay_registros_campo=false`, `probabilidad_infeccion_calibrada=false`, `alerta_fitosanitaria=false`.
+5. `modelos/visor_campo_botrytis_7c.js` y nuevo panel plegable en `index.html`, pestaña Cultivos → Predicción. Muestra únicamente estado agregado y enlaces de plantillas y metodología.
+
+**Confidencialidad:** guardar futuras observaciones reales en `datos/_privados/botrytis_7c/` (ruta ignorada por Git) con ID anónimo de parcela; no subir coordenadas o identidad de productores al repositorio público. Las plantillas públicas siguen sin datos.
+
+**Limitaciones reconocidas:** todavía no es posible analizar incidencia diagnosticada, cuantificar exactitud del indicador como pronóstico fitopatológico ni entrenar algoritmo ML de enfermedad. El estudio 7B solo comparó HR pronosticada con ERA5, con numerosos falsos meteorológicos en Motupe/Olmos. La fuente UF/IFAS destaca floración, tejidos senescentes y humedad prolongada, sin determinar umbrales calibrados para Lambayeque.
+
+**Preservación comprobada:** portada con recuadro verde exclusivamente título y dos fotografías, autor bajo portada en primera persona, cinco pestañas, nueve enfermedades y módulos previos de arándano/vid, radiación y predicción de El Niño Costero sin modificación.
+
+**Siguiente Fase 7D:** desarrollar un emparejamiento por identificador de parcela, fecha y hora con microclima verificado, fenología, diagnóstico y emisiones meteorológicas anteriores al evento, sin fuga temporal ni asignación geográfica arbitraria. Diseñar un piloto que incluya observaciones con y sin síntomas; calibrar modelos solo después de disponer de datos suficientes y validarlos en parcelas/fechas independientes. Mantener línea oceánica Niño Costero en paralelo.
+
 ## Último avance: Fase 7B · ¿La humedad pronosticada se confirma? (15/10/2026)
 
 **Objetivo:** evaluar científicamente la capacidad real del indicador HR >90 % durante ≥6 horas para anticipar episodios de humedad en Lambayeque, y evitar llamarlo «predicción de enfermedad» sin datos de infección por *Botrytis*.
