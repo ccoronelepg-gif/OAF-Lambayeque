@@ -19,6 +19,22 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance realizado: Fase 7A · Botrytis de arándano (15/10/2026)
+
+**Nuevo módulo de arándano efectivamente integrado en el portal:** dentro de Cultivos → Predicción (ruta `#riesgos`), se presenta un análisis horario experimental de siete días completos de HR >90 % durante al menos seis horas consecutivas, que puede atravesar medianoche. Se complementa con lluvia, radiación (W/m² convertida a MJ/m² diarios), temperatura y DPV, en cuatro localidades de Lambayeque. Hay opción de identificar floración, pero la fenología *no* está certificada por el modelo. Se muestran solo patrones de humedad, **no probabilidades, alertas, diagnósticos ni tratamientos**.
+
+**Sustento:** UC IPM documenta esas condiciones de humedad como favorables a *Botrytis* en general; la guía de arándano UF/IFAS destaca la floración y humectación prolongada. HR del aire a 2 m NO equivale a humectación foliar en flores. El criterio no fue calibrado para Lambayeque.
+
+**Implementación verificada:** `modelos/botrytis_arandano_humedad_7a.js`, `modelos/botrytis_arandano_humedad_7a.py`, `.github/workflows/oaf_botrytis_arandano_7a.yml`; GitHub Actions pasó autopruebas, consulta real a Open-Meteo y archivo horario de cuatro localidades. Cotejo entre ambos lenguajes superó las verificaciones de episodios, duración, días, lluvia, radiación y DPV usando los datos del primer archivo.
+
+**Primera emisión real 15/10/2026:** `datos/patrones_botrytis_emitidos/2026-10-15.json`, con pronósticos de 16–22 octubre (168 horas × 4 localidades). Episodios esperados según criterio atmosférico: Motupe **2**, Jayanca **0**, Olmos **3**, Chiclayo **0**. No son brotes ni infecciones.
+
+**Documentación:** `FASE_7A_BOTRYTIS_ARANDANO.md`, y `datos/plantilla_monitoreo_botrytis_arandano.csv` (25 columnas únicamente; no existen registros sanitarios de campo). La investigación del modelo térmico de oídio de vid continúa intacta, así como la comparación climática, ENFEN y verificación prospectiva 6G.
+
+**Condición de preservación:** en recuadro verde de Inicio SOLO título Observatorio Agroclimático y Fitosanitario y dos fotos, bajo este la presentación en primera persona firmada Carlos E. Coronel García, Ingeniero Agrónomo. Cinco pestañas principales y nueve enfermedades en ficha.
+
+**Siguiente Fase 7B:** empezar validación con datos reales y observaciones regionales de HR dentro del dosel, humectación foliar medida, fase de floración, incidencia/severidad confirmada de Botrytis. Comparar señales pronosticadas y observaciones sin fuga temporal, antes de producir cualquier probabilidad fitosanitaria. Mantener línea Niño Costero (ICEN/TSM) y anomalías climáticas en paralelo.
+
 ## Último avance: Fase 6G — Verificación prospectiva de pronósticos archivados (15/10/2026 UTC)
 
 **Cierre confirmado Fase 6F:** el benchmark de radiación/humedad/viento terminó correctamente, con [JSON](datos/benchmark_variables_6f.json) y [CSV de errores mensuales](datos/benchmark_variables_6f_mes.csv) finalmente publicados. Cada localidad tuvo 6.552 horas de prueba enero–septiembre 2026. En relación con el modelo básico, los intervalos de mejora mediante remuestreo por bloques incluyeron 0 para Chiclayo (−2,73 % a +15,33 %) y Motupe (−5,48 % a +1,86 %); fueron negativos en Jayanca (−42,69 % a −9,52 %) y positivos en Olmos (+1,65 % a +10,14 %). No suponer causalidad ni generalizar la mejora de Olmos a toda Lambayeque.
