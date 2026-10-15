@@ -58,6 +58,17 @@ La implementación reproducible está en [modelos/oidio_vid_indicador_termico.py
 
 **Condición para publicación de pronósticos OAF:** guardar predicciones con fecha anterior al evento, medir habilidad frente a referencias, errores e incertidumbre, y no declarar operatividad hasta contar con validación externa o prospectiva suficiente.
 
+## Fase 6A · Comparación predictiva de anomalías climáticas (14/10/2026)
+
+En [Datos climatológicos del portal](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#clima), el nuevo módulo experimental compara temperaturas medias y lluvias previstas para 7 jornadas futuras con una referencia por época del año del periodo **1996–2025**. Para temperatura se identifican días previstos por encima de P90 o por debajo de P10 histórico; para precipitación se contrasta la suma de 7 días con el P90 de acumulados históricos equivalentes. Los datos históricos se consultan bajo demanda como reanálisis ERA5-Land (temperatura) y ERA5 (precipitación); el pronóstico es **externo de Open-Meteo**, no un modelo meteorológico propio. La comparación no equivale a probabilidad calibrada ni a alerta oficial.
+
+- Código probado con datos sintéticos: [modelos/anomalias_climaticas_v01.js](modelos/anomalias_climaticas_v01.js).
+- Método científico y limitaciones: [MODELO_ANOMALIAS_FASE6A.md](MODELO_ANOMALIAS_FASE6A.md).
+- Diez verificaciones de lógica superadas: señales normales/cálidas/lluviosas, referencia de 30 años y umbrales mínimos de 25/24 años, registros faltantes, cambio de año y bisiestos. **No constituyen validación con observaciones meteorológicas reales**.
+- El apartado **Boletín de El Niño** incluye una hoja de ruta predictiva específica Niño 1+2/ICEN. No se afirma que el OAF prediga ya El Niño Costero; ese modelo y su validación siguen pendientes.
+
+**Próxima prioridad:** construir una serie oceánico-atmosférica verificable de Niño 1+2 e ICEN y un primer modelo base de predicción frente a persistencia y escenarios institucionales; en paralelo validar indicadores fitosanitarios con observaciones de campo.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
