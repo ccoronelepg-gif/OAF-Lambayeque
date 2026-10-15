@@ -1,0 +1,44 @@
+name: OAF 8D - ENSO and Lambayeque agroclimate independent test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/benchmark_impacto_regional_8d.py'
+      - '.github/workflows/oaf_impacto_regional_8d.yml'
+      - 'datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv'
+      - 'datos/noaa_pmel_t300_8c.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-local-ocean-impact-8d
+  cancel-in-progress: false
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test time-leakage, month completion, and frozen 1996-2022 baseline
+        run: python modelos/benchmark_impacto_regional_8d.py --self-test
+      - name: Retrieve local ERA5 and ERA5-Land with real 1996–2026 history
+        run: python modelos/benchmark_impacto_regional_8d.py
+      - name: Publish only complete scientific data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/lambayeque_mensual_era5_8d.csv datos/benchmark_impacto_lambayeque_8d.json datos/benchmark_impacto_lambayeque_8d_prueba.csv
+          if git diff --cached --quiet; then
+            echo "No new model comparison."
+          else
+            git commit -m "data(oaf): evaluate NOAA precursor skill for regional rain temperature and solar radiation"
+            git pull --rebase origin main
+            git push
+          fi
