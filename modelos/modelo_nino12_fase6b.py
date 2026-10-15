@@ -14,6 +14,7 @@ import argparse
 import csv
 import json
 import math
+import random
 import statistics
 import sys
 import time
@@ -130,6 +131,28 @@ def evaluate(rows):
     mae_ar=scores["ar1"]["mae_c"]
     mae_p=scores["persistencia"]["mae_c"]
     skill=1-mae_ar/mae_p if mae_p>0 else None
+    recent=folds[-12:]
+    def raw_mae(method, subset):
+        return sum(abs(r[method]-r["observado"]) for r in subset)/len(subset)
+    recent_ar=raw_mae("ar1",recent)
+    recent_p=raw_mae("persistencia",recent)
+    recent_skill=1-recent_ar/recent_p if recent_p>0 else None
+    # Resampling of paired out-of-sample forecast errors by 12-month blocks.
+    # Descriptive robustness check, NOT a calibrated probability of skill.
+    rnd=random.Random(20261014)
+    replicates=[]
+    for _ in range(2000):
+        sample=[]
+        while len(sample)<len(folds):
+            start=rnd.randrange(0,len(folds)-12+1)
+            sample.extend(folds[start:start+12])
+        sample=sample[:len(folds)]
+        ar_b=raw_mae("ar1",sample)
+        persist_b=raw_mae("persistencia",sample)
+        if persist_b>0:
+            replicates.append(1-ar_b/persist_b)
+    confidence=[quantile(replicates,.025),quantile(replicates,.975)]
+    consistent=bool(skill is not None and skill>0 and recent_skill is not None and recent_skill>0 and confidence[0]>0)
     a,b=ar1(values)
     latest=values[-1]
     forecast=a+b*latest
@@ -165,6 +188,15 @@ def evaluate(rows):
             "metricas":scores,
             "habilidad_mae_respecto_persistencia":round(skill,4) if skill is not None else None,
             "supera_persistencia_mae":(skill is not None and skill>0),
+            "reciente_12_meses":{
+                "mae_ar1_c":round(recent_ar,4),
+                "mae_persistencia_c":round(recent_p,4),
+                "habilidad_relativa":round(recent_skill,4) if recent_skill is not None else None,
+                "supera_persistencia":bool(recent_skill is not None and recent_skill>0)
+            },
+            "intervalo_heuristico_skill_95": [round(v,4) for v in confidence],
+            "intervalo_metodo":"2000 remuestreos de bloques móviles de 12 meses, sobre errores pareados ya evaluados",
+            "habilidad_consistente_demostrada":consistent,
             "advertencia":"La evaluación con una serie NOAA reprocesada y normal 1991-2020 no equivale a archivos de emisión real-time; el intervalo P10-P90 de residuos retrospectivos no garantiza cobertura futura."
         },
         "series_recientes":rows[-24:],
@@ -212,6 +244,8 @@ def self_test():
     assert report["mes_predicho"]=="2027-01"
     assert report["es_icen"] is False
     assert not report["es_pronostico_institucional"]
+    assert "reciente_12_meses" in report["evaluacion"]
+    assert len(report["evaluacion"]["intervalo_heuristico_skill_95"])==2
     try:
         parse_text(original.replace("1982 2 ", "1982 4 ", 1))
     except ValueError:
