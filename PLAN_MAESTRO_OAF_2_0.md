@@ -8,16 +8,25 @@
 
 ## 1. Misión renovada
 
-> Desarrollar un sistema regional de **vigilancia, predicción probabilística y alerta temprana experimental** de anomalías agroclimáticas y condiciones de riesgo fitosanitario en Lambayeque, integrando observaciones oficiales, información oceánica, satélites, pronósticos meteorológicos y registros agronómicos de campo, con trazabilidad, actualización reciente y evaluación independiente.
+> Desarrollar un **observatorio regional predictivo** con dos capacidades científicas complementarias: **anticipar anomalías climáticas y posibles episodios o evolución de El Niño Costero**, y **predecir el riesgo de enfermedades agrícolas en arándano y vid**, mediante análisis de datos climáticos y oceánico-atmosféricos, modelos probabilísticos, registros fitosanitarios de campo, trazabilidad, pronósticos fechados y validación independiente. La vigilancia y los estudios retrospectivos son medios para alcanzar esa finalidad, no el objetivo final.
 
 La salida inicial de un módulo no validado se etiqueta **experimental / no operativo**. Las alertas meteorológicas y clasificaciones de El Niño Costero **oficiales** corresponden a ENFEN y SENAMHI: el OAF las reproduce con fuente, fecha y validez, no las suplanta.
+
+
+### Precisión de objetivos predictivos: dos líneas obligatorias
+
+**Línea A — anomalías climáticas y El Niño Costero:** no limitarse a mostrar boletines. El proyecto debe estudiar señales precursoras, predicciones oceánicas/atmosféricas fechadas y evolución de anomalías de TSM (región Niño 1+2), junto con lluvia y temperatura de Lambayeque. El modelado predictivo de El Niño debe tener horizonte y evento bien definidos (p. ej., evolución de un índice o probabilidad de cruzar un umbral oficial); la clasificación ENFEN conserva su autoridad institucional. No intentar inferir la génesis de El Niño a partir de la precipitación local. Archivar pronósticos emitidos antes del resultado y comparar contra modelos de referencia y escenarios institucionales, sin confundir predicción externa con habilidad propia.
+
+**Línea B — enfermedades en arándano y vid:** utilizar pronósticos de condiciones agroclimáticas y datos fitosanitarios para modelos específicos por patógeno, con evaluación independiente. La predicción validada de enfermedades exige historial de presencia/incidencia y de microclima real, no solo rangos bibliográficos. Resultados experimentales se distinguen claramente de advertencias operativas.
+
+**Ambas líneas deben converger en el portal:** dato observado/estimado → escenario o pronóstico fechado → riesgo condicional por cultivo → evaluación posterior del acierto. Todos los resultados incluyen fuente, horizonte, localización, incertidumbre y estado de validación.
 
 ## 2. Preguntas que debe responder el sistema
 
 1. **Estado oceánico:** ¿qué declara oficialmente ENFEN sobre El Niño Costero (región Niño 1+2) y cuáles son los escenarios/probabilidades con fecha de emisión?
 2. **Condición observada reciente:** ¿cuándo y dónde se han observado o estimado anomalías de lluvia, temperatura y humedad? Distinguir siempre dato de pluviómetro de estimación satelital y su incertidumbre.
 3. **Pronóstico:** ¿cuál es la probabilidad de un evento de lluvia/temperatura en 1–7 días, 2–6 semanas o 1–6 meses, según la fuente y su capacidad verificada?
-4. **Implicaciones para los cultivos:** ¿hay condiciones meteorológicas favorables para el desarrollo de patógenos y plagas del arándano, y las observaciones de campo confirman eventos de enfermedad?
+4. **Implicaciones para los cultivos:** ¿hay condiciones meteorológicas favorables para el desarrollo de patógenos y plagas del arándano y de la vid, y las observaciones de campo confirman eventos de enfermedad?
 5. **Desempeño:** ¿qué proporción de pronósticos históricos emitidos por adelantado acertó, cuál fue su incertidumbre y cuándo falló?
 
 **No se pretende pronosticar la génesis de El Niño Costero únicamente a partir de cinco pluviómetros**. El componente oceánico tendrá como referencia la clasificación oficial; el valor añadido del OAF es el análisis de exposición y riesgo agrícola en Lambayeque.
@@ -44,10 +53,10 @@ La salida inicial de un módulo no validado se etiqueta **experimental / no oper
 | Módulo | Responsable científico | Entrada principal | Primera salida esperada | Condición para declarar operativo |
 |---|---|---|---|---|
 | **M0 — Trazabilidad** | Calidad de datos y fuentes | Metadatos y controles por estación/producto | Registro auditable: confiable, provisional, no disponible, desactualizado | Control de fuentes y pruebas automáticas |
-| **M1 — Vigilancia oceánica** | Escenarios ENSO | ENFEN (comunicados/ICEN Niño 1+2), SST/índices con procedencia | Estado oficial con fecha, evolución e incertidumbre | Fuente vigente verificable y sin inferencia del OAF sobre estado ENFEN |
+| **M1 — Vigilancia y predicción de El Niño Costero** | Anomalías océano-atmosféricas y pronósticos ENSO | ENFEN (estado e ICEN), TSM/anomalías Niño 1+2, información atmosférica, pronósticos oceánicos emitidos y archivados con fecha | Estado oficial diferenciado de perspectivas externas y **probabilidad experimental OAF** de evolución/eventos con horizonte explícito | Verificación del estado oficial y habilidad predictiva propia demostrada fuera de muestra frente a referencias; sin atribuirse autoridad ENFEN |
 | **M2 — Vigilancia agroclimática** | Anomalías regionales | SENAMHI, CHIRPS v3 preliminar/final, NASA IMERG V07, metadatos geográficos | Lluvia y temperatura recientes, anomalías/percentiles por área | Validación espacial, fechas, píxeles y calidad suficientes |
 | **M3 — Pronóstico meteorológico** | Predicción prospectiva | Fuentes oficiales de pronósticos con fecha de emisión, ensembles cuando existan | Probabilidades de excedencia por horizonte (1–7 días; subseasonal y estacional) | Evaluación retrospectiva *sin filtración temporal* y control prospectivo; no usar reanálisis como pronóstico |
-| **M4 — Riesgo fitosanitario** | Arándano, posteriormente otros cultivos | Meteorología, fenología, variedad, humectación, registros de incidencia/severidad | Condiciones favorables a Botrytis; después probabilidad de enfermedad calibrada | Suficientes observaciones independientes de campo y validación fuera de muestra |
+| **M4 — Predicción fitosanitaria** | **Arándano y vid** desde el diseño | Meteorología pronosticada y observada, fenología, variedad, humectación, manejo e incidencia/severidad confirmada | Ventanas meteorológicas favorables para Botrytis/antracnosis en arándano y oídio/mildiu en vid; luego probabilidades calibradas por enfermedad | Registros de campo suficientes, evaluación independiente prospectiva y validación fuera de muestra, sin confundir condiciones favorables con diagnóstico |
 | **M5 — Comunicación** | Transparencia y decisiones | Resultados M0–M4 | Panel, mapas, fechas, límites de incertidumbre y avisos **oficiales** | Auditoría de mensajes; alertas *propias* solo tras validación y reglas aprobadas |
 
 ## 5. Hoja de ruta y entregables comprobables
