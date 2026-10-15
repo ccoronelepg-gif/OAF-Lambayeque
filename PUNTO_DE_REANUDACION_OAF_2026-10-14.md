@@ -19,6 +19,21 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance ejecutado: Fase 6B — modelo oceánico NOAA Niño 1+2 (14/10/2026)
+
+**El trabajo efectivamente realizado:**
+- Se implementó un modelo AR(1) un paso adelante sobre anomalía mensual SST Niño 1+2 de **NOAA CPC OISST v2.1** (NO es ICEN ENFEN), y se comparó contra **persistencia** y anomalía cero.
+- GitHub Actions procesó exitosamente la serie NOAA, guardando datos 1982-01 a 2026-09, 200 pruebas walk-forward retrospectivas, métrica y salida JSON versionada. Archivos: `modelos/modelo_nino12_fase6b.py`, `.github/workflows/oaf_nino12_fase6b.yml`, `datos/noaa_nino12_oisst_mensual.csv`, `datos/nino12_backtest_walkforward.csv`, `datos/modelo_nino12_experimental.json`.
+- Última anomalía NOAA real: **septiembre 2026, +4,69 °C**. Predicción AR(1) **octubre 2026, +4,35 °C**; persistencia **+4,69 °C**. Estas magnitudes **no equivalen al ICEN oficial** ni permiten afirmar pronóstico validado del evento El Niño Costero.
+- Evaluación de 200 meses: MAE AR(1) **0,3749 °C**, persistencia **0,3797 °C** (mejora nominal ~1,26 %). Últimos 12 meses: MAE AR(1) **0,5818 °C**, persistencia **0,4708 °C** (**AR1 peor**). Prueba exploratoria de remuestreo por bloques 12 meses: intervalo de mejora relativa incluye cero, por lo que **no hay mejora robusta demostrada**.
+- El módulo web **Boletín de El Niño** dispone de visor que consume solamente la salida JSON verificada y presenta errores/advertencias, nunca simulaciones. Código: `modelos/nino12_visor_v01.js`.
+- Documento científico: `MODELO_NINO12_FASE6B.md`.
+- Se ejecutó descarga y se confirmó la existencia de productos JSON/CSV reales en GitHub; no se ha inspeccionado manualmente el renderizado final desde un navegador de usuario.
+
+**Siguiente trabajo: fase 6C (prioritario):** convertir las señales oceánicas en un modelo mejor informado, usando **ERSSTv5 e ICEN según ENFEN**, anomalías TSM Niño 1+2, vientos, señales subsuperficiales y posibles precursores, más evaluación estricta con pronósticos históricos fechados. Antes de agregar complejidad, determinar si hay mejora real contra persistencia y si se pueden producir horizontes 1–3 meses con incertidumbre verificable. Luego estudiar relación con anomalías de Lambayeque y enfermedades de arándano/vid.
+
+**Regla permanente:** el proyecto busca predecir anomalías climáticas y enfermedades agrícolas, pero nunca presentará un valor de anomalía SST/indicador térmico como predicción operativa de El Niño Costero o de una infección agrícola sin validación.
+
 ## Último avance: Fase 6A (14/10/2026)
 
 **Implementado y guardado en GitHub:**
