@@ -68,5 +68,38 @@ prods.forEach(p=>{const row=document.createElement('p');const a=document.createE
 const links=document.createElement('div');links.className='links';for(const [url,label] of [[d.src,'Respaldo científico ↗'],[SEN,'Verificar en SENASA ↗']]){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=label;links.append(a)}art.append(links);return art}
 function renderControls(){const c=$('#oaf-control-crop'),t=$('#oaf-control-type'),out=$('#oaf-control-cards');if(!out)return;out.replaceChildren();const filtered=diseases.filter(d=>(c.value==='Todos'||d.crop===c.value)&&(!t||t.value==='todos'||Object.values(products).some(p=>p.cultivos.includes(d.crop)&&p.diseases.includes(d.id)&&p.kind===t.value)));for(const d of filtered)out.append(card(d));setText('#oaf-control-count',filtered.length+' enfermedades · '+(t.value==='todos'?'opciones documentadas o en verificación':t.value));}
 function initControls(){$('#oaf-control-crop')?.addEventListener('change',renderControls);$('#oaf-control-type')?.addEventListener('change',renderControls);renderControls()}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{initDash();initControls()});else{initDash();initControls()}
+
+let monthly=null;
+const historicalVars={temperatura_c:{unit:'°C',caption:'temperatura'},precipitacion_mm:{unit:'mm',caption:'precipitación'},radiacion_mj_m2:{unit:'MJ/m²',caption:'radiación'}};
+async function loadHistorical(){
+if(monthly)return monthly;
+const r=await fetch('datos/lambayeque_mensual_era5_8d.csv',{cache:'no-store'});if(!r.ok)throw Error('CSV histórico HTTP '+r.status);
+const csv=await r.text(),rows=csv.trim().split(/\r?\n/).slice(1).map(line=>line.split(','));
+const out=rows.map(z=>({place:z[0],date:z[1],temperatura_c:Number(z[2]),precipitacion_mm:Number(z[3]),radiacion_mj_m2:Number(z[4])}));
+if(out.length<1400||out.some(z=>!pts[z.place]||!/^(19|20)\d{2}-(0[1-9]|1[0-2])$/.test(z.date)||!Object.keys(historicalVars).every(k=>Number.isFinite(z[k]))))throw Error('CSV histórico incompleto o inválido');
+monthly=out;return monthly}
+function drawHistorical(data){
+const place=$('#oaf-hist-place').value,year=$('#oaf-hist-year').value,vname=$('#oaf-hist-variable').value,variable=historicalVars[vname],status=$('#oaf-hist-status'),plot=$('#oaf-hist-plot');
+const reference=data.filter(r=>r.place===place&&r.date>='1996-01'&&r.date<='2025-12');
+const chosen=data.filter(r=>r.place===place&&r.date.startsWith(year+'-')).sort((a,b)=>a.date.localeCompare(b.date));
+if(chosen.length===0)throw Error('No se encontraron observaciones para este año');
+const means=Array.from({length:12},(_,month)=>{const sub=reference.filter(r=>Number(r.date.slice(5))===month+1);if(sub.length!==30)throw Error('Climatología 1996–2025 incompleta');return sub.reduce((sum,r)=>sum+r[vname],0)/sub.length});
+const values=chosen.map(r=>({date:r.date,anom:r[vname]-means[Number(r.date.slice(5))-1],observed:r[vname]}));
+const peak=Math.max(...values.map(v=>Math.abs(v.anom)),.2)*1.15,W=770,H=274,L=62,R=21,T=20,B=46;
+const el=(tag,props,textVal)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(props||{}))n.setAttribute(k,String(v));if(textVal!==undefined)n.textContent=textVal;return n};
+const svg=el('svg',{viewBox:'0 0 770 274',role:'img','aria-label':`Anomalías mensuales de ${variable.caption}, ${place}, ${year}, respecto a 1996–2025`});svg.classList.add('oaf-chart');const cy=T+(H-T-B)/2,scale=(H-T-B)/2/peak;
+for(let k=-2;k<=2;k++){const yy=cy-k*peak/2*scale;svg.append(el('line',{x1:L,x2:W-R,y1:yy,y2:yy,stroke:k===0?'#587685':'#dce9ee','stroke-width':k===0?1.5:1,'stroke-dasharray':k===0?'':'3 4'}));svg.append(el('text',{x:L-11,y:yy+4,'text-anchor':'end',class:'axis'},fmt(k*peak/2,1)));}
+const bw=(W-L-R)/12;
+for(const v of values){const mon=Number(v.date.slice(5))-1,xx=L+mon*bw+bw*.18,yy=cy-v.anom*scale;const rect=el('rect',{x:xx,y:Math.min(cy,yy),width:bw*.64,height:Math.max(1,Math.abs(cy-yy)),rx:3,fill:v.anom>=0?'#e4a546':'#1493a5'});rect.append(el('title',{},`${v.date}: anomalía ${fmt(v.anom,2)} ${variable.unit}, valor ${fmt(v.observed,2)} ${variable.unit}`));svg.append(rect);}
+for(let i=0;i<12;i++)svg.append(el('text',{x:L+i*bw+bw/2,y:H-15,'text-anchor':'middle',class:'axis'},String(i+1)));
+svg.append(el('text',{x:L,y:14,class:'axis'},'Anomalía '+variable.unit));
+plot.replaceChildren(svg);
+status.textContent=`${place} · ${year} · ${chosen.length}/12 meses disponibles · referencia 1996–2025 (30 valores por mes). Fuente: extracción ERA5-Land del estudio 8D; no medición de estación ni pronóstico. Barras ámbar: positivas; turquesa: negativas.`;}
+async function initHistorical(){const plot=$('#oaf-hist-plot'),status=$('#oaf-hist-status');if(!plot)return;for(let y=2026;y>=1996;y--){const opt=document.createElement('option');opt.value=String(y);opt.textContent=String(y)+(y===2026?' (parcial)':'');$('#oaf-hist-year').append(opt)}
+const replot=()=>{try{if(monthly)drawHistorical(monthly)}catch(e){status.textContent='No se puede graficar: '+e.message;plot.replaceChildren();}};
+['#oaf-hist-place','#oaf-hist-year','#oaf-hist-variable'].forEach(k=>$(k).addEventListener('change',replot));
+$('#oaf-history').addEventListener('toggle',async e=>{if(!e.target.open)return;status.textContent='Cargando CSV histórico validado…';try{const d=await loadHistorical();drawHistorical(d)}catch(e){status.textContent='No se puede cargar la serie histórica: '+e.message+'. No se fabrican valores.';}});
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{initDash();initControls();initHistorical()});else{initDash();initControls();initHistorical()}
 })();
