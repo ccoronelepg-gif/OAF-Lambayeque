@@ -122,6 +122,20 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Interpretación:</b> un resultado es una comparación estadística entre pronóstico y reanálisis de modelos diferentes, no una alerta por calor/lluvia, una predicción calibrada del OAF o una predicción de El Niño Costero. No usar para afirmar presencia de enfermedades. El observatorio prioriza validar estas señales frente a estaciones y pronósticos archivados.</div>
 <p class="small">Fuente técnica: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">pronósticos Open-Meteo</a> y <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">reanálisis ERA5-Land/ERA5</a>. La descarga histórica puede tardar y está sujeta a disponibilidad/cuotas del proveedor. <a href="MODELO_ANOMALIAS_FASE6A.md">Método y limitaciones ↗</a></p>
 </div>
+<details class="panel" id="oaf-benchmark-6f">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span><strong style="font-size:18px;color:var(--navy)">Fase 6F · ¿La radiación mejora el pronóstico?</strong><small style="display:block;color:var(--muted)">Comparación histórica de temperatura: pronóstico original, modelo básico y modelo con radiación, humedad y viento</small></span><span class="badge">Evaluación experimental</span></summary>
+<div style="margin-top:15px">
+<p class="small">Utilizamos pronósticos archivados <b>24 horas antes del momento evaluado</b>. Los modelos se entrenan con 2024–2025 y se contrastan con temperatura de reanálisis ERA5-Land en enero–septiembre de 2026. Es una prueba fuera del periodo de entrenamiento, <b>no una validación operativa ni un diagnóstico de enfermedades</b>.</p>
+<div class="tools"><button id="oaf-benchmark-run" class="btn dark" type="button">Consultar resultados históricos ↻</button></div>
+<p id="oaf-benchmark-status" class="small" role="status">Los resultados se mostrarán cuando el cálculo con datos históricos haya concluido correctamente.</p>
+<div id="oaf-benchmark-output" hidden>
+<div class="scroller"><table><thead><tr><th>Localidad</th><th>Horas verificadas</th><th>MAE original (°C)</th><th>MAE básico (°C)</th><th>MAE ampliado (°C)</th><th>Mejora vs básico</th><th>Interpretación</th></tr></thead><tbody id="oaf-benchmark-results"></tbody></table></div>
+<p class="small" id="oaf-benchmark-method"></p>
+</div>
+<div class="notice"><b>Lectura responsable:</b> menor error absoluto medio (MAE) indica mejor aproximación a la temperatura reanalizada. Un resultado mejor no prueba causalidad de la radiación ni permite afirmar que el OAF prediga El Niño Costero o la aparición de Botrytis u oídio. Falta validación prospectiva contra sensores y estaciones regionales.</div>
+<div class="links"><a href="https://open-meteo.com/en/docs/previous-runs-api" target="_blank" rel="noopener noreferrer">Pronósticos previos de Open-Meteo ↗</a><a href="FASE_6F_EVALUACION_PREDICTORES.md">Método y límites ↗</a></div>
+</div>
+</details>
 <div class="split"><div class="panel"><h2>Estimaciones de precipitación CHIRPS</h2><span id="chirps-month" style="font-size:26px;font-weight:800;color:var(--navy)">Consultando…</span><p id="chirps-info" class="small">Último mes con información satelital comprobada.</p><a href="datos/chirps_v3_reciente_3z.csv" class="small">Consultar CSV de precipitación ↗</a></div><div class="panel"><h2>Predicciones del OAF</h2><span class="badge">En investigación</span><p>Próxima etapa: modelos probabilísticos propios, evaluación de error y validación independiente antes de mostrar pronósticos OAF.</p></div></div>
 </section>
 <section data-page="cultivos" id="cultivos" hidden>
@@ -327,4 +341,5 @@ nav();
 <script src="modelos/anomalias_climaticas_v01.js" defer></script>
 <script src="modelos/nino12_visor_v01.js" defer></script>
 <script src="modelos/ersstv5_visor_v01.js" defer></script>
-<script src="modelos/ncei_visor_6d.js" defer></script></body></html>
+<script src="modelos/ncei_visor_6d.js" defer></script>
+<script src="modelos/benchmark_visor_6f.js" defer></script></body></html>
