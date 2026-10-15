@@ -1,0 +1,53 @@
+name: OAF 6B - NOAA Nino 1+2 baseline
+
+on:
+  workflow_dispatch:
+  schedule:
+    # NOAA CPC monthly indices are typically updated around day 10
+    - cron: '23 13 12 * *'
+    - cron: '23 13 19 * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/oaf_nino12_fase6b.yml'
+      - 'modelos/modelo_nino12_fase6b.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oaf-nino12-experimental
+  cancel-in-progress: false
+
+jobs:
+  ocean-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test parser and walk-forward logic
+        run: python modelos/modelo_nino12_fase6b.py --self-test
+
+      - name: Fetch official NOAA CPC data and calculate experimental baseline
+        run: python modelos/modelo_nino12_fase6b.py
+
+      - name: Commit ONLY successfully verified data products
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/noaa_nino12_oisst_mensual.csv datos/nino12_backtest_walkforward.csv datos/modelo_nino12_experimental.json
+          if git diff --cached --quiet; then
+            echo "No differences in NOAA Niño 1+2 outputs."
+          else
+            git commit -m "data(oaf): update verified NOAA Nino 1+2 series and experimental month-ahead model"
+            git push
+          fi
