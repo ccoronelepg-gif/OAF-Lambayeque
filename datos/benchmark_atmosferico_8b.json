@@ -1,0 +1,214 @@
+{
+  "fase": "8B",
+  "generado_utc": "2026-10-15T06:03:56+00:00",
+  "estado": "comparacion_historica_sin_habilidad_operativa",
+  "predictores_mes_origen": [
+    "soi_estandarizado",
+    "alisios_pacifico_central",
+    "alisios_pacifico_oriental"
+  ],
+  "inicio_datos_atmosfericos": "1979-01",
+  "origen_ultimo_comun": "2026-09",
+  "mes_ultimo_oceanico": "2026-09",
+  "num_meses_comunes": 573,
+  "objetivo": "Anomalía Niño1+2 NOAA NCEI ERSSTv5 reajustada por OAF a 1991-2020; NO ICEN oficial",
+  "entrenamiento": "ventana expansiva con solo objetivos cronológicamente disponibles",
+  "primer_origen_de_prueba": "2010-01",
+  "regularizacion_ridge_fija": 20.0,
+  "fuentes": {
+    "soi": "https://www.cpc.ncep.noaa.gov/data/indices/soi",
+    "viento_central": "https://www.cpc.ncep.noaa.gov/data/indices/cpac850",
+    "viento_oriental": "https://www.cpc.ncep.noaa.gov/data/indices/epac850",
+    "tsm": "NOAA NCEI ERSSTv5 rebasada por OAF; ver fase 6D"
+  },
+  "cobertura_prediccion_actual": true,
+  "predicciones_exploratorias_actuales": {
+    "1": {
+      "mes_objetivo": "2026-10",
+      "horizonte_meses": 1,
+      "ar1_solo_tsm_c": 3.9781,
+      "tsm_mas_atmosfera_c": 4.06,
+      "persistencia_c": 4.3887,
+      "emision_prospectiva": false,
+      "no_operativo": true
+    },
+    "2": {
+      "mes_objetivo": "2026-11",
+      "horizonte_meses": 2,
+      "ar1_solo_tsm_c": 3.5482,
+      "tsm_mas_atmosfera_c": 3.7252,
+      "persistencia_c": 4.3887,
+      "emision_prospectiva": false,
+      "no_operativo": true
+    },
+    "3": {
+      "mes_objetivo": "2026-12",
+      "horizonte_meses": 3,
+      "ar1_solo_tsm_c": 3.0664,
+      "tsm_mas_atmosfera_c": 3.2953,
+      "persistencia_c": 4.3887,
+      "emision_prospectiva": false,
+      "no_operativo": true
+    }
+  },
+  "resultados_por_horizonte": {
+    "1": {
+      "n_origenes_evaluados": 200,
+      "desde": "2010-01",
+      "hasta": "2026-08",
+      "metricas": {
+        "persistencia": {
+          "n": 200,
+          "mae_c": 0.3375,
+          "rmse_c": 0.4164,
+          "sesgo_c": -0.0205
+        },
+        "ar1_solo_tsm": {
+          "n": 200,
+          "mae_c": 0.3351,
+          "rmse_c": 0.4229,
+          "sesgo_c": -0.031
+        },
+        "tsm_mas_atmosfera": {
+          "n": 200,
+          "mae_c": 0.3537,
+          "rmse_c": 0.4578,
+          "sesgo_c": -0.0637
+        }
+      },
+      "ultimos12": {
+        "ar1_solo_tsm": {
+          "n": 12,
+          "mae_c": 0.5594,
+          "rmse_c": 0.6683,
+          "sesgo_c": -0.5051
+        },
+        "tsm_mas_atmosfera": {
+          "n": 12,
+          "mae_c": 0.5652,
+          "rmse_c": 0.6765,
+          "sesgo_c": -0.529
+        }
+      },
+      "beneficio_vs_ar1": -0.0555,
+      "beneficio_vs_persistencia": -0.048,
+      "beneficio_ultimos12_vs_ar1": -0.0104,
+      "intervalo_descriptivo_bloques_12m_95": [
+        -0.1248,
+        0.0019
+      ],
+      "mejora_retrospectiva_robusta_provisional": false,
+      "validacion_prospectiva": false
+    },
+    "2": {
+      "n_origenes_evaluados": 199,
+      "desde": "2010-01",
+      "hasta": "2026-07",
+      "metricas": {
+        "persistencia": {
+          "n": 199,
+          "mae_c": 0.5105,
+          "rmse_c": 0.652,
+          "sesgo_c": -0.0386
+        },
+        "ar1_solo_tsm": {
+          "n": 199,
+          "mae_c": 0.4871,
+          "rmse_c": 0.6496,
+          "sesgo_c": -0.0547
+        },
+        "tsm_mas_atmosfera": {
+          "n": 199,
+          "mae_c": 0.5084,
+          "rmse_c": 0.697,
+          "sesgo_c": -0.1291
+        }
+      },
+      "ultimos12": {
+        "ar1_solo_tsm": {
+          "n": 12,
+          "mae_c": 0.9931,
+          "rmse_c": 1.1851,
+          "sesgo_c": -0.8587
+        },
+        "tsm_mas_atmosfera": {
+          "n": 12,
+          "mae_c": 1.03,
+          "rmse_c": 1.2209,
+          "sesgo_c": -0.9406
+        }
+      },
+      "beneficio_vs_ar1": -0.0437,
+      "beneficio_vs_persistencia": 0.0041,
+      "beneficio_ultimos12_vs_ar1": -0.0372,
+      "intervalo_descriptivo_bloques_12m_95": [
+        -0.1604,
+        0.0529
+      ],
+      "mejora_retrospectiva_robusta_provisional": false,
+      "validacion_prospectiva": false
+    },
+    "3": {
+      "n_origenes_evaluados": 198,
+      "desde": "2010-01",
+      "hasta": "2026-06",
+      "metricas": {
+        "persistencia": {
+          "n": 198,
+          "mae_c": 0.667,
+          "rmse_c": 0.8414,
+          "sesgo_c": -0.0543
+        },
+        "ar1_solo_tsm": {
+          "n": 198,
+          "mae_c": 0.6121,
+          "rmse_c": 0.8155,
+          "sesgo_c": -0.0734
+        },
+        "tsm_mas_atmosfera": {
+          "n": 198,
+          "mae_c": 0.6322,
+          "rmse_c": 0.8767,
+          "sesgo_c": -0.1831
+        }
+      },
+      "ultimos12": {
+        "ar1_solo_tsm": {
+          "n": 12,
+          "mae_c": 1.3237,
+          "rmse_c": 1.5917,
+          "sesgo_c": -1.1095
+        },
+        "tsm_mas_atmosfera": {
+          "n": 12,
+          "mae_c": 1.374,
+          "rmse_c": 1.6865,
+          "sesgo_c": -1.2773
+        }
+      },
+      "beneficio_vs_ar1": -0.0328,
+      "beneficio_vs_persistencia": 0.0522,
+      "beneficio_ultimos12_vs_ar1": -0.038,
+      "intervalo_descriptivo_bloques_12m_95": [
+        -0.1397,
+        0.0622
+      ],
+      "mejora_retrospectiva_robusta_provisional": false,
+      "validacion_prospectiva": false
+    }
+  },
+  "es_icen_oficial": false,
+  "es_alerta_enfen": false,
+  "demuestra_prediccion_elnino_costero": false,
+  "validacion_prospectiva": false,
+  "advertencias": [
+    "Archivo mensual CPC retrospectivo posiblemente revisado; NO conserva la versión disponible en cada fecha histórica, por lo que el walk-forward no es una auditoría as-of perfecta.",
+    "Datos de índice del mes de origen se suponen disponibles al emitir tras publicación mensual; no emitir predicción actual si la fuente está rezagada.",
+    "SOI y anomalías de viento no son variables locales de Lambayeque ni representan por sí solas intensidad del Niño Costero.",
+    "Ningún resultado de Niño 1+2 reconstruido por OAF equivale al ICEN oficial ENFEN.",
+    "El modelo atmosférico puede empeorar frente a persistencia; publicar también errores negativos.",
+    "La serie y características de viento alisios se basan en índices NOAA CPC 850 hPa; no son datos de anemómetros en campo.",
+    "Contenido de calor oceánico subsuperficial todavía no incluido; requiere versión, cobertura y disponibilidad históricas verificables.",
+    "No se permiten categorías de alerta ENSO, predicciones de enfermedad ni probabilidades calibradas."
+  ]
+}
