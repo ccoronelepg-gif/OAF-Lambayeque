@@ -1,0 +1,52 @@
+name: OAF 6C - ERSSTv5 Nino 1+2 and experiments
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 13 12 * *'
+    - cron: '47 13 19 * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/oaf_ersstv5_fase6c.yml'
+      - 'modelos/modelo_ersstv5_nino12_fase6c.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oaf-ersstv5-experimental
+  cancel-in-progress: false
+
+jobs:
+  ersstv5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute deterministic tests
+        run: python modelos/modelo_ersstv5_nino12_fase6c.py --self-test
+
+      - name: Read NOAA ERSSTv5 and evaluate monthly horizons
+        run: python modelos/modelo_ersstv5_nino12_fase6c.py
+
+      - name: Save only successfully generated products
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/noaa_ersstv5_nino12_mensual.csv datos/nino12_ersstv5_promedio_trimestral_experimental.csv datos/ersstv5_nino12_walkforward_1a3m.csv datos/modelo_ersstv5_nino12_6c.json
+          if git diff --cached --quiet; then
+            echo "No changes to ERSSTv5 products."
+          else
+            git commit -m "data(oaf): update verified ERSSTv5 Niño 1+2 and 1-3 month experiments"
+            git push
+          fi
