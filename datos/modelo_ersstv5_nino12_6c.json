@@ -1,0 +1,172 @@
+{
+  "fase": "6C",
+  "fecha_procesamiento_utc": "2026-10-15T04:27:15+00:00",
+  "fuente": "NOAA CPC",
+  "url_fuente": "https://www.cpc.ncep.noaa.gov/data/indices/ersst5.nino.mth.91-20.ascii",
+  "producto": "ERSSTv5 SST mensual Niño 1+2, anomalías base 1991-2020",
+  "tipo_dato": "reanálisis SST oceánica",
+  "es_icen_oficial": false,
+  "es_pronostico_institucional": false,
+  "es_alerta": false,
+  "estado": "archivo_historico_desactualizado",
+  "fuente_actualizada": false,
+  "prediccion_actual_disponible": false,
+  "desfase_meses": 4,
+  "mes_inicial": "1950-01",
+  "mes_ultimo_observado": "2026-06",
+  "ultima_anomalia_ersstv5_c": 2.82,
+  "promedio_3m_indicativo": {
+    "mes_central": "2026-05",
+    "mes_publicacion_ultimo_dato": "2026-06",
+    "promedio_trimestral_ersstv5_c": 1.983,
+    "es_icen_oficial": false
+  },
+  "modelos_horizontes": {
+    "1": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-05",
+      "metricas": {
+        "ar1": {
+          "n": 197,
+          "mae_c": 0.3449,
+          "rmse_c": 0.4339
+        },
+        "persistencia": {
+          "n": 197,
+          "mae_c": 0.3546,
+          "rmse_c": 0.4379
+        },
+        "cero": {
+          "n": 197,
+          "mae_c": 0.8353,
+          "rmse_c": 1.0641
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 0.423,
+          "rmse_c": 0.5439
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.3875,
+          "rmse_c": 0.4946
+        }
+      },
+      "habilidad_mae_relativa": 0.0274,
+      "habilidad_ultimos_12": -0.0916,
+      "intervalo_bootstrap_skill_95": [
+        0.0053,
+        0.0637
+      ],
+      "mejora_consistente_demostrada": false,
+      "pronostico_ar1_c": null,
+      "pronostico_persistencia_c": null,
+      "mes_objetivo": null
+    },
+    "2": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-04",
+      "metricas": {
+        "ar1": {
+          "n": 196,
+          "mae_c": 0.4952,
+          "rmse_c": 0.6497
+        },
+        "persistencia": {
+          "n": 196,
+          "mae_c": 0.5282,
+          "rmse_c": 0.6733
+        },
+        "cero": {
+          "n": 196,
+          "mae_c": 0.8389,
+          "rmse_c": 1.0668
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 0.6574,
+          "rmse_c": 0.8484
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.6208,
+          "rmse_c": 0.7911
+        }
+      },
+      "habilidad_mae_relativa": 0.0625,
+      "habilidad_ultimos_12": -0.059,
+      "intervalo_bootstrap_skill_95": [
+        0.0324,
+        0.116
+      ],
+      "mejora_consistente_demostrada": false,
+      "pronostico_ar1_c": null,
+      "pronostico_persistencia_c": null,
+      "mes_objetivo": null
+    },
+    "3": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-03",
+      "metricas": {
+        "ar1": {
+          "n": 195,
+          "mae_c": 0.6183,
+          "rmse_c": 0.8028
+        },
+        "persistencia": {
+          "n": 195,
+          "mae_c": 0.6823,
+          "rmse_c": 0.8565
+        },
+        "cero": {
+          "n": 195,
+          "mae_c": 0.8429,
+          "rmse_c": 1.0695
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 0.7898,
+          "rmse_c": 1.0454
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.7917,
+          "rmse_c": 1.0065
+        }
+      },
+      "habilidad_mae_relativa": 0.0938,
+      "habilidad_ultimos_12": 0.0024,
+      "intervalo_bootstrap_skill_95": [
+        0.0489,
+        0.1553
+      ],
+      "mejora_consistente_demostrada": true,
+      "pronostico_ar1_c": null,
+      "pronostico_persistencia_c": null,
+      "mes_objetivo": null
+    }
+  },
+  "comparacion_oisst": {
+    "estado": "comparacion_exploratoria_no_validacion",
+    "meses_comunes": 534,
+    "mae_entre_productos_c": 0.2171,
+    "ultimo_mes_comun": "2026-06",
+    "diferencia_ultimo_mes_c": -0.01,
+    "nota": "Diferencias entre productos no son error de predicción ni validación instrumental"
+  },
+  "advertencias": [
+    "Si la serie ERSSTv5 está desactualizada, solo se publican los análisis retrospectivos; nunca proyecciones actuales.",
+    "Promedio trimestral ilustrativo no es ICEN oficial; para la clasificación se usa exclusivamente ENFEN.",
+    "Modelo AR1 univariado, sin información de viento, termoclina, calor subsuperficial ni predicción dinámica.",
+    "Walk-forward retrospectivo con la versión NOAA revisada, no con pronósticos archivados al momento de emisión.",
+    "Un cambio del índice oceánico no implica por sí solo un evento El Niño Costero ni predice lluvia en Lambayeque.",
+    "Comparar AR1 con persistencia; no divulgar habilidad no demostrada.",
+    "No generar alertas meteorológicas o fitosanitarias a partir de estos resultados."
+  ]
+}
