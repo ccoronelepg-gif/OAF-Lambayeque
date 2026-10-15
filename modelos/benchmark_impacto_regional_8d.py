@@ -269,8 +269,8 @@ def self_test():
     assert shift("2022-12",2)=="2023-02"
     assert calendar.monthrange(2024,2)[1]==29
     mock={}
-    for y in range(1996,2026):
-        for m in range(1,13):
+    for y in range(1996,2027):
+        for m in range(1,10 if y==2026 else 13):
             mock[f"{y:04d}-{m:02d}"]={
                 "temperatura_c":float(m)+float(y>=2023),
                 "precipitacion_mm":float(m*2),
