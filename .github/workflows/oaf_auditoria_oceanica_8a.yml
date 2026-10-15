@@ -1,0 +1,52 @@
+name: OAF 8A - Archivo prospectivo ENSO Nino12 y verificacion mensual
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '39 15 12,19,26 * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/auditoria_oceanica_8a.py'
+      - '.github/workflows/oaf_auditoria_oceanica_8a.yml'
+      - 'datos/modelo_ersstv5_ncei_6d.json'
+      - 'datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oaf-oceanic-prospective-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test month rollovers, integrity and nowcast separation
+        run: python modelos/auditoria_oceanica_8a.py --self-test
+      - name: Freeze experimental monthly emissions without overwriting earlier ones
+        run: python modelos/auditoria_oceanica_8a.py --snapshot
+      - name: Verify only previously issued predictions whose NOAA monthly data matured
+        run: python modelos/auditoria_oceanica_8a.py --verify
+      - name: Commit dated snapshots and explicit evaluation status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/pronosticos_oceanicos_emitidos/ datos/verificacion_oceanica_8a.json datos/verificacion_oceanica_8a.csv
+          if git diff --cached --quiet; then
+            echo "No new forecast issuance or verification."
+          else
+            git commit -m "data(oaf): freeze and verify NOAA Nino12 forecasts without retrospective leakage"
+            git pull --rebase origin main
+            git push
+          fi
