@@ -103,6 +103,36 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="kpis"><div class="kpi"><small>Radiación solar actual (onda corta)</small><b id="wx-rad">—</b></div><div class="kpi"><small>Velocidad del viento a 10 m</small><b id="wx-wind">—</b></div><div class="kpi"><small>Déficit de presión de vapor (DPV)</small><b id="wx-vpd">—</b></div><div class="kpi"><small>Presión atmosférica superficial</small><b id="wx-pressure">—</b></div></div>
 <p class="small">La radiación actual se expresa en W/m²; los acumulados diarios, en MJ/m². El DPV se expresa en kPa. Son variables modeladas para puntos de referencia, no sensores dentro del dosel.</p>
 <h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. precipitación</th><th>Radiación solar (MJ/m²)</th><th>Viento máx. (km/h)</th><th>Humedad media (%)</th><th>DPV máx. (kPa)</th><th>ET₀ FAO (mm)</th><th>Insolación (h)</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. La radiación de onda corta, ET₀, DPV, viento y presión proceden de modelos meteorológicos externos en puntos referenciales, no estaciones dentro de la parcela. La insolación (h) es duración estimada de sol, distinta de la radiación acumulada (MJ/m²).</p></div>
+<details class="panel" id="oaf-temp-8e">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8E · Primeros pronósticos fechados de temperatura en Lambayeque</strong>
+<small style="display:block;color:var(--muted)">Emisión original, referencia local e incorporación de Niño 1+2 / T300, con verificación posterior</small></span>
+<span class="badge">Experimental · Sin validación operativa</span></summary>
+<div style="margin-top:16px">
+<p class="small">El OAF archiva <b>antes de conocer el resultado</b> las estimaciones mensuales de <b>temperatura media a 2 metros</b> para Chiclayo, Jayanca, Motupe y Olmos. Muestra un modelo basado únicamente en temperatura local y otro que añade <b>Niño 1+2 y T300</b>. La fecha original se conserva sin sobrescritura para comparar errores después.</p>
+<div class="tools">
+<label for="oaf-temp-8e-filter">Mes objetivo</label>
+<select id="oaf-temp-8e-filter"><option value="todos">Todos los meses</option></select>
+<button type="button" class="btn dark" id="oaf-temp-8e-run">Consultar pronósticos archivados ↻</button></div>
+<p class="small" id="oaf-temp-8e-message" role="status">Consulta el archivo experimental original y comprueba si sus meses objetivo ya pueden verificarse.</p>
+<div id="oaf-temp-8e-data" hidden>
+<div class="scroller"><table><thead><tr>
+<th>Localidad</th><th>Mes objetivo</th><th>OAF Niño+T300 (°C)</th><th>Referencia local (°C)</th><th>Tipo de emisión</th><th>Verificación</th>
+</tr></thead><tbody id="oaf-temp-8e-body"></tbody></table></div>
+<p class="small" id="oaf-temp-8e-provenance"></p>
+<div class="links">
+<a id="oaf-temp-8e-original" href="datos/verificacion_temperatura_regional_8e.json">Abrir emisión original con fecha y fuentes ↗</a>
+<a href="datos/verificacion_temperatura_regional_8e.json">Estado de verificación ↗</a>
+<a href="datos/verificacion_temperatura_regional_8e.csv">Comparaciones futuras en CSV ↗</a>
+</div>
+</div>
+<div class="notice"><b>Límites científicos:</b> los valores representan la temperatura media mensual de una <b>cuadrícula ERA5-Land</b>, NO lecturas de estación SENAMHI ni temperatura de la parcela. Un valor emitido durante el mes objetivo se identifica como <b>estimación intramensual</b>, no como pronóstico antes del mes. La capacidad predictiva futura aún debe comprobarse; <b>sin porcentajes de probabilidad, alertas de ENFEN/SENAMHI ni pronósticos de enfermedades</b>.</div>
+<div class="links">
+<a href="FASE_8E_PRONOSTICOS_TEMPERATURA_PROSPECTIVOS.md">Método y primera emisión ↗</a>
+<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Antecedentes y errores históricos 8D ↗</a>
+</div>
+</div>
+</details>
 <details class="panel" id="oaf-regional-8d">
 <summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
 <span><strong style="font-size:18px;color:var(--navy)">Fase 8D · ¿El Niño 1+2 ayuda a anticipar el clima de Lambayeque?</strong>
@@ -533,4 +563,5 @@ nav();
 <script src="modelos/archivo_oceanico_visor_8a.js" defer></script>
 <script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script>
 <script src="modelos/visor_subsuperficial_8c.js" defer></script>
-<script src="modelos/visor_impacto_regional_8d.js" defer></script></body></html>
+<script src="modelos/visor_impacto_regional_8d.js" defer></script>
+<script src="modelos/visor_temperatura_regional_8e.js" defer></script></body></html>
