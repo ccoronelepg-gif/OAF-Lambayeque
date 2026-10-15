@@ -165,6 +165,25 @@ Se implementó en [Cultivos → Predicción fitosanitaria](https://ccoronelepg-g
 
 **Próxima etapa 7B:** obtener observaciones de humectación foliar, fenología, temperatura y humedad en el dosel y diagnóstico de *Botrytis* del arándano para estudiar sensibilidad y capacidad predictiva; antes de contar con datos sanitarios reales, este módulo sigue siendo **una comparación de condiciones meteorológicas previstas**, no un modelo de presencia de enfermedad.
 
+## Fase 7B · Validación de señales de humedad del arándano (15/10/2026)
+
+Se realizó y publicó la primera evaluación cuantitativa real de **episodios de humedad atmosférica que podrían favorecer Botrytis**, sin convertirlos en predicciones de infección. Se comparó el pronóstico archivado a horizonte 24 h de Open-Meteo con humedad horaria reanalizada **ERA5** durante **enero–septiembre de 2026 (273 días y 6.552 horas alineadas por localidad)**, preservando el criterio HR >90 % y seis horas continuas de la Fase 7A.
+
+| Localidad | Coincidencias positivas | Falsas señales frente a ERA5 | Omisiones | Precisión positiva |
+|---|---:|---:|---:|---:|
+| Chiclayo | 7 | 31 | 5 | 18,4 % |
+| Jayanca | 16 | 4 | 18 | 80,0 % |
+| Motupe | 17 | 111 | 17 | 13,3 % |
+| Olmos | 27 | 140 | 10 | 16,2 % |
+
+**Conclusión:** el indicador meteorológico no está preparado para alertar por Botrytis. Hubo muchas falsas señales meteorológicas respecto de ERA5 en Motupe y Olmos. Los resultados difieren entre cuadrículas de distinta resolución; ERA5 NO son sensores del dosel ni datos micológicos. La precisión positiva citada **NO es probabilidad de enfermedad**.
+
+Se implementó además una verificación **prospectiva** independiente de los pronósticos realmente archivados por el OAF: primer pronóstico emitido 15/10/2026 para 16–22/10; **28 jornadas-localidad guardadas**, 0 elegibles/verificadas al ejecutar 15/10 y **primera fecha de comparación posible 23/10/2026** por demora de siete días para disponibilidad ERA5. Todos los ceros de esta inicialización significan datos todavía pendientes, no ausencia de enfermedad.
+
+**Recursos:** [informe técnico Fase 7B](FASE_7B_VALIDACION_HUMEDAD.md), [backtest JSON](datos/botrytis_indicador_7b_backtest.json), [series diarias](datos/botrytis_indicador_7b_diario.csv), [evaluación prospectiva actual](datos/botrytis_humedad_7b_prospectivo.json), [motor de comparación histórica](modelos/validar_indicador_humedad_botrytis_7b.py), [motor de verificación prospectiva](modelos/verificar_patrones_botrytis_emitidos_7b.py) y [panel en Cultivos y riesgo de enfermedades](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#riesgos).
+
+**Siguiente Fase 7C:** diseñar y validar registros sanitarios de parcelas de arándano, sensores de humectación foliar, temperatura/HR en dosel y fenología; contrastar la señal horaria con incidencia y diagnóstico de *Botrytis*, con evaluación espacial y temporal independiente. Mientras falten datos reales de infección, no se puede estimar riesgo porcentual ni recomendar fungicidas.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
