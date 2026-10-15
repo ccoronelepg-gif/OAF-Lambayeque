@@ -1,0 +1,40 @@
+name: OAF 7B - Botrytis Humidity Meteorological Benchmark
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/validar_indicador_humedad_botrytis_7b.py'
+      - '.github/workflows/oaf_botrytis_7b_backtest.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-botrytis-meteorological-backtest
+  cancel-in-progress: false
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate event, midnight and missing-hour logic
+        run: python modelos/validar_indicador_humedad_botrytis_7b.py --self-test
+      - name: Evaluate issued 24h humidity forecasts against archived ERA5
+        run: python modelos/validar_indicador_humedad_botrytis_7b.py
+      - name: Commit only verified historical meteorological classification results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/botrytis_indicador_7b_backtest.json datos/botrytis_indicador_7b_diario.csv
+          if git diff --cached --quiet; then
+            echo "No changes in meteorological retrospective benchmark."
+          else
+            git commit -m "data(oaf): audit archived humid-period forecasts against ERA5"
+            git pull --rebase origin main
+            git push
+          fi
