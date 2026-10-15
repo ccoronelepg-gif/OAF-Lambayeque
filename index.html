@@ -236,6 +236,26 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <p class="small" id="oaf-botrytis-7b-prospective">La primera comparación prospectiva será posible desde el 23 de octubre de 2026, cuando el reanálisis ERA5 esté disponible.</p>
 <div class="links"><a href="FASE_7B_VALIDACION_HUMEDAD.md">Método, resultados y limitaciones ↗</a><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5 ↗</a></div>
 </div></details>
+<details class="panel" id="oaf-field-7c">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 7C · Validación fitosanitaria con datos de campo</strong>
+<small style="display:block;color:var(--muted)">Protocolo de muestreo, sensores de humectación y diagnóstico para arándano</small></span>
+<span class="badge">Preparación de investigación</span></summary>
+<div style="margin-top:15px">
+<p class="small">Para pronosticar <i>Botrytis cinerea</i> necesitamos observaciones realmente obtenidas en parcelas: <b>floración, unidades evaluadas, síntomas, diagnóstico y humectación foliar medida</b>. Una serie externa de humedad no demuestra infección. El OAF validará la integridad de los registros privados antes de entrenar o publicar cualquier probabilidad.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-field-7c-reload">Consultar avance de validación ↻</button></div>
+<p class="small" id="oaf-field-7c-status" role="status">Aún no hay observaciones de campo publicadas. Se consultará el estado agregado de calidad cuando abras este apartado.</p>
+<div id="oaf-field-7c-info" hidden>
+<p class="small"><b>Informe de integridad generado:</b> <span id="oaf-field-7c-updated">—</span></p>
+<p class="small" id="oaf-field-7c-private"></p>
+</div>
+<div class="notice"><b>Confidencialidad y validez:</b> los archivos reales de parcelas no se publican en GitHub. La confirmación específica de <i>B. cinerea</i> se distingue de los síntomas compatibles y se requiere un denominador homogéneo. Sin muestras de campo no existe diagnóstico, incidencia comprobada ni modelo fitosanitario calibrado.</div>
+<div class="links">
+<a href="datos/plantilla_7c_monitoreo_botrytis.csv">Plantilla de monitoreo fitosanitario (CSV) ↗</a>
+<a href="datos/plantilla_7c_microclima_horario.csv">Plantilla horaria de microclima (CSV) ↗</a>
+<a href="FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md">Protocolo, unidades y controles ↗</a>
+</div>
+</div></details>
 <div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
 <article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
 <div class="notice">Una predicción meteorológica de condiciones favorables <b>no equivale a presencia confirmada</b> de una enfermedad. Hasta contar con evaluación independiente del modelo, no se mostrarán porcentajes de infección ni recomendaciones automáticas de tratamiento.</div></div>
@@ -414,4 +434,5 @@ nav();
 <script src="modelos/benchmark_visor_6f.js" defer></script>
 <script src="modelos/verificacion_prospectiva_visor_6g.js" defer></script>
 <script src="modelos/botrytis_arandano_humedad_7a.js" defer></script>
-<script src="modelos/visor_validacion_humedad_botrytis_7b.js" defer></script></body></html>
+<script src="modelos/visor_validacion_humedad_botrytis_7b.js" defer></script>
+<script src="modelos/visor_campo_botrytis_7c.js" defer></script></body></html>
