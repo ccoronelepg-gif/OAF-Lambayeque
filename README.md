@@ -69,6 +69,20 @@ En [Datos climatológicos del portal](https://ccoronelepg-gif.github.io/OAF-Lamb
 
 **Próxima prioridad:** construir una serie oceánico-atmosférica verificable de Niño 1+2 e ICEN y un primer modelo base de predicción frente a persistencia y escenarios institucionales; en paralelo validar indicadores fitosanitarios con observaciones de campo.
 
+## Fase 6B · Primera predicción oceánica experimental Niño 1+2 (14/10/2026)
+
+**Objetivo de investigación:** anticipar una anomalía mensual oceánica Niño 1+2, como paso hacia un sistema de predicción de posibles episodios de El Niño Costero, y evaluar objetivamente si un modelo propio supera la persistencia. **No se afirma que este primer modelo prediga El Niño Costero o sea el índice ICEN oficial.**
+
+- **Fuente real descargada:** [NOAA CPC OISST v2.1 Niño 1+2](https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices), serie continua desde enero de 1982 hasta septiembre de 2026. Se distinguen en todo momento NOAA OISST y el **ICEN/ERSSTv5 oficial de ENFEN**.
+- **Última anomalía NOAA:** septiembre de 2026, **+4,69 °C**.
+- **Modelo de anomalía a un mes (octubre de 2026):** AR(1) experimental **+4,35 °C**; persistencia **+4,69 °C**. No son probabilidades, clasificaciones ENFEN ni avisos climáticos para Lambayeque.
+- **Walk-forward con 200 pronósticos retrospectivos (2010–2026):** MAE AR(1) **0,3749 °C**, persistencia **0,3797 °C**; diferencia favorable **~1,26 %**, demasiado reducida para proclamar habilidad consolidada.
+- **Últimos 12 meses:** MAE AR(1) **0,5818 °C** frente a **0,4708 °C** de persistencia (el AR1 empeora un **23,56 %**). El intervalo exploratorio del remuestreo por bloques incluye cero: NO se ha demostrado mejor desempeño robusto.
+- **Archivos y método:** [MODELO_NINO12_FASE6B.md](MODELO_NINO12_FASE6B.md), [Python](modelos/modelo_nino12_fase6b.py), [workflow automático de GitHub Actions](.github/workflows/oaf_nino12_fase6b.yml), [serie NOAA](datos/noaa_nino12_oisst_mensual.csv), [evaluación mensual](datos/nino12_backtest_walkforward.csv), [salida JSON](datos/modelo_nino12_experimental.json).
+- **Página:** [Boletín de El Niño → evaluación oceánica experimental](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino). Se conserva la fuente y estado oficial ENFEN por separado.
+
+**Siguiente fase:** incorporar la serie ERSSTv5/ICEN conforme a la definición oficial actualizada, variables de viento y océano subsuperficial, y un conjunto histórico de pronósticos fechados para evaluación prospectiva. Persistencia seguirá siendo el modelo de referencia que debe superarse; ninguna alerta OAF se emitirá hasta validar los modelos.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
