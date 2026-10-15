@@ -158,7 +158,7 @@ function dateAfter(a,b){const day=86400000;return (Date.parse(a+'T00:00:00Z')-Da
 function evaluatePredHourly(raw){
  if(!raw||!Array.isArray(raw.time)||!Array.isArray(raw.temperature_2m)||raw.time.length!==raw.temperature_2m.length)throw Error('Series horarias incompatibles');
  const byDay=new Map(),seen=new Set();
- for(let i=0;i<raw.time.length;i++){const stamp=raw.time[i],t=raw.temperature_2m[i];if(typeof stamp!=='string'||!/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:00$/.test(stamp)||seen.has(stamp))throw Error('Fechas inválidas, repetidas o no horarias');
+ for(let i=0;i<raw.time.length;i++){const stamp=raw.time[i],t=raw.temperature_2m[i];if(typeof stamp!=='string'||!/^\d{4}-\d{2}-\d{2}T\d{2}:00$/.test(stamp)||seen.has(stamp))throw Error('Fechas inválidas, repetidas o no horarias');
  seen.add(stamp);let date=stamp.slice(0,10),hour=Number(stamp.slice(11,13));if(!byDay.has(date))byDay.set(date,new Map());byDay.get(date).set(hour,t);
  }
  const keys=[...byDay.keys()].sort().slice(1,8);if(keys.length!==7)throw Error('La fuente no ofrece siete días futuros completos');
