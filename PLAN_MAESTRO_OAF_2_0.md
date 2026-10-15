@@ -131,6 +131,14 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 
 **Trabajo científico pendiente:** acumular emisiones prospectivas durante varios meses, comprobar sesgos contra estaciones SENAMHI, evaluar la precisión de anomalías de lluvia y radiación por horizonte y comparar modelos propios con referencias simples. Los modelos de El Niño Costero y enfermedades agrícolas continúan siendo líneas diferenciadas sujetas a validación.
 
+### Fase 7A completada — primera señal meteorológica para Botrytis del arándano (15/10/2026)
+
+- Se extendió Cultivos → Predicción con una sección para arándano: búsqueda en pronósticos Open-Meteo de **periodos de HR >90 % durante ≥6 h consecutivas**. Ese criterio de UC IPM es general para *Botrytis*, no un modelo entrenado ni validado en arándanos de Lambayeque. UF/IFAS indica que floración y humectación prolongada son componentes de susceptibilidad.
+- Se incluyen temperatura a 2 m, lluvia, **radiación solar**, DPV y duración de la HR elevada, con intervalos que cruzan medianoche y rechazo estricto de horas nulas. No se publica riesgo porcentual o recomendación de productos comerciales.
+- Primera emisión archivada y verificable 15/10/2026 para 16–22/10/2026, con 168 horas por localidad: Motupe 2 periodos, Jayanca 0, Olmos 3, Chiclayo 0. Sin mediciones de enfermedad, los episodios solo indican condiciones de humedad atmosférica pronosticadas.
+- **Código, API y archivo prospectivo** comprobados mediante GitHub Actions; JavaScript y Python coincidieron en seis magnitudes al reprocesar los archivos reales para las cuatro localidades. Ver `FASE_7A_BOTRYTIS_ARANDANO.md` y `datos/patrones_botrytis_emitidos/2026-10-15.json`.
+- **Fase 7B:** recopilar observaciones reales de humectación foliar en arándano, fases fenológicas, HR y temperatura en dosel y enfermedades diagnosticadas, con cronología y ubicación verificables. Evaluar modelos fitosanitarios únicamente después de contar con suficientes casos y negativos, periodos y parcelas.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
