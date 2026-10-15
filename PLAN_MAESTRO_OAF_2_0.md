@@ -91,6 +91,16 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 
 **Siguiente fase 6D:** conseguir series ICEN/ERSSTv5 verificadas y vigentes para continuar una predicción actual y auditable; explorar ERSSTv6 como un producto alternativo **distinto**, introducir predictores atmosféricos y oceánicos, mantener métricas y pruebas prospectivas contra persistencia, y vincular después condiciones oceanográficas con el clima y enfermedades en Lambayeque.
 
+### Fase 6D realizada: reconstrucción ERSSTv5 NOAA NCEI de referencia 1991–2020
+
+- Fuente alternativa NOAA NCEI ERSSTv5 `ersst.v5.el_nino.dat` detectada con registros hasta septiembre 2026, con índice Niño 1+2 en sexta columna y climatología original 1971–2000.
+- Se implementó la transformación por mes calendario de anomalías desde la referencia original a la base **1991–2020**, restando la media mensual 1991–2020 de la serie original. Resultado OAF DERIVADO, **no ICEN institucional**, con procedencia documentada.
+- El contraste con los 918 meses comunes del archivo CPC ERSSTv5 mostró una diferencia absoluta media de 0,0397 °C en los últimos 24 meses coincidentes. Es un control de plausibilidad, no equivalencia de instrumentos ni validación predictiva.
+- Se ejecutó y se guardó un backtest de AR(1) a 1/2/3 meses vs persistencia. Pronósticos experimentales octubre +4,054, noviembre +3,744, diciembre +3,456 °C, anclados en último mes septiembre 2026 de anomalía +4,389 °C. **El AR1 no supera a persistencia en los doce meses más recientes**; sin validación prospectiva ni alertas.
+- Módulo adicional en pestaña Boletín de El Niño, plegable para conservar el diseño simplificado. Ver `MODELO_NCEI_ERSSTV5_FASE6D.md` y `datos/modelo_ersstv5_ncei_6d.json`.
+
+**Fase 6E recomendada:** llevar un registro versionado de cada emisión mensual y su horizonte, incorporar variables climáticas atmosféricas (SOI, vientos, condiciones subsuperficiales) con origen temporal comprobado y evaluar capacidad predictiva fuera de muestra. Integrar después la predicción de anomalías regionales en Lambayeque y los modelos de riesgo fitosanitario de arándano y vid, evitando inferencias causales o sanitarias no justificadas.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
