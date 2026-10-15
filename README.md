@@ -223,6 +223,24 @@ Se completó la primera comparación de **vientos y presión del Pacífico tropi
 
 **Próximo paso 8C:** estudiar hipótesis limitadas de desfases de SOI/vientos, contenido de calor oceánico subsuperficial disponible e impacto regional sobre lluvia, temperatura y radiación de Lambayeque (1996–2025), evitando ajustes retrospectivos oportunistas.
 
+## Fase 8C · Calor subsuperficial T300 y SOI/vientos desfasados (15/10/2026)
+
+Se continuó la línea de investigación de **anomalías oceánicas / El Niño Costero** durante la recopilación pendiente de evaluaciones fitosanitarias reales de arándano/vid. Se incorporó una nueva fuente: [temperatura promedio del océano de 0–300 m, T300, NOAA/PMEL-GODAS](https://www.pmel.noaa.gov/tao/wwv/data/t300.dat), para la banda ecuatorial 5°N–5°S, 120°E–80°O. La **anomalía T300 usa base 1981–2010**; la anomalía SST Niño 1+2 NOAA NCEI del OAF usa **1991–2020**. No son medidas idénticas.
+
+Se enfrentaron **persistencia**, un modelo **SST t y t−1**, uno con **T300 t−1** y otro con **T300 t−1 + SOI/vientos t−1**. Todos los modelos Ridge tuvieron regularización fija `alpha=20` y se entrenaron únicamente con meses objetivo **hasta diciembre 2022**. Periodo de prueba aislado: **enero 2023 a septiembre 2026** (44, 43 y 42 orígenes según horizonte h1/h2/h3). No se usaron objetivos de ese periodo para reajustar los parámetros.
+
+| Horizonte | MAE TSM+tendencia | MAE +T300 | MAE +T300+atmósfera |
+|---|---:|---:|---:|
+| 1 mes | 0,4500 °C | **0,4168 °C** | 0,4917 °C |
+| 2 meses | 0,6951 °C | **0,6519 °C** | 0,7782 °C |
+| 3 meses | 0,8780 °C | **0,8285 °C** | 0,9345 °C |
+
+**Resultado:** T300 redujo el MAE **7,38 %, 6,21 % y 5,64 %** frente a TSM+tendencia, pero los intervalos exploratorios por bloques cruzaron cero en los tres horizontes; la ganancia **no está demostrada de forma robusta**. Añadir SOI y vientos empeoró de nuevo. Ningún modelo de 8C se promovió a predicción o alerta operativa ni se modificaron las emisiones fechadas de la Fase 8A.
+
+**Implementación auditada:** [informe Fase 8C](FASE_8C_CALOR_SUBSUPERFICIAL_ENSO.md), [motor Python](modelos/benchmark_calor_subsuperficial_8c.py), [workflow de GitHub](.github/workflows/oaf_benchmark_calor_subsuperficial_8c.yml), [serie real T300](datos/noaa_pmel_t300_8c.csv), [informe JSON](datos/benchmark_subsuperficial_8c.json), [129 resultados mensuales](datos/benchmark_subsuperficial_8c_test.csv) y [visualización en Boletín de El Niño](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino). La fuente PMEL llega hasta agosto 2026; el mes t−1 permite emparejarla con el origen SST septiembre 2026, pero no garantiza disponibilidad de la versión histórica exacta al emitir un pronóstico.
+
+**Siguiente etapa 8D:** evaluar relaciones entre Niño 1+2/T300 y anomalías **de temperatura, lluvia y radiación solar en Lambayeque**, con referencia regional 1996–2025 (y OMM 1991–2020). Asimismo diseñar una futura emisión prospectiva de T300 con control estricto de datos disponibles y evaluación frente a persistencia. Mantener ENFEN/ICEN oficial claramente diferenciado.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
