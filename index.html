@@ -55,6 +55,19 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 .autor-firma{margin-top:20px;display:flex;flex-direction:column;gap:2px}
 .autor-firma strong{font-size:15px;color:var(--navy)}.autor-firma span{font-size:13px;color:var(--muted)}
 @media(max-width:800px){.autor-presentacion{padding:21px 19px}.hero .herotxt{min-height:170px}}
+
+/* OAF: indicador térmico experimental oídio de vid */
+.pred-screen{margin:16px 0 19px;padding:18px;border:1px solid #d4e6df;background:#fbfdfb;border-radius:13px}
+.pred-header{display:flex;align-items:start;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.pred-header h3{font-size:19px;letter-spacing:-.25px;margin:6px 0 3px;color:var(--navy)}
+.pred-header p{max-width:650px}.pred-controls{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:17px 0 13px}
+.pred-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:750;color:var(--muted)}
+.pred-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0 18px}
+.pred-summary>div{background:#edf7f4;border-radius:10px;padding:14px}
+.pred-summary small{font-size:11px;color:var(--muted);display:block;line-height:1.4}
+.pred-summary strong{font-size:23px;color:var(--navy);display:block;margin-top:5px}
+.pred-screen .scroller{margin-bottom:9px}
+@media(max-width:660px){.pred-summary{grid-template-columns:1fr}.pred-screen{padding:12px}}
 </style></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo">◈</span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <nav aria-label="Secciones principales">
@@ -107,7 +120,16 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <tr data-cultivo="Vid"><td>Podredumbre negra · <i>Guignardia bidwellii</i> <a href="https://extension.psu.edu/grape-disease-black-rot" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>Temperatura y humectación combinadas; por ejemplo 6 h a 27 °C.</td><td>Vid</td></tr>
 </tbody></table></div><div class="notice">Los umbrales provienen de estudios externos; no se han validado para Lambayeque. Clima favorable no significa presencia comprobada de enfermedad. La humedad relativa no equivale a humectación foliar medida.</div>
 </div></div><div id="panel-prediccion" role="tabpanel" aria-labelledby="cultivos-tab-prediccion" hidden><div class="panel" id="modelos-fitosanitarios">
-<div class="modelhead"><div><h2>Predicción de riesgo de presencia de enfermedades</h2><p class="small">Aquí desarrollaremos los modelos de predicción fitosanitaria del observatorio para arándano y vid.</p></div><span class="badge">Módulo predictivo en desarrollo</span></div><div class="notice"><b>Predicciones todavía no disponibles.</b> Este apartado integrará pronósticos meteorológicos, variables favorables al patógeno y datos de campo. Mostrará el cultivo, la enfermedad evaluada, el periodo pronosticado, el nivel de riesgo y la incertidumbre solamente cuando el modelo haya sido validado.</div>
+<div class="modelhead"><div><h2>Predicción de riesgo de presencia de enfermedades</h2><p class="small">Aquí desarrollaremos los modelos de predicción fitosanitaria del observatorio para arándano y vid.</p></div><span class="badge">Módulo predictivo en desarrollo</span></div><div class="pred-screen" aria-labelledby="pred-title">
+<div class="pred-header"><div><span class="riskcrop">Primer ensayo computacional · Vid</span><h3 id="pred-title">Oídio: ventanas térmicas pronosticadas</h3><p class="small">Evalúa las siguientes siete jornadas completas con temperaturas horarias del pronóstico externo. No calcula probabilidad de enfermedad.</p></div><span class="badge">Indicador experimental</span></div>
+<div class="pred-controls"><label for="pred-place">Localidad<select id="pred-place"><option value="Motupe">Motupe</option><option value="Jayanca">Jayanca</option><option value="Olmos">Olmos</option><option value="Chiclayo">Chiclayo</option></select></label><button type="button" id="pred-run" class="btn dark">Analizar pronóstico horario</button></div>
+<div id="pred-status" role="status" class="small">Selecciona una localidad para analizar las condiciones meteorológicas.</div>
+<div id="pred-results" hidden><div class="pred-summary"><div><small>Días con ≥6 h continuas favorables</small><strong id="pred-days">—</strong></div><div><small>Mayor secuencia de días</small><strong id="pred-streak">—</strong></div><div><small>Patrón de tres días consecutivos</small><strong id="pred-triple">—</strong></div></div>
+<div class="scroller"><table><thead><tr><th>Fecha</th><th>Mayor periodo continuo 21,1–29,4 °C</th><th>Evaluación térmica</th></tr></thead><tbody id="pred-table"></tbody></table></div>
+<p class="small" id="pred-provenance"></p></div>
+<div class="notice"><b>Condición previa del modelo:</b> el índice de UC IPM presupone una infección primaria ya establecida. Las temperaturas pronosticadas a 2 m <b>no sustituyen</b> sensores dentro del dosel. El análisis horario no reproduce las variaciones de 15 minutos ni constituye el índice epidemiológico completo. Un resultado favorable no confirma enfermedad ni indica aplicación de fungicidas.</div>
+<div class="links"><a href="https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/" target="_blank" rel="noopener noreferrer">Modelo original UC IPM ↗</a><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Datos y pronóstico Open-Meteo ↗</a></div>
+</div>
 <div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
 <article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
 <div class="notice">Una predicción meteorológica de condiciones favorables <b>no equivale a presencia confirmada</b> de una enfermedad. Hasta contar con evaluación independiente del modelo, no se mostrarán porcentajes de infección ni recomendaciones automáticas de tratamiento.</div></div>
@@ -127,8 +149,57 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <script>
 (function(){
 const pages=['inicio','clima','cultivos','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
-function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}}
+function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}if(isPredictive&&!predLoaded){predLoaded=true;runPred()}}
 function setCultivosPanel(which){const prediction=which==='prediccion';document.getElementById('panel-condiciones').hidden=prediction;document.getElementById('panel-prediccion').hidden=!prediction;document.getElementById('cultivos-tab-condiciones').setAttribute('aria-selected',String(!prediction));document.getElementById('cultivos-tab-prediccion').setAttribute('aria-selected',String(prediction));}
+
+/* Primera evaluación prospectiva: solo patrón térmico UC IPM, sin infección primaria ni índice de tratamientos */
+let predLoaded=false;const predBtn=document.getElementById('pred-run'),predPlace=document.getElementById('pred-place');
+function dateAfter(a,b){const day=86400000;return (Date.parse(a+'T00:00:00Z')-Date.parse(b+'T00:00:00Z'))===day;}
+function evaluatePredHourly(raw){
+ if(!raw||!Array.isArray(raw.time)||!Array.isArray(raw.temperature_2m)||raw.time.length!==raw.temperature_2m.length)throw Error('Series horarias incompatibles');
+ const byDay=new Map(),seen=new Set();
+ for(let i=0;i<raw.time.length;i++){const stamp=raw.time[i],t=raw.temperature_2m[i];if(typeof stamp!=='string'||!/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:00$/.test(stamp)||seen.has(stamp))throw Error('Fechas inválidas, repetidas o no horarias');
+ seen.add(stamp);let date=stamp.slice(0,10),hour=Number(stamp.slice(11,13));if(!byDay.has(date))byDay.set(date,new Map());byDay.get(date).set(hour,t);
+ }
+ const keys=[...byDay.keys()].sort().slice(1,8);if(keys.length!==7)throw Error('La fuente no ofrece siete días futuros completos');
+ const daily=[];let daysGood=0,streak=0,maxStreak=0,last=null,anyTriple=false;
+ for(const date of keys){
+  const group=byDay.get(date);let run=0,longest=0,complete=group.size===24;
+  for(let h=0;h<24;h++){const val=group.get(h);if(!Number.isFinite(val)){complete=false;run=0;continue}
+  const qualifies=val>=(70-32)*5/9&&val<=(85-32)*5/9;
+  run=qualifies?run+1:0;longest=Math.max(longest,run);
+  }
+  const ok=complete&&longest>=6;
+  if(ok){daysGood++;streak=last&&dateAfter(date,last)?streak+1:1;maxStreak=Math.max(maxStreak,streak);if(streak>=3)anyTriple=true}
+  else streak=0;
+  daily.push({date,longest,complete,ok});last=date;
+ }
+ return {daily,daysGood,maxStreak,anyTriple};
+}
+async function runPred(){
+ const status=document.getElementById('pred-status'),out=document.getElementById('pred-results'),local=predPlace.value,coordinates=points[local];
+ predBtn.disabled=true;out.hidden=true;status.textContent='Consultando temperatura horaria pronosticada para '+local+'…';
+ try{
+  const p=new URLSearchParams({latitude:String(coordinates[0]),longitude:String(coordinates[1]),hourly:'temperature_2m',timezone:'America/Lima',forecast_days:'8'});
+  const response=await fetch('https://api.open-meteo.com/v1/forecast?'+p.toString(),{cache:'no-store'});
+  if(!response.ok)throw Error('Servicio meteorológico: HTTP '+response.status);
+  const data=await response.json();if(data.error||!data.hourly)throw Error(data.reason||'Datos insuficientes');
+  const assessment=evaluatePredHourly(data.hourly);
+  document.getElementById('pred-days').textContent=assessment.daysGood+' de 7';
+  document.getElementById('pred-streak').textContent=assessment.maxStreak+' días';
+  document.getElementById('pred-triple').textContent=assessment.anyTriple?'Sí, patrón térmico':'No identificado';
+  const body=document.getElementById('pred-table');body.replaceChildren();
+  for(const item of assessment.daily){const row=document.createElement('tr');
+   [item.date,item.complete?item.longest+' h':'Datos incompletos',item.complete?(item.ok?'≥6 h continuas':'No alcanza seis horas'):'No evaluable'].forEach(value=>{const cell=document.createElement('td');cell.textContent=value;row.appendChild(cell)});body.appendChild(row);
+  }
+  status.textContent='Análisis horario finalizado: '+local+' · siete jornadas futuras completas.';
+  document.getElementById('pred-provenance').textContent='Modelo térmico: UC IPM (oídio de vid). Datos: Open-Meteo, temperatura pronosticada a 2 m; zona horaria America/Lima; consulta '+new Date().toLocaleString('es-PE',{timeZone:'America/Lima'})+'. No es una estimación de incidencia ni un índice completo de riesgo.';
+  out.hidden=false;
+ }catch(err){status.textContent='No es posible completar la evaluación: '+err.message+'. No se han sustituido datos faltantes por valores simulados.'}
+ finally{predBtn.disabled=false}
+}
+predBtn.addEventListener('click',runPred);predPlace.addEventListener('change',runPred);
+
 window.addEventListener('hashchange',nav);
 filtro.addEventListener('change',()=>{let n=0;document.querySelectorAll('#patologias tr').forEach(t=>{t.hidden=filtro.value!=='Todos'&&filtro.value!==t.dataset.cultivo;if(!t.hidden)n++});document.getElementById('count').textContent=n+' enfermedades'});
 const points={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]},loc=document.getElementById('localidad'),btn=document.getElementById('actualizar');
