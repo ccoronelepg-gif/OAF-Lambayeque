@@ -1,0 +1,843 @@
+{
+  "fase": "8D_robustez",
+  "generado_utc": "2026-10-15T06:28:00+00:00",
+  "fuente": "datos/benchmark_impacto_lambayeque_8d_prueba.csv",
+  "evaluacion": "Solo orígenes de prueba 2023-2026, MAE emparejado",
+  "metodo": "Remuestreo de bloques móviles de 6 meses contiguos, 2000 réplicas, semilla fija por comparación",
+  "comparaciones": "Niño1+2 y Niño1+2+T300 contra Ridge local, mismas fechas",
+  "validacion_prospectiva": false,
+  "son_intervalos_de_confianza_formalmente_calibrados": false,
+  "se_confirmo_habilidad_operativa": false,
+  "resultado": {
+    "Chiclayo": {
+      "precipitacion_mm": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.19957,
+            "intervalo_exploratorio_95": [
+              -0.4962,
+              -0.02316
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.17195,
+            "intervalo_exploratorio_95": [
+              -0.4587,
+              -0.00669
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.36865,
+            "intervalo_exploratorio_95": [
+              -0.89374,
+              -0.1162
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.354,
+            "intervalo_exploratorio_95": [
+              -0.80772,
+              -0.10241
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.6904,
+            "intervalo_exploratorio_95": [
+              -1.43552,
+              -0.17337
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.66511,
+            "intervalo_exploratorio_95": [
+              -1.45278,
+              -0.16814
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        }
+      },
+      "radiacion_mj_m2": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.09901,
+            "intervalo_exploratorio_95": [
+              -0.20739,
+              -0.01151
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.09193,
+            "intervalo_exploratorio_95": [
+              -0.1948,
+              -0.00581
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.09328,
+            "intervalo_exploratorio_95": [
+              -0.19011,
+              -0.0046
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.08204,
+            "intervalo_exploratorio_95": [
+              -0.1726,
+              0.00341
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.08114,
+            "intervalo_exploratorio_95": [
+              -0.15832,
+              0.00541
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.06374,
+            "intervalo_exploratorio_95": [
+              -0.14508,
+              0.02129
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      },
+      "temperatura_c": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.0135,
+            "intervalo_exploratorio_95": [
+              -0.05331,
+              0.05967
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.07217,
+            "intervalo_exploratorio_95": [
+              -0.09163,
+              0.13077
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.01788,
+            "intervalo_exploratorio_95": [
+              -0.01246,
+              0.06295
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.06397,
+            "intervalo_exploratorio_95": [
+              -0.0904,
+              0.10654
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.0187,
+            "intervalo_exploratorio_95": [
+              -0.00382,
+              0.0602
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.07458,
+            "intervalo_exploratorio_95": [
+              -0.02167,
+              0.13558
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      }
+    },
+    "Jayanca": {
+      "precipitacion_mm": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.14282,
+            "intervalo_exploratorio_95": [
+              -0.32937,
+              -0.01438
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.12937,
+            "intervalo_exploratorio_95": [
+              -0.29161,
+              -0.00188
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.30953,
+            "intervalo_exploratorio_95": [
+              -0.68619,
+              -0.06097
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.31104,
+            "intervalo_exploratorio_95": [
+              -0.67852,
+              -0.05878
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.47386,
+            "intervalo_exploratorio_95": [
+              -0.99887,
+              -0.078
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.45931,
+            "intervalo_exploratorio_95": [
+              -0.98799,
+              -0.07852
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        }
+      },
+      "radiacion_mj_m2": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.09124,
+            "intervalo_exploratorio_95": [
+              -0.19087,
+              -0.0011
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.08397,
+            "intervalo_exploratorio_95": [
+              -0.18218,
+              -0.00121
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.1048,
+            "intervalo_exploratorio_95": [
+              -0.20611,
+              -0.01186
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.09297,
+            "intervalo_exploratorio_95": [
+              -0.18862,
+              -0.00134
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.07632,
+            "intervalo_exploratorio_95": [
+              -0.15893,
+              0.00631
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.06088,
+            "intervalo_exploratorio_95": [
+              -0.1495,
+              0.01858
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      },
+      "temperatura_c": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.02138,
+            "intervalo_exploratorio_95": [
+              -0.11213,
+              0.07918
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.07098,
+            "intervalo_exploratorio_95": [
+              -0.23117,
+              0.17023
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.0332,
+            "intervalo_exploratorio_95": [
+              -0.0533,
+              0.07567
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.11798,
+            "intervalo_exploratorio_95": [
+              -0.07019,
+              0.17323
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.05977,
+            "intervalo_exploratorio_95": [
+              0.02391,
+              0.11035
+            ],
+            "intervalo_totalmente_positivo": true,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.1554,
+            "intervalo_exploratorio_95": [
+              0.0661,
+              0.229
+            ],
+            "intervalo_totalmente_positivo": true,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      }
+    },
+    "Motupe": {
+      "precipitacion_mm": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.15168,
+            "intervalo_exploratorio_95": [
+              -0.33468,
+              -0.01624
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.14309,
+            "intervalo_exploratorio_95": [
+              -0.32677,
+              -0.01311
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.34476,
+            "intervalo_exploratorio_95": [
+              -0.80377,
+              -0.05144
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.3518,
+            "intervalo_exploratorio_95": [
+              -0.81971,
+              -0.05712
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.55302,
+            "intervalo_exploratorio_95": [
+              -1.27115,
+              -0.0938
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.53927,
+            "intervalo_exploratorio_95": [
+              -1.17263,
+              -0.08872
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        }
+      },
+      "radiacion_mj_m2": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.07117,
+            "intervalo_exploratorio_95": [
+              -0.17203,
+              0.01795
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.06194,
+            "intervalo_exploratorio_95": [
+              -0.14938,
+              0.01988
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.08803,
+            "intervalo_exploratorio_95": [
+              -0.18141,
+              -0.00579
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.07772,
+            "intervalo_exploratorio_95": [
+              -0.16333,
+              -0.00606
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.06044,
+            "intervalo_exploratorio_95": [
+              -0.13243,
+              0.01021
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.04867,
+            "intervalo_exploratorio_95": [
+              -0.12575,
+              0.01465
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      },
+      "temperatura_c": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.0066,
+            "intervalo_exploratorio_95": [
+              -0.16164,
+              0.04997
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.02217,
+            "intervalo_exploratorio_95": [
+              -0.27553,
+              0.10141
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.01425,
+            "intervalo_exploratorio_95": [
+              -0.13784,
+              0.03157
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.02566,
+            "intervalo_exploratorio_95": [
+              -0.2543,
+              0.08983
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.01076,
+            "intervalo_exploratorio_95": [
+              -0.07462,
+              0.06244
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.0679,
+            "intervalo_exploratorio_95": [
+              -0.15728,
+              0.15473
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      }
+    },
+    "Olmos": {
+      "precipitacion_mm": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.18245,
+            "intervalo_exploratorio_95": [
+              -0.37856,
+              -0.038
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.17331,
+            "intervalo_exploratorio_95": [
+              -0.35013,
+              -0.0341
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.33931,
+            "intervalo_exploratorio_95": [
+              -0.69202,
+              -0.04631
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.33672,
+            "intervalo_exploratorio_95": [
+              -0.70945,
+              -0.05193
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.57674,
+            "intervalo_exploratorio_95": [
+              -1.14874,
+              -0.09976
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.55071,
+            "intervalo_exploratorio_95": [
+              -1.1022,
+              -0.10306
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": true
+          }
+        }
+      },
+      "radiacion_mj_m2": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.04476,
+            "intervalo_exploratorio_95": [
+              -0.12351,
+              0.01467
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": -0.03489,
+            "intervalo_exploratorio_95": [
+              -0.1036,
+              0.01653
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.03752,
+            "intervalo_exploratorio_95": [
+              -0.09637,
+              0.00827
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": -0.02811,
+            "intervalo_exploratorio_95": [
+              -0.07479,
+              0.01012
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.02288,
+            "intervalo_exploratorio_95": [
+              -0.06223,
+              0.01118
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": -0.01224,
+            "intervalo_exploratorio_95": [
+              -0.04586,
+              0.01566
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      },
+      "temperatura_c": {
+        "1": {
+          "nino_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.04387,
+            "intervalo_exploratorio_95": [
+              -0.14244,
+              0.11905
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 44,
+            "mejora_relativa": 0.08079,
+            "intervalo_exploratorio_95": [
+              -0.28189,
+              0.19101
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "2": {
+          "nino_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.04362,
+            "intervalo_exploratorio_95": [
+              -0.10115,
+              0.09374
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 43,
+            "mejora_relativa": 0.08033,
+            "intervalo_exploratorio_95": [
+              -0.18521,
+              0.15987
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        },
+        "3": {
+          "nino_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.04525,
+            "intervalo_exploratorio_95": [
+              -0.05446,
+              0.10348
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          },
+          "nino_t300_vs_local": {
+            "n_meses": 42,
+            "mejora_relativa": 0.13543,
+            "intervalo_exploratorio_95": [
+              -0.09752,
+              0.22455
+            ],
+            "intervalo_totalmente_positivo": false,
+            "intervalo_totalmente_negativo": false
+          }
+        }
+      }
+    }
+  },
+  "advertencias": [
+    "Los intervalos son descriptivos sobre meses contiguos de esta prueba, no garantía de pronóstico futuro.",
+    "Datos climáticos de referencia ERA5/ERA5-Land reanalizados, no mediciones SENAMHI.",
+    "ERA5 y fuentes oceánicas históricas pueden revisarse; el predictor mensual no necesariamente estaba publicado antes de iniciar el mes objetivo.",
+    "El contraste posterior a 2022 sigue siendo retrospectivo, no archivo de pronósticos reales del modelo regional."
+  ]
+}
