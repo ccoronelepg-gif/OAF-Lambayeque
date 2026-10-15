@@ -1,6 +1,6 @@
 {
   "fase": "6G",
-  "generado_utc": "2026-10-15T05:06:19+00:00",
+  "generado_utc": "2026-10-15T15:18:15+00:00",
   "hoy_local_peru": "2026-10-15",
   "estado": "pendiente_reanalisis",
   "tipo": "verificacion_de_pronosticos_externos_emitidos_antes_del_evento",
@@ -9,7 +9,7 @@
   "retraso_seguridad_dias": 7,
   "primera_fecha_valida_archivada": "2026-10-15",
   "primera_fecha_elegible": "2026-10-22",
-  "jornadas_pronosticadas_en_archivo": 28,
+  "jornadas_pronosticadas_en_archivo": 56,
   "jornadas_elegibles": 0,
   "jornadas_verificadas": 0,
   "jornadas_con_referencia_incompleta": 0,
