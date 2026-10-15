@@ -264,6 +264,30 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
 <div class="panel"><h2>Impacto en cultivos</h2><p>El Niño puede modificar patrones de lluvia, humedad y temperatura. El efecto fitosanitario depende además del patógeno, fenología, manejo y microclima.</p><div class="notice">El OAF no emite alertas propias de El Niño ni puede inferir una infección a partir del comunicado.</div></div></div>
+<details class="panel" id="oaf-atmos-8b">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8B · ¿El SOI y los vientos mejoran las predicciones?</strong>
+<small style="display:block;color:var(--muted)">Comparación histórica con temperatura superficial del mar y persistencia</small></span>
+<span class="badge">Investigación · Sin ventaja demostrada</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">Se descargaron de <b>NOAA CPC</b> tres indicadores atmosféricos: <b>SOI</b>, anomalías de los vientos a <b>850 hPa del Pacífico central</b> y del <b>Pacífico oriental</b>. La comparación utiliza únicamente información del mes de origen para predecir anomalías Niño 1+2 a uno, dos o tres meses. El entrenamiento avanza por el tiempo sin incorporar objetivos posteriores a cada origen.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-atmos-8b-refresh">Consultar comparación NOAA ↻</button></div>
+<p class="small" id="oaf-atmos-8b-status" role="status">Abre esta sección para conocer si las variables atmosféricas mejoraron realmente los resultados históricos.</p>
+<div id="oaf-atmos-8b-output" hidden>
+<div class="scroller"><table>
+<thead><tr><th>Horizonte</th><th>Meses evaluados</th><th>MAE persistencia</th><th>MAE solo TSM</th><th>MAE TSM + atmósfera</th><th>Resultado</th></tr></thead>
+<tbody id="oaf-atmos-8b-rows"></tbody>
+</table></div>
+<p class="small" id="oaf-atmos-8b-method"></p>
+</div>
+<div class="notice"><b>Conclusión científica inicial:</b> agregar más variables no garantiza mejores predicciones; este primer modelo ampliado empeoró frente a usar solo temperatura oceánica en los tres horizontes estudiados. El análisis emplea archivos históricos de NOAA que pueden contener revisiones y <b>no demuestra habilidad prospectiva ni predice el ICEN oficial</b>. El OAF no emite alertas de El Niño Costero.</div>
+<div class="links">
+<a href="FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md">Metodología y métricas completas ↗</a>
+<a href="datos/benchmark_atmosferico_8b_fold.csv">Errores por cada mes analizado ↗</a>
+<a href="https://www.cpc.ncep.noaa.gov/data/indices/index.shtml" target="_blank" rel="noopener noreferrer">Series oficiales NOAA CPC ↗</a>
+</div>
+</div></details>
 <details class="panel" id="oaf-ocean-archive-8a">
 <summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
 <span><strong style="font-size:18px;color:var(--navy)">Fase 8A · Pronósticos oceánicos archivados antes del evento</strong>
@@ -460,4 +484,5 @@ nav();
 <script src="modelos/botrytis_arandano_humedad_7a.js" defer></script>
 <script src="modelos/visor_validacion_humedad_botrytis_7b.js" defer></script>
 <script src="modelos/visor_campo_botrytis_7c.js" defer></script>
-<script src="modelos/archivo_oceanico_visor_8a.js" defer></script></body></html>
+<script src="modelos/archivo_oceanico_visor_8a.js" defer></script>
+<script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script></body></html>
