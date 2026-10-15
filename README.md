@@ -153,6 +153,18 @@ El OAF ya no solo archiva pronósticos: se implementó una **verificación prosp
 
 **Corrección final de Fase 6F:** el último GitHub Actions terminó exitosamente y publicó [benchmark_variables_6f.json](datos/benchmark_variables_6f.json) y [errores mensuales](datos/benchmark_variables_6f_mes.csv). Los intervalos exploratorios de mejora ampliado vs básico por bloques fueron: Chiclayo **−2,73 % a +15,33 %**, Jayanca **−42,69 % a −9,52 %**, Motupe **−5,48 % a +1,86 %**, Olmos **+1,65 % a +10,14 %**. Solo Olmos presentó mejora positiva en ambos extremos de ese intervalo exploratorio. Un intervalo descriptivo y ERA5-Land como referencia NO equivalen a validación operativa.
 
+## Fase 7A · Primer indicador fitosanitario para Botrytis de arándano (15/10/2026)
+
+Se implementó en [Cultivos → Predicción fitosanitaria](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#riesgos) un **indicador exploratorio de periodos atmosféricos prolongados de humedad** relacionados con condiciones que pueden favorecer *Botrytis cinerea*. El objetivo del OAF sigue siendo predecir anomalías climáticas / Niño Costero y riesgos de enfermedades de arándano y vid **con validación científica futura**, sin confundir una señal del clima con infección real.
+
+- **Fundamento externo:** UC IPM describe HR superior a aproximadamente 90 % durante ≥6 horas continuas como contexto que puede favorecer *Botrytis* en general; UF/IFAS destaca floración y humectación prolongada en el arándano. Este criterio **no está validado para los cultivos de Lambayeque**.
+- Se analizan siete días completos de pronósticos **horarios externos Open-Meteo**, en Motupe, Jayanca, Olmos y Chiclayo, usando temperatura, HR, lluvia, **radiación solar** y DPV, sin convertirlos en porcentaje de enfermedad ni alerta fitosanitaria. Episodios pueden cruzar medianoche; datos faltantes hacen que el análisis no sea evaluable.
+- **Primera emisión efectivamente archivada, 15/10/2026**, para jornadas 16–22/10/2026: **Motupe 2**, **Jayanca 0**, **Olmos 3** y **Chiclayo 0** episodios previstos de HR >90 % por al menos 6 h. Los ceros no equivalen a ausencia de enfermedad.
+- La automatización Python/GitHub Actions pasó autopruebas y verificación en vivo. El motor JavaScript y Python coincidieron por localidad al reprocesar el archivo horario, incluidos lluvia, radiación y DPV.
+- [Informe Fase 7A](FASE_7A_BOTRYTIS_ARANDANO.md), [motor Python](modelos/botrytis_arandano_humedad_7a.py), [motor web](modelos/botrytis_arandano_humedad_7a.js), [workflow diario](.github/workflows/oaf_botrytis_arandano_7a.yml), [archivo de pronósticos horarios](datos/patrones_botrytis_emitidos/2026-10-15.json), [plantilla vacía de campo](datos/plantilla_monitoreo_botrytis_arandano.csv).
+
+**Próxima etapa 7B:** obtener observaciones de humectación foliar, fenología, temperatura y humedad en el dosel y diagnóstico de *Botrytis* del arándano para estudiar sensibilidad y capacidad predictiva; antes de contar con datos sanitarios reales, este módulo sigue siendo **una comparación de condiciones meteorológicas previstas**, no un modelo de presencia de enfermedad.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
