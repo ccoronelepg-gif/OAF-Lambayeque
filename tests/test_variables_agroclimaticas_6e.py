@@ -66,10 +66,12 @@ def verify_archive():
                 usable.append(model)
         except Exception as ex:
             print("HISTORICAL RADIATION:", model, "not available", str(ex)[:160])
-    assert usable, "No historical solar radiation available from tested models"
+    assert "era5" in usable, "Chosen ERA5 historical solar radiation source is missing"
     era5rain = get(archive, {**common, "daily": "precipitation_sum", "models": "era5"})
     assert len(era5rain["daily"]["precipitation_sum"]) == 31
-    print("VALID HISTORICAL RADIATION MODELS:", ",".join(usable))
+    era5land_temp = get(archive, {**common, "daily": "temperature_2m_mean", "models": "era5_land"})
+    assert sum(isinstance(v, (int, float)) for v in era5land_temp["daily"]["temperature_2m_mean"]) >= 25
+    print("CHOSEN SOURCES VERIFIED: ERA5 radiation and rain; ERA5-Land temperature")
 
 
 if __name__ == "__main__":
