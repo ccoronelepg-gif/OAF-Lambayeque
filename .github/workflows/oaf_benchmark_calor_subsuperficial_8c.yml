@@ -1,0 +1,44 @@
+name: OAF 8C - NOAA PMEL Subsurface Heat Temporal Holdout
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '13 16 12,19,26 * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/benchmark_calor_subsuperficial_8c.py'
+      - '.github/workflows/oaf_benchmark_calor_subsuperficial_8c.yml'
+      - 'datos/noaa_cpc_predictores_atmosfericos_8b.csv'
+      - 'datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-subsurface-holdout-8c
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests for PMEL monthly series, lags, and chronological integrity
+        run: python modelos/benchmark_calor_subsuperficial_8c.py --self-test
+      - name: Read NOAA PMEL T300 and calculate frozen 2023+ temporal holdout
+        run: python modelos/benchmark_calor_subsuperficial_8c.py
+      - name: Store only verified public oceanographic model comparisons
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/noaa_pmel_t300_8c.csv datos/benchmark_subsuperficial_8c.json datos/benchmark_subsuperficial_8c_test.csv
+          if git diff --cached --quiet; then
+            echo "No new monthly results."
+          else
+            git commit -m "data(oaf): validate PMEL T300 and lagged winds on frozen independent test"
+            git pull --rebase origin main
+            git push
+          fi
