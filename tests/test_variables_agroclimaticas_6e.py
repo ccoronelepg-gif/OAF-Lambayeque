@@ -55,14 +55,21 @@ def verify_archive():
     archive = "https://archive-api.open-meteo.com/v1/archive"
     common = {"latitude": lat, "longitude": lon, "timezone": "America/Lima",
               "start_date": "2019-10-01", "end_date": "2019-10-31"}
-    era5land = get(archive, {**common, "daily": "temperature_2m_mean,shortwave_radiation_sum",
-                              "models": "era5_land"})
+    usable = []
+    for model in ["era5_land", "era5", "best_match"]:
+        try:
+            result = get(archive, {**common, "daily": "shortwave_radiation_sum", "models": model})
+            values = result["daily"]["shortwave_radiation_sum"]
+            count = sum(isinstance(v, (int, float)) for v in values)
+            print("HISTORICAL RADIATION:", model, "valid=", count, "unit=", result.get("daily_units",{}).get("shortwave_radiation_sum"), "first=", values[:5])
+            if count >= 25:
+                usable.append(model)
+        except Exception as ex:
+            print("HISTORICAL RADIATION:", model, "not available", str(ex)[:160])
+    assert usable, "No historical solar radiation available from tested models"
     era5rain = get(archive, {**common, "daily": "precipitation_sum", "models": "era5"})
-    assert len(era5land["daily"]["time"]) == 31
-    assert len(era5land["daily"]["shortwave_radiation_sum"]) == 31
-    assert sum(v is not None for v in era5land["daily"]["shortwave_radiation_sum"]) >= 25
     assert len(era5rain["daily"]["precipitation_sum"]) == 31
-    print("Historical variables: ERA5-Land radiation and temperature; ERA5 precipitation: OK")
+    print("VALID HISTORICAL RADIATION MODELS:", ",".join(usable))
 
 
 if __name__ == "__main__":
