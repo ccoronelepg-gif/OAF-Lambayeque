@@ -158,7 +158,6 @@ def compare_oisst(rows):
 
 def evaluate(rows):
     v=[r["anomalia_ersstv5_c"] for r in rows]
-    scores={}, {}
     results={}
     backtest=[]
     for h in HORIZONS:
@@ -247,13 +246,13 @@ def write(rows,report,quarter,back):
 def self_test():
     rows=[]
     for year in range(1950,2027):
-        for mon in range(1,13):
+        for mon in range(1,10 if year==2026 else 13):
             v=round(.8*math.sin(len(rows)/10)+.1*math.cos(len(rows)/3),2)
             rows.append({"mes":f"{year:04d}-{mon:02d}","tsm_c":24.0,"anomalia_ersstv5_c":v})
     text="YR MON NINO1+2 ANOM NINO3 ANOM NINO4 ANOM NINO3.4 ANOM\n"
     text+="\n".join(f"{r['mes'][:4]} {int(r['mes'][5:])} {r['tsm_c']:.2f} {r['anomalia_ersstv5_c']:.2f} 26 0 28 0 27 0" for r in rows)
     parsed=parse_source(text)
-    assert len(parsed)==924 and advance_month("2026-12",1)=="2027-01"
+    assert len(parsed)==921 and advance_month("2026-12",1)=="2027-01"
     assert abs(moving_three_month(parsed)[0]["promedio_trimestral_ersstv5_c"]-
                sum(r["anomalia_ersstv5_c"] for r in parsed[:3])/3)<0.001
     report,avg,folds=evaluate(parsed)
