@@ -173,7 +173,7 @@ def seasonal_means(by):
     return averages
 
 
-def models_and_issue(by,sea,heat,now,origin):
+def models_and_issue(by,sea,heat,now,origin,was_supplemented=False):
     if now.tzinfo is None:raise ValueError("Se requiere un sello con huso horario")
     if origin!=shift(now.astimezone(LOCAL).strftime("%Y-%m"),-1):
         raise ValueError("No emitir si el origen no es el mes anterior terminado")
@@ -198,7 +198,7 @@ def models_and_issue(by,sea,heat,now,origin):
         "fuente_nino12":"NOAA NCEI ERSSTv5 Niño1+2 reconstruido por OAF referencia 1991–2020",
         "fuente_t300":"NOAA/PMEL GODAS anomalía 0–300 m referencia 1981–2010; mes t−1",
         "sha256_fuentes_y_codigo":source_hashes,
-        "serie_local_suplementaria":bool(origin>max(local_records()["Chiclayo"])),
+        "serie_local_suplementaria":bool(was_supplemented),
         "modelo":"Ridge con regularización fija alpha=20; local frente a local+Niño1+2+T300",
         "ultimos_datos_predictores":{},
         "pronosticos":[],
@@ -276,13 +276,14 @@ def snapshot(now=None):
     if origin not in sea or shift(origin,-1) not in heat:
         print("SIN EMISIÓN NUEVA: índices NOAA/PMEL todavía no publicaron valores necesarios "+origin)
         return None,False
+    original_last=max(by["Chiclayo"])
     try:
         last=extend_local(by,now)
     except (RuntimeError,ValueError) as e:
         print("SIN EMISIÓN NUEVA: referencia local no disponible "+str(e))
         return None,False
     if last!=origin:raise ValueError("Último mes local no corresponde al origen")
-    data=models_and_issue(by,sea,heat,now,origin)
+    data=models_and_issue(by,sea,heat,now,origin,last>original_last)
     ISSUES.mkdir(parents=True,exist_ok=True)
     if path.exists():raise ValueError("No sobrescribir una emisión previa")
     path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
