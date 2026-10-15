@@ -103,6 +103,31 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="kpis"><div class="kpi"><small>Radiación solar actual (onda corta)</small><b id="wx-rad">—</b></div><div class="kpi"><small>Velocidad del viento a 10 m</small><b id="wx-wind">—</b></div><div class="kpi"><small>Déficit de presión de vapor (DPV)</small><b id="wx-vpd">—</b></div><div class="kpi"><small>Presión atmosférica superficial</small><b id="wx-pressure">—</b></div></div>
 <p class="small">La radiación actual se expresa en W/m²; los acumulados diarios, en MJ/m². El DPV se expresa en kPa. Son variables modeladas para puntos de referencia, no sensores dentro del dosel.</p>
 <h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. precipitación</th><th>Radiación solar (MJ/m²)</th><th>Viento máx. (km/h)</th><th>Humedad media (%)</th><th>DPV máx. (kPa)</th><th>ET₀ FAO (mm)</th><th>Insolación (h)</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. La radiación de onda corta, ET₀, DPV, viento y presión proceden de modelos meteorológicos externos en puntos referenciales, no estaciones dentro de la parcela. La insolación (h) es duración estimada de sol, distinta de la radiación acumulada (MJ/m²).</p></div>
+<details class="panel" id="oaf-regional-8d">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8D · ¿El Niño 1+2 ayuda a anticipar el clima de Lambayeque?</strong>
+<small style="display:block;color:var(--muted)">Temperatura, lluvia y radiación solar: prueba temporal con NOAA y ERA5</small></span>
+<span class="badge">Estudio regional · sin alertas</span></summary>
+<div style="margin-top:16px">
+<p class="small">Investigamos si las anomalías mensuales de <b>Niño 1+2</b> y el indicador subsuperficial <b>T300</b> aportan capacidad para anticipar anomalías de <b>temperatura, precipitación y radiación solar</b> en Chiclayo, Jayanca, Motupe y Olmos. Comparamos con la climatología y modelos basados en información local previa. Esta es una <b>evaluación retrospectiva sobre reanálisis</b>, no una predicción operativa ni un boletín ENFEN.</p>
+<div class="tools">
+<label for="oaf-regional-8d-city">Localidad</label>
+<select id="oaf-regional-8d-city"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
+<label for="oaf-regional-8d-variable">Variable</label>
+<select id="oaf-regional-8d-variable"><option value="temperatura_c">Temperatura media</option><option value="precipitacion_mm">Lluvia mensual</option><option value="radiacion_mj_m2">Radiación solar mensual</option></select>
+<button type="button" class="btn dark" id="oaf-regional-8d-load">Consultar evaluación ↻</button></div>
+<p id="oaf-regional-8d-status" class="small" role="status">Abre esta sección para consultar las comparaciones regionales cuando finalicen sus verificaciones.</p>
+<div id="oaf-regional-8d-data" hidden>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses</th><th>MAE climatología</th><th>MAE persistencia</th><th>MAE local</th><th>MAE + Niño 1+2</th><th>MAE + Niño 1+2 + T300</th><th>Mejora Niño vs local</th><th>Mejora con T300 vs local</th></tr></thead><tbody id="oaf-regional-8d-results"></tbody></table></div>
+<p id="oaf-regional-8d-detail" class="small"></p>
+</div>
+<div class="notice"><b>Interpretación obligatoria:</b> la climatología de referencia pública es <b>1996–2025</b> (30 años), pero para evitar contaminación del periodo de prueba las anomalías del entrenamiento/evaluación usan una referencia fijada con **1996–2022**. Las fuentes meteorológicas son <b>reanálisis ERA5 y ERA5-Land</b>, no estaciones SENAMHI. La TSM del mes de origen suele publicarse después de cerrar ese mes: horizonte 1 puede representar una <b>estimación intramensual</b>. No inferir causalidad, clasificación oficial de El Niño Costero, lluvia extrema o enfermedades de una correlación histórica.</div>
+<div class="links">
+<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Método y resultados regionales ↗</a>
+<a href="datos/benchmark_impacto_lambayeque_8d_prueba.csv">Errores verificables por mes ↗</a>
+<a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5/ERA5-Land ↗</a>
+</div>
+</div></details>
 <div class="panel" id="oaf-anomaly-panel">
 <div class="modelhead"><div><span class="riskcrop">Nuevo · Exploración predictiva de anomalías</span><h2 style="margin-top:6px">¿Se esperan anomalías de temperatura, lluvia o radiación solar?</h2></div><span class="badge">Indicador experimental · no alerta</span></div>
 <p class="small">Comparamos siete días futuros pronosticados por un proveedor externo con datos de reanálisis de <b>1996–2025</b> para la misma época del año. Añadimos la radiación solar acumulada de onda corta a las evaluaciones de temperatura y precipitación. El percentil 90 señala valores relativamente altos frente a su distribución histórica, <b>no</b> una probabilidad de ocurrencia.</p>
@@ -507,4 +532,5 @@ nav();
 <script src="modelos/visor_campo_botrytis_7c.js" defer></script>
 <script src="modelos/archivo_oceanico_visor_8a.js" defer></script>
 <script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script>
-<script src="modelos/visor_subsuperficial_8c.js" defer></script></body></html>
+<script src="modelos/visor_subsuperficial_8c.js" defer></script>
+<script src="modelos/visor_impacto_regional_8d.js" defer></script></body></html>
