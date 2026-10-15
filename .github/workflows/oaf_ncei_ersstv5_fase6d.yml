@@ -1,0 +1,48 @@
+name: OAF 6D - NCEI ERSSTv5 1991-2020 recalculation
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '14 14 12 * *'
+    - cron: '14 14 19 * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/modelo_ncei_ersstv5_fase6d.py'
+      - '.github/workflows/oaf_ncei_ersstv5_fase6d.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oaf-ncei-ersstv5-experimental
+  cancel-in-progress: false
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test monthly rebasing
+        run: python modelos/modelo_ncei_ersstv5_fase6d.py --self-test
+      - name: Obtain NCEI ERSSTv5 Niño 1+2 and calculate experimental index
+        run: python modelos/modelo_ncei_ersstv5_fase6d.py
+      - name: Publish only verified data products
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv datos/ncei_ersstv5_backtest_1a3m.csv datos/modelo_ersstv5_ncei_6d.json
+          if git diff --cached --quiet; then
+            echo "No changes to experimental NCEI series."
+          else
+            git commit -m "data(oaf): update NCEI ERSSTv5 1991-2020 rebasing and verification"
+            git push
+          fi
