@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c3440"><meta name="description" content="OAF-Lambayeque: clima y predicción meteorológica, boletines ENFEN, enfermedades de arándano y vid, y verificación científica."><title>OAF-Lambayeque · Clima y sanidad vegetal</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c3440"><meta name="description" content="OAF-Lambayeque: clima y predicción meteorológica, boletines ENFEN, enfermedades de arándano y vid, y verificación científica."><title>OAF-Lambayeque · Clima y sanidad vegetal</title><link rel="icon" type="image/svg+xml" href="assets/logo-cecg.svg">
 <style>
 :root{--navy:#103842;--teal:#177d72;--ink:#213c44;--muted:#5e777c;--line:#dce8e5;--paper:#f5f8f7;--white:#fff;--mint:#e5f4eb;--gold:#9b632d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--teal)}button,select{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #9fcdc4;outline-offset:2px}[hidden]{display:none!important}
@@ -68,21 +68,15 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 .pred-summary strong{font-size:23px;color:var(--navy);display:block;margin-top:5px}
 .pred-screen .scroller{margin-bottom:9px}
 @media(max-width:660px){.pred-summary{grid-template-columns:1fr}.pred-screen{padding:12px}}
-</style></head><body>
-<header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo">◈</span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
-<nav aria-label="Secciones principales">
-<a data-tab="inicio" href="#inicio">Inicio</a>
-<a data-tab="clima" href="#clima">Datos climatológicos</a>
-<a data-tab="cultivos" href="#cultivos">Cultivos y riesgo de enfermedades</a>
-<a data-tab="nino" href="#nino">Boletín de El Niño</a>
-<a data-tab="verificaciones" href="#verificaciones">Verificación de datos</a>
-</nav></div></header>
+</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"></head><body>
+<header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo"><img src="assets/logo-cecg.svg" alt="Logo CECG" width="48" height="48"></span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
+<nav aria-label="Secciones principales"><a data-tab="inicio" href="#inicio">Inicio</a><a data-tab="clima" href="#clima">Monitoreo agroclimático</a><a data-tab="cultivos" href="#cultivos">Sanidad fitosanitaria</a><a data-tab="dashboard" href="#dashboard">Dashboard</a><a data-tab="control" href="#control">Control fitosanitario</a><a data-tab="nino" href="#nino">Boletines y El Niño</a><a data-tab="verificaciones" href="#verificaciones">Verificación de datos</a></nav></div></header>
 <main>
 <section data-page="inicio" id="inicio">
 <div class="hero"><div class="herotxt"><h1>Observatorio Agroclimático y Fitosanitario</h1></div><div class="heroimg">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700" alt="Fotografía de arándanos maduros" loading="eager">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=650" alt="Fotografía de racimo de uvas en la vid" loading="eager"></div></div>
-<div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
+<div class="oaf-home-metrics" aria-label="Indicadores meteorológicos de Open-Meteo"><div class="oaf-metric"><small>Temperatura del aire</small><strong id="oaf-live-temp">—</strong><span>Modelo externo · 2 m</span></div><div class="oaf-metric"><small>Humedad relativa</small><strong id="oaf-live-hum">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Precipitación reciente</small><strong id="oaf-live-prec">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Radiación solar global</small><strong id="oaf-live-rad">—</strong><span>Modelo externo · onda corta</span></div></div><p class="small" id="oaf-home-source" role="status">Conectando a la fuente externa. Los indicadores no son mediciones de parcela.</p><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
 <p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
 <div class="autor-firma"><strong>Carlos E. Coronel García</strong><span>Ingeniero Agrónomo</span></div>
 </div>
@@ -446,6 +440,30 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="links"><a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">Índice ICEN · fuente IMARPE ↗</a><a href="https://enfen.imarpe.gob.pe/notas-tecnicas/" target="_blank" rel="noopener noreferrer">Metodología oficial ENFEN ↗</a></div>
 </div>
 </section>
+
+<section data-page="dashboard" id="dashboard" hidden>
+<div class="viewhead"><span class="eyebrow">Exploración visual</span><h1>Dashboard agroclimático</h1><p>Gráficos interactivos de siete días, calculados con pronósticos meteorológicos externos para Chiclayo, Jayanca, Motupe y Olmos. Los resultados propios del OAF siguen siendo experimentales.</p></div>
+<div class="oaf-dashboard-grid">
+<div class="panel oaf-dashboard-main"><div class="oaf-panel-title"><h2>Variables y tendencias</h2><span class="oaf-chip">Datos modelados · Open-Meteo</span></div>
+<div class="oaf-filterline"><label for="oaf-dash-place">Localidad<select id="oaf-dash-place"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select></label>
+<label for="oaf-dash-var">Variable<select id="oaf-dash-var"><option value="temp">Temperatura máxima</option><option value="min">Temperatura mínima</option><option value="hum">Humedad relativa media</option><option value="prec">Precipitación</option><option value="rad">Radiación solar</option><option value="wind">Viento máximo</option><option value="vpd">DPV máximo</option><option value="et0">ET₀ FAO</option></select></label>
+<button class="btn dark" id="oaf-dash-reload" type="button">Actualizar ↻</button></div>
+<div id="oaf-plot" aria-live="polite"><div class="oaf-chart" style="display:grid;place-items:center;color:#5b7485">Consultando serie meteorológica…</div></div>
+<div class="oaf-legends"><span><i class="oaf-legend-dot"></i> <span id="oaf-chart-caption">Serie diaria · datos externos</span></span></div><p id="oaf-dash-status" class="oaf-status" role="status">Consultando fuente…</p><div class="oaf-insight"><b>Límite científico:</b> no corresponde a observaciones SENAMHI, clima medido en parcela, anomalías verificadas ni a una alerta propia del OAF.</div></div>
+<div class="panel"><h2>Resumen de la serie</h2><div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi"><small>Media</small><b style="font-size:18px" id="oaf-series-mean">—</b></div><div class="kpi"><small>Mínimo</small><b style="font-size:18px" id="oaf-series-min">—</b></div><div class="kpi"><small>Máximo</small><b style="font-size:18px" id="oaf-series-max">—</b></div></div><p class="small">Estadísticos de los siete valores diarios graficados; no equivalen a normales climáticas.</p></div>
+<div class="panel"><h2>Lluvia prevista · siete días</h2><div class="oaf-value" id="oaf-rain-sum">—</div><div class="oaf-mini-bars" id="oaf-mini-bars" role="img" aria-label="Lluvia pronosticada por Open-Meteo"></div><p class="small">Acumulado de la predicción meteorológica externa.</p></div>
+<div class="panel"><h2>Modelo OAF · verificación</h2><div class="oaf-value" id="oaf-model-status" style="font-size:21px">Pendiente</div><p class="small" id="oaf-model-note">Los pronósticos de 8E se verificarán al recibir observaciones posteriores.</p><a class="btn" href="#verificaciones">Consultar metodología ↗</a></div>
+</div>
+<div class="panel"><h2>Fuentes y limitaciones</h2><div class="oaf-sources"><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo · API meteorológica ↗</a><a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land" target="_blank" rel="noopener noreferrer">Copernicus · ERA5-Land ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">SENAMHI · Observación oficial ↗</a></div><p class="small">Referencias históricas del OAF: 1996–2025, y normal 1991–2020 de la OMM cuando exista cobertura. Históricos, validaciones y documentación en <a href="#verificaciones">Verificación de datos</a>.</p></div>
+</section>
+<section data-page="control" id="control" hidden>
+<div class="viewhead"><span class="eyebrow">Manejo integrado de enfermedades</span><h1>Recomendaciones de control fitosanitario</h1><p>Medidas culturales, productos químicos y biológicos con etiquetas publicadas por SENASA, seleccionados para arándano y vid. Cada ficha identifica respaldo científico y verificación regulatoria.</p></div>
+<div class="panel"><span class="oaf-chip pending">Orientación técnica · No sustituye la inspección de campo</span><p>Un ambiente favorable no confirma infección ni justifica por sí solo una aplicación. <b>La autorización efectiva requiere registro SENASA vigente, cultivo y patógeno indicados en la etiqueta actual, diagnóstico y evaluación profesional.</b> Las etiquetas enlazadas son documentos publicados, no una certificación de vigencia en tiempo real.</p>
+<div class="links"><a href="https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html" target="_blank" rel="noopener noreferrer">SIGIA · Productos por cultivo ↗</a><a href="https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_producto.html" target="_blank" rel="noopener noreferrer">SENASA · Registro de productos ↗</a><a href="https://www.frac.info/publications/all-downloads/" target="_blank" rel="noopener noreferrer">FRAC · Códigos 2026 ↗</a></div>
+<div class="oaf-control-filters"><label for="oaf-control-crop">Cultivo<select id="oaf-control-crop"><option>Todos</option><option>Arándano</option><option>Vid</option></select></label><label for="oaf-control-type">Tipo de opción<select id="oaf-control-type"><option value="todos">Todas las enfermedades</option><option value="quimico">Producto químico documentado</option><option value="biologico">Producto biológico documentado</option></select></label><span class="small" id="oaf-control-count" role="status"></span></div></div>
+<div class="oaf-controls" id="oaf-control-cards" aria-live="polite"></div>
+<div class="panel" style="margin-top:17px"><h2>Seguridad, resistencia y trazabilidad</h2><p>Revisar etiqueta, número de registro, dosis, periodo de carencia, reingreso, protección del aplicador, grupos FRAC y requisitos de residuos del destino comercial. Alternar modos de acción de acuerdo con etiqueta y asesoría agronómica. La evidencia de otros países no autoriza aplicaciones en Perú.</p><p class="small">Fuentes: SENASA, UC IPM, UF/IFAS, FRAC. Consultar siempre el registro actualizado.</p></div>
+</section>
 <section data-page="verificaciones" id="verificaciones" hidden>
 <div class="viewhead"><span class="eyebrow">Transparencia científica</span><h1>Verificación de datos</h1><p>Los resultados de control de calidad y comparación histórica siguen disponibles sin saturar la página principal.</p></div>
 <div class="panel"><h2>Base observacional histórica SENAMHI (1996–2015)</h2><div class="kpis"><div class="kpi"><small>Meses-estación completos</small><b>1 109</b></div><div class="kpi"><small>Estación-año completos</small><b>79</b></div><div class="kpi"><small>Último año común completo</small><b>2012</b></div></div><p class="small">Estos totales provienen del proceso histórico del OAF y no constituyen una normal instrumental completa para 1996–2025.</p></div>
@@ -455,7 +473,7 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <footer><div class="foot"><div><strong>OAF · LAMBAYEQUE</strong><br><small>Proyecto científico · Lambayeque, Perú</small></div><div><small>Autor: Ing. Agrónomo Carlos Enrique Coronel García</small><br><small>Fotografías: Scott Bauer/USDA y Panelxf (dominio público) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></small></div><div><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque" target="_blank" rel="noopener noreferrer">Repositorio y fuentes ↗</a></div></div></footer>
 <script>
 (function(){
-const pages=['inicio','clima','cultivos','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
+const pages=['inicio','clima','cultivos','dashboard','control','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
 function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}if(isPredictive&&!predLoaded){predLoaded=true;runPred()}}
 function setCultivosPanel(which){const prediction=which==='prediccion';document.getElementById('panel-condiciones').hidden=prediction;document.getElementById('panel-prediccion').hidden=!prediction;document.getElementById('cultivos-tab-condiciones').setAttribute('aria-selected',String(!prediction));document.getElementById('cultivos-tab-prediccion').setAttribute('aria-selected',String(prediction));}
 
@@ -564,4 +582,4 @@ nav();
 <script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script>
 <script src="modelos/visor_subsuperficial_8c.js" defer></script>
 <script src="modelos/visor_impacto_regional_8d.js" defer></script>
-<script src="modelos/visor_temperatura_regional_8e.js" defer></script></body></html>
+<script src="modelos/visor_temperatura_regional_8e.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
