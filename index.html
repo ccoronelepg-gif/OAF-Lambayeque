@@ -264,6 +264,27 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
 <div class="panel"><h2>Impacto en cultivos</h2><p>El Niño puede modificar patrones de lluvia, humedad y temperatura. El efecto fitosanitario depende además del patógeno, fenología, manejo y microclima.</p><div class="notice">El OAF no emite alertas propias de El Niño ni puede inferir una infección a partir del comunicado.</div></div></div>
+<details class="panel" id="oaf-subsurface-8c">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8C · ¿El calor subsuperficial del Pacífico mejora la predicción?</strong>
+<small style="display:block;color:var(--muted)">NOAA/PMEL T300, tendencias oceánicas y presiones/vientos desfasados</small></span>
+<span class="badge">Resultados experimentales · No operativos</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">Comparamos <b>persistencia</b>, <b>TSM Niño 1+2 y tendencia previa</b>, un modelo con el <b>calor subsuperficial T300 del mes anterior</b>, y otro que agrega también SOI y anomalías de vientos de meses anteriores. Los parámetros se entrenaron solo con meses objetivo hasta diciembre de 2022; las pruebas de <b>enero de 2023 a 2026</b> se mantuvieron separadas.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-subsurface-8c-refresh">Consultar comparación NOAA / T300 ↻</button></div>
+<p class="small" id="oaf-subsurface-8c-status" role="status">Abre esta sección para verificar los errores históricos en los tres horizontes.</p>
+<div id="oaf-subsurface-8c-output" hidden>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses de prueba</th><th>MAE persistencia</th><th>MAE TSM+tendencia</th><th>MAE con T300</th><th>MAE T300+atmósfera</th><th>Mejora T300 vs tendencia</th></tr></thead>
+<tbody id="oaf-subsurface-8c-tbody"></tbody></table></div>
+<p class="small" id="oaf-subsurface-8c-details"></p>
+</div>
+<div class="notice"><b>Interpretación científica:</b> T300 es una medida modelada del océano hasta 300 m, <b>no</b> la TSM local de Lambayeque. En el periodo histórico el modelo con T300 redujo el error, pero los intervalos de estabilidad todavía incluyen la posibilidad de ninguna mejora; al agregar SOI y vientos el resultado empeoró. Los datos históricos pueden contener revisiones y <b>esta fase no constituye una emisión prospectiva, ICEN oficial ni pronóstico validado de El Niño Costero</b>. Además, un pronóstico calculado después del cierre mensual puede ser intramensual para el mes siguiente.</div>
+<div class="links"><a href="FASE_8C_CALOR_SUBSUPERFICIAL_ENSO.md">Análisis y metodología 8C ↗</a>
+<a href="datos/benchmark_subsuperficial_8c_test.csv">Pruebas mensuales separadas ↗</a>
+<a href="https://www.pmel.noaa.gov/elnino/upper-ocean-heat-content-and-enso/" target="_blank" rel="noopener noreferrer">NOAA/PMEL: calor subsuperficial y ENSO ↗</a></div>
+</div>
+</details>
 <details class="panel" id="oaf-atmos-8b">
 <summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
 <span><strong style="font-size:18px;color:var(--navy)">Fase 8B · ¿El SOI y los vientos mejoran las predicciones?</strong>
@@ -485,4 +506,5 @@ nav();
 <script src="modelos/visor_validacion_humedad_botrytis_7b.js" defer></script>
 <script src="modelos/visor_campo_botrytis_7c.js" defer></script>
 <script src="modelos/archivo_oceanico_visor_8a.js" defer></script>
-<script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script></body></html>
+<script src="modelos/benchmark_atmosferico_visor_8b.js" defer></script>
+<script src="modelos/visor_subsuperficial_8c.js" defer></script></body></html>
