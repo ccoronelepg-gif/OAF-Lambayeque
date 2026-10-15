@@ -192,6 +192,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Se implementó panel Fase 8D en «Datos climatológicos», resultados CSV/JSON y [análisis con límites](FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md). Pruebas de calidad y dos workflows automáticos pasaron; ERA5/ERA5-Land no equivalen a SENAMHI, las anomalías oceánicas t solo se publican tras el cierre de t, por lo que h1 puede representar nowcast.
 - **Próxima Fase 8E:** emisiones reales de temperatura con fecha de publicación, comparación con estaciones locales y modelos específicos para lluvia/radiación. Continuar ENFEN/ICEN oficial separado y aprovechar registros de Botrytis solo cuando existan observaciones reales de campo.
 
+### Fase 8E completa — primera emisión fechada de temperaturas de Lambayeque (15/10/2026)
+
+- Se implementó el motor `modelos/pronostico_temperatura_regional_8e.py` con entrenamiento congelado en etiquetas hasta diciembre 2022, comparación de Ridge local contra Ridge local + Niño1+2 + T300(t−1), y **archivo inmutable por mes de origen**. Se registraron coeficientes de origen como pronósticos, base climática 1996–2022, hashes SHA-256 de entrada y código, UTC y hora de Perú. Ni T300 ni SST se interpolan si faltan.
+- Primera ejecución GitHub Actions **success** el **15/10/2026, 01:41:18 Perú**: 12 pronósticos de temperatura 2m, **4 intramensuales para octubre y 8 previos para noviembre/diciembre 2026**, para Chiclayo, Jayanca, Motupe y Olmos, guardados en `datos/pronosticos_temperatura_regional_8e/2026-09.json`. La serie ERA5-Land inicial llega a septiembre 2026; SST Niño1+2 septiembre y T300 agosto. Los valores corresponden a **reanálisis de celda**, no mediciones de estación.
+- Se configuró evaluación real posterior con referencias ERA5-Land mensuales, descargadas y verificadas con calendario completo, no antes del día **10 del mes posterior al objetivo**. Cero verificaciones iniciales, CSV de errores sin filas. No se sumarán pronósticos intramensuales al MAE de emisiones realmente previas. La publicación de NOAA/PMEL u Open-Meteo puede retrasarse; en ese caso **no se emite un resultado nuevo ficticio**.
+- Nuevo panel «Fase 8E» dentro de Datos climatológicos, archivo `modelos/visor_temperatura_regional_8e.js`. Documentación `FASE_8E_PRONOSTICOS_TEMPERATURA_PROSPECTIVOS.md` y estado `datos/verificacion_temperatura_regional_8e.json`. Conserva la portada autorizada y paneles 8A–8D/7A–7C.
+- No hay habilidad operativa demostrada, intervalos calibrados, validación SENAMHI ni alertas oficiales. Lluvia y radiación no se pronostican mediante el modelo 8E debido a los resultados desfavorables en 8D.
+- **Siguiente Fase 8F:** validación con estaciones SENAMHI, sesgos por lugar/estación, estrategias diferentes para lluvia y radiación; verificar las emisiones de octubre–diciembre cuando existan observaciones completas.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
