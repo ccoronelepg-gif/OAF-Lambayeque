@@ -1,0 +1,21 @@
+name: OAF 6F - Archived Forecast Feasibility
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/probe_prevruns_6f.py'
+      - '.github/workflows/oaf_prevruns_6f_probe.yml'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe past-issued temperature, radiation, RH, wind and historical temperature
+        run: python tests/probe_prevruns_6f.py
