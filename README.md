@@ -136,6 +136,12 @@ Se creó un experimento cuantitativo para comprobar **si incorporar radiación s
 - Archivos de salida cuando la evaluación termine correctamente: [benchmark_variables_6f.json](datos/benchmark_variables_6f.json) y [errores mensuales](datos/benchmark_variables_6f_mes.csv).
 - Este experimento **no constituye aún predicción validada de El Niño Costero ni enfermedades**, y su referencia ERA5-Land es reanálisis, no medición SENAMHI. Los modelos fitosanitarios requieren datos de campo adicionales.
 
+## Fase 6F — Hallazgos iniciales y archivo prospectivo (14/10/2026)
+
+La comparación con pronósticos efectivamente emitidos **24 horas antes** encontró que agregar radiación, humedad y viento disminuyó el MAE de temperatura corregida frente al modelo básico en **Chiclayo (5,95 %) y Olmos (4,97 %)**, pero lo aumentó en **Jayanca (24,38 %) y Motupe (2,11 %)**. Se entrenó con 2024–2025 y se evaluaron 6.552 horas por localidad de enero–septiembre 2026; la referencia es ERA5-Land reanalizado, no sensores SENAMHI. El pipeline generó métricas, pero el primer envío de archivos falló por cambios concurrentes en Git; se corrigió su proceso de publicación. Las variaciones no validan modelos operativos ni atribuyen causalidad a una variable específica.
+
+También quedó registrada **la primera emisión prospectiva real**, correspondiente al 14/10/2026 en Perú, con pronósticos externos del 15 al 21 de octubre para las cuatro localidades: [consultar JSON emitido](datos/pronosticos_emitidos/2026-10-14.json). Incluye temperatura, precipitación, radiación, humedad, viento, DPV y ET₀ con fecha y unidades; permitirá verificar errores una vez sucedan las jornadas previstas. [Método y resultados de Fase 6F](FASE_6F_EVALUACION_PREDICTORES.md).
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
