@@ -1,0 +1,157 @@
+{
+  "fase": "7B",
+  "fecha_procesamiento_utc": "2026-10-15T05:26:37+00:00",
+  "estado": "retrospectivo_meteorologico_no_validado_con_campo",
+  "primer_dia": "2026-01-01",
+  "ultimo_dia": "2026-09-30",
+  "fuente_pronostico": "Open-Meteo Previous Model Runs API, relative_humidity_2m_previous_day1",
+  "fuente_verificacion": "Open-Meteo Historical Weather API, ERA5 hourly relative_humidity_2m",
+  "condicion": "RH >90% por >=6 horas continuas; cuenta día cuando se alcanza sexta hora o persiste episodio",
+  "horizonte": "un día nominal previo a cada hora válida",
+  "es_prediccion_de_botrytis": false,
+  "es_verificacion_humectacion_foliar": false,
+  "es_alerta": false,
+  "son_registros_de_campo": false,
+  "resultados": {
+    "Chiclayo": {
+      "dias_evaluados": 273,
+      "episodios_diarios_previstos": 38,
+      "episodios_diarios_referencia": 12,
+      "matriz": {
+        "verdaderos_positivos": 7,
+        "falsos_positivos": 31,
+        "falsos_negativos": 5,
+        "verdaderos_negativos": 230
+      },
+      "sensibilidad": 0.5833,
+      "especificidad": 0.8812,
+      "precision_positiva": 0.1842,
+      "exactitud_global": 0.8681,
+      "exactitud_balanceada": 0.7323,
+      "episodios_secuencia_previstos": 38,
+      "episodios_secuencia_reanalisis": 12,
+      "aplica_a": "episodio atmosférico HR 2 m >90% por >=6 h; NO infección ni humectación de hoja",
+      "validacion_biologica": false,
+      "control_fechas_y_celdas": {
+        "horas_pronosticadas": 6552,
+        "horas_reanalisis": 6552,
+        "horas_alineadas_validas": 6552,
+        "celda_pronostico": [
+          -6.783831,
+          -79.84848
+        ],
+        "celda_reanalisis": [
+          -6.75,
+          -79.75
+        ]
+      }
+    },
+    "Jayanca": {
+      "dias_evaluados": 273,
+      "episodios_diarios_previstos": 20,
+      "episodios_diarios_referencia": 34,
+      "matriz": {
+        "verdaderos_positivos": 16,
+        "falsos_positivos": 4,
+        "falsos_negativos": 18,
+        "verdaderos_negativos": 235
+      },
+      "sensibilidad": 0.4706,
+      "especificidad": 0.9833,
+      "precision_positiva": 0.8,
+      "exactitud_global": 0.9194,
+      "exactitud_balanceada": 0.7269,
+      "episodios_secuencia_previstos": 20,
+      "episodios_secuencia_reanalisis": 34,
+      "aplica_a": "episodio atmosférico HR 2 m >90% por >=6 h; NO infección ni humectación de hoja",
+      "validacion_biologica": false,
+      "control_fechas_y_celdas": {
+        "horas_pronosticadas": 6552,
+        "horas_reanalisis": 6552,
+        "horas_alineadas_validas": 6552,
+        "celda_pronostico": [
+          -6.362038,
+          -79.82413
+        ],
+        "celda_reanalisis": [
+          -6.5,
+          -79.75
+        ]
+      }
+    },
+    "Motupe": {
+      "dias_evaluados": 273,
+      "episodios_diarios_previstos": 128,
+      "episodios_diarios_referencia": 34,
+      "matriz": {
+        "verdaderos_positivos": 17,
+        "falsos_positivos": 111,
+        "falsos_negativos": 17,
+        "verdaderos_negativos": 128
+      },
+      "sensibilidad": 0.5,
+      "especificidad": 0.5356,
+      "precision_positiva": 0.1328,
+      "exactitud_global": 0.5311,
+      "exactitud_balanceada": 0.5178,
+      "episodios_secuencia_previstos": 129,
+      "episodios_secuencia_reanalisis": 34,
+      "aplica_a": "episodio atmosférico HR 2 m >90% por >=6 h; NO infección ni humectación de hoja",
+      "validacion_biologica": false,
+      "control_fechas_y_celdas": {
+        "horas_pronosticadas": 6552,
+        "horas_reanalisis": 6552,
+        "horas_alineadas_validas": 6552,
+        "celda_pronostico": [
+          -6.151142,
+          -79.69925
+        ],
+        "celda_reanalisis": [
+          -6.25,
+          -79.75
+        ]
+      }
+    },
+    "Olmos": {
+      "dias_evaluados": 273,
+      "episodios_diarios_previstos": 167,
+      "episodios_diarios_referencia": 37,
+      "matriz": {
+        "verdaderos_positivos": 27,
+        "falsos_positivos": 140,
+        "falsos_negativos": 10,
+        "verdaderos_negativos": 96
+      },
+      "sensibilidad": 0.7297,
+      "especificidad": 0.4068,
+      "precision_positiva": 0.1617,
+      "exactitud_global": 0.4505,
+      "exactitud_balanceada": 0.5683,
+      "episodios_secuencia_previstos": 167,
+      "episodios_secuencia_reanalisis": 37,
+      "aplica_a": "episodio atmosférico HR 2 m >90% por >=6 h; NO infección ni humectación de hoja",
+      "validacion_biologica": false,
+      "control_fechas_y_celdas": {
+        "horas_pronosticadas": 6552,
+        "horas_reanalisis": 6552,
+        "horas_alineadas_validas": 6552,
+        "celda_pronostico": [
+          -6.0105443,
+          -79.71643
+        ],
+        "celda_reanalisis": [
+          -6.0,
+          -79.75
+        ]
+      }
+    }
+  },
+  "limitaciones": [
+    "Reanálisis ERA5 RH a 2m no es medición SENAMHI ni sensor en dosel.",
+    "Se evalúa una señal de humedad, NO enfermedad, infección ni incidencia de Botrytis.",
+    "La emisión Previous Runs es de horizonte nominal 24h, NO archivo inmutable del OAF.",
+    "Umbral descriptivo externo no calibrado para arándano en Lambayeque.",
+    "Evaluación retrospectiva de un único periodo 2026; faltan replicaciones independientes.",
+    "Nunca inferir fungicidas, probabilidad de infección ni estado oficial ENSO."
+  ]
+}
