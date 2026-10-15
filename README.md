@@ -211,6 +211,18 @@ Se implementó **un archivo irreversible por mes de origen** de pronósticos exp
 
 **Fase 8B recomendada:** añadir señales de viento zonal del Pacífico, SOI/presión y calor subsuperficial con fechas auditables para comprobar mejora real sobre persistencia en 1–3 meses; continuar validaciones meteorológicas regionales con radiación y predicciones climáticas 1996–2025.
 
+## Fase 8B · Experimento oceánico-atmosférico NOAA CPC 1–3 meses (15/10/2026)
+
+Se completó la primera comparación de **vientos y presión del Pacífico tropical** como predictores de anomalía Niño 1+2, manteniendo la línea de El Niño Costero en paralelo a la búsqueda de registros reales de enfermedades en arándano y vid.
+
+- **NOAA CPC oficial:** [SOI](https://www.cpc.ncep.noaa.gov/data/indices/soi), [alisios central 850 hPa](https://www.cpc.ncep.noaa.gov/data/indices/cpac850) y [alisios oriental 850 hPa](https://www.cpc.ncep.noaa.gov/data/indices/epac850), junto con TSM Niño 1+2 NOAA NCEI ERSSTv5 reajustada a 1991–2020 por el OAF. Se verificaron **573 meses de información coincidente (1979-01 a 2026-09)**.
+- Se comparó **persistencia**, un modelo **TSM sola** y otro **TSM + SOI + dos índices de viento**, los dos últimos mediante Ridge con el mismo `alpha=20`. Walk-forward desde 2010, entrenamiento expansivo que nunca usa resultados posteriores al mes origen, y 1, 2, 3 meses de horizonte.
+- **Resultado histórico:** MAE solo TSM frente a TSM + atmósfera: **h1 0,3351 → 0,3537 °C**; **h2 0,4871 → 0,5084 °C**; **h3 0,6121 → 0,6322 °C**. **Agregar estas tres variables empeoró el MAE en los tres horizontes.** En los 12 meses más recientes el modelo ampliado también resultó peor. No sustituir las emisiones oceánicas de Fase 8A.
+- **Auditoría:** [método y conclusiones 8B](FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md), [datos NOAA atmosféricos](datos/noaa_cpc_predictores_atmosfericos_8b.csv), [JSON de métricas](datos/benchmark_atmosferico_8b.json), [597 predicciones retrospectivas](datos/benchmark_atmosferico_8b_fold.csv), [motor](modelos/benchmark_atmosferico_8b.py), [GitHub Actions](.github/workflows/oaf_benchmark_atmosferico_8b.yml) y [panel Boletín de El Niño](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino).
+- **Límites:** archivos históricos CPC pueden contener revisiones (no son versiones fechadas originales); no hay habilidad prospectiva demostrada, el ICEN oficial pertenece a ENFEN, ni es predicción de lluvia o incidencia agrícola. La Fase 8A mantiene su archivo prospectivo sellado y sus controles de evaluación posteriores.
+
+**Próximo paso 8C:** estudiar hipótesis limitadas de desfases de SOI/vientos, contenido de calor oceánico subsuperficial disponible e impacto regional sobre lluvia, temperatura y radiación de Lambayeque (1996–2025), evitando ajustes retrospectivos oportunistas.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
