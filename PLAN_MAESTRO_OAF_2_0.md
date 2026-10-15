@@ -183,6 +183,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - **No elevar a alerta ENFEN, predicción ICEN oficial ni pronóstico operativo**. Advertir sobre revisiones de índices y fecha real de disponibilidad: para pronosticar t+1 con SST final de t normalmente habría una estimación intramensual.
 - **Fase 8D pendiente:** análisis de anomalías Niño 1+2 frente a temperatura, precipitación y **radiación solar** de Lambayeque (climatología principal 1996–2025) y futura comparación prospectiva de T300 con verdadera trazabilidad de datos emitidos; los modelos fitosanitarios esperan registros sanitarios comprobados.
 
+### Fase 8D realizada — capacidad predictiva regional de ENSO/T300 para temperatura, lluvia y radiación (15/10/2026)
+
+- Se descargaron y validaron **369 meses por localidad** de ERA5-Land (temperatura mensual, °C) y ERA5 (precipitación, mm; radiación global, MJ/m²), en Chiclayo, Jayanca, Motupe y Olmos. La recolección utiliza ahora **dos llamadas multicoordenada por producto climático** para disminuir límites de Open-Meteo; los primeros 429 se corrigieron, y el workflow final terminó **success**.
+- La referencia histórica pública **1996–2025 (30 años)** se conserva como diagnóstico; el entrenamiento/evaluación fija la normal a **1996–2022** para no filtrar los 2023–2026 al cálculo de anomalías. Objetivos de entrenamiento hasta dic 2022, test temporal enero 2023 en adelante; horizontes h1/h2/h3; 1.548 predicciones retrospectivas revisables.
+- Se compararon climatología, persistencia local, Ridge local, Ridge local+Niño 1+2 y Ridge local+Niño1+2+T300(t−1). **Temperatura** mejoró en las 12 celdas localidad×horizonte (a tres meses, +7,5 % Chiclayo, +15,5 % Jayanca, +6,8 % Motupe, +13,6 % Olmos). Pero de los intervalos exploratorios de seis meses **solo Jayanca/h3** fue completamente favorable (+6,61 % a +22,90 %); no constituye prueba de habilidad operativa.
+- **Lluvia y radiación solar** empeoraron con el modelo oceánico en las 12 comparaciones de cada variable; para lluvia, el promedio climático fue mejor que los modelos. No se promoverá un modelo ENSO común para todas las variables agronómicas.
+- Se implementó panel Fase 8D en «Datos climatológicos», resultados CSV/JSON y [análisis con límites](FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md). Pruebas de calidad y dos workflows automáticos pasaron; ERA5/ERA5-Land no equivalen a SENAMHI, las anomalías oceánicas t solo se publican tras el cierre de t, por lo que h1 puede representar nowcast.
+- **Próxima Fase 8E:** emisiones reales de temperatura con fecha de publicación, comparación con estaciones locales y modelos específicos para lluvia/radiación. Continuar ENFEN/ICEN oficial separado y aprovechar registros de Botrytis solo cuando existan observaciones reales de campo.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
