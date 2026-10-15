@@ -1,0 +1,31 @@
+{
+  "fase": "7C",
+  "fecha_generacion_utc": "2026-10-15T05:38:38+00:00",
+  "estado": "sin_datos_campo",
+  "fuentes": "archivos locales privados / plantillas de monitoreo y microclima",
+  "hay_registros_campo": false,
+  "hay_errores_formato": false,
+  "n_errores_validacion": 0,
+  "conteos_ocultos_por_confidencialidad": false,
+  "datos_publicos_agregados": null,
+  "se_calculo_incidencia_fitopatologica": false,
+  "hay_modelo_predictivo_de_infeccion": false,
+  "modelo_ajustado_con_datos_campo": false,
+  "probabilidad_infeccion_calibrada": false,
+  "validacion_prospectiva_en_parcela": false,
+  "alerta_fitosanitaria": false,
+  "criterios_pendientes": [
+    "Casos sintomáticos, confirmados y negativos observados en campo con fechas",
+    "Unidades de muestreo homogéneas y denominadores comprobados",
+    "Humectación real con sensor calibrado y hora local trazable",
+    "Vinculación de parcela-fecha a pronósticos archivados ANTES del evento",
+    "Cobertura temporal y espacial independiente de entrenamiento y prueba"
+  ],
+  "advertencias": [
+    "Síntomas sospechosos no equivalen a Botrytis cinerea confirmada.",
+    "Un campo sin registros no significa incidencia cero.",
+    "Este módulo valida estructura de datos; no estima daño ni recomienda tratamientos.",
+    "Las parcelas se identifican por códigos anónimos en ficheros privados, nunca con coordenadas públicas.",
+    "La señal de HR >90% durante >=6 h continúa siendo exploratoria."
+  ]
+}
