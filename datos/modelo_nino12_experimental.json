@@ -7,7 +7,7 @@
   "es_icen": false,
   "es_pronostico_institucional": false,
   "estado_modelo": "EXPERIMENTAL_NO_VALIDADO_OPERATIVAMENTE",
-  "fecha_procesamiento_utc": "2026-10-15T04:14:03+00:00",
+  "fecha_procesamiento_utc": "2026-10-15T04:16:10+00:00",
   "archivo_fuente": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
   "mes_primero": "1982-01",
   "mes_ultimo_observado": "2026-09",
@@ -45,6 +45,18 @@
     },
     "habilidad_mae_respecto_persistencia": 0.0126,
     "supera_persistencia_mae": true,
+    "reciente_12_meses": {
+      "mae_ar1_c": 0.5818,
+      "mae_persistencia_c": 0.4708,
+      "habilidad_relativa": -0.2356,
+      "supera_persistencia": false
+    },
+    "intervalo_heuristico_skill_95": [
+      -0.0025,
+      0.0536
+    ],
+    "intervalo_metodo": "2000 remuestreos de bloques móviles de 12 meses, sobre errores pareados ya evaluados",
+    "habilidad_consistente_demostrada": false,
     "advertencia": "La evaluación con una serie NOAA reprocesada y normal 1991-2020 no equivale a archivos de emisión real-time; el intervalo P10-P90 de residuos retrospectivos no garantiza cobertura futura."
   },
   "series_recientes": [
