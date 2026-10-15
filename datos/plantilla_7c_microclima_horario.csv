@@ -1,0 +1,1 @@
+id_lectura,fecha_hora_local,id_parcela_anonimo,id_sensor,tipo_sensor,altura_m,temperatura_dosel_c,hr_dosel_pct,humectacion_foliar_binaria,radiacion_w_m2,precipitacion_mm,control_calibracion
