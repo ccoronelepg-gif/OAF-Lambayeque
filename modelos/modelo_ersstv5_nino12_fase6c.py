@@ -178,8 +178,11 @@ def evaluate(rows):
         skill=1-m["ar1"]["mae_c"]/m["persistencia"]["mae_c"] if m["persistencia"]["mae_c"]>0 else None
         recent_skill=1-m_recent["ar1"]["mae_c"]/m_recent["persistencia"]["mae_c"] if m_recent["persistencia"]["mae_c"]>0 else None
         ci=bootstrap_delta(folds)
-        consistent=(skill is not None and skill>0 and recent_skill is not None
+        retrospective_signal=(skill is not None and skill>0 and recent_skill is not None
                     and recent_skill>0 and ci[0]>0)
+        # Historical resampling is not prospective validation and must not be
+        # labeled "skill demonstrated" even if these retrospective criteria pass.
+        consistent=False
         results[str(h)]={"origen_inicial":folds[0]["origen"],
                          "origen_final":folds[-1]["origen"],
                          "metricas":m,"metricas_ultimos_12":m_recent,
@@ -187,6 +190,8 @@ def evaluate(rows):
                          "habilidad_ultimos_12":round(recent_skill,4) if recent_skill is not None else None,
                          "intervalo_bootstrap_skill_95":ci,
                          "mejora_consistente_demostrada":consistent,
+                         "patron_retrospectivo_favorable":retrospective_signal,
+                         "validacion_prospectiva":False,
                          "pronostico_ar1_c":round(predict_steps(v,h),3),
                          "pronostico_persistencia_c":round(v[-1],3),
                          "mes_objetivo":advance_month(rows[-1]["mes"],h)}
@@ -271,6 +276,7 @@ def self_test():
     assert set(f["horizonte_meses"] for f in folds)==set(HORIZONS)
     assert report["es_icen_oficial"] is False
     assert report["es_alerta"] is False
+    assert all(not z["mejora_consistente_demostrada"] for z in report["modelos_horizontes"].values())
     assert report["prediccion_actual_disponible"] is True
     try:
         parse_source(text.replace("1950 2 ", "1950 4 ",1))
