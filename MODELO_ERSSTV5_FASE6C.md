@@ -66,3 +66,25 @@ Los scripts se ejecutaron correctamente en GitHub Actions tras ajustar el contro
 5. Relacionar las señales Niño 1+2 con datos regionales de Lambayeque mediante estadística válida; solo después trasladarlas a modelos de riesgo fitosanitario de arándano y vid.
 
 **Regla científica:** ninguna anomalía oceánica mensual, promedio ilustrativo ni predicción AR(1) sustituye un pronóstico ENFEN, demuestra presencia de enfermedad o constituye una alerta OAF operativa.
+
+## 8. Contraste documental ampliado: cuatro ICEN publicados (2026)
+
+La siguiente es una **comparación puntual de valores**, no una validación predictiva. Los informes institucionales fueron publicados en fechas distintas y NOAA puede revisar retrospectivamente sus índices.
+
+| Mes central | ICEN SENAMHI–ENFEN | Media móvil ERSSTv5 indicativa del OAF | Diferencia OAF – institucional | Fuente |
+|---|---:|---:|---:|---|
+| Febrero de 2026 | +0,42 °C | +0,437 °C | +0,017 °C | [Informe 03-2026](https://www.gob.pe/institucion/senamhi/informes-publicaciones/8056650-informe-tecnico-senamhi-enfen-n-03-2026) |
+| Marzo de 2026 | +0,96 °C | +0,970 °C | +0,010 °C | [Informe 04-2026](https://www.gob.pe/institucion/senamhi/informes-publicaciones/8191185-informe-tecnico-senamhi-enfen-n-04-2026) |
+| Abril de 2026 | +1,34 °C | +1,340 °C | 0,000 °C | [Informe 05-2026](https://www.gob.pe/institucion/senamhi/informes-publicaciones/8297719-informe-tecnico-senamhi-enfen-n-05-2026) |
+| Mayo de 2026 | +1,98 °C | +1,983 °C | +0,003 °C | [Informe 06-2026](https://www.gob.pe/institucion/senamhi/informes-publicaciones/8419259-informe-tecnico-senamhi-enfen-n-06-2026) |
+
+**Diferencia absoluta media en estos cuatro meses:** 0,0075 °C. Esta cercanía respalda el cálculo del promedio móvil **en esa muestra pequeña**, pero no reemplaza ICEN institucional ni valida capacidad predictiva.
+
+Archivo [datos/contraste_icen_publicado_2026.csv](datos/contraste_icen_publicado_2026.csv) con la comparación y sus referencias originales.
+
+## 9. Control final de estado predictivo
+
+El análisis histórico terminó correctamente en GitHub Actions; sus pruebas sintéticas también pasaron. Como la serie ERSSTv5 disponible finaliza en junio de 2026, el JSON `prediccion_actual_disponible` permanece en `false`, y todos los pronósticos a horizonte 1–3 meses se establecen en `null` para evitar mostrar proyecciones de julio-septiembre como actuales. El visor puede mostrar métricas históricas, no estimaciones vigentes con esta serie desactualizada.
+
+El indicador `patron_retrospectivo_favorable` registra únicamente criterios descriptivos del backtest. `mejora_consistente_demostrada` y `validacion_prospectiva` están en `false` para los tres horizontes; no se proclama habilidad predictiva demostrada antes de una verificación prospectiva independiente.
+
