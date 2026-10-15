@@ -37,5 +37,6 @@ jobs:
             echo "No change to benchmark."
           else
             git commit -m "data(oaf): evaluate hourly forecast corrections with radiation humidity and wind"
+            git pull --rebase origin main
             git push
           fi
