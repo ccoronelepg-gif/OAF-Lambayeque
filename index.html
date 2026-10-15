@@ -38,6 +38,14 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 .riskcrop{font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:.7px;font-weight:850}
 @media(max-width:800px){.method{grid-template-columns:1fr;padding:17px}.riskmini{grid-template-columns:1fr}}
 @media(max-width:460px){.methodsteps{grid-template-columns:1fr}}
+
+/* Ajustes editoriales y módulo de predicción - OAF */
+.hero .hero-subtitle{color:#b9e6d3;font-weight:750;font-size:16px;margin:4px 0 12px}
+.crop-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 16px}
+.crop-tab{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid var(--line);border-radius:10px;padding:11px 16px;text-decoration:none;font-weight:750;font-size:13px;line-height:1.35;color:#42646a}
+.crop-tab:hover{background:#f1f8f5}
+.crop-tab[aria-selected="true"]{background:var(--mint);color:var(--teal);border-color:#a7d9c8;box-shadow:inset 0 -2px 0 var(--teal)}
+@media(max-width:800px){.crop-tab{flex:1;min-width:190px}.hero .hero-subtitle{font-size:15px}}
 </style></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo">◈</span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <nav aria-label="Secciones principales">
@@ -49,7 +57,7 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 </nav></div></header>
 <main>
 <section data-page="inicio" id="inicio">
-<div class="hero"><div class="herotxt"><span class="eyebrow">Región Lambayeque · Perú</span><h1>Del clima a la prevención de enfermedades agrícolas.</h1><p>El OAF-Lambayeque estudia cómo la temperatura, la humedad y las lluvias pueden favorecer enfermedades del arándano y la vid. Integramos datos abiertos, investigación científica y verificaciones de campo para desarrollar herramientas de vigilancia y futuras predicciones.</p><a href="#clima" class="btn">Consultar el clima →</a></div><div class="heroimg">
+<div class="hero"><div class="herotxt"><span class="eyebrow">Región Lambayeque · Perú</span><h1>Observatorio Agroclimático y Fitosanitario</h1><p class="hero-subtitle">El clima influye en la salud de nuestros cultivos.</p><p>Estudiamos cómo la temperatura, la humedad y las lluvias pueden favorecer enfermedades del arándano y la vid. Integramos datos climáticos abiertos, boletines oficiales y evidencia científica, verificamos su calidad y desarrollamos modelos que deberán validarse con observaciones de campo. Nuestro objetivo es anticipar condiciones de riesgo y apoyar decisiones preventivas para una agricultura más informada y resiliente.</p><a href="#clima" class="btn">Consultar el clima →</a></div><div class="heroimg">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700" alt="Fotografía de arándanos maduros" loading="eager">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=650" alt="Fotografía de racimo de uvas en la vid" loading="eager"><span>Arándano · Vid</span></div></div>
 <div class="cards">
@@ -69,7 +77,10 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 </section>
 <section data-page="cultivos" id="cultivos" hidden>
 <div class="viewhead"><span class="eyebrow">Biblioteca fitosanitaria</span><h1>Cultivos y riesgo de enfermedades</h1><p>Identifica condiciones climáticas asociadas a nueve enfermedades del arándano y la vid. Las fuentes científicas están enlazadas en cada fila.</p></div>
-<div class="cropimg"><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=360" alt="Arándanos" loading="lazy"><div><strong>Arándano</strong><small>5 enfermedades</small></div></div><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=360" alt="Uvas en la vid" loading="lazy"><div><strong>Vid</strong><small>4 enfermedades</small></div></div></div>
+<div class="crop-tabs" id="cultivo-switch" role="tablist" aria-label="Explorar cultivos y predicciones">
+<a href="#cultivos" role="tab" id="cultivos-tab-condiciones" aria-controls="panel-condiciones" aria-selected="true" class="crop-tab">Enfermedades y condiciones climáticas</a>
+<a href="#riesgos" role="tab" id="cultivos-tab-prediccion" aria-controls="panel-prediccion" aria-selected="false" class="crop-tab">Riesgo de presencia de enfermedades · Predicción</a>
+</div><div id="panel-condiciones" role="tabpanel" aria-labelledby="cultivos-tab-condiciones"><div class="cropimg"><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=360" alt="Arándanos" loading="lazy"><div><strong>Arándano</strong><small>5 enfermedades</small></div></div><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=360" alt="Uvas en la vid" loading="lazy"><div><strong>Vid</strong><small>4 enfermedades</small></div></div></div>
 <div class="panel"><div class="tools"><label for="filtro">Cultivo</label><select id="filtro"><option value="Todos">Todos</option><option value="Arándano">Arándano</option><option value="Vid">Vid</option></select><span id="count" class="small" role="status">9 enfermedades</span></div>
 <div class="scroller"><table><thead><tr><th scope="col">Enfermedad</th><th scope="col">Condiciones climáticas</th><th scope="col">Cultivo</th></tr></thead><tbody id="patologias">
 <tr data-cultivo="Arándano"><td>Moho gris · <i>Botrytis cinerea</i> <a href="https://doi.org/10.1094/PDIS-12-12-1112-RE" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>14–25 °C y más de 6 h de humectación continua (modelo experimental).</td><td>Arándano</td></tr>
@@ -82,12 +93,12 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <tr data-cultivo="Vid"><td>Podredumbre gris · <i>Botrytis cinerea</i> <a href="https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>HR superior a 92 %, agua libre y aproximadamente 14–28 °C (infecciones tardías).</td><td>Vid</td></tr>
 <tr data-cultivo="Vid"><td>Podredumbre negra · <i>Guignardia bidwellii</i> <a href="https://extension.psu.edu/grape-disease-black-rot" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>Temperatura y humectación combinadas; por ejemplo 6 h a 27 °C.</td><td>Vid</td></tr>
 </tbody></table></div><div class="notice">Los umbrales provienen de estudios externos; no se han validado para Lambayeque. Clima favorable no significa presencia comprobada de enfermedad. La humedad relativa no equivale a humectación foliar medida.</div>
-</div><div class="panel" id="modelos-fitosanitarios">
-<div class="modelhead"><div><h2>Evaluación de riesgo fitosanitario</h2><p class="small">Progreso de los primeros modelos del observatorio</p></div><span class="badge">En desarrollo · sin alertas operativas</span></div>
+</div></div><div id="panel-prediccion" role="tabpanel" aria-labelledby="cultivos-tab-prediccion" hidden><div class="panel" id="modelos-fitosanitarios">
+<div class="modelhead"><div><h2>Predicción de riesgo de presencia de enfermedades</h2><p class="small">Aquí desarrollaremos los modelos de predicción fitosanitaria del observatorio para arándano y vid.</p></div><span class="badge">Módulo predictivo en desarrollo</span></div><div class="notice"><b>Predicciones todavía no disponibles.</b> Este apartado integrará pronósticos meteorológicos, variables favorables al patógeno y datos de campo. Mostrará el cultivo, la enfermedad evaluada, el periodo pronosticado, el nivel de riesgo y la incertidumbre solamente cuando el modelo haya sido validado.</div>
 <div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
 <article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
-<div class="notice">El sistema diferenciará <b>condiciones meteorológicas favorables</b>, <b>riesgo estimado</b> y <b>enfermedad diagnosticada</b>. Actualmente no predice presencia confirmada ni recomienda tratamientos.</div></div>
-</section>
+<div class="notice">Una predicción meteorológica de condiciones favorables <b>no equivale a presencia confirmada</b> de una enfermedad. Hasta contar con evaluación independiente del modelo, no se mostrarán porcentajes de infección ni recomendaciones automáticas de tratamiento.</div></div>
+</div></section>
 <section data-page="nino" id="nino" hidden>
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
@@ -103,7 +114,8 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <script>
 (function(){
 const pages=['inicio','clima','cultivos','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
-function nav(){let id=location.hash.slice(1);if(id==='riesgos')id='cultivos';if(!pages.includes(id))id='inicio';document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}}
+function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}}
+function setCultivosPanel(which){const prediction=which==='prediccion';document.getElementById('panel-condiciones').hidden=prediction;document.getElementById('panel-prediccion').hidden=!prediction;document.getElementById('cultivos-tab-condiciones').setAttribute('aria-selected',String(!prediction));document.getElementById('cultivos-tab-prediccion').setAttribute('aria-selected',String(prediction));}
 window.addEventListener('hashchange',nav);
 filtro.addEventListener('change',()=>{let n=0;document.querySelectorAll('#patologias tr').forEach(t=>{t.hidden=filtro.value!=='Todos'&&filtro.value!==t.dataset.cultivo;if(!t.hidden)n++});document.getElementById('count').textContent=n+' enfermedades'});
 const points={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]},loc=document.getElementById('localidad'),btn=document.getElementById('actualizar');
