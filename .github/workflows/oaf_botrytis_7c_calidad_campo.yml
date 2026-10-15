@@ -1,0 +1,44 @@
+name: OAF 7C - Botrytis field data QA readiness
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/validar_campo_botrytis_7c.py'
+      - '.github/workflows/oaf_botrytis_7c_calidad_campo.yml'
+      - 'datos/plantilla_7c_monitoreo_botrytis.csv'
+      - 'datos/plantilla_7c_microclima_horario.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-7c-data-quality
+  cancel-in-progress: false
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Prepare Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run deterministic QA and safety tests on temporary synthetic input
+        run: python modelos/validar_campo_botrytis_7c.py --self-test
+      - name: Publish TRUE data-readiness status (no field observations present)
+        run: python modelos/validar_campo_botrytis_7c.py
+      - name: Version only aggregate public status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/estado_campo_botrytis_7c.json
+          if git diff --cached --quiet; then
+            echo "No changes to field data readiness."
+          else
+            git commit -m "data(oaf): report actual field validation readiness without invented observations"
+            git pull --rebase origin main
+            git push
+          fi
