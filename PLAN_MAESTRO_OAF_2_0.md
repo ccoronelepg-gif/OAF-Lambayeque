@@ -174,6 +174,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Código/CSV/JSON publicados, workflow GitHub Actions ejecutado con éxito, panel 8B incorporado al Boletín de El Niño. Metodología `FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md`. No se infieren alertas de El Niño Costero, ICEN oficial, probabilidades calibradas de ENSO ni enfermedades.
 - **Siguiente Fase 8C:** fuentes de calor subsuperficial con trazabilidad, hipótesis de vientos/presión con desfases temporales, validación temporal realmente independiente y anomalías climáticas regionales con radiación; continuar progresión 7D cuando haya datos sanitarios verdaderos.
 
+### Fase 8C realizada — NOAA/PMEL T300 y pruebas con periodo independiente (15/10/2026)
+
+- Se incorporó serie mensual T300 de **temperatura oceánica promedio 0–300 m** del Pacífico ecuatorial NOAA/PMEL/GODAS (1980–agosto 2026). Anomalías T300 en referencia 1981–2010, distintas de la referencia 1991–2020 empleada por OAF para anomalías TSM Niño 1+2. La fuente es **reanálisis de océano**, no medición local de la costa de Lambayeque.
+- Cuatro estrategias comparadas: persistencia, Ridge SST t/t−1, Ridge SST t/t−1 + T300 t−1, y Ridge con T300 + SOI/vientos t−1. Corte fijo **entrenar solo con etiquetas hasta dic-2022**, test **orígenes enero 2023–jun/ago 2026**, según horizonte. Alpha=20 fijo; todas las estrategias evaluadas sobre idénticos meses.
+- T300 mejoró MAE frente al modelo SST+tendencia: h1 **0,4500→0,4168** (44 pruebas), h2 **0,6951→0,6519** (43), h3 **0,8780→0,8285 °C** (42); mejoras 7,38 %, 6,21 %, 5,64 %; **intervalos por bloques incluyen 0**, sin beneficio estable comprobado. Agregar SOI y vientos empeoró los tres horizontes.
+- GitHub Actions inicial **success**; código, fuente NOAA PMEL, 129 predicciones retrospectivas, JSON y documentación publicados. Se añadió visor 8C al Boletín de El Niño sin alterar portada, vid, arándano ni modelo oceánico 8A.
+- **No elevar a alerta ENFEN, predicción ICEN oficial ni pronóstico operativo**. Advertir sobre revisiones de índices y fecha real de disponibilidad: para pronosticar t+1 con SST final de t normalmente habría una estimación intramensual.
+- **Fase 8D pendiente:** análisis de anomalías Niño 1+2 frente a temperatura, precipitación y **radiación solar** de Lambayeque (climatología principal 1996–2025) y futura comparación prospectiva de T300 con verdadera trazabilidad de datos emitidos; los modelos fitosanitarios esperan registros sanitarios comprobados.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
