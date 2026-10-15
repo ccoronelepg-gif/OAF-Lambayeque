@@ -19,6 +19,18 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 6F · Valor predictivo de la radiación y covariables (14/10/2026)
+
+**Pregunta prioritaria:** ¿la radiación solar, la humedad relativa y el viento realmente mejoran la predicción, frente al pronóstico original y un modelo sencillo, o generan sobreajuste?
+
+**Implementado y verificado en la API:** se recuperaron exitosamente 120/120 horas de predictores archivados 24 horas antes para Motupe (temperatura, radiación, humedad y viento) y 120 horas coincidentes de referencia ERA5-Land. Esto permite un experimento que respeta mejor la cronología de emisión de pronósticos.
+
+**Código en GitHub:** `modelos/benchmark_radiacion_6f.py` (entrenamiento 2024–2025, prueba temporal aislada enero–septiembre 2026, cuatro localidades, regresión Ridge con/sin covariables; MAE/RMSE y remuestreo en bloques), `.github/workflows/oaf_benchmark_radiacion_6f.yml`, `tests/probe_prevruns_6f.py`, `modelos/benchmark_visor_6f.js`, `FASE_6F_EVALUACION_PREDICTORES.md`. El panel desplegable está en Datos climatológicos.
+
+**Precisión:** únicamente inferimos temperatura futura contra reanálisis ERA5-Land, no El Niño Costero ni enfermedades. Las mejoras retrospectivas, si aparecen, NO se interpretan como validación operativa ni como causalidad de la radiación. Si una localidad o variable carece de cobertura, no se publicarán cifras fabricadas.
+
+**Continuación:** revisar GitHub Actions del benchmark y los resultados `datos/benchmark_variables_6f.json` y `datos/benchmark_variables_6f_mes.csv` cuando estén realmente generados; documentar si el modelo ampliado supera o no al básico en cada localidad. Después programar archivo de pronósticos emitidos prospectivamente, validación contra sensores SENAMHI y mediciones de humectación para Botrytis del arándano.
+
 ## Avance más reciente: Fase 6E — radiación solar y nuevas variables (14/10/2026)
 
 **Nueva instrucción y alcance del autor:** incorporar nuevas variables predictoras, **especialmente la radiación solar**, tanto para el análisis agroclimático y de anomalías regionales como para estudiar su posible utilidad en modelos fitosanitarios de arándano y vid. Mantener la línea ENSO con predictores oceánico-atmosféricos por separado.
