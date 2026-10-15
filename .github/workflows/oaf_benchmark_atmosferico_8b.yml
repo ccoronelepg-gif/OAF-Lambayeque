@@ -1,0 +1,45 @@
+name: OAF 8B - NOAA CPC Ocean-Atmosphere Benchmark
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '56 15 12,19,26 * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/benchmark_atmosferico_8b.py'
+      - '.github/workflows/oaf_benchmark_atmosferico_8b.yml'
+      - 'datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8b-atmosphere-benchmark
+  cancel-in-progress: false
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests for NOAA parsing and predictive model
+        run: python modelos/benchmark_atmosferico_8b.py --self-test
+      - name: Download NOAA CPC indices and compare honest expanding-window folds
+        run: python modelos/benchmark_atmosferico_8b.py
+      - name: Store NOAA inputs and historical errors only on full success
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/noaa_cpc_predictores_atmosfericos_8b.csv datos/benchmark_atmosferico_8b.json datos/benchmark_atmosferico_8b_fold.csv
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "data(oaf): verify SOI and 850hPa winds against Nino12 walk-forward benchmarks"
+            git pull --rebase origin main
+            git push
+          fi
