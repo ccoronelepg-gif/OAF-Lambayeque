@@ -37,5 +37,6 @@ jobs:
             echo "Forecast snapshot already archived for local date."
           else
             git commit -m "data(oaf): archive dated external forecast for independent prospective verification"
+            git pull --rebase origin main
             git push
           fi
