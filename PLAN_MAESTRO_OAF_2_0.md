@@ -121,6 +121,16 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Las métricas permiten detectar si agregar covariables empeora la habilidad, y no solo destacar mejores valores. La verificación ERA5-Land no sustituye sensores locales SENAMHI.
 - Antes de llamar operativo al modelo será necesario archivar fechas de emisión en tiempo real, validar con observaciones regionales, medir estabilidad fuera de muestra, y extender la línea a enfermedades solamente con registros fitosanitarios confirmados.
 
+### Fase 6G realizada: verificación de emisiones archivadas sin usar información futura
+
+- El proceso `oaf_verificacion_6g.yml` se ejecuta diariamente: lee instantáneas inmutables de pronóstico emitido, verifica su cronología y fecha de emisión, y solo compara fechas transcurridas con una tolerancia de **siete días** para la llegada de reanálisis.
+- Variables evaluadas: temperatura media diaria (ERA5-Land), lluvia diaria (ERA5) y radiación solar diaria acumulada (ERA5), por Chiclayo, Jayanca, Motupe y Olmos, y horizontes D+1..D+7. Se calculan MAE, RMSE, sesgo y n verificadas sin rellenar faltantes.
+- Primer estado publicado el 15/10/2026: **28 jornadas pronosticadas, ninguna aún elegible para verificarse**. Primera evaluación posible 22/10/2026. Este diseño impide presentar errores de referencia ficticios cuando el evento todavía no ocurrió.
+- Se añadió al portal una sección Fase 6G dentro de «Datos climatológicos», con informe `FASE_6G_VERIFICACION_PROSPECTIVA.md` y datos públicos `datos/evaluacion_prospectiva_6g.json`.
+- El benchmark Fase 6F publicó finalmente sus resultados completos: las mejoras con radiación/HR/viento fueron heterogéneas y solo en Olmos el intervalo exploratorio del beneficio fue completamente positivo. Este hecho no implica causalidad ni validez operativa.
+
+**Trabajo científico pendiente:** acumular emisiones prospectivas durante varios meses, comprobar sesgos contra estaciones SENAMHI, evaluar la precisión de anomalías de lluvia y radiación por horizonte y comparar modelos propios con referencias simples. Los modelos de El Niño Costero y enfermedades agrícolas continúan siendo líneas diferenciadas sujetas a validación.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
