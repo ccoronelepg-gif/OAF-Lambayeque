@@ -76,17 +76,14 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="hero"><div class="herotxt"><h1>Observatorio Agroclimático y Fitosanitario</h1></div><div class="heroimg">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700" alt="Fotografía de arándanos maduros" loading="eager">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=650" alt="Fotografía de racimo de uvas en la vid" loading="eager"></div></div>
-<div class="oaf-home-metrics" aria-label="Indicadores meteorológicos de Open-Meteo"><div class="oaf-metric"><small>Temperatura del aire</small><strong id="oaf-live-temp">—</strong><span>Modelo externo · 2 m</span></div><div class="oaf-metric"><small>Humedad relativa</small><strong id="oaf-live-hum">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Precipitación reciente</small><strong id="oaf-live-prec">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Radiación solar global</small><strong id="oaf-live-rad">—</strong><span>Modelo externo · onda corta</span></div></div><p class="small" id="oaf-home-source" role="status">Conectando a la fuente externa. Los indicadores no son mediciones de parcela.</p><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
-<p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
-<div class="autor-firma"><strong>Carlos E. Coronel García</strong><span>Ingeniero Agrónomo</span></div>
-</div>
+<div class="oaf-home-metrics" aria-label="Indicadores meteorológicos de Open-Meteo"><div class="oaf-metric"><small>Temperatura del aire</small><strong id="oaf-live-temp">—</strong><span>Modelo externo · 2 m</span></div><div class="oaf-metric"><small>Humedad relativa</small><strong id="oaf-live-hum">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Precipitación reciente</small><strong id="oaf-live-prec">—</strong><span>Modelo externo</span></div><div class="oaf-metric"><small>Radiación solar global</small><strong id="oaf-live-rad">—</strong><span>Modelo externo · onda corta</span></div></div><p class="small" id="oaf-home-source" role="status">Conectando a la fuente externa. Los indicadores no son mediciones de parcela.</p><div class="autor-presentacion"><p>Un observatorio abierto para acercar datos climáticos verificables a productores, técnicos e investigadores. Integramos información meteorológica, resultados experimentales y bibliografía fitosanitaria para arándano y vid. <a href="#verificaciones">Metodología y autoría ↗</a></p><div class="autor-firma"><strong>Carlos E. Coronel García</strong><span>Ingeniero Agrónomo · CECG</span></div></div>
 <div class="cards">
 <article class="card"><span class="kicker">01 · Datos</span><h2>¿Cómo está el clima?</h2><p>Temperatura, humedad y pronóstico meteorológico externo para las localidades de referencia, junto con registros de precipitaciones.</p><a href="#clima">Consultar el clima →</a></article>
 <article class="card"><span class="kicker">02 · Cultivos</span><h2>Arándano y vid</h2><p>Conoce las enfermedades que pueden verse favorecidas por determinadas condiciones climáticas y consulta las fuentes científicas.</p><a href="#cultivos">Ver condiciones de riesgo →</a></article>
 <article class="card"><span class="kicker">03 · El Niño</span><h2>Información oficial</h2><p>Accede a los boletines ENFEN y a los avisos del SENAMHI, distinguiendo información verificada y pendiente.</p><a href="#nino">Revisar boletines →</a></article>
 </div>
 </div>
-<div class="method"><div><span class="eyebrow">Cómo se desarrolla el proyecto</span><h2>De los datos abiertos a la información útil</h2></div><div class="methodsteps"><span><b>1.</b> Reunimos datos climáticos</span><span><b>2.</b> Comprobamos su calidad</span><span><b>3.</b> Relacionamos clima y patógenos</span><span><b>4.</b> Validamos modelos y predicciones</span></div></div>
+
  <p class="small home-disclaimer">Los pronósticos meteorológicos actuales proceden de proveedores externos. Las alertas fitosanitarias y predicciones propias del OAF aún no están validadas.</p>
 </section>
 <section data-page="clima" id="clima" hidden>
@@ -97,61 +94,8 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="kpis"><div class="kpi"><small>Radiación solar actual (onda corta)</small><b id="wx-rad">—</b></div><div class="kpi"><small>Velocidad del viento a 10 m</small><b id="wx-wind">—</b></div><div class="kpi"><small>Déficit de presión de vapor (DPV)</small><b id="wx-vpd">—</b></div><div class="kpi"><small>Presión atmosférica superficial</small><b id="wx-pressure">—</b></div></div>
 <p class="small">La radiación actual se expresa en W/m²; los acumulados diarios, en MJ/m². El DPV se expresa en kPa. Son variables modeladas para puntos de referencia, no sensores dentro del dosel.</p>
 <h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. precipitación</th><th>Radiación solar (MJ/m²)</th><th>Viento máx. (km/h)</th><th>Humedad media (%)</th><th>DPV máx. (kPa)</th><th>ET₀ FAO (mm)</th><th>Insolación (h)</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. La radiación de onda corta, ET₀, DPV, viento y presión proceden de modelos meteorológicos externos en puntos referenciales, no estaciones dentro de la parcela. La insolación (h) es duración estimada de sol, distinta de la radiación acumulada (MJ/m²).</p></div>
-<details class="panel" id="oaf-temp-8e">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 8E · Primeros pronósticos fechados de temperatura en Lambayeque</strong>
-<small style="display:block;color:var(--muted)">Emisión original, referencia local e incorporación de Niño 1+2 / T300, con verificación posterior</small></span>
-<span class="badge">Experimental · Sin validación operativa</span></summary>
-<div style="margin-top:16px">
-<p class="small">El OAF archiva <b>antes de conocer el resultado</b> las estimaciones mensuales de <b>temperatura media a 2 metros</b> para Chiclayo, Jayanca, Motupe y Olmos. Muestra un modelo basado únicamente en temperatura local y otro que añade <b>Niño 1+2 y T300</b>. La fecha original se conserva sin sobrescritura para comparar errores después.</p>
-<div class="tools">
-<label for="oaf-temp-8e-filter">Mes objetivo</label>
-<select id="oaf-temp-8e-filter"><option value="todos">Todos los meses</option></select>
-<button type="button" class="btn dark" id="oaf-temp-8e-run">Consultar pronósticos archivados ↻</button></div>
-<p class="small" id="oaf-temp-8e-message" role="status">Consulta el archivo experimental original y comprueba si sus meses objetivo ya pueden verificarse.</p>
-<div id="oaf-temp-8e-data" hidden>
-<div class="scroller"><table><thead><tr>
-<th>Localidad</th><th>Mes objetivo</th><th>OAF Niño+T300 (°C)</th><th>Referencia local (°C)</th><th>Tipo de emisión</th><th>Verificación</th>
-</tr></thead><tbody id="oaf-temp-8e-body"></tbody></table></div>
-<p class="small" id="oaf-temp-8e-provenance"></p>
-<div class="links">
-<a id="oaf-temp-8e-original" href="datos/verificacion_temperatura_regional_8e.json">Abrir emisión original con fecha y fuentes ↗</a>
-<a href="datos/verificacion_temperatura_regional_8e.json">Estado de verificación ↗</a>
-<a href="datos/verificacion_temperatura_regional_8e.csv">Comparaciones futuras en CSV ↗</a>
-</div>
-</div>
-<div class="notice"><b>Límites científicos:</b> los valores representan la temperatura media mensual de una <b>cuadrícula ERA5-Land</b>, NO lecturas de estación SENAMHI ni temperatura de la parcela. Un valor emitido durante el mes objetivo se identifica como <b>estimación intramensual</b>, no como pronóstico antes del mes. La capacidad predictiva futura aún debe comprobarse; <b>sin porcentajes de probabilidad, alertas de ENFEN/SENAMHI ni pronósticos de enfermedades</b>.</div>
-<div class="links">
-<a href="FASE_8E_PRONOSTICOS_TEMPERATURA_PROSPECTIVOS.md">Método y primera emisión ↗</a>
-<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Antecedentes y errores históricos 8D ↗</a>
-</div>
-</div>
-</details>
-<details class="panel" id="oaf-regional-8d">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 8D · ¿El Niño 1+2 ayuda a anticipar el clima de Lambayeque?</strong>
-<small style="display:block;color:var(--muted)">Temperatura, lluvia y radiación solar: prueba temporal con NOAA y ERA5</small></span>
-<span class="badge">Estudio regional · sin alertas</span></summary>
-<div style="margin-top:16px">
-<p class="small">Investigamos si las anomalías mensuales de <b>Niño 1+2</b> y el indicador subsuperficial <b>T300</b> aportan capacidad para anticipar anomalías de <b>temperatura, precipitación y radiación solar</b> en Chiclayo, Jayanca, Motupe y Olmos. Comparamos con la climatología y modelos basados en información local previa. Esta es una <b>evaluación retrospectiva sobre reanálisis</b>, no una predicción operativa ni un boletín ENFEN.</p>
-<div class="tools">
-<label for="oaf-regional-8d-city">Localidad</label>
-<select id="oaf-regional-8d-city"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
-<label for="oaf-regional-8d-variable">Variable</label>
-<select id="oaf-regional-8d-variable"><option value="temperatura_c">Temperatura media</option><option value="precipitacion_mm">Lluvia mensual</option><option value="radiacion_mj_m2">Radiación solar mensual</option></select>
-<button type="button" class="btn dark" id="oaf-regional-8d-load">Consultar evaluación ↻</button></div>
-<p id="oaf-regional-8d-status" class="small" role="status">Abre esta sección para consultar las comparaciones regionales cuando finalicen sus verificaciones.</p>
-<div id="oaf-regional-8d-data" hidden>
-<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses</th><th>MAE climatología</th><th>MAE persistencia</th><th>MAE local</th><th>MAE + Niño 1+2</th><th>MAE + Niño 1+2 + T300</th><th>Mejora Niño vs local</th><th>Mejora con T300 vs local</th><th>Intervalo exploratorio de mejora con T300 (bloques temporales)</th></tr></thead><tbody id="oaf-regional-8d-results"></tbody></table></div>
-<p id="oaf-regional-8d-detail" class="small"></p>
-</div>
-<div class="notice"><b>Interpretación obligatoria:</b> la climatología de referencia pública es <b>1996–2025</b> (30 años), pero para evitar contaminación del periodo de prueba las anomalías del entrenamiento/evaluación usan una referencia fijada con **1996–2022**. Las fuentes meteorológicas son <b>reanálisis ERA5 y ERA5-Land</b>, no estaciones SENAMHI. La TSM del mes de origen suele publicarse después de cerrar ese mes: horizonte 1 puede representar una <b>estimación intramensual</b>. No inferir causalidad, clasificación oficial de El Niño Costero, lluvia extrema o enfermedades de una correlación histórica.</div>
-<div class="links">
-<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Método y resultados regionales ↗</a>
-<a href="datos/benchmark_impacto_lambayeque_8d_prueba.csv">Errores verificables por mes ↗</a>
-<a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5/ERA5-Land ↗</a>
-</div>
-</div></details>
+
+
 <div class="panel" id="oaf-anomaly-panel">
 <div class="modelhead"><div><span class="riskcrop">Nuevo · Exploración predictiva de anomalías</span><h2 style="margin-top:6px">¿Se esperan anomalías de temperatura, lluvia o radiación solar?</h2></div><span class="badge">Indicador experimental · no alerta</span></div>
 <p class="small">Comparamos siete días futuros pronosticados por un proveedor externo con datos de reanálisis de <b>1996–2025</b> para la misma época del año. Añadimos la radiación solar acumulada de onda corta a las evaluaciones de temperatura y precipitación. El percentil 90 señala valores relativamente altos frente a su distribución histórica, <b>no</b> una probabilidad de ocurrencia.</p>
@@ -171,45 +115,8 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Interpretación:</b> un resultado es una comparación estadística entre pronóstico y reanálisis de modelos diferentes, no una alerta por calor/lluvia, una predicción calibrada del OAF o una predicción de El Niño Costero. No usar para afirmar presencia de enfermedades. El observatorio prioriza validar estas señales frente a estaciones y pronósticos archivados.</div>
 <p class="small">Fuente técnica: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">pronósticos Open-Meteo</a> y <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">reanálisis ERA5-Land/ERA5</a>. La descarga histórica puede tardar y está sujeta a disponibilidad/cuotas del proveedor. <a href="MODELO_ANOMALIAS_FASE6A.md">Método y limitaciones ↗</a></p>
 </div>
-<details class="panel" id="oaf-benchmark-6f">
-<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span><strong style="font-size:18px;color:var(--navy)">Fase 6F · ¿La radiación mejora el pronóstico?</strong><small style="display:block;color:var(--muted)">Comparación histórica de temperatura: pronóstico original, modelo básico y modelo con radiación, humedad y viento</small></span><span class="badge">Evaluación experimental</span></summary>
-<div style="margin-top:15px">
-<p class="small">Utilizamos pronósticos archivados <b>24 horas antes del momento evaluado</b>. Los modelos se entrenan con 2024–2025 y se contrastan con temperatura de reanálisis ERA5-Land en enero–septiembre de 2026. Es una prueba fuera del periodo de entrenamiento, <b>no una validación operativa ni un diagnóstico de enfermedades</b>.</p>
-<div class="tools"><button id="oaf-benchmark-run" class="btn dark" type="button">Consultar resultados históricos ↻</button></div>
-<p id="oaf-benchmark-status" class="small" role="status">Los resultados se mostrarán cuando el cálculo con datos históricos haya concluido correctamente.</p>
-<div id="oaf-benchmark-output" hidden>
-<div class="scroller"><table><thead><tr><th>Localidad</th><th>Horas verificadas</th><th>MAE original (°C)</th><th>MAE básico (°C)</th><th>MAE ampliado (°C)</th><th>Mejora vs básico</th><th>Interpretación</th></tr></thead><tbody id="oaf-benchmark-results"></tbody></table></div>
-<p class="small" id="oaf-benchmark-method"></p>
-</div>
-<div class="notice"><b>Lectura responsable:</b> menor error absoluto medio (MAE) indica mejor aproximación a la temperatura reanalizada. Un resultado mejor no prueba causalidad de la radiación ni permite afirmar que el OAF prediga El Niño Costero o la aparición de Botrytis u oídio. Falta validación prospectiva contra sensores y estaciones regionales.</div>
-<div class="links"><a href="https://open-meteo.com/en/docs/previous-runs-api" target="_blank" rel="noopener noreferrer">Pronósticos previos de Open-Meteo ↗</a><a href="FASE_6F_EVALUACION_PREDICTORES.md">Método y límites ↗</a></div>
-</div>
-</details>
-<details class="panel" id="oaf-verify-6g">
-<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 6G · ¿Se cumplieron los pronósticos archivados?</strong><small style="display:block;color:var(--muted)">Verificación de temperatura, lluvia y radiación por localidad y horizonte</small></span>
-<span class="badge">Evaluación prospectiva · sin alertas</span></summary>
-<div style="margin-top:16px">
-<p class="small">El observatorio conserva las predicciones meteorológicas <b>antes</b> de los días previstos y después contrasta sus valores con reanálisis de ERA5-Land (temperatura) y ERA5 (lluvia y radiación). La comparación exige al menos <b>siete días después de cada jornada</b>, para respetar el retraso de publicación. Los reanálisis son estimaciones científicas, <b>no estaciones meteorológicas SENAMHI</b>.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-verify-6g-refresh">Comprobar verificaciones ↻</button></div>
-<p class="small" id="oaf-verify-6g-status" role="status">El primer pronóstico archivado corresponde al 14 de octubre de 2026. La verificación se mostrará solo cuando haya datos de referencia disponibles.</p>
-<div id="oaf-verify-6g-results" hidden>
-<div class="tools">
-<label for="oaf-verify-6g-place">Localidad</label>
-<select id="oaf-verify-6g-place"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
-<label for="oaf-verify-6g-var">Variable</label>
-<select id="oaf-verify-6g-var">
-<option value="temperature_2m_mean">Temperatura media · °C</option>
-<option value="precipitation_sum">Precipitación · mm</option>
-<option value="shortwave_radiation_sum">Radiación solar · MJ/m²</option>
-</select>
-</div>
-<p class="small" id="oaf-verify-6g-counter"></p>
-<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Jornadas comparadas</th><th>Error absoluto medio (MAE)</th><th>Sesgo</th><th>RMSE</th></tr></thead><tbody id="oaf-verify-6g-table"></tbody></table></div>
-</div>
-<div class="notice"><b>Interpretación:</b> las cifras verifican pronósticos externos; todavía NO prueban que el OAF prediga por sí mismo anomalías climáticas, El Niño Costero o enfermedades de arándano y vid. La verificación con estaciones y sensores de campo sigue pendiente. No se publican errores mientras falte la referencia.</div>
-<div class="links"><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis de referencia ↗</a><a href="FASE_6G_VERIFICACION_PROSPECTIVA.md">Método y registro de avances ↗</a><a href="datos/pronosticos_emitidos/2026-10-14.json">Primera emisión conservada ↗</a></div>
-</div></details>
+
+
 <div class="split"><div class="panel"><h2>Estimaciones de precipitación CHIRPS</h2><span id="chirps-month" style="font-size:26px;font-weight:800;color:var(--navy)">Consultando…</span><p id="chirps-info" class="small">Último mes con información satelital comprobada.</p><a href="datos/chirps_v3_reciente_3z.csv" class="small">Consultar CSV de precipitación ↗</a></div><div class="panel"><h2>Predicciones del OAF</h2><span class="badge">En investigación</span><p>Próxima etapa: modelos probabilísticos propios, evaluación de error y validación independiente antes de mostrar pronósticos OAF.</p></div></div>
 </section>
 <section data-page="cultivos" id="cultivos" hidden>
@@ -268,43 +175,8 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Condición previa del modelo:</b> el índice de UC IPM presupone una infección primaria ya establecida. Las temperaturas pronosticadas a 2 m <b>no sustituyen</b> sensores dentro del dosel. El análisis horario no reproduce las variaciones de 15 minutos ni constituye el índice epidemiológico completo. Un resultado favorable no confirma enfermedad ni indica aplicación de fungicidas.</div>
 <div class="links"><a href="https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/" target="_blank" rel="noopener noreferrer">Modelo original UC IPM ↗</a><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Datos y pronóstico Open-Meteo ↗</a></div>
 </div>
-<details class="panel" id="oaf-botrytis-validation">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 7B · ¿Qué tan bien se anticipan los periodos de humedad?</strong>
-<small style="display:block;color:var(--muted)">Comprobación meteorológica retrospectiva de las señales para arándano</small></span>
-<span class="badge">Sin validación biológica</span></summary>
-<div style="margin-top:15px">
-<p class="small">Comparamos los pronósticos archivados a <b>24 horas de anticipación</b> con la humedad relativa horaria del reanálisis <b>ERA5</b> entre enero y septiembre de 2026. Evaluamos si aparecen periodos de <b>HR superior al 90 % durante ≥6 horas continuas</b>. Estos resultados <b>no verifican enfermedad, flores mojadas ni presencia de Botrytis</b>.</p>
-<div class="tools"><button id="oaf-botrytis-validate-run" type="button" class="btn dark">Consultar evaluación de humedad ↻</button></div>
-<p class="small" id="oaf-botrytis-validate-status" role="status">Las cifras se mostrarán cuando las cuatro localidades dispongan de una evaluación verificable.</p>
-<div id="oaf-botrytis-validate-output" hidden>
-<div class="scroller"><table><thead><tr><th>Localidad</th><th>Días evaluados</th><th>Señales previstas</th><th>Señales ERA5</th><th>Verdaderas</th><th>Falsas alarmas</th><th>Omisiones</th><th>Sin señal</th><th>Sensibilidad</th><th>Precisión positiva</th></tr></thead><tbody id="oaf-botrytis-validate-rows"></tbody></table></div>
-<p class="small" id="oaf-botrytis-validate-provenance"></p>
-</div>
-<div class="notice"><b>Interpretación científica:</b> «verdadera» o «falsa» se refiere <b>solo</b> a la coincidencia de una señal meteorológica de HR elevada con ERA5, no al estado fitosanitario del cultivo. La validación de Botrytis requiere humectación foliar medida, fenología, diagnóstico e incidencia observada en parcelas.</div>
-<p class="small" id="oaf-botrytis-7b-prospective">La primera comparación prospectiva será posible desde el 23 de octubre de 2026, cuando el reanálisis ERA5 esté disponible.</p>
-<div class="links"><a href="FASE_7B_VALIDACION_HUMEDAD.md">Método, resultados y limitaciones ↗</a><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5 ↗</a></div>
-</div></details>
-<details class="panel" id="oaf-field-7c">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 7C · Validación fitosanitaria con datos de campo</strong>
-<small style="display:block;color:var(--muted)">Protocolo de muestreo, sensores de humectación y diagnóstico para arándano</small></span>
-<span class="badge">Preparación de investigación</span></summary>
-<div style="margin-top:15px">
-<p class="small">Para pronosticar <i>Botrytis cinerea</i> necesitamos observaciones realmente obtenidas en parcelas: <b>floración, unidades evaluadas, síntomas, diagnóstico y humectación foliar medida</b>. Una serie externa de humedad no demuestra infección. El OAF validará la integridad de los registros privados antes de entrenar o publicar cualquier probabilidad.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-field-7c-reload">Consultar avance de validación ↻</button></div>
-<p class="small" id="oaf-field-7c-status" role="status">Aún no hay observaciones de campo publicadas. Se consultará el estado agregado de calidad cuando abras este apartado.</p>
-<div id="oaf-field-7c-info" hidden>
-<p class="small"><b>Informe de integridad generado:</b> <span id="oaf-field-7c-updated">—</span></p>
-<p class="small" id="oaf-field-7c-private"></p>
-</div>
-<div class="notice"><b>Confidencialidad y validez:</b> los archivos reales de parcelas no se publican en GitHub. La confirmación específica de <i>B. cinerea</i> se distingue de los síntomas compatibles y se requiere un denominador homogéneo. Sin muestras de campo no existe diagnóstico, incidencia comprobada ni modelo fitosanitario calibrado.</div>
-<div class="links">
-<a href="datos/plantilla_7c_monitoreo_botrytis.csv">Plantilla de monitoreo fitosanitario (CSV) ↗</a>
-<a href="datos/plantilla_7c_microclima_horario.csv">Plantilla horaria de microclima (CSV) ↗</a>
-<a href="FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md">Protocolo, unidades y controles ↗</a>
-</div>
-</div></details>
+
+
 <div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
 <article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
 <div class="notice">Una predicción meteorológica de condiciones favorables <b>no equivale a presencia confirmada</b> de una enfermedad. Hasta contar con evaluación independiente del modelo, no se mostrarán porcentajes de infección ni recomendaciones automáticas de tratamiento.</div></div>
@@ -313,109 +185,11 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
 <div class="panel"><h2>Impacto en cultivos</h2><p>El Niño puede modificar patrones de lluvia, humedad y temperatura. El efecto fitosanitario depende además del patógeno, fenología, manejo y microclima.</p><div class="notice">El OAF no emite alertas propias de El Niño ni puede inferir una infección a partir del comunicado.</div></div></div>
-<details class="panel" id="oaf-subsurface-8c">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 8C · ¿El calor subsuperficial del Pacífico mejora la predicción?</strong>
-<small style="display:block;color:var(--muted)">NOAA/PMEL T300, tendencias oceánicas y presiones/vientos desfasados</small></span>
-<span class="badge">Resultados experimentales · No operativos</span>
-</summary>
-<div style="margin-top:16px">
-<p class="small">Comparamos <b>persistencia</b>, <b>TSM Niño 1+2 y tendencia previa</b>, un modelo con el <b>calor subsuperficial T300 del mes anterior</b>, y otro que agrega también SOI y anomalías de vientos de meses anteriores. Los parámetros se entrenaron solo con meses objetivo hasta diciembre de 2022; las pruebas de <b>enero de 2023 a 2026</b> se mantuvieron separadas.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-subsurface-8c-refresh">Consultar comparación NOAA / T300 ↻</button></div>
-<p class="small" id="oaf-subsurface-8c-status" role="status">Abre esta sección para verificar los errores históricos en los tres horizontes.</p>
-<div id="oaf-subsurface-8c-output" hidden>
-<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses de prueba</th><th>MAE persistencia</th><th>MAE TSM+tendencia</th><th>MAE con T300</th><th>MAE T300+atmósfera</th><th>Mejora T300 vs tendencia</th></tr></thead>
-<tbody id="oaf-subsurface-8c-tbody"></tbody></table></div>
-<p class="small" id="oaf-subsurface-8c-details"></p>
-</div>
-<div class="notice"><b>Interpretación científica:</b> T300 es una medida modelada del océano hasta 300 m, <b>no</b> la TSM local de Lambayeque. En el periodo histórico el modelo con T300 redujo el error, pero los intervalos de estabilidad todavía incluyen la posibilidad de ninguna mejora; al agregar SOI y vientos el resultado empeoró. Los datos históricos pueden contener revisiones y <b>esta fase no constituye una emisión prospectiva, ICEN oficial ni pronóstico validado de El Niño Costero</b>. Además, un pronóstico calculado después del cierre mensual puede ser intramensual para el mes siguiente.</div>
-<div class="links"><a href="FASE_8C_CALOR_SUBSUPERFICIAL_ENSO.md">Análisis y metodología 8C ↗</a>
-<a href="datos/benchmark_subsuperficial_8c_test.csv">Pruebas mensuales separadas ↗</a>
-<a href="https://www.pmel.noaa.gov/elnino/upper-ocean-heat-content-and-enso/" target="_blank" rel="noopener noreferrer">NOAA/PMEL: calor subsuperficial y ENSO ↗</a></div>
-</div>
-</details>
-<details class="panel" id="oaf-atmos-8b">
-<summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 8B · ¿El SOI y los vientos mejoran las predicciones?</strong>
-<small style="display:block;color:var(--muted)">Comparación histórica con temperatura superficial del mar y persistencia</small></span>
-<span class="badge">Investigación · Sin ventaja demostrada</span>
-</summary>
-<div style="margin-top:16px">
-<p class="small">Se descargaron de <b>NOAA CPC</b> tres indicadores atmosféricos: <b>SOI</b>, anomalías de los vientos a <b>850 hPa del Pacífico central</b> y del <b>Pacífico oriental</b>. La comparación utiliza únicamente información del mes de origen para predecir anomalías Niño 1+2 a uno, dos o tres meses. El entrenamiento avanza por el tiempo sin incorporar objetivos posteriores a cada origen.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-atmos-8b-refresh">Consultar comparación NOAA ↻</button></div>
-<p class="small" id="oaf-atmos-8b-status" role="status">Abre esta sección para conocer si las variables atmosféricas mejoraron realmente los resultados históricos.</p>
-<div id="oaf-atmos-8b-output" hidden>
-<div class="scroller"><table>
-<thead><tr><th>Horizonte</th><th>Meses evaluados</th><th>MAE persistencia</th><th>MAE solo TSM</th><th>MAE TSM + atmósfera</th><th>Resultado</th></tr></thead>
-<tbody id="oaf-atmos-8b-rows"></tbody>
-</table></div>
-<p class="small" id="oaf-atmos-8b-method"></p>
-</div>
-<div class="notice"><b>Conclusión científica inicial:</b> agregar más variables no garantiza mejores predicciones; este primer modelo ampliado empeoró frente a usar solo temperatura oceánica en los tres horizontes estudiados. El análisis emplea archivos históricos de NOAA que pueden contener revisiones y <b>no demuestra habilidad prospectiva ni predice el ICEN oficial</b>. El OAF no emite alertas de El Niño Costero.</div>
-<div class="links">
-<a href="FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md">Metodología y métricas completas ↗</a>
-<a href="datos/benchmark_atmosferico_8b_fold.csv">Errores por cada mes analizado ↗</a>
-<a href="https://www.cpc.ncep.noaa.gov/data/indices/index.shtml" target="_blank" rel="noopener noreferrer">Series oficiales NOAA CPC ↗</a>
-</div>
-</div></details>
-<details class="panel" id="oaf-ocean-archive-8a">
-<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 8A · Pronósticos oceánicos archivados antes del evento</strong>
-<small style="display:block;color:var(--muted)">Emisiones fechadas de Niño 1+2, persistencia y verificación posterior</small></span>
-<span class="badge">Investigación · Sin alerta ENFEN</span>
-</summary>
-<div style="margin-top:16px">
-<p class="small">El OAF conserva una copia <b>inmutable</b> de cada predicción experimental mensual, con fecha y fuentes de NOAA, para comprobar sus errores cuando exista el dato posterior. Distinguimos una <b>estimación intramensual</b>, emitida cuando el mes ya empezó, de los pronósticos verdaderamente anteriores al inicio del mes. Se compara siempre con una referencia sencilla de <b>persistencia</b>.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-ocean-archive-8a-reload">Consultar emisión y verificación ↻</button></div>
-<p id="oaf-ocean-archive-8a-status" class="small" role="status">Abre este apartado para consultar el registro de las emisiones oceánicas y comprobar su madurez.</p>
-<div id="oaf-ocean-archive-8a-data" hidden>
-<div class="scroller"><table>
-<thead><tr><th>Mes objetivo</th><th>AR(1) experimental</th><th>Persistencia</th><th>Tipo de emisión</th><th>Comprobación</th></tr></thead>
-<tbody id="oaf-ocean-archive-8a-rows"></tbody>
-</table></div>
-<p id="oaf-ocean-archive-8a-method" class="small"></p>
-<div class="links"><a id="oaf-ocean-archive-8a-link" href="datos/verificacion_oceanica_8a.json">Ver emisión original y su fecha ↗</a>
-<a href="datos/verificacion_oceanica_8a.json">Estado auditable de la verificación ↗</a></div>
-</div>
-<div class="notice"><b>Control científico:</b> ERSSTv5 Niño 1+2 reconstruido por el OAF con referencia 1991–2020 <b>NO ES el ICEN oficial publicado por ENFEN</b>. Estas estimaciones no predicen directamente la lluvia de Lambayeque ni la incidencia de enfermedades; el AR(1) aún no demuestra mejor desempeño consistente que persistencia. La verificación utiliza una serie que puede sufrir revisiones retrospectivas.</div>
-<div class="links"><a href="FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md">Metodología y limitaciones ↗</a>
-<a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">ICEN oficial · ENFEN/IMARPE ↗</a></div>
-</div>
-</details>
-<details class="panel" id="oaf-ncei-6d">
-<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 6D · Perspectiva oceánica actualizada (NOAA NCEI)</strong><small style="display:block;color:var(--muted)">Anomalías Niño 1+2 a 1, 2 y 3 meses · abrir análisis</small></span>
-<span class="badge">Investigación · Sin alerta</span>
-</summary>
-<div style="margin-top:16px">
-<p class="small">Ahora utilizamos anomalías ERSSTv5 de NOAA NCEI disponibles hasta un mes reciente. El OAF convierte su referencia original <b>1971–2000</b> a <b>1991–2020</b> usando promedios mensuales verificables; contrastamos el periodo coincidente con NOAA CPC. El resultado es <b>una reconstrucción experimental del OAF, no el ICEN publicado por ENFEN</b>.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-ncei-load">Actualizar resultados NOAA NCEI ↻</button></div>
-<p class="small" id="oaf-ncei-status" role="status">Abre este apartado para consultar la última serie procesada con sus controles de procedencia.</p>
-<div id="oaf-ncei-output" hidden>
-<div class="kpis"><div class="kpi"><small>Última anomalía NCEI ajustada · <span id="oaf-ncei-date">—</span></small><b id="oaf-ncei-value">—</b></div><div class="kpi"><small>Diferencia absoluta media vs CPC · 24 meses comunes (hasta <span id="oaf-ncei-difference-date">—</span>)</small><b id="oaf-ncei-difference">—</b></div></div>
-<div class="scroller"><table><thead><tr><th>Mes previsto</th><th>AR(1) experimental</th><th>MAE histórico: AR(1) / persistencia</th><th>MAE últimos 12: AR(1) / persistencia</th><th>Estado</th></tr></thead><tbody id="oaf-ncei-horizons"></tbody></table></div>
-<p class="small" id="oaf-ncei-method"></p>
-</div>
-<div class="notice"><b>Advertencia científica:</b> las anomalías marinas estimadas no son una alerta de El Niño Costero, ni un pronóstico verificado de lluvia regional o de enfermedades agrícolas. El desempeño reciente del AR(1) puede ser inferior a la persistencia. ENFEN conserva la autoridad sobre las categorías y probabilidades oficiales.</div>
-<div class="links"><a href="https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat" target="_blank" rel="noopener noreferrer">Fuente NCEI ERSSTv5 ↗</a><a href="https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/Readme" target="_blank" rel="noopener noreferrer">Definición y columnas ↗</a><a href="MODELO_NCEI_ERSSTV5_FASE6D.md">Método y evaluación OAF ↗</a></div>
-</div></details>
-<details class="panel" id="oaf-ersstv5-6c">
-<summary style="cursor:pointer;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-<span><strong style="font-size:18px;color:var(--navy)">Fase 6C · ERSSTv5: perspectivas a 1, 2 y 3 meses</strong><small style="display:block;color:var(--muted)">Comparación con persistencia y promedio trimestral indicativo · Abrir análisis</small></span>
-<span class="badge">Experimental · No es ICEN oficial</span>
-</summary>
-<div style="margin-top:17px">
-<p class="small">Este modelo intenta anticipar anomalías mensuales de temperatura del océano en la región Niño 1+2. A diferencia de OISST, ERSSTv5 es el producto de referencia usado para calcular el ICEN; <b>el promedio indicativo presentado aquí no equivale al índice oficial publicado por ENFEN</b>.</p>
-<div class="tools"><button type="button" class="btn dark" id="oaf-ersstv5-load">Consultar resultados ERSSTv5 ↻</button></div>
-<p id="oaf-ersstv5-status" class="small" role="status">Se mostrarán solamente datos efectivamente descargados y procesados en el repositorio.</p>
-<div id="oaf-ersstv5-output" hidden>
-<div class="kpis"><div class="kpi"><small>Anomalía mensual ERSSTv5 · <span id="oaf-ersstv5-date">—</span></small><b id="oaf-ersstv5-latest">—</b></div><div class="kpi"><small>Media móvil de tres meses · mes central <span id="oaf-ersstv5-mean-date">—</span></small><b id="oaf-ersstv5-mean3">—</b></div></div>
-<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Estimación AR(1)</th><th>Persistencia</th><th>MAE histórico: modelo / persistencia</th><th>MAE últimos 12: modelo / persistencia</th><th>¿Mejora consistente?</th></tr></thead><tbody id="oaf-ersstv5-results"></tbody></table></div>
-<p id="oaf-ersstv5-compare" class="small"></p></div>
-<div class="notice"><b>Interpretación:</b> comparaciones retrospectivas no garantizan predicciones futuras. Las categorías y alertas de El Niño Costero son atribuciones de ENFEN; no se inferirán a partir de este modelo. El OAF no pronostica todavía precipitaciones regionales usando este índice.</div>
-<div class="links"><a href="https://www.cpc.ncep.noaa.gov/data/indices/ersst5.nino.mth.91-20.ascii" target="_blank" rel="noopener noreferrer">Fuente NOAA ERSSTv5 ↗</a><a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">ICEN oficial IMARPE ↗</a><a href="MODELO_ERSSTV5_FASE6C.md">Método y validación ↗</a></div>
-</div>
-</details>
+
+
+
+
+
 <div class="panel" id="oaf-nino-pred-data">
 <div class="modelhead"><div><span class="riskcrop">Fase 6B · Predicción oceánica experimental</span><h2 style="margin-top:6px">Anomalía mensual Niño 1+2: estimación a un mes</h2></div><span class="badge">NO es el ICEN oficial</span></div>
 <p class="small">Procesamos la serie mensual NOAA CPC OISST de Niño 1+2 con un modelo AR(1) y comparamos sus errores históricos frente a la persistencia del último valor. <b>Este módulo no emite alertas ni clasifica eventos de El Niño Costero.</b></p>
@@ -468,13 +242,240 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="viewhead"><span class="eyebrow">Transparencia científica</span><h1>Verificación de datos</h1><p>Los resultados de control de calidad y comparación histórica siguen disponibles sin saturar la página principal.</p></div>
 <div class="panel"><h2>Base observacional histórica SENAMHI (1996–2015)</h2><div class="kpis"><div class="kpi"><small>Meses-estación completos</small><b>1 109</b></div><div class="kpi"><small>Estación-año completos</small><b>79</b></div><div class="kpi"><small>Último año común completo</small><b>2012</b></div></div><p class="small">Estos totales provienen del proceso histórico del OAF y no constituyen una normal instrumental completa para 1996–2025.</p></div>
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
-</section>
+<div class="panel oaf-tech-archive"><h2>Autoría y fundamentos del OAF</h2><p>La presentación completa del proyecto y su procedimiento metodológico se mantienen en este archivo de consulta.</p><div class="oaf-archive-list"><details><summary>Presentación completa y autoría</summary><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
+<p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
+<div class="autor-firma"><strong>Carlos E. Coronel García</strong><span>Ingeniero Agrónomo</span></div>
+</div></details><details><summary>Proceso general de desarrollo</summary><div class="method"><div><span class="eyebrow">Cómo se desarrolla el proyecto</span><h2>De los datos abiertos a la información útil</h2></div><div class="methodsteps"><span><b>1.</b> Reunimos datos climáticos</span><span><b>2.</b> Comprobamos su calidad</span><span><b>3.</b> Relacionamos clima y patógenos</span><span><b>4.</b> Validamos modelos y predicciones</span></div></div></details></div></div>
+<div class="panel oaf-tech-archive"><h2>Investigación documentada · Fases 6–8E</h2><p>Visores originales, datos de prueba, modelos experimentales y trazabilidad conservados tras la reorganización del portal. Los enlaces y scripts siguen vinculados a los archivos originales.</p><div class="oaf-archive-list"><details class="panel" id="oaf-temp-8e">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8E · Primeros pronósticos fechados de temperatura en Lambayeque</strong>
+<small style="display:block;color:var(--muted)">Emisión original, referencia local e incorporación de Niño 1+2 / T300, con verificación posterior</small></span>
+<span class="badge">Experimental · Sin validación operativa</span></summary>
+<div style="margin-top:16px">
+<p class="small">El OAF archiva <b>antes de conocer el resultado</b> las estimaciones mensuales de <b>temperatura media a 2 metros</b> para Chiclayo, Jayanca, Motupe y Olmos. Muestra un modelo basado únicamente en temperatura local y otro que añade <b>Niño 1+2 y T300</b>. La fecha original se conserva sin sobrescritura para comparar errores después.</p>
+<div class="tools">
+<label for="oaf-temp-8e-filter">Mes objetivo</label>
+<select id="oaf-temp-8e-filter"><option value="todos">Todos los meses</option></select>
+<button type="button" class="btn dark" id="oaf-temp-8e-run">Consultar pronósticos archivados ↻</button></div>
+<p class="small" id="oaf-temp-8e-message" role="status">Consulta el archivo experimental original y comprueba si sus meses objetivo ya pueden verificarse.</p>
+<div id="oaf-temp-8e-data" hidden>
+<div class="scroller"><table><thead><tr>
+<th>Localidad</th><th>Mes objetivo</th><th>OAF Niño+T300 (°C)</th><th>Referencia local (°C)</th><th>Tipo de emisión</th><th>Verificación</th>
+</tr></thead><tbody id="oaf-temp-8e-body"></tbody></table></div>
+<p class="small" id="oaf-temp-8e-provenance"></p>
+<div class="links">
+<a id="oaf-temp-8e-original" href="datos/verificacion_temperatura_regional_8e.json">Abrir emisión original con fecha y fuentes ↗</a>
+<a href="datos/verificacion_temperatura_regional_8e.json">Estado de verificación ↗</a>
+<a href="datos/verificacion_temperatura_regional_8e.csv">Comparaciones futuras en CSV ↗</a>
+</div>
+</div>
+<div class="notice"><b>Límites científicos:</b> los valores representan la temperatura media mensual de una <b>cuadrícula ERA5-Land</b>, NO lecturas de estación SENAMHI ni temperatura de la parcela. Un valor emitido durante el mes objetivo se identifica como <b>estimación intramensual</b>, no como pronóstico antes del mes. La capacidad predictiva futura aún debe comprobarse; <b>sin porcentajes de probabilidad, alertas de ENFEN/SENAMHI ni pronósticos de enfermedades</b>.</div>
+<div class="links">
+<a href="FASE_8E_PRONOSTICOS_TEMPERATURA_PROSPECTIVOS.md">Método y primera emisión ↗</a>
+<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Antecedentes y errores históricos 8D ↗</a>
+</div>
+</div>
+</details><details class="panel" id="oaf-regional-8d">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8D · ¿El Niño 1+2 ayuda a anticipar el clima de Lambayeque?</strong>
+<small style="display:block;color:var(--muted)">Temperatura, lluvia y radiación solar: prueba temporal con NOAA y ERA5</small></span>
+<span class="badge">Estudio regional · sin alertas</span></summary>
+<div style="margin-top:16px">
+<p class="small">Investigamos si las anomalías mensuales de <b>Niño 1+2</b> y el indicador subsuperficial <b>T300</b> aportan capacidad para anticipar anomalías de <b>temperatura, precipitación y radiación solar</b> en Chiclayo, Jayanca, Motupe y Olmos. Comparamos con la climatología y modelos basados en información local previa. Esta es una <b>evaluación retrospectiva sobre reanálisis</b>, no una predicción operativa ni un boletín ENFEN.</p>
+<div class="tools">
+<label for="oaf-regional-8d-city">Localidad</label>
+<select id="oaf-regional-8d-city"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
+<label for="oaf-regional-8d-variable">Variable</label>
+<select id="oaf-regional-8d-variable"><option value="temperatura_c">Temperatura media</option><option value="precipitacion_mm">Lluvia mensual</option><option value="radiacion_mj_m2">Radiación solar mensual</option></select>
+<button type="button" class="btn dark" id="oaf-regional-8d-load">Consultar evaluación ↻</button></div>
+<p id="oaf-regional-8d-status" class="small" role="status">Abre esta sección para consultar las comparaciones regionales cuando finalicen sus verificaciones.</p>
+<div id="oaf-regional-8d-data" hidden>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses</th><th>MAE climatología</th><th>MAE persistencia</th><th>MAE local</th><th>MAE + Niño 1+2</th><th>MAE + Niño 1+2 + T300</th><th>Mejora Niño vs local</th><th>Mejora con T300 vs local</th><th>Intervalo exploratorio de mejora con T300 (bloques temporales)</th></tr></thead><tbody id="oaf-regional-8d-results"></tbody></table></div>
+<p id="oaf-regional-8d-detail" class="small"></p>
+</div>
+<div class="notice"><b>Interpretación obligatoria:</b> la climatología de referencia pública es <b>1996–2025</b> (30 años), pero para evitar contaminación del periodo de prueba las anomalías del entrenamiento/evaluación usan una referencia fijada con **1996–2022**. Las fuentes meteorológicas son <b>reanálisis ERA5 y ERA5-Land</b>, no estaciones SENAMHI. La TSM del mes de origen suele publicarse después de cerrar ese mes: horizonte 1 puede representar una <b>estimación intramensual</b>. No inferir causalidad, clasificación oficial de El Niño Costero, lluvia extrema o enfermedades de una correlación histórica.</div>
+<div class="links">
+<a href="FASE_8D_IMPACTO_AGROCLIMATICO_LAMBAYEQUE.md">Método y resultados regionales ↗</a>
+<a href="datos/benchmark_impacto_lambayeque_8d_prueba.csv">Errores verificables por mes ↗</a>
+<a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5/ERA5-Land ↗</a>
+</div>
+</div></details><details class="panel" id="oaf-benchmark-6f">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span><strong style="font-size:18px;color:var(--navy)">Fase 6F · ¿La radiación mejora el pronóstico?</strong><small style="display:block;color:var(--muted)">Comparación histórica de temperatura: pronóstico original, modelo básico y modelo con radiación, humedad y viento</small></span><span class="badge">Evaluación experimental</span></summary>
+<div style="margin-top:15px">
+<p class="small">Utilizamos pronósticos archivados <b>24 horas antes del momento evaluado</b>. Los modelos se entrenan con 2024–2025 y se contrastan con temperatura de reanálisis ERA5-Land en enero–septiembre de 2026. Es una prueba fuera del periodo de entrenamiento, <b>no una validación operativa ni un diagnóstico de enfermedades</b>.</p>
+<div class="tools"><button id="oaf-benchmark-run" class="btn dark" type="button">Consultar resultados históricos ↻</button></div>
+<p id="oaf-benchmark-status" class="small" role="status">Los resultados se mostrarán cuando el cálculo con datos históricos haya concluido correctamente.</p>
+<div id="oaf-benchmark-output" hidden>
+<div class="scroller"><table><thead><tr><th>Localidad</th><th>Horas verificadas</th><th>MAE original (°C)</th><th>MAE básico (°C)</th><th>MAE ampliado (°C)</th><th>Mejora vs básico</th><th>Interpretación</th></tr></thead><tbody id="oaf-benchmark-results"></tbody></table></div>
+<p class="small" id="oaf-benchmark-method"></p>
+</div>
+<div class="notice"><b>Lectura responsable:</b> menor error absoluto medio (MAE) indica mejor aproximación a la temperatura reanalizada. Un resultado mejor no prueba causalidad de la radiación ni permite afirmar que el OAF prediga El Niño Costero o la aparición de Botrytis u oídio. Falta validación prospectiva contra sensores y estaciones regionales.</div>
+<div class="links"><a href="https://open-meteo.com/en/docs/previous-runs-api" target="_blank" rel="noopener noreferrer">Pronósticos previos de Open-Meteo ↗</a><a href="FASE_6F_EVALUACION_PREDICTORES.md">Método y límites ↗</a></div>
+</div>
+</details><details class="panel" id="oaf-verify-6g">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 6G · ¿Se cumplieron los pronósticos archivados?</strong><small style="display:block;color:var(--muted)">Verificación de temperatura, lluvia y radiación por localidad y horizonte</small></span>
+<span class="badge">Evaluación prospectiva · sin alertas</span></summary>
+<div style="margin-top:16px">
+<p class="small">El observatorio conserva las predicciones meteorológicas <b>antes</b> de los días previstos y después contrasta sus valores con reanálisis de ERA5-Land (temperatura) y ERA5 (lluvia y radiación). La comparación exige al menos <b>siete días después de cada jornada</b>, para respetar el retraso de publicación. Los reanálisis son estimaciones científicas, <b>no estaciones meteorológicas SENAMHI</b>.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-verify-6g-refresh">Comprobar verificaciones ↻</button></div>
+<p class="small" id="oaf-verify-6g-status" role="status">El primer pronóstico archivado corresponde al 14 de octubre de 2026. La verificación se mostrará solo cuando haya datos de referencia disponibles.</p>
+<div id="oaf-verify-6g-results" hidden>
+<div class="tools">
+<label for="oaf-verify-6g-place">Localidad</label>
+<select id="oaf-verify-6g-place"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
+<label for="oaf-verify-6g-var">Variable</label>
+<select id="oaf-verify-6g-var">
+<option value="temperature_2m_mean">Temperatura media · °C</option>
+<option value="precipitation_sum">Precipitación · mm</option>
+<option value="shortwave_radiation_sum">Radiación solar · MJ/m²</option>
+</select>
+</div>
+<p class="small" id="oaf-verify-6g-counter"></p>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Jornadas comparadas</th><th>Error absoluto medio (MAE)</th><th>Sesgo</th><th>RMSE</th></tr></thead><tbody id="oaf-verify-6g-table"></tbody></table></div>
+</div>
+<div class="notice"><b>Interpretación:</b> las cifras verifican pronósticos externos; todavía NO prueban que el OAF prediga por sí mismo anomalías climáticas, El Niño Costero o enfermedades de arándano y vid. La verificación con estaciones y sensores de campo sigue pendiente. No se publican errores mientras falte la referencia.</div>
+<div class="links"><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis de referencia ↗</a><a href="FASE_6G_VERIFICACION_PROSPECTIVA.md">Método y registro de avances ↗</a><a href="datos/pronosticos_emitidos/2026-10-14.json">Primera emisión conservada ↗</a></div>
+</div></details><details class="panel" id="oaf-subsurface-8c">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8C · ¿El calor subsuperficial del Pacífico mejora la predicción?</strong>
+<small style="display:block;color:var(--muted)">NOAA/PMEL T300, tendencias oceánicas y presiones/vientos desfasados</small></span>
+<span class="badge">Resultados experimentales · No operativos</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">Comparamos <b>persistencia</b>, <b>TSM Niño 1+2 y tendencia previa</b>, un modelo con el <b>calor subsuperficial T300 del mes anterior</b>, y otro que agrega también SOI y anomalías de vientos de meses anteriores. Los parámetros se entrenaron solo con meses objetivo hasta diciembre de 2022; las pruebas de <b>enero de 2023 a 2026</b> se mantuvieron separadas.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-subsurface-8c-refresh">Consultar comparación NOAA / T300 ↻</button></div>
+<p class="small" id="oaf-subsurface-8c-status" role="status">Abre esta sección para verificar los errores históricos en los tres horizontes.</p>
+<div id="oaf-subsurface-8c-output" hidden>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Meses de prueba</th><th>MAE persistencia</th><th>MAE TSM+tendencia</th><th>MAE con T300</th><th>MAE T300+atmósfera</th><th>Mejora T300 vs tendencia</th></tr></thead>
+<tbody id="oaf-subsurface-8c-tbody"></tbody></table></div>
+<p class="small" id="oaf-subsurface-8c-details"></p>
+</div>
+<div class="notice"><b>Interpretación científica:</b> T300 es una medida modelada del océano hasta 300 m, <b>no</b> la TSM local de Lambayeque. En el periodo histórico el modelo con T300 redujo el error, pero los intervalos de estabilidad todavía incluyen la posibilidad de ninguna mejora; al agregar SOI y vientos el resultado empeoró. Los datos históricos pueden contener revisiones y <b>esta fase no constituye una emisión prospectiva, ICEN oficial ni pronóstico validado de El Niño Costero</b>. Además, un pronóstico calculado después del cierre mensual puede ser intramensual para el mes siguiente.</div>
+<div class="links"><a href="FASE_8C_CALOR_SUBSUPERFICIAL_ENSO.md">Análisis y metodología 8C ↗</a>
+<a href="datos/benchmark_subsuperficial_8c_test.csv">Pruebas mensuales separadas ↗</a>
+<a href="https://www.pmel.noaa.gov/elnino/upper-ocean-heat-content-and-enso/" target="_blank" rel="noopener noreferrer">NOAA/PMEL: calor subsuperficial y ENSO ↗</a></div>
+</div>
+</details><details class="panel" id="oaf-atmos-8b">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8B · ¿El SOI y los vientos mejoran las predicciones?</strong>
+<small style="display:block;color:var(--muted)">Comparación histórica con temperatura superficial del mar y persistencia</small></span>
+<span class="badge">Investigación · Sin ventaja demostrada</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">Se descargaron de <b>NOAA CPC</b> tres indicadores atmosféricos: <b>SOI</b>, anomalías de los vientos a <b>850 hPa del Pacífico central</b> y del <b>Pacífico oriental</b>. La comparación utiliza únicamente información del mes de origen para predecir anomalías Niño 1+2 a uno, dos o tres meses. El entrenamiento avanza por el tiempo sin incorporar objetivos posteriores a cada origen.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-atmos-8b-refresh">Consultar comparación NOAA ↻</button></div>
+<p class="small" id="oaf-atmos-8b-status" role="status">Abre esta sección para conocer si las variables atmosféricas mejoraron realmente los resultados históricos.</p>
+<div id="oaf-atmos-8b-output" hidden>
+<div class="scroller"><table>
+<thead><tr><th>Horizonte</th><th>Meses evaluados</th><th>MAE persistencia</th><th>MAE solo TSM</th><th>MAE TSM + atmósfera</th><th>Resultado</th></tr></thead>
+<tbody id="oaf-atmos-8b-rows"></tbody>
+</table></div>
+<p class="small" id="oaf-atmos-8b-method"></p>
+</div>
+<div class="notice"><b>Conclusión científica inicial:</b> agregar más variables no garantiza mejores predicciones; este primer modelo ampliado empeoró frente a usar solo temperatura oceánica en los tres horizontes estudiados. El análisis emplea archivos históricos de NOAA que pueden contener revisiones y <b>no demuestra habilidad prospectiva ni predice el ICEN oficial</b>. El OAF no emite alertas de El Niño Costero.</div>
+<div class="links">
+<a href="FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md">Metodología y métricas completas ↗</a>
+<a href="datos/benchmark_atmosferico_8b_fold.csv">Errores por cada mes analizado ↗</a>
+<a href="https://www.cpc.ncep.noaa.gov/data/indices/index.shtml" target="_blank" rel="noopener noreferrer">Series oficiales NOAA CPC ↗</a>
+</div>
+</div></details><details class="panel" id="oaf-ocean-archive-8a">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 8A · Pronósticos oceánicos archivados antes del evento</strong>
+<small style="display:block;color:var(--muted)">Emisiones fechadas de Niño 1+2, persistencia y verificación posterior</small></span>
+<span class="badge">Investigación · Sin alerta ENFEN</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">El OAF conserva una copia <b>inmutable</b> de cada predicción experimental mensual, con fecha y fuentes de NOAA, para comprobar sus errores cuando exista el dato posterior. Distinguimos una <b>estimación intramensual</b>, emitida cuando el mes ya empezó, de los pronósticos verdaderamente anteriores al inicio del mes. Se compara siempre con una referencia sencilla de <b>persistencia</b>.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-ocean-archive-8a-reload">Consultar emisión y verificación ↻</button></div>
+<p id="oaf-ocean-archive-8a-status" class="small" role="status">Abre este apartado para consultar el registro de las emisiones oceánicas y comprobar su madurez.</p>
+<div id="oaf-ocean-archive-8a-data" hidden>
+<div class="scroller"><table>
+<thead><tr><th>Mes objetivo</th><th>AR(1) experimental</th><th>Persistencia</th><th>Tipo de emisión</th><th>Comprobación</th></tr></thead>
+<tbody id="oaf-ocean-archive-8a-rows"></tbody>
+</table></div>
+<p id="oaf-ocean-archive-8a-method" class="small"></p>
+<div class="links"><a id="oaf-ocean-archive-8a-link" href="datos/verificacion_oceanica_8a.json">Ver emisión original y su fecha ↗</a>
+<a href="datos/verificacion_oceanica_8a.json">Estado auditable de la verificación ↗</a></div>
+</div>
+<div class="notice"><b>Control científico:</b> ERSSTv5 Niño 1+2 reconstruido por el OAF con referencia 1991–2020 <b>NO ES el ICEN oficial publicado por ENFEN</b>. Estas estimaciones no predicen directamente la lluvia de Lambayeque ni la incidencia de enfermedades; el AR(1) aún no demuestra mejor desempeño consistente que persistencia. La verificación utiliza una serie que puede sufrir revisiones retrospectivas.</div>
+<div class="links"><a href="FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md">Metodología y limitaciones ↗</a>
+<a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">ICEN oficial · ENFEN/IMARPE ↗</a></div>
+</div>
+</details><details class="panel" id="oaf-ncei-6d">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 6D · Perspectiva oceánica actualizada (NOAA NCEI)</strong><small style="display:block;color:var(--muted)">Anomalías Niño 1+2 a 1, 2 y 3 meses · abrir análisis</small></span>
+<span class="badge">Investigación · Sin alerta</span>
+</summary>
+<div style="margin-top:16px">
+<p class="small">Ahora utilizamos anomalías ERSSTv5 de NOAA NCEI disponibles hasta un mes reciente. El OAF convierte su referencia original <b>1971–2000</b> a <b>1991–2020</b> usando promedios mensuales verificables; contrastamos el periodo coincidente con NOAA CPC. El resultado es <b>una reconstrucción experimental del OAF, no el ICEN publicado por ENFEN</b>.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-ncei-load">Actualizar resultados NOAA NCEI ↻</button></div>
+<p class="small" id="oaf-ncei-status" role="status">Abre este apartado para consultar la última serie procesada con sus controles de procedencia.</p>
+<div id="oaf-ncei-output" hidden>
+<div class="kpis"><div class="kpi"><small>Última anomalía NCEI ajustada · <span id="oaf-ncei-date">—</span></small><b id="oaf-ncei-value">—</b></div><div class="kpi"><small>Diferencia absoluta media vs CPC · 24 meses comunes (hasta <span id="oaf-ncei-difference-date">—</span>)</small><b id="oaf-ncei-difference">—</b></div></div>
+<div class="scroller"><table><thead><tr><th>Mes previsto</th><th>AR(1) experimental</th><th>MAE histórico: AR(1) / persistencia</th><th>MAE últimos 12: AR(1) / persistencia</th><th>Estado</th></tr></thead><tbody id="oaf-ncei-horizons"></tbody></table></div>
+<p class="small" id="oaf-ncei-method"></p>
+</div>
+<div class="notice"><b>Advertencia científica:</b> las anomalías marinas estimadas no son una alerta de El Niño Costero, ni un pronóstico verificado de lluvia regional o de enfermedades agrícolas. El desempeño reciente del AR(1) puede ser inferior a la persistencia. ENFEN conserva la autoridad sobre las categorías y probabilidades oficiales.</div>
+<div class="links"><a href="https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat" target="_blank" rel="noopener noreferrer">Fuente NCEI ERSSTv5 ↗</a><a href="https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/Readme" target="_blank" rel="noopener noreferrer">Definición y columnas ↗</a><a href="MODELO_NCEI_ERSSTV5_FASE6D.md">Método y evaluación OAF ↗</a></div>
+</div></details><details class="panel" id="oaf-ersstv5-6c">
+<summary style="cursor:pointer;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 6C · ERSSTv5: perspectivas a 1, 2 y 3 meses</strong><small style="display:block;color:var(--muted)">Comparación con persistencia y promedio trimestral indicativo · Abrir análisis</small></span>
+<span class="badge">Experimental · No es ICEN oficial</span>
+</summary>
+<div style="margin-top:17px">
+<p class="small">Este modelo intenta anticipar anomalías mensuales de temperatura del océano en la región Niño 1+2. A diferencia de OISST, ERSSTv5 es el producto de referencia usado para calcular el ICEN; <b>el promedio indicativo presentado aquí no equivale al índice oficial publicado por ENFEN</b>.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-ersstv5-load">Consultar resultados ERSSTv5 ↻</button></div>
+<p id="oaf-ersstv5-status" class="small" role="status">Se mostrarán solamente datos efectivamente descargados y procesados en el repositorio.</p>
+<div id="oaf-ersstv5-output" hidden>
+<div class="kpis"><div class="kpi"><small>Anomalía mensual ERSSTv5 · <span id="oaf-ersstv5-date">—</span></small><b id="oaf-ersstv5-latest">—</b></div><div class="kpi"><small>Media móvil de tres meses · mes central <span id="oaf-ersstv5-mean-date">—</span></small><b id="oaf-ersstv5-mean3">—</b></div></div>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Estimación AR(1)</th><th>Persistencia</th><th>MAE histórico: modelo / persistencia</th><th>MAE últimos 12: modelo / persistencia</th><th>¿Mejora consistente?</th></tr></thead><tbody id="oaf-ersstv5-results"></tbody></table></div>
+<p id="oaf-ersstv5-compare" class="small"></p></div>
+<div class="notice"><b>Interpretación:</b> comparaciones retrospectivas no garantizan predicciones futuras. Las categorías y alertas de El Niño Costero son atribuciones de ENFEN; no se inferirán a partir de este modelo. El OAF no pronostica todavía precipitaciones regionales usando este índice.</div>
+<div class="links"><a href="https://www.cpc.ncep.noaa.gov/data/indices/ersst5.nino.mth.91-20.ascii" target="_blank" rel="noopener noreferrer">Fuente NOAA ERSSTv5 ↗</a><a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">ICEN oficial IMARPE ↗</a><a href="MODELO_ERSSTV5_FASE6C.md">Método y validación ↗</a></div>
+</div>
+</details><details class="panel" id="oaf-botrytis-validation">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 7B · ¿Qué tan bien se anticipan los periodos de humedad?</strong>
+<small style="display:block;color:var(--muted)">Comprobación meteorológica retrospectiva de las señales para arándano</small></span>
+<span class="badge">Sin validación biológica</span></summary>
+<div style="margin-top:15px">
+<p class="small">Comparamos los pronósticos archivados a <b>24 horas de anticipación</b> con la humedad relativa horaria del reanálisis <b>ERA5</b> entre enero y septiembre de 2026. Evaluamos si aparecen periodos de <b>HR superior al 90 % durante ≥6 horas continuas</b>. Estos resultados <b>no verifican enfermedad, flores mojadas ni presencia de Botrytis</b>.</p>
+<div class="tools"><button id="oaf-botrytis-validate-run" type="button" class="btn dark">Consultar evaluación de humedad ↻</button></div>
+<p class="small" id="oaf-botrytis-validate-status" role="status">Las cifras se mostrarán cuando las cuatro localidades dispongan de una evaluación verificable.</p>
+<div id="oaf-botrytis-validate-output" hidden>
+<div class="scroller"><table><thead><tr><th>Localidad</th><th>Días evaluados</th><th>Señales previstas</th><th>Señales ERA5</th><th>Verdaderas</th><th>Falsas alarmas</th><th>Omisiones</th><th>Sin señal</th><th>Sensibilidad</th><th>Precisión positiva</th></tr></thead><tbody id="oaf-botrytis-validate-rows"></tbody></table></div>
+<p class="small" id="oaf-botrytis-validate-provenance"></p>
+</div>
+<div class="notice"><b>Interpretación científica:</b> «verdadera» o «falsa» se refiere <b>solo</b> a la coincidencia de una señal meteorológica de HR elevada con ERA5, no al estado fitosanitario del cultivo. La validación de Botrytis requiere humectación foliar medida, fenología, diagnóstico e incidencia observada en parcelas.</div>
+<p class="small" id="oaf-botrytis-7b-prospective">La primera comparación prospectiva será posible desde el 23 de octubre de 2026, cuando el reanálisis ERA5 esté disponible.</p>
+<div class="links"><a href="FASE_7B_VALIDACION_HUMEDAD.md">Método, resultados y limitaciones ↗</a><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5 ↗</a></div>
+</div></details><details class="panel" id="oaf-field-7c">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 7C · Validación fitosanitaria con datos de campo</strong>
+<small style="display:block;color:var(--muted)">Protocolo de muestreo, sensores de humectación y diagnóstico para arándano</small></span>
+<span class="badge">Preparación de investigación</span></summary>
+<div style="margin-top:15px">
+<p class="small">Para pronosticar <i>Botrytis cinerea</i> necesitamos observaciones realmente obtenidas en parcelas: <b>floración, unidades evaluadas, síntomas, diagnóstico y humectación foliar medida</b>. Una serie externa de humedad no demuestra infección. El OAF validará la integridad de los registros privados antes de entrenar o publicar cualquier probabilidad.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-field-7c-reload">Consultar avance de validación ↻</button></div>
+<p class="small" id="oaf-field-7c-status" role="status">Aún no hay observaciones de campo publicadas. Se consultará el estado agregado de calidad cuando abras este apartado.</p>
+<div id="oaf-field-7c-info" hidden>
+<p class="small"><b>Informe de integridad generado:</b> <span id="oaf-field-7c-updated">—</span></p>
+<p class="small" id="oaf-field-7c-private"></p>
+</div>
+<div class="notice"><b>Confidencialidad y validez:</b> los archivos reales de parcelas no se publican en GitHub. La confirmación específica de <i>B. cinerea</i> se distingue de los síntomas compatibles y se requiere un denominador homogéneo. Sin muestras de campo no existe diagnóstico, incidencia comprobada ni modelo fitosanitario calibrado.</div>
+<div class="links">
+<a href="datos/plantilla_7c_monitoreo_botrytis.csv">Plantilla de monitoreo fitosanitario (CSV) ↗</a>
+<a href="datos/plantilla_7c_microclima_horario.csv">Plantilla horaria de microclima (CSV) ↗</a>
+<a href="FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md">Protocolo, unidades y controles ↗</a>
+</div>
+</div></details></div></div></section>
 </main>
 <footer><div class="foot"><div><strong>OAF · LAMBAYEQUE</strong><br><small>Proyecto científico · Lambayeque, Perú</small></div><div><small>Autor: Ing. Agrónomo Carlos Enrique Coronel García</small><br><small>Fotografías: Scott Bauer/USDA y Panelxf (dominio público) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></small></div><div><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque" target="_blank" rel="noopener noreferrer">Repositorio y fuentes ↗</a></div></div></footer>
 <script>
 (function(){
 const pages=['inicio','clima','cultivos','dashboard','control','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
-function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}if(isPredictive&&!predLoaded){predLoaded=true;runPred()}}
+function nav(){let id=location.hash.slice(1);const isPredictive=id==='riesgos';if(isPredictive)id='cultivos';if(id.startsWith('oaf-'))id='verificaciones';if(!pages.includes(id))id='inicio';setCultivosPanel(isPredictive?'prediccion':'condiciones');document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}if(isPredictive&&!predLoaded){predLoaded=true;runPred()}}
 function setCultivosPanel(which){const prediction=which==='prediccion';document.getElementById('panel-condiciones').hidden=prediction;document.getElementById('panel-prediccion').hidden=!prediction;document.getElementById('cultivos-tab-condiciones').setAttribute('aria-selected',String(!prediction));document.getElementById('cultivos-tab-prediccion').setAttribute('aria-selected',String(prediction));}
 
 /* Primera evaluación prospectiva: solo patrón térmico UC IPM, sin infección primaria ni índice de tratamientos */
