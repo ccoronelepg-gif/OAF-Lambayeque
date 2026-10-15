@@ -19,6 +19,26 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 6D completada (14/10/2026, Perú)
+
+**Meta permanente del proyecto:** predecir futuras anomalías climáticas, especialmente El Niño Costero, y anticipar enfermedades en arándano y vid con datos y validación prospectiva, no solo vigilar series.
+
+**Hallazgo y solución de disponibilidad:** el archivo NOAA CPC ERSSTv5 usado antes permanecía en junio 2026. Se encontró una fuente NOAA NCEI ERSSTv5 distinta, actualizada a septiembre de 2026, con anomalías de Niño 1+2 en la sexta columna y climatología original 1971–2000. Se aplicó **reajuste mensual propio a 1991–2020**, con control estricto 30 años completos, meses continuos, datos numéricos, comparación con ERSSTv5 CPC y auditoría de procedencia.
+
+**Resultados observados y cálculos derivados:** septiembre 2026 +4,389 °C (ERSSTv5 NOAA NCEI reajustado por OAF). Contraste con CPC: MAE interproducto últimos 24 meses coincidentes 0,0397 °C; NO mide desempeño de pronósticos. Modelo experimental AR(1) octubre 2026 +4,054 °C, noviembre +3,744 °C, diciembre +3,456 °C, frente a persistencia +4,389 °C. A 1/2/3 meses el AR(1) tiene un error mayor en los últimos 12 meses evaluados. NO se considera habilidad prospectiva demostrada, NO es ICEN oficial, NO predice una categoría ENFEN ni riesgo directo de enfermedades.
+
+**Entregables implementados:**
+- `modelos/modelo_ncei_ersstv5_fase6d.py`: ingesta, normalización climática, backtests y pruebas de calidad.
+- `.github/workflows/oaf_ncei_ersstv5_fase6d.yml`: ejecución automática mensual confirmada como exitosa en GitHub Actions.
+- `datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv`: serie histórica reajustada.
+- `datos/ncei_ersstv5_backtest_1a3m.csv` y `datos/modelo_ersstv5_ncei_6d.json`: predicciones retrospectivas y métricas.
+- `modelos/ncei_visor_6d.js`: panel web que impide mostrar resultados sin datos y vigencia.
+- `MODELO_NCEI_ERSSTV5_FASE6D.md`: metodología, incertidumbres, limitaciones y siguientes pasos.
+
+**Interfaz:** la pestaña «Boletín de El Niño» incluye un panel plegable 6D actualizado además del panel 6C histórico. Se mantienen las cinco pestañas y el recuadro verde con SOLO el título y dos fotos; bajo el recuadro la descripción en primera persona y firma «Carlos E. Coronel García, Ingeniero Agrónomo».
+
+**Siguiente trabajo — Fase 6E:** probar predictores multivariables con datos realmente disponibles, priorizando SOI, viento zonal o calor subsuperficial si existen series trazables con fecha de disponibilidad. Evaluar por horizonte y frente a persistencia mediante walk-forward y, para resultados operativos, archivo prospectivo de emisiones. No afirmar resultados de El Niño Costero ni enfermedad agrícola antes de validarlos.
+
 ## Avance más reciente: Fase 6C · ERSSTv5 e ICEN (14/10/2026)
 
 **Datos efectivamente descargados y procesados:** NOAA CPC ERSSTv5 Niño 1+2, anomalías mensuales desde enero de 1950 hasta junio de 2026. Esta versión NOAA presenta un desfase de **4 meses** a octubre de 2026, motivo por el cual **no se publican proyecciones vigentes** basadas en ella. El módulo conserva únicamente sus datos y evaluaciones históricas.
