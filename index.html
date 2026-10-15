@@ -155,6 +155,25 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
 <div class="panel"><h2>Impacto en cultivos</h2><p>El Niño puede modificar patrones de lluvia, humedad y temperatura. El efecto fitosanitario depende además del patógeno, fenología, manejo y microclima.</p><div class="notice">El OAF no emite alertas propias de El Niño ni puede inferir una infección a partir del comunicado.</div></div></div>
+<div class="panel" id="oaf-nino-pred-data">
+<div class="modelhead"><div><span class="riskcrop">Fase 6B · Predicción oceánica experimental</span><h2 style="margin-top:6px">Anomalía mensual Niño 1+2: estimación a un mes</h2></div><span class="badge">NO es el ICEN oficial</span></div>
+<p class="small">Procesamos la serie mensual NOAA CPC OISST de Niño 1+2 con un modelo AR(1) y comparamos sus errores históricos frente a la persistencia del último valor. <b>Este módulo no emite alertas ni clasifica eventos de El Niño Costero.</b></p>
+<div class="tools" style="margin-top:14px"><button id="oaf-nino-pred-refresh" type="button" class="btn dark">Consultar resultados verificados ↻</button></div>
+<p id="oaf-nino-pred-status" class="small" role="status">El resultado se publica únicamente cuando se ha descargado y procesado correctamente la serie NOAA.</p>
+<div id="oaf-nino-pred-results" hidden>
+<div class="kpis">
+<div class="kpi"><small>Última anomalía oceánica observada · <span id="oaf-n12-latest-month">—</span></small><b id="oaf-n12-latest">—</b></div>
+<div class="kpi"><small>Estimación AR(1) a un mes · <span id="oaf-n12-forecast-month">—</span></small><b id="oaf-n12-forecast">—</b></div>
+<div class="kpi"><small>Referencia: persistencia último valor</small><b id="oaf-n12-persistence">—</b></div>
+</div>
+<p id="oaf-n12-error" class="small"></p><div class="notice" id="oaf-n12-eval"></div>
+<h3 style="font-size:15px;margin:18px 0 9px">Últimos seis registros mensuales NOAA Niño 1+2</h3>
+<div class="scroller"><table><thead><tr><th>Mes</th><th>Anomalía SST (°C)</th></tr></thead><tbody id="oaf-n12-recent"></tbody></table></div>
+<p id="oaf-n12-issued" class="small"></p>
+</div>
+<div class="links"><a href="https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices" target="_blank" rel="noopener noreferrer">Serie NOAA CPC Niño 1+2 ↗</a><a href="MODELO_NINO12_FASE6B.md">Método y evaluación ↗</a></div>
+<div class="notice">Una anomalía de temperatura del mar no implica automáticamente un diagnóstico ENFEN, una probabilidad calibrada de El Niño Costero ni un pronóstico directo de las lluvias de Lambayeque. La serie NOAA OISST es diferente del producto ERSSTv5 empleado por el ICEN.</div>
+</div>
 <div class="panel" id="oaf-nino-predictive"><div class="modelhead"><div><span class="riskcrop">Siguiente desarrollo · Segunda línea predictiva</span><h2 style="margin-top:6px">Anticipación de El Niño Costero</h2></div><span class="badge">Modelo OAF pendiente de validación</span></div>
 <p class="small">Esta investigación empleará anomalías oceánicas y atmosféricas, especialmente temperatura superficial del mar en <b>Niño 1+2</b>, y pronósticos fechados, para estudiar la evolución probable de El Niño Costero y su relación con las anomalías agroclimáticas de Lambayeque. <b>El estado oficial y sus probabilidades corresponden a ENFEN.</b></p>
 <div class="links"><a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" target="_blank" rel="noopener noreferrer">Índice ICEN · fuente IMARPE ↗</a><a href="https://enfen.imarpe.gob.pe/notas-tecnicas/" target="_blank" rel="noopener noreferrer">Metodología oficial ENFEN ↗</a></div>
@@ -238,4 +257,5 @@ async function chirps(){try{const r=await fetch('datos/estado_monitoreo_3z.json'
 nav();
 })();
 </script>
-<script src="modelos/anomalias_climaticas_v01.js" defer></script></body></html>
+<script src="modelos/anomalias_climaticas_v01.js" defer></script>
+<script src="modelos/nino12_visor_v01.js" defer></script></body></html>
