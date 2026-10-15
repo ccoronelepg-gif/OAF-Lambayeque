@@ -110,6 +110,9 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Se agregó [VARIABLES_AGROCLIMATICAS_FASE6E.md](VARIABLES_AGROCLIMATICAS_FASE6E.md) con fuentes, unidades, aplicación agronómica, control de calidad y nuevas variables candidatas.
 - Continuar con validación de la radiación en series históricas completas y sensores de campo; después evaluar aportación incremental de covariables climáticas a modelos de enfermedad y de anomalías, evitando multicolinealidad y fuga de datos futuros.
 
+- **Fase 6F, primer benchmark real:** el modelo que incorpora radiación/HR/viento mejoró MAE frente a corrección básica en Chiclayo (+5,95 %) y Olmos (+4,97 %), empeoró en Jayanca (−24,38 %) y Motupe (−2,11 %), con 6.552 h de prueba por sitio (2026) y ERA5-Land como referencia reanalizada. No atribuir causalidad ni capacidad operativa. Consultar `FASE_6F_EVALUACION_PREDICTORES.md`.
+- **Primera verificación prospectiva iniciada:** archivo real fechado `datos/pronosticos_emitidos/2026-10-14.json` para jornadas futuras 15–21 octubre 2026; 4 localidades y variables meteorológicas, con actualización automatizada. Falta comprobar predicciones contra observaciones al cierre de cada horizonte.
+
 ### Fase 6F · Validar aporte de radiación, humedad y viento (14/10/2026)
 
 - Se puso en marcha una comparación rigurosa de predictores *realmente pronosticados antes de la hora objetivo*, usando el archivo Open-Meteo Previous Runs con desplazamiento de 24 horas y temperatura verificadora ERA5-Land.
