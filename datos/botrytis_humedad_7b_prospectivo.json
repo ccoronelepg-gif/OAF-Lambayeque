@@ -1,0 +1,63 @@
+{
+  "fase": "7B_prospectivo",
+  "fecha_generacion_utc": "2026-10-15T05:27:47+00:00",
+  "estado": "pendiente_reanalisis",
+  "es_prediccion_enfermedad": false,
+  "hay_validacion_biologica": false,
+  "referencia": "ERA5 humedad a 2 m, no medición de humectación ni parcela",
+  "umbral": "HR >90 % >=6 horas continuas; comparado como señal atmosférica",
+  "demora_minima_dias": 7,
+  "primer_dia_predicho": "2026-10-16",
+  "primer_dia_elegible": "2026-10-23",
+  "jornadas_archivadas": 28,
+  "jornadas_elegibles": 0,
+  "jornadas_verificadas": 0,
+  "jornadas_referencia_incompleta": 0,
+  "metricas": [
+    {
+      "localidad": "Motupe",
+      "n_jornadas": 0,
+      "verdaderos_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 0,
+      "verdaderos_negativos": 0,
+      "sensibilidad": null,
+      "precision_positiva": null,
+      "validacion_biologica": false
+    },
+    {
+      "localidad": "Jayanca",
+      "n_jornadas": 0,
+      "verdaderos_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 0,
+      "verdaderos_negativos": 0,
+      "sensibilidad": null,
+      "precision_positiva": null,
+      "validacion_biologica": false
+    },
+    {
+      "localidad": "Olmos",
+      "n_jornadas": 0,
+      "verdaderos_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 0,
+      "verdaderos_negativos": 0,
+      "sensibilidad": null,
+      "precision_positiva": null,
+      "validacion_biologica": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "n_jornadas": 0,
+      "verdaderos_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 0,
+      "verdaderos_negativos": 0,
+      "sensibilidad": null,
+      "precision_positiva": null,
+      "validacion_biologica": false
+    }
+  ],
+  "advertencia": "Se evalúa humedad del aire modelada, NO presencia de Botrytis ni humectación foliar real"
+}
