@@ -1,0 +1,212 @@
+{
+  "fase": "6D",
+  "fecha_procesamiento_utc": "2026-10-15T04:34:49+00:00",
+  "fuente": "NOAA NCEI",
+  "url_fuente": "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat",
+  "producto": "ERSSTv5 Niño 1+2 NOAA NCEI: rebajado 1971-2000 -> 1991-2020 por OAF",
+  "tipo_dato": "reanálisis SST oceánica",
+  "es_icen_oficial": false,
+  "es_pronostico_institucional": false,
+  "es_alerta": false,
+  "estado": "experimental_rebase_verificado_no_operativo",
+  "fuente_actualizada": true,
+  "prediccion_actual_disponible": true,
+  "desfase_meses": 1,
+  "mes_inicial": "1950-01",
+  "mes_ultimo_observado": "2026-09",
+  "ultima_anomalia_ersstv5_c": 4.389,
+  "promedio_3m_indicativo": {
+    "mes_central": "2026-08",
+    "mes_publicacion_ultimo_dato": "2026-09",
+    "promedio_trimestral_ersstv5_c": 3.795,
+    "es_icen_oficial": false
+  },
+  "modelos_horizontes": {
+    "1": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-08",
+      "metricas": {
+        "ar1": {
+          "n": 200,
+          "mae_c": 0.3336,
+          "rmse_c": 0.4199
+        },
+        "persistencia": {
+          "n": 200,
+          "mae_c": 0.3375,
+          "rmse_c": 0.4164
+        },
+        "cero": {
+          "n": 200,
+          "mae_c": 0.8383,
+          "rmse_c": 1.1121
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 0.5438,
+          "rmse_c": 0.647
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.4404,
+          "rmse_c": 0.5247
+        }
+      },
+      "habilidad_mae_relativa": 0.0116,
+      "habilidad_ultimos_12": -0.2348,
+      "intervalo_bootstrap_skill_95": [
+        -0.0054,
+        0.0588
+      ],
+      "mejora_consistente_demostrada": false,
+      "patron_retrospectivo_favorable": false,
+      "validacion_prospectiva": false,
+      "pronostico_ar1_c": 4.054,
+      "pronostico_persistencia_c": 4.389,
+      "mes_objetivo": "2026-10"
+    },
+    "2": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-07",
+      "metricas": {
+        "ar1": {
+          "n": 199,
+          "mae_c": 0.4869,
+          "rmse_c": 0.6458
+        },
+        "persistencia": {
+          "n": 199,
+          "mae_c": 0.5105,
+          "rmse_c": 0.652
+        },
+        "cero": {
+          "n": 199,
+          "mae_c": 0.8415,
+          "rmse_c": 1.1148
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 0.9647,
+          "rmse_c": 1.1473
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.8199,
+          "rmse_c": 0.9579
+        }
+      },
+      "habilidad_mae_relativa": 0.0462,
+      "habilidad_ultimos_12": -0.1766,
+      "intervalo_bootstrap_skill_95": [
+        0.021,
+        0.1118
+      ],
+      "mejora_consistente_demostrada": false,
+      "patron_retrospectivo_favorable": false,
+      "validacion_prospectiva": false,
+      "pronostico_ar1_c": 3.744,
+      "pronostico_persistencia_c": 4.389,
+      "mes_objetivo": "2026-11"
+    },
+    "3": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-06",
+      "metricas": {
+        "ar1": {
+          "n": 198,
+          "mae_c": 0.6141,
+          "rmse_c": 0.8135
+        },
+        "persistencia": {
+          "n": 198,
+          "mae_c": 0.667,
+          "rmse_c": 0.8414
+        },
+        "cero": {
+          "n": 198,
+          "mae_c": 0.8449,
+          "rmse_c": 1.1176
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 1.2949,
+          "rmse_c": 1.5476
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 1.1619,
+          "rmse_c": 1.343
+        }
+      },
+      "habilidad_mae_relativa": 0.0793,
+      "habilidad_ultimos_12": -0.1145,
+      "intervalo_bootstrap_skill_95": [
+        0.0399,
+        0.1512
+      ],
+      "mejora_consistente_demostrada": false,
+      "patron_retrospectivo_favorable": false,
+      "validacion_prospectiva": false,
+      "pronostico_ar1_c": 3.456,
+      "pronostico_persistencia_c": 4.389,
+      "mes_objetivo": "2026-12"
+    }
+  },
+  "comparacion_oisst": {
+    "estado": "comparacion_exploratoria_no_validacion",
+    "meses_comunes": 537,
+    "mae_entre_productos_c": 0.2065,
+    "ultimo_mes_comun": "2026-09",
+    "diferencia_ultimo_mes_c": -0.301,
+    "nota": "Diferencias entre productos no son error de predicción ni validación instrumental"
+  },
+  "advertencias": [
+    "Si la serie ERSSTv5 está desactualizada, solo se publican los análisis retrospectivos; nunca proyecciones actuales.",
+    "Promedio trimestral ilustrativo no es ICEN oficial; para la clasificación se usa exclusivamente ENFEN.",
+    "Modelo AR1 univariado, sin información de viento, termoclina, calor subsuperficial ni predicción dinámica.",
+    "Walk-forward retrospectivo con la versión NOAA revisada, no con pronósticos archivados al momento de emisión.",
+    "Un cambio del índice oceánico no implica por sí solo un evento El Niño Costero ni predice lluvia en Lambayeque.",
+    "Comparar AR1 con persistencia; no divulgar habilidad no demostrada.",
+    "No generar alertas meteorológicas o fitosanitarias a partir de estos resultados.",
+    "El índice NCEI tiene climatología original 1971–2000, ajustada estadísticamente por OAF a 1991–2020; no es el ICEN oficial.",
+    "El ajuste de media mensual y la comparación con CPC no prueban identidad de fuentes ni validez operativa.",
+    "Aunque la fuente esté vigente, no existe predicción probabilística calibrada ni habilidad prospectiva demostrada."
+  ],
+  "serie_noaa_orig_anom_base": "1971-2000",
+  "serie_oaf_ajustada_base": "1991-2020",
+  "transformacion": "Para cada mes calendario restar media de anomalía NCEI 1971-2000 durante 1991-2020",
+  "offset_mensual_1971a2000_a_1991a2020_c": {
+    "1": 0.02167,
+    "2": 0.22,
+    "3": 0.14633,
+    "4": -0.044,
+    "5": -0.00467,
+    "6": -0.00733,
+    "7": -0.09567,
+    "8": -0.09067,
+    "9": -0.09867,
+    "10": -0.14367,
+    "11": -0.14867,
+    "12": -0.136
+  },
+  "valores_rebasados_no_indice_oficial": true,
+  "no_es_clasificacion_enfen": true,
+  "contraste_cpc_ersstv5": {
+    "estado": "contraste_rebases_1991_2020",
+    "meses_comunes": 918,
+    "ultima_fecha_comun": "2026-06",
+    "media_abs_diferencias_todos_c": 0.041,
+    "media_abs_diferencias_ultimos24_c": 0.0397,
+    "max_abs_diferencia_ultimos24_c": 0.1127,
+    "dif_ultimo_c": -0.1127,
+    "umbral_operativo_comparacion": "MAE últimos 24 <=0.4 °C y diferencia absoluta máxima <=0.75 °C",
+    "calidad_suficiente": true,
+    "no_es_validacion_independiente": true
+  }
+}
