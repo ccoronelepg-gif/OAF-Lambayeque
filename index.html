@@ -22,29 +22,53 @@ button:disabled{opacity:.55;cursor:wait}footer{background:#fff;border-top:1px so
 @media(max-width:1100px){.head{flex-wrap:wrap}.head nav{flex-basis:100%;justify-content:flex-start;overflow-x:auto;scrollbar-width:thin}.head nav a{white-space:nowrap;padding:10px 13px}}
 @media(max-width:800px){main{padding:18px 14px 45px}.hero{grid-template-columns:1fr}.heroimg{height:185px;min-height:185px}.herotxt{padding:28px 25px}.cards,.kpis,.block3,.split,.cropimg{grid-template-columns:1fr}.card,.panel{padding:17px}.strip{justify-content:flex-start}.cropimg img{width:100px;height:78px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* OAF 2.4: navegación y experiencia de usuario simplificadas */
+nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
+.method{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:center;background:white;border:1px solid var(--line);border-radius:14px;padding:21px 24px;margin-top:22px}
+.method .eyebrow{color:var(--teal)}.method h2{font-size:17px;line-height:1.35;margin:7px 0 0;letter-spacing:-.3px}
+.methodsteps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.methodsteps span{display:block;background:#f2f8f6;border-radius:9px;padding:10px 12px;color:#365960;font-size:12px;font-weight:600}
+.methodsteps b{color:var(--teal);margin-right:5px}
+.home-disclaimer{margin:12px 5px 0}
+.modelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.modelhead h2{margin:0}
+.riskmini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+.riskmini article{border:1px solid var(--line);background:#f7faf8;padding:16px;border-radius:11px}
+.riskmini strong{display:block;font-size:16px;color:var(--navy);margin:4px 0}.riskmini p{font-size:13px;color:var(--muted);margin:6px 0 0}
+.riskcrop{font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:.7px;font-weight:850}
+@media(max-width:800px){.method{grid-template-columns:1fr;padding:17px}.riskmini{grid-template-columns:1fr}}
+@media(max-width:460px){.methodsteps{grid-template-columns:1fr}}
 </style></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo">◈</span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <nav aria-label="Secciones principales">
-<a data-tab="cultivos" href="#cultivos">Cultivos y condiciones de riesgo de patologías</a>
-<a data-tab="nino" href="#nino">Boletines de El Niño</a>
-<a data-tab="clima" href="#clima">Datos climáticos</a>
-<a data-tab="riesgos" href="#riesgos">Riesgo de presencia de enfermedades</a>
-<a data-tab="verificaciones" href="#verificaciones">Verificaciones de datos</a>
+<a data-tab="inicio" href="#inicio">Inicio</a>
+<a data-tab="clima" href="#clima">Datos climatológicos</a>
+<a data-tab="cultivos" href="#cultivos">Cultivos y riesgo de enfermedades</a>
+<a data-tab="nino" href="#nino">Boletín de El Niño</a>
+<a data-tab="verificaciones" href="#verificaciones">Verificación de datos</a>
 </nav></div></header>
 <main>
 <section data-page="inicio" id="inicio">
-<div class="hero"><div class="herotxt"><span class="eyebrow">Región Lambayeque · Perú</span><h1>El clima influye en la salud de nuestros cultivos.</h1><p>Datos meteorológicos, vigilancia de El Niño y evidencia científica para comprender las condiciones que favorecen enfermedades del arándano y la vid.</p><a href="#clima" class="btn">Consultar el clima →</a></div><div class="heroimg">
+<div class="hero"><div class="herotxt"><span class="eyebrow">Región Lambayeque · Perú</span><h1>Del clima a la prevención de enfermedades agrícolas.</h1><p>El OAF-Lambayeque estudia cómo la temperatura, la humedad y las lluvias pueden favorecer enfermedades del arándano y la vid. Integramos datos abiertos, investigación científica y verificaciones de campo para desarrollar herramientas de vigilancia y futuras predicciones.</p><a href="#clima" class="btn">Consultar el clima →</a></div><div class="heroimg">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700" alt="Fotografía de arándanos maduros" loading="eager">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=650" alt="Fotografía de racimo de uvas en la vid" loading="eager"><span>Arándano · Vid</span></div></div>
 <div class="cards">
-<article class="card"><span class="kicker">01 · Clima</span><h2>¿Cómo está el clima?</h2><p>Temperatura y humedad recientes y perspectiva meteorológica de siete días para cuatro localidades.</p><a href="#clima">Ver el clima y su evolución →</a></article>
-<article class="card"><span class="kicker">02 · El Niño</span><h2>Vigilancia oficial</h2><p>Comunicados ENFEN y avisos SENAMHI identificados por fuente y estado de verificación.</p><a href="#nino">Consultar boletines →</a></article>
-<article class="card"><span class="kicker">03 · Fitosanidad</span><h2>2 cultivos · 9 enfermedades</h2><p>Condiciones meteorológicas asociadas a patógenos y fuentes científicas para cada enfermedad.</p><a href="#cultivos">Ver enfermedades →</a></article>
+<article class="card"><span class="kicker">01 · Datos</span><h2>¿Cómo está el clima?</h2><p>Temperatura, humedad y pronóstico meteorológico externo para las localidades de referencia, junto con registros de precipitaciones.</p><a href="#clima">Consultar el clima →</a></article>
+<article class="card"><span class="kicker">02 · Cultivos</span><h2>Arándano y vid</h2><p>Conoce las enfermedades que pueden verse favorecidas por determinadas condiciones climáticas y consulta las fuentes científicas.</p><a href="#cultivos">Ver condiciones de riesgo →</a></article>
+<article class="card"><span class="kicker">03 · El Niño</span><h2>Información oficial</h2><p>Accede a los boletines ENFEN y a los avisos del SENAMHI, distinguiendo información verificada y pendiente.</p><a href="#nino">Revisar boletines →</a></article>
 </div>
-<div class="strip" aria-label="Secuencia de vigilancia"><b>Clima</b><span>→</span><b>Condiciones favorables</b><span>→</span><b>Evaluación del cultivo</b><span>→</span><b>Decisiones fundamentadas</b></div>
+</div>
+<div class="method"><div><span class="eyebrow">Cómo se desarrolla el proyecto</span><h2>De los datos abiertos a la información útil</h2></div><div class="methodsteps"><span><b>1.</b> Reunimos datos climáticos</span><span><b>2.</b> Comprobamos su calidad</span><span><b>3.</b> Relacionamos clima y patógenos</span><span><b>4.</b> Validamos modelos y predicciones</span></div></div>
+ <p class="small home-disclaimer">Los pronósticos meteorológicos actuales proceden de proveedores externos. Las alertas fitosanitarias y predicciones propias del OAF aún no están validadas.</p>
+</section>
+<section data-page="clima" id="clima" hidden>
+<div class="viewhead"><span class="eyebrow">Datos y evolución meteorológica</span><h1>Datos climatológicos</h1><p>Explora condiciones meteorológicas recientes, su evolución prevista durante siete días y los registros climáticos utilizados en el observatorio. Los pronósticos actuales son externos; los modelos propios continúan en desarrollo.</p></div>
+<div class="panel"><div class="tools"><label for="localidad">Localidad</label><select id="localidad"><option value="Chiclayo">Chiclayo</option><option value="Jayanca">Jayanca</option><option value="Motupe">Motupe</option><option value="Olmos">Olmos</option></select><button class="btn dark" id="actualizar" type="button">Actualizar datos ↻</button></div><p class="small" id="wx-status" role="status">La consulta requiere Internet.</p>
+<div id="wx-data" hidden><div class="kpis"><div class="kpi"><small>Temperatura actual modelada</small><b id="wx-t">—</b></div><div class="kpi"><small>Humedad relativa</small><b id="wx-h">—</b></div><div class="kpi"><small>Precipitación reciente</small><b id="wx-p">—</b></div></div><h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. máxima de precipitación</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. Modelos externos en coordenadas referenciales, no estaciones dentro de la parcela.</p></div>
+<div class="split"><div class="panel"><h2>Estimaciones de precipitación CHIRPS</h2><span id="chirps-month" style="font-size:26px;font-weight:800;color:var(--navy)">Consultando…</span><p id="chirps-info" class="small">Último mes con información satelital comprobada.</p><a href="datos/chirps_v3_reciente_3z.csv" class="small">Consultar CSV de precipitación ↗</a></div><div class="panel"><h2>Predicciones del OAF</h2><span class="badge">En investigación</span><p>Próxima etapa: modelos probabilísticos propios, evaluación de error y validación independiente antes de mostrar pronósticos OAF.</p></div></div>
 </section>
 <section data-page="cultivos" id="cultivos" hidden>
-<div class="viewhead"><span class="eyebrow">Biblioteca fitosanitaria</span><h1>Cultivos y condiciones de riesgo de patologías</h1><p>Una consulta breve por enfermedad con sus condiciones climáticas y el enlace a la evidencia de referencia.</p></div>
+<div class="viewhead"><span class="eyebrow">Biblioteca fitosanitaria</span><h1>Cultivos y riesgo de enfermedades</h1><p>Identifica condiciones climáticas asociadas a nueve enfermedades del arándano y la vid. Las fuentes científicas están enlazadas en cada fila.</p></div>
 <div class="cropimg"><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=360" alt="Arándanos" loading="lazy"><div><strong>Arándano</strong><small>5 enfermedades</small></div></div><div class="item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=360" alt="Uvas en la vid" loading="lazy"><div><strong>Vid</strong><small>4 enfermedades</small></div></div></div>
 <div class="panel"><div class="tools"><label for="filtro">Cultivo</label><select id="filtro"><option value="Todos">Todos</option><option value="Arándano">Arándano</option><option value="Vid">Vid</option></select><span id="count" class="small" role="status">9 enfermedades</span></div>
 <div class="scroller"><table><thead><tr><th scope="col">Enfermedad</th><th scope="col">Condiciones climáticas</th><th scope="col">Cultivo</th></tr></thead><tbody id="patologias">
@@ -58,26 +82,19 @@ button:disabled{opacity:.55;cursor:wait}footer{background:#fff;border-top:1px so
 <tr data-cultivo="Vid"><td>Podredumbre gris · <i>Botrytis cinerea</i> <a href="https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>HR superior a 92 %, agua libre y aproximadamente 14–28 °C (infecciones tardías).</td><td>Vid</td></tr>
 <tr data-cultivo="Vid"><td>Podredumbre negra · <i>Guignardia bidwellii</i> <a href="https://extension.psu.edu/grape-disease-black-rot" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>Temperatura y humectación combinadas; por ejemplo 6 h a 27 °C.</td><td>Vid</td></tr>
 </tbody></table></div><div class="notice">Los umbrales provienen de estudios externos; no se han validado para Lambayeque. Clima favorable no significa presencia comprobada de enfermedad. La humedad relativa no equivale a humectación foliar medida.</div>
-</div></section>
+</div><div class="panel" id="modelos-fitosanitarios">
+<div class="modelhead"><div><h2>Evaluación de riesgo fitosanitario</h2><p class="small">Progreso de los primeros modelos del observatorio</p></div><span class="badge">En desarrollo · sin alertas operativas</span></div>
+<div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
+<article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
+<div class="notice">El sistema diferenciará <b>condiciones meteorológicas favorables</b>, <b>riesgo estimado</b> y <b>enfermedad diagnosticada</b>. Actualmente no predice presencia confirmada ni recomienda tratamientos.</div></div>
+</section>
 <section data-page="nino" id="nino" hidden>
-<div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletines de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
+<div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Boletín de El Niño</h1><p>Consultas directas a los emisores de información oficial, sin confundir la alerta climática con una enfermedad agrícola.</p></div>
 <div class="split"><div class="panel"><span id="enfen-badge" class="badge">Estado pendiente de comprobar</span><h2 style="margin-top:13px">ENFEN · El Niño Costero</h2><p id="enfen-status" role="status">Consultando el registro de verificación del observatorio…</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">Avisos SENAMHI ↗</a></div></div>
 <div class="panel"><h2>Impacto en cultivos</h2><p>El Niño puede modificar patrones de lluvia, humedad y temperatura. El efecto fitosanitario depende además del patógeno, fenología, manejo y microclima.</p><div class="notice">El OAF no emite alertas propias de El Niño ni puede inferir una infección a partir del comunicado.</div></div></div>
 </section>
-<section data-page="clima" id="clima" hidden>
-<div class="viewhead"><span class="eyebrow">Datos y evolución meteorológica</span><h1>Datos climáticos</h1><p>Estado meteorológico modelado y perspectiva externa de siete días. Las predicciones propias del OAF continúan en desarrollo.</p></div>
-<div class="panel"><div class="tools"><label for="localidad">Localidad</label><select id="localidad"><option value="Chiclayo">Chiclayo</option><option value="Jayanca">Jayanca</option><option value="Motupe">Motupe</option><option value="Olmos">Olmos</option></select><button class="btn dark" id="actualizar" type="button">Actualizar datos ↻</button></div><p class="small" id="wx-status" role="status">La consulta requiere Internet.</p>
-<div id="wx-data" hidden><div class="kpis"><div class="kpi"><small>Temperatura actual modelada</small><b id="wx-t">—</b></div><div class="kpi"><small>Humedad relativa</small><b id="wx-h">—</b></div><div class="kpi"><small>Precipitación reciente</small><b id="wx-p">—</b></div></div><h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. máxima de precipitación</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. Modelos externos en coordenadas referenciales, no estaciones dentro de la parcela.</p></div>
-<div class="split"><div class="panel"><h2>Estimaciones de precipitación CHIRPS</h2><span id="chirps-month" style="font-size:26px;font-weight:800;color:var(--navy)">Consultando…</span><p id="chirps-info" class="small">Último mes con información satelital comprobada.</p><a href="datos/chirps_v3_reciente_3z.csv" class="small">Consultar CSV de precipitación ↗</a></div><div class="panel"><h2>Predicciones del OAF</h2><span class="badge">En investigación</span><p>Próxima etapa: modelos probabilísticos propios, evaluación de error y validación independiente antes de mostrar pronósticos OAF.</p></div></div>
-</section>
-<section data-page="riesgos" id="riesgos" hidden>
-<div class="viewhead"><span class="eyebrow">Clima y epidemiología</span><h1>Riesgo de presencia de enfermedades</h1><p>El sistema evalúa las bases de un modelo de riesgo; por ahora no genera alertas fitosanitarias operativas.</p></div>
-<div class="panel"><span class="badge">Modelos no validados localmente</span><h2 style="margin-top:15px">¿Cómo se construye un riesgo defendible?</h2><div class="block3"><article><b>1. Variables del cultivo</b><p>Temperatura, humedad foliar y del suelo, lluvia y condiciones del dosel.</p></article><article><b>2. Modelo epidemiológico</b><p>Umbrales científicos por patógeno, especie y etapa fenológica.</p></article><article><b>3. Verificación de campo</b><p>Diagnóstico y comparación con casos reales para medir aciertos y errores.</p></article></div>
-<div class="notice">Sin validación local y observaciones sanitarias no mostraremos porcentajes inventados de infección ni recomendaciones automáticas de tratamientos.</div></div>
-<div class="panel"><h2>Modelos iniciales</h2><div class="scroller"><table><thead><tr><th>Cultivo</th><th>Patógenos prioritarios</th><th>Situación actual</th></tr></thead><tbody><tr><td>Arándano</td><td>Botrytis y antracnosis</td><td>Reglas científicas disponibles. Requieren humectación foliar confiable y validación local.</td></tr><tr><td>Vid</td><td>Oídio y mildiu</td><td>Modelos publicados. Faltan datos de dosel, fenología y observaciones sanitarias.</td></tr></tbody></table></div></div>
-</section>
 <section data-page="verificaciones" id="verificaciones" hidden>
-<div class="viewhead"><span class="eyebrow">Transparencia científica</span><h1>Verificaciones de datos</h1><p>Los resultados de control de calidad y comparación histórica siguen disponibles sin saturar la página principal.</p></div>
+<div class="viewhead"><span class="eyebrow">Transparencia científica</span><h1>Verificación de datos</h1><p>Los resultados de control de calidad y comparación histórica siguen disponibles sin saturar la página principal.</p></div>
 <div class="panel"><h2>Base observacional histórica SENAMHI (1996–2015)</h2><div class="kpis"><div class="kpi"><small>Meses-estación completos</small><b>1 109</b></div><div class="kpi"><small>Estación-año completos</small><b>79</b></div><div class="kpi"><small>Último año común completo</small><b>2012</b></div></div><p class="small">Estos totales provienen del proceso histórico del OAF y no constituyen una normal instrumental completa para 1996–2025.</p></div>
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
 </section>
@@ -85,8 +102,8 @@ button:disabled{opacity:.55;cursor:wait}footer{background:#fff;border-top:1px so
 <footer><div class="foot"><div><strong>OAF · LAMBAYEQUE</strong><br><small>Proyecto científico · Lambayeque, Perú</small></div><div><small>Autor: Ing. Agrónomo Carlos Enrique Coronel García</small><br><small>Fotografías: Scott Bauer/USDA y Panelxf (dominio público) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a></small></div><div><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque" target="_blank" rel="noopener noreferrer">Repositorio y fuentes ↗</a></div></div></footer>
 <script>
 (function(){
-const pages=['inicio','cultivos','nino','clima','riesgos','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
-function nav(){let id=location.hash.slice(1);if(!pages.includes(id))id='inicio';document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}}
+const pages=['inicio','clima','cultivos','nino','verificaciones'],tabs=document.querySelectorAll('nav a'),filtro=document.getElementById('filtro');let wxLoaded=false,enLoaded=false,chLoaded=false;
+function nav(){let id=location.hash.slice(1);if(id==='riesgos')id='cultivos';if(!pages.includes(id))id='inicio';document.querySelectorAll('[data-page]').forEach(e=>e.hidden=e.dataset.page!==id);tabs.forEach(t=>t.dataset.tab===id?t.setAttribute('aria-current','page'):t.removeAttribute('aria-current'));window.scrollTo(0,0);if(id==='clima'){if(!wxLoaded){wxLoaded=true;weather()}if(!chLoaded){chLoaded=true;chirps()}}if(id==='nino'&&!enLoaded){enLoaded=true;enfen()}}
 window.addEventListener('hashchange',nav);
 filtro.addEventListener('change',()=>{let n=0;document.querySelectorAll('#patologias tr').forEach(t=>{t.hidden=filtro.value!=='Todos'&&filtro.value!==t.dataset.cultivo;if(!t.hidden)n++});document.getElementById('count').textContent=n+' enfermedades'});
 const points={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]},loc=document.getElementById('localidad'),btn=document.getElementById('actualizar');
