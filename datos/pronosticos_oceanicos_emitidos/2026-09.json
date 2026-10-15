@@ -1,0 +1,66 @@
+{
+  "fase": "8A",
+  "tipo": "emision_inmutable_experimental_anomalia_oceanica_mensual",
+  "emision_utc": "2026-10-15T05:53:43+00:00",
+  "emision_local_peru": "2026-10-15T00:53:43-05:00",
+  "mes_origen": "2026-09",
+  "anomalia_observada_origen_c": 4.38867,
+  "producto": "NOAA NCEI ERSSTv5 Niño 1+2, anomalía 1991-2020 reconstruida por OAF",
+  "climatologia_noaa_archivo": "1971-2000",
+  "climatologia_oaf_ajustada": "1991-2020",
+  "fuente_noaa": "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat",
+  "sha256_modelo_ncei_6d": "5d8f2d53be1bf6843dfb21c51433858152a22bab07ca3e41511daf6f7479aad7",
+  "sha256_serie_reajustada": "45f863d80f925368baa1d180136dca985423fa80404966e8f3da625a590f0f79",
+  "fecha_elaboracion_modelo_utc": "2026-10-15T04:34:49+00:00",
+  "calidad_contraste_fuentes": true,
+  "pronosticos": [
+    {
+      "horizonte_meses": 1,
+      "mes_objetivo": "2026-10",
+      "pronostico_ar1_c": 4.054,
+      "persistencia_c": 4.389,
+      "emitido_antes_de_inicio_mes": false,
+      "clase_emision": "estimacion_intramensual_nowcast",
+      "mae_historico_ar1_c": 0.3336,
+      "mae_historico_persistencia_c": 0.3375,
+      "mae_ultimos12_ar1_c": 0.5438,
+      "mae_ultimos12_persistencia_c": 0.4404,
+      "validacion_prospectiva": false
+    },
+    {
+      "horizonte_meses": 2,
+      "mes_objetivo": "2026-11",
+      "pronostico_ar1_c": 3.744,
+      "persistencia_c": 4.389,
+      "emitido_antes_de_inicio_mes": true,
+      "clase_emision": "pronostico_previo_al_mes",
+      "mae_historico_ar1_c": 0.4869,
+      "mae_historico_persistencia_c": 0.5105,
+      "mae_ultimos12_ar1_c": 0.9647,
+      "mae_ultimos12_persistencia_c": 0.8199,
+      "validacion_prospectiva": false
+    },
+    {
+      "horizonte_meses": 3,
+      "mes_objetivo": "2026-12",
+      "pronostico_ar1_c": 3.456,
+      "persistencia_c": 4.389,
+      "emitido_antes_de_inicio_mes": true,
+      "clase_emision": "pronostico_previo_al_mes",
+      "mae_historico_ar1_c": 0.6141,
+      "mae_historico_persistencia_c": 0.667,
+      "mae_ultimos12_ar1_c": 1.2949,
+      "mae_ultimos12_persistencia_c": 1.1619,
+      "validacion_prospectiva": false
+    }
+  ],
+  "es_icen_oficial": false,
+  "es_alerta_enfen": false,
+  "prediccion_elnino_costero_validada": false,
+  "modelo_supera_persistencia_demostrado": false,
+  "observaciones": [
+    "Si el pronóstico se emite después del inicio del mes objetivo, se declara estimación intramensual, NO predicción enteramente previa al mes.",
+    "Esta emisión fija cálculos y fuentes como evidencia fechada; verificaciones futuras contra series NOAA pueden usar datos revisados.",
+    "Modelo AR(1) experimental; MAE reciente peor que persistencia al preparar fase 8A. No usar como alerta ENSO, ICEN oficial ni recomendación agrícola."
+  ]
+}

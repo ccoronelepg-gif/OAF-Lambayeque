@@ -1,0 +1,82 @@
+{
+  "fase": "8A",
+  "estado": "pendiente_maduracion_oceanica",
+  "ultima_actualizacion_utc": "2026-10-15T05:53:43+00:00",
+  "ultima_emision_almacenada": "datos/pronosticos_oceanicos_emitidos/2026-09.json",
+  "ultimo_mes_observado": "2026-09",
+  "numero_emisiones": 1,
+  "pronosticos_archivados": 3,
+  "predicciones_previas_al_inicio_mes": 2,
+  "estimaciones_intramensuales": 1,
+  "predicciones_verificadas": 0,
+  "predicciones_verificadas_previas_al_mes": 0,
+  "primera_fecha_verificacion_posible": "2026-11-10",
+  "demora_comprobacion": "No antes del día 10 del mes posterior al mes objetivo y solo cuando NOAA registre un valor finito",
+  "estadisticas_por_horizonte_previas_al_mes": [
+    {
+      "horizonte_meses": 1,
+      "n_meses_realmente_pronosticados_antes_del_inicio": 0,
+      "mae_ar1_c": null,
+      "mae_persistencia_c": null,
+      "habilidad_prospectiva_demostrada": false,
+      "muestra_suficiente_para_evaluacion": false
+    },
+    {
+      "horizonte_meses": 2,
+      "n_meses_realmente_pronosticados_antes_del_inicio": 0,
+      "mae_ar1_c": null,
+      "mae_persistencia_c": null,
+      "habilidad_prospectiva_demostrada": false,
+      "muestra_suficiente_para_evaluacion": false
+    },
+    {
+      "horizonte_meses": 3,
+      "n_meses_realmente_pronosticados_antes_del_inicio": 0,
+      "mae_ar1_c": null,
+      "mae_persistencia_c": null,
+      "habilidad_prospectiva_demostrada": false,
+      "muestra_suficiente_para_evaluacion": false
+    }
+  ],
+  "ultima_emision_pronosticos": [
+    {
+      "mes_objetivo": "2026-10",
+      "horizonte_meses": 1,
+      "emitido_antes_de_inicio_mes": false,
+      "pronostico_ar1_c": 4.054,
+      "persistencia_c": 4.389,
+      "estado": "mes_aun_no_maduro",
+      "fecha_minima_verificacion": "2026-11-10"
+    },
+    {
+      "mes_objetivo": "2026-11",
+      "horizonte_meses": 2,
+      "emitido_antes_de_inicio_mes": true,
+      "pronostico_ar1_c": 3.744,
+      "persistencia_c": 4.389,
+      "estado": "mes_aun_no_maduro",
+      "fecha_minima_verificacion": "2026-12-10"
+    },
+    {
+      "mes_objetivo": "2026-12",
+      "horizonte_meses": 3,
+      "emitido_antes_de_inicio_mes": true,
+      "pronostico_ar1_c": 3.456,
+      "persistencia_c": 4.389,
+      "estado": "mes_aun_no_maduro",
+      "fecha_minima_verificacion": "2027-01-10"
+    }
+  ],
+  "es_icen_oficial": false,
+  "es_alerta_enfen": false,
+  "son_proyecciones_oceanicas_experimentales": true,
+  "validacion_operativa": false,
+  "limitaciones": [
+    "Las anomalías reconstruidas por OAF no son el ICEN publicado por ENFEN.",
+    "Proyección de Niño 1+2 no equivale a predicción de lluvia o enfermedades en Lambayeque.",
+    "El modelo univariado AR(1) NO demostró superar de forma consistente a persistencia.",
+    "Pronósticos intramensuales no cuentan como emisiones anteriores al inicio del mes.",
+    "La comprobación posterior usa anomalías NOAA potencialmente revisadas; no observaciones instrumentales independientes.",
+    "No clasificar El Niño Costero ni presentar probabilidades ENSO con este producto."
+  ]
+}
