@@ -5,7 +5,19 @@
 **Repositorio:** https://github.com/ccoronelepg-gif/OAF-Lambayeque
 
 ## Objetivo del proyecto
-Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque para integrar series meteorológicas, vigilancia oficial de El Niño, evidencia epidemiológica y modelos predictivos progresivamente validados con observaciones de campo. El propósito es anticipar condiciones de riesgo, facilitar decisiones preventivas y reducir pérdidas agrícolas.
+Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un **sistema predictivo con dos objetivos científicos principales**: **(1) anticipar posibles anomalías climáticas en Lambayeque, especialmente eventos y evolución de El Niño Costero, además de anomalías de lluvia, temperatura y humedad**, y **(2) predecir condiciones de riesgo de enfermedades agrícolas en arándano y vid**, integrando información climática, variables agronómicas y registros sanitarios de campo. El propósito es ofrecer predicciones anticipadas, probabilísticas, fechadas y verificables para mejorar la prevención y las decisiones de productores y profesionales. La vigilancia y el análisis histórico son la base, **no el resultado final**.
+
+
+## Precisión estratégica final del autor (14/10/2026)
+
+**Meta principal de todo el proyecto: PREDICCIÓN, no únicamente vigilancia o visualización.** El OAF deberá evolucionar hacia dos sistemas predictivos diferenciados pero relacionados:
+
+1. **Predicción agroclimática:** estimar con anticipación la ocurrencia, intensificación o persistencia de anomalías de lluvia, temperatura y humedad en Lambayeque, prestando especial atención a **posibles episodios de El Niño Costero**. Para este fenómeno no basta procesar lluvia local: se necesitarán observaciones y predicciones oceánicas/atmosféricas, anomalía de TSM en Niño 1+2, índices y escenarios ENFEN, además de modelos de referencia. Distinguir pronósticos externos de predicciones originales del OAF. Empezar con modelos sencillos y avanzar a modelado probabilístico solo cuando existan datos adecuados.
+2. **Predicción fitosanitaria:** estimar anticipadamente las condiciones favorables o, posteriormente, probabilidades calibradas de ocurrencia de enfermedades de **arándano y vid** con variables climáticas, fenología, datos de campo y modelos epidemiológicos validados localmente. Los primeros focos son Botrytis/antracnosis en arándano y oídio/mildiu en vid.
+
+**Cadena de valor:** datos y monitoreo → pronóstico de anomalías climáticas → estimación de condiciones favorables para patógenos → predicción fitosanitaria calibrada → comunicación preventiva, con sello temporal y niveles explícitos de incertidumbre.
+
+**Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
 ## Estado del portal
 - Cinco secciones principales en este orden: **Inicio**, **Datos climatológicos**, **Cultivos y riesgo de enfermedades**, **Boletín de El Niño**, **Verificación de datos**.
@@ -32,10 +44,10 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque para in
 - Mantener avisos de que los resultados experimentales no recomiendan fungicidas ni sustituyen monitoreo del cultivo.
 
 ## Próximos trabajos acordados
-1. Verificar funcionamiento de la interfaz y la consulta horaria externa en el sitio publicado; corregir eventuales fallos sin alterar el diseño aprobado.
-2. Validar sesgos y calidad de pronósticos horarios frente a estaciones o sensores de temperatura en el dosel.
-3. Implementar un indicador experimental para Botrytis en arándano, desarrollando o validando previamente una estimación confiable de humectación foliar.
-4. Registrar predicciones por fecha de emisión, horizonte y localidad; compararlas con observaciones fitosanitarias y métricas reproducibles.
-5. Evolucionar hacia modelos calibrados localmente para arándano y vid; mantener separados los boletines oficiales ENFEN y las alertas OAF aún no operativas.
+1. **Abrir la línea predictiva agroclimática**: definir anomalías objetivo (lluvia, temperatura, humedad y evolución de El Niño Costero), escalas temporales y métricas; catalogar TSM Niño 1+2, escenarios ENFEN y pronósticos oceánico-atmosféricos fechados.
+2. Verificar la consulta horaria de la web y conservar instantáneas de pronósticos por fecha de emisión, plazo y localidad para futura evaluación sin fuga temporal.
+3. **Continuar la línea predictiva fitosanitaria**: validar el indicador térmico de oídio en vid y trabajar en Botrytis de arándano con datos fiables de humectación foliar y registros de campo.
+4. Implementar evaluación retrospectiva y prospectiva frente a referencias simples u oficiales, cuantificar habilidad, falsos avisos e incertidumbre, y registrar datos faltantes.
+5. Evolucionar ambas líneas hacia predicciones útiles **solo si alcanzan validación independiente**; mantener diferenciados comunicados oficiales ENFEN, pronósticos externos, modelos propios experimentales y enfermedades diagnosticadas.
 
 **Criterio permanente:** no inventar mediciones, cifras de riesgo, predicciones o validaciones. Presentar resultados confirmados y las incertidumbres.
