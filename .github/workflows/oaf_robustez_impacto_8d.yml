@@ -1,0 +1,41 @@
+name: OAF 8D - Regional forecast uncertainty by monthly blocks
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/robustez_impacto_regional_8d.py'
+      - '.github/workflows/oaf_robustez_impacto_8d.yml'
+      - 'datos/benchmark_impacto_lambayeque_8d_prueba.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8d-regional-stability
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate paired monthly block resampling
+        run: python modelos/robustez_impacto_regional_8d.py --self-test
+      - name: Assess actual 2023-2026 prediction stability without refitting
+        run: python modelos/robustez_impacto_regional_8d.py
+      - name: Preserve auditable robustness assessment
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/robustez_impacto_regional_8d.json
+          if git diff --cached --quiet; then
+            echo "No changed stability results."
+          else
+            git commit -m "data(oaf): publish descriptive 8D climate skill stability intervals"
+            git pull --rebase origin main
+            git push
+          fi
