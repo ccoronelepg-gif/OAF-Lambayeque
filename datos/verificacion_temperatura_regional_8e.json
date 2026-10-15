@@ -1,0 +1,108 @@
+{
+  "fase": "8E",
+  "estado": "esperando_cierre_y_reanalisis",
+  "generado_utc": "2026-10-15T06:41:18+00:00",
+  "numero_emisiones_originales": 1,
+  "pronosticos_originales_archivados": 12,
+  "pronosticos_anteriores_al_mes": 8,
+  "estimaciones_intramensuales": 4,
+  "pronosticos_comparados": 0,
+  "comparados_realmente_previos_al_mes": 0,
+  "primera_verificacion_posible": "2026-11-10",
+  "ultima_emision": "2026-09",
+  "mae_previo_por_localidad_horizonte": {
+    "Chiclayo": {
+      "1": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "2": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "3": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      }
+    },
+    "Jayanca": {
+      "1": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "2": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "3": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      }
+    },
+    "Motupe": {
+      "1": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "2": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "3": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      }
+    },
+    "Olmos": {
+      "1": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "2": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      },
+      "3": {
+        "n": 0,
+        "mae_local_c": null,
+        "mae_nino_t300_c": null,
+        "habilidad_comprobada": false
+      }
+    }
+  },
+  "clasificacion_ensayo": "temperatura mensual modelada ERA5-Land, no validación instrumental SENAMHI",
+  "es_icen_oficial": false,
+  "es_alerta_enfen": false,
+  "es_alerta_senamhi": false,
+  "validacion_instrumental": false,
+  "habilidad_prospectiva_demostrada": false,
+  "probabilidades_calibradas": false,
+  "cautelas": [
+    "Hasta acumular meses completos de pronóstico anterior al evento no es posible demostrar habilidad futura.",
+    "ERA5-Land es un reanálisis actualizable, NO observación SENAMHI de estación.",
+    "El modelo de Niño/T300 muestra beneficio histórico irregular; no sustituye alertas oficiales.",
+    "h1 emitido tras el inicio del objetivo es ahora-cast y nunca integra la MAE de predicciones realmente previas."
+  ]
+}
