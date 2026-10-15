@@ -142,6 +142,17 @@ La comparación con pronósticos efectivamente emitidos **24 horas antes** encon
 
 También quedó registrada **la primera emisión prospectiva real**, correspondiente al 14/10/2026 en Perú, con pronósticos externos del 15 al 21 de octubre para las cuatro localidades: [consultar JSON emitido](datos/pronosticos_emitidos/2026-10-14.json). Incluye temperatura, precipitación, radiación, humedad, viento, DPV y ET₀ con fecha y unidades; permitirá verificar errores una vez sucedan las jornadas previstas. [Método y resultados de Fase 6F](FASE_6F_EVALUACION_PREDICTORES.md).
 
+## Fase 6G · Verificación de pronósticos emitidos antes del evento (15/10/2026)
+
+El OAF ya no solo archiva pronósticos: se implementó una **verificación prospectiva automatizada por fecha de emisión, localidad y horizonte**. Se comprueba temperatura media, precipitación y radiación solar pronosticadas para los siguientes 7 días frente a reanálisis **ERA5-Land (temperatura) y ERA5 (lluvia y radiación)**, con un margen de siete días después de la jornada válida por el retraso de publicación de aproximadamente cinco días.
+
+- El primer pronóstico conservado se emitió el **14/10/2026 en horario Perú** y cubre del 15 al 21 de octubre para Chiclayo, Jayanca, Motupe y Olmos.
+- [Estado actual de la evaluación prospectiva](datos/evaluacion_prospectiva_6g.json): **pendiente de reanálisis; 0 de 28 jornadas disponibles**, primera fecha posible de verificación **22/10/2026**. No se declaran aciertos, errores cero ni predicciones verificadas hasta obtener datos.
+- [Motor de verificación](modelos/verificar_pronosticos_emitidos_6g.py), [proceso diario](.github/workflows/oaf_verificacion_6g.yml), [CSV auditable](datos/evaluacion_prospectiva_6g.csv) y [metodología](FASE_6G_VERIFICACION_PROSPECTIVA.md).
+- Nuevo apartado plegable **Fase 6G** en [Datos climatológicos del portal](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#clima), con futura consulta de MAE, RMSE y sesgo por variable, localidad y horizonte.
+
+**Corrección final de Fase 6F:** el último GitHub Actions terminó exitosamente y publicó [benchmark_variables_6f.json](datos/benchmark_variables_6f.json) y [errores mensuales](datos/benchmark_variables_6f_mes.csv). Los intervalos exploratorios de mejora ampliado vs básico por bloques fueron: Chiclayo **−2,73 % a +15,33 %**, Jayanca **−42,69 % a −9,52 %**, Motupe **−5,48 % a +1,86 %**, Olmos **+1,65 % a +10,14 %**. Solo Olmos presentó mejora positiva en ambos extremos de ese intervalo exploratorio. Un intervalo descriptivo y ERA5-Land como referencia NO equivalen a validación operativa.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
