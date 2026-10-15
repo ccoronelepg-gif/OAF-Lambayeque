@@ -139,6 +139,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - **Código, API y archivo prospectivo** comprobados mediante GitHub Actions; JavaScript y Python coincidieron en seis magnitudes al reprocesar los archivos reales para las cuatro localidades. Ver `FASE_7A_BOTRYTIS_ARANDANO.md` y `datos/patrones_botrytis_emitidos/2026-10-15.json`.
 - **Fase 7B:** recopilar observaciones reales de humectación foliar en arándano, fases fenológicas, HR y temperatura en dosel y enfermedades diagnosticadas, con cronología y ubicación verificables. Evaluar modelos fitosanitarios únicamente después de contar con suficientes casos y negativos, periodos y parcelas.
 
+### Fase 7B completada — desempeño meteorológico del indicador Botrytis (15/10/2026)
+
+- Se evaluaron 273 días por localidad (enero–septiembre de 2026), pronóstico real retrospectivo de HR a horizonte fijo de 24 h (Open-Meteo Previous Runs) frente a reanálisis ERA5, con criterio predefinido HR >90 % durante ≥6 horas.
+- **Falsas señales frente a ERA5**: Chiclayo 31, Jayanca 4, Motupe 111 y Olmos 140; omisiones 5, 18, 17 y 10 respectivamente. Precisión positiva meteorológica: 18,4 %, 80,0 %, 13,3 % y 16,2 %. Estos son resultados de detección **del patrón atmosférico**, no del patógeno. Nunca etiquetar como sensibilidad o especificidad de enfermedad.
+- El desempeño del indicador es heterogéneo y presenta excesivos positivos no corroborados por ERA5, sobre todo Motupe y Olmos. Existen discrepancias geográficas por resolución de celdas; se necesita observación instrumental y fenología. **No se habilitan alertas fitosanitarias del OAF**.
+- Se activó el proceso independiente de verificación prospectiva de emisiones 7A ya registradas. Primera jornada 16/10/2026, posible verificar desde 23/10/2026 tras siete días de margen. Estado inicial legítimo: 28 jornadas archivadas, cero maduras.
+- Panel Fase 7B dentro de Predicción fitosanitaria y documentación `FASE_7B_VALIDACION_HUMEDAD.md`. Motores y automatizaciones: `modelos/validar_indicador_humedad_botrytis_7b.py`, `modelos/verificar_patrones_botrytis_emitidos_7b.py`, `.github/workflows/oaf_botrytis_7b_backtest.yml` y `.github/workflows/oaf_botrytis_7b_prospectivo.yml`.
+- **Próxima Fase 7C:** recolectar resultados sanitarios positivos y negativos, temperatura y humectación foliar verdaderas, fenología, variedad y manejo, y comparar predictivamente contra modelos triviales y meteorología pronosticada. Preservar línea oceánica de El Niño Costero en paralelo.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
