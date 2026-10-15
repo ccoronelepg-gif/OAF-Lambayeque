@@ -148,6 +148,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Panel Fase 7B dentro de Predicción fitosanitaria y documentación `FASE_7B_VALIDACION_HUMEDAD.md`. Motores y automatizaciones: `modelos/validar_indicador_humedad_botrytis_7b.py`, `modelos/verificar_patrones_botrytis_emitidos_7b.py`, `.github/workflows/oaf_botrytis_7b_backtest.yml` y `.github/workflows/oaf_botrytis_7b_prospectivo.yml`.
 - **Próxima Fase 7C:** recolectar resultados sanitarios positivos y negativos, temperatura y humectación foliar verdaderas, fenología, variedad y manejo, y comparar predictivamente contra modelos triviales y meteorología pronosticada. Preservar línea oceánica de El Niño Costero en paralelo.
 
+### Fase 7C · Validación de infraestructura para datos fitopatológicos (15/10/2026)
+
+- Se publicó el [protocolo de campo de Botrytis](FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md), con 20 campos de monitoreo fitosanitario y 12 campos de lecturas horarias de microclima y humectación verdadera. Las plantillas CSV **solo contienen encabezados**.
+- [Validador Python](modelos/validar_campo_botrytis_7c.py) y automatización [oaf_botrytis_7c_calidad_campo.yml](.github/workflows/oaf_botrytis_7c_calidad_campo.yml) verificados exitosamente con casos sintéticos que incluyen duplicados, conteos incompatibles, diagnósticos de especie no confirmados, lecturas de sensores y husos horarios. El validador separa síntomas de confirmación específica e impide tratar valores faltantes como «negativos».
+- Los registros reales quedan únicamente en un directorio privado `datos/_privados/botrytis_7c/` ya excluido del control de versiones. Se publica solo un JSON de estado sin datos de parcelas identificables, con protección adicional cuando haya pocas parcelas.
+- El primer [estado publicado](datos/estado_campo_botrytis_7c.json) es **`sin_datos_campo`**. Ninguna infección fue comprobada, ninguna predicción de enfermedad fue entrenada y no existe una probabilidad calibrada de Botrytis.
+- Se añadió a Cultivos un panel plegable Fase 7C con lectura de estado y descargas de formularios vacíos. El histórico de falsas señales meteorológicas 7B permanece visible y NO se confunde con falsos positivos biológicos.
+- **Fase 7D pendiente:** diseño de emparejamiento temporal/espacial seguro entre pronósticos, observaciones privadas, humectación medida y resultados diagnósticos. Validación estricta por parcela, fecha y fenología; sin afirmar impacto o enfermedad sin datos reales.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
