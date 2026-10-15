@@ -93,6 +93,19 @@ La nueva sección plegable en [Boletín de El Niño](https://ccoronelepg-gif.git
 - **Documentos:** [MODELO_ERSSTV5_FASE6C.md](MODELO_ERSSTV5_FASE6C.md), [código Python](modelos/modelo_ersstv5_nino12_fase6c.py), [contraste institucional CSV](datos/contraste_icen_publicado_2026.csv) y [datos/modelo_ersstv5_nino12_6c.json](datos/modelo_ersstv5_nino12_6c.json).
 - **Próximo paso Fase 6D:** localizar ERSSTv5/ICEN actuales de fuente institucional, ampliar contraste de meses y probar ERSSTv6 como producto distinto; iniciar evaluación de predicciones emitidas y archivadas realmente antes de cada evento.
 
+## Fase 6D · Fuente NOAA NCEI ERSSTv5 recuperada y predicción experimental (14/10/2026)
+
+**Resuelto el desfase de datos sin confundir índices.** NOAA NCEI mantiene una serie ERSSTv5 Niño 1+2 actualizada a **septiembre de 2026**, pero sus anomalías están calculadas frente a **1971–2000**. El OAF toma la **sexta columna** (Niño 1+2), calcula mes a mes la media de anomalías durante 1991–2020 y la resta para crear una serie de anomalías **reajustada por el OAF a 1991–2020**. Esta serie es *derivada*, **no un ICEN oficial**.
+
+- Última anomalía mensual derivada: **+4,389 °C, septiembre de 2026**.
+- Comparación interna con el archivo CPC ERSSTv5: 918 meses comunes; **MAE entre productos últimos 24 meses comunes: 0,0397 °C**. El control de procedencia pasó. No confundir este MAE de comparación entre fuentes con error predictivo.
+- Modelo experimental AR(1) a uno, dos y tres meses: **+4,054 °C (octubre), +3,744 °C (noviembre) y +3,456 °C (diciembre de 2026)**. Referencia trivial de persistencia: **+4,389 °C** en los tres horizontes.
+- Aunque el error histórico medio del AR(1) es ligeramente menor que el de persistencia, **el AR(1) es peor en los últimos doce meses a los tres horizontes**; ninguna estimación es considerada una predicción validada de El Niño Costero, lluvia regional o enfermedad agrícola.
+- [Informe Fase 6D](MODELO_NCEI_ERSSTV5_FASE6D.md), [motor Python](modelos/modelo_ncei_ersstv5_fase6d.py), [fuente reajustada CSV](datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv), [evaluación walk-forward CSV](datos/ncei_ersstv5_backtest_1a3m.csv), [salida JSON](datos/modelo_ersstv5_ncei_6d.json), [flujo GitHub Actions](.github/workflows/oaf_ncei_ersstv5_fase6d.yml).
+- Nuevo panel plegable en [Boletín de El Niño](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino). Conserva aparte el panel Fase 6C con su fuente CPC de junio 2026, identificada como histórica y desactualizada.
+
+**Próximo avance recomendado — Fase 6E:** añadir predictores oceánico-atmosféricos de fuentes públicas, generar pronósticos verdaderamente fechados y compararlos prospectivamente con persistencia y modelos de referencia institucional. Sin esta evaluación **no existe predicción OAF operativa**.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
