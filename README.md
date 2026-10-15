@@ -16,6 +16,19 @@ La página pública [OAF-Lambayeque 2.2](https://ccoronelepg-gif.github.io/OAF-L
 
 Los índices no son alertas operativas ni permiten diagnosticar enfermedades. El navegador necesita acceso a la API de terceros para obtener datos horarios.
 
+## Interfaz pública simplificada · 14/10/2026
+
+**Sitio:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
+
+La portada se reorganizó en cinco pestañas exclusivas:
+1. Cultivos y condiciones de riesgo de patologías: tabla de tres columnas (enfermedad, condiciones climáticas y cultivo), con nueve patologías y fuentes.
+2. Boletines de El Niño: enlaces ENFEN/SENAMHI, consulta al registro institucional y estado de verificación sin suponer alerta vigente.
+3. Datos climáticos: consulta modelada de tiempo reciente y pronóstico externo a siete días para cuatro localidades, más última disponibilidad CHIRPS.
+4. Riesgo de presencia de enfermedades: estado de los modelos, requisitos y advertencia de que no existen alertas OAF operativas.
+5. Verificaciones de datos: resumen de calidad, cobertura histórica y enlace al portal anterior conservado en [archivo-analisis-historico.html](archivo-analisis-historico.html).
+
+El nuevo diseño reduce información redundante; la página histórica de 2026 se mantiene íntegra. Las imágenes públicas proceden de Wikimedia Commons (Scott Bauer/USDA y Panelxf, CC0/dominio público). Las cifras de estado de fuente se cargan desde los JSON mantenidos en este repositorio. El pronóstico de Open-Meteo **no es un modelo predictivo propio del OAF**.
+
 ## Misión
 
 Desarrollar un sistema regional de **vigilancia agroclimática actualizada, pronóstico probabilístico y alerta temprana experimental** de eventos anómalos —en especial condiciones vinculadas con **El Niño Costero**— y de riesgos fitosanitarios agrícolas. La primera línea de sanidad vegetal se centra en **arándano**, comenzando con condiciones favorables para *Botrytis cinerea*.
