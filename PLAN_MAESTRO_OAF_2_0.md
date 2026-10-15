@@ -4,7 +4,7 @@
 **Aprobación de orientación:** 14/10/2026.  
 **Responsable y autor:** ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA.  
 **Región de trabajo:** Lambayeque, Perú, con contexto oceanográfico del Pacífico oriental y regional del norte peruano.  
-**Situación:** Plan de reorganización aprobado; **los módulos predictivos y las alertas propias aún no se han desarrollado ni validado**. No declarar que el OAF anticipó un fenómeno por consultar informes publicados.
+**Situación:** Plan aprobado y módulos experimentales 6A–6C implementados; **todavía no existe predicción OAF operativa, validada prospectivamente, ni alertas propias**. No declarar que el OAF anticipó un fenómeno por consultar informes publicados.
 
 ## 1. Misión renovada
 
@@ -80,6 +80,16 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - MAE global AR1 0,3749 °C y persistencia 0,3797 °C; MAE últimos 12 meses AR1 0,5818 °C y persistencia 0,4708 °C. No existe habilidad robusta demostrada; remuestreo por bloques incluye mejora nula/negativa.
 - Ingesta automática/alerta de fallo de fuente, CSV, JSON, documentación y visor público guardados en el repositorio: `MODELO_NINO12_FASE6B.md`.
 - **Próxima fase 6C:** integrar producto ERSSTv5 e índice oficial ICEN actualizado por ENFEN para evaluar la correspondencia con la serie NOAA; añadir pronósticos oceánico-atmosféricos fechados y comparar modelos con persistencia en horizonte 1–3 meses. No utilizar índices OISST como si fuesen ICEN ni extrapolar directamente a lluvia/enfermedad regional.
+
+### Fase 6C realizada · Validación histórica con ERSSTv5 (14/10/2026)
+
+- NOAA CPC ERSSTv5 Niño 1+2, base 1991–2020, con meses desde 1950-01 hasta 2026-06. La serie fue descargada y procesada en GitHub Actions; el desfase de cuatro meses frente a octubre de 2026 quedó identificado y bloqueó proyecciones prospectivas actuales.
+- Se evaluaron 197, 196 y 195 orígenes de predicción a 1, 2 y 3 meses, mediante AR(1) frente a persistencia y anomalía cero, con método walk-forward y prueba exploratoria de errores por bloques. Ningún horizonte fue declarado validado prospectivamente.
+- El promedio móvil ERSSTv5 indicativo fue contrastado con cuatro valores ICEN publicados por SENAMHI–ENFEN de febrero a mayo de 2026 (diferencia absoluta media 0,0075 °C); este control limitado **no** convierte la serie en índice oficial.
+- Se integró un panel desplegable en «Boletín de El Niño», con aviso de desactualización y métricas de validación; intactos el título/fotografías del recuadro verde y las cinco pestañas.
+- Ver [MODELO_ERSSTV5_FASE6C.md](MODELO_ERSSTV5_FASE6C.md) y [contraste institucional](datos/contraste_icen_publicado_2026.csv).
+
+**Siguiente fase 6D:** conseguir series ICEN/ERSSTv5 verificadas y vigentes para continuar una predicción actual y auditable; explorar ERSSTv6 como un producto alternativo **distinto**, introducir predictores atmosféricos y oceánicos, mantener métricas y pruebas prospectivas contra persistencia, y vincular después condiciones oceanográficas con el clima y enfermedades en Lambayeque.
 
 ## 5. Hoja de ruta y entregables comprobables
 
