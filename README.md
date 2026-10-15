@@ -83,6 +83,16 @@ En [Datos climatológicos del portal](https://ccoronelepg-gif.github.io/OAF-Lamb
 
 **Siguiente fase:** incorporar la serie ERSSTv5/ICEN conforme a la definición oficial actualizada, variables de viento y océano subsuperficial, y un conjunto histórico de pronósticos fechados para evaluación prospectiva. Persistencia seguirá siendo el modelo de referencia que debe superarse; ninguna alerta OAF se emitirá hasta validar los modelos.
 
+## Fase 6C · ERSSTv5 Niño 1+2 y comprobación documental (14/10/2026)
+
+La nueva sección plegable en [Boletín de El Niño](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino) incorpora una serie real **ERSSTv5 NOAA 1950-01 a 2026-06** y la evaluación histórica de modelos AR(1) a **1, 2 y 3 meses** frente a persistencia, además de un promedio móvil de tres meses **indicativo, no ICEN oficial**.
+
+- **Control de vigencia:** el archivo ERSSTv5 NOAA tiene **4 meses de desfase respecto de octubre 2026**. Se guardan históricos y evaluaciones; **se bloquean todas las proyecciones actuales** (`prediccion_actual_disponible=false`), sin sustituir los últimos meses por datos OISST.
+- **Backtest retrospectivo:** 197, 196 y 195 predicciones verificadas respectivamente. MAE AR(1) = **0,3449 / 0,4952 / 0,6183 °C** a 1/2/3 meses y MAE persistencia = **0,3546 / 0,5282 / 0,6823 °C**. Las mejoras globales NO prueban validez prospectiva; a uno y dos meses el AR(1) empeora en los últimos 12 meses.
+- **Control institucional externo, no validación operativa:** se contrastaron ICEN publicados por SENAMHI de febrero, marzo, abril y mayo de 2026 con promedios trimestrales indicativos ERSSTv5 del OAF. Diferencia absoluta media de **0,0075 °C** en esos cuatro registros. Fuentes de SENAMHI enlazadas en el informe.
+- **Documentos:** [MODELO_ERSSTV5_FASE6C.md](MODELO_ERSSTV5_FASE6C.md), [código Python](modelos/modelo_ersstv5_nino12_fase6c.py), [contraste institucional CSV](datos/contraste_icen_publicado_2026.csv) y [datos/modelo_ersstv5_nino12_6c.json](datos/modelo_ersstv5_nino12_6c.json).
+- **Próximo paso Fase 6D:** localizar ERSSTv5/ICEN actuales de fuente institucional, ampliar contraste de meses y probar ERSSTv6 como producto distinto; iniciar evaluación de predicciones emitidas y archivadas realmente antes de cada evento.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
