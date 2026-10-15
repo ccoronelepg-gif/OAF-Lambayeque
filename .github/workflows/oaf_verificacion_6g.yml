@@ -1,0 +1,42 @@
+name: OAF 6G - Prospective Forecast Verification
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '52 14 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/verificar_pronosticos_emitidos_6g.py'
+      - '.github/workflows/oaf_verificacion_6g.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-prospective-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test lag gate and rejection of nonexistent measurements
+        run: python modelos/verificar_pronosticos_emitidos_6g.py --self-test
+      - name: Evaluate emissions only for verified historical dates
+        run: python modelos/verificar_pronosticos_emitidos_6g.py
+      - name: Store verifiable state and errors only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/evaluacion_prospectiva_6g.json datos/evaluacion_prospectiva_6g.csv
+          if git diff --cached --quiet; then
+            echo "No change in verified records."
+          else
+            git commit -m "data(oaf): update cautious prospective verification of emitted forecasts"
+            git pull --rebase origin main
+            git push
+          fi
