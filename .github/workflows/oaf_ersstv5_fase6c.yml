@@ -36,6 +36,9 @@ jobs:
       - name: Execute deterministic tests
         run: python modelos/modelo_ersstv5_nino12_fase6c.py --self-test
 
+      - name: Confirm NOAA ERSSTv5 source and model provenance
+        run: echo "NOAA CPC ERSSTv5 Niño 1+2, NOT official ICEN and NOT an operational alert"
+
       - name: Read NOAA ERSSTv5 and evaluate monthly horizons
         run: python modelos/modelo_ersstv5_nino12_fase6c.py
 
