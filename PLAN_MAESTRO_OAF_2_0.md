@@ -110,6 +110,14 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Se agregó [VARIABLES_AGROCLIMATICAS_FASE6E.md](VARIABLES_AGROCLIMATICAS_FASE6E.md) con fuentes, unidades, aplicación agronómica, control de calidad y nuevas variables candidatas.
 - Continuar con validación de la radiación en series históricas completas y sensores de campo; después evaluar aportación incremental de covariables climáticas a modelos de enfermedad y de anomalías, evitando multicolinealidad y fuga de datos futuros.
 
+### Fase 6F · Validar aporte de radiación, humedad y viento (14/10/2026)
+
+- Se puso en marcha una comparación rigurosa de predictores *realmente pronosticados antes de la hora objetivo*, usando el archivo Open-Meteo Previous Runs con desplazamiento de 24 horas y temperatura verificadora ERA5-Land.
+- Se diseñaron A) pronóstico externo original, B) Ridge básico con temperatura y estacionalidad, y C) Ridge ampliado con radiación, humedad y viento. Entrenamiento hasta diciembre 2025; evaluación temporal separada enero–septiembre 2026; cuatro localidades regionales.
+- Se verificó por GitHub Actions la existencia de 120 horas archivadas y referencia horaria para Motupe. Se implementó pipeline de evaluación completa, informe metodológico y visor seguro de datos, sin exponer resultados antes de procesarse.
+- Las métricas permiten detectar si agregar covariables empeora la habilidad, y no solo destacar mejores valores. La verificación ERA5-Land no sustituye sensores locales SENAMHI.
+- Antes de llamar operativo al modelo será necesario archivar fechas de emisión en tiempo real, validar con observaciones regionales, medir estabilidad fuera de muestra, y extender la línea a enfermedades solamente con registros fitosanitarios confirmados.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
