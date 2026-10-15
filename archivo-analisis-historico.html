@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b242d"><meta name="description" content="OAF-Lambayeque 2.0: vigilancia climática, El Niño Costero y riesgo fitosanitario en arándano. Proyecto experimental; sin alertas propias validadas.">
+<title>OAF-Lambayeque 2.2 | Vigilancia agroclimática y fitosanitaria</title>
+<style>
+:root{--ink:#13313a;--muted:#59727b;--border:#dce7e8;--bg:#f3f7f6;--white:#fff;--navy:#082e39;--teal:#007b79;--aqua:#d6f0ea;--gold:#f1b96c;--orange:#ad5b22;--shadow:0 10px 32px rgba(13,57,68,.06)}
+*{box-sizing:border-box}.split>*,.panel,.container{min-width:0} html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif} button,select{font:inherit}button{cursor:pointer}a{color:#096e6c}a:hover{text-decoration:none}header{background:radial-gradient(ellipse at 85% 5%,#215963 0,transparent 50%),linear-gradient(120deg,#082e39,#0c4449);color:#fff;padding:0 0 54px} .top{border-bottom:1px solid #ffffff24}.topinner{max-width:1220px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.3px;font-size:18px}.brandmark{display:grid;place-items:center;width:39px;height:39px;border:1px solid #92ccbf66;background:#d7f0e824;border-radius:11px;color:#b4eee0;font-size:17px}.top nav{display:flex;gap:22px;flex-wrap:wrap}.top nav a{color:#d5e7e5;font-size:13px;text-decoration:none}.top nav a:hover{color:white}.hero{max-width:1220px;margin:auto;padding:64px 24px 5px;display:grid;grid-template-columns:1.5fr .8fr;gap:40px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:1.7px;font-size:11px;font-weight:800;color:#bce4d7;margin-bottom:16px}.hero h1{font-size:clamp(29px,4.2vw,52px);line-height:1.12;letter-spacing:-1.5px;max-width:740px;margin:0 0 19px}.hero p{font-size:16px;max-width:650px;color:#d5e6e4;margin:0}.heroaside{padding:23px;border-radius:18px;background:#ffffff0e;border:1px solid #ffffff35}.heroaside .tag{font-size:11px;color:#0c393d;background:#cef1e7;padding:6px 9px;border-radius:20px;font-weight:800}.heroaside h2{font-size:24px;margin:17px 0 7px}.heroaside p{font-size:13px;color:#d1e5df}.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.meta span{font-size:12px;border:1px solid #ffffff46;border-radius:99px;padding:6px 12px;background:#ffffff13}.container{max-width:1220px;margin:auto;padding:0 24px 65px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-28px;position:relative}.stat,.panel{background:var(--white);border:1px solid var(--border);border-radius:17px;box-shadow:var(--shadow)}.stat{padding:19px}.stat .label{font-size:12px;color:var(--muted);font-weight:650}.stat strong{display:block;font-size:30px;letter-spacing:-1px;margin:4px 0 1px}.stat small{color:var(--muted);font-size:12px}.sectionhead{margin:44px 0 17px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}.sectionhead h2{font-size:27px;letter-spacing:-.7px;margin:0}.sectionhead p{color:var(--muted);margin:4px 0 0;max-width:720px}.panel{padding:23px;margin-bottom:17px}.overline{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:var(--teal)}.filters{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:19px 0 8px}.filter{display:flex;flex-direction:column;gap:6px;min-width:195px}.filter label{font-size:12px;color:var(--muted);font-weight:700}.filter select{border:1px solid #bbd0cf;background:white;color:#183940;border-radius:9px;padding:10px 13px;min-height:43px}.filter select:focus,.stationbtn:focus{outline:3px solid #6ebfbca6;outline-offset:2px}.notice{background:#f9f1e6;color:#785126;border-left:3px solid #d5a165;padding:12px 15px;border-radius:7px;font-size:13px}.split{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:17px}.kpirow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:19px 0}.kpi{background:#f3f8f6;border-radius:12px;padding:14px}.kpi strong{display:block;font-size:23px;letter-spacing:-.4px}.kpi small{color:var(--muted);font-size:12px}.charttitle{font-size:16px;font-weight:760;margin:16px 0 6px}.chartbox{overflow-x:auto}.chartbox svg{display:block;width:100%;height:auto;min-width:480px}.legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--teal);margin-right:4px}.muted{color:var(--muted)}.sm{font-size:12px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #e8eff0;white-space:nowrap}th{background:#f5f9f9;color:#59717a;font-weight:720}tr:last-child td{border:0}tr.em td{font-weight:700;background:#f0f8f6}.stationbtn{border:0;background:transparent;color:#076a69;text-align:left;padding:0;font-weight:720}.stationbtn:hover{text-decoration:underline}.maparea{background:linear-gradient(140deg,#ecf6f2,#f7f9f5);border:1px solid #d9e9e5;border-radius:13px;padding:13px}.maparea svg{width:100%;height:auto}.statuslist{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:15px 0}.status{background:#f4f8f8;padding:14px;border-radius:10px;border:1px solid #e5eeed}.status b{display:block;font-size:13px}.status small{color:var(--muted)}.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:5px;padding:3px 7px;margin-bottom:7px}.done{background:#d8f4e7;color:#0c6146}.pending{background:#fff0d8;color:#92611d}.road{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.roaditem{border:1px solid var(--border);border-radius:12px;padding:16px;background:#fff}.roaditem span{font-size:11px;color:#59717a;font-weight:700}.roaditem h3{font-size:15px;margin:9px 0 8px}.roaditem p{font-size:13px;color:var(--muted);margin:0}footer{background:#092f39;color:#b3ccc9;padding:32px 24px;font-size:12px}footer .inner{max-width:1172px;margin:auto}footer a{color:#d5f0e7}@media(max-width:950px){.hero{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:minmax(0,1fr)}.road{grid-template-columns:repeat(2,1fr)}}@media(max-width:610px){.topinner{flex-wrap:wrap}.top nav{gap:11px}.hero{padding-top:38px}.stats{gap:9px}.stat{padding:12px}.stat strong{font-size:23px}.panel{padding:16px}.sectionhead h2{font-size:23px}.kpirow{grid-template-columns:1fr}.road,.statuslist{grid-template-columns:1fr}.filters{align-items:stretch}.filter{min-width:100%;flex:1}header{padding-bottom:45px}}
+
+/* Datos públicos de autoría y contacto */
+.autoria-hero{margin-top:22px;padding:13px 17px;border-left:3px solid #b4eee0;background:rgba(255,255,255,.10);border-radius:0 10px 10px 0;max-width:690px;font-size:13px;color:#e6f5f1}
+.autoria-hero strong{color:#fff}.autoria-hero a{color:#c4fae9;text-decoration:underline;text-underline-offset:3px}
+.autoria-hero .autor-dato{display:block;margin-top:3px}
+.autor-panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:15px}
+.autor-panel h2{margin:4px 0 5px;font-size:21px}.autor-panel p{margin:0;color:var(--muted)}
+.autor-panel .autor-telefono{display:inline-block;background:var(--aqua);border:1px solid #a3d8cb;color:var(--ink);padding:11px 17px;border-radius:11px;font-weight:800;text-decoration:none;white-space:nowrap}
+.autor-panel .autor-telefono:hover{background:#bbebe1;text-decoration:underline}
+
+/* Extensión científica OAF 2.2: biblioteca y consulta horaria */
+.oaf22-head{margin:35px 0 17px}.oaf22-head h2{margin:0;font-size:26px;letter-spacing:-.5px}.oaf22-head p{margin:5px 0 0;color:var(--muted)}.oaf22-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:15px 0}.oaf22-toolbar label{font-weight:700;color:var(--muted);font-size:12px;display:grid;gap:5px;min-width:170px;flex:1}.oaf22-toolbar select,.oaf22-toolbar input{min-height:43px;padding:10px 12px;border:1px solid #bdd4d1;border-radius:9px;background:#fff;color:var(--ink);width:100%;font:inherit}.oaf22-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:13px;margin:18px 0}.oaf22-disease{border:1px solid #d9e7e4;background:white;border-radius:12px;padding:17px}.oaf22-disease h3{font-size:17px;margin:5px 0 1px}.oaf22-disease .latin{color:#56757a;font-size:13px;font-style:italic;margin:0 0 12px}.oaf22-disease .var{font-size:12px;font-weight:800;color:#0c6f6d;letter-spacing:.2px}.oaf22-disease p{font-size:13px;margin:7px 0 11px}.oaf22-disease a{font-size:12px;font-weight:700}.oaf22-tag{display:inline-block;border-radius:7px;background:#eaf6ef;color:#1b6547;font-size:11px;font-weight:800;padding:3px 8px}.oaf22-tag.expl{background:#fff0d9;color:#8a5b1d}.oaf22-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.oaf22-btn{padding:11px 15px;border:0;border-radius:9px;background:#007b79;color:white;font-weight:750;cursor:pointer}.oaf22-btn:hover{background:#006966}.oaf22-btn:disabled{opacity:.6;cursor:wait}.oaf22-btn.secondary{background:#e3f1ee;color:#085e5c}.oaf22-quicklinks{display:flex;gap:10px;flex-wrap:wrap}.oaf22-quicklinks a{display:inline-block;border:1px solid #bfdcd6;padding:9px 13px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;background:#f0faf7}.oaf22-readout{background:#f1f7f6;border-radius:9px;padding:13px;margin-top:12px;font-size:13px;overflow-wrap:anywhere}.oaf22-readout[hidden]{display:none}.oaf22-aux{color:#61767a;font-size:12px}.oaf22-link{color:#0b706a;font-weight:700}.oaf22-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}@media(max-width:810px){.oaf22-cols{grid-template-columns:1fr}}</style></head>
+<body>
+<header><div class="top"><div class="topinner"><div class="brand"><div class="brandmark">◎</div><span>OAF · LAMBAYEQUE</span></div><nav><a href="#biblioteca-fitosanitaria-2026">Arándano y vid</a><a href="#boletines-enfen-2026">Boletines El Niño</a><a href="#consulta-horaria-oaf22">Datos horarios</a><a href="#monitoreo3z">Clima reciente 3Z</a><a href="#plan20">Nueva misión 2.0</a><a href="#panorama">Panorama</a><a href="#explorador">Explorador histórico</a><a href="#validacion">Validación 1998</a><a href="#multianual">Análisis multianual</a><a href="#auditoria3p">Modelos ERA5</a><a href="#chirps3q">CHIRPS 1998</a><a href="#chirpsmultianual">CHIRPS 1996–2000</a><a href="#validacion20">Validación 1996–2015</a><a href="#sensibilidad3r">Auditoría 1998/2000</a><a href="#sensibilidad3r20">Sensibilidad 1996–2015</a><a href="#intensidad3s">Lluvias intensas</a><a href="#independencia3t">Confiabilidad temporal</a><a href="#incorporacion3u">Nuevos datos SENAMHI</a><a href="#fuentes3v">Fuentes externas 3V</a><a href="#gbon3w">GBON/RBON 3W</a><a href="#fuentes3x">Boletines DZ2</a><a href="#boletines3y">Datos 2024–2025</a><a href="#coberturaoficial">Años completos</a><a href="#estaciones">Estaciones</a><a href="#progreso">Evolución</a></nav></div></div>
+<div class="hero"><div><div class="eyebrow">Observatorio agroclimático y fitosanitario</div><h1>El clima de Lambayeque: observar, anticipar y proteger.</h1><p>Proyecto científico para integrar datos recientes, vigilar anomalías como <b>El Niño Costero</b> y desarrollar pronósticos probabilísticos y herramientas de <b>riesgo fitosanitario en arándano y vid</b>. Los modelos y alertas propios todavía están en desarrollo; los análisis históricos se conservan como referencia.</p><div class="meta"><span>5 estaciones meteorológicas</span><span>Último año completo común: 2012</span><span>Fase 3Z: precipitación reciente CHIRPS</span></div><div class="autoria-hero"><b>Autor del observatorio:</b> <strong>ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA</strong><span class="autor-dato">Contacto: <a href="tel:+51929304528">+51 929 304 528</a></span></div></div><aside class="heroaside"><span class="tag">VERSIÓN PÚBLICA · 2.2</span><h2>Nueva misión · OAF 2.0</h2><p>De la validación histórica a la vigilancia regional reciente y la predicción probabilística. Fase 3Z en ejecución: CHIRPS v3 reciente integrado y consulta ENFEN con verificación institucional.</p><p style="margin-top:14px"><b>Estado:</b> planificación publicada; sin modelo predictivo propio ni alertas operativas.</p></aside></div></header>
+<main class="container">
+<section class="panel" id="biblioteca-fitosanitaria-2026" aria-labelledby="title-oaf22">
+<div class="overline">Nuevo · Fitosanidad basada en evidencia · OAF 2.2</div>
+<div class="oaf22-head"><h2 id="title-oaf22">Enfermedades vinculadas al clima: arándano y vid</h2><p>Biblioteca científica de condiciones meteorológicas favorables. Selecciona el cultivo y consulta el respaldo bibliográfico original. Los rangos publicados no son umbrales locales validados.</p></div>
+<div class="notice">La coincidencia con condiciones favorables <b>no demuestra presencia de patógeno</b>, no predice por sí sola la infección y no debe usarse como indicación automática de tratamientos. La etapa fenológica, el inóculo, el riego, los cultivares y el microclima del dosel modifican el riesgo.</div>
+<div class="oaf22-toolbar"><label for="oaf22-crop">Cultivo<select id="oaf22-crop"><option value="todos">Ambos cultivos</option><option value="arandano">Arándano</option><option value="vid">Vid</option></select></label><label for="oaf22-search">Buscar enfermedad o factor climático<input id="oaf22-search" type="search" placeholder="Ej. humedad, oídio, Botrytis"></label></div>
+<p class="oaf22-aux" id="oaf22-count" role="status">9 enfermedades documentadas · 5 arándano / 4 vid</p>
+<div class="oaf22-cards" id="oaf22-cards">
+<article class="oaf22-disease" data-crop="arandano"><span class="oaf22-tag">Arándano · modelo publicado</span><h3>Moho gris</h3><p class="latin">Botrytis cinerea</p><div class="var">Temperatura + humectación foliar</div><p>Más de 6 h de humectación entre 14–25 °C en un algoritmo experimental estudiado en arándano en Chile. Pendiente de validación local.</p><a href="https://doi.org/10.1094/PDIS-12-12-1112-RE" target="_blank" rel="noopener noreferrer">Rivera, Zoffoli y Latorre (2013), Plant Disease ↗</a></article>
+<article class="oaf22-disease" data-crop="arandano"><span class="oaf22-tag">Arándano · sistema validado fuera de Perú</span><h3>Antracnosis del fruto</h3><p class="latin">Colletotrichum spp.</p><div class="var">Temperatura + lluvia + humectación foliar + HR</div><p>El sistema Blueberry Advisory System evalúa temperatura durante la humectación, horas de mojado y otras variables. Su índice no debe sustituirse por un umbral único sin calibración.</p><a href="https://ask.ifas.ufl.edu/publication/PP366" target="_blank" rel="noopener noreferrer">UF/IFAS · Blueberry Advisory System ↗</a></article>
+<article class="oaf22-disease" data-crop="arandano"><span class="oaf22-tag expl">Arándano · evidencia descriptiva</span><h3>Mancha diana</h3><p class="latin">Corynespora cassiicola</p><div class="var">Humedad + lluvia + temperatura</div><p>Ambiente húmedo, lluvias moderadas y temperaturas de 26,1–28,9 °C favorecen la esporulación, según guía técnica. No existe aquí un modelo horario validado para Lambayeque.</p><a href="https://ask.ifas.ufl.edu/publication/PP348" target="_blank" rel="noopener noreferrer">UF/IFAS · Florida Blueberry Leaf Disease Guide ↗</a></article>
+<article class="oaf22-disease" data-crop="arandano"><span class="oaf22-tag expl">Arándano · evidencia descriptiva</span><h3>Oídio</h3><p class="latin">Microsphaera vaccinii / complejo de oídio</p><div class="var">Humedad relativa persistente</div><p>La humedad ambiental elevada durante periodos prolongados favorece el desarrollo. No requiere necesariamente lluvia ni agua libre, por lo que no usaremos un índice basado solo en humectación.</p><a href="https://ask.ifas.ufl.edu/publication/PP348" target="_blank" rel="noopener noreferrer">UF/IFAS · Florida Blueberry Leaf Disease Guide ↗</a></article>
+<article class="oaf22-disease" data-crop="arandano"><span class="oaf22-tag expl">Arándano · requiere datos de riego</span><h3>Pudrición radicular</h3><p class="latin">Phytophthora spp.</p><div class="var">Humedad de suelo + saturación + drenaje</div><p>La humedad excesiva del suelo favorece zoosporas e infección radicular. La precipitación regional no refleja por sí sola el estado del sustrato irrigado.</p><a href="https://extension.oregonstate.edu/es/catalog/blueberry-bacterial-fungal-diseases" target="_blank" rel="noopener noreferrer">Oregon State University Extension ↗</a></article>
+<article class="oaf22-disease" data-crop="vid"><span class="oaf22-tag">Vid · índice térmico publicado</span><h3>Oídio de la vid</h3><p class="latin">Erysiphe necator</p><div class="var">Temperatura horaria del dosel</div><p>El índice UC IPM inicia su fase conidial después de infección primaria y tres días consecutivos con al menos 6 h continuas a 21,1–29,4 °C. No es un diagnóstico ni una regla simple de aplicación.</p><a href="https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/" target="_blank" rel="noopener noreferrer">Universidad de California · UC IPM ↗</a></article>
+<article class="oaf22-disease" data-crop="vid"><span class="oaf22-tag expl">Vid · evidencia epidemiológica</span><h3>Mildiu de la vid</h3><p class="latin">Plasmopara viticola</p><div class="var">Agua libre + HR + temperatura</div><p>Ambientes cálidos y mojados favorecen la infección. UC IPM señala un intervalo óptimo aproximado de 20–25 °C; lluvia y aspersión pueden impulsar epidemias.</p><a href="https://ipm.ucanr.edu/agriculture/grape/downy-mildew/" target="_blank" rel="noopener noreferrer">Universidad de California · UC IPM ↗</a></article>
+<article class="oaf22-disease" data-crop="vid"><span class="oaf22-tag expl">Vid · evidencia epidemiológica</span><h3>Podredumbre gris</h3><p class="latin">Botrytis cinerea</p><div class="var">Humedad alta + agua libre + temperatura</div><p>En infecciones tardías, mayor gravedad con HR superior al 92 %, presencia de humedad libre y aproximadamente 14,4–27,8 °C, según UC IPM.</p><a href="https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/" target="_blank" rel="noopener noreferrer">Universidad de California · UC IPM ↗</a></article>
+<article class="oaf22-disease" data-crop="vid"><span class="oaf22-tag">Vid · tabla experimental publicada</span><h3>Podredumbre negra</h3><p class="latin">Guignardia bidwellii</p><div class="var">Temperatura + horas de mojado</div><p>El tiempo mínimo de humectación varía con la temperatura: ejemplo publicado, 6 h a 26,7 °C y 9 h a 15,6 °C. La tabla completa debe aplicarse a tejidos susceptibles.</p><a href="https://extension.psu.edu/grape-disease-black-rot" target="_blank" rel="noopener noreferrer">Penn State Extension · Tabla de infección ↗</a></article>
+</div>
+<p class="oaf22-aux">Fuentes: publicaciones científicas y guías universitarias enlazadas individualmente. Cobertura: evidencia externa a Lambayeque; validación con campo y sensores pendiente. Fecha de revisión: 14/10/2026.</p>
+</section>
+<section class="panel" id="boletines-enfen-2026" aria-labelledby="oaf22-enfen-title">
+<div class="overline">El Niño Costero · Boletines oficiales</div><div class="oaf22-head"><h2 id="oaf22-enfen-title">Centro de comunicados y avisos climáticos</h2><p>Accesos directos a documentación institucional con fecha y fuente. El OAF no sustituye a ENFEN ni a SENAMHI.</p></div>
+<div class="oaf22-cols"><div><span class="oaf22-tag expl">Último comunicado identificado en consulta 14/10/2026</span><h3 style="margin:9px 0 4px">ENFEN N.º 17-2026</h3><p class="muted sm">Fecha de emisión: 28 de septiembre de 2026. Estado publicado entonces: <b>Alerta de El Niño Costero</b>. Revisar siempre el portal oficial para confirmar cualquier actualización posterior.</p><div class="oaf22-quicklinks"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Comunicados ENFEN ↗</a><a href="https://enfen.imarpe.gob.pe/archivo-enfen/" target="_blank" rel="noopener noreferrer">Archivo ENFEN ↗</a></div></div><div><h3 style="margin:0 0 9px">Vigilancia meteorológica</h3><p class="sm">Los avisos por precipitaciones intensas y otros peligros provienen de SENAMHI. El sistema histórico del OAF conserva <a href="#enfen3z">el registro de seguimiento ENFEN</a> con indicación de fallos de consulta, cuando ocurran.</p><div class="oaf22-quicklinks"><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">SENAMHI ↗</a><a href="#enfen3z">Estado de consulta del OAF ↓</a></div></div></div>
+<p class="notice" style="margin-top:15px">Un comunicado de El Niño describe vigilancia oceánico-climática; <b>no equivale a una alerta de Botrytis, mildiu u otra enfermedad</b>. Las condiciones fitosanitarias requieren evidencia adicional.</p>
+</section>
+<section class="panel" id="consulta-horaria-oaf22" aria-labelledby="oaf22-clim-title">
+<div class="overline">Piloto de consulta horaria · Reanálisis</div><div class="oaf22-head"><h2 id="oaf22-clim-title">Temperatura, humedad y precipitación por localidad</h2><p>Consulta datos horarios del año seleccionado a través de Open-Meteo. Temperatura y HR: ERA5-Land; precipitación: ERA5. Las fuentes tienen celdas espaciales diferentes y no son mediciones en parcelas.</p></div>
+<div class="oaf22-toolbar"><label for="oaf22-site">Punto de referencia<select id="oaf22-site"><option value="jayanca">Jayanca</option><option value="motupe">Motupe</option><option value="olmos">Olmos</option><option value="chiclayo">Chiclayo</option></select></label><label for="oaf22-year">Año<select id="oaf22-year"><option value="2025">2025 (completo)</option><option value="2024">2024 (completo)</option><option value="2023">2023 (completo)</option></select></label></div>
+<div class="oaf22-actions"><button class="oaf22-btn" id="oaf22-load" type="button">Consultar datos reales</button><button class="oaf22-btn secondary" id="oaf22-csv" type="button" disabled>Descargar CSV</button></div><div id="oaf22-output" class="oaf22-readout" role="status" hidden></div><p class="oaf22-aux">Fuente: <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Open-Meteo Historical Weather API ↗</a>. Requiere Internet y disponibilidad del proveedor; si falla, no se inventan datos ni se completan vacíos. HR ≥90 % solo indica humedad ambiental elevada, no humectación foliar medida.</p>
+</section>
+
+
+<div class="sectionhead" id="plan20">
+ <div><div class="overline">Nueva orientación científica · OAF-Lambayeque 2.0</div>
+  <h2>De la meteorología histórica a la vigilancia y predicción del riesgo agrícola</h2>
+  <p>La prioridad cambia: combinar fuentes recientes, condiciones oceánicas, pronósticos y datos fitosanitarios para anticipar riesgos. La validación histórica continúa como fundamento científico, no como actividad exclusiva del observatorio.</p></div>
+</div>
+<section class="panel" aria-labelledby="mision2">
+ <div class="overline" id="mision2">Misión aprobada · octubre de 2026</div>
+ <p class="notice"><b>Proyecto científico en evolución:</b> el OAF busca vigilar El Niño Costero y anomalías de lluvia y temperatura, y desarrollar indicadores de riesgo fitosanitario para arándano. <b>No emitimos aún alertas propias ni predicciones validadas.</b> Los avisos oficiales corresponden a SENAMHI y el estado de El Niño Costero a ENFEN.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:13px;margin:20px 0">
+   <div style="padding:17px;border-radius:12px;background:#edf4f5;border:1px solid #d9e7ea">
+    <div class="overline">01 · Fase 3Z</div><h3 style="margin:4px 0">Monitoreo reciente</h3><p class="sm">ENFEN, SENAMHI, CHIRPS v3, NASA IMERG; sellos de tiempo, unidades, calidad y anomalías.</p><b class="sm">Siguiente etapa</b>
+   </div>
+   <div style="padding:17px;border-radius:12px;background:#edf4f5;border:1px solid #d9e7ea">
+    <div class="overline">02 · Fase 4A</div><h3 style="margin:4px 0">Pronóstico agroclimático</h3><p class="sm">Probabilidad de lluvias intensas y temperaturas anómalas por plazo y zona, comparada con referencias.</p><b class="sm">Por desarrollar y validar</b>
+   </div>
+   <div style="padding:17px;border-radius:12px;background:#edf4f5;border:1px solid #d9e7ea">
+    <div class="overline">03 · Fase 4B</div><h3 style="margin:4px 0">Fitosanidad de arándano</h3><p class="sm">Primera enfermedad: <i>Botrytis cinerea</i>. Condiciones meteorológicas y observaciones sanitarias reales.</p><b class="sm">Requiere datos de campo</b>
+   </div>
+   <div style="padding:17px;border-radius:12px;background:#edf4f5;border:1px solid #d9e7ea">
+    <div class="overline">04 · Fase 4C</div><h3 style="margin:4px 0">Verificación y alertas</h3><p class="sm">Registrar pronósticos antes de los eventos, medir aciertos, falsas alarmas y confiabilidad.</p><b class="sm">Alertas propias deshabilitadas</b>
+   </div>
+ </div>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:14px 0">
+  <div style="border:1px solid #dce7e8;padding:15px;border-radius:11px"><h3 style="margin:0 0 8px">Reloj histórico</h3><p class="sm">Totales anuales de estaciones únicamente si existen <b>12 meses completos y 365/366 días válidos</b>. Con los archivos existentes, el último año completo común es <b>2012</b>. Los años faltantes nunca se completarán artificialmente.</p></div>
+  <div style="border:1px solid #dce7e8;padding:15px;border-radius:11px"><h3 style="margin:0 0 8px">Reloj de vigilancia</h3><p class="sm">Observaciones o estimaciones recientes, con <b>fecha y periodo de validez</b>, pueden analizarse hoy sin esperar diciembre. Una ventana incompleta se etiqueta como tal; no se convierte en acumulado completo.</p></div>
+ </div>
+ <p class="muted sm"><b>Fuentes a integrar, sin conexión reciente confirmada todavía:</b> <a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN</a> (estado oficial), <a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">SENAMHI</a> (instrumentos y avisos), <a href="https://www.chc.ucsb.edu/data/chirps3" target="_blank" rel="noopener noreferrer">CHIRPS v3</a> y <a href="https://gpm.nasa.gov/data/imerg" target="_blank" rel="noopener noreferrer">NASA IMERG</a> (estimación satelital), además de pronósticos meteorológicos institucionales. No confundir la información estimada con pluviómetros ni un reanálisis con un pronóstico.</p>
+ <p class="sm"><a href="PLAN_MAESTRO_OAF_2_0.md">Plan maestro 2.0</a> · <a href="PROTOCOLO_ESTADOS_Y_ALERTAS_OAF_2_0.md">Criterios de calidad y alertas</a> · <a href="datos/plan_operativo_oaf_2_0.json">Fases verificables</a> · <a href="datos/catalogo_fuentes_operativas_3z.csv">Catálogo de fuentes</a> · <a href="README.md">Presentación del proyecto</a></p>
+</section>
+
+
+<div class="sectionhead" id="monitoreo3z">
+ <div><div class="overline">Fase 3Z · Primera vigilancia climática reciente · Actualización automática programada</div>
+ <h2>Precipitación reciente estimada y estado institucional de El Niño Costero</h2>
+ <p>Los datos mostrados a continuación se consultan directamente desde los resultados auditados en GitHub. Son dos fuentes diferentes: celdas mensuales CHIRPS v3 y comunicados oficiales ENFEN. <b>No representan un pronóstico propio ni una alerta del OAF.</b></p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3z">
+ <div class="overline" id="titulo3z">Módulo climático reciente · Datos con fecha, fuente y cobertura</div>
+ <p class="notice"><b>Monitoreo CHIRPS v3:</b> lluvia mensual <b>estimada</b> con información satelital y pluviométrica en celdas de 0,05°, no lluvia medida en una estación SENAMHI. Los valores solo aparecerán después de verificar que el archivo GeoTIFF del mes completo esté disponible.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0">
+  <div style="padding:15px;border:1px solid #dce7e8;border-radius:10px"><div class="overline">Último mes encontrado</div><strong style="font-size:26px" id="ultimo3z">Consultando…</strong><div class="muted sm">Mes completo disponible en CHIRPS</div></div>
+  <div style="padding:15px;border:1px solid #dce7e8;border-radius:10px"><div class="overline">Meses verificables</div><strong style="font-size:26px" id="meses3z">—</strong><div class="muted sm">En la ventana reciente consultada</div></div>
+  <div style="padding:15px;border:1px solid #dce7e8;border-radius:10px"><div class="overline">Meses sin archivo</div><strong style="font-size:26px" id="faltan3z">—</strong><div class="muted sm">No se sustituyen por cero</div></div>
+ </div>
+ <p id="fuente3z" class="muted sm" aria-live="polite">Cargando el informe de la última ejecución del monitoreo…</p>
+ <div style="display:flex;gap:18px;align-items:end;flex-wrap:wrap;margin:16px 0">
+  <label><b>Mes CHIRPS disponible</b><select id="mes3z" style="display:block;margin-top:6px;min-width:160px;max-width:100%" disabled><option>Esperando datos…</option></select></label>
+ </div>
+ <div class="tablewrap"><table aria-label="Precipitación CHIRPS v3 estimada en cinco celdas geográficas"><thead><tr><th>Punto geográfico referencial</th><th>Precipitación estimada (mm/mes)</th><th>Origen</th></tr></thead><tbody id="tabla3z"><tr><td colspan="3">Verificando archivos públicos…</td></tr></tbody></table></div>
+ <div id="grafico3z" role="img" aria-label="Barras de precipitación estimada según CHIRPS v3 por punto" style="margin-top:20px"></div>
+ <p class="muted sm"><b>Interpretación:</b> cada resultado es la estimación de una celda y no debe atribuirse al pluviómetro homónimo. Los cinco puntos de coordenadas históricas permanecen provisionales. Una lluvia estimada de 0 mm es distinta de un archivo no disponible. Los totales anuales instrumentales SENAMHI no se modifican.</p>
+ <div style="border-top:1px solid #dce7e8;margin-top:23px;padding-top:18px">
+  <div class="overline">ENFEN · El Niño Costero</div>
+  <h3 style="margin:5px 0 10px">Último comunicado que el sistema pudo verificar</h3>
+  <p id="enfen3z" aria-live="polite">Consultando registro institucional…</p>
+  <p class="muted sm">El estado de alerta pertenece únicamente a ENFEN. Los datos automáticos pueden no estar disponibles si falla la conexión al portal oficial; en ese caso no inferimos ni actualizamos su clasificación. Comprueba siempre la fecha del comunicado y revisa las fuentes oficiales.</p>
+  <p class="sm"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Consultar directamente el último comunicado ENFEN</a></p>
+ </div>
+ <p class="sm"><a href="MONITOREO_CHIRPS_RECIENTE_3Z.md">Informe CHIRPS</a> · <a href="datos/chirps_v3_reciente_3z.csv">Precipitación estimada (CSV)</a> · <a href="datos/auditoria_rasters_chirps_3z.json">Auditoría de rasters</a> · <a href="datos/estado_monitoreo_3z.json">Estado de calidad</a> · <a href="MONITOREO_ENFEN_3Z.md">Registro ENFEN</a> · <a href="datos/estado_enfen_3z.json">Estado de consulta ENFEN</a> · <a href="https://www.chc.ucsb.edu/data/chirps3">Documentación de CHIRPS</a></p>
+</section>
+<script>
+(function(){
+ const stationOrder=['Jayanca (La Viña)','Cayaltí','Reque','Lambayeque','Cueva Blanca'];
+ const el=(id)=>document.getElementById(id);
+ const month=el('mes3z'),table=el('tabla3z'),chart=el('grafico3z');
+ const format=(n)=>Number(n).toLocaleString('es-PE',{maximumFractionDigits:2,minimumFractionDigits:2});
+ function parseCSV(text){
+   const lines=text.trim().split(/\r?\n/);
+   if(lines.length<2)return [];
+   const keys=lines.shift().split(',');
+   return lines.filter(Boolean).map(s=>Object.fromEntries(s.split(',').map((v,i)=>[keys[i],v])));
+ }
+ function render(rows){
+   const selected=month.value;
+   const subset=stationOrder.map(st=>rows.find(r=>r.mes===selected&&r.estacion_referencial===st));
+   if(subset.some(v=>!v)){
+     table.innerHTML='<tr><td colspan="3">Mes sin cinco puntos verificables; no se completarán faltantes.</td></tr>';chart.innerHTML='';return;
+   }
+   table.innerHTML=subset.map(r=>'<tr><td><b>'+r.estacion_referencial+'</b></td><td>'+format(r.lluvia_estimada_mm)+'</td><td>CHIRPS v3 · 0,05°</td></tr>').join('');
+   const max=Math.max(...subset.map(r=>Number(r.lluvia_estimada_mm)),1);
+   chart.innerHTML=subset.map((r,i)=>{
+     const width=(100*Number(r.lluvia_estimada_mm)/max).toFixed(2);
+     return '<div style="margin:11px 0"><div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><b>'+r.estacion_referencial+'</b><span>'+format(r.lluvia_estimada_mm)+' mm</span></div><div style="height:20px;border-radius:5px;background:#e9f0ef;overflow:hidden;margin-top:4px"><div style="height:100%;width:'+width+'%;background:'+(['#258b84','#4481b2','#ad8b52','#845eaa','#376e7c'][i])+'"></div></div></div>';
+   }).join('');
+ }
+ async function loadChirps(){
+  try{
+   const [a,b]=await Promise.all([fetch('datos/estado_monitoreo_3z.json',{cache:'no-store'}),fetch('datos/chirps_v3_reciente_3z.csv',{cache:'no-store'})]);
+   if(!a.ok||!b.ok)throw Error('No se pudo acceder a la publicación');
+   const status=await a.json(),rows=parseCSV(await b.text());
+   if(status.tipo_dato!=='ESTIMADO_SATELITAL_GAUGE_BLEND'||status.registros_punto_mes!==rows.length)throw Error('Auditoría inconsistente');
+   const months=[...new Set(rows.map(r=>r.mes))].sort();
+   if(months.length!==status.meses_con_raster_verificado||rows.some(r=>!Number.isFinite(Number(r.lluvia_estimada_mm))||Number(r.lluvia_estimada_mm)<0))throw Error('Periodo o valores inválidos');
+   if(months.length===0)throw Error('No hay meses verificables');
+   el('ultimo3z').textContent=status.ultimo_mes_disponible||'No disponible';
+   el('meses3z').textContent=String(status.meses_con_raster_verificado);
+   el('faltan3z').textContent=String(status.meses_no_disponibles);
+   el('fuente3z').textContent='Consulta: '+status.fecha_ejecucion_utc+' · Ventana '+status.periodo_analizado_inicio+' a '+status.periodo_analizado_fin_ultimo_mes_calendario_terminado+' · Último mes descargado: '+status.ultimo_mes_disponible+'. Actualización de GitHub programada cada lunes; datos solo cuando CHIRPS publica el raster.';
+   month.innerHTML=months.map(m=>'<option value="'+m+'">'+m+'</option>').join('');
+   month.disabled=false;month.value=months[months.length-1];month.addEventListener('change',()=>render(rows));render(rows);
+  }catch(err){
+   el('ultimo3z').textContent='No disponible';
+   el('meses3z').textContent='—';el('faltan3z').textContent='—';
+   el('fuente3z').textContent='La última ejecución no pudo verificarse: '+String(err.message||err)+'. Consultar auditoría.';
+   table.innerHTML='<tr><td colspan="3">Sin datos verificados para mostrar.</td></tr>';chart.innerHTML='';
+  }
+ }
+ async function loadEnfen(){
+   try{
+     const r=await fetch('datos/estado_enfen_3z.json',{cache:'no-store'});
+     if(!r.ok)throw Error('Archivo de estado sin publicar');
+     const s=await r.json();
+     if(s.verificacion==='identificado_en_comunicado'&&s.fecha_emision&&s.estado_institucional){
+       const title='ENFEN · Comunicado N.º '+s.numero+'-'+s.anio+' · emitido '+s.fecha_emision+'. Estado declarado: '+s.estado_institucional+'.';
+       el('enfen3z').textContent=title+' Última consulta automatizada: '+s.fecha_consulta_utc+'.';
+     }else{
+       el('enfen3z').textContent='Consulta automática sin verificación del estado institucional ('+(s.fecha_consulta_utc||'sin fecha')+'). Consulte la página ENFEN para conocer el comunicado vigente. No se ha emitido alerta propia.';
+     }
+   }catch(err){
+     el('enfen3z').textContent='No se pudo obtener la lectura automática de ENFEN. Consulte la fuente institucional oficial.';
+   }
+ }
+ loadChirps();loadEnfen();
+})();
+</script>
+
+<section id="panorama" class="stats" aria-label="Indicadores de avance"><div class="stat"><div class="label">Estaciones integradas</div><strong>5</strong><small>Registros instrumentales</small></div><div class="stat"><div class="label">Corte anual común completo</div><strong>2012</strong><small>5 estaciones · archivos disponibles</small></div><div class="stat"><div class="label">Años completos · 5 estaciones</div><strong>11</strong><small>Simultáneamente disponibles</small></div><div class="stat"><div class="label">Revisión de cobertura</div><strong>12/12</strong><small>Meses completos para cada total anual</small></div></section>
+<div class="sectionhead" id="explorador"><div><div class="overline">Datos y visualizaciones</div><h2>Explorador histórico</h2><p>Selecciona una estación y un año para consultar las observaciones de precipitación y su disponibilidad.</p></div></div>
+<section class="panel"><div class="filters"><div class="filter"><label for="estacion">Estación meteorológica</label><select id="estacion"></select></div><div class="filter"><label for="anio">Año de consulta</label><select id="anio"></select></div></div>
+<div class="kpirow"><div class="kpi"><small>Precipitación anual</small><strong id="lluviaAnual">—</strong><small id="statusAnual"></small></div><div class="kpi"><small>Días con dato de lluvia</small><strong id="diasValidos">—</strong><small id="coberturaAnual"></small></div><div class="kpi"><small>Años completos en la estación</small><strong id="aniosCompletos">—</strong><small>Años completos de los TXT disponibles</small></div></div>
+<p id="advertencia" class="notice" role="status"></p>
+<div class="split"><div><h3 class="charttitle">Precipitación mensual observada</h3><div class="chartbox" id="graficoMeses"></div><div class="legend"><span><i class="dot"></i> Mes completo</span><span>— Mes sin cobertura total: no se grafica un acumulado</span></div></div><div><h3 class="charttitle">Lluvia anual disponible (solo años completos)</h3><div class="chartbox" id="graficoAnual"></div><p class="muted sm">Aparecen solo años con 100 % de días válidos. Las ausencias no equivalen a cero lluvia.</p></div></div></section>
+<section class="panel"><div class="overline">Caso de estudio: El Niño 1997–1998</div><h3 style="font-size:19px;margin:8px 0 5px">Precipitación observada en 1998</h3><p class="muted" style="margin-top:0">Los cinco archivos contienen una serie diaria completa para 1998. Los acumulados difieren considerablemente entre estaciones.</p><div class="tablewrap"><table><thead><tr><th>Estación</th><th>Lluvia 1998 (mm)</th><th>Ene.–mar. (%)</th><th>Máximo diario (mm)</th></tr></thead><tbody id="tabla1998"></tbody></table></div></section>
+<div class="sectionhead" id="validacion"><div><div class="overline">Fase 3N · Primer contraste instrumental</div><h2>Validación exploratoria de lluvia · 1998</h2><p>Comparación mensual entre estaciones SENAMHI, PISCOp v3.0 y ERA5-Seamless. Selecciona una estación para comparar acumulados anuales y error absoluto medio mensual.</p></div></div>
+<section class="panel" style="padding:24px">
+  <p class="notice" style="display:block"><strong>Resultado provisional de un solo año.</strong> Las ubicaciones históricas siguen en comprobación. PISCOp puede haber empleado estas mismas estaciones para elaborarse: este contraste <b>no es una validación independiente</b> ni evalúa el rendimiento predictivo.</p>
+  <div class="filters" style="margin-top:16px"><div class="filter"><label for="estacionValidacion">Estación para comparar productos</label><select id="estacionValidacion"></select></div></div>
+  <div class="chartbox" id="graficoValidacion" style="height:auto;min-height:240px"></div>
+  <div class="kpirow"><div class="kpi"><small>Observado SENAMHI · 1998</small><strong id="vObs">—</strong></div><div class="kpi"><small>MAE mensual PISCOp</small><strong id="vPisco">—</strong></div><div class="kpi"><small>MAE mensual ERA5</small><strong id="vEra5">—</strong></div></div>
+  <p class="sm muted">MAE: error absoluto medio mensual frente al registro de la estación (12 meses completos, mm/mes). Las barras representan precipitación anual en mm, no son pronósticos.</p>
+  <div class="tablewrap"><table><thead><tr><th>Estación</th><th>Observada (mm)</th><th>PISCOp (mm)</th><th>ERA5 (mm)</th></tr></thead><tbody><tr><td>Jayanca (La Viña)</td><td>1,428</td><td>1,296.71</td><td>7,603.9</td></tr><tr><td>Cayaltí</td><td>558.5</td><td>685.56</td><td>1,335.6</td></tr><tr><td>Reque</td><td>232.82</td><td>245.46</td><td>846.4</td></tr><tr><td>Lambayeque</td><td>279.61</td><td>288.23</td><td>1,270.2</td></tr><tr><td>Cueva Blanca</td><td>969.2</td><td>1,044.23</td><td>8,451.4</td></tr></tbody></table></div>
+  <p class="sm muted" style="margin-top:18px">Fuente: cálculos reproducibles realizados con 60 meses-estación de precipitación observada y 120 estimaciones mensuales de PISCOp y ERA5 para 1998. <a href="VALIDACION_3N.md" target="_blank" rel="noopener">Informe metodológico y resultados completos</a> · <a href="datos/metricas_3n_1998.csv" target="_blank" rel="noopener">Indicadores CSV</a>.</p>
+</section>
+<div class="sectionhead" id="estaciones"><div><div class="overline">Red de observación</div><h2>Ubicación de las estaciones</h2><p>Coordenadas provisionales tomadas de documentación histórica; las diferencias de emplazamiento y altitud se encuentran en revisión.</p></div></div>
+<div class="split"><section class="panel"><div class="maparea" id="mapaEstaciones"></div><p class="sm muted">Esquema georreferenciado de puntos (longitud/latitud), sin contorno geográfico departamental. No es un mapa de estaciones verificadas.</p></section><section class="panel"><h3 style="margin-top:0">Selección y trazabilidad</h3><div class="tablewrap"><table><thead><tr><th>Estación</th><th>Elevación preliminar</th><th>Años completos</th></tr></thead><tbody id="tablaEstaciones"></tbody></table></div><p class="sm muted">Las altitudes de algunos puntos presentan diferencias entre referencias. La validación de códigos y ubicación histórica de estaciones está pendiente.</p></section></div>
+<div class="sectionhead" id="progreso"><div><div class="overline">Transparencia científica</div><h2>Cómo evoluciona OAF-Lambayeque</h2><p>Cada nueva versión incorporará datos y resultados contrastados. Esta página muestra el avance disponible, no información meteorológica en tiempo real.</p></div></div>
+<section class="panel"><div class="statuslist"><div class="status"><span class="pill done">COMPLETADO</span><b>Integración de cinco estaciones</b><small>Series originales históricas hasta 2015; años completos según estación.</small></div><div class="status"><span class="pill done">COMPLETADO</span><b>Exploración de 1998</b><small>Patrones anuales y mensuales de lluvia observada.</small></div><div class="status"><span class="pill pending">EN VALIDACIÓN</span><b>Georreferenciación de estaciones</b><small>Verificación de coordenadas, altitudes y cambios de emplazamiento.</small></div><div class="status"><span class="pill done">EXPLORATORIO</span><b>Contraste PISCOp / ERA5 de 1998</b><small>10 comparaciones mensuales (5 estaciones × 2 productos), pendientes de verificación histórica e independencia.</small></div></div>
+<h3 class="charttitle">Próximas versiones</h3><div class="road"><div class="roaditem"><span>FASE COMPLETADA</span><h3>Validación multianual preliminar</h3><p>Extender la comparación a años y meses con registros íntegros e investigar diferencias espaciales.</p></div><div class="roaditem"><span>POSTERIOR</span><h3>Índices El Niño</h3><p>Anomalías y señales oceánicas, diferenciando asociación y causalidad.</p></div><div class="roaditem"><span>POSTERIOR</span><h3>Pronósticos</h3><p>Modelos meteorológicos, evaluación retrospectiva y alertas sujetas a validación.</p></div><div class="roaditem"><span>POSTERIOR</span><h3>Sanidad del arándano</h3><p>Riesgos fitosanitarios modelados con clima y datos reales de campo.</p></div></div>
+<p class="sm muted" style="margin:18px 0 0"><b>Actualización del prototipo:</b> 14/10/2026. Los resultados se incorporan a esta misma dirección pública a través de GitHub Pages.</p></section>
+<section class="panel"><div class="overline">Notas metodológicas</div><h3 style="margin-top:8px">Qué representa y qué no representa este visor</h3><p>Presenta registros diarios de precipitación contenidos en cinco archivos de estaciones atribuidos a SENAMHI. El análisis aplica el código <code>-99.9</code> como valor faltante. Los meses y años no completamente observados no se utilizan como acumulados completos. La documentación disponible señala variaciones históricas en ciertos metadatos geográficos.</p><p>Se han incorporado comparaciones <b>exploratorias de 1998 y del periodo instrumental 1996–2015</b> entre PISCOp y ERA5-Seamless, y una auditoría específica de selección de celdas. Una validación verdaderamente independiente, los pronósticos y las alertas fitosanitarias <b>todavía no están disponibles</b>. Los registros futuros o ausentes no se han sustituido por cero ni imputado como lluvia real.</p></section>
+
+<div class="sectionhead" id="multianual"><div><div class="overline">Fase 3O · Ciencia de datos aplicada</div><h2>Contraste meteorológico multianual</h2><p>Validación comparativa exploratoria de precipitación mensual en cinco estaciones instrumentales SENAMHI, frente a PISCOp v3.0 y ERA5-Seamless.</p></div></div>
+<section class="panel" aria-labelledby="tit3o">
+  <div class="overline" id="tit3o">Auditoría instrumental 1996–2015</div>
+  <div class="kpirow">
+    <div class="kpi"><strong>1 109</strong><small>Meses-estación SENAMHI completos</small></div>
+    <div class="kpi"><strong>2 218</strong><small>Pares observación–estimación contrastados</small></div>
+    <div class="kpi"><strong>11</strong><small>Años completos comunes a las cinco estaciones</small></div>
+  </div>
+  <p class="notice" id="estado3o" aria-live="polite">Verificando los resultados multianuales publicados...</p>
+  <h3 class="charttitle">Error medio absoluto de precipitación mensual (MAE)</h3>
+  <p class="muted sm">Un MAE más bajo indica menores diferencias absolutas respecto de las observaciones para los meses comparados; no demuestra por sí solo precisión independiente.</p>
+  <div class="tablewrap"><table><thead><tr><th>Estación</th><th>Meses</th><th>PISCOp MAE</th><th>ERA5 MAE</th><th>Sesgo total PISCOp</th><th>Sesgo total ERA5</th></tr></thead><tbody id="tabla3o"><tr><td colspan="6">Cargando las métricas contrastadas...</td></tr></tbody></table></div>
+  <p class="muted sm" style="margin-top:15px"><b>Advertencia:</b> son coordenadas documentales preliminares; PISCOp puede incluir observaciones de las mismas estaciones, por lo que este ejercicio no constituye validación independiente. ERA5-Seamless se consulta mediante Open-Meteo y requiere auditoría adicional de sus elevados acumulados en ciertas localidades. Las series SENAMHI recibidas terminan en 2014–2015; no se ha validado instrumentalmente 2016–2025.</p>
+  <p class="sm"><a href="VALIDACION_3O.md">Informe técnico 3O</a> · <a href="COBERTURA_SENAMHI_3O.md">Auditoría de cobertura</a> · <a href="datos/metricas_3o_multianual.csv">Datos de métricas (CSV)</a> · <a href="scripts/validacion_3o_multianual.py">Código reproducible</a></p>
+</section>
+<script>
+(async function cargarContraste3O(){
+ const est=document.getElementById('estado3o');
+ const tbody=document.getElementById('tabla3o');
+ try{
+  const [respEstado,respCsv]=await Promise.all([fetch('datos/estado_3o.json',{cache:'no-store'}),fetch('datos/metricas_3o_multianual.csv',{cache:'no-store'})]);
+  if(!respEstado.ok||!respCsv.ok)throw Error('Archivos aún no disponibles en GitHub Pages');
+  const estado=await respEstado.json(),csv=await respCsv.text();
+  const lines=csv.trim().split(/\r?\n/);
+  const cols=lines.shift().split(',');
+  const registros=lines.map(line=>{const vals=line.split(',');return Object.fromEntries(cols.map((col,i)=>[col,vals[i]]))}).filter(r=>r.estrato==='todos');
+  const names=['Jayanca (La Viña)','Cayaltí','Reque','Lambayeque','Cueva Blanca'];
+  const tabla=[];
+  function fmt(v,n){const x=Number(v);return Number.isFinite(x)?x.toLocaleString('es-PE',{minimumFractionDigits:n,maximumFractionDigits:n}):'—'}
+  for(const name of names){
+   const p=registros.find(x=>x.estacion===name&&x.producto==='PISCOp v3.0');
+   const e=registros.find(x=>x.estacion===name&&x.producto==='ERA5-Seamless');
+   if(!p||!e)continue;
+   const n=p.meses===e.meses?p.meses:p.meses+' / '+e.meses+'*';
+   tabla.push('<tr><td>'+name+'</td><td>'+n+'</td><td>'+fmt(p.mae_mensual_mm,2)+' mm</td><td>'+fmt(e.mae_mensual_mm,2)+' mm</td><td>'+fmt(p.sesgo_acumulado_pct,2)+' %</td><td>'+fmt(e.sesgo_acumulado_pct,2)+' %</td></tr>');
+  }
+  if(!tabla.length)throw Error('No se encontraron resultados mensuales suficientes');
+  tbody.innerHTML=tabla.join('');
+  const c=Number(estado.combinaciones_obtenidas),i=(estado.incidencias||[]).length;
+  est.textContent='Comparaciones disponibles: '+c+'/10; '+Number(estado.pares_mensuales).toLocaleString('es-PE')+' pares mensuales, '+i+' incidencias de consulta. Datos exploratorios sujetos a verificación geográfica y validación independiente.';
+ }catch(error){
+  est.textContent='Las métricas multianuales aún no están accesibles desde el portal: '+String(error.message||error);
+  tbody.innerHTML='<tr><td colspan="6">Consulte el informe técnico del repositorio.</td></tr>';
+ }
+})();
+</script>
+
+<div class="sectionhead" id="auditoria3p">
+ <div><div class="overline">Fase 3P · Auditoría metodológica de reanálisis</div><h2>¿Por qué ERA5 estima tanta lluvia?</h2>
+ <p>Comparación directa entre ERA5-Seamless, ERA5 y ERA5-Land en las mismas estaciones: acumulados observados, distancias entre celda y estación y método de selección espacial.</p></div>
+</div>
+<section class="panel" aria-labelledby="tit3p">
+ <div class="overline" id="tit3p">Modelos y celdas · Años 1998 y 2000</div>
+ <p class="muted sm">Esta auditoría examina un año de lluvias extraordinarias (1998) y otro año de contraste (2000). Las coordenadas documentales de las estaciones son provisionales; la posición de las celdas meteorológicas proviene de las respuestas del modelo. No representa validación operacional.</p>
+ <p class="notice"><b>Hallazgo 3P:</b> 180/180 comparaciones mensuales ERA5 frente a ERA5-Seamless fueron idénticas; 60/60 comparaciones entre <code>nearest</code> y <code>land</code> en 1998 también fueron idénticas. ERA5-Land no devolvió una serie completa: una prueba de disponibilidad registró valores diarios y horarios nulos, no lluvia de 0 mm. <a href="CONCLUSIONES_3P.md">Leer conclusiones y limitaciones</a>.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:14px;margin:17px 0;align-items:end">
+  <label style="min-width:210px"><b>Estación SENAMHI</b><select id="estacion3p" style="display:block;width:100%;margin-top:6px"><option>Jayanca (La Viña)</option><option>Cayaltí</option><option>Reque</option><option>Lambayeque</option><option>Cueva Blanca</option></select></label>
+  <label><b>Año</b><select id="ano3p" style="display:block;width:100%;margin-top:6px"><option value="1998">1998</option><option value="2000">2000</option></select></label>
+  <label><b>Selección de celda</b><select id="celda3p" style="display:block;width:100%;margin-top:6px"><option value="nearest">nearest</option><option value="land">land</option></select></label>
+ </div>
+ <p class="notice" id="estado3p" aria-live="polite">Consultando los registros auditados...</p>
+ <div class="tablewrap"><table aria-label="Modelos ERA5 comparados con registros SENAMHI"><thead><tr><th>Modelo</th><th>Observado</th><th>Estimado</th><th>Sesgo</th><th>Distancia a celda</th><th>Posición de celda</th></tr></thead><tbody id="tabla3p"><tr><td colspan="6">Los resultados se cargan desde GitHub.</td></tr></tbody></table></div>
+ <p class="muted sm" style="margin-top:13px"><b>Interpretación:</b> una celda más próxima no garantiza mejor lluvia estimada. Los modelos tienen resoluciones, algoritmos y condiciones orográficas diferentes. La comparación anual de 1998 y 2000 no reemplaza la evaluación multianual.</p>
+ <p class="sm"><a href="AUDITORIA_3P.md">Informe completo 3P</a> · <a href="METADATOS_GEOGRAFICOS_3P.md">Metadatos de estaciones</a> · <a href="DIAGNOSTICO_ESTACIONAL_3P.md">Diagnóstico estacional sin 1998</a> · <a href="datos/auditoria_3p_celdas_modelos.csv">Resultados de celdas (CSV)</a> · <a href="datos/estado_3p.json">Estado del análisis</a> · <a href="scripts/auditoria_3p_era5.py">Código reproducible</a></p>
+ <h3 class="charttitle">CHIRPS v3: análisis piloto disponible</h3>
+ <p class="muted sm">Se integró un primer contraste de 1998 con CHIRPS v3 (0,05°); el estudio multianual todavía está pendiente. CHIRPS también incorpora observaciones instrumentales, por lo que se documentará la independencia de su evaluación. <a href="https://www.chc.ucsb.edu/data/chirps3" target="_blank" rel="noopener">Fuente oficial CHIRPS</a>.</p>
+</section>
+<script>
+(async function auditoria3p(){
+ const estado=document.getElementById('estado3p'),tbody=document.getElementById('tabla3p'),
+ est=document.getElementById('estacion3p'),ano=document.getElementById('ano3p'),celda=document.getElementById('celda3p');
+ const nombres={'era5_seamless':'ERA5-Seamless','era5':'ERA5','era5_land':'ERA5-Land'};
+ let registros=[],datosEstado=null;
+ const fmt=(n,d=1)=>{const v=Number(n);return n!==''&&n!=null&&Number.isFinite(v)?v.toLocaleString('es-PE',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';};
+ function render(){
+  const year=Number(ano.value),where=celda.value,station=est.value;
+  const found=registros.filter(x=>x.estacion===station&&Number(x.ano)===year&&x.seleccion===where);
+  const orden=['era5_seamless','era5','era5_land'];
+  const html=orden.map(key=>{
+   const z=found.find(x=>x.modelo===key);
+   return !z?'<tr><td>'+nombres[key]+'</td><td colspan="5">Sin resultado válido en esta combinación</td></tr>':
+    '<tr><td><b>'+nombres[key]+'</b></td><td>'+fmt(z.obs_anual_mm)+' mm</td><td>'+fmt(z.estimado_anual_mm)+' mm</td><td>'+fmt(z.sesgo_anual_pct)+' %</td><td>'+fmt(z.distancia_celda_km,2)+' km</td><td>'+fmt(z.lat_celda,3)+', '+fmt(z.lon_celda,3)+'</td></tr>';
+  });
+  tbody.innerHTML=html.join('');
+  if(year===2000&&where==='land')estado.textContent='En 2000 se auditó únicamente la opción nearest. Para comparar land y nearest, elige 1998.';
+  else estado.textContent='Datos auditados: '+(datosEstado?datosEstado.obtenidos:'?')+'/45 consultas completas. Estación '+station+' · '+year+' · '+where+'. Resultados exploratorios con coordenadas preliminares.';
+ }
+ try{
+  const [a,b]=await Promise.all([fetch('datos/auditoria_3p_celdas_modelos.csv',{cache:'no-store'}),fetch('datos/estado_3p.json',{cache:'no-store'})]);
+  if(!a.ok||!b.ok)throw Error('Los archivos de auditoría todavía no están publicados');
+  datosEstado=await b.json();const csv=await a.text();const lines=csv.trim().split(/\r?\n/);const headers=lines.shift().split(',');
+  registros=lines.map(l=>{const vals=l.split(',');return Object.fromEntries(headers.map((h,i)=>[h,vals[i]||'']));});
+  for(const x of [est,ano,celda])x.addEventListener('change',render);
+  render();
+ }catch(e){
+  estado.textContent='La auditoría aún se está ejecutando o sus resultados no están accesibles: '+String(e.message||e);
+  tbody.innerHTML='<tr><td colspan="6">Consulta el seguimiento de GitHub Actions o vuelve a cargar la página.</td></tr>';
+ }
+})();
+</script>
+<div class="sectionhead" id="chirps3q">
+ <div><div class="overline">Fase 3Q · Nuevo contraste satelital · 1998</div>
+ <h2>CHIRPS v3 frente a SENAMHI, PISCOp y ERA5</h2>
+ <p>Se analizaron 12 mapas mensuales oficiales de CHIRPS v3 de América Latina y cinco estaciones instrumentales. Los 60 píxeles-mes fueron válidos; resultados exploratorios, no pronósticos.</p></div>
+</div>
+<section class="panel" aria-labelledby="t3q">
+ <div class="overline" id="t3q">Contraste regional de precipitaciones · 1998</div>
+ <p class="notice"><b>Resultado:</b> CHIRPS v3 subestima la lluvia anual de Jayanca (−42,1 %) y sobreestima Cayaltí, Reque, Lambayeque y Cueva Blanca (+17,7 % a +65,3 %). La resolución es de 0,05°; se ha registrado el centro del píxel utilizado para cada estación.</p>
+ <p class="muted sm"><b>Advertencia:</b> es una muestra de un solo año extremo; varias coordenadas instrumentales históricas siguen siendo provisionales. CHIRPS y PISCOp pueden incorporar mediciones de estaciones meteorológicas, por lo que estos resultados no constituyen validación independiente.</p>
+ <div class="tablewrap"><table aria-label="Comparacion SENAMHI PISCOp CHIRPS ERA5 en 1998">
+ <thead><tr><th>Estación</th><th>SENAMHI (mm)</th><th>PISCOp (mm)</th><th>CHIRPS v3 (mm)</th><th>ERA5 (mm)</th><th>Sesgo CHIRPS</th></tr></thead>
+ <tbody><tr><td>Jayanca (La Viña)</td><td>1,428.0</td><td>1,296.7</td><td>826.8</td><td>7,603.9</td><td>-42.1 %</td></tr>
+<tr><td>Cayaltí</td><td>558.5</td><td>685.6</td><td>657.6</td><td>1,335.6</td><td>+17.7 %</td></tr>
+<tr><td>Reque</td><td>232.8</td><td>245.5</td><td>332.0</td><td>846.4</td><td>+42.6 %</td></tr>
+<tr><td>Lambayeque</td><td>279.6</td><td>288.2</td><td>462.1</td><td>1,270.2</td><td>+65.3 %</td></tr>
+<tr><td>Cueva Blanca</td><td>969.2</td><td>1,044.2</td><td>1,516.0</td><td>8,451.4</td><td>+56.4 %</td></tr></tbody></table></div>
+ <div style="margin-top:23px">
+ <label for="estacion3q"><b>Explorar una estación</b></label>
+ <select id="estacion3q" style="display:block;max-width:360px;width:100%;margin:7px 0 10px">
+ <option value="0">Jayanca (La Viña)</option>
+<option value="1">Cayaltí</option>
+<option value="2">Reque</option>
+<option value="3">Lambayeque</option>
+<option value="4">Cueva Blanca</option>
+ </select>
+ <div id="grafico3q" style="padding:7px 0" aria-live="polite"></div>
+ </div>
+ <p class="muted sm">Los gráficos usan una escala común por estación; valores anuales en milímetros. La elevada estimación ERA5 puede comprimir visualmente las demás barras.</p>
+ <p class="sm"><a href="CHIRPS_3Q_1998.md">Informe CHIRPS 1998</a> · <a href="datos/comparacion_3q_chirps_1998.csv">Comparación mensual (CSV)</a> · <a href="datos/metricas_3q_chirps_1998.csv">Métricas (CSV)</a> · <a href="datos/chirps_3q_pixeles_1998.csv">Georreferenciación de píxeles</a> · <a href="scripts/validacion_3q_chirps_1998.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const data=[{"name":"Jayanca (La Viña)","obs":1428,"chirps":826.757,"pisco":1296.7080000000005,"era":7603.9,"bias":-42.1},{"name":"Cayaltí","obs":558.5,"chirps":657.559,"pisco":685.559,"era":1335.6,"bias":17.74},{"name":"Reque","obs":232.82,"chirps":331.993,"pisco":245.46499999999997,"era":846.4000000000002,"bias":42.6},{"name":"Lambayeque","obs":279.61,"chirps":462.126,"pisco":288.2299999999999,"era":1270.1999999999998,"bias":65.28},{"name":"Cueva Blanca","obs":969.2,"chirps":1515.965,"pisco":1044.231,"era":8451.400000000001,"bias":56.41}];
+ const sel=document.getElementById('estacion3q'),target=document.getElementById('grafico3q');
+ if(!sel||!target)return;
+ const format=n=>n.toLocaleString('es-PE',{maximumFractionDigits:1});
+ function render(){
+  const x=data[Number(sel.value)||0],max=Math.max(x.obs,x.pisco,x.chirps,x.era)*1.04;
+  const series=[['SENAMHI · medido',x.obs,'#147a79'],['PISCOp v3.0 · estimado',x.pisco,'#bd8740'],['CHIRPS v3 · estimado',x.chirps,'#785db0'],['ERA5 · estimado',x.era,'#4c7ba3']];
+  target.innerHTML=series.map(z=>'<div style="margin:13px 0"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><b>'+z[0]+'</b><b>'+format(z[1])+' mm</b></div><div style="background:#e9f0ef;height:22px;overflow:hidden;border-radius:5px;margin-top:5px"><div style="background:'+z[2]+';height:100%;width:'+(100*z[1]/max).toFixed(2)+'%;border-radius:5px"></div></div></div>').join('');
+ }
+ sel.addEventListener('change',render);render();
+})();
+</script>
+
+
+
+<div class="sectionhead" id="chirpsmultianual">
+ <div><div class="overline">Fase 3Q · Extensión multianual · 1996–2000</div>
+ <h2>Tres productos climáticos sobre los mismos meses observados</h2>
+ <p>Comparación con SENAMHI de PISCOp v3.0, CHIRPS v3 y ERA5-Seamless. Primer bloque completo: 300 meses-estación y 900 pares de precipitación mensual, sin incidencias.</p></div>
+</div>
+<section class="panel" aria-labelledby="t3qm">
+ <div class="overline" id="t3qm">Comparación estadística y sensibilidad a 1998</div>
+ <p class="notice"><b>Lectura del análisis:</b> PISCOp obtuvo el menor error absoluto medio en el bloque 1996–2000 en las cinco estaciones; al excluir 1998, CHIRPS obtuvo el menor MAE en Cueva Blanca. Son resultados exploratorios con ubicaciones documentales provisionales y posible dependencia de datos instrumentales.</p>
+ <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:end;margin:17px 0">
+   <label><b>Estación SENAMHI</b><select id="sel3qm" style="display:block;width:260px;max-width:100%;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+   <label><b>Periodo de análisis</b><select id="periodo3qm" style="display:block;width:240px;max-width:100%;margin-top:6px"><option value="0">1996–2000 (60 meses)</option><option value="1">1996–2000 sin 1998 (48 meses)</option></select></label>
+ </div>
+ <p class="muted sm" id="desc3qm" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Comparación de errores multianuales con SENAMHI"><thead><tr><th>Producto</th><th>MAE mensual (mm)</th><th>RMSE mensual (mm)</th><th>Sesgo acumulado (%)</th><th>Meses</th></tr></thead><tbody id="tabla3qm"></tbody></table></div>
+ <div id="grafico3qm" role="img" aria-label="Gráfico horizontal de MAE mensual por producto" style="margin-top:18px"></div>
+ <p class="muted sm" style="margin-top:13px"><b>Importante:</b> El MAE mide la magnitud típica del error mensual. El sesgo acumulado conserva la dirección de la subestimación o sobreestimación; ninguno de los dos demuestra precisión fuera de las cinco estaciones. Esta sección no es un pronóstico.</p>
+ <p class="sm"><a href="VALIDACION_3Q_MULTIANUAL.md">Informe 1996–2000</a> · <a href="datos/comparacion_3q_multianual_1996_2000.csv">Datos mensuales comparados</a> · <a href="datos/metricas_3q_multianual_1996_2000.csv">Estadísticas completas</a> · <a href="scripts/validacion_3q_bloque_1996_2000.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const stations=["Jayanca (La Viña)","Cayaltí","Reque","Lambayeque","Cueva Blanca"];
+ const models=["PISCOp v3.0","CHIRPS v3","ERA5-Seamless"];
+ const values=[[1,1,1,48,4.069,6.074,-13.79],[1,2,1,48,11.812,22.007,179.18],[1,0,1,48,2.244,5.215,-27.36],[1,1,0,60,5.178,12.999,7.01],[1,2,0,60,22.452,66.399,152.76],[1,0,0,60,4.006,11.164,5.71],[4,1,1,48,22.371,30.927,-23.53],[4,2,1,48,119.185,189.432,190.36],[4,0,1,48,29.199,40.284,-34.22],[4,1,0,60,32.409,72.387,-3.24],[4,2,0,60,223.31,542.01,337.91],[4,0,0,60,30.752,42.359,-23.57],[0,1,1,48,4.369,8.307,-13.64],[0,2,1,48,94.535,154.196,1370.36],[0,0,1,48,2.333,8.768,-22.33],[0,1,0,60,13.915,47.422,-36.75],[0,2,0,60,178.518,437.779,608.83],[0,0,0,60,4.078,12.802,-11.67],[3,1,1,48,2.314,4.827,-21.3],[3,2,1,48,6.999,12.711,237.5],[3,0,1,48,0.843,1.895,-20.59],[3,1,0,60,5.039,18.24,37.96],[3,2,0,60,22.109,74.236,317.43],[3,0,0,60,1.28,3.423,-4.39],[2,1,1,48,2.969,6.647,-12.15],[2,2,1,48,6.465,13.111,248.78],[2,0,1,48,1.053,2.64,0.68],[2,1,0,60,4.028,9.133,25.18],[2,2,0,60,15.398,50.139,258.85],[2,0,0,60,1.138,2.657,3.92]];
+ const st=document.getElementById('sel3qm'),period=document.getElementById('periodo3qm');
+ const tbody=document.getElementById('tabla3qm'),chart=document.getElementById('grafico3qm'),desc=document.getElementById('desc3qm');
+ if(!st||!period||!tbody||!chart)return;
+ function f(n,k=2){return Number(n).toLocaleString('es-PE',{minimumFractionDigits:k,maximumFractionDigits:k});}
+ function draw(){
+   const ix=Number(st.value),stratum=Number(period.value);
+   const data=models.map((m,i)=>values.find(v=>v[0]===ix&&v[1]===i&&v[2]===stratum)).filter(Boolean);
+   if(data.length!==3){desc.textContent='Datos incompletos';return;}
+   desc.textContent=stations[ix]+' · '+(stratum?'48':'60')+' meses completos por producto. Menor MAE mensual = mejor concordancia observada en esta muestra.';
+   tbody.innerHTML=data.map((v,i)=>'<tr><td><b>'+models[i]+'</b></td><td>'+f(v[4])+'</td><td>'+f(v[5])+'</td><td>'+(v[6]>0?'+':'')+f(v[6])+' %</td><td>'+v[3]+'</td></tr>').join('');
+   const colors=['#c38b2c','#7b6ab8','#4c7ba3'];
+   const max=Math.max(...data.map(v=>v[4]))*1.04||1;
+   chart.innerHTML=data.map((v,i)=>'<div style="margin:11px 0"><div style="display:flex;justify-content:space-between;gap:9px;font-size:13px"><b>'+models[i]+'</b><span>'+f(v[4])+' mm/mes</span></div><div style="background:#e9f0ef;border-radius:5px;height:22px;overflow:hidden;margin-top:5px"><div style="height:100%;background:'+colors[i]+';width:'+(100*v[4]/max).toFixed(2)+'%"></div></div></div>').join('');
+ }
+ st.addEventListener('change',draw);period.addEventListener('change',draw);draw();
+})();
+</script>
+
+
+<div class="sectionhead" id="validacion20">
+ <div><div class="overline">Fase 3Q · Resultado consolidado · 1996–2015</div>
+ <h2>Validación histórica de tres productos de precipitación</h2>
+ <p>Los tres productos se compararon con exactamente los mismos 1 109 meses-estación completos de cinco series SENAMHI. Se obtuvieron 3 327 comparaciones emparejadas, tras descargar los GeoTIFF CHIRPS v3.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo20">
+ <div class="overline" id="titulo20">Cobertura instrumental · 20 años de calendario</div>
+ <p class="notice"><b>Resultado científico:</b> sobre la serie disponible, PISCOp ofrece el menor error absoluto mensual en las cinco estaciones. Sin incluir 1998, CHIRPS presenta un MAE ligeramente menor que PISCOp en Cueva Blanca. ERA5-Seamless mantiene sobreestimaciones importantes.</p>
+ <p class="muted sm"><b>Cobertura:</b> 1 109 meses-estación válidos de 1 200 posibles en 1996–2015 (92,42 %). El 100 % de los meses válidos se emparejó con los tres productos. Los meses faltantes no se consideraron días sin lluvia. La referencia climática de 1996–2025 todavía no está validada instrumentalmente en su totalidad.</p>
+ <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:end;margin:17px 0">
+   <label><b>Estación SENAMHI</b><select id="estacion20" style="display:block;width:260px;max-width:100%;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+   <label><b>Periodo comparado</b><select id="periodo20" style="display:block;width:260px;max-width:100%;margin-top:6px"><option value="0">Meses válidos de 1996–2015</option><option value="1">Excluyendo completamente 1998</option></select></label>
+ </div>
+ <p class="muted sm" id="resultado20" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Errores de PISCOp CHIRPS y ERA5 respecto a SENAMHI 1996-2015">
+ <thead><tr><th>Producto</th><th>MAE mensual (mm)</th><th>RMSE (mm)</th><th>Sesgo acumulado (%)</th><th>Correlación Pearson</th><th>Meses</th></tr></thead><tbody id="tabla20"></tbody></table></div>
+ <div id="grafico20" role="img" aria-label="Barras comparativas del error absoluto medio mensual por producto" style="margin-top:20px"></div>
+ <p class="muted sm" style="margin-top:12px"><b>Precauciones:</b> ubicación histórica exacta de las estaciones todavía provisional; PISCOp y CHIRPS pueden incluir estaciones en su elaboración, de modo que esta evaluación no es completamente independiente. Los resultados no autorizan predicciones ni alertas fitosanitarias.</p>
+ <p class="sm"><a href="VALIDACION_3Q_1996_2015.md">Informe científico completo</a> · <a href="datos/metricas_3q_1996_2015.csv">Métricas (CSV)</a> · <a href="datos/estado_3q_1996_2015.json">Cobertura auditada</a> · <a href="datos/comparacion_3q_1996_2015.csv">Datos emparejados</a> · <a href="scripts/consolidar_3q_1996_2015.py">Análisis reproducible</a></p>
+</section>
+<script>
+(function(){
+ const stations=["Jayanca (La Viña)","Cayaltí","Reque","Lambayeque","Cueva Blanca"];
+ const models=["PISCOp v3.0","CHIRPS v3","ERA5-Seamless"];
+ const vals=[[1,1,1,223,3.394,5.789,25.65,0.7393],[1,2,1,223,12.954,25.367,319.26,0.7006],[1,0,1,223,1.327,3.272,4.81,0.9002],[1,1,0,235,3.712,8.21,22.56,0.9557],[1,2,0,235,15.613,40.465,248.89,0.831],[1,0,0,235,1.824,6.035,11.82,0.9856],[4,1,1,206,28.052,40.01,-33.81,0.8141],[4,2,1,206,101.387,186.863,140.59,0.7131],[4,0,1,206,28.808,40.702,-37.48,0.8163],[4,1,0,218,30.502,52.386,-27.73,0.7327],[4,2,0,218,131.025,325.5,183.11,0.5737],[4,0,0,218,29.257,41.255,-34.43,0.8063],[0,1,1,207,6.664,16.892,-19.99,0.7188],[0,2,1,207,81.214,145.233,967.07,0.7519],[0,0,1,207,2.643,9.404,-23.27,0.9488],[0,1,0,219,9.154,29.508,-30.02,0.9197],[0,2,0,219,104.953,259.292,724.56,0.9385],[0,0,0,219,3.104,10.566,-16.89,0.9886],[3,1,1,192,2.609,5.312,-13.65,0.6446],[3,2,1,192,6.861,13.252,231.14,0.7017],[3,0,1,192,0.913,2.166,-9.08,0.9518],[3,1,0,204,3.394,10.905,13.63,0.8834],[3,2,0,204,11.313,41.811,273.7,0.8839],[3,0,0,204,1.038,2.649,-4.87,0.9798],[2,1,1,221,2.7,5.254,-1.06,0.3229],[2,2,1,221,5.402,10.687,202.62,0.5704],[2,0,1,221,0.999,2.435,3.32,0.8907],[2,1,0,233,2.986,6.209,12.67,0.8875],[2,2,0,233,7.757,26.838,221.78,0.8782],[2,0,0,233,1.023,2.45,3.98,0.975]];
+ const sel=document.getElementById('estacion20'),period=document.getElementById('periodo20');
+ const tbody=document.getElementById('tabla20'),plot=document.getElementById('grafico20'),summary=document.getElementById('resultado20');
+ if(!sel||!period||!tbody||!plot)return;
+ const fmt=(v,d=2)=>Number(v).toLocaleString('es-PE',{maximumFractionDigits:d,minimumFractionDigits:d});
+ function draw(){
+  const s=Number(sel.value),p=Number(period.value);
+  const rows=models.map((_,i)=>vals.find(z=>z[0]===s&&z[1]===i&&z[2]===p));
+  if(rows.some(r=>!r)){tbody.innerHTML='<tr><td colspan="6">Sin resultados en esta selección</td></tr>';return;}
+  const lim=Math.max(...rows.map(r=>r[4]))*1.05||1;
+  const colors=['#c38b2c','#785db0','#4c7ba3'];
+  summary.textContent=stations[s]+' · '+rows[0][3]+' meses instrumentales completos por producto; los tres productos tienen idéntica cobertura.';
+  tbody.innerHTML=rows.map((r,i)=>'<tr><td><b>'+models[i]+'</b></td><td>'+fmt(r[4])+'</td><td>'+fmt(r[5])+'</td><td>'+(r[6]>0?'+':'')+fmt(r[6])+' %</td><td>'+fmt(r[7],3)+'</td><td>'+r[3]+'</td></tr>').join('');
+  plot.innerHTML=rows.map((r,i)=>'<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><b>'+models[i]+'</b><span>'+fmt(r[4])+' mm/mes</span></div><div style="height:22px;background:#e9f0ef;border-radius:5px;overflow:hidden;margin-top:5px"><div style="width:'+(100*r[4]/lim).toFixed(2)+'%;height:100%;background:'+colors[i]+'"></div></div></div>').join('');
+ }
+ sel.addEventListener('change',draw);period.addEventListener('change',draw);draw();
+})();
+</script>
+
+
+<div class="sectionhead" id="sensibilidad3r">
+ <div><div class="overline">Fase 3R · Control de calidad geográfico · Versión 1.0</div>
+ <h2>¿Qué ocurre si cambia la coordenada de una estación?</h2>
+ <p>Se compararon 24 mapas mensuales CHIRPS v3 de 1998 y 2000 sobre dos coordenadas documentales por estación. La ubicación original y la alternativa se examinan con los mismos datos medidos por SENAMHI.</p></div>
+</div>
+<section class="panel" aria-labelledby="title3r">
+ <div class="overline" id="title3r">Sensibilidad de las celdas de lluvia</div>
+ <p class="notice"><b>Hallazgo comprobado:</b> Cayaltí y Cueva Blanca cambian de píxel al cambiar de coordenada; Jayanca, Reque y Lambayeque conservan el mismo píxel CHIRPS (0,05°) en esta prueba. La diferencia de georreferenciación no demuestra que una estación haya sido trasladada.</p>
+ <p class="muted sm"><b>Estado documental:</b> las coordenadas alternativas son candidatas. En Cueva Blanca existen registros con códigos y ubicaciones discrepantes cuya equivalencia no se ha acreditado. Las comparaciones corresponden exclusivamente a 1998 y 2000, sin corrección de las series originales SENAMHI.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:15px;align-items:end;margin:17px 0">
+   <label><b>Estación SENAMHI</b><select id="estacion3r" style="display:block;max-width:100%;width:270px;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+   <label><b>Año auditado</b><select id="year3r" style="display:block;min-width:145px;margin-top:6px"><option value="1998">1998</option><option value="2000">2000</option></select></label>
+ </div>
+ <p class="muted sm" id="summary3r" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Sensibilidad de precipitación a coordenadas candidatas"><thead><tr><th>CHIRPS</th><th>Precipitación anual</th><th>MAE mensual</th></tr></thead><tbody id="rows3r"></tbody></table></div>
+ <div id="bars3r" role="img" aria-label="Precipitación anual CHIRPS en dos coordenadas candidatas" style="margin-top:20px"></div>
+ <p class="muted sm" style="margin-top:14px">Este panel muestra <b>sensibilidad espacial del producto de precipitación</b>, no confirmación geográfica. El valor que más se acerca a SENAMHI no identifica por sí solo la estación histórica correcta.</p>
+ <p class="sm"><a href="SENSIBILIDAD_3R.md">Informe estadístico</a> · <a href="METADATOS_3R.md">Fuentes y códigos de estaciones</a> · <a href="datos/catalogo_coordenadas_3r.csv">Catálogo de coordenadas</a> · <a href="datos/sensibilidad_3r_resumen.csv">Resultados CSV</a> · <a href="scripts/sensibilidad_geografica_3r.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const stations=["Jayanca (La Viña)","Cayaltí","Reque","Lambayeque","Cueva Blanca"];
+ const rows=[[1,1998,2.415,0,657.559,609.704,-47.855,9.616,13.142],[1,2000,2.415,0,53.283,49.322,-3.961,3.335,3.568],[4,1998,6.339,0,1515.965,1655.767,139.802,72.559,83.634],[4,2000,6.339,0,574.097,712.494,138.397,26.087,25.287],[0,1998,1.683,12,826.757,826.757,0,52.099,52.099],[0,2000,1.683,12,67.109,67.109,0,2.972,2.972],[3,1998,3.356,12,462.126,462.126,0,15.941,15.941],[3,2000,3.356,12,11.169,11.169,0,1.727,1.727],[2,1998,0.042,12,331.993,331.993,0,8.264,8.264],[2,2000,0.042,12,10.627,10.627,0,1.724,1.724]];
+ const station=document.getElementById('estacion3r'),year=document.getElementById('year3r');
+ const info=document.getElementById('summary3r'),table=document.getElementById('rows3r'),chart=document.getElementById('bars3r');
+ if(!station||!year||!info||!table||!chart)return;
+ const f=(x,d=2)=>Number(x).toLocaleString('es-PE',{maximumFractionDigits:d,minimumFractionDigits:d});
+ function draw(){
+  const s=Number(station.value),a=Number(year.value);
+  const x=rows.find(r=>r[0]===s&&r[1]===a);if(!x){info.textContent='Sin comparación disponible';return;}
+  const same=x[3]===12;
+  const diff=x[6],sign=diff>0?'+':'';
+  info.textContent=stations[s]+' · Distancia entre coordenadas candidatas: '+f(x[2],3)+' km. '+x[3]+'/12 meses en el mismo píxel. Cambio en precipitación estimada: '+sign+f(diff,2)+' mm.';
+  const colors=['#127f80','#785db0'];
+  const vals=[x[4],x[5]],labels=['Coordenada utilizada 3Q','Coordenada documental alternativa'];
+  table.innerHTML=vals.map((v,i)=>'<tr><td><b>'+labels[i]+'</b></td><td>'+f(v,2)+' mm</td><td>'+f(x[i===0?7:8],2)+' mm/mes</td></tr>').join('');
+  const lim=Math.max(...vals)*1.05||1;
+  chart.innerHTML=vals.map((v,i)=>'<div style="margin:13px 0"><div style="display:flex;gap:10px;justify-content:space-between;font-size:13px"><b>'+labels[i]+'</b><span>'+f(v,2)+' mm</span></div><div style="height:22px;background:#e9f0ef;overflow:hidden;border-radius:5px;margin-top:5px"><div style="width:'+(100*v/lim).toFixed(2)+'%;height:100%;background:'+colors[i]+'"></div></div></div>').join('');
+ }
+ station.addEventListener('change',draw);year.addEventListener('change',draw);draw();
+})();
+</script>
+
+
+<div class="sectionhead" id="sensibilidad3r20">
+ <div><div class="overline">Fase 3R · Sensibilidad espacial multianual · 1996–2015</div>
+ <h2>¿Cuánto influye la ubicación en veinte años de estimaciones CHIRPS?</h2>
+ <p>La misma serie de precipitación observada por SENAMHI se contrastó contra CHIRPS extraído de dos coordenadas documentales por estación. Se analizaron 1 109 meses-estación completos y 2 218 píxeles, sin fallos de extracción.</p></div>
+</div>
+<section class="panel" aria-labelledby="title3r20">
+ <div class="overline" id="title3r20">Evaluación reproducible por estación</div>
+ <p class="notice"><b>Resultado:</b> Jayanca, Reque y Lambayeque conservaron el mismo píxel en ambas coordenadas para todos los meses disponibles; Cayaltí y Cueva Blanca cambiaron de píxel. La elección de la ubicación histórica <b>no debe basarse</b> en cuál consigue el MAE más bajo.</p>
+ <p class="muted sm">Coordenadas documentales <b>provisionales</b>. Los códigos y periodos instrumentales deben verificarse con SENAMHI. No se han reemplazado los archivos históricos ni demostrado traslados de estaciones.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:15px;align-items:end;margin:18px 0">
+   <label><b>Estación</b><select id="st3r20" style="display:block;width:260px;max-width:100%;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+   <label><b>Periodo</b><select id="per3r20" style="display:block;width:285px;max-width:100%;margin-top:6px"><option value="0">1996–2015, meses completos</option><option value="1">1996–2015, sin 1998</option></select></label>
+ </div>
+ <p id="inf3r20" class="muted sm" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Precipitación CHIRPS y errores según coordenada">
+ <thead><tr><th>Coordenada</th><th>CHIRPS acumulado (mm)</th><th>MAE mensual (mm)</th><th>RMSE mensual (mm)</th></tr></thead>
+ <tbody id="tab3r20"></tbody></table></div>
+ <div id="bars3r20" role="img" aria-label="Comparación del MAE en las coordenadas documentales" style="margin-top:21px"></div>
+ <p class="muted sm" style="margin-top:13px">La suma CHIRPS considera solo meses válidos de SENAMHI: <b>no</b> son 20 años completos para todas las estaciones. La prueba no constituye validación independiente de CHIRPS ni identificación definitiva de estaciones.</p>
+ <p class="sm"><a href="SENSIBILIDAD_3R_MULTIANUAL.md">Informe 1996–2015</a> · <a href="METADATOS_3R.md">Códigos y coordenadas documentales</a> · <a href="datos/metricas_sensibilidad_3r_1996_2015.csv">Estadísticas (CSV)</a> · <a href="datos/sensibilidad_3r_1996_2015.csv">Comparación mensual (CSV)</a> · <a href="SOLICITUD_DATOS_SENAMHI_3R.md">Solicitud preparada a SENAMHI</a></p>
+</section>
+<script>
+(function(){
+ const names=["Jayanca (La Viña)","Cayaltí","Reque","Lambayeque","Cueva Blanca"];
+ const rows=[[1,1,223,0,2.415,-147.858,3.394,3.14,1094.432,946.573,5.789,5.289],[1,0,235,0,2.415,-195.714,3.712,3.651,1751.991,1556.278,8.21,8.284],[4,1,206,0,6.339,1841.585,28.052,24.759,8878.139,10719.724,40.01,36.736],[4,0,218,0,6.339,1981.387,30.502,27.999,10394.104,12375.491,52.386,52.494],[0,1,207,207,1.683,0,6.664,6.664,1376.925,1376.925,16.892,16.892],[0,0,219,219,1.683,0,9.154,9.154,2203.683,2203.683,29.508,29.508],[3,1,192,192,3.356,0,2.609,2.609,457.053,457.053,5.312,5.312],[3,0,204,204,3.356,0,3.394,3.394,919.179,919.179,10.905,10.905],[2,1,221,221,0.042,0,2.7,2.7,501.848,501.848,5.254,5.254],[2,0,233,233,0.042,0,2.986,2.986,833.841,833.841,6.209,6.209]];
+ const sta=document.getElementById('st3r20'),per=document.getElementById('per3r20');
+ const info=document.getElementById('inf3r20'),table=document.getElementById('tab3r20'),bars=document.getElementById('bars3r20');
+ if(!sta||!per||!info||!table||!bars)return;
+ const fmt=(v,n=2)=>Number(v).toLocaleString('es-PE',{minimumFractionDigits:n,maximumFractionDigits:n});
+ function draw(){
+   const s=Number(sta.value),p=Number(per.value);
+   const x=rows.find(v=>v[0]===s&&v[1]===p);
+   if(!x){info.textContent='No hay registro en esta selección';return;}
+   const arrow=x[5]>0?'+':'';
+   info.textContent=names[s]+' · '+x[2]+' meses válidos · Distancia entre puntos: '+fmt(x[4],3)+' km. Píxeles iguales: '+x[3]+'/'+x[2]+'. Diferencia CHIRPS alternativo - original: '+arrow+fmt(x[5],2)+' mm.';
+   const titles=['Coordenada utilizada en 3Q','Coordenada alternativa documental'];
+   table.innerHTML=titles.map((n,i)=>'<tr><td><b>'+n+'</b></td><td>'+fmt(x[i===0?8:9])+'</td><td>'+fmt(x[i===0?6:7])+'</td><td>'+fmt(x[i===0?10:11])+'</td></tr>').join('');
+   const max=Math.max(x[6],x[7],0.0001)*1.05;
+   const colors=['#127f80','#7b6ab8'];
+   bars.innerHTML=titles.map((t,i)=>'<div style="margin:14px 0"><div style="display:flex;gap:12px;justify-content:space-between;font-size:13px"><b>'+t+'</b><span>'+fmt(x[i===0?6:7])+' mm/mes</span></div><div style="height:23px;background:#e8f0ef;overflow:hidden;border-radius:5px;margin-top:5px"><div style="height:100%;width:'+(100*x[i===0?6:7]/max).toFixed(2)+'%;background:'+colors[i]+'"></div></div></div>').join('');
+ }
+ sta.addEventListener('change',draw);per.addEventListener('change',draw);draw();
+})();
+</script>
+
+<section id="autor-contacto" class="panel autor-panel" aria-label="Autor y contacto del observatorio">
+ <div><div class="overline">Autoría y contacto</div><h2>ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA</h2><p>Autor del Observatorio Agroclimático y Fitosanitario de Lambayeque (OAF-Lambayeque).</p></div>
+ <a class="autor-telefono" href="tel:+51929304528" aria-label="Llamar al autor al +51 929 304 528">☎ +51 929 304 528</a>
+</section>
+
+
+<div class="sectionhead" id="intensidad3s">
+ <div><div class="overline">Fase 3S · Intensidad de lluvia y estacionalidad · Datos 1996–2015</div>
+ <h2>¿Qué modelo reproduce mejor los meses de lluvia significativa?</h2>
+ <p>Se comparan PISCOp v3.0, CHIRPS v3 y ERA5-Seamless con exactamente los mismos 1 109 meses-estación de SENAMHI, diferenciando clases de precipitación observada.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3s">
+ <div class="overline" id="titulo3s">Comparación condicionada por precipitación observada</div>
+ <p class="notice"><b>Hallazgo:</b> un producto puede mostrar menor error al considerar todos los meses y no ser el de menor error en los meses más lluviosos. En Cayaltí (≥20 mm observados), CHIRPS obtuvo menor MAE que PISCOp para el periodo evaluado.</p>
+ <p class="muted sm"><b>Criterios descriptivos:</b> seco (menos de 1 mm/mes); lluvia baja (de 1 a menos de 20 mm); lluvioso (20 mm o más); subgrupo intenso (50 mm o más). No son umbrales oficiales de alerta ni pronósticos.</p>
+ <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:end;margin:18px 0">
+  <label><b>Estación</b><select id="st3s" style="display:block;width:230px;max-width:100%;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+  <label><b>Lluvia medida por SENAMHI</b><select id="cl3s" style="display:block;width:220px;max-width:100%;margin-top:6px">
+    <option value="0">Todos los meses válidos</option><option value="1">Seco: &lt;1 mm</option><option value="2">Baja: 1 a &lt;20 mm</option><option value="3" selected>Lluvioso: ≥20 mm</option><option value="4">Subgrupo intenso: ≥50 mm</option>
+  </select></label>
+  <label><b>Periodo histórico</b><select id="pr3s" style="display:block;width:210px;max-width:100%;margin-top:6px"><option value="0">1996–2015</option><option value="1">1996–2015 sin 1998</option></select></label>
+ </div>
+ <p id="descripcion3s" class="muted sm" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Errores retrospectivos por precipitación observada">
+ <thead><tr><th>Producto</th><th>Meses</th><th>MAE (mm/mes)</th><th>RMSE (mm/mes)</th><th>Sesgo (mm/mes)</th></tr></thead><tbody id="tabla3s"></tbody></table></div>
+ <div id="grafico3s" role="img" aria-label="Barras comparativas de MAE mensual por modelo de lluvia" style="margin-top:21px"></div>
+ <div style="margin-top:24px"><div class="overline">Coincidencia histórica de meses lluviosos · No pronóstico</div>
+ <p class="muted sm">Se compara si el mes supera el umbral tanto en SENAMHI como en cada estimación. F1 resume la clasificación retrospectiva. Con pocos meses intensos, estos indicadores son inestables.</p>
+ <label><b>Umbral del mes</b><select id="umbral3s" style="display:inline-block;margin-left:12px"><option value="20">≥20 mm</option><option value="50">≥50 mm</option></select></label>
+ <div class="tablewrap" style="margin-top:10px"><table aria-label="Clasificación retrospectiva de meses lluviosos"><thead><tr><th>Producto</th><th>Meses observados que superan umbral</th><th>Verdaderos positivos</th><th>Falsas coincidencias positivas</th><th>Omisiones</th><th>F1</th></tr></thead><tbody id="eventos3s"></tbody></table></div>
+ </div>
+ <p class="muted sm" style="margin-top:16px"><b>Limitaciones:</b> algunas muestras costeras son pequeñas; la identidad geográfica histórica de las estaciones aún requiere cotejo; PISCOp y CHIRPS pueden incorporar pluviómetros SENAMHI. Sin registros 2016–2025 validados ni modelos operativos de alerta.</p>
+ <p class="sm"><a href="ANALISIS_3S.md">Informe científico 3S</a> · <a href="datos/metricas_intensidad_3s.csv">MAE/RMSE por intensidad</a> · <a href="datos/clasificacion_mensual_3s.csv">Conteos de coincidencia mensual</a> · <a href="datos/metricas_estacionales_3s.csv">Resultados estacionales</a> · <a href="datos/cobertura_3s.csv">Cobertura observada</a> · <a href="scripts/analisis_3s_intensidad.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const stations=["Jayanca (La Viña)","Cayaltí","Reque","Lambayeque","Cueva Blanca"];
+ const products=["PISCOp v3.0","CHIRPS v3","ERA5-Seamless"];
+ const rows=[[1,1,2,1,115,4.635,6.832,1.127],[1,2,2,1,115,17.89,28.805,17.252],[1,0,2,1,115,1.604,2.833,0.462],[1,1,3,1,8,10.522,13.014,-4.205],[1,2,3,1,8,59.666,71.195,55.439],[1,0,3,1,8,11.363,13.428,-2.887],[1,1,1,1,100,1.397,2.738,1.274],[1,2,1,1,100,3.542,8.678,3.534],[1,0,1,1,100,0.206,0.462,0.119],[1,1,0,1,223,3.394,5.789,1.002],[1,2,0,1,223,12.954,25.367,12.47],[1,0,0,1,223,1.327,3.272,0.188],[1,1,2,0,117,4.58,6.776,1.098],[1,2,2,0,117,17.614,28.559,16.961],[1,0,2,0,117,1.6,2.816,0.43],[1,1,4,0,3,33.782,52.685,29.675],[1,2,4,0,3,210.273,274.2,210.273],[1,0,4,0,3,41.096,45.266,41.096],[1,1,3,0,12,15.841,28.436,4.996],[1,2,3,0,12,102.753,153.217,99.935],[1,0,3,0,12,18.209,25.18,8.709],[1,1,1,0,106,1.381,2.685,1.264],[1,2,1,0,106,3.539,8.498,3.531],[1,0,1,0,106,0.216,0.479,0.133],[1,1,0,0,235,3.712,8.21,1.372],[1,2,0,0,235,15.613,40.465,15.14],[1,0,0,0,235,1.824,6.035,0.719],[4,1,2,1,43,7.026,8.279,-4.383],[4,2,2,1,43,13.658,23.674,5.547],[4,0,2,1,43,5.124,6.475,-4.64],[4,1,4,1,104,42.736,53.639,-33.579],[4,2,4,1,104,167.12,253.678,157.212],[4,0,4,1,104,45.709,55.231,-38.441],[4,1,3,1,154,35.403,46.057,-28.372],[4,2,3,1,154,131.539,215.747,120.634],[4,0,3,1,154,36.946,46.94,-31.499],[4,1,1,1,9,2.725,4.151,2.525],[4,2,1,1,9,4.6,8.885,4.6],[4,0,1,1,9,2.71,4.077,2.542],[4,1,0,1,206,28.052,40.01,-22.014],[4,2,0,1,206,101.387,186.863,91.541],[4,0,0,1,206,28.808,40.702,-24.405],[4,1,2,0,44,7.014,8.243,-4.431],[4,2,2,0,44,13.566,23.448,5.202],[4,0,2,0,44,5.156,6.476,-4.684],[4,1,4,0,110,47.115,71.566,-25.956],[4,2,4,0,110,210.549,418.71,199.62],[4,0,4,0,110,45.846,55.523,-35.612],[4,1,3,0,164,38.513,60.239,-23.268],[4,2,3,0,164,170.271,375.079,158.934],[4,0,3,0,164,37.353,47.436,-29.086],[4,1,1,0,10,2.452,3.938,2.272],[4,2,1,0,10,4.2,8.431,4.2],[4,0,1,0,10,2.519,3.876,2.368],[4,1,0,0,218,30.502,52.386,-18.294],[4,2,0,0,218,131.025,325.5,120.807],[4,0,0,0,218,29.257,41.255,-22.718],[0,1,2,1,68,5.863,7.97,2.802],[0,2,2,1,68,107.984,145.236,107.81],[0,0,2,1,68,1.345,2.176,-0.172],[0,1,4,1,12,54.336,65.1,-54.336],[0,2,4,1,12,355.408,407.007,342.408],[0,0,4,1,12,30.655,37.888,-30.334],[0,1,3,1,20,38.182,51.514,-36.878],[0,2,3,1,20,315.84,364.544,308.04],[0,0,3,1,20,21.334,29.904,-20.673],[0,1,1,1,119,1.825,3.749,1.706],[0,2,1,1,119,26.484,47.983,26.474],[0,0,1,1,119,0.243,0.916,0.207],[0,1,0,1,207,6.664,16.892,-1.662],[0,2,0,1,207,81.214,145.233,80.398],[0,0,0,1,207,2.643,9.404,-1.935],[0,1,2,0,70,5.754,7.862,2.72],[0,2,2,0,70,106.44,143.682,106.271],[0,0,2,0,70,1.363,2.194,-0.221],[0,1,4,0,16,79.131,106.781,-78.712],[0,2,4,0,16,639.881,877.934,630.131],[0,0,4,0,16,30.999,38.205,-30.759],[0,1,3,0,24,57.404,87.715,-56.039],[0,2,3,0,24,512.083,736.045,505.583],[0,0,3,0,24,23.117,31.632,-22.566],[0,1,1,0,125,1.794,3.691,1.674],[0,2,1,0,125,25.951,47.034,25.942],[0,0,1,0,125,0.237,0.894,0.202],[0,1,0,0,219,9.154,29.508,-4.316],[0,2,0,0,219,104.953,259.292,104.181],[0,0,0,0,219,3.104,10.566,-2.428],[3,1,2,1,60,3.653,5.144,-1.208],[3,2,2,1,60,12.783,19.668,11.428],[3,0,2,1,60,1.553,2.505,-0.804],[3,1,4,1,1,29.509,29.509,-29.509],[3,2,4,1,1,26.27,26.27,26.27],[3,0,4,1,1,7.251,7.251,-7.251],[3,1,3,1,7,19.093,20.75,-19.093],[3,2,3,1,7,24.443,29.408,23.009],[3,0,3,1,7,7.403,8.277,-3.794],[3,1,1,1,125,1.185,2.553,1.071],[3,2,1,1,125,3.034,5.971,3.014],[3,0,1,1,125,0.243,0.598,0.214],[3,1,0,1,192,2.609,5.312,-0.376],[3,2,0,1,192,6.861,13.252,6.372],[3,0,0,1,192,0.913,2.166,-0.25],[3,1,2,0,63,3.725,5.193,-0.963],[3,2,2,0,63,13.003,20.098,11.713],[3,0,2,0,63,1.532,2.461,-0.736],[3,1,4,0,3,66.951,80.825,47.278],[3,2,4,0,3,226.377,284.358,226.377],[3,0,4,0,3,13.044,13.868,-0.52],[3,1,3,0,10,30.679,46.631,3.59],[3,2,3,0,10,110.462,180.752,109.458],[3,0,3,0,10,8.473,10.025,-1.983],[3,1,1,0,131,1.151,2.498,1.031],[3,2,1,0,131,2.932,5.837,2.913],[3,0,1,0,131,0.232,0.584,0.204],[3,1,0,0,204,3.394,10.905,0.54],[3,2,0,0,204,11.313,41.811,10.853],[3,0,0,0,204,1.038,2.649,-0.193],[2,1,2,1,68,4.1,5.641,-1.588],[2,2,2,1,68,8.559,13.794,6.795],[2,0,2,1,68,2.056,3.644,-0.287],[2,1,3,1,5,20.737,23.179,-20.737],[2,2,3,1,5,22.19,24.249,13.466],[2,0,3,1,5,6.63,7.857,-1.103],[2,1,1,1,148,1.447,2.906,1.394],[2,2,1,1,148,3.385,7.954,3.367],[2,0,1,1,148,0.323,0.816,0.283],[2,1,0,1,221,2.7,5.254,-0.024],[2,2,0,1,221,5.402,10.687,4.65],[2,0,0,1,221,0.999,2.435,0.076],[2,1,2,0,70,4.29,6.038,-1.236],[2,2,2,0,70,9.981,16.989,8.268],[2,0,2,0,70,2.065,3.613,-0.211],[2,1,4,0,2,34.429,34.967,34.429],[2,2,4,0,2,243.2,260.091,243.2],[2,0,4,0,2,5.455,6.185,2.917],[2,1,3,0,7,24.649,27.076,-4.975],[2,2,3,0,7,85.336,140.527,79.104],[2,0,3,0,7,6.294,7.418,0.046],[2,1,1,0,156,1.429,2.886,1.379],[2,2,1,0,156,3.278,7.757,3.262],[2,0,1,0,156,0.32,0.8,0.282],[2,1,0,0,233,2.986,6.209,0.402],[2,2,0,0,233,7.757,26.838,7.044],[2,0,0,0,233,1.023,2.45,0.127]];
+ const events=[[1,1,1,20,8,14,7,7,1,0.6364,0.5,0.875],[1,2,1,20,8,55,7,48,1,0.2222,0.1273,0.875],[1,0,1,20,8,12,7,5,1,0.7,0.5833,0.875],[1,1,1,50,0,2,0,2,0,null,0,null],[1,2,1,50,0,24,0,24,0,null,0,null],[1,0,1,50,0,0,0,0,0,null,null,null],[1,1,0,20,12,18,11,7,1,0.7333,0.6111,0.9167],[1,2,0,20,12,59,11,48,1,0.3099,0.1864,0.9167],[1,0,0,20,12,16,11,5,1,0.7857,0.6875,0.9167],[1,1,0,50,3,5,3,2,0,0.75,0.6,1],[1,2,0,50,3,28,3,25,0,0.1935,0.1071,1],[1,0,0,50,3,3,3,0,0,1,1,1],[4,1,1,20,154,113,112,1,42,0.839,0.9912,0.7273],[4,2,1,20,154,148,138,10,16,0.9139,0.9324,0.8961],[4,0,1,20,154,110,110,0,44,0.8333,1,0.7143],[4,1,1,50,104,61,59,2,45,0.7152,0.9672,0.5673],[4,2,1,50,104,127,97,30,7,0.8398,0.7638,0.9327],[4,0,1,50,104,57,56,1,48,0.6957,0.9825,0.5385],[4,1,0,20,164,120,119,1,45,0.838,0.9917,0.7256],[4,2,0,20,164,157,147,10,17,0.9159,0.9363,0.8963],[4,0,0,20,164,118,118,0,46,0.8369,1,0.7195],[4,1,0,50,110,67,64,3,46,0.7232,0.9552,0.5818],[4,2,0,50,110,135,102,33,8,0.8327,0.7556,0.9273],[4,0,0,50,110,62,60,2,50,0.6977,0.9677,0.5455],[0,1,1,20,20,20,11,9,9,0.55,0.55,0.55],[0,2,1,20,20,122,20,102,0,0.2817,0.1639,1],[0,0,1,20,20,17,15,2,5,0.8108,0.8824,0.75],[0,1,1,50,12,4,4,0,8,0.5,1,0.3333],[0,2,1,50,12,78,11,67,1,0.2444,0.141,0.9167],[0,0,1,50,12,7,7,0,5,0.7368,1,0.5833],[0,1,0,20,24,24,15,9,9,0.625,0.625,0.625],[0,2,0,20,24,129,24,105,0,0.3137,0.186,1],[0,0,0,20,24,21,19,2,5,0.8444,0.9048,0.7917],[0,1,0,50,16,8,8,0,8,0.6667,1,0.5],[0,2,0,50,16,83,15,68,1,0.303,0.1807,0.9375],[0,0,0,50,16,11,11,0,5,0.8148,1,0.6875],[3,1,1,20,7,2,2,0,5,0.4444,1,0.2857],[3,2,1,20,7,28,7,21,0,0.4,0.25,1],[3,0,1,20,7,6,5,1,2,0.7692,0.8333,0.7143],[3,1,1,50,1,0,0,0,1,null,null,0],[3,2,1,50,1,11,1,10,0,0.1667,0.0909,1],[3,0,1,50,1,1,1,0,0,1,1,1],[3,1,0,20,10,5,5,0,5,0.6667,1,0.5],[3,2,0,20,10,32,10,22,0,0.4762,0.3125,1],[3,0,0,20,10,9,8,1,2,0.8421,0.8889,0.8],[3,1,0,50,3,2,2,0,1,0.8,1,0.6667],[3,2,0,50,3,15,3,12,0,0.3333,0.2,1],[3,0,0,50,3,3,3,0,0,1,1,1],[2,1,1,20,5,1,0,1,5,null,0,0],[2,2,1,20,5,25,5,20,0,0.3333,0.2,1],[2,0,1,20,5,6,4,2,1,0.7273,0.6667,0.8],[2,1,1,50,0,0,0,0,0,null,null,null],[2,2,1,50,0,5,0,5,0,null,0,null],[2,0,1,50,0,0,0,0,0,null,null,null],[2,1,0,20,7,4,2,2,5,0.3636,0.5,0.2857],[2,2,0,20,7,29,7,22,0,0.3889,0.2414,1],[2,0,0,20,7,9,6,3,1,0.75,0.6667,0.8571],[2,1,0,50,2,2,2,0,0,1,1,1],[2,2,0,50,2,8,2,6,0,0.4,0.25,1],[2,0,0,50,2,2,2,0,0,1,1,1]];
+ const sel=document.getElementById('st3s'),cls=document.getElementById('cl3s'),period=document.getElementById('pr3s'),threshold=document.getElementById('umbral3s');
+ const info=document.getElementById('descripcion3s'),tbody=document.getElementById('tabla3s'),chart=document.getElementById('grafico3s'),eventBody=document.getElementById('eventos3s');
+ if(!sel||!cls||!period||!threshold||!tbody||!chart||!eventBody)return;
+ const fmt=(v,d=2)=>Number(v).toLocaleString('es-PE',{minimumFractionDigits:d,maximumFractionDigits:d});
+ const cv=v=>v===null?'No calculable':fmt(v,3);
+ function draw(){
+  const st=Number(sel.value),cl=Number(cls.value),pr=Number(period.value),th=Number(threshold.value);
+  const data=products.map((_,i)=>rows.find(z=>z[0]===st&&z[1]===i&&z[2]===cl&&z[3]===pr));
+  const valid=data.filter(Boolean);
+  if(valid.length!==3){info.textContent='No hay meses completos para este estrato';tbody.innerHTML='';chart.innerHTML='';}
+  else{
+   const n=valid[0][4],max=Math.max(...valid.map(x=>x[5]))*1.04||1;
+   info.textContent=stations[st]+' · '+n+' meses observados completos en esta clase; mismas fechas en los tres productos.';
+   tbody.innerHTML=data.map((x,i)=>'<tr><td><b>'+products[i]+'</b></td><td>'+x[4]+'</td><td>'+fmt(x[5])+'</td><td>'+fmt(x[6])+'</td><td>'+(x[7]>0?'+':'')+fmt(x[7])+'</td></tr>').join('');
+   const colors=['#c18b38','#8466b3','#4b80a5'];
+   chart.innerHTML=data.map((x,i)=>'<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;gap:9px;font-size:13px"><b>'+products[i]+'</b><span>'+fmt(x[5])+' mm/mes</span></div><div style="height:22px;background:#eaf0f1;border-radius:5px;overflow:hidden;margin-top:5px"><div style="height:100%;width:'+(x[5]*100/max).toFixed(2)+'%;background:'+colors[i]+'"></div></div></div>').join('');
+  }
+  const e=products.map((_,i)=>events.find(x=>x[0]===st&&x[1]===i&&x[2]===pr&&x[3]===th));
+  eventBody.innerHTML=e.every(Boolean)?e.map((x,i)=>'<tr><td><b>'+products[i]+'</b></td><td>'+x[4]+'</td><td>'+x[6]+'</td><td>'+x[7]+'</td><td>'+x[8]+'</td><td>'+cv(x[9])+'</td></tr>').join(''):'<tr><td colspan="6">No disponible</td></tr>';
+ }
+ [sel,cls,period,threshold].forEach(el=>el.addEventListener('change',draw));draw();
+})();
+</script>
+
+
+<div class="sectionhead" id="independencia3t">
+ <div><div class="overline">Fase 3T · Robustez temporal · Validación externa pendiente</div>
+ <h2>¿Se mantiene el desempeño climático a lo largo de los años?</h2>
+ <p>Analizamos 92 combinaciones estación-año con al menos nueve meses completos, comparando PISCOp y CHIRPS sobre los mismos meses medidos por SENAMHI entre 1996 y 2015.</p></div>
+</div>
+<section class="panel" aria-labelledby="t3t">
+ <div class="overline" id="t3t">Concordancia histórica, sin independencia demostrada</div>
+ <p class="notice"><b>Resultado:</b> PISCOp tuvo menor MAE en 82 de 92 combinaciones estación-año evaluables; CHIRPS en las 10 restantes. En Cueva Blanca cada producto tuvo menor error en nueve años. La estabilidad temporal no equivale a validación independiente.</p>
+ <p class="muted sm"><b>Independencia externa pendiente de verificar:</b> 0 de las 15 combinaciones estación-producto tienen hasta ahora documentación suficiente para confirmar que la estación no intervino en su elaboración. Esto no implica que todas participaran. La correspondencia geográfica histórica también está pendiente.</p>
+ <div style="display:flex;gap:18px;align-items:end;flex-wrap:wrap;margin:18px 0">
+   <label><b>Estación de referencia</b><select id="station3t" style="display:block;max-width:100%;width:285px;margin-top:6px"><option value="0">Jayanca (La Viña)</option><option value="1">Cayaltí</option><option value="2">Reque</option><option value="3">Lambayeque</option><option value="4">Cueva Blanca</option></select></label>
+ </div>
+ <p id="caption3t" class="muted sm" aria-live="polite"></p>
+ <div class="tablewrap"><table aria-label="Conteo de años por producto con menor error mensual">
+ <thead><tr><th>Producto</th><th>Años con menor MAE</th><th>Total de años evaluables</th></tr></thead><tbody id="tbl3t"></tbody></table></div>
+ <div id="bar3t" role="img" aria-label="Porcentaje de años en que cada producto tiene menor MAE" style="margin-top:21px"></div>
+ <p id="interval3t" class="muted sm" style="margin-top:13px"></p>
+ <p class="muted sm"><b>Metodología:</b> el MAE anual usa los meses observados disponibles (mínimo nueve), no la precipitación acumulada de un año supuestamente completo. El rango de remuestreo por años muestra sensibilidad temporal, no incertidumbre de validación independiente ni desempeño de pronósticos.</p>
+ <p class="sm"><a href="AUDITORIA_3T.md">Informe de la Fase 3T</a> · <a href="datos/comparacion_anual_piscop_chirps_3t.csv">Resultados año por año</a> · <a href="datos/resumen_robustez_3t.csv">Indicadores por estación</a> · <a href="datos/trazabilidad_independencia_3t.csv">Independencia pendiente por producto</a> · <a href="scripts/auditoria_3t_robustez.py">Código reproducible</a></p>
+</section>
+<script>
+(function(){
+ const data=[{"name":"Jayanca (La Viña)","years":18,"months":212,"pisco":18,"chirps":0,"diff":6.161,"low":3.187,"high":11.055},{"name":"Cayaltí","years":20,"months":235,"pisco":19,"chirps":1,"diff":1.888,"low":1.391,"high":2.318},{"name":"Reque","years":20,"months":233,"pisco":20,"chirps":0,"diff":1.963,"low":1.404,"high":2.672},{"name":"Lambayeque","years":16,"months":191,"pisco":16,"chirps":0,"diff":2.463,"low":1.446,"high":4.063},{"name":"Cueva Blanca","years":18,"months":215,"pisco":9,"chirps":9,"diff":1.193,"low":-2.956,"high":6.569}];
+ const select=document.getElementById('station3t'),caption=document.getElementById('caption3t'),table=document.getElementById('tbl3t'),chart=document.getElementById('bar3t'),note=document.getElementById('interval3t');
+ if(!select||!caption||!table||!chart||!note)return;
+ const fmt=(x,d=2)=>Number(x).toLocaleString('es-PE',{minimumFractionDigits:d,maximumFractionDigits:d});
+ function render(){
+  const x=data[Number(select.value)];if(!x)return;
+  caption.textContent=x.name+' · '+x.years+' años evaluables ('+x.months+' meses observados). Cada año tiene al menos nueve meses completos.';
+  table.innerHTML='<tr><td><b>PISCOp v3.0</b></td><td>'+x.pisco+'</td><td>'+x.years+'</td></tr><tr><td><b>CHIRPS v3</b></td><td>'+x.chirps+'</td><td>'+x.years+'</td></tr>';
+  const elements=[['PISCOp v3.0',x.pisco,'#bd8740'],['CHIRPS v3',x.chirps,'#785db0']];
+  chart.innerHTML=elements.map(e=>'<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px"><b>'+e[0]+'</b><span>'+e[1]+' de '+x.years+' años</span></div><div style="height:22px;border-radius:5px;background:#e9f0ef;overflow:hidden;margin-top:5px"><div style="width:'+(100*e[1]/x.years).toFixed(2)+'%;background:'+e[2]+';height:100%"></div></div></div>').join('');
+  note.textContent='Diferencia media pareada de MAE (CHIRPS menos PISCOp): '+fmt(x.diff,3)+' mm/mes. Rango exploratorio de remuestreo por año: '+fmt(x.low,3)+' a '+fmt(x.high,3)+' mm/mes. Si incluye cero, no hay ventaja temporal consistente en este análisis.';
+ }
+ select.addEventListener('change',render);render();
+})();
+</script>
+
+
+<div class="sectionhead" id="incorporacion3u">
+ <div><div class="overline">Fase 3U · Integración de observaciones instrumentales · Objetivo 2016–2025</div>
+ <h2>Nuevas observaciones SENAMHI: trazabilidad y calidad antes de publicar</h2>
+ <p>La nueva etapa prepara la recepción y el control de archivos meteorológicos originales posteriores a 2015, sin alterar las validaciones históricas ni publicar datos no certificados.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3u">
+ <div class="overline" id="titulo3u">Estado auditado de incorporación · 14 de octubre de 2026</div>
+ <p class="notice"><b>Importador preparado y probado.</b> Actualmente no se han incorporado nuevas series SENAMHI de 2016–2025 al repositorio del observatorio. Los valores ausentes no representan precipitación cero.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin:18px 0">
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Histórico previamente analizado</div><strong style="display:block;font-size:27px">1 109</strong><span class="muted sm">Meses-estación completos de 1996–2015</span></div>
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Archivos diarios nuevos recibidos</div><strong style="display:block;font-size:27px">0</strong><span class="muted sm">Periodo pendiente: 2016–2025</span></div>
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Meses nuevos certificados</div><strong style="display:block;font-size:27px">0</strong><span class="muted sm">No confundir con ausencia real de lluvia</span></div>
+ </div>
+ <p><b>Controles que ya realiza el programa:</b> fechas y duplicados, distinción entre lluvia 0 mm y dato ausente −99,9, verificación de calendario de cada mes, registros negativos/anómalos y trazabilidad SHA-256 del archivo recibido.</p>
+ <p class="muted sm"><b>Sin certificación automática:</b> una serie puede estar bien procesada pero continuar pendiente de confirmar código y ubicación de la estación, procedencia, condiciones de uso y participación en PISCOp/CHIRPS. Las pruebas del programa son con datos sintéticos y no contienen observaciones nuevas.</p>
+ <p class="sm"><a href="PROTOCOLO_3U_INGESTA_SENAMHI.md">Protocolo completo 3U</a> · <a href="datos/estado_3u.json">Estado verificable</a> · <a href="scripts/importar_senamhi_3u.py">Importador Python</a> · <a href="tests/test_importar_senamhi_3u.py">Pruebas automáticas</a> · <a href="SOLICITUD_DATOS_SENAMHI_3R.md">Solicitud técnica preparada</a></p>
+ <p class="muted sm">Fuente institucional: <a href="https://www.gob.pe/es/9312-conocer-los-datos-hidrometeorologicos-del-peru-descargar-los-datos-meteorologicos" rel="noopener noreferrer" target="_blank">descarga diaria SENAMHI con registro</a>. El acceso debe realizarlo el investigador autorizado. Esta página no solicita contraseñas.</p>
+</section>
+
+
+<div class="sectionhead" id="fuentes3v">
+ <div><div class="overline">Fase 3V · Búsqueda y evaluación de fuentes externas · 2016–2025</div>
+ <h2>¿Hay estaciones adicionales con registros completos en el norte del Perú?</h2>
+ <p>Se consultó el inventario internacional NOAA GHCN-Daily y se verificaron archivos de precipitación de estaciones cercanas a los cinco puntos del proyecto.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3v">
+ <div class="overline" id="titulo3v">Inventario real de NOAA · Evaluación exploratoria</div>
+ <p class="notice"><b>Resultado:</b> se revisaron cuatro estaciones candidatas y solo se identificaron <b>dos meses completos</b> de precipitación entre 2016 y 2025. Ninguno permite construir una serie decenal continua para Lambayeque. El inventario institucional puede abarcar años sin aportar observaciones diarias completas.</p>
+ <div class="tablewrap"><table aria-label="Inventario NOAA de cuatro estaciones y días de lluvia con control de calidad"><thead>
+ <tr><th>Estación de referencia NOAA</th><th>Departamento aeroportuario</th><th>Días de precipitación válidos</th><th>Meses completos</th></tr>
+ </thead><tbody>
+ <tr><td>José A. Quiñones — Chiclayo</td><td>Lambayeque</td><td>263</td><td><b>0</b></td></tr>
+ <tr><td>Armando Revoredo Iglesias</td><td>Cajamarca</td><td>1 487</td><td><b>1</b></td></tr>
+ <tr><td>Carlos Martínez de Pinillos</td><td>La Libertad</td><td>159</td><td><b>0</b></td></tr>
+ <tr><td>Guillermo Concha Ibérico</td><td>Piura</td><td>218</td><td><b>1</b></td></tr>
+ </tbody></table></div>
+ <p class="muted sm"><b>Significado:</b> los días válidos pueden estar dispersos. Para calcular lluvia mensual necesitamos todos los días del mes con datos y controles aceptables. Las ubicaciones se identifican por el nombre del aeropuerto y fuentes oficiales; no se ha comprobado su equivalencia exacta con pluviómetros históricos. La selección original se hizo por distancia, no por límites departamentales.</p>
+ <p><b>Fuente adicional identificada:</b> las estaciones automáticas SENAMHI de intercambio internacional GBON/RBON ofrecen registros horarios de precipitación, temperatura y humedad. Su utilidad local y continuidad todavía están por comprobar. No se incorporaron como observaciones certificadas.</p>
+ <p class="muted sm"><b>Estado del OAF:</b> ninguna observación nueva 2016–2025 se ha incorporado a nuestra serie SENAMHI. La independencia de NOAA respecto a SENAMHI, PISCOp y CHIRPS tampoco está demostrada.</p>
+ <p class="sm"><a href="INVENTARIO_3V_NOAA.md">Informe de estaciones NOAA</a> · <a href="datos/candidatos_3v_noaa.csv">Inventario CSV</a> · <a href="datos/estado_3v_noaa.json">Estado verificable</a> · <a href="scripts/inventario_3v_noaa.py">Código reproducible</a> · <a href="https://www.datosabiertos.gob.pe/dataset/variables-meteorologicas-de-las-estaciones-autom%C3%A1ticas-de-intercambio-internacional-servicio">Portal SENAMHI GBON/RBON</a></p>
+</section>
+
+
+<div class="sectionhead" id="gbon3w">
+ <div><div class="overline">Fase 3W · Verificación de GBON/RBON · CSV oficial 2015–2024</div>
+ <h2>Estaciones automáticas SENAMHI: cobertura real del archivo abierto</h2>
+ <p>Auditoría del conjunto publicado de estaciones de intercambio internacional GBON/RBON. Se examinó todo el CSV original y se verificó cuántas estaciones contiene realmente.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3w">
+ <div class="overline" id="titulo3w">Resultado geográfico y temporal comprobado</div>
+ <p class="notice"><b>Conclusión:</b> el archivo oficial de 46,3 MB contiene 408 960 filas y registros entre enero de 2015 y abril de 2024. Sus datos corresponden a <b>cinco estaciones situadas en Lima, Arequipa y Tacna</b>. No registra estaciones del departamento de Lambayeque ni ubicadas a menos de 160 km de los puntos de este observatorio.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0">
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Registros del archivo</div><strong style="display:block;font-size:26px">408 960</strong><span class="muted sm">Filas originales inspeccionadas</span></div>
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Estaciones reales</div><strong style="display:block;font-size:26px">5</strong><span class="muted sm">No son 408 960 estaciones</span></div>
+  <div style="border:1px solid #dce7e8;border-radius:11px;padding:16px"><div class="overline">Estaciones de Lambayeque</div><strong style="display:block;font-size:26px">0</strong><span class="muted sm">Solo en este conjunto de datos GBON/RBON</span></div>
+ </div>
+ <div class="tablewrap"><table aria-label="Estaciones y departamentos del CSV SENAMHI GBON RBON">
+ <thead><tr><th>Estación publicada</th><th>Departamento</th><th>Red</th><th>Distancia mínima aproximada al OAF</th></tr></thead>
+ <tbody>
+ <tr><td>Matucana</td><td>Lima</td><td>GBON</td><td>652 km</td></tr>
+ <tr><td>Carania</td><td>Lima</td><td>GBON</td><td>729 km</td></tr>
+ <tr><td>Imata</td><td>Arequipa</td><td>RBON</td><td>1 357 km</td></tr>
+ <tr><td>San José de Uzuna</td><td>Arequipa</td><td>RBON</td><td>1 401 km</td></tr>
+ <tr><td>Candarave</td><td>Tacna</td><td>RBON</td><td>1 534 km</td></tr>
+ </tbody></table></div>
+ <p class="muted sm"><b>Lectura correcta:</b> esta cobertura no representa toda la red SENAMHI del Perú. El campo <code>ID</code> identifica filas, no estaciones. La última modificación del catálogo en 2025 no significa que el CSV contenga observaciones de 2025. No se incorporaron datos nuevos a las cinco series históricas del OAF.</p>
+ <p class="muted sm">La evaluación temporal e instrumental de 2016–2025 sigue pendiente de conseguir registros locales completos, su ficha de estación y la comprobación de independencia respecto de los productos climáticos.</p>
+ <p class="sm"><a href="AUDITORIA_3W_GBON_RBON.md">Informe técnico 3W</a> · <a href="datos/inventario_nacional_gbon_3w.csv">Inventario real de estaciones</a> · <a href="datos/estado_geografia_3w.json">Auditoría geográfica JSON</a> · <a href="datos/estado_3w.json">Estado de la descarga y fechas</a> · <a href="scripts/auditar_gbon_rbon_3w.py">Código Python reproducible</a></p>
+</section>
+
+
+<div class="sectionhead" id="fuentes3x">
+ <div><div class="overline">Fase 3X · Fuentes locales de SENAMHI · 2024–2025</div>
+ <h2>Observaciones meteorológicas publicadas en Lambayeque</h2>
+ <p>La Dirección Zonal 2 publica boletines con precipitación mensual observada para las mismas cinco denominaciones de estación que estudiamos en el OAF. Estos documentos constituyen una vía de recuperación de información reciente, diferente de las series diarias originales.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3x">
+ <div class="overline" id="titulo3x">Evidencia documental recuperada</div>
+ <p class="notice"><b>Nueva fuente local:</b> los boletines climáticos regionales incluyen observaciones de Jayanca, Cayaltí, Reque, Lambayeque y Cueva Blanca. Se catalogaron diez fuentes y transcribieron tres meses seleccionados (15 pares estación-mes) conservando las referencias de cada PDF.</p>
+ <p class="muted sm"><b>Importante:</b> los siguientes datos son una transcripción preliminar de tablas de boletines, con cotejo visual PDF y códigos instrumentales todavía pendientes. No equivalen a una serie diaria certificada ni se han añadido a la comparación científica 1996–2015.</p>
+ <div class="tablewrap"><table aria-label="Acumulados de precipitación reportados por boletines DZ2, en milímetros por mes">
+ <thead><tr><th>Mes</th><th>Jayanca</th><th>Cayaltí</th><th>Reque</th><th>Lambayeque</th><th>Cueva Blanca</th><th>Documento</th></tr></thead>
+ <tbody>
+ <tr><td>Julio 2024</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3,3</td><td><a href="https://www.senamhi.gob.pe/load/file/03601SENA-144.pdf" target="_blank" rel="noopener noreferrer">Boletín PDF</a></td></tr>
+ <tr><td>Octubre 2024</td><td>0</td><td>Traza</td><td>4,4</td><td>0</td><td>54,1</td><td><a href="https://www.senamhi.gob.pe/load/file/03601SENA-147.pdf" target="_blank" rel="noopener noreferrer">Boletín PDF</a></td></tr>
+ <tr><td>Febrero 2025</td><td>35,6</td><td>19,62</td><td>10,91</td><td>21,5</td><td>282,3</td><td><a href="https://www.senamhi.gob.pe/load/file/03601SENA-151.pdf" target="_blank" rel="noopener noreferrer">Boletín PDF</a></td></tr>
+ </tbody></table></div>
+ <p class="muted sm"><b>Unidad:</b> mm por mes, salvo «Traza», que es una anotación no numérica y nunca se convierte automáticamente en 0 mm. Solo se incluyen los meses seleccionados que fueron catalogados: no se pueden interpolar ni sumar los meses faltantes para obtener totales anuales.</p>
+ <p><b>Próximo requisito científico:</b> obtener para cada estación su código, la ficha técnica, eventuales reubicaciones, el calendario diario válido de 2016–2025 y los permisos de uso. La coincidencia de nombres en los boletines no demuestra identidad histórica de los instrumentos.</p>
+ <p class="sm"><a href="FUENTES_DZ2_3X.md">Informe 3X</a> · <a href="datos/fuentes_dz2_3x.csv">Catálogo de diez fuentes</a> · <a href="datos/observaciones_publicadas_dz2_3x.csv">Registro documental CSV</a> · <a href="datos/estado_3x.json">Control de calidad y limitaciones</a> · <a href="https://www.senamhi.gob.pe/mapas/descarga-datos/map_hist_data.php?dp=lambayeque">Mapa oficial de estaciones</a> · <a href="SOLICITUD_DATOS_SENAMHI_3R.md">Solicitud preparada a SENAMHI</a></p>
+</section>
+
+
+<div class="sectionhead" id="boletines3y">
+  <div><div class="overline">Fase 3Y · Observaciones publicadas · 2024–2025</div>
+  <h2>Ampliación del archivo documental de lluvia de SENAMHI DZ2</h2>
+  <p>Se organizó la precipitación mensual observada publicada en los boletines oficiales de las cinco denominaciones de estación, diferenciando ceros, trazas y meses aún no transcritos.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo3y">
+  <div class="overline" id="titulo3y">Siete meses documentales · Informe preliminar</div>
+  <p class="notice"><b>Nuevo avance:</b> 35 pares estación-mes con referencia a los boletines oficiales. En 2025 se documentaron enero, febrero, marzo y junio de los doce boletines publicados; los ocho meses restantes todavía no han sido transcritos con control suficiente.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin:18px 0">
+   <div style="border:1px solid #dce7e8;border-radius:11px;padding:15px"><div class="overline">Meses documentados</div><strong style="display:block;font-size:26px">7</strong><span class="muted sm">3 de 2024 y 4 de 2025</span></div>
+   <div style="border:1px solid #dce7e8;border-radius:11px;padding:15px"><div class="overline">Observaciones de boletín</div><strong style="display:block;font-size:26px">35</strong><span class="muted sm">33 numéricas y 2 «Traza»</span></div>
+   <div style="border:1px solid #dce7e8;border-radius:11px;padding:15px"><div class="overline">Meses diarios nuevos certificados</div><strong style="display:block;font-size:26px">0</strong><span class="muted sm">La serie 1996–2015 permanece intacta</span></div>
+  </div>
+  <label style="display:block;margin:14px 0"><b>Filtrar por año publicado</b>
+    <select id="anio3y" style="display:block;margin-top:6px;max-width:100%;width:235px">
+      <option value="2025">2025</option><option value="2024">2024</option><option value="todos">Todos los meses documentados</option>
+    </select>
+  </label>
+  <p id="desc3y" class="muted sm" aria-live="polite"></p>
+  <div class="tablewrap"><table aria-label="Precipitación mensual observada según boletines SENAMHI DZ2; traza no equivale a cero">
+   <thead><tr><th>Mes</th><th>Jayanca</th><th>Cayaltí</th><th>Reque</th><th>Lambayeque</th><th>Cueva Blanca</th><th>Fuente</th></tr></thead>
+   <tbody id="tabla3y"></tbody></table></div>
+  <p class="muted sm" style="margin-top:14px"><b>Unidad:</b> mm/mes. «Traza» se registra literalmente y no es 0 mm. Los valores corresponden a tablas de boletines oficiales localizadas mediante texto indexado; aún no se ha completado su revisión visual por página ni la certificación de códigos y ubicaciones de los instrumentos. No son series diarias continuas ni una validación de PISCOp, CHIRPS o ERA5 posterior a 2015.</p>
+  <p class="sm"><a href="BOLETINES_DZ2_3Y.md">Informe 3Y</a> · <a href="datos/observaciones_documentales_dz2_3y.csv">35 registros documentales (CSV)</a> · <a href="datos/matriz_boletines_2025_3y.csv">Control de los 12 meses de 2025</a> · <a href="datos/estado_3y.json">Estado científico</a> · <a href="scripts/actualizar_boletines_3y.py">Código reproducible</a> · <a href="https://www.gob.pe/institucion/senamhi/informes-publicaciones/6490504-boletin-climatico-regional-dz2-2025">Colección SENAMHI 2025</a></p>
+</section>
+<script>
+(function(){
+const data=[["2024-07","0","0","0","0","3.3","tabla_precipitacion_observada_boletin_DZ2"],["2024-09","2.3","Traza","0","0","30.1","tabla_precipitacion_observada_boletin_DZ2"],["2024-10","0","Traza","4.4","0","54.1","tabla_precipitacion_observada_boletin_DZ2"],["2025-01","12.4","19","9.5","4.5","117.2","tabla_precipitacion_observada_boletin_DZ2"],["2025-02","35.6","19.62","10.91","21.5","282.3","tabla_precipitacion_observada_boletin_DZ2"],["2025-03","33.5","6.55","3.9","11.2","205.1","tabla_precipitacion_observada_boletin_DZ2"],["2025-06","0","1.4","0.31","0","48.7","tabla_precipitacion_observada_boletin_DZ2"]];
+const selector=document.getElementById('anio3y'),desc=document.getElementById('desc3y'),body=document.getElementById('tabla3y');
+if(!selector||!desc||!body)return;
+function render(){
+ const year=selector.value;
+ const rows=data.filter(r=>year==='todos'||r[0].startsWith(year));
+ desc.textContent=rows.length+' meses disponibles en la selección. Son acumulados de meses documentados separados; no se debe sumar para obtener lluvia anual.';
+ body.innerHTML=rows.map(r=>'<tr><td><b>'+r[0]+'</b></td>'+r.slice(1,6).map(v=>'<td>'+(v==='Traza'?'<em>Traza</em>':Number(v).toLocaleString('es-PE',{maximumFractionDigits:2}))+'</td>').join('')+'<td><a href="'+r[6]+'" target="_blank" rel="noopener noreferrer">PDF</a></td></tr>').join('');
+}
+selector.addEventListener('change',render);render();
+})();
+</script>
+
+
+<div class="sectionhead" id="coberturaoficial">
+ <div><div class="overline">Regla permanente · Observaciones oficiales completas, sin imputación</div>
+ <h2>El último año válido depende de los datos reales disponibles</h2>
+ <p>El observatorio utiliza como corte el año más reciente con <b>12 meses de precipitación observada completa</b> de fuente oficial y calidad verificada. Los años parciales no se convierten en totales anuales, y ningún dato faltante se reemplaza por cero ni por PISCOp, CHIRPS o ERA5.</p></div>
+</div>
+<section class="panel" aria-labelledby="titulo-corte">
+ <div class="overline" id="titulo-corte">Control automático de las cinco estaciones SENAMHI históricas</div>
+ <p class="notice"><b>Último año completo compartido: 2012.</b> Con los TXT históricos recibidos, Jayanca tiene 12 meses completos por última vez en 2012; Cayaltí, Reque, Lambayeque y Cueva Blanca en 2013. Los cortes se recalcularán cuando existan registros oficiales más recientes, completos y debidamente identificados.</p>
+ <div class="tablewrap"><table aria-label="Último año completo de precipitación observada según el archivo histórico SENAMHI"><thead><tr><th>Estación</th><th>Último año completo</th><th>Años completos encontrados</th></tr></thead><tbody>
+ <tr><td>Jayanca (La Viña)</td><td><b>2012</b></td><td>15</td></tr>
+ <tr><td>Cayaltí</td><td>2013</td><td>17</td></tr>
+ <tr><td>Reque</td><td>2013</td><td>15</td></tr>
+ <tr><td>Lambayeque</td><td>2013</td><td>15</td></tr>
+ <tr><td>Cueva Blanca</td><td>2013</td><td>17</td></tr>
+ </tbody></table></div>
+ <p class="muted sm"><b>Regla técnica:</b> 12 meses completos y 365/366 días válidos. Se encontraron <b>79 combinaciones estación-año</b> completas y <b>11 años completos compartidos</b>. Esta verificación es temporal; los códigos y eventuales traslados de instrumentos históricos siguen pendientes de confirmación oficial.</p>
+ <p class="muted sm">Los boletines de 2024–2025 permanecen en un registro documental separado: no prueban por sí solos cobertura anual completa ni continuidad instrumental. Los análisis retrospectivos por meses pueden conservar meses válidos y deben indicar expresamente que no representan años completos.</p>
+ <p class="sm"><a href="CRITERIO_COBERTURA_OFICIAL.md">Política permanente</a> · <a href="RESULTADO_COBERTURA_OFICIAL.md">Auditoría de cobertura</a> · <a href="datos/ultimo_anio_completo_por_estacion.csv">Corte por estación (CSV)</a> · <a href="datos/acumulados_anuales_completos.csv">Solo acumulados anuales válidos</a> · <a href="datos/estado_cobertura_oficial.json">Estado verificable</a> · <a href="scripts/control_anios_completos.py">Código reproducible</a></p>
+</section>
+
+</main><footer><div class="inner"><b>OAF-Lambayeque</b> · Observatorio Agroclimático y Fitosanitario · Prototipo científico exploratorio.<br><b>Autor:</b> ING. AGRÓNOMO CARLOS ENRIQUE CORONEL GARCÍA · <b>Contacto:</b> <a href="tel:+51929304528">+51 929 304 528</a>.<br>Información histórica para investigación. No sustituye boletines oficiales del SENAMHI ni recomendaciones agronómicas validadas.</div></footer>
+<script>
+const DATA=[{"name":"Jayanca (La Viña)","lat":-6.322,"lon":-79.779,"alt":65,"metadata_note":"SENAMHI 2017: -6.322, -79.779, 65 m; emplazamiento 1998 sin confirmar","annual":[[1996,23.3,366,366],[1997,80.6,365,365],[1998,1428.0,365,365],[1999,168.7,365,365],[2000,58.4,366,366],[2001,218.8,365,365],[2002,202.2,365,365],[2003,42.9,365,365],[2004,null,304,366],[2005,26.8,365,365],[2006,76.1,365,365],[2007,20.0,365,365],[2008,null,335,366],[2009,61.6,365,365],[2010,106.8,365,365],[2011,30.2,365,365],[2012,229.1,366,366],[2013,null,334,365],[2014,null,212,365],[2015,null,0,365],[2016,null,0,366],[2017,null,0,365],[2018,null,0,365],[2019,null,0,365],[2020,null,0,366],[2021,null,0,365],[2022,null,0,365],[2023,null,0,365],[2024,null,0,366],[2025,null,0,365]],"months":{"1996":[[0.2,0.0,13.9,7.4,0.8,0.5,0.0,0.0,0.0,0.5,0.0,0.0],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"1997":[[0.0,2.2,0.0,15.3,0.0,0.0,0.0,0.0,0.7,0.0,7.4,55.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1998":[[348.3,466.3,539.1,61.5,10.0,0.4,0.0,0.0,2.1,0.0,0.0,0.3],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1999":[[4.0,118.2,2.8,22.3,7.1,3.8,0.0,0.0,3.9,0.5,0.2,5.9],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2000":[[2.2,1.0,27.3,21.6,0.0,1.1,0.0,1.1,0.0,0.0,0.0,4.1],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2001":[[7.7,9.2,175.5,21.6,0.0,0.5,0.6,0.0,0.0,0.9,1.4,1.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2002":[[0.0,26.4,96.7,69.7,0.0,0.0,0.0,0.0,0.0,1.3,8.1,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2003":[[3.6,33.1,0.0,0.9,0.0,0.0,0.0,0.0,1.2,0.0,0.8,3.3],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2004":[[0.4,1.6,null,3.6,null,0.0,5.0,0.0,1.5,4.5,0.2,9.4],[31,29,0,30,0,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2005":[[0.6,4.0,19.7,0.0,0.0,0.0,0.0,0.0,0.0,0.8,1.7,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2006":[[7.8,6.7,59.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.2,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2007":[[0.8,0.0,3.8,4.7,1.4,0.0,0.0,0.0,0.0,5.5,3.8,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2008":[[4.6,61.6,105.3,4.9,0.0,0.0,0.3,0.0,0.0,0.0,111.8,null],[31,29,31,30,31,30,31,31,30,31,30,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2009":[[12.9,14.6,22.3,0.6,4.2,0.0,0.0,0.0,0.0,0.0,7.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2010":[[0.0,71.6,14.5,9.4,0.0,0.0,0.0,0.0,0.0,7.9,3.4,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2011":[[13.4,1.5,0.0,11.2,1.5,0.0,0.0,0.0,0.0,0.0,0.0,2.6],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2012":[[4.2,101.4,113.1,4.0,0.0,0.0,0.0,0.0,0.0,1.7,1.2,3.5],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2013":[[2.0,3.5,28.7,0.0,13.8,0.0,null,0.0,0.0,3.1,0.0,3.0],[31,28,31,30,31,30,0,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2014":[[0.0,0.0,0.8,0.7,5.1,0.0,0.0,null,null,null,null,null],[31,28,31,30,31,30,31,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2015":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2016":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2017":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2018":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2019":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2020":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2021":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2022":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2023":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2024":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2025":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]]},"rain98":1428.0,"jfm98":94.8,"max98":96.3,"max98date":"1998-03-23","completeYears":15},{"name":"Cueva Blanca","lat":-6.1313,"lon":-79.4045,"alt":3300,"metadata_note":"Coordenadas 3300 m segun SENAMHI; corrige error de ubicacion del prototipo anterior","annual":[[1996,595.1,366,366],[1997,495.9,365,365],[1998,969.2,365,365],[1999,944.0,365,365],[2000,813.9,366,366],[2001,735.3,365,365],[2002,797.0,365,365],[2003,620.4,365,365],[2004,540.8,366,366],[2005,574.6,365,365],[2006,785.7,365,365],[2007,null,334,365],[2008,1057.9,366,366],[2009,731.8,365,365],[2010,891.3,365,365],[2011,870.1,365,365],[2012,1034.8,366,366],[2013,906.3,365,365],[2014,null,91,365],[2015,null,0,365],[2016,null,0,366],[2017,null,0,365],[2018,null,0,365],[2019,null,0,365],[2020,null,0,366],[2021,null,0,365],[2022,null,0,365],[2023,null,0,365],[2024,null,0,366],[2025,null,0,365]],"months":{"1996":[[21.2,138.6,134.4,64.2,30.8,30.1,0.0,25.8,21.0,90.8,20.6,17.6],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"1997":[[37.6,118.3,54.9,81.1,10.9,7.1,0.9,3.4,10.7,16.1,68.0,86.9],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1998":[[45.3,149.6,231.3,172.0,83.5,33.4,0.0,11.8,64.0,97.9,45.0,35.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1999":[[109.9,196.3,133.5,128.6,78.5,43.7,24.4,0.0,65.0,42.3,39.7,82.1],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2000":[[42.2,147.7,150.4,134.7,62.6,49.8,12.9,13.7,73.3,20.5,21.4,84.7],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2001":[[112.1,70.9,144.9,43.8,37.1,6.4,15.7,1.8,61.5,48.0,113.7,79.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2002":[[49.7,143.2,98.0,175.8,45.4,12.6,21.7,0.0,5.2,102.0,90.1,53.3],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2003":[[80.0,116.3,92.1,29.7,63.7,38.4,8.4,4.2,20.9,35.3,58.1,73.3],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2004":[[56.8,22.1,50.9,54.7,54.3,13.3,21.6,1.7,41.0,90.6,46.8,87.0],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2005":[[15.1,125.6,131.2,20.3,11.0,11.2,2.4,3.3,5.7,123.8,19.8,105.2],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2006":[[73.5,159.1,258.1,64.8,9.4,34.1,32.8,0.0,13.5,46.4,48.9,45.1],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2007":[[72.3,44.7,163.7,122.9,45.3,0.0,0.0,null,3.4,160.0,136.6,61.1],[31,28,31,30,31,30,31,0,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2008":[[70.6,238.2,169.4,172.8,61.9,31.1,24.2,23.4,35.5,155.0,61.5,14.3],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2009":[[144.8,83.5,224.0,53.1,28.5,7.0,10.0,15.9,19.4,37.9,55.0,52.7],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2010":[[33.2,212.2,124.2,138.3,27.8,25.3,9.4,13.0,95.1,65.9,53.1,93.8],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2011":[[71.5,95.3,48.4,199.2,70.6,4.7,15.7,7.0,84.3,83.4,51.6,138.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2012":[[211.5,169.7,209.9,104.7,35.3,10.0,0.0,14.2,12.7,105.2,101.0,60.6],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2013":[[116.6,130.8,164.9,54.0,144.8,5.9,24.8,11.2,5.6,164.3,0.0,83.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2014":[[null,null,null,53.2,119.9,35.1,null,null,null,null,null,null],[0,0,0,30,31,30,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2015":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2016":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2017":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2018":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2019":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2020":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2021":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2022":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2023":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2024":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2025":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]]},"rain98":969.2,"jfm98":44.0,"max98":32.0,"max98date":"1998-02-18","completeYears":17},{"name":"Cayaltí","lat":-6.88079444,"lon":-79.54701389,"alt":90,"metadata_note":"SENAMHI ficha 000320: 90 m; confirmar emplazamiento historico","annual":[[1996,46.92,366,366],[1997,105.63,365,365],[1998,558.5,365,365],[1999,85.91,365,365],[2000,49.38,366,366],[2001,52.26,365,365],[2002,47.19,365,365],[2003,21.31,365,365],[2004,23.26,366,366],[2005,13.1,365,365],[2006,33.58,365,365],[2007,23.13,365,365],[2008,63.86,366,366],[2009,40.78,365,365],[2010,49.23,365,365],[2011,null,351,365],[2012,67.08,366,366],[2013,68.54,365,365],[2014,null,334,365],[2015,null,304,365],[2016,null,0,366],[2017,null,0,365],[2018,null,0,365],[2019,null,0,365],[2020,null,0,366],[2021,null,0,365],[2022,null,0,365],[2023,null,0,365],[2024,null,0,366],[2025,null,0,365]],"months":{"1996":[[3.25,11.82,8.55,8.31,3.13,1.1,0.0,1.21,1.4,6.72,0.22,1.21],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"1997":[[0.03,34.61,1.54,18.93,0.72,0.03,0.0,0.01,2.11,0.03,6.98,40.64],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1998":[[58.28,292.33,174.87,26.31,0.03,2.11,0.0,0.02,0.03,4.51,0.0,0.01],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1999":[[5.34,48.46,0.41,11.65,4.61,1.05,3.04,0.05,2.81,2.93,0.02,5.54],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2000":[[0.92,0.54,10.13,12.28,7.05,1.92,0.0,1.83,5.34,0.02,0.94,8.41],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2001":[[1.44,1.01,30.23,15.02,0.03,0.01,0.0,0.0,3.41,0.04,0.03,1.04],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2002":[[0.01,12.53,14.22,8.83,0.01,0.01,0.01,0.0,0.01,0.64,5.62,5.3],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2003":[[2.73,10.5,0.71,1.33,0.82,1.1,0.01,0.0,0.03,0.02,2.14,1.92],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2004":[[1.21,1.64,5.04,0.45,0.05,0.01,0.54,0.0,3.53,3.47,0.61,6.71],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2005":[[1.61,1.89,1.96,1.02,0.7,0.02,0.01,0.0,0.0,4.35,1.03,0.51],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2006":[[2.72,1.52,15.47,2.83,0.01,0.63,1.24,0.0,1.02,0.0,2.54,5.6],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2007":[[2.56,0.23,8.34,3.06,0.93,0.01,0.0,0.03,0.0,4.94,1.72,1.31],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2008":[[5.83,16.83,27.52,3.45,0.02,1.87,1.41,2.21,1.71,2.37,0.63,0.01],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2009":[[18.53,6.83,4.35,0.51,0.02,0.5,0.01,0.0,2.01,0.7,7.32,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2010":[[1.01,8.02,23.1,4.86,0.63,0.03,0.01,0.7,0.22,6.52,4.1,0.03],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2011":[[4.71,3.2,2.93,9.92,0.21,0.0,0.02,0.0,0.03,null,null,3.93],[31,28,31,30,31,30,31,31,30,22,25,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2012":[[2.36,19.33,30.2,6.33,0.01,0.13,0.0,0.02,0.01,4.44,2.61,1.64],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2013":[[3.61,5.61,41.43,1.75,8.05,0.0,0.01,0.02,0.01,7.84,0.01,0.2],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2014":[[null,0.0,3.54,1.13,5.73,0.01,0.0,0.0,12.7,0.0,0.62,6.21],[0,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2015":[[3.66,3.13,11.54,2.62,0.15,0.01,0.52,0.01,0.0,3.34,null,null],[31,28,31,30,31,30,31,31,30,31,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2016":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2017":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2018":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2019":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2020":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2021":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2022":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2023":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2024":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2025":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]]},"rain98":558.5,"jfm98":94.1,"max98":77.3,"max98date":"1998-02-14","completeYears":17},{"name":"Lambayeque","lat":-6.73152778,"lon":-79.90983611,"alt":18,"metadata_note":"Documento con ficha SENAMHI: 18 m; validar desplazamientos historicos","annual":[[1996,12.88,366,366],[1997,38.99,365,365],[1998,279.61,365,365],[1999,56.61,365,365],[2000,20.41,366,366],[2001,76.94,365,365],[2002,45.52,365,365],[2003,23.53,365,365],[2004,20.12,366,366],[2005,null,181,365],[2006,null,0,365],[2007,null,348,365],[2008,39.89,366,366],[2009,23.05,365,365],[2010,44.74,365,365],[2011,19.76,365,365],[2012,63.29,366,366],[2013,31.17,365,365],[2014,null,212,365],[2015,null,0,365],[2016,null,0,366],[2017,null,0,365],[2018,null,0,365],[2019,null,0,365],[2020,null,0,366],[2021,null,0,365],[2022,null,0,365],[2023,null,0,365],[2024,null,0,366],[2025,null,0,365]],"months":{"1996":[[0.04,1.74,6.23,0.74,2.52,0.03,0.0,0.0,0.0,1.55,0.02,0.01],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"1997":[[0.34,3.8,0.01,1.37,0.02,0.01,0.04,0.0,0.12,0.82,4.44,28.02],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1998":[[42.14,110.02,116.22,7.25,2.0,0.01,0.0,0.0,0.0,0.54,0.2,1.23],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1999":[[2.33,31.94,1.23,10.94,1.63,1.52,0.42,0.0,1.6,2.9,0.0,2.1],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2000":[[0.62,0.46,3.66,3.82,0.52,5.83,0.0,0.01,3.15,0.01,0.5,1.83],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2001":[[0.13,1.63,58.13,11.2,0.22,2.12,0.0,0.01,0.0,0.7,0.0,2.8],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2002":[[0.0,16.01,17.82,6.23,0.0,0.0,0.2,0.0,0.0,1.23,2.12,1.91],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2003":[[1.54,4.81,0.13,0.02,0.03,2.2,0.01,0.0,0.0,0.01,14.73,0.05],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2004":[[0.01,2.35,12.1,0.0,0.8,0.0,0.43,0.0,1.33,2.25,0.03,0.82],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2005":[[0.32,3.32,1.97,0.04,0.02,0.0,null,null,null,null,null,null],[31,28,31,30,31,30,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2006":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2007":[[null,0.0,2.52,0.02,0.02,0.0,0.0,0.01,0.0,0.02,0.02,0.02],[14,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2008":[[2.11,9.3,23.33,5.11,0.0,0.0,0.01,0.01,0.0,0.02,0.0,0.0],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2009":[[8.62,3.1,4.41,0.0,0.5,0.0,0.0,0.0,0.0,0.01,0.7,5.71],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2010":[[0.0,20.91,15.01,0.7,0.01,0.0,0.0,0.0,0.0,4.9,3.2,0.01],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2011":[[3.7,0.01,0.01,8.5,0.01,0.0,0.0,0.0,0.0,0.01,0.01,7.51],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2012":[[0.04,30.41,31.4,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.92,0.51],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2013":[[0.03,2.1,19.8,2.2,3.6,0.0,0.0,0.0,0.0,3.44,0.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2014":[[0.02,0.0,0.4,0.0,3.7,0.0,0.0,null,null,null,null,null],[31,28,31,30,31,30,31,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2015":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2016":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2017":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2018":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2019":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2020":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2021":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2022":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2023":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2024":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2025":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]]},"rain98":279.61,"jfm98":96.0,"max98":71.3,"max98date":"1998-02-14","completeYears":15},{"name":"Reque","lat":-6.88613,"lon":-79.8355,"alt":13,"metadata_note":"Ficha ANA: 13 m; existen diferencias con otros documentos de SENAMHI","annual":[[1996,7.23,366,366],[1997,59.85,365,365],[1998,232.82,365,365],[1999,23.4,365,365],[2000,18.1,366,366],[2001,20.5,365,365],[2002,17.8,365,365],[2003,6.5,365,365],[2004,null,364,366],[2005,null,303,365],[2006,22.46,365,365],[2007,27.4,365,365],[2008,null,364,366],[2009,22.19,365,365],[2010,39.58,365,365],[2011,20.09,365,365],[2012,59.36,366,366],[2013,52.92,365,365],[2014,null,337,365],[2015,null,304,365],[2016,null,0,366],[2017,null,0,365],[2018,null,0,365],[2019,null,0,365],[2020,null,0,366],[2021,null,0,365],[2022,null,0,365],[2023,null,0,365],[2024,null,0,366],[2025,null,0,365]],"months":{"1996":[[0.0,0.61,0.52,0.0,1.8,0.0,0.0,0.0,0.0,4.3,0.0,0.0],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"1997":[[0.0,7.02,0.0,4.01,0.0,0.0,0.0,0.0,0.01,0.0,9.31,39.5],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1998":[[19.51,111.7,96.6,5.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"1999":[[0.0,10.2,0.0,9.7,0.0,0.0,0.0,0.0,0.0,1.0,0.0,2.5],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2000":[[0.0,0.0,3.3,9.2,3.6,0.0,0.0,0.0,0.0,0.0,2.0,0.0],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2001":[[0.0,0.0,9.4,11.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2002":[[0.0,5.0,10.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2003":[[0.0,1.9,0.0,0.6,0.0,3.0,0.0,0.0,0.0,0.0,1.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2004":[[0.0,0.0,0.0,0.0,0.0,null,0.0,0.0,14.0,5.7,0.0,0.0],[31,29,31,30,31,28,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2005":[[0.0,0.0,0.0,0.0,0.0,0.0,null,null,0.0,3.61,0.9,0.0],[31,28,31,30,31,30,0,0,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2006":[[3.21,1.9,10.61,0.6,0.0,0.0,0.41,0.0,0.0,0.01,1.12,4.6],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2007":[[6.21,3.9,2.32,1.31,0.41,0.0,0.0,0.02,0.0,8.82,2.01,2.4],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2008":[[3.61,6.4,22.64,null,0.0,0.32,0.51,0.01,0.11,0.7,1.0,0.0],[31,29,31,28,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2009":[[11.9,2.22,0.91,0.91,0.3,0.01,0.01,0.01,0.01,0.0,5.4,0.51],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2010":[[0.41,12.4,13.5,3.93,0.7,0.0,0.0,0.0,0.01,4.11,4.5,0.02],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2011":[[3.32,0.42,0.51,9.02,0.01,0.0,0.0,0.0,0.0,0.4,0.0,6.41],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2012":[[1.11,26.61,21.81,4.9,0.01,0.0,0.0,0.0,0.21,0.3,2.0,2.41],[31,29,31,30,31,30,31,31,30,31,30,31],[31,29,31,30,31,30,31,31,30,31,30,31]],"2013":[[0.1,4.41,31.41,7.6,5.0,0.3,0.0,0.0,0.0,4.1,0.0,0.0],[31,28,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2014":[[0.8,null,3.3,0.1,1.4,0.0,0.0,0.0,9.3,0.4,1.91,3.4],[31,0,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]],"2015":[[3.7,3.8,19.72,1.6,0.11,0.0,0.0,0.0,0.0,0.81,null,null],[31,28,31,30,31,30,31,31,30,31,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2016":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2017":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2018":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2019":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2020":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2021":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2022":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2023":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]],"2024":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,29,31,30,31,30,31,31,30,31,30,31]],"2025":[[null,null,null,null,null,null,null,null,null,null,null,null],[0,0,0,0,0,0,0,0,0,0,0,0],[31,28,31,30,31,30,31,31,30,31,30,31]]},"rain98":232.82,"jfm98":97.8,"max98":60.4,"max98date":"1998-02-18","completeYears":15}];
+const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const $=s=>document.querySelector(s);
+const fmt=(n,d=1)=>n===null||n===undefined?'—':Number(n).toLocaleString('es-PE',{minimumFractionDigits:d,maximumFractionDigits:d});
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+let current=0;
+const stSel=$('#estacion'),yrSel=$('#anio');
+DATA.forEach((s,i)=>stSel.add(new Option(s.name,String(i))));
+for(let y=2025;y>=1996;y--)yrSel.add(new Option(y,String(y)));
+const ultimoAnioCompleto=s=>Math.max(...s.annual.filter(y=>y[1]!==null).map(y=>y[0]));
+yrSel.value=String(ultimoAnioCompleto(DATA[0]));
+function svgBars(vals,labels,w=760,h=300){const L=57,R=15,T=29,B=47,PW=w-L-R,PH=h-T-B;const available=vals.filter(v=>v!==null&&Number.isFinite(v));let max=Math.max(25,...available)*1.17;max=Math.ceil(max/25)*25;
+let p=[`<svg role="img" aria-label="Precipitación por mes en milímetros" viewBox="0 0 ${w} ${h}">`];
+for(let i=0;i<=4;i++){let v=max*i/4,y=h-B-PH*i/4;p.push(`<line x1="${L}" y1="${y}" x2="${w-R}" y2="${y}" stroke="#dfe9ea"/><text x="${L-8}" y="${y+4}" fill="#627b7e" font-size="12" text-anchor="end">${Math.round(v)}</text>`)}
+vals.forEach((v,i)=>{let sw=PW/vals.length,bw=Math.min(sw*.6,42),x=L+sw*i+(sw-bw)/2,base=h-B;
+if(v!==null){let bh=Math.max(v>0?1.5:0,v/max*PH);p.push(`<rect x="${x}" y="${base-bh}" width="${bw}" height="${bh}" rx="3" fill="#007b79"><title>${labels[i]}: ${fmt(v,2)} mm</title></rect>`)}else{p.push(`<rect x="${x}" y="${base-12}" width="${bw}" height="12" rx="2" fill="#dee5e5"><title>${labels[i]}: acumulado incompleto</title></rect>`)}
+p.push(`<text x="${x+bw/2}" y="${base+20}" fill="#556d74" text-anchor="middle" font-size="11">${labels[i]}</text>`)});
+p.push('</svg>');return p.join('')}
+function svgYears(a,selectedYear,w=670,h=295){const L=53,R=15,T=30,B=48,PW=w-L-R,PH=h-T-B;let valid=a.filter(x=>x[1]!==null);let top=Math.ceil(Math.max(200,...valid.map(x=>x[1]))*1.12/50)*50;
+let p=[`<svg role="img" aria-label="Serie de precipitación anual, años incompletos omitidos" viewBox="0 0 ${w} ${h}">`];for(let i=0;i<=4;i++){let v=top*i/4,y=h-B-PH*i/4;p.push(`<line x1="${L}" y1="${y}" x2="${w-R}" y2="${y}" stroke="#dfe9ea"/><text x="${L-7}" y="${y+4}" text-anchor="end" font-size="11" fill="#667e82">${Math.round(v)}</text>`)}
+a.forEach((x,i)=>{let sw=PW/a.length,bw=sw*.63,x0=L+i*sw+(sw-bw)/2;let selected=x[0]===selectedYear;let bh=x[1]===null?0:x[1]/top*PH;
+if(x[1]===null)p.push(`<rect x="${x0}" y="${h-B-6}" width="${bw}" height="6" fill="#cdd7d7"><title>${x[0]}: incompleto (${x[2]}/${x[3]} días)</title></rect>`);
+else p.push(`<rect x="${x0}" y="${h-B-bh}" width="${bw}" height="${bh}" fill="${selected?'#d69a50':'#56a6a1'}"><title>${x[0]}: ${fmt(x[1],2)} mm</title></rect>`);
+if([1996,2000,2005,2010,2015,2020,2025].includes(x[0]))p.push(`<text x="${x0+bw/2}" y="${h-B+17}" font-size="11" text-anchor="middle" fill="#607479">${x[0]}</text>`)});
+p.push('</svg>');return p.join('')}
+function render(){let s=DATA[current],year=Number(yrSel.value),rec=s.annual.find(a=>a[0]===year),m=s.months[String(year)];$('#aniosCompletos').textContent=s.completeYears+' años';$('#diasValidos').textContent=rec[2]+' / '+rec[3];$('#coberturaAnual').textContent=fmt(rec[2]/rec[3]*100,1)+' % de días con dato';$('#lluviaAnual').textContent=rec[1]===null?'No disponible':fmt(rec[1],2)+' mm';$('#statusAnual').textContent=rec[1]===null?'Acumulado anual no completo':'Año con datos diarios completos';
+$('#advertencia').textContent=rec[1]===null?`El año ${year} está incompleto en ${s.name} (${rec[2]} de ${rec[3]} días con precipitación). Los meses completos pueden visualizarse, pero no se calcula un total anual representativo.`:`Datos de ${s.name} para ${year}: ${rec[2]} días válidos de ${rec[3]}. Acumulado anual instrumental completo; aún no se ha contrastado con PISCOp ni ERA5.`;
+$('#graficoMeses').innerHTML=svgBars(m[0],MES);$('#graficoAnual').innerHTML=svgYears(s.annual,year);document.querySelectorAll('[data-station]').forEach(el=>{el.setAttribute('aria-pressed',el.dataset.station===String(current)?'true':'false')});}
+stSel.addEventListener('change',()=>{current=Number(stSel.value);yrSel.value=String(ultimoAnioCompleto(DATA[current]));render()});yrSel.addEventListener('change',render);
+$('#tabla1998').innerHTML=DATA.map((s,i)=>`<tr class="${i===current?'em':''}"><td><button class="stationbtn" data-station="${i}">${escapeHtml(s.name)}</button></td><td>${fmt(s.rain98,2)}</td><td>${fmt(s.jfm98,1)} %</td><td>${fmt(s.max98,1)}</td></tr>`).join('');
+$('#tablaEstaciones').innerHTML=DATA.map((s,i)=>`<tr><td><button class="stationbtn" data-station="${i}">${escapeHtml(s.name)}</button></td><td>${fmt(s.alt,0)} m</td><td>${s.completeYears}</td></tr>`).join('');
+document.body.addEventListener('click',e=>{let btn=e.target.closest('button[data-station]');if(btn){current=Number(btn.dataset.station);stSel.value=String(current);yrSel.value='1998';render();document.querySelector('#explorador').scrollIntoView({behavior:'smooth',block:'start'});}});
+function map(){let w=660,h=360,pad=60,lonMin=-80.04,lonMax=-79.37,latMin=-7.0,latMax=-5.70;let xp=lon=>pad+(lon-lonMin)/(lonMax-lonMin)*(w-2*pad),yp=lat=>h-pad-(lat-latMin)/(latMax-latMin)*(h-2*pad);
+let s=[`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Posición relativa de cinco estaciones en coordenadas de latitud y longitud">`];for(let k=0;k<=4;k++){let x=pad+(w-pad*2)*k/4,y=pad+(h-pad*2)*k/4;s.push(`<line x1="${x}" y1="${pad}" x2="${x}" y2="${h-pad}" stroke="#cfe2df" stroke-dasharray="3 4"/><line x1="${pad}" y1="${y}" x2="${w-pad}" y2="${y}" stroke="#cfe2df" stroke-dasharray="3 4"/>`)}
+DATA.forEach((o,i)=>{let x=xp(o.lon),y=yp(o.lat);s.push(`<circle cx="${x}" cy="${y}" r="10" fill="#006b70" stroke="#fff" stroke-width="3"><title>${escapeHtml(o.name)} (${o.lat}, ${o.lon})</title></circle><text x="${x+14}" y="${y-8}" font-size="12" fill="#164650" font-weight="650">${escapeHtml(o.name)}</text>`)});s.push(`<text x="${w/2}" y="${h-13}" text-anchor="middle" font-size="12" fill="#49686d">Longitud oeste</text><text x="20" y="${h/2}" transform="rotate(-90 20 ${h/2})" text-anchor="middle" fill="#49686d" font-size="12">Latitud sur</text></svg>`);$('#mapaEstaciones').innerHTML=s.join('')}
+map();render();
+
+// Fase 3N — Datos resumidos generados por el procedimiento reproducible del proyecto.
+(function(){
+  const datos=[{"name":"Jayanca (La Viña)","observado":1428,"pisco":1296.71,"era5":7603.9,"maeP":11.057,"maeE":514.658},{"name":"Cayaltí","observado":558.5,"pisco":685.56,"era5":1335.6,"maeP":11.053,"maeE":65.01},{"name":"Reque","observado":232.82,"pisco":245.46,"era5":846.4,"maeP":1.477,"maeE":51.132},{"name":"Lambayeque","observado":279.61,"pisco":288.23,"era5":1270.2,"maeP":3.029,"maeE":82.549},{"name":"Cueva Blanca","observado":969.2,"pisco":1044.23,"era5":8451.4,"maeP":36.963,"maeE":640.117}];
+  const sel=document.getElementById('estacionValidacion');
+  if(!sel)return;
+  datos.forEach((d,i)=>{const o=document.createElement('option');o.value=i;o.textContent=d.name;sel.appendChild(o);});
+  function dibujar(){
+    const d=datos[Number(sel.value)||0];const max=Math.max(d.observado,d.pisco,d.era5)*1.06;
+    const lista=[['SENAMHI observado',d.observado,'#147a79'],['PISCOp v3.0',d.pisco,'#ce902e'],['ERA5-Seamless',d.era5,'#4c7ba3']];
+    const caja=document.getElementById('graficoValidacion');
+    caja.innerHTML=lista.map(([label,v,color])=>'<div style="margin:19px 0"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:700"><span>'+label+'</span><span>'+v.toLocaleString('es-PE',{maximumFractionDigits:2})+' mm</span></div><div style="height:23px;border-radius:5px;background:#eef4f3;overflow:hidden;margin-top:7px"><div style="width:'+Math.max(0,100*v/max).toFixed(3)+'%;height:100%;background:'+color+';border-radius:5px"></div></div></div>').join('');
+    document.getElementById('vObs').textContent=d.observado.toLocaleString('es-PE',{maximumFractionDigits:1})+' mm';
+    document.getElementById('vPisco').textContent=d.maeP.toLocaleString('es-PE',{maximumFractionDigits:2})+' mm';
+    document.getElementById('vEra5').textContent=d.maeE.toLocaleString('es-PE',{maximumFractionDigits:2})+' mm';
+  }
+  sel.addEventListener('change',dibujar);dibujar();
+})();
+</script>
+<script>
+(function(){
+ const crop=document.getElementById('oaf22-crop'),search=document.getElementById('oaf22-search'),cards=Array.from(document.querySelectorAll('#oaf22-cards .oaf22-disease')),counter=document.getElementById('oaf22-count');
+ const refresh=()=>{let n=0;const q=search.value.trim().toLocaleLowerCase('es');cards.forEach(card=>{const visible=(crop.value==='todos'||card.dataset.crop===crop.value)&&(!q||card.textContent.toLocaleLowerCase('es').includes(q));card.hidden=!visible;if(visible)n++;});counter.textContent=n+' de '+cards.length+' enfermedades visibles';};
+ crop.addEventListener('change',refresh);search.addEventListener('input',refresh);refresh();
+ const pts={jayanca:[-6.39278,-79.8228],motupe:[-6.15083,-79.7142],olmos:[-5.98825,-79.74723],chiclayo:[-6.7714,-79.8409]},site=document.getElementById('oaf22-site'),yr=document.getElementById('oaf22-year'),btn=document.getElementById('oaf22-load'),dl=document.getElementById('oaf22-csv'),out=document.getElementById('oaf22-output');let csv='';
+ const fmt=x=>Number.isFinite(x)?x.toLocaleString('es-PE',{maximumFractionDigits:2}):'sin datos';
+ const get=async(model,fields)=>{const [lat,lon]=pts[site.value],params=new URLSearchParams({latitude:String(lat),longitude:String(lon),start_date:yr.value+'-01-01',end_date:yr.value+'-12-31',timezone:'America/Lima',models:model,hourly:fields,temperature_unit:'celsius',precipitation_unit:'mm'}),url='https://archive-api.open-meteo.com/v1/archive?'+params;const r=await fetch(url,{headers:{Accept:'application/json'}});if(!r.ok)throw Error('API '+model+' devolvió HTTP '+r.status);const d=await r.json();if(d.error||!d.hourly||!Array.isArray(d.hourly.time))throw Error(d.reason||'Estructura incorrecta de '+model);return d.hourly;};
+ btn.addEventListener('click',async()=>{
+  btn.disabled=true;dl.disabled=true;csv='';out.hidden=false;out.textContent='Consultando modelos históricos. No se mostrarán valores sintéticos…';
+  try{
+   const [a,b]=await Promise.all([get('era5_land','temperature_2m,relative_humidity_2m'),get('era5','precipitation')]);
+   if(!a.temperature_2m||!a.relative_humidity_2m||!b.precipitation||a.time.length!==b.time.length||a.time.some((v,i)=>v!==b.time[i]))throw Error('Marcas de tiempo o columnas incompatibles entre modelos');
+   let expected=((Number(yr.value)%4===0&&Number(yr.value)%100!==0)||Number(yr.value)%400===0)?8784:8760;
+   if(a.time.length!==expected)throw Error('Cobertura horaria incompleta ('+a.time.length+' de '+expected+'). No se interpretó como año completo.');
+   let t=[],h=[],p=[],wet=0;
+   const rows=['fecha_hora_local,temperatura_era5land_c,humedad_era5land_pct,precipitacion_era5_mm'];
+   for(let i=0;i<a.time.length;i++){const tt=a.temperature_2m[i],hh=a.relative_humidity_2m[i],pp=b.precipitation[i];if(typeof tt==='number'&&Number.isFinite(tt))t.push(tt);if(typeof hh==='number'&&Number.isFinite(hh)){h.push(hh);if(hh>=90)wet++;}if(typeof pp==='number'&&Number.isFinite(pp))p.push(pp);rows.push([a.time[i],tt??'',hh??'',pp??''].join(','));}
+   csv=rows.join('\n');
+   out.innerHTML='<b>Consulta completada · '+site.options[site.selectedIndex].text+' · '+yr.value+'</b><p>Horas recibidas: <b>'+a.time.length+'</b>; con temperatura válida: <b>'+t.length+'</b>; HR válida: <b>'+h.length+'</b>; precipitación válida: <b>'+p.length+'</b>.</p><p>Temperatura media de horas disponibles: <b>'+fmt(t.length?t.reduce((x,y)=>x+y,0)/t.length:NaN)+' °C</b> · HR media: <b>'+fmt(h.length?h.reduce((x,y)=>x+y,0)/h.length:NaN)+' %</b> · precipitación sumada de horas disponibles: <b>'+fmt(p.length?p.reduce((x,y)=>x+y,0):NaN)+' mm</b>.</p><p>Horas con HR ≥90 %: <b>'+wet+'</b> (indicador indirecto; no equivale a horas medidas de hoja mojada).</p><p class="oaf22-aux">Procedencia: Open-Meteo / ERA5-Land y ERA5; huso horario America/Lima; resultados sujetos a calidad/cobertura. La lluvia total no es una estimación anual completa cuando hay horas faltantes.</p>';
+   dl.disabled=false;
+  }catch(err){csv='';out.textContent='No fue posible obtener y verificar los datos meteorológicos reales: '+err.message+'. Reintenta desde un navegador conectado; no se sustituyeron por simulaciones.';}
+  finally{btn.disabled=false;}
+ });
+ dl.addEventListener('click',()=>{if(!csv)return;const blob=new Blob(['\ufeff',csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='oaf_'+site.value+'_'+yr.value+'_era5_era5land.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),5000);});
+})();
+</script></body></html>
