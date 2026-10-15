@@ -94,3 +94,17 @@ Se implementó un archivo automático diario de los pronósticos meteorológicos
 - Este archivo contiene **pronósticos externos**, NO predicciones propias de El Niño Costero o infección. Un archivo emitido en el futuro no debe sobrescribir la primera emisión de su fecha; el script impide tal sustitución.
 
 Este método servirá de base para verificar errores en predicciones nuevas, pero **todavía no confirma aciertos** sobre jornadas aún futuras. Faltan confrontaciones con observaciones instrumentales y registros fitosanitarios.
+
+## Cierre de publicación y análisis de estabilidad (15/10/2026 UTC)
+
+La reejecución del benchmark concluyó correctamente en GitHub Actions; el **JSON y CSV auditables ya están publicados** en `datos/benchmark_variables_6f.json` y `datos/benchmark_variables_6f_mes.csv`.
+
+Los intervalos exploratorios (95 % de remuestreos por bloques temporales) de la mejora relativa del MAE de C sobre B fueron:
+- Chiclayo: −2,73 % a +15,33 % (no demuestra mejora estable).
+- Jayanca: −42,69 % a −9,52 % (peor en la prueba).
+- Motupe: −5,48 % a +1,86 % (inconcluso).
+- Olmos: +1,65 % a +10,14 % (señal retrospectiva favorable bajo este método).
+
+**La evidencia no respalda implantar el modelo ampliado para las cuatro localidades.** Tampoco permite afirmar que la radiación, considerada individualmente, explica la mejora: el modelo añadió simultáneamente radiación, humedad y viento.
+
+Se inició la Fase 6G con verificación prospectiva de pronósticos nuevos, explicada en [FASE_6G_VERIFICACION_PROSPECTIVA.md](FASE_6G_VERIFICACION_PROSPECTIVA.md). La primera evaluación no podrá comenzar antes del 22/10/2026 porque faltan días completos y el reanálisis se publica con retraso.
