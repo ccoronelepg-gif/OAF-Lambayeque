@@ -178,7 +178,7 @@ def main():
         "fase":"7B_prospectivo",
         "fecha_generacion_utc":now.isoformat(timespec="seconds"),
         "estado":"verificacion_meteorologica" if scored else "pendiente_reanalisis",
-        "prediccion_emfermedad":False,
+        "es_prediccion_enfermedad":False,
         "hay_validacion_biologica":False,
         "referencia":"ERA5 humedad a 2 m, no medición de humectación ni parcela",
         "umbral":"HR >90 % >=6 horas continuas; comparado como señal atmosférica",
