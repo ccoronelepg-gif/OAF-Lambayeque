@@ -166,6 +166,14 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Se actualizaron los paneles de Boletín de El Niño con módulo **Fase 8A**. [Informe técnico](FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md), [código](modelos/auditoria_oceanica_8a.py), [workflow](.github/workflows/oaf_auditoria_oceanica_8a.yml), [primera emisión](datos/pronosticos_oceanicos_emitidos/2026-09.json).
 - **Siguiente fase 8B:** recoger predictores oceánico-atmosféricos con series fechadas, validar en periodos apartados y frente a persistencia; posteriormente estudiar asociación climática con variables regionales de Lambayeque, incluida radiación solar; mantener ENFEN como única fuente de alertas oficiales.
 
+### Fase 8B ejecutada — ¿SOI y vientos NOAA CPC mejoran la predicción Niño 1+2? (15/10/2026)
+
+- Se incorporaron índices mensuales reales NOAA CPC: SOI estandarizado, anomalías de alisios 850 hPa Pacífico central y oriental, emparejados con ERSSTv5 NCEI Niño 1+2. **573 meses con datos coincidentes**; la fuente CPC se revisa históricamente y no garantiza los valores exactos disponibles en el momento original.
+- Ensayo walk-forward con entrenamiento expansivo y sin objetivos futuros, Ridge `alpha=20` fijo, horizontes uno, dos y tres meses. Comparadores: persistencia oceánica y Ridge solo TSM.
+- **Los tres modelos ampliados empeoraron el MAE respecto al Ridge solo TSM**: h1 0,3351 a 0,3537 °C (200 meses), h2 0,4871 a 0,5084 °C (199 meses), h3 0,6121 a 0,6322 °C (198 meses). Últimos 12 meses también desfavorables. La variante **no se promovió como herramienta operativa** ni se reescribieron emisiones congeladas de Fase 8A.
+- Código/CSV/JSON publicados, workflow GitHub Actions ejecutado con éxito, panel 8B incorporado al Boletín de El Niño. Metodología `FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md`. No se infieren alertas de El Niño Costero, ICEN oficial, probabilidades calibradas de ENSO ni enfermedades.
+- **Siguiente Fase 8C:** fuentes de calor subsuperficial con trazabilidad, hipótesis de vientos/presión con desfases temporales, validación temporal realmente independiente y anomalías climáticas regionales con radiación; continuar progresión 7D cuando haya datos sanitarios verdaderos.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
