@@ -59,6 +59,19 @@ La salida inicial de un módulo no validado se etiqueta **experimental / no oper
 | **M4 — Predicción fitosanitaria** | **Arándano y vid** desde el diseño | Meteorología pronosticada y observada, fenología, variedad, humectación, manejo e incidencia/severidad confirmada | Ventanas meteorológicas favorables para Botrytis/antracnosis en arándano y oídio/mildiu en vid; luego probabilidades calibradas por enfermedad | Registros de campo suficientes, evaluación independiente prospectiva y validación fuera de muestra, sin confundir condiciones favorables con diagnóstico |
 | **M5 — Comunicación** | Transparencia y decisiones | Resultados M0–M4 | Panel, mapas, fechas, límites de incertidumbre y avisos **oficiales** | Auditoría de mensajes; alertas *propias* solo tras validación y reglas aprobadas |
 
+### Entregable 6A realizado (14/10/2026): anomalías agroclimáticas proyectadas
+
+- Portal: indicador comparativo de temperatura media diaria pronosticada a 7 días contra P10/P90 de ERA5-Land estacional **1996–2025** (ventana ±15 días); lluvia pronosticada a 7 días contra distribución histórica estacional de acumulados 7 días de ERA5.
+- Localidades referenciales: Chiclayo, Jayanca, Motupe y Olmos, **no estaciones instrumentales**.
+- Datos y errores: la base se consulta bajo demanda; si faltan días o hay menos de 25 años aptos, no se genera señal. Cada fuente queda diferenciada. Ni las señales térmicas ni el umbral de precipitación son probabilidades calibradas o alertas.
+- Pruebas: diez escenarios sintéticos de lógica satisfactorios; faltan pruebas contra datos reales, sesgos y despliegue público completo.
+- Archivos: modelos/anomalias_climaticas_v01.js y MODELO_ANOMALIAS_FASE6A.md.
+
+### Fase 6B — Próximo entregable: modelo experimental de Niño Costero
+
+Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evolución de ICEN usando **metodología oficial vigente ENFEN**, incluyendo actualización de 2024 y documentación de 2026. Ingestar series oceánicas oficiales y pronósticos fechados, construir primero pronóstico base de persistencia/estacionalidad y evaluar walk-forward contra referencias institucionales. NO inferir la clasificación oficial ni declarar capacidad predictiva en ausencia de habilidad demostrada. Separar esta predicción oceánica de la señal agroclimática local, investigando luego sus relaciones probabilísticas.
+
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
