@@ -1,0 +1,45 @@
+name: OAF 8E - Temperatura regional, emisiones y verificacion prospectiva
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 17 12,19,26 * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/pronostico_temperatura_regional_8e.py'
+      - '.github/workflows/oaf_temperatura_regional_8e.yml'
+      - 'datos/lambayeque_mensual_era5_8d.csv'
+      - 'datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv'
+      - 'datos/noaa_pmel_t300_8c.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-prospective-temperature-8e
+  cancel-in-progress: false
+jobs:
+  regional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test rigid training cut-off, future month detection and issuance
+        run: python modelos/pronostico_temperatura_regional_8e.py --self-test
+      - name: Freeze only source-complete temperature forecasts, then verify matured months
+        run: python modelos/pronostico_temperatura_regional_8e.py --run
+      - name: Preserve immutable issued originals and separate observed comparison ledger
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/pronosticos_temperatura_regional_8e/ datos/verificacion_temperatura_regional_8e.json datos/verificacion_temperatura_regional_8e.csv
+          if git diff --cached --quiet; then
+            echo "No new forecasts or mature ERA5-Land verification."
+          else
+            git commit -m "data(oaf): date-stamp and verify regional temperature model without overwriting past issues"
+            git pull --rebase origin main
+            git push
+          fi
