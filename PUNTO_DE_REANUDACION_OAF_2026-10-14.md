@@ -19,6 +19,26 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance: Fase 7B · ¿La humedad pronosticada se confirma? (15/10/2026)
+
+**Objetivo:** evaluar científicamente la capacidad real del indicador HR >90 % durante ≥6 horas para anticipar episodios de humedad en Lambayeque, y evitar llamarlo «predicción de enfermedad» sin datos de infección por *Botrytis*.
+
+**Benchmark histórico ejecutado con éxito:** Open-Meteo Previous Model Runs `relative_humidity_2m_previous_day1` (nominal 24 h antes) contrastado con HR horaria ERA5, enero–septiembre 2026, 273 jornadas y 6.552 horas coincidentes por localidad. Se evaluó matriz binaria de verdaderas coincidencias meteorológicas, falsas señales, omisiones y coincidencias negativas:
+- **Chiclayo:** TP 7, FP 31, FN 5, TN 230, precisión positiva **18,4 %**.
+- **Jayanca:** TP 16, FP 4, FN 18, TN 235, precisión positiva **80,0 %**.
+- **Motupe:** TP 17, FP 111, FN 17, TN 128, precisión positiva **13,3 %**.
+- **Olmos:** TP 27, FP 140, FN 10, TN 96, precisión positiva **16,2 %**.
+
+**No es validación fitopatológica:** los aciertos/falsos se refieren al patrón de humedad del aire de cuadrícula frente a ERA5, nunca a infecciones. No se dispone de humectación foliar medida ni registros de incidencia o diagnóstico de parcelas. Además, las resoluciones de cuadrícula de pronóstico y ERA5 difieren. Publicar ambas incertidumbres.
+
+**Fase 7B prospectiva real:** se implementó verificador automático diario de las emisiones inmutables del OAF. Emisión inicial guardada 15/10/2026 para jornadas 16–22/10/2026; **28 jornadas-localidad archivadas, 0 maduras, 0 verificadas**, estado `pendiente_reanalisis`. Primera verificación posible **23/10/2026**, margen de siete días, si ERA5 tiene datos reales disponibles. No inventar resultados futuros.
+
+**Implementado y archivado:** `FASE_7B_VALIDACION_HUMEDAD.md`, `modelos/validar_indicador_humedad_botrytis_7b.py`, `modelos/verificar_patrones_botrytis_emitidos_7b.py`, sus dos workflows GitHub Actions, `datos/botrytis_indicador_7b_backtest.json`, `datos/botrytis_indicador_7b_diario.csv`, `datos/botrytis_humedad_7b_prospectivo.json` y `datos/botrytis_humedad_7b_prospectivo.csv`. Nuevo panel desplegable Fase 7B en la sección Cultivos → Predicción, con lector `modelos/visor_validacion_humedad_botrytis_7b.js`.
+
+**Preservación del sitio:** cinco pestañas, recuadro verde inicial exclusivamente título «Observatorio Agroclimático y Fitosanitario» y fotos arándano/vid; presentación autor en primera persona bajo el recuadro; nueve enfermedades; módulos climáticos y ENFEN separados, sin alertas propias inventadas.
+
+**Siguiente paso Fase 7C:** preparar captura y validación de datos fitopatológicos de campo reales (parcela, variedad, floración, incidencia y severidad de Botrytis, confirmación diagnóstica) con HR/temperatura en dosel y humectación foliar instrumentada. Comparar su capacidad pronóstica para infección con modelo meteorológico básico, sin fuga temporal y con suficientes casos positivos/negativos. Mantener línea ENSO/El Niño Costero predictiva independiente.
+
 ## Último avance realizado: Fase 7A · Botrytis de arándano (15/10/2026)
 
 **Nuevo módulo de arándano efectivamente integrado en el portal:** dentro de Cultivos → Predicción (ruta `#riesgos`), se presenta un análisis horario experimental de siete días completos de HR >90 % durante al menos seis horas consecutivas, que puede atravesar medianoche. Se complementa con lluvia, radiación (W/m² convertida a MJ/m² diarios), temperatura y DPV, en cuatro localidades de Lambayeque. Hay opción de identificar floración, pero la fenología *no* está certificada por el modelo. Se muestran solo patrones de humedad, **no probabilidades, alertas, diagnósticos ni tratamientos**.
