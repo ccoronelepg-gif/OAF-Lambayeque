@@ -21,7 +21,9 @@ async function show(){
      throw Error('Formato o procedencia del producto no verificados');
   const [year,mon]=j.mes_ultimo_observado.split('-').map(Number);
   const now=new Date(),age=(now.getUTCFullYear()-year)*12+now.getUTCMonth()+1-mon;
-  if(age<1||age>3)throw Error('La referencia mensual está desactualizada o pertenece a un mes futuro');
+  if(age<1)throw Error('La serie contiene un mes aún no cerrado');
+  const stale=age>3;
+  if(stale&&j.prediccion_actual_disponible!==false)throw Error('Serie desactualizada sin bandera de bloqueo predictivo');
   const three=j.promedio_3m_indicativo;
   if(three.es_icen_oficial!==false||!Number.isFinite(three.promedio_trimestral_ersstv5_c))
      throw Error('Promedio indicativo inválido');
@@ -33,15 +35,15 @@ async function show(){
   table.replaceChildren();
   for(const k of ['1','2','3']){
     const h=j.modelos_horizontes[k];
-    if(!h||!Number.isFinite(h.pronostico_ar1_c)||!Number.isFinite(h.pronostico_persistencia_c)
+    if(!h||(!stale&&(!Number.isFinite(h.pronostico_ar1_c)||!Number.isFinite(h.pronostico_persistencia_c)))
        ||!Number.isFinite(h.metricas?.ar1?.mae_c)||!Number.isFinite(h.metricas?.persistencia?.mae_c)
        ||!Number.isFinite(h.metricas_ultimos_12?.ar1?.mae_c)
        ||!Number.isFinite(h.metricas_ultimos_12?.persistencia?.mae_c)
-       ||!/^\d{4}-\d{2}$/.test(h.mes_objetivo))
+       ||(!stale&&!/^\d{4}-\d{2}$/.test(h.mes_objetivo)))
       throw Error('Un horizonte carece de verificación o datos válidos');
     const tr=document.createElement('tr');
-    const cells=[k+' mes'+(k==='1'?'':'es')+' · '+h.mes_objetivo,
-      val(h.pronostico_ar1_c)+' °C',val(h.pronostico_persistencia_c)+' °C',
+    const cells=[k+' mes'+(k==='1'?'':'es')+(stale?' · evaluación histórica':' · '+h.mes_objetivo),
+      stale?'No disponible':val(h.pronostico_ar1_c)+' °C',stale?'No disponible':val(h.pronostico_persistencia_c)+' °C',
       val(h.metricas.ar1.mae_c,3)+' / '+val(h.metricas.persistencia.mae_c,3)+' °C',
       val(h.metricas_ultimos_12.ar1.mae_c,3)+' / '+val(h.metricas_ultimos_12.persistencia.mae_c,3)+' °C',
       h.mejora_consistente_demostrada===true?'Sí (solo retrospectivo)':'No demostrada'];
@@ -52,7 +54,9 @@ async function show(){
   document.getElementById('oaf-ersstv5-compare').textContent=cmp?.estado==='comparacion_exploratoria_no_validacion'?
    'Diferencia ERSSTv5–OISST en el último mes común '+cmp.ultimo_mes_comun+': '+val(cmp.diferencia_ultimo_mes_c)+' °C. Diferencia media absoluta entre productos: '+val(cmp.mae_entre_productos_c)+' °C ('+cmp.meses_comunes+' meses). No es error de pronóstico.' :
    'Comparación OISST–ERSSTv5 todavía no disponible o no válida.';
-  status.textContent='Datos NOAA procesados, origen '+j.mes_ultimo_observado+'. Archivo generado: '+j.fecha_procesamiento_utc+'.';
+  status.textContent=stale?
+   'La serie NOAA ERSSTv5 termina en '+j.mes_ultimo_observado+' (desfase '+age+' meses). Solo se muestra evaluación histórica; NO hay pronóstico vigente ERSSTv5.':
+   'Serie ERSSTv5 actualizada hasta '+j.mes_ultimo_observado+'. Estimaciones exclusivamente experimentales. Archivo: '+j.fecha_procesamiento_utc+'.';
   output.hidden=false;
  }catch(err){
    status.textContent='Sin resultado ERSSTv5 publicable: '+err.message+'. El módulo no sustituye datos ausentes ni muestra una clasificación ENFEN inventada.';
