@@ -19,6 +19,20 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance: Fase 6A (14/10/2026)
+
+**Implementado y guardado en GitHub:**
+- En «Datos climatológicos» hay un módulo experimental para comparar pronósticos externos de siete jornadas futuras con valores históricos por estación del año, usando como referencia **1996–2025** (reanalizados ERA5-Land: temperatura; ERA5: precipitación).
+- Se clasifican temperaturas pronosticadas como relativamente cálidas (sobre P90), frías (bajo P10) o sin extremos, mostrando diferencia respecto a la media histórica. Para lluvias se compara el acumulado previsto de siete días con el P90 histórico estacional de acumulados de siete días.
+- El cálculo se activa bajo demanda desde el navegador; NO informa riesgos porcentuales ni predice por sí solo El Niño Costero. Si falla la consulta a Open-Meteo, no inventa datos. Fuente y limitaciones explícitas.
+- En «Boletín de El Niño» aparece la **línea predictiva oceánica por desarrollar**, vinculada al ICEN y a metodología oficial ENFEN actualizada en 2024/2026.
+- **Código:** modelos/anomalias_climaticas_v01.js.
+- **Documentación:** MODELO_ANOMALIAS_FASE6A.md.
+- **Pruebas:** 10 pruebas sintéticas completadas (temperatura normal, anómala, lluvia >P90, transición de año, año bisiesto, 30 años elegibles, faltantes, 24 años rechazados, 25 años aceptados y 10.958 fechas históricas). Se ha verificado integridad estructural de la portada y cinco pestañas; el acceso real al proveedor y el despliegue de GitHub Pages NO han sido comprobados de extremo a extremo desde este entorno.
+- **No alterar la presentación aprobada:** recuadro verde solo con título «Observatorio Agroclimático y Fitosanitario» y las fotografías; debajo y fuera, descripción en primera persona firmada «Carlos E. Coronel García, Ingeniero Agrónomo».
+
+**Nuevo siguiente trabajo:** fase 6B, datos oceánicos y predicción preliminar de Niño Costero (anomalías TSM Niño 1+2, ICEN, índices atmosféricos, pronósticos externos archivados y modelo base de persistencia con evaluación walk-forward). En paralelo preparar validación de errores de las anomalías agroclimáticas e indicadores de enfermedades con datos de campo. No afirmar todavía predicción de El Niño o enfermedades validada.
+
 ## Estado del portal
 - Cinco secciones principales en este orden: **Inicio**, **Datos climatológicos**, **Cultivos y riesgo de enfermedades**, **Boletín de El Niño**, **Verificación de datos**.
 - Portada: dentro del recuadro verde, **solo** «Observatorio Agroclimático y Fitosanitario» y las fotografías de arándano y vid. Debajo y fuera del recuadro, descripción del proyecto **en primera persona por el autor**, seguida de **Carlos E. Coronel García — Ingeniero Agrónomo**. No introducir más texto en el recuadro verde.
