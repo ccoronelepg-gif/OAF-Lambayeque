@@ -19,6 +19,20 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 6C · ERSSTv5 e ICEN (14/10/2026)
+
+**Datos efectivamente descargados y procesados:** NOAA CPC ERSSTv5 Niño 1+2, anomalías mensuales desde enero de 1950 hasta junio de 2026. Esta versión NOAA presenta un desfase de **4 meses** a octubre de 2026, motivo por el cual **no se publican proyecciones vigentes** basadas en ella. El módulo conserva únicamente sus datos y evaluaciones históricas.
+
+**Resultados:** 197, 196 y 195 pronósticos históricos walk-forward a horizontes de 1, 2 y 3 meses. MAE AR(1): **0,3449 / 0,4952 / 0,6183 °C**, MAE persistencia: **0,3546 / 0,5282 / 0,6823 °C**. En los últimos 12 meses, el AR(1) empeora a 1 y 2 meses y la mejora a 3 meses es mínima. Todas las etiquetas de habilidad prospectiva y demostrada siguen en falso.
+
+**Contraste con fuente institucional:** un promedio trimestral centrado basado en ERSSTv5 del OAF se comparó con cuatro ICEN de SENAMHI–ENFEN publicados para febrero–mayo 2026. Diferencias OAF menos índice institucional: +0,017; +0,010; 0,000; +0,003 °C, respectivamente; media absoluta **0,0075 °C**. Solo control limitado de cómputo, no validación completa ni índice oficial.
+
+**Archivos:** `MODELO_ERSSTV5_FASE6C.md`, `modelos/modelo_ersstv5_nino12_fase6c.py`, `.github/workflows/oaf_ersstv5_fase6c.yml`, `datos/modelo_ersstv5_nino12_6c.json`, `datos/noaa_ersstv5_nino12_mensual.csv`, `datos/contraste_icen_publicado_2026.csv`, `modelos/ersstv5_visor_v01.js`.
+
+**Portal:** panel plegable de Fase 6C dentro de «Boletín de El Niño». Se mantienen las cinco pestañas. En el recuadro verde, únicamente título «Observatorio Agroclimático y Fitosanitario» y dos fotografías; abajo y fuera, descripción en primera persona y firma.
+
+**Próximo trabajo Fase 6D:** localizar fuentes **vigentes** de ICEN/ERSSTv5 o registros institucionales y estudiar ERA6/ERSSTv6 como productos diferentes; ampliar controles documentales, recopilar pronósticos fechados para evaluación realmente prospectiva, y añadir señales atmosféricas para Niño Costero. No extrapolar automáticamente las anomalías oceánicas a incidencia de Botrytis u oídio.
+
 ## Último avance ejecutado: Fase 6B — modelo oceánico NOAA Niño 1+2 (14/10/2026)
 
 **El trabajo efectivamente realizado:**
