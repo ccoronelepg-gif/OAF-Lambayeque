@@ -125,6 +125,17 @@ Se amplió [Datos climatológicos](https://ccoronelepg-gif.github.io/OAF-Lambaye
 
 **El próximo uso predictivo no será automático:** radiación, DPV, viento y humedad servirán como covariables candidatas solo después de evaluar errores y utilidad real. La humedad relativa **no sustituye** la duración medida de humectación foliar requerida para modelos de Botrytis. Las variables de meteorología local tampoco sustituyen señales oceánicas/atmosféricas de El Niño Costero.
 
+## Fase 6F · Evaluación del valor predictivo de la radiación (14/10/2026)
+
+Se creó un experimento cuantitativo para comprobar **si incorporar radiación solar, humedad relativa y viento mejora o empeora** el pronóstico de temperatura. A diferencia de una simple regresión sobre observaciones del mismo día, utiliza **predictores de pronósticos archivados con 24 horas de antelación** de Open-Meteo (Previous Runs API); la variable objetivo es temperatura reanalizada por ERA5-Land.
+
+- Tres alternativas comparadas: (A) pronóstico anterior sin corregir, (B) corrección Ridge básica con temperatura y componentes horarios/estacionales, (C) mismo modelo Ridge más radiación, humedad y viento. Regularización fija y normalización aprendida exclusivamente del entrenamiento.
+- Entrenamiento 2024–2025; evaluación temporal aislada enero–septiembre 2026; Chiclayo, Jayanca, Motupe y Olmos. Métricas MAE, RMSE, sesgo y remuestreo temporal en bloques; publicar honestamente resultados mejores o peores.
+- Prueba de API real en Motupe: **120 horas archivadas para cada predictor y 120 horas equivalentes de referencia**, coincidentes; GitHub Actions lo confirmó.
+- Código [benchmark_radiacion_6f.py](modelos/benchmark_radiacion_6f.py), [metodología](FASE_6F_EVALUACION_PREDICTORES.md), [flujo de evaluación](.github/workflows/oaf_benchmark_radiacion_6f.yml) y panel plegable en [Datos climatológicos](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#clima).
+- Archivos de salida cuando la evaluación termine correctamente: [benchmark_variables_6f.json](datos/benchmark_variables_6f.json) y [errores mensuales](datos/benchmark_variables_6f_mes.csv).
+- Este experimento **no constituye aún predicción validada de El Niño Costero ni enfermedades**, y su referencia ERA5-Land es reanálisis, no medición SENAMHI. Los modelos fitosanitarios requieren datos de campo adicionales.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
