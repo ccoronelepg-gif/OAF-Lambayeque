@@ -19,6 +19,22 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 8A · Predicción oceánica prospectiva en paralelo (15/10/2026)
+
+**Decisión central del proyecto:** mientras el autor obtiene **registros de evaluaciones reales de campo** para validar Botrytis en arándano (y posteriormente enfermedades de vid), el OAF sigue avanzando por separado hacia predicciones de **anomalías climáticas, El Niño Costero y su posible influencia regional en Lambayeque**. No pedir tareas, exámenes ni comprobaciones de aprendizaje; ejecutar los desarrollos técnicos.
+
+**Se concretó el archivo prospectivo de predicciones oceánicas:** `modelos/auditoria_oceanica_8a.py` y workflow `.github/workflows/oaf_auditoria_oceanica_8a.yml` terminados y ejecutados con GitHub Actions **success**. El modelo fuente es **NOAA NCEI ERSSTv5 Niño 1+2**, con datos derivados por OAF a **1991–2020**, NO el ICEN oficial ni el índice diagnóstico ENFEN. Los archivos originales incluyen huellas SHA-256 de la fuente y del modelo, fecha UTC y hora de Perú y no se sobrescriben.
+
+**Primera emisión congelada:** `datos/pronosticos_oceanicos_emitidos/2026-09.json`, fechada 15/10/2026 a las 00:53:43 Perú; último mes observado septiembre 2026, anomalía derivada +4,38867 °C. AR(1): **octubre +4,054 °C (emitido a mitad del mes, nowcast)**, **noviembre +3,744 °C (pronóstico verdaderamente anterior al mes)** y **diciembre +3,456 °C (anterior al mes)**; persistencia +4,389 °C en todos. No mostrar como «aciertos»; sigue sin habilidad prospectiva demostrada ni ventaja reciente robusta sobre persistencia.
+
+**Verificación futura configurada:** `datos/verificacion_oceanica_8a.json` está en `pendiente_maduracion_oceanica`, pronósticos archivados **3**, verdaderamente anteriores al mes **2**, estimación intramensual **1**, evaluaciones realizadas **0**; `datos/verificacion_oceanica_8a.csv` no tiene filas de error. Primera comprobación posible octubre 10/11/2026 si NOAA ya publicó el dato, noviembre 10/12/2026 y diciembre 10/01/2027, sujeto a disponibilidad. Revisiones de ERSSTv5 posteriores no alterarán emisiones congeladas. Se verificará contra una serie mensual revisable, no contra sensor marino independiente.
+
+**Sitio:** apartado plegable «Fase 8A · Pronósticos oceánicos archivados antes del evento» dentro de pestaña Boletín de El Niño `#nino`, archivo `modelos/archivo_oceanico_visor_8a.js`. No modificar héroe verde (SOLO título y dos fotos), descripción del autor bajo el héroe, cinco pestañas, nueve enfermedades ni módulos fitosanitarios.
+
+**Documentación:** `FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md`, `README.md`, `PLAN_MAESTRO_OAF_2_0.md`. Implementación auditada contra JSON/CSV reales. ICEN y comunicados ENFEN constituyen un módulo oficial separado; pronóstico OAF es exploratorio.
+
+**Próxima fase 8B:** comparar modelos ENSO/oceánico-atmosféricos con series y disponibilidad históricas de SOI, viento zonal, calor subsuperficial, TSM regional y datos ENFEN; horizonte 1–3 meses y pruebas walk-forward sin usar futuro, más archivo prospectivo en curso. Comprobar aportación incremental de radiación a anomalías locales con 1996–2025 y estaciones disponibles. Continuar avance fitosanitario cuando existan datos verdaderos de campo.
+
 ## Último avance: Fase 7C — Protocolo fitosanitario y control de datos de parcelas (15/10/2026)
 
 **Objetivo científico:** continuar desde 7B (que validó únicamente señales de HR elevada frente a ERA5) hacia una futura **validación biológica real de Botrytis cinerea en arándano**, con observaciones instrumentales y enfermedad diagnosticada. No hay incidencias medidas ni probabilidades calibradas que reportar.
