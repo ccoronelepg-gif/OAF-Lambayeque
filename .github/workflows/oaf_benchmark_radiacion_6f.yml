@@ -1,0 +1,41 @@
+name: OAF 6F - Historical Forecast Predictor Benchmark
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/benchmark_radiacion_6f.py'
+      - '.github/workflows/oaf_benchmark_radiacion_6f.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-6f-benchmark
+  cancel-in-progress: false
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit test of regression solver and predictions
+        run: python modelos/benchmark_radiacion_6f.py --self-test
+      - name: Real-data retrospective benchmark four locations
+        run: python modelos/benchmark_radiacion_6f.py
+      - name: Publish audited retrospective MAE only on full success
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/benchmark_variables_6f.json datos/benchmark_variables_6f_mes.csv
+          if git diff --cached --quiet; then
+            echo "No change to benchmark."
+          else
+            git commit -m "data(oaf): evaluate hourly forecast corrections with radiation humidity and wind"
+            git push
+          fi
