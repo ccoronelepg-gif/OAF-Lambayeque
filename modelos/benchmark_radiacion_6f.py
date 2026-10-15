@@ -6,6 +6,7 @@ Objetivo: ERA5-Land temperatura 2m REANALIZADA, no estación SENAMHI.
 Entrenamiento: 2024–2025; evaluación aislada: enero–septiembre de 2026.
 No es modelo de enfermedad, Niño Costero ni alerta operativa.
 """
+import argparse
 import csv
 import json
 import math
