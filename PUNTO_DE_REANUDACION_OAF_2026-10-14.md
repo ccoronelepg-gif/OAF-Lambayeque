@@ -19,6 +19,22 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 8B — Predictores atmosféricos y prueba real NOAA (15/10/2026)
+
+**Motivo:** mientras se consiguen datos de campo para la línea fitosanitaria 7C, el OAF sigue investigando la capacidad predictiva de anomalías oceánicas y El Niño Costero. La línea regional conserva referencia 1996–2025, radiación y otras variables, y el índice oficial ICEN/avisos de ENFEN debe mantenerse aparte de estimaciones OAF.
+
+**Código y datos realmente implementados en GitHub:**
+- `modelos/benchmark_atmosferico_8b.py`, workflow `.github/workflows/oaf_benchmark_atmosferico_8b.yml` (GitHub Actions **success**). Se descargaron y validaron NOAA CPC `soi` (sección `STANDARDIZED DATA`), `cpac850` y `epac850` (secciones `ANOMALY`); los índices de viento son del Pacífico central/oriental a 850 hPa, no meteorología local. Se interpretan como ausentes los `-999.9` incluso concatenados. **573 meses comunes (1979-01..2026-09).**
+- Resultados históricos: `datos/noaa_cpc_predictores_atmosfericos_8b.csv`, `datos/benchmark_atmosferico_8b.json` y `datos/benchmark_atmosferico_8b_fold.csv` (597 casos por mes objetivo y horizonte). Informe `FASE_8B_PREDICTORES_ATMOSFERICOS_ENSO.md`.
+- Tres modelos evaluados en walk-forward desde 2010, horizonte 1/2/3: persistencia, Ridge `alpha=20` solo anomalía Niño1+2 ERSSTv5 reajustada por OAF a 1991–2020, Ridge con los mismos parámetros más SOI y anomalías de viento. Training solo incluye objetivos observados hasta cada mes origen, sin etiquetas futuras. Histórico CPC no es archivo vintage; no representa prueba verdaderamente emitida antes del evento.
+- **Resultado científico NEGATIVO para estas covariables y especificación:** MAE solo TSM vs TSM+atmósfera: **h1 0,3351 vs 0,3537 °C (200 orígenes)**; **h2 0,4871 vs 0,5084 (199)**; **h3 0,6121 vs 0,6322 (198)**. Los últimos 12 meses y remuestreo por bloques tampoco demuestran mejora. **NO** cambiar ni sobrescribir el modelo de emisión 8A; continuar archivando/verificando sus pronósticos reales como antes.
+- `modelos/benchmark_atmosferico_visor_8b.js` y panel nuevo 8B en pestaña «Boletín de El Niño» `#nino`, mostrando métodos y MAE reales sin exagerar la mejora.
+- No es ICEN oficial, clasificación ENSO, pronóstico operacional ENFEN, alerta de Niño Costero ni predicción de precipitación regional. Faltan evaluaciones atmosféricas con versiones originales de los datos y comprobación verdaderamente prospectiva de modelos alternativos.
+
+**Próxima fase 8C:** estudiar desfases de SOI/vientos, contenido de calor oceánico subsuperficial con fuente mensual verificable, cambios rápidos del océano y relación estadística con precipitación/radiación/temperatura de Lambayeque (1996–2025); nuevas variables solo si demuestran mejora sobre comparadores en muestras independientes. Mantener la línea de arándano/vid esperando observaciones sanitarias y la protección de datos de parcelas.
+
+**Portada y diseño:** cinco pestañas; dentro del recuadro verde solo «Observatorio Agroclimático y Fitosanitario» y las dos fotos, sin subtítulos; descripción en primera persona y firma debajo. Preservar nueve enfermedades y módulos anteriores en toda siguiente modificación.
+
 ## Avance más reciente: Fase 8A · Predicción oceánica prospectiva en paralelo (15/10/2026)
 
 **Decisión central del proyecto:** mientras el autor obtiene **registros de evaluaciones reales de campo** para validar Botrytis en arándano (y posteriormente enfermedades de vid), el OAF sigue avanzando por separado hacia predicciones de **anomalías climáticas, El Niño Costero y su posible influencia regional en Lambayeque**. No pedir tareas, exámenes ni comprobaciones de aprendizaje; ejecutar los desarrollos técnicos.
