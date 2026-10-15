@@ -46,6 +46,15 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 .crop-tab:hover{background:#f1f8f5}
 .crop-tab[aria-selected="true"]{background:var(--mint);color:var(--teal);border-color:#a7d9c8;box-shadow:inset 0 -2px 0 var(--teal)}
 @media(max-width:800px){.crop-tab{flex:1;min-width:190px}.hero .hero-subtitle{font-size:15px}}
+
+/* Presentación editorial independiente del recuadro principal */
+.hero .herotxt{display:flex;align-items:center;justify-content:flex-start}
+.hero .herotxt h1{margin:0;max-width:540px}
+.autor-presentacion{padding:29px 31px 26px;margin:17px 0 25px;background:#fff;border:1px solid var(--line);border-radius:15px}
+.autor-presentacion p{color:var(--ink);font-size:15px;line-height:1.85;margin:0;max-width:1020px}
+.autor-firma{margin-top:20px;display:flex;flex-direction:column;gap:2px}
+.autor-firma strong{font-size:15px;color:var(--navy)}.autor-firma span{font-size:13px;color:var(--muted)}
+@media(max-width:800px){.autor-presentacion{padding:21px 19px}.hero .herotxt{min-height:170px}}
 </style></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo">◈</span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <nav aria-label="Secciones principales">
@@ -57,9 +66,13 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 </nav></div></header>
 <main>
 <section data-page="inicio" id="inicio">
-<div class="hero"><div class="herotxt"><h1>Observatorio Agroclimático y Fitosanitario</h1><p>El Observatorio Agroclimático y Fitosanitario de Lambayeque es un proyecto que integra información climática de fuentes abiertas, boletines oficiales y evidencia científica para comprender cómo la temperatura, la humedad y las precipitaciones influyen en el desarrollo de enfermedades agrícolas. Inicialmente, la vigilancia se enfoca en los cultivos de arándano y vid. Su finalidad es analizar las condiciones meteorológicas y su evolución, desarrollar modelos de predicción del riesgo fitosanitario y, una vez validados con datos de campo, contribuir a generar alertas tempranas que respalden decisiones preventivas. De esta manera, buscamos reducir pérdidas en los cultivos y facilitar a productores, profesionales e investigadores información confiable para afrontar la variabilidad climática y fenómenos como El Niño.</p></div><div class="heroimg">
+<div class="hero"><div class="herotxt"><h1>Observatorio Agroclimático y Fitosanitario</h1></div><div class="heroimg">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700" alt="Fotografía de arándanos maduros" loading="eager">
 <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bunch_Of_Grapes_On_Vine.jpg?width=650" alt="Fotografía de racimo de uvas en la vid" loading="eager"></div></div>
+<div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
+<p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
+<div class="autor-firma"><strong>Carlos E. Coronel García</strong><span>Ingeniero Agrónomo</span></div>
+</div>
 <div class="cards">
 <article class="card"><span class="kicker">01 · Datos</span><h2>¿Cómo está el clima?</h2><p>Temperatura, humedad y pronóstico meteorológico externo para las localidades de referencia, junto con registros de precipitaciones.</p><a href="#clima">Consultar el clima →</a></article>
 <article class="card"><span class="kicker">02 · Cultivos</span><h2>Arándano y vid</h2><p>Conoce las enfermedades que pueden verse favorecidas por determinadas condiciones climáticas y consulta las fuentes científicas.</p><a href="#cultivos">Ver condiciones de riesgo →</a></article>
