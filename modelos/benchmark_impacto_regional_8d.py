@@ -89,10 +89,60 @@ def pull(site,lat,lon,model,fields,start=START,end=END):
     raise RuntimeError("Unavailable ERA reanalysis for "+site+" "+model+": "+str(last))
 
 
+REANALYSIS_CACHE={}
+
+def pull_multiple(model,fields):
+    """One provider call per model for FOUR sites to avoid repeated rate limits."""
+    sites=list(SITES)
+    params={
+      "latitude":",".join(str(SITES[n][0]) for n in sites),
+      "longitude":",".join(str(SITES[n][1]) for n in sites),
+      "start_date":START,"end_date":END,"timezone":"America/Lima",
+      "daily":",".join(fields),"models":model}
+    url="https://archive-api.open-meteo.com/v1/archive?"+urlencode(params)
+    last=None
+    for attempt in range(4):
+        try:
+            req=Request(url,headers={"User-Agent":"OAF-Lambayeque-8D-batched-climate/1.0"})
+            with urlopen(req,timeout=150) as response:
+                data=json.load(response)
+            if not isinstance(data,list) or len(data)!=len(sites):
+                raise ValueError("Expected one historical data object per site")
+            for site,datum in zip(sites,data):
+                if not isinstance(datum,dict) or datum.get("error"):
+                    raise ValueError("Invalid reanalysis response for "+site)
+                dates=datum.get("daily",{}).get("time")
+                if (datum.get("timezone")!="America/Lima" or
+                    not isinstance(dates,list) or not dates or
+                    dates[0]!=START or dates[-1]!=END or
+                    len(dates)!=len(set(dates))):
+                    raise ValueError("Incomplete local day coverage "+site)
+                lat,lon=SITES[site]
+                if abs(float(datum.get("latitude",999))-lat)>1.0 or abs(float(datum.get("longitude",999))-lon)>1.0:
+                    raise ValueError("Remote model grid cell outside locality "+site)
+                for name in fields:
+                    if not isinstance(datum["daily"].get(name),list) or len(datum["daily"][name])!=len(dates):
+                        raise ValueError("Missing field "+name+" at "+site)
+            return dict(zip(sites,data))
+        except (OSError,ValueError) as exc:
+            last=exc
+            if attempt<3:
+                print("Retrying batch",model,"after upstream failure",str(exc),flush=True)
+                time.sleep([0,35,100,180][attempt+1])
+    raise RuntimeError("Batched ERA reanalysis unavailable for "+model+": "+str(last))
+
+
+def fetch_reanalysis_for_all():
+    temp=pull_multiple("era5_land",["temperature_2m_mean"])
+    # Delay reduces high-cost Open-Meteo public API rate limiting.
+    time.sleep(12)
+    others=pull_multiple("era5",["precipitation_sum","shortwave_radiation_sum"])
+    for site in SITES:
+        REANALYSIS_CACHE[site]=(temp[site],others[site])
+
+
 def merge_reanalysis(site):
-    lat,lon=SITES[site]
-    t=pull(site,lat,lon,"era5_land",["temperature_2m_mean"])
-    p=pull(site,lat,lon,"era5",["precipitation_sum","shortwave_radiation_sum"])
+    t,p=REANALYSIS_CACHE[site]
     if t["daily"]["time"]!=p["daily"]["time"]:
         raise ValueError("ERA5/ERA5-Land daily date alignment mismatch "+site)
     units_t=t.get("daily_units",{})
@@ -298,6 +348,7 @@ def main():
     sea=load_target()
     heat=load_heat()
     monthly={};positions={}
+    fetch_reanalysis_for_all()
     for site in SITES:
         monthly[site],positions[site]=merge_reanalysis(site)
         print("Fetched site",site,len(monthly[site]),"complete months",flush=True)
