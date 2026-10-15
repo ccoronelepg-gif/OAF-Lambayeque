@@ -34,9 +34,19 @@ async function show(){
     const ar=metric?.ar1?.mae_c,ps=metric?.persistencia?.mae_c;
     if(!Number.isFinite(ar)||!Number.isFinite(ps))throw Error('Verificación estadística incompleta');
     document.getElementById('oaf-n12-error').textContent='MAE modelo: '+fmt(ar)+' °C · persistencia: '+fmt(ps)+' °C. '+j.evaluacion.num_folds+' pronósticos retrospectivos.';
-    document.getElementById('oaf-n12-eval').textContent=j.evaluacion.supera_persistencia_mae?
-      'El AR(1) redujo el error histórico respecto a persistencia. Aún NO está validado operativamente.' :
-      'El AR(1) NO superó a la referencia de persistencia; no interpretar su estimación como mejora demostrada.';
+    const recent=j.evaluacion.reciente_12_meses;
+    const ci=j.evaluacion.intervalo_heuristico_skill_95;
+    const strong=j.evaluacion.habilidad_consistente_demostrada===true;
+    let review='';
+    if(recent&&Number.isFinite(recent.mae_ar1_c)&&Number.isFinite(recent.mae_persistencia_c)){
+       review+='Últimos 12 meses: error medio AR(1) '+fmt(recent.mae_ar1_c,4)+' °C frente a '+fmt(recent.mae_persistencia_c,4)+' °C de persistencia. ';
+    }
+    if(Array.isArray(ci)&&ci.length===2&&ci.every(Number.isFinite)){
+       review+='Intervalo exploratorio de mejora relativa por remuestreo: '+fmt(ci[0]*100,1)+' % a '+fmt(ci[1]*100,1)+' %. ';
+    }
+    document.getElementById('oaf-n12-eval').textContent=(strong?
+       'Las pruebas retrospectivas superaron las referencias seleccionadas; NO existe validación prospectiva ni operativa. ' :
+       'El modelo NO ha demostrado una mejora consistente frente a persistencia. La cifra publicada es un ensayo, NO una alerta ni un pronóstico validado. ')+review;
     const rows=document.getElementById('oaf-n12-recent');
     rows.replaceChildren();
     for(const record of j.series_recientes.slice(-6)){
