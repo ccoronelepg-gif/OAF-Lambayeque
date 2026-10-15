@@ -198,6 +198,19 @@ El nuevo panel Fase 7C aparece en [Cultivos y riesgo de enfermedades](https://cc
 
 **Próxima prioridad 7D:** emparejar en entorno privado fecha/parcela/fenología con pronósticos archivados ANTES del evento, revisar representatividad espacial y disponibilidad real de sensores y diagnóstico; evaluar capacidad de anticipar incidencia solo tras reunir casos y controles suficientes.
 
+## Fase 8A · Predicciones oceánicas prospectivas mientras se buscan datos fitosanitarios (15/10/2026)
+
+Continúan **dos líneas de trabajo en paralelo**: (1) recopilación y posterior validación de evaluaciones reales de Botrytis en arándano y vid; (2) desarrollo y evaluación prospectiva de predicciones de anomalías climáticas y El Niño Costero. No se suspendió el desarrollo climático por falta de registros fitosanitarios.
+
+Se implementó **un archivo irreversible por mes de origen** de pronósticos experimentales de anomalía oceánica Niño 1+2, NOAA NCEI ERSSTv5 reajustado por OAF a climatología 1991–2020. Registra SHA-256 de datos/modelo, hora de emisión, mes objetivo, AR(1) y referencia de persistencia. **Distingue expresamente emisión intramensual frente a un pronóstico emitido antes del inicio del mes**, y no utiliza observaciones futuras para calificar sus resultados.
+
+- **Primera emisión real, 15/10/2026:** septiembre +4,38867 °C observado como origen; predicción AR(1) para octubre **+4,054 °C (intramensual)**, noviembre **+3,744 °C (antes del mes)** y diciembre **+3,456 °C (antes del mes)**; referencia de persistencia +4,389 °C en todos los horizontes.
+- **Aciertos aún no conocidos:** inicialmente 3 estimaciones guardadas, 0 verificadas. Primer control posible de octubre desde **10/11/2026** y únicamente si NOAA ya publicó ese valor. La verificación conserva la cautela ante revisiones retrospectivas de ERSSTv5.
+- [Emisión original con sello](datos/pronosticos_oceanicos_emitidos/2026-09.json), [resumen de verificación](datos/verificacion_oceanica_8a.json), [código](modelos/auditoria_oceanica_8a.py), [automatización mensual](.github/workflows/oaf_auditoria_oceanica_8a.yml), [informe metodológico](FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md) y [apartado en Boletín de El Niño](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino).
+- **No** se atribuye habilidad predictiva demostrada al AR(1) ni se equipara anomalía Niño 1+2 derivada a **ICEN oficial ENFEN**, predicción de lluvia o incidencia de enfermedades.
+
+**Fase 8B recomendada:** añadir señales de viento zonal del Pacífico, SOI/presión y calor subsuperficial con fechas auditables para comprobar mejora real sobre persistencia en 1–3 meses; continuar validaciones meteorológicas regionales con radiación y predicciones climáticas 1996–2025.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
