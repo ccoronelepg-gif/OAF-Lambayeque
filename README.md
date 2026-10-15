@@ -106,6 +106,25 @@ La nueva sección plegable en [Boletín de El Niño](https://ccoronelepg-gif.git
 
 **Próximo avance recomendado — Fase 6E:** añadir predictores oceánico-atmosféricos de fuentes públicas, generar pronósticos verdaderamente fechados y compararlos prospectivamente con persistencia y modelos de referencia institucional. Sin esta evaluación **no existe predicción OAF operativa**.
 
+## Fase 6E · Nuevas variables agroclimáticas: radiación solar y microclima (14/10/2026)
+
+Se amplió [Datos climatológicos](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#clima) con variables **modeladas y pronosticadas por Open-Meteo** para Chiclayo, Jayanca, Motupe y Olmos:
+
+- **Radiación solar global de onda corta:** `shortwave_radiation` actual (W/m²) y `shortwave_radiation_sum` diario (MJ/m²). No confundir con PAR, UV ni sensor en dosel.
+- **Déficit de presión de vapor (DPV):** actual y máximo diario (kPa).
+- **Viento a 10 m:** actual y máximo diario (km/h).
+- **Humedad relativa:** actual y promedio diario (%).
+- **ET₀ FAO:** evapotranspiración de referencia diaria (mm), no evapotranspiración real del cultivo.
+- **Presión atmosférica superficial:** actual (hPa), no índice SOI.
+- **Insolación estimada:** horas diarias de brillo solar, distintas del acumulado de energía.
+- Temperatura, precipitación y probabilidad de precipitación se mantienen.
+
+**Análisis de anomalías solares:** el indicador 1996–2025 ahora compara la radiación prevista acumulada en siete días con valores estacionales históricos (ventana ±15 días, P10/P90, ≥25 años válidos). Fuente de **radiación y lluvia: ERA5**, temperatura **ERA5-Land**, según comprobación de disponibilidad con GitHub Actions. Una ausencia de radiación deja su comparación **no evaluable**, sin fabricar ceros ni impedir interpretar separadamente temperatura/lluvia.
+
+**Control con datos reales:** dos localidades pasaron comprobación de variables, formatos y unidades de pronóstico; en una muestra de octubre de 2019 se encontraron 31/31 valores radiativos con ERA5 y 0/31 con ERA5-Land. Se corrigió la fuente histórica usada por el indicador. Ver [metodología y catálogo de variables de Fase 6E](VARIABLES_AGROCLIMATICAS_FASE6E.md) y [pruebas de consulta](tests/test_variables_agroclimaticas_6e.py).
+
+**El próximo uso predictivo no será automático:** radiación, DPV, viento y humedad servirán como covariables candidatas solo después de evaluar errores y utilidad real. La humedad relativa **no sustituye** la duración medida de humectación foliar requerida para modelos de Botrytis. Las variables de meteorología local tampoco sustituyen señales oceánicas/atmosféricas de El Niño Costero.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
