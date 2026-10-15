@@ -26,7 +26,7 @@ Los datos proceden de modelos meteorológicos externos servidos por Open-Meteo; 
 ## Radiación incorporada al análisis de anomalías 1996–2025
 
 - Pronóstico externo: siete días completos futuros, acumulados diarios `shortwave_radiation_sum` de Open-Meteo.
-- Referencia: reanálisis **ERA5-Land** de 1996-01-01 a 2025-12-31, variable `shortwave_radiation_sum`, localidad de referencia.
+- Referencia: reanálisis **ERA5** de 1996-01-01 a 2025-12-31, variable `shortwave_radiation_sum`, localidad de referencia. Para temperatura se conserva **ERA5-Land**; para precipitación, **ERA5**.
 - Comparación: sumar **siete días pronosticados** y comparar con acumulados de siete días del mismo periodo estacional (**±15 días**) de cada año.
 - Se calculan **P10**, **mediana** y **P90** históricos. Se requieren **≥25 años** con al menos ocho ventanas de siete días completas dentro de la ventana estacional.
 - Etiquetas: radiación prevista por encima de P90, por debajo de P10 o dentro de P10–P90. **No son probabilidades de eventos ni una alerta agrícola.**
@@ -34,7 +34,7 @@ Los datos proceden de modelos meteorológicos externos servidos por Open-Meteo; 
 
 **Pruebas sintéticas de código aprobadas:** periodo 1996–2025 (10 958 días), cobertura completa de radiación, radiación alta >P90, radiación dentro del rango, dato futuro ausente, referencia radiativa ausente, invariancia de clasificación de temperatura y precipitación.
 
-**Verificación en vivo:** las pruebas de contrato de API están en [tests/test_variables_agroclimaticas_6e.py](tests/test_variables_agroclimaticas_6e.py) y el flujo [oaf_variables_6e_check.yml](.github/workflows/oaf_variables_6e_check.yml). Estas verificaciones comprueban existencia y unidades de variables pronosticadas y datos históricos; su resultado debe confirmarse mediante GitHub Actions.
+**Verificación con respuestas reales:** el primer ensayo en GitHub confirmó para Motupe y Chiclayo las variables y unidades de pronóstico. Detectó que ERA5-Land devolvía 0 de 31 registros útiles de radiación en octubre de 2019, mientras que ERA5 devolvió 31 de 31 (MJ/m²), por lo que se corrigió la referencia histórica para radiación a ERA5. Las pruebas de contrato están en [tests/test_variables_agroclimaticas_6e.py](tests/test_variables_agroclimaticas_6e.py) y el flujo [oaf_variables_6e_check.yml](.github/workflows/oaf_variables_6e_check.yml). Estas verificaciones comprueban existencia y unidades de variables pronosticadas y datos históricos; se programó una segunda comprobación automatizada para confirmar la combinación final ERA5 (radiación/lluvia) y ERA5-Land (temperatura).
 
 ## Variables prioritarias para fases siguientes (aún no integradas ni medidas)
 
