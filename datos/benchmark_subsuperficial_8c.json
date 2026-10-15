@@ -1,0 +1,163 @@
+{
+  "fase": "8C",
+  "fecha_procesamiento_utc": "2026-10-15T06:13:19+00:00",
+  "estado": "evaluacion_temporal_retrospectiva_no_operativa",
+  "hipotesis_predefinida": "Si la anomalía T300 y el SOI/vientos retrasados 1 mes aportan habilidad predictiva adicional al SST de origen y su tendencia",
+  "base_oceanica": "NOAA NCEI ERSSTv5 Niño1+2 anomalía reconstruida por OAF a 1991-2020",
+  "t300": "NOAA/PMEL GODAS anomalía temperatura media 0-300m 5N-5S 120E-80W, climatología 1981-2010",
+  "fuente_t300": "https://www.pmel.noaa.gov/tao/wwv/data/t300.dat",
+  "fuentes_atmosfericas": "NOAA CPC 850hPa y SOI de fase 8B",
+  "desfase_t300_meses": 1,
+  "desfase_soi_y_vientos_meses": 1,
+  "corte_entrenamiento_por_mes_objetivo": "2022-12",
+  "inicio_prueba_independiente": "2023-01",
+  "fit_fijo_ridge_alpha": 20.0,
+  "sin_ajuste_con_periodo_prueba": true,
+  "evaluacion_meses_1_2_3": {
+    "1": {
+      "n_entrenamiento": 514,
+      "n_prueba": 44,
+      "primer_origen_prueba": "2023-01",
+      "ultimo_origen_prueba": "2026-08",
+      "metricas": {
+        "persistencia_c": {
+          "n": 44,
+          "mae_c": 0.4378,
+          "rmse_c": 0.5228,
+          "sesgo_c": -0.1118
+        },
+        "sst_tendencia_c": {
+          "n": 44,
+          "mae_c": 0.45,
+          "rmse_c": 0.5659,
+          "sesgo_c": -0.2122
+        },
+        "sst_tendencia_t300_c": {
+          "n": 44,
+          "mae_c": 0.4168,
+          "rmse_c": 0.5105,
+          "sesgo_c": -0.172
+        },
+        "sst_tendencia_t300_atmosfera_c": {
+          "n": 44,
+          "mae_c": 0.4917,
+          "rmse_c": 0.6255,
+          "sesgo_c": -0.3216
+        }
+      },
+      "mejora_t300_vs_tendencia": 0.0738,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.0927,
+      "intervalo_exploratorio_t300_vs_tendencia": [
+        -0.0475,
+        0.1263
+      ],
+      "intervalo_exploratorio_completo_vs_tendencia": [
+        -0.1932,
+        0.0013
+      ],
+      "habilidad_operativa_demostrada": false
+    },
+    "2": {
+      "n_entrenamiento": 513,
+      "n_prueba": 43,
+      "primer_origen_prueba": "2023-01",
+      "ultimo_origen_prueba": "2026-07",
+      "metricas": {
+        "persistencia_c": {
+          "n": 43,
+          "mae_c": 0.7132,
+          "rmse_c": 0.8738,
+          "sesgo_c": -0.1914
+        },
+        "sst_tendencia_c": {
+          "n": 43,
+          "mae_c": 0.6951,
+          "rmse_c": 0.92,
+          "sesgo_c": -0.3711
+        },
+        "sst_tendencia_t300_c": {
+          "n": 43,
+          "mae_c": 0.6519,
+          "rmse_c": 0.8376,
+          "sesgo_c": -0.3194
+        },
+        "sst_tendencia_t300_atmosfera_c": {
+          "n": 43,
+          "mae_c": 0.7782,
+          "rmse_c": 1.0206,
+          "sesgo_c": -0.5375
+        }
+      },
+      "mejora_t300_vs_tendencia": 0.0621,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.1196,
+      "intervalo_exploratorio_t300_vs_tendencia": [
+        -0.0719,
+        0.1031
+      ],
+      "intervalo_exploratorio_completo_vs_tendencia": [
+        -0.2454,
+        -0.0218
+      ],
+      "habilidad_operativa_demostrada": false
+    },
+    "3": {
+      "n_entrenamiento": 512,
+      "n_prueba": 42,
+      "primer_origen_prueba": "2023-01",
+      "ultimo_origen_prueba": "2026-06",
+      "metricas": {
+        "persistencia_c": {
+          "n": 42,
+          "mae_c": 0.928,
+          "rmse_c": 1.1408,
+          "sesgo_c": -0.2382
+        },
+        "sst_tendencia_c": {
+          "n": 42,
+          "mae_c": 0.878,
+          "rmse_c": 1.1731,
+          "sesgo_c": -0.4875
+        },
+        "sst_tendencia_t300_c": {
+          "n": 42,
+          "mae_c": 0.8285,
+          "rmse_c": 1.0851,
+          "sesgo_c": -0.4341
+        },
+        "sst_tendencia_t300_atmosfera_c": {
+          "n": 42,
+          "mae_c": 0.9345,
+          "rmse_c": 1.2596,
+          "sesgo_c": -0.6548
+        }
+      },
+      "mejora_t300_vs_tendencia": 0.0564,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.0644,
+      "intervalo_exploratorio_t300_vs_tendencia": [
+        -0.0656,
+        0.1075
+      ],
+      "intervalo_exploratorio_completo_vs_tendencia": [
+        -0.1932,
+        0.0726
+      ],
+      "habilidad_operativa_demostrada": false
+    }
+  },
+  "ultimo_mes_reanalisis_t300": "2026-08",
+  "ultimo_mes_oceanico": "2026-09",
+  "ultimo_origen_con_predictores_retrasados": "2026-09",
+  "se_ha_emitido_pronostico_prospectivo_8c": false,
+  "es_icen_oficial": false,
+  "es_alerta_enfen": false,
+  "prediccion_elnino_costero_validada": false,
+  "cautelas": [
+    "PMEL T300 mide temperatura media de los primeros 300 m del Pacífico ecuatorial, NO calor de superficie en las costas de Perú.",
+    "El T300 de GODAS usa base 1981-2010, mientras que la anomalía SST objetivo fue reconstruida a base 1991-2020; NO restar ambos índices.",
+    "Los archivos históricos públicos pueden ser revisados y no guardan vintage de fecha real de emisión; separar holdout temporal no elimina este sesgo.",
+    "Desfasar 1 mes no garantiza que el dato T300 estuviera publicado en una fecha histórica concreta; fase 8A sigue siendo la línea de verificación de emisiones genuinas.",
+    "No se demostró causalidad ni predicción operativa de lluvia, enfermedades o impacto de El Niño Costero en Lambayeque.",
+    "Ningún pronóstico previo congelado se reemplaza por proyecciones calculadas con datos retrospectivos actuales.",
+    "Tres comparaciones exploratorias preespecificadas; no seleccionar una variante por el mejor resultado sin replicación prospectiva."
+  ]
+}
