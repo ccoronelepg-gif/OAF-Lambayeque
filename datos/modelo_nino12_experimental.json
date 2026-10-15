@@ -1,0 +1,178 @@
+{
+  "fase": "6B",
+  "fuente": "NOAA CPC",
+  "producto": "OISST v2.1 mensual Niño 1+2 (sstoi.indices)",
+  "region": "0-10°S, 90-80°W",
+  "indice_enfen_oficial": false,
+  "es_icen": false,
+  "es_pronostico_institucional": false,
+  "estado_modelo": "EXPERIMENTAL_NO_VALIDADO_OPERATIVAMENTE",
+  "fecha_procesamiento_utc": "2026-10-15T04:14:03+00:00",
+  "archivo_fuente": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
+  "mes_primero": "1982-01",
+  "mes_ultimo_observado": "2026-09",
+  "mes_predicho": "2026-10",
+  "ultimo_valor_anomalia_c": 4.69,
+  "pronostico_persistencia_c": 4.69,
+  "pronostico_ar1_c": 4.35,
+  "intervalo_empirico_ar1_p10_p90_c": [
+    3.78,
+    5.06
+  ],
+  "ar1_intercepto": 0.01034,
+  "ar1_pendiente": 0.92544,
+  "evaluacion": {
+    "procedimiento": "expanding window month-ahead retrospectivo",
+    "primer_origen": "2010-01",
+    "ultimo_origen": "2026-08",
+    "num_folds": 200,
+    "metricas": {
+      "ar1": {
+        "mae_c": 0.3749,
+        "rmse_c": 0.4744,
+        "n": 200
+      },
+      "persistencia": {
+        "mae_c": 0.3797,
+        "rmse_c": 0.475,
+        "n": 200
+      },
+      "climatologia_cero": {
+        "mae_c": 0.8419,
+        "rmse_c": 1.1416,
+        "n": 200
+      }
+    },
+    "habilidad_mae_respecto_persistencia": 0.0126,
+    "supera_persistencia_mae": true,
+    "advertencia": "La evaluación con una serie NOAA reprocesada y normal 1991-2020 no equivale a archivos de emisión real-time; el intervalo P10-P90 de residuos retrospectivos no garantiza cobertura futura."
+  },
+  "series_recientes": [
+    {
+      "mes": "2024-10",
+      "nino12_tsm_c": 20.55,
+      "nino12_anom_c": -0.32
+    },
+    {
+      "mes": "2024-11",
+      "nino12_tsm_c": 21.88,
+      "nino12_anom_c": 0.26
+    },
+    {
+      "mes": "2024-12",
+      "nino12_tsm_c": 22.74,
+      "nino12_anom_c": -0.1
+    },
+    {
+      "mes": "2025-01",
+      "nino12_tsm_c": 24.32,
+      "nino12_anom_c": -0.2
+    },
+    {
+      "mes": "2025-02",
+      "nino12_tsm_c": 26.78,
+      "nino12_anom_c": 0.69
+    },
+    {
+      "mes": "2025-03",
+      "nino12_tsm_c": 27.75,
+      "nino12_anom_c": 1.15
+    },
+    {
+      "mes": "2025-04",
+      "nino12_tsm_c": 26.36,
+      "nino12_anom_c": 0.63
+    },
+    {
+      "mes": "2025-05",
+      "nino12_tsm_c": 24.78,
+      "nino12_anom_c": 0.16
+    },
+    {
+      "mes": "2025-06",
+      "nino12_tsm_c": 23.79,
+      "nino12_anom_c": 0.61
+    },
+    {
+      "mes": "2025-07",
+      "nino12_tsm_c": 22.29,
+      "nino12_anom_c": 0.46
+    },
+    {
+      "mes": "2025-08",
+      "nino12_tsm_c": 21.09,
+      "nino12_anom_c": 0.23
+    },
+    {
+      "mes": "2025-09",
+      "nino12_tsm_c": 20.4,
+      "nino12_anom_c": -0.18
+    },
+    {
+      "mes": "2025-10",
+      "nino12_tsm_c": 20.83,
+      "nino12_anom_c": -0.04
+    },
+    {
+      "mes": "2025-11",
+      "nino12_tsm_c": 21.28,
+      "nino12_anom_c": -0.34
+    },
+    {
+      "mes": "2025-12",
+      "nino12_tsm_c": 22.41,
+      "nino12_anom_c": -0.43
+    },
+    {
+      "mes": "2026-01",
+      "nino12_tsm_c": 24.23,
+      "nino12_anom_c": -0.29
+    },
+    {
+      "mes": "2026-02",
+      "nino12_tsm_c": 27.01,
+      "nino12_anom_c": 0.92
+    },
+    {
+      "mes": "2026-03",
+      "nino12_tsm_c": 27.89,
+      "nino12_anom_c": 1.29
+    },
+    {
+      "mes": "2026-04",
+      "nino12_tsm_c": 27.25,
+      "nino12_anom_c": 1.52
+    },
+    {
+      "mes": "2026-05",
+      "nino12_tsm_c": 26.43,
+      "nino12_anom_c": 1.81
+    },
+    {
+      "mes": "2026-06",
+      "nino12_tsm_c": 26.01,
+      "nino12_anom_c": 2.83
+    },
+    {
+      "mes": "2026-07",
+      "nino12_tsm_c": 25.4,
+      "nino12_anom_c": 3.56
+    },
+    {
+      "mes": "2026-08",
+      "nino12_tsm_c": 24.93,
+      "nino12_anom_c": 4.08
+    },
+    {
+      "mes": "2026-09",
+      "nino12_tsm_c": 25.27,
+      "nino12_anom_c": 4.69
+    }
+  ],
+  "limitaciones": [
+    "OISST NOAA CPC no es ICEN ENFEN, que utiliza ERSSTv5 y un índice trimestral según definición vigente.",
+    "Predicción experimental de anomalía oceánica de un mes, NO predicción categórica de El Niño Costero ni de lluvias en Lambayeque.",
+    "AR(1) usa solo rezagos históricos; sin variables de viento/subsuperficie ni ensambles.",
+    "No usar como alerta meteorológica o fitosanitaria."
+  ]
+}
