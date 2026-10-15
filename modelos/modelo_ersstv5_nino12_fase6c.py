@@ -195,8 +195,15 @@ def evaluate(rows):
     now=datetime.now(timezone.utc)
     year,month=map(int,rows[-1]["mes"].split("-"))
     age=(now.year-year)*12+now.month-month
-    if age>3 or age<1:
-        raise ValueError("ERSSTv5 latest month outdated or not yet closed: "+rows[-1]["mes"])
+    if age<1:
+        raise ValueError("ERSSTv5 row belongs to an unfinished/future month: "+rows[-1]["mes"])
+    stale = age>3
+    if stale:
+        # Never publish archived projections as CURRENT forecasts.
+        for horizon in results.values():
+            horizon["pronostico_ar1_c"] = None
+            horizon["pronostico_persistencia_c"] = None
+            horizon["mes_objetivo"] = None
     report={
         "fase":"6C",
         "fecha_procesamiento_utc":now.isoformat(timespec="seconds"),
@@ -207,7 +214,10 @@ def evaluate(rows):
         "es_icen_oficial":False,
         "es_pronostico_institucional":False,
         "es_alerta":False,
-        "estado":"experimental_no_validado",
+        "estado":"archivo_historico_desactualizado" if stale else "experimental_no_validado",
+        "fuente_actualizada":not stale,
+        "prediccion_actual_disponible":not stale,
+        "desfase_meses":age,
         "mes_inicial":rows[0]["mes"],
         "mes_ultimo_observado":rows[-1]["mes"],
         "ultima_anomalia_ersstv5_c":round(v[-1],3),
@@ -215,6 +225,7 @@ def evaluate(rows):
         "modelos_horizontes":results,
         "comparacion_oisst":compare_oisst(rows),
         "advertencias":[
+            "Si la serie ERSSTv5 está desactualizada, solo se publican los análisis retrospectivos; nunca proyecciones actuales.",
             "Promedio trimestral ilustrativo no es ICEN oficial; para la clasificación se usa exclusivamente ENFEN.",
             "Modelo AR1 univariado, sin información de viento, termoclina, calor subsuperficial ni predicción dinámica.",
             "Walk-forward retrospectivo con la versión NOAA revisada, no con pronósticos archivados al momento de emisión.",
@@ -260,6 +271,7 @@ def self_test():
     assert set(f["horizonte_meses"] for f in folds)==set(HORIZONS)
     assert report["es_icen_oficial"] is False
     assert report["es_alerta"] is False
+    assert report["prediccion_actual_disponible"] is True
     try:
         parse_source(text.replace("1950 2 ", "1950 4 ",1))
     except ValueError:
