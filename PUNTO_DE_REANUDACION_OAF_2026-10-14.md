@@ -19,6 +19,21 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Avance más reciente: Fase 6E — radiación solar y nuevas variables (14/10/2026)
+
+**Nueva instrucción y alcance del autor:** incorporar nuevas variables predictoras, **especialmente la radiación solar**, tanto para el análisis agroclimático y de anomalías regionales como para estudiar su posible utilidad en modelos fitosanitarios de arándano y vid. Mantener la línea ENSO con predictores oceánico-atmosféricos por separado.
+
+**Ejecutado en GitHub y publicado en código:**
+- En **Datos climatológicos** se presentan radiación actual de onda corta (W/m²), radiación diaria acumulada (MJ/m²), viento actual y máximo diario (km/h), humedad relativa actual y media diaria (%), DPV actual y máximo (kPa), ET₀ FAO diaria (mm), presión superficial actual (hPa) e insolación diaria (h).
+- Se amplió **Anomalías climáticas** con radiación acumulada prevista para siete días, radiación histórica P90 de acumulados equivalentes y clasificación respecto de P10/P90, conservando periodo **1996–2025** y ventana estacional ±15 días.
+- **Verificación externa real:** GitHub Actions confirmó variables y unidades para Motupe y Chiclayo. El primer test detectó que el archivo ERA5-Land no entregaba radiación para octubre 2019 (0 de 31 días), mientras ERA5 sí entregaba 31 de 31. Se corrigió el módulo para usar **ERA5 como referencia de radiación y precipitación**, y ERA5-Land para temperatura.
+- Se mantuvieron controles para rechazar datos faltantes; pruebas sintéticas de temperatura/lluvia/radiación pasaron. La verificación definitiva de toda la cobertura 1996–2025 quedó incorporada como nueva prueba automática y debe revisarse en su ejecución.
+- Se documentó metodología y futuras fuentes (humectación foliar medida, sensores de suelo, PAR, UV, viento zonal del Pacífico, SOI) en `VARIABLES_AGROCLIMATICAS_FASE6E.md`.
+- Código actualizado: `index.html`, `modelos/anomalias_climaticas_v01.js`; pruebas `tests/test_variables_agroclimaticas_6e.py`, flujo `.github/workflows/oaf_variables_6e_check.yml`.
+- **No se modificó** la portada: recuadro verde solo con título Observatorio Agroclimático y Fitosanitario y fotografías; descripción en primera persona del autor debajo y firma Carlos E. Coronel García, Ingeniero Agrónomo. Cinco pestañas intactas.
+
+**Siguiente tarea:** confirmar que el periodo 1996–2025 ofrece cobertura diaria suficiente con ERA5 para radiación; guardar fechas/horizontes de pronósticos; estudiar sesgos entre modelos y observación real; recopilar duración de humectación foliar y observaciones sanitarias. No tratar radiación/HR/DPV como diagnóstico de infección ni como pronóstico ENSO por sí solos.
+
 ## Avance más reciente: Fase 6D completada (14/10/2026, Perú)
 
 **Meta permanente del proyecto:** predecir futuras anomalías climáticas, especialmente El Niño Costero, y anticipar enfermedades en arándano y vid con datos y validación prospectiva, no solo vigilar series.
