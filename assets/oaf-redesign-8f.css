@@ -1,0 +1,38 @@
+/* OAF 8F-Web · interfaz científica · 15-10-2026 */
+:root{--navy:#103b61;--teal:#077f80;--ink:#17364b;--muted:#5b7282;--paper:#f2f7fb;--line:#d8e5ed;--mint:#e0f5ed;--gold:#e7a831;--white:#fff;--sky:#e4f4ff}
+body{background:linear-gradient(180deg,#e7f4fb 0,#f5f9fc 300px,#f5f9fc 100%);color:var(--ink)}
+header{border-bottom:1px solid #d8e6ec;box-shadow:0 7px 26px #073a5d12}
+.head{max-width:1400px;min-height:76px;padding:11px 24px}.brand{gap:11px}.brand .logo{width:48px;height:48px;border-radius:12px;background:#fff;box-shadow:0 3px 10px #123e5b1a;overflow:hidden;padding:1px}.brand .logo img{width:100%;height:100%;object-fit:contain}.brand b{font-size:16px;color:#123f64}.brand small{letter-spacing:.55px;color:#657985;font-size:9px}
+nav a{font-size:12px;border-radius:9px;padding:10px 12px;color:#4b667a;transition:background .18s,color .18s}
+nav a:hover{background:#e5f3f4;color:#076d80}nav a[aria-current="page"]{background:linear-gradient(110deg,#e0f5ed,#e4f1ff);color:#086c79;box-shadow:inset 0 -2px 0 #0b8d90}
+main{max-width:1280px;padding:26px 25px 70px}
+.hero{min-height:300px;grid-template-columns:1.12fr .88fr;background:linear-gradient(120deg,#103c66 0%,#126c8a 60%,#10866e 100%);border-radius:23px;box-shadow:0 20px 34px #134a7824}
+.hero .herotxt{padding:35px 45px;display:flex;align-items:center}.hero h1{font-size:clamp(33px,3.7vw,49px);line-height:1.12;letter-spacing:-1.8px;max-width:620px}.hero h1:after{content:"Ciencia climática al servicio del campo";display:block;color:#ccf9e5;letter-spacing:0;font-size:15px;font-weight:500;margin-top:18px;line-height:1.5}
+.heroimg:after{content:"Lambayeque · Perú";position:absolute;right:16px;bottom:16px;padding:5px 10px;border-radius:8px;background:#0d3d55e0;color:white;font-size:12px}.heroimg img{opacity:.86}
+.autor-presentacion{margin:18px 0 20px;padding:18px 25px;box-shadow:0 8px 24px #17486608;background:#ffffffc9}.autor-presentacion p{font-size:13px;line-height:1.75;color:#577080}.autor-firma{margin-top:10px;flex-direction:row;align-items:center;gap:12px}.autor-firma strong{font-size:13px}.autor-firma span{font-size:12px}
+.cards{grid-template-columns:repeat(3,minmax(0,1fr));margin:18px 0}.card,.panel,.method{border-radius:17px;box-shadow:0 6px 22px #163e5a0a}.card{border-top:4px solid #07888e;min-height:184px}.card:nth-child(2){border-top-color:#41a766}.card:nth-child(3){border-top-color:#e9b34e}.card h2{font-size:19px}.card .kicker{color:#0a8490}.card a{color:#057c80}
+.panel h2{color:#16466a}.viewhead .eyebrow{color:#0e8384}.viewhead h1{color:#123d61}.viewhead{padding:15px 0 5px}.viewhead p{max-width:970px}
+.kpi{background:linear-gradient(140deg,#eef7ff,#e7f8f0);border:1px solid #dbece9}.kpi b{color:#125479}
+.btn.dark{background:linear-gradient(110deg,#0a6280,#0b7d74);box-shadow:0 3px 8px #0c72831c}.btn{background:#dff4f0;color:#076e77}
+.notice{border-left-color:#47a789;background:#f1fbf7}.badge{background:#fff0cc;color:#805e19}
+#inicio .method{margin-top:15px}.oaf-home-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:17px 0}.oaf-metric{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;border-left:4px solid #1597a0}.oaf-metric:nth-child(2){border-left-color:#45aa68}.oaf-metric:nth-child(3){border-left-color:#e2ab40}.oaf-metric:nth-child(4){border-left-color:#5a91d5}.oaf-metric small{font-size:11px;color:#6e8290;display:block}.oaf-metric strong{font-size:22px;color:#194e69;display:block;margin-top:4px}.oaf-metric span{font-size:11px;color:#69818d}
+.oaf-dashboard-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:16px}.oaf-dashboard-main{grid-row:span 2}.oaf-panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.oaf-panel-title h2{margin:0}
+.oaf-chart{display:block;width:100%;height:285px;min-height:240px;background:linear-gradient(180deg,#f9fcff,#f3f8fb);border:1px solid #e1edf2;border-radius:13px;margin-top:14px;overflow:hidden}
+.oaf-chart .axis{font:12px system-ui,Arial;fill:#66808e}.oaf-chart .gridline{stroke:#d9e8ee;stroke-dasharray:3 4}.oaf-chart .area{fill:#d9f0f2;opacity:.8}.oaf-chart .line{fill:none;stroke:#0794a2;stroke-width:3;stroke-linejoin:round}.oaf-chart .bar{fill:#4aa5b0}
+.oaf-chart text{font-family:system-ui,Arial}
+.oaf-filterline{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:14px 0}.oaf-filterline label{font-size:11px;display:flex;flex-direction:column;gap:5px;font-weight:750;color:#597583}.oaf-filterline select{min-width:145px;max-width:230px}
+.oaf-legends{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:12px;color:#657e8c;margin-top:10px}.oaf-legend-dot{width:10px;height:10px;display:inline-block;border-radius:50%;background:#0d8e97}
+.oaf-insight{background:#eef9f6;border-radius:10px;padding:12px 15px;font-size:12px;color:#517077}.oaf-insight b{color:#22566a}
+.oaf-value{font-size:33px;font-weight:800;letter-spacing:-1px;color:#15597d;margin:5px 0}.oaf-value em{font-size:12px;font-style:normal;font-weight:500;color:#6d8893}
+.oaf-mini-bars{display:flex;align-items:flex-end;gap:9px;height:102px;padding-top:12px}.oaf-mini-bars>div{flex:1;background:linear-gradient(0deg,#1a899e,#71bfc1);border-radius:5px 5px 0 0;min-height:4px;position:relative}.oaf-mini-bars>div:hover{filter:saturate(1.3)}.oaf-mini-bars>div span{position:absolute;bottom:-23px;left:50%;transform:translateX(-50%);font-size:9px;color:#6d8591;white-space:nowrap}
+.oaf-status{font-size:12px;color:#637e8b;margin:10px 0}.oaf-status.error{color:#9b4b31}
+.oaf-chip{display:inline-block;border:1px solid #c9e7df;background:#e8f7f1;color:#146b63;font-size:11px;font-weight:750;border-radius:99px;padding:4px 10px}
+.oaf-chip.pending{border-color:#f1dfb7;background:#fff7e5;color:#815f22}
+.oaf-control-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:18px 0}.oaf-control-filters label{font-size:12px;font-weight:750;display:flex;gap:5px;flex-direction:column}.oaf-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.oaf-control-card{background:white;border:1px solid #d9e7eb;border-radius:14px;padding:19px;box-shadow:0 5px 16px #123d5a09}.oaf-control-card h3{margin:8px 0 8px;color:#13486b;font-size:18px}.oaf-control-card p{font-size:13px;color:#607985}.oaf-control-card ul{margin:9px 0 14px;padding-left:19px;color:#405d70;font-size:13px}.oaf-control-card a{font-size:12px}.oaf-control-card .oaf-chip{margin-right:7px}
+.oaf-sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.oaf-sources a{text-decoration:none;padding:15px;border:1px solid #d8e8ec;border-radius:12px;background:#f4fafc;color:#235a71;font-size:13px;font-weight:700}.oaf-sources a:hover{background:#e9f6f6}
+.oaf-archive-list details{margin-bottom:12px}.oaf-archive-list>details>summary{cursor:pointer;font-weight:800;color:#225875;margin-bottom:12px}.oaf-archive-list details details{margin:10px 0}
+#verificaciones .oaf-tech-archive{margin-top:20px}
+@media(max-width:1100px){.head{flex-wrap:wrap}.head nav{flex-basis:100%;justify-content:flex-start;overflow-x:auto}.head nav a{white-space:nowrap}.oaf-dashboard-grid{grid-template-columns:1fr 1fr}.oaf-dashboard-main{grid-column:span 2;grid-row:auto}}
+@media(max-width:800px){main{padding:18px 14px 50px}.hero .herotxt{padding:24px}.hero h1{font-size:31px}.oaf-home-metrics{grid-template-columns:repeat(2,1fr)}.oaf-dashboard-grid,.oaf-controls{grid-template-columns:1fr}.oaf-dashboard-main{grid-column:auto}.oaf-sources{grid-template-columns:1fr}.oaf-chart{height:245px}.autor-presentacion{padding:16px 19px}.autor-presentacion p{font-size:12px}}
+@media(max-width:420px){.oaf-home-metrics{grid-template-columns:1fr 1fr}.oaf-metric strong{font-size:18px}.head{padding:11px 15px}.brand small{font-size:8px}}
