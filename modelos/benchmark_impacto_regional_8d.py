@@ -142,6 +142,7 @@ def fetch_reanalysis_for_all():
 
 
 def merge_reanalysis(site):
+    lat,lon=SITES[site]
     t,p=REANALYSIS_CACHE[site]
     if t["daily"]["time"]!=p["daily"]["time"]:
         raise ValueError("ERA5/ERA5-Land daily date alignment mismatch "+site)
