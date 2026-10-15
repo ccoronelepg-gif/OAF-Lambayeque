@@ -38,7 +38,7 @@
   function prepare(temperatureData,rainData){
     const tm=extract(temperatureData,'temperature_2m_mean');
     const pm=extract(rainData,'precipitation_sum');
-    const rm=Array.isArray(temperatureData?.daily?.shortwave_radiation_sum)?extract(temperatureData,'shortwave_radiation_sum'):new Map();
+    const rm=Array.isArray(rainData?.daily?.shortwave_radiation_sum)?extract(rainData,'shortwave_radiation_sum'):new Map();
     const dates=[...new Set([...tm.keys(),...pm.keys()])].sort();
     if(dates.length<10500)throw Error('Base 1996–2025 incompleta; no alcanza el mínimo esperado');
     const raw=new Map(),list=[];
@@ -55,7 +55,7 @@
       rainDays:list.filter(r=>isNum(r.rain)).length,
       radiationDays:list.filter(r=>isNum(r.radiation)&&r.radiation>=0).length,
       tempCell:[temperatureData.latitude,temperatureData.longitude],
-      solarCell:[temperatureData.latitude,temperatureData.longitude],
+      solarCell:[rainData.latitude,rainData.longitude],
       rainCell:[rainData.latitude,rainData.longitude]
     }};
   }
@@ -139,7 +139,7 @@
         forecastSource:'Open-Meteo API (modelo externo)',
         historicalT:'ERA5-Land (reanálisis)',
         historicalP:'ERA5 (reanálisis)',
-        historicalRadiation:'ERA5-Land (reanálisis, onda corta de superficie)',
+        historicalRadiation:'ERA5 (reanálisis, onda corta de superficie)',
         tempYearsMin:Math.min(...selected.map(d=>d.years)),
         histCoverage:history.coverage,
         limitation:'Comparación de modelos de distinta naturaleza. No son probabilidades calibradas ni predicción de El Niño Costero.'
@@ -168,8 +168,8 @@
     const qp=(extra)=>new URLSearchParams(Object.assign({},q,extra)).toString();
     return [
       'https://api.open-meteo.com/v1/forecast?'+qp({daily:'temperature_2m_mean,precipitation_sum,shortwave_radiation_sum',forecast_days:'8'}),
-      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'temperature_2m_mean,shortwave_radiation_sum',models:'era5_land'}),
-      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'precipitation_sum',models:'era5'})
+      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'temperature_2m_mean',models:'era5_land'}),
+      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'precipitation_sum,shortwave_radiation_sum',models:'era5'})
     ];
   }
   function draw(out,loc){
@@ -191,7 +191,7 @@
     document.getElementById('oaf-anomaly-method').textContent=
       'Localidad: '+loc+'. Referencia 1996–2025: ≥'+out.metadata.tempYearsMin+
       ' años válidos por fecha; lluvia: '+out.rain.years+' años; radiación: '+(out.radiation.years||'no evaluable')+' años. Ventana estacional ±15 días. '+
-      'T y radiación: ERA5-Land; lluvia: ERA5. Fecha de consulta: '+new Date().toLocaleString('es-PE',{timeZone:'America/Lima'})+
+      'T: ERA5-Land; lluvia y radiación: ERA5. Fecha de consulta: '+new Date().toLocaleString('es-PE',{timeZone:'America/Lima'})+
       '. Pronóstico externo Open-Meteo, diferente del reanálisis.';
     results.hidden=false;
   }
