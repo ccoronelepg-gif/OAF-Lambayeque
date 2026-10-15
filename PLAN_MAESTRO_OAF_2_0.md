@@ -101,6 +101,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 
 **Fase 6E recomendada:** llevar un registro versionado de cada emisión mensual y su horizonte, incorporar variables climáticas atmosféricas (SOI, vientos, condiciones subsuperficiales) con origen temporal comprobado y evaluar capacidad predictiva fuera de muestra. Integrar después la predicción de anomalías regionales en Lambayeque y los modelos de riesgo fitosanitario de arándano y vid, evitando inferencias causales o sanitarias no justificadas.
 
+### Fase 6E: ampliación de variables climáticas y registro de radiación solar (14/10/2026)
+
+- Se integraron radiación solar global (W/m² instantáneo, MJ/m² por día), horas de insolación, DPV (kPa), viento (km/h), humedad relativa (%), ET₀ de referencia (mm) y presión atmosférica (hPa) a los datos externos disponibles en la pestaña Datos climatológicos.
+- Se extendió el indicador de anomalías 1996–2025 a **radiación solar acumulada 7 días**, con percentiles P10/P90 y referencia estacional ±15 días; se exigen ≥25 años válidos y se muestran resultados **no evaluables** si falta radiación.
+- Una prueba en API real identificó que **ERA5-Land no entregaba radiación histórica** para la muestra revisada (0/31 datos útiles); ERA5 entregó 31/31. Por ello la fuente definitiva es **ERA5 para radiación y lluvia, ERA5-Land para temperatura**. Los pronósticos provienen de Open-Meteo, no del OAF.
+- Las variables no permiten inferir humectación foliar, enfermedad diagnosticada, riesgo calibrado ni predicción oficial de El Niño Costero.
+- Se agregó [VARIABLES_AGROCLIMATICAS_FASE6E.md](VARIABLES_AGROCLIMATICAS_FASE6E.md) con fuentes, unidades, aplicación agronómica, control de calidad y nuevas variables candidatas.
+- Continuar con validación de la radiación en series históricas completas y sensores de campo; después evaluar aportación incremental de covariables climáticas a modelos de enfermedad y de anomalías, evitando multicolinealidad y fuga de datos futuros.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
