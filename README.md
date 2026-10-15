@@ -49,9 +49,18 @@ En [Cultivos → Predicción fitosanitaria](https://ccoronelepg-gif.github.io/OA
 
 La implementación reproducible está en [modelos/oidio_vid_indicador_termico.py](modelos/oidio_vid_indicador_termico.py), con cuatro escenarios sintéticos de prueba. [Método, limitaciones y plan de validación](MODELO_TERMICO_OIDIO_VID_FASE5.md).
 
+## Prioridad científica: dos sistemas de predicción (precisión del autor, 14/10/2026)
+
+**No se trata solo de monitorear ni de reunir boletines.** La finalidad del proyecto es investigar, construir y evaluar dos tipos de predicción:
+
+- **Anomalías agroclimáticas y El Niño Costero:** probabilidades o escenarios futuros de lluvia, temperatura y humedad anómalas, junto con evolución oceánica/atmosférica ligada a El Niño Costero y su posible impacto regional. El estado oficial pertenece a ENFEN; todo pronóstico OAF debe validarse y distinguirse de escenarios ajenos.
+- **Enfermedades de arándano y vid:** modelos separados por patógeno y cultivo que incorporen pronósticos meteorológicos, microclima, fenología y observación sanitaria. No se equipara clima favorable a diagnóstico ni a probabilidad calibrada.
+
+**Condición para publicación de pronósticos OAF:** guardar predicciones con fecha anterior al evento, medir habilidad frente a referencias, errores e incertidumbre, y no declarar operatividad hasta contar con validación externa o prospectiva suficiente.
+
 ## Misión
 
-Desarrollar un sistema regional de **vigilancia agroclimática actualizada, pronóstico probabilístico y alerta temprana experimental** de eventos anómalos —en especial condiciones vinculadas con **El Niño Costero**— y de riesgos fitosanitarios agrícolas. La primera línea de sanidad vegetal se centra en **arándano**, comenzando con condiciones favorables para *Botrytis cinerea*.
+Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
 
 **Estado actual:** la nueva arquitectura está **planificada**, no constituye aún un sistema de predicción propio validado, ni emite alertas climáticas o fitosanitarias operativas.
 
