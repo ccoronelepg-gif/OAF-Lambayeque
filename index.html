@@ -136,6 +136,31 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="links"><a href="https://open-meteo.com/en/docs/previous-runs-api" target="_blank" rel="noopener noreferrer">Pronósticos previos de Open-Meteo ↗</a><a href="FASE_6F_EVALUACION_PREDICTORES.md">Método y límites ↗</a></div>
 </div>
 </details>
+<details class="panel" id="oaf-verify-6g">
+<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 6G · ¿Se cumplieron los pronósticos archivados?</strong><small style="display:block;color:var(--muted)">Verificación de temperatura, lluvia y radiación por localidad y horizonte</small></span>
+<span class="badge">Evaluación prospectiva · sin alertas</span></summary>
+<div style="margin-top:16px">
+<p class="small">El observatorio conserva las predicciones meteorológicas <b>antes</b> de los días previstos y después contrasta sus valores con reanálisis de ERA5-Land (temperatura) y ERA5 (lluvia y radiación). La comparación exige al menos <b>siete días después de cada jornada</b>, para respetar el retraso de publicación. Los reanálisis son estimaciones científicas, <b>no estaciones meteorológicas SENAMHI</b>.</p>
+<div class="tools"><button type="button" class="btn dark" id="oaf-verify-6g-refresh">Comprobar verificaciones ↻</button></div>
+<p class="small" id="oaf-verify-6g-status" role="status">El primer pronóstico archivado corresponde al 14 de octubre de 2026. La verificación se mostrará solo cuando haya datos de referencia disponibles.</p>
+<div id="oaf-verify-6g-results" hidden>
+<div class="tools">
+<label for="oaf-verify-6g-place">Localidad</label>
+<select id="oaf-verify-6g-place"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select>
+<label for="oaf-verify-6g-var">Variable</label>
+<select id="oaf-verify-6g-var">
+<option value="temperature_2m_mean">Temperatura media · °C</option>
+<option value="precipitation_sum">Precipitación · mm</option>
+<option value="shortwave_radiation_sum">Radiación solar · MJ/m²</option>
+</select>
+</div>
+<p class="small" id="oaf-verify-6g-counter"></p>
+<div class="scroller"><table><thead><tr><th>Horizonte</th><th>Jornadas comparadas</th><th>Error absoluto medio (MAE)</th><th>Sesgo</th><th>RMSE</th></tr></thead><tbody id="oaf-verify-6g-table"></tbody></table></div>
+</div>
+<div class="notice"><b>Interpretación:</b> las cifras verifican pronósticos externos; todavía NO prueban que el OAF prediga por sí mismo anomalías climáticas, El Niño Costero o enfermedades de arándano y vid. La verificación con estaciones y sensores de campo sigue pendiente. No se publican errores mientras falte la referencia.</div>
+<div class="links"><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis de referencia ↗</a><a href="FASE_6G_VERIFICACION_PROSPECTIVA.md">Método y registro de avances ↗</a><a href="datos/pronosticos_emitidos/2026-10-14.json">Primera emisión conservada ↗</a></div>
+</div></details>
 <div class="split"><div class="panel"><h2>Estimaciones de precipitación CHIRPS</h2><span id="chirps-month" style="font-size:26px;font-weight:800;color:var(--navy)">Consultando…</span><p id="chirps-info" class="small">Último mes con información satelital comprobada.</p><a href="datos/chirps_v3_reciente_3z.csv" class="small">Consultar CSV de precipitación ↗</a></div><div class="panel"><h2>Predicciones del OAF</h2><span class="badge">En investigación</span><p>Próxima etapa: modelos probabilísticos propios, evaluación de error y validación independiente antes de mostrar pronósticos OAF.</p></div></div>
 </section>
 <section data-page="cultivos" id="cultivos" hidden>
@@ -342,4 +367,5 @@ nav();
 <script src="modelos/nino12_visor_v01.js" defer></script>
 <script src="modelos/ersstv5_visor_v01.js" defer></script>
 <script src="modelos/ncei_visor_6d.js" defer></script>
-<script src="modelos/benchmark_visor_6f.js" defer></script></body></html>
+<script src="modelos/benchmark_visor_6f.js" defer></script>
+<script src="modelos/verificacion_prospectiva_visor_6g.js" defer></script></body></html>
