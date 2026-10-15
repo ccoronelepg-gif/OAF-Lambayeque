@@ -69,3 +69,28 @@ La evaluación no debe considerarse completada únicamente por la existencia del
 Después del resultado con datos reales: comparar el desempeño por localidad, estación, precipitación y rangos de radiación; verificar si la radiación mejora de forma estable respecto del modelo B y del pronóstico original; conservar emisiones diarias fechadas para auditoría prospectiva; comenzar diseño de estudio de humectación foliar y sanidad de arándano.
 
 **Principio del OAF:** publicar errores y limitaciones aunque un modelo más complejo obtenga peores resultados que el básico.
+
+## Primer procesamiento con datos reales: hallazgos
+
+En la primera ejecución GitHub Actions, el programa concluyó íntegramente los cálculos con **17.105 horas de entrenamiento y 6.552 horas del periodo de prueba por localidad**. El envío automático del JSON falló por una actualización simultánea del repositorio (error Git `non-fast-forward`); los errores numéricos abajo proceden del registro de ejecución real. La publicación del JSON y CSV se repetirá tras corregir el flujo de envío.
+
+| Localidad | MAE externo original | MAE corrección básica | MAE con radiación + HR + viento | Diferencia ampliado vs básico |
+|---|---:|---:|---:|---:|
+| Chiclayo | 0,9180 °C | 0,8463 °C | 0,7959 °C | **+5,95 %** |
+| Jayanca | 1,0659 °C | 0,7424 °C | 0,9234 °C | **−24,38 %** |
+| Motupe | 1,2410 °C | 1,5424 °C | 1,5749 °C | **−2,11 %** |
+| Olmos | 1,7102 °C | 1,7432 °C | 1,6566 °C | **+4,97 %** |
+
+**Interpretación:** la combinación ampliada mejoró Chiclayo y Olmos respecto del modelo básico, pero **empeoró Jayanca y Motupe**. En Motupe el pronóstico original fue mejor que ambos modelos de corrección. Estas variaciones son comparaciones en una **misma prueba temporal retrospectiva** contra ERA5-Land. No implican validez prospectiva ni permiten determinar el aporte causal individual de la radiación. Los intervalos por bloques estarán en el JSON completo si concluye su publicación.
+
+## Nuevo archivo prospectivo antes del evento
+
+Se implementó un archivo automático diario de los pronósticos meteorológicos externos de **siete jornadas futuras completas** para cuatro localidades. La primera emisión comprobada fue el **14 de octubre de 2026 en horario de Perú**, registrada antes del periodo previsto **15–21 de octubre**.
+
+- Script: [archivar_pronosticos_prospectivos_6f.py](modelos/archivar_pronosticos_prospectivos_6f.py).
+- Flujo diario: [oaf_archivo_prospectivo_6f.yml](.github/workflows/oaf_archivo_prospectivo_6f.yml).
+- Primera emisión real: [2026-10-14.json](datos/pronosticos_emitidos/2026-10-14.json).
+- La instantánea almacena hora UTC exacta, fecha local, localidad y coordenadas de celda, origen Open-Meteo, unidades y diez variables: temperatura media/máxima/mínima, lluvia, radiación global, HR media, viento máximo, DPV máximo, ET₀ y duración de insolación.
+- Este archivo contiene **pronósticos externos**, NO predicciones propias de El Niño Costero o infección. Un archivo emitido en el futuro no debe sobrescribir la primera emisión de su fecha; el script impide tal sustitución.
+
+Este método servirá de base para verificar errores en predicciones nuevas, pero **todavía no confirma aciertos** sobre jornadas aún futuras. Faltan confrontaciones con observaciones instrumentales y registros fitosanitarios.
