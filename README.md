@@ -184,6 +184,20 @@ Se implementó además una verificación **prospectiva** independiente de los pr
 
 **Siguiente Fase 7C:** diseñar y validar registros sanitarios de parcelas de arándano, sensores de humectación foliar, temperatura/HR en dosel y fenología; contrastar la señal horaria con incidencia y diagnóstico de *Botrytis*, con evaluación espacial y temporal independiente. Mientras falten datos reales de infección, no se puede estimar riesgo porcentual ni recomendar fungicidas.
 
+## Fase 7C · Preparación de validación sanitaria de Botrytis en parcelas reales (15/10/2026)
+
+La plataforma ya dispone de la estructura y controles necesarios para empezar, cuando haya observaciones reales, la **evaluación biológica** de *Botrytis cinerea* en arándano: [protocolo 7C](FASE_7C_PROTOCOLO_CAMPO_BOTRYTIS.md), [ficha fitosanitaria de 20 campos](datos/plantilla_7c_monitoreo_botrytis.csv), [ficha horaria de microclima de 12 campos](datos/plantilla_7c_microclima_horario.csv), [validador Python](modelos/validar_campo_botrytis_7c.py), [pruebas de GitHub Actions](.github/workflows/oaf_botrytis_7c_calidad_campo.yml) y [estado público actual](datos/estado_campo_botrytis_7c.json).
+
+- **Monitoreo de campo:** variedad, fenología y floración, unidad muestreada, denominador y unidades sintomáticas; diagnóstico `sin_analisis` / `sospechoso` / `compatible_laboratorio` / `confirmado_botrytis_cinerea` / `descartado`. La confirmación de especie se trata conservadoramente y requiere método molecular específico; síntomas compatibles **no se convierten automáticamente** en incidencia confirmada.
+- **Microclima medido:** temperatura/HR en dosel y sensor de humectación foliar binario, con identificación del equipo, altura, hora local Perú UTC−05 y estado de calibración; radiación y lluvia opcionales. Un dato de humectación ausente no significa hoja seca.
+- **Privacidad:** futuros datos reales permanecen en `datos/_privados/botrytis_7c/`, excluido de Git. El visor presenta solo estado agregado, sin parcelas identificables.
+- **Pruebas 7C pasaron en GitHub Actions:** validación de formato, límites de conteos, métodos de diagnóstico, duplicados, hora con huso y privacidad mediante **datos sintéticos temporales para autopruebas**.
+- **Estado real confirmado:** `sin_datos_campo`; no existen en el proyecto observaciones de parcela, cifras de incidencia confirmada, un modelo entrenado de infección ni probabilidades validadas. Tener un validador no equivale a haber validado la enfermedad.
+
+El nuevo panel Fase 7C aparece en [Cultivos y riesgo de enfermedades](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#riesgos). Se mantienen las cinco pestañas, la portada y la línea científica independiente de El Niño Costero.
+
+**Próxima prioridad 7D:** emparejar en entorno privado fecha/parcela/fenología con pronósticos archivados ANTES del evento, revisar representatividad espacial y disponibilidad real de sensores y diagnóstico; evaluar capacidad de anticipar incidencia solo tras reunir casos y controles suficientes.
+
 ## Misión
 
 Construir un observatorio cuyo **objetivo principal es predecir**, de manera progresiva y científicamente verificable, **(1) posibles anomalías climáticas en Lambayeque, incluidos episodios y evolución de El Niño Costero**, y **(2) condiciones de riesgo y, tras validación, posible ocurrencia de enfermedades agrícolas en arándano y vid**. Integra observaciones, pronósticos oceánico-atmosféricos, bibliografía científica, datos fitosanitarios y evaluación independiente. Los gráficos, boletines y datos históricos sirven para desarrollar y evaluar esas capacidades predictivas.
