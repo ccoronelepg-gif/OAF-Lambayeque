@@ -157,6 +157,15 @@ Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evo
 - Se añadió a Cultivos un panel plegable Fase 7C con lectura de estado y descargas de formularios vacíos. El histórico de falsas señales meteorológicas 7B permanece visible y NO se confunde con falsos positivos biológicos.
 - **Fase 7D pendiente:** diseño de emparejamiento temporal/espacial seguro entre pronósticos, observaciones privadas, humectación medida y resultados diagnósticos. Validación estricta por parcela, fecha y fenología; sin afirmar impacto o enfermedad sin datos reales.
 
+### Fase 8A completada · Emisiones fechadas y verificación real de predicciones Niño 1+2 (15/10/2026)
+
+- El OAF mantendrá en paralelo la búsqueda de evaluaciones fitosanitarias de campo para arándano y vid y la línea de predicción oceánica/atmosférica. El indicador de humedad de Botrytis permanece exploratorio, sin diagnóstico ni incidencia validada.
+- Se publicó una emisión **inmutable** de anomalía Niño 1+2 (ERSSTv5 NOAA NCEI reconstruido a 1991–2020 por el OAF), con datos de origen, SHA-256, fecha exacta y 3 horizontes mensuales. Se separó la **estimación intramensual octubre 2026** de los **pronósticos realmente anteriores al mes de noviembre y diciembre**.
+- Primera emisión 15/10/2026 Perú: anomalía de origen septiembre +4,38867 °C; AR(1) octubre +4,054, noviembre +3,744 y diciembre +3,456 °C. Persistencia +4,389 °C. Estos valores no son ICEN oficial, ni alertas ENFEN, ni habilidad pronóstica validada.
+- Se implementó una verificación posterior: no antes del 10 del mes posterior a cada objetivo y solo si NOAA publica observación finita. Primer registro: **cero verificaciones maduras**, CSV de errores únicamente con encabezados. Futuros cálculos comparan AR(1) contra persistencia, y excluyen nowcasts de la habilidad realmente anterior al mes.
+- Se actualizaron los paneles de Boletín de El Niño con módulo **Fase 8A**. [Informe técnico](FASE_8A_AUDITORIA_PROSPECTIVA_ENSO.md), [código](modelos/auditoria_oceanica_8a.py), [workflow](.github/workflows/oaf_auditoria_oceanica_8a.yml), [primera emisión](datos/pronosticos_oceanicos_emitidos/2026-09.json).
+- **Siguiente fase 8B:** recoger predictores oceánico-atmosféricos con series fechadas, validar en periodos apartados y frente a persistencia; posteriormente estudiar asociación climática con variables regionales de Lambayeque, incluida radiación solar; mantener ENFEN como única fuente de alertas oficiales.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
