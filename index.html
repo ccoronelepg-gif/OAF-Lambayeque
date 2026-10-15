@@ -98,7 +98,11 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <section data-page="clima" id="clima" hidden>
 <div class="viewhead"><span class="eyebrow">Datos y evolución meteorológica</span><h1>Datos climatológicos</h1><p>Explora condiciones meteorológicas recientes, su evolución prevista durante siete días y los registros climáticos utilizados en el observatorio. Los pronósticos actuales son externos; los modelos propios continúan en desarrollo.</p></div>
 <div class="panel"><div class="tools"><label for="localidad">Localidad</label><select id="localidad"><option value="Chiclayo">Chiclayo</option><option value="Jayanca">Jayanca</option><option value="Motupe">Motupe</option><option value="Olmos">Olmos</option></select><button class="btn dark" id="actualizar" type="button">Actualizar datos ↻</button></div><p class="small" id="wx-status" role="status">La consulta requiere Internet.</p>
-<div id="wx-data" hidden><div class="kpis"><div class="kpi"><small>Temperatura actual modelada</small><b id="wx-t">—</b></div><div class="kpi"><small>Humedad relativa</small><b id="wx-h">—</b></div><div class="kpi"><small>Precipitación reciente</small><b id="wx-p">—</b></div></div><h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. máxima de precipitación</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. Modelos externos en coordenadas referenciales, no estaciones dentro de la parcela.</p></div>
+<div id="wx-data" hidden><div class="kpis"><div class="kpi"><small>Temperatura actual modelada</small><b id="wx-t">—</b></div><div class="kpi"><small>Humedad relativa</small><b id="wx-h">—</b></div><div class="kpi"><small>Precipitación reciente</small><b id="wx-p">—</b></div></div>
+<h2>Variables agroclimáticas complementarias</h2>
+<div class="kpis"><div class="kpi"><small>Radiación solar actual (onda corta)</small><b id="wx-rad">—</b></div><div class="kpi"><small>Velocidad del viento a 10 m</small><b id="wx-wind">—</b></div><div class="kpi"><small>Déficit de presión de vapor (DPV)</small><b id="wx-vpd">—</b></div><div class="kpi"><small>Presión atmosférica superficial</small><b id="wx-pressure">—</b></div></div>
+<p class="small">La radiación actual se expresa en W/m²; los acumulados diarios, en MJ/m². El DPV se expresa en kPa. Son variables modeladas para puntos de referencia, no sensores dentro del dosel.</p>
+<h2>Perspectiva meteorológica · próximos siete días</h2><div class="scroller"><table><thead><tr><th>Día</th><th>Mín.–máx.</th><th>Lluvia prevista</th><th>Prob. precipitación</th><th>Radiación solar (MJ/m²)</th><th>Viento máx. (km/h)</th><th>Humedad media (%)</th><th>DPV máx. (kPa)</th><th>ET₀ FAO (mm)</th><th>Insolación (h)</th></tr></thead><tbody id="wx-days"></tbody></table></div></div><p class="small">Fuente: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast API</a> · Huso America/Lima. La radiación de onda corta, ET₀, DPV, viento y presión proceden de modelos meteorológicos externos en puntos referenciales, no estaciones dentro de la parcela. La insolación (h) es duración estimada de sol, distinta de la radiación acumulada (MJ/m²).</p></div>
 <div class="panel" id="oaf-anomaly-panel">
 <div class="modelhead"><div><span class="riskcrop">Nuevo · Exploración predictiva de anomalías</span><h2 style="margin-top:6px">¿Se esperan temperaturas o lluvias inusuales?</h2></div><span class="badge">Indicador experimental · no alerta</span></div>
 <p class="small">Comparamos siete días futuros pronosticados por un proveedor externo con datos de reanálisis de <b>1996–2025</b> para la misma época del año. El percentil 90 identifica valores relativamente altos frente al historial, <b>no</b> una probabilidad de ocurrencia.</p>
@@ -278,13 +282,40 @@ window.addEventListener('hashchange',nav);
 filtro.addEventListener('change',()=>{let n=0;document.querySelectorAll('#patologias tr').forEach(t=>{t.hidden=filtro.value!=='Todos'&&filtro.value!==t.dataset.cultivo;if(!t.hidden)n++});document.getElementById('count').textContent=n+' enfermedades'});
 const points={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]},loc=document.getElementById('localidad'),btn=document.getElementById('actualizar');
 function num(x,d=1){return typeof x==='number'&&Number.isFinite(x)?x.toLocaleString('es-PE',{maximumFractionDigits:d,minimumFractionDigits:d}):'—'}
-async function weather(){const [lat,lon]=points[loc.value],status=document.getElementById('wx-status');btn.disabled=true;status.textContent='Consultando datos meteorológicos externos…';document.getElementById('wx-data').hidden=true;
-try{const q=new URLSearchParams({latitude:String(lat),longitude:String(lon),current:'temperature_2m,relative_humidity_2m,precipitation',daily:'temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max',timezone:'America/Lima',forecast_days:'7'});
-const r=await fetch('https://api.open-meteo.com/v1/forecast?'+q.toString(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();if(j.error||!j.current||!j.daily||!Array.isArray(j.daily.time))throw Error('Respuesta meteorológica incompleta');
-document.getElementById('wx-t').textContent=num(j.current.temperature_2m)+' °C';document.getElementById('wx-h').textContent=num(j.current.relative_humidity_2m,0)+' %';document.getElementById('wx-p').textContent=num(j.current.precipitation)+' mm';
-const b=document.getElementById('wx-days');b.replaceChildren();for(let i=0;i<j.daily.time.length;i++){const tr=document.createElement('tr'),d=j.daily;[d.time[i],num(d.temperature_2m_min?.[i])+'–'+num(d.temperature_2m_max?.[i])+' °C',num(d.precipitation_sum?.[i])+' mm',num(d.precipitation_probability_max?.[i],0)+' %'].forEach(v=>{const c=document.createElement('td');c.textContent=v;tr.appendChild(c)});b.appendChild(tr)}
-status.textContent='Datos modelados para '+loc.value+' · hora local '+j.current.time+' · origen Open-Meteo (no OAF).';document.getElementById('wx-data').hidden=false;
-}catch(e){status.textContent='No se pueden consultar datos reales en este momento. Vuelve a intentarlo. '+e.message;}finally{btn.disabled=false}}
+async function weather(){const [lat,lon]=points[loc.value],status=document.getElementById('wx-status');btn.disabled=true;status.textContent='Consultando variables agroclimáticas externas…';document.getElementById('wx-data').hidden=true;
+try{
+ const q=new URLSearchParams({
+ latitude:String(lat),longitude:String(lon),
+ current:'temperature_2m,relative_humidity_2m,precipitation,shortwave_radiation,wind_speed_10m,vapour_pressure_deficit,surface_pressure',
+ daily:'temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,shortwave_radiation_sum,wind_speed_10m_max,relative_humidity_2m_mean,vapour_pressure_deficit_max,et0_fao_evapotranspiration,sunshine_duration',
+ timezone:'America/Lima',forecast_days:'7'
+ });
+ const response=await fetch('https://api.open-meteo.com/v1/forecast?'+q.toString(),{cache:'no-store'});
+ if(!response.ok)throw Error('HTTP '+response.status);
+ const j=await response.json();
+ if(j.error||!j.current||!j.daily||!Array.isArray(j.daily.time)||j.daily.time.length!==7)throw Error('Respuesta meteorológica incompleta');
+ const requiredCurrent=['temperature_2m','relative_humidity_2m','precipitation','shortwave_radiation','wind_speed_10m','vapour_pressure_deficit','surface_pressure'];
+ const requiredDaily=['temperature_2m_max','temperature_2m_min','precipitation_sum','precipitation_probability_max','shortwave_radiation_sum','wind_speed_10m_max','relative_humidity_2m_mean','vapour_pressure_deficit_max','et0_fao_evapotranspiration','sunshine_duration'];
+ if(requiredCurrent.some(x=>typeof j.current[x]!=='number'||!Number.isFinite(j.current[x]))||requiredDaily.some(x=>!Array.isArray(j.daily[x])||j.daily[x].length!==7))throw Error('Faltan variables solicitadas: resultados no evaluables');
+ document.getElementById('wx-t').textContent=num(j.current.temperature_2m)+' °C';
+ document.getElementById('wx-h').textContent=num(j.current.relative_humidity_2m,0)+' %';
+ document.getElementById('wx-p').textContent=num(j.current.precipitation)+' mm';
+ document.getElementById('wx-rad').textContent=num(j.current.shortwave_radiation,0)+' W/m²';
+ document.getElementById('wx-wind').textContent=num(j.current.wind_speed_10m)+' km/h';
+ document.getElementById('wx-vpd').textContent=num(j.current.vapour_pressure_deficit,2)+' kPa';
+ document.getElementById('wx-pressure').textContent=num(j.current.surface_pressure,1)+' hPa';
+ const b=document.getElementById('wx-days');b.replaceChildren();
+ for(let i=0;i<j.daily.time.length;i++){
+  const d=j.daily,fmt=(key,digits=1,suffix='')=>Number.isFinite(d[key][i])?num(d[key][i],digits)+suffix:'No disponible';
+  const values=[d.time[i],fmt('temperature_2m_min')+'–'+fmt('temperature_2m_max')+' °C',fmt('precipitation_sum',1,' mm'),fmt('precipitation_probability_max',0,' %'),fmt('shortwave_radiation_sum',1),fmt('wind_speed_10m_max',1),fmt('relative_humidity_2m_mean',0),fmt('vapour_pressure_deficit_max',2),fmt('et0_fao_evapotranspiration',1),Number.isFinite(d.sunshine_duration[i])?num(d.sunshine_duration[i]/3600,1):'No disponible'];
+  const tr=document.createElement('tr');
+  for(const v of values){const c=document.createElement('td');c.textContent=v;tr.appendChild(c)}
+  b.appendChild(tr);
+ }
+ status.textContent='Datos externos Open-Meteo para '+loc.value+' · hora local '+j.current.time+'. Radiación global de onda corta, no radiación UV ni intensidad medida en parcela.';
+ document.getElementById('wx-data').hidden=false;
+}catch(e){status.textContent='No se pueden consultar los datos agroclimáticos completos en este momento: '+e.message+'. No se completan valores faltantes con datos simulados.'}
+finally{btn.disabled=false}}
 loc.addEventListener('change',weather);btn.addEventListener('click',weather);
 async function enfen(){const p=document.getElementById('enfen-status'),badge=document.getElementById('enfen-badge');try{const r=await fetch('datos/estado_enfen_3z.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(d.verificacion==='verificada'&&d.numero&&d.estado_institucional){badge.textContent='Comunicado oficial verificado';badge.classList.add('good');p.textContent='N.º '+d.numero+'-'+d.anio+' · '+d.fecha_emision+' · '+d.estado_institucional+'. Verificado: '+d.fecha_consulta_utc;}else{badge.textContent='Estado automático no verificado';p.textContent='La consulta automática registrada el '+(d.fecha_consulta_utc||'último proceso')+' no confirmó el estado oficial. Para conocer la situación vigente, consulta los boletines ENFEN.'}}catch(e){badge.textContent='Sin comprobación actual';p.textContent='No está disponible el registro del OAF. Consulta los comunicados ENFEN directamente.'}}
 async function chirps(){try{const r=await fetch('datos/estado_monitoreo_3z.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();document.getElementById('chirps-month').textContent=d.ultimo_mes_disponible||'No disponible';document.getElementById('chirps-info').textContent='Último mes con raster verificado. CHIRPS v3, '+d.meses_con_raster_verificado+' meses disponibles en la ventana consultada; fecha de procesamiento '+(d.fecha_ejecucion_utc||'no indicada')+'. Estimación satelital/pluviómetros, no observación local.'}catch(e){document.getElementById('chirps-month').textContent='Sin datos';document.getElementById('chirps-info').textContent='No se pudo cargar el registro de verificación CHIRPS.'}}
