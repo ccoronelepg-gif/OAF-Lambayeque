@@ -72,6 +72,15 @@ La salida inicial de un módulo no validado se etiqueta **experimental / no oper
 Definir un objetivo verificable relacionado con anomalía de TSM Niño 1+2 o evolución de ICEN usando **metodología oficial vigente ENFEN**, incluyendo actualización de 2024 y documentación de 2026. Ingestar series oceánicas oficiales y pronósticos fechados, construir primero pronóstico base de persistencia/estacionalidad y evaluar walk-forward contra referencias institucionales. NO inferir la clasificación oficial ni declarar capacidad predictiva en ausencia de habilidad demostrada. Separar esta predicción oceánica de la señal agroclimática local, investigando luego sus relaciones probabilísticas.
 
 
+### Avance científico 6B realizado — modelo oceánico experimental Niño 1+2
+
+- Se descargó y versionó la serie mensual **NOAA CPC OISST v2.1 Niño 1+2** de enero de 1982 a septiembre de 2026, desde su fuente original, sin imputación de meses.
+- Se implementó pronóstico de anomalía a un mes con **AR(1) lineal** ajustado por origen temporal; referencias persistencia y climatología de anomalía cero; 200 verificaciones retrospectivas desde enero de 2010.
+- Resultado inicial a octubre de 2026: AR1 +4,35 °C contra persistencia +4,69 °C, con última observación NOAA de septiembre de 2026 +4,69 °C. **No es diagnóstico oficial ENFEN ni predicción demostrada del evento El Niño Costero**.
+- MAE global AR1 0,3749 °C y persistencia 0,3797 °C; MAE últimos 12 meses AR1 0,5818 °C y persistencia 0,4708 °C. No existe habilidad robusta demostrada; remuestreo por bloques incluye mejora nula/negativa.
+- Ingesta automática/alerta de fallo de fuente, CSV, JSON, documentación y visor público guardados en el repositorio: `MODELO_NINO12_FASE6B.md`.
+- **Próxima fase 6C:** integrar producto ERSSTv5 e índice oficial ICEN actualizado por ENFEN para evaluar la correspondencia con la serie NOAA; añadir pronósticos oceánico-atmosféricos fechados y comparar modelos con persistencia en horizonte 1–3 meses. No utilizar índices OISST como si fuesen ICEN ni extrapolar directamente a lluvia/enfermedad regional.
+
 ## 5. Hoja de ruta y entregables comprobables
 
 ### Fase 3Z — Modernizar fuentes y monitoreo reciente (prioridad inmediata)
