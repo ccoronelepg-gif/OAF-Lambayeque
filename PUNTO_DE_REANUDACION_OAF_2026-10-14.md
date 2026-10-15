@@ -19,6 +19,20 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Requisitos obligatorios antes de declarar éxito:** pronósticos emitidos antes del evento, comparación contra una referencia ingenua/institucional, evaluación temporal fuera de muestra, seguimiento de falsas alarmas, incertidumbre, verificación independiente y evidencia de campo cuando aplique. Los comunicados ENFEN continúan siendo el estado **oficial**, mientras que cualquier pronóstico propio sobre El Niño Costero debe identificarse como experimental hasta demostrar habilidad predictiva. No presentar el OAF como capaz de predecir El Niño o enfermedades antes de completar esta validación.
 
+## Último avance: Fase 6G — Verificación prospectiva de pronósticos archivados (15/10/2026 UTC)
+
+**Cierre confirmado Fase 6F:** el benchmark de radiación/humedad/viento terminó correctamente, con [JSON](datos/benchmark_variables_6f.json) y [CSV de errores mensuales](datos/benchmark_variables_6f_mes.csv) finalmente publicados. Cada localidad tuvo 6.552 horas de prueba enero–septiembre 2026. En relación con el modelo básico, los intervalos de mejora mediante remuestreo por bloques incluyeron 0 para Chiclayo (−2,73 % a +15,33 %) y Motupe (−5,48 % a +1,86 %); fueron negativos en Jayanca (−42,69 % a −9,52 %) y positivos en Olmos (+1,65 % a +10,14 %). No suponer causalidad ni generalizar la mejora de Olmos a toda Lambayeque.
+
+**Fase 6G efectivamente ejecutada:** el OAF implementó la evaluación diaria de pronósticos externos conservados antes del evento, verificando pronóstico D+1...D+7 por localidad y variable frente a ERA5-Land (temperatura) y ERA5 (radiación y precipitación). Se impone retraso mínimo de 7 días por disponibilidad científica de reanálisis (~5 días). Calcula MAE, RMSE y sesgo sin imputaciones. Los datos de referencia no son estaciones SENAMHI.
+
+**Primera ejecución REAL:** GitHub Actions exitoso, JSON `datos/evaluacion_prospectiva_6g.json` con estado `pendiente_reanalisis`, **28 jornadas archivadas, 0 verificables y 0 verificadas**. Primera fecha válida 15/10/2026; primera fecha elegible para evaluación 22/10/2026, siempre sujeto a disponibilidad. Archivo `datos/evaluacion_prospectiva_6g.csv` únicamente con encabezados. Ningún porcentaje de acierto fue inventado.
+
+**Archivos guardados:** `modelos/verificar_pronosticos_emitidos_6g.py`, `.github/workflows/oaf_verificacion_6g.yml`, `modelos/verificacion_prospectiva_visor_6g.js`, `FASE_6G_VERIFICACION_PROSPECTIVA.md`. La web incorpora una sección desplegable Fase 6G en «Datos climatológicos».
+
+**Estado del portal preservado:** cinco pestañas; dentro del recuadro verde solo título «Observatorio Agroclimático y Fitosanitario» y dos fotografías; debajo, descripción del proyecto en primera persona firmada por Carlos E. Coronel García, Ingeniero Agrónomo; enfermedades de arándano y vid y modelos oceánicos ENFEN diferenciados.
+
+**Siguiente prioridad:** al cerrar las fechas previstas, contrastar error frente al reanálisis y luego a estaciones instrumentales SENAMHI/parcelas. Comparar sistemáticamente horizontes y eventos anómalos, estudiar señales radiativas/DPV/humectación foliar y comenzar validación biológica de Botrytis del arándano. Continuar modelos de Niño Costero con fuentes ICEN y predictores oceánico-atmosféricos diferenciados.
+
 ## Avance más reciente: Fase 6F · Valor predictivo de la radiación y covariables (14/10/2026)
 
 **Pregunta prioritaria:** ¿la radiación solar, la humedad relativa y el viento realmente mejoran la predicción, frente al pronóstico original y un modelo sencillo, o generan sobreajuste?
