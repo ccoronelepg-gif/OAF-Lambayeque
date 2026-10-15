@@ -219,6 +219,22 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Condición previa del modelo:</b> el índice de UC IPM presupone una infección primaria ya establecida. Las temperaturas pronosticadas a 2 m <b>no sustituyen</b> sensores dentro del dosel. El análisis horario no reproduce las variaciones de 15 minutos ni constituye el índice epidemiológico completo. Un resultado favorable no confirma enfermedad ni indica aplicación de fungicidas.</div>
 <div class="links"><a href="https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/" target="_blank" rel="noopener noreferrer">Modelo original UC IPM ↗</a><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Datos y pronóstico Open-Meteo ↗</a></div>
 </div>
+<details class="panel" id="oaf-botrytis-validation">
+<summary style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap">
+<span><strong style="font-size:18px;color:var(--navy)">Fase 7B · ¿Qué tan bien se anticipan los periodos de humedad?</strong>
+<small style="display:block;color:var(--muted)">Comprobación meteorológica retrospectiva de las señales para arándano</small></span>
+<span class="badge">Sin validación biológica</span></summary>
+<div style="margin-top:15px">
+<p class="small">Comparamos los pronósticos archivados a <b>24 horas de anticipación</b> con la humedad relativa horaria del reanálisis <b>ERA5</b> entre enero y septiembre de 2026. Evaluamos si aparecen periodos de <b>HR superior al 90 % durante ≥6 horas continuas</b>. Estos resultados <b>no verifican enfermedad, flores mojadas ni presencia de Botrytis</b>.</p>
+<div class="tools"><button id="oaf-botrytis-validate-run" type="button" class="btn dark">Consultar evaluación de humedad ↻</button></div>
+<p class="small" id="oaf-botrytis-validate-status" role="status">Las cifras se mostrarán cuando las cuatro localidades dispongan de una evaluación verificable.</p>
+<div id="oaf-botrytis-validate-output" hidden>
+<div class="scroller"><table><thead><tr><th>Localidad</th><th>Días evaluados</th><th>Señales previstas</th><th>Señales ERA5</th><th>Verdaderas</th><th>Falsas alarmas</th><th>Omisiones</th><th>Sin señal</th><th>Sensibilidad</th><th>Precisión positiva</th></tr></thead><tbody id="oaf-botrytis-validate-rows"></tbody></table></div>
+<p class="small" id="oaf-botrytis-validate-provenance"></p>
+</div>
+<div class="notice"><b>Interpretación científica:</b> «verdadera» o «falsa» se refiere <b>solo</b> a la coincidencia de una señal meteorológica de HR elevada con ERA5, no al estado fitosanitario del cultivo. La validación de Botrytis requiere humectación foliar medida, fenología, diagnóstico e incidencia observada en parcelas.</div>
+<div class="links"><a href="FASE_7B_VALIDACION_HUMEDAD.md">Método, resultados y limitaciones ↗</a><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Reanálisis ERA5 ↗</a></div>
+</div></details>
 <div class="riskmini"><article><span class="riskcrop">Arándano</span><strong>Botrytis y antracnosis</strong><p>Se estudian episodios de temperatura y humectación foliar. Falta validación con datos de campo.</p></article>
 <article><span class="riskcrop">Vid</span><strong>Oídio y mildiu</strong><p>Se evalúan condiciones térmicas y de humedad por fase del cultivo. Falta validación local.</p></article></div>
 <div class="notice">Una predicción meteorológica de condiciones favorables <b>no equivale a presencia confirmada</b> de una enfermedad. Hasta contar con evaluación independiente del modelo, no se mostrarán porcentajes de infección ni recomendaciones automáticas de tratamiento.</div></div>
@@ -396,4 +412,5 @@ nav();
 <script src="modelos/ncei_visor_6d.js" defer></script>
 <script src="modelos/benchmark_visor_6f.js" defer></script>
 <script src="modelos/verificacion_prospectiva_visor_6g.js" defer></script>
-<script src="modelos/botrytis_arandano_humedad_7a.js" defer></script></body></html>
+<script src="modelos/botrytis_arandano_humedad_7a.js" defer></script>
+<script src="modelos/visor_validacion_humedad_botrytis_7b.js" defer></script></body></html>
