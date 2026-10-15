@@ -72,6 +72,18 @@ def verify_archive():
     era5land_temp = get(archive, {**common, "daily": "temperature_2m_mean", "models": "era5_land"})
     assert sum(isinstance(v, (int, float)) for v in era5land_temp["daily"]["temperature_2m_mean"]) >= 25
     print("CHOSEN SOURCES VERIFIED: ERA5 radiation and rain; ERA5-Land temperature")
+    full_period = {**common, "start_date": "1996-01-01", "end_date": "2025-12-31"}
+    full = get(archive, {**full_period, "daily": "precipitation_sum,shortwave_radiation_sum", "models": "era5"})
+    full_t = get(archive, {**full_period, "daily": "temperature_2m_mean", "models": "era5_land"})
+    count_days = len(full["daily"]["time"])
+    rad_count = sum(isinstance(v, (int,float)) for v in full["daily"]["shortwave_radiation_sum"])
+    rain_count = sum(isinstance(v, (int,float)) for v in full["daily"]["precipitation_sum"])
+    temp_count = sum(isinstance(v, (int,float)) for v in full_t["daily"]["temperature_2m_mean"])
+    print("FULL 1996-2025:", count_days, "solar:", rad_count, "rain:", rain_count, "temp:", temp_count)
+    assert count_days == 10958, "Historic period incomplete"
+    assert len(full_t["daily"]["time"]) == count_days
+    assert min(rad_count,rain_count,temp_count) >= 25*365, "Historic variable coverage below 25 years"
+
 
 
 if __name__ == "__main__":
