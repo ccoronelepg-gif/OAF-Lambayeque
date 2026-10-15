@@ -1,0 +1,42 @@
+name: OAF 7B - Prospective Botrytis Humidity Signal Verification
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '18 15 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/verificar_patrones_botrytis_emitidos_7b.py'
+      - '.github/workflows/oaf_botrytis_7b_prospectivo.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-botrytis-hourly-prospective-verification
+  cancel-in-progress: false
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test time gates, hourly continuity and pending state
+        run: python modelos/verificar_patrones_botrytis_emitidos_7b.py --self-test
+      - name: Compare only matured archived hourly forecasts with ERA5
+        run: python modelos/verificar_patrones_botrytis_emitidos_7b.py
+      - name: Version only verified or pending-data records
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/botrytis_humedad_7b_prospectivo.json datos/botrytis_humedad_7b_prospectivo.csv
+          if git diff --cached --quiet; then
+            echo "No new mature forecast comparisons."
+          else
+            git commit -m "data(oaf): verify dated humidity forecast episodes only after ERA5 delay"
+            git pull --rebase origin main
+            git push
+          fi
