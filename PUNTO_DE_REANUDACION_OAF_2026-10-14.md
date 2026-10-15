@@ -31,6 +31,12 @@ Desarrollar el Observatorio Agroclimático y Fitosanitario de Lambayeque como un
 
 **Continuación:** revisar GitHub Actions del benchmark y los resultados `datos/benchmark_variables_6f.json` y `datos/benchmark_variables_6f_mes.csv` cuando estén realmente generados; documentar si el modelo ampliado supera o no al básico en cada localidad. Después programar archivo de pronósticos emitidos prospectivamente, validación contra sensores SENAMHI y mediciones de humectación para Botrytis del arándano.
 
+### Evaluación real y archivo prospectivo (continuación 6F)
+
+El benchmark completó cálculos de 17.105 h de entrenamiento y 6.552 h de prueba por localidad. MAE básico → MAE con radiación/HR/viento: **Chiclayo 0,8463 → 0,7959 °C (mejora 5,95 %)**; **Jayanca 0,7424 → 0,9234 °C (empeora 24,38 %)**; **Motupe 1,5424 → 1,5749 °C (empeora 2,11 %)**; **Olmos 1,7432 → 1,6566 °C (mejora 4,97 %)**. Son valores de registros GitHub Actions completos del cálculo; el primer `git push` del JSON falló porque la rama avanzó concurrentemente y se ajustará el flujo. No proclamar ventaja regional estable ni validación prospectiva.
+
+Se creó con éxito el **archivo prospectivo diario**, primera emisión local 14 de octubre 2026 para los siete días siguientes y las cuatro localidades, en `datos/pronosticos_emitidos/2026-10-14.json`. Archiva Open-Meteo como pronóstico **externo** con fecha/hora, diez variables (incluida radiación), localidades, fuente y unidades. Workflow `.github/workflows/oaf_archivo_prospectivo_6f.yml` y script `modelos/archivar_pronosticos_prospectivos_6f.py` verificaron la primera emisión. La evaluación de acierto queda pendiente de que transcurran las fechas previstas.
+
 ## Avance más reciente: Fase 6E — radiación solar y nuevas variables (14/10/2026)
 
 **Nueva instrucción y alcance del autor:** incorporar nuevas variables predictoras, **especialmente la radiación solar**, tanto para el análisis agroclimático y de anomalías regionales como para estudiar su posible utilidad en modelos fitosanitarios de arándano y vid. Mantener la línea ENSO con predictores oceánico-atmosféricos por separado.
