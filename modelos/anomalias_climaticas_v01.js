@@ -38,13 +38,14 @@
   function prepare(temperatureData,rainData){
     const tm=extract(temperatureData,'temperature_2m_mean');
     const pm=extract(rainData,'precipitation_sum');
+    const rm=Array.isArray(temperatureData?.daily?.shortwave_radiation_sum)?extract(temperatureData,'shortwave_radiation_sum'):new Map();
     const dates=[...new Set([...tm.keys(),...pm.keys()])].sort();
     if(dates.length<10500)throw Error('Base 1996–2025 incompleta; no alcanza el mínimo esperado');
     const raw=new Map(),list=[];
     for(const date of dates){
       const year=Number(date.slice(0,4));
       if(year<REF_START||year>REF_END)continue;
-      const rec={date,year,day:sday(date),temp:tm.get(date)??null,rain:pm.get(date)??null};
+      const rec={date,year,day:sday(date),temp:tm.get(date)??null,rain:pm.get(date)??null,radiation:rm.get(date)??null};
       raw.set(date,rec);list.push(rec);
     }
     if(list.length<10500)throw Error('Insuficientes días dentro del periodo 1996–2025');
@@ -52,7 +53,9 @@
       dates:list.length,
       tempDays:list.filter(r=>isNum(r.temp)).length,
       rainDays:list.filter(r=>isNum(r.rain)).length,
+      radiationDays:list.filter(r=>isNum(r.radiation)&&r.radiation>=0).length,
       tempCell:[temperatureData.latitude,temperatureData.longitude],
+      solarCell:[temperatureData.latitude,temperatureData.longitude],
       rainCell:[rainData.latitude,rainData.longitude]
     }};
   }
@@ -71,14 +74,15 @@
   function nextDate(d,shift){
     const dt=new Date(d+'T00:00:00Z');dt.setUTCDate(dt.getUTCDate()+shift);return dt.toISOString().slice(0,10);
   }
-  function sevenDayReference(hist,target){
+  function sevenDayReference(hist,target,field='rain'){
+    if(!['rain','radiation'].includes(field))throw Error('Variable histórica no admitida');
     const grouped=new Map(),idx=sday(target);
     for(const r of hist.list){
       if(dist(r.day,idx)>WINDOW)continue;
       let sum=0,good=true;
       for(let k=0;k<7;k++){
         const key=nextDate(r.date,k);
-        const v=hist.raw.get(key)?.rain;
+        const v=hist.raw.get(key)?.[field];
         if(!isNum(v)||v<0){good=false;break}
         sum+=v;
       }
@@ -87,13 +91,14 @@
       grouped.get(r.year).push(sum);
     }
     const eligible=[...grouped.values()].filter(v=>v.length>=8);
-    if(eligible.length<YEARS_MIN)throw Error('Referencia de lluvia incompleta: '+eligible.length+' años');
+    if(eligible.length<YEARS_MIN)throw Error('Referencia '+field+' incompleta: '+eligible.length+' años');
     return {values:eligible.flat(),years:eligible.length};
   }
   function compare(forecast,history){
     const daily=forecast?.daily;
     if(!daily||!Array.isArray(daily.time)||!Array.isArray(daily.temperature_2m_mean)||!Array.isArray(daily.precipitation_sum))throw Error('Pronóstico diario incompatible');
     if(daily.time.length<8||daily.temperature_2m_mean.length<8||daily.precipitation_sum.length<8)throw Error('Necesitamos hoy y siete jornadas futuras');
+    const radiationAvailable=Array.isArray(daily.shortwave_radiation_sum)&&daily.shortwave_radiation_sum.length>=8;
     const selected=[];
     for(let i=1;i<=7;i++){
       const date=daily.time[i],t=daily.temperature_2m_mean[i],p=daily.precipitation_sum[i];
@@ -103,14 +108,27 @@
       selected.push({
         date,tForecast:t,tClim:mean,delta:t-mean,p10,p90,
         signal:t>p90?'cálida':t<p10?'fría':'sin extremo térmico',
-        years:base.years,pForecast:p
+        years:base.years,pForecast:p,
+        radiationForecast:radiationAvailable&&isNum(daily.shortwave_radiation_sum[i])&&daily.shortwave_radiation_sum[i]>=0?daily.shortwave_radiation_sum[i]:null
       });
     }
     const forecastRain=selected.reduce((a,b)=>a+b.pForecast,0);
     const rainRef=sevenDayReference(history,selected[0].date);
     const rainMedian=q(rainRef.values,.5),rainP90=q(rainRef.values,.9);
+    // Radiation is optional: missing forecast/reference must never become fake zeros.
+    let radiation={status:'no_evaluable',reason:'Datos de radiación diarios o referencia histórica insuficientes'};
+    if(selected.every(d=>isNum(d.radiationForecast))&&history.coverage.radiationDays>0){
+      try{
+        const ref=sevenDayReference(history,selected[0].date,'radiation');
+        const value=selected.reduce((v,d)=>v+d.radiationForecast,0);
+        const p10=q(ref.values,.1),p90=q(ref.values,.9),median=q(ref.values,.5);
+        radiation={status:'evaluado',value,p10,p90,median,years:ref.years,
+          signal:value>p90?'radiación alta frente a P90':value<p10?'radiación baja frente a P10':'dentro de P10–P90'};
+      }catch(e){radiation.reason=e.message}
+    }
     return {
       days:selected,
+      radiation,
       rain:{
         value:forecastRain,median:rainMedian,p90:rainP90,years:rainRef.years,
         signal:rainP90>0 && forecastRain>rainP90?'acumulado sobre P90':
@@ -121,6 +139,7 @@
         forecastSource:'Open-Meteo API (modelo externo)',
         historicalT:'ERA5-Land (reanálisis)',
         historicalP:'ERA5 (reanálisis)',
+        historicalRadiation:'ERA5-Land (reanálisis, onda corta de superficie)',
         tempYearsMin:Math.min(...selected.map(d=>d.years)),
         histCoverage:history.coverage,
         limitation:'Comparación de modelos de distinta naturaleza. No son probabilidades calibradas ni predicción de El Niño Costero.'
@@ -148,8 +167,8 @@
     const q={latitude:String(lat),longitude:String(lon),timezone:'America/Lima'};
     const qp=(extra)=>new URLSearchParams(Object.assign({},q,extra)).toString();
     return [
-      'https://api.open-meteo.com/v1/forecast?'+qp({daily:'temperature_2m_mean,precipitation_sum',forecast_days:'8'}),
-      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'temperature_2m_mean',models:'era5_land'}),
+      'https://api.open-meteo.com/v1/forecast?'+qp({daily:'temperature_2m_mean,precipitation_sum,shortwave_radiation_sum',forecast_days:'8'}),
+      'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'temperature_2m_mean,shortwave_radiation_sum',models:'era5_land'}),
       'https://archive-api.open-meteo.com/v1/archive?'+qp({start_date:'1996-01-01',end_date:'2025-12-31',daily:'precipitation_sum',models:'era5'})
     ];
   }
@@ -158,18 +177,21 @@
     document.getElementById('oaf-anomaly-rain').textContent=number(out.rain.value,1)+' mm';
     document.getElementById('oaf-anomaly-rain-p90').textContent=number(out.rain.p90,1)+' mm';
     document.getElementById('oaf-anomaly-rain-class').textContent=out.rain.signal;
+    document.getElementById('oaf-anomaly-solar').textContent=out.radiation.status==='evaluado'?number(out.radiation.value,1)+' MJ/m²':'No evaluable';
+    document.getElementById('oaf-anomaly-solar-p90').textContent=out.radiation.status==='evaluado'?number(out.radiation.p90,1)+' MJ/m²':'No evaluable';
+    document.getElementById('oaf-anomaly-solar-class').textContent=out.radiation.status==='evaluado'?out.radiation.signal:'Sin evaluación: '+out.radiation.reason;
     const body=document.getElementById('oaf-anomaly-table');
     body.replaceChildren();
     for(const d of out.days){
       const tr=document.createElement('tr');
-      const values=[d.date,number(d.tForecast,1)+' °C',number(d.delta,1)+' °C',number(d.p10,1)+' a '+number(d.p90,1)+' °C',d.signal];
+      const values=[d.date,number(d.tForecast,1)+' °C',number(d.delta,1)+' °C',number(d.p10,1)+' a '+number(d.p90,1)+' °C',d.signal,isNum(d.radiationForecast)?number(d.radiationForecast,1)+' MJ/m²':'No disponible'];
       for(const v of values){const td=document.createElement('td');td.textContent=v;tr.appendChild(td)}
       body.appendChild(tr);
     }
     document.getElementById('oaf-anomaly-method').textContent=
       'Localidad: '+loc+'. Referencia 1996–2025: ≥'+out.metadata.tempYearsMin+
-      ' años válidos por fecha; lluvia: '+out.rain.years+' años. Ventana estacional ±15 días. '+
-      'T: ERA5-Land; lluvia: ERA5. Fecha de consulta: '+new Date().toLocaleString('es-PE',{timeZone:'America/Lima'})+
+      ' años válidos por fecha; lluvia: '+out.rain.years+' años; radiación: '+(out.radiation.years||'no evaluable')+' años. Ventana estacional ±15 días. '+
+      'T y radiación: ERA5-Land; lluvia: ERA5. Fecha de consulta: '+new Date().toLocaleString('es-PE',{timeZone:'America/Lima'})+
       '. Pronóstico externo Open-Meteo, diferente del reanálisis.';
     results.hidden=false;
   }
