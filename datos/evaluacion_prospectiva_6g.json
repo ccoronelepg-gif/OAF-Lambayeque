@@ -1,0 +1,48 @@
+{
+  "fase": "6G",
+  "generado_utc": "2026-10-15T05:06:19+00:00",
+  "hoy_local_peru": "2026-10-15",
+  "estado": "pendiente_reanalisis",
+  "tipo": "verificacion_de_pronosticos_externos_emitidos_antes_del_evento",
+  "son_predicciones_oaf": false,
+  "validacion_instrumental": false,
+  "retraso_seguridad_dias": 7,
+  "primera_fecha_valida_archivada": "2026-10-15",
+  "primera_fecha_elegible": "2026-10-22",
+  "jornadas_pronosticadas_en_archivo": 28,
+  "jornadas_elegibles": 0,
+  "jornadas_verificadas": 0,
+  "jornadas_con_referencia_incompleta": 0,
+  "emisiones_distintas_verificadas": 0,
+  "variables_evaluadas": [
+    {
+      "nombre": "temperature_2m_mean",
+      "unidad": "°C",
+      "referencia": "ERA5-Land"
+    },
+    {
+      "nombre": "precipitation_sum",
+      "unidad": "mm",
+      "referencia": "ERA5"
+    },
+    {
+      "nombre": "shortwave_radiation_sum",
+      "unidad": "MJ/m²",
+      "referencia": "ERA5"
+    }
+  ],
+  "metricas_por_localidad_horizonte_y_variable": [],
+  "referencias": {
+    "temperatura": "Open-Meteo Historical Weather, ERA5-Land daily",
+    "lluvia_y_radiacion": "Open-Meteo Historical Weather, ERA5 daily",
+    "latencia_fuente": "ERA5 / ERA5-Land aprox. 5 días, margen de seguridad 7 días"
+  },
+  "advertencias": [
+    "ERA5/ERA5-Land son reanálisis, no observaciones instrumentales SENAMHI.",
+    "La información muestra error de pronóstico externo, no habilidad predictiva original del OAF.",
+    "Los horizontes son días calendario desde emisión local, no exactamente horas de plazo.",
+    "Faltan mediciones locales e información de incidencia de enfermedades en arándano y vid.",
+    "No se infiere predicción de El Niño Costero ni se generan alertas fitosanitarias.",
+    "Un número pequeño de emisiones verificadas no constituye validación operativa."
+  ]
+}
