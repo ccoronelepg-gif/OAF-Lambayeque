@@ -1,0 +1,44 @@
+name: OAF 7A - Botrytis Blueberry Hourly Conditions
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '11 13 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/botrytis_arandano_humedad_7a.py'
+      - '.github/workflows/oaf_botrytis_arandano_7a.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-blueberry-botrytis-forecast-snapshots
+  cancel-in-progress: false
+jobs:
+  botrytis-hourly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check hourly algorithm and missing-data rejection
+        run: python modelos/botrytis_arandano_humedad_7a.py --self-test
+      - name: Check live provider variables for Motupe
+        run: python modelos/botrytis_arandano_humedad_7a.py --smoke
+      - name: Archive real hourly forecasts before the event for four reference sites
+        run: python modelos/botrytis_arandano_humedad_7a.py
+      - name: Store only complete and dated external forecasts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/patrones_botrytis_emitidos/
+          if git diff --cached --quiet; then
+            echo "An hourly forecast was previously issued today."
+          else
+            git commit -m "data(oaf): archive dated humidity screening inputs for blueberry Botrytis"
+            git pull --rebase origin main
+            git push
+          fi
