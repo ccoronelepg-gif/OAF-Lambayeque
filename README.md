@@ -41,6 +41,14 @@ La navegación pública se ordena de izquierda a derecha en cinco secciones:
 
 La web preserva los enlaces directos anteriores a `#cultivos` y redirige la pestaña antigua `#riesgos` a esa sección, sin duplicación de información.
 
+## Fase 5 · Primer indicador térmico experimental (14/10/2026)
+
+En [Cultivos → Predicción fitosanitaria](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#riesgos) se incorporó la consulta de pronóstico horario externo para Motupe, Jayanca, Olmos y Chiclayo, y una evaluación **exploratoria** del patrón térmico asociado con la fase conidial del oídio de la vid (*Erysiphe necator*) según UC IPM. Procesa siete jornadas futuras completas, cuenta horas continuas dentro del intervalo favorable y detecta secuencias de tres días consecutivos. Un vacío de datos hace no evaluable la jornada.
+
+**No es una predicción validada de presencia de enfermedad ni un índice completo de UC IPM:** se usan temperaturas a 2 m, no datos del dosel, y se desconoce la infección primaria. No se recomienda tratamiento fitosanitario. La API externa se consulta cuando el visitante abre el módulo y su disponibilidad no está garantizada.
+
+La implementación reproducible está en [modelos/oidio_vid_indicador_termico.py](modelos/oidio_vid_indicador_termico.py), con cuatro escenarios sintéticos de prueba. [Método, limitaciones y plan de validación](MODELO_TERMICO_OIDIO_VID_FASE5.md).
+
 ## Misión
 
 Desarrollar un sistema regional de **vigilancia agroclimática actualizada, pronóstico probabilístico y alerta temprana experimental** de eventos anómalos —en especial condiciones vinculadas con **El Niño Costero**— y de riesgos fitosanitarios agrícolas. La primera línea de sanidad vegetal se centra en **arándano**, comenzando con condiciones favorables para *Botrytis cinerea*.
