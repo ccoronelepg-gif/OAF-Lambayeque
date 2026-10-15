@@ -182,7 +182,34 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <tr data-cultivo="Vid"><td>Podredumbre negra · <i>Guignardia bidwellii</i> <a href="https://extension.psu.edu/grape-disease-black-rot" target="_blank" rel="noopener noreferrer">[Fuente ↗]</a></td><td>Temperatura y humectación combinadas; por ejemplo 6 h a 27 °C.</td><td>Vid</td></tr>
 </tbody></table></div><div class="notice">Los umbrales provienen de estudios externos; no se han validado para Lambayeque. Clima favorable no significa presencia comprobada de enfermedad. La humedad relativa no equivale a humectación foliar medida.</div>
 </div></div><div id="panel-prediccion" role="tabpanel" aria-labelledby="cultivos-tab-prediccion" hidden><div class="panel" id="modelos-fitosanitarios">
-<div class="modelhead"><div><h2>Predicción de riesgo de presencia de enfermedades</h2><p class="small">Aquí desarrollaremos los modelos de predicción fitosanitaria del observatorio para arándano y vid.</p></div><span class="badge">Módulo predictivo en desarrollo</span></div><div class="pred-screen" aria-labelledby="pred-title">
+<div class="modelhead"><div><h2>Predicción de riesgo de presencia de enfermedades</h2><p class="small">Aquí desarrollaremos los modelos de predicción fitosanitaria del observatorio para arándano y vid.</p></div><span class="badge">Módulo predictivo en desarrollo</span></div><div class="pred-screen" id="botrytis-panel" aria-labelledby="botrytis-title">
+<div class="pred-header"><div>
+<span class="riskcrop">Arándano · Segundo ensayo fitosanitario</span>
+<h3 id="botrytis-title">Botrytis: ¿se prevén periodos prolongados de humedad elevada?</h3>
+<p class="small">Se revisan siete días completos de pronósticos horarios. Se identifica si la humedad relativa del aire a 2 m supera 90 % durante seis o más horas seguidas, una condición ambiental descrita para Botrytis. <b>No se calcula infección ni probabilidad de enfermedad.</b></p>
+</div><span class="badge">Señal meteorológica experimental</span></div>
+<div class="pred-controls">
+<label for="botrytis-place">Localidad<select id="botrytis-place"><option value="Motupe">Motupe</option><option value="Jayanca">Jayanca</option><option value="Olmos">Olmos</option><option value="Chiclayo">Chiclayo</option></select></label>
+<label for="botrytis-bloom">¿Floración confirmada en la parcela?<select id="botrytis-bloom"><option value="desconocida">No se conoce</option><option value="si">Sí, floración observada</option></select></label>
+<button type="button" id="botrytis-run" class="btn dark">Analizar siete días futuros</button>
+</div>
+<p id="botrytis-status" class="small" role="status">Consulta opcional de condiciones futuras. Se necesitan datos horarios completos.</p>
+<div id="botrytis-results" hidden>
+<div class="pred-summary">
+<div><small>Tramos de ≥6 h con HR superior al 90 %</small><strong id="botrytis-episodes">—</strong></div>
+<div><small>Mayor secuencia continua de HR elevada</small><strong id="botrytis-longest">—</strong></div>
+<div><small>Días con horas dentro de un tramo prolongado</small><strong id="botrytis-days">—</strong></div>
+</div>
+<div class="scroller"><table><thead><tr><th>Fecha</th><th>Horas de HR &gt;90 %</th><th>Lluvia prevista</th><th>Radiación solar</th><th>DPV medio</th><th>¿Humedad prolongada?</th></tr></thead><tbody id="botrytis-rows"></tbody></table></div>
+<p class="small" id="botrytis-phenology"></p>
+<p class="small" id="botrytis-provenance"></p>
+</div>
+<div class="notice"><b>Alcance y límites:</b> la humedad relativa pronosticada a 2 m, la precipitación, la radiación y el DPV <b>no miden humectación foliar</b>. Un periodo con HR elevada no demuestra germinación, infección ni presencia de <i>Botrytis cinerea</i>. La floración es importante para la susceptibilidad del arándano; todavía se necesitan fenología verificada, sensores de hoja y observaciones de campo. Este indicador no recomienda tratamientos.</div>
+<div class="links"><a href="https://ipm.ucanr.edu/home-and-landscape/botrytis-blight-or-gray-mold/" target="_blank" rel="noopener noreferrer">Condiciones de Botrytis · UC IPM ↗</a>
+<a href="https://ask.ifas.ufl.edu/publication/HS380" target="_blank" rel="noopener noreferrer">Guía fitosanitaria del arándano · UF/IFAS ↗</a>
+<a href="FASE_7A_BOTRYTIS_ARANDANO.md">Metodología y validaciones pendientes ↗</a></div>
+</div>
+<div class="pred-screen" aria-labelledby="pred-title">
 <div class="pred-header"><div><span class="riskcrop">Primer ensayo computacional · Vid</span><h3 id="pred-title">Oídio: ventanas térmicas pronosticadas</h3><p class="small">Evalúa las siguientes siete jornadas completas con temperaturas horarias del pronóstico externo. No calcula probabilidad de enfermedad.</p></div><span class="badge">Indicador experimental</span></div>
 <div class="pred-controls"><label for="pred-place">Localidad<select id="pred-place"><option value="Motupe">Motupe</option><option value="Jayanca">Jayanca</option><option value="Olmos">Olmos</option><option value="Chiclayo">Chiclayo</option></select></label><button type="button" id="pred-run" class="btn dark">Analizar pronóstico horario</button></div>
 <div id="pred-status" role="status" class="small">Selecciona una localidad para analizar las condiciones meteorológicas.</div>
@@ -368,4 +395,5 @@ nav();
 <script src="modelos/ersstv5_visor_v01.js" defer></script>
 <script src="modelos/ncei_visor_6d.js" defer></script>
 <script src="modelos/benchmark_visor_6f.js" defer></script>
-<script src="modelos/verificacion_prospectiva_visor_6g.js" defer></script></body></html>
+<script src="modelos/verificacion_prospectiva_visor_6g.js" defer></script>
+<script src="modelos/botrytis_arandano_humedad_7a.js" defer></script></body></html>
