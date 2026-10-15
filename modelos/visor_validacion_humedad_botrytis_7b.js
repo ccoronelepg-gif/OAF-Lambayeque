@@ -49,6 +49,21 @@ async function load(){
     "Periodo "+j.primer_dia+" a "+j.ultimo_dia+" · archivo generado "+j.fecha_procesamiento_utc+
     " · pronóstico Previous Runs y reanálisis ERA5. Una coincidencia no demuestra infección ni humectación foliar.";
   content.hidden=false;
+  const prospective=document.getElementById("oaf-botrytis-7b-prospective");
+  if(prospective){
+   try{
+    const q=await fetch("datos/botrytis_humedad_7b_prospectivo.json",{cache:"no-store"});
+    if(!q.ok)throw Error("todavía no publicado");
+    const v=await q.json();
+    if(v.fase!=="7B_prospectivo"||v.es_prediccion_enfermedad!==false||
+       v.hay_validacion_biologica!==false||v.demora_minima_dias!==7||
+       !Number.isInteger(v.jornadas_verificadas)||!Number.isInteger(v.jornadas_elegibles))
+      throw Error("formato no verificado");
+    prospective.textContent=v.estado==="pendiente_reanalisis"?
+      "Emisiones realmente archivadas: "+v.jornadas_archivadas+" jornadas-localidad. Primera comparación posible: "+v.primer_dia_elegible+". Hasta ahora no hay días verificables; no se calculan aciertos ni alertas.":
+      "Verificación prospectiva de la señal atmosférica: "+v.jornadas_verificadas+" jornadas-localidad comprobadas con ERA5. NO corresponde a infección de Botrytis ni a observaciones de parcela.";
+   }catch(e){prospective.textContent="La comprobación prospectiva todavía no está disponible: "+e.message}
+  }
  }catch(e){
   s.textContent="Evaluación todavía no publicable: "+e.message+". No se muestran cifras de reemplazo.";
  }finally{b.disabled=false}
