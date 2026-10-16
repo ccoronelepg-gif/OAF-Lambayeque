@@ -1,0 +1,71 @@
+{
+  "fase": "8I",
+  "tipo": "homologacion_instrumental_descriptiva_condicional",
+  "estado": "sin_serie_termica_senamhi_instrumental",
+  "n_archivos_fuente_autorizados": 0,
+  "n_estaciones_con_fuente": 0,
+  "n_meses_inspeccionados": 0,
+  "n_meses_completos": 0,
+  "n_meses_con_pares_estacion_era5": 0,
+  "n_estaciones_con_par": 0,
+  "estadisticos_descriptivos": {
+    "n": 0,
+    "mae_c": null,
+    "rmse_c": null,
+    "sesgo_c": null,
+    "habilidad_predictiva_8e_demostrada": false,
+    "validacion_independiente_certificada": false
+  },
+  "por_localidad": {
+    "Chiclayo": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null,
+      "habilidad_predictiva_8e_demostrada": false,
+      "validacion_independiente_certificada": false
+    },
+    "Jayanca": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null,
+      "habilidad_predictiva_8e_demostrada": false,
+      "validacion_independiente_certificada": false
+    },
+    "Motupe": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null,
+      "habilidad_predictiva_8e_demostrada": false,
+      "validacion_independiente_certificada": false
+    },
+    "Olmos": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null,
+      "habilidad_predictiva_8e_demostrada": false,
+      "validacion_independiente_certificada": false
+    }
+  },
+  "temperatura_senamhi_real_descargada_automaticamente": false,
+  "validacion_instrumental_independiente_certificada": false,
+  "habilidad_prospectiva_8e_demostrada": false,
+  "intervalos_predictivos_90_calibrados": false,
+  "comparacion_de_modelos": "ERA5-Land 8D con estación, NO error de emisión 8E",
+  "notas": [
+    "Los datos de entrada han de aportarse con autorización y trazabilidad; el programa no descarga SENAMHI.",
+    "Solo meses con todos los días de Tmedia válida; no se imputa ausencia ni se estima Tmedia como (Tmax+Tmin)/2.",
+    "La media diaria y su agregación mensual exigen documentación de comparabilidad temporal con ERA5-Land.",
+    "Distancia de cribado 20 km no garantiza misma exposición, altitud ni representatividad; la auditoría humana continúa siendo necesaria.",
+    "Incluso con pares ERA5-estación, la comparación no prueba habilidad de los pronósticos prospectivos 8E.",
+    "La independencia frente a la asimilación/forzamiento del reanálisis necesita evidencia adicional."
+  ],
+  "trazabilidad": {
+    "manifest_sha256": "07a439eb43cacc25c07ad95f4c237ad40c84f5e0d9daf3a3d1be05c248353060",
+    "serie_era5_8d_sha256": "d325d83475b65a4843d089566c627070108276d114221e5ad3a498c26654ccda",
+    "archivos_originales": []
+  }
+}
