@@ -240,6 +240,8 @@ def report_template(root):
         "n_pares_mensuales_esperados":8*4*360,
         "n_pares_mensuales_comparados":0,
         "resultados_disponibles":False,
+        "localidades_con_periodo_completo":[],
+        "bloques_presentes":0,
         "celdas_originales_8d_certificadas":False,
         "validacion_instrumental":False,"habilidad_prospectiva_8e_demostrada":False,
         "alerta_enfen_senamhi_o_fitosanitaria":False,
@@ -271,13 +273,16 @@ def evaluate(root):
             item=source(root,city,start,end)
             if item:sources[(city,start,end)]=item
     if not sources:return rep,[],[]
-    if len(sources)!=len(SITES)*len(BLOCKS):
-        rep["estado"]="fuentes_parciales_no_se_publican_resultados"
-        rep["bloques_presentes"]=len(sources)
+    complete_cities=[city for city in SITES
+                     if all((city,start,end) in sources for start,end in BLOCKS)]
+    rep["bloques_presentes"]=len(sources)
+    rep["localidades_con_periodo_completo"]=complete_cities
+    if not complete_cities:
+        rep["estado"]="fuentes_parciales_sin_localidades_con_30_anios"
         return rep,[],[]
     pairs=[]
     points=[]
-    for city in SITES:
+    for city in complete_cities:
         bypoint={direction:{} for direction in OFFSETS}
         centers={direction:set() for direction in OFFSETS}
         elevations={direction:set() for direction in OFFSETS}
@@ -365,10 +370,14 @@ def evaluate(root):
             "max_mae_diferencia_anomalias_c":round5(max(p["mae_diferencia_anomalias_c"] for p in city_points)),
             "max_distancia_centro_celda_km":round5(max(p["distancia_celda_base_km"] for p in city_points))
         }
-    if len(points)!=36 or len(pairs)!=11520:
-        raise ValueError("Matriz final de 36 puntos y 11520 vecinos-mes incompleta")
-    rep["estado"]="sensibilidad_espacial_completa_1996_2025"
-    rep["resultados_disponibles"]=True
+    if len(points)!=9*len(complete_cities) or len(pairs)!=8*360*len(complete_cities):
+        raise ValueError("Matriz por localidad completa inconsistente (9 puntos, 2880 pares)")
+    complete=len(complete_cities)==len(SITES)
+    rep["estado"]=("sensibilidad_espacial_completa_1996_2025" if complete
+                   else "localidades_completas_regional_pendiente")
+    # Cada localidad publicada posee sus 360 meses. Los indicadores regionales
+    # SOLO se marcarán completos cuando estén las cuatro localidades.
+    rep["resultados_disponibles"]=complete
     rep["n_pares_mensuales_comparados"]=len(pairs)
     rep["trazabilidad"]["fuentes"].sort(key=lambda v:(v["ciudad"],v["periodo"][0]))
     return rep,points,pairs
@@ -390,6 +399,8 @@ def publish(root,check=False):
         directory/"pares_mensuales_8m.csv":csv_data(pairs,PAIR_FIELDS),
         directory/"vista_8m.json":json.dumps({"fase":"8M","estado":report["estado"],
             "resultados_disponibles":report["resultados_disponibles"],
+            "localidades_con_periodo_completo":report["localidades_con_periodo_completo"],
+            "bloques_presentes":report["bloques_presentes"],
             "por_localidad":report["por_localidad"],"puntos":points,
             "n_pares_mensuales":len(pairs),"no_validacion_instrumental":True,
             "no_habilidad_predictiva_demostrada":True},
