@@ -2,6 +2,8 @@
   "fase": "8K",
   "tipo": "auditoria_de_correspondencia_espacial_y_catalogo",
   "estaciones_documentales_historicas_lluvia": 5,
+  "estaciones_con_tmax_tmin_en_boletin_senamhi": 8,
+  "series_diarias_termometricas_descargadas": 0,
   "variantes_de_coordenadas_estacion": 9,
   "localidades_oaf": 4,
   "respuestas_geograficas_proveedor_8k": 4,
@@ -28,6 +30,7 @@
   "trazabilidad": {
     "modelo_8d_sha256": "655f2d7a262b98b188884226a6943c14ffe3c3fbeaa5d0c802f470b55c65f29e",
     "catalogo_instrumental_8h_sha256": "cecfa3040c1dfb4b0dc1cbdb2a33ab84ab00cf9c67ba0d907d5c6f8ff42a8f1e",
+    "boletin_candidatas_senamhi_sha256": "2cb378805662295cf47aa70479c87e09de31fe9c77e17aedcc32680c0ed6bf60",
     "auditoria_estaciones_8h_sha256": "489d4cc461f7a3bef0d0289d8d425e7a1ff1c410081d73af3516acf1e9cd7fc0",
     "metadatos_proveedor_8k_sha256": "6ed1e973a1adf61736ac5f4d4dcfcd8fcbf0b5cdb29040d4fb92acb9811b5281",
     "informe_8i_sha256": "dcb6916de15dcc5c9f4b6ced53f0c4e4b138a01cb3818202dd6aedb8fa79c5bd",
