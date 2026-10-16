@@ -29,6 +29,12 @@ TEMP8I="datos/homologacion_temperatura_8i/estado_8i.json"
 TEMP8J="datos/homologacion_horaria_8j/estado_8j.json"
 OUT="datos/seleccion_espacial_8k"
 SITES=("Chiclayo","Jayanca","Motupe","Olmos")
+SOURCE_SITES_8D={
+ "Chiclayo":(-6.77140,-79.84090),
+ "Jayanca":(-6.39278,-79.82280),
+ "Motupe":(-6.15083,-79.71420),
+ "Olmos":(-5.98825,-79.74723)
+}
 STATION_FIELDS=(
   "estacion","latitud_consultada","longitud_consultada",
   "latitud_candidata_publicada","longitud_candidata_publicada",
@@ -95,7 +101,7 @@ def sites_from_8d(root):
     hits=[v for n in code.body if isinstance(n,ast.Assign)
           for t in n.targets if isinstance(t,ast.Name) and t.id=="SITES"
           for v in [ast.literal_eval(n.value)]]
-    if len(hits)!=1 or list(hits[0])!=list(SITES):
+    if len(hits)!=1 or hits[0]!=SOURCE_SITES_8D or list(hits[0])!=list(SITES):
         raise ValueError("Las coordenadas originales 8D no coinciden con la fase 8K")
     for pair in hits[0].values():
         if len(pair)!=2:raise ValueError("Par de coordenadas 8D inválido")
