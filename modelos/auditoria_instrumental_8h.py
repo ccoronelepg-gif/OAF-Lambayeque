@@ -190,6 +190,12 @@ def conformal_radius(calibration: list, emission_utc: str, alpha=.10, min_sample
         released=released.astimezone(timezone.utc)
         if issue.astimezone(PERU).date()>=date(int(target[:4]),int(target[5:]),1):
             raise ValueError("Estimación intramensual en calibración premes")
+        # Un valor del mes objetivo no puede publicarse antes de terminar el mes.
+        # 8E exige al menos el día 10 del mes siguiente para reanálisis.
+        y,m=int(target[:4]),int(target[5:])
+        next_year,next_month=(y+1,1) if m==12 else (y,m+1)
+        if released.astimezone(PERU).date()<date(next_year,next_month,10):
+            raise ValueError("Verificación fechada antes del cierre y madurez del mes objetivo")
         if not issue<released<issuance:
             raise ValueError("Fuga temporal en disponibilidad instrumental/reanálisis")
         score=maybe_float(str(row["error_c"]))
