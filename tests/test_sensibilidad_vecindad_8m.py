@@ -93,7 +93,7 @@ class TestVecindad8M(unittest.TestCase):
     def test_partial_sources_do_not_publish_any_pair(self):
         self.write_one("Chiclayo",1996,2005)
         rep,points,pairs=m.evaluate(self.root)
-        self.assertEqual(rep["estado"],"fuentes_parciales_no_se_publican_resultados")
+        self.assertEqual(rep["estado"],"fuentes_parciales_sin_localidades_con_30_anios")
         self.assertEqual(rep["bloques_presentes"],1)
         self.assertEqual(points,[])
         self.assertEqual(pairs,[])
