@@ -32,6 +32,23 @@ jobs:
           python-version: '3.11'
       - name: Pruebas aisladas de auditoría temporal, duplicados y errores
         run: python -m unittest discover -s tests -p 'test_evaluador_prospectivo_8g.py' -v
+      - name: Comprobar sintaxis y conexión del visor público 8G
+        run: |
+          node --check modelos/visor_evaluacion_prospectiva_8g.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          js=Path("modelos/visor_evaluacion_prospectiva_8g.js").read_text(encoding="utf-8")
+          ids=("oaf-eval-8g","oaf-8g-clase","oaf-8g-localidad",
+               "oaf-8g-horizonte","oaf-8g-rows","oaf-8g-plot",
+               "oaf-8g-status","oaf-8g-improvement")
+          for i in ids:
+              assert html.count(f'id="{i}"') == 1, f"ID ausente o duplicado: {i}"
+          assert 'src="modelos/visor_evaluacion_prospectiva_8g.js"' in html
+          assert "datos/evaluacion_prospectiva_8g/metricas_8g.json" in js
+          assert html.index('id="oaf-eval-8g"') > html.index('data-page="verificaciones"')
+          print("Visor 8G: elementos, carga de datos y sintaxis correctos")
+          PY
       - name: Crear únicamente métricas derivadas de verificaciones reales
         run: |
           python modelos/evaluador_prospectivo_8g.py --run
