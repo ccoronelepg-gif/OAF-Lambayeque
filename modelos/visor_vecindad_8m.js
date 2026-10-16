@@ -154,16 +154,22 @@
        r.delta_tmedia_c=delta;
        parsed.push(r);
      }
-     if(v.resultados_disponibles){
-       if(v.n_pares_mensuales!==11520||parsed.length!==11520||v.puntos.length!==36||
-          sites.some(s=>parsed.filter(x=>x.localidad===s).length!==2880))
-         throw Error("Cobertura espacial 1996–2025 incompleta");
-     }else if(parsed.length||v.n_pares_mensuales!==0||v.puntos.length)
-       throw Error("El informe pendiente no puede contener resultados incompletos");
+     const complete=sites.filter(s=>v.por_localidad[s].n_puntos===9);
+     if(v.n_pares_mensuales!==complete.length*2880||
+        parsed.length!==complete.length*2880||
+        v.puntos.length!==complete.length*9||
+        !Array.isArray(v.localidades_con_periodo_completo)||
+        complete.join(",")!==v.localidades_con_periodo_completo.join(",")||
+        v.resultados_disponibles!==(complete.length===4)||
+        sites.some(s=>parsed.filter(x=>x.localidad===s).length!==(complete.includes(s)?2880:0)))
+       throw Error("Un sitio solo se publica con 360 meses completos; la región exige cuatro sitios");
      report=v;points=v.puntos;pairs=parsed;draw();
      state.textContent=v.resultados_disponibles
-       ?"Sensibilidad descriptiva de reanálisis en 36 posiciones; los cambios incluyen elección de píxel y ajuste de elevación del proveedor. No son mediciones de parcela ni precisión prospectiva."
-       :"No están archivadas las doce fuentes históricas necesarias. No se presentan valores simulados.";
+       ?"Sensibilidad descriptiva regional de 36 puntos y cuatro localidades durante 1996–2025. No es medición instrumental ni habilidad prospectiva."
+       :complete.length>0
+       ?"Resultados completos de 1996–2025 para "+complete.join(", ")+
+        " ("+complete.length+"/4 localidades). El análisis REGIONAL continúa pendiente. Cambios de celda y ajuste de elevación no se separan."
+       :"No existe ninguna localidad con los tres bloques decenales completos; no se presentan valores simulados.";
    }catch(err){
      report=null;points=[];pairs=[];
      table.replaceChildren();chart.replaceChildren();compass.replaceChildren();
