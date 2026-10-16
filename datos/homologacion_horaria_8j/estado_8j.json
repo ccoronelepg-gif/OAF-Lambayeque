@@ -1,0 +1,64 @@
+{
+  "fase": "8J",
+  "estado": "sin_series_horarias_instrumentales_autorizadas",
+  "registros_horarios_cargados": 0,
+  "estaciones_fuente_autorizada": 0,
+  "meses_con_registros": 0,
+  "meses_horarios_completos": 0,
+  "pares_descriptivos_estacion_era5": 0,
+  "estadisticas_por_localidad": {
+    "Chiclayo": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null
+    },
+    "Jayanca": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null
+    },
+    "Motupe": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null
+    },
+    "Olmos": {
+      "n": 0,
+      "mae_c": null,
+      "rmse_c": null,
+      "sesgo_c": null
+    }
+  },
+  "datos_origen_observados_no_sinteticos": false,
+  "temperaturas_instrumentales_disponibles": false,
+  "no_se_imputan_horas": true,
+  "correccion_gradiente_altitud_automatico": false,
+  "validacion_independiente_demostrada": false,
+  "habilidad_predictiva_8e_demostrada": false,
+  "intervalos_predictivos_90_calibrados": false,
+  "comparaciones_pueden_ser_publicadas_como_operativas": false,
+  "criterios_cribado": {
+    "distancia_km_max": 20,
+    "desnivel_absoluto_m_max": 200,
+    "son_criterios_suficientes_para_validacion": false
+  },
+  "definicion_horaria": "instantes UTC a hora exacta convertidos a America/Lima; 24 por día local, calendario completo",
+  "tipo_contraste": "estación horaria vs temperatura mensual de reanálisis 8D (descriptivo, no error prospectivo de 8E)",
+  "limitaciones": [
+    "SENAMHI no ha proporcionado al repositorio datos instrumentales horarios autorizados.",
+    "La media de 24 observaciones instantáneas horarias se compara exploratoriamente con la media mensual ERA5-Land 8D y puede diferir por método y cuadrícula.",
+    "No se inventa Tmedia desde Tmax/Tmin ni se interpolan horas faltantes.",
+    "Las coordenadas del punto OAF no son necesariamente las coordenadas reales de su cuadrícula ERA5-Land; comprobar metadatos de píxel antes de validar.",
+    "La distancia y el desnivel son filtros de revisión, no demostración física de representatividad ni independencia.",
+    "Sin metadatos originales no se atribuye un gradiente térmico vertical a las diferencias.",
+    "Un contraste retrospectivo estación–reanálisis no evalúa habilidad prospectiva de las emisiones 8E."
+  ],
+  "trazabilidad": {
+    "manifest_sha256": "8cd151864b476bd61b709591434b417425a50b8973b4dcd657c1d092318ee944",
+    "era5_land_8d_sha256": "d325d83475b65a4843d089566c627070108276d114221e5ad3a498c26654ccda",
+    "fuentes": []
+  }
+}
