@@ -1,0 +1,74 @@
+name: OAF 8L - Sensibilidad historica por seleccion de celda
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sensibilidad_celdas_8l.py'
+      - 'tests/test_sensibilidad_celdas_8l.py'
+      - 'modelos/visor_sensibilidad_celdas_8l.js'
+      - 'index.html'
+      - '.github/workflows/oaf_sensibilidad_celdas_8l.yml'
+  schedule:
+    - cron: '28 19 24 * *'
+
+permissions:
+  contents: write
+concurrency:
+  group: oaf-sensibilidad-celdas-8l
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probar series sintéticas aisladas sin publicar resultados inventados
+        run: python -m unittest discover -s tests -p 'test_sensibilidad_celdas_8l.py' -v
+      - name: Obtener fuentes históricas 1996-2025 de ambos criterios si no están archivadas
+        run: |
+          if python modelos/sensibilidad_celdas_8l.py --fetch; then
+            echo "Series de referencia históricas verificadas o recuperadas."
+          else
+            echo "::warning::El proveedor de reanálisis no permite descargar los seis bloques completos. Sin imputar, se conservará informe pendiente."
+          fi
+      - name: Generar comparación determinista solo con fuentes completas
+        run: |
+          python modelos/sensibilidad_celdas_8l.py
+          python modelos/sensibilidad_celdas_8l.py --check
+      - name: Comprobar visor cuando exista en Verificación de datos
+        run: |
+          if test -f modelos/visor_sensibilidad_celdas_8l.js; then
+            node --check modelos/visor_sensibilidad_celdas_8l.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          js=Path("modelos/visor_sensibilidad_celdas_8l.js").read_text(encoding="utf-8")
+          for key in ("oaf-sensitivity-8l","oaf-8l-status","oaf-8l-site",
+                      "oaf-8l-complete","oaf-8l-mean","oaf-8l-max",
+                      "oaf-8l-table","oaf-8l-plot","oaf-8l-refresh"):
+              assert html.count('id="'+key+'"')==1,key
+          assert 'src="modelos/visor_sensibilidad_celdas_8l.js"' in html
+          assert "sensibilidad_celdas_8l/estado_8l.json" in js
+          assert "FASE_8L_SENSIBILIDAD_CELDAS.md" in html
+          print("Visor de selección de celdas 8L conectado y válido")
+          PY
+          fi
+      - name: Archivar fuentes comprimidas y resultados derivados, solo si cambiaron
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/fuentes_celdas_8l/ datos/sensibilidad_celdas_8l/
+          if git diff --cached --quiet; then
+            echo "Sin novedades en archivos OAF 8L."
+          else
+            git commit -m "data(oaf): fijar series ERA5-Land y sensibilidad land nearest 1996-2025"
+            git pull --rebase origin main
+            git push
+          fi
