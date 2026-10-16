@@ -155,12 +155,21 @@ def api_get(url):
                 raw=r.read(16_000_001)
             if len(raw)>16_000_000:raise ValueError("Respuesta muy grande")
             return raw
-        except (HTTPError,URLError,TimeoutError,OSError,ValueError) as exc:
+        except HTTPError as exc:
+            if exc.code==429:
+                raise RuntimeError("HTTP 429: Open-Meteo limita nuevas solicitudes. Conservar lo archivado y continuar después.") from exc
+            last=exc
+            if i<2:time.sleep((i+1)*6)
+        except (URLError,TimeoutError,OSError,ValueError) as exc:
             last=exc
             if i<2:time.sleep((i+1)*6)
     raise RuntimeError("Proveedor no disponible: "+str(last))
 
-def capture(root,refresh=False):
+def capture(root,refresh=False,max_new_blocks=2):
+    if not 1<=max_new_blocks<=len(SITES)*len(BLOCKS):
+        raise ValueError("Número de bloques nuevos por ejecución fuera del diseño")
+    if refresh and max_new_blocks!=len(SITES)*len(BLOCKS):
+        raise ValueError("Un refresh del estudio requiere los doce bloques en la misma ejecución")
     allkeys=[(city,start,end) for city in SITES for start,end in BLOCKS]
     existing=[source(root,*key) for key in allkeys]
     if all(x is not None for x in existing) and not refresh:
@@ -170,8 +179,12 @@ def capture(root,refresh=False):
     # No publicar NINGUNA métrica mientras falte una fuente.
     rootdir=root/INPUT
     rootdir.mkdir(parents=True,exist_ok=True)
+    downloaded=0
     for (city,start,end),old in zip(allkeys,existing):
         if old is not None and not refresh:continue
+        if downloaded>=max_new_blocks:
+            print("Límite conservador de consultas alcanzado; conservar bloques válidos y reanudar en otro ciclo.",flush=True)
+            break
         url=build_url(city,start,end)
         raw=api_get(url)
         validate_payload(json.loads(raw),city,start,end)
@@ -187,7 +200,9 @@ def capture(root,refresh=False):
         source_path(root,city,start,end).write_bytes(gzip.compress(raw,mtime=0))
         meta_path(root,city,start,end).write_text(
             json.dumps(metadata,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-        print("Archivo validado:",city,start,end,flush=True)
+        downloaded+=1
+        print("Archivo validado:",city,start,end,
+              "- nuevos en este ciclo:",downloaded,flush=True)
 
 def load_reference(root):
     with (root/REFERENCE).open(encoding="utf-8-sig",newline="") as f:
@@ -397,6 +412,8 @@ if __name__=="__main__":
     p.add_argument("--fetch",action="store_true")
     p.add_argument("--check",action="store_true")
     p.add_argument("--refresh",action="store_true")
+    p.add_argument("--max-new-blocks",type=int,default=2,
+                   help="Protección del proveedor: máximo dos solicitudes nuevas por ejecución")
     a=p.parse_args()
-    if a.fetch:capture(a.root,refresh=a.refresh)
+    if a.fetch:capture(a.root,refresh=a.refresh,max_new_blocks=a.max_new_blocks)
     publish(a.root,check=a.check)
