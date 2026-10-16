@@ -31,6 +31,20 @@ jobs:
           python-version: '3.11'
       - name: Comprobar casos reales de procedencia y pruebas sintéticas sin fuga temporal
         run: python -m unittest discover -s tests -p 'test_auditoria_instrumental_8h.py' -v
+      - name: Comprobar visor 8H sin redundancia ni errores de sintaxis
+        run: |
+          node --check modelos/visor_auditoria_instrumental_8h.js
+          python - <<'PY'
+          from pathlib import Path
+          index=Path("index.html").read_text(encoding="utf-8")
+          for ident in ("oaf-audit-8h","oaf-8h-refresh","oaf-8h-status","oaf-8h-cobertura","oaf-8h-estaciones","oaf-8h-month-n","oaf-8h-temperature-n"):
+              assert index.count('id="'+ident+'"')==1, "Identificador inexistente/duplicado "+ident
+          assert 'src="modelos/visor_auditoria_instrumental_8h.js"' in index
+          assert 'FASE_8H_AUDITORIA_INSTRUMENTAL.md' in index
+          assert 'data-page="verificaciones"' in index
+          assert 'meses-estación completos</small><b>1 109' not in index, "Ficha redundante antigua"
+          print("Visor 8H: sintaxis, IDs y rediseño correctos")
+          PY
       - name: Auditar evidencia instrumental sin convertir lluvia a temperatura
         run: |
           python modelos/auditoria_instrumental_8h.py
