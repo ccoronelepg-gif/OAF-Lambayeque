@@ -34,6 +34,25 @@ La distancia métrica real de 0,05° depende de la dirección y la latitud. Se c
 
 **Diseño previsto:** 4 localidades × 9 posiciones = **36 puntos**. Para cada posición se requieren 360 meses completos de 1996–2025. La comparación vecino–centro produce, si todas las fuentes están disponibles, **11.520 pares mensuales** (4 × 8 × 360), además de 1.440 meses base de los centros.
 
+## Resultados instrumentados al primer corte (16/10/2026)
+
+La API limitó temporalmente nuevas consultas con HTTP 429. Por ello, la adquisición se reparte en **un máximo de dos bloques decenales por ejecución programada** y el resumen regional se mantiene pendiente hasta contar con los 12 bloques de las cuatro localidades.
+
+Ya se obtuvieron seis bloques íntegros, equivalentes a **360 meses completos en Chiclayo y Jayanca**. La comparación produce **18 puntos y 5.760 pares mensuales vecino–centro**; **Motupe y Olmos siguen pendientes**.
+
+| Indicador descriptivo de reanálisis | Chiclayo | Jayanca |
+|---|---:|---:|
+| Vecinos con otro píxel de Open-Meteo | 5/8 | 5/8 |
+| Mayor MAE de Tmedia vecino–centro por rumbo | 0,59889 °C | 0,63055 °C |
+| Máxima diferencia absoluta mensual | 1,12333 °C | 1,47500 °C |
+| Mayor MAE de diferencias de anomalía por rumbo | 0,11058 °C | 0,11376 °C |
+
+En Chiclayo, al desplazar el punto **al oeste**, el píxel cambió y la diferencia media fue aproximadamente **−0,563 °C**; al desplazarlo al norte, el píxel también cambió y la diferencia media fue aproximadamente **+0,596 °C**. En Jayanca, el desplazamiento **al noroeste** presentó un MAE de **0,63055 °C**.
+
+**Hallazgo metodológico adicional:** algunos puntos que mantuvieron **la misma celda informada** también presentaron diferencias térmicas menores, congruentes con que la API utiliza un ajuste espacial/elevacional adicional. No atribuir estas diferencias exclusivamente a la selección de celda ni a un gradiente térmico físico sin un nuevo ensayo con downscaling desactivado.
+
+Todos estos indicadores son **sensibilidad espacial del reanálisis**, no errores de temperatura respecto a SENAMHI ni medición fitosanitaria. El estado actualizable debe consultarse en [`estado_8m.json`](datos/sensibilidad_vecindad_8m/estado_8m.json), pues el número de localidades completas aumentará con los nuevos bloques verificables.
+
 ## 3. Datos, proveedores y precaución sobre elevación
 
 La fuente elegida es el conjunto **ERA5-Land** a través de **Open-Meteo Historical Weather API**. Para conservar compatibilidad con la etapa anterior 8L se mantienen:
@@ -86,7 +105,7 @@ Esto permite distinguir diferencia media sistemática del sitio respecto de dife
 - [Fuentes originales comprimidas y metadatos](datos/fuentes_vecindad_8m/), sujeto a disponibilidad y respuesta de la API.
 - [Visor público de la fase 8M](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#verificaciones), pestaña **Verificación de datos**.
 
-La acción automatizada se activa ante cambios de código y mensualmente. Si falta un bloque, **no se mezclan fuentes sintéticas ni se calculan métricas parciales como si fueran un estudio completo**.
+La acción automatizada se activa ante cambios de código y mensualmente. Si faltan fuentes, se muestran **únicamente localidades que cuentan individualmente con los tres bloques completos y 360 meses**; nunca se presenta la región como finalizada hasta reunir las cuatro localidades. No se mezclan fuentes sintéticas ni se imputan meses.
 
 ## 6. Interpretación científica y continuidad
 
