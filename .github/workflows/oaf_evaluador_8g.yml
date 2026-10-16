@@ -1,0 +1,50 @@
+name: OAF 8G - Evaluación prospectiva sin fuga temporal
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/evaluador_prospectivo_8g.py'
+      - 'tests/test_evaluador_prospectivo_8g.py'
+      - '.github/workflows/oaf_evaluador_8g.yml'
+      - 'datos/verificacion_temperatura_regional_8e.json'
+      - 'datos/verificacion_temperatura_regional_8e.csv'
+      - 'datos/pronosticos_temperatura_regional_8e/**'
+  schedule:
+    - cron: '37 17 13,20,27 * *'
+
+permissions:
+  contents: write
+concurrency:
+  group: oaf-evaluador-8g
+  cancel-in-progress: false
+
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pruebas aisladas de auditoría temporal, duplicados y errores
+        run: python -m unittest discover -s tests -p 'test_evaluador_prospectivo_8g.py' -v
+      - name: Crear únicamente métricas derivadas de verificaciones reales
+        run: |
+          python modelos/evaluador_prospectivo_8g.py --run
+          python modelos/evaluador_prospectivo_8g.py --check
+      - name: Guardar CSV y JSON solo si cambiaron las fuentes verificadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/evaluacion_prospectiva_8g/
+          if git diff --cached --quiet; then
+            echo "Sin nuevas verificaciones; informe 8G sin cambios."
+          else
+            git commit -m "data(oaf): actualizar evaluación 8G sin atribuir habilidad no demostrada"
+            git pull --rebase origin main
+            git push
+          fi
