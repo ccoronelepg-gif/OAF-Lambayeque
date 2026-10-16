@@ -148,7 +148,7 @@ class Test8J(unittest.TestCase):
 
     def test_no_imputed_temperature_outlier(self):
         self.hourly(temp="999");self.registration()
-        with self.assertRaisesRegex(ValueError,"fuera de rango"):
+        with self.assertRaisesRegex(ValueError,"inverosímil"):
             mod.calculate(self.root)
 
     def test_future_release_rejected(self):
