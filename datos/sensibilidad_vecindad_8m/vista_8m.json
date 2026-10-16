@@ -1,0 +1,47 @@
+{
+  "fase": "8M",
+  "estado": "fuentes_parciales_no_se_publican_resultados",
+  "resultados_disponibles": false,
+  "por_localidad": {
+    "Chiclayo": {
+      "n_puntos": 0,
+      "n_vecinos_con_celda_distinta": null,
+      "n_vecinos_misma_celda": null,
+      "max_mae_tmedia_c": null,
+      "max_diferencia_mensual_absoluta_c": null,
+      "max_mae_diferencia_anomalias_c": null,
+      "max_distancia_centro_celda_km": null
+    },
+    "Jayanca": {
+      "n_puntos": 0,
+      "n_vecinos_con_celda_distinta": null,
+      "n_vecinos_misma_celda": null,
+      "max_mae_tmedia_c": null,
+      "max_diferencia_mensual_absoluta_c": null,
+      "max_mae_diferencia_anomalias_c": null,
+      "max_distancia_centro_celda_km": null
+    },
+    "Motupe": {
+      "n_puntos": 0,
+      "n_vecinos_con_celda_distinta": null,
+      "n_vecinos_misma_celda": null,
+      "max_mae_tmedia_c": null,
+      "max_diferencia_mensual_absoluta_c": null,
+      "max_mae_diferencia_anomalias_c": null,
+      "max_distancia_centro_celda_km": null
+    },
+    "Olmos": {
+      "n_puntos": 0,
+      "n_vecinos_con_celda_distinta": null,
+      "n_vecinos_misma_celda": null,
+      "max_mae_tmedia_c": null,
+      "max_diferencia_mensual_absoluta_c": null,
+      "max_mae_diferencia_anomalias_c": null,
+      "max_distancia_centro_celda_km": null
+    }
+  },
+  "puntos": [],
+  "n_pares_mensuales": 0,
+  "no_validacion_instrumental": true,
+  "no_habilidad_predictiva_demostrada": true
+}
