@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'modelos/homologar_temperatura_senamhi_8i.py'
+      - 'modelos/visor_homologacion_temperatura_8i.js'
+      - 'index.html'
       - 'tests/test_homologar_temperatura_8i.py'
       - 'datos/temperatura_senamhi_8i/**'
       - 'datos/lambayeque_mensual_era5_8d.csv'
@@ -29,6 +31,21 @@ jobs:
           python-version: '3.11'
       - name: Pruebas de importación y homologación, solo fixtures sintéticas aisladas
         run: python -m unittest discover -s tests -p 'test_homologar_temperatura_8i.py' -v
+      - name: Verificar visor web y sus entradas reales
+        run: |
+          node --check modelos/visor_homologacion_temperatura_8i.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          for marker in ("oaf-instrumental-8i","oaf-8i-status","oaf-8i-archivos",
+                         "oaf-8i-completos","oaf-8i-pares","oaf-8i-localidades",
+                         "oaf-8i-grafico","oaf-8i-refresh"):
+              assert html.count(f'id="{marker}"') == 1, marker
+          assert 'src="modelos/visor_homologacion_temperatura_8i.js"' in html
+          assert 'FASE_8I_HOMOLOGACION_TEMPERATURA.md' in html
+          assert html.index('id="oaf-instrumental-8i"') > html.index('data-page="verificaciones"')
+          print("Visor de fase 8I vinculado a Verificación de datos y sin IDs duplicados")
+          PY
       - name: Generar estado real sin imputaciones y comprobar determinismo
         run: |
           python modelos/homologar_temperatura_senamhi_8i.py
