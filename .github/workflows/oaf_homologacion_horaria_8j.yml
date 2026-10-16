@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'modelos/homologar_temperatura_horaria_8j.py'
+      - 'modelos/visor_homologacion_horaria_8j.js'
+      - 'index.html'
       - 'tests/test_homologar_temperatura_horaria_8j.py'
       - 'datos/temperatura_horaria_8j/**'
       - 'datos/lambayeque_mensual_era5_8d.csv'
@@ -29,6 +31,23 @@ jobs:
           python-version: '3.11'
       - name: Probar huso horario, 24 horas, días completos, QA, altitud y SHA
         run: python -m unittest discover -s tests -p 'test_homologar_temperatura_horaria_8j.py' -v
+      - name: Validar visor 8J y evitar duplicación en navegación científica
+        run: |
+          node --check modelos/visor_homologacion_horaria_8j.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          js=Path('modelos/visor_homologacion_horaria_8j.js').read_text(encoding='utf-8')
+          for key in ('oaf-hourly-8j','oaf-8j-sources','oaf-8j-complete',
+                      'oaf-8j-pairs','oaf-8j-state','oaf-8j-months',
+                      'oaf-8j-chart','oaf-8j-reload'):
+              assert html.count('id="'+key+'"') == 1, key
+          assert 'src="modelos/visor_homologacion_horaria_8j.js"' in html
+          assert 'FASE_8J_HOMOLOGACION_HORARIA.md' in html
+          assert html.index('id="oaf-hourly-8j"') > html.index('data-page="verificaciones"')
+          assert 'datos/homologacion_horaria_8j/estado_8j.json' in js
+          print('Panel OAF 8J auditado: sintaxis, selectores y archivo científico correctos')
+          PY
       - name: Calcular sólo contrastes con fuentes autorizadas y auditar integridad
         run: |
           python modelos/homologar_temperatura_horaria_8j.py
