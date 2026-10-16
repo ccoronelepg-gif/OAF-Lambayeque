@@ -1,0 +1,17 @@
+{
+  "fase": "8M",
+  "ciudad": "Jayanca",
+  "periodo": [
+    2006,
+    2015
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278%2C-6.34278%2C-6.44278%2C-6.39278%2C-6.39278%2C-6.34278%2C-6.34278%2C-6.44278%2C-6.44278&longitude=-79.8228%2C-79.8228%2C-79.8228%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+  "sha256_respuesta_original": "a6698bb5b3495a774f5014d64cf1d6701ea38ce1aab1138b6a16bb87531a6d19",
+  "consulta_utc": "2026-10-16T23:40:46+00:00",
+  "variable": "temperature_2m_mean",
+  "modelo": "era5_land",
+  "seleccion": "land",
+  "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+  "sin_validacion_instrumental": true,
+  "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+}

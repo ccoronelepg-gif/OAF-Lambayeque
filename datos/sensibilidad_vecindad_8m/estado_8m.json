@@ -1,6 +1,6 @@
 {
   "fase": "8M",
-  "estado": "fuentes_parciales_no_se_publican_resultados",
+  "estado": "localidades_completas_regional_pendiente",
   "objetivo": "Sensibilidad al desplazamiento espacial de puntos de consulta, no habilidad predictiva",
   "periodo": "1996–2025",
   "fuente": "ERA5-Land mediante API histórica Open-Meteo, seleccion land",
@@ -15,8 +15,13 @@
   "meses_por_punto": 360,
   "n_puntos_esperados": 36,
   "n_pares_mensuales_esperados": 11520,
-  "n_pares_mensuales_comparados": 0,
+  "n_pares_mensuales_comparados": 5760,
   "resultados_disponibles": false,
+  "localidades_con_periodo_completo": [
+    "Chiclayo",
+    "Jayanca"
+  ],
+  "bloques_presentes": 6,
   "celdas_originales_8d_certificadas": false,
   "validacion_instrumental": false,
   "habilidad_prospectiva_8e_demostrada": false,
@@ -33,22 +38,22 @@
   ],
   "por_localidad": {
     "Chiclayo": {
-      "n_puntos": 0,
-      "n_vecinos_con_celda_distinta": null,
-      "n_vecinos_misma_celda": null,
-      "max_mae_tmedia_c": null,
-      "max_diferencia_mensual_absoluta_c": null,
-      "max_mae_diferencia_anomalias_c": null,
-      "max_distancia_centro_celda_km": null
+      "n_puntos": 9,
+      "n_vecinos_con_celda_distinta": 5,
+      "n_vecinos_misma_celda": 3,
+      "max_mae_tmedia_c": 0.59889,
+      "max_diferencia_mensual_absoluta_c": 1.12333,
+      "max_mae_diferencia_anomalias_c": 0.11058,
+      "max_distancia_centro_celda_km": 15.67118
     },
     "Jayanca": {
-      "n_puntos": 0,
-      "n_vecinos_con_celda_distinta": null,
-      "n_vecinos_misma_celda": null,
-      "max_mae_tmedia_c": null,
-      "max_diferencia_mensual_absoluta_c": null,
-      "max_mae_diferencia_anomalias_c": null,
-      "max_distancia_centro_celda_km": null
+      "n_puntos": 9,
+      "n_vecinos_con_celda_distinta": 5,
+      "n_vecinos_misma_celda": 3,
+      "max_mae_tmedia_c": 0.63055,
+      "max_diferencia_mensual_absoluta_c": 1.475,
+      "max_mae_diferencia_anomalias_c": 0.11376,
+      "max_distancia_centro_celda_km": 15.67813
     },
     "Motupe": {
       "n_puntos": 0,
@@ -71,7 +76,109 @@
   },
   "trazabilidad": {
     "referencia_8l_sha256": "72234a3da7724b96e20ca8c638124762fa3c440a06001134a32d71127ab8a5b2",
-    "fuentes": []
-  },
-  "bloques_presentes": 4
+    "fuentes": [
+      {
+        "fase": "8M",
+        "ciudad": "Chiclayo",
+        "periodo": [
+          1996,
+          2005
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.7214%2C-6.8214%2C-6.7714%2C-6.7714%2C-6.7214%2C-6.7214%2C-6.8214%2C-6.8214&longitude=-79.8409%2C-79.8409%2C-79.8409%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "b91fa47067f65a18093acf6ebf6a8b4701df810b12dafdb25c675f7286a461d0",
+        "consulta_utc": "2026-10-16T23:37:38+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Chiclayo",
+        "periodo": [
+          2006,
+          2015
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.7214%2C-6.8214%2C-6.7714%2C-6.7714%2C-6.7214%2C-6.7214%2C-6.8214%2C-6.8214&longitude=-79.8409%2C-79.8409%2C-79.8409%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "e3451384497a9843cc77800ff503958e158bed8d89cc63467c866776daf6cb47",
+        "consulta_utc": "2026-10-16T23:37:39+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Chiclayo",
+        "periodo": [
+          2016,
+          2025
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.7214%2C-6.8214%2C-6.7714%2C-6.7714%2C-6.7214%2C-6.7214%2C-6.8214%2C-6.8214&longitude=-79.8409%2C-79.8409%2C-79.8409%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "0c7732f4d93b2083ea88bd74a49c0b65384b25e11b1b0dd209b4bd6d5b097880",
+        "consulta_utc": "2026-10-16T23:38:55+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Jayanca",
+        "periodo": [
+          1996,
+          2005
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278%2C-6.34278%2C-6.44278%2C-6.39278%2C-6.39278%2C-6.34278%2C-6.34278%2C-6.44278%2C-6.44278&longitude=-79.8228%2C-79.8228%2C-79.8228%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "9798913e7fa3b4a429efe3136ffd331e857cc306a52f59bc374fee3dd3dd9f4a",
+        "consulta_utc": "2026-10-16T23:38:56+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Jayanca",
+        "periodo": [
+          2006,
+          2015
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278%2C-6.34278%2C-6.44278%2C-6.39278%2C-6.39278%2C-6.34278%2C-6.34278%2C-6.44278%2C-6.44278&longitude=-79.8228%2C-79.8228%2C-79.8228%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "a6698bb5b3495a774f5014d64cf1d6701ea38ce1aab1138b6a16bb87531a6d19",
+        "consulta_utc": "2026-10-16T23:40:46+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Jayanca",
+        "periodo": [
+          2016,
+          2025
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278%2C-6.34278%2C-6.44278%2C-6.39278%2C-6.39278%2C-6.34278%2C-6.34278%2C-6.44278%2C-6.44278&longitude=-79.8228%2C-79.8228%2C-79.8228%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "1fbda7f3901cecec04c5c64a78f9b27ae75d3a82457f7aad31e03b15cbd65437",
+        "consulta_utc": "2026-10-16T23:40:48+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      }
+    ]
+  }
 }
