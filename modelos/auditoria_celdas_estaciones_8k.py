@@ -326,6 +326,7 @@ def csv_output(rows,fields):
 
 def publish(root,check=False):
     report,atlas,ranked=build(root)
+    candidates=documentary_thermometric_candidates(root)
     out=root/OUT
     nearest=[]
     for city in SITES:
