@@ -1,0 +1,17 @@
+{
+  "fase": "8M",
+  "ciudad": "Chiclayo",
+  "periodo": [
+    2016,
+    2025
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.7214%2C-6.8214%2C-6.7714%2C-6.7714%2C-6.7214%2C-6.7214%2C-6.8214%2C-6.8214&longitude=-79.8409%2C-79.8409%2C-79.8409%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909%2C-79.7909%2C-79.8909&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+  "sha256_respuesta_original": "0c7732f4d93b2083ea88bd74a49c0b65384b25e11b1b0dd209b4bd6d5b097880",
+  "consulta_utc": "2026-10-16T23:38:55+00:00",
+  "variable": "temperature_2m_mean",
+  "modelo": "era5_land",
+  "seleccion": "land",
+  "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+  "sin_validacion_instrumental": true,
+  "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+}
