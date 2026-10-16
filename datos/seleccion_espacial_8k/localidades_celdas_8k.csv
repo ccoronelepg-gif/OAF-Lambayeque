@@ -1,0 +1,5 @@
+localidad_oaf,latitud_solicitada,longitud_solicitada,nodo_teorico_red_0_1_lat,nodo_teorico_red_0_1_lon,nodo_teorico_distancia_km,celda_devuelta_por_openmeteo_lat,celda_devuelta_por_openmeteo_lon,distancia_solicitud_celda_devuelta_km,elevacion_reportada_openmeteo_m,significado_elevacion_openmeteo,estado_celda_8d_original,estaciones_termometricas_confirmadas
+Chiclayo,-6.7714,-79.8409,-6.8,-79.8,5.523,-6.7999954,-79.799995,5.524,34.0,"API: elevación de estadística/downscaling, NO altitud de píxel 8D",no_almacenada_en_la_emision_original_8d,0
+Jayanca,-6.39278,-79.8228,-6.4,-79.8,2.644,-6.4000015,-79.799995,2.645,62.0,"API: elevación de estadística/downscaling, NO altitud de píxel 8D",no_almacenada_en_la_emision_original_8d,0
+Motupe,-6.15083,-79.7142,-6.2,-79.7,5.688,-6.199997,-79.7,5.688,132.0,"API: elevación de estadística/downscaling, NO altitud de píxel 8D",no_almacenada_en_la_emision_original_8d,0
+Olmos,-5.98825,-79.74723,-6.0,-79.7,5.384,-6.0,-79.7,5.384,177.0,"API: elevación de estadística/downscaling, NO altitud de píxel 8D",no_almacenada_en_la_emision_original_8d,0
