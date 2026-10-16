@@ -110,7 +110,7 @@ class TestVecindad8M(unittest.TestCase):
         self.assertEqual(rep["por_localidad"]["Chiclayo"]["max_mae_diferencia_anomalias_c"],0.0)
         self.assertEqual(rep["por_localidad"]["Motupe"]["max_diferencia_mensual_absoluta_c"],0.5)
         self.assertEqual({r["direccion"] for r in pairs},set(m.OFFSETS)-{"C"})
-        self.assertTrue(all(r["celda_distinta"] for r in pairs))
+        self.assertTrue(all(r["centro_celda_distinto"] for r in pairs))
         self.assertFalse(rep["habilidad_prospectiva_8e_demostrada"])
         m.publish(self.root)
         m.publish(self.root,check=True)
