@@ -1,0 +1,71 @@
+name: OAF 8M - Sensibilidad espacial de 36 puntos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sensibilidad_vecindad_8m.py'
+      - 'tests/test_sensibilidad_vecindad_8m.py'
+      - 'modelos/visor_vecindad_8m.js'
+      - '.github/workflows/oaf_sensibilidad_vecindad_8m.yml'
+  schedule:
+    - cron: '31 18 25 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8m-historical-neighbourhood
+  cancel-in-progress: false
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pruebas sintéticas aisladas de fechas, SHA, celdas y 30 años completos
+        run: python -m unittest discover -s tests -p 'test_sensibilidad_vecindad_8m.py' -v
+      - name: Archivar bloques originales ERA5-Land si no existen
+        run: |
+          if python modelos/sensibilidad_vecindad_8m.py --fetch; then
+            echo "Datos originales completos o bloques pendientes añadidos con SHA256."
+          else
+            echo "::warning::Fuente Open-Meteo no disponible para todos los bloques. Se preservan parciales, no se inventan resultados."
+          fi
+      - name: Generar informes, sin imputación ni atribución de habilidad prospectiva
+        run: |
+          python modelos/sensibilidad_vecindad_8m.py
+          python modelos/sensibilidad_vecindad_8m.py --check
+      - name: Comprobar visor científico 8M cuando esté instalado
+        run: |
+          if test -f modelos/visor_vecindad_8m.js; then
+            node --check modelos/visor_vecindad_8m.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          js=Path("modelos/visor_vecindad_8m.js").read_text(encoding="utf-8")
+          for k in ("oaf-neighbour-8m","oaf-8m-state","oaf-8m-site",
+                    "oaf-8m-count","oaf-8m-grid","oaf-8m-anomaly",
+                    "oaf-8m-table","oaf-8m-plot","oaf-8m-refresh"):
+              assert html.count('id="'+k+'"')==1,k
+          assert 'src="modelos/visor_vecindad_8m.js"' in html
+          assert "FASE_8M_SENSIBILIDAD_VECINDAD.md" in html
+          assert "sensibilidad_vecindad_8m/vista_8m.json" in js
+          print("Panel 8M integrado sin IDs duplicados")
+          PY
+          fi
+      - name: Publicar archivos fuente inmutables y reportes derivados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/fuentes_vecindad_8m/ datos/sensibilidad_vecindad_8m/
+          if git diff --cached --quiet; then
+            echo "Sin actualizaciones reales en la vecindad OAF."
+          else
+            git commit -m "data(oaf): archivar desplazamientos y anomalías 8M con fuentes SHA"
+            git pull --rebase origin main
+            git push
+          fi
