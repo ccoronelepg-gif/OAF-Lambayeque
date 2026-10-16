@@ -349,7 +349,7 @@ def publish(root,check=False):
         } for row in candidates]
     }
     files={
-      out/"vista_8k.json":json.dumps(view,ensure_ascii=False,indent=2,allow_nan=False)+"\\n",
+      out/"vista_8k.json":json.dumps(view,ensure_ascii=False,indent=2,allow_nan=False)+"\n",
       out/"estado_8k.json":json.dumps(report,ensure_ascii=False,indent=2,allow_nan=False)+"\n",
       out/"localidades_celdas_8k.csv":csv_output(atlas,ATLAS_FIELDS),
       out/"proximidad_estaciones_8k.csv":csv_output(ranked,RANK_FIELDS)
