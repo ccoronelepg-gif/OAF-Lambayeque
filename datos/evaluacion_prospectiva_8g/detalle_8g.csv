@@ -1,0 +1,13 @@
+emision_utc,mes_origen,mes_objetivo,localidad,horizonte_meses,tipo_emision,emitido_antes_inicio_mes,estado_verificacion,fecha_minima_verificacion,fuente_observacion,pronostico_local_c,pronostico_nino_t300_c,pronostico_climatologia_c,pronostico_persistencia_c,observacion_era5_land_c,error_local_c,error_nino_t300_c,error_climatologia_c,error_persistencia_c
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Chiclayo,1,estimacion_intramensual,False,esperando_cierre_o_fecha_minima,2026-11-10,,23.66283,23.98175,19.21744,24.57213,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Jayanca,1,estimacion_intramensual,False,esperando_cierre_o_fecha_minima,2026-11-10,,24.15749,24.49581,20.65078,24.95003,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Motupe,1,estimacion_intramensual,False,esperando_cierre_o_fecha_minima,2026-11-10,,23.51175,23.78559,20.49749,24.25268,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Olmos,1,estimacion_intramensual,False,esperando_cierre_o_fecha_minima,2026-11-10,,23.88896,24.17598,21.13166,24.63017,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-11,Chiclayo,2,pronostico_antes_inicio_mes,True,mes_futuro,2026-12-10,,23.92126,24.35209,20.12815,25.48284,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-11,Jayanca,2,pronostico_antes_inicio_mes,True,mes_futuro,2026-12-10,,24.3814,24.83474,21.38148,25.68074,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-11,Motupe,2,pronostico_antes_inicio_mes,True,mes_futuro,2026-12-10,,23.6418,24.00269,20.99074,24.74593,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-11,Olmos,2,pronostico_antes_inicio_mes,True,mes_futuro,2026-12-10,,23.84765,24.21523,21.36012,24.85864,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-12,Chiclayo,3,pronostico_antes_inicio_mes,True,mes_futuro,2027-01-10,,25.17023,25.61317,21.9374,27.29209,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-12,Jayanca,3,pronostico_antes_inicio_mes,True,mes_futuro,2027-01-10,,25.38151,25.88814,22.86523,27.16449,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-12,Motupe,3,pronostico_antes_inicio_mes,True,mes_futuro,2027-01-10,,24.55906,24.9805,22.3362,26.09139,,,,,
+2026-10-15T06:41:18+00:00,2026-09,2026-12,Olmos,3,pronostico_antes_inicio_mes,True,mes_futuro,2027-01-10,,24.74591,25.17582,22.62425,26.12277,,,,,

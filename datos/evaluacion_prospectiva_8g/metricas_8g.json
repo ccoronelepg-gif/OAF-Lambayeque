@@ -1,0 +1,1474 @@
+{
+  "fase": "8G",
+  "evaluado_con_corte_utc": "2026-10-15T06:41:18+00:00",
+  "clasificacion": "evaluador retrospectivo de emisiones archivadas, NO sistema operativo validado",
+  "fuente_verificacion": "ERA5-Land via Open-Meteo; reanálisis no instrumental",
+  "periodo_climatologia_entrenamiento": "1996–2022",
+  "periodo_climatologia_descriptiva": "1996–2025 (no usada para entrenar)",
+  "n_emisiones_originales": 1,
+  "n_registros_archivados": 12,
+  "n_premes_archivados": 8,
+  "n_intramensuales_archivados": 4,
+  "n_verificados_total": 0,
+  "n_verificados_premes": 0,
+  "n_verificados_intramensuales": 0,
+  "n_pendientes": 12,
+  "primera_fecha_elegible": "2026-11-10",
+  "metricas": {
+    "premes": {
+      "total": {
+        "n": 0,
+        "modelos": {
+          "local": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "nino_t300": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "climatologia": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "persistencia": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          }
+        },
+        "mejora_mae_nino_vs_local_pct": null,
+        "interpretacion": "insuficiente"
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Jayanca": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Motupe": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Olmos": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        }
+      },
+      "por_horizonte": {
+        "1": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "2": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "3": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        }
+      },
+      "por_localidad_horizonte": {
+        "Chiclayo": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Jayanca": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Motupe": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Olmos": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        }
+      }
+    },
+    "intramensual": {
+      "total": {
+        "n": 0,
+        "modelos": {
+          "local": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "nino_t300": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "climatologia": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          },
+          "persistencia": {
+            "mae_c": null,
+            "rmse_c": null,
+            "sesgo_c": null,
+            "intervalo_90_cobertura": null,
+            "n_intervalos_90_calibrados": 0
+          }
+        },
+        "mejora_mae_nino_vs_local_pct": null,
+        "interpretacion": "insuficiente"
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Jayanca": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Motupe": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "Olmos": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        }
+      },
+      "por_horizonte": {
+        "1": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "2": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        },
+        "3": {
+          "n": 0,
+          "modelos": {
+            "local": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "nino_t300": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "climatologia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            },
+            "persistencia": {
+              "mae_c": null,
+              "rmse_c": null,
+              "sesgo_c": null,
+              "intervalo_90_cobertura": null,
+              "n_intervalos_90_calibrados": 0
+            }
+          },
+          "mejora_mae_nino_vs_local_pct": null,
+          "interpretacion": "insuficiente"
+        }
+      },
+      "por_localidad_horizonte": {
+        "Chiclayo": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Jayanca": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Motupe": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        },
+        "Olmos": {
+          "1": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "2": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          },
+          "3": {
+            "n": 0,
+            "modelos": {
+              "local": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "nino_t300": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "climatologia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              },
+              "persistencia": {
+                "mae_c": null,
+                "rmse_c": null,
+                "sesgo_c": null,
+                "intervalo_90_cobertura": null,
+                "n_intervalos_90_calibrados": 0
+              }
+            },
+            "mejora_mae_nino_vs_local_pct": null,
+            "interpretacion": "insuficiente"
+          }
+        }
+      }
+    }
+  },
+  "intervalos_calibrados_disponibles": false,
+  "cobertura_intervalos_90_evaluable": false,
+  "habilidad_prospectiva_demostrada": false,
+  "validacion_instrumental": false,
+  "no_es_alerta_enfen_senamhi": true,
+  "mensajes": [
+    "El CSV de origen 8E solo debe contener observaciones posteriores al mes objetivo y a la fecha mínima habilitada.",
+    "Las estimaciones intramensuales nunca se mezclan en las métricas de predicción anterior al mes.",
+    "Una mejora porcentual descriptiva no demuestra habilidad operativa, causalidad o significancia estadística.",
+    "No existen intervalos predictivos 90% guardados ex ante: cobertura y probabilidades se mantienen como null.",
+    "Observaciones de ERA5-Land pueden revisarse; los pronósticos originales no se reescriben."
+  ],
+  "trazabilidad": {
+    "emisiones_inmutables": [
+      {
+        "archivo": "datos/pronosticos_temperatura_regional_8e/2026-09.json",
+        "sha256": "1a8c6f628151c9ede4049b358029dbdc156a34427380d369629e5daebe1de90d",
+        "emision_utc": "2026-10-15T06:41:18+00:00"
+      }
+    ],
+    "sha256_csv_verificacion_8e": "0fd4d94ca526d6b79ba3a99e92550b83c86043de96e821c220fec2cb37fe9f45",
+    "sha256_reporte_verificacion_8e": "c65ec3fa97a008beb83b29da7ba6ef16f88b087e7bbc3af25c5333b2b86d8585"
+  }
+}
