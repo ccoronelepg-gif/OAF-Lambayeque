@@ -1,0 +1,6 @@
+estacion,meses_completos_precipitacion,primer_mes,ultimo_mes,anios_completos,ultimo_anio_completo,latitud_referencia_no_certificada,longitud_referencia_no_certificada,alternativa_publicada_disponible,diferencia_posiciones_km,punto_oaf_provisional_mas_cercano,distancia_referencial_km,altitud_publicada_m,serie_temperatura_t2m_instrumental_verificada,codigo_instrumental_verificado,historial_emplazamiento_verificado,identidad_serie_txt_verificada,apto_contraste_8e_temperatura,fuente_metadatos
+Jayanca (La Viña),219,1996-01,2014-07,15,2012,-6.322,-79.779,true,1.68,Jayanca,9.24,,false,false,false,false,false,https://www.senamhi.gob.pe/load/file/00701SENA-313.pdf
+Cayaltí,235,1996-01,2015-10,17,2013,-6.88079444,-79.54701389,true,2.41,Chiclayo,34.65,,false,false,false,false,false,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf
+Reque,233,1996-01,2015-10,15,2013,-6.88613,-79.8355,true,0.04,Chiclayo,12.77,,false,false,false,false,false,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf
+Lambayeque,204,1996-01,2014-07,15,2013,-6.73152778,-79.90983611,true,3.36,Chiclayo,8.81,,false,false,false,false,false,https://www.senamhi.gob.pe/
+Cueva Blanca,218,1996-01,2014-06,17,2013,-6.1313,-79.4045,false,,Motupe,34.31,3300.0,false,false,false,false,false,https://www.senamhi.gob.pe/load/file/03619SENA-31.pdf

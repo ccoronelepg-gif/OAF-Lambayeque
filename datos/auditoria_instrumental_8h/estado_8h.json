@@ -1,0 +1,53 @@
+{
+  "fase": "8H",
+  "tipo": "auditoria_instrumental_de_preparacion",
+  "variable_instrumental_existente": "precipitacion mensual (mm)",
+  "variable_modelo_8e": "temperatura media mensual a 2 m (°C)",
+  "comparabilidad_directa_variables": false,
+  "meses_estacion_precipitacion": 1109,
+  "estaciones_historicas_precipitacion": 5,
+  "estacion_anio_completos": 79,
+  "ultimo_anio_comun_completo": 2012,
+  "serie_temperatura_senamhi_disponible_en_repositorio": false,
+  "estaciones_aptas_validacion_temperatura_8e": 0,
+  "comparaciones_temperatura_instrumental_efectuadas": 0,
+  "estado_validacion_independiente_temperatura": "pendiente_de_serie_t2m_y_metadatos",
+  "numero_emisiones_premes_8g": 8,
+  "numero_emisiones_premes_verificadas_era5_8g": 0,
+  "intervalos_prediccion_90_publicables": false,
+  "radio_90_por_localidad_horizonte": null,
+  "cobertura_intervalos_90": null,
+  "calibracion_temporal_realizada": false,
+  "aptitud_operativa": false,
+  "adquisicion_prioritaria": [
+    "Tmax/Tmin y, preferiblemente, Tmedia diaria observada a 2 m de estación con códigos de ausencia documentados, para los mismos meses de pronóstico.",
+    "Código instrumental oficial de cada serie, WSI si corresponde, latitud/longitud/altitud y tipo de estación.",
+    "Historia de traslados y cambios de instrumentos, fechas y método de cálculo de la temperatura media.",
+    "Verificación de series diarias completas; coincidencia temporal y geográfica con píxel ERA5-Land.",
+    "Documentar posible participación de las estaciones en la generación de productos de reanálisis y corrección de sesgos.",
+    "Establecer conjunto futuro de calibración y evaluación sin fuga temporal; archivar intervalos ANTES de observar el objetivo."
+  ],
+  "separacion_de_fuentes": {
+    "senamhi": "archivo histórico de precipitación de estaciones (1996–2015)",
+    "era5_land": "reanálisis de temperatura de celda, nunca estación SENAMHI",
+    "oaf_8e": "predicciones experimentales de temperatura modelada, sin validación instrumental"
+  },
+  "advertencias": [
+    "La estación meteorológica con nombre de localidad no es necesariamente el mismo punto usado por los modelos regionales.",
+    "Las distancias calculadas son geográficas exploratorias entre coordenadas candidatas, NO certifican identidad de estación ni permiten comparar temperaturas.",
+    "Cueva Blanca tiene documentación reciente de altitud elevada y no es sustituto automático de estaciones de valles agrícolas.",
+    "Ni la precipitación de estaciones ni un historial ERA5-Land equivalen a Tmedia instrumental de SENAMHI.",
+    "La técnica conformal es un mecanismo preparatorio: sin predicciones previas, errores documentados antes de la emisión y validación, NO se anuncian intervalos 90%."
+  ],
+  "trazabilidad": {
+    "catalogo_estaciones_sha256": "cecfa3040c1dfb4b0dc1cbdb2a33ab84ab00cf9c67ba0d907d5c6f8ff42a8f1e",
+    "lluvia_historica_sha256": "b6db111e1df101994778b2d49c68de09a16855ff3d78101c9ebdacb650236596",
+    "metadatos_cobertura_sha256": "27aee49ed6d8183531f9eaa0742fdccce48249cc9cb76ef08c5937826a74fe05",
+    "informe_8g_sha256": "4cf6886b27da10b27d1e98bb260881555f66bb8aeb0c3174082ec33485dedeaa"
+  },
+  "fuentes_oficiales": {
+    "senamhi": "https://www.senamhi.gob.pe/?p=descarga-datos-hidrometeorologicos",
+    "wmo_oscar": "https://wmo.int/activities/global-observing-system-gos/global-observing-system-gos",
+    "copernicus_era5_land": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land"
+  }
+}
