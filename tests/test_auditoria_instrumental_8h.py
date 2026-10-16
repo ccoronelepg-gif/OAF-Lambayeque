@@ -104,6 +104,12 @@ class TestOAF8H(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"Fuga temporal"):
             audit.conformal_radius(rows,"2026-10-16T12:00:00+00:00")
 
+    def test_release_before_month_end_is_rejected(self):
+        rows=self.synthetic_calibration()
+        rows[0]["observado_disponible_utc"]="2019-01-20T12:00:00+00:00"
+        with self.assertRaisesRegex(ValueError,"cierre y madurez"):
+            audit.conformal_radius(rows,"2026-10-16T12:00:00+00:00")
+
     def test_duplicate_target_for_calibration_is_rejected(self):
         rows=self.synthetic_calibration()
         rows[-1]["fecha_objetivo"]=rows[0]["fecha_objetivo"]
