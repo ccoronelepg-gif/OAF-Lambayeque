@@ -1,0 +1,9 @@
+estacion_mencionada,tipo_evidencia,variable_publicada,fuente_institucional,serie_diaria_obtenida,codigo_instrumental_historico_confirmado,coordenadas_del_sensor_correspondientes_al_periodo_confirmadas,identidad_con_archivos_8h_confirmada,elegible_validacion_instrumental,observacion
+Jayanca,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Olmos,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Reque,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Lambayeque,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Cayaltí,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Tongorrape,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Sipán,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
+Puchaca,boletin_climatico_direccion_zonal_2,Tmax_y_Tmin,https://www.senamhi.gob.pe/load/file/03601SENA-102.pdf,false,false,false,false,false,Mencionada_en_tabla_de_temperaturas_sin_serie_diaria_documentada
