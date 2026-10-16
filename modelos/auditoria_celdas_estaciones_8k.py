@@ -23,6 +23,7 @@ from urllib.parse import urlparse,parse_qs
 BASE=Path(__file__).resolve().parents[1]
 SOURCE_SCRIPT="modelos/benchmark_impacto_regional_8d.py"
 STATIONS="datos/catalogo_instrumental_candidato_8h.csv"
+CANDIDATES="datos/candidatas_termometricas_documentales_8k.csv"
 AUDIT="datos/auditoria_instrumental_8h/estaciones_8h.csv"
 CELLS="datos/metadatos_celdas_openmeteo_8k.csv"
 TEMP8I="datos/homologacion_temperatura_8i/estado_8i.json"
@@ -41,6 +42,12 @@ STATION_FIELDS=(
   "altitud_publicada_m","variable_archivo_historico",
   "codigo_instrumental_verificado","continuidad_emplazamiento_verificada",
   "identidad_con_serie_txt_verificada","referencia_documental","observacion")
+CANDIDATE_FIELDS=(
+ "estacion_mencionada","tipo_evidencia","variable_publicada",
+ "fuente_institucional","serie_diaria_obtenida",
+ "codigo_instrumental_historico_confirmado",
+ "coordenadas_del_sensor_correspondientes_al_periodo_confirmadas",
+ "identidad_con_archivos_8h_confirmada","elegible_validacion_instrumental","observacion")
 CELL_FIELDS=(
   "localidad_oaf","latitud_solicitada","longitud_solicitada",
   "latitud_respuesta","longitud_respuesta","elevacion_respuesta_m",
@@ -198,6 +205,22 @@ def load_stations(root):
                     "months":months,"source":r["referencia_documental"]})
     return out
 
+def documentary_thermometric_candidates(root):
+    rows=read_csv(root/CANDIDATES,CANDIDATE_FIELDS)
+    if len(rows)<5 or len({r["estacion_mencionada"].casefold() for r in rows})!=len(rows):
+        raise ValueError("Inventario documental de temperatura ausente o duplicado")
+    for r in rows:
+        if r["variable_publicada"]!="Tmax_y_Tmin" or r["tipo_evidencia"]!="boletin_climatico_direccion_zonal_2":
+            raise ValueError("No confundir boletines Tmax/Tmin con series diarias Tmedia")
+        if not r["fuente_institucional"].startswith("https://www.senamhi.gob.pe/load/file/"):
+            raise ValueError("Fuente de estación termométrica no institucional")
+        for flag in ("serie_diaria_obtenida","codigo_instrumental_historico_confirmado",
+                     "coordenadas_del_sensor_correspondientes_al_periodo_confirmadas",
+                     "identidad_con_archivos_8h_confirmada","elegible_validacion_instrumental"):
+            if boolval(r[flag]):
+                raise ValueError("La mención en un boletín no certifica una serie diaria")
+    return rows
+
 def ensure_not_termometric(root):
     for filename,key in ((TEMP8I,"n_estaciones_con_fuente"),(TEMP8J,"estaciones_fuente_autorizada")):
         val=json.loads((root/filename).read_text(encoding="utf-8"))
@@ -210,6 +233,7 @@ def build(root):
     sites=sites_from_8d(root)
     cells=inspect_cells(root,sites)
     station_list=load_stations(root)
+    candidates=documentary_thermometric_candidates(root)
     ensure_not_termometric(root)
     atlas=[]
     ranked=[]
@@ -255,6 +279,8 @@ def build(root):
       "fase":"8K",
       "tipo":"auditoria_de_correspondencia_espacial_y_catalogo",
       "estaciones_documentales_historicas_lluvia":len(station_list),
+      "estaciones_con_tmax_tmin_en_boletin_senamhi":len(candidates),
+      "series_diarias_termometricas_descargadas":0,
       "variantes_de_coordenadas_estacion":sum(1+bool(s["alternate"]) for s in station_list),
       "localidades_oaf":len(sites),
       "respuestas_geograficas_proveedor_8k":len(cells),
@@ -281,6 +307,7 @@ def build(root):
       "trazabilidad":{
         "modelo_8d_sha256":hashfile(root/SOURCE_SCRIPT),
         "catalogo_instrumental_8h_sha256":hashfile(root/STATIONS),
+        "boletin_candidatas_senamhi_sha256":hashfile(root/CANDIDATES),
         "auditoria_estaciones_8h_sha256":hashfile(root/AUDIT),
         "metadatos_proveedor_8k_sha256":hashfile(root/CELLS),
         "informe_8i_sha256":hashfile(root/TEMP8I),
@@ -300,7 +327,29 @@ def csv_output(rows,fields):
 def publish(root,check=False):
     report,atlas,ranked=build(root)
     out=root/OUT
+    nearest=[]
+    for city in SITES:
+        by_station={}
+        for entry in ranked:
+            if entry["localidad_oaf"]==city:
+                name=entry["estacion_historica"]
+                if name not in by_station:
+                    by_station[name]=entry
+        nearest.extend(list(by_station.values())[:2])
+    view={
+        "fase":"8K",
+        "indicadores":report,
+        "localidades":atlas,
+        "estaciones_historicas_lluvia_cercanas":nearest,
+        "candidatas_termometricas_documentadas":[{
+          "nombre":row["estacion_mencionada"],
+          "evidencia":"Tmax y Tmin en un boletín institucional, NO serie diaria",
+          "serie_instrumental_tmedia_obtenida":False,
+          "fuente":row["fuente_institucional"]
+        } for row in candidates]
+    }
     files={
+      out/"vista_8k.json":json.dumps(view,ensure_ascii=False,indent=2,allow_nan=False)+"\\n",
       out/"estado_8k.json":json.dumps(report,ensure_ascii=False,indent=2,allow_nan=False)+"\n",
       out/"localidades_celdas_8k.csv":csv_output(atlas,ATLAS_FIELDS),
       out/"proximidad_estaciones_8k.csv":csv_output(ranked,RANK_FIELDS)
