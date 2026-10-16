@@ -52,18 +52,7 @@ jobs:
         run: |
           if test -f modelos/visor_geografia_8k.js; then
             node --check modelos/visor_geografia_8k.js
-            python - <<'PY'
-          from pathlib import Path
-          html=Path('index.html').read_text(encoding='utf-8')
-          js=Path('modelos/visor_geografia_8k.js').read_text(encoding='utf-8')
-          for marker in ('oaf-spatial-8k','oaf-8k-status','oaf-8k-cells',
-                         'oaf-8k-stations','oaf-8k-verified','oaf-8k-table',
-                         'oaf-8k-source','oaf-8k-refresh'):
-              assert html.count('id="'+marker+'"')==1,marker
-          assert 'src="modelos/visor_geografia_8k.js"' in html
-          assert 'FASE_8K_INVENTARIO_ESPACIAL.md' in html
-          print('Panel 8K: identificadores y datos fuente verificados')
-          PY
+            python -c 'from pathlib import Path; h=Path("index.html").read_text(encoding="utf-8"); j=Path("modelos/visor_geografia_8k.js").read_text(encoding="utf-8"); keys=("oaf-spatial-8k","oaf-8k-status","oaf-8k-cells","oaf-8k-stations","oaf-8k-verified","oaf-8k-table","oaf-8k-source","oaf-8k-refresh"); assert all(h.count("id="+chr(34)+i+chr(34))==1 for i in keys); assert "visor_geografia_8k.js" in h; assert "FASE_8K_INVENTARIO_ESPACIAL.md" in h; assert "seleccion_espacial_8k/estado_8k.json" in j; print("Panel 8K aprobado")'
           fi
       - name: Guardar manifiesto y reportes derivados solo si cambiaron
         run: |
