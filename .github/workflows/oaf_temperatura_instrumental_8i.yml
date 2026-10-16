@@ -1,0 +1,47 @@
+name: OAF 8I - Homologación instrumental de temperatura
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/homologar_temperatura_senamhi_8i.py'
+      - 'tests/test_homologar_temperatura_8i.py'
+      - 'datos/temperatura_senamhi_8i/**'
+      - 'datos/lambayeque_mensual_era5_8d.csv'
+      - '.github/workflows/oaf_temperatura_instrumental_8i.yml'
+  schedule:
+    - cron: '19 19 21 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-instrumental-temp-8i
+  cancel-in-progress: false
+jobs:
+  homologar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pruebas de importación y homologación, solo fixtures sintéticas aisladas
+        run: python -m unittest discover -s tests -p 'test_homologar_temperatura_8i.py' -v
+      - name: Generar estado real sin imputaciones y comprobar determinismo
+        run: |
+          python modelos/homologar_temperatura_senamhi_8i.py
+          python modelos/homologar_temperatura_senamhi_8i.py --check
+      - name: Guardar solo productos derivados autorizados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/homologacion_temperatura_8i/
+          if git diff --cached --quiet; then
+            echo "Sin cambios; ninguna observación de temperatura fue inventada."
+          else
+            git commit -m "data(oaf): actualizar homologación instrumental 8I sin alterar fuentes"
+            git pull --rebase origin main
+            git push
+          fi
