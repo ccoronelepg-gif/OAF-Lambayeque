@@ -1,0 +1,15 @@
+{
+  "fase": "8L",
+  "selection": "land",
+  "start": 2016,
+  "end": 2025,
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+  "sha256_json_original": "91f6343c83b266e416117f7ee3b19e0549ce270349dd94009c14056030a6f980",
+  "fecha_consulta_utc": "2026-10-16T23:25:37+00:00",
+  "unidad": "°C",
+  "agregacion": "media_aritmetica_de_medias_diarias",
+  "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+  "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+  "metadata_version": 1,
+  "no_certifica_celda_original_8d": true
+}

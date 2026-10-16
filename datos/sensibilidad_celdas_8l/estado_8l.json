@@ -1,0 +1,217 @@
+{
+  "fase": "8L",
+  "tipo": "sensibilidad_historica_seleccion_de_celda",
+  "periodo_referencia": "1996–2025",
+  "normal_omm_comparativa": "1991–2020 (no calculada en esta fase)",
+  "variable": "temperatura media diaria del aire a 2 m, agregada por mes (°C)",
+  "fuente": "Open-Meteo Historical Weather API, ERA5-Land, cell_selection land/nearest",
+  "criterios": [
+    "land",
+    "nearest"
+  ],
+  "n_localidades": 4,
+  "meses_por_localidad_esperados": 360,
+  "meses_pareados_por_localidad": 360,
+  "n_pares_mensuales": 1440,
+  "n_consultas_por_bloques": 6,
+  "resultado_disponible": true,
+  "independencia_instrumental_demostrada": false,
+  "habilidad_prospectiva_8e_demostrada": false,
+  "apto_para_alertas_niño_o_fitosanitarias": false,
+  "celdas_8d_originales_inequivocamente_identificadas": false,
+  "parametro_elevacion_fijado": false,
+  "metodos": {
+    "land": "celda en tierra próxima y elevación semejante",
+    "nearest": "celda más cercana independientemente de preferencia terrestre"
+  },
+  "interpretacion": "Las diferencias land/nearest incluyen elección de celda y posibles efectos del ajuste del proveedor; NO equivalen a error instrumental ni impacto causal de altitud.",
+  "advertencias": [
+    "Solo reanálisis: nunca temperatura instrumental SENAMHI.",
+    "ERA5-Land es 0,1° regular en CDS; la API tiene lógica adicional de selección y elevación, no es un muestreo raster CDS puro.",
+    "Los metadatos de celda originales de 8D no quedaron archivados; comparar 8L con 8D es una auditoría retrospectiva descriptiva.",
+    "Cada método calcula su propia normal mensual 1996–2025: una diferencia de anomalía no equivale a diferencia de temperatura absoluta.",
+    "No utilizar diferencia de celda como probabilidad de El Niño o enfermedad vegetal."
+  ],
+  "por_localidad": {
+    "Chiclayo": {
+      "n": 360,
+      "diferencia_media_nearest_menos_land_c": 0.0,
+      "mae_entre_selecciones_c": 0.0,
+      "rmse_entre_selecciones_c": 0.0,
+      "max_abs_diferencia_c": 0.0,
+      "mae_diferencia_anomalias_c": 0.0,
+      "n_meses_abs_diferencia_ge_0_5_c": 0,
+      "n_meses_abs_diferencia_ge_1_0_c": 0,
+      "centros_land": [
+        -6.799995,
+        -79.799995
+      ],
+      "centros_nearest": [
+        -6.799995,
+        -79.799995
+      ],
+      "centros_distintos": false,
+      "desplazamiento_centros_km": 0.0,
+      "mae_8d_archivado_menos_land_8l_c": 0.0
+    },
+    "Jayanca": {
+      "n": 360,
+      "diferencia_media_nearest_menos_land_c": 0.0,
+      "mae_entre_selecciones_c": 0.0,
+      "rmse_entre_selecciones_c": 0.0,
+      "max_abs_diferencia_c": 0.0,
+      "mae_diferencia_anomalias_c": 0.0,
+      "n_meses_abs_diferencia_ge_0_5_c": 0,
+      "n_meses_abs_diferencia_ge_1_0_c": 0,
+      "centros_land": [
+        -6.400002,
+        -79.799995
+      ],
+      "centros_nearest": [
+        -6.400002,
+        -79.799995
+      ],
+      "centros_distintos": false,
+      "desplazamiento_centros_km": 0.0,
+      "mae_8d_archivado_menos_land_8l_c": 0.0
+    },
+    "Motupe": {
+      "n": 360,
+      "diferencia_media_nearest_menos_land_c": 0.0,
+      "mae_entre_selecciones_c": 0.0,
+      "rmse_entre_selecciones_c": 0.0,
+      "max_abs_diferencia_c": 0.0,
+      "mae_diferencia_anomalias_c": 0.0,
+      "n_meses_abs_diferencia_ge_0_5_c": 0,
+      "n_meses_abs_diferencia_ge_1_0_c": 0,
+      "centros_land": [
+        -6.199997,
+        -79.7
+      ],
+      "centros_nearest": [
+        -6.199997,
+        -79.7
+      ],
+      "centros_distintos": false,
+      "desplazamiento_centros_km": 0.0,
+      "mae_8d_archivado_menos_land_8l_c": 0.0
+    },
+    "Olmos": {
+      "n": 360,
+      "diferencia_media_nearest_menos_land_c": 0.0,
+      "mae_entre_selecciones_c": 0.0,
+      "rmse_entre_selecciones_c": 0.0,
+      "max_abs_diferencia_c": 0.0,
+      "mae_diferencia_anomalias_c": 0.0,
+      "n_meses_abs_diferencia_ge_0_5_c": 0,
+      "n_meses_abs_diferencia_ge_1_0_c": 0,
+      "centros_land": [
+        -6.0,
+        -79.7
+      ],
+      "centros_nearest": [
+        -6.0,
+        -79.7
+      ],
+      "centros_distintos": false,
+      "desplazamiento_centros_km": 0.0,
+      "mae_8d_archivado_menos_land_8l_c": 0.0
+    }
+  },
+  "trazabilidad": {
+    "sha256_8d_reanalisis_archivado": "d325d83475b65a4843d089566c627070108276d114221e5ad3a498c26654ccda",
+    "fuentes_originales": [
+      {
+        "fase": "8L",
+        "selection": "land",
+        "start": 1996,
+        "end": 2005,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_json_original": "1f2f09b1930d2dc6fdd9890291631e892d99de42c78d3ce37cd28c6855a8f7ac",
+        "fecha_consulta_utc": "2026-10-16T23:25:35+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      },
+      {
+        "fase": "8L",
+        "selection": "land",
+        "start": 2006,
+        "end": 2015,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_json_original": "1588dc8cc41c40f3e2cca0aa3fac05122ebf851c371c34e5bb117f5883177cb7",
+        "fecha_consulta_utc": "2026-10-16T23:25:36+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      },
+      {
+        "fase": "8L",
+        "selection": "land",
+        "start": 2016,
+        "end": 2025,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_json_original": "91f6343c83b266e416117f7ee3b19e0549ce270349dd94009c14056030a6f980",
+        "fecha_consulta_utc": "2026-10-16T23:25:37+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      },
+      {
+        "fase": "8L",
+        "selection": "nearest",
+        "start": 1996,
+        "end": 2005,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=nearest",
+        "sha256_json_original": "7438f03190db9ebcaf653626037bb46064cffc380188199bec3063c84d48f771",
+        "fecha_consulta_utc": "2026-10-16T23:25:38+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      },
+      {
+        "fase": "8L",
+        "selection": "nearest",
+        "start": 2006,
+        "end": 2015,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=nearest",
+        "sha256_json_original": "8ef3afd269d36276a09214296b22f94aaa47953ae6dd98d1e51b69aba89bf00b",
+        "fecha_consulta_utc": "2026-10-16T23:25:39+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      },
+      {
+        "fase": "8L",
+        "selection": "nearest",
+        "start": 2016,
+        "end": 2025,
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=nearest",
+        "sha256_json_original": "b2d6ce45296a76cfb2461179fce08b39e8bce05a100944f29b8fde9b4f9bf718",
+        "fecha_consulta_utc": "2026-10-16T23:25:40+00:00",
+        "unidad": "°C",
+        "agregacion": "media_aritmetica_de_medias_diarias",
+        "dataset": "ERA5-Land vía Open-Meteo Historical Weather API",
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
+        "metadata_version": 1,
+        "no_certifica_celda_original_8d": true
+      }
+    ]
+  },
+  "estado": "comparacion_descriptiva_360_meses_completos"
+}
