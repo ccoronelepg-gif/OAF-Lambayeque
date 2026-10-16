@@ -15,7 +15,7 @@ spec=importlib.util.spec_from_file_location("audit8k",ROOT/"modelos/auditoria_ce
 m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
-FILES=(m.SOURCE_SCRIPT,m.STATIONS,m.AUDIT,m.CELLS,m.TEMP8I,m.TEMP8J)
+FILES=(m.SOURCE_SCRIPT,m.STATIONS,m.CANDIDATES,m.AUDIT,m.CELLS,m.TEMP8I,m.TEMP8J)
 
 class TestSpatial8K(unittest.TestCase):
     def setUp(self):
@@ -54,6 +54,7 @@ class TestSpatial8K(unittest.TestCase):
         self.assertEqual(report["estaciones_documentales_historicas_lluvia"],5)
         self.assertEqual(report["variantes_de_coordenadas_estacion"],9)
         self.assertEqual(report["respuestas_geograficas_proveedor_8k"],0)
+        self.assertEqual(report["estaciones_con_tmax_tmin_en_boletin_senamhi"],8)
         self.assertEqual(report["coordenadas_celda_8d_originales_verificadas"],0)
         self.assertEqual(len(atlas),4)
         self.assertEqual(len(ranking),36)
@@ -61,6 +62,9 @@ class TestSpatial8K(unittest.TestCase):
         self.assertTrue(all(z["celda_devuelta_por_openmeteo_lat"] is None for z in atlas))
         m.publish(self.root)
         m.publish(self.root,check=True)
+        view=json.loads((self.root/m.OUT/"vista_8k.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(view["candidatas_termometricas_documentadas"]),8)
+        self.assertEqual(len(view["estaciones_historicas_lluvia_cercanas"]),8)
 
     def test_response_is_not_original_8d_cell(self):
         self.write_cells(self.fake_cells())
@@ -70,6 +74,13 @@ class TestSpatial8K(unittest.TestCase):
         self.assertTrue(all(z["celda_devuelta_por_openmeteo_lat"] is not None for z in atlas))
         self.assertTrue(all(z["distancia_a_celda_openmeteo_8k_km"] is not None for z in ranking))
         self.assertTrue(all(not z["apta_validacion_temperatura"] for z in ranking))
+
+    def test_official_temperature_bulletin_is_not_an_authorised_daily_series(self):
+        path=self.root/m.CANDIDATES
+        altered=path.read_text(encoding="utf-8").replace(",false,false,false,false,false,",",true,false,false,false,false,",1)
+        path.write_text(altered,encoding="utf-8")
+        with self.assertRaisesRegex(ValueError,"mención en un boletín"):
+            m.build(self.root)
 
     def test_changed_provider_coordinate_requested_rejected(self):
         x=self.fake_cells()
