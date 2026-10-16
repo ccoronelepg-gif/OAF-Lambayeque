@@ -98,6 +98,22 @@ class TestVecindad8M(unittest.TestCase):
         self.assertEqual(points,[])
         self.assertEqual(pairs,[])
 
+    def test_one_city_with_three_complete_decades_is_publishable_as_local_only(self):
+        for start,end in m.BLOCKS:
+            self.write_one("Chiclayo",start,end)
+        report,points,pairs=m.evaluate(self.root)
+        self.assertFalse(report["resultados_disponibles"])
+        self.assertEqual(report["estado"],"localidades_completas_regional_pendiente")
+        self.assertEqual(report["localidades_con_periodo_completo"],["Chiclayo"])
+        self.assertEqual(report["n_pares_mensuales_comparados"],2880)
+        self.assertEqual(len(points),9)
+        self.assertEqual(len(pairs),2880)
+        self.assertEqual(report["por_localidad"]["Chiclayo"]["n_puntos"],9)
+        self.assertEqual(report["por_localidad"]["Olmos"]["n_puntos"],0)
+        self.assertFalse(report["validacion_instrumental"])
+        m.publish(self.root)
+        m.publish(self.root,check=True)
+
     def test_full_synthetic_set_has_exact_months_and_zero_anomaly_delta_for_constant_offset(self):
         self.create_all()
         rep,points,pairs=m.evaluate(self.root)
