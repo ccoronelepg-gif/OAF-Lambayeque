@@ -26,6 +26,8 @@ class TestSpatial8K(unittest.TestCase):
             target=self.root/file
             target.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT/file,target)
+        # La prueba de ausencia es aislada incluso si CI ya archivó 4 celdas reales.
+        self.write_cells([])
 
     def write_cells(self,rows):
         with (self.root/m.CELLS).open("w",encoding="utf-8",newline="") as f:
