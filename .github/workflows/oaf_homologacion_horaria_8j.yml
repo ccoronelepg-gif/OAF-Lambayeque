@@ -1,0 +1,47 @@
+name: OAF 8J - Homologación horaria y geografía de temperatura
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/homologar_temperatura_horaria_8j.py'
+      - 'tests/test_homologar_temperatura_horaria_8j.py'
+      - 'datos/temperatura_horaria_8j/**'
+      - 'datos/lambayeque_mensual_era5_8d.csv'
+      - '.github/workflows/oaf_homologacion_horaria_8j.yml'
+  schedule:
+    - cron: '43 19 22 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-homologacion-horaria-8j
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probar huso horario, 24 horas, días completos, QA, altitud y SHA
+        run: python -m unittest discover -s tests -p 'test_homologar_temperatura_horaria_8j.py' -v
+      - name: Calcular sólo contrastes con fuentes autorizadas y auditar integridad
+        run: |
+          python modelos/homologar_temperatura_horaria_8j.py
+          python modelos/homologar_temperatura_horaria_8j.py --check
+      - name: Publicar únicamente resultados derivados; respetar emisiones originales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/homologacion_horaria_8j/
+          if git diff --cached --quiet; then
+            echo "No hay observaciones horarias nuevas comprobables."
+          else
+            git commit -m "data(oaf): homologación horaria 8J auditable sin datos sustituidos"
+            git pull --rebase origin main
+            git push
+          fi
