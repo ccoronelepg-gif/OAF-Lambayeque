@@ -1,0 +1,79 @@
+name: OAF 8K - Correspondencia espacial SENAMHI y ERA5-Land
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/auditoria_celdas_estaciones_8k.py'
+      - 'modelos/consultar_metadatos_openmeteo_8k.py'
+      - 'modelos/visor_geografia_8k.js'
+      - 'tests/test_auditoria_celdas_8k.py'
+      - 'datos/metadatos_celdas_openmeteo_8k.csv'
+      - 'datos/catalogo_instrumental_candidato_8h.csv'
+      - 'datos/auditoria_instrumental_8h/estaciones_8h.csv'
+      - 'datos/homologacion_temperatura_8i/estado_8i.json'
+      - 'datos/homologacion_horaria_8j/estado_8j.json'
+      - 'index.html'
+      - '.github/workflows/oaf_geografia_8k.yml'
+  schedule:
+    - cron: '19 20 23 * *'
+
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8k-spatial-metadata
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ejecutar pruebas contra metadatos y respuestas sintéticas aisladas
+        run: python -m unittest discover -s tests -p 'test_auditoria_celdas_8k.py' -v
+      - name: Capturar una vez metadatos de Open-Meteo si la API está disponible
+        run: |
+          if python modelos/consultar_metadatos_openmeteo_8k.py; then
+            echo "Metadatos geográficos archivados o previamente disponibles."
+          else
+            echo "::warning::El proveedor no respondió: NO inventar celdas ni completar el manifiesto."
+          fi
+      - name: Comprobar trazabilidad y publicar únicamente auditoría espacial
+        run: |
+          python modelos/auditoria_celdas_estaciones_8k.py
+          python modelos/auditoria_celdas_estaciones_8k.py --check
+      - name: Verificar el panel público si está integrado
+        run: |
+          if test -f modelos/visor_geografia_8k.js; then
+            node --check modelos/visor_geografia_8k.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          js=Path('modelos/visor_geografia_8k.js').read_text(encoding='utf-8')
+          for marker in ('oaf-spatial-8k','oaf-8k-status','oaf-8k-cells',
+                         'oaf-8k-stations','oaf-8k-verified','oaf-8k-table',
+                         'oaf-8k-source','oaf-8k-refresh'):
+              assert html.count('id="'+marker+'"')==1,marker
+          assert 'src="modelos/visor_geografia_8k.js"' in html
+          assert 'FASE_8K_INVENTARIO_ESPACIAL.md' in html
+          print('Panel 8K: identificadores y datos fuente verificados')
+          PY
+          fi
+      - name: Guardar manifiesto y reportes derivados solo si cambiaron
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/metadatos_celdas_openmeteo_8k.csv datos/seleccion_espacial_8k/
+          if git diff --cached --quiet; then
+            echo "Sin nuevas respuestas geográficas verificables."
+          else
+            git commit -m "data(oaf): archivar metadatos geográficos 8K y su trazabilidad"
+            git pull --rebase origin main
+            git push
+          fi
