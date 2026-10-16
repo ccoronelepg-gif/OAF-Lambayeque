@@ -7,9 +7,10 @@ on:
       - 'modelos/sensibilidad_vecindad_8m.py'
       - 'tests/test_sensibilidad_vecindad_8m.py'
       - 'modelos/visor_vecindad_8m.js'
+      - 'index.html'
       - '.github/workflows/oaf_sensibilidad_vecindad_8m.yml'
   schedule:
-    - cron: '31 18 25 * *'
+    - cron: '27 14 * * *'
 permissions:
   contents: write
 concurrency:
@@ -30,8 +31,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_sensibilidad_vecindad_8m.py' -v
       - name: Archivar bloques originales ERA5-Land si no existen
         run: |
-          if python modelos/sensibilidad_vecindad_8m.py --fetch; then
-            echo "Datos originales completos o bloques pendientes añadidos con SHA256."
+          if python modelos/sensibilidad_vecindad_8m.py --fetch --max-new-blocks 2; then
+            echo "Ciclo conservador: máximo dos bloques nuevos o fuentes completas conservadas."
           else
             echo "::warning::Fuente Open-Meteo no disponible para todos los bloques. Se preservan parciales, no se inventan resultados."
           fi
