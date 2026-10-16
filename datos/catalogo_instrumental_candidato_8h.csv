@@ -1,0 +1,6 @@
+estacion,latitud_consultada,longitud_consultada,latitud_candidata_publicada,longitud_candidata_publicada,altitud_publicada_m,variable_archivo_historico,codigo_instrumental_verificado,continuidad_emplazamiento_verificada,identidad_con_serie_txt_verificada,referencia_documental,observacion
+Jayanca (La Viña),-6.322,-79.779,-6.33306,-79.76861,,precipitacion_mm,false,false,false,https://www.senamhi.gob.pe/load/file/00701SENA-313.pdf,"La Viña automática y Jayanca histórica no tienen equivalencia instrumental demostrada"
+Cayaltí,-6.88079444,-79.54701389,-6.89853,-79.55964,,precipitacion_mm,false,false,false,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf,"Dos georreferencias reportadas; corroborar coordenada del instrumento y periodo"
+Reque,-6.88613,-79.83550,-6.88644,-79.83572,,precipitacion_mm,false,false,false,https://www.senamhi.gob.pe/load/file/01404SENA-1.pdf,"Diferencia de geocodificación pequeña, identidad documental pendiente"
+Lambayeque,-6.73152778,-79.90983611,-6.70361,-79.92139,,precipitacion_mm,false,false,false,https://www.senamhi.gob.pe/,"Contrastar catálogos y cambios del emplazamiento"
+Cueva Blanca,-6.13130,-79.40450,,,3300,precipitacion_mm,false,false,false,https://www.senamhi.gob.pe/load/file/03619SENA-31.pdf,"Ubicación anterior descartada; la ubicación documental reciente no certifica el emplazamiento de 1998"
