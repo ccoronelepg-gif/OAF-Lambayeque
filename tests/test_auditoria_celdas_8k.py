@@ -97,11 +97,8 @@ class TestSpatial8K(unittest.TestCase):
         s=target.read_text(encoding="utf-8")
         s=s.replace('"Chiclayo":(-6.77140,-79.84090)','"Chiclayo":(-5.00000,-70.00000)')
         target.write_text(s,encoding="utf-8")
-        self.write_cells(self.fake_cells())
-        # The originally defined four-study-site coordinates are expected in
-        # the unit test, so detect drift by checking the published anchor too.
-        x=m.sites_from_8d(self.root)
-        self.assertEqual(x["Chiclayo"],(-5.0,-70.0))
+        with self.assertRaisesRegex(ValueError,"coordenadas originales 8D"):
+            m.sites_from_8d(self.root)
 
     def test_thermal_file_requires_8i_8j_reaudit(self):
         path=self.root/m.TEMP8I
