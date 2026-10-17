@@ -4,11 +4,11 @@
   "periodo_fuente": "1996–2025",
   "horizonte": "anomalia_termica_un_mes",
   "fuente": "temperatura diaria ERA5-Land via Open-Meteo, archivos 8O/8P",
-  "testigos_climaticos_regionales_disponibles": 67,
+  "testigos_climaticos_regionales_disponibles": 81,
   "testigos_excluidos_dem_le_5m": 2,
-  "testigos_empleados": 65,
-  "centros_celda_era5land_unicos": 50,
-  "consultas_redundantes_descartadas": 15,
+  "testigos_empleados": 79,
+  "centros_celda_era5land_unicos": 55,
+  "consultas_redundantes_descartadas": 24,
   "n_cortes_rolling_origin": 5,
   "cortes_temporales": [
     {
@@ -17,25 +17,25 @@
       "normal_local": "1996–2008",
       "validacion": "2009–2011",
       "prueba": "2012–2014",
-      "n_centros": 50,
+      "n_centros": 55,
       "modelo_elegido": "jerarquico",
       "rmse_validacion_por_modelo": {
-        "climatologia": 0.56345,
-        "persistencia": 0.417695,
-        "regional_rezago": 0.420778,
-        "jerarquico": 0.394459
+        "climatologia": 0.563533,
+        "persistencia": 0.410522,
+        "regional_rezago": 0.421487,
+        "jerarquico": 0.387231
       },
       "rmse_prueba_por_modelo": {
-        "climatologia": 0.659318,
-        "persistencia": 0.495672,
-        "regional_rezago": 0.512464,
-        "jerarquico": 0.467761
+        "climatologia": 0.637128,
+        "persistencia": 0.484995,
+        "regional_rezago": 0.511683,
+        "jerarquico": 0.457188
       },
-      "n_observaciones_test": 1800,
+      "n_observaciones_test": 1980,
       "coeficientes_ajustados": [
-        0.0048692,
-        0.800729,
-        0.0984123
+        0.0045197,
+        0.802652,
+        0.0968627
       ]
     },
     {
@@ -44,25 +44,25 @@
       "normal_local": "1996–2011",
       "validacion": "2012–2014",
       "prueba": "2015–2017",
-      "n_centros": 50,
+      "n_centros": 55,
       "modelo_elegido": "jerarquico",
       "rmse_validacion_por_modelo": {
-        "climatologia": 0.647553,
-        "persistencia": 0.487389,
-        "regional_rezago": 0.502683,
-        "jerarquico": 0.457627
+        "climatologia": 0.625989,
+        "persistencia": 0.477103,
+        "regional_rezago": 0.502367,
+        "jerarquico": 0.447589
       },
       "rmse_prueba_por_modelo": {
-        "climatologia": 1.060629,
-        "persistencia": 0.428646,
-        "regional_rezago": 0.488676,
-        "jerarquico": 0.416788
+        "climatologia": 1.038477,
+        "persistencia": 0.420723,
+        "regional_rezago": 0.492958,
+        "jerarquico": 0.408837
       },
-      "n_observaciones_test": 1800,
+      "n_observaciones_test": 1980,
       "coeficientes_ajustados": [
-        0.0050449,
-        0.7757549,
-        0.1136411
+        0.0047761,
+        0.77938,
+        0.1111143
       ]
     },
     {
@@ -71,25 +71,25 @@
       "normal_local": "1996–2014",
       "validacion": "2015–2017",
       "prueba": "2018–2020",
-      "n_centros": 50,
+      "n_centros": 55,
       "modelo_elegido": "jerarquico",
       "rmse_validacion_por_modelo": {
-        "climatologia": 1.026452,
-        "persistencia": 0.423744,
-        "regional_rezago": 0.478835,
-        "jerarquico": 0.41182
+        "climatologia": 1.005776,
+        "persistencia": 0.416306,
+        "regional_rezago": 0.482367,
+        "jerarquico": 0.404362
       },
       "rmse_prueba_por_modelo": {
-        "climatologia": 0.710659,
-        "persistencia": 0.424201,
-        "regional_rezago": 0.461321,
-        "jerarquico": 0.4032
+        "climatologia": 0.687319,
+        "persistencia": 0.415458,
+        "regional_rezago": 0.45928,
+        "jerarquico": 0.394332
       },
-      "n_observaciones_test": 1800,
+      "n_observaciones_test": 1980,
       "coeficientes_ajustados": [
-        0.0064143,
-        0.7465125,
-        0.1324889
+        0.0062507,
+        0.7534923,
+        0.1264181
       ]
     },
     {
@@ -98,25 +98,25 @@
       "normal_local": "1996–2017",
       "validacion": "2018–2020",
       "prueba": "2021–2022",
-      "n_centros": 50,
+      "n_centros": 55,
       "modelo_elegido": "jerarquico",
       "rmse_validacion_por_modelo": {
-        "climatologia": 0.648222,
-        "persistencia": 0.422128,
-        "regional_rezago": 0.459532,
-        "jerarquico": 0.400922
+        "climatologia": 0.627124,
+        "persistencia": 0.413322,
+        "regional_rezago": 0.455633,
+        "jerarquico": 0.392014
       },
       "rmse_prueba_por_modelo": {
-        "climatologia": 0.642846,
-        "persistencia": 0.471317,
-        "regional_rezago": 0.534692,
-        "jerarquico": 0.446455
+        "climatologia": 0.628137,
+        "persistencia": 0.467714,
+        "regional_rezago": 0.523652,
+        "jerarquico": 0.442019
       },
-      "n_observaciones_test": 1200,
+      "n_observaciones_test": 1320,
       "coeficientes_ajustados": [
-        0.0053064,
-        0.7439147,
-        0.1439465
+        0.0052264,
+        0.7513189,
+        0.1380949
       ]
     },
     {
@@ -125,25 +125,25 @@
       "normal_local": "1996–2020",
       "validacion": "2021–2022",
       "prueba": "2023–2025",
-      "n_centros": 50,
+      "n_centros": 55,
       "modelo_elegido": "jerarquico",
       "rmse_validacion_por_modelo": {
-        "climatologia": 0.663445,
-        "persistencia": 0.474991,
-        "regional_rezago": 0.531002,
-        "jerarquico": 0.448844
+        "climatologia": 0.647929,
+        "persistencia": 0.471189,
+        "regional_rezago": 0.520396,
+        "jerarquico": 0.444245
       },
       "rmse_prueba_por_modelo": {
-        "climatologia": 1.123666,
-        "persistencia": 0.515401,
-        "regional_rezago": 0.619838,
-        "jerarquico": 0.499807
+        "climatologia": 1.09,
+        "persistencia": 0.502934,
+        "regional_rezago": 0.62885,
+        "jerarquico": 0.487636
       },
-      "n_observaciones_test": 1800,
+      "n_observaciones_test": 1980,
       "coeficientes_ajustados": [
-        0.0036057,
-        0.7393153,
-        0.1426019
+        0.00352,
+        0.7461447,
+        0.1372512
       ]
     }
   ],
@@ -154,218 +154,218 @@
     {
       "corte": 1,
       "bloque": "LAT1",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.509169,
-      "rmse_persistencia_retenido": 0.541103,
-      "rmse_climatologia_retenido": 0.722856
+      "rmse_prueba_retenido": 0.512805,
+      "rmse_persistencia_retenido": 0.544675,
+      "rmse_climatologia_retenido": 0.736428
     },
     {
       "corte": 1,
       "bloque": "LAT2",
-      "centros_retenidos": 12,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.450127,
-      "rmse_persistencia_retenido": 0.473599,
-      "rmse_climatologia_retenido": 0.662421
+      "rmse_prueba_retenido": 0.45997,
+      "rmse_persistencia_retenido": 0.486486,
+      "rmse_climatologia_retenido": 0.643414
     },
     {
       "corte": 1,
       "bloque": "LAT3",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.472289,
-      "rmse_persistencia_retenido": 0.500487,
-      "rmse_climatologia_retenido": 0.656933
+      "rmse_prueba_retenido": 0.42792,
+      "rmse_persistencia_retenido": 0.454063,
+      "rmse_climatologia_retenido": 0.587801
     },
     {
       "corte": 1,
       "bloque": "LAT4",
-      "centros_retenidos": 12,
+      "centros_retenidos": 13,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.431502,
-      "rmse_persistencia_retenido": 0.459197,
-      "rmse_climatologia_retenido": 0.582118
+      "rmse_prueba_retenido": 0.419201,
+      "rmse_persistencia_retenido": 0.445828,
+      "rmse_climatologia_retenido": 0.561647
     },
     {
       "corte": 2,
       "bloque": "LAT1",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.403203,
-      "rmse_persistencia_retenido": 0.405389,
-      "rmse_climatologia_retenido": 1.099168
+      "rmse_prueba_retenido": 0.409454,
+      "rmse_persistencia_retenido": 0.409853,
+      "rmse_climatologia_retenido": 1.113638
     },
     {
       "corte": 2,
       "bloque": "LAT2",
-      "centros_retenidos": 12,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.418126,
-      "rmse_persistencia_retenido": 0.428749,
-      "rmse_climatologia_retenido": 1.0809
+      "rmse_prueba_retenido": 0.413863,
+      "rmse_persistencia_retenido": 0.425469,
+      "rmse_climatologia_retenido": 1.056243
     },
     {
       "corte": 2,
       "bloque": "LAT3",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.41807,
-      "rmse_persistencia_retenido": 0.430459,
-      "rmse_climatologia_retenido": 1.047937
+      "rmse_prueba_retenido": 0.383199,
+      "rmse_persistencia_retenido": 0.39476,
+      "rmse_climatologia_retenido": 0.990616
     },
     {
       "corte": 2,
       "bloque": "LAT4",
-      "centros_retenidos": 12,
+      "centros_retenidos": 13,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.428773,
-      "rmse_persistencia_retenido": 0.450528,
-      "rmse_climatologia_retenido": 1.010123
+      "rmse_prueba_retenido": 0.430362,
+      "rmse_persistencia_retenido": 0.452997,
+      "rmse_climatologia_retenido": 0.984248
     },
     {
       "corte": 3,
       "bloque": "LAT1",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.396099,
-      "rmse_persistencia_retenido": 0.416503,
-      "rmse_climatologia_retenido": 0.70084
+      "rmse_prueba_retenido": 0.401461,
+      "rmse_persistencia_retenido": 0.422056,
+      "rmse_climatologia_retenido": 0.704648
     },
     {
       "corte": 3,
       "bloque": "LAT2",
-      "centros_retenidos": 12,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.414907,
-      "rmse_persistencia_retenido": 0.438095,
-      "rmse_climatologia_retenido": 0.739273
+      "rmse_prueba_retenido": 0.406977,
+      "rmse_persistencia_retenido": 0.429284,
+      "rmse_climatologia_retenido": 0.716127
     },
     {
       "corte": 3,
       "bloque": "LAT3",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.407239,
-      "rmse_persistencia_retenido": 0.427047,
-      "rmse_climatologia_retenido": 0.693647
+      "rmse_prueba_retenido": 0.376795,
+      "rmse_persistencia_retenido": 0.39764,
+      "rmse_climatologia_retenido": 0.641216
     },
     {
       "corte": 3,
       "bloque": "LAT4",
-      "centros_retenidos": 12,
+      "centros_retenidos": 13,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.393929,
-      "rmse_persistencia_retenido": 0.415152,
-      "rmse_climatologia_retenido": 0.71024
+      "rmse_prueba_retenido": 0.390413,
+      "rmse_persistencia_retenido": 0.411921,
+      "rmse_climatologia_retenido": 0.684726
     },
     {
       "corte": 4,
       "bloque": "LAT1",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.43676,
-      "rmse_persistencia_retenido": 0.455889,
-      "rmse_climatologia_retenido": 0.716467
+      "rmse_prueba_retenido": 0.440608,
+      "rmse_persistencia_retenido": 0.459463,
+      "rmse_climatologia_retenido": 0.732156
     },
     {
       "corte": 4,
       "bloque": "LAT2",
-      "centros_retenidos": 12,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.444402,
-      "rmse_persistencia_retenido": 0.466106,
-      "rmse_climatologia_retenido": 0.647523
+      "rmse_prueba_retenido": 0.436906,
+      "rmse_persistencia_retenido": 0.459502,
+      "rmse_climatologia_retenido": 0.632318
     },
     {
       "corte": 4,
       "bloque": "LAT3",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.449416,
-      "rmse_persistencia_retenido": 0.474544,
-      "rmse_climatologia_retenido": 0.657773
+      "rmse_prueba_retenido": 0.432414,
+      "rmse_persistencia_retenido": 0.459973,
+      "rmse_climatologia_retenido": 0.595324
     },
     {
       "corte": 4,
       "bloque": "LAT4",
-      "centros_retenidos": 12,
+      "centros_retenidos": 13,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.454535,
-      "rmse_persistencia_retenido": 0.489095,
-      "rmse_climatologia_retenido": 0.527041
+      "rmse_prueba_retenido": 0.458224,
+      "rmse_persistencia_retenido": 0.492879,
+      "rmse_climatologia_retenido": 0.528901
     },
     {
       "corte": 5,
       "bloque": "LAT1",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.541471,
-      "rmse_persistencia_retenido": 0.546039,
-      "rmse_climatologia_retenido": 1.205049
+      "rmse_prueba_retenido": 0.554232,
+      "rmse_persistencia_retenido": 0.558232,
+      "rmse_climatologia_retenido": 1.214701
     },
     {
       "corte": 5,
       "bloque": "LAT2",
-      "centros_retenidos": 12,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.498591,
-      "rmse_persistencia_retenido": 0.510209,
-      "rmse_climatologia_retenido": 1.157226
+      "rmse_prueba_retenido": 0.488866,
+      "rmse_persistencia_retenido": 0.499355,
+      "rmse_climatologia_retenido": 1.115763
     },
     {
       "corte": 5,
       "bloque": "LAT3",
-      "centros_retenidos": 13,
+      "centros_retenidos": 14,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.503909,
-      "rmse_persistencia_retenido": 0.523734,
-      "rmse_climatologia_retenido": 1.080694
+      "rmse_prueba_retenido": 0.454002,
+      "rmse_persistencia_retenido": 0.475957,
+      "rmse_climatologia_retenido": 0.992871
     },
     {
       "corte": 5,
       "bloque": "LAT4",
-      "centros_retenidos": 12,
+      "centros_retenidos": 13,
       "metodo_elegido_otros_bloques": "jerarquico",
-      "rmse_prueba_retenido": 0.445796,
-      "rmse_persistencia_retenido": 0.475766,
-      "rmse_climatologia_retenido": 1.040859
+      "rmse_prueba_retenido": 0.442551,
+      "rmse_persistencia_retenido": 0.47122,
+      "rmse_climatologia_retenido": 1.017482
     }
   ],
   "evaluacion_temporal": {
-    "n": 8400,
+    "n": 9240,
     "seleccionado": {
-      "rmse_c": 0.448275,
-      "mae_c": 0.343438
+      "rmse_c": 0.439084,
+      "mae_c": 0.335695
     },
     "persistencia": {
-      "rmse_c": 0.468228,
-      "mae_c": 0.362334
+      "rmse_c": 0.459102,
+      "mae_c": 0.354476
     },
     "climatologia": {
-      "rmse_c": 0.878651,
-      "mae_c": 0.660765
+      "rmse_c": 0.854557,
+      "mae_c": 0.639506
     },
-    "skill_rmse_vs_persistencia": 0.042614,
-    "skill_rmse_vs_climatologia": 0.489814,
+    "skill_rmse_vs_persistencia": 0.043603,
+    "skill_rmse_vs_climatologia": 0.486185,
     "mejora_persistencia": true
   },
   "evaluacion_con_bloque_retenido": {
-    "n": 8400,
+    "n": 9240,
     "seleccionado": {
-      "rmse_c": 0.448167,
-      "mae_c": 0.343375
+      "rmse_c": 0.439071,
+      "mae_c": 0.335641
     },
     "persistencia": {
-      "rmse_c": 0.468228,
-      "mae_c": 0.362334
+      "rmse_c": 0.459102,
+      "mae_c": 0.354476
     },
     "climatologia": {
-      "rmse_c": 0.878651,
-      "mae_c": 0.660765
+      "rmse_c": 0.854557,
+      "mae_c": 0.639506
     },
-    "skill_rmse_vs_persistencia": 0.042845,
-    "skill_rmse_vs_climatologia": 0.489937,
+    "skill_rmse_vs_persistencia": 0.043631,
+    "skill_rmse_vs_climatologia": 0.4862,
     "mejora_persistencia": true
   },
   "evaluacion_por_estrato_altitudinal": [
@@ -373,8 +373,8 @@
       "estrato": "llanura_costa",
       "n": 2016,
       "seleccionado": {
-        "rmse_c": 0.566437,
-        "mae_c": 0.433407
+        "rmse_c": 0.566794,
+        "mae_c": 0.433408
       },
       "persistencia": {
         "rmse_c": 0.583587,
@@ -384,35 +384,35 @@
         "rmse_c": 1.103727,
         "mae_c": 0.847003
       },
-      "skill_rmse_vs_persistencia": 0.029387,
-      "skill_rmse_vs_climatologia": 0.486796,
+      "skill_rmse_vs_persistencia": 0.028775,
+      "skill_rmse_vs_climatologia": 0.486473,
       "mejora_persistencia": true
     },
     {
       "estrato": "montana_alta",
-      "n": 336,
+      "n": 1176,
       "seleccionado": {
-        "rmse_c": 0.330746,
-        "mae_c": 0.263252
+        "rmse_c": 0.327594,
+        "mae_c": 0.258032
       },
       "persistencia": {
-        "rmse_c": 0.361974,
-        "mae_c": 0.283664
+        "rmse_c": 0.357129,
+        "mae_c": 0.278118
       },
       "climatologia": {
-        "rmse_c": 0.599265,
-        "mae_c": 0.464977
+        "rmse_c": 0.570904,
+        "mae_c": 0.43779
       },
-      "skill_rmse_vs_persistencia": 0.086271,
-      "skill_rmse_vs_climatologia": 0.448081,
+      "skill_rmse_vs_persistencia": 0.082701,
+      "skill_rmse_vs_climatologia": 0.426184,
       "mejora_persistencia": true
     },
     {
       "estrato": "montana_baja",
       "n": 1680,
       "seleccionado": {
-        "rmse_c": 0.361147,
-        "mae_c": 0.285802
+        "rmse_c": 0.36187,
+        "mae_c": 0.286174
       },
       "persistencia": {
         "rmse_c": 0.381327,
@@ -422,16 +422,16 @@
         "rmse_c": 0.717923,
         "mae_c": 0.548898
       },
-      "skill_rmse_vs_persistencia": 0.05292,
-      "skill_rmse_vs_climatologia": 0.496956,
+      "skill_rmse_vs_persistencia": 0.051024,
+      "skill_rmse_vs_climatologia": 0.495949,
       "mejora_persistencia": true
     },
     {
       "estrato": "montana_media",
       "n": 840,
       "seleccionado": {
-        "rmse_c": 0.321652,
-        "mae_c": 0.254834
+        "rmse_c": 0.322698,
+        "mae_c": 0.255571
       },
       "persistencia": {
         "rmse_c": 0.348482,
@@ -441,16 +441,16 @@
         "rmse_c": 0.573745,
         "mae_c": 0.441684
       },
-      "skill_rmse_vs_persistencia": 0.076991,
-      "skill_rmse_vs_climatologia": 0.439382,
+      "skill_rmse_vs_persistencia": 0.073989,
+      "skill_rmse_vs_climatologia": 0.437558,
       "mejora_persistencia": true
     },
     {
       "estrato": "piedemonte",
       "n": 1848,
       "seleccionado": {
-        "rmse_c": 0.413984,
-        "mae_c": 0.326402
+        "rmse_c": 0.414733,
+        "mae_c": 0.326577
       },
       "persistencia": {
         "rmse_c": 0.434353,
@@ -460,16 +460,16 @@
         "rmse_c": 0.829157,
         "mae_c": 0.638517
       },
-      "skill_rmse_vs_persistencia": 0.046895,
-      "skill_rmse_vs_climatologia": 0.500717,
+      "skill_rmse_vs_persistencia": 0.045171,
+      "skill_rmse_vs_climatologia": 0.499814,
       "mejora_persistencia": true
     },
     {
       "estrato": "valle_bajo",
       "n": 1680,
       "seleccionado": {
-        "rmse_c": 0.476122,
-        "mae_c": 0.371875
+        "rmse_c": 0.476927,
+        "mae_c": 0.372122
       },
       "persistencia": {
         "rmse_c": 0.497628,
@@ -479,13 +479,13 @@
         "rmse_c": 0.943507,
         "mae_c": 0.722317
       },
-      "skill_rmse_vs_persistencia": 0.043217,
-      "skill_rmse_vs_climatologia": 0.49537,
+      "skill_rmse_vs_persistencia": 0.041599,
+      "skill_rmse_vs_climatologia": 0.494517,
       "mejora_persistencia": true
     }
   ],
-  "n_predicciones_temporales": 8400,
-  "n_predicciones_espaciales": 8400,
+  "n_predicciones_temporales": 9240,
+  "n_predicciones_espaciales": 9240,
   "red_espacial_de_solo_reanalisis_sin_sensores": true,
   "climatologia_sitio_del_bloque_retenido_historicamente_disponible": true,
   "variables_predictores_disponibles_hasta_t_menos_1": true,
@@ -592,10 +592,31 @@
         "fin": 2025,
         "sha256_archivo_comprimido": "fdf308381606cd415c0d932967aa36e6cafd41e4461c7737f6e0fd92fae3e5dc",
         "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_4",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_comprimido": "d3e9beebd219bf73de755da01cf649ae2a026e47fae8ba85e0c5bb3cff477f09",
+        "centros_en_solicitud": 14
+      },
+      {
+        "fuente": "8P_grupo_4",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_comprimido": "a3beeb32b9d50dc17f558e69f68ef94f9cf7cdafd43a6628ad1eee6403b11064",
+        "centros_en_solicitud": 14
+      },
+      {
+        "fuente": "8P_grupo_4",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_comprimido": "d3dfaad4628272bd6ebb5e645d668b800b426a0989ebd7bfcef29f92f441aa19",
+        "centros_en_solicitud": 14
       }
     ],
-    "testigos_8p_8o_disponibles": 67,
+    "testigos_8p_8o_disponibles": 81,
     "testigos_descartados_dem_le_5_m": 2,
-    "estado_original_8p_sha256": "0c73da2646629c38cadb11696c1a7d2977a1625367a6718f8c9e02093fb6fc59"
+    "estado_original_8p_sha256": "3ddf87f22c5a223f0622859ccb3e63f5460c038a401035a5b064dd700c4ec6b4"
   }
 }
