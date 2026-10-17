@@ -75,7 +75,7 @@ class Agrozonas9M(unittest.TestCase):
   h=(ROOT/"index.html").read_text("utf8")
   self.assertEqual(h.count('<section data-page='),5)
   i=h.index('<section data-page="clima"')
-  j=h.indexOf('<section data-page="nino"',i)
+  j=h.index('<section data-page="nino"',i)
   part=h[i:j]
   for key in ("oaf-9m-visor","oaf-9m-map","oaf-9m-floor","oaf-9m-table",
               "oaf-9m-catchments","oaf-9m-detail","oaf-9m-status"):
