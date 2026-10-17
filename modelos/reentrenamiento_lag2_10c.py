@@ -291,13 +291,14 @@ def bootstrap_folds(rows,ma,mb):
 
 def run(check=False):
  if check:
-  d=obj(REPORT);f=obj(FOLDS);r=csvread(PRED)
-  if d["fase"]!="9X" or f["fase"]!="9X":raise ValueError("Datos 9X inválidos")
-  if d["n_predicciones_sector_mes_por_modelo"]!=39*60:raise ValueError("Cobertura prueba parcial")
-  if len(r)!=39*60*len(MODELS):raise ValueError("Resultados incompletos")
-  if d["sha256_serie_9w"]!=sha(SOURCE):raise ValueError("La serie 9W cambió")
-  if d["n_modelos_operativos_autorizados"]!=0 or d["validacion_SENAMHI_externa"]:
-   raise ValueError("Afirmación indebida de validación")
+  d=obj(REPORT);f=obj(FOLDS);r=csvread(PRED);c=csvread(CALPRED)
+  if d["fase"]!="10C" or f["fase"]!="10C":raise ValueError("Datos 10C sin procedencia")
+  if len(r)!=39*60*len(MODELS) or len(c)!=39*24*len(MODELS):
+   raise ValueError("Se esperan 11700 pruebas y 4680 calibraciones")
+  if sha(SOURCE)!=d["sha256_serie_9w"] or sha(PRED)!=d["sha256_predicciones_10c"]:
+   raise ValueError("SHA de entrada o salida no coincide")
+  if d.get("alertas_habilitadas") is not False or d.get("modelo_operativo_ganador") is not None:
+   raise ValueError("Activación operativa indebida")
   return d
  nodes,A,edges,fixed,floors,polygons,data,prior=inputs()
  pix=raster_cells(nodes,polygons)
@@ -457,10 +458,11 @@ def run(check=False):
  report["modelo_operativo_ganador"]=None
  report["alertas_habilitadas"]=False
  report["sha256_predicciones_calibracion_10c"]=sha(CALPRED)
+ report["sha256_predicciones_10c"]=sha(PRED)
  report["n_predicciones_calibracion"]=len(cal_out)
  report["limitaciones"].append("10C usa rezagos >= 2 meses, pero datos CHIRPS v3 FINAL reprocesados posteriormente; no sustituye archivos as-issued.")
  report["limitaciones"].append("Separación 2016–18 tuning / 2019–20 conformal / 2021–25 prueba, no certifica intercambio de residuos con años ENSO.")
- REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf8")
+ REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
  print("10C",json.dumps({"mae":{m:overall[m]["mae_mm"] for m in MODELS},
    "winner":report["ganador_por_mae_descriptivo"],"n":len(out)},ensure_ascii=False),flush=True)
  return report
