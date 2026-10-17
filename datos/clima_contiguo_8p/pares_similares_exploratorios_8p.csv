@@ -1,6 +1,14 @@
 nodo_a,nodo_b,distancia_geografica_km,desnivel_dem_m,distancia_climatica_estandarizada,diferencia_tmedia_anual_c,diferencia_precipitacion_anual_mm,diferencia_humedad_pct,igual_celda_era5land,igual_celda_era5,centros_de_ambos_modelos_diferentes,criterio_filtro_vecindad,zona_homogenea_verificada
 M0385,M0396,9.8028,39.0,0.06776,0.3595,-0.0,0.041,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0222,M0224,13.8151,200.0,0.11576,0.068,-0.0,0.206,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0031,M0044,17.5975,85.0,0.11872,0.253,0.0,0.084,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
 M0163,M0120,15.5199,262.0,0.13689,-1.1011,0.0,-0.224,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0052,M0031,6.9497,201.0,0.14833,1.3064,0.0,0.2,si,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
 M0176,M0116,17.7139,200.0,0.1584,0.97,0.0,0.206,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0063,M0052,10.9196,49.0,0.16184,0.3803,0.0,0.048,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
 M0107,M0116,10.9227,239.0,0.20889,1.4098,0.0,0.243,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0222,M0246,15.4654,198.0,0.24644,0.7273,-0.0,0.203,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
 M0308,M0234,17.7143,258.0,0.24979,-1.0457,-53.237,1.249,no,no,true,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0374,M0328,19.6029,121.0,0.56582,1.2992,0.0,0.119,no,si,false,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0163,M0224,17.7141,214.0,0.59354,-0.9027,75.387,4.913,no,no,true,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
+M0184,M0224,10.9817,95.0,0.59962,0.2982,75.387,5.178,no,no,true,distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica,false
