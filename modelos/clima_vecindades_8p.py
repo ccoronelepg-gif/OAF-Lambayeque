@@ -190,6 +190,45 @@ def candidate(a,b,norma,scaling,limit=20,centers=None):
       "criterio_filtro_vecindad":"distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica",
       "zona_homogenea_verificada":"false"}
 
+def nucleos_vecindad(eligible,profiles):
+    """Componentes por pares de clima semejante con centros de ambos modelos
+    distintos. No son polígonos ni prueban continuidad climática intermedia."""
+    links=[e for e in eligible if e["centros_de_ambos_modelos_diferentes"]=="true"]
+    neighbors={}
+    for e in links:
+        a,b=e["nodo_a"],e["nodo_b"]
+        neighbors.setdefault(a,set()).add(b)
+        neighbors.setdefault(b,set()).add(a)
+    seen=set()
+    results=[]
+    for start in sorted(neighbors):
+        if start in seen:continue
+        pending=[start];nodes=set()
+        while pending:
+            node=pending.pop()
+            if node in nodes:continue
+            nodes.add(node);pending.extend(neighbors.get(node,[]))
+        seen|=nodes
+        coords=[profiles[n] for n in sorted(nodes)]
+        associated=[e for e in links if e["nodo_a"] in nodes and e["nodo_b"] in nodes]
+        results.append({
+           "id":"V"+str(len(results)+1),
+           "n_testigos":len(nodes),"ids":sorted(nodes),
+           "altitud_dem_min_m":min(p["altitud_dem_m"] for p in coords),
+           "altitud_dem_max_m":max(p["altitud_dem_m"] for p in coords),
+           "n_pares_con_celdas_distintas":len(associated),
+           "distancia_climatica_media_de_enlaces":round(
+              statistics.mean(e["distancia_climatica_estandarizada"] for e in associated),5),
+           "poligono_contiguo_verificado":False,
+           "paisaje_agricola_confirmado":False,
+           "evidencia_instrumental_independiente":False,
+           "no_extrapolar_al_espacio_entre_nodos":True,
+           "interpretacion":"nucleo_exploratorio_para_muestreo_mas_denso"
+        })
+    results.sort(key=lambda x:(-x["n_testigos"],x["distancia_climatica_media_de_enlaces"],x["ids"][0]))
+    for i,result in enumerate(results,1):result["id"]="V"+str(i)
+    return results
+
 def textcsv(rows,fields):
     s=io.StringIO(newline="");w=csv.DictWriter(s,fieldnames=fields,lineterminator="\n")
     w.writeheader()
@@ -251,6 +290,7 @@ def evaluate(root):
               abs(e["diferencia_tmedia_anual_c"])<=1.5 and
               abs(e["diferencia_precipitacion_anual_mm"])<=150]
     eligible.sort(key=lambda e:(e["distancia_climatica_estandarizada"],e["distancia_geografica_km"],e["nodo_a"],e["nodo_b"]))
+    nuclei=nucleos_vecindad(eligible,profiles)
     summary={
       "fase":"8P","estado":"expansion_climatica_completa" if len(full)==len(groups) else
                        "ampliacion_climatica_en_ejecucion",
@@ -263,6 +303,8 @@ def evaluate(root):
       "grupos_de_descarga_completos":full,
       "pares_vecinos_hasta_20km_comparados":len(edges),
       "pares_que_superan_filtro_exploratorio":len(eligible),
+      "n_nucleos_vecindad_exploratorios":len(nuclei),
+      "nucleos_vecindad_exploratorios":nuclei,
       "pares_filtrados_con_celda_repetida_era5_o_era5land":sum(
          e["igual_celda_era5"]=="si" or e["igual_celda_era5land"]=="si"
          for e in eligible),
