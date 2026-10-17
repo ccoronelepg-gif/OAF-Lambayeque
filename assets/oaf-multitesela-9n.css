@@ -1,0 +1,16 @@
+/* OAF 9N: lectura y cobertura topográfica con advertencias visibles. */
+#oaf-9n-visor{border:1px solid #cce3dc;background:#fff}
+#oaf-9n-visor summary{cursor:pointer}
+.oaf-9n-controls{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.oaf-9n-controls label{font-size:12px;font-weight:650;display:grid;gap:5px;min-width:240px}
+.oaf-9n-controls select{min-width:220px}
+#oaf-9n-map{border:1px solid #d2e2dc;border-radius:12px;background:#f5f9f7;padding:10px;min-height:180px}
+#oaf-9n-map svg{display:block;width:100%;max-height:590px}
+#oaf-9n-map path{cursor:pointer;transition:fill-opacity .18s}
+#oaf-9n-map path:hover,#oaf-9n-map path:focus{stroke:#234f50;stroke-width:2;fill-opacity:1;outline:none}
+#oaf-9n-legend{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.oaf-9n-key{display:inline-flex;align-items:center;gap:5px;font-size:12px}
+.oaf-9n-key i{width:12px;height:12px;border-radius:3px}
+#oaf-9n-detail{background:#f5faf8;border:1px solid #d4e9df;padding:13px;border-radius:12px}
+#oaf-9n-table td,#oaf-9n-visor th{font-size:12px}
+@media(max-width:650px){.oaf-9n-controls{display:block}.oaf-9n-controls label{margin:10px 0}.oaf-9n-controls select{width:100%}}
