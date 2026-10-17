@@ -29,7 +29,7 @@ La ejecución de entrenamiento sobre cinco bloques terminó y comunicó los sigu
 | Modelo | MAE anterior 9X, mm | MAE nuevo 10C, mm | Diferencia, mm |
 |---|---:|---:|---:|
 | Random Forest | 17,1634 | 18,1443 | +0,9809 |
-| GCN | 18,6207 | 17,6452 | −0,9755 |
+| GCN | 18,6207 | 17,6429 | −0,9778 |
 | Climatología por piso | 20,3708 | 20,3708 | 0,0000 |
 
 En **2023**, tras calibrar en 2019–2020, la cobertura observada de intervalos nominales 90 % fue **79,49 % para GCN**, **85,04 % para Random Forest** y **89,96 % para climatología por piso**. Ninguno de esos tres modelos alcanzó el 90 % ese año.
@@ -38,10 +38,12 @@ En **2021–2025**, sobre **137** observaciones sector-mes con lluvia ≥100 mm,
 
 **Advertencia de inferencia:** entre 9X y 10C cambian simultáneamente **las variables rezagadas y el periodo de selección de hiperparámetros** (9X 2016–2020 frente a 10C 2016–2018). Por ello, el contraste identifica el resultado de **dos diseños distintos**, no el efecto causal aislado de eliminar t−1. Una futura comparación factorial con idéntico periodo de tuning es necesaria.
 
-**Estado de publicación:** el entrenamiento fue ejecutado con éxito; la subida permanente de los CSV/JSON se valida separadamente en la automatización.
+**Estado de publicación: FINALIZADO.** Entrenamiento, seis pruebas, controles SHA y guardado del JSON/CSV en GitHub completados con éxito. La [ejecución publicada](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39080124008) conservó todos los artefactos. La primera corrida había mostrado GCN=17,6452 mm y la ejecución final 17,6429 mm; se observa una diferencia numérica de 0,0023 mm entre entornos/corridas, por lo que conviene fijar versiones e imagen computacional para garantizar reproducción bit a bit.
+
+**Incertidumbre espacial:** el remuestreo exploratorio de cinco bloques para la diferencia GCN menos RF en MAE tiene intervalo 95 % **[−1,0931; +0,2103] mm**, que incluye el cero. No se ha demostrado ventaja generalizable concluyente entre los modelos ni validez predictiva prospectiva.
 
 ## Resultados y ejecución
-**Resultados verificables solo cuando termine la ejecución automática.** La corrida genera:
+**Resultados verificados en GitHub Actions y publicados en el repositorio.** La corrida genera:
 - [Métricas completas 10C](datos/reentrenamiento_10c/evaluacion_lag2_10c.json).
 - [Predicciones de calibración 2019–2020](datos/reentrenamiento_10c/predicciones_calibracion_lag2_10c.csv).
 - [Predicciones de prueba 2021–2025](datos/reentrenamiento_10c/predicciones_prueba_lag2_10c.csv).
