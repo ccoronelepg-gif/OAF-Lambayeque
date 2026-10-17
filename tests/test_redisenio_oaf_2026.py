@@ -138,8 +138,8 @@ class Redisenio(unittest.TestCase):
         self.assertIn("'#oaf-live-vpd'",src)
         self.assertIn("'#oaf-live-wind'",src)
     def test_inline_navigation_javascript_syntax(self):
-        scripts=re.findall(r'<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>',HTML)
-        source='\\n'.join(script for script in scripts if script.strip())
+        scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',HTML)
+        source='\n'.join(script for script in scripts if script.strip())
         self.assertIn('function nav()',source)
         with tempfile.TemporaryDirectory() as folder:
             dest=Path(folder)/'inline-oaf.js'
