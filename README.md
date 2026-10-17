@@ -7,6 +7,13 @@
 
 
 
+
+## Fase 10C · Reentrenamiento con rezagos t−2 y calibración separada (17/10/2026)
+
+Se reentrenaron **Random Forest y GCN** sobre cinco bloques geográficos de 39 sectores, utilizando solamente rezagos t−2, t−3, t−4, t−6, t−12 para pronósticos mensuales, ajuste de 2016–2018 y calibración independiente de 2019–2020. La prueba 2021–2025 produjo **MAE 18,1443 mm para RF y 17,6452 mm para GCN** (climatología por piso: 20,3708 mm). En 2023, la cobertura de intervalos nominales 90 % fue **85,04 % RF y 79,49 % GCN**. Los resultados usan CHIRPS v3 FINAL revisado: **NO son pruebas as-issued ni habilitan alertas**. El cambio respecto a 9X combina rezagos y una ventana distinta de selección de hiperparámetros.
+
+[Panel 10C](evaluacion-lag2.html) · [Documento metodológico](FASE_10C_REENTRENAMIENTO_LAG2.md) · [Modelo reproducible](modelos/reentrenamiento_lag2_10c.py) · [Validación CI](.github/workflows/oaf_10c_reentrenamiento.yml) · [Resultados cuando finalice la ejecución](datos/reentrenamiento_10c/evaluacion_lag2_10c.json).
+
 ## Fase 10B · Incertidumbre y sensibilidad en años extremos (17/10/2026)
 
 Se ejecutó una calibración conformal **retrospectiva**, empleando las 11.700 predicciones de 9X, calibración **2021–2022** y prueba posterior **2023–2025**, con radio de orden 23/24 por sector/modelo. En 2023, la cobertura observada cayó a **80,13 % en Random Forest**, **82,26 % en GCN** y **85,68 % en climatología por piso**, frente al 90 % nominal. Entre 91 observaciones sector-mes con precipitación mensual ≥100 mm durante 2023–2025, el pronóstico puntual también alcanzó ese umbral en 15 (RF), 4 (GCN) y 17 (climatología por piso). Son criterios exploratorios, no alertas oficiales. Las predicciones utilizan **CHIRPS v3 FINAL retroprocesado**, no un conjunto de versiones originales as-issued; no se reentrenaron todavía con rezagos operativos ni existe validación instrumental independiente. **Ningún modelo operativo está autorizado**.
