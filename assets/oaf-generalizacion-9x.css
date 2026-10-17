@@ -1,0 +1,11 @@
+#oaf-9x-visor{border:1px solid #c9dfdb}
+#oaf-9x-status,#oaf-9x-comparisons{border:1px solid #d9e8df;background:#f5faf7;padding:12px;border-radius:10px}
+#oaf-9x-winner{font-size:20px;color:#205e67;display:block;margin:7px 0}
+#oaf-9x-map{min-height:170px;background:#f5f8f7;border:1px solid #d5e6de;border-radius:11px;padding:10px}
+#oaf-9x-map svg{display:block;width:100%;max-height:500px}
+#oaf-9x-map path{cursor:pointer}
+#oaf-9x-map path:hover,#oaf-9x-map path:focus{stroke:#153d41;stroke-width:2.6;fill-opacity:1;outline:none}
+#oaf-9x-legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.oaf-9x-key{display:inline-flex;align-items:center;gap:5px;font-size:12px}
+.oaf-9x-key i{width:12px;height:12px;border-radius:3px}
+#oaf-9x-visor td,#oaf-9x-visor th{font-size:12px}
