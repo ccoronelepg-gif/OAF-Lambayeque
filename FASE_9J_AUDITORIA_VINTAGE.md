@@ -14,7 +14,7 @@ Archivos `datos/pronosticos_emitidos/2026-10-14.json` a `2026-10-17.json` guarda
 |---|---|---|---|
 | 14/10/2026 | [79e92c9](https://github.com/ccoronelepg-gif/OAF-Lambayeque/commit/79e92c9aac669e37599e868ff371aa67d9799ec5) | 15/10/2026 | 22/10/2026 |
 | 15/10/2026 | [864d2bc](https://github.com/ccoronelepg-gif/OAF-Lambayeque/commit/864d2bc94ea653ad51ecb11001e9decdee80268d) | 16/10/2026 | 23/10/2026 |
-| 16/10/2026 | [699bd04](https://github.com/ccoronelepg-gif/OAF-Lambayeque/commit/699bd04852dce39e79140c37afcced9c38aa71) | 17/10/2026 | 24/10/2026 |
+| 16/10/2026 | [699bd04](https://github.com/ccoronelepg-gif/OAF-Lambayeque/commit/699bd04852691fe39e79140c37afcced9c38aa71) | 17/10/2026 | 24/10/2026 |
 | 17/10/2026 | [02445eb](https://github.com/ccoronelepg-gif/OAF-Lambayeque/commit/02445eb630eb77b4a1c4bb2b466230356c8b4a66) | 18/10/2026 | 25/10/2026 |
 
 *Condición necesaria, no suficiente: después de siete días de resguardo conservador y solo si el reanálisis diario completo ya está disponible. El modelo exige contenido archivado en un commit anterior al **día objetivo en hora Perú**, revisa las fechas y compara **byte por byte** cada archivo con el contenido guardado en aquel commit. Los timestamps del commit son evidencia de trazabilidad del repositorio, no firma externa de un organismo de certificación.
