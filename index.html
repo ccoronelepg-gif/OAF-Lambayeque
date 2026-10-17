@@ -462,6 +462,26 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <p class="small"><a href="datos/relaciones_fisicas_8u/estado_relaciones_8u.json">Reporte completo con SHA-256 y advertencias metodológicas ↗</a></p>
 <p class="small">No se presenta una climatología de corrientes 1996–2025 porque NOAA/AOML no tiene esa cobertura. Los vectores geostróficos no representan por sí solos la corriente costera total, el transporte de Ekman ni el flujo inducido por mareas. <a href="FASE_8U_VIENTO_TSM_CORRIENTES.md">Informe científico complementario 8U ↗</a> · <a href="datos/corrientes_8u/estado_corrientes_8u.json">Cobertura geostrófica ↗</a></p>
 </details>
+<details class="panel" id="oaf-integracion-8v">
+<summary><strong>Fase 8V · Series océano-atmósfera 1996–2025</strong> · matriz real y gráficos interactivos</summary>
+<p>Integración reproducible de lluvia, temperatura y radiación (ERA5/ERA5-Land), viento (ERA5), índices regionales NOAA Niño 1+2 y Niño 3.4, y corrientes geostróficas marinas disponibles únicamente desde 2017. Son <b>datos modelados y series históricas revisadas</b>, no estaciones ni pronósticos propios validados.</p>
+<div class="kpis">
+<div class="kpi"><small>Meses-sitio terrestres</small><b id="oaf-8v-nland">—</b></div>
+<div class="kpi"><small>Meses-sitio marinos</small><b id="oaf-8v-nsea">—</b></div>
+<div class="kpi"><small>Meses con corrientes geostróficas</small><b id="oaf-8v-ncurrent">—</b></div>
+<div class="kpi"><small>Meses con lluvia ≥1000 mm a revisar</small><b id="oaf-8v-nextreme">—</b></div>
+</div>
+<div class="split">
+<label>Localidad<br><select id="oaf-8v-site"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select></label>
+<label>Variable<br><select id="oaf-8v-variable"><option value="temperatura_aire_c">Temperatura del aire (°C)</option><option value="precipitacion_mes_mm">Precipitación (mm)</option><option value="radiacion_mes_mj_m2">Radiación (MJ/m²)</option><option value="viento_10m_m_s">Viento 10 m (m/s)</option><option value="viento_u_aprox_m_s">Viento u aproximado (m/s)</option><option value="viento_v_aprox_m_s">Viento v aproximado (m/s)</option><option value="anomalia_nino12_c">Anomalía Niño 1+2 (°C)</option></select></label>
+<label>Ventana temporal<br><select id="oaf-8v-window"><option value="1996">1996–2025</option><option value="2016">2016–2025</option><option value="2017">2017–2025</option></select></label>
+</div>
+<h3 id="oaf-8v-chart-title">Serie histórica · seleccione variable y localidad</h3>
+<svg id="oaf-8v-chart" role="img" aria-label="Gráfico histórico mensual OAF 8V" width="100%" style="max-height:380px" viewBox="0 0 750 300"></svg>
+<p id="oaf-8v-status" class="small" role="status">Abra el panel para cargar los CSV auditados.</p>
+<div class="notice"><b>Control de calidad:</b> los valores excepcionales de lluvia modelada (incluido marzo de 1998 en Motupe) están marcados para contraste con SENAMHI; NO son alertas. Las corrientes geostróficas de 2017–2025 proceden de celdas marinas diferentes a las del viento; se conservan en matriz separada para evitar mezclar ubicaciones. La SST Niño 1+2 no es una medición de una playa, ni equivale al ICEN oficial de ENFEN.</div>
+<p><a href="datos/integracion_8v/matriz_terrestre_8v.csv">Matriz terrestre CSV ↗</a> · <a href="datos/integracion_8v/matriz_marina_8v.csv">Matriz marina CSV ↗</a> · <a href="datos/integracion_8v/estado_integracion_8v.json">Cobertura y SHA-256 ↗</a> · <a href="FASE_8V_INTEGRACION_OCEANO_ATMOSFERA.md">Protocolo 8V ↗</a></p>
+</details>
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
 <div class="panel oaf-tech-archive"><h2>Autoría y fundamentos del OAF</h2><p>La presentación completa del proyecto y su procedimiento metodológico se mantienen en este archivo de consulta.</p><div class="oaf-archive-list"><details><summary>Presentación completa y autoría</summary><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
 <p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
@@ -821,4 +841,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
