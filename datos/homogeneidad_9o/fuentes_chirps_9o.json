@@ -4,45 +4,35 @@
   "periodo_solicitado": "1996-01 a 2025-12",
   "anios_preseleccionados": [
     1996,
+    2002,
+    2011,
+    2018,
+    2025
+  ],
+  "anios_archivados_completos": [
+    1996,
     1997,
     1998,
     1999,
     2000,
-    2001,
     2002,
-    2003,
-    2004,
-    2005,
-    2006,
-    2007,
-    2008,
-    2009,
-    2010,
     2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2017,
     2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
     2025
   ],
   "meses_objetivo_total_30anios": 360,
   "n_meses_solicitados": 360,
-  "n_meses_reales": 60,
-  "n_meses_faltantes": 300,
+  "n_meses_reales": 108,
+  "n_meses_faltantes": 252,
+  "n_meses_errores_documentados": 252,
+  "n_meses_sin_resultado_ni_error_confirmado": 0,
+  "nuevos_meses_solicitados_este_lote": 60,
+  "nuevos_meses_exitosos_este_lote": 60,
   "n_sectores": 42,
   "n_testigos_reanalisis": 81,
   "periodo_climatologico_30anios_completo": false,
-  "n_registros_sector_mes": 2520,
-  "n_registros_testigo_mes": 4860,
+  "n_registros_sector_mes": 4536,
+  "n_registros_testigo_mes": 8748,
   "n_pixeles_chirps_distintos_en_testigos": 80,
   "n_testigos_duplican_pixel_chirps": 1,
   "errores": [
@@ -104,66 +94,6 @@
     {
       "mes": "2001-12",
       "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-01",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-02",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-03",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-04",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-05",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-06",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-07",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-08",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-09",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-10",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-11",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2002-12",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
@@ -647,66 +577,6 @@
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
-      "mes": "2011-01",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.01.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-02",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.02.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-03",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.03.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-04",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.04.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-05",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.05.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-06",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.06.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-07",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.07.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-08",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.08.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-09",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.09.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-10",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.10.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-11",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.11.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2011-12",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.12.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
       "mes": "2012-01",
       "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.01.tif",
       "error": "HTTPError: HTTP Error 403: Forbidden"
@@ -1067,66 +937,6 @@
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
-      "mes": "2018-01",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.01.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-02",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.02.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-03",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.03.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-04",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.04.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-05",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.05.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-06",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.06.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-07",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.07.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-08",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.08.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-09",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.09.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-10",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.10.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-11",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.11.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2018-12",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.12.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
       "mes": "2019-01",
       "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.01.tif",
       "error": "HTTPError: HTTP Error 403: Forbidden"
@@ -1484,66 +1294,6 @@
     {
       "mes": "2024-12",
       "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.12.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-01",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.01.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-02",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.02.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-03",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.03.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-04",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.04.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-05",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.05.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-06",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.06.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-07",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.07.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-08",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.08.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-09",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.09.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-10",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.10.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-11",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.11.tif",
-      "error": "HTTPError: HTTP Error 403: Forbidden"
-    },
-    {
-      "mes": "2025-12",
-      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.12.tif",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     }
   ],
@@ -2507,11 +2257,779 @@
         -5.4500006
       ],
       "epsg": 4326
+    },
+    {
+      "mes": "2002-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif",
+      "sha256": "5475d84648f1f9ce06879c51105ba713a43738e5028edfb8bca9c4f02be00fd4",
+      "bytes": 4168344,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif",
+      "sha256": "96448c2b008b36c37e831a82de732d7a15aac158bd04d39a1b8529632a1ce5db",
+      "bytes": 4230184,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif",
+      "sha256": "7f9480a9fed97debdb6d17025710071ff136084bfb366e9bfed32bf736fe0684",
+      "bytes": 4179614,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif",
+      "sha256": "5334ec90884c029b8052ad4e12df03504897049e5437c338223d60662bb2a8bc",
+      "bytes": 4246528,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif",
+      "sha256": "04ebc3aa17392afc4bf9b2b99c62643efafa4beff5a8cadd4cbf9d006053bbfb",
+      "bytes": 4260388,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif",
+      "sha256": "a8a0fc3b1944c3b4380ec5673bf48b957359e7a3560d13d9f658e4a946ed6ab7",
+      "bytes": 4142898,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif",
+      "sha256": "46f3e82803bb29eaa13e84fcecc38a13816283da00e286a71a83ac9828cd5dd6",
+      "bytes": 4302314,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif",
+      "sha256": "6703fd8cf122e8b119e26451c849ca8acb402772f4a0464fd14fa2c8219eb4e0",
+      "bytes": 4302996,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif",
+      "sha256": "7f7a3976ad4cd3bcb68aae5f80dc7aaf37e0736d1e452291325f671d8cb6d517",
+      "bytes": 4305402,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif",
+      "sha256": "2be8990d7d8eb482111a40d6d5e4601ef85a3fdf3c94e9b40a4b8cd87ca555ec",
+      "bytes": 4302582,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif",
+      "sha256": "08419e50724c6ee01f8ae562003c8ff9cbbfa7acd7ee98b86481fb5b5dc98ff1",
+      "bytes": 4269080,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2002-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif",
+      "sha256": "b21f07713729ab283aa5e4e103ac46c56b8cb2228b0a9d43ce432e1bf003369e",
+      "bytes": 4253982,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.01.tif",
+      "sha256": "aa9c63969c0c30ee7f05be6302b4adc54c563063c4f6276e663cc3f4ac3b4573",
+      "bytes": 4108920,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.02.tif",
+      "sha256": "a03907c465d681bc6f741a8031b0d596da3ebe86c38c22f3a21634af250fc53e",
+      "bytes": 3992042,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.03.tif",
+      "sha256": "0b0e0739d42dad73b0b5c7fe04ca475109762e6d967b1d0294789437b05c391b",
+      "bytes": 4028248,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.04.tif",
+      "sha256": "4c81ed813fe1e49bb263fea3a094ffe6ad28ec578fcac9e4b8c3eca0d177d668",
+      "bytes": 4132946,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.05.tif",
+      "sha256": "a0039484f3410f1137499703de73b682a896446570d6e467348f4eda9c16cb59",
+      "bytes": 4097830,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.06.tif",
+      "sha256": "5075b1ab7f0b9dd01ae32ae8717077d4be9867a5a1ca69daa294bcc43049fa7d",
+      "bytes": 4220774,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.07.tif",
+      "sha256": "12fd842cd4276c275e9fb37e82f2f0f98709b04309722fb1dcfc5d580b7b402e",
+      "bytes": 4250638,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.08.tif",
+      "sha256": "b6b9ad95cd0b6ad69d28f422ad96177b19abee47dfbb399ad34895a421ac6ae5",
+      "bytes": 4264812,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.09.tif",
+      "sha256": "983a35f00d79a98f940b21ce543163017e3ee80023fd7f5be1a85a3f27d006ec",
+      "bytes": 4301702,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.10.tif",
+      "sha256": "de54e775d58e99ffbcba3eb8d45a4638e242effcfce80dcda20d0c062d090e24",
+      "bytes": 4230212,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.11.tif",
+      "sha256": "fc86fb214a45eae9a4eb0cd7d21e792c7ddf5bc032a16dd698cc192c0e0be3ae",
+      "bytes": 4220074,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2011-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.12.tif",
+      "sha256": "83bb43041f38799f6a4e8a197ce707f69db7a12d413267059cff94ae2591f18c",
+      "bytes": 4154278,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.01.tif",
+      "sha256": "4cfb52d5cb8925bbb666c093ea218d26190c9bd3304677bf93450723343fd7e7",
+      "bytes": 4202000,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.02.tif",
+      "sha256": "c8de7e2892f87bd679aee006df03d01da6e811c80cd7c3ac6faceb93e913c12b",
+      "bytes": 4234172,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.03.tif",
+      "sha256": "46e48b6481e5c243d399c1c98e02ffc0d49dade256c050b504d1a36b3b867d15",
+      "bytes": 4143536,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.04.tif",
+      "sha256": "abd0813e405254c0d5a75c35470b77c34fc01ac2421ea60edaadee1adb7586f0",
+      "bytes": 4188214,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.05.tif",
+      "sha256": "e1f6a2c42615d009d88303df2673b88175957b474ee4d27cb356d44611a77e90",
+      "bytes": 4222712,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.06.tif",
+      "sha256": "f793133a27a319900016eceb0ea11773c37bc323304acfbd297d889ad1ab1c68",
+      "bytes": 4168720,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.07.tif",
+      "sha256": "51535b9b6074916cdec63c55bd0f2977c52003fcd96c0754efa3366691b591b2",
+      "bytes": 4295036,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.08.tif",
+      "sha256": "488c1c4a14c160b9d84735a42c13c374007f97df5183d36d7451644bb3a4a538",
+      "bytes": 4292212,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.09.tif",
+      "sha256": "9977a3725dbdf4859cfc649b1b13a091c83b936f6e4ac1d7a9a66e1c66168795",
+      "bytes": 4280918,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.10.tif",
+      "sha256": "b8332d850b0c052c54b778d201791d8197ba621603f802978a3a810c996a2805",
+      "bytes": 4264698,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.11.tif",
+      "sha256": "063c9f3bb9da471c8a1f0d8e62d14236925120dcbbddb319901dada245e610c8",
+      "bytes": 4228006,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2018-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.12.tif",
+      "sha256": "dce2611920a7152412501dd03fd0983230d631d38026356ba0b98839f7d5389d",
+      "bytes": 4237948,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.01.tif",
+      "sha256": "b4cb24217be955d8634f574db89625d00b9fc21f39e4a8a664d1c562d5a4d9a1",
+      "bytes": 4212510,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.02.tif",
+      "sha256": "db76337ee4bec924bd6fc510c0c9ea640453825ad09556e4dfb7991f5975b3bd",
+      "bytes": 4145188,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.03.tif",
+      "sha256": "852b05d19f4d79dbaf66bbdb235a70af8c95d91758794772ddf8370621cf3dd4",
+      "bytes": 4132866,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.04.tif",
+      "sha256": "0da1737d849bdaec9d42cc2b8df5802aba20f08d32ddecf37f5ab9f36f9e6bf3",
+      "bytes": 4166536,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.05.tif",
+      "sha256": "1a3f070a3f73dde8b3539fc48fd8e078b73e9d97780179a7060b0dc7cc7a2aae",
+      "bytes": 4217286,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.06.tif",
+      "sha256": "6080ed1202ae9016d2f45570bae0692fdf738a87829cc6bdfdcadfc768721fd0",
+      "bytes": 4178734,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.07.tif",
+      "sha256": "76ab834f3babafbcb32e94e31b0909b77870e29b2787fb51996889f5df272b0f",
+      "bytes": 4108730,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.08.tif",
+      "sha256": "4475c5e7e6367e507a9222289dcf57f376cb1c84caa13d7d6934b5beb3ad6df8",
+      "bytes": 4263636,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.09.tif",
+      "sha256": "89a4dc17a1dbda8ce05c1c2bc88f21f45c53b3202d0b9c0e908865a15de4e241",
+      "bytes": 4281784,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.10.tif",
+      "sha256": "686b11f83bacde4ac0b62dee69bc627439c6281f394f142a59721ecc643e876a",
+      "bytes": 4270472,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.11.tif",
+      "sha256": "52b4370bda50cb905e96821db69b29e513440be8830b8a915540afc4feaa384f",
+      "bytes": 4130624,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2025-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.12.tif",
+      "sha256": "e8c180c5dd99166cfa7f3e9905ed492c343bac7dab12ab006f620889e11a42ae",
+      "bytes": 4195766,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
     }
   ],
   "raw_geotiff_archivado_en_github": false,
   "reproduccion_fuente": "Descargar URL mensual original; comparar SHA256 conservado antes de re-extraer.",
-  "primera_descarga_con_fecha_UTC": "2026-10-17T18:20:23+00:00",
+  "primera_descarga_con_fecha_UTC": "2026-10-17T18:22:58+00:00",
   "mascara_terrestre_chirps_no_terreno_dem": true,
   "superficie_pixel_media_no_ponderada_por_area": true,
   "calibracion_de_pronosticos_zonales": false,
