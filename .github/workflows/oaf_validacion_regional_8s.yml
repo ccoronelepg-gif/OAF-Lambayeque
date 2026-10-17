@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'datos/clima_contiguo_8p/estado_clima_8p.json'
       - 'modelos/validacion_regional_8s.py'
       - 'tests/test_validacion_regional_8s.py'
       - '.github/workflows/oaf_validacion_regional_8s.yml'
