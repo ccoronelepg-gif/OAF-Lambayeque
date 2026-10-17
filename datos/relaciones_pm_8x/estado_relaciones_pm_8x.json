@@ -1,0 +1,280 @@
+{
+  "fase": "8X",
+  "estado": "asociacion_retrospectiva_no_causal",
+  "periodo": "2023-2025 solamente",
+  "modelos_no_instrumentos": true,
+  "serie_climatica_1996_2025_no_compatible_con_PM": true,
+  "controles_sin_imputacion": true,
+  "correlaciones_no_son_habilidad_predictiva": true,
+  "pares_series_pm_identicas": [
+    {
+      "sitios": [
+        "Motupe",
+        "Olmos"
+      ],
+      "meses_identicos": 12,
+      "interpretacion": "Series PM idénticas; no tratarlas como réplicas independientes"
+    }
+  ],
+  "correlaciones": [
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "variable": "precipitacion_mes_mm",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "variable": "viento_10m_m_s",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "variable": "radiacion_mes_mj_m2",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "variable": "anomalia_nino12_c",
+      "meses_emparejados": 12,
+      "correlacion_pearson": null,
+      "evaluable_descriptivamente": false
+    }
+  ],
+  "n_relaciones_evaluables": 0,
+  "n_relaciones_totales": 32,
+  "no_emitir_alertas": true
+}
