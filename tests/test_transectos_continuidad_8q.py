@@ -31,10 +31,11 @@ class TestCorridors8Q(unittest.TestCase):
   self.assertGreater(max(p["altitud_dem_m"] for p in v2),3236)
   self.assertLess(min(p["altitud_dem_m"] for p in v2),2978)
  def test_no_incomplete_meteorology_claims_climate_continuity(self):
-  status,positions,comparison=m.evaluate(self.root)
+  status,positions,comparison,cellrows=m.evaluate(self.root)
   self.assertEqual(status["fuentes_climaticas_verificadas"],0)
   self.assertEqual(status["n_testigos_intermedios_30_anios_completos"],0)
   self.assertEqual(comparison,[])
+  self.assertEqual(cellrows,[])
   self.assertEqual(status["zonas_contiguas_homogeneas_demostradas"],0)
   m.publish(self.root);m.publish(self.root,check=True)
  def test_missing_climate_sources_are_not_substituted(self):
@@ -65,7 +66,7 @@ class TestCorridors8Q(unittest.TestCase):
   self.assertEqual(a,b)
   self.assertEqual(route,route2)
  def test_report_is_only_sampling_not_instrument_validation(self):
-  state,p,_=m.evaluate(self.root)
+  state,p,_,cellrows=m.evaluate(self.root)
   self.assertEqual(state["poligonos_agroclimaticos_certificados"],0)
   self.assertEqual(state["instrumentos_SENAMHI_confirmados"],0)
   self.assertTrue(state["interpolacion_de_coordenadas_no_es_ruta_topografica"])
