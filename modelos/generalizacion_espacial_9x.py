@@ -119,7 +119,7 @@ def features_matrix(nodes,fixed,data):
   sin=np.full(len(nodes),math.sin(2*math.pi*mm/12),dtype=np.float32)
   cos=np.full(len(nodes),math.cos(2*math.pi*mm/12),dtype=np.float32)
   static=fixed
-  feats.append(np.column_stack([*lag,rolling,sin,cos,static.T]).astype(np.float32))
+  feats.append(np.column_stack([*lag,rolling,sin,cos,*[static[:,j] for j in range(3)]]).astype(np.float32))
  X=np.stack(feats)
  y=np.log1p(rainfall[time_indices])
  dates=np.array(months)[time_indices]
@@ -149,7 +149,7 @@ def enrich(X,raw):
  mean=a/np.where(degree[:,None]>0,degree[:,None],1.)
  neigh=np.stack([np.einsum("ij,tj->ti",mean,X[:,:,k]) for k in (0,2,4)],axis=-1)
  for i in range(n):
-  if degree[i]==0:neigh[:,i,:]=X[:,i,[0,2,4]].T
+  if degree[i]==0:neigh[:,i,:]=X[:,i,:][:,[0,2,4]]
  de=np.broadcast_to((degree/8).reshape(1,n,1),(len(X),n,1))
  enriched=np.concatenate((X,neigh,de),axis=2).astype(np.float32)
  if enriched.shape[-1]!=FEAT:raise ValueError("Dimensión features inesperada")
