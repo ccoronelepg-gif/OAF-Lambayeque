@@ -1,0 +1,124 @@
+{
+  "fase": "9G",
+  "fecha_revision": "2026-10-17",
+  "dictamen": "evaluacion_de_incertidumbre_de_fichas; productos_grillados_no_extraidos",
+  "identidad_nombres_corroborada": true,
+  "ubicacion_sensor_1963_2014_certificada": false,
+  "comparacion_era5_chirps_ejecutada": false,
+  "metricas_mae_rmse_sesgo_calculadas": false,
+  "origen": "metadatos públicos documentados en 9F, no coordenadas derivadas de ERA5/CHIRPS",
+  "interpretacion_espacial": "Las resoluciones nominales 0,05° y 0,1° no acreditan por sí solas un píxel comparable; se necesita confirmar centros reales de celda y cobertura temporal de cada producto.",
+  "estaciones": [
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "coordenada_documental_1": {
+        "lat": -6.817527778,
+        "lon": -79.201611111,
+        "url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+        "caracter": "referencia cartográfica publicada; fecha histórica de emplazamiento sin certificar"
+      },
+      "coordenada_documental_2": {
+        "lat": -6.825555556,
+        "lon": -79.216388889,
+        "url": "https://www.ana.gob.pe/sites/default/files/normatividad/files/condiciones_agroclimaticas_arroz_0_2.pdf",
+        "caracter": "ubicación alternativa en documento MINAG"
+      },
+      "desplazamiento_entre_referencias_km": 1.86,
+      "altitudes_publicadas_m": [
+        409.0,
+        371.0,
+        408.6
+      ],
+      "altitud_min_m": 371.0,
+      "altitud_max_m": 409.0,
+      "rango_publicado_altitud_m": 38.0,
+      "franjas_altitudinales_posibles": [
+        "300–799 m"
+      ],
+      "franja_unica_acreditada": false,
+      "tramo_1998_mm": 1847.1,
+      "mensaje": "Los cambios de emplazamiento y de altura pueden alterar las comparaciones con píxeles; datos de 9F no acreditan qué referencia corresponde al sensor en cada año.",
+      "parejas_observacion_vs_CHIRPS": 0,
+      "parejas_observacion_vs_ERA5_Land": 0,
+      "riesgo_desfase_geografico": "requiere_revision"
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "coordenada_documental_1": {
+        "lat": -6.373638889,
+        "lon": -79.4695,
+        "url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+        "caracter": "referencia cartográfica publicada; fecha histórica de emplazamiento sin certificar"
+      },
+      "coordenada_documental_2": {
+        "lat": -6.35,
+        "lon": -79.466666667,
+        "url": "https://www.senamhi.gob.pe/load/file/01401SENA-77.pdf",
+        "caracter": "ubicación alternativa aproximada en catálogo histórico SENAMHI"
+      },
+      "desplazamiento_entre_referencias_km": 2.647,
+      "altitudes_publicadas_m": [
+        355.0,
+        500.0,
+        800.0
+      ],
+      "altitud_min_m": 355.0,
+      "altitud_max_m": 800.0,
+      "rango_publicado_altitud_m": 445.0,
+      "franjas_altitudinales_posibles": [
+        "300–799 m",
+        "800–1599 m"
+      ],
+      "franja_unica_acreditada": false,
+      "tramo_1998_mm": 2258.0,
+      "mensaje": "Los cambios de emplazamiento y de altura pueden alterar las comparaciones con píxeles; datos de 9F no acreditan qué referencia corresponde al sensor en cada año.",
+      "parejas_observacion_vs_CHIRPS": 0,
+      "parejas_observacion_vs_ERA5_Land": 0,
+      "riesgo_desfase_geografico": "elevado"
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "coordenada_documental_1": {
+        "lat": -5.580833333,
+        "lon": -79.969888889,
+        "url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+        "caracter": "referencia cartográfica publicada; fecha histórica de emplazamiento sin certificar"
+      },
+      "coordenada_documental_2": {
+        "lat": -5.575833333,
+        "lon": -79.982777778,
+        "url": "https://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/SENAMHI/Validacion%20de%20datos%20CHIRPS%20de%20Precipitacion%20para%20Monitoreo%20de%20Periodos%20Secos%20y%20Humedos%20en%20el%20Peru.pdf",
+        "caracter": "ubicación alternativa SENAMHI de estudio 2015"
+      },
+      "desplazamiento_entre_referencias_km": 1.531,
+      "altitudes_publicadas_m": [
+        264.0,
+        275.0,
+        214.0
+      ],
+      "altitud_min_m": 214.0,
+      "altitud_max_m": 275.0,
+      "rango_publicado_altitud_m": 61.0,
+      "franjas_altitudinales_posibles": [
+        "100–299 m"
+      ],
+      "franja_unica_acreditada": false,
+      "tramo_1998_mm": 3367.4,
+      "mensaje": "Los cambios de emplazamiento y de altura pueden alterar las comparaciones con píxeles; datos de 9F no acreditan qué referencia corresponde al sensor en cada año.",
+      "parejas_observacion_vs_CHIRPS": 0,
+      "parejas_observacion_vs_ERA5_Land": 0,
+      "riesgo_desfase_geografico": "requiere_revision"
+    }
+  ],
+  "criterios_para_9H": [
+    "Obtener evidencia de emplazamiento e historia de traslados por fecha",
+    "Revisar discrepancias de altitud con SENAMHI, especialmente Puchaca",
+    "Extraer valores de CHIRPS y ERA5-Land por cada coordenada alternativa sin seleccionar solo la que mejor ajusta",
+    "Homologar hora, día, periodo, variable, resolución y producto final/preliminar",
+    "Cuantificar dependencia de CHIRPS por posible asimilación del mismo pluviómetro",
+    "Calcular sesgo, MAE/RMSE por punto y sensibilidad entre ubicaciones con meses completos, separando observación y predicción"
+  ]
+}
