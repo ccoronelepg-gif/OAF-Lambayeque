@@ -17,7 +17,7 @@ ROW=PATH/"evaluacion_42_sectores_9n.json"
 OUTPUT=PATH/"prioridades_validacion_climatica_9n.json"
 def j(p):return json.loads(p.read_text("utf8"))
 def csvrows(p):
- with p.open(encoding="utf8-sig",newline="") as f:return list(csv.DictReader(f))
+ with p.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
 def generate():
  dem=j(ROW);byid={r["id_sector"]:r for r in dem}
  sectors=j(PREV)["features"];climate=csvrows(CLIMATE);pairs=csvrows(PAIRS)
