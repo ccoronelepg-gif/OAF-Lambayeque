@@ -38,13 +38,51 @@ Los modelos puntúan exactamente **39 sectores × 60 meses = 2.340 casos sector-
 
 El ejercicio realiza además un bootstrap **sobre cinco bloques geográficos enteros**, 5^5 = 3125 combinaciones posibles, para el diferencial emparejado de MAE: primer método menos segundo (positivo significa peor). Esta medida representa solamente variabilidad descriptiva de los bloques de este protocolo, no intervalos de confianza instrumentales independientes ni pronósticos futuros.
 
-## 5. Resultados del ensayo y su lectura
+## 5. Resultados auditados de la evaluación espacial
 
-**Primera ejecución registrada:** MAE climatología regional **24,3027 mm**, climatología por piso **20,3708 mm**, persistencia anual **21,8341 mm**, Random Forest **17,1723 mm**, GCN **18,5370 mm**. La primera corrida de entrenamiento concluyó y calculó estas métricas; su flujo inicialmente falló después en la prueba de navegación porque el visor 9X todavía no estaba incorporado a aquel commit. El reporte estructurado en [evaluacion_bloques_espaciales_9x.json](datos/generalizacion_9x/evaluacion_bloques_espaciales_9x.json) prevalece cuando la auditoría completa se reproduzca y publique.
+La ejecución auditada de [GitHub Actions 9X](.github/workflows/oaf_generalizacion_9x.yml) calculó los resultados siguientes, reproducidos con el mismo conjunto de **39 sectores reservados por turnos × 60 meses (2021–2025) = 2340 casos sector-mes por método**:
 
-**Interpretación:** en esta prueba de **transferencia geográfica**, Random Forest mostró inicialmente menor MAE que GCN y que el baseline de piso. Esto **no contradice** que la climatología obtuviera mejor MAE en 9R: 9R y 9X responden preguntas distintas, porque 9R sí había entrenado con los mismos sectores y 9X excluye sectores completamente. Además, la climatología por piso de 9X tiene sectores nuevos donde su promedio histórico fue calculado sobre otras ubicaciones, por lo que su desempeño y significado cambian.
+| Modelo | MAE (mm/mes) ↓ | RMSE (mm/mes) ↓ | Sesgo medio (mm/mes) | Skill MAE respecto a climatología por piso |
+|---|---:|---:|---:|---:|
+| **Random Forest** | **17,1634** | **39,0143** | **−11,9889** | **+15,745 %** |
+| **GCN convolucional de grafos** | **18,6207** | **41,4780** | **−11,3100** | **+8,591 %** |
+| Climatología por piso de otros sectores | 20,3708 | 39,9676 | −2,0955 | 0 % |
+| Persistencia anual del sector (t−12) | 21,8341 | 47,2184 | −1,7163 | −7,183 % |
+| Climatología mensual regional de otros sectores | 24,3027 | 45,0520 | −1,6765 | −19,302 % |
 
-No se deben proclamar capacidades de pronóstico real al agricultor ni cambios operativos en el portal basados en estos datos. Los cinco pliegues son pocos para decidir capacidad generalizable a nuevas cuencas y pueden conservar correlaciones por sistemas meteorológicos comunes.
+**Ganador descriptivo de esta prueba espacial: Random Forest.** Tiene 1,4573 mm/mes menos MAE que GCN y 3,2074 mm/mes menos MAE que climatología por piso (el skill global +15,745 %). Esta clasificación es válida **solamente para esta tarea espacial con historia previa del sector y los cortes temporales indicados**; no modifica retroactivamente la comparación 9R, cuyo objetivo era evaluar años nuevos en sectores ya entrenados.
+
+### Precauciones para interpretación de diferencias por bloque
+
+Dos bloques geográficos tienen **una clase altitudinal sin ninguna contraparte en el conjunto de entrenamiento**: el bloque 0 contiene la montaña alta completa (S006–S008) y el bloque 3 contiene toda la costa baja (S002–S005), además de S001 cuya cota DSM es negativa. En esos casos, la *climatología por piso* **retrocede a la climatología mensual regional**, que puede ser una referencia particularmente débil. El menor MAE de RF en esos sitios no debe interpretarse como habilidad garantizada en otros pisos. Es recomendable añadir un baseline altitudinal continuo ajustado solo con sectores de entrenamiento antes de seleccionar un modelo para uso práctico.
+
+El remuestreo **exacto por cinco bloques espaciales (5^5 = 3125 remuestras)** usa medias de MAE por bloque con el mismo peso para cada bloque; esta ponderación **no coincide necesariamente con el promedio por cada sector-mes**, porque los bloques tienen tamaños diferentes.
+
+| Diferencia emparejada de MAE (primer método menos segundo) | Media igualmente ponderada por bloque | Rango 95 % exploratorio por bloques |
+|---|---:|---|
+| RF − climatología por piso | **−4,5886 mm** | **[−12,2605; +0,0936]** |
+| GCN − climatología por piso | **−3,2948 mm** | **[−11,7264; +1,7912]** |
+| GCN − RF | **+1,2938 mm** | **[+0,5201; +1,8385]** |
+
+El primer rango **incluye cero**. Con solo cinco bloques autocorrelacionados en clima, **no se ha demostrado con robustez una superioridad espacial generalizable** del RF frente al control climatológico. El resultado GCN − RF favorece RF en estos bloques, pero tampoco convierte la prueba en validación estadística de regiones y estaciones independientes.
+
+### Fallo importante en años lluviosos y sectores altos
+
+La prueba por año revela un comportamiento que impediría usar directamente estos modelos para alertas:
+
+| Año de prueba | Climatología por piso MAE | Random Forest MAE | GCN MAE |
+|---|---:|---:|---:|
+| 2021 | 19,54 | **15,61** | 18,76 |
+| 2022 | 17,81 | 14,92 | 16,00 |
+| **2023** | **29,06** | **31,72** | **31,69** |
+| 2024 | 18,24 | **9,63** | 9,89 |
+| 2025 | 17,21 | **13,93** | 16,76 |
+
+En **2023**, el sesgo medio del RF fue **−26,38 mm/mes** y el de la GCN **−26,64 mm/mes**, que señalan **subestimación global de lluvia**. Para un sistema agroclimático que aspira a vigilar anomalías y El Niño Costero, esta vulnerabilidad es especialmente relevante. Sin controles adicionales **no emitir advertencias de sequía, exceso de lluvia o riesgos sanitarios** apoyadas en esas predicciones.
+
+En la franja **ladera media (1600–2499 m)**, Random Forest obtuvo **29,24 mm/mes** de MAE, frente a **25,39 mm/mes de climatología por piso**. Por ello la ventaja regional promedio **no se extiende a todos los pisos**. Se requieren análisis por elevación, cuenca, estación húmeda, extremos y error de signo de anomalía.
+
+**Resumen científico:** la fase 9X aporta evidencia de una posible mejora del Random Forest para la transferencia en ciertas zonas; todavía no demuestra habilidad robusta para todas las franjas ni para años anómalos, y no permite pronósticos operativos.
 
 ## 6. Resultados disponibles, trazabilidad y siguiente trabajo
 
