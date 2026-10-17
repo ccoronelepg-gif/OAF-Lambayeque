@@ -1,0 +1,49 @@
+name: OAF 9H - Auditoria de datos y visualizaciones
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'datos/validacion_estaciones_9h/**'
+      - 'modelos/visor_contraste_estaciones_9h.js'
+      - 'assets/oaf-contraste-estaciones-9h.css'
+      - 'tests/test_contraste_instrumental_9h.py'
+      - '.github/workflows/oaf_auditoria_9h.yml'
+permissions:
+  contents: read
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Control científico 9H y comparación observacional
+        run: |
+          python -m unittest discover -s tests -p 'test_contraste_instrumental_9h.py' -v
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('datos/validacion_estaciones_9h/comparacion_observacional_9h.json').read_text('utf8'))
+          b=json.loads(Path('datos/validacion_estaciones_9h/contraste_era5_complementario_9h.json').read_text('utf8'))
+          assert not a['habilidad_predictiva_operativa_certificada']
+          assert not b['validacion_predictiva_operativa']
+          assert b['n_pares_era5_precipitacion']>0
+          assert a['n_pares_chirps']>0
+          print('9H: CHIRPS',a['n_pares_chirps'],'ERA5',b['n_pares_era5_precipitacion'])
+          PY
+      - name: Sintaxis JS, contratos de usuarios y 463 IDs conservados
+        run: |
+          node --check modelos/visor_contraste_estaciones_9h.js
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+      - name: Bloquear pérdida de fuentes originales y enlaces
+        run: |
+          test -s FASE_9H_CONTRASTE_INSTRUMENTAL.md
+          test -s datos/estaciones_9d/originales/qc00000340.txt
+          test -s datos/estaciones_9d/originales/qc00153114.txt
+          test -s datos/estaciones_9d/originales/qc00152107.txt
+          test -s datos/validacion_estaciones_9h/pares_mensuales_9h.csv
+          test -s datos/validacion_estaciones_9h/pares_era5_complementarios_9h.csv
