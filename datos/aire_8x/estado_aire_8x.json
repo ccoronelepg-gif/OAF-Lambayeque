@@ -12,8 +12,8 @@
     "Motupe",
     "Olmos"
   ],
-  "filas_mes_sitio": 12,
-  "meses_pm_80pct_aptos": 12,
+  "filas_mes_sitio": 48,
+  "meses_pm_80pct_aptos": 48,
   "registros_faltantes_no_imputados": true,
   "comparacion_legal_ECA_habilitada": false,
   "pronostico_pm_agricola_validado": false,
@@ -25,6 +25,27 @@
       "sha256": "1cbd295419389989172cb238c1ca30aa03ed5150fb43a54e71494e9ccde5b579",
       "modelo": "CAMS Global forecast archive via Open-Meteo",
       "sitio": "Chiclayo",
+      "year": 2025
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Jayanca_2025.json.gz",
+      "sha256": "1ae7b38cf02eb252c872c1cbc36b81b043459cfa44c649ce6287fd6154f4ca30",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Jayanca",
+      "year": 2025
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Motupe_2025.json.gz",
+      "sha256": "854fb35e4999057874b12e05149bddf5c334a836187d52948f921e8f39c60205",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Motupe",
+      "year": 2025
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Olmos_2025.json.gz",
+      "sha256": "8f18f030e8ee406f319919f7591155b9131af2399a8256a9e55dc775ae3087ea",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Olmos",
       "year": 2025
     }
   ],

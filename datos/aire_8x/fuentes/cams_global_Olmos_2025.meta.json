@@ -1,0 +1,13 @@
+{
+  "sitio": "Olmos",
+  "year": 2025,
+  "modelo": "CAMS Global forecast archive via Open-Meteo",
+  "url": "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=-5.98825&longitude=-79.74723&start_date=2025-01-01&end_date=2025-12-31&hourly=pm2_5%2Cpm10&domains=cams_global&timezone=UTC",
+  "sha256_original": "8f18f030e8ee406f319919f7591155b9131af2399a8256a9e55dc775ae3087ea",
+  "timezone": "UTC",
+  "unidad": "ug/m3",
+  "paso_horas": 1,
+  "meses": 12,
+  "recuperado_utc": "2026-10-17T05:05:59.436892+00:00",
+  "estacion_instrumental": false
+}
