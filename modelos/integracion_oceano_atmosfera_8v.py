@@ -103,7 +103,8 @@ def sst_features(row):
 def climate_features(row):
     return {
         'temperatura_aire_c': finite(row, 'temperatura_c', -15, 50),
-        'precipitacion_mes_mm': finite(row, 'precipitacion_mm', 0, 2500),
+        'precipitacion_mes_mm': finite(row, 'precipitacion_mm', 0, 10000),
+        'lluvia_modelada_ge_1000_mm_revisar': finite(row, 'precipitacion_mm', 0, 10000) >= 1000,
         'radiacion_mes_mj_m2': finite(row, 'radiacion_mj_m2', 0, 2000),
     }
 
@@ -194,6 +195,8 @@ def build(root, check=False):
         'localidades_terrestres': list(SITES_LAND),
         'puntos_de_viento_marino_no_validados_in_situ': list(SITES_SEA),
         'filas_matriz_terrestre': len(land),
+        'meses_sitio_lluvia_modelada_ge_1000_mm_revision': sum(x['lluvia_modelada_ge_1000_mm_revisar'] for x in land),
+        'registro_max_lluvia_modelada': {k: v for k, v in max(land, key=lambda x: x['precipitacion_mes_mm']).items() if k in ('mes','localidad','precipitacion_mes_mm')},
         'filas_matriz_marina': len(sea),
         'meses_corriente_geostrofica_integrados': n_current,
         'meses_sin_corriente_geostrofica': len(sea)-n_current,
