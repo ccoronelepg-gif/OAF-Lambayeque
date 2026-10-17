@@ -1,0 +1,68 @@
+{
+  "fase": "8U",
+  "estado": "viento_historico_parcial",
+  "periodo": "1996–2025",
+  "localidades": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "bloques_viento_obtenidos": 1,
+  "bloques_viento_previstos": 3,
+  "periodos_archivados": [
+    [
+      1996,
+      2005
+    ]
+  ],
+  "meses_localidad_obtenidos": 480,
+  "testigos_viento_historico_completos": 0,
+  "resumen_viento_por_localidad": [],
+  "unidad_velocidad_viento": "m/s",
+  "direccion_de_donde_sopla": true,
+  "componentes_vectoriales_aproximadas_con_promedios_diarios": true,
+  "indices_sst_noaa_1996_2025_archivados": true,
+  "sha256_sst_noaa": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "resumen_sst_nino12": {
+    "nino12_anom_mean_c": 0.0383,
+    "nino12_anom_min_c": -1.9,
+    "nino12_anom_max_c": 3.73
+  },
+  "corrientes_marinas_serie_historica_verificada": false,
+  "corrientes_marinas_fuente_validada": null,
+  "corrientes_no_inferibles_del_viento_ni_del_SST": true,
+  "datos_no_son_observaciones_senamhi": true,
+  "modelo_predictivo_viento_corriente_ya_validado": false,
+  "riesgo_fitosanitario_validado": false,
+  "zonas_homogeneas_certificadas": 0,
+  "fuentes_propuestas_para_corrientes": [
+    {
+      "institucion": "NASA PO.DAAC",
+      "producto": "OSCAR_L4_OC_FINAL_V2.0",
+      "url": "https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0",
+      "variables": "u,v m/s, velocidad superficial por análisis satelital, 0,25°",
+      "periodo_catalogo": "1993–2026 (consultar cobertura final y acceso)",
+      "descarga_y_QA_1996_2025": false,
+      "acceso_puede_requerir_Earthdata_Login": true
+    },
+    {
+      "institucion": "Copernicus Marine",
+      "producto": "GLOBAL_MULTIYEAR_PHY_001_030",
+      "url": "https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description",
+      "variables": "eastward_sea_water_velocity, northward_sea_water_velocity",
+      "periodo_catalogo": "desde 1993, observar profundidad y máscara costera",
+      "descarga_y_QA_1996_2025": false,
+      "requiere_subconjunto_NetCDF": true
+    }
+  ],
+  "advertencias": [
+    "Puntos regionales son centros 8M, no estaciones ni parcelas instrumentadas.",
+    "Dirección dominante diaria y velocidad media diaria construyen componentes aproximadas, no viento vectorial horario promedio físico exacto.",
+    "Temperatura del mar NOAA Niño1+2 representa promedio de amplia región marina, no SST frente a Santa Rosa/Pimentel directamente.",
+    "El antiguo ERDDAP jplOscar etiquetado 1992-presente en octubre 2026 solo tiene cobertura 2011-12 a 2014-09; NO usarlo como serie 30 años.",
+    "Velocidad y dirección de corrientes oceánicas requieren productos u/v y máscara agua; no es legítimo derivarlas de SST.",
+    "Sin corrientes reales, no se prueba modelo viento+SST+corrientes ni su habilidad prospectiva.",
+    "No se declara relación causal entre viento y anomalía marina por correlación descriptiva."
+  ]
+}
