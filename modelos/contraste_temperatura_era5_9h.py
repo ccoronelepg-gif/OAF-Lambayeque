@@ -81,13 +81,16 @@ def fetch(url):
 
 def retrieve(product,model,variables,points):
     out=defaultdict(lambda:defaultdict(dict));cell={};provenance=[]
-    for y1,y2 in [(1996,2005),(2006,2013)]:
+    chunks=[(1996,2005),(2006,2013)] if model=="era5" else [
+        (1996,1999),(2000,2003),(2004,2007),(2008,2011),(2012,2013)
+    ]
+    for y1,y2 in chunks:
         url="https://archive-api.open-meteo.com/v1/archive?"+urlencode({
           "latitude":",".join(str(p["lat"]) for p in points),
           "longitude":",".join(str(p["lon"]) for p in points),
           "start_date":f"{y1}-01-01","end_date":f"{y2}-12-31",
           "daily":",".join(variables),"models":model,"timezone":"America/Lima",
-          "cell_selection":"land"})
+          "cell_selection":"land","temperature_unit":"celsius"})
         raw=fetch(url);sha=hashlib.sha256(raw).hexdigest()
         api=json.loads(raw)
         if not isinstance(api,list) or len(api)!=len(points):
