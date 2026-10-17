@@ -1,0 +1,49 @@
+{
+  "fase": "8Z",
+  "tipo": "humedad_y_vpd_de_ERA5_modelados",
+  "periodo_referencia": "1996-2025",
+  "localidades_esperadas": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "localidades_serie_completa": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "registros_mes_sitio": 1440,
+  "registros_esperados": 1440,
+  "cobertura_regional_cuatro_sitios_completa": true,
+  "datos_reanalisis_no_sensor": true,
+  "no_mide_humedad_dosel": true,
+  "vpd_mensual_es_media_de_maximos_diarios": true,
+  "series_humedad_vpd_identicas": [],
+  "fuentes_original_sha256": [
+    {
+      "site": "Chiclayo",
+      "sha256": "4320ff88b4c66bb86eca92ca6b3bfb53f5f3c57134cc66389d455f0a6462cb3f",
+      "archivo": "datos/humedad_8z/fuentes/era5_humedad_Chiclayo_1996_2025.json.gz"
+    },
+    {
+      "site": "Jayanca",
+      "sha256": "5061cb442f76cbd7736445dc10388eef6f9021b18e550fceadc1b43729aedcf7",
+      "archivo": "datos/humedad_8z/fuentes/era5_humedad_Jayanca_1996_2025.json.gz"
+    },
+    {
+      "site": "Motupe",
+      "sha256": "8df0a47cb67af97f6bef082950a710bcfd3c13e7e424ddf60997aac2ce2a9519",
+      "archivo": "datos/humedad_8z/fuentes/era5_humedad_Motupe_1996_2025.json.gz"
+    },
+    {
+      "site": "Olmos",
+      "sha256": "6ce7f8e2e0995ce646e33ad3f2debda2413d69564515d9c66ea4cf475622497a",
+      "archivo": "datos/humedad_8z/fuentes/era5_humedad_Olmos_1996_2025.json.gz"
+    }
+  ],
+  "errores_fuentes": [],
+  "no_alertas_fitosanitarias": true,
+  "no_validacion_instrumental_senamhi": true
+}
