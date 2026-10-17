@@ -1,0 +1,14 @@
+/* OAF fase 9I: lectura sencilla, misma jerarquía visual del observatorio */
+#oaf-9i-visor{border-color:#d2e5df}
+#oaf-9i-visor summary{cursor:pointer;color:#103842;font-weight:750}
+.oaf-9i-controls{display:flex;gap:13px;flex-wrap:wrap;margin:18px 0}
+.oaf-9i-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#496c70}
+.oaf-9i-controls select{min-width:170px}
+.oaf-9i-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:14px 0}
+.oaf-9i-metrics article{background:#f0f7f5;border:1px solid #dceae5;border-radius:13px;padding:17px}
+.oaf-9i-metrics small,.oaf-9i-metrics span{display:block;font-size:12px;color:#59777b}
+.oaf-9i-metrics strong{display:block;font-size:25px;color:#103842}
+.oaf-9i-bar-row{margin:14px 0}.oaf-9i-bar-row p{font-size:12px;font-weight:700;margin:0 0 5px}
+.oaf-9i-track{height:12px;background:#e5efeb;border-radius:99px;overflow:hidden}
+.oaf-9i-fill{height:100%;border-radius:99px;background:#248b7b}
+@media(max-width:680px){.oaf-9i-metrics{grid-template-columns:1fr}.oaf-9i-controls{flex-direction:column}.oaf-9i-controls label,.oaf-9i-controls select{width:100%}}
