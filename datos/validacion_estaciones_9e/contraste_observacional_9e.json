@@ -1,0 +1,447 @@
+{
+  "fase": "9E",
+  "fecha_revision": "2026-10-17",
+  "dictamen": "contraste_observacional_temporal_descriptivo; contraste_grilla_bloqueado_por_falta_de_metadatos",
+  "fuente": "datos/estaciones_9d/series_mensuales_9d.csv",
+  "cobertura_exigida": "100% de días para análisis de precipitación estricta y años completos; se conserva indicador 90% de 9D separado",
+  "tres_estaciones_certificadas": false,
+  "comparacion_directa_era5_chirps_ejecutada": false,
+  "razon_de_bloqueo": "No existen coordenadas, altitud, código oficial y día pluviométrico verificados que permitan emparejar archivos con rejillas científicamente.",
+  "restricciones": [
+    "Correlación descriptiva entre series codificadas, no homogeneidad espacial ni clima de pisos altitudinales.",
+    "Lluvia 1983/1998 es registro instrumental histórico sin demostrar pronóstico emitido previamente.",
+    "La ingestión no valida calidad de extremos, cambios de instrumento ni derechos de republicación.",
+    "CHIRPS incluye pluviómetros potencialmente coincidentes con estaciones de referencia: la comparación podría no ser estrictamente independiente.",
+    "ERA5 tiene distintos soportes y horarios; no convertir reanálisis en estación medida."
+  ],
+  "estaciones": [
+    {
+      "codigo_archivo": "00000340",
+      "n_meses_1996_2013": 216,
+      "meses_lluvia_100pct": 215,
+      "meses_lluvia_90pct": 215,
+      "anios_ejemplo_100pct": [
+        {
+          "anio": 1982,
+          "meses_con_100pct_dias": 6,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 1983,
+          "meses_con_100pct_dias": 0,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 378.1
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 1847.1
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 489.4
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 321.8
+        }
+      ],
+      "anios_1996_2013_100pct": [
+        {
+          "anio": 1996,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 224.7
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 378.1
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 1847.1
+        },
+        {
+          "anio": 1999,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 496.9
+        },
+        {
+          "anio": 2000,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 355.7
+        },
+        {
+          "anio": 2001,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 480.5
+        },
+        {
+          "anio": 2002,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2003,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 166.1
+        },
+        {
+          "anio": 2004,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 166.9
+        },
+        {
+          "anio": 2005,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 188.8
+        },
+        {
+          "anio": 2006,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 399.4
+        },
+        {
+          "anio": 2007,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 297.8
+        },
+        {
+          "anio": 2008,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 728.12
+        },
+        {
+          "anio": 2009,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 371.9
+        },
+        {
+          "anio": 2010,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 269.1
+        },
+        {
+          "anio": 2011,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 228.9
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 489.4
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 321.8
+        }
+      ]
+    },
+    {
+      "codigo_archivo": "00153114",
+      "n_meses_1996_2013": 216,
+      "meses_lluvia_100pct": 207,
+      "meses_lluvia_90pct": 213,
+      "anios_ejemplo_100pct": [
+        {
+          "anio": 1982,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 121.0
+        },
+        {
+          "anio": 1983,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 1836.0
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 204.1
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 2258.0
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 143.13
+        }
+      ],
+      "anios_1996_2013_100pct": [
+        {
+          "anio": 1996,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 111.5
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 204.1
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 2258.0
+        },
+        {
+          "anio": 1999,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 460.94
+        },
+        {
+          "anio": 2000,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2001,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2002,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 486.15
+        },
+        {
+          "anio": 2003,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 102.11
+        },
+        {
+          "anio": 2004,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 141.51
+        },
+        {
+          "anio": 2005,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2006,
+          "meses_con_100pct_dias": 10,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2007,
+          "meses_con_100pct_dias": 10,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2008,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2009,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 239.16
+        },
+        {
+          "anio": 2010,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 189.39
+        },
+        {
+          "anio": 2011,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 88.45
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 11,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 143.13
+        }
+      ]
+    },
+    {
+      "codigo_archivo": "00152107",
+      "n_meses_1996_2013": 216,
+      "meses_lluvia_100pct": 216,
+      "meses_lluvia_90pct": 216,
+      "anios_ejemplo_100pct": [
+        {
+          "anio": 1982,
+          "meses_con_100pct_dias": 10,
+          "total_mm_estricto": null
+        },
+        {
+          "anio": 1983,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 3046.55
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 260.7
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 3367.4
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 968.96
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 165.0
+        }
+      ],
+      "anios_1996_2013_100pct": [
+        {
+          "anio": 1996,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 31.69
+        },
+        {
+          "anio": 1997,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 260.7
+        },
+        {
+          "anio": 1998,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 3367.4
+        },
+        {
+          "anio": 1999,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 347.69
+        },
+        {
+          "anio": 2000,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 296.8
+        },
+        {
+          "anio": 2001,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 708.78
+        },
+        {
+          "anio": 2002,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 589.64
+        },
+        {
+          "anio": 2003,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 49.85
+        },
+        {
+          "anio": 2004,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 26.03
+        },
+        {
+          "anio": 2005,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 98.89
+        },
+        {
+          "anio": 2006,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 335.91
+        },
+        {
+          "anio": 2007,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 55.28
+        },
+        {
+          "anio": 2008,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 757.05
+        },
+        {
+          "anio": 2009,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 395.94
+        },
+        {
+          "anio": 2010,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 228.16
+        },
+        {
+          "anio": 2011,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 155.55
+        },
+        {
+          "anio": 2012,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 968.96
+        },
+        {
+          "anio": 2013,
+          "meses_con_100pct_dias": 12,
+          "total_mm_estricto": 165.0
+        }
+      ]
+    }
+  ],
+  "pares": [
+    {
+      "codigo_a": "00000340",
+      "codigo_b": "00153114",
+      "periodo": "1996-01 a 2013-12",
+      "meses_comunes_100pct": 206,
+      "correlacion_lluvia_mensual_cruda": 0.9337,
+      "correlacion_log1p_lluvia_mensual": 0.81128,
+      "enero_abril_meses_comunes_100pct": 70,
+      "correlacion_log1p_enero_abril": 0.79908,
+      "no_implica_cercania_espacial": true,
+      "no_indica_capacidad_predictiva": true
+    },
+    {
+      "codigo_a": "00000340",
+      "codigo_b": "00152107",
+      "periodo": "1996-01 a 2013-12",
+      "meses_comunes_100pct": 215,
+      "correlacion_lluvia_mensual_cruda": 0.93276,
+      "correlacion_log1p_lluvia_mensual": 0.78934,
+      "enero_abril_meses_comunes_100pct": 72,
+      "correlacion_log1p_enero_abril": 0.81028,
+      "no_implica_cercania_espacial": true,
+      "no_indica_capacidad_predictiva": true
+    },
+    {
+      "codigo_a": "00153114",
+      "codigo_b": "00152107",
+      "periodo": "1996-01 a 2013-12",
+      "meses_comunes_100pct": 207,
+      "correlacion_lluvia_mensual_cruda": 0.94873,
+      "correlacion_log1p_lluvia_mensual": 0.87053,
+      "enero_abril_meses_comunes_100pct": 70,
+      "correlacion_log1p_enero_abril": 0.85201,
+      "no_implica_cercania_espacial": true,
+      "no_indica_capacidad_predictiva": true
+    }
+  ]
+}
