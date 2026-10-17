@@ -42,7 +42,9 @@ jobs:
             git commit -m 'data(oaf): fuentes ERA5 RH y VPD de 1996-2025 con SHA'
           fi
           # Rebuild derived CSV against the most recent repository main.
-          git restore --ignore-unmatch datos/humedad_8z/humedad_vpd_mensual_8z.csv datos/humedad_8z/estado_humedad_8z.json
+          # Delete generated untracked outputs; restore any previously tracked versions.
+          git clean -f -- datos/humedad_8z/humedad_vpd_mensual_8z.csv datos/humedad_8z/estado_humedad_8z.json
+          git restore -- datos/humedad_8z/humedad_vpd_mensual_8z.csv datos/humedad_8z/estado_humedad_8z.json 2>/dev/null || true
           git pull --rebase origin main
           python modelos/humedad_agroclimatica_8z.py
           python modelos/humedad_agroclimatica_8z.py --check
