@@ -53,7 +53,7 @@ jobs:
           h=Path("index.html").read_text(encoding="utf-8")
           for x in ("oaf-transects-8q","oaf-8q-status","oaf-8q-sites",
                     "oaf-8q-sources","oaf-8q-complete","oaf-8q-table",
-                    "oaf-8q-map","oaf-8q-reload"):
+                    "oaf-8q-map","oaf-8q-reload","oaf-8q-coherence"):
               assert h.count('id="'+x+'"')==1,x
           assert 'src="modelos/visor_transectos_8q.js"' in h
           print("Visor 8Q validado")
