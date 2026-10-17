@@ -1,9 +1,9 @@
 {
   "fase": "8O",
   "estado": "perfiles_multivariables_pendientes",
-  "n_testigos": 0,
+  "n_testigos": 19,
   "n_fuentes_esperadas": 6,
-  "n_fuentes_archivadas": 0,
+  "n_fuentes_archivadas": 1,
   "n_testigos_con_perfil_30anios": 0,
   "n_grupos_similitud_exploratorios": 0,
   "homogeneidad_espacial_certificada": false,
@@ -26,7 +26,42 @@
     "La altitud informa el diseño, pero no es una variable que fuerce directamente los conglomerados climáticos."
   ],
   "trazabilidad": {
-    "archivo_testigos_sha256": "40fa6546ca2a031e56154645d8c3652c83e8d6e874b18ff12fd1d2dd3861a46e",
-    "fuentes": []
+    "archivo_testigos_sha256": "9f932d1a325663f93431f08a405adcebf8f39f144b15f53cf50718ec2694cf79",
+    "fuentes": [
+      {
+        "fase": "8O",
+        "modelo": "era5_land",
+        "periodo": [
+          1996,
+          2005
+        ],
+        "ids": [
+          "M0176",
+          "M0208",
+          "M0385",
+          "M0222",
+          "M0419",
+          "M0020",
+          "M0163",
+          "M0420",
+          "M0016",
+          "M0287",
+          "M0007",
+          "M0098",
+          "M0288",
+          "M0070",
+          "M0380",
+          "M0308",
+          "M0367",
+          "M0234",
+          "M0189"
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.3125%2C-5.875%2C-6.3125%2C-5.5625%2C-6.90625%2C-6.46875%2C-5.5625%2C-6.9375%2C-6.15625%2C-7.0%2C-6.65625%2C-6.15625%2C-6.75%2C-5.9375%2C-6.125%2C-5.96875%2C-6.28125%2C-6.375&longitude=-79.75%2C-80.5625%2C-80.0625%2C-79.6875%2C-79.9375%2C-79.34375%2C-79.53125%2C-79.875%2C-79.3125%2C-79.53125%2C-79.3125%2C-79.53125%2C-79.46875%2C-79.1875%2C-79.5%2C-79.375%2C-79.46875%2C-79.34375%2C-80.375&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean%2Ctemperature_2m_max%2Ctemperature_2m_min&models=era5_land&cell_selection=land",
+        "fecha_consulta_utc": "2026-10-17T02:09:20+00:00",
+        "sha256_original": "f15b2fc2cd0410535f5b6c01df6154d1bf342b72a1574a1889441b9d35a202f1",
+        "reanálisis_no_instrumental": true,
+        "no_son_zonas_climaticas_certificadas": true
+      }
+    ]
   }
 }
