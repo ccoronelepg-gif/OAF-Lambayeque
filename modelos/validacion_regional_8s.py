@@ -22,7 +22,7 @@ OUT="datos/validacion_regional_8s"
 YEARS=((2008,2009,2011,2012,2014),
        (2011,2012,2014,2015,2017),
        (2014,2015,2017,2018,2020),
-       (2017,2018,2020,2021,2023),
+       (2017,2018,2020,2021,2022),
        (2020,2021,2022,2023,2025))
 MODELS=core.MODELS
 ALT=("llanura_costa","valle_bajo","piedemonte",
@@ -124,11 +124,13 @@ def monthly_folds(monthly,centers,train_end,band_held=None,groups=None):
     """No future data in site normals; no held band in regional predictors."""
     years=range(1996,train_end+1)
     ids=sorted(monthly)
+    complete=[f"{y}-{m:02d}" for y in range(1996,2026) for m in range(1,13)]
+    if any(sorted(monthly[pid])!=complete or
+           any(type(value) not in (int,float) or not math.isfinite(value)
+               for value in monthly[pid].values()) for pid in ids):
+        raise ValueError("Histórico mensual incompleto o no numérico entre 1996 y 2025")
     norm={pid:{m:statistics.mean(monthly[pid][f"{year}-{m:02d}"] for year in years)
               for m in range(1,13)} for pid in ids}
-    complete=[f"{y}-{m:02d}" for y in range(1996,2026) for m in range(1,13)]
-    if any(sorted(monthly[pid])!=complete for pid in ids):
-        raise ValueError("Histórico mensual incompleto entre 1996 y 2025")
     unique=core.cell_groups(centers)
     representatives={cell:names[0] for cell,names in unique.items()}
     included={cell:pid for cell,pid in representatives.items()
