@@ -1,0 +1,31 @@
+{
+  "fase": "8P",
+  "grupo": 1,
+  "modelo": "era5",
+  "periodo": [
+    2006,
+    2015
+  ],
+  "ids": [
+    "M0002",
+    "M0035",
+    "M0215",
+    "M0063",
+    "M0318",
+    "M0300",
+    "M0126",
+    "M0322",
+    "M0107",
+    "M0238",
+    "M0384",
+    "M0023",
+    "M0120",
+    "M0325",
+    "M0396",
+    "M0116"
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-7.0625%2C-6.8125%2C-6.3125%2C-6.75%2C-6.0625%2C-6.125%2C-6.5625%2C-6.0625%2C-6.625%2C-6.25%2C-5.90625%2C-6.875%2C-6.59375%2C-6.0625%2C-5.8125%2C-6.59375&longitude=-79.625%2C-79.9375%2C-80.125%2C-79.625%2C-80.375%2C-79.875%2C-80.0625%2C-80.125%2C-79.8125%2C-80.3125%2C-79.71875%2C-79.75%2C-79.46875%2C-79.9375%2C-80.0%2C-79.71875&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=precipitation_sum%2Crelative_humidity_2m_mean%2Cshortwave_radiation_sum&models=era5&cell_selection=land",
+  "sha256_original": "e48668d125a923da05249cc1e7830093f98d588f77483dec49f19c4554751a43",
+  "consultado_utc": "2026-10-17T02:33:41+00:00",
+  "dato_reanalisis_no_sensor": true
+}
