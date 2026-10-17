@@ -1,0 +1,63 @@
+name: OAF 10C · Reentrenamiento lag2 experimental
+on:
+  push:
+    paths:
+      - "modelos/reentrenamiento_lag2_10c.py"
+      - "tests/test_reentrenamiento_10c.py"
+      - ".github/workflows/oaf_10c_reentrenamiento.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reentrenar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: "requirements.txt"
+      - name: Instalar bibliotecas numéricas CPU
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy scikit-learn shapely
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Verificar causa temporal (lag2 y splits)
+        run: python -m unittest discover -s tests -p test_reentrenamiento_10c.py -v
+      - name: Reentrenar en cinco bloques espaciales
+        run: python modelos/reentrenamiento_lag2_10c.py
+      - name: Reproducibilidad, SHA, no alertas
+        run: python modelos/reentrenamiento_lag2_10c.py --check
+      - name: Informe breve en el registro
+        run: |
+          python - <<'PY'
+          import json
+          p="datos/reentrenamiento_10c/evaluacion_lag2_10c.json"
+          d=json.load(open(p,encoding="utf8"))
+          assert d["alertas_habilitadas"] is False
+          assert d["modelo_operativo_ganador"] is None
+          assert d["n_predicciones_calibracion"]==4680
+          assert d["n_predicciones_totales"]==11700
+          assert d["periodo_calibracion"]=="2019-01/2020-12"
+          for m,v in d["comparacion_pareada_con_9x"].items():
+            print("COMPARACION_10C",m, v)
+          for m,v in d["cobertura_2023"].items():
+            print("COBERTURA_2023_10C",m,v)
+          for m,v in d["eventos_umbral"]:
+            pass
+          PY
+      - name: Subir resultados a artefactos
+        uses: actions/upload-artifact@v4
+        with:
+          name: oaf-10c-evaluacion-completa
+          path: datos/reentrenamiento_10c/*
+          retention-days: 90
+      - name: Guardar resultados reproducibles en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/reentrenamiento_10c
+          git diff --cached --quiet || git commit -m "data(10C): evaluación con lag2 y calibración separada"
+          git push origin HEAD:main
