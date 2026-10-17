@@ -1,0 +1,62 @@
+name: OAF 9K - Sectores altitudinales y fuentes NMME
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sectores_altitudinales_9k.py'
+      - 'modelos/inspeccion_nmme_9k.py'
+      - 'tests/test_sectores_altitudinales_9k.py'
+      - '.github/workflows/oaf_sectores_nmme_9k.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9k-sectorial
+  cancel-in-progress: false
+jobs:
+  cartografia-9k:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SIG, proyeccion y lector NetCDF
+        run: pip install shapely==2.1.2 pyproj==3.7.2 numpy==2.2.6 netCDF4==1.7.3
+      - name: Delimitar sectores de muestreo con DEM y evidencia climatica
+        run: |
+          python modelos/sectores_altitudinales_9k.py
+          python modelos/sectores_altitudinales_9k.py --check
+      - name: Obtener fuentes numericas reales NOAA NMME e inspeccionar ejes
+        run: |
+          python modelos/inspeccion_nmme_9k.py
+          python modelos/inspeccion_nmme_9k.py --check
+      - name: Pruebas de coherencia geoespacial y estados
+        run: |
+          python -m unittest discover -s tests -p 'test_sectores_altitudinales_9k.py' -v
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('datos/sectores_agroclimaticos_9k')
+          status=json.loads((p/'estado_sectores_9k.json').read_text('utf8'))
+          g=json.loads((p/'sectores_muestreo_9k.geojson').read_text('utf8'))
+          assert len(g['features'])==status['n_poligonos_graficos_exploratorios']
+          assert status['n_zonas_homogeneas_certificadas']==0
+          assert not status['validacion_espacial_de_pronosticos']
+          print('Poligonos cartograficos experimentales:',len(g['features']))
+          PY
+      - name: Publicar sin cambiar originales DEM, NOAA o climatologias
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/sectores_agroclimaticos_9k/
+          if git diff --cached --quiet; then
+            echo 'Sin salidas 9K nuevas'
+          else
+            git commit -m 'data(9K): sectores SIG 420 nodos y fuente NOAA NMME trazable'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
