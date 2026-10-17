@@ -77,6 +77,26 @@ function render(){
   "Perfiles climáticos multivariables pendientes: "+(climate?.n_fuentes_archivadas??0)+
   "/6 bloques históricos; 0 zonas climáticas certificadas.";
  plot.append(q);
+ if(climate?.analisis?.ranking_cohesion_climatica_no_zonas){
+   const title=document.createElement("strong");
+   title.textContent="Cohesión de perfiles piloto (no zonas agrícolas)";
+   plot.append(title);
+   const info=document.createElement("ul");info.className="small";
+   for(const g of climate.analisis.ranking_cohesion_climatica_no_zonas){
+     const row=document.createElement("li");
+     row.textContent=g.grupo+": "+g.n_testigos+
+       " testigos; distancia climática interna "+g.distancia_climatica_interna_media+
+       "; extensión entre testigos hasta "+g.diametro_geografico_testigos_km+
+       " km, desnivel entre testigos "+g.rango_altitudinal_testigos_m+
+       " m; cotas DEM ≤ 0 m: "+g.testigos_cota_dem_menor_o_igual_cero+
+       ". No delimita una región agronómica confirmada.";
+     info.append(row);
+   }
+   plot.append(info);
+   const notice=document.createElement("p");notice.className="small";
+   notice.textContent="La coincidencia de clasificación por décadas no sustituye un mapa terrestre oficial, estaciones independientes, continuidad geográfica ni validación de campo.";
+   plot.append(notice);
+ }
 }
 async function load(){
  status.textContent="Leyendo altitudes, malla y fuentes climáticas verificables…";
