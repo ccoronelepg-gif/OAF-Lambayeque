@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'modelos/cobertura_multitesela_9n.py'
+      - 'modelos/prioridades_validacion_9n.py'
       - 'tests/test_cobertura_9n.py'
       - '.github/workflows/oaf_cobertura_9n.yml'
 permissions:
@@ -29,6 +30,10 @@ jobs:
         run: |
           python modelos/cobertura_multitesela_9n.py
           python modelos/cobertura_multitesela_9n.py --check
+      - name: Identificar sectores con necesidad de contrastes climáticos instrumentales
+        run: |
+          python modelos/prioridades_validacion_9n.py
+          python modelos/prioridades_validacion_9n.py --check
       - name: Validar no invención de clima, cuencas o aptitud agrícola
         run: |
           python - <<'PY'
