@@ -5,6 +5,16 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Nueva experiencia UX · productor y ciencia técnica (17/10/2026)
+
+Se implementó una interfaz por **Vista rápida/Vista técnica**, con navegación Android, localidad compartida Chiclayo/Jayanca/Motupe/Olmos, fuente y hora de validez por los siete indicadores del Inicio, cuatro gráficos independientes a siete días desde Open-Meteo, mapa DEM original de 420 puntos en portada, resumen de arándano/vid, estado oficial ENFEN solo si la verificación institucional aporta evidencia, e índice expandible de cuatro áreas científicas. El proyecto **conserva los 463 IDs y 45 scripts originales**, sus CSV/JSON y evaluaciones, verificables automáticamente.
+
+**[Plan de implementación](PLAN_UX_OAF_2026.md)** · **[Entrega y limitaciones](ENTREGA_UX_OAF_OCTUBRE_2026.md)** · **[QA integral](.github/workflows/oaf_ux_integrity_2026.yml)** · **[Portal interactivo](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#inicio)**.
+
+## Fase 9G · Sensibilidad geográfica instrumental (17/10/2026)
+
+Las referencias documentales de Virrey, Puchaca y El Espinal tienen separación entre coordenadas alternativas de **1,531; 2,647; y 1,860 km**, respectivamente. Las alturas publicadas difieren **61, 445 y 38 m**; el caso Puchaca podría cambiar de franja exploratoria según qué cota histórica corresponda al instrumental. Estos valores no son distancias medidas de traslado, ni MAE/RMSE contra ERA5/CHIRPS: **los modelos grillados aún no se han extraído para estas candidatas**. [Auditoría reproducible 9G](datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json) · [método](FASE_9G_SENSIBILIDAD_GEOGRAFICA.md).
+
 ## Identificación territorial: Virrey, Puchaca y El Espinal (17/10/2026)
 
 Con información adicional del usuario y tres coincidencias exactas de día y precipitación máxima con **tablas oficiales SENAMHI**, se identificaron los originales: **00152107 = Virrey (código 152107; 330 mm el 10/02/2012)**, **00153114 = Puchaca (153114; 150,2 mm el 06/01/1998)** y **00000340 = El Espinal (000340; 107 mm el 20/02/1998)**. La identidad nominal supera la incertidumbre registrada en la etapa anterior.
