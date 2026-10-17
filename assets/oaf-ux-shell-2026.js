@@ -51,7 +51,7 @@ function setPlace(value){
 }
 function hashAccess(){
  const raw=decodeURIComponent(location.hash.slice(1));
- if(raw==="verificaciones"||raw==="inicio"||raw==="clima"||raw==="cultivos"||raw==="nino")return;
+ // Handle both primary tabs and deep links, preserving the original hash router.
  const el=byId(raw);
  if(el?.closest('[data-page="verificaciones"]'))applyView("tecnica");
  const page=known.includes(raw)?raw:el?.closest("[data-page]")?.dataset.page;
