@@ -46,6 +46,21 @@ async function init(){
     status.n_geometrias_filtro!==finalGeo.features.length ||
     status.teselas_archivadas_validas!==manifest.teselas_que_pudieron_abrirse.length)
    throw Error("Auditoría de cobertura incoherente");
+  try{
+    const todo=await read(base+"prioridades_validacion_climatica_9n.json");
+    if(todo.fase!=="9N"||todo.n_sectores!==42||
+       todo.zonas_climaticamente_homogeneas_certificadas!==0)
+      throw Error("Inventario de prioridades inconsistente");
+    const counts=todo.conteos_prioridad;
+    txt("oaf-9n-validation","Prioridades de verificación: "+
+      (counts.alta||0)+" sectores de prioridad alta, "+
+      (counts.media||0)+" media y "+
+      (counts.basica_pendiente_de_validacion||0)+
+      " pendientes de validación estándar. Los 81 perfiles ERA5/ERA5-Land son reanálisis, no pluviómetros independientes. Las 3 estaciones históricas de 9I no validan 1996–2025 por sector.");
+  }catch(e){
+    txt("oaf-9n-validation","Inventario de contraste instrumental pendiente: "+e.message+
+      ". No hay pruebas de homogeneidad espacial independientes certificadas.");
+  }
   const byId=new Map(rows.map(r=>[r.id_sector,r]));
   txt("oaf-9n-summary",status.n_sectores_cobertura_completa+
       " con cobertura completa · "+status.n_sectores_cobertura_parcial+
