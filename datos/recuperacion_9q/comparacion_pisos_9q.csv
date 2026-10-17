@@ -1,0 +1,8 @@
+clase_piso,etiqueta,cota_min_m,cota_max_m,n_sectores,sectores_con_lluvia_valida,n_sectores_con_perfil_era5,n_anios_referencia_fuentes,lluvia_anual_mediana_sectores_mm,lluvia_anual_min_sectores_mm,lluvia_anual_max_sectores_mm,lluvia_anual_cv_entre_sectores,temperatura_era5land_media_testigos_c,humedad_era5_media_testigos_pct,radiacion_era5_media_testigos_mj_m2_dia_equiv,interpretacion
+llanura_costa,Planicie litoral,0,100,4,4,1,30,50.19,46.67,76.76,0.2163,22.23,73.99,635.39,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+valle_bajo,Valle bajo,100,300,6,6,5,30,154.84,59.94,228.28,0.369,22.04,75.4,618.1,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+piedemonte,Piedemonte,300,800,14,11,11,30,193.36,106.29,379.49,0.425,20.6,76.82,614.24,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+montana_baja,Ladera baja,800,1600,6,6,6,30,223.9,142.35,362.61,0.3531,17.92,77.86,608.9,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+montana_media,Ladera media,1600,2500,8,8,8,30,520.29,425.3,662.75,0.1218,15.93,78.0,598.07,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+montana_alta,Montaña alta,2500,,3,3,3,30,791.62,617.73,906.39,0.1537,11.53,75.9,593.0,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
+cota_negativa_revisar,Cota negativa DSM: revisar,,0,1,1,0,30,51.58,51.58,51.58,,,,,clase_de_altitud_exploratoria_no_ecorregion_SENAMHI
