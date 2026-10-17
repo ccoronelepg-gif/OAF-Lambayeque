@@ -1,4 +1,4 @@
-# Ejecución solicitada: completar Motupe y Olmos, lote 3 de 3 (hasta 2 bloques)
+# Estudio regional completo 1996–2025. No volver a descargar fuentes válidas.
 name: OAF 8M - Sensibilidad espacial de 36 puntos
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
       - 'index.html'
       - '.github/workflows/oaf_sensibilidad_vecindad_8m.yml'
   schedule:
-    - cron: '27 14 * * *'
+    - cron: '31 18 25 * *'
 permissions:
   contents: write
 concurrency:
