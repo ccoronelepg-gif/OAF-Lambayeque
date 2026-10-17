@@ -6,6 +6,7 @@ const allowed=["Chiclayo","Jayanca","Motupe","Olmos"];
 const known=["inicio","clima","nino","cultivos","verificaciones"];
 const controls=[["oaf-ux-view-quick","rapida"],["oaf-ux-view-technical","tecnica"]];
 let mode="rapida";
+let syncing=false;
 function applyView(next){
  if(next!=="rapida"&&next!=="tecnica")return;
  mode=next;
@@ -26,7 +27,8 @@ function setMobile(open){
  nav.classList.toggle("oaf-menu-open",Boolean(open));
 }
 function setPlace(value){
- if(!allowed.includes(value))return;
+ if(syncing||!allowed.includes(value))return;
+ syncing=true;
  const active=byId("oaf-current-city");
  if(active)active.textContent=value;
  for(const id of ["oaf-home-location","localidad","oaf-dash-place","pred-place"]){
@@ -38,18 +40,30 @@ function setPlace(value){
   // unnecessary network requests for all four independent forecasts.
   if(id==="oaf-home-location"||(!sel.closest("[data-page]")?.hidden&&id!=="pred-place")){
    sel.dispatchEvent(new Event("change",{bubbles:true}));
+   sel.dataset.oafSyncedCity=value;
   }
  }
  document.querySelectorAll("[data-oaf-set-city]").forEach(button=>{
   button.setAttribute("aria-pressed",String(button.dataset.oafSetCity===value));
  });
  document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:value}}));
+ syncing=false;
 }
 function hashAccess(){
  const raw=decodeURIComponent(location.hash.slice(1));
  if(raw==="verificaciones"||raw==="inicio"||raw==="clima"||raw==="cultivos"||raw==="nino")return;
  const el=byId(raw);
  if(el?.closest('[data-page="verificaciones"]'))applyView("tecnica");
+ const page=known.includes(raw)?raw:el?.closest("[data-page]")?.dataset.page;
+ if(page==="clima"){
+  for(const id of ["localidad","oaf-dash-place"]){
+   const citySel=byId(id);
+   if(citySel&&citySel.dataset.oafSyncedCity!==citySel.value){
+    citySel.dataset.oafSyncedCity=citySel.value;
+    citySel.dispatchEvent(new Event("change",{bubbles:true}));
+   }
+  }
+ }
 }
 function init(){
  if(!byId("oaf-ux-view-quick"))return;
@@ -68,6 +82,10 @@ function init(){
  const sel=byId("oaf-home-location");
  if(sel){
   sel.addEventListener("change",()=>setPlace(sel.value));
+ for(const id of ["localidad","oaf-dash-place","pred-place"]){
+  const citySel=byId(id);
+  citySel?.addEventListener("change",()=>{if(citySel.value!==sel.value)setPlace(citySel.value);});
+ }
   setPlace(sel.value);
  }
  window.addEventListener("hashchange",hashAccess);
