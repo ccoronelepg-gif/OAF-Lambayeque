@@ -1,0 +1,73 @@
+name: OAF 9X - Generalizacion espacial RF GCN
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/generalizacion_espacial_9x.py'
+      - 'tests/test_generalizacion_9x.py'
+      - '.github/workflows/oaf_generalizacion_9x.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-generalizacion-9x
+  cancel-in-progress: false
+jobs:
+  evaluar-transferencia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 42
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias CPU reproducibles
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy==1.26.4 pandas==2.2.3 scikit-learn==1.6.1 shapely==2.1.2
+          pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+      - name: Entrenar cinco pliegues de sectores geograficamente reservados
+        run: |
+          python modelos/generalizacion_espacial_9x.py
+          python modelos/generalizacion_espacial_9x.py --check
+      - name: Protección de periodos de prueba, separación espacial y prohibición de alertas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("datos/generalizacion_9x")
+          s=json.loads((p/"evaluacion_bloques_espaciales_9x.json").read_text("utf8"))
+          f=json.loads((p/"bloques_geograficos_9x.json").read_text("utf8"))
+          assert s["n_bloques"]==5 and s["n_sectores"]==39
+          assert s["n_predicciones_sector_mes_por_modelo"]==39*60
+          assert s["n_predicciones_totales"]==39*60*5
+          assert len(f["folds"])==5 and f["n_pixeles_compartidos_entre_bloques"]==0
+          assert f["n_datos_de_lluvia_de_sectores_holdout_usados_para_fit"]==0
+          assert not s["validacion_SENAMHI_externa"]
+          assert not s["alertas_fitosanitarias_activadas"]
+          assert s["n_modelos_operativos_autorizados"]==0
+          for group in f["folds"]:
+            assert not (set(group["sectores_holdout"])&set(group["sectores_train"]))
+            assert group["holdout_excluded_from_train_and_validation_targets"]
+          print("9X MAE por modelo y bloques:")
+          for k,v in s["metricas_globales"].items():
+            print(k, v["mae_mm"])
+          PY
+      - name: Pruebas científicas y rutas UX
+        run: |
+          python -m unittest discover -s tests -p 'test_generalizacion_9x.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_generalizacion_9x.js
+      - name: Confirmar resultados auditables en el repositorio
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --mixed origin/main
+          git add datos/generalizacion_9x/
+          if git diff --cached --quiet; then
+            echo '9X reproducido sin cambios'
+          else
+            git commit -m 'data(9X): resultados RF GCN en cinco bloques espaciales sin entrenamiento local'
+            git push origin HEAD:main
+          fi
