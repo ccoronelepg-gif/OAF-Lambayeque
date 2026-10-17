@@ -1,0 +1,14 @@
+/* 9O — climatología sectorial trazable y comparaciones sin certificación. */
+#oaf-9o-visor{border:1px solid #c9dfdc;background:#fff}
+#oaf-9o-visor summary{cursor:pointer}
+.oaf-9o-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.oaf-9o-kpis article{padding:13px;border:1px solid #dbe8e5;background:#f4f8f6;border-radius:12px}
+.oaf-9o-kpis b{display:block;font-size:22px;color:#16404a}
+.oaf-9o-kpis small{display:block;font-size:12px;color:#5b7680}
+.oaf-9o-select{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0;font-weight:650}
+.oaf-9o-select select{min-width:230px;max-width:100%}
+#oaf-9o-plot{border-radius:12px;border:1px solid #d8e7e1;background:#f7faf8;min-height:160px;padding:10px}
+#oaf-9o-plot svg{max-height:330px;width:100%;display:block}
+#oaf-9o-description{padding:12px 14px;border:1px solid #d6e6e0;border-radius:10px;background:#f6faf7}
+#oaf-9o-pairs td{font-size:12px}
+@media(max-width:700px){.oaf-9o-kpis{grid-template-columns:1fr}.oaf-9o-select{display:block}.oaf-9o-select select{width:100%;margin-top:6px}}
