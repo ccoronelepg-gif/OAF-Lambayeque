@@ -1,0 +1,879 @@
+{
+  "fase": "9R",
+  "fecha_corte": "2026-10-17",
+  "objetivo": "Lluvia mensual del mes siguiente por sector, CHIRPS v3 final, hindcast pseudo-prospectivo",
+  "variables_disponibles_al_mes_previo": [
+    "CHIRPS lluvia meses -1,-2,-3,-6,-12",
+    "promedio de meses -1 a -3",
+    "seno/coseno del mes objetivo",
+    "altitud del nodo, latitud y longitud estáticas 9K"
+  ],
+  "variables_EXCLUIDAS_por_fuga_temporal": [
+    "normales ERA5 1996-2025",
+    "familias 9Q basadas en precipitación 2021-2025",
+    "lluvia CHIRPS del mes objetivo",
+    "series de sensores no archivadas ex-ante",
+    "temperatura,HR,radiación contemporáneas del mes objetivo"
+  ],
+  "conjuntos": {
+    "train": "1997-01 a 2015-12",
+    "validacion": "2016-01 a 2020-12",
+    "prueba_fuera_muestra": "2021-01 a 2025-12",
+    "n_meses_entrenamiento": 228,
+    "n_meses_validacion": 60,
+    "n_meses_prueba": 60,
+    "horizonte_meses": 1,
+    "mes_objetivo_desconocido_para_predictor": true,
+    "serie_final_CHIRPS_revisada_a_posteriori": true
+  },
+  "origen_CHIRPS": {
+    "meses_verificados": 360,
+    "periodo": "1996-2025",
+    "fase_origen": {
+      "9O": 108,
+      "9P": 12,
+      "9Q": 240
+    },
+    "fuente_manifest_sha256": "a6ffe080bcc7d27d250123ab64ca121614c8abbc800b92b3aa08c70ea0791eb7",
+    "sin_pluviometros_independientes": true
+  },
+  "grafo": {
+    "n_nodos_con_lluvia_valida": 39,
+    "sectores_descartados": [
+      "S028",
+      "S032",
+      "S034"
+    ],
+    "n_aristas_no_dirigidas": 46,
+    "aristas_estaticas": [
+      [
+        "S002",
+        "S003"
+      ],
+      [
+        "S002",
+        "S005"
+      ],
+      [
+        "S003",
+        "S004"
+      ],
+      [
+        "S003",
+        "S005"
+      ],
+      [
+        "S004",
+        "S005"
+      ],
+      [
+        "S006",
+        "S007"
+      ],
+      [
+        "S006",
+        "S008"
+      ],
+      [
+        "S007",
+        "S008"
+      ],
+      [
+        "S009",
+        "S010"
+      ],
+      [
+        "S010",
+        "S012"
+      ],
+      [
+        "S015",
+        "S016"
+      ],
+      [
+        "S015",
+        "S017"
+      ],
+      [
+        "S015",
+        "S018"
+      ],
+      [
+        "S015",
+        "S019"
+      ],
+      [
+        "S015",
+        "S020"
+      ],
+      [
+        "S016",
+        "S017"
+      ],
+      [
+        "S016",
+        "S018"
+      ],
+      [
+        "S016",
+        "S020"
+      ],
+      [
+        "S016",
+        "S021"
+      ],
+      [
+        "S017",
+        "S018"
+      ],
+      [
+        "S018",
+        "S019"
+      ],
+      [
+        "S018",
+        "S020"
+      ],
+      [
+        "S019",
+        "S020"
+      ],
+      [
+        "S023",
+        "S029"
+      ],
+      [
+        "S023",
+        "S030"
+      ],
+      [
+        "S023",
+        "S031"
+      ],
+      [
+        "S023",
+        "S033"
+      ],
+      [
+        "S023",
+        "S035"
+      ],
+      [
+        "S024",
+        "S027"
+      ],
+      [
+        "S025",
+        "S026"
+      ],
+      [
+        "S025",
+        "S027"
+      ],
+      [
+        "S025",
+        "S029"
+      ],
+      [
+        "S026",
+        "S029"
+      ],
+      [
+        "S027",
+        "S029"
+      ],
+      [
+        "S030",
+        "S031"
+      ],
+      [
+        "S030",
+        "S035"
+      ],
+      [
+        "S031",
+        "S033"
+      ],
+      [
+        "S031",
+        "S035"
+      ],
+      [
+        "S033",
+        "S035"
+      ],
+      [
+        "S035",
+        "S036"
+      ],
+      [
+        "S037",
+        "S038"
+      ],
+      [
+        "S037",
+        "S040"
+      ],
+      [
+        "S039",
+        "S040"
+      ],
+      [
+        "S039",
+        "S042"
+      ],
+      [
+        "S040",
+        "S041"
+      ],
+      [
+        "S040",
+        "S042"
+      ]
+    ],
+    "adyacencia": "misma banda altitudinal + código hidrográfico ANA/IDEP + distancia <=0.14°",
+    "construccion_sin_series_CHIRPS_de_entrenamiento_o_prueba": true,
+    "sin_cuartos_pisos_ecologicos_oficiales": true
+  },
+  "modelo_RF": {
+    "candidate_min_samples_leaf": [
+      3,
+      8
+    ],
+    "chosen_min_samples_leaf": 3,
+    "val_mae_mm": 15.9946,
+    "validation_candidates_mae_mm": {
+      "3": 15.9946,
+      "8": 16.292
+    }
+  },
+  "modelo_GCN": {
+    "best_epoch": 118,
+    "stop_epoch": 143,
+    "val_mae_mm": 16.1478,
+    "hidden_features": 40,
+    "graph_layers": 2,
+    "early_stopping_patience": 25,
+    "library": "PyTorch GCN normalización D^-1/2 (A+I) D^-1/2, sin torch_geometric",
+    "loss": "Huber log1p precipitación"
+  },
+  "metricas_prueba": {
+    "Climatología": {
+      "n": 2340,
+      "mae_mm": 14.2957,
+      "rmse_mm": 30.6393,
+      "bias_mm": -0.0589,
+      "skill_mae_vs_climatologia_pct": 0.0
+    },
+    "Random Forest": {
+      "n": 2340,
+      "mae_mm": 15.5397,
+      "rmse_mm": 34.3094,
+      "bias_mm": -8.4337,
+      "skill_mae_vs_climatologia_pct": -8.702
+    },
+    "GCN": {
+      "n": 2340,
+      "mae_mm": 18.4682,
+      "rmse_mm": 39.6384,
+      "bias_mm": -6.2141,
+      "skill_mae_vs_climatologia_pct": -29.187
+    }
+  },
+  "mejor_modelo_ml_por_mae": "Random Forest",
+  "mejor_modelo_incluyendo_baseline_por_mae": "Climatología",
+  "comparacion_por_piso_altitudinal": {
+    "cota_negativa_revisar": {
+      "nodes": [
+        "S001"
+      ],
+      "n_sector": 1,
+      "metrics": {
+        "Climatología": {
+          "n": 60,
+          "mae_mm": 4.8734,
+          "rmse_mm": 13.0068,
+          "bias_mm": -0.3442
+        },
+        "Random Forest": {
+          "n": 60,
+          "mae_mm": 3.9435,
+          "rmse_mm": 13.3636,
+          "bias_mm": -2.7492
+        },
+        "GCN": {
+          "n": 60,
+          "mae_mm": 4.8139,
+          "rmse_mm": 14.6013,
+          "bias_mm": -2.1556
+        }
+      }
+    },
+    "llanura_costa": {
+      "nodes": [
+        "S002",
+        "S003",
+        "S004",
+        "S005"
+      ],
+      "n_sector": 4,
+      "metrics": {
+        "Climatología": {
+          "n": 240,
+          "mae_mm": 5.1239,
+          "rmse_mm": 13.0076,
+          "bias_mm": -0.0018
+        },
+        "Random Forest": {
+          "n": 240,
+          "mae_mm": 3.9605,
+          "rmse_mm": 13.1546,
+          "bias_mm": -2.6535
+        },
+        "GCN": {
+          "n": 240,
+          "mae_mm": 4.8934,
+          "rmse_mm": 14.1998,
+          "bias_mm": -2.2429
+        }
+      }
+    },
+    "montana_alta": {
+      "nodes": [
+        "S006",
+        "S007",
+        "S008"
+      ],
+      "n_sector": 3,
+      "metrics": {
+        "Climatología": {
+          "n": 180,
+          "mae_mm": 29.0929,
+          "rmse_mm": 48.5971,
+          "bias_mm": -0.5906
+        },
+        "Random Forest": {
+          "n": 180,
+          "mae_mm": 35.4076,
+          "rmse_mm": 59.0975,
+          "bias_mm": -17.3349
+        },
+        "GCN": {
+          "n": 180,
+          "mae_mm": 36.1313,
+          "rmse_mm": 57.0845,
+          "bias_mm": -12.3576
+        }
+      }
+    },
+    "montana_baja": {
+      "nodes": [
+        "S009",
+        "S010",
+        "S011",
+        "S012",
+        "S013",
+        "S014"
+      ],
+      "n_sector": 6,
+      "metrics": {
+        "Climatología": {
+          "n": 360,
+          "mae_mm": 12.1502,
+          "rmse_mm": 24.0989,
+          "bias_mm": -0.1978
+        },
+        "Random Forest": {
+          "n": 360,
+          "mae_mm": 13.7201,
+          "rmse_mm": 26.9276,
+          "bias_mm": -7.2893
+        },
+        "GCN": {
+          "n": 360,
+          "mae_mm": 15.6958,
+          "rmse_mm": 30.9503,
+          "bias_mm": -6.0867
+        }
+      }
+    },
+    "montana_media": {
+      "nodes": [
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S019",
+        "S020",
+        "S021",
+        "S022"
+      ],
+      "n_sector": 8,
+      "metrics": {
+        "Climatología": {
+          "n": 480,
+          "mae_mm": 21.8805,
+          "rmse_mm": 40.2168,
+          "bias_mm": -0.9692
+        },
+        "Random Forest": {
+          "n": 480,
+          "mae_mm": 24.3652,
+          "rmse_mm": 44.5132,
+          "bias_mm": -13.0858
+        },
+        "GCN": {
+          "n": 480,
+          "mae_mm": 30.9741,
+          "rmse_mm": 56.9481,
+          "bias_mm": -10.6964
+        }
+      }
+    },
+    "piedemonte": {
+      "nodes": [
+        "S023",
+        "S024",
+        "S025",
+        "S026",
+        "S027",
+        "S029",
+        "S030",
+        "S031",
+        "S033",
+        "S035",
+        "S036"
+      ],
+      "n_sector": 11,
+      "metrics": {
+        "Climatología": {
+          "n": 660,
+          "mae_mm": 12.5809,
+          "rmse_mm": 29.6051,
+          "bias_mm": 0.408
+        },
+        "Random Forest": {
+          "n": 660,
+          "mae_mm": 13.0466,
+          "rmse_mm": 31.8623,
+          "bias_mm": -7.3134
+        },
+        "GCN": {
+          "n": 660,
+          "mae_mm": 15.5825,
+          "rmse_mm": 36.2173,
+          "bias_mm": -4.6439
+        }
+      }
+    },
+    "valle_bajo": {
+      "nodes": [
+        "S037",
+        "S038",
+        "S039",
+        "S040",
+        "S041",
+        "S042"
+      ],
+      "n_sector": 6,
+      "metrics": {
+        "Climatología": {
+          "n": 360,
+          "mae_mm": 9.758,
+          "rmse_mm": 20.8811,
+          "bias_mm": 0.7127
+        },
+        "Random Forest": {
+          "n": 360,
+          "mae_mm": 9.881,
+          "rmse_mm": 23.0601,
+          "bias_mm": -5.7796
+        },
+        "GCN": {
+          "n": 360,
+          "mae_mm": 12.3506,
+          "rmse_mm": 26.9576,
+          "bias_mm": -3.4958
+        }
+      }
+    }
+  },
+  "comparacion_por_grupo_exploratorio_9q": {
+    "Q01": {
+      "sectors": [
+        "S006",
+        "S007"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 31.516,
+          "rmse_mm": 51.8091,
+          "bias_mm": -0.651
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 39.2928,
+          "rmse_mm": 64.5469,
+          "bias_mm": -20.1519
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 39.907,
+          "rmse_mm": 62.236,
+          "bias_mm": -18.9981
+        }
+      }
+    },
+    "Q02": {
+      "sectors": [
+        "S015",
+        "S016"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 22.2619,
+          "rmse_mm": 39.892,
+          "bias_mm": -0.8119
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 25.1338,
+          "rmse_mm": 43.3182,
+          "bias_mm": -12.8955
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 32.4669,
+          "rmse_mm": 56.0617,
+          "bias_mm": 4.8255
+        }
+      }
+    },
+    "Q03": {
+      "sectors": [
+        "S017",
+        "S018"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 20.214,
+          "rmse_mm": 39.1684,
+          "bias_mm": 1.1249
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 21.5231,
+          "rmse_mm": 40.1624,
+          "bias_mm": -9.7391
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 27.4726,
+          "rmse_mm": 48.5003,
+          "bias_mm": -6.6179
+        }
+      }
+    },
+    "Q04": {
+      "sectors": [
+        "S023",
+        "S029"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 13.5378,
+          "rmse_mm": 27.1225,
+          "bias_mm": 1.754
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 14.2139,
+          "rmse_mm": 30.8727,
+          "bias_mm": -8.4952
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 18.8704,
+          "rmse_mm": 37.8723,
+          "bias_mm": -5.4787
+        }
+      }
+    },
+    "Q05": {
+      "sectors": [
+        "S024",
+        "S027"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 22.5293,
+          "rmse_mm": 52.3997,
+          "bias_mm": 1.0924
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 22.6121,
+          "rmse_mm": 55.2192,
+          "bias_mm": -13.1271
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 24.9385,
+          "rmse_mm": 59.8633,
+          "bias_mm": -7.8382
+        }
+      }
+    },
+    "Q06": {
+      "sectors": [
+        "S030",
+        "S031"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 8.248,
+          "rmse_mm": 17.7368,
+          "bias_mm": 0.2261
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 8.0233,
+          "rmse_mm": 18.0546,
+          "bias_mm": -3.8849
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 9.7458,
+          "rmse_mm": 21.9973,
+          "bias_mm": -1.6965
+        }
+      }
+    },
+    "Q07": {
+      "sectors": [
+        "S040",
+        "S042"
+      ],
+      "n_evaluable": 2,
+      "metrics": {
+        "Climatología": {
+          "n": 120,
+          "mae_mm": 8.4483,
+          "rmse_mm": 16.4545,
+          "bias_mm": -0.1621
+        },
+        "Random Forest": {
+          "n": 120,
+          "mae_mm": 9.7553,
+          "rmse_mm": 19.0053,
+          "bias_mm": -5.6321
+        },
+        "GCN": {
+          "n": 120,
+          "mae_mm": 12.9482,
+          "rmse_mm": 25.3722,
+          "bias_mm": -3.7747
+        }
+      }
+    }
+  },
+  "metricas_por_anio_test": [
+    {
+      "year": 2021,
+      "metrics": {
+        "Climatología": {
+          "n": 468,
+          "mae_mm": 11.5963,
+          "rmse_mm": 21.7389,
+          "bias_mm": 3.0281
+        },
+        "Random Forest": {
+          "n": 468,
+          "mae_mm": 13.1004,
+          "rmse_mm": 30.4306,
+          "bias_mm": -6.3153
+        },
+        "GCN": {
+          "n": 468,
+          "mae_mm": 20.2167,
+          "rmse_mm": 43.2652,
+          "bias_mm": 1.5047
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "metrics": {
+        "Climatología": {
+          "n": 468,
+          "mae_mm": 12.1021,
+          "rmse_mm": 19.8186,
+          "bias_mm": 1.9851
+        },
+        "Random Forest": {
+          "n": 468,
+          "mae_mm": 12.3926,
+          "rmse_mm": 21.3893,
+          "bias_mm": -7.7763
+        },
+        "GCN": {
+          "n": 468,
+          "mae_mm": 14.8172,
+          "rmse_mm": 26.4881,
+          "bias_mm": -8.2976
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "metrics": {
+        "Climatología": {
+          "n": 468,
+          "mae_mm": 24.8143,
+          "rmse_mm": 49.8706,
+          "bias_mm": -17.945
+        },
+        "Random Forest": {
+          "n": 468,
+          "mae_mm": 30.9409,
+          "rmse_mm": 60.4235,
+          "bias_mm": -23.9761
+        },
+        "GCN": {
+          "n": 468,
+          "mae_mm": 32.3255,
+          "rmse_mm": 63.3157,
+          "bias_mm": -22.6214
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "metrics": {
+        "Climatología": {
+          "n": 468,
+          "mae_mm": 15.7262,
+          "rmse_mm": 34.6439,
+          "bias_mm": 12.562
+        },
+        "Random Forest": {
+          "n": 468,
+          "mae_mm": 10.0285,
+          "rmse_mm": 20.7267,
+          "bias_mm": 2.46
+        },
+        "GCN": {
+          "n": 468,
+          "mae_mm": 12.1702,
+          "rmse_mm": 25.9219,
+          "bias_mm": 4.2698
+        }
+      }
+    },
+    {
+      "year": 2025,
+      "metrics": {
+        "Climatología": {
+          "n": 468,
+          "mae_mm": 7.2394,
+          "rmse_mm": 11.8825,
+          "bias_mm": 0.0751
+        },
+        "Random Forest": {
+          "n": 468,
+          "mae_mm": 11.2362,
+          "rmse_mm": 20.5317,
+          "bias_mm": -6.5609
+        },
+        "GCN": {
+          "n": 468,
+          "mae_mm": 12.8114,
+          "rmse_mm": 24.529,
+          "bias_mm": -5.9259
+        }
+      }
+    }
+  ],
+  "sensibilidad_cinco_anios_test_leave_one_year_out": [
+    {
+      "excluded_year": 2021,
+      "rf_minus_gcn_mae_mm": -1.8815
+    },
+    {
+      "excluded_year": 2022,
+      "rf_minus_gcn_mae_mm": -3.0545
+    },
+    {
+      "excluded_year": 2023,
+      "rf_minus_gcn_mae_mm": -3.3144
+    },
+    {
+      "excluded_year": 2024,
+      "rf_minus_gcn_mae_mm": -3.1252
+    },
+    {
+      "excluded_year": 2025,
+      "rf_minus_gcn_mae_mm": -3.2668
+    }
+  ],
+  "anomalia_lluvia_muy_alta_umbral_percentil80_train": {
+    "Climatología": {
+      "train_monthly_p80_threshold": true,
+      "n_true_anomaly": 688,
+      "tp": 167,
+      "fp": 318,
+      "fn": 521,
+      "precision": 0.3443,
+      "recall": 0.2427,
+      "f1": 0.2847
+    },
+    "Random Forest": {
+      "train_monthly_p80_threshold": true,
+      "n_true_anomaly": 688,
+      "tp": 157,
+      "fp": 205,
+      "fn": 531,
+      "precision": 0.4337,
+      "recall": 0.2282,
+      "f1": 0.299
+    },
+    "GCN": {
+      "train_monthly_p80_threshold": true,
+      "n_true_anomaly": 688,
+      "tp": 109,
+      "fp": 275,
+      "fn": 579,
+      "precision": 0.2839,
+      "recall": 0.1584,
+      "f1": 0.2034
+    }
+  },
+  "n_predicciones_sector_mes_prueba": 2340,
+  "n_zonas_homogeneas_certificadas": 0,
+  "n_modelos_operativamente_validados": 0,
+  "alertas_fitosanitarias_emitidas": false,
+  "pronostico_2026_comprobado": false,
+  "limitaciones": [
+    "Se predice lluvia CHIRPS FINAL reanalizada, no cantidades medidas en pluviómetros independientes.",
+    "La serie CHIRPS FINAL para t-1 fue revisada a posteriori y pudo no estar disponible exactamente en la fecha original; simulación histórica no vintage emitido.",
+    "La propia geometría sectorial exploratoria y el grafo se construyeron después del periodo de prueba: el ensayo no es backtest operacional puramente ex-ante.",
+    "Un único bloque de prueba 2021-2025 contiene pocos años de El Niño intenso y extremos; no extrapolar habilidad a nuevos eventos.",
+    "Sectores próximos pueden compartir orígenes satelitales y de estaciones: 39 nodos no son 39 réplicas independientes.",
+    "Se pronostica un solo mes por paso con lluvia pasada efectivamente observada; no se valida pronóstico a tres/seis meses.",
+    "No incorporar los sectores sin píxel CHIRPS ni reclamar capacidad en todos los pisos o agrupaciones.",
+    "Una victoria en MAE no garantiza mayor acierto de lluvia extrema; contrastar RMSE, recall y baseline.",
+    "No hay umbrales de fitopatología/arándano/vid ni validación SENAMHI para este modelo."
+  ]
+}
