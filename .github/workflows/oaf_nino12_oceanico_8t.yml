@@ -1,0 +1,65 @@
+name: OAF 8T - Evaluar Niño 1+2 NOAA como predictor retrospectivo
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/contraste_oceanico_8t.py'
+      - 'tests/test_contraste_oceanico_8t.py'
+      - '.github/workflows/oaf_nino12_oceanico_8t.yml'
+      - 'modelos/visor_oceanico_8t.js'
+      - 'index.html'
+  schedule:
+    - cron: '17 18 7 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8t-noaa-index
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar evidencias climáticas del repositorio
+        run: git pull --ff-only origin main
+      - name: Comprobar índices, fuga temporal y comparaciones
+        run: python -m unittest discover -s tests -p 'test_contraste_oceanico_8t.py' -v
+      - name: Fijar versión de índices NOAA con SHA y ejecutar backtest
+        run: |
+          python modelos/contraste_oceanico_8t.py --fetch
+          python modelos/contraste_oceanico_8t.py --check
+      - name: Auditar integración pública cuando esté disponible
+        run: |
+          if test -f modelos/visor_oceanico_8t.js; then
+            node --check modelos/visor_oceanico_8t.js
+            python - <<'PY'
+          from pathlib import Path
+          page=Path('index.html').read_text(encoding='utf-8')
+          for key in ('oaf-ocean-8t','oaf-8t-status','oaf-8t-cells',
+                      'oaf-8t-base','oaf-8t-ocean','oaf-8t-windows',
+                      'oaf-8t-spatial','oaf-8t-refresh'):
+              assert page.count('id="'+key+'"')==1,key
+          assert 'src="modelos/visor_oceanico_8t.js"' in page
+          assert "FASE_8T_ENSO_OCEANICO.md" in page
+          print("Panel 8T presenta fuente NOAA solo si está auditada")
+          PY
+          fi
+      - name: Guardar respuesta NOAA original y pruebas reprodubibles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/oceano_8t/ datos/validacion_oceanica_8t/
+          if git diff --cached --quiet; then
+            echo "Archivos 8T sin cambios."
+          else
+            git commit -m "data(oaf): NOAA Niño1+2 y contraste histórico 8T congelados por SHA"
+            git pull --rebase origin main
+            git push
+          fi
