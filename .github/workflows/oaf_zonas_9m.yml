@@ -6,6 +6,7 @@ on:
     paths:
       - 'modelos/sensibilidad_relieve_9m.py'
       - 'modelos/zonas_hidrograficas_9m.py'
+      - 'modelos/agrupar_hidrofisicos_9m.py'
       - 'tests/test_zonas_9m.py'
       - '.github/workflows/oaf_zonas_9m.yml'
 permissions:
@@ -46,9 +47,14 @@ jobs:
               "intersecciones",len(g["features"]),
               "incidencia:",s.get("problema_acceso","ninguna"))
           PY
+      - name: Construir agrupaciones físicas preliminares por unidad hidrográfica
+        run: |
+          python modelos/agrupar_hidrofisicos_9m.py
+          python modelos/agrupar_hidrofisicos_9m.py --check
       - name: Pruebas de fuentes SIG y UI (si ya fue integrado el panel)
         run: |
           python -m unittest discover -s tests -p 'test_zonas_9m.py' -v
+          python -m unittest discover -s tests -p 'test_agrupacion_9m.py' -v
           python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
           node --check modelos/visor_zonas_9m.js
       - name: Publicar evidencia real sin alterar originales 9K y 9L
