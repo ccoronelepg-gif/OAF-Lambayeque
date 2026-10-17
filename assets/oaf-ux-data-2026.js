@@ -120,6 +120,23 @@ async function enfenSummary(){
   set("oaf-enfen-date","Sin acceso a la verificación institucional. Utilice la página oficial ENFEN.");
  }
 }
+async function territorialSensitivity(){
+ const host=g("oaf-9g-card-list");if(!host)return;
+ try{
+  const j=await get("datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json");
+  if(j.fase!=="9G"||j.estaciones?.length!==3||j.comparacion_era5_chirps_ejecutada)throw Error("inventario geográfico no verificado");
+  host.replaceChildren();
+  for(const st of j.estaciones){
+   const card=document.createElement("article");card.className="oaf-quick-card";
+   const title=document.createElement("h3");title.textContent=st.nombre;card.append(title);
+   const pos=document.createElement("p");pos.textContent="Diferencia entre referencias de ubicación: "+fmt(st.desplazamiento_entre_referencias_km,2)+" km.";card.append(pos);
+   const elev=document.createElement("p");elev.textContent="Altitudes publicadas: "+st.altitudes_publicadas_m.join(", ")+" m; rango entre fuentes: "+fmt(st.rango_publicado_altitud_m,0)+" m.";card.append(elev);
+   const band=document.createElement("p");band.textContent="Franjas posibles según publicaciones: "+st.franjas_altitudinales_posibles.join(" y ")+". No son pisos altitudinales certificados del instrumento.";card.append(band);
+   host.append(card);
+  }
+  set("oaf-9g-state","Sensibilidad documental calculada desde las fichas 9F. No hay extracción real de celdas ERA5-Land ni CHIRPS.");
+ }catch(e){set("oaf-9g-state","No se pudo corroborar la matriz geográfica; los resultados no se muestran como verificados.");}
+}
 function attach(){
  const sel=g("oaf-home-location");if(!sel)return;
  // The shared locality coordinator emits a single event; no duplicate API request.
@@ -128,6 +145,7 @@ function attach(){
  forecast(sel.value);
  updateMap(sel.value,null);
  enfenSummary();
+ territorialSensitivity();
  // The observed/reference station objects are already available in the climate tab.
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",attach);
