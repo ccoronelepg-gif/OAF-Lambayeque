@@ -45,7 +45,14 @@ El módulo 8U previamente incorporado al observatorio también documenta cuatro 
 
 **A. Instantánea marina física modelada**: la fase 8U archiva además **72 horas** de corriente y temperatura marina modeladas por Open-Meteo Marine/Météo-France para **tres puntos de mar abierto**, con componentes u/v obtenidas de la dirección de flujo **hacia** la que se mueve el agua, no dirección meteorológica de procedencia. Ver [estado y fecha de la instantánea](datos/marino_8u/estado_marino_8u.json). Es una salida del modelo oceanográfico de corto horizonte, **no** una normal 1996–2025, ni una boya validada, ni una predicción ENSO.
 
-**B. Historia parcial geostrófica NOAA/AOML**: se implementó una segunda vía independiente usando [NOAA CoastWatch, `miamicurrents`](https://coastwatch.pfeg.noaa.gov/erddap/griddap/miamicurrents.html), cuyas variables originales `u_current` y `v_current` miden componente este/norte de **corriente geostrófica** en m/s. El servicio declara cobertura aproximada desde julio de **2016**; por tanto, no hay base para afirmar una historia 1996–2025. Se recuperó y guardó al menos el subconjunto **2017–2020** de un punto de ensayo (−6,7; −81,1), con **1.461 días válidos de 1.461**, SHA original `3038574fb51b301c8888acf3d723a9cd18a5d665fce6987827cd20aeccdc8994`. Una solicitud posterior devolvió HTTP 403, por lo que siguen pendientes otros bloques. Los meses de cualquier bloque realmente recuperado pueden publicarse como **datos parciales** sin completar los nueve años de estudio ni 30 años históricos. **No se imputan** tramos ausentes y no se atribuye el resultado a toda la corriente de Humboldt.
+**B. Historia parcial geostrófica NOAA/AOML**: se implementó una segunda vía independiente usando [NOAA CoastWatch, `miamicurrents`](https://coastwatch.pfeg.noaa.gov/erddap/griddap/miamicurrents.html), cuyas variables originales `u_current` y `v_current` miden componente este/norte de **corriente geostrófica** en m/s. El servicio declara cobertura aproximada desde julio de **2016**; por tanto, no hay base para afirmar una historia 1996–2025. Se recuperaron y verificaron los **cuatro subconjuntos previstos** de **2017–2025** para **dos puntos marítimos**, con **3.287 días por punto, 6.574 registros diarios válidos en total y 216 promedios mensuales** (108 por sitio). Los archivos originales de NOAA/AOML se conservaron con metadatos y huella SHA-256. La primera fuente 2017–2020 para el punto al oeste de Pimentel conserva SHA original `3038574fb51b301c8888acf3d723a9cd18a5d665fce6987827cd20aeccdc8994`. Durante las consultas hubo alguna respuesta HTTP 403, pero los reintentos posteriores permitieron completar el subconjunto **2017–2025**; **esto no completa 1996–2025**.
+
+| Punto de ensayo | Periodo íntegro | Componente geostrófica media u (hacia este) | Componente geostrófica media v (hacia norte) |
+|---|---|---:|---:|
+| Frente al sector de Pimentel (−6,7; −81,1) | 2017–2025 | **−0,0480 m/s** | **+0,0908 m/s** |
+| Norte de Lambayeque (−5,9; −81,5) | 2017–2025 | **+0,0668 m/s** | **+0,0120 m/s** |
+
+Los promedios son de las componentes de **la corriente geostrófica modelada**, no el transporte total paralelo a la costa, ni una estimación de corriente litoral en la playa. **No se imputó ningún día**.
 
 [Estado real de cobertura](datos/corrientes_8u/estado_corrientes_8u.json) · [CSV mensual de vectores, solamente meses reales](datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv) · [script de consulta/QA](modelos/corrientes_geostroficas_8u.py).
 
@@ -71,7 +78,7 @@ La inclusión de estas variables en la base **no equivale a haber demostrado que
 | SST regional Niño1+2/3.4 | NOAA CPC, 360 meses | Sí, índice amplio | No |
 | SST más cercana a Lambayeque | OISST por dos celdas oceánicas | Incompleta y con días ausentes | No |
 | Corriente modelada de corto horizonte | 72 horas, 3 puntos | No | No |
-| Corriente geostrófica NOAA/AOML | Subconjunto histórico 2017–2020 comprobado | No | No |
+| Corriente geostrófica NOAA/AOML | 2 puntos × 108 meses de 2017–2025, 6.574 días-punto | No; falta 1996–2016 | No |
 | OSCAR v2/Copernicus Marine | Productos identificados, archivos locales pendientes | Pendiente | No |
 
 **Habilidad prospectiva de predecir Niño Costero oficialmente: no demostrada. Polígonos agroclimáticos homogéneos certificados: 0. Riesgos fitosanitarios de arándano/vid validados: 0.**
