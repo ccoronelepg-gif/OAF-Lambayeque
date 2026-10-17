@@ -519,9 +519,11 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="split">
 <label>Ubicación del modelo<br><select id="oaf-8x-site"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select></label>
 <label>Partículas<br><select id="oaf-8x-pollutant"><option value="pm25_media_ug_m3">PM₂.₅</option><option value="pm10_media_ug_m3">PM₁₀</option></select></label>
+<label>Año de datos CAMS<br><select id="oaf-8x-year"><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option></select></label>
 </div>
 <h3 id="oaf-8x-unit">Concentración modelada de partículas en aire (µg/m³)</h3>
 <svg id="oaf-8x-air-graph" role="img" aria-label="Serie mensual de partículas modeladas" viewBox="0 0 750 240" width="100%" style="max-height:300px"></svg>
+<p class="small" id="oaf-8x-grid-status">Comprueba la cobertura y celdas CAMS al abrir el módulo.</p>
 <p class="small">La concentración depende de emisión, transporte atmosférico, mezcla, humedad y deposición; no puede inferirse la contaminación exacta de un campo agrícola a partir de un píxel global. El polvo levantado por viento es una hipótesis a estudiar, no una relación demostrada para cada parcela.</p>
 <h3>Auditoría de errores en los años 2017 y 2023</h3>
 <p class="small">Prueba independiente de la variable PM, sobre errores de modelos climáticos del OAF. El caso 1997–1998 no fue prueba fuera de muestra de 8W: sus datos se encuentran en entrenamiento.</p>
