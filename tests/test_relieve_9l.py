@@ -9,7 +9,9 @@ from shapely.geometry import shape
 class Relieve9L(unittest.TestCase):
  def test_geometria_y_altitud(self):
   self.assertTrue(m.F_SOURCE.exists(),"Copernicus COG original requerido")
-  ge,state=m.check()
+  m.check()
+  ge=json.loads(m.F_GEO.read_text('utf8'))
+  state=json.loads(m.F_STATE.read_text('utf8'))
   self.assertEqual(state["n_familias"],3)
   self.assertEqual(state["n_sectores_9k_auditados"],5)
   self.assertEqual(len(ge["features"]),5)
