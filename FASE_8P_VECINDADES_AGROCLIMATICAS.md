@@ -87,6 +87,23 @@ Este par es un **candidato prioritario para investigar continuidad climática de
 
 La ampliación hacia los **46 testigos nuevos restantes** seguirá mediante la automatización, de acuerdo con el límite de consultas del proveedor. La cifra dinámica de lotes cargados y pares está en [`estado_clima_8p.json`](datos/clima_contiguo_8p/estado_clima_8p.json). No atribuir como validada ninguna zona ni emitir pronósticos por grupo todavía.
 
+## 5B. Segundo corte: dos núcleos de vecindad que requieren investigación, sin polígonos
+
+Con los **dos primeros grupos de descarga 8P completos**, el análisis cuenta con **51 testigos** (19 de 8O + 32 de 8P), todos con **1996–2025 completo**. Dentro de ese conjunto, 61 pares están a 20 km o menos, y 13 cumplen el filtro exploratorio. La auditoría de centros de celda revela **10 de esos 13 pares con una misma celda ERA5 o ERA5-Land compartida**. **Tres pares utilizan centros distintos en ambos modelos** (sin que eso signifique independientes desde el punto de vista estadístico).
+
+Se formaron **dos núcleos de puntos unidos por pares climáticamente parecidos y próximos**, sin interpolación espacial ni polígonos:
+
+| Núcleo piloto | Testigos con climatología | Altitudes DEM | Enlaces con ambas celdas distintas | Interpretación correcta |
+|---|---|---:|---:|---|
+| **V1: transición de valle alto/piedemonte** | M0163, M0184, M0224 | 212–521 m | 2 | Conjunto local de tres puntos que justifica refinar el muestreo alrededor; no equivale a una zona agrícola continua |
+| **V2: alta montaña** | M0234, M0308 | 2.978–3.236 m | 1 | Par montañoso con afinidad climatológica, separado aproximadamente 17,7 km, pendiente de verificar el espacio intermedio |
+
+Las coordenadas de los nodos V1 son aproximadamente **−6,469 a −6,313° S y −79,562 a −79,531° O**; V2 se sitúa entre **−6,281 y −6,125° S, alrededor de −79,375° O**. No se atribuyen nombres de comunidades, parcelas ni estaciones oficiales sin cartografía y metadatos verificados.
+
+**Advertencia:** estos núcleos únicamente están compuestos por nodos enlazados mediante una prueba de proximidad y perfiles de reanálisis. No existe evaluación del clima entre las ubicaciones, máscaras oficiales de tierra/mar, suelo agrícola, límites de cuenca ni contrastes independientes de SENAMHI. **No constituyen zonas homogéneas demostradas ni habilitan pronósticos o alertas por zona.**
+
+El [estado climático 8P](datos/clima_contiguo_8p/estado_clima_8p.json) actualiza automáticamente el inventario, el número de pares y los núcleos cuando finalizan nuevos bloques, sin sustituir las fuentes anteriores.
+
 ## 6. Archivos y automatización
 
 - [Muestreo de nuevos testigos y grafo](modelos/muestreo_zonas_contiguas_8p.py).
