@@ -38,7 +38,6 @@ function mapPlot(data,chosen){
 }
 function detail(data,st){
  const box=byId("oaf-9f-detail");box.replaceChildren();
- h("h3",st.nombre).append; // intentionally no effect, title added below
  box.append(h("h3",st.nombre));
  box.append(h("p",st.sector_referencia+". Código de archivo "+st.codigo_archivo+"; código documental "+st.codigo_catalogo+"."));
  const ext=h("p",undefined,"oaf-9f-extreme");
