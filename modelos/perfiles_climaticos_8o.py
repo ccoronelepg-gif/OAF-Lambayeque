@@ -333,6 +333,9 @@ def build(root):
             "diametro_geografico_testigos_km":round(max(geographic),3),
             "rango_altitudinal_testigos_m":round(max(p["altitud_dem_m"] for p in positions)-
                                                min(p["altitud_dem_m"] for p in positions),1),
+            "testigos_cota_dem_menor_o_igual_cero":sum(p["altitud_dem_m"]<=0 for p in positions),
+            "evaluacion_mascara_tierra_costa_pendiente":True,
+            "viabilidad_de_zona_agricola_verificada":False,
             "poligono_homogeneo_demostrado":False})
     ranking.sort(key=lambda g:(g["distancia_climatica_interna_media"],g["grupo"]))
     # Estabilidad exploratoria al reagrupar por tres décadas de diez años,
@@ -369,6 +372,8 @@ def build(root):
       "estabilidad_temporal_exploratoria_evaluada":True,
       "estabilidad_espacial_y_contigüidad_certificadas":False,
       "estabilidad_temporal_y_espacial_evaluada":False,
+      "grupos_aptos_para_zonificacion_agricola_operativa":0,
+      "interpretacion_cautelar":"El menor contraste climático interno no demuestra continuidad territorial, suelo agrícola ni coherencia de lluvia; revisar nodos costeros de cota <=0 m y el grupo muy extenso de varias altitudes.",
       "poligonos_homogeneos_certificados":False
     }
     return out,nodes,norms
