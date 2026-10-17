@@ -1,0 +1,3392 @@
+{
+  "fase": "10A",
+  "fecha_corte": "2026-10-17",
+  "fuente": "datos/generalizacion_9x/predicciones_sector_bloque_9x.csv",
+  "fuente_sha256_declarado_9x": "57df5d8022143ee24fc22ea20858847afc620969144c807a334de706fb669a92",
+  "fuente_tipo": "CHIRPS_v3_FINAL_retroactivo",
+  "prueba": "2021-01/2025-12",
+  "entrenamiento_declarado_9x": "1997-01/2015-12",
+  "validacion_hiperparametros_declarada_9x": "2016-01/2020-12",
+  "datos_as_issued": false,
+  "fecha_emision_original_conservada": false,
+  "matriz_calibracion_fuera_de_muestra_2016_2020": false,
+  "calibracion_conformal_9y_ejecutable": false,
+  "comparacion_espacial_descriptiva": true,
+  "habilidad_operativa_certificada": false,
+  "alertas_habilitadas": false,
+  "modelo_operativo_ganador": null,
+  "control_calidad": {
+    "filas": 11700,
+    "sectores": 39,
+    "meses": 60,
+    "modelos": [
+      "climatologia_global",
+      "climatologia_piso",
+      "gcn",
+      "persistencia_anual",
+      "random_forest"
+    ],
+    "grupos_sector_mes": 2340,
+    "duplicados": 0,
+    "objetivos_inconsistentes": 0,
+    "valores_invalidos": 0,
+    "pares_con_cinco_modelos": 2340,
+    "areas_con_cota_negativa_revisar": 1
+  },
+  "comprobacion_coincidencia_mae_9x": true,
+  "global": [
+    {
+      "modelo": "climatologia_global",
+      "n": 2340,
+      "mae_mm": 24.3027,
+      "rmse_mm": 45.052,
+      "sesgo_mm": -1.6765
+    },
+    {
+      "modelo": "climatologia_piso",
+      "n": 2340,
+      "mae_mm": 20.3708,
+      "rmse_mm": 39.9676,
+      "sesgo_mm": -2.0955
+    },
+    {
+      "modelo": "gcn",
+      "n": 2340,
+      "mae_mm": 18.6207,
+      "rmse_mm": 41.478,
+      "sesgo_mm": -11.31
+    },
+    {
+      "modelo": "persistencia_anual",
+      "n": 2340,
+      "mae_mm": 21.8341,
+      "rmse_mm": 47.2184,
+      "sesgo_mm": -1.7163
+    },
+    {
+      "modelo": "random_forest",
+      "n": 2340,
+      "mae_mm": 17.1634,
+      "rmse_mm": 39.0143,
+      "sesgo_mm": -11.9889
+    }
+  ],
+  "por_anio": [
+    {
+      "anio": "2021",
+      "modelo": "climatologia_global",
+      "n": 468,
+      "mae_mm": 24.2001,
+      "rmse_mm": 43.5801,
+      "sesgo_mm": 1.4105
+    },
+    {
+      "anio": "2021",
+      "modelo": "climatologia_piso",
+      "n": 468,
+      "mae_mm": 19.5405,
+      "rmse_mm": 36.9406,
+      "sesgo_mm": 0.9915
+    },
+    {
+      "anio": "2021",
+      "modelo": "gcn",
+      "n": 468,
+      "mae_mm": 18.7639,
+      "rmse_mm": 42.9592,
+      "sesgo_mm": -6.7775
+    },
+    {
+      "anio": "2021",
+      "modelo": "persistencia_anual",
+      "n": 468,
+      "mae_mm": 18.7086,
+      "rmse_mm": 44.1116,
+      "sesgo_mm": -5.6284
+    },
+    {
+      "anio": "2021",
+      "modelo": "random_forest",
+      "n": 468,
+      "mae_mm": 15.6107,
+      "rmse_mm": 40.4271,
+      "sesgo_mm": -10.423
+    },
+    {
+      "anio": "2022",
+      "modelo": "climatologia_global",
+      "n": 468,
+      "mae_mm": 23.3571,
+      "rmse_mm": 37.2167,
+      "sesgo_mm": 0.3675
+    },
+    {
+      "anio": "2022",
+      "modelo": "climatologia_piso",
+      "n": 468,
+      "mae_mm": 17.8083,
+      "rmse_mm": 30.05,
+      "sesgo_mm": -0.0515
+    },
+    {
+      "anio": "2022",
+      "modelo": "gcn",
+      "n": 468,
+      "mae_mm": 16.0019,
+      "rmse_mm": 30.7044,
+      "sesgo_mm": -11.2545
+    },
+    {
+      "anio": "2022",
+      "modelo": "persistencia_anual",
+      "n": 468,
+      "mae_mm": 13.3468,
+      "rmse_mm": 21.8284,
+      "sesgo_mm": -1.043
+    },
+    {
+      "anio": "2022",
+      "modelo": "random_forest",
+      "n": 468,
+      "mae_mm": 14.9179,
+      "rmse_mm": 28.5462,
+      "sesgo_mm": -11.0804
+    },
+    {
+      "anio": "2023",
+      "modelo": "climatologia_global",
+      "n": 468,
+      "mae_mm": 30.626,
+      "rmse_mm": 64.4957,
+      "sesgo_mm": -19.5626
+    },
+    {
+      "anio": "2023",
+      "modelo": "climatologia_piso",
+      "n": 468,
+      "mae_mm": 29.0583,
+      "rmse_mm": 60.6392,
+      "sesgo_mm": -19.9815
+    },
+    {
+      "anio": "2023",
+      "modelo": "gcn",
+      "n": 468,
+      "mae_mm": 31.6858,
+      "rmse_mm": 65.2613,
+      "sesgo_mm": -26.6432
+    },
+    {
+      "anio": "2023",
+      "modelo": "persistencia_anual",
+      "n": 468,
+      "mae_mm": 27.633,
+      "rmse_mm": 51.4153,
+      "sesgo_mm": -19.9301
+    },
+    {
+      "anio": "2023",
+      "modelo": "random_forest",
+      "n": 468,
+      "mae_mm": 31.723,
+      "rmse_mm": 63.1626,
+      "sesgo_mm": -26.3801
+    },
+    {
+      "anio": "2024",
+      "modelo": "climatologia_global",
+      "n": 468,
+      "mae_mm": 20.8005,
+      "rmse_mm": 34.2022,
+      "sesgo_mm": 10.9444
+    },
+    {
+      "anio": "2024",
+      "modelo": "climatologia_piso",
+      "n": 468,
+      "mae_mm": 18.236,
+      "rmse_mm": 31.3969,
+      "sesgo_mm": 10.5255
+    },
+    {
+      "anio": "2024",
+      "modelo": "gcn",
+      "n": 468,
+      "mae_mm": 9.8882,
+      "rmse_mm": 17.9406,
+      "sesgo_mm": -0.6232
+    },
+    {
+      "anio": "2024",
+      "modelo": "persistencia_anual",
+      "n": 468,
+      "mae_mm": 31.8321,
+      "rmse_mm": 68.1106,
+      "sesgo_mm": 30.507
+    },
+    {
+      "anio": "2024",
+      "modelo": "random_forest",
+      "n": 468,
+      "mae_mm": 9.6324,
+      "rmse_mm": 18.7396,
+      "sesgo_mm": -1.592
+    },
+    {
+      "anio": "2025",
+      "modelo": "climatologia_global",
+      "n": 468,
+      "mae_mm": 22.5299,
+      "rmse_mm": 39.1743,
+      "sesgo_mm": -1.5425
+    },
+    {
+      "anio": "2025",
+      "modelo": "climatologia_piso",
+      "n": 468,
+      "mae_mm": 17.2108,
+      "rmse_mm": 32.5046,
+      "sesgo_mm": -1.9614
+    },
+    {
+      "anio": "2025",
+      "modelo": "gcn",
+      "n": 468,
+      "mae_mm": 16.7635,
+      "rmse_mm": 35.1138,
+      "sesgo_mm": -11.2518
+    },
+    {
+      "anio": "2025",
+      "modelo": "persistencia_anual",
+      "n": 468,
+      "mae_mm": 17.65,
+      "rmse_mm": 37.9868,
+      "sesgo_mm": -12.4869
+    },
+    {
+      "anio": "2025",
+      "modelo": "random_forest",
+      "n": 468,
+      "mae_mm": 13.933,
+      "rmse_mm": 28.6469,
+      "sesgo_mm": -10.4688
+    }
+  ],
+  "por_piso": [
+    {
+      "piso": "cota_negativa_revisar",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 24.1565,
+      "rmse_mm": 37.8803,
+      "sesgo_mm": 23.6578
+    },
+    {
+      "piso": "cota_negativa_revisar",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 24.1565,
+      "rmse_mm": 37.8803,
+      "sesgo_mm": 23.6578
+    },
+    {
+      "piso": "cota_negativa_revisar",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 4.1121,
+      "rmse_mm": 14.0439,
+      "sesgo_mm": -3.9256
+    },
+    {
+      "piso": "cota_negativa_revisar",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 6.2109,
+      "rmse_mm": 17.9465,
+      "sesgo_mm": -0.2412
+    },
+    {
+      "piso": "cota_negativa_revisar",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 4.4628,
+      "rmse_mm": 12.4978,
+      "sesgo_mm": -0.8944
+    },
+    {
+      "piso": "llanura_costa",
+      "modelo": "climatologia_global",
+      "n": 240,
+      "mae_mm": 24.0346,
+      "rmse_mm": 37.7905,
+      "sesgo_mm": 23.5144
+    },
+    {
+      "piso": "llanura_costa",
+      "modelo": "climatologia_piso",
+      "n": 240,
+      "mae_mm": 24.0346,
+      "rmse_mm": 37.7905,
+      "sesgo_mm": 23.5144
+    },
+    {
+      "piso": "llanura_costa",
+      "modelo": "gcn",
+      "n": 240,
+      "mae_mm": 4.2867,
+      "rmse_mm": 14.0091,
+      "sesgo_mm": -4.1289
+    },
+    {
+      "piso": "llanura_costa",
+      "modelo": "persistencia_anual",
+      "n": 240,
+      "mae_mm": 6.4234,
+      "rmse_mm": 17.8793,
+      "sesgo_mm": -0.2107
+    },
+    {
+      "piso": "llanura_costa",
+      "modelo": "random_forest",
+      "n": 240,
+      "mae_mm": 4.4713,
+      "rmse_mm": 12.4642,
+      "sesgo_mm": -1.0309
+    },
+    {
+      "piso": "montana_alta",
+      "modelo": "climatologia_global",
+      "n": 180,
+      "mae_mm": 52.4273,
+      "rmse_mm": 82.6583,
+      "sesgo_mm": -50.875
+    },
+    {
+      "piso": "montana_alta",
+      "modelo": "climatologia_piso",
+      "n": 180,
+      "mae_mm": 52.4273,
+      "rmse_mm": 82.6583,
+      "sesgo_mm": -50.875
+    },
+    {
+      "piso": "montana_alta",
+      "modelo": "gcn",
+      "n": 180,
+      "mae_mm": 42.1831,
+      "rmse_mm": 70.0314,
+      "sesgo_mm": -28.9337
+    },
+    {
+      "piso": "montana_alta",
+      "modelo": "persistencia_anual",
+      "n": 180,
+      "mae_mm": 44.9557,
+      "rmse_mm": 74.6348,
+      "sesgo_mm": -3.5856
+    },
+    {
+      "piso": "montana_alta",
+      "modelo": "random_forest",
+      "n": 180,
+      "mae_mm": 43.1523,
+      "rmse_mm": 70.4468,
+      "sesgo_mm": -37.5568
+    },
+    {
+      "piso": "montana_baja",
+      "modelo": "climatologia_global",
+      "n": 360,
+      "mae_mm": 16.9388,
+      "rmse_mm": 29.639,
+      "sesgo_mm": 2.2802
+    },
+    {
+      "piso": "montana_baja",
+      "modelo": "climatologia_piso",
+      "n": 360,
+      "mae_mm": 15.3613,
+      "rmse_mm": 27.5522,
+      "sesgo_mm": -0.9768
+    },
+    {
+      "piso": "montana_baja",
+      "modelo": "gcn",
+      "n": 360,
+      "mae_mm": 15.1316,
+      "rmse_mm": 30.7472,
+      "sesgo_mm": -8.8208
+    },
+    {
+      "piso": "montana_baja",
+      "modelo": "persistencia_anual",
+      "n": 360,
+      "mae_mm": 19.0239,
+      "rmse_mm": 37.5023,
+      "sesgo_mm": -1.7933
+    },
+    {
+      "piso": "montana_baja",
+      "modelo": "random_forest",
+      "n": 360,
+      "mae_mm": 14.2615,
+      "rmse_mm": 28.4653,
+      "sesgo_mm": -7.4961
+    },
+    {
+      "piso": "montana_media",
+      "modelo": "climatologia_global",
+      "n": 480,
+      "mae_mm": 32.4086,
+      "rmse_mm": 59.0624,
+      "sesgo_mm": -28.9604
+    },
+    {
+      "piso": "montana_media",
+      "modelo": "climatologia_piso",
+      "n": 480,
+      "mae_mm": 25.3855,
+      "rmse_mm": 43.9821,
+      "sesgo_mm": -5.3078
+    },
+    {
+      "piso": "montana_media",
+      "modelo": "gcn",
+      "n": 480,
+      "mae_mm": 32.7456,
+      "rmse_mm": 61.1852,
+      "sesgo_mm": -24.854
+    },
+    {
+      "piso": "montana_media",
+      "modelo": "persistencia_anual",
+      "n": 480,
+      "mae_mm": 35.3852,
+      "rmse_mm": 63.2931,
+      "sesgo_mm": -2.81
+    },
+    {
+      "piso": "montana_media",
+      "modelo": "random_forest",
+      "n": 480,
+      "mae_mm": 29.2351,
+      "rmse_mm": 54.5915,
+      "sesgo_mm": -21.7519
+    },
+    {
+      "piso": "piedemonte",
+      "modelo": "climatologia_global",
+      "n": 660,
+      "mae_mm": 18.0517,
+      "rmse_mm": 34.1185,
+      "sesgo_mm": 9.2833
+    },
+    {
+      "piso": "piedemonte",
+      "modelo": "climatologia_piso",
+      "n": 660,
+      "mae_mm": 14.0963,
+      "rmse_mm": 32.438,
+      "sesgo_mm": -0.2744
+    },
+    {
+      "piso": "piedemonte",
+      "modelo": "gcn",
+      "n": 660,
+      "mae_mm": 14.7701,
+      "rmse_mm": 33.7359,
+      "sesgo_mm": -4.8368
+    },
+    {
+      "piso": "piedemonte",
+      "modelo": "persistencia_anual",
+      "n": 660,
+      "mae_mm": 18.6494,
+      "rmse_mm": 45.2126,
+      "sesgo_mm": -1.3978
+    },
+    {
+      "piso": "piedemonte",
+      "modelo": "random_forest",
+      "n": 660,
+      "mae_mm": 12.8604,
+      "rmse_mm": 33.0134,
+      "sesgo_mm": -8.5178
+    },
+    {
+      "piso": "valle_bajo",
+      "modelo": "climatologia_global",
+      "n": 360,
+      "mae_mm": 18.4598,
+      "rmse_mm": 30.3605,
+      "sesgo_mm": 14.2351
+    },
+    {
+      "piso": "valle_bajo",
+      "modelo": "climatologia_piso",
+      "n": 360,
+      "mae_mm": 11.0954,
+      "rmse_mm": 22.5454,
+      "sesgo_mm": 0.7547
+    },
+    {
+      "piso": "valle_bajo",
+      "modelo": "gcn",
+      "n": 360,
+      "mae_mm": 10.5288,
+      "rmse_mm": 23.3118,
+      "sesgo_mm": -4.8145
+    },
+    {
+      "piso": "valle_bajo",
+      "modelo": "persistencia_anual",
+      "n": 360,
+      "mae_mm": 13.7316,
+      "rmse_mm": 30.7383,
+      "sesgo_mm": -1.0796
+    },
+    {
+      "piso": "valle_bajo",
+      "modelo": "random_forest",
+      "n": 360,
+      "mae_mm": 9.4422,
+      "rmse_mm": 22.3767,
+      "sesgo_mm": -6.1981
+    }
+  ],
+  "por_bloque": [
+    {
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 720,
+      "mae_mm": 35.276,
+      "rmse_mm": 64.1242,
+      "sesgo_mm": -31.8325
+    },
+    {
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 720,
+      "mae_mm": 31.0315,
+      "rmse_mm": 55.68,
+      "sesgo_mm": -17.3896
+    },
+    {
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 720,
+      "mae_mm": 33.1371,
+      "rmse_mm": 61.526,
+      "sesgo_mm": -23.3256
+    },
+    {
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 720,
+      "mae_mm": 35.9809,
+      "rmse_mm": 64.816,
+      "sesgo_mm": -2.6718
+    },
+    {
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 720,
+      "mae_mm": 31.314,
+      "rmse_mm": 57.9218,
+      "sesgo_mm": -25.4211
+    },
+    {
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 480,
+      "mae_mm": 18.1233,
+      "rmse_mm": 29.3867,
+      "sesgo_mm": 14.1744
+    },
+    {
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 480,
+      "mae_mm": 12.8315,
+      "rmse_mm": 23.6357,
+      "sesgo_mm": 4.1721
+    },
+    {
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 480,
+      "mae_mm": 11.4678,
+      "rmse_mm": 25.9355,
+      "sesgo_mm": -6.5467
+    },
+    {
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 480,
+      "mae_mm": 14.3939,
+      "rmse_mm": 30.7898,
+      "sesgo_mm": -1.4354
+    },
+    {
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 480,
+      "mae_mm": 10.0148,
+      "rmse_mm": 22.9172,
+      "sesgo_mm": -6.2908
+    },
+    {
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 480,
+      "mae_mm": 19.9719,
+      "rmse_mm": 38.0646,
+      "sesgo_mm": 9.0808
+    },
+    {
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 480,
+      "mae_mm": 14.73,
+      "rmse_mm": 36.2453,
+      "sesgo_mm": -2.2669
+    },
+    {
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 480,
+      "mae_mm": 15.1681,
+      "rmse_mm": 35.2683,
+      "sesgo_mm": -1.2516
+    },
+    {
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 480,
+      "mae_mm": 20.0745,
+      "rmse_mm": 50.8648,
+      "sesgo_mm": -0.9048
+    },
+    {
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 480,
+      "mae_mm": 13.1888,
+      "rmse_mm": 36.4719,
+      "sesgo_mm": -9.6729
+    },
+    {
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 300,
+      "mae_mm": 24.059,
+      "rmse_mm": 37.8084,
+      "sesgo_mm": 23.5431
+    },
+    {
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 300,
+      "mae_mm": 24.059,
+      "rmse_mm": 37.8084,
+      "sesgo_mm": 23.5431
+    },
+    {
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 300,
+      "mae_mm": 4.2517,
+      "rmse_mm": 14.0161,
+      "sesgo_mm": -4.0882
+    },
+    {
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 300,
+      "mae_mm": 6.3809,
+      "rmse_mm": 17.8928,
+      "sesgo_mm": -0.2168
+    },
+    {
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 300,
+      "mae_mm": 4.4696,
+      "rmse_mm": 12.4709,
+      "sesgo_mm": -1.0036
+    },
+    {
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 360,
+      "mae_mm": 16.573,
+      "rmse_mm": 26.3548,
+      "sesgo_mm": 2.1414
+    },
+    {
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 360,
+      "mae_mm": 13.5493,
+      "rmse_mm": 22.2468,
+      "sesgo_mm": -1.001
+    },
+    {
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 360,
+      "mae_mm": 15.7025,
+      "rmse_mm": 29.8802,
+      "sesgo_mm": -13.0595
+    },
+    {
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 360,
+      "mae_mm": 18.6846,
+      "rmse_mm": 33.3105,
+      "sesgo_mm": -2.5112
+    },
+    {
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 360,
+      "mae_mm": 14.2713,
+      "rmse_mm": 24.0917,
+      "sesgo_mm": -4.9641
+    }
+  ],
+  "por_sector": [
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 24.1565,
+      "rmse_mm": 37.8803,
+      "sesgo_mm": 23.6578
+    },
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 24.1565,
+      "rmse_mm": 37.8803,
+      "sesgo_mm": 23.6578
+    },
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 4.1121,
+      "rmse_mm": 14.0439,
+      "sesgo_mm": -3.9256
+    },
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 6.2109,
+      "rmse_mm": 17.9465,
+      "sesgo_mm": -0.2412
+    },
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 4.4628,
+      "rmse_mm": 12.4978,
+      "sesgo_mm": -0.8944
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 24.7778,
+      "rmse_mm": 38.594,
+      "sesgo_mm": 24.366
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 24.7778,
+      "rmse_mm": 38.594,
+      "sesgo_mm": 24.366
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 3.4721,
+      "rmse_mm": 12.9542,
+      "sesgo_mm": -3.272
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 5.5076,
+      "rmse_mm": 16.8704,
+      "sesgo_mm": -0.1229
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 3.8926,
+      "rmse_mm": 11.9743,
+      "sesgo_mm": -0.7632
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 24.4501,
+      "rmse_mm": 38.238,
+      "sesgo_mm": 23.9722
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 24.4501,
+      "rmse_mm": 38.238,
+      "sesgo_mm": 23.9722
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 3.8652,
+      "rmse_mm": 13.7035,
+      "sesgo_mm": -3.6964
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 5.9822,
+      "rmse_mm": 17.6118,
+      "sesgo_mm": -0.2333
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 4.3237,
+      "rmse_mm": 12.4415,
+      "sesgo_mm": -0.8373
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 24.0626,
+      "rmse_mm": 37.9816,
+      "sesgo_mm": 23.7817
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 24.0626,
+      "rmse_mm": 37.9816,
+      "sesgo_mm": 23.7817
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 4.0238,
+      "rmse_mm": 14.2156,
+      "sesgo_mm": -3.8163
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 6.2239,
+      "rmse_mm": 18.1671,
+      "sesgo_mm": -0.1774
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 4.4806,
+      "rmse_mm": 13.1065,
+      "sesgo_mm": -1.1552
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 22.8478,
+      "rmse_mm": 36.3074,
+      "sesgo_mm": 21.9377
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 22.8478,
+      "rmse_mm": 36.3074,
+      "sesgo_mm": 21.9377
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 5.7855,
+      "rmse_mm": 15.0777,
+      "sesgo_mm": -5.7309
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 7.9799,
+      "rmse_mm": 18.8109,
+      "sesgo_mm": -0.3092
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 5.1883,
+      "rmse_mm": 12.3072,
+      "sesgo_mm": -1.3679
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 54.4331,
+      "rmse_mm": 82.3858,
+      "sesgo_mm": -52.7036
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 54.4331,
+      "rmse_mm": 82.3858,
+      "sesgo_mm": -52.7036
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 43.597,
+      "rmse_mm": 68.9788,
+      "sesgo_mm": -30.7623
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 46.5309,
+      "rmse_mm": 75.7908,
+      "sesgo_mm": -3.0793
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 44.5358,
+      "rmse_mm": 70.0312,
+      "sesgo_mm": -38.9955
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 63.0982,
+      "rmse_mm": 98.9296,
+      "sesgo_mm": -62.3275
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 63.0982,
+      "rmse_mm": 98.9296,
+      "sesgo_mm": -62.3275
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 50.5834,
+      "rmse_mm": 85.7007,
+      "sesgo_mm": -40.3863
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 49.5984,
+      "rmse_mm": 83.5517,
+      "sesgo_mm": -5.4082
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 50.5184,
+      "rmse_mm": 83.9165,
+      "sesgo_mm": -46.5805
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 39.7506,
+      "rmse_mm": 62.6313,
+      "sesgo_mm": -37.5939
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 39.7506,
+      "rmse_mm": 62.6313,
+      "sesgo_mm": -37.5939
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 32.3688,
+      "rmse_mm": 51.093,
+      "sesgo_mm": -15.6527
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 38.7378,
+      "rmse_mm": 63.1344,
+      "sesgo_mm": -2.2694
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 34.4026,
+      "rmse_mm": 54.2393,
+      "sesgo_mm": -27.0946
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 19.4299,
+      "rmse_mm": 31.0424,
+      "sesgo_mm": 14.8192
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 15.8864,
+      "rmse_mm": 27.1321,
+      "sesgo_mm": 9.9942
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 10.3517,
+      "rmse_mm": 22.0962,
+      "sesgo_mm": -3.8798
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 14.5408,
+      "rmse_mm": 32.8705,
+      "sesgo_mm": -0.8084
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 9.6128,
+      "rmse_mm": 23.4575,
+      "sesgo_mm": -6.0176
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 14.7161,
+      "rmse_mm": 30.3533,
+      "sesgo_mm": -4.9819
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 14.3611,
+      "rmse_mm": 29.8569,
+      "sesgo_mm": -3.2426
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 17.2408,
+      "rmse_mm": 33.7419,
+      "sesgo_mm": -4.6606
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 20.0932,
+      "rmse_mm": 41.5004,
+      "sesgo_mm": -1.2448
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 15.7734,
+      "rmse_mm": 31.9941,
+      "sesgo_mm": -10.7323
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 18.2826,
+      "rmse_mm": 28.6142,
+      "sesgo_mm": 15.4817
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 13.5447,
+      "rmse_mm": 22.9082,
+      "sesgo_mm": 9.4672
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 9.2493,
+      "rmse_mm": 20.7146,
+      "sesgo_mm": -3.5318
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 13.5719,
+      "rmse_mm": 29.1191,
+      "sesgo_mm": -1.3672
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 8.9639,
+      "rmse_mm": 19.4398,
+      "sesgo_mm": -4.307
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 20.1073,
+      "rmse_mm": 38.7601,
+      "sesgo_mm": -14.7721
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 19.4092,
+      "rmse_mm": 37.3646,
+      "sesgo_mm": -13.0327
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 21.4254,
+      "rmse_mm": 42.5098,
+      "sesgo_mm": -14.4508
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 26.3002,
+      "rmse_mm": 49.5301,
+      "sesgo_mm": -1.846
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 20.0448,
+      "rmse_mm": 39.1515,
+      "sesgo_mm": -15.866
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 13.564,
+      "rmse_mm": 22.7323,
+      "sesgo_mm": 8.0376
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 11.3695,
+      "rmse_mm": 18.6388,
+      "sesgo_mm": 1.947
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 12.9279,
+      "rmse_mm": 25.3988,
+      "sesgo_mm": -11.1449
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 16.1309,
+      "rmse_mm": 28.2597,
+      "sesgo_mm": -2.3377
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 12.5961,
+      "rmse_mm": 23.9068,
+      "sesgo_mm": 0.3023
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 15.5329,
+      "rmse_mm": 23.4096,
+      "sesgo_mm": -4.9032
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 17.5971,
+      "rmse_mm": 25.6679,
+      "sesgo_mm": -10.9938
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 19.5944,
+      "rmse_mm": 34.1219,
+      "sesgo_mm": -15.2568
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 23.5066,
+      "rmse_mm": 39.1918,
+      "sesgo_mm": -3.1555
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 18.5777,
+      "rmse_mm": 28.3812,
+      "sesgo_mm": -8.3562
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 32.2864,
+      "rmse_mm": 55.3334,
+      "sesgo_mm": -29.2677
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 23.7881,
+      "rmse_mm": 38.5186,
+      "sesgo_mm": -5.0053
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 30.079,
+      "rmse_mm": 51.9301,
+      "sesgo_mm": -20.0103
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 34.7872,
+      "rmse_mm": 60.6795,
+      "sesgo_mm": -2.3496
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 29.7234,
+      "rmse_mm": 51.4594,
+      "sesgo_mm": -22.9945
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 35.531,
+      "rmse_mm": 58.5947,
+      "sesgo_mm": -32.6176
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 26.2794,
+      "rmse_mm": 41.071,
+      "sesgo_mm": -8.3551
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 31.626,
+      "rmse_mm": 49.4063,
+      "sesgo_mm": -8.0255
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 37.3766,
+      "rmse_mm": 62.2502,
+      "sesgo_mm": -2.1098
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 31.8908,
+      "rmse_mm": 53.1078,
+      "sesgo_mm": -25.0728
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 30.2052,
+      "rmse_mm": 54.8293,
+      "sesgo_mm": -27.9052
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 22.9397,
+      "rmse_mm": 39.9804,
+      "sesgo_mm": -3.6428
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 32.3614,
+      "rmse_mm": 58.6699,
+      "sesgo_mm": -30.6571
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 34.5535,
+      "rmse_mm": 61.9091,
+      "sesgo_mm": -1.877
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 24.1635,
+      "rmse_mm": 42.6387,
+      "sesgo_mm": -18.3717
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 25.1909,
+      "rmse_mm": 45.9149,
+      "sesgo_mm": -20.729
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 21.5576,
+      "rmse_mm": 34.4953,
+      "sesgo_mm": 3.5334
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 24.2649,
+      "rmse_mm": 43.6859,
+      "sesgo_mm": -11.4716
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 30.8985,
+      "rmse_mm": 55.5382,
+      "sesgo_mm": -1.7161
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 23.6028,
+      "rmse_mm": 44.3433,
+      "sesgo_mm": -18.1501
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 30.6323,
+      "rmse_mm": 71.3227,
+      "sesgo_mm": -26.9053
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 28.0238,
+      "rmse_mm": 55.3079,
+      "sesgo_mm": -2.6428
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 34.5591,
+      "rmse_mm": 80.3919,
+      "sesgo_mm": -30.6374
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 34.9481,
+      "rmse_mm": 74.2998,
+      "sesgo_mm": -3.5349
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 31.0915,
+      "rmse_mm": 70.7375,
+      "sesgo_mm": -24.2428
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 44.2165,
+      "rmse_mm": 83.6993,
+      "sesgo_mm": -42.6811
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 33.3531,
+      "rmse_mm": 62.7957,
+      "sesgo_mm": -18.4187
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 45.2505,
+      "rmse_mm": 88.2527,
+      "sesgo_mm": -41.967
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 42.8199,
+      "rmse_mm": 81.1177,
+      "sesgo_mm": -5.3999
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 40.2301,
+      "rmse_mm": 79.518,
+      "sesgo_mm": -34.4002
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 33.1443,
+      "rmse_mm": 52.1539,
+      "sesgo_mm": -29.5056
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 25.3842,
+      "rmse_mm": 38.1737,
+      "sesgo_mm": -5.2431
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 34.2885,
+      "rmse_mm": 55.0175,
+      "sesgo_mm": -31.2253
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 35.1264,
+      "rmse_mm": 54.3309,
+      "sesgo_mm": -1.2263
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 29.7908,
+      "rmse_mm": 47.2721,
+      "sesgo_mm": -22.5521
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 28.0621,
+      "rmse_mm": 38.5344,
+      "sesgo_mm": -22.072
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 21.7582,
+      "rmse_mm": 32.5117,
+      "sesgo_mm": -2.6884
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 29.5358,
+      "rmse_mm": 46.7161,
+      "sesgo_mm": -24.8379
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 32.5714,
+      "rmse_mm": 50.2141,
+      "sesgo_mm": -4.2666
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 23.3882,
+      "rmse_mm": 32.0536,
+      "sesgo_mm": -8.2313
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 16.0532,
+      "rmse_mm": 28.1676,
+      "sesgo_mm": 6.3196
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 14.9438,
+      "rmse_mm": 28.5791,
+      "sesgo_mm": -1.7265
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 18.2369,
+      "rmse_mm": 39.6993,
+      "sesgo_mm": -13.8671
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 20.5116,
+      "rmse_mm": 42.2478,
+      "sesgo_mm": -2.6443
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 14.9259,
+      "rmse_mm": 33.3887,
+      "sesgo_mm": -11.1172
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 23.8574,
+      "rmse_mm": 61.1923,
+      "sesgo_mm": -5.1296
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 23.1416,
+      "rmse_mm": 66.1783,
+      "sesgo_mm": -16.917
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 24.234,
+      "rmse_mm": 64.5164,
+      "sesgo_mm": -13.3146
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 37.9966,
+      "rmse_mm": 94.1028,
+      "sesgo_mm": -1.6542
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 25.3133,
+      "rmse_mm": 69.6579,
+      "sesgo_mm": -21.0564
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 19.791,
+      "rmse_mm": 32.0402,
+      "sesgo_mm": 13.1533
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 12.264,
+      "rmse_mm": 26.4719,
+      "sesgo_mm": 1.3659
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 15.3962,
+      "rmse_mm": 28.3228,
+      "sesgo_mm": 5.6834
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 16.9359,
+      "rmse_mm": 39.2732,
+      "sesgo_mm": -0.9433
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 10.552,
+      "rmse_mm": 26.7064,
+      "sesgo_mm": -7.3025
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 19.9649,
+      "rmse_mm": 31.3451,
+      "sesgo_mm": 17.0769
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 11.527,
+      "rmse_mm": 21.2001,
+      "sesgo_mm": 5.2895
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 9.2856,
+      "rmse_mm": 17.0654,
+      "sesgo_mm": 1.1702
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 11.5733,
+      "rmse_mm": 24.5796,
+      "sesgo_mm": -0.5822
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 7.6062,
+      "rmse_mm": 17.6867,
+      "sesgo_mm": -4.5818
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 20.5569,
+      "rmse_mm": 42.8896,
+      "sesgo_mm": -1.8982
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 19.1773,
+      "rmse_mm": 46.1567,
+      "sesgo_mm": -13.6856
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 24.1153,
+      "rmse_mm": 46.0969,
+      "sesgo_mm": 3.7083
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 28.6828,
+      "rmse_mm": 64.931,
+      "sesgo_mm": -1.1572
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 20.8765,
+      "rmse_mm": 46.5959,
+      "sesgo_mm": -15.0799
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 16.2161,
+      "rmse_mm": 29.3492,
+      "sesgo_mm": 6.9815
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 12.6276,
+      "rmse_mm": 28.1453,
+      "sesgo_mm": -4.8059
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 15.8113,
+      "rmse_mm": 29.1937,
+      "sesgo_mm": -0.4884
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 19.6512,
+      "rmse_mm": 40.1168,
+      "sesgo_mm": -0.967
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 12.879,
+      "rmse_mm": 27.3987,
+      "sesgo_mm": -8.3703
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 20.1085,
+      "rmse_mm": 31.5952,
+      "sesgo_mm": 18.7954
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 14.2462,
+      "rmse_mm": 24.016,
+      "sesgo_mm": 10.7493
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 8.0701,
+      "rmse_mm": 18.2693,
+      "sesgo_mm": -3.2553
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 11.6124,
+      "rmse_mm": 24.534,
+      "sesgo_mm": -0.5969
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 7.1383,
+      "rmse_mm": 16.4368,
+      "sesgo_mm": -3.3969
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 19.5869,
+      "rmse_mm": 30.2457,
+      "sesgo_mm": 17.2343
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 13.7612,
+      "rmse_mm": 23.543,
+      "sesgo_mm": 9.1882
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 10.0047,
+      "rmse_mm": 21.2424,
+      "sesgo_mm": -2.9524
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 13.1222,
+      "rmse_mm": 27.6719,
+      "sesgo_mm": -0.9314
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 8.5376,
+      "rmse_mm": 19.0647,
+      "sesgo_mm": -4.532
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 14.9,
+      "rmse_mm": 24.862,
+      "sesgo_mm": 9.7322
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 11.8548,
+      "rmse_mm": 22.4775,
+      "sesgo_mm": 1.6861
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 14.8432,
+      "rmse_mm": 30.2752,
+      "sesgo_mm": -10.8495
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 17.5108,
+      "rmse_mm": 34.5956,
+      "sesgo_mm": -2.0613
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 12.7526,
+      "rmse_mm": 26.1773,
+      "sesgo_mm": -9.1404
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 13.0562,
+      "rmse_mm": 21.3606,
+      "sesgo_mm": 7.9815
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 10.279,
+      "rmse_mm": 18.4121,
+      "sesgo_mm": 0.975
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 12.8429,
+      "rmse_mm": 25.9255,
+      "sesgo_mm": -11.4636
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 14.8346,
+      "rmse_mm": 28.4608,
+      "sesgo_mm": -2.0879
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 11.2304,
+      "rmse_mm": 21.5244,
+      "sesgo_mm": -5.3764
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 14.4779,
+      "rmse_mm": 23.8624,
+      "sesgo_mm": 11.8692
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 11.2369,
+      "rmse_mm": 18.1678,
+      "sesgo_mm": 4.8626
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 9.6309,
+      "rmse_mm": 18.3442,
+      "sesgo_mm": -7.5759
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 12.7124,
+      "rmse_mm": 22.3442,
+      "sesgo_mm": -1.7503
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 9.653,
+      "rmse_mm": 17.0761,
+      "sesgo_mm": -3.742
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 20.7043,
+      "rmse_mm": 32.1283,
+      "sesgo_mm": 17.83
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 10.5977,
+      "rmse_mm": 19.8293,
+      "sesgo_mm": 4.3201
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 9.8467,
+      "rmse_mm": 18.7044,
+      "sesgo_mm": 2.5623
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 11.4989,
+      "rmse_mm": 25.1107,
+      "sesgo_mm": -0.3885
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 7.2974,
+      "rmse_mm": 17.7665,
+      "sesgo_mm": -5.1952
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 19.2551,
+      "rmse_mm": 33.7778,
+      "sesgo_mm": 9.8135
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 12.6186,
+      "rmse_mm": 30.4639,
+      "sesgo_mm": -3.6964
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 12.3043,
+      "rmse_mm": 29.6609,
+      "sesgo_mm": -5.4541
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 19.7166,
+      "rmse_mm": 46.4709,
+      "sesgo_mm": -0.7374
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 11.3731,
+      "rmse_mm": 31.2337,
+      "sesgo_mm": -9.7794
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 22.7843,
+      "rmse_mm": 35.8574,
+      "sesgo_mm": 22.6317
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 10.3116,
+      "rmse_mm": 18.385,
+      "sesgo_mm": 8.6921
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 4.8772,
+      "rmse_mm": 9.5131,
+      "sesgo_mm": -1.2303
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 6.3424,
+      "rmse_mm": 13.1993,
+      "sesgo_mm": -0.1305
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 4.4876,
+      "rmse_mm": 9.7507,
+      "sesgo_mm": -1.7533
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 17.8396,
+      "rmse_mm": 27.9521,
+      "sesgo_mm": 14.6499
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 9.6491,
+      "rmse_mm": 19.5135,
+      "sesgo_mm": 0.7103
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 10.7701,
+      "rmse_mm": 21.8534,
+      "sesgo_mm": -6.2332
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 13.5167,
+      "rmse_mm": 27.5569,
+      "sesgo_mm": -1.1641
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 9.2652,
+      "rmse_mm": 19.4748,
+      "sesgo_mm": -5.8978
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 15.431,
+      "rmse_mm": 26.4234,
+      "sesgo_mm": 8.5501
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 14.3407,
+      "rmse_mm": 27.795,
+      "sesgo_mm": -5.3895
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 15.691,
+      "rmse_mm": 33.2629,
+      "sesgo_mm": -10.4541
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 18.9631,
+      "rmse_mm": 38.1204,
+      "sesgo_mm": -2.5877
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 14.0471,
+      "rmse_mm": 30.2597,
+      "sesgo_mm": -10.1817
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "modelo": "climatologia_global",
+      "n": 60,
+      "mae_mm": 14.7446,
+      "rmse_mm": 24.3333,
+      "sesgo_mm": 11.9351
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "modelo": "climatologia_piso",
+      "n": 60,
+      "mae_mm": 9.0548,
+      "rmse_mm": 15.4009,
+      "sesgo_mm": -0.1084
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "modelo": "gcn",
+      "n": 60,
+      "mae_mm": 9.6833,
+      "rmse_mm": 18.8815,
+      "sesgo_mm": -8.0779
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "modelo": "persistencia_anual",
+      "n": 60,
+      "mae_mm": 12.3516,
+      "rmse_mm": 22.1852,
+      "sesgo_mm": -1.4694
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "modelo": "random_forest",
+      "n": 60,
+      "mae_mm": 10.1827,
+      "rmse_mm": 17.9755,
+      "sesgo_mm": -4.3811
+    }
+  ],
+  "por_piso_2023": [
+    {
+      "anio": "2023",
+      "piso": "cota_negativa_revisar",
+      "modelo": "climatologia_global",
+      "n": 12,
+      "mae_mm": 15.4078,
+      "rmse_mm": 23.7089,
+      "sesgo_mm": 12.9147
+    },
+    {
+      "anio": "2023",
+      "piso": "cota_negativa_revisar",
+      "modelo": "climatologia_piso",
+      "n": 12,
+      "mae_mm": 15.4078,
+      "rmse_mm": 23.7089,
+      "sesgo_mm": 12.9147
+    },
+    {
+      "anio": "2023",
+      "piso": "cota_negativa_revisar",
+      "modelo": "gcn",
+      "n": 12,
+      "mae_mm": 14.7196,
+      "rmse_mm": 30.8649,
+      "sesgo_mm": -14.6382
+    },
+    {
+      "anio": "2023",
+      "piso": "cota_negativa_revisar",
+      "modelo": "persistencia_anual",
+      "n": 12,
+      "mae_mm": 13.4155,
+      "rmse_mm": 27.3989,
+      "sesgo_mm": -12.7319
+    },
+    {
+      "anio": "2023",
+      "piso": "cota_negativa_revisar",
+      "modelo": "random_forest",
+      "n": 12,
+      "mae_mm": 12.6691,
+      "rmse_mm": 26.6335,
+      "sesgo_mm": -10.118
+    },
+    {
+      "anio": "2023",
+      "piso": "llanura_costa",
+      "modelo": "climatologia_global",
+      "n": 48,
+      "mae_mm": 15.1966,
+      "rmse_mm": 23.3205,
+      "sesgo_mm": 12.6448
+    },
+    {
+      "anio": "2023",
+      "piso": "llanura_costa",
+      "modelo": "climatologia_piso",
+      "n": 48,
+      "mae_mm": 15.1966,
+      "rmse_mm": 23.3205,
+      "sesgo_mm": 12.6448
+    },
+    {
+      "anio": "2023",
+      "piso": "llanura_costa",
+      "modelo": "gcn",
+      "n": 48,
+      "mae_mm": 15.0528,
+      "rmse_mm": 30.6089,
+      "sesgo_mm": -15.0051
+    },
+    {
+      "anio": "2023",
+      "piso": "llanura_costa",
+      "modelo": "persistencia_anual",
+      "n": 48,
+      "mae_mm": 13.6026,
+      "rmse_mm": 27.021,
+      "sesgo_mm": -12.8729
+    },
+    {
+      "anio": "2023",
+      "piso": "llanura_costa",
+      "modelo": "random_forest",
+      "n": 48,
+      "mae_mm": 12.6278,
+      "rmse_mm": 26.4197,
+      "sesgo_mm": -10.5386
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_alta",
+      "modelo": "climatologia_global",
+      "n": 36,
+      "mae_mm": 71.7768,
+      "rmse_mm": 117.0381,
+      "sesgo_mm": -71.7651
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_alta",
+      "modelo": "climatologia_piso",
+      "n": 36,
+      "mae_mm": 71.7768,
+      "rmse_mm": 117.0381,
+      "sesgo_mm": -71.7651
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_alta",
+      "modelo": "gcn",
+      "n": 36,
+      "mae_mm": 59.0836,
+      "rmse_mm": 98.6941,
+      "sesgo_mm": -49.0636
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_alta",
+      "modelo": "persistencia_anual",
+      "n": 36,
+      "mae_mm": 42.9262,
+      "rmse_mm": 61.9782,
+      "sesgo_mm": -18.899
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_alta",
+      "modelo": "random_forest",
+      "n": 36,
+      "mae_mm": 60.6771,
+      "rmse_mm": 96.8722,
+      "sesgo_mm": -50.198
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_baja",
+      "modelo": "climatologia_global",
+      "n": 72,
+      "mae_mm": 22.2888,
+      "rmse_mm": 43.7364,
+      "sesgo_mm": -13.696
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_baja",
+      "modelo": "climatologia_piso",
+      "n": 72,
+      "mae_mm": 22.2678,
+      "rmse_mm": 44.1021,
+      "sesgo_mm": -16.9531
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_baja",
+      "modelo": "gcn",
+      "n": 72,
+      "mae_mm": 26.3957,
+      "rmse_mm": 51.4628,
+      "sesgo_mm": -22.2702
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_baja",
+      "modelo": "persistencia_anual",
+      "n": 72,
+      "mae_mm": 24.0219,
+      "rmse_mm": 41.8277,
+      "sesgo_mm": -17.6165
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_baja",
+      "modelo": "random_forest",
+      "n": 72,
+      "mae_mm": 26.8468,
+      "rmse_mm": 49.3179,
+      "sesgo_mm": -19.5297
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_media",
+      "modelo": "climatologia_global",
+      "n": 96,
+      "mae_mm": 51.6656,
+      "rmse_mm": 93.0632,
+      "sesgo_mm": -50.8424
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_media",
+      "modelo": "climatologia_piso",
+      "n": 96,
+      "mae_mm": 39.7768,
+      "rmse_mm": 68.7761,
+      "sesgo_mm": -27.1898
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_media",
+      "modelo": "gcn",
+      "n": 96,
+      "mae_mm": 50.279,
+      "rmse_mm": 91.3557,
+      "sesgo_mm": -45.1014
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_media",
+      "modelo": "persistencia_anual",
+      "n": 96,
+      "mae_mm": 37.0975,
+      "rmse_mm": 58.5304,
+      "sesgo_mm": -22.1955
+    },
+    {
+      "anio": "2023",
+      "piso": "montana_media",
+      "modelo": "random_forest",
+      "n": 96,
+      "mae_mm": 46.6867,
+      "rmse_mm": 80.2801,
+      "sesgo_mm": -37.6677
+    },
+    {
+      "anio": "2023",
+      "piso": "piedemonte",
+      "modelo": "climatologia_global",
+      "n": 132,
+      "mae_mm": 22.9784,
+      "rmse_mm": 53.9067,
+      "sesgo_mm": -10.8419
+    },
+    {
+      "anio": "2023",
+      "piso": "piedemonte",
+      "modelo": "climatologia_piso",
+      "n": 132,
+      "mae_mm": 25.4132,
+      "rmse_mm": 61.1696,
+      "sesgo_mm": -20.3996
+    },
+    {
+      "anio": "2023",
+      "piso": "piedemonte",
+      "modelo": "gcn",
+      "n": 132,
+      "mae_mm": 27.3896,
+      "rmse_mm": 59.9657,
+      "sesgo_mm": -20.1103
+    },
+    {
+      "anio": "2023",
+      "piso": "piedemonte",
+      "modelo": "persistencia_anual",
+      "n": 132,
+      "mae_mm": 28.7458,
+      "rmse_mm": 60.867,
+      "sesgo_mm": -24.4261
+    },
+    {
+      "anio": "2023",
+      "piso": "piedemonte",
+      "modelo": "random_forest",
+      "n": 132,
+      "mae_mm": 29.6088,
+      "rmse_mm": 65.2235,
+      "sesgo_mm": -26.5286
+    },
+    {
+      "anio": "2023",
+      "piso": "valle_bajo",
+      "modelo": "climatologia_global",
+      "n": 72,
+      "mae_mm": 17.1785,
+      "rmse_mm": 30.7359,
+      "sesgo_mm": -0.4938
+    },
+    {
+      "anio": "2023",
+      "piso": "valle_bajo",
+      "modelo": "climatologia_piso",
+      "n": 72,
+      "mae_mm": 18.3975,
+      "rmse_mm": 38.5276,
+      "sesgo_mm": -13.9742
+    },
+    {
+      "anio": "2023",
+      "piso": "valle_bajo",
+      "modelo": "gcn",
+      "n": 72,
+      "mae_mm": 20.2786,
+      "rmse_mm": 40.7605,
+      "sesgo_mm": -16.9315
+    },
+    {
+      "anio": "2023",
+      "piso": "valle_bajo",
+      "modelo": "persistencia_anual",
+      "n": 72,
+      "mae_mm": 20.6613,
+      "rmse_mm": 39.2562,
+      "sesgo_mm": -17.4004
+    },
+    {
+      "anio": "2023",
+      "piso": "valle_bajo",
+      "modelo": "random_forest",
+      "n": 72,
+      "mae_mm": 21.9522,
+      "rmse_mm": 42.7966,
+      "sesgo_mm": -19.2707
+    }
+  ],
+  "resumen_sectores": {
+    "rf_mejor_que_gcn": 29,
+    "gcn_mejor_o_igual_que_rf": 10,
+    "rf_mejor_que_climatologia_piso": 21,
+    "rf_no_mejor_que_climatologia_piso": 18,
+    "rf_menor_mae_de_tres": 14
+  },
+  "ranking_descriptivo_por_sector": [
+    {
+      "sector": "S001",
+      "piso": "cota_negativa_revisar",
+      "bloque": "3",
+      "rf_mae": 4.4628,
+      "gcn_mae": 4.1121,
+      "climatologia_mae": 24.1565,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S002",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "rf_mae": 3.8926,
+      "gcn_mae": 3.4721,
+      "climatologia_mae": 24.7778,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S003",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "rf_mae": 4.3237,
+      "gcn_mae": 3.8652,
+      "climatologia_mae": 24.4501,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S004",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "rf_mae": 4.4806,
+      "gcn_mae": 4.0238,
+      "climatologia_mae": 24.0626,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S005",
+      "piso": "llanura_costa",
+      "bloque": "3",
+      "rf_mae": 5.1883,
+      "gcn_mae": 5.7855,
+      "climatologia_mae": 22.8478,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S006",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "rf_mae": 44.5358,
+      "gcn_mae": 43.597,
+      "climatologia_mae": 54.4331,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S007",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "rf_mae": 50.5184,
+      "gcn_mae": 50.5834,
+      "climatologia_mae": 63.0982,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S008",
+      "piso": "montana_alta",
+      "bloque": "0",
+      "rf_mae": 34.4026,
+      "gcn_mae": 32.3688,
+      "climatologia_mae": 39.7506,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S009",
+      "piso": "montana_baja",
+      "bloque": "2",
+      "rf_mae": 9.6128,
+      "gcn_mae": 10.3517,
+      "climatologia_mae": 15.8864,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S010",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "rf_mae": 15.7734,
+      "gcn_mae": 17.2408,
+      "climatologia_mae": 14.3611,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S011",
+      "piso": "montana_baja",
+      "bloque": "1",
+      "rf_mae": 8.9639,
+      "gcn_mae": 9.2493,
+      "climatologia_mae": 13.5447,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S012",
+      "piso": "montana_baja",
+      "bloque": "0",
+      "rf_mae": 20.0448,
+      "gcn_mae": 21.4254,
+      "climatologia_mae": 19.4092,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S013",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "rf_mae": 12.5961,
+      "gcn_mae": 12.9279,
+      "climatologia_mae": 11.3695,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S014",
+      "piso": "montana_baja",
+      "bloque": "4",
+      "rf_mae": 18.5777,
+      "gcn_mae": 19.5944,
+      "climatologia_mae": 17.5971,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S015",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 29.7234,
+      "gcn_mae": 30.079,
+      "climatologia_mae": 23.7881,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S016",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 31.8908,
+      "gcn_mae": 31.626,
+      "climatologia_mae": 26.2794,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S017",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 24.1635,
+      "gcn_mae": 32.3614,
+      "climatologia_mae": 22.9397,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S018",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 23.6028,
+      "gcn_mae": 24.2649,
+      "climatologia_mae": 21.5576,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S019",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 31.0915,
+      "gcn_mae": 34.5591,
+      "climatologia_mae": 28.0238,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S020",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 40.2301,
+      "gcn_mae": 45.2505,
+      "climatologia_mae": 33.3531,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S021",
+      "piso": "montana_media",
+      "bloque": "0",
+      "rf_mae": 29.7908,
+      "gcn_mae": 34.2885,
+      "climatologia_mae": 25.3842,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S022",
+      "piso": "montana_media",
+      "bloque": "4",
+      "rf_mae": 23.3882,
+      "gcn_mae": 29.5358,
+      "climatologia_mae": 21.7582,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S023",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "rf_mae": 14.9259,
+      "gcn_mae": 18.2369,
+      "climatologia_mae": 14.9438,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S024",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "rf_mae": 25.3133,
+      "gcn_mae": 24.234,
+      "climatologia_mae": 23.1416,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S025",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "rf_mae": 10.552,
+      "gcn_mae": 15.3962,
+      "climatologia_mae": 12.264,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S026",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "rf_mae": 7.6062,
+      "gcn_mae": 9.2856,
+      "climatologia_mae": 11.527,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S027",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "rf_mae": 20.8765,
+      "gcn_mae": 24.1153,
+      "climatologia_mae": 19.1773,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S029",
+      "piso": "piedemonte",
+      "bloque": "2",
+      "rf_mae": 12.879,
+      "gcn_mae": 15.8113,
+      "climatologia_mae": 12.6276,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S030",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "rf_mae": 7.1383,
+      "gcn_mae": 8.0701,
+      "climatologia_mae": 14.2462,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S031",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "rf_mae": 8.5376,
+      "gcn_mae": 10.0047,
+      "climatologia_mae": 13.7612,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S033",
+      "piso": "piedemonte",
+      "bloque": "1",
+      "rf_mae": 12.7526,
+      "gcn_mae": 14.8432,
+      "climatologia_mae": 11.8548,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S035",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "rf_mae": 11.2304,
+      "gcn_mae": 12.8429,
+      "climatologia_mae": 10.279,
+      "menor_mae_descriptivo": "climatologia_piso"
+    },
+    {
+      "sector": "S036",
+      "piso": "piedemonte",
+      "bloque": "4",
+      "rf_mae": 9.653,
+      "gcn_mae": 9.6309,
+      "climatologia_mae": 11.2369,
+      "menor_mae_descriptivo": "gcn"
+    },
+    {
+      "sector": "S037",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "rf_mae": 7.2974,
+      "gcn_mae": 9.8467,
+      "climatologia_mae": 10.5977,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S038",
+      "piso": "valle_bajo",
+      "bloque": "2",
+      "rf_mae": 11.3731,
+      "gcn_mae": 12.3043,
+      "climatologia_mae": 12.6186,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S039",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "rf_mae": 4.4876,
+      "gcn_mae": 4.8772,
+      "climatologia_mae": 10.3116,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S040",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "rf_mae": 9.2652,
+      "gcn_mae": 10.7701,
+      "climatologia_mae": 9.6491,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S041",
+      "piso": "valle_bajo",
+      "bloque": "1",
+      "rf_mae": 14.0471,
+      "gcn_mae": 15.691,
+      "climatologia_mae": 14.3407,
+      "menor_mae_descriptivo": "random_forest"
+    },
+    {
+      "sector": "S042",
+      "piso": "valle_bajo",
+      "bloque": "4",
+      "rf_mae": 10.1827,
+      "gcn_mae": 9.6833,
+      "climatologia_mae": 9.0548,
+      "menor_mae_descriptivo": "climatologia_piso"
+    }
+  ],
+  "certificacion_pisos": "Los pisos son estratos exploratorios 9K/9X; no zonas homogéneas certificadas.",
+  "bloqueo_incertidumbre_9y": "9X archiva solo predicciones 2021-2025; 2016-2020 se usó para selección/early stopping, por lo que no debe reutilizarse sin nueva estrategia y predicciones fuera de muestra para calibrar intervalos.",
+  "nota": "Aun cuando 9X usa rezagos y splits nominales adecuados, CHIRPS v3 FINAL fue compilado posteriormente. En particular el lag del mes previo puede no estar disponible antes del inicio del mes objetivo. No se reconstruyen fechas de emisión ficticias."
+}
