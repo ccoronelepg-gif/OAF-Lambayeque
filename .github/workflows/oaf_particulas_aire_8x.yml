@@ -1,0 +1,58 @@
+name: OAF 8X - Particulas PM2.5 y PM10 CAMS
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/particulas_aire_8x.py'
+      - 'tests/test_particulas_aire_8x.py'
+      - '.github/workflows/oaf_particulas_aire_8x.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8x-particles
+  cancel-in-progress: false
+jobs:
+  qa-particulas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests PM2.5 PM10 sin red
+        run: python -m unittest discover -s tests -p 'test_particulas_aire_8x.py' -v
+      - name: Descargar como maximo un punto-anio valido de CAMS
+        continue-on-error: true
+        run: python modelos/particulas_aire_8x.py --fetch --year 2025
+      - name: Recomputar datos realmente archivados y verificar
+        run: |
+          python modelos/particulas_aire_8x.py
+          python modelos/particulas_aire_8x.py --check
+      - name: Asegurar estado NO INSTRUMENTAL / NO ECA
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=json.loads(Path('datos/aire_8x/estado_aire_8x.json').read_text())
+          assert d['serie_pm_1996_2025_completa'] is False
+          assert d['estaciones_pm_lambayeque_validadas']==0
+          assert d['comparacion_legal_ECA_habilitada'] is False
+          assert d['pronostico_pm_agricola_validado'] is False
+          print('Fuente CAMS válida disponible:',d['csv_publicado'])
+          PY
+      - name: Publicar originales auditados y su estado sin inventar mediciones
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/aire_8x/
+          if git diff --cached --quiet; then
+            echo 'Sin nuevos datos auditables'
+          else
+            git commit -m 'data(oaf): archivar estado y particulas CAMS modeladas'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
