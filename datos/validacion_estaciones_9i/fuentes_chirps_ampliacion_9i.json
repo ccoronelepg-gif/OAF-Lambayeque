@@ -1,0 +1,572 @@
+{
+  "fase": "9I",
+  "producto": "CHIRPS v3 mensual LATAM",
+  "anios_prespecificados": [
+    1996,
+    1998,
+    2002,
+    2007,
+    2011,
+    2013
+  ],
+  "anios_descarga_nueva": [
+    1996,
+    2002,
+    2007,
+    2011,
+    2013
+  ],
+  "anio_1998_reutiliza_9h": true,
+  "metodo": "un pixel por coordenada documental; solo meses con observacion diaria al 100 por ciento",
+  "fuentes": [
+    {
+      "mes": "1996-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.01.tif",
+      "sha256": "0c208a692755ad8ce1d64a9dac9da4f81ecf2645648c0d908e837513d1f5bdbd",
+      "bytes": 4182414,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:43.673140+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.02.tif",
+      "sha256": "f3f6b6239b016f90677e165999918a84c27f8503dc9f38d09e0a880b0dfaa42b",
+      "bytes": 4166736,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:44.644851+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.03.tif",
+      "sha256": "b959a47a2c1ec676f4839753b2e1dfe2252bded6e57d465711cc14cac89561a7",
+      "bytes": 4248542,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:45.698068+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.04.tif",
+      "sha256": "83a0c7a78e999b4ff35a3cc9d129e2a2f225133bd565eb6e400648b7860dc76e",
+      "bytes": 4087358,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:46.604953+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.05.tif",
+      "sha256": "aa9926db9bba6e03cd4f45ab00376f52976bb25aa934c1d2c3168183901f60be",
+      "bytes": 4082986,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:47.491832+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.06.tif",
+      "sha256": "6fb7d6021d7fd1ade6067cdc69076b3f11a9dd40e9be9e645088397adf77767b",
+      "bytes": 4126448,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:48.414834+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.07.tif",
+      "sha256": "2e0d189bb0a0ef61559382ce34d1b055c6efe1d71a00e09907af9c8036c220b8",
+      "bytes": 4080484,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:49.420760+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.08.tif",
+      "sha256": "957f3428fc9f2365a59364cc2f320361e145b7c9c97e42efb532a96529908134",
+      "bytes": 4157498,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:50.320920+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.09.tif",
+      "sha256": "9e6b7bc676928b7c10571249fa981e152118dc3c686d9d9f97add14d4d615f58",
+      "bytes": 4266566,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:51.304561+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.10.tif",
+      "sha256": "2f8b5961b620a855267ab967490c32cb348d7daebf52aacb2b34d81acd2c947c",
+      "bytes": 4230610,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:52.322452+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.11.tif",
+      "sha256": "ad37c0fa762c8e07664ac7ced2f4352adf04166059038ea2c61507f5016231bb",
+      "bytes": 4210980,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:53.594024+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "1996-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.12.tif",
+      "sha256": "fd7049db3e390d90e9bc8d9b2fbe14f9bca4caa182ad292b6fe52d46d9c8b464",
+      "bytes": 4191830,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:54.606537+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif",
+      "sha256": "5475d84648f1f9ce06879c51105ba713a43738e5028edfb8bca9c4f02be00fd4",
+      "bytes": 4168344,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:55.581775+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif",
+      "sha256": "96448c2b008b36c37e831a82de732d7a15aac158bd04d39a1b8529632a1ce5db",
+      "bytes": 4230184,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:56.591052+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif",
+      "sha256": "7f9480a9fed97debdb6d17025710071ff136084bfb366e9bfed32bf736fe0684",
+      "bytes": 4179614,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:57.487428+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif",
+      "sha256": "5334ec90884c029b8052ad4e12df03504897049e5437c338223d60662bb2a8bc",
+      "bytes": 4246528,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:51:58.358261+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif",
+      "sha256": "04ebc3aa17392afc4bf9b2b99c62643efafa4beff5a8cadd4cbf9d006053bbfb",
+      "bytes": 4260388,
+      "n_pares": 4,
+      "consulta_utc": "2026-10-17T15:51:59.256814+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif",
+      "sha256": "a8a0fc3b1944c3b4380ec5673bf48b957359e7a3560d13d9f658e4a946ed6ab7",
+      "bytes": 4142898,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:00.190395+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif",
+      "sha256": "46f3e82803bb29eaa13e84fcecc38a13816283da00e286a71a83ac9828cd5dd6",
+      "bytes": 4302314,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:01.302289+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif",
+      "sha256": "6703fd8cf122e8b119e26451c849ca8acb402772f4a0464fd14fa2c8219eb4e0",
+      "bytes": 4302996,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:02.402351+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif",
+      "sha256": "7f7a3976ad4cd3bcb68aae5f80dc7aaf37e0736d1e452291325f671d8cb6d517",
+      "bytes": 4305402,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:03.337198+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif",
+      "sha256": "2be8990d7d8eb482111a40d6d5e4601ef85a3fdf3c94e9b40a4b8cd87ca555ec",
+      "bytes": 4302582,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:04.202482+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif",
+      "sha256": "08419e50724c6ee01f8ae562003c8ff9cbbfa7acd7ee98b86481fb5b5dc98ff1",
+      "bytes": 4269080,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:05.215071+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2002-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif",
+      "sha256": "b21f07713729ab283aa5e4e103ac46c56b8cb2228b0a9d43ce432e1bf003369e",
+      "bytes": 4253982,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:06.072486+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.01.tif",
+      "sha256": "f79f0d6d682c34da3ddc9e7735e426eff2a1f2fb8cf4e25259b76a87a0391cb3",
+      "bytes": 4241048,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:07.005625+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.02.tif",
+      "sha256": "7ba8a1f2c83ecabeff9f73f37a7b55a6cdd6c9610b36268aa889ddffb1774ea6",
+      "bytes": 4179402,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:07.922944+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.03.tif",
+      "sha256": "46706e7564ae0045804c83fe5799e164608e084229d0b0014a008d8440ff1ba3",
+      "bytes": 4244580,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:08.876712+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.04.tif",
+      "sha256": "b773812d0adfcb009056a5c920beb451e7365bef3ba3c7be573eb6e679133634",
+      "bytes": 4239224,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:09.790231+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.05.tif",
+      "sha256": "b5a8ae0da16b91e37d460d04b6b6e0f03df06be9218d2231c2cec9feace05c0b",
+      "bytes": 4216270,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:10.778510+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.06.tif",
+      "sha256": "4ec8619ac74cbd7e21646580a5903d95debb3c33f9eca02adf758bbaadd9943f",
+      "bytes": 4194428,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:11.722795+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.07.tif",
+      "sha256": "14a6b6b880d98e70b0c11a3d53639f14815735b47092360eceb43d8912e64b14",
+      "bytes": 4279758,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:12.715750+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.08.tif",
+      "sha256": "840170d32816e8554fc02a9fe25d5d061df542889020fe242a2c4b9684b7eb9b",
+      "bytes": 4287584,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:13.703649+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.09.tif",
+      "sha256": "53108bca3f8ad53b055002b65647b2d0b3a3ff4a3c05a099f3904d0f42f59fff",
+      "bytes": 4278014,
+      "n_pares": 4,
+      "consulta_utc": "2026-10-17T15:52:14.581657+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.10.tif",
+      "sha256": "8fe0116d05e888ba9386dc141276001d90e5925b46d77cbf52fd990c55a0c3c3",
+      "bytes": 4288288,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:15.483864+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.11.tif",
+      "sha256": "aba34b5baea23fda27acc8a3c3970520ca221abca2c9d446173c9331f5eb369e",
+      "bytes": 4230066,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:16.566580+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2007-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.12.tif",
+      "sha256": "2e01001a1edc94b8b77246e5b2d1c329ad08b398875c12590cf44f1bab51550a",
+      "bytes": 4197122,
+      "n_pares": 4,
+      "consulta_utc": "2026-10-17T15:52:17.559236+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.01.tif",
+      "sha256": "aa9c63969c0c30ee7f05be6302b4adc54c563063c4f6276e663cc3f4ac3b4573",
+      "bytes": 4108920,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:18.508388+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.02.tif",
+      "sha256": "a03907c465d681bc6f741a8031b0d596da3ebe86c38c22f3a21634af250fc53e",
+      "bytes": 3992042,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:19.532609+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.03.tif",
+      "sha256": "0b0e0739d42dad73b0b5c7fe04ca475109762e6d967b1d0294789437b05c391b",
+      "bytes": 4028248,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:20.521832+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.04.tif",
+      "sha256": "4c81ed813fe1e49bb263fea3a094ffe6ad28ec578fcac9e4b8c3eca0d177d668",
+      "bytes": 4132946,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:21.405883+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.05.tif",
+      "sha256": "a0039484f3410f1137499703de73b682a896446570d6e467348f4eda9c16cb59",
+      "bytes": 4097830,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:22.363204+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.06.tif",
+      "sha256": "5075b1ab7f0b9dd01ae32ae8717077d4be9867a5a1ca69daa294bcc43049fa7d",
+      "bytes": 4220774,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:23.335496+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.07.tif",
+      "sha256": "12fd842cd4276c275e9fb37e82f2f0f98709b04309722fb1dcfc5d580b7b402e",
+      "bytes": 4250638,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:24.201531+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.08.tif",
+      "sha256": "b6b9ad95cd0b6ad69d28f422ad96177b19abee47dfbb399ad34895a421ac6ae5",
+      "bytes": 4264812,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:25.158692+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.09.tif",
+      "sha256": "983a35f00d79a98f940b21ce543163017e3ee80023fd7f5be1a85a3f27d006ec",
+      "bytes": 4301702,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:26.063274+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.10.tif",
+      "sha256": "de54e775d58e99ffbcba3eb8d45a4638e242effcfce80dcda20d0c062d090e24",
+      "bytes": 4230212,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:27.020951+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.11.tif",
+      "sha256": "fc86fb214a45eae9a4eb0cd7d21e792c7ddf5bc032a16dd698cc192c0e0be3ae",
+      "bytes": 4220074,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:27.887018+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2011-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.12.tif",
+      "sha256": "83bb43041f38799f6a4e8a197ce707f69db7a12d413267059cff94ae2591f18c",
+      "bytes": 4154278,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:28.835600+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.01.tif",
+      "sha256": "1fbd60a5e95073d55d1a5496a9c63ce6f755a5dd6e6095acb380db8c678a4ab1",
+      "bytes": 4263414,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:29.759362+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.02.tif",
+      "sha256": "4a54b951735294c5b7d76f2b4a618f3cd2884a5c879816906365a8e9892a9836",
+      "bytes": 4192216,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:46.561649+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.03.tif",
+      "sha256": "4620e6cac0f5dc9c4d0544ef69b12bbf470b5cf95f13a00a8e7038fcee2aba39",
+      "bytes": 4228206,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:47.471697+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.04.tif",
+      "sha256": "a10f798100d45242ae01041d24888136419e5d1bae755fe539139d443a3f2c16",
+      "bytes": 4041776,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:48.364155+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.05.tif",
+      "sha256": "a69d4409b7c3d09518fd5122afe2d23c019e938ed29b4f487d63d7de3e779f4b",
+      "bytes": 4234064,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:49.346601+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.06.tif",
+      "sha256": "c8c0d262da9a132b19c5c5fdf3e7a65798ee0336e66f152c27fe1e34c106ac9b",
+      "bytes": 4242526,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:50.192123+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.07.tif",
+      "sha256": "94c943337374ffb3b13907f483120b12fe0690e15019f169eb5d32d700571eb7",
+      "bytes": 4214384,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:51.130791+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.08.tif",
+      "sha256": "1d5c9bb662af77b936fd112aa772a4864beda76dfce8631f526203939acade1d",
+      "bytes": 4298470,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:52.020501+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.09.tif",
+      "sha256": "cd5ac3a0575d21b218483f8b71ebd216ae1a5d5e11be1c8c0939eefa238afc11",
+      "bytes": 4286892,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:53.017179+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.10.tif",
+      "sha256": "cd7bfc1b90ccd848a014ee6128f16d8bd1ad931072ba756d3b28339aab698ecf",
+      "bytes": 4299872,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:53.929552+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.11.tif",
+      "sha256": "d7e22d9c6668af12b743be7abb163abea0cfc84722a682a13e016223058ed603",
+      "bytes": 4252080,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:54.934892+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    },
+    {
+      "mes": "2013-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.12.tif",
+      "sha256": "abdb8ded4412b9edab9c5a4bcf969ff1ef3d21cdcfe6d6534095069bcafbe84d",
+      "bytes": 4223436,
+      "n_pares": 6,
+      "consulta_utc": "2026-10-17T15:52:55.842018+00:00",
+      "formato": "GeoTIFF mensual v3 LATAM, EPSG:4326"
+    }
+  ],
+  "problemas": [],
+  "meses_tiff_exitosos": 60,
+  "meses_tiff_solicitados": 60,
+  "pares_adicionales": 354,
+  "filas_sin_observacion_no_imputadas": true,
+  "independencia_chirps_certificada": false,
+  "ubicacion_historica_certificada": false,
+  "capacidad_predictiva_certificada": false,
+  "nota": "La cantidad de pares duplica registros por hipótesis de ubicación; no son replicas independientes."
+}
