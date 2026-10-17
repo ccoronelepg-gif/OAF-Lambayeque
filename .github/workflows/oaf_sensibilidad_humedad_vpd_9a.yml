@@ -6,6 +6,8 @@ on:
     paths:
       - 'modelos/sensibilidad_humedad_vpd_9a.py'
       - 'tests/test_sensibilidad_humedad_vpd_9a.py'
+      - 'modelos/visor_benchmark_9a.js'
+      - 'index.html'
       - '.github/workflows/oaf_sensibilidad_humedad_vpd_9a.yml'
       - 'datos/humedad_8z/humedad_vpd_mensual_8z.csv'
       - 'datos/benchmark_8w/predicciones_mensuales_8w.csv'
@@ -57,6 +59,19 @@ jobs:
               t=datetime.strptime(x['mes_objetivo'],'%Y-%m')
               assert (t.year-o.year)*12+t.month-o.month==int(x['horizonte_meses'])
           print('9A: MAE y P90 idénticamente pareados sin desplazamiento ni alertas.')
+          PY
+      - name: Verificar portal 9A y filtros de comparación
+        run: |
+          node --check modelos/visor_benchmark_9a.js
+          python - <<'PY'
+          from pathlib import Path
+          page=Path('index.html').read_text(encoding='utf-8')
+          keys=['oaf-benchmark-9a','oaf-9a-site','oaf-9a-h','oaf-9a-target',
+                'oaf-9a-stability','oaf-9a-models','oaf-9a-seasons',
+                'oaf-9a-events','oaf-9a-status','oaf-9a-summary']
+          assert all(page.count('id="'+x+'"')==1 for x in keys)
+          assert page.count('src="modelos/visor_benchmark_9a.js"')==1
+          print('Gráfico y filtros del dashboard 9A auditados.')
           PY
       - name: Publicar matrices 9A tras reconstruir
         run: |
