@@ -1,0 +1,25 @@
+{
+  "fase": "8U",
+  "periodo": [
+    2016,
+    2025
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.1522%2C-5.9849%2C-6.8%2C-5.9&longitude=-79.8409%2C-79.8228%2C-79.7154%2C-79.7454%2C-81.0%2C-81.5&start_date=2016-01-01&end_date=2025-12-31&daily=wind_speed_10m_mean%2Cwind_speed_10m_max%2Cwind_direction_10m_dominant&models=era5&timezone=America%2FLima&wind_speed_unit=ms&cell_selection=nearest",
+  "sha256_original": "a7f345047386fdd8d2bddeec2255a849d45bba083e813c3a3277967ae6dd6e43",
+  "consulta_utc": "2026-10-17T04:08:30+00:00",
+  "sitios": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos",
+    "Mar_frente_Pimentel",
+    "Mar_norte_Lambayeque"
+  ],
+  "variables": [
+    "wind_speed_10m_mean",
+    "wind_speed_10m_max",
+    "wind_direction_10m_dominant"
+  ],
+  "modelo": "ERA5 reanálisis no estación",
+  "viento_10m_no_corriente_marina": true
+}

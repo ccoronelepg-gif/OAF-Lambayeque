@@ -1,7 +1,7 @@
 {
   "fase": "8U",
   "submodulo": "viento_atmosferico",
-  "estado": "fuentes_viento_incompletas",
+  "estado": "viento_completo_30_anos",
   "modelo": "ERA5 vía Open-Meteo Historical Archive",
   "variables": [
     "wind_speed_10m_mean",
@@ -10,12 +10,12 @@
   ],
   "periodo": "1996–2025",
   "n_bloques_esperados": 3,
-  "n_bloques_verificados": 1,
+  "n_bloques_verificados": 3,
   "n_ubicaciones_de_referencia": 6,
   "n_ubicaciones_maritimas": 2,
-  "meses_por_ubicacion_completa": 0,
-  "n_filas_publicadas": 0,
-  "numero_celdas_era5_unicas": 0,
+  "meses_por_ubicacion_completa": 360,
+  "n_filas_publicadas": 2160,
+  "numero_celdas_era5_unicas": 6,
   "procedimiento_componentes": "velocidad_media_diaria × direccion_dominante_diaria (FROM), estimación aproximada de u/v",
   "viento_inferido_no_es_corriente_oceanica": true,
   "interpretacion_celda_offshore_sin_verificacion_mascara_oceanica": true,
@@ -35,14 +35,14 @@
         2006,
         2015
       ],
-      "sha256_original_comprimido": null
+      "sha256_original_comprimido": "2d036329eebcbb8a469e92f7c59244c9fae2dddf42d7f3f04992776525e86cf3"
     },
     {
       "periodo": [
         2016,
         2025
       ],
-      "sha256_original_comprimido": null
+      "sha256_original_comprimido": "364a82d1c29b4ca029dfc7d9c0ffee48aec005dd35ef1b9b80bb29aa71ca16ac"
     }
   ]
 }
