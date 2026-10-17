@@ -17,8 +17,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
-          cache-dependency-path: "requirements.txt"
       - name: Instalar bibliotecas numéricas CPU
         run: |
           python -m pip install --upgrade pip
@@ -45,8 +43,8 @@ jobs:
             print("COMPARACION_10C",m, v)
           for m,v in d["cobertura_2023"].items():
             print("COBERTURA_2023_10C",m,v)
-          for m,v in d["eventos_umbral"]:
-            pass
+          for v in d["eventos_umbral"]:
+            if v["umbral_mm"]==100: print("EXTREMOS_100MM_10C", v)
           PY
       - name: Subir resultados a artefactos
         uses: actions/upload-artifact@v4
