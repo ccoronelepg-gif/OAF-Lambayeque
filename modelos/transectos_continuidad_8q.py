@@ -34,6 +34,9 @@ FIELDS=("testigo_id","transecto","extremo_inicio","extremo_fin",
 CMP_FIELDS=("transecto","testigo_id","altitud_dem_m","tmedia_1996_2025_c",
             "precipitacion_anual_media_mm","humedad_relativa_media_pct",
             "radiacion_anual_media_mj_m2","clima_instrumental_verificado")
+CELL_FIELDS=("transecto","testigo_id","modelo","latitud_celda_api",
+             "longitud_celda_api","n_centros_distintos_en_decadas",
+             "coincide_con_otra_muestra_mismo_transecto","valor_de_celda_no_es_sensor")
 
 def csv_data(path):
     with path.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
@@ -179,6 +182,35 @@ def evaluate(root):
         for start,end in climate.BLOCKS:
             blob=inspect(root,model,start,end,pts)
             if blob is not None:sources[(model,start,end)]=blob
+    # Coordenadas de cada respuesta histórica real, conservando separación
+    # entre ERA5 y ERA5-Land. Se admiten resultados de modelos con al menos
+    # una década disponible, pero no se reclama estabilidad sin tres.
+    centers={}
+    for (model,begin,end),blob in sources.items():
+        for p,obj in zip(selected,blob):
+            key=(model,p["testigo_id"])
+            centers.setdefault(key,set()).add(
+              (round(float(obj["latitude"]),5),round(float(obj["longitude"]),5)))
+    by_transect={}
+    for p in selected:
+        by_transect.setdefault(p["transecto"],[]).append(p["testigo_id"])
+    cellrows=[]
+    for p in selected:
+        for model in climate.VARS:
+            coords=centers.get((model,p["testigo_id"]),set())
+            if not coords:continue
+            unique=sorted(coords)
+            center=unique[0] if len(unique)==1 else (None,None)
+            same=any(len(coords)==1 and coords==centers.get((model,other),set())
+                 for other in by_transect[p["transecto"]]
+                 if other!=p["testigo_id"])
+            cellrows.append({"transecto":p["transecto"],
+              "testigo_id":p["testigo_id"],"modelo":model,
+              "latitud_celda_api":center[0] if center[0] is not None else "",
+              "longitud_celda_api":center[1] if center[1] is not None else "",
+              "n_centros_distintos_en_decadas":len(unique),
+              "coincide_con_otra_muestra_mismo_transecto":"true" if same else "false",
+              "valor_de_celda_no_es_sensor":"true"})
     complete=len(sources)==6
     comparables=[]
     if complete:
@@ -209,6 +241,16 @@ def evaluate(root):
        "n_testigos_intermedios_30_anios_completos":len(comparables),
        "periodo":"1996–2025",
        "transectos":layout,
+       "centros_de_celda_api_revisados":len(cellrows),
+       "muestras_con_celda_era5_repetida_en_mismo_transecto":len({
+          c["testigo_id"] for c in cellrows if c["modelo"]=="era5" and
+          c["coincide_con_otra_muestra_mismo_transecto"]=="true"
+       }),
+       "muestras_con_celda_era5land_repetida_en_mismo_transecto":len({
+          c["testigo_id"] for c in cellrows if c["modelo"]=="era5_land" and
+          c["coincide_con_otra_muestra_mismo_transecto"]=="true"
+       }),
+       "identidad_de_celda_no_garantiza_medicion_independiente":True,
        "zonas_contiguas_homogeneas_demostradas":0,
        "poligonos_agroclimaticos_certificados":0,
        "instrumentos_SENAMHI_confirmados":0,
@@ -231,15 +273,16 @@ def evaluate(root):
           "fuentes_SHA_original":{f"{m}_{a}_{b}":sha(gzip.decompress(source_paths(root,m,a,b)[0].read_bytes()))
              for (m,a,b) in sources}}
     }
-    return report,selected,comparables
+    return report,selected,comparables,cellrows
 
 def publish(root,check=False):
-    state,samples_,metrics=evaluate(root)
+    state,samples_,metrics,cellrows=evaluate(root)
     base=root/BASE
     outputs={
       base/"estado_transectos_8q.json":json.dumps(state,ensure_ascii=False,indent=2)+"\n",
       base/"muestras_intermedias_8q.csv":csv_text(samples_,FIELDS),
-      base/"comparacion_climatica_8q.csv":csv_text(metrics,CMP_FIELDS)
+      base/"comparacion_climatica_8q.csv":csv_text(metrics,CMP_FIELDS),
+      base/"centros_modelados_8q.csv":csv_text(cellrows,CELL_FIELDS)
     }
     if not check:base.mkdir(parents=True,exist_ok=True)
     for path,contents in outputs.items():
