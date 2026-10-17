@@ -1,0 +1,66 @@
+name: OAF 8S - Validacion regional multibloque de anomalias
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/validacion_regional_8s.py'
+      - 'tests/test_validacion_regional_8s.py'
+      - '.github/workflows/oaf_validacion_regional_8s.yml'
+      - 'modelos/visor_regional_8s.js'
+      - 'index.html'
+  schedule:
+    - cron: '53 18 4 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8s-validacion-regional
+  cancel-in-progress: false
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar fuentes auditadas 8O y 8P
+        run: git pull --ff-only origin main
+      - name: Pruebas sintéticas sin acceso a observaciones futuras
+        run: python -m unittest discover -s tests -p 'test_validacion_regional_8s.py' -v
+      - name: Evaluar cinco cortes temporales y cuatro bloques espaciales
+        run: |
+          python modelos/validacion_regional_8s.py
+          python modelos/validacion_regional_8s.py --check
+      - name: Verificar interfaz de reporte cuando exista
+        run: |
+          if test -f modelos/visor_regional_8s.js; then
+            node --check modelos/visor_regional_8s.js
+            python - <<'PY'
+          from pathlib import Path
+          page=Path("index.html").read_text(encoding="utf-8")
+          for identifier in ("oaf-regional-8s","oaf-8s-status","oaf-8s-cells",
+                             "oaf-8s-temporal","oaf-8s-spatial","oaf-8s-folds",
+                             "oaf-8s-altitude","oaf-8s-refresh"):
+              assert page.count('id="'+identifier+'"')==1,identifier
+          assert 'src="modelos/visor_regional_8s.js"' in page
+          assert 'FASE_8S_VALIDACION_REGIONAL.md' in page
+          print("Panel de validación regional 8S comprobado")
+          PY
+          fi
+      - name: Archivar trazabilidad y resultados sin inventar mediciones
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/validacion_regional_8s/
+          if git diff --cached --quiet; then
+            echo "Resultados 8S idénticos a los ya archivados."
+          else
+            git commit -m "data(oaf): backtest regional 8S cronológico y espacial, sin SENAMHI"
+            git pull --rebase origin main
+            git push
+          fi
