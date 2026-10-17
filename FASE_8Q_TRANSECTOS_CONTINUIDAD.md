@@ -58,11 +58,29 @@ Para los 10 nodos intermedios se diseñaron seis consultas históricas verificab
 - **Parámetros:** zona America/Lima, selección de celda `land`, con URL de solicitud, UTC de adquisición y SHA-256 del JSON comprimido.
 - **QA:** días completos, fechas iguales, valores finitos, unidades y coherencia Tmean/Tmin/Tmax. Ningún dato sintético puede ingresar al inventario productivo.
 
-**Regla de publicación:** solo se calcularán indicadores climáticos de los diez puntos cuando estén archivadas las **seis fuentes originales completas**, evitando presentar un bloque aislado como una climatología de treinta años. Se utilizarán el mismo periodo y modelos de la fase 8P.
+**Ejecución completada y auditada:** **6 de 6 respuestas históricas** originales archivadas, válidas y trazables mediante SHA-256; **10 de 10 puntos intermedios con 360 meses completos** de variables meteorológicas. Se conservaron por separado las coordenadas de las celdas proporcionadas por ERA5-Land (temperatura) y ERA5 (precipitación/humedad/radiación) en [`centros_modelados_8q.csv`](datos/transectos_8q/centros_modelados_8q.csv). Los centros resultaron constantes entre las tres décadas para cada punto y modelo.
 
-En la primera ejecución la plataforma completó correctamente **1 de las 6 fuentes climáticas**; las restantes se obtendrán mediante GitHub Actions a un ritmo conservador y respetando los límites del proveedor. El [estado vivo](datos/transectos_8q/estado_transectos_8q.json) permite comprobar cuántas fuentes hay realmente. Una vez completas, se informarán por testigo la temperatura media de 30 años, la precipitación media anual, la humedad relativa y la radiación, sin atribuir causalidad de altitud por sí sola.
+### Resultados comparados del periodo completo 1996–2025
 
-**Control posterior necesario:** comprobar identidad de píxeles ERA5 y ERA5-Land entre los puntos intermedios. Dos consultas distintas pueden reutilizar la misma celda. También será necesario incorporar unidades climáticas por cuenca, pendiente y exposición, y evaluar series observadas de SENAMHI.
+| Transecto | Mínimo de temperatura media de largo plazo | Máximo | Amplitud entre muestras |
+|---|---:|---:|---:|
+| V1a (4 muestras) | **19,0854 °C** (M0206, 1.120 m DEM) | **22,0676 °C** (M0184, 212 m) | **2,9822 °C** |
+| V1b (2 muestras adicionales) | **21,7073 °C** (M0203, 526 m) | **22,0021 °C** (M0205, 271 m) | **0,2948 °C** |
+| V2 (4 muestras) | **7,2269 °C** (M0281, 3.839 m) | **15,2893 °C** (M0253, 2.186 m) | **8,0624 °C** |
+
+Estas cifras representan diferencias entre climatologías **modeladas en distintas coordenadas**, potencialmente afectadas por la elección de celda y el ajuste de elevación de Open-Meteo. No son sesgos frente a termómetros ni prueban por sí solas una relación causal altitud–temperatura. Sí muestran por qué no debemos atribuir la misma Tmedia a todos los ambientes de un transecto.
+
+El análisis de las celdas originales identificó:
+
+- **ERA5-Land:** **4 de los 10 puntos** comparten centro de celda con otro punto del mismo transecto. V1a comparte celda en M0179–M0184; V2 comparte celda en M0281–M0290.
+- **ERA5:** **7 de los 10 puntos** comparten centro de celda con otros del mismo transecto: tres de V1a y los cuatro puntos V2.
+- En **V2, las cuatro series de precipitación, humedad y radiación provienen de una misma celda ERA5**. Que la lluvia modelada sea exactamente **1.419,53 mm/año** para los cuatro nodos **NO constituye evidencia de un régimen pluviométrico homogéneo real** entre las laderas o cumbres.
+
+En V1a, la precipitación anual histórica del modelo asciende a **1.355,28 mm** para tres nodos que reutilizan centro ERA5 y a **2.097,91 mm** en M0206 que consulta otra celda; esta diferencia no prueba una frontera climática precisa porque el cambio de píxel puede crear discontinuidades artificiales.
+
+**Resultado científico útil:** la heterogeneidad térmica/altitudinal del transecto V2 y el contraste térmico de V1a indican que una zonificación que suponga temperaturas absolutas homogéneas en esos recorridos sería poco defendible. Para **predicción de anomalías**, sin embargo, también es necesario comparar cuánto se parecen las **anomalías temporales locales tras descontar la normal de cada sitio**: dos sitios con temperaturas base diferentes podrían compartir cierta señal temporal. Esa cuestión se evaluará separadamente para no confundir temperatura absoluta con respuesta anómala compartida.
+
+**Control posterior necesario:** contrastar independientemente los ajustes altitudinales del proveedor y verificar datos SENAMHI, máscara tierra/mar, orientación de laderas, cuencas y uso agrícola. No asumir independencia estadística incluso entre centros de píxel distintos.
 
 ## 5. Hallazgos y conclusiones de aplicación agrícola
 
@@ -82,4 +100,4 @@ Para arándano y vid no se puede extrapolar incidencia o riesgo de enfermedades 
 - [Base ERA5-Land Copernicus](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land).
 - [API histórica Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api).
 
-**Estado:** el muestreo DEM intermedio está comprobado; la comparación climática multivariable de los diez puntos sigue en ejecución. **Zonas homogéneas certificadas: cero.**
+**Estado:** muestreo DEM y climatologías históricas completas de los diez puntos publicados y auditados. **Zonas homogéneas certificadas: cero; predicción zonal independiente acreditada: cero.**
