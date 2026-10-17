@@ -133,6 +133,7 @@ def polygon_parts(poly):
 
 def build():
     d,w,edges,border=read()
+    boundary_wgs=shape(json.loads(BOUND.read_text("utf8"))["features"][0]["geometry"])
     group,climate_families,links,shared=families(w,edges)
     ordered=list(d.values()) # orden estable CSV
     points=MultiPoint([p["p"] for p in ordered])
@@ -178,7 +179,7 @@ def build():
             # Núcleos con un único testigo en pieza no implican continuidad entre testigos.
             state=("hipotesis_nucleo_conectado" if supported else
                    "influencia_altitudinal_exploratoria")
-            g=transform(UNPROJ,part)
+            g=transform(UNPROJ,part).intersection(boundary_wgs)
             if not g.is_valid:
                 # Algunos anillos casi tangentes se vuelven autointersectantes por la
                 # inversión UTM->WGS84. Reparar solo el aspecto geométrico de dibujo.
@@ -203,8 +204,7 @@ def build():
             ledger.append(prop)
     cover=unary_union([shape(f["geometry"]) for f in feats])
     # Verificación visual, en grados, de que ninguna pieza queda fuera de Lambayeque.
-    region_wgs=transform(UNPROJ,border)
-    if cover.difference(region_wgs.buffer(0.00002)).area>1e-8:
+    if cover.difference(boundary_wgs.buffer(0.000001)).area>1e-10:
         raise ValueError("La capa sale fuera del límite departamental simplificado")
     assert len(records)==len(ordered) and len(feats)>7
     source={p:source_sha(q) for p,q in
