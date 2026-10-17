@@ -51,6 +51,14 @@ def response_to_months(response,site,year):
     if response.get('error'):raise ValueError(str(response.get('reason','API error')))
     if response.get('timezone') not in ('GMT','UTC'):
         raise ValueError('Timezone non-UTC. Datos no comparables.')
+    try:
+        grid_lat=float(response['latitude'])
+        grid_lon=float(response['longitude'])
+    except (TypeError,KeyError,ValueError):
+        raise ValueError('Proveedor no devuelve centro de celda geográfico') from None
+    target_lat,target_lon=SITES[site]
+    if abs(grid_lat-target_lat)>1.0 or abs(grid_lon-target_lon)>1.0:
+        raise ValueError('CAMS devolvió celda lejana a ubicación solicitada')
     units=response.get('hourly_units',{})
     for key in REQUIRED:
         if units.get(key) not in ('μg/m³','µg/m³','ug/m3'):
@@ -83,6 +91,7 @@ def response_to_months(response,site,year):
         count_expected=month_days(year,m)*24//step
         if len(inds)!=count_expected:raise ValueError('Faltan marcas temporales del mes')
         row={'mes':f'{year}-{m:02d}','localidad':site,
+             'celda_cams_lat':grid_lat,'celda_cams_lon':grid_lon,
              'fuente':'Open-Meteo CAMS Global modelado, NO estación',
              'modelado_no_instrumental':True,
              'resolucion_horas':step,'marcas_temporales_esperadas':count_expected}
@@ -168,6 +177,7 @@ def execute(root='.',fetch=False,year=2025,site=None,check=False):
     if len({(x['mes'],x['localidad']) for x in records})!=len(records):
         raise ValueError('Mes/sitio duplicado entre fuentes')
     records.sort(key=lambda x:(x['localidad'],x['mes']))
+    unique_cells=sorted({(x['celda_cams_lat'],x['celda_cams_lon']) for x in records})
     result_csv=write_csv(records) if records else None
     valid=sum(bool(x['mes_pm_completo_80pct']) for x in records)
     status={
@@ -179,6 +189,12 @@ def execute(root='.',fetch=False,year=2025,site=None,check=False):
         'estaciones_pm_lambayeque_validadas':0,
         'sitios_referencia':list(SITES),
         'filas_mes_sitio':len(records),'meses_pm_80pct_aptos':valid,
+        'n_celdas_modelo_unicas':len(unique_cells),
+        'centros_celda_cams': [{'latitud':lat,'longitud':lon} for lat,lon in unique_cells],
+        'asignaciones_localidad_a_celda':{
+            site: {'latitud':next(x['celda_cams_lat'] for x in records if x['localidad']==site),
+                   'longitud':next(x['celda_cams_lon'] for x in records if x['localidad']==site)}
+            for site in SITES if any(x['localidad']==site for x in records)},
         'registros_faltantes_no_imputados':True,
         'comparacion_legal_ECA_habilitada':False,
         'pronostico_pm_agricola_validado':False,
