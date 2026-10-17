@@ -129,7 +129,9 @@ class Redisenio(unittest.TestCase):
         self.assertIn('no son zonas climáticas homogéneas certificadas',HTML)
     def test_home_indicators_and_current_source(self):
         src=(ROOT/'assets/oaf-redesign-8f.js').read_text()
-        self.assertIn("wind_speed_10m,vapour_pressure_deficit",src)
+        self.assertIn("shortwave_radiation,wind_speed_10m",src)
+        self.assertIn("vpdEstimate",src)
+        self.assertNotIn("wind_speed_10m,vapour_pressure_deficit",src)
         self.assertIn("$('#oaf-home-location')",src)
         self.assertIn("'#oaf-live-vpd'",src)
         self.assertIn("'#oaf-live-wind'",src)
