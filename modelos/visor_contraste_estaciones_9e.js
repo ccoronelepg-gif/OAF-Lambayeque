@@ -51,7 +51,8 @@ async function init(){
   const cell=create(list,"div","oaf-compare-card");
   create(cell,"small","","Series "+p.codigo_a+" / "+p.codigo_b);
   create(cell,"strong","",f(p.correlacion_log1p_lluvia_mensual,2));
-  create(cell,"span","",p.meses_comunes_100pct+" meses comparables (1996–2013)");
+  create(cell,"span","",p.meses_comunes_100pct+" meses completos · sin ciclo anual: "+f(p.correlacion_residual_calendario_log1p,2)+
+     " · sin 1998: "+f(p.correlacion_log1p_sin_1998,2));
  }
  const v=el("oaf-compare-status");
  v.textContent="Los tres archivos siguen sin ficha geográfica oficial verificada. No hay comparación ERA5-Land/CHIRPS calculada.";
