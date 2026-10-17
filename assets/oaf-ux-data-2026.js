@@ -122,7 +122,7 @@ async function enfenSummary(){
 }
 function attach(){
  const sel=g("oaf-home-location");if(!sel)return;
- sel.addEventListener("change",()=>{forecast(sel.value);updateMap(sel.value,null)});
+ // The shared locality coordinator emits a single event; no duplicate API request.
  document.addEventListener("oaf:localidad",e=>{if(coords[e.detail?.localidad]){forecast(e.detail.localidad);updateMap(e.detail.localidad,null)}});
  document.addEventListener("oaf:weather",e=>{if(e.detail?.localidad===sel.value)updateMap(sel.value,e.detail.current)});
  forecast(sel.value);
