@@ -1,9 +1,9 @@
 (()=>{
 "use strict";
-const root=document.getElementById("oaf-forcing-8u");if(!root)return;
+const root=document.getElementById("oaf-factors-8u");if(!root)return;
 const $=id=>document.getElementById(id);
-const msg=$("oaf-8u-status");
-const bodies=[$("oaf-8u-wind-table"),$("oaf-8u-ocean-table"),$("oaf-8u-current-table")];
+const msg=$("oaf-8u-extra-status");
+const bodies=[$("oaf-8u-extra-wind-table"),$("oaf-8u-extra-ocean-table"),$("oaf-8u-extra-current-table")];
 const number=x=>Number.isFinite(+x)?Number(x).toLocaleString("es-PE",{maximumFractionDigits:3}):"—";
 function csv(text){
  let lines=text.trim().split(/\r?\n/);
@@ -45,9 +45,9 @@ async function update(){
      cr.some(x=>x.observacion_directa_campo!=="false"))
        throw Error("Fuentes o unidades no auditadas");
   bodies.forEach(x=>x.replaceChildren());
-  $("oaf-8u-wind").textContent=w.n_bloques_verificados+"/3";
-  $("oaf-8u-sst").textContent=String(sr.length);
-  $("oaf-8u-currents").textContent=c.n_series_punto_periodo_verificadas+"/4";
+  $("oaf-8u-extra-wind").textContent=w.n_bloques_verificados+"/3";
+  $("oaf-8u-extra-sst").textContent=String(sr.length);
+  $("oaf-8u-extra-currents").textContent=c.n_series_punto_periodo_verificadas+"/4";
   for(const month of ["1997-03","1998-03","2017-03","2023-03","2025-12"]){
     const r=sr.find(x=>x.mes===month);
     if(r)add(bodies[1],[r.mes,number(r.tsm_nino12_c),number(r.anomalia_tsm_nino12_c)]);
@@ -78,6 +78,6 @@ async function update(){
   msg.textContent="No hay evidencia publicable completa: "+e.message;
  }
 }
-$("oaf-8u-refresh")?.addEventListener("click",update);
+$("oaf-8u-extra-refresh")?.addEventListener("click",update);
 let started=false;root.addEventListener("toggle",()=>{if(root.open&&!started){started=true;update()}});
 })();
