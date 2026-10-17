@@ -78,7 +78,27 @@ El análisis de las celdas originales identificó:
 
 En V1a, la precipitación anual histórica del modelo asciende a **1.355,28 mm** para tres nodos que reutilizan centro ERA5 y a **2.097,91 mm** en M0206 que consulta otra celda; esta diferencia no prueba una frontera climática precisa porque el cambio de píxel puede crear discontinuidades artificiales.
 
-**Resultado científico útil:** la heterogeneidad térmica/altitudinal del transecto V2 y el contraste térmico de V1a indican que una zonificación que suponga temperaturas absolutas homogéneas en esos recorridos sería poco defendible. Para **predicción de anomalías**, sin embargo, también es necesario comparar cuánto se parecen las **anomalías temporales locales tras descontar la normal de cada sitio**: dos sitios con temperaturas base diferentes podrían compartir cierta señal temporal. Esa cuestión se evaluará separadamente para no confundir temperatura absoluta con respuesta anómala compartida.
+## 4A. Coherencia temporal de las anomalías respecto de la normal local
+
+Para conectar la zonificación con el objetivo principal de **predecir anomalías**, calculamos para cada uno de los diez nodos su propia media de cada mes calendario utilizando 1996–2025, con treinta observaciones mensuales por mes del año. A cada mes de la serie de 360 meses se le resta **su normal del mismo sitio y mes**. Se correlacionan las anomalías mensuales de temperatura de dos puntos de un mismo transecto y se calcula su diferencia media absoluta.
+
+**Esto no evalúa pronósticos.** Se describen dos series históricas derivadas del mismo proveedor y período, sin emitir predicciones previas a la fecha observada.
+
+| Transecto | Pares con 360 meses | Rango de correlación de anomalías Tmedia | Diferencia media absoluta de anomalías |
+|---|---:|---:|---:|
+| V1a | 6 | **0,93603 a 0,99998** | 0,00344–0,22296 °C |
+| V1b | 1 | **0,96507** | 0,15014 °C |
+| V2 | 6 | **0,93823 a 0,99998** | 0,00280–0,14820 °C |
+
+**Control indispensable:** en 2 de los 13 pares ambos puntos comparten el **mismo centro de píxel ERA5-Land**, lo que explica casi totalmente correlaciones ~1 y diferencias de anomalía muy pequeñas. Si excluimos esas dos comparaciones con píxel térmico idéntico, las correlaciones de V2 siguen entre **0,93823 y 0,98773**, y las de V1a entre **0,93603 y 0,95987**. Estos valores pueden reflejar forzamientos meteorológicos regionales semejantes y/o estructura y ajuste del modelo, **sin constituir validación independiente**.
+
+En **9 de los 13 pares** se reutiliza la **misma celda ERA5 de precipitación**. Las correlaciones de lluvia cercanas o iguales a 1 no demuestran igual lluvia real y no justifican agrupar las parcelas bajo un mismo modelo hídrico. Se necesitará una fuente de precipitación espacial más detallada, observaciones SENAMHI y comparaciones con CHIRPS u otras bases confiables.
+
+**Implicación concreta para el diseño OAF**: estudiar una arquitectura jerárquica en dos niveles: (1) señal de anomalía regional o de subzona; (2) climatología local por posición, elevación, orientación y régimen meteorológico, con calibraciones diferentes. Evaluar ambas partes mediante separación temporal estricta, bloques espaciales, sensores independientes y comparación con climatología/persistencia antes de declararla predictiva.
+
+Archivos de apoyo: [`coherencia_anomalias_8q.csv`](datos/transectos_8q/coherencia_anomalias_8q.csv) (13 pares, coeficiente Pearson, MAE, identidad de celda y estatus instrumental) y [`estado_transectos_8q.json`](datos/transectos_8q/estado_transectos_8q.json), con sumarios y procedencia SHA.
+
+**Resultado científico útil:** la heterogeneidad térmica/altitudinal del transecto V2 y el contraste térmico de V1a indican que una zonificación que suponga temperaturas absolutas homogéneas en esos recorridos sería poco defendible. Para **predicción de anomalías**, el análisis de coherencia temporal anterior demuestra semejanza descriptiva de anomalías locales en el reanálisis, pero aún no habilidad predictiva prospectiva ni similitud de lluvia independiente.
 
 **Control posterior necesario:** contrastar independientemente los ajustes altitudinales del proveedor y verificar datos SENAMHI, máscara tierra/mar, orientación de laderas, cuencas y uso agrícola. No asumir independencia estadística incluso entre centros de píxel distintos.
 
