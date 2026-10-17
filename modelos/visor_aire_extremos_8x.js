@@ -10,7 +10,7 @@ const site=el('oaf-8x-site');
 const pollutant=el('oaf-8x-pollutant');
 const graph=el('oaf-8x-air-graph');
 const table=el('oaf-8x-extreme-table');
-let records=[], extreme=[];
+let records=[], extreme=[], airMeta=null;
 const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 const num=(v,k=2)=>v===null||v===undefined||v===''?'—':Number(v).toLocaleString('es-PE',{maximumFractionDigits:k,minimumFractionDigits:k});
 function parseCSV(text){
@@ -35,8 +35,14 @@ function node(tag,attrs,txt){
  return v;
 }
 function render(){
- const rows=records.filter(r=>r.localidad===site.value&&r.mes.startsWith('2025')&&r.mes_pm_completo_80pct==='True')
+ const rows=records.filter(r=>r.localidad===site.value&&r.mes.startsWith(el('oaf-8x-year').value)&&r.mes_pm_completo_80pct==='True')
   .sort((a,b)=>a.mes.localeCompare(b.mes));
+ if(airMeta){
+  const pairs=(airMeta.series_pm_identicas||[]).filter(p=>p.sitios.includes(site.value));
+  el('oaf-8x-grid-status').textContent=pairs.length?
+   'Precaución: '+pairs.map(p=>p.sitios.join(' y ')+' presentan '+p.meses_identicos+' meses de PM idénticos').join('; ')+'. No usar como muestras independientes.':
+   'Celda modelada no instrumental: la resolución CAMS no representa directamente la parcela; verificar el centro y la independencia espacial.';
+ }
  const key=pollutant.value;
  graph.replaceChildren();
  if(rows.length<1){
@@ -77,6 +83,7 @@ async function load(){
   fetch('datos/extremos_8x/error_extremos_2017_2023_8x.csv',{cache:'no-store'})]);
  if(!s0.ok)throw Error('No está publicado el estado de calidad del aire');
  const meta=await s0.json();
+ airMeta=meta;
  if(meta.fase!=='8X'||meta.serie_pm_1996_2025_completa!==false
    ||meta.comparacion_legal_ECA_habilitada!==false)throw Error('Metadatos PM incompatibles');
  if(!s1.ok)throw Error('Aún no hay CSV PM verificable');
@@ -96,6 +103,6 @@ async function load(){
  }catch(err){status.textContent=err.message;}
 }
 pane.addEventListener('toggle',()=>{if(pane.open)load()});
-[site,pollutant,el('oaf-8x-h'),el('oaf-8x-extreme-variable')].forEach(x=>x.addEventListener('change',render));
+[site,pollutant,el('oaf-8x-year'),el('oaf-8x-h'),el('oaf-8x-extreme-variable')].forEach(x=>x.addEventListener('change',render));
 if(pane.open)load();
 })();
