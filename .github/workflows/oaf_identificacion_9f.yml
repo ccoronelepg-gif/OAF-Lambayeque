@@ -6,6 +6,9 @@ on:
     paths:
       - 'modelos/identificacion_instrumental_9f.py'
       - 'modelos/visor_identificacion_9f.js'
+      - 'modelos/visor_estaciones_9d.js'
+      - 'modelos/visor_contraste_estaciones_9e.js'
+      - 'assets/oaf-identidad-territorial-9f.css'
       - 'datos/estaciones_9d/originales/**'
       - 'datos/estaciones_9d/series_mensuales_9d.csv'
       - 'datos/validacion_estaciones_9e/metadatos_identidad_9e.json'
@@ -59,6 +62,32 @@ jobs:
       - name: Comprobar visualización de nombres institucionales
         run: |
           if test -f modelos/visor_identificacion_9f.js; then node --check modelos/visor_identificacion_9f.js; fi
+      - name: Verificar ficha publica y estructura de navegacion
+        run: |
+          node --check modelos/visor_estaciones_9d.js
+          node --check modelos/visor_contraste_estaciones_9e.js
+          node --check modelos/visor_identificacion_9f.js
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          h=Path('index.html').read_text('utf8')
+          start=h.index('<section data-page="clima"')
+          end=h.index('<section data-page="nino"')
+          c=h[start:end]
+          for identifier in ('oaf-9d-estaciones','oaf-contraste-estaciones','oaf-stations-identified',
+                             'oaf-9f-site','oaf-9f-detail','oaf-9f-position','oaf-9f-caption','oaf-9f-status'):
+              assert c.count('id="'+identifier+'"')==1, identifier
+          assert c.count('<section')==c.count('</section>')
+          assert c.rfind('</section>')>c.index('id="oaf-stations-identified"')
+          assert '<script src="modelos/visor_identificacion_9f.js" defer></script>' in h
+          assert 'oaf-identidad-territorial-9f.css' in h
+          assert 'Ciencia Climática al servicio del campo' in h
+          assert 'FASE_9F_IDENTIDAD_TERRITORIAL.md' in h
+          d=json.loads(Path('datos/validacion_estaciones_9f/identificacion_territorial_9f.json').read_text('utf8'))
+          years={x['nombre']:x['resumen_1998']['anos_base_validos'] for x in d['estaciones']}
+          assert years=={'El Espinal':15,'Puchaca':9,'Virrey':16}
+          print('Los tres paneles estan dentro de clima regional; nombres y referencias consistentes.')
+          PY
       - name: Guardar auditoría pública como resultado reproducible
         run: |
           git config user.name 'github-actions[bot]'
