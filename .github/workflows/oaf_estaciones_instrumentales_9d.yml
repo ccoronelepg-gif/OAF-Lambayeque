@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'modelos/estaciones_instrumentales_9d.py'
+      - 'modelos/visor_estaciones_9d.js'
+      - 'index.html'
       - 'datos/estaciones_9d/originales/**'
       - '.github/workflows/oaf_estaciones_instrumentales_9d.yml'
 permissions:
@@ -41,6 +43,19 @@ jobs:
           assert all(x['periodo_1996_2013']['no_es_normal_climatologica_1996_2025'] for x in d['estaciones'])
           assert all(x['raw_sha256'] for x in d['estaciones'])
           print('9D: 55,200 registros, sin identidad espacial inventada, sin alertas.')
+          PY
+      - name: Comprobar Javascript e integracion web 9D
+        run: |
+          node --check modelos/visor_estaciones_9d.js
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('index.html').read_text(encoding='utf8')
+          ids=['oaf-9d-estaciones','oaf-9d-site','oaf-9d-var','oaf-9d-period',
+               'oaf-9d-chart','oaf-9d-count','oaf-9d-caption','oaf-9d-qc','oaf-9d-state']
+          assert all(h.count('id="'+k+'"')==1 for k in ids), 'Panel 9D duplicado o incompleto'
+          assert h.count('src="modelos/visor_estaciones_9d.js"')==1
+          assert 'FASE_9D_ESTACIONES_REALES.md' in h
+          print('Panel 9D y leyenda cientifica disponibles.')
           PY
       - name: Publicar salidas derivadas versionadas
         run: |
