@@ -1,0 +1,53 @@
+name: OAF 8X - Asociaciones PM y clima
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/relaciones_particulas_8x.py'
+      - 'tests/test_relaciones_particulas_8x.py'
+      - 'datos/aire_8x/estado_aire_8x.json'
+      - 'datos/aire_8x/particulas_mensuales_8x.csv'
+      - '.github/workflows/oaf_relaciones_particulas_8x.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8x-correlation
+  cancel-in-progress: false
+jobs:
+  relacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pruebas de Pearson descriptivo y umbral de cobertura
+        run: python -m unittest discover -s tests -p 'test_relaciones_particulas_8x.py' -v
+      - name: Analizar PM viento lluvia y oceano exclusivamente en meses coincidentes
+        run: |
+          python modelos/relaciones_particulas_8x.py
+          python modelos/relaciones_particulas_8x.py --check
+      - name: Revisar limites y escribir resultados
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('datos/relaciones_pm_8x/estado_relaciones_pm_8x.json').read_text())
+          assert d['no_emitir_alertas'] is True
+          assert d['correlaciones_no_son_habilidad_predictiva'] is True
+          assert d['n_relaciones_evaluables']<=32
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/relaciones_pm_8x/
+          if git diff --cached --quiet; then
+            echo 'No changed report'
+          else
+            git commit -m 'data(oaf): asociaciones descriptivas PM y agroclima auditadas'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
