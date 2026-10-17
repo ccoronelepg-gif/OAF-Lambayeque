@@ -341,6 +341,30 @@ def run(root='.',check=False):
         site,h,target,model=key
         summaries.append(dict(localidad=site,horizonte_meses=h,objetivo=target,modelo=model,
                               **metric(rws)))
+    # Estabilidad: NO inferir robustez a partir del promedio de cinco bloques.
+    fold_groups=defaultdict(list)
+    for row in continuous:
+        fold_groups[(row['localidad'],row['objetivo'],row['horizonte_meses'],
+                     row['fold'],row['modelo'])].append(row)
+    per_fold=[dict(localidad=site,objetivo=target,horizonte_meses=h,
+                   fold=fold,modelo=model,**metric(rr))
+              for (site,target,h,fold,model),rr in sorted(fold_groups.items())]
+    fold_index={(r['localidad'],r['objetivo'],r['horizonte_meses'],r['fold'],r['modelo']):r
+                for r in per_fold}
+    stability=[]
+    for site in SITES:
+        for target in TARGETS:
+            for h in HORIZONS:
+                for model in ('local_viento','local_viento_sst'):
+                    delta=[]
+                    for a,b in FOLDS:
+                        fold=f'{a}-{b}'
+                        base=fold_index[(site,target,h,fold,'local_ridge')]['mae']
+                        other=fold_index[(site,target,h,fold,model)]['mae']
+                        delta.append(100*(base-other)/base)
+                    stability.append(dict(localidad=site,objetivo=target,horizonte_meses=h,
+                         modelo=model,cortes_mejora=sum(x>0 for x in delta),
+                         total_cortes=len(delta),mejora_por_corte_pct=[round(x,3) for x in delta]))
     events_summary=[]
     g=defaultdict(list)
     for row in event_rows:
@@ -371,6 +395,8 @@ def run(root='.',check=False):
       'n_pronosticos_probabilisticos_eventos':len(event_rows),
       'n_predicciones_sensibilidad_corrientes':len(current_rows),
       'metricas_continuas':summaries,
+      'metricas_por_corte':per_fold,
+      'estabilidad_variantes':stability,
       'metricas_eventos':events_summary,
       'metricas_sensibilidad_corrientes':currents_summary,
       'sha_8v_entrada':{'terrestre':hash_land,'marino':hash_sea},
