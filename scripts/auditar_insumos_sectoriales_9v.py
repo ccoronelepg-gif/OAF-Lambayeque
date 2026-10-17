@@ -31,7 +31,7 @@ def analyze(p):
             for idx,row in enumerate(reader,2):
                 sector=(row.get("sector_id") or "").strip()
                 month=(row.get("mes") or "").strip()
-                if not sector or not re.fullmatch(r"\\d{4}-(0[1-9]|1[0-2])",month):
+                if not sector or not re.fullmatch(r"\d{4}-(0[1-9]|1[0-2])",month):
                     raise ValueError(f"identificador/fecha inválidos, línea {idx}")
                 value=float(row["lluvia_mm"])
                 if not (value>=0 and value<float("inf")):
