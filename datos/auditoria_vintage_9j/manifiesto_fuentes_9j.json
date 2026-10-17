@@ -1,0 +1,55 @@
+{
+  "fase": "9J",
+  "corte_local": "2026-10-17",
+  "zona": "America/Lima",
+  "criterio": "Se conserva el contenido exacto del archivo en el commit identificado. Esto apoya la trazabilidad del registro, no certifica sensores ni garantiza que todo el contenido meteorológico sea correcto.",
+  "archivos_diarios": [
+    {
+      "fecha": "2026-10-14",
+      "path": "datos/pronosticos_emitidos/2026-10-14.json",
+      "primer_commit": "79e92c9aac669e37599e868ff371aa67d9799ec5",
+      "fecha_commit_utc": "2026-10-15T04:55:57Z"
+    },
+    {
+      "fecha": "2026-10-15",
+      "path": "datos/pronosticos_emitidos/2026-10-15.json",
+      "primer_commit": "864d2bc94ea653ad51ecb11001e9decdee80268d",
+      "fecha_commit_utc": "2026-10-15T05:06:33Z"
+    },
+    {
+      "fecha": "2026-10-16",
+      "path": "datos/pronosticos_emitidos/2026-10-16.json",
+      "primer_commit": "699bd04852691fe39e79140c37afcced9c38aa71",
+      "fecha_commit_utc": "2026-10-16T13:58:26Z"
+    },
+    {
+      "fecha": "2026-10-17",
+      "path": "datos/pronosticos_emitidos/2026-10-17.json",
+      "primer_commit": "02445eb630eb77b4a1c4bb2b466230356c8b4a66",
+      "fecha_commit_utc": "2026-10-17T13:47:27Z"
+    }
+  ],
+  "fuentes_estacionales_candidatas": [
+    {
+      "nombre": "NOAA CPC NMME — archivo de emisiones en tiempo real",
+      "tipo": "forecast_archive",
+      "url": "https://ftp.cpc.ncep.noaa.gov/NMME/archive/",
+      "inicio_documentado": "2011-08",
+      "verificacion_numerica_oaf": false,
+      "riesgo": "Las imágenes publicadas no bastan para extraer un valor regional numérico; requieren productos numéricos asociados y fecha inequívoca de emisión."
+    },
+    {
+      "nombre": "NOAA CPC NMME — acceso a datos",
+      "tipo": "guia_datos",
+      "url": "https://www.cpc.ncep.noaa.gov/products/NMME/data.html",
+      "verificacion_numerica_oaf": false
+    },
+    {
+      "nombre": "Copernicus C3S — pronósticos estacionales",
+      "tipo": "catalogo_cds",
+      "url": "https://www.ecmwf.int/en/forecasts/datasets/seasonal-forecast-monthly-statistics-single-levels",
+      "verificacion_numerica_oaf": false,
+      "riesgo": "Los hindcasts y las emisiones reales deben separarse con metadatos originales de inicialización, sistema y versión."
+    }
+  ]
+}
