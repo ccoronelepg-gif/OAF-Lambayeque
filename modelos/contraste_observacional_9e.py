@@ -110,6 +110,22 @@ def summary():
             xx=[x[1] for x in matches]
             yy=[x[2] for x in matches]
             wet=[x for x in matches if int(x[0][-2:]) in (1,2,3,4)]
+            logs=[(mon,math.log1p(obs_a),math.log1p(obs_b)) for mon,obs_a,obs_b in matches]
+            # Restar únicamente la media descriptiva de cada mes calendario;
+            # no utilizar estos promedios para probar habilidad de pronóstico.
+            monthly_clim={}
+            for mm in range(1,13):
+                in_month=[x for x in logs if int(x[0][-2:])==mm]
+                monthly_clim[mm]=(
+                    sum(x[1] for x in in_month)/len(in_month),
+                    sum(x[2] for x in in_month)/len(in_month)
+                ) if in_month else (0.,0.)
+            residuals=[
+                (x[1]-monthly_clim[int(x[0][-2:])][0],
+                 x[2]-monthly_clim[int(x[0][-2:])][1]) for x in logs
+            ]
+            without_1998=[x for x in logs if not x[0].startswith("1998-")]
+            without_1997_1998=[x for x in logs if not x[0].startswith(("1997-","1998-"))]
             pairs.append({
                 "codigo_a":a,"codigo_b":b,"periodo":"1996-01 a 2013-12",
                 "meses_comunes_100pct":len(matches),
@@ -117,6 +133,12 @@ def summary():
                 "correlacion_log1p_lluvia_mensual":correlation([math.log1p(x) for x in xx],[math.log1p(x) for x in yy]),
                 "enero_abril_meses_comunes_100pct":len(wet),
                 "correlacion_log1p_enero_abril":correlation([math.log1p(x[1]) for x in wet],[math.log1p(x[2]) for x in wet]),
+                "correlacion_residual_calendario_log1p":correlation(
+                    [x[0] for x in residuals],[x[1] for x in residuals]),
+                "correlacion_log1p_sin_1998":correlation(
+                    [x[1] for x in without_1998],[x[2] for x in without_1998]),
+                "correlacion_log1p_sin_1997_1998":correlation(
+                    [x[1] for x in without_1997_1998],[x[2] for x in without_1997_1998]),
                 "no_implica_cercania_espacial":True,
                 "no_indica_capacidad_predictiva":True
             })
