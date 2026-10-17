@@ -256,7 +256,8 @@ def save():
 
 def check():
     geo,status,records=build()
-    if json.loads(GEO.read_text("utf8"))!=json.loads(json.dumps(geo)):\n        raise ValueError("GeoJSON 9K no se reproduce")
+    if json.loads(GEO.read_text("utf8"))!=json.loads(json.dumps(geo)):
+        raise ValueError("GeoJSON 9K no se reproduce")
     if json.loads(OUT.read_text("utf8"))!=status:raise ValueError("Metadatos 9K no se reproducen")
     if rows(TABLE)!=[{k:str(v) for k,v in r.items()} for r in records]:
         raise ValueError("Inventario de asignaciones distinto de DEM y testigos")
