@@ -10,7 +10,7 @@
   ],
   "periodo": "1996–2025",
   "n_bloques_esperados": 3,
-  "n_bloques_verificados": 0,
+  "n_bloques_verificados": 1,
   "n_ubicaciones_de_referencia": 6,
   "n_ubicaciones_maritimas": 2,
   "meses_por_ubicacion_completa": 0,
@@ -28,7 +28,7 @@
         1996,
         2005
       ],
-      "sha256_original_comprimido": null
+      "sha256_original_comprimido": "6f77aed5f980e6aba5282e508bd7b22568816e172e00a5c9bafb3e16c84a5188"
     },
     {
       "periodo": [
