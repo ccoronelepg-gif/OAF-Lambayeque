@@ -1,4 +1,4 @@
-# Ejecución solicitada: completar Motupe y Olmos, lote 2 de 3 (hasta 2 bloques)
+# Ejecución solicitada: completar Motupe y Olmos, lote 3 de 3 (hasta 2 bloques)
 name: OAF 8M - Sensibilidad espacial de 36 puntos
 on:
   workflow_dispatch:
