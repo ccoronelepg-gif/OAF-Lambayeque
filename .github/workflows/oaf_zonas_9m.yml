@@ -1,0 +1,65 @@
+name: OAF 9M - Sensibilidad SIG y unidades hidrográficas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sensibilidad_relieve_9m.py'
+      - 'modelos/zonas_hidrograficas_9m.py'
+      - 'tests/test_zonas_9m.py'
+      - '.github/workflows/oaf_zonas_9m.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-zonas-9m
+  cancel-in-progress: false
+jobs:
+  evaluar-territorio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Entorno SIG reproducible
+        run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2 pyproj==3.7.2 affine==2.4.0
+      - name: Sensibilidad física por altitud, pendiente y orientación
+        run: |
+          python modelos/sensibilidad_relieve_9m.py
+          python modelos/sensibilidad_relieve_9m.py --check
+      - name: Consultar unidades hidrográficas ANA por portal institucional IDEP
+        run: |
+          python modelos/zonas_hidrograficas_9m.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("datos/sensibilidad_9m")
+          s=json.loads((p/"estado_cuencas_ana_9m.json").read_text("utf8"))
+          g=json.loads((p/"cruces_hidrograficos_9m.geojson").read_text("utf8"))
+          assert s["n_cuencas_certificadas_por_oaf"]==0
+          assert s["n_intersecciones_referenciales"]==len(g["features"])
+          assert not s["alertas_fitosanitarias_habilitadas"]
+          print("Fuente ANA IDEP comprobada:",s["cobertura_institucional_capa_descargada"],
+              "intersecciones",len(g["features"]),
+              "incidencia:",s.get("problema_acceso","ninguna"))
+          PY
+      - name: Pruebas de fuentes SIG y UI (si ya fue integrado el panel)
+        run: |
+          python -m unittest discover -s tests -p 'test_zonas_9m.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_zonas_9m.js
+      - name: Publicar evidencia real sin alterar originales 9K y 9L
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/sensibilidad_9m/
+          if git diff --cached --quiet; then
+            echo "9M sin nuevas evidencias"
+          else
+            git commit -m "data(9M): registrar sensibilidad por piso y cruces hidrográficos verificables"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
