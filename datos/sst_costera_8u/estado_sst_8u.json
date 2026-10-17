@@ -1,0 +1,64 @@
+{
+  "fase": "8U",
+  "fuente": "NOAA NCEI OISST v2.1 AVHRR-only final 0.25deg",
+  "periodo": "1996–2025",
+  "puntos_oceanicos_de_ensayo": 2,
+  "estaciones_mareas_o_marinas_instrumentales": 0,
+  "archivos_sst_verificados": 0,
+  "archivos_sst_previstos": 6,
+  "sitios_con_sst_30anios_completa": 0,
+  "resumen_sst_oceanica": {},
+  "bloques_pendientes": [
+    {
+      "sitio": "Pacifico_sur_Lambayeque",
+      "bloque": [
+        1996,
+        2005
+      ]
+    },
+    {
+      "sitio": "Pacifico_sur_Lambayeque",
+      "bloque": [
+        2006,
+        2015
+      ]
+    },
+    {
+      "sitio": "Pacifico_sur_Lambayeque",
+      "bloque": [
+        2016,
+        2025
+      ]
+    },
+    {
+      "sitio": "Pacifico_norte_Lambayeque",
+      "bloque": [
+        1996,
+        2005
+      ]
+    },
+    {
+      "sitio": "Pacifico_norte_Lambayeque",
+      "bloque": [
+        2006,
+        2015
+      ]
+    },
+    {
+      "sitio": "Pacifico_norte_Lambayeque",
+      "bloque": [
+        2016,
+        2025
+      ]
+    }
+  ],
+  "n_meses_oceanicos_publicados": 0,
+  "coordenadas_marinas_pendientes_de_mascara_oficial": true,
+  "sst_no_es_velocidad_de_corrientes": true,
+  "sst_costera_no_es_promedio_indice_nino12": true,
+  "normal_local_1996_2025_es_descriptiva_no_baseline_para_backtest": true,
+  "no_hay_validacion_independiente_de_boyas_o_peru": true,
+  "prediccion_oceanica_aun_no_probada": true,
+  "fuente_agua_batimetrias_y_mascaras_verificadas": false,
+  "nota": "Puntos oceánicos fijos sin comprobación oficial de máscara litoral, separados 0,5 grados; SST diaria OISST analizada, no sensor puntual."
+}
