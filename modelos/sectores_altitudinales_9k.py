@@ -133,7 +133,7 @@ def polygon_parts(poly):
 
 def build():
     d,w,edges,border=read()
-    group,families,links,shared=families(w,edges)
+    group,climate_families,links,shared=families(w,edges)
     ordered=list(d.values()) # orden estable CSV
     points=MultiPoint([p["p"] for p in ordered])
     tiles=voronoi_polygons(points,extend_to=border.envelope,ordered=True)
@@ -210,8 +210,8 @@ def build():
       "n_nodos_dem":len(ordered),"n_testigos_con_360_meses":len(w),
       "n_pares_8p_similares":len(edges),"n_enlaces_con_celdas_reanalisis_compartidas":shared,
       "n_enlaces_distintos_y_dentro_del_mismo_piso":len(links),
-      "n_familias_multicelda_exploratorias":len(families),
-      "familias":families,"n_poligonos_graficos_exploratorios":len(feats),
+      "n_familias_multicelda_exploratorias":len(climate_families),
+      "familias":climate_families,"n_poligonos_graficos_exploratorios":len(feats),
       "n_sectores_nucleo_conectado":sum(f["properties"]["estado_evidencia"]=="hipotesis_nucleo_conectado" for f in feats),
       "n_nodos_asociados_a_testigos":sum(bool(r["testigo_climatico_asociado"]) for r in records),
       "n_nodos_no_asociados":sum(not r["testigo_climatico_asociado"] for r in records),
