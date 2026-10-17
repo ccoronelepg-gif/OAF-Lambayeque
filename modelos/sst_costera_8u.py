@@ -50,7 +50,7 @@ def validate(blob,site,period):
     rows=entries[1:]
     if rows and rows[0][0].strip() in ("UTC","UTC (ISO 8601)"):rows=rows[1:]
     expected=common.dates(*period)
-    if len(rows)!=len(expected):raise ValueError("No hay un valor SST diario por día de década")
+    if len(rows)!=len(expected):raise ValueError(f"No hay un valor SST diario por día de década: {len(rows)} vs {len(expected)}; primer={rows[0][:1] if rows else []}; ultimo={rows[-1][:1] if rows else []}")
     result={}
     for expected_date,row in zip(expected,rows):
         if len(row)!=5 or row[0][:10]!=expected_date or not row[0].endswith("Z"):
