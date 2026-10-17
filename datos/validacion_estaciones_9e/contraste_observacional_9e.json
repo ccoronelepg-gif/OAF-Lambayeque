@@ -416,6 +416,9 @@
       "correlacion_log1p_lluvia_mensual": 0.81128,
       "enero_abril_meses_comunes_100pct": 70,
       "correlacion_log1p_enero_abril": 0.79908,
+      "correlacion_residual_calendario_log1p": 0.60552,
+      "correlacion_log1p_sin_1998": 0.79201,
+      "correlacion_log1p_sin_1997_1998": 0.79917,
       "no_implica_cercania_espacial": true,
       "no_indica_capacidad_predictiva": true
     },
@@ -428,6 +431,9 @@
       "correlacion_log1p_lluvia_mensual": 0.78934,
       "enero_abril_meses_comunes_100pct": 72,
       "correlacion_log1p_enero_abril": 0.81028,
+      "correlacion_residual_calendario_log1p": 0.5664,
+      "correlacion_log1p_sin_1998": 0.77297,
+      "correlacion_log1p_sin_1997_1998": 0.7737,
       "no_implica_cercania_espacial": true,
       "no_indica_capacidad_predictiva": true
     },
@@ -440,6 +446,9 @@
       "correlacion_log1p_lluvia_mensual": 0.87053,
       "enero_abril_meses_comunes_100pct": 70,
       "correlacion_log1p_enero_abril": 0.85201,
+      "correlacion_residual_calendario_log1p": 0.71677,
+      "correlacion_log1p_sin_1998": 0.85662,
+      "correlacion_log1p_sin_1997_1998": 0.85833,
       "no_implica_cercania_espacial": true,
       "no_indica_capacidad_predictiva": true
     }
