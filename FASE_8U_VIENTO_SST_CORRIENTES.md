@@ -114,6 +114,23 @@ Fuentes: [Open-Meteo Marine](https://open-meteo.com/en/docs/marine-weather-api);
 
 **El número de series de corrientes oceánicas completas e independientes durante 1996–2025 sigue siendo cero.** Hace falta investigar NASA OSCAR v2 o el reanálisis de Copernicus Marine con componentes u/v a resolución adecuada para la costa peruana, y distinguir corrientes oceánicas superficiales, afloramiento e influencia de vientos de tierra.
 
+## 5B. Validación de sensibilidad al tamaño de muestra: 81 testigos de 8P
+
+Durante la fase 8U, la automatización de 8P completó **24/24 bloques históricos** y los **81 testigos programados**. Esta adquisición no modifica las cuatro series de viento a 10 m ni los tres puntos marinos de 72 horas, pero sí amplía el experimento de predicción térmica de fases 8S/8T.
+
+Los ensayos se recalcularon de forma automática tras los cambios en 8P con sus mismos procedimientos de selección y fechas sin fuga temporal:
+
+- 81 testigos climáticos completos en el repositorio; después del filtrado precautorio DEM ≤5 m, **79 testigos**, equivalentes a **55 centros ERA5-Land diferentes**.
+- **9.240 predicciones retrospectivas espacio–mes** en la comparación de 5 cortes cronológicos y 4 bandas espaciales, sin duplicar celdas.
+- RMSE de persistencia: **0,459102 °C**.
+- RMSE de 8S sin Niño 1+2, control por bandas retenidas: **0,439071 °C**.
+- RMSE 8T, método preseleccionado por validación que incorpora Niño 1+2 solo cuando valida favorablemente: **0,438524 °C**.
+- **Mejora incremental del RMSE de 8T frente a 8S ≈0,1246 %**. La variante oceánica fue elegida en **3/5 periodos temporales y 9/20 pliegues espaciales**: no hay beneficio grande ni prueba prospectiva de pronóstico de El Niño Costero.
+
+Las diferencias frente al corte anterior (65 testigos, 50 centros) **dependen también del cambio de cobertura**; no deben atribuirse a una mejora del algoritmo sin comparar ambas muestras de forma controlada.
+
+Fuentes reproducibles: [inventario 8P](datos/clima_contiguo_8p/estado_clima_8p.json), [reporte 8S](datos/validacion_regional_8s/estado_validacion_8s.json) y [reporte 8T](datos/validacion_oceanica_8t/estado_oceanico_8t.json). Los modelos son retrospectivos frente a ERA5-Land, no termómetros SENAMHI.
+
 ## 6. Qué se podrá evaluar cuando haya datos suficientes
 
 **Primero:** la asociación de viento sobre mar, SST costera, corrientes superficiales y lluvia/temperatura/HR agrícola por temporada, sin confundir retrasos y simultaneidad. **Después:** nuevos backtests con entrenamiento previo, validación y prueba temporal independiente, selección fija de predictores y control geográfico por cuencas y pisos altitudinales. Las fases 8R–8T mostraron la importancia de contar una vez cada celda y de comparar siempre persistencia y climatología.
