@@ -1,0 +1,69 @@
+{
+  "fase": "9D",
+  "fecha_revision": "2026-10-17",
+  "alcance": "auditoria_documental del calendario de disponibilidad temporal: 8W, 9A, 9C y tres series instrumentales integradas; no reconstruccion de pronosticos originales",
+  "conclusion": "el diseño de fold y mes-origen de 9A evita fuga por etiqueta de prueba; sin embargo no demuestra disponibilidad a fecha de emisión porque insumos revisados y del mes origen completo pueden publicarse después",
+  "tabla_fuentes": [
+    {
+      "fuente": "temperatura media y lluvia mensual objetivo",
+      "producto": "ERA5-Land temperatura / ERA5 lluvia via series retrospectivas 8V/8W",
+      "uso": "objetivo de hindcast",
+      "primera_fecha_disponible_en_emision": "no acreditada",
+      "vintage_historico_archivado": false,
+      "riesgo": "observado desde reanálisis final, no pluviómetros; comparación instrumental pendiente"
+    },
+    {
+      "fuente": "viento atmosférico",
+      "producto": "reanálisis histórico viento usado en fase 8W",
+      "uso": "predictor mes origen t",
+      "primera_fecha_disponible_en_emision": "no acreditada",
+      "vintage_historico_archivado": false,
+      "riesgo": "datos históricos revisados, necesidad de release/vintage para pronóstico causal"
+    },
+    {
+      "fuente": "Niño 1+2 y Niño 3.4",
+      "producto": "índices de SST NOAA consolidados históricos",
+      "uso": "predictor océano t y t-1",
+      "primera_fecha_disponible_en_emision": "no acreditada",
+      "vintage_historico_archivado": false,
+      "riesgo": "revisiones ex post; comprobar fecha de publicación y serie congelada original"
+    },
+    {
+      "fuente": "RH a 2m y VPD",
+      "producto": "ERA5 histórico vía Open-Meteo de fase 8Z",
+      "uso": "predictor mes origen t",
+      "primera_fecha_disponible_en_emision": "no acreditada",
+      "vintage_historico_archivado": false,
+      "riesgo": "VPD representa media mensual del máximo diario, no humedad del dosel; retrasos de reanálisis"
+    },
+    {
+      "fuente": "precipitación, Tmax y Tmin de tres archivos",
+      "producto": "datos diarios aportados por usuario; codigos 00000340 / 00153114 / 00152107",
+      "uso": "observaciones históricas para contrastar, no predictores 9A",
+      "primera_fecha_disponible_en_emision": "no acreditada",
+      "vintage_historico_archivado": false,
+      "riesgo": "falta ficha institucional, hora de observación, zona horaria, coordenadas, licencia y calidad original; cobertura termina 2013/2014"
+    }
+  ],
+  "afirmaciones_soportadas": [
+    "9A usa 5 bloques cronológicos de 36 meses: 2011-2013, 2014-2016, 2017-2019, 2020-2022, 2023-2025.",
+    "Los predictores RH/VPD de 9A se obtienen del mes-origen, no del mes-objetivo, pero el mes-origen ya cerrado no siempre habría estado publicado en la fecha de pronóstico.",
+    "Las 3 estaciones no contienen fecha de publicación o metadatos de disponibilidad histórica.",
+    "La disponibilidad de fuentes y de estaciones no demuestra por sí sola mejora prospectiva del benchmark 8W/9A/9C."
+  ],
+  "requisitos_para_prospectivo": [
+    "archivar fecha/hora exacta de pronóstico y del archivo de cada predictor",
+    "guardar copia vintage inmutable y hash por corrida",
+    "medir retraso oficial de publicación y disponer de datos solo con disponibilidad estrictamente anterior a fecha/hora de emisión",
+    "usar fecha/hora local/UTC y cierre horario coherente con observaciones y reanálisis",
+    "reportar skill exclusivamente contra estaciones con coordenadas confirmadas y datos posteriores a emisión",
+    "no emplear año de prueba para calibrar umbrales P90, normales, ni hyperparametros"
+  ],
+  "referencia_repo": [
+    "FASE_8W_BENCHMARK_MULTIVARIABLE.md",
+    "FASE_9A_BENCHMARK_HUMEDAD_VPD.md",
+    "FASE_9C_RESULTADOS_VALIDACION.md",
+    "FASE_9D_ESTACIONES_REALES.md"
+  ],
+  "sin_alertas": true
+}
