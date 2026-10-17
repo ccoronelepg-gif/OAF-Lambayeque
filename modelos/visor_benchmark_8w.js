@@ -19,6 +19,32 @@ tr.append(cell);
 function display(){
 if(!state)return;
 const s=site.value,h=Number(horizon.value),t=objective.value;
+const stab=state.estabilidad_variantes.find(r=>r.localidad===s&&r.horizonte_meses===h&&r.objetivo===t&&r.modelo==='local_viento_sst');
+const chart=el('oaf-8w-stability'); chart.replaceChildren();
+const create=(tag,attrs,text)=>{
+ const e=document.createElementNS('http://www.w3.org/2000/svg',tag);
+ for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
+ if(text!==undefined)e.textContent=String(text);
+ return e;
+};
+if(stab){
+ const vals=stab.mejora_por_corte_pct, low=Math.min(-1,...vals)*1.15,
+ high=Math.max(1,...vals)*1.15, y=v=>18+(174*(high-v)/(high-low)), zero=y(0);
+ chart.setAttribute('viewBox','0 0 750 240');
+ chart.append(create('line',{x1:44,y1:zero,x2:734,y2:zero,stroke:'currentColor',opacity:.4}));
+ const labels=['2011–13','2014–16','2017–19','2020–22','2023–25'];
+ vals.forEach((v,i)=>{
+   const x=78+i*135,yy=y(v);
+   chart.append(create('rect',{x,y:Math.min(yy,zero),width:70,height:Math.max(1,Math.abs(yy-zero)),
+     fill:v>=0?'#267b69':'#a75a53',rx:3}));
+   chart.append(create('text',{x:x+35,y:(v>=0?yy-5:yy+16),'text-anchor':'middle',
+     'font-size':13,fill:'currentColor'},(v>0?'+':'')+format(v,1)+' %'));
+   chart.append(create('text',{x:x+35,y:215,'text-anchor':'middle','font-size':12,
+     fill:'currentColor'},labels[i]));
+ });
+ el('oaf-8w-folds-desc').textContent=stab.cortes_mejora+' de '+stab.total_cortes+
+  ' cortes con menor MAE que el modelo local. Se evalúan los mismos años por variante.';
+}
 const records=state.metricas_continuas.filter(r=>r.localidad===s&&r.horizonte_meses===h&&r.objetivo===t);
 const base=records.find(r=>r.modelo==='local_ridge');
 const table=el('oaf-8w-table');
