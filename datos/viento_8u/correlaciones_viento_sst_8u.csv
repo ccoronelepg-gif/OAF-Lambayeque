@@ -1,0 +1,5 @@
+localidad,n_meses_emparejados,correlacion_anomalia_viento_sst_nino12_rezago_2,correlacion_anomalia_zonal_sst_nino12_rezago_2,correlacion_anomalia_meridional_sst_nino12_rezago_2,velocidad_media_ms,mismos_pixeles_comprobados,interpretacion
+Chiclayo,358,0.172522,-0.60452,0.199717,3.1382,no,asociacion_descriptiva_no_causal_ni_predictiva
+Jayanca,358,0.217735,-0.396361,0.205066,2.4096,no,asociacion_descriptiva_no_causal_ni_predictiva
+Motupe,358,0.157064,-0.385576,0.214768,1.8902,no,asociacion_descriptiva_no_causal_ni_predictiva
+Olmos,358,0.194071,-0.311165,0.244656,1.393,no,asociacion_descriptiva_no_causal_ni_predictiva

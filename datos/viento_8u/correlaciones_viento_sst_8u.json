@@ -1,0 +1,59 @@
+{
+  "fase": "8U",
+  "componente": "contraste_descriptivo_vientos_sst",
+  "n_localidades": 4,
+  "n_meses_maximos_por_localidad": 360,
+  "periodo_viento": "1996–2025",
+  "rezago_SST_meses": 2,
+  "modelo_viento": "ERA5 modelo no anemometro",
+  "indice_SST": "NOAA Niño1+2 revisado, no SST costera in situ ni ICEN oficial",
+  "periodo_de_normales_descriptivas": "1996–2025, no usar en backtest",
+  "anomalías_de_viento_por_media_calendario_local": true,
+  "correlaciones_no_son_pronosticos": true,
+  "corrientes_marinas_no_estimadas_en_cruce": true,
+  "frentes_fisicos_y_causalidad_no_verificados": true,
+  "sha256_NOAA_original": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "sha256_serie_viento_mensual": "292d47e9d845d93531c18142f5d3ebdac9b65a7878529939ec6921fe35b319cd",
+  "correlaciones": [
+    {
+      "localidad": "Chiclayo",
+      "n_meses_emparejados": 358,
+      "correlacion_anomalia_viento_sst_nino12_rezago_2": 0.172522,
+      "correlacion_anomalia_zonal_sst_nino12_rezago_2": -0.60452,
+      "correlacion_anomalia_meridional_sst_nino12_rezago_2": 0.199717,
+      "velocidad_media_ms": 3.1382,
+      "mismos_pixeles_comprobados": "no",
+      "interpretacion": "asociacion_descriptiva_no_causal_ni_predictiva"
+    },
+    {
+      "localidad": "Jayanca",
+      "n_meses_emparejados": 358,
+      "correlacion_anomalia_viento_sst_nino12_rezago_2": 0.217735,
+      "correlacion_anomalia_zonal_sst_nino12_rezago_2": -0.396361,
+      "correlacion_anomalia_meridional_sst_nino12_rezago_2": 0.205066,
+      "velocidad_media_ms": 2.4096,
+      "mismos_pixeles_comprobados": "no",
+      "interpretacion": "asociacion_descriptiva_no_causal_ni_predictiva"
+    },
+    {
+      "localidad": "Motupe",
+      "n_meses_emparejados": 358,
+      "correlacion_anomalia_viento_sst_nino12_rezago_2": 0.157064,
+      "correlacion_anomalia_zonal_sst_nino12_rezago_2": -0.385576,
+      "correlacion_anomalia_meridional_sst_nino12_rezago_2": 0.214768,
+      "velocidad_media_ms": 1.8902,
+      "mismos_pixeles_comprobados": "no",
+      "interpretacion": "asociacion_descriptiva_no_causal_ni_predictiva"
+    },
+    {
+      "localidad": "Olmos",
+      "n_meses_emparejados": 358,
+      "correlacion_anomalia_viento_sst_nino12_rezago_2": 0.194071,
+      "correlacion_anomalia_zonal_sst_nino12_rezago_2": -0.311165,
+      "correlacion_anomalia_meridional_sst_nino12_rezago_2": 0.244656,
+      "velocidad_media_ms": 1.393,
+      "mismos_pixeles_comprobados": "no",
+      "interpretacion": "asociacion_descriptiva_no_causal_ni_predictiva"
+    }
+  ]
+}
