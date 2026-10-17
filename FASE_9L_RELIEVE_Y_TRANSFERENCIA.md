@@ -66,6 +66,17 @@ Para un futuro ensayo se necesitarían emisiones numéricas NMME archivadas con 
 
 Los productos de 9L fijan **predicciones zonales generadas = 0**, **evaluación prospectiva validada = falsa**, **zonas homogéneas certificadas = 0**, **cuencas oficiales confirmadas = 0**. Se conserva como referencia primaria descriptiva 1996–2025, OMM 1991–2020 solo para comparabilidad y SENAMHI/ENFEN para observaciones y avisos institucionales.
 
+## 5A. Comprobación institucional de unidades hidrográficas: intento registrado, sin inventar resultados
+
+Se integró un procedimiento independiente, `modelos/consulta_cuencas_9l.py`, que intenta recuperar unidades hidrográficas mediante el servicio **EXTERNAS/Hidrografia/MapServer/6** atribuido a ANA y publicado por el Ministerio de Vivienda, Construcción y Saneamiento. Su consulta se limita a la envolvente de los núcleos (79,67°–79,24° O; 6,62°–6,05° S). La tarea de GitHub se ejecutó correctamente **en modo de registro de estado**, pero la consulta externa devolvió **error DNS (`Name or service not known`)** desde el entorno de ejecución. Por tanto **NO** se descargó ni comprobó ninguna geometría hidrográfica y se conserva **0 cuencas certificadas / 0 intersecciones**. El error no se interpreta como ausencia de cuencas en Lambayeque.
+
+- [Registro de la consulta y error original](datos/relieve_9l/consulta_unidades_hidrograficas_9l.json).
+- [GeoJSON vacío e identificado como no validado](datos/relieve_9l/intersecciones_cuencas_9l.geojson).
+- [Workflow de comprobación de estado](.github/workflows/oaf_cuencas_9l.yml).
+- [HydroBASINS, alternativa global de referencia cartográfica](https://www.hydrosheds.org/products/hydrobasins); también requiere cotejo con unidades hidrográficas ANA antes de asignar sectores por cuenca.
+
+**Esta limitación impide afirmar la continuidad de una cuenca o fusionar sectores entre vertientes distintas.** Solo la topografía del DSM original sustenta el filtro espacial descrito en la fase.
+
 ## 6. Entregables
 
 - [Copernicus GLO-90 original, sin reescribir](datos/relieve_9l/fuentes/copernicus_glo90_s07_w080.tif).
