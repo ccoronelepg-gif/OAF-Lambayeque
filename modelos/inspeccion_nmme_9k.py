@@ -123,7 +123,7 @@ def inspect(raw,kind,url):
                          for d in var.dimensions)
             vals=np.ma.asarray(var[varidx])
             nym=np.ma.filled(vals,np.nan).astype("float64")
-            val_list=[round(float(x),6) if np.isfinite(x) and abs(x)<1e9 else None
+            val_list=[round(float(x),10) if np.isfinite(x) and abs(x)<1e9 else None
                       for x in nym.flatten()]
             other=[d for d in var.dimensions if d not in (lat_dim,lon_dim)]
             if len(other)>2 or len(val_list)>180:
