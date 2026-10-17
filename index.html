@@ -127,7 +127,7 @@ details.panel{scroll-margin-top:120px}
 @media(max-width:800px){.oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-heading-line{flex-wrap:wrap}.oaf-news-grid,.oaf-research-intro{grid-template-columns:1fr}.oaf-home-module{padding:18px}.oaf-hero-2026 .herotxt{padding:28px 25px}nav a{max-width:none;min-width:148px;flex-shrink:0}}
 @media(max-width:400px){.oaf-home-metrics{grid-template-columns:1fr 1fr;gap:7px}.oaf-home-metrics .oaf-metric{padding:11px;min-height:98px}.oaf-home-metrics .oaf-metric strong{font-size:22px}}
 
-</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"><link rel="stylesheet" href="assets/oaf-identidad-territorial-9f.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9h.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-9i.css?v=1"><link rel="stylesheet" href="assets/oaf-sectores-9k.css?v=1"><link rel="stylesheet" href="assets/oaf-auditoria-9j.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-shell-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-home-2026.css?v=1"></head><body>
+</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"><link rel="stylesheet" href="assets/oaf-identidad-territorial-9f.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9h.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-9i.css?v=1"><link rel="stylesheet" href="assets/oaf-sectores-9k.css?v=1"><link rel="stylesheet" href="assets/oaf-zonas-9m.css?v=1"><link rel="stylesheet" href="assets/oaf-auditoria-9j.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-shell-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-home-2026.css?v=1"></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo"><img src="assets/logo-cecg.svg" alt="Logo CECG" width="48" height="48"></span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <button type="button" id="oaf-mobile-menu" aria-label="Mostrar u ocultar menú" aria-expanded="false" aria-controls="oaf-primary-nav">☰ Menú</button>
 <nav id="oaf-primary-nav" aria-label="Secciones principales"><a data-tab="inicio" href="#inicio">Inicio</a><a data-tab="clima" href="#clima">Análisis de clima regional</a><a data-tab="nino" href="#nino">Monitoreo del Niño y anomalías climáticas</a><a data-tab="cultivos" href="#cultivos">Sanidad vegetal</a><a data-tab="verificaciones" href="#verificaciones">Investigación y datos</a></nav><div class="oaf-view-switch" role="group" aria-label="Nivel de lectura">
@@ -542,6 +542,35 @@ details.panel{scroll-margin-top:120px}
 <p id="oaf-9l-cuencas" class="small">Verificando si el servicio institucional entrega unidades hidrográficas para contrastar los sectores.</p>
 <div class="notice"><strong>Fiabilidad:</strong> Copernicus es un modelo digital de superficie (DSM), no medición de campo ni mapa de cuencas oficial. El umbral de pendiente de 30° es un criterio de prueba, no un límite normativo agronómico. Los pronósticos NOAA NMME a 1° aún no están recalibrados para cada ladera. No inferir riesgo de enfermedades de arándano o vid a partir de este filtro.</div>
 <div class="links"><a href="FASE_9L_RELIEVE_Y_TRANSFERENCIA.md">Informe técnico 9L ↗</a><a href="datos/relieve_9l/nucleos_restringidos_relieve_9l.geojson">Polígonos refinados · GeoJSON ↗</a><a href="datos/relieve_9l/estado_relieve_9l.json">QA e indicadores · JSON ↗</a><a href="datos/relieve_9l/consulta_unidades_hidrograficas_9l.json">Resultado de consulta hidrográfica · JSON ↗</a><a href="https://registry.opendata.aws/copernicus-dem/" target="_blank" rel="noopener noreferrer">Fuente Copernicus GLO-90 ↗</a></div>
+</details>
+<details class="panel" id="oaf-9m-visor">
+<summary><strong>¿Cómo cambian las zonas al comparar pendientes, orientación y cuencas?</strong> · sensibilidad territorial</summary>
+<p>Revisamos las agrupaciones de Lambayeque con el modelo de superficie Copernicus GLO-90, comparando <strong>dos resoluciones aproximadas (270 y 450 m)</strong>, tres límites de pendiente (20°, 30° y 40°) y la orientación de las laderas. Es una evaluación del método de delimitación, no una predicción meteorológica ni certificación de parcelas.</p>
+<div class="oaf-9m-panels">
+<article><small>Sectores 9K con dos escalas evaluadas</small><b id="oaf-9m-count">—</b></article>
+<article><small>Sectores con cruce institucional referencial de cuencas</small><b id="oaf-9m-hydro">—</b></article>
+<article><small>Diferencia mediana de máscara por resolución (pendiente ≤30°)</small><b id="oaf-9m-change">—</b></article>
+</div>
+<p id="oaf-9m-status" role="status" class="small">Cargando auditoría de sensibilidad topográfica…</p>
+<div class="oaf-9m-controls">
+<label for="oaf-9m-floor">Filtrar piso altitudinal<select id="oaf-9m-floor"><option value="todas">Todos los pisos disponibles</option></select></label>
+</div>
+<div id="oaf-9m-legend" aria-label="Leyenda de clases altitudinales"></div>
+<div id="oaf-9m-map" aria-label="Sectores con máscara topográfica preliminar"></div>
+<p id="oaf-9m-visible" class="small">La capa muestra únicamente las geometrías descargadas y auditadas.</p>
+<p id="oaf-9m-detail">Selecciona un polígono para conocer la orientación del relieve y la fracción de píxeles compatibles.</p>
+<div class="scroller"><table><thead><tr><th>Sector</th><th>Piso</th><th>Orientación</th><th>Píxeles compatibles</th><th>Cobertura de tesela</th></tr></thead><tbody id="oaf-9m-table"></tbody></table></div>
+<h3>Contraste con unidades hidrográficas de ANA / IDEP</h3>
+<p id="oaf-9m-catchments" class="small">Comprobando si se recuperó la cartografía institucional de unidades hidrográficas…</p>
+<div class="notice"><strong>Cómo interpretar el mapa:</strong> el análisis topográfico utiliza una tesela del Copernicus GLO-90 y no debe extrapolarse a toda Lambayeque. La orientación describe hacia dónde desciende el terreno, no el viento dominante ni la insolación. Una intersección con una capa hidrográfica no acredita un límite de parcela ni demuestra que las enfermedades de vid o arándano se comporten igual en una cuenca.</div>
+<div class="links">
+<a href="FASE_9M_SENSIBILIDAD_CUENCAS.md">Metodología y resultados completos ↗</a>
+<a href="datos/sensibilidad_9m/estado_relieve_9m.json">Indicadores de sensibilidad · JSON ↗</a>
+<a href="datos/sensibilidad_9m/sensibilidad_42_sectores_9m.csv">Comparación por sector · CSV ↗</a>
+<a href="datos/sensibilidad_9m/sectores_filtrados_tesela_9m.geojson">Geometrías filtradas · GeoJSON ↗</a>
+<a href="datos/sensibilidad_9m/estado_cuencas_ana_9m.json">Trazabilidad hidrográfica ↗</a>
+<a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/FeatureServer/7" target="_blank" rel="noopener noreferrer">Fuente oficial publicada en IDEP ↗</a>
+</div>
 </details>
 </section>
 
@@ -1306,4 +1335,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="modelos/visor_identificacion_9f.js" defer></script><script src="modelos/visor_contraste_estaciones_9h.js" defer></script><script src="modelos/visor_contraste_9i.js" defer></script><script src="modelos/visor_sectores_9k.js" defer></script><script src="modelos/visor_relieve_9l.js" defer></script><script src="modelos/visor_auditoria_9j.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script><script src="assets/oaf-ux-shell-2026.js?v=1" defer></script><script src="assets/oaf-ux-data-2026.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="modelos/visor_identificacion_9f.js" defer></script><script src="modelos/visor_contraste_estaciones_9h.js" defer></script><script src="modelos/visor_contraste_9i.js" defer></script><script src="modelos/visor_sectores_9k.js" defer></script><script src="modelos/visor_relieve_9l.js" defer></script><script src="modelos/visor_zonas_9m.js" defer></script><script src="modelos/visor_auditoria_9j.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script><script src="assets/oaf-ux-shell-2026.js?v=1" defer></script><script src="assets/oaf-ux-data-2026.js?v=1" defer></script></body></html>
