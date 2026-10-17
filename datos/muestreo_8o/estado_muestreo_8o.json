@@ -2,12 +2,12 @@
   "fase": "8O",
   "estado": "muestra_dem_incompleta_sin_zonas_climaticas",
   "nodos_diseno": 420,
-  "nodos_dem_verificados": 200,
+  "nodos_dem_verificados": 300,
   "n_referencias_8n": 69,
   "n_anclas_refuerzo": 33,
   "n_refuerzos": 127,
   "n_lotes_esperados": 9,
-  "n_lotes_archivados": 4,
+  "n_lotes_archivados": 6,
   "paso_regional_grados": 0.0625,
   "paso_refuerzo_grados": 0.03125,
   "tipos_muestreo_no_son_celdas_climaticas_independientes": true,
@@ -20,37 +20,37 @@
   "pronosticos_zonales_certificados": false,
   "bloques_altitudinales_preliminares": {
     "llanura_costa": {
-      "n_puntos": 92,
+      "n_puntos": 136,
       "altitud_min_m": 0.0,
       "altitud_max_m": 97.0
     },
     "valle_bajo": {
-      "n_puntos": 57,
-      "altitud_min_m": 101.0,
+      "n_puntos": 76,
+      "altitud_min_m": 100.0,
       "altitud_max_m": 293.0
     },
     "piedemonte": {
-      "n_puntos": 37,
+      "n_puntos": 46,
       "altitud_min_m": 304.0,
       "altitud_max_m": 778.0
     },
     "montana_baja": {
-      "n_puntos": 6,
+      "n_puntos": 16,
       "altitud_min_m": 802.0,
-      "altitud_max_m": 1568.0
+      "altitud_max_m": 1590.0
     },
     "montana_media": {
-      "n_puntos": 1,
-      "altitud_min_m": 1715.0,
-      "altitud_max_m": 1715.0
+      "n_puntos": 6,
+      "altitud_min_m": 1681.0,
+      "altitud_max_m": 2447.0
     },
     "montana_alta": {
-      "n_puntos": 0,
-      "altitud_min_m": null,
-      "altitud_max_m": null
+      "n_puntos": 10,
+      "altitud_min_m": 2501.0,
+      "altitud_max_m": 3839.0
     },
     "cota_negativa_revisar": {
-      "n_puntos": 7,
+      "n_puntos": 10,
       "altitud_min_m": -2.0,
       "altitud_max_m": -1.0
     }
@@ -81,6 +81,14 @@
       {
         "index": 4,
         "sha256_archivo_comprimido": "43dda2289a0a36e6064ea6623a065f690936b0904584b4254085b907b8bccba6"
+      },
+      {
+        "index": 5,
+        "sha256_archivo_comprimido": "c5598e54fa389da18dae728ab06d1045e8cd988022bc372908c26a88007d87f0"
+      },
+      {
+        "index": 6,
+        "sha256_archivo_comprimido": "65fbf3de692393e5899a9e6cc01bee4f93fc15fdd14940aaca7e919b0c13370f"
       }
     ]
   }
