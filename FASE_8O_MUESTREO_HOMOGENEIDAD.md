@@ -36,12 +36,31 @@ Las cinco familias de variables se escalan por su desviación estándar espacial
 
 Para delimitar zonas agronómicas será necesario continuar con un muestreo climático denso entre los 420 nodos, validar estabilidad al variar periodos/pesos, incluir proximidad y conectividad geográfica, explorar transiciones entre cuencas, gradientes costeros y laderas, comprobar límites oficiales y contrastar con series independientes de SENAMHI y estaciones de campo.
 
+## Primer resultado real de similitud multivariable, 1996–2025
+
+El repositorio ya archivó y validó las **seis respuestas históricas** del experimento (temperatura de ERA5-Land y lluvia, humedad y radiación de ERA5). Se verificaron los **19 testigos seleccionados con 360 meses cada uno**, sin llenar ausencias artificialmente.
+
+La selección exploratoria mediante vinculación media y silueta eligió **dos grupos de perfiles climáticos** (`k=2`), con **coeficiente de silueta 0,34389**. La clasificación de los testigos se reprodujo con **ARI = 1,0** al comparar separadamente cada década 1996–2005, 2006–2015 y 2016–2025 con la agrupación de treinta años. Este resultado es una **estabilidad temporal exploratoria para los 19 puntos**, no una demostración de continuidad territorial o estabilidad con más nodos.
+
+| Núcleo climático piloto | Testigos | Distancia climática interna media estandarizada | Separación geográfica máxima entre testigos | Diferencia de altitud DEM | Resultado |
+|---|---:|---:|---:|---:|---|
+| C2 | 2 | 0,62350 | 21,856 km | 1 m | Perfil costero parecido; **no apto todavía para delimitar una zona agrícola** |
+| C1 | 17 | 0,99970 | 174,131 km | 3.164 m | Grupo excesivamente amplio y topográficamente heterogéneo; **no considerarlo una única zona homogénea** |
+
+**C2 (mayor afinidad interna entre los núcleos obtenidos):** centros M0208 (lat. −6,31250; lon. −80,56250; DEM 0 m) y M0189 (lat. −6,37500; lon. −80,37500; DEM −1 m). Se ubican en el extremo occidental de la delimitación simplificada; ambos requieren **verificación de máscara tierra/mar, cartografía oficial y aptitud agrícola** antes de aceptar la interpretación terrestre. Además, sus lluvias medias anuales modeladas presentan diferencia sustancial: aproximadamente 167 frente a 299 mm, lo que **impide equiparar semejanza global del vector con igual régimen pluviométrico**.
+
+**C1:** reúne testigos desde planicies interiores hasta altas montañas; sus 3.164 m de amplitud altitudinal y 174 km de diámetro geográfico son evidencia suficiente para **no** etiquetarlo como ambiente agroclimático homogéneo de uso agrario, pese a su etiqueta estadística compartida. El número `k=2` no constituye una recomendación de dividir Lambayeque en dos zonas.
+
+**Conclusión científica:** el estudio delimitó la diversidad física y calculó semejanzas climáticas exploratorias, pero **no ha identificado todavía polígonos de zonas agroclimáticas homogéneas científicamente defendibles**. Zonas operativas verificadas = **0**. La primera muestra climática de 19 nodos es un piloto de perfiles, mientras que los 420 nodos DEM representan el muestreo del relieve; son productos con distintos niveles de evidencia.
+
+El siguiente refinamiento de investigación será excluir o marcar áreas no agrícolas/costeras mediante máscara terrestre y límites oficiales, aumentar el número de testigos climáticos en piedemonte y cabeceras y clasificar perfiles de nodos vecinos atendiendo a contigüidad espacial. Solo entonces evaluar regiones homogéneas como polígonos con pruebas de estabilidad en el tiempo y frente a estaciones independientes.
+
 ## Estado de ejecución y honestidad de resultados
 
 - DEM regional detallado: **420/420 elevaciones verificadas**.
 - Testigos de clima multivariable: **19 seleccionados**.
 - Evaluación de homogeneidad: solo será viable cuando estén archivadas las **seis fuentes históricas completas**, sin imputar muestras ni usar tests sintéticos como evidencia de campo.
-- **Zonas homogéneas certificadas = 0**.
+- **Grupos preliminares de semejanza multivariable = 2 (19 testigos × 360 meses), y zonas homogéneas certificadas = 0**.
 - **Pronósticos climáticos zonales prospectivamente validados = 0**.
 
 La automatización respeta límites de solicitudes del proveedor y preserva respuestas originales sin descargar de nuevo fuentes ya verificadas. Los conjuntos climáticos, incluso cuando estén disponibles, serán **exploratorios**, no unidades agroclimáticas operativas.
