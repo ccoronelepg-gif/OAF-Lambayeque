@@ -1,0 +1,56 @@
+name: OAF 9D - Ingesta de estaciones meteorologicas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/estaciones_instrumentales_9d.py'
+      - 'datos/estaciones_9d/originales/**'
+      - '.github/workflows/oaf_estaciones_instrumentales_9d.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9d-estaciones
+  cancel-in-progress: false
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Auditar 3 archivos con SHA y generar resultados sin imputacion
+        run: |
+          python modelos/estaciones_instrumentales_9d.py
+          python modelos/estaciones_instrumentales_9d.py --check
+      - name: Revisar integridad, cobertura y limites de inferencia
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('datos/estaciones_9d/auditoria_estaciones_9d.json').read_text('utf8'))
+          assert d['totales']['archivos']==3
+          assert d['totales']['registros_diarios']==55200
+          assert d['modelo_y_territorio']['alertas_operativas'] is False
+          assert d['modelo_y_territorio']['comparacion_directa_con_9A_9C'] is False
+          assert all(x['metadatos_senamhi_verificados'] is False for x in d['estaciones'])
+          assert all(x['periodo_1996_2013']['no_es_normal_climatologica_1996_2025'] for x in d['estaciones'])
+          assert all(x['raw_sha256'] for x in d['estaciones'])
+          print('9D: 55,200 registros, sin identidad espacial inventada, sin alertas.')
+          PY
+      - name: Publicar salidas derivadas versionadas
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/estaciones_9d/auditoria_estaciones_9d.json datos/estaciones_9d/series_mensuales_9d.csv
+          if git diff --cached --quiet; then
+            echo 'Sin cambios de datos'
+          else
+            git commit -m 'data(9D): auditoria QA y mensuales de 3 series originales'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
