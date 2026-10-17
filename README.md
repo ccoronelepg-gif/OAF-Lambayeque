@@ -5,6 +5,14 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Rediseño de la web pública · 17/10/2026
+
+La interfaz tiene **cinco pestañas para el público y los investigadores**, conservando los modelos, fuentes y series archivadas: (1) **Inicio** con seis indicadores agrometeorológicos modelados (temperatura, precipitación, humedad, VPD, viento y radiación), resumen breve de fuentes científicas y novedades verificadas; (2) **Análisis de clima regional** con dashboard, anomalías, mapa de 420 puntos DEM, pisos altitudinales y series históricas; (3) **Monitoreo del Niño y anomalías climáticas**, fuentes ENFEN/NOAA, viento, SST, corrientes y análisis experimentales; (4) **Sanidad vegetal** con subpestañas **Cultivos** (arándano y vid, enfermedades y manejo integrado) y **Modelos predictivos de enfermedades** (todavía experimentales); y (5) **Investigación y datos** para fuentes, validaciones, modelos y descargas reproducibles.
+
+Los resultados científicos del OAF **no son automáticamente validados localmente por emplear fuentes de prestigio**. ERA5/ERA5-Land, NOAA, CHIRPS, CAMS y Open-Meteo tienen documentación de origen y metodología, pero predicciones de enfermedades, alertas ENSO y zonas homogéneas deben contar con su propia evaluación instrumental y de campo.
+
+**[Descripción detallada del rediseño](REDISENO_WEB_OAF_OCTUBRE_2026.md)** · [Web OAF](https://ccoronelepg-gif.github.io/OAF-Lambayeque/) · [QA de la nueva arquitectura](.github/workflows/oaf_redisenio_web_2026.yml).
+
 ## Actualización del portal · 14/10/2026
 
 La página pública [OAF-Lambayeque 2.2](https://ccoronelepg-gif.github.io/OAF-Lambayeque/) incorpora:
