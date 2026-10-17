@@ -32,7 +32,7 @@ T_STATUS=ROOT/"resultados/9t/manifiesto.json"
 U_STATUS=ROOT/"resultados/9u/decision.json"
 NAMES=("climatologia","random_forest","gcn")
 DAYS=[f"{y:04d}-{m:02d}" for y in range(1996,2026) for m in range(1,13)]
-EPS=.00011
+EPS=.001  # tolerancia máxima 0,001 mm por cast float32 en 9R y redondeo CSV
 
 def hashfile(path):
  h=hashlib.sha256()
@@ -81,6 +81,7 @@ def ingest():
  if document["grafo"]["n_nodos_con_lluvia_valida"]!=len(good):
   raise ValueError("9R reporta otro censo de nodos")
  pred=rows(PRED9R)
+ max_abs_target_diff=0.0
  if len(pred)!=2340 or len({(v["mes_objetivo"],v["sector"]) for v in pred})!=2340:
   raise ValueError("Archivo 9R no tiene 60 x 39 casos únicos")
  for row in pred:
@@ -88,14 +89,15 @@ def ingest():
   if s not in good or m not in DAYS[-60:]:
    raise ValueError("9R muestra fuera de corte")
   y=numeric(row["lluvia_observada_CHIRPS_mm"],(m,s))
-  if abs(y-values[s][m])>EPS:
-   raise ValueError("Objetivo observado 9R no es CHIRPS 9Q en "+m+" "+s)
+  diff=abs(y-values[s][m]);max_abs_target_diff=max(max_abs_target_diff,diff)
+  if diff>EPS:
+   raise ValueError("Objetivo observado 9R no es CHIRPS 9Q en "+m+" "+s+" diferencia="+str(diff))
  if document["origen_CHIRPS"]["meses_verificados"]!=360:
   raise ValueError("9R no tiene procedencia 360")
- return floors,good,dropped,values,stages,rawhash,document,pred
+ return floors,good,dropped,values,stages,rawhash,document,pred,max_abs_target_diff
 
 def bridge():
- floors,good,dropped,values,stages,rawhash,doc,pred=ingest()
+ floors,good,dropped,values,stages,rawhash,doc,pred,max_diff=ingest()
  BASE.mkdir(parents=True,exist_ok=True)
  data=[{"sector_id":s,"mes":m,"lluvia_mm":format(values[s][m],".5f")}
        for s in good for m in DAYS]
@@ -109,7 +111,7 @@ def bridge():
   "sha256_poligonos":hashfile(GEOMS),"sha256_9R_predicciones":hashfile(PRED9R),
   "sha256_fuentes_csv":rawhash,"conteo_por_fase":stages,
   "auditoria_de_objetivos_9R":{"n_comparaciones":len(pred),
-    "tolerancia_redondeo_mm":EPS,"incongruencias":0},
+    "tolerancia_redondeo_mm":EPS,"diferencia_maxima_observada_mm":round(max_diff,7),"incongruencias":0},
   "fuente_productos":"CHIRPS v3 final retrospectivo, no mediciones SENAMHI independientes",
   "meses_bloque_train_9R":"1997-01/2015-12",
   "meses_bloque_validacion_9R":"2016-01/2020-12",
@@ -282,7 +284,7 @@ def report():
  return result
 
 def check():
- floors,good,dropped,values,stages,sha,doc,pred=ingest()
+ floors,good,dropped,values,stages,sha,doc,pred,max_diff=ingest()
  st=obj(MANIFEST)
  if hashfile(BRIDGE)!=st["sha256_matriz_nueva"]:raise ValueError("SHA matriz 9W cambiado")
  if len(rows(BRIDGE))!=39*360:raise ValueError("Matriz incompleta")
