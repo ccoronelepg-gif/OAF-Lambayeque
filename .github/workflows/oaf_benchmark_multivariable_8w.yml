@@ -1,0 +1,60 @@
+name: OAF 8W - Backtest multivariable oceano atmosfera
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/benchmark_multivariable_8w.py'
+      - 'tests/test_benchmark_multivariable_8w.py'
+      - '.github/workflows/oaf_benchmark_multivariable_8w.yml'
+      - 'datos/integracion_8v/estado_integracion_8v.json'
+      - 'datos/integracion_8v/matriz_terrestre_8v.csv'
+      - 'datos/integracion_8v/matriz_marina_8v.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8w-hindcast
+  cancel-in-progress: false
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verificar temporalidad probabilidades y mascara marina
+        run: python -m unittest discover -s tests -p 'test_benchmark_multivariable_8w.py' -v
+      - name: Reconstruir hindcasts sobre archivos reales 8V
+        run: |
+          python modelos/benchmark_multivariable_8w.py
+          python modelos/benchmark_multivariable_8w.py --check
+      - name: Verificacion de trazabilidad y no alerta
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('datos/benchmark_8w/estado_benchmark_8w.json').read_text())
+          assert d['prediccion_operativa_validada'] is False
+          assert d['alertas_agricolas_permitidas'] is False
+          assert d['aprendizaje_de_normales_umbral_y_escalado_solo_entrenamiento'] is True
+          assert len(d['cortes'])==5
+          assert d['n_predicciones_continuas']>5000
+          assert d['n_pronosticos_probabilisticos_eventos']>100
+          print('Retrospectivo completo, sin alerta operacional.')
+          PY
+      - name: Archivar salidas verificadas
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/benchmark_8w/
+          if git diff --cached --quiet; then
+            echo 'Sin modificaciones'
+          else
+            git commit -m 'data(oaf): publicar hindcasts 8W revisados con 5 cortes'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
