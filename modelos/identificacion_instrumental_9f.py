@@ -111,7 +111,7 @@ def validation(code,by,identity):
         years[y]=strict_annual(by,y)
     base={y:v for y,v in years.items() if y not in (1997,1998) and v is not None}
     target=years[1998]
-    if len(base)<12 or target is None:
+    if len(base)<8 or target is None:
         raise ValueError("No existen referencias anuales/objetivo suficientes")
     avg=sum(base.values())/len(base)
     seasonal=[]
@@ -133,6 +133,7 @@ def validation(code,by,identity):
         "anio_extremo":1998,
         "lluvia_1998_mm":target,
         "anos_base_validos":len(base),
+        "advertencia_muestra_base":"Conjunto breve de años íntegros; los años con meses faltantes se excluyen. No permite inferencia climatológica formal.",
         "anos_excluidos_de_base":[1997,1998],
         "media_anual_base_exploratoria_mm":round(avg,3),
         "mediana_anual_base_exploratoria_mm":round(median(list(base.values())),3),
