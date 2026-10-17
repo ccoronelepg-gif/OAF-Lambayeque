@@ -18,7 +18,7 @@ function draw(data){
  const max=Math.max(1,...values.map(x=>x.row?.total_mm_estricto||0));
  for(const x of values){
   const line=create(chart,"div","oaf-compare-line");
-  create(line,"div","oaf-compare-name","Estación "+x.code);
+  create(line,"div","oaf-compare-name",(STATION_NAMES[x.code]||"Estación")+" · "+x.code);
   const track=create(line,"div","oaf-compare-track");
   const bar=create(track,"div","oaf-compare-bar");
   const valid=x.row?.total_mm_estricto!==null && x.row?.total_mm_estricto!==undefined;
@@ -49,13 +49,13 @@ async function init(){
  list.replaceChildren();
  for(const p of data.pares){
   const cell=create(list,"div","oaf-compare-card");
-  create(cell,"small","","Series "+p.codigo_a+" / "+p.codigo_b);
+  create(cell,"small","",(STATION_NAMES[p.codigo_a]||p.codigo_a)+" / "+(STATION_NAMES[p.codigo_b]||p.codigo_b));
   create(cell,"strong","",f(p.correlacion_log1p_lluvia_mensual,2));
   create(cell,"span","",p.meses_comunes_100pct+" meses completos · sin ciclo anual: "+f(p.correlacion_residual_calendario_log1p,2)+
      " · sin 1998: "+f(p.correlacion_log1p_sin_1998,2));
  }
  const v=el("oaf-compare-status");
- v.textContent="Los tres archivos siguen sin ficha geográfica oficial verificada. No hay comparación ERA5-Land/CHIRPS calculada.";
+ v.textContent="Nombres y códigos corroborados con boletines SENAMHI; coordenadas y altitudes alternativas no conciliadas. No hay comparación ERA5-Land/CHIRPS calculada.";
  sel.addEventListener("change",()=>draw(data));
  draw(data);
 }
