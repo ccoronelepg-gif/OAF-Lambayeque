@@ -62,3 +62,9 @@ La información histórica observada no constituye por sí sola un pronóstico. 
 ## 6. Ruta a fase 9E
 
 Verificar nombres, coordenadas y altitudes oficiales y derechos de uso; emparejar observaciones con ERA5-Land/CHIRPS para la localización real; estimar sesgo y habilidad de extremos observados, validación espacial fuera de muestra y evaluar versiones de datos disponibles en fecha de emisión. No extrapolar automáticamente a los seis pisos altitudinales sin evidencia instrumental en cada subzona.
+
+## 7. Auditoría temporal de disponibilidad real (vintage)
+
+Se publicó [matriz de riesgos y disponibilidad temporal 9D](datos/estaciones_9d/auditoria_temporal_9d.json) contrastando documentación 8W/9A/9C y las tres series incorporadas. En los cortes 9A las variables RH/VPD pertenecen al mes de origen, y no al objetivo; eso limita fuga de objetivos futuros, **pero no demuestra disponibilidad al emitir**. Viento reanalizado, temperaturas y lluvia ERA5/ERA5-Land, índices históricos NOAA revisados y RH/VPD histórico no disponen en este repositorio de un archivo de *vintage* congelado según fecha de publicación. Los textos de estaciones tampoco contienen hora, fecha de difusión o metadatos institucionales. Esta limitación es distinta del control de error MAE/Brier y bloquea atribuir habilidad operativa al hindcast.
+
+La próxima evaluación prospectiva debe conservar copia y huella SHA de predictores realmente disponibles a cada fecha de emisión, registrar latencia de publicación y evitar calcular atributos con valores conocidos solo después de la emisión. El archivo del observatorio no permite reconstruir retrospectivamente los vintages perdidos.
