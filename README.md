@@ -5,6 +5,10 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+
+## Evaluación territorial 10A · 17/10/2026
+Se auditaron y reconciliaron **11.700 registros reales de CHIRPS v3 FINAL** (39 sectores × 60 meses × cinco modelos, prueba 2021–2025) contra la fase 9X. Random Forest tuvo MAE de **17,1634 mm**, GCN **18,6207 mm** y la climatología por piso **20,3708 mm**. **RF supera a GCN en 29/39 sectores, pero a la climatología solo en 21/39**; en 2023 la climatología por piso obtuvo menor MAE regional (29,0583 mm) que ambos modelos complejos. **No son predicciones operativas as-issued ni intervalos conformales calibrados; no se activaron alertas**. [Panel comparativo](evaluacion-territorial.html) · [Datos auditados](datos/integracion_10a/diagnostico_reconciliado_10a.json) · [Informe técnico](FASE_10A_RECONSTRUCCION_PREDICTIVA.md) · [Código replicable](modelos/auditoria_integrada_10a.py) · [Pruebas CI](.github/workflows/oaf_10a_auditoria.yml).
+
 ## Nueva experiencia UX · productor y ciencia técnica (17/10/2026)
 
 Se implementó una interfaz por **Vista rápida/Vista técnica**, con navegación Android, localidad compartida Chiclayo/Jayanca/Motupe/Olmos, fuente y hora de validez por los siete indicadores del Inicio, cuatro gráficos independientes a siete días desde Open-Meteo, mapa DEM original de 420 puntos en portada, resumen de arándano/vid, estado oficial ENFEN solo si la verificación institucional aporta evidencia, e índice expandible de cuatro áreas científicas. El proyecto **conserva los 463 IDs y 45 scripts originales**, sus CSV/JSON y evaluaciones, verificables automáticamente.
