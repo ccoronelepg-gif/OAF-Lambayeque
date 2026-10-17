@@ -16,7 +16,7 @@ from affine import Affine
 from rasterio.enums import Resampling
 from rasterio.features import rasterize, shapes
 from rasterio.windows import from_bounds, transform as wtransform
-from shapely.geometry import shape,mapping,box
+from shapely.geometry import shape,mapping,box,Polygon
 from shapely.ops import unary_union
 from shapely import make_valid
 
@@ -54,7 +54,7 @@ def clean(x):
   for v in x.geoms:
    if v.geom_type=="Polygon":parts.append(v)
    elif v.geom_type=="MultiPolygon":parts.extend(v.geoms)
- return unary_union([v for v in parts if v.area>0]) if parts else shape({"type":"Polygon","coordinates":[]})
+ return unary_union([v for v in parts if v.area>0]) if parts else Polygon()
 def parts(x):
  if x.is_empty:return []
  if x.geom_type=="Polygon":return [x]
