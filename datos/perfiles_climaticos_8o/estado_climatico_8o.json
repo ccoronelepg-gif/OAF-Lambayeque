@@ -1,0 +1,32 @@
+{
+  "fase": "8O",
+  "estado": "perfiles_multivariables_pendientes",
+  "n_testigos": 0,
+  "n_fuentes_esperadas": 6,
+  "n_fuentes_archivadas": 0,
+  "n_testigos_con_perfil_30anios": 0,
+  "n_grupos_similitud_exploratorios": 0,
+  "homogeneidad_espacial_certificada": false,
+  "zonas_agroclimaticas_operativas": 0,
+  "capacidad_predictiva_zonal_demostrada": false,
+  "validacion_instrumental_SENAMHI": false,
+  "periodo": "1996–2025",
+  "modelos_fuente_por_variable": {
+    "Tmedia_Tmax_Tmin": "ERA5-Land a través de Open-Meteo",
+    "lluvia_humedad_radiacion": "ERA5 a través de Open-Meteo"
+  },
+  "sin_iguales_pixeles_entre_fuentes_demostrados": true,
+  "sin_imputar_ausencias": true,
+  "analisis": null,
+  "restricciones": [
+    "Testigos espaciales estratificados no son todos los nodos ni representan porcentajes de área.",
+    "Grupo de similitud multivariable no es zona geográfica contigua ni pronóstico validado.",
+    "ERA5 vs ERA5-Land pueden usar distinta resolución espacial y bajar escala por elevación.",
+    "El umbral de separación de grupos se elige exploratoriamente con silueta, sujeto a estabilidad anual y muestreo denso.",
+    "La altitud informa el diseño, pero no es una variable que fuerce directamente los conglomerados climáticos."
+  ],
+  "trazabilidad": {
+    "archivo_testigos_sha256": "40fa6546ca2a031e56154645d8c3652c83e8d6e874b18ff12fd1d2dd3861a46e",
+    "fuentes": []
+  }
+}
