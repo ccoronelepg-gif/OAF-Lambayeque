@@ -1,0 +1,67 @@
+name: OAF 8U - Viento ERA5 y factores marinos trazables
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/viento_oceano_8u.py'
+      - 'tests/test_viento_oceano_8u.py'
+      - '.github/workflows/oaf_viento_oceano_8u.yml'
+      - 'modelos/visor_factores_8u.js'
+      - 'index.html'
+  schedule:
+    - cron: '43 16 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-viento-mar-8u
+  cancel-in-progress: false
+jobs:
+  viento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar archivos públicos con SHA verificado
+        run: git pull --ff-only origin main
+      - name: Probar validez de viento y protección contra inventar corrientes
+        run: python -m unittest discover -s tests -p 'test_viento_oceano_8u.py' -v
+      - name: Descargar como máximo un bloque de viento ERA5 nuevo
+        run: python modelos/viento_oceano_8u.py --fetch --max-new 1
+      - name: Verificar conservación del reporte ERA5 y NOAA
+        run: |
+          python modelos/viento_oceano_8u.py
+          python modelos/viento_oceano_8u.py --check
+      - name: Auditar panel cuando esté incorporado
+        run: |
+          if test -f modelos/visor_factores_8u.js; then
+            node --check modelos/visor_factores_8u.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          for name in ("oaf-factors-8u","oaf-8u-status","oaf-8u-blocks",
+                       "oaf-8u-cities","oaf-8u-current","oaf-8u-wind",
+                       "oaf-8u-refresh"):
+              assert html.count('id="'+name+'"')==1,name
+          assert 'src="modelos/visor_factores_8u.js"' in html
+          print("8U module wiring verified")
+          PY
+          fi
+      - name: Archivar crudos originales y salidas sin imputación
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/viento_8u/
+          if git diff --cached --quiet; then
+            echo "No hubo nuevas fuentes de viento."
+          else
+            git commit -m "data(oaf): viento ERA5 8U con origen, SHA-256 y calidad verificable"
+            git pull --rebase origin main
+            git push
+          fi
