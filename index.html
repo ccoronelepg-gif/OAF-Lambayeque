@@ -580,6 +580,38 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>NASA MERRA-2:</b> existe inventario de archivos para 1998 y 2025, pero todavía no se extrajo un histórico de concentraciones desde NetCDF. PM₂.₅ deriva de especies de aerosol a nivel superficial; PM₁₀ necesita concentraciones calculadas con los mezclados de aerosoles tridimensionales, densidad del aire y nivel inferior 72. No usar el producto CAMS 2023–2025 como sustituto de una normal de 30 años, ni publicar alertas por contaminación o fitosanitarias.</div>
 <p><a href="FASE_8Z_HUMEDAD_AEROSOLES_MERRA2.md">Informe científico 8Z ↗</a> · <a href="datos/humedad_8z/humedad_vpd_mensual_8z.csv">RH/VPD mensual ERA5 ↗</a> · <a href="datos/humedad_8z/estado_humedad_8z.json">SHA-256 y cobertura ↗</a> · <a href="datos/merra2_8z/estado_piloto_merra2_8z.json">Inventario NASA MERRA-2 ↗</a> · <a href="datos/relaciones_pm_humedad_8z/estado_relacion_pm_humedad_8z.json">Correlaciones PM-humedad ↗</a> · <a href="https://gmao.gsfc.nasa.gov/gmao-products/merra-2/faq_merra-2/">Fórmulas originales NASA ↗</a></p>
 </details>
+<details class="panel" id="oaf-benchmark-9a">
+<summary><strong>Fase 9A · ¿Mejoran RH y VPD la predicción?</strong> · benchmark pareado con fase 8W</summary>
+<p>Comparación temporal retrospectiva entre cuatro modelos: <b>base viento + SST</b>, <b>base + humedad relativa</b>, <b>base + VPD</b> y <b>base + RH + VPD</b>. Se mantienen las mismas localidades, meses objetivo, cortes temporales y métricas de 8W. Las normales y el escalado de cada modelo se ajustan solo con el entrenamiento anterior. Datos ERA5 y NOAA revisados: <b>NO son pronósticos que se hayan emitido realmente antes de cada mes</b>.</p>
+<div class="kpis">
+<div class="kpi"><small>Predicciones continuas pareadas</small><b id="oaf-9a-num-cont">—</b></div>
+<div class="kpi"><small>Probabilidades retrospectivas P90</small><b id="oaf-9a-num-prob">—</b></div>
+<div class="kpi"><small>Cortes cronológicos de prueba</small><b id="oaf-9a-num-fold">—</b></div>
+</div>
+<div class="split">
+<label>Localidad<br><select id="oaf-9a-site"><option>Chiclayo</option><option>Jayanca</option><option selected>Motupe</option><option>Olmos</option></select></label>
+<label>Horizonte<br><select id="oaf-9a-h"><option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option></select></label>
+<label>Objetivo<br><select id="oaf-9a-target"><option value="temperatura_aire_c">Temperatura del aire</option><option value="precipitacion_mes_mm">Lluvia mensual</option></select></label>
+</div>
+<h3>Errores de pronóstico según variables</h3>
+<p class="small" id="oaf-9a-units">MAE y RMSE: menor es mejor. Una mejora de error no demuestra habilidad operativa.</p>
+<div class="scroller"><table><thead><tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>Variación frente a 8W</th><th>Meses</th></tr></thead><tbody id="oaf-9a-models"></tbody></table></div>
+<h3>Estabilidad de la mejora en los cinco cortes</h3>
+<p class="small">Barras positivas representan reducciones del MAE respecto al modelo 8W; negativas representan empeoramientos. No son intervalos estadísticos de confianza.</p>
+<svg id="oaf-9a-stability" viewBox="0 0 750 305" role="img" aria-label="Comparación de mejoras por periodos de prueba" width="100%" style="max-height:350px"></svg>
+<p class="small" id="oaf-9a-fold-caption">Ganancias y pérdidas de cada modelo en los cinco periodos.</p>
+<h3>Prueba climática: enero–abril de 2017 y 2023</h3>
+<p class="small">Solo cuatro meses por año. No constituye prueba fuera de muestra para El Niño de 1997–1998 ni evidencia suficiente para alerta de inundación. Se presentan también las variantes que empeoran.</p>
+<div class="scroller"><table><thead><tr><th>Año</th><th>Modelo</th><th>MAE</th><th>RMSE</th><th>Meses</th></tr></thead><tbody id="oaf-9a-seasons"></tbody></table></div>
+<h3>¿Mejora el pronóstico de lluvia extrema?</h3>
+<p class="small">Eventos de enero–abril que superan el P90 mensual de precipitación modelada calculado solo con cada entrenamiento. <b>Brier menor es mejor.</b> Sin evaluación independiente SENAMHI ni probabilidades calibradas operacionalmente.</p>
+<div class="scroller"><table><thead><tr><th>Modelo</th><th>Brier</th><th>Eventos / meses</th></tr></thead><tbody id="oaf-9a-events"></tbody></table></div>
+<p class="small" id="oaf-9a-summary">Lectura técnica del caso seleccionado.</p>
+<p id="oaf-9a-status" role="status" class="small">Abra este panel para leer los resultados archivados.</p>
+<div class="notice"><b>Resultado no monotónico:</b> sumar variables puede empeorar el pronóstico. RH/VPD provienen de ERA5, no de sensores del campo, y los 4 centros modelo no representan toda la variedad altitudinal de Lambayeque. La precipitación extrema ERA5 debe verificarse con SENAMHI; no se habilitan alertas fitosanitarias de arándano o vid.</div>
+<p><a href="FASE_9A_BENCHMARK_HUMEDAD_VPD.md">Informe completo fase 9A ↗</a> · <a href="datos/benchmark_9a/estado_benchmark_9a.json">Resultados de error y estabilidad ↗</a> · <a href="datos/benchmark_9a/pronosticos_pareados_9a.csv">Hindcasts temperatura/lluvia CSV ↗</a> · <a href="datos/benchmark_9a/eventos_p90_pareados_9a.csv">Probabilidades eventos P90 CSV ↗</a></p>
+</details>
+
 
 
 
@@ -943,4 +975,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
