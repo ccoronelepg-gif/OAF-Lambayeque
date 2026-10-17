@@ -1,0 +1,70 @@
+name: OAF 9N - Copernicus multitesela y zonificacion verificable
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/cobertura_multitesela_9n.py'
+      - 'tests/test_cobertura_9n.py'
+      - '.github/workflows/oaf_cobertura_9n.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-cobertura-9n
+  cancel-in-progress: false
+jobs:
+  ampliar-cobertura:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias GLO90 y geometría científica
+        run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2 affine==2.4.0
+      - name: Descargar teselas crudas adicionales, medir y bloquear errores de procedencia
+        run: |
+          python modelos/cobertura_multitesela_9n.py
+          python modelos/cobertura_multitesela_9n.py --check
+      - name: Validar no invención de clima, cuencas o aptitud agrícola
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('datos/cobertura_multitesela_9n')
+          j=json.loads((p/'estado_cobertura_9n.json').read_text())
+          g=json.loads((p/'mascaras_multitesela_9n.geojson').read_text())
+          m=json.loads((p/'fuentes_dem_9n.json').read_text())
+          assert j['fase']=='9N' and j['n_sectores_9k']==42
+          assert (j['n_sectores_cobertura_completa']+j['n_sectores_cobertura_parcial']
+                   +j['n_sectores_sin_dem']==42)
+          assert j['teselas_archivadas_validas']==len(m['teselas_que_pudieron_abrirse'])
+          assert j['teselas_no_disponibles']==len(m['teselas_que_no_pudieron_comprobarse'])
+          assert j['n_geometrias_filtro']==len(g['features'])
+          assert j['n_zonas_agroclimaticas_homogeneas_validadas']==0
+          assert j['cuencas_ana_oficialmente_ratificadas']==0
+          assert not j['ajuste_altitudinal_nmme_validado']
+          assert not j['alertas_fitosanitarias_derivadas']
+          print('9N: sector por cobertura',j['cobertura_por_estado'])
+          print('9N: teselas',j['teselas_archivadas_validas'],'de',j['teselas_necesarias'])
+          PY
+      - name: Pruebas detalladas de estabilidad, geométricas y UX
+        run: |
+          python -m unittest discover -s tests -p 'test_cobertura_9n.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_multitesela_9n.js
+      - name: Guardar fuentes SHA y resultados sin borrar originales de 9K y 9L
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/cobertura_multitesela_9n/
+          if git diff --cached --quiet; then
+            echo 'Sin nuevas fuentes'
+          else
+            git commit -m 'data(9N): teselas GLO90 archivadas y máscaras geográficas auditadas'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
