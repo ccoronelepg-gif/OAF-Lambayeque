@@ -16,7 +16,7 @@ concurrency:
 jobs:
   evaluacion-espacial:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 22
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,9 +26,11 @@ jobs:
           python-version: '3.11'
       - name: Bibliotecas SIG y números
         run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2
-      - name: Extraer CHIRPS v3 histórico real por 42 sectores y 81 testigos
+      - name: Extraer 5 años CHIRPS v3 distribuidos en el periodo 1996-2025 sin sobrecargar UCSB
         run: |
-          python modelos/chirps_homogeneidad_9o.py --workers 5
+          # Piloto histórico preespecificado distribuido en 30 años.
+          # No atribuir normales 30 años CHIRPS a esta extracción parcial.
+          python modelos/chirps_homogeneidad_9o.py --workers 3 --years 1996,2002,2011,2018,2025
           python modelos/chirps_homogeneidad_9o.py --check
       - name: Diagnóstico climático 1996–2025 y prueba de estabilidad temporal
         run: |
