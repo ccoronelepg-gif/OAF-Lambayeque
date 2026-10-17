@@ -11,7 +11,7 @@ const COLORS={llanura_costa:"#2d82b7",valle_bajo:"#2da989",
 const svg=(tag,attrs={},title)=>{
  const el=document.createElementNS("http://www.w3.org/2000/svg",tag);
  for(const [key,val] of Object.entries(attrs))el.setAttribute(key,String(val));
- if(title!==undefined)el.append(document.createElementNS("http://www.w3.org/2000/svg","title")).lastChild.textContent=title;
+ if(title!==undefined){const tip=document.createElementNS("http://www.w3.org/2000/svg","title");tip.textContent=title;el.append(tip);}
  return el;
 };
 const num=v=>typeof v==="number"&&Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:2}):"—";
