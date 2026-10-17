@@ -6,6 +6,8 @@ on:
     paths:
       - 'modelos/diagnostico_particulas_8y.py'
       - 'tests/test_diagnostico_particulas_8y.py'
+      - 'modelos/visor_diagnostico_pm_8y.js'
+      - 'index.html'
       - 'datos/aire_8x/estado_aire_8x.json'
       - 'datos/aire_8x/particulas_mensuales_8x.csv'
       - 'datos/integracion_8v/matriz_terrestre_8v.csv'
@@ -44,6 +46,17 @@ jobs:
           assert d['inferencia_causal_permitida'] is False
           assert d['uso_pm_como_predictor_climatico_aprobado'] is False
           print('Disponibles:',d['n_comparaciones_evaluables'],'de',d['n_comparaciones'])
+          PY
+      - name: Comprobar visor de fase 8Y y celdas geograficas
+        run: |
+          node --check modelos/visor_diagnostico_pm_8y.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          for x in ('oaf-diagnostico-8y','oaf-8y-localidad','oaf-8y-pm','oaf-8y-correlations','oaf-8y-table','oaf-8y-message'):
+              assert html.count('id="'+x+'"')==1,x
+          assert html.count('src="modelos/visor_diagnostico_pm_8y.js"')==1
+          print('Panel 8Y accesible y sin IDs duplicados')
           PY
       - name: Publicar diagnostico con fuentes SHA
         run: |
