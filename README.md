@@ -5,13 +5,23 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Identificación territorial: Virrey, Puchaca y El Espinal (17/10/2026)
+
+Con información adicional del usuario y tres coincidencias exactas de día y precipitación máxima con **tablas oficiales SENAMHI**, se identificaron los originales: **00152107 = Virrey (código 152107; 330 mm el 10/02/2012)**, **00153114 = Puchaca (153114; 150,2 mm el 06/01/1998)** y **00000340 = El Espinal (000340; 107 mm el 20/02/1998)**. La identidad nominal supera la incertidumbre registrada en la etapa anterior.
+
+Se recuperaron referencias geográficas institucionales de Virrey (Olmos), Puchaca (Incahuasi) y El Espinal (Oyotún). **Las fuentes no coinciden completamente en coordenadas ni en altitudes**; para Puchaca se publican 355, 500 y 800 m. Estas discrepancias se conservan en vez de elegir arbitrariamente una cota: la ubicación histórica del instrumento **aún no está certificada**.
+
+Con datos observados completos y excluyendo 1997–1998 de la media anual descriptiva 1996–2013, la lluvia de 1998 fue aproximadamente **5,34 veces** la referencia de El Espinal (**15 años base**), **10,36 veces** en Puchaca (**9 años base**), y **10,34 veces** en Virrey (**16 años base**). Son razones exploratorias, **no una normal 1996–2025 ni validación predictiva**.
+
+Recursos: [informe técnico](FASE_9F_IDENTIDAD_TERRITORIAL.md) · [inventario y hallazgos reproducibles](datos/validacion_estaciones_9f/identificacion_territorial_9f.json) · [script con SHA y coincidencias](modelos/identificacion_instrumental_9f.py) · [pruebas automáticas](.github/workflows/oaf_identificacion_9f.yml). En el portal, **Análisis de clima regional → Virrey, Puchaca y El Espinal: estaciones y territorio**. Los paneles de estaciones se colocaron correctamente dentro de esa pestaña, manteniendo la navegación desplegable y sin códigos de etapas en los títulos.
+
 ## Fase 9E · Contraste instrumental entre tres series (17/10/2026)
 
 Se realizó un segundo control de 3 registros de estación aportados por usuario, usando solo meses con **100 % de días observados**. Sobre los 216 meses de 1996–2013, la precipitación estricta está disponible en **215 (00000340), 207 (00153114) y 216 (00152107)**. Los tres archivos tienen 1998 completo; 1983 solo está completo en 00153114 y 00152107.
 
 **Correlaciones descriptivas de log(1+mm) mensuales, entre pares:** **0,81128**, **0,78934** y **0,87053** (n pareados 206, 215 y 207). Tales similitudes temporales no prueban que las estaciones estén cercanas, geográficamente localizadas, climáticamente homogéneas, ni que un modelo haya pronosticado las lluvias.
 
-Se consultaron fuentes institucionales para identificación de estaciones, pero **no se acreditó la correspondencia exacta de los códigos originales con nombre, coordenadas, altitud y licencia**. El motor de comparación ERA5-Land/CHIRPS se entregó **con bloqueo deliberado** hasta disponer de fichas geográficas verificadas; **no hay sesgo/MAE estación-grilla calculados**. CHIRPS v3 incluye pluviómetros, por lo que hay que analizar la independencia del contraste si la propia estación fue asimilada en el producto.
+Durante 9E todavía no se había cotejado la identidad; la **etapa posterior de identificación territorial** corroboró nombres y códigos, aunque coordenadas históricas, altitudes y licencia no están conciliadas. El motor de comparación ERA5-Land/CHIRPS se entregó **con bloqueo deliberado** hasta disponer de fichas geográficas verificadas; **no hay sesgo/MAE estación-grilla calculados**. CHIRPS v3 incluye pluviómetros, por lo que hay que analizar la independencia del contraste si la propia estación fue asimilada en el producto.
 
 Recursos: [informe y resultados 9E](FASE_9E_CONTRASTE_INSTRUMENTAL.md) · [matriz de comparación temporal JSON](datos/validacion_estaciones_9e/contraste_observacional_9e.json) · [fichas pendientes](datos/validacion_estaciones_9e/metadatos_identidad_9e.json) · [comparador geoespacial preparado](modelos/emparejamiento_reanalisis_9e.py). El público puede explorar las lluvias y correlaciones en **Análisis de clima regional → Comparación histórica de lluvias entre estaciones**, sin códigos de fase en los títulos.
 
