@@ -95,12 +95,13 @@ def obtain_sources(tiles,allow_download=True):
     sources={}
     details=[]
     failures=[]
+    old_failures={i["id"]:i for i in load_json(MISSING)} if (not allow_download and MISSING.exists()) else {}
     for key,t in tiles.items():
         path=(ORIGINAL if key=="S07W080" else TILES/f"{key}.tif")
         url=t["url"]
         if path.exists():
             raw=path.read_bytes()
-            mode="congelado_9L" if key=="S07W080" else "congelado_9N"
+            mode="original_9L_con_SHA" if key=="S07W080" else "original_9N_con_SHA"
         elif allow_download:
             try:
                 request=Request(url,headers={"User-Agent":"OAF-Lambayeque-9N-science/1.0"})
@@ -109,16 +110,16 @@ def obtain_sources(tiles,allow_download=True):
                 meta=inspect_tiff(raw,t["lat"],t["lon"])
                 TILES.mkdir(parents=True,exist_ok=True)
                 path.write_bytes(raw)
-                mode="descarga_archivada_9N"
+                mode="original_9N_con_SHA"
             except (HTTPError,URLError,TimeoutError,ValueError) as err:
                 failures.append({"id":key,"url":url,
                                  "razon":f"{type(err).__name__}: {err}"[:250],
                                  "no_inferir_elevacion_cero":True})
                 continue
         else:
-            failures.append({"id":key,"url":url,
+            failures.append(old_failures.get(key,{"id":key,"url":url,
                              "razon":"Sin copia cruda local conservada",
-                             "no_inferir_elevacion_cero":True})
+                             "no_inferir_elevacion_cero":True}))
             continue
         meta=inspect_tiff(raw,t["lat"],t["lon"])
         item={**t,**meta,"bytes":len(raw),"sha256":digest(raw),
