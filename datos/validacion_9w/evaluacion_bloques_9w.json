@@ -1,0 +1,339 @@
+{
+  "fase": "9W",
+  "fecha_corte": "2026-10-17",
+  "mensaje": "9R YA TENÍA entrenamiento real GCN/RF; 9S-9V son documentos metodológicos obsoletos respecto a ello",
+  "auditoria_matriz_9q_sectorial": {
+    "fase": "9W",
+    "fecha_corte": "2026-10-17",
+    "insumos_identificados": {
+      "9O": "datos/homogeneidad_9o/serie_sectores_chirps_9o.csv",
+      "9P": "datos/continuidad_9p/meses_adicionales_sectores_9p.csv",
+      "9Q": "datos/recuperacion_9q/sectores_mensuales_9q.csv"
+    },
+    "meses_CHIRPS_final_verificados": 360,
+    "anios_completos": 30,
+    "n_poligonos_9k": 42,
+    "n_sectores_aptos_historia_CHIRPS": 39,
+    "sectores_sin_celda_CHIRPS": [
+      "S028",
+      "S032",
+      "S034"
+    ],
+    "sectores_evaluables": [
+      "S001",
+      "S002",
+      "S003",
+      "S004",
+      "S005",
+      "S006",
+      "S007",
+      "S008",
+      "S009",
+      "S010",
+      "S011",
+      "S012",
+      "S013",
+      "S014",
+      "S015",
+      "S016",
+      "S017",
+      "S018",
+      "S019",
+      "S020",
+      "S021",
+      "S022",
+      "S023",
+      "S024",
+      "S025",
+      "S026",
+      "S027",
+      "S029",
+      "S030",
+      "S031",
+      "S033",
+      "S035",
+      "S036",
+      "S037",
+      "S038",
+      "S039",
+      "S040",
+      "S041",
+      "S042"
+    ],
+    "filas_matriz_auditada": 14040,
+    "sha256_matriz_nueva": "5717e77a141114a2ce62f1ba5db1153b8ca59e112710a87daa8af173581b5bc8",
+    "sha256_poligonos": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+    "sha256_9R_predicciones": "083055cdeb2f6b1269fa71e9e3c2beddac4d356a6434f20dbdf737e84e5bd848",
+    "sha256_fuentes_csv": {
+      "9O": "adfe62e3425d884db857a1dea795ba4760605fa99f5834ab3a69fcd652df7fa9",
+      "9P": "3c2a1eda9bd5a5fac0c276910e4baa15a70e1443dd294b0299205afa98839cb6",
+      "9Q": "f467d8c85822736247703e056fb75844be99f892279c42dac4beb355b3bc5e74"
+    },
+    "conteo_por_fase": {
+      "9O": 108,
+      "9P": 12,
+      "9Q": 240
+    },
+    "auditoria_de_objetivos_9R": {
+      "n_comparaciones": 2340,
+      "tolerancia_redondeo_mm": 0.001,
+      "diferencia_maxima_observada_mm": 0.00011,
+      "incongruencias": 0
+    },
+    "fuente_productos": "CHIRPS v3 final retrospectivo, no mediciones SENAMHI independientes",
+    "meses_bloque_train_9R": "1997-01/2015-12",
+    "meses_bloque_validacion_9R": "2016-01/2020-12",
+    "meses_bloque_prueba_9R": "2021-01/2025-12",
+    "modelo_9R_ya_ejecutado": true,
+    "notas_9S_9V_anteriores_desactualizadas": true,
+    "vintage_CHIRPS_as_issued_historico_no_auditado": true,
+    "no_publicar_aciertos_operacionales": true,
+    "zona_homogenea_certificada": false,
+    "alertas_activadas": false
+  },
+  "modelos_y_pruebas": [
+    {
+      "protocolo": "9R",
+      "anios_prueba": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "n_sectores": 39,
+      "casos_sector_mes_por_modelo": 2340,
+      "metrica_modelos": {
+        "climatologia": {
+          "n": 2340,
+          "mae_mm": 14.29568,
+          "rmse_mm": 30.63928,
+          "sesgo_mm": -0.05895
+        },
+        "gcn": {
+          "n": 2340,
+          "mae_mm": 18.4682,
+          "rmse_mm": 39.63836,
+          "sesgo_mm": -6.21408
+        },
+        "random_forest": {
+          "n": 2340,
+          "mae_mm": 15.53971,
+          "rmse_mm": 34.30938,
+          "sesgo_mm": -8.43373
+        }
+      },
+      "skill_MAE_vs_climatologia_pct": {
+        "climatologia": 0.0,
+        "gcn": -29.1873,
+        "random_forest": -8.7021
+      },
+      "comparacion_errores_emparejados": {
+        "random_forest_menos_climatologia": {
+          "comparacion": "random_forest_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 1.24403,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            -2.5612,
+            4.42268
+          ],
+          "fraccion_remuestras_delta_positivo": 0.77088,
+          "n_bloques_anio": 5,
+          "n_remuestras_exactas": 3125,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        },
+        "gcn_menos_climatologia": {
+          "comparacion": "gcn_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 4.17252,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            0.09517,
+            7.56704
+          ],
+          "fraccion_remuestras_delta_positivo": 0.97728,
+          "n_bloques_anio": 5,
+          "n_remuestras_exactas": 3125,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        },
+        "gcn_menos_random_forest": {
+          "comparacion": "gcn_menos_random_forest",
+          "delta_mae_mm_positivo_es_peor": 2.92849,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            1.61231,
+            5.06973
+          ],
+          "fraccion_remuestras_delta_positivo": 1.0,
+          "n_bloques_anio": 5,
+          "n_remuestras_exactas": 3125,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        }
+      },
+      "ganador_por_mae_incluyendo_baselines": "climatologia"
+    },
+    {
+      "protocolo": "9R_2022_2025",
+      "anios_prueba": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "n_sectores": 39,
+      "casos_sector_mes_por_modelo": 1872,
+      "metrica_modelos": {
+        "climatologia": {
+          "n": 1872,
+          "mae_mm": 14.97053,
+          "rmse_mm": 32.48556,
+          "sesgo_mm": -0.8307
+        },
+        "gcn": {
+          "n": 1872,
+          "mae_mm": 18.03108,
+          "rmse_mm": 38.67853,
+          "sesgo_mm": -8.14378
+        },
+        "random_forest": {
+          "n": 1872,
+          "mae_mm": 16.14954,
+          "rmse_mm": 35.21239,
+          "sesgo_mm": -8.96333
+        }
+      },
+      "skill_MAE_vs_climatologia_pct": {
+        "climatologia": 0.0,
+        "gcn": -20.4438,
+        "random_forest": -7.8755
+      },
+      "comparacion_errores_emparejados": {
+        "random_forest_menos_climatologia": {
+          "comparacion": "random_forest_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 1.179,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            -3.27411,
+            5.06163
+          ],
+          "fraccion_remuestras_delta_positivo": 0.69922,
+          "n_bloques_anio": 4,
+          "n_remuestras_exactas": 256,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        },
+        "gcn_menos_climatologia": {
+          "comparacion": "gcn_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 3.06055,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            -1.27403,
+            6.54159
+          ],
+          "fraccion_remuestras_delta_positivo": 0.92578,
+          "n_bloques_anio": 4,
+          "n_remuestras_exactas": 256,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        },
+        "gcn_menos_random_forest": {
+          "comparacion": "gcn_menos_random_forest",
+          "delta_mae_mm_positivo_es_peor": 1.88155,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            1.47996,
+            2.28313
+          ],
+          "fraccion_remuestras_delta_positivo": 1.0,
+          "n_bloques_anio": 4,
+          "n_remuestras_exactas": 256,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        }
+      },
+      "ganador_por_mae_incluyendo_baselines": "climatologia"
+    },
+    {
+      "protocolo": "9T",
+      "anios_prueba": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "n_sectores": 39,
+      "casos_sector_mes_por_modelo": 1872,
+      "metrica_modelos": {
+        "climatologia": {
+          "n": 1872,
+          "mae_mm": 14.82932,
+          "rmse_mm": 32.04035,
+          "sesgo_mm": -0.68539
+        },
+        "persistencia": {
+          "n": 1872,
+          "mae_mm": 22.61547,
+          "rmse_mm": 47.96367,
+          "sesgo_mm": -0.73824
+        },
+        "random_forest": {
+          "n": 1872,
+          "mae_mm": 16.27165,
+          "rmse_mm": 31.71264,
+          "sesgo_mm": 0.41214
+        }
+      },
+      "skill_MAE_vs_climatologia_pct": {
+        "climatologia": 0.0,
+        "persistencia": -52.5051,
+        "random_forest": -9.7262
+      },
+      "comparacion_errores_emparejados": {
+        "random_forest_menos_climatologia": {
+          "comparacion": "random_forest_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 1.44232,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            -1.78013,
+            4.56272
+          ],
+          "fraccion_remuestras_delta_positivo": 0.85547,
+          "n_bloques_anio": 4,
+          "n_remuestras_exactas": 256,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        },
+        "persistencia_menos_climatologia": {
+          "comparacion": "persistencia_menos_climatologia",
+          "delta_mae_mm_positivo_es_peor": 7.78615,
+          "intervalo_bootstrap_anual_95_pct_mm": [
+            2.39523,
+            13.17707
+          ],
+          "fraccion_remuestras_delta_positivo": 1.0,
+          "n_bloques_anio": 4,
+          "n_remuestras_exactas": 256,
+          "interpretacion": "variabilidad por AÑOS de prueba; no independencia espacial ni prueba prospectiva"
+        }
+      },
+      "ganador_por_mae_incluyendo_baselines": "climatologia"
+    }
+  ],
+  "decision_9U_reproducida_en_protocolo_9T": {
+    "fase": "9U",
+    "decision": "RF_NO_SUPERA_CLIMATOLOGIA",
+    "ganador_descriptivo_entre_baselines": "climatologia",
+    "rf_mae_mm": 16.2716465271452,
+    "climatologia_mae_mm": 14.829322121212122,
+    "gc_n": "NO_ENTRENADA_NI_COMPARADA",
+    "validacion_instrumental": "NO_REALIZADA",
+    "advertencia": "Comparación retrospectiva CHIRPS, no exactitud operativa; ranking sin intervalos robustos de confianza"
+  },
+  "comparar_mae_9R_vs_9T_para_elegir_modelo": false,
+  "razon_no_intercambiabilidad": "Particiones de entrenamiento y validación DIFERENTES, hiperparámetros y entrenamiento distintos, aunque se repitan 2022–2025; no comparar como torneo pareado 9R vs 9T",
+  "n_estaciones_independientes_SENAMHI_validadas": 0,
+  "validacion_espacial_con_sectores_ausentes_en_entrenamiento": false,
+  "GCN_de_9R_arquitectura_de_grafos_no_CNN_convolucion_2D": true,
+  "producto_CHIRPS_version_final_historica_revisada": true,
+  "verificacion_as_issued_de_variables_rezagadas": false,
+  "modelo_operativo_habilitado": false,
+  "n_zonas_climaticamente_homogeneas_certificadas": 0,
+  "alertas_fitosanitarias_emitidas": false,
+  "limitaciones": [
+    "Los sectores test estuvieron presentes en el entrenamiento 9R y 9T: hay prueba temporal, NO prueba de transferencia espacial a sectores nuevos.",
+    "Los 5 años de prueba 9R o 4 de 9T son clústeres temporales; 39x60 no son 2340 observaciones independientes.",
+    "La reestimación con otro corte 9T es control de robustez, no un nuevo ensayo independiente por compartir años 2022–2025.",
+    "Climatología 9R y 9T cambia porque se estima sobre tramos temporales diferentes: no comparar MAE directo entre protocolos para declarar ganador.",
+    "CHIRPS v3 final y geometrías 9K fueron compiladas en 2026 a posteriori: rezagos no certificados como disponibles en la fecha histórica de emisión.",
+    "No se evaluó ninguna CNN 2D convencional: 9R utilizó GCN convolucional sobre grafo.",
+    "Los modelos no se validaron sobre estaciones pluviométricas SENAMHI independientes ni eventos fitosanitarios reales."
+  ]
+}

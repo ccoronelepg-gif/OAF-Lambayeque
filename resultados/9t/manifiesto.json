@@ -1,0 +1,215 @@
+{
+  "fase": "9T",
+  "estado": "BASELINES_RF_EJECUTADOS_GCN_PENDIENTE",
+  "fuente_entrada": "datos/validacion_9w/matriz_sectores_chirps_9w.csv",
+  "sha256_entrada": "5717e77a141114a2ce62f1ba5db1153b8ca59e112710a87daa8af173581b5bc8",
+  "n_sectores": 39,
+  "cobertura": {
+    "S001": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S002": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S003": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S004": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S005": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S006": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S007": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S008": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S009": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S010": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S011": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S012": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S013": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S014": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S015": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S016": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S017": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S018": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S019": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S020": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S021": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S022": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S023": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S024": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S025": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S026": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S027": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S029": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S030": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S031": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S033": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S035": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S036": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S037": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S038": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S039": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S040": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S041": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    },
+    "S042": {
+      "meses_observados": 360,
+      "faltantes_1996_2025": [],
+      "fuera_periodo": []
+    }
+  },
+  "periodo_entrenamiento": "1996-01/2018-12",
+  "periodo_validacion": "2019-01/2021-12",
+  "periodo_prueba": "2022-01/2025-12",
+  "n_predictions": 9828,
+  "semilla": 42,
+  "advertencias": [
+    "CHIRPS no es observación instrumental SENAMHI",
+    "La disponibilidad en tiempo de emisión de rezagos no está certificada",
+    "Sin geometrías/grafo auditado, GCN no ejecutada",
+    "No hay pronóstico ni alerta operativa"
+  ]
+}

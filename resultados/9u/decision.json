@@ -1,0 +1,10 @@
+{
+  "fase": "9U",
+  "decision": "RF_NO_SUPERA_CLIMATOLOGIA",
+  "ganador_descriptivo_entre_baselines": "climatologia",
+  "rf_mae_mm": 16.2716465271452,
+  "climatologia_mae_mm": 14.829322121212122,
+  "gc_n": "NO_ENTRENADA_NI_COMPARADA",
+  "validacion_instrumental": "NO_REALIZADA",
+  "advertencia": "Comparación retrospectiva CHIRPS, no exactitud operativa; ranking sin intervalos robustos de confianza"
+}
