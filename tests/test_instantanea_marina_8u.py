@@ -36,10 +36,17 @@ class Marine8UTest(unittest.TestCase):
   data=self.fake()
   data[1]["latitude"]+=1.5
   with self.assertRaises(ValueError):m.check(json.dumps(data).encode())
- def test_reject_wrong_velocity_unit(self):
+ def test_kmh_converted_to_ms_without_guessing(self):
   data=self.fake()
   data[0]["hourly_units"]["ocean_current_velocity"]="km/h"
-  with self.assertRaisesRegex(ValueError,"m/s"):m.check(json.dumps(data).encode())
+  data[0]["hourly"]["ocean_current_velocity"]=[3.6]*72
+  out=m.check(json.dumps(data).encode())
+  self.assertAlmostEqual(out[0]["velocidad_media_modelada_ms"],1,places=5)
+  self.assertEqual(out[0]["unidad_entrada_velocidad_corriente"],"km/h")
+ def test_reject_wrong_velocity_unit(self):
+  data=self.fake()
+  data[0]["hourly_units"]["ocean_current_velocity"]="nautical_units"
+  with self.assertRaisesRegex(ValueError,"desconocida"):m.check(json.dumps(data).encode())
  def test_no_sentinel_contamination(self):
   data=self.fake()
   data[2]["hourly"]["ocean_current_velocity"][2]=-999.0
