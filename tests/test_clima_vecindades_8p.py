@@ -43,6 +43,25 @@ class TestClimate8P(unittest.TestCase):
   self.assertLess(result["distancia_geografica_km"],20)
   self.assertEqual(result["distancia_climatica_estandarizada"],0)
   self.assertEqual(result["zona_homogenea_verificada"],"false")
+ def test_shared_era5_cell_is_explicitly_flagged_not_declared_independent(self):
+  a={"id":"a","latitud":-6.5,"longitud":-79.5,"altitud_dem_m":170}
+  b={"id":"b","latitud":-6.53,"longitud":-79.52,"altitud_dem_m":220}
+  normals={(node,m):{"tmedia_c":21.,"amplitud_termica_c":8.,
+   "precipitacion_mm":30.,"humedad_relativa_pct":75.,"radiacion_mj_m2":550.}
+    for node in ("a","b") for m in range(1,13)}
+  scale={f:(0.,1.) for f in m.FEATS}
+  centers={("era5","a"):{(-6.5,-79.5)},("era5","b"):{(-6.5,-79.5)},
+           ("era5_land","a"):{(-6.5,-79.5)},("era5_land","b"):{(-6.52,-79.5)}}
+  pair=m.candidate(a,b,normals,scale,centers=centers)
+  self.assertEqual(pair["igual_celda_era5"],"si")
+  self.assertEqual(pair["igual_celda_era5land"],"no")
+  self.assertEqual(pair["centros_de_ambos_modelos_diferentes"],"false")
+  self.assertEqual(pair["zona_homogenea_verificada"],"false")
+  centers[("era5","b")]={(-6.53,-79.52)}
+  pair2=m.candidate(a,b,normals,scale,centers=centers)
+  self.assertEqual(pair2["centros_de_ambos_modelos_diferentes"],"true")
+  self.assertEqual(pair2["zona_homogenea_verificada"],"false")
+
  def test_far_locations_cannot_be_called_neighbor(self):
   a={"id":"a","latitud":-6.5,"longitud":-79.5,"altitud_dem_m":100}
   b={"id":"b","latitud":-5.0,"longitud":-79.0,"altitud_dem_m":100}
