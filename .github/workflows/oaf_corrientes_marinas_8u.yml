@@ -1,0 +1,70 @@
+name: OAF 8U - Analisis viento SST y corrientes marinas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/instantanea_marina_8u.py'
+      - 'modelos/relacion_viento_sst_8u.py'
+      - 'tests/test_instantanea_marina_8u.py'
+      - 'tests/test_relacion_viento_sst_8u.py'
+      - '.github/workflows/oaf_corrientes_marinas_8u.yml'
+  schedule:
+    - cron: '26 17 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8u-marine-wind-correlations
+  cancel-in-progress: false
+jobs:
+  marino:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fuentes climáticas históricas ya auditadas
+        run: git pull --ff-only origin main
+      - name: Unit tests sin red
+        run: |
+          python -m unittest discover -s tests -p 'test_instantanea_marina_8u.py' -v
+          python -m unittest discover -s tests -p 'test_relacion_viento_sst_8u.py' -v
+      - name: Asociación descriptiva viento 30 años e índice oceánico
+        run: |
+          python modelos/relacion_viento_sst_8u.py
+          python modelos/relacion_viento_sst_8u.py --check
+      - name: Archivar snapshot 3 días pronosticados, no observaciones
+        run: python modelos/instantanea_marina_8u.py --fetch
+      - name: Confirmar JSON de estado solo si hubo respuesta válida
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('datos/marino_8u/estado_marino_8u.json')
+          if p.exists():
+              s=json.loads(p.read_text(encoding='utf-8'))
+              assert s['corrientes_historicas_30_anios_integradas'] is False
+              assert s['validacion_instrumental_independiente'] is False
+              assert s['habilidad_pronostico_marino_demostrada'] is False
+              print('Pronóstico marino archivado, no observado.')
+          else:
+              print('Sin pronóstico marino validable, se conserva ausencia de dato.')
+          PY
+      - name: Guardar fuentes originales y reportes solo cuando existan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/viento_8u/correlaciones_viento_sst_8u.json datos/viento_8u/correlaciones_viento_sst_8u.csv
+          if test -d datos/marino_8u; then git add datos/marino_8u/; fi
+          if git diff --cached --quiet; then
+            echo "Sin fuentes nuevas"
+          else
+            git commit -m "data(oaf): prueba SST-viento y pronóstico de corrientes modeladas con SHA"
+            git pull --rebase origin main
+            git push
+          fi
