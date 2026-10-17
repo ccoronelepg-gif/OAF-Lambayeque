@@ -558,6 +558,29 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <p><b>NASA MERRA-2</b> publica diagnósticos de aerosol desde 1980, pero PM₂.₅ y PM₁₀ requieren aplicar correctamente fórmulas y unidades oficiales. <b>Copernicus CAMS EAC4</b> dispone de reanálisis desde 2003, pero su rejilla es demasiado gruesa para representar directamente una parcela.</p>
 <p><a href="FASE_8Y_AEROSOLES_Y_CLIMA.md">Informe técnico fase 8Y ↗</a> · <a href="datos/diagnostico_pm_8y/estado_diagnostico_pm_8y.json">Evaluación y trazabilidad ↗</a> · <a href="datos/diagnostico_pm_8y/catalogo_fuentes_aerosoles_8y.json">Inventario de fuentes PM ↗</a> · <a href="https://www.ecmwf.int/en/research/climate-reanalysis/cams-reanalysis">ECMWF EAC4 ↗</a> · <a href="https://access.earthdata.nasa.gov/collections/C1276812830-GES_DISC">NASA MERRA-2 ↗</a></p>
 </details>
+<details class="panel" id="oaf-8z-humedad">
+<summary><strong>Fase 8Z · Humedad, VPD y aerosoles históricos NASA</strong> · nuevas variables climáticas</summary>
+<p>Se incorpora al observatorio una serie de <b>humedad relativa a 2 metros (%)</b> y <b>déficit de presión de vapor (VPD, kPa)</b> del reanálisis <b>ERA5, 1996–2025</b>. Los valores no equivalen al microclima de hojas y bayas en parcelas. En paralelo se valida la disponibilidad de productos NASA MERRA-2 para caracterizar aerosoles de largo plazo sin sustituir estaciones reales.</p>
+<div class="kpis">
+<div class="kpi"><small>Meses-sitio de RH y VPD archivados</small><b id="oaf-8z-count">—</b></div>
+<div class="kpi"><small>Muestras de metadatos NASA MERRA-2</small><b id="oaf-8z-nasa">—</b></div>
+<div class="kpi"><small>Comparaciones descriptivas PM–RH/VPD</small><b id="oaf-8z-coincidence">—</b></div>
+</div>
+<div class="split">
+<label>Localidad de referencia<br><select id="oaf-8z-site"><option>Chiclayo</option><option>Jayanca</option><option selected>Motupe</option><option>Olmos</option></select></label>
+<label>Variable agroclimática<br><select id="oaf-8z-variable"><option value="rh_2m_media_pct">Humedad relativa media (%)</option><option value="vpd_max_diario_media_mes_kpa">Media del VPD máximo diario (kPa)</option><option value="vpd_max_diario_max_mes_kpa">Pico de VPD máximo diario por mes (kPa)</option></select></label>
+</div>
+<h3 id="oaf-8z-chart-title">Serie histórica modelada de humedad</h3>
+<svg id="oaf-8z-graph" width="100%" role="img" aria-label="Humedad relativa y VPD ERA5 histórico 1996 a 2025" viewBox="0 0 750 270" style="max-height:310px"></svg>
+<p id="oaf-8z-chart-note" class="small">El gráfico agrupa los 12 meses de cada año, sin imputar valores ausentes.</p>
+<h3>Relación PM–humedad atmosférica: tres años coincidentes</h3>
+<p class="small">CAMS Global PM₂.₅ / PM₁₀ y RH/VPD ERA5 son productos modelados diferentes. Correlación positiva o negativa no implica efecto causal, transmisión de enfermedades ni capacidad predictiva; 2023–2025 son pocos años para extrapolar ENSO.</p>
+<div class="scroller"><table><thead><tr><th>Material particulado</th><th>Variable meteorológica</th><th>Meses</th><th>r bruta</th><th>r sin ciclo mensual</th></tr></thead><tbody id="oaf-8z-pm-relations"></tbody></table></div>
+<p id="oaf-8z-status" role="status" class="small">Abra el módulo para auditar los resultados.</p>
+<div class="notice"><b>NASA MERRA-2:</b> existe inventario de archivos para 1998 y 2025, pero todavía no se extrajo un histórico de concentraciones desde NetCDF. PM₂.₅ deriva de especies de aerosol a nivel superficial; PM₁₀ necesita concentraciones calculadas con los mezclados de aerosoles tridimensionales, densidad del aire y nivel inferior 72. No usar el producto CAMS 2023–2025 como sustituto de una normal de 30 años, ni publicar alertas por contaminación o fitosanitarias.</div>
+<p><a href="FASE_8Z_HUMEDAD_AEROSOLES_MERRA2.md">Informe científico 8Z ↗</a> · <a href="datos/humedad_8z/humedad_vpd_mensual_8z.csv">RH/VPD mensual ERA5 ↗</a> · <a href="datos/humedad_8z/estado_humedad_8z.json">SHA-256 y cobertura ↗</a> · <a href="datos/merra2_8z/estado_piloto_merra2_8z.json">Inventario NASA MERRA-2 ↗</a> · <a href="datos/relaciones_pm_humedad_8z/estado_relacion_pm_humedad_8z.json">Correlaciones PM-humedad ↗</a> · <a href="https://gmao.gsfc.nasa.gov/gmao-products/merra-2/faq_merra-2/">Fórmulas originales NASA ↗</a></p>
+</details>
+
 
 
 
@@ -920,4 +943,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
