@@ -14,6 +14,43 @@
   ],
   "filas_mes_sitio": 48,
   "meses_pm_80pct_aptos": 48,
+  "n_celdas_modelo_unicas": 4,
+  "centros_celda_cams": [
+    {
+      "latitud": -6.7999954,
+      "longitud": -79.799995
+    },
+    {
+      "latitud": -6.4000015,
+      "longitud": -79.799995
+    },
+    {
+      "latitud": -6.199997,
+      "longitud": -79.7
+    },
+    {
+      "latitud": -6.0,
+      "longitud": -79.7
+    }
+  ],
+  "asignaciones_localidad_a_celda": {
+    "Chiclayo": {
+      "latitud": -6.7999954,
+      "longitud": -79.799995
+    },
+    "Jayanca": {
+      "latitud": -6.4000015,
+      "longitud": -79.799995
+    },
+    "Motupe": {
+      "latitud": -6.199997,
+      "longitud": -79.7
+    },
+    "Olmos": {
+      "latitud": -6.0,
+      "longitud": -79.7
+    }
+  },
   "registros_faltantes_no_imputados": true,
   "comparacion_legal_ECA_habilitada": false,
   "pronostico_pm_agricola_validado": false,
