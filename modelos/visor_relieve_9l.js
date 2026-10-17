@@ -65,6 +65,21 @@ async function run(){
     svg.append(item);
   }
   map.replaceChildren(svg);
+  try{
+    const r=await fetch("datos/relieve_9l/consulta_unidades_hidrograficas_9l.json",{cache:"no-store"});
+    if(!r.ok)throw Error("sin archivo público de unidades");
+    const hydro=await r.json();
+    if(hydro.fase!=="9L")throw Error("procedencia incompatible");
+    $("oaf-9l-cuencas").textContent=hydro.n_intersecciones_sector_unidad_referencial>0?
+      "Cartografía hidrográfica referencial: "+hydro.n_intersecciones_sector_unidad_referencial+
+      " cruces preliminares; ningún límite certificado por ANA y ninguna predicción por cuenca validada.":
+      "Consulta hidrográfica institucional: no fue posible confirmar unidades para los sectores. "+
+      "Se conservan sin asignación de cuenca; consulta registrada: "+
+      (hydro.mensaje_error||"no hay polígonos encontrados")+".";
+  }catch(e){
+    $("oaf-9l-cuencas").textContent="Consulta de cuencas no disponible: "+e.message+
+     ". No se asignaron cuencas por inferencia.";
+  }
   $("oaf-9l-conclusion").textContent=
     "Solo se evaluaron "+meta.n_sectores_9k_auditados+
     " fragmentos de las familias C01, C02 y C03. El porcentaje describe la máscara raster "+
