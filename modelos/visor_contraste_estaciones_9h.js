@@ -66,10 +66,9 @@ function details(report,summary,variable){
  if(pre){
   const all=[
    {name:"CHIRPS · 1998",score:ch?.episodio_1998?{mae:ch.episodio_1998.mae_mm}:null},
-   {name:"ERA5 atmósfera · 1998",score:p?.metricas_1998},
-   {name:"ERA5 atmósfera · 1996–2013",score:p?.metricas_periodo}
+   {name:"ERA5 atmósfera · 1998",score:p?.metricas_1998}
   ];
-  drawBars(blocks,all,"mm","Comparación descriptiva de errores de precipitación — intervalos distintos");
+  drawBars(blocks,all,"mm","Precipitación mensual · año 1998 · mismo periodo en ambos productos");
  }else{
   drawBars(blocks,[
    {name:"ERA5-Land Tmax mensual",score:mx?.metricas_periodo},
@@ -79,7 +78,9 @@ function details(report,summary,variable){
  const text="CHIRPS 1998: "+report.n_pares_chirps+" pares totales de los seis escenarios."+
   " Complemento ERA5: "+(summary?.n_pares_era5_precipitacion??"pendiente")+
   " pares de precipitación y "+(summary?.n_pares_era5_land_temperatura??"pendiente")+
-  " pares de temperatura. No sumar escenarios como observaciones independientes.";
+  " pares de temperatura. No sumar escenarios como observaciones independientes."+
+  (summary?.errores_descarga?.["ERA5-Land_temperatura"]?
+   " Temperatura ERA5-Land pendiente: no respondió el proveedor.":"");
  $("oaf-9h-overview").textContent=text;
 }
 async function init(){
