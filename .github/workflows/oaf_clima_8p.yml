@@ -1,3 +1,4 @@
+# Ejecución de expansión 8P: completar los seis bloques del primer grupo.
 name: OAF 8P - Climática de vecindades y continuidad
 on:
   workflow_dispatch:
