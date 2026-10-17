@@ -1,0 +1,64 @@
+name: OAF 9L - Relieve Copernicus y continuidad topografica
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/refinar_relieve_9l.py'
+      - 'tests/test_relieve_9l.py'
+      - '.github/workflows/oaf_relieve_9l.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-relieve-9l
+  cancel-in-progress: false
+jobs:
+  relieve-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bibliotecas de cartografia científica
+        run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2 affine==2.4.0
+      - name: Copernicus GLO-90 real, máscara y control de reproducción
+        run: |
+          python modelos/refinar_relieve_9l.py
+          python modelos/refinar_relieve_9l.py --check
+      - name: Comprobación de salida sin estimaciones engañosas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path("datos/relieve_9l")
+          s=json.loads((d/"estado_relieve_9l.json").read_text("utf8"))
+          g=json.loads((d/"nucleos_restringidos_relieve_9l.geojson").read_text("utf8"))
+          assert len(g["features"])==5
+          assert s["n_familias"]==3
+          assert not s["comparacion_nmme"]["prediccion_por_sector_generada"]
+          assert not s["comparacion_nmme"]["ajuste_altitudinal_entrenado"]
+          assert s["cuencas_hidrograficas_confirmadas"]==0
+          print("9L, píxeles y familias:",[(x["familia"],x["pixeles_total"],
+             x["fraccion_compatible"]) for x in s["familias"]])
+          PY
+      - name: Pruebas cartográficas y enlaces web
+        run: |
+          python -m unittest discover -s tests -p 'test_relieve_9l.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_relieve_9l.js
+      - name: Publicar originales GLO-90 y derivaciones verificadas
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/relieve_9l/
+          if git diff --cached --quiet; then
+            echo '9L sin novedades'
+          else
+            git commit -m 'data(9L): guardar Copernicus GLO90 original y filtros de continuidad'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
