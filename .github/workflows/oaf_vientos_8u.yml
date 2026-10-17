@@ -1,0 +1,48 @@
+name: OAF 8U - Vientos atmosfericos ERA5 historicos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/vientos_atmosfericos_8u.py'
+      - 'tests/test_vientos_atmosfericos_8u.py'
+      - '.github/workflows/oaf_vientos_8u.yml'
+  schedule:
+    - cron: '23 18 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8u-winds
+  cancel-in-progress: false
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar datos
+        run: git pull --ff-only origin main
+      - name: Controlar fuentes, unidades y fechas ERA5
+        run: python -m unittest discover -s tests -p 'test_vientos_atmosfericos_8u.py' -v
+      - name: Adquirir una década nueva de viento como máximo
+        run: python modelos/vientos_atmosfericos_8u.py --fetch --max-new 1
+      - name: Comprobar determinismo y publicar solo periodos completos
+        run: python modelos/vientos_atmosfericos_8u.py --check
+      - name: Archivar originales comprimidos con huella y resultados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/meteorologia_8u/
+          if git diff --cached --quiet; then
+            echo "Sin fuentes nuevas de viento"
+          else
+            git commit -m "data(oaf): viento atmosférico ERA5 8U auditado por fuente original"
+            git pull --rebase origin main
+            git push
+          fi
