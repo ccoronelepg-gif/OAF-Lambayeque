@@ -38,6 +38,18 @@ El servicio [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/h
 
 Son **1 276 pares estación–celda** (duplicación de 638 meses observados entre los dos escenarios). Los valores de MAE de la tabla principal corresponden a **todo 1996–2013**, mientras que la última columna se limita a 1998. **No es apropiado comparar directamente un MAE de CHIRPS 1998 contra un MAE de ERA5 1996–2013 sin igualar periodos.**
 
+### Comparación en meses idénticos: El Niño 1998
+
+Para evitar comparar errores de horizontes diferentes, se armonizaron los **12 meses de enero a diciembre de 1998**, utilizando únicamente el **escenario documental 1** en las tres estaciones. Los datos son retrospectivos y están archivados en los dos CSV de la fase; no se ha seleccionado retrospectivamente la coordenada más favorable.
+
+| Estación | Meses observados comunes | MAE CHIRPS v3 1998 | MAE ERA5 atmosférico 1998 |
+|---|---:|---:|---:|
+| El Espinal | 12 | 70,27 mm/mes | 94,85 mm/mes |
+| Puchaca | 12 | 84,80 mm/mes | 368,09 mm/mes |
+| Virrey | 12 | 169,30 mm/mes | 81,47 mm/mes |
+
+**Lectura científica:** CHIRPS tiene menor MAE en El Espinal y Puchaca en este episodio, mientras que ERA5 atmosférico lo tiene en Virrey. **No es un ranking general**: las celdas tienen distinta resolución, los lugares exactos de los pluviómetros históricos no están certificados y CHIRPS puede incorporar observaciones pluviométricas en su elaboración, por lo que la comparación no es necesariamente independiente. Según el [Climate Hazards Center, CHIRPS v3](https://www.chc.ucsb.edu/data/chirps3), el producto incorpora observaciones de estaciones y procedimientos de corrección de subcaptación del pluviómetro; debe verificarse si las series locales presentan correcciones equivalentes antes de emitir conclusiones de calidad instrumental.
+
 **Sensibilidad espacial ERA5:** El Espinal y Virrey retornan el mismo centro de celda para ambas coordenadas. Puchaca cambia entre las celdas aproximadas `(-6.5, -79.5)` y `(-6.25, -79.5)`: un cambio notable debido a la malla gruesa, que incrementa el MAE mensual histórico de **93,056 a 155,147 mm**. Esta divergencia no justifica elegir a posteriori la ubicación 1, ni demuestra cuál describe la estación histórica.
 
 ### ERA5-Land, temperatura y lluvia
