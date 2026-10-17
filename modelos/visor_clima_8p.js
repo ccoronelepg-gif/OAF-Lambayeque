@@ -79,6 +79,21 @@ function draw(){
  const key=document.createElement("p");key.className="small";
  key.textContent="Puntos pequeños: malla DEM de 420 nodos. Centros blancos: 62 nuevos testigos seleccionados. Anillos turquesa: climatología completa (incluye 19 de 8O). Líneas discontinuas: pares locales que superan filtros exploratorios; nunca perímetros o alertas.";
  map.append(key);
+ if(Array.isArray(summary.nucleos_vecindad_exploratorios)){
+  const title=document.createElement("p");title.className="small";
+  title.textContent="Núcleos de testigos con vecindad climática y celdas de reanálisis distintas: "+
+   summary.nucleos_vecindad_exploratorios.length+" (NO polígonos)";
+  map.append(title);
+  const list=document.createElement("ul");list.className="small";
+  for(const group of summary.nucleos_vecindad_exploratorios){
+    const li=document.createElement("li");
+    li.textContent=group.id+": "+group.ids.join(", ")+" ("+group.n_testigos+
+     " testigos; DEM "+num(group.altitud_dem_min_m)+"–"+num(group.altitud_dem_max_m)+
+     " m). No extrapolar al espacio entre ellos.";
+    list.append(li);
+  }
+  map.append(list);
+ }
  for(const r of pairs.slice(0,12)){
   const tr=document.createElement("tr");
   for(const val of [r.nodo_a+" – "+r.nodo_b,
