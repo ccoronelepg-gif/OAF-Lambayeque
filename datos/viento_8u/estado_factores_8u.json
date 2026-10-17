@@ -8,15 +8,19 @@
     "Motupe",
     "Olmos"
   ],
-  "bloques_viento_obtenidos": 1,
+  "bloques_viento_obtenidos": 2,
   "bloques_viento_previstos": 3,
   "periodos_archivados": [
     [
       1996,
       2005
+    ],
+    [
+      2006,
+      2015
     ]
   ],
-  "meses_localidad_obtenidos": 480,
+  "meses_localidad_obtenidos": 960,
   "testigos_viento_historico_completos": 0,
   "resumen_viento_por_localidad": [],
   "unidad_velocidad_viento": "m/s",
