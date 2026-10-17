@@ -5,6 +5,16 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Fase 9C · Validación robusta con intervalos (17/10/2026)
+
+Se recuperaron las matrices **reales, retrospectivas y reanalizadas** de 9A y se verificaron **4 320 parejas de predicción continua** y **720 parejas probabilísticas** comparando el benchmark 8W viento+SST frente a HR+VPD. Se calcularon MAE/Brier y 10 000 remuestreos en bloques circulares de tres años, análisis a un año, sensibilidad a 2017/2023 e intervalos exploratorios con ajuste conservador Bonferroni.
+
+- HR+VPD mejora MAE en **11/24** combinaciones (temperatura 5/12, precipitación 6/12), y Brier extremo P90 en **1/12**.
+- **0 de 36** resultados superan el ajuste conservador por comparaciones múltiples; **0 de 12** evaluaciones P90 tienen suficientes eventos (4–7 por localidad; horizontes repiten eventos).
+- **No cambiar el modelo de referencia ni activar alertas.** Las celdas de reanálisis Chiclayo, Jayanca, Motupe y Olmos no representan todos los pisos altitudinales. Falta verificación instrumental SENAMHI y prospectiva con fechas originales.
+
+**Recursos:** [informe 9C](FASE_9C_RESULTADOS_VALIDACION.md) · [matriz JSON](datos/validacion_9c/resultados_9c.json) · [motor Python de reproducción](modelos/evaluacion_pareada_9c.py) · [prueba automatizada](.github/workflows/oaf_validacion_9c.yml). El panel interactivo está en **Investigación y datos → Fase 9C** de la [web pública](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#verificaciones).
+
 ## Rediseño de la web pública · 17/10/2026
 
 La interfaz tiene **cinco pestañas para el público y los investigadores**, conservando los modelos, fuentes y series archivadas: (1) **Inicio** con seis indicadores agrometeorológicos modelados (temperatura, precipitación, humedad, VPD, viento y radiación), resumen breve de fuentes científicas y novedades verificadas; (2) **Análisis de clima regional** con dashboard, anomalías, mapa de 420 puntos DEM, pisos altitudinales y series históricas; (3) **Monitoreo del Niño y anomalías climáticas**, fuentes ENFEN/NOAA, viento, SST, corrientes y análisis experimentales; (4) **Sanidad vegetal** con subpestañas **Cultivos** (arándano y vid, enfermedades y manejo integrado) y **Modelos predictivos de enfermedades** (todavía experimentales); y (5) **Investigación y datos** para fuentes, validaciones, modelos y descargas reproducibles.
