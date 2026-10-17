@@ -58,6 +58,22 @@ Los promedios son de las componentes de **la corriente geostrófica modelada**, 
 
 **C. Productos para completar la historia física**: [NASA/PO.DAAC OSCAR v2 final](https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0) ofrece vectores oceánicos basados en datos satelitales y dinámica geostrófica/Ekman; [Copernicus Marine reanálisis global](https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description) ofrece componentes oceanográficas y temperatura por niveles desde 1993. Su acceso y extracción por coordenadas/localización para toda la costa y el periodo 1996–2025 **no están verificados ni integrados aquí**. El producto OSCAR antiguo que aparece en ciertos formularios NOAA `jplOscar`, pese a su título amplio, declara en sus metadatos solo 2011–2014, por lo que fue descartado como fuente histórica continua.
 
+## 4A. Relación descriptiva entre las tres variables (108 meses comunes, 2017–2025)
+
+Con los dos subconjuntos históricos de corriente geostrófica ya completos para **2017–2025**, se emparejaron por mes los vectores geostróficos NOAA/AOML, las componentes aproximadas de viento atmosférico ERA5 de los dos sitios marítimos de referencia y la anomalía de SST regional Niño 1+2 del CPC NOAA **t−2**. Para cada serie se sustrajo su normal del mes calendario calculada sobre **2017–2025 (nueve años)**. Esos promedios utilizan los años posteriores de la ventana: están permitidos en un análisis de asociación descriptivo, **pero no deben emplearse para ajustar un backtest que pretenda evaluar predicciones pasadas**.
+
+| Asociación entre anomalías mensuales | Sector oeste de Pimentel (108 meses) | Sector norte (108 meses) |
+|---|---:|---:|
+| Componente zonal del viento (u) vs corriente geostrófica (u) | **r = 0,25820** | **r = 0,04878** |
+| Componente meridional del viento (v) vs corriente geostrófica (v) | r = 0,17916 | r = 0,08190 |
+| Velocidad media del viento vs magnitud de corriente geostrófica | r = 0,22285 | r = 0,06039 |
+| SST Niño 1+2 t−2 vs corriente este (u) | r = −0,08923 | r = 0,00582 |
+| SST Niño 1+2 t−2 vs corriente norte (v) | r = 0,08461 | r = 0,05340 |
+
+Interpretación: **no aparece una relación fuerte y uniforme** entre esas tres variables en ambos puntos y bajo estas definiciones. Los coeficientes no demuestran causalidad, que la corriente geostrófica responda instantáneamente al viento, que no exista corriente de Humboldt ni que Niño 1+2 no condicione el clima de Lambayeque. La dirección de la costa, Ekman/surgencia, resolución espacial, SST costera real, rezago variable, patrones de lluvia y covariabilidad remota quedan fuera de este contraste.
+
+Cifras verificadas con [modelo descriptivo](modelos/relaciones_oceano_viento_8u.py), [pruebas](tests/test_relaciones_oceano_viento_8u.py), [resumen de 216 meses-punto y SHA de fuentes](datos/relaciones_fisicas_8u/estado_relaciones_8u.json) y [comparaciones tabulares](datos/relaciones_fisicas_8u/correlaciones_fisicas_8u.csv). **Modelos de pronóstico evaluados en esta subfase: cero.**
+
 ## 5. ¿Cómo debería estudiarse su efecto predictivo?
 
 La estrategia futura es jerárquica y previa a la validación:
