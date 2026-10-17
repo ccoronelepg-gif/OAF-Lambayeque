@@ -28,7 +28,10 @@ jobs:
         run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2
       - name: Comprobar fuente oficial USGS frente a dos meses originales CHC
         run: |
-          python modelos/mirror_chirps_9p.py --batch 4
+          # Dos tandas moderadas de cuatro meses, sin mezcla de productos ni 360 descargas simultáneas.
+          for tramo in 1 2; do
+            python modelos/mirror_chirps_9p.py --batch 4
+          done
           python modelos/mirror_chirps_9p.py --check
       - name: Calcular estabilidad entre décadas sin imputar meses faltantes
         run: |
