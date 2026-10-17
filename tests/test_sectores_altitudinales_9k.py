@@ -60,6 +60,42 @@ class Poligonos9K(unittest.TestCase):
             self.assertLessEqual(abs(float(x["altitud_dem_m"])-w[c]["alt"]),180.00001)
             self.assertLessEqual(float(x["distancia_testigo_km"]),12.001)
 
+    def test_archivo_noaa_congelado_y_tiempos_sin_rellenos_ficticios(self):
+        p=ROOT/"datos/sectores_agroclimaticos_9k/inventario_nmme_9k.json"
+        if not p.exists():return
+        import gzip,hashlib
+        j=json.loads(p.read_text("utf8"))
+        self.assertEqual(j["fuentes_netcdf_comprobadas"],2)
+        self.assertEqual(len(j["errores_consulta"]),0)
+        self.assertTrue(j["mes_objetivo_cf_validado"])
+        self.assertFalse(j["downscaling_zonal_aplicado"])
+        self.assertEqual(j["n_pares_con_observacion_validada"],0)
+        cells=set()
+        for entry in j["fuentes"]:
+            raw=gzip.decompress((ROOT/entry["archivo_congelado_ruta"]).read_bytes())
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),entry["sha256"])
+            self.assertEqual(entry["resolucion_latitud_deg"],1)
+            self.assertEqual(entry["resolucion_longitud_deg"],1)
+            self.assertEqual(len(entry["meses_con_campo_numerico"]),9)
+            self.assertEqual(entry["meses_con_ceros_globales_sin_dato"],
+                             ["2027-07","2027-08","2027-09"])
+            for site in entry["sitios_celda"]:
+                cells.add((site["celda_latitud"],site["celda_longitud_archivo"]))
+                self.assertEqual(site["valores_anomalia_original"][-3:],[None,None,None])
+        self.assertEqual(cells,{(-7,280),(-6,280)})
+
+    def test_panel_publico_de_agrupar_poligonos_y_noaa(self):
+        h=(ROOT/"index.html").read_text("utf8")
+        self.assertEqual(h.count('<section data-page='),5)
+        part=h.split('<section data-page="clima"')[1].split('<section data-page="nino"')[0]
+        for item in ("oaf-9k-visor","oaf-9k-floor","oaf-9k-map","oaf-9k-families",
+                     "oaf-9k-nmme","oaf-9k-site","oaf-9k-target",
+                     "oaf-9k-noaa-detail"):
+            self.assertEqual(part.count('id="'+item+'"'),1)
+        self.assertIn("FASE_9K_ZONAS_Y_NMME.md",part)
+        self.assertIn("modelos/visor_sectores_9k.js",h)
+        self.assertIn("assets/oaf-sectores-9k.css",h)
+
     def test_reproduccion_si_se_publico(self):
         if z.GEO.exists() and z.OUT.exists() and z.TABLE.exists():
             z.check()
