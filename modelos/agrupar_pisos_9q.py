@@ -280,7 +280,7 @@ def compare():
 def run(check=False):
  state,perfloor,candidates,features=compare()
  if check:
-  if j(REPORT)!=state or j(GROUPS)!=features:
+  if j(REPORT)!=state or j(GROUPS)!=json.loads(json.dumps(features,ensure_ascii=False)):
    raise ValueError("Comparación 9Q no se reproduce")
   if len(csvrows(FLOORS))!=len(perfloor) or len(csvrows(PAIRS))!=len(candidates):
    raise ValueError("Salidas 9Q difieren en número de filas")
