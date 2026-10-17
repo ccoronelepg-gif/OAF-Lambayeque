@@ -1,0 +1,72 @@
+name: OAF 9A - Validacion humedad VPD en hindcasts
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sensibilidad_humedad_vpd_9a.py'
+      - 'tests/test_sensibilidad_humedad_vpd_9a.py'
+      - '.github/workflows/oaf_sensibilidad_humedad_vpd_9a.yml'
+      - 'datos/humedad_8z/humedad_vpd_mensual_8z.csv'
+      - 'datos/benchmark_8w/predicciones_mensuales_8w.csv'
+      - 'datos/benchmark_8w/probabilidades_lluvia_p90_8w.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9a-hindcast
+  cancel-in-progress: false
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ocho pruebas de fuga, estadistica y episodios extremos
+        run: python -m unittest discover -s tests -p 'test_sensibilidad_humedad_vpd_9a.py' -v
+      - name: Reconstruir 9A sobre ERA5 y 8W real
+        run: |
+          python modelos/sensibilidad_humedad_vpd_9a.py
+          python modelos/sensibilidad_humedad_vpd_9a.py --check
+      - name: QA de correspondencia temporal y no alertas
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          p=Path('datos/benchmark_9a')
+          d=json.loads((p/'estado_benchmark_9a.json').read_text())
+          assert d['validacion_prospectiva'] is False
+          assert d['alertas_agricolas_aprobadas'] is False
+          assert d['pm25_pm10_no_incluidos_por_cobertura_historica_insuficiente'] is True
+          assert d['n_predicciones_continuas']==17280
+          assert d['n_eventos_probabilisticos']==1440
+          assert len(d['metrica_mae'])==72
+          assert len(d['mejoras_brier'])==12
+          assert len(d['estabilidad_cortes'])==72
+          assert len(d['auditoria_2017_2023_enero_abril'])==192
+          with (p/'pronosticos_pareados_9a.csv').open(newline='') as f:
+              a=list(csv.DictReader(f))
+          for x in a:
+              from datetime import datetime
+              o=datetime.strptime(x['mes_origen'],'%Y-%m')
+              t=datetime.strptime(x['mes_objetivo'],'%Y-%m')
+              assert (t.year-o.year)*12+t.month-o.month==int(x['horizonte_meses'])
+          print('9A: MAE y P90 idénticamente pareados sin desplazamiento ni alertas.')
+          PY
+      - name: Publicar matrices 9A tras reconstruir
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/benchmark_9a/
+          if git diff --cached --quiet; then
+            echo 'Sin cambios'
+          else
+            git commit -m 'data(oaf): benchmark RH/VPD 9A pareado con 8W'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
