@@ -775,6 +775,22 @@ details.panel{scroll-margin-top:120px}
 <a href="datos/reentrenamiento_10c/predicciones_prueba_lag2_10c.csv">Predicciones históricas · CSV ↗</a>
 </div>
 </details>
+<details class="panel" id="oaf-10d-visor">
+<summary><strong>¿Es confiable la IA durante lluvias fuertes?</strong> · comparación justa de rezagos y eventos extremos</summary>
+<p>Este nuevo experimento reentrena Random Forest y GCN con <strong>dos esquemas de precipitación histórica</strong> usando las mismas ventanas de entrenamiento, ajuste, calibración y prueba. Compara error mensual y capacidad de identificar meses de lluvia intensa en sectores geográficamente reservados, sin confundir una mejor media con una alerta confiable.</p>
+<div class="scroller"><table><thead><tr><th>Diseño</th><th>Variables de lluvia</th><th>Periodo de ajuste</th><th>Periodo de evaluación</th></tr></thead><tbody>
+<tr><td>Rezago 1</td><td>t−1, t−2, t−3, t−6, t−12</td><td>2016–2018</td><td>2021–2025</td></tr>
+<tr><td>Rezago 2+</td><td>t−2, t−3, t−4, t−6, t−12</td><td>2016–2018</td><td>2021–2025</td></tr>
+</tbody></table></div>
+<p class="oaf-figure-caption">Analizamos 50, 100 y 150 mm por mes como umbrales <strong>exploratorios</strong>, con detecciones, omisiones y falsas alarmas. La comparación incorpora estratos retrospectivos según el índice tropical RONI (NOAA), que no equivale al diagnóstico costero de ENFEN.</p>
+<div class="notice"><strong>Límite de uso:</strong> CHIRPS v3 FINAL está revisado retrospectivamente y no representa la información exacta disponible en la emisión original. El brazo t−1 tampoco era necesariamente disponible al inicio del mes. Ningún resultado habilita avisos automáticos de El Niño o sanidad vegetal.</div>
+<div class="links">
+<a href="evaluacion-extremos.html">Explorar precisión y lluvias intensas ↗</a>
+<a href="FASE_10D_COMPARACION_FACTORIAL_EXTREMOS.md">Metodología y limitaciones ↗</a>
+<a href="datos/experimentos_10d/evaluacion_controlada_10d.json">Resultados auditados (JSON) ↗</a>
+<a href="datos/experimentos_10d/roni_noaa_2021_2025.json">Índice RONI y procedencia ↗</a>
+</div>
+</details>
 </section>
 
 <section data-page="nino" id="nino" hidden>
