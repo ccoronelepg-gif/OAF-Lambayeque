@@ -1,0 +1,55 @@
+{
+  "fase": "9M",
+  "corte": "2026-10-17",
+  "metodo": "Auditoria de franja altitudinal, pendiente, aspecto e incertidumbre a 270/450 m usando una tesela GLO-90 original; NO mapa regional completo.",
+  "n_sectores_9k": 42,
+  "n_sector_evaluados_con_dos_escalas": 35,
+  "estado_cobertura": {
+    "completa": 26,
+    "fuera_de_tesela": 7,
+    "parcial": 9
+  },
+  "por_piso_evaluados": {
+    "llanura_costa": 1,
+    "montana_alta": 3,
+    "montana_baja": 6,
+    "montana_media": 8,
+    "piedemonte": 11,
+    "valle_bajo": 6
+  },
+  "n_geometrias_refinadas": 35,
+  "n_fuentes_cog_territoriales": 1,
+  "limite_territorial_de_prueba": "tesela S07 W080, lat -7..-6 lon -80..-79",
+  "comparacion_resoluciones_m": [
+    270,
+    450
+  ],
+  "umbrales_pendiente_grados": [
+    20,
+    30,
+    40
+  ],
+  "desnivel_max_zona_operativa": null,
+  "resumen_cambio_fraccion_30grados_270_450": {
+    "min": 0.00054,
+    "mediana": 0.01915,
+    "max": 0.17957
+  },
+  "filtro_altitud_por_celda_raster_no_por_altitud_unica_del_nodo": true,
+  "aspecto_orientacion_terreno_no_viento_ni_radiacion": true,
+  "indicador_area_agricola": false,
+  "n_cuencas_ANA_certificadas": 0,
+  "n_zonas_homogeneas_certificadas": 0,
+  "downscaling_nmme_entrenado": false,
+  "alerta_fitosanitaria_generada": false,
+  "capa_9k_sha256": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+  "dem_original_9l_sha256": "c4d78e481f80927d72886787e422ed02214ffb0d5739e67a25facd2c874f7532",
+  "nota": "La sensibilidad es diferencia de FRACCIONES de píxeles muestreados entre resoluciones, sin observación meteorológica independiente; valores de sectores parciales no caracterizan el polígono completo.",
+  "limitaciones": [
+    "No se extrapola fuera de la tesela Copernicus archivada.",
+    "La orientación es dirección de máxima pendiente hacia abajo derivada del DSM, sin validar exposición solar o drenaje.",
+    "Las pendientes son aproximadas sobre grados de lat/lon con distancias geográficas locales.",
+    "No se deducen áreas agrícolas, límites administrativos oficiales ni riesgo de arándano/vid.",
+    "La clasificación de píxeles depende de celdas promediadas, vecinos y resolución; no es aptitud agronómica."
+  ]
+}

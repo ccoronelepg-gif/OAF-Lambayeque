@@ -1,0 +1,280 @@
+{
+  "fase": "9M",
+  "fecha_corte": "2026-10-17",
+  "servidor": "www.idep.gob.pe / INSTITUCIONALES/ANA_WMS/FeatureServer/7",
+  "capa": "Unidades Hidrográficas",
+  "consulta": "https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/FeatureServer/7/query?where=1%3D1&geometry=-80.7%2C-7.25%2C-79.0%2C-5.4&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID_1%2CCODIGO%2CNOMBRE%2CNIVEL5%2CNIVEL6%2CNIVEL7%2CNOMB_UH_N6%2CNOMB_UH_N7&outSR=4326&returnGeometry=true&f=geojson&resultRecordCount=1000",
+  "sha256_original": "ed20eddd32f4ec945dd1dbc792134cfcaca28dededde693eb60b7f4e73320867",
+  "n_unidades_devueltas": 17,
+  "n_unidades_geometricas_elegibles": 17,
+  "n_registros_sin_geometria_valida": 0,
+  "n_sectores_9k_con_interseccion": 42,
+  "n_intersecciones_referenciales": 91,
+  "n_sectores_9k_no_cruzados": 0,
+  "cobertura_institucional_capa_descargada": true,
+  "verificacion_de_vigencia_limites_ANA": false,
+  "n_cuencas_certificadas_por_oaf": 0,
+  "n_zonas_homogeneas_declaradas": 0,
+  "sin_duplicacion_de_area_entre_niveles": true,
+  "asignacion_sectores": {
+    "S001": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 0.99988,
+      "codigo_principal_por_interseccion": "137779",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S002": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 0.9857,
+      "codigo_principal_por_interseccion": "137779",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S003": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137779",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S004": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 0.99601,
+      "codigo_principal_por_interseccion": "137773",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S005": {
+      "n_referencias_hidrograficas": 10,
+      "fraccion_geometrica_cubierta": 0.99939,
+      "codigo_principal_por_interseccion": "137779",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S006": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "49896",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S007": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S008": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "49896",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S009": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137774",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S010": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S011": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S012": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S013": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137754",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S014": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13776",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S015": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S016": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S017": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137774",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S018": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S019": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S020": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S021": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "49896",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S022": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13776",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S023": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S024": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13778",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S025": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137779",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S026": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137773",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S027": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13778",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S028": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S029": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S030": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137771",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S031": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137771",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S032": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137774",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S033": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S034": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 0.99978,
+      "codigo_principal_por_interseccion": "13776",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S035": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13776",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S036": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137754",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S037": {
+      "n_referencias_hidrograficas": 2,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137774",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S038": {
+      "n_referencias_hidrograficas": 4,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "13778",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S039": {
+      "n_referencias_hidrograficas": 3,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137759",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S040": {
+      "n_referencias_hidrograficas": 5,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S041": {
+      "n_referencias_hidrograficas": 1,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137772",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    },
+    "S042": {
+      "n_referencias_hidrograficas": 4,
+      "fraccion_geometrica_cubierta": 1.0,
+      "codigo_principal_por_interseccion": "137754",
+      "coincidencia_no_es_validacion_de_cuenca": true
+    }
+  },
+  "alertas_fitosanitarias_habilitadas": false,
+  "cautelas": [
+    "La procedencia institucional de la capa no acredita actualización, escala oficial a parcela ni delimitación de cultivo.",
+    "Algunos códigos pueden referirse a distintos niveles de jerarquía: cruzar geometrías no implica una unidad exclusiva.",
+    "El mapa conserva únicamente las intersecciones de más de 0,01 km², simplificadas para pantalla.",
+    "Se requiere ratificar vigencia y versión con ANA/IDEP antes de segmentación operativa."
+  ]
+}
