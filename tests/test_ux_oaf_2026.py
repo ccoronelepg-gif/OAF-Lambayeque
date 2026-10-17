@@ -91,7 +91,7 @@ class UXContract(unittest.TestCase):
         self.assertIn('forecast_days:"7"',src)
         for key in ("temperature_2m_max","precipitation_sum","relative_humidity_2m_mean","shortwave_radiation_sum"):
             self.assertIn(key,src)
-        for w in ("oaf:weather","oaf-meta-temp","oaf-meta-air"):
+        for w in ("oaf:weather",'"oaf-meta-"+id',"oaf-meta-air"):
             self.assertIn(w,curr)
         self.assertNotIn("t>=33",curr)
         self.assertNotIn("h>=80",curr)
