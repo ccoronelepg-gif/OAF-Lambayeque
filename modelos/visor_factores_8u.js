@@ -4,11 +4,11 @@
 const root=document.getElementById("oaf-factors-8u");if(!root)return;
 const $=id=>document.getElementById(id);
 const status=$("oaf-8u-status");
-const tbody=$("oaf-8u-wind");
+const tbody=$("oaf-8u-wind"), correlations=$("oaf-8u-correlations");
 const fmt=n=>typeof n==="number"&&Number.isFinite(n)?
  n.toLocaleString("es-PE",{maximumFractionDigits:3}):"—";
-function show(report){
- tbody.replaceChildren();
+function show(report,associations,coastal){
+ tbody.replaceChildren();correlations.replaceChildren();
  $("oaf-8u-blocks").textContent=report.bloques_viento_obtenidos+"/3";
  $("oaf-8u-cities").textContent=report.testigos_viento_historico_completos+"/4";
  $("oaf-8u-current").textContent=report.corrientes_marinas_serie_historica_verificada?
@@ -23,20 +23,35 @@ function show(report){
   }
   tbody.append(tr);
  }
+ for(const item of associations.localidades){
+   const tr=document.createElement("tr");
+   for(const val of [item.localidad,item.n_meses_rezago_2,
+       fmt(item.r_anomalia_viento_sst_menos_2),
+       fmt(item.r_componente_u_aproximada_sst_menos_2),
+       fmt(item.r_componente_v_aproximada_sst_menos_2),
+       "Descriptivo, no pronóstico"]){
+     const td=document.createElement("td");td.textContent=String(val);tr.append(td);
+   }
+   correlations.append(tr);
+ }
+ $("oaf-8u-sst").textContent=coastal.archivos_sst_verificados+"/"+coastal.archivos_sst_previstos;
  status.textContent="Viento ERA5: "+report.bloques_viento_obtenidos+
    " de 3 décadas archivadas; "+report.meses_localidad_obtenidos+
    " meses-localidad verificables. SST Niño 1+2 NOAA: "+
    (report.indices_sst_noaa_1996_2025_archivados?"360 meses históricos disponibles (serie revisable).":"pendiente")+
    ". Corrientes oceánicas u/v: "+
    (report.corrientes_marinas_serie_historica_verificada?"verificadas.":"no disponibles todavía para inferir dinámica marina.")+
-   " No hay pronóstico conjunto ni validación instrumental.";
+   " SST oceánica local OISST verificada: "+coastal.archivos_sst_verificados+"/6 archivos. No hay pronóstico conjunto ni validación instrumental.";
 }
 async function load(){
  status.textContent="Auditando fuentes originales de viento, SST y catálogo de corrientes…";
  try{
-   const response=await fetch("datos/viento_8u/estado_factores_8u.json",{cache:"no-store"});
-   if(!response.ok)throw Error("Estado 8U todavía no publicado");
-   const r=await response.json();
+   const urls=["datos/viento_8u/estado_factores_8u.json",
+       "datos/relaciones_viento_sst_8u/estado_relaciones_8u.json",
+       "datos/sst_costera_8u/estado_sst_8u.json"];
+   const responses=await Promise.all(urls.map(u=>fetch(u,{cache:"no-store"})));
+   if(responses.some(r=>!r.ok))throw Error("Fuentes 8U todavía no publicadas");
+   const [r,associations,coastal]=await Promise.all(responses.map(x=>x.json()));
    if(r.fase!=="8U"||r.periodo!=="1996–2025"||
        r.corrientes_no_inferibles_del_viento_ni_del_SST!==true||
        r.datos_no_son_observaciones_senamhi!==true||
@@ -45,9 +60,16 @@ async function load(){
        r.localidades?.length!==4||r.bloques_viento_obtenidos>3||
        r.resumen_viento_por_localidad?.length!==r.testigos_viento_historico_completos)
        throw Error("Metadatos fuente o control metodológico no coinciden");
-   show(r);
+   if(associations.fase!=="8U"||associations.habilidad_predictiva_validada!==false||
+       associations.corrientes_marinas_vectoriales_utilizadas!==false||
+       associations.localidades?.length!==4||associations.n_comparaciones!==1440||
+       coastal.fase!=="8U"||coastal.sst_no_es_velocidad_de_corrientes!==true||
+       coastal.sitios_con_sst_30anios_completa>coastal.puntos_oceanicos_de_ensayo||
+       coastal.archivos_sst_verificados>coastal.archivos_sst_previstos)
+       throw Error("Asociaciones o SST costera sin procedencia metodológica");
+   show(r,associations,coastal);
  }catch(e){
-   tbody.replaceChildren();
+   tbody.replaceChildren();correlations.replaceChildren();
    status.textContent="Sin fuente 8U presentable: "+e.message;
  }
 }
