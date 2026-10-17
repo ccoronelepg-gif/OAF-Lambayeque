@@ -1,3 +1,4 @@
+# Fase 8Q: continuar validación histórica del cuarto bloque de seis.
 name: OAF 8Q - Continuidad altitudinal y climatica V1 V2
 on:
   workflow_dispatch:
