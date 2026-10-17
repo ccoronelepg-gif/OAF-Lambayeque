@@ -1,0 +1,7 @@
+#oaf-9w-visor{border:1px solid #cbdcd8}
+#oaf-9w-visor summary{cursor:pointer}
+#oaf-9w-visor label{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0;font-weight:600;font-size:13px}
+#oaf-9w-protocol{min-width:250px;max-width:100%}
+#oaf-9w-status,#oaf-9w-comparison,#oaf-9w-details{padding:12px;border-radius:9px;background:#f3f8f6;border:1px solid #d8e8e2;line-height:1.6}
+#oaf-9w-grid td,#oaf-9w-grid th{font-size:12px}
+@media(max-width:700px){#oaf-9w-visor label{display:block}#oaf-9w-protocol{width:100%;margin:8px 0}}
