@@ -71,6 +71,39 @@ async function init(){
    const p=feature.properties,tr=document.createElement("tr");
    [p.id,names[p.piso]||p.piso,p.sectores.join(", "),"Hipótesis, no validada"].forEach(x=>cell(tr,x));tbody.append(tr);
   }
+  const mapBox=$("oaf-9q-map");mapBox.replaceChildren();
+  if(g.features.length){
+   const polys=geom=>geom.type==="Polygon"?[geom.coordinates]:geom.type==="MultiPolygon"?geom.coordinates:[];
+   const points=g.features.flatMap(f=>polys(f.geometry).flatMap(p=>p.flatMap(ring=>ring)));
+   const lons=points.map(p=>p[0]),lats=points.map(p=>p[1]);
+   const left=Math.min(...lons),right=Math.max(...lons),
+         bottom=Math.min(...lats),top=Math.max(...lats);
+   const W=850,H=500,pad=23,dx=Math.max(.01,right-left),dy=Math.max(.01,top-bottom);
+   const proj={x:lon=>pad+(lon-left)/dx*(W-2*pad),
+               y:lat=>H-pad-(lat-bottom)/dy*(H-2*pad)};
+   const fig=sv("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+      "aria-label":"Polígonos hidroclimáticos de agrupaciones no certificadas"});
+   fig.style.width="100%";
+   const colors={montana_alta:"#765f9e",montana_media:"#967ac0",
+     piedemonte:"#be9946",valle_bajo:"#53a080",llanura_costa:"#378baf"};
+   for(const feature of g.features){
+     const p=feature.properties;
+     const dpath=polys(feature.geometry).map(poly=>poly.map(ring=>
+       ring.map((point,i)=>(i?"L":"M")+proj.x(point[0]).toFixed(2)+","+
+                         proj.y(point[1]).toFixed(2)).join(" ")+"Z").join(" ")).join(" ");
+     const f=sv("path",{d:dpath,fill:colors[p.piso]||"#759b8b",
+        stroke:"#f5f9f8","stroke-width":1.5,"fill-opacity":.85,
+        tabindex:0,role:"button"});
+     const tip=p.id+" · "+(names[p.piso]||p.piso)+" · "+p.sectores.join(", ")+
+       " · Propuesta exploratoria, no certificada";
+     f.append(sv("title",{},tip));
+     const select=()=>set("oaf-9q-map-detail",tip);
+     f.addEventListener("click",select);
+     f.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select();}});
+     fig.append(f);
+   }
+   mapBox.append(fig);
+  }else{mapBox.textContent="No se publicaron grupos: ninguno satisfizo todos los filtros científicos.";}
   set("oaf-9q-science",d.n_pares_mismo_piso_cuenca_cercanos_evaluados+
    " pares próximos con piso y unidad hidrográfica común examinados; "+
    d.n_pares_lluvia_y_testigos_multivariable_satisfacen_criterios+
