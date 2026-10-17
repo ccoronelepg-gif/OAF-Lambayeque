@@ -17,7 +17,7 @@ def fabricated(year=2025, missing=False):
         p25.append(None if missing and d.month==2 else 12.5)
         p10.append(28.0)
         d+=timedelta(hours=1)
-    return dict(timezone='GMT',hourly_units={'pm2_5':'μg/m³','pm10':'μg/m³'},
+    return dict(latitude=-6.75,longitude=-79.75,timezone='GMT',hourly_units={'pm2_5':'μg/m³','pm10':'μg/m³'},
                 hourly=dict(time=times,pm2_5=p25,pm10=p10))
 
 class Aire8XTests(unittest.TestCase):
