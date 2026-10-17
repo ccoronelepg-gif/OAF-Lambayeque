@@ -34,6 +34,36 @@ Archivo del motor: [`modelos/viento_oceano_8u.py`](modelos/viento_oceano_8u.py).
 
 Datos: [`datos/viento_8u/estado_factores_8u.json`](datos/viento_8u/estado_factores_8u.json), [`viento_mensual_8u.csv`](datos/viento_8u/viento_mensual_8u.csv) y los JSON originales gz con metadatos SHA en `datos/viento_8u/fuentes/`.
 
+### Resultados reales del viento 1996–2025: descarga completada
+
+Los tres bloques diarios 1996–2005, 2006–2015 y 2016–2025 están **completos**, con JSON originales, metadatos URL y SHA-256 auditados. Se obtuvieron **1.440 meses-localidad** (4 localidades × 360 meses) y **10.958 días por localidad**.
+
+| Localidad | Viento medio diario agregado a 30 años (m/s) | Media de máximos diarios (m/s) | Centros de celda ERA5 por localidad |
+|---|---:|---:|---:|
+| Chiclayo | **3,138** | 4,985 | 1 |
+| Jayanca | **2,410** | 4,003 | 1 |
+| Motupe | **1,890** | 3,453 | 1 |
+| Olmos | **1,393** | 2,989 | 1 |
+
+El descenso entre las cuatro ubicaciones **no permite atribuir un gradiente causal exclusivo costa–interior**: influyen selección espacial de celdas, relieve, exposición del punto, rugosidad y reanálisis; no son estaciones SENAMHI.
+
+### Asociación descriptiva viento–SST Niño1+2, 1996–2025
+
+Se calcularon primero normales mensuales del propio punto basadas en **1996–2025** y se restaron de cada viento mensual. Estas normales se utilizan **solo para diagnóstico descriptivo**, no para entrenamiento de un pronóstico retrospectivo (donde introducirían información futura). Se compararon el viento de un mes y el índice SST NOAA Niño1+2 observado **en el mismo mes** o **dos meses antes**. La asociación de dos meses usa 358 meses por localidad.
+
+| Localidad | Pearson r: anomalía de velocidad del viento vs SST t−2 | Pearson r: componente zonal aproximada del viento vs SST t−2 | Pearson r: componente meridional aproximada del viento vs SST t−2 |
+|---|---:|---:|---:|
+| Chiclayo | +0,17252 | −0,40218 | +0,11805 |
+| Jayanca | +0,21774 | −0,30892 | +0,11890 |
+| Motupe | +0,15706 | −0,26237 | +0,13544 |
+| Olmos | +0,19407 | −0,16926 | +0,20262 |
+
+Las correlaciones de velocidad son débiles; la componente zonal aproximada muestra una relación negativa más pronunciada en algunos puntos. La convención del viento atmosférico es hacia donde sopla para **u/v**, calculado desde la dirección meteorológica *de donde proviene*. **No confundir estos u/v de viento con u/v de corrientes oceánicas**.
+
+No se aplicó una prueba de significación con autocorrelación temporal ni separación por década, no hay contraste con viento marítimo u observaciones instrumentales y, por ello, **ninguno de estos coeficientes demuestra mecanismo causal, pronóstico o eficiencia predictiva**.
+
+Archivos reales: [diagnóstico por localidad](datos/relaciones_viento_sst_8u/estado_relaciones_8u.json), [1440 comparaciones mensuales](datos/relaciones_viento_sst_8u/comparaciones_mensuales_8u.csv) y [motor de cálculo](modelos/relaciones_viento_sst_8u.py).
+
 ## 4. SST: dos escalas complementarias
 
 **SST regional ya disponible:** 360 anomalías mensuales 1996–2025 del índice **Niño 1+2 NOAA CPC**, con archivo y SHA congelados en [fase 8T](datos/oceano_8t/noaa_cpc_sstoi_indices.meta.json). Es un índice revisado hasta 2026, no la versión necesariamente conocida al emitir un pronóstico en cada año histórico y **no equivale al ICEN de ENFEN**.
@@ -59,7 +89,7 @@ Especial atención: **el efecto de SST y viento sobre temperatura media no tiene
 
 ## 7. Estado científico
 
-- Viento ERA5 1996–2025: adquisición incremental verificable.
+- Viento ERA5 1996–2025: **completado, 3 bloques archivados y 1.440 meses-localidad auditados**.
 - SST histórica regional Niño 1+2: **disponible, versión histórica revisable**.
 - SST local OISST y corriente oceánica u/v 1996–2025: **acceso/ingesta y verificación todavía pendientes**.
 - Reanálisis no sustituye estación SENAMHI ni monitoreo oceánico local; estaciones instrumentales independientes utilizadas = **0**.
