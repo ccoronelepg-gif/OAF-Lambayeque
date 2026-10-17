@@ -1,11 +1,11 @@
 {
   "fase": "8O",
-  "estado": "perfiles_multivariables_pendientes",
+  "estado": "núcleos_de_similitud_multivariable_exploratorios",
   "n_testigos": 19,
   "n_fuentes_esperadas": 6,
-  "n_fuentes_archivadas": 5,
-  "n_testigos_con_perfil_30anios": 0,
-  "n_grupos_similitud_exploratorios": 0,
+  "n_fuentes_archivadas": 6,
+  "n_testigos_con_perfil_30anios": 19,
+  "n_grupos_similitud_exploratorios": 2,
   "homogeneidad_espacial_certificada": false,
   "zonas_agroclimaticas_operativas": 0,
   "capacidad_predictiva_zonal_demostrada": false,
@@ -17,7 +17,73 @@
   },
   "sin_iguales_pixeles_entre_fuentes_demostrados": true,
   "sin_imputar_ausencias": true,
-  "analisis": null,
+  "analisis": {
+    "metodo": "agglomerative average-linkage; normal 1996-2025; variables escaladas",
+    "k_seleccionado": 2,
+    "coeficiente_silueta": 0.34389,
+    "grupos": [
+      {
+        "nombre": "C1",
+        "n_testigos": 17,
+        "ids": [
+          "M0176",
+          "M0385",
+          "M0222",
+          "M0419",
+          "M0020",
+          "M0163",
+          "M0420",
+          "M0016",
+          "M0287",
+          "M0007",
+          "M0098",
+          "M0288",
+          "M0070",
+          "M0380",
+          "M0308",
+          "M0367",
+          "M0234"
+        ]
+      },
+      {
+        "nombre": "C2",
+        "n_testigos": 2,
+        "ids": [
+          "M0208",
+          "M0189"
+        ]
+      }
+    ],
+    "ranking_cohesion_climatica_no_zonas": [
+      {
+        "grupo": "C2",
+        "n_testigos": 2,
+        "distancia_climatica_interna_media": 0.6235,
+        "distancia_climatica_interna_maxima": 0.6235,
+        "diametro_geografico_testigos_km": 21.856,
+        "rango_altitudinal_testigos_m": 1.0,
+        "poligono_homogeneo_demostrado": false
+      },
+      {
+        "grupo": "C1",
+        "n_testigos": 17,
+        "distancia_climatica_interna_media": 0.9997,
+        "distancia_climatica_interna_maxima": 1.9036,
+        "diametro_geografico_testigos_km": 174.131,
+        "rango_altitudinal_testigos_m": 3164.0,
+        "poligono_homogeneo_demostrado": false
+      }
+    ],
+    "ari_temporal_comparado_con_periodo_completo": {
+      "1996-2005": 1.0,
+      "2006-2015": 1.0,
+      "2016-2025": 1.0
+    },
+    "estabilidad_temporal_exploratoria_evaluada": true,
+    "estabilidad_espacial_y_contigüidad_certificadas": false,
+    "estabilidad_temporal_y_espacial_evaluada": false,
+    "poligonos_homogeneos_certificados": false
+  },
   "restricciones": [
     "Testigos espaciales estratificados no son todos los nodos ni representan porcentajes de área.",
     "Grupo de similitud multivariable no es zona geográfica contigua ni pronóstico validado.",
@@ -195,6 +261,40 @@
         "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.3125%2C-5.875%2C-6.3125%2C-5.5625%2C-6.90625%2C-6.46875%2C-5.5625%2C-6.9375%2C-6.15625%2C-7.0%2C-6.65625%2C-6.15625%2C-6.75%2C-5.9375%2C-6.125%2C-5.96875%2C-6.28125%2C-6.375&longitude=-79.75%2C-80.5625%2C-80.0625%2C-79.6875%2C-79.9375%2C-79.34375%2C-79.53125%2C-79.875%2C-79.3125%2C-79.53125%2C-79.3125%2C-79.53125%2C-79.46875%2C-79.1875%2C-79.5%2C-79.375%2C-79.46875%2C-79.34375%2C-80.375&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=precipitation_sum%2Crelative_humidity_2m_mean%2Cshortwave_radiation_sum&models=era5&cell_selection=land",
         "fecha_consulta_utc": "2026-10-17T02:11:43+00:00",
         "sha256_original": "ff40e77daa7bc9a6628c0084b713a5ab30bd51510e059aed88d6ec8298e973b6",
+        "reanálisis_no_instrumental": true,
+        "no_son_zonas_climaticas_certificadas": true
+      },
+      {
+        "fase": "8O",
+        "modelo": "era5",
+        "periodo": [
+          2016,
+          2025
+        ],
+        "ids": [
+          "M0176",
+          "M0208",
+          "M0385",
+          "M0222",
+          "M0419",
+          "M0020",
+          "M0163",
+          "M0420",
+          "M0016",
+          "M0287",
+          "M0007",
+          "M0098",
+          "M0288",
+          "M0070",
+          "M0380",
+          "M0308",
+          "M0367",
+          "M0234",
+          "M0189"
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.3125%2C-5.875%2C-6.3125%2C-5.5625%2C-6.90625%2C-6.46875%2C-5.5625%2C-6.9375%2C-6.15625%2C-7.0%2C-6.65625%2C-6.15625%2C-6.75%2C-5.9375%2C-6.125%2C-5.96875%2C-6.28125%2C-6.375&longitude=-79.75%2C-80.5625%2C-80.0625%2C-79.6875%2C-79.9375%2C-79.34375%2C-79.53125%2C-79.875%2C-79.3125%2C-79.53125%2C-79.3125%2C-79.53125%2C-79.46875%2C-79.1875%2C-79.5%2C-79.375%2C-79.46875%2C-79.34375%2C-80.375&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=precipitation_sum%2Crelative_humidity_2m_mean%2Cshortwave_radiation_sum&models=era5&cell_selection=land",
+        "fecha_consulta_utc": "2026-10-17T02:12:14+00:00",
+        "sha256_original": "b3da125ee793867e793c884a7c70b7ca8941872c776a27415cf2431d94fb0bc1",
         "reanálisis_no_instrumental": true,
         "no_son_zonas_climaticas_certificadas": true
       }
