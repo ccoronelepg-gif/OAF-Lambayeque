@@ -28,13 +28,14 @@ async function read(path,json=true){
 async function update(){
  msg.textContent="Auditoría de vientos atmosféricos, SST regional y corrientes geostróficas…";
  try{
-  const [w,s,c,wr,sr,cr]=await Promise.all([
+  const [w,s,c,wr,sr,cr,relation]=await Promise.all([
    read("datos/meteorologia_8u/estado_viento_8u.json"),
    read("datos/oceanografia_8u/estado_oceanografia_8u.json"),
    read("datos/corrientes_8u/estado_corrientes_8u.json"),
    read("datos/meteorologia_8u/vientos_mensuales_8u.csv",false),
    read("datos/oceanografia_8u/tsm_nino12_mensual_8u.csv",false),
-   read("datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv",false)]);
+   read("datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv",false),
+   read("datos/relaciones_fisicas_8u/estado_relaciones_8u.json")]);
   if(w.fase!=="8U"||s.fase!=="8U"||c.fase!=="8U"||
      w.viento_inferido_no_es_corriente_oceanica!==true||
      s.tsm_costa_lambayeque_medido!==false||
@@ -44,6 +45,19 @@ async function update(){
      wr.some(x=>x.observacion_instrumental!=="false")||
      cr.some(x=>x.observacion_directa_campo!=="false"))
        throw Error("Fuentes o unidades no auditadas");
+  if(relation.fase!=="8U"||relation.n_parejas_mes_punto!==216||
+     relation.habilidad_predictiva_evaluada!==false||
+     relation.normal_no_apta_para_backtest_porque_contiene_futuro!==true)
+     throw Error("Relaciones físicas descriptivas no auditadas");
+  const correlation=$("oaf-8u-extra-correlation");
+  correlation.replaceChildren();
+  for(const p of relation.perfiles){
+    add(correlation,[p.punto_marino,
+      number(p.r_anomalia_u_viento_vs_u_geostrofica),
+      number(p.r_anomalia_v_viento_vs_v_geostrofica),
+      number(p.r_anomalia_sst_nino12_t_menos_2_vs_u_geostrofica),
+      number(p.r_anomalia_sst_nino12_t_menos_2_vs_v_geostrofica)]);
+  }
   bodies.forEach(x=>x.replaceChildren());
   $("oaf-8u-extra-wind").textContent=w.n_bloques_verificados+"/3";
   $("oaf-8u-extra-sst").textContent=String(sr.length);
