@@ -1,0 +1,34 @@
+{
+  "fase": "8O",
+  "modelo": "era5",
+  "periodo": [
+    1996,
+    2005
+  ],
+  "ids": [
+    "M0176",
+    "M0208",
+    "M0385",
+    "M0222",
+    "M0419",
+    "M0020",
+    "M0163",
+    "M0420",
+    "M0016",
+    "M0287",
+    "M0007",
+    "M0098",
+    "M0288",
+    "M0070",
+    "M0380",
+    "M0308",
+    "M0367",
+    "M0234",
+    "M0189"
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.3125%2C-5.875%2C-6.3125%2C-5.5625%2C-6.90625%2C-6.46875%2C-5.5625%2C-6.9375%2C-6.15625%2C-7.0%2C-6.65625%2C-6.15625%2C-6.75%2C-5.9375%2C-6.125%2C-5.96875%2C-6.28125%2C-6.375&longitude=-79.75%2C-80.5625%2C-80.0625%2C-79.6875%2C-79.9375%2C-79.34375%2C-79.53125%2C-79.875%2C-79.3125%2C-79.53125%2C-79.3125%2C-79.53125%2C-79.46875%2C-79.1875%2C-79.5%2C-79.375%2C-79.46875%2C-79.34375%2C-80.375&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=precipitation_sum%2Crelative_humidity_2m_mean%2Cshortwave_radiation_sum&models=era5&cell_selection=land",
+  "fecha_consulta_utc": "2026-10-17T02:11:08+00:00",
+  "sha256_original": "54408fda9cd2aa7a852655898f0a23e4091e6b2330276fb935629f533edc7a11",
+  "reanálisis_no_instrumental": true,
+  "no_son_zonas_climaticas_certificadas": true
+}
