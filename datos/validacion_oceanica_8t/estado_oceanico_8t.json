@@ -1,0 +1,558 @@
+{
+  "fase": "8T",
+  "estado": "contraste_oceanico_retroactivo_auditable_no_operativo",
+  "periodo_clima": "1996–2025",
+  "horizonte_objetivo": "1 mes",
+  "indices_fuente": "NOAA CPC sstoi.indices, Niño1+2 ANOM, serie mensual revisable",
+  "corte_fuente_noaa_utc": "2026-10-17T03:29:47+00:00",
+  "fuente_noaa_url": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
+  "sha256_indice_original": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "n_meses_noaa_historicos": 360,
+  "rezago_oceanico_meses": 2,
+  "indice_1996_2025_se_puede_revisar_expost": true,
+  "no_representa_vintage_NOAA_publicado_en_cada_fecha_historica": true,
+  "no_equivale_a_ICEN_ENFEN_ni_a_alerta_oficial": true,
+  "entrenamiento_y_normales_solo_anteriores_al_test": true,
+  "seleccion_de_modelo_solo_validacion_pasada": true,
+  "predictores_local_y_regional_rezagados_un_mes": true,
+  "bloque_latitudinal_retenido_fuera_del_ajuste_y_predictores_regionales": true,
+  "n_testigos_empleados": 65,
+  "n_centros_temperatura_era5land_unicos": 50,
+  "n_cortes_temporales": 5,
+  "n_bloques_geo": 4,
+  "n_evaluaciones_temporales": 8400,
+  "n_evaluaciones_espaciales": 8400,
+  "comparacion_temporal": {
+    "n": 8400,
+    "modelo_seleccionado": {
+      "rmse_c": 0.448468,
+      "mae_c": 0.343608
+    },
+    "modelo_8s_sin_oceano": {
+      "rmse_c": 0.448275,
+      "mae_c": 0.343438
+    },
+    "persistencia": {
+      "rmse_c": 0.468228,
+      "mae_c": 0.362334
+    },
+    "mejora_RMSE_vs_8S": -0.000431,
+    "mejora_RMSE_vs_persistencia": 0.042202
+  },
+  "comparacion_bloques_espaciales": {
+    "n": 8400,
+    "modelo_seleccionado": {
+      "rmse_c": 0.448123,
+      "mae_c": 0.34349
+    },
+    "modelo_8s_sin_oceano": {
+      "rmse_c": 0.448167,
+      "mae_c": 0.343375
+    },
+    "persistencia": {
+      "rmse_c": 0.468228,
+      "mae_c": 0.362334
+    },
+    "mejora_RMSE_vs_8S": 9.8e-05,
+    "mejora_RMSE_vs_persistencia": 0.042938
+  },
+  "comparacion_por_estrato": {
+    "llanura_costa": {
+      "n": 2016,
+      "modelo_seleccionado": {
+        "rmse_c": 0.566022,
+        "mae_c": 0.433393
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.566437,
+        "mae_c": 0.433407
+      },
+      "persistencia": {
+        "rmse_c": 0.583587,
+        "mae_c": 0.451054
+      },
+      "mejora_RMSE_vs_8S": 0.000733,
+      "mejora_RMSE_vs_persistencia": 0.030098
+    },
+    "valle_bajo": {
+      "n": 1680,
+      "modelo_seleccionado": {
+        "rmse_c": 0.476069,
+        "mae_c": 0.372038
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.476122,
+        "mae_c": 0.371875
+      },
+      "persistencia": {
+        "rmse_c": 0.497628,
+        "mae_c": 0.39187
+      },
+      "mejora_RMSE_vs_8S": 0.000111,
+      "mejora_RMSE_vs_persistencia": 0.043324
+    },
+    "piedemonte": {
+      "n": 1848,
+      "modelo_seleccionado": {
+        "rmse_c": 0.413775,
+        "mae_c": 0.326415
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.413984,
+        "mae_c": 0.326402
+      },
+      "persistencia": {
+        "rmse_c": 0.434353,
+        "mae_c": 0.346533
+      },
+      "mejora_RMSE_vs_8S": 0.000505,
+      "mejora_RMSE_vs_persistencia": 0.047376
+    },
+    "montana_baja": {
+      "n": 1680,
+      "modelo_seleccionado": {
+        "rmse_c": 0.361358,
+        "mae_c": 0.285934
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.361147,
+        "mae_c": 0.285802
+      },
+      "persistencia": {
+        "rmse_c": 0.381327,
+        "mae_c": 0.30391
+      },
+      "mejora_RMSE_vs_8S": -0.000584,
+      "mejora_RMSE_vs_persistencia": 0.052367
+    },
+    "montana_media": {
+      "n": 840,
+      "modelo_seleccionado": {
+        "rmse_c": 0.322474,
+        "mae_c": 0.255073
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.321652,
+        "mae_c": 0.254834
+      },
+      "persistencia": {
+        "rmse_c": 0.348482,
+        "mae_c": 0.273413
+      },
+      "mejora_RMSE_vs_8S": -0.002556,
+      "mejora_RMSE_vs_persistencia": 0.074632
+    },
+    "montana_alta": {
+      "n": 336,
+      "modelo_seleccionado": {
+        "rmse_c": 0.332158,
+        "mae_c": 0.264073
+      },
+      "modelo_8s_sin_oceano": {
+        "rmse_c": 0.330746,
+        "mae_c": 0.263252
+      },
+      "persistencia": {
+        "rmse_c": 0.361974,
+        "mae_c": 0.283664
+      },
+      "mejora_RMSE_vs_8S": -0.004269,
+      "mejora_RMSE_vs_persistencia": 0.082371
+    }
+  },
+  "ventanas_temporales": [
+    {
+      "corte": 1,
+      "train_end": 2008,
+      "validacion": "2009–2011",
+      "prueba": "2012–2014",
+      "n_train": 7200,
+      "n_test": 1800,
+      "rmse_validacion_8s": 0.394459,
+      "rmse_validacion_nino12": 0.395075,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.02309356,
+      "rmse_prueba_8s": 0.467761,
+      "rmse_prueba_oceanico": 0.46716,
+      "rmse_prueba_seleccionado": 0.467761
+    },
+    {
+      "corte": 2,
+      "train_end": 2011,
+      "validacion": "2012–2014",
+      "prueba": "2015–2017",
+      "n_train": 9000,
+      "n_test": 1800,
+      "rmse_validacion_8s": 0.457627,
+      "rmse_validacion_nino12": 0.457081,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": -0.01818907,
+      "rmse_prueba_8s": 0.416788,
+      "rmse_prueba_oceanico": 0.417769,
+      "rmse_prueba_seleccionado": 0.417769
+    },
+    {
+      "corte": 3,
+      "train_end": 2014,
+      "validacion": "2015–2017",
+      "prueba": "2018–2020",
+      "n_train": 10800,
+      "n_test": 1800,
+      "rmse_validacion_8s": 0.41182,
+      "rmse_validacion_nino12": 0.413203,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.02149917,
+      "rmse_prueba_8s": 0.4032,
+      "rmse_prueba_oceanico": 0.404362,
+      "rmse_prueba_seleccionado": 0.4032
+    },
+    {
+      "corte": 4,
+      "train_end": 2017,
+      "validacion": "2018–2020",
+      "prueba": "2021–2022",
+      "n_train": 12600,
+      "n_test": 1200,
+      "rmse_validacion_8s": 0.400922,
+      "rmse_validacion_nino12": 0.401516,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.00897421,
+      "rmse_prueba_8s": 0.446455,
+      "rmse_prueba_oceanico": 0.447304,
+      "rmse_prueba_seleccionado": 0.446455
+    },
+    {
+      "corte": 5,
+      "train_end": 2020,
+      "validacion": "2021–2022",
+      "prueba": "2023–2025",
+      "n_train": 14400,
+      "n_test": 1800,
+      "rmse_validacion_8s": 0.448844,
+      "rmse_validacion_nino12": 0.448838,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 7.458e-05,
+      "rmse_prueba_8s": 0.499807,
+      "rmse_prueba_oceanico": 0.499793,
+      "rmse_prueba_seleccionado": 0.499793
+    }
+  ],
+  "controles_espaciales": [
+    {
+      "corte": 1,
+      "franja": "LAT1",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 0.00287988,
+      "rmse_8s": 0.509169,
+      "rmse_oceano": 0.509343,
+      "rmse_seleccionado": 0.509343
+    },
+    {
+      "corte": 1,
+      "franja": "LAT2",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.01811955,
+      "rmse_8s": 0.450127,
+      "rmse_oceano": 0.449708,
+      "rmse_seleccionado": 0.450127
+    },
+    {
+      "corte": 1,
+      "franja": "LAT3",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.02794603,
+      "rmse_8s": 0.472289,
+      "rmse_oceano": 0.472041,
+      "rmse_seleccionado": 0.472289
+    },
+    {
+      "corte": 1,
+      "franja": "LAT4",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.04603694,
+      "rmse_8s": 0.431502,
+      "rmse_oceano": 0.431151,
+      "rmse_seleccionado": 0.431502
+    },
+    {
+      "corte": 2,
+      "franja": "LAT1",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": 0.00841583,
+      "rmse_8s": 0.403203,
+      "rmse_oceano": 0.403145,
+      "rmse_seleccionado": 0.403203
+    },
+    {
+      "corte": 2,
+      "franja": "LAT2",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": -0.01215389,
+      "rmse_8s": 0.418126,
+      "rmse_oceano": 0.418385,
+      "rmse_seleccionado": 0.418385
+    },
+    {
+      "corte": 2,
+      "franja": "LAT3",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": -0.02450553,
+      "rmse_8s": 0.41807,
+      "rmse_oceano": 0.420053,
+      "rmse_seleccionado": 0.420053
+    },
+    {
+      "corte": 2,
+      "franja": "LAT4",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": -0.04113512,
+      "rmse_8s": 0.428773,
+      "rmse_oceano": 0.432728,
+      "rmse_seleccionado": 0.432728
+    },
+    {
+      "corte": 3,
+      "franja": "LAT1",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 0.00273545,
+      "rmse_8s": 0.396099,
+      "rmse_oceano": 0.396046,
+      "rmse_seleccionado": 0.396046
+    },
+    {
+      "corte": 3,
+      "franja": "LAT2",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.01592711,
+      "rmse_8s": 0.414907,
+      "rmse_oceano": 0.415417,
+      "rmse_seleccionado": 0.414907
+    },
+    {
+      "corte": 3,
+      "franja": "LAT3",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.02717246,
+      "rmse_8s": 0.407239,
+      "rmse_oceano": 0.409881,
+      "rmse_seleccionado": 0.407239
+    },
+    {
+      "corte": 3,
+      "franja": "LAT4",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.04260057,
+      "rmse_8s": 0.393929,
+      "rmse_oceano": 0.396106,
+      "rmse_seleccionado": 0.393929
+    },
+    {
+      "corte": 4,
+      "franja": "LAT1",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 0.01481166,
+      "rmse_8s": 0.43676,
+      "rmse_oceano": 0.435604,
+      "rmse_seleccionado": 0.435604
+    },
+    {
+      "corte": 4,
+      "franja": "LAT2",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.00340155,
+      "rmse_8s": 0.444402,
+      "rmse_oceano": 0.44469,
+      "rmse_seleccionado": 0.444402
+    },
+    {
+      "corte": 4,
+      "franja": "LAT3",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.0144881,
+      "rmse_8s": 0.449416,
+      "rmse_oceano": 0.451295,
+      "rmse_seleccionado": 0.449416
+    },
+    {
+      "corte": 4,
+      "franja": "LAT4",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.03004846,
+      "rmse_8s": 0.454535,
+      "rmse_oceano": 0.456855,
+      "rmse_seleccionado": 0.454535
+    },
+    {
+      "corte": 5,
+      "franja": "LAT1",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 0.02042062,
+      "rmse_8s": 0.541471,
+      "rmse_oceano": 0.537296,
+      "rmse_seleccionado": 0.537296
+    },
+    {
+      "corte": 5,
+      "franja": "LAT2",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_nino12",
+      "coeficiente_nino12": 0.00380471,
+      "rmse_8s": 0.498591,
+      "rmse_oceano": 0.497849,
+      "rmse_seleccionado": 0.497849
+    },
+    {
+      "corte": 5,
+      "franja": "LAT3",
+      "celdas_retenidas": 13,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.00438408,
+      "rmse_8s": 0.503909,
+      "rmse_oceano": 0.504784,
+      "rmse_seleccionado": 0.503909
+    },
+    {
+      "corte": 5,
+      "franja": "LAT4",
+      "celdas_retenidas": 12,
+      "modelo_preseleccionado": "jerarquico_8s",
+      "coeficiente_nino12": -0.01754268,
+      "rmse_8s": 0.445796,
+      "rmse_oceano": 0.448698,
+      "rmse_seleccionado": 0.445796
+    }
+  ],
+  "seleccion_oceanica_por_ventanas": {
+    "jerarquico_8s": 3,
+    "jerarquico_nino12": 2
+  },
+  "n_pliegues_oceanicos_seleccionados": 8,
+  "factores_probados": [
+    "anomalia_termica_local_t-1",
+    "anomalia_termica_otros_pixeles_t-1",
+    "Niño1+2_NOAA_anomalia_t-2"
+  ],
+  "fuentes_de_datos_senamhi_instrumentales_integradas": 0,
+  "prediccion_prospectiva_demostrada": false,
+  "habilidad_nino_costero_predecir_ENFEN_demostrada": false,
+  "zonas_homogeneas_certificadas": 0,
+  "evaluacion_riesgo_fitopatologico_validada": false,
+  "nota": "Análisis incremental exploratorio: si el índice oceánico no ayuda en validación se conserva modelo 8S. Existen revisiones NOAA retrospectivas y el objetivo proviene de ERA5-Land.",
+  "limitaciones": [
+    "Índices NOAA actuales están revisados retrospectivamente: no son vintages históricos disponibles en las fechas del backtest.",
+    "Lag t−2 disminuye filtración inmediata, pero no establece fecha real de publicación mensual ni acceso operativo.",
+    "Las franjas espaciales retienen coeficientes y señal regional, pero permiten temperatura y climatología anterior propia de la franja.",
+    "No existe contraste independiente con estaciones SENAMHI ni estaciones agrícolas.",
+    "El Niño 1+2 histórico NOAA no es el ICEN clasificado por ENFEN ni probabilidad de un evento oficial.",
+    "El método exige evaluar ventanas sin elegir el mejor resultado tras leer el test.",
+    "Series de NOAA y ERA5-Land no son muestras estadísticamente independientes entre centros y meses."
+  ],
+  "trazabilidad_climatica": {
+    "fuentes_temperatura_reanalisis": [
+      {
+        "fuente": "8O",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_comprimido": "e8bb2b7137be60adcf2858a904ec1b2b0c0d838a7b7638711c2e7078a43c0c12",
+        "centros_en_solicitud": 19
+      },
+      {
+        "fuente": "8O",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_comprimido": "b955293ec76da1416bfbfaa7b9535a6de1368bf224cd7f1b8a0fe4471a1857be",
+        "centros_en_solicitud": 19
+      },
+      {
+        "fuente": "8O",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_comprimido": "fc2f213ce1fad26045fd58839e7a5d2da82ded773b745d4efd6bc5f814e57a4b",
+        "centros_en_solicitud": 19
+      },
+      {
+        "fuente": "8P_grupo_1",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_comprimido": "8bebfcdc2d4f9bbc6383671c12df3a23e5e561f9f3a9c3157bc5a3dc578dcbbf",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_1",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_comprimido": "75622cc20c80e611bd0c422c9b419ac8ea7c6581fea19cb27b671728926bbf16",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_1",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_comprimido": "51e32a4396f965c06092e8780141bb604826d5bb1f5b6178c844b702e87a81f0",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_2",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_comprimido": "a08a5e835f33ccc3f0d7978e5afb17080e7e6ab6cc2156c4436ba190822663fa",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_2",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_comprimido": "e285b8d76b53f9cd64adf23c11f5a8921dd2ffa37805a0705313affe1956c13f",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_2",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_comprimido": "aac357c6fe87c3a4c48d23c85906a26e5bce711b06da57d29b99da5e766dbfe8",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_3",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_comprimido": "b06d713db84b444b751b184a0fbff077087bf4f45a435529604e23094b910a7d",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_3",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_comprimido": "1a33cf99a9e569c83f59d5da2a36f4bf5f0e327e24055786e9a524118edc0008",
+        "centros_en_solicitud": 16
+      },
+      {
+        "fuente": "8P_grupo_3",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_comprimido": "fdf308381606cd415c0d932967aa36e6cafd41e4461c7737f6e0fd92fae3e5dc",
+        "centros_en_solicitud": 16
+      }
+    ],
+    "testigos_8p_8o_disponibles": 67,
+    "testigos_descartados_dem_le_5_m": 2,
+    "estado_original_8p_sha256": "ab7bcb186c0133cb7f78584328d74a94c871e9da48d6534341927fe65235c260"
+  }
+}

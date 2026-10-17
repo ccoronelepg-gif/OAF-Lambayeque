@@ -1,0 +1,14 @@
+{
+  "fuente": "NOAA CPC SST Niño indices",
+  "url": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
+  "consultado_utc": "2026-10-17T03:29:47+00:00",
+  "sha256_original": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "nino12_mes_referencia": "1996–2025",
+  "n_meses_estudio": 360,
+  "indices_revisables_retroactivamente": true,
+  "tipo": "OISST índice mensual NOAA CPC (serie actual revisable)",
+  "observacion_en_archivo_no_equivale_a_vintage_realtime": true,
+  "variable_usada": "NINO1+2 ANOM",
+  "rezago_meses_prueba": 2,
+  "prohibido_inferir_aviso_ENFEN": true
+}
