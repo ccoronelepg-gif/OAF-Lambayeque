@@ -1,0 +1,41 @@
+name: OAF 10A integridad retrospectiva
+on:
+  push:
+    paths:
+      - "modelos/auditoria_integrada_10a.py"
+      - "tests/test_integracion_10a.py"
+      - "datos/generalizacion_9x/**"
+      - "datos/integracion_10a/**"
+      - ".github/workflows/oaf_10a_auditoria.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducibilidad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Probar validaciones sin datos ficticios
+        run: python -m unittest discover -s tests -p 'test_integracion_10a.py' -v
+      - name: Recalcular 11700 pares del archivo 9X real
+        run: python modelos/auditoria_integrada_10a.py --salida "${{ runner.temp }}/auditoria_regenerada_10a.json"
+      - name: Comprobar cierre y prohibición de alertas
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"auditoria_regenerada_10a.json"
+          d=json.loads(p.read_text("utf8"))
+          assert d["integridad"]["filas"]==11700
+          assert d["integridad"]["pares"]==2340
+          assert d["integridad"]["sectores"]==39
+          assert d["resumen_sectores"]["rf_menor_mae_que_gcn"]==29
+          assert d["resumen_sectores"]["rf_menor_mae_que_climatologia_piso"]==21
+          assert d["resumen_sectores"]["rf_menor_mae_de_tres"]==14
+          assert d["alertas_habilitadas"] is False
+          assert d["modelo_operativo_ganador"] is None
+          assert d["calibracion_conformal_9y_ejecutable"] is False
+          print("Control territorial 10A conforme")
+          PY
