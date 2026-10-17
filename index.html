@@ -519,6 +519,12 @@ details.panel{scroll-margin-top:120px}
 <div class="notice"><strong>Cómo interpretar la zonificación:</strong> pisos físicos del DEM (0–99, 100–299, 300–799, 800–1599, 1600–2499 y ≥2500 m). Los agrupamientos se separan al cruzar un piso y no infieren continuidad por compartir celdas ERA5. Los 81 perfiles climatológicos son de reanálisis 1996–2025; la malla total consta de 420 puntos con elevación. <strong>No se estiman superficies agrícolas ni se deduce la condición de toda una ladera desde una sola cota.</strong></div>
 <h3>Pronósticos estacionales NOAA de gran escala</h3>
 <p id="oaf-9k-nmme" class="small">Comprobando inventario de archivos NetCDF NMME…</p>
+<div class="oaf-9k-controls">
+<label for="oaf-9k-site">Localidad referencial<select id="oaf-9k-site"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select></label>
+<label for="oaf-9k-target">Mes objetivo NOAA<select id="oaf-9k-target" aria-label="Mes válido del pronóstico NMME"></select></label>
+</div>
+<div id="oaf-9k-noaa-detail" aria-live="polite">Los valores se muestran solamente si los archivos NetCDF, las unidades y el mes objetivo están verificados.</div>
+
 <p class="oaf-figure-caption">Los pronósticos NOAA NMME usan una cuadrícula mucho más gruesa que el relieve de Lambayeque. Pueden servir como forzante de gran escala, pero no es correcto asignar sin calibración una predicción diferente a cada piso o polígono. Esta fase no emite alertas sobre El Niño Costero ni riesgos de arándano o vid.</p>
 <div class="links"><a href="FASE_9K_ZONAS_Y_NMME.md">Informe científico de la fase 9K ↗</a><a href="datos/sectores_agroclimaticos_9k/sectores_muestreo_9k.geojson">Polígonos experimentales · GeoJSON ↗</a><a href="datos/sectores_agroclimaticos_9k/estado_sectores_9k.json">Metodología y conteos · JSON ↗</a><a href="datos/sectores_agroclimaticos_9k/asignacion_nodos_9k.csv">Asociación DEM/testigos · CSV ↗</a><a href="datos/sectores_agroclimaticos_9k/inventario_nmme_9k.json">Archivos NOAA NetCDF · JSON ↗</a></div>
 </details>
