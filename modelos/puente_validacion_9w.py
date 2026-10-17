@@ -211,7 +211,7 @@ def unpack9T(good,values,floors):
  return test,decision,doc
 
 def report():
- floors,good,dropped,values,stages,rawhash,doc,pred=ingest()
+ floors,good,dropped,values,stages,rawhash,doc,pred,max_diff=ingest()
  if not MANIFEST.exists() or obj(MANIFEST)["sha256_matriz_nueva"]!=hashfile(BRIDGE):
   raise ValueError("9W debe construir y archivar matriz antes de evaluar")
  a=unpack9R(pred)
