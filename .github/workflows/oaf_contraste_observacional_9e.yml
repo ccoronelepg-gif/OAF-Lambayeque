@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'modelos/contraste_observacional_9e.py'
+      - 'modelos/emparejamiento_reanalisis_9e.py'
+      - 'modelos/visor_contraste_estaciones_9e.js'
+      - 'assets/oaf-contraste-estaciones-9e.css'
+      - 'index.html'
       - 'datos/estaciones_9d/series_mensuales_9d.csv'
       - 'datos/estaciones_9d/auditoria_estaciones_9d.json'
       - 'datos/validacion_estaciones_9e/metadatos_identidad_9e.json'
@@ -45,6 +49,28 @@ jobs:
           for x in data['estaciones']:
               assert x['n_meses_1996_2013']==216
           print('Tres pares temporalmente auditados sin falsear correspondencia espacial.')
+          PY
+      - name: Bloquear obligatoriamente emparejamiento no georreferenciado
+        run: |
+          if python modelos/emparejamiento_reanalisis_9e.py > /tmp/oaf-9e-gate.log 2>&1; then
+            echo 'ERROR: permitió comparación espacial sin metadatos'
+            exit 1
+          fi
+          grep -q 'carece de identidad institucional documentada' /tmp/oaf-9e-gate.log
+          echo 'La comparación estación/ERA5/CHIRPS sigue bloqueada hasta acreditar fichas.'
+      - name: Revisar gráficas públicas y panel desplegable
+        run: |
+          node --check modelos/visor_contraste_estaciones_9e.js
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('index.html').read_text(encoding='utf8')
+          keys=['oaf-contraste-estaciones','oaf-compare-year','oaf-compare-chart',
+                'oaf-compare-correlations','oaf-compare-legend','oaf-compare-status']
+          assert all(h.count('id="'+k+'"')==1 for k in keys)
+          assert 'src="modelos/visor_contraste_estaciones_9e.js"' in h
+          assert 'oaf-contraste-estaciones-9e.css' in h
+          assert 'FASE_9E_CONTRASTE_INSTRUMENTAL.md' in h
+          print('El panel público conserva las restricciones científicas.')
           PY
       - name: Commit para consulta y dashboard
         run: |
