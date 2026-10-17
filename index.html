@@ -758,6 +758,23 @@ details.panel{scroll-margin-top:120px}
 <a href="datos/generalizacion_9x/predicciones_sector_bloque_9x.csv">Predicciones históricas · CSV ↗</a>
 </div>
 </details>
+<details class="panel" id="oaf-10c-visor">
+<summary><strong>¿Qué cambia si la IA utiliza lluvia de dos meses atrás?</strong> · reentrenamiento con incertidumbre</summary>
+<p>Se compararon Random Forest y una red convolucional de grafos (GCN) en 39 sectores y cinco bloques espaciales. El modelo ya no recibe como variable la lluvia final del mes inmediatamente anterior, que habitualmente no se encuentra publicada al comienzo del mes a pronosticar.</p>
+<div class="scroller"><table><thead><tr><th>Método</th><th>Error histórico 9X</th><th>Error con lag 2+ (10C)</th><th>Cobertura 2023 del intervalo 90 %</th></tr></thead><tbody>
+<tr><td>Random Forest</td><td>17,16 mm</td><td>18,14 mm</td><td>85,04 %</td></tr>
+<tr><td>GCN (grafo)</td><td>18,62 mm</td><td>17,64 mm</td><td>79,49 %</td></tr>
+<tr><td>Climatología por piso</td><td>20,37 mm</td><td>20,37 mm</td><td>89,96 %</td></tr>
+</tbody></table></div>
+<p class="oaf-figure-caption">La fase 10C utiliza entrenamiento 1997–2015, selección 2016–2018, calibración 2019–2020 y prueba 2021–2025. El cambio de error combina nuevos rezagos y distinta ventana de ajuste; no demuestra el efecto causal de cada modificación.</p>
+<div class="notice"><strong>Precaución científica:</strong> los datos CHIRPS v3 Final son retrospectivos, no fotografías de la información disponible en cada fecha histórica. Los intervalos no mantuvieron siempre el 90 % en 2023. No se emiten alertas del Niño ni fitosanitarias con estos resultados; las zonas permanecen exploratorias.</div>
+<div class="links">
+<a href="evaluacion-lag2.html">Panel de cobertura por pisos ↗</a>
+<a href="FASE_10C_REENTRENAMIENTO_LAG2.md">Protocolo científico ↗</a>
+<a href="datos/reentrenamiento_10c/evaluacion_lag2_10c.json">Resultados completos · JSON ↗</a>
+<a href="datos/reentrenamiento_10c/predicciones_prueba_lag2_10c.csv">Predicciones históricas · CSV ↗</a>
+</div>
+</details>
 </section>
 
 <section data-page="nino" id="nino" hidden>
