@@ -33,8 +33,8 @@ FIELDS=("id","latitud","longitud","altitud_dem_m","estrato_fisico_preliminar",
 EDGE_FIELDS=("nodo_a","nodo_b","distancia_geografica_km","desnivel_dem_m",
   "distancia_climatica_estandarizada","diferencia_tmedia_anual_c",
   "diferencia_precipitacion_anual_mm","diferencia_humedad_pct",
-  "igual_celda_temperatura_referencia","criterio_filtro_vecindad",
-  "zona_homogenea_verificada")
+  "igual_celda_era5land","igual_celda_era5","centros_de_ambos_modelos_diferentes",
+  "criterio_filtro_vecindad","zona_homogenea_verificada")
 NORMAL_FIELDS=("id","mes_calendario")+FEATS
 
 def sha(data):return hashlib.sha256(data).hexdigest()
@@ -136,7 +136,34 @@ def fetch(root,max_new=2):
                 print("Histórico 8P recuperado:",group,model,start,end,flush=True)
                 if counter<max_new:time.sleep(2)
 
-def candidate(a,b,norma,scaling,limit=20):
+def grid_centers_8o(root):
+    """Archive original 8O API cell coordinates when complete; unknown otherwise.
+
+    A center being distinct does NOT establish independent instrumentation.
+    """
+    try:
+        originals=ref.read_testigos(root)
+    except (FileNotFoundError,ValueError):
+        return {}
+    points={}
+    for model in METHODS:
+        for start,end in BLOCKS:
+            file=ref.read_source(root,model,start,end,originals)
+            if file is None:return {}
+            values,_=file
+            for p,v in zip(originals,values):
+                points.setdefault((model,p["id"]),set()).add((
+                  round(float(v["latitude"]),5),round(float(v["longitude"]),5)))
+    return points
+
+def cell_compare(a,b,model,centers):
+    if centers is None:return "desconocido"
+    ax=centers.get((model,a),set())
+    bx=centers.get((model,b),set())
+    if len(ax)!=1 or len(bx)!=1:return "desconocido"
+    return "si" if next(iter(ax))==next(iter(bx)) else "no"
+
+def candidate(a,b,norma,scaling,limit=20,centers=None):
     from math import sin,cos,asin,sqrt,pi
     x=sin((b["latitud"]-a["latitud"])*pi/360)**2+cos(a["latitud"]*pi/180)*cos(b["latitud"]*pi/180)*sin((b["longitud"]-a["longitud"])*pi/360)**2
     distance=12742.0176*asin(min(1,sqrt(x)))
@@ -148,6 +175,8 @@ def candidate(a,b,norma,scaling,limit=20):
     t=statistics.mean(ae["tmedia_c"])-statistics.mean(be["tmedia_c"])
     rain=sum(ae["precipitacion_mm"])-sum(be["precipitacion_mm"])
     rh=statistics.mean(ae["humedad_relativa_pct"])-statistics.mean(be["humedad_relativa_pct"])
+    same_t=cell_compare(a["id"],b["id"],"era5_land",centers)
+    same_o=cell_compare(a["id"],b["id"],"era5",centers)
     return {"nodo_a":a["id"],"nodo_b":b["id"],
       "distancia_geografica_km":round(distance,4),
       "desnivel_dem_m":round(abs(a["altitud_dem_m"]-b["altitud_dem_m"]),2),
@@ -155,7 +184,9 @@ def candidate(a,b,norma,scaling,limit=20):
       "diferencia_tmedia_anual_c":round(t,4),
       "diferencia_precipitacion_anual_mm":round(rain,3),
       "diferencia_humedad_pct":round(rh,3),
-      "igual_celda_temperatura_referencia":"desconocido",
+      "igual_celda_era5land":same_t,
+      "igual_celda_era5":same_o,
+      "centros_de_ambos_modelos_diferentes":"true" if same_t=="no" and same_o=="no" else "false",
       "criterio_filtro_vecindad":"distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica",
       "zona_homogenea_verificada":"false"}
 
@@ -178,12 +209,17 @@ def evaluate(root):
             full.append(i)
     profiles=dict(oldsites)
     normals=dict(oldnormals)
+    cellcenters=grid_centers_8o(root)
     for i in full:
         part=groups[i-1]
         values={}
         for model in METHODS:
             for start,end in BLOCKS:
-                rows=ref.monthly(sources[(i,model,start,end)],model,part)
+                original=sources[(i,model,start,end)]
+                rows=ref.monthly(original,model,part)
+                for p,obj in zip(part,original):
+                    cellcenters.setdefault((model,p["id"]),set()).add(
+                       (round(float(obj["latitude"]),5),round(float(obj["longitude"]),5)))
                 for key,d in rows.items():values.setdefault(key,{}).update(d)
         if len(values)!=len(part)*360:raise ValueError("Lote 8P no reúne 360 meses por punto")
         for p in part:
@@ -207,7 +243,7 @@ def evaluate(root):
     edges=[]
     for i,p in enumerate(legitimate):
         for q in legitimate[i+1:]:
-            e=candidate(p,q,normals,means)
+            e=candidate(p,q,normals,means,centers=cellcenters)
             if e:edges.append(e)
     # Not zones. Physical controls only for ranking LOCAL comparison candidates.
     eligible=[e for e in edges if e["distancia_climatica_estandarizada"]<=0.6 and
@@ -227,6 +263,15 @@ def evaluate(root):
       "grupos_de_descarga_completos":full,
       "pares_vecinos_hasta_20km_comparados":len(edges),
       "pares_que_superan_filtro_exploratorio":len(eligible),
+      "pares_filtrados_con_celda_repetida_era5_o_era5land":sum(
+         e["igual_celda_era5"]=="si" or e["igual_celda_era5land"]=="si"
+         for e in eligible),
+      "pares_filtrados_con_celdas_distintas_en_ambos_modelos":sum(
+         e["centros_de_ambos_modelos_diferentes"]=="true" for e in eligible),
+      "n_pares_sin_celdas_correspondientes_determinadas":sum(
+         e["igual_celda_era5"]=="desconocido" or e["igual_celda_era5land"]=="desconocido"
+         for e in edges),
+      "tener_celdas_distintas_no_prueba_independencia_espacial":True,
       "umbrales_filtro_exploratorio_no_normativos":{"distancia_km":20,
          "distancia_climatica_estandarizada":0.6,"desnivel_m":300,
          "diferencia_tmedia_anual_abs_c":1.5,
