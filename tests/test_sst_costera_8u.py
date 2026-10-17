@@ -21,6 +21,12 @@ class TestSST(unittest.TestCase):
   truncated=self.fake().splitlines(keepends=True)
   with patch.object(m.common,"dates",return_value=["1996-01-01","1996-01-02"]):
    with self.assertRaisesRegex(ValueError,"por día"):m.validate(b"".join(truncated[:-1]),m.POINTS[0],m.PERIODS[0])
+ def test_partial_noaa_dates_are_preserved_without_claiming_complete_period(self):
+  rows=self.fake().splitlines(keepends=True)
+  with patch.object(m.common,"dates",return_value=["1996-01-01","1996-01-02"]):
+   recorded=m.validate(b"".join(rows[:-1]),m.POINTS[0],m.PERIODS[0],require_full=False)
+  self.assertEqual(sorted(recorded),["1996-01-01"])
+  self.assertNotIn("1996-01-02",recorded)
  def test_land_or_missing_numeric_is_rejected(self):
   bad=self.fake().replace(b"22.5",b"NaN")
   with patch.object(m.common,"dates",return_value=["1996-01-01","1996-01-02"]):
