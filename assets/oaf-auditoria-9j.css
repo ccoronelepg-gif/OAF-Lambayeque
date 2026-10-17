@@ -1,0 +1,10 @@
+/* OAF 9J: ficha transparente de calidad del pronóstico, sin colores de falsas alarmas. */
+#oaf-9j-visor{border:1px solid #d7e9e2;background:#fff}
+#oaf-9j-visor summary{cursor:pointer;color:#103842;font-weight:760}
+.oaf-9j-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.oaf-9j-grid article{border:1px solid #dbeae4;background:#f4f9f7;padding:15px;border-radius:12px}
+.oaf-9j-grid strong{display:block;font-size:28px;line-height:1.15;color:#173e44}
+.oaf-9j-grid span{display:block;color:#55777b;font-size:12px;line-height:1.5;margin-top:7px}
+#oaf-9j-visor table{min-width:620px}
+#oaf-9j-visor .notice{border-left-color:#93b1a8}
+@media(max-width:650px){.oaf-9j-grid{grid-template-columns:1fr}}
