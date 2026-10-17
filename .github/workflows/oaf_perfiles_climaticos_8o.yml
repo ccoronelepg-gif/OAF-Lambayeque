@@ -1,0 +1,72 @@
+name: OAF 8O - Perfiles climáticos homogéneos multivariables
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/perfiles_climaticos_8o.py'
+      - 'tests/test_perfiles_climaticos_8o.py'
+      - '.github/workflows/oaf_perfiles_climaticos_8o.yml'
+      - 'modelos/visor_homogeneidad_8o.js'
+      - 'index.html'
+  schedule:
+    - cron: '49 16 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-climate-stratified-8o
+  cancel-in-progress: false
+jobs:
+  perfiles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar testigos y fuentes que ya fueron comprobadas
+        run: git pull --ff-only origin main
+      - name: Pruebas aisladas de reanálisis, cobertura e inferencia provisional
+        run: python -m unittest discover -s tests -p 'test_perfiles_climaticos_8o.py' -v
+      - name: Capturar como máximo una respuesta climática 30 años por ciclo
+        run: |
+          if python modelos/perfiles_climaticos_8o.py --fetch --max-new-batches 1; then
+            echo "Reanálisis histórico validado o pendiente de DEM completo."
+          else
+            echo "::warning::La fuente meteorológica no fue verificable; conservar resultados pendientes."
+          fi
+      - name: Recalcular perfiles y similitud solo si hay 6 fuentes completas
+        run: |
+          python modelos/perfiles_climaticos_8o.py
+          python modelos/perfiles_climaticos_8o.py --check
+      - name: Verificar módulo de homogeneidad cuando esté instalado
+        run: |
+          if test -f modelos/visor_homogeneidad_8o.js; then
+            node --check modelos/visor_homogeneidad_8o.js
+            python - <<'PY'
+          from pathlib import Path
+          doc=Path("index.html").read_text(encoding="utf-8")
+          for x in ("oaf-homogeneity-8o","oaf-8o-state","oaf-8o-nodes",
+                    "oaf-8o-profiles","oaf-8o-groups","oaf-8o-table","oaf-8o-refresh"):
+              assert doc.count('id="'+x+'"')==1,x
+          assert 'src="modelos/visor_homogeneidad_8o.js"' in doc
+          assert 'FASE_8O_MUESTREO_HOMOGENEIDAD.md' in doc
+          print("Módulo OAF 8O: marcado HTML y JS correctos")
+          PY
+          fi
+      - name: Archivar solo datos reales y reportes interpretados con cautela
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/perfiles_climaticos_8o/
+          if git diff --cached --quiet; then
+            echo "Sin archivos climáticos nuevos."
+          else
+            git commit -m "data(oaf): climatologías piloto 8O verificadas con sus SHA"
+            git pull --rebase origin main
+            git push
+          fi
