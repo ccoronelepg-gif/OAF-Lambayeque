@@ -70,6 +70,19 @@ Archivos reales: [diagnóstico por localidad](datos/relaciones_viento_sst_8u/est
 
 **SST local frente a Lambayeque — fuente identificada, extracción y QA pendientes:** [NOAA NCEI OISST versión 2.1](https://upwell.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.html), malla 0,25° con valores diarios desde 1981. Las posibles ubicaciones marinas deberán seleccionarse en celdas realmente oceánicas y a diferentes distancias de la costa, y comprobar máscara tierra/mar. No se permite atribuir a una playa una celda de SST que en realidad sea terrestre, ni tratar el índice Niño 1+2 como temperatura costera medida.
 
+## 4A. Cruce cuantitativo viento–Niño 1+2 (realizado con datos archivados)
+
+Se contrastaron **358 meses emparejados** por cada una de las cuatro localidades, usando normales mensuales de viento de cada sitio calculadas sobre 1996–2025 y la anomalía Niño 1+2 de NOAA desplazada **dos meses**. La normal 1996–2025 aquí solo sirve para análisis **descriptivo**, **no** puede usarse como normal aprendida para una predicción retrospectiva que reserve años posteriores.
+
+| Localidad | Correlación de velocidad media de viento con Niño 1+2 t−2 | Correlación de componente zonal aproximada con Niño 1+2 t−2 |
+|---|---:|---:|
+| Chiclayo | +0,172522 | **−0,604520** |
+| Jayanca | +0,217735 | −0,396361 |
+| Motupe | +0,157064 | −0,385576 |
+| Olmos | +0,194071 | −0,311165 |
+
+Los índices son descriptivos de series históricas reanalizadas/revisadas: no son causalidad, no controlan automáticamente tendencias, dependencia temporal, ENSO de otras regiones, perturbaciones costeras ni exposición de laderas, y no demuestran capacidad de anticipar lluvias o vientos de campo. La componente zonal estimada usa dirección dominante diaria y velocidad media diaria, por lo cual tampoco equivale a una observación vectorial instantánea. Los coeficientes y su SHA quedan en [correlaciones_viento_sst_8u.json](datos/viento_8u/correlaciones_viento_sst_8u.json).
+
 ## 5. Corrientes marinas: revisión de fuentes y control anti-datos-ficticios
 
 Se identificaron dos fuentes legítimas con componentes físicas **u/v**:
@@ -80,6 +93,26 @@ Se identificaron dos fuentes legítimas con componentes físicas **u/v**:
 **Advertencia de detección importante:** el [antiguo servidor NOAA ERDDAP `jplOscar`](https://coastwatch.pfeg.noaa.gov/erddap/info/jplOscar/index.html) tiene una descripción que indica 1992–presente, pero su atributo de cobertura temporal disponible documenta **2011-12-06 a 2014-09-26**, insuficiente para 1996–2025. **No se utilizará esa subserie ni se imputará para crear un registro de 30 años.**
 
 Al corte 8U actual, **no hay una serie de u/v marinos 1996–2025 archivada, validada y asociada a puntos oceánicos de Lambayeque**. La variable figura como pendiente, no como evidencia medida. Su incorporación requerirá URL/granulos netCDF originales, huellas verificables, unidades m/s, archivos de máscaras y concordancia temporal, con series completas por celda o una cobertura histórica explícitamente parcial.
+
+## 5A. Primera instantánea de corrientes y SST en mar abierto: 16–18 octubre de 2026
+
+Se completó una adquisición adicional **real de archivo de pronóstico modelado**, sin atribuirle 30 años de climatología ni observaciones de boyas. Fuente: Open-Meteo Marine Forecast, productos marinos de Météo-France, datos horarios de SST y velocidad/dirección de corriente, tres ubicaciones sobre el Pacífico frente a Lambayeque (longitud solicitada −80,7°; latitudes −6,1°, −6,5° y −6,9°). Se usó preferencia `cell_selection=sea` y se archivó la respuesta original.
+
+**Fecha de adquisición:** 17/10/2026 03:51:48 UTC. **Archivo SHA-256:** `1459507b8405ea5d9dab9a2b1e42622e38a0a81a1dfc13bdb9bd0729559c693e`. La serie devuelta cubre **72 horas desde el 16/10/2026 hasta el 18/10/2026, hora de Perú**; parte del periodo es anterior a la descarga, por lo que tampoco representa una secuencia enteramente de pronósticos futuros emitidos antes de empezar.
+
+| Punto piloto sobre mar (latitud solicitada) | SST media modelada (°C) | Velocidad media de corriente (m/s) | u media: este positivo (m/s) | v media: norte positivo (m/s) |
+|---|---:|---:|---:|---:|
+| Norte, −6,1° | **26,0569** | 0,1701 | −0,0998 | +0,1316 |
+| Centro, −6,5° | **25,5903** | 0,1636 | −0,1033 | +0,1193 |
+| Sur, −6,9° | **24,9319** | 0,1782 | −0,1346 | +0,0624 |
+
+Los vectores medios modelados poseen **componente oeste y norte** en los tres puntos. La dirección de corriente indica *hacia dónde* fluye el agua (0° = norte), mientras la dirección del viento meteorológico indica *desde dónde* sopla. **El proveedor devolvió la velocidad marina en km/h**; antes de obtener estas cifras en m/s se aplicó explícitamente la conversión km/h ÷ 3,6, con pruebas automatizadas de unidad. Se conservaron las coordenadas **de celda efectivamente devueltas**, diferentes de las coordenadas solicitadas.
+
+La diferencia de SST media modelada de esta instantánea entre norte y sur es **1,125 °C**; no es una anomalía frente a una climatología local ni una estimación de calentamiento por El Niño. Tampoco es una observación de velocidad de la **Corriente de Humboldt** ni permite afirmar circulación costera completa: se trata de tres puntos marinos y un producto modelado cuya precisión costera es limitada.
+
+Fuentes: [Open-Meteo Marine](https://open-meteo.com/en/docs/marine-weather-api); [estado y celdas del muestreo 8U](datos/marino_8u/estado_marino_8u.json); [archivo de fuente y SHA](datos/marino_8u/fuentes/ocean_forecast_2026-10-17.meta.json). El programa [instantanea_marina_8u.py](modelos/instantanea_marina_8u.py) archiva una instantánea diaria bajo auditoría de columnas y unidades, sin reutilizarla como serie 1996–2025.
+
+**El número de series de corrientes oceánicas completas e independientes durante 1996–2025 sigue siendo cero.** Hace falta investigar NASA OSCAR v2 o el reanálisis de Copernicus Marine con componentes u/v a resolución adecuada para la costa peruana, y distinguir corrientes oceánicas superficiales, afloramiento e influencia de vientos de tierra.
 
 ## 6. Qué se podrá evaluar cuando haya datos suficientes
 
