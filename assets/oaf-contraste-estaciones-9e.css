@@ -1,0 +1,16 @@
+/* Comparador observacional compacto, desplegable y legible. */
+.oaf-compare-chart{display:grid;gap:17px;margin:18px 0 15px;padding:20px;border:1px solid #dfebe7;border-radius:15px;background:#f8fbfa}
+.oaf-compare-line{display:grid;grid-template-columns:minmax(150px,210px) 1fr minmax(120px,170px);gap:12px;align-items:center}
+.oaf-compare-name{font-size:12px;color:#365c6c;font-weight:700}
+.oaf-compare-track{height:20px;border-radius:9px;background:#e1eaeb;overflow:hidden}
+.oaf-compare-bar{height:100%;border-radius:9px;background:linear-gradient(90deg,#138796,#5db9ac);transition:width .25s}
+.oaf-compare-line:nth-child(2) .oaf-compare-bar{background:linear-gradient(90deg,#236a9b,#8fb9e3)}
+.oaf-compare-line:nth-child(3) .oaf-compare-bar{background:linear-gradient(90deg,#a57e38,#f0bb65)}
+.oaf-compare-number{text-align:right;color:#1c485e;font-size:13px;font-variant-numeric:tabular-nums}
+.oaf-compare-nodata{background:repeating-linear-gradient(135deg,#e7ecec 0 6px,#d7e0e0 6px 12px)}
+.oaf-compare-correlations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.oaf-compare-card{padding:16px;background:#f8fafb;border:1px solid #dce9ed;border-radius:13px;display:flex;flex-direction:column;gap:6px}
+.oaf-compare-card small{font-size:11px;color:#5b7282}
+.oaf-compare-card strong{font-size:25px;line-height:1.2;color:#145f7a}
+.oaf-compare-card span{font-size:11px;color:#57717b}
+@media(max-width:790px){.oaf-compare-correlations{grid-template-columns:1fr}.oaf-compare-line{grid-template-columns:1fr;gap:5px}.oaf-compare-number{text-align:left}}
