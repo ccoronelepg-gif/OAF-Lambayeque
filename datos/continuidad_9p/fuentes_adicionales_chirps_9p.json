@@ -28,14 +28,14 @@
     }
   ],
   "n_meses_referencia_9o": 108,
-  "n_meses_9p_nuevos": 4,
+  "n_meses_9p_nuevos": 12,
   "n_meses_objetivo": 360,
-  "n_meses_pendientes": 248,
+  "n_meses_pendientes": 240,
   "meses_intentados_lote": [
-    "2001-01",
-    "2001-02",
-    "2001-03",
-    "2001-04"
+    "2001-09",
+    "2001-10",
+    "2001-11",
+    "2001-12"
   ],
   "problema_sonda": null,
   "nuevos": [
@@ -92,6 +92,134 @@
       "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.04.tif",
       "sha256": "43ad6b8040c042271e1c65f12892c16787d79c77aefc5779f2270a30b5f10653",
       "bytes": 22912518,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-05",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.05.tif",
+      "sha256": "54c795bbe724cfaca23c50a457ceeb6e995071375fbbebe00bf0ccda839fb002",
+      "bytes": 22709722,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-06",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.06.tif",
+      "sha256": "1da9421920fde6a22bcfcb5c96d208154605e5f820afc29d97a97c9971a6b138",
+      "bytes": 22553264,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-07",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.07.tif",
+      "sha256": "18d2694ce6f6b852b605b32c6f5ffa80bde633637e71e3c9da17802fe12b6f28",
+      "bytes": 23697282,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-08",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.08.tif",
+      "sha256": "6975616c9978f0960daf86f1189bf7f9c1fbf6fefe1703b76e5f3fec10cbf96a",
+      "bytes": 23815760,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-09",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.09.tif",
+      "sha256": "c272fbde64b6aa865dea05f5ce429058bd24a751748bb597eed190ef015fb556",
+      "bytes": 23781416,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-10",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.10.tif",
+      "sha256": "7ab7f49df8bad6661baa95836492c8026bdde2e31ff30c81a304f21b663bc27d",
+      "bytes": 23035724,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-11",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.11.tif",
+      "sha256": "22b1929e14071ddecf9f79a6ca1e001f11049ff7a92f3e238a27f9bf0b96b06e",
+      "bytes": 22289772,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-12",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.12.tif",
+      "sha256": "5119f1e62da0708a80c3da98eb855b01b6916fd79b1fdadc3a5e4bff5afe99c6",
+      "bytes": 23307228,
       "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
       "n_sectores": 42,
       "n_testigos": 81,

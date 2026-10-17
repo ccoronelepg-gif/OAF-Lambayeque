@@ -4,7 +4,7 @@ S001,1997,36.638,12,true,false
 S001,1998,516.744,12,true,false
 S001,1999,59.542,12,true,false
 S001,2000,5.019,12,true,false
-S001,2001,,4,true,false
+S001,2001,27.552,12,true,false
 S001,2002,27.802,12,true,false
 S001,2003,,0,false,false
 S001,2004,,0,false,false
@@ -34,7 +34,7 @@ S002,1997,33.966,12,true,false
 S002,1998,531.238,12,true,false
 S002,1999,47.63,12,true,false
 S002,2000,3.963,12,true,false
-S002,2001,,4,true,false
+S002,2001,22.934,12,true,false
 S002,2002,27.495,12,true,false
 S002,2003,,0,false,false
 S002,2004,,0,false,false
@@ -64,7 +64,7 @@ S003,1997,42.568,12,true,false
 S003,1998,517.029,12,true,false
 S003,1999,64.647,12,true,false
 S003,2000,5.899,12,true,false
-S003,2001,,4,true,false
+S003,2001,27.159,12,true,false
 S003,2002,23.285,12,true,false
 S003,2003,,0,false,false
 S003,2004,,0,false,false
@@ -94,7 +94,7 @@ S004,1997,34.379,12,true,false
 S004,1998,444.314,12,true,false
 S004,1999,57.017,12,true,false
 S004,2000,4.839,12,true,false
-S004,2001,,4,true,false
+S004,2001,31.684,12,true,false
 S004,2002,25.693,12,true,false
 S004,2003,,0,false,false
 S004,2004,,0,false,false
@@ -124,7 +124,7 @@ S005,1997,49.396,12,true,false
 S005,1998,709.71,12,true,false
 S005,1999,106.447,12,true,false
 S005,2000,25.581,12,true,false
-S005,2001,,4,true,false
+S005,2001,58.39,12,true,false
 S005,2002,59.226,12,true,false
 S005,2003,,0,false,false
 S005,2004,,0,false,false
@@ -154,7 +154,7 @@ S006,1997,679.943,12,true,false
 S006,1998,1937.475,12,true,false
 S006,1999,1125.54,12,true,false
 S006,2000,846.938,12,true,false
-S006,2001,,4,true,false
+S006,2001,709.175,12,true,false
 S006,2002,760.998,12,true,false
 S006,2003,,0,false,false
 S006,2004,,0,false,false
@@ -184,7 +184,7 @@ S007,1997,760.795,12,true,false
 S007,1998,2434.013,12,true,false
 S007,1999,1249.093,12,true,false
 S007,2000,1024.019,12,true,false
-S007,2001,,4,true,false
+S007,2001,824.281,12,true,false
 S007,2002,862.565,12,true,false
 S007,2003,,0,false,false
 S007,2004,,0,false,false
@@ -214,7 +214,7 @@ S008,1997,520.53,12,true,false
 S008,1998,1589.296,12,true,false
 S008,1999,900.67,12,true,false
 S008,2000,629.776,12,true,false
-S008,2001,,4,true,false
+S008,2001,531.887,12,true,false
 S008,2002,597.592,12,true,false
 S008,2003,,0,false,false
 S008,2004,,0,false,false
@@ -244,7 +244,7 @@ S009,1997,61.918,12,true,false
 S009,1998,977.224,12,true,false
 S009,1999,204.73,12,true,false
 S009,2000,79.249,12,true,false
-S009,2001,,4,true,false
+S009,2001,152.329,12,true,false
 S009,2002,145.039,12,true,false
 S009,2003,,0,false,false
 S009,2004,,0,false,false
@@ -274,7 +274,7 @@ S010,1997,182.385,12,true,false
 S010,1998,1235.196,12,true,false
 S010,1999,426.972,12,true,false
 S010,2000,243.972,12,true,false
-S010,2001,,4,true,false
+S010,2001,284.603,12,true,false
 S010,2002,232.204,12,true,false
 S010,2003,,0,false,false
 S010,2004,,0,false,false
@@ -304,7 +304,7 @@ S011,1997,77.721,12,true,false
 S011,1998,876.941,12,true,false
 S011,1999,210.16,12,true,false
 S011,2000,92.215,12,true,false
-S011,2001,,4,true,false
+S011,2001,169.944,12,true,false
 S011,2002,175.926,12,true,false
 S011,2003,,0,false,false
 S011,2004,,0,false,false
@@ -334,7 +334,7 @@ S012,1997,240.468,12,true,false
 S012,1998,1352.14,12,true,false
 S012,1999,529.624,12,true,false
 S012,2000,355.009,12,true,false
-S012,2001,,4,true,false
+S012,2001,360.657,12,true,false
 S012,2002,371.554,12,true,false
 S012,2003,,0,false,false
 S012,2004,,0,false,false
@@ -364,7 +364,7 @@ S013,1997,156.493,12,true,false
 S013,1998,941.822,12,true,false
 S013,1999,230.482,12,true,false
 S013,2000,176.681,12,true,false
-S013,2001,,4,true,false
+S013,2001,219.62,12,true,false
 S013,2002,204.263,12,true,false
 S013,2003,,0,false,false
 S013,2004,,0,false,false
@@ -394,7 +394,7 @@ S014,1997,312.924,12,true,false
 S014,1998,920.914,12,true,false
 S014,1999,552.312,12,true,false
 S014,2000,347.748,12,true,false
-S014,2001,,4,true,false
+S014,2001,332.719,12,true,false
 S014,2002,389.824,12,true,false
 S014,2003,,0,false,false
 S014,2004,,0,false,false
@@ -424,7 +424,7 @@ S015,1997,386.216,12,true,false
 S015,1998,1531.12,12,true,false
 S015,1999,733.077,12,true,false
 S015,2000,511.633,12,true,false
-S015,2001,,4,true,false
+S015,2001,512.386,12,true,false
 S015,2002,504.235,12,true,false
 S015,2003,,0,false,false
 S015,2004,,0,false,false
@@ -454,7 +454,7 @@ S016,1997,445.28,12,true,false
 S016,1998,1530.081,12,true,false
 S016,1999,781.648,12,true,false
 S016,2000,583.215,12,true,false
-S016,2001,,4,true,false
+S016,2001,449.157,12,true,false
 S016,2002,534.654,12,true,false
 S016,2003,,0,false,false
 S016,2004,,0,false,false
@@ -484,7 +484,7 @@ S017,1997,338.631,12,true,false
 S017,1998,1372.1,12,true,false
 S017,1999,711.852,12,true,false
 S017,2000,672.869,12,true,false
-S017,2001,,4,true,false
+S017,2001,437.06,12,true,false
 S017,2002,523.677,12,true,false
 S017,2003,,0,false,false
 S017,2004,,0,false,false
@@ -514,7 +514,7 @@ S018,1997,306.069,12,true,false
 S018,1998,1389.214,12,true,false
 S018,1999,601.97,12,true,false
 S018,2000,411.551,12,true,false
-S018,2001,,4,true,false
+S018,2001,418.552,12,true,false
 S018,2002,403.549,12,true,false
 S018,2003,,0,false,false
 S018,2004,,0,false,false
@@ -544,7 +544,7 @@ S019,1997,268.071,12,true,false
 S019,1998,1857.0,12,true,false
 S019,1999,741.118,12,true,false
 S019,2000,466.738,12,true,false
-S019,2001,,4,true,false
+S019,2001,616.245,12,true,false
 S019,2002,549.943,12,true,false
 S019,2003,,0,false,false
 S019,2004,,0,false,false
@@ -574,7 +574,7 @@ S020,1997,443.835,12,true,false
 S020,1998,2005.944,12,true,false
 S020,1999,967.753,12,true,false
 S020,2000,753.526,12,true,false
-S020,2001,,4,true,false
+S020,2001,688.466,12,true,false
 S020,2002,675.751,12,true,false
 S020,2003,,0,false,false
 S020,2004,,0,false,false
@@ -604,7 +604,7 @@ S021,1997,477.281,12,true,false
 S021,1998,1346.809,12,true,false
 S021,1999,824.082,12,true,false
 S021,2000,498.178,12,true,false
-S021,2001,,4,true,false
+S021,2001,439.158,12,true,false
 S021,2002,525.959,12,true,false
 S021,2003,,0,false,false
 S021,2004,,0,false,false
@@ -634,7 +634,7 @@ S022,1997,506.04,12,true,false
 S022,1998,1088.18,12,true,false
 S022,1999,833.959,12,true,false
 S022,2000,561.189,12,true,false
-S022,2001,,4,true,false
+S022,2001,503.151,12,true,false
 S022,2002,495.254,12,true,false
 S022,2003,,0,false,false
 S022,2004,,0,false,false
@@ -664,7 +664,7 @@ S023,1997,160.488,12,true,false
 S023,1998,1420.927,12,true,false
 S023,1999,388.949,12,true,false
 S023,2000,184.668,12,true,false
-S023,2001,,4,true,false
+S023,2001,322.119,12,true,false
 S023,2002,325.509,12,true,false
 S023,2003,,0,false,false
 S023,2004,,0,false,false
@@ -694,7 +694,7 @@ S024,1997,237.446,12,true,false
 S024,1998,1399.998,12,true,false
 S024,1999,498.772,12,true,false
 S024,2000,421.919,12,true,false
-S024,2001,,4,true,false
+S024,2001,448.411,12,true,false
 S024,2002,466.497,12,true,false
 S024,2003,,0,false,false
 S024,2004,,0,false,false
@@ -724,7 +724,7 @@ S025,1997,96.125,12,true,false
 S025,1998,1072.675,12,true,false
 S025,1999,288.931,12,true,false
 S025,2000,120.452,12,true,false
-S025,2001,,4,true,false
+S025,2001,161.014,12,true,false
 S025,2002,169.531,12,true,false
 S025,2003,,0,false,false
 S025,2004,,0,false,false
@@ -754,7 +754,7 @@ S026,1997,62.18,12,true,false
 S026,1998,899.593,12,true,false
 S026,1999,156.477,12,true,false
 S026,2000,60.465,12,true,false
-S026,2001,,4,true,false
+S026,2001,104.528,12,true,false
 S026,2002,120.007,12,true,false
 S026,2003,,0,false,false
 S026,2004,,0,false,false
@@ -784,7 +784,7 @@ S027,1997,238.899,12,true,false
 S027,1998,1408.087,12,true,false
 S027,1999,552.949,12,true,false
 S027,2000,389.486,12,true,false
-S027,2001,,4,true,false
+S027,2001,333.076,12,true,false
 S027,2002,331.118,12,true,false
 S027,2003,,0,false,false
 S027,2004,,0,false,false
@@ -844,7 +844,7 @@ S029,1997,191.936,12,true,false
 S029,1998,1196.242,12,true,false
 S029,1999,412.428,12,true,false
 S029,2000,213.457,12,true,false
-S029,2001,,4,true,false
+S029,2001,230.974,12,true,false
 S029,2002,235.963,12,true,false
 S029,2003,,0,false,false
 S029,2004,,0,false,false
@@ -874,7 +874,7 @@ S030,1997,42.549,12,true,false
 S030,1998,819.378,12,true,false
 S030,1999,136.721,12,true,false
 S030,2000,44.216,12,true,false
-S030,2001,,4,true,false
+S030,2001,113.471,12,true,false
 S030,2002,124.356,12,true,false
 S030,2003,,0,false,false
 S030,2004,,0,false,false
@@ -904,7 +904,7 @@ S031,1997,46.24,12,true,false
 S031,1998,901.271,12,true,false
 S031,1999,199.759,12,true,false
 S031,2000,55.753,12,true,false
-S031,2001,,4,true,false
+S031,2001,152.776,12,true,false
 S031,2002,155.39,12,true,false
 S031,2003,,0,false,false
 S031,2004,,0,false,false
@@ -964,7 +964,7 @@ S033,1997,74.266,12,true,false
 S033,1998,966.906,12,true,false
 S033,1999,302.291,12,true,false
 S033,2000,123.386,12,true,false
-S033,2001,,4,true,false
+S033,2001,234.888,12,true,false
 S033,2002,273.178,12,true,false
 S033,2003,,0,false,false
 S033,2004,,0,false,false
@@ -1024,7 +1024,7 @@ S035,1997,140.89,12,true,false
 S035,1998,870.065,12,true,false
 S035,1999,284.295,12,true,false
 S035,2000,172.184,12,true,false
-S035,2001,,4,true,false
+S035,2001,218.319,12,true,false
 S035,2002,254.286,12,true,false
 S035,2003,,0,false,false
 S035,2004,,0,false,false
@@ -1054,7 +1054,7 @@ S036,1997,114.674,12,true,false
 S036,1998,804.153,12,true,false
 S036,1999,190.278,12,true,false
 S036,2000,129.104,12,true,false
-S036,2001,,4,true,false
+S036,2001,163.336,12,true,false
 S036,2002,165.62,12,true,false
 S036,2003,,0,false,false
 S036,2004,,0,false,false
@@ -1084,7 +1084,7 @@ S037,1997,63.064,12,true,false
 S037,1998,948.33,12,true,false
 S037,1999,158.425,12,true,false
 S037,2000,43.649,12,true,false
-S037,2001,,4,true,false
+S037,2001,113.228,12,true,false
 S037,2002,105.177,12,true,false
 S037,2003,,0,false,false
 S037,2004,,0,false,false
@@ -1114,7 +1114,7 @@ S038,1997,147.612,12,true,false
 S038,1998,1166.65,12,true,false
 S038,1999,340.029,12,true,false
 S038,2000,172.086,12,true,false
-S038,2001,,4,true,false
+S038,2001,210.498,12,true,false
 S038,2002,203.226,12,true,false
 S038,2003,,0,false,false
 S038,2004,,0,false,false
@@ -1144,7 +1144,7 @@ S039,1997,47.794,12,true,false
 S039,1998,501.428,12,true,false
 S039,1999,53.088,12,true,false
 S039,2000,29.188,12,true,false
-S039,2001,,4,true,false
+S039,2001,50.008,12,true,false
 S039,2002,54.414,12,true,false
 S039,2003,,0,false,false
 S039,2004,,0,false,false
@@ -1174,7 +1174,7 @@ S040,1997,106.617,12,true,false
 S040,1998,1042.677,12,true,false
 S040,1999,234.522,12,true,false
 S040,2000,103.362,12,true,false
-S040,2001,,4,true,false
+S040,2001,179.113,12,true,false
 S040,2002,185.472,12,true,false
 S040,2003,,0,false,false
 S040,2004,,0,false,false
@@ -1204,7 +1204,7 @@ S041,1997,151.346,12,true,false
 S041,1998,1335.318,12,true,false
 S041,1999,366.509,12,true,false
 S041,2000,167.512,12,true,false
-S041,2001,,4,true,false
+S041,2001,280.75,12,true,false
 S041,2002,285.228,12,true,false
 S041,2003,,0,false,false
 S041,2004,,0,false,false
@@ -1234,7 +1234,7 @@ S042,1997,126.719,12,true,false
 S042,1998,784.124,12,true,false
 S042,1999,180.628,12,true,false
 S042,2000,123.128,12,true,false
-S042,2001,,4,true,false
+S042,2001,160.683,12,true,false
 S042,2002,167.421,12,true,false
 S042,2003,,0,false,false
 S042,2004,,0,false,false
