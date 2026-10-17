@@ -40,32 +40,22 @@ async function getJson(url){
 function analysis(weather,air,locality){
   const phrases=[];
   if(weather){
-    const t=weather.temperature_2m,h=weather.relative_humidity_2m,v=weather.wind_speed_10m;
-    if(finite(t)){
-      if(t>=33)phrases.push("Temperatura elevada ("+format(t)+" °C): puede aumentar el estrés térmico en personas y animales, especialmente durante exposición prolongada, y la demanda de agua de los cultivos.");
-      else if(t>=29)phrases.push("Ambiente cálido ("+format(t)+" °C): conviene considerar hidratación, sombra y disponibilidad de agua para animales y plantas.");
-      else if(t<16)phrases.push("Ambiente fresco ("+format(t)+" °C): las respuestas de plantas y animales dependen de la especie, etapa de crecimiento y exposición.");
-      else phrases.push("Temperatura de "+format(t)+" °C, sin señalar un extremo térmico por este indicador aislado.");
-    }
-    if(finite(h)){
-      if(h>=80)phrases.push("Humedad relativa alta ("+format(h,0)+" %): puede contribuir a ambientes húmedos, pero por sí sola no confirma mojado foliar, infecciones ni enfermedades.");
-      else if(h<=35)phrases.push("Humedad relativa baja ("+format(h,0)+" %): la atmósfera puede favorecer mayor pérdida de agua; el efecto depende del cultivo y de la ventilación.");
-    }
-    if(finite(v)&&v>=30)phrases.push("Viento de "+format(v,0)+" km/h a 10 m: conviene considerar exposición durante labores y aplicaciones agrícolas; no equivale a medir ráfagas.");
+    if(finite(weather.temperature_2m))phrases.push("🌡️ Temperatura del aire: "+format(weather.temperature_2m)+" °C. Es un valor informativo modelado; no se determina si es inusual sin compararlo con una referencia climática local adecuada.");
+    if(finite(weather.relative_humidity_2m))phrases.push("💧 Humedad relativa: "+format(weather.relative_humidity_2m,0)+" %. No demuestra que el follaje esté mojado ni permite diagnosticar enfermedades.");
+    if(finite(weather.precipitation))phrases.push("🌧️ Precipitación modelada del intervalo reciente: "+format(weather.precipitation)+" mm. Para los próximos días consulte las barras de pronóstico.");
+    if(finite(weather.shortwave_radiation))phrases.push("☀️ Radiación de onda corta: "+format(weather.shortwave_radiation,0)+" W/m², valor informativo para la hora indicada, no índice UV.");
+    if(finite(weather.wind_speed_10m))phrases.push("🌬️ Viento modelado a 10 m: "+format(weather.wind_speed_10m)+" km/h. No representa ráfagas ni exposición precisa en parcela.");
   }
-  if(air && finite(air.european_aqi)){
-    const index=air.european_aqi,descriptor=airDescription(index);
-    if(index<=20)phrases.push("Calidad del aire modelada buena (AQI europeo "+format(index,0)+"). Es una referencia general, no una garantía de exposición individual ni del estado de los cultivos.");
-    else if(index<=40)phrases.push("Calidad del aire modelada razonable (AQI europeo "+format(index,0)+"); personas sensibles pueden requerir más información según el contaminante.");
-    else phrases.push("Calidad del aire modelada "+descriptor+" (AQI europeo "+format(index,0)+"): la exposición puede ser relevante para la salud de las personas y los animales; el efecto vegetal requiere analizar contaminantes específicos.");
-  } else {
-    phrases.push("No se pudo evaluar la calidad del aire en esta consulta: el modelo no entregó un índice utilizable.");
-  }
-  phrases.push("Lectura orientativa para "+locality+"; valores de modelos regionales, no sensores locales, diagnóstico sanitario ni aviso oficial.");
-  return phrases.slice(0,4).join(" ");
+  if(air && finite(air.european_aqi))phrases.push("🌫️ Calidad del aire, índice europeo calculado con CAMS: "+format(air.european_aqi,0)+" ("+airDescription(air.european_aqi)+"). No es un sensor local ni diagnóstico sanitario.");
+  else phrases.push("Calidad del aire: no evaluable en esta consulta; no se sustituye por una estimación inventada.");
+  phrases.push("Lectura orientativa para "+locality+"; las respuestas de personas, animales y cultivos dependen del contexto y de mediciones complementarias. Interpretación aún no validada localmente.");
+  return phrases.join(" ");
 }
 function reset(){
-  for(const id of ["oaf-live-temp","oaf-live-prec","oaf-live-hum","oaf-live-vpd","oaf-live-wind","oaf-live-rad","oaf-live-air"])put(id,"—");
+  for(const id of ["temp","prec","hum","vpd","wind","rad","air"]){
+    put("oaf-live-"+id,"—");
+    put("oaf-meta-"+id,"Esperando hora de validez · fuente modelada");
+  }
 }
 async function update(){
   const site=ids("oaf-home-location");
@@ -107,7 +97,13 @@ async function update(){
   if(air && finite(air.european_aqi)){
     put("oaf-live-air",format(air.european_aqi,0)+" · "+airDescription(air.european_aqi));
   }
-  const time=weather?.time||air?.time;
+  const wtime=weather?.time,atime=air?.time;
+  const wt="Validez: "+dateText(wtime)+" · Open-Meteo, modelo meteorológico; no observación instrumental.";
+  const at="Validez: "+dateText(atime)+" · Open-Meteo/CAMS global; modelo de calidad del aire.";
+  for(const id of ["temp","prec","hum","vpd","wind","rad"])
+    put("oaf-meta-"+id,weather?wt:"Sin dato · Open-Meteo (modelo meteorológico)");
+  put("oaf-meta-air",air?at:"Sin dato · Open-Meteo/CAMS global (modelo)");
+  const time=wtime||atime;
   put("oaf-home-source","Fuente: Open-Meteo (modelo meteorológico) · Calidad del aire: Open-Meteo/CAMS global (modelo) · "+city+
       " · "+dateText(time)+
       ". Calidad del aire: AQI europeo, no sensor local. Valores de validez modelada.");
@@ -115,6 +111,8 @@ async function update(){
   const pm=(air&&finite(air.pm2_5)&&finite(air.pm10))
     ? " PM₂.₅: "+format(air.pm2_5)+" µg/m³; PM₁₀: "+format(air.pm10)+" µg/m³ (estimaciones).":"";
   put("oaf-home-analysis", (!weather?"No se pudo obtener el modelo meteorológico en este momento. ":"")+outlook+pm);
+  if(typeof CustomEvent==="function" && typeof document.dispatchEvent==="function")
+    document.dispatchEvent(new CustomEvent("oaf:weather",{detail:{localidad:city,current:weather,air,time}}));
   if(!weather && !air){
     put("oaf-home-source","Fuente: Open-Meteo (modelo externo) · "+city+" · sin conexión o datos actuales. No se muestran valores inventados.");
   }
