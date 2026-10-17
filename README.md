@@ -10,9 +10,9 @@
 
 ## Fase 10C · Reentrenamiento con rezagos t−2 y calibración separada (17/10/2026)
 
-Se reentrenaron **Random Forest y GCN** sobre cinco bloques geográficos de 39 sectores, utilizando solamente rezagos t−2, t−3, t−4, t−6, t−12 para pronósticos mensuales, ajuste de 2016–2018 y calibración independiente de 2019–2020. La prueba 2021–2025 produjo **MAE 18,1443 mm para RF y 17,6452 mm para GCN** (climatología por piso: 20,3708 mm). En 2023, la cobertura de intervalos nominales 90 % fue **85,04 % RF y 79,49 % GCN**. Los resultados usan CHIRPS v3 FINAL revisado: **NO son pruebas as-issued ni habilitan alertas**. El cambio respecto a 9X combina rezagos y una ventana distinta de selección de hiperparámetros.
+Se reentrenaron **Random Forest y GCN** sobre cinco bloques geográficos de 39 sectores, utilizando solamente rezagos t−2, t−3, t−4, t−6, t−12 para pronósticos mensuales, ajuste de 2016–2018 y calibración independiente de 2019–2020. La prueba 2021–2025 produjo **MAE 18,1443 mm para RF y 17,6429 mm para GCN** (climatología por piso: 20,3708 mm). En 2023, la cobertura de intervalos nominales 90 % fue **85,04 % RF y 79,49 % GCN**. Los resultados usan CHIRPS v3 FINAL revisado: **NO son pruebas as-issued ni habilitan alertas**. El cambio respecto a 9X combina rezagos y una ventana distinta de selección de hiperparámetros.
 
-[Panel 10C](evaluacion-lag2.html) · [Documento metodológico](FASE_10C_REENTRENAMIENTO_LAG2.md) · [Modelo reproducible](modelos/reentrenamiento_lag2_10c.py) · [Validación CI](.github/workflows/oaf_10c_reentrenamiento.yml) · [Resultados cuando finalice la ejecución](datos/reentrenamiento_10c/evaluacion_lag2_10c.json).
+[Panel 10C](evaluacion-lag2.html) · [Documento metodológico](FASE_10C_REENTRENAMIENTO_LAG2.md) · [Modelo reproducible](modelos/reentrenamiento_lag2_10c.py) · [Validación CI](.github/workflows/oaf_10c_reentrenamiento.yml) · [Resultados publicados](datos/reentrenamiento_10c/evaluacion_lag2_10c.json).
 
 ## Fase 10B · Incertidumbre y sensibilidad en años extremos (17/10/2026)
 
