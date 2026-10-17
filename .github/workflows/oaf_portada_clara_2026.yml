@@ -1,0 +1,50 @@
+name: OAF - Experiencia web y portada climatica
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/oaf-inicio-climatico-2026.js'
+      - 'assets/oaf-interfaz-clara-2026.js'
+      - 'assets/oaf-interfaz-clara-2026.css'
+      - 'assets/oaf-redesign-8f.js'
+      - 'tests/test_portada_2026.js'
+      - '.github/workflows/oaf_portada_clara_2026.yml'
+permissions:
+  contents: read
+jobs:
+  qa_publica:
+    name: Calidad de experiencia de usuario
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar JavaScript sin errores sintacticos
+        run: |
+          node --check assets/oaf-inicio-climatico-2026.js
+          node --check assets/oaf-interfaz-clara-2026.js
+          node --check assets/oaf-redesign-8f.js
+          node --check assets/oaf-arquitectura-2026.js
+      - name: Probar portada, AQI, mensajes y fallos parciales
+        run: |
+          node tests/test_portada_2026.js
+      - name: Auditar identificadores accesibles y enlaces de fuentes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text(encoding='utf8')
+          home=s.split('<section data-page="inicio" id="inicio">',1)[1].split('<section data-page="clima" id="clima" hidden>',1)[0]
+          for element in ['oaf-home-location','oaf-home-refresh','oaf-live-temp','oaf-live-prec',
+            'oaf-live-hum','oaf-live-vpd','oaf-live-wind','oaf-live-rad',
+            'oaf-live-air','oaf-home-source','oaf-home-analysis','oaf-strengths-summary']:
+            assert home.count('id="'+element+'"')==1, element
+          for provider in ['open-meteo.com','ecmwf.int','cpc.ncep.noaa.gov','chc.ucsb.edu','atmosphere.copernicus.eu','enfen.imarpe.gob.pe','senamhi.gob.pe','gob.pe/senasa']:
+            assert provider in home, provider
+          assert 'oaf-news-grid' not in home
+          assert 'oaf-current-status-title' not in home
+          print('Estructura y atribución documental correctas')
+          PY
