@@ -42,7 +42,7 @@ class Test8PSampling(unittest.TestCase):
   self.assertEqual(report["n_testigos_totales_propuestos"],81)
  def test_dem_metadata_altered_is_not_accepted(self):
   p=self.root/m.NODES;txt=p.read_text()
-  p.write_text(txt.replace("false","true",1))
+  p.write_text(txt.replace(",false\n",",true\n",1))
   with self.assertRaisesRegex(ValueError,"falsamente"):
    m.select(self.root)
  def test_geo_distance_and_no_coincidence_rules(self):
