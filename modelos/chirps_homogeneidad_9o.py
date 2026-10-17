@@ -171,6 +171,34 @@ def build(max_months=360,workers=6,years=None):
      errors.append({"mes":mon,"url":source_url(mon),
        "error":f"{type(e).__name__}: {e}"[:280]})
    # No persistir ninguno de los TIFF íntegros; cada uno lleva SHA y URL fuente.
+ # Fusionar sin perder meses previamente auditados. No sobrescribir un vintage
+ # diferente sin explicar la modificación; cada mes conserva su SHA original.
+ old=None
+ if DAYS.exists() and SERIES.exists() and WITNESS.exists():
+  old=json.loads(DAYS.read_text("utf8"))
+  if old.get("fase")!="9O":raise ValueError("Manifiesto 9O preexistente desconocido")
+  earlier={x["mes"]:x for x in old["fuentes"]}
+  now={x["mes"]:x for x in sources}
+  for month,item in earlier.items():
+   if month in now and now[month]["sha256"]!=item["sha256"]:
+    raise ValueError("El proveedor cambió CHIRPS ya archivado en "+month)
+  old_sec=read_csv(SERIES);old_wit=read_csv(WITNESS)
+  for item in old_sec:
+   if item["mes"] not in now:s_rows.append(item)
+  for item in old_wit:
+   if item["mes"] not in now:p_rows.append(item)
+  for month,item in earlier.items():
+   if month not in now:sources.append(item)
+  old_errors={r["mes"]:r for r in old.get("errores",[])}
+ else:
+  old_errors={}
+ valid_months={i["mes"] for i in sources}
+ pending={**old_errors,**{i["mes"]:i for i in errors}}
+ errors=sorted([v for k,v in pending.items() if k not in valid_months],
+               key=lambda v:v["mes"])
+ sources.sort(key=lambda x:x["mes"])
+ s_rows.sort(key=lambda x:(x["mes"],x["sector"]))
+ p_rows.sort(key=lambda x:(x["mes"],x["testigo"]))
  fields={"sec":F_SEC,"wit":F_WIT}
  for path,rows,cols in ((SERIES,s_rows,F_SEC),(WITNESS,p_rows,F_WIT)):
   with path.open("w",encoding="utf8",newline="") as file:
@@ -178,13 +206,18 @@ def build(max_months=360,workers=6,years=None):
  report={"fase":"9O","producto":"CHIRPS v3 final mensual LATAM a 0.05°",
      "periodo_solicitado":"1996-01 a 2025-12",
      "anios_preseleccionados":[int(y) for y in years] if years is not None else YEARS,
+     "anios_archivados_completos":[y for y in YEARS if all(f"{y}-{m:02d}" in valid_months for m in range(1,13))],
      "meses_objetivo_total_30anios":360,
-     "n_meses_solicitados":len(selected),"n_meses_reales":len(sources),
-     "n_meses_faltantes":len(errors),"n_sectores":42,"n_testigos_reanalisis":81,
+     "n_meses_solicitados":360,"n_meses_reales":len(sources),
+     "n_meses_faltantes":360-len(sources),
+     "n_meses_errores_documentados":len(errors),
+     "n_meses_sin_resultado_ni_error_confirmado":360-len(sources)-len(errors),
+     "nuevos_meses_solicitados_este_lote":len(selected),
+     "nuevos_meses_exitosos_este_lote":n,"n_sectores":42,"n_testigos_reanalisis":81,
      "periodo_climatologico_30anios_completo":len(sources)==360,
      "n_registros_sector_mes":len(s_rows),"n_registros_testigo_mes":len(p_rows),
-     "n_pixeles_chirps_distintos_en_testigos":len(duplicated or {}),
-     "n_testigos_duplican_pixel_chirps":sum(len(v)>1 for v in (duplicated or {}).values()),
+     "n_pixeles_chirps_distintos_en_testigos":len(duplicated or {}) or (old.get("n_pixeles_chirps_distintos_en_testigos",0) if old else 0),
+     "n_testigos_duplican_pixel_chirps":sum(len(v)>1 for v in (duplicated or {}).values()) if duplicated else (old.get("n_testigos_duplican_pixel_chirps",0) if old else 0),
      "errores":errors,"fuentes":sources,
      "raw_geotiff_archivado_en_github":False,
      "reproduccion_fuente":"Descargar URL mensual original; comparar SHA256 conservado antes de re-extraer.",
