@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'datos/validacion_regional_8s/estado_validacion_8s.json'
       - 'modelos/contraste_oceanico_8t.py'
       - 'tests/test_contraste_oceanico_8t.py'
       - '.github/workflows/oaf_nino12_oceanico_8t.yml'
