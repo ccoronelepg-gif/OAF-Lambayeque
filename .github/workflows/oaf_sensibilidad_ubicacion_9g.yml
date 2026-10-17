@@ -1,0 +1,60 @@
+name: OAF 9G - Incertidumbre geografica de estaciones
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sensibilidad_ubicacion_9g.py'
+      - 'datos/validacion_estaciones_9f/identificacion_territorial_9f.json'
+      - '.github/workflows/oaf_sensibilidad_ubicacion_9g.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-sensibilidad-ubicacion-9g
+  cancel-in-progress: false
+jobs:
+  sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Calcular escenarios territoriales sin inventar celdas
+        run: |
+          python modelos/sensibilidad_ubicacion_9g.py
+          python modelos/sensibilidad_ubicacion_9g.py --check
+      - name: Comprobar restricciones cientificas y elevaciones
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json').read_text('utf8'))
+          assert len(x['estaciones'])==3
+          assert not x['ubicacion_sensor_1963_2014_certificada']
+          assert not x['comparacion_era5_chirps_ejecutada']
+          assert not x['metricas_mae_rmse_sesgo_calculadas']
+          s={a['nombre']:a for a in x['estaciones']}
+          assert s['Puchaca']['rango_publicado_altitud_m']>=445
+          assert len(s['Puchaca']['franjas_altitudinales_posibles'])==2
+          assert s['Virrey']['rango_publicado_altitud_m']==61
+          assert s['El Espinal']['rango_publicado_altitud_m']==38
+          assert all(a['desplazamiento_entre_referencias_km']>0 for a in x['estaciones'])
+          assert all(a['parejas_observacion_vs_CHIRPS']==0 and a['parejas_observacion_vs_ERA5_Land']==0 for a in x['estaciones'])
+          print('Se cuantificaron 3 divergencias de ubicación; no se inventaron métricas ERA5/CHIRPS.')
+          PY
+      - name: Publicar datos reproducibles como artefacto trazable
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json
+          if git diff --cached --quiet; then
+            echo 'Sin cambios'
+          else
+            git commit -m 'data(9G): sensibilidad documental de localizacion y cotas de estaciones'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
