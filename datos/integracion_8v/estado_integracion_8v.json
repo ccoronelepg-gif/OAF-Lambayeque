@@ -1,0 +1,53 @@
+{
+  "fase": "8V",
+  "estado": "matrices_retrospectivas_integradas_no_predictivas",
+  "periodo": "1996-01/2025-12",
+  "meses_esperados_por_ubicacion": 360,
+  "localidades_terrestres": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "puntos_de_viento_marino_no_validados_in_situ": [
+    "Mar_frente_Pimentel",
+    "Mar_norte_Lambayeque"
+  ],
+  "filas_matriz_terrestre": 1440,
+  "meses_sitio_lluvia_modelada_ge_1000_mm_revision": 11,
+  "registro_max_lluvia_modelada": {
+    "mes": "1998-03",
+    "localidad": "Motupe",
+    "precipitacion_mes_mm": 2913.8
+  },
+  "filas_matriz_marina": 720,
+  "meses_corriente_geostrofica_integrados": 216,
+  "meses_sin_corriente_geostrofica": 504,
+  "meses_corriente_geostrofica_maximos_2017_2025": 216,
+  "corrientes_marinas_30_anios_completas": false,
+  "viento_es_modelo_no_estacion": true,
+  "lluvia_y_temperatura_son_reanalisis_no_estacion": true,
+  "indices_noaa_no_son_sst_costera_ni_icen": true,
+  "no_son_vintages_historicas_fecha_emision": true,
+  "no_hay_validacion_prospectiva_de_prediccion": true,
+  "no_hay_alerta_fitosanitaria_derivada": true,
+  "sin_imputacion_de_datos_faltantes": true,
+  "climatologia_1996_2025_solo_para_descripcion_no_entrenamiento": true,
+  "rutas_y_sha256_fuente_csv": {
+    "datos/meteorologia_8u/vientos_mensuales_8u.csv": "4896f590a2306b16251b5ab80f6ff359da48c6169ed334ef04e2c3a6e092afbd",
+    "datos/oceanografia_8u/tsm_nino12_mensual_8u.csv": "0ad5523732bf96813c54b7908a5eca05c335eaafc8df5c8ee509fa653fe341b4",
+    "datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv": "dfb875642636c54a0a16e38f604bef366e30096080b442e43e3b89b4d2c3ada3",
+    "datos/lambayeque_mensual_era5_8d.csv": "d325d83475b65a4843d089566c627070108276d114221e5ad3a498c26654ccda"
+  },
+  "rutas_y_sha256_salidas": {
+    "matriz_terrestre_8v.csv": "b07b30becfe6ff9b92b67f88782ca26e552ea06b627d324a62d76d4962a81d4e",
+    "matriz_marina_8v.csv": "ff34c094e90dd191f5d97b7333345865ccb8de79c2e1313e2421e04a18b0cb87"
+  },
+  "limitaciones": [
+    "Rejillas de viento y corrientes no colocalizadas",
+    "Reanalisis no son estaciones instrumentales",
+    "Corrientes geostroficas solo 2017-2025; no corriente total",
+    "NOAA indices revisados ex post; sin vintage por fecha de emision",
+    "Sin validacion externa, causal o prospectiva"
+  ]
+}
