@@ -1,0 +1,33 @@
+{
+  "fase": "9M",
+  "fecha_corte": "2026-10-17",
+  "fuente_ANA_descargada": true,
+  "n_sectores_9k_originales": 42,
+  "n_sectores_con_cruce": 42,
+  "n_cruces_ANA_originales": 91,
+  "n_fragmentos_atomo_tras_quitar_duplicaciones": 109,
+  "n_agrupaciones_hidrofisicas": 107,
+  "n_grupos_con_dos_o_mas_sectores": 2,
+  "n_grupos_con_nucleo_climatico": 9,
+  "n_pisos_con_grupos": 7,
+  "area_solapada_entre_niveles_removida_km2": 0.461,
+  "prioridad_de_desduplicacion": "Codigo hidrografico mas largo primero; luego orden lexicografico, dentro de cada sector 9K.",
+  "cobertura_topografica_total": false,
+  "n_cuencas_operativas_certificadas": 0,
+  "n_zonas_homogeneas_validadas": 0,
+  "modelo_zonal_con_habilidad_demostrada": false,
+  "uso_agricola_certificado": false,
+  "fuentes_sha256": {
+    "9K": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+    "cruces_IDEP_ANA": "f6608322e72d2c138572067ab9789227ffb5329526ab41130c0ac3e7691a4406",
+    "estado_dem": "db01e24bf3e97b426f9d42765c629a7a3aefc8a079baaaaa9622c1ffb1a7b389"
+  },
+  "interpretacion": "Agrupación física exploratoria y de cartografía ANA/IDEP. No implica microclima uniforme: los grupos sin núcleo climático son prioritariamente de muestreo.",
+  "limites": [
+    "Se usan intersecciones de una capa servida por IDEP atribuida a ANA, no verificación jurídica ni catastral.",
+    "El filtro de 9M sobre pendiente y aspecto cubre una tesela, no todo el ámbito de los grupos.",
+    "Los códigos anidados de ANA se priorizan para evitar contar superficies duplicadas.",
+    "El área es geométrica aproximada por UTM 17S de polígonos 9K ya simplificados, no hectáreas cultivadas.",
+    "No se han calibrado pronósticos NOAA por agrupación o verificado fitosanidad de arándano y vid."
+  ]
+}
