@@ -3,7 +3,7 @@
   "estado": "transectos_climaticos_completos_no_zonas_validadas",
   "segmentos_originales_ex_ante": 3,
   "testigos_intermedios_dem_seleccionados": 10,
-  "n_muestras_previas_8p": 1,
+  "n_muestras_previas_8p": 2,
   "fuentes_climaticas_verificadas": 6,
   "fuentes_climaticas_previstas": 6,
   "n_testigos_intermedios_30_anios_completos": 10,
