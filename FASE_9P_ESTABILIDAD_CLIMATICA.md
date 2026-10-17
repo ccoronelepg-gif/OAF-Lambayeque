@@ -8,6 +8,32 @@ La fase 9O verificó **108 meses mensuales de CHIRPS v3 final (nueve años compl
 
 El objetivo 9P es reducir, sin fabricar datos, los meses faltantes CHIRPS v3 y verificar si la fuerte correlación entre algunos sectores de la misma intercuenca persiste cuando cambia la selección temporal. Se consideran simultáneamente los **pisos altitudinales**, la clasificación de **42 polígonos físicos experimentales**, las intersecciones ANA/IDEP de 9M y las advertencias de procedencia de estaciones históricas.
 
+## Resultado cuantitativo verificado — fase 9P (17/10/2026)
+
+La fuente alternativa **USGS CHIRPS v3 final GLOBAL** superó los controles sobre **1996-01** y **2025-12**, comparados contra los CHIRPS final LATAM ya archivados. La diferencia máxima de medias de lluvia entre los **39 sectores con celda terrestre válida** fue de **0,000005 mm** en el primer mes y **0,000004 mm** en el segundo; asimismo, se comprobó cada uno de los **81 testigos**. Este contraste demuestra concordancia de los dos archivos para **los meses y posiciones verificados**, no asegura que futuras revisiones del proveedor sean idénticas.
+
+Se recuperaron los **12 meses de 2001**, con SHA-256 propios, para pasar de **108 a 120 meses (10 años completos)** de CHIRPS en el periodo 1996–2025. Persisten **240 meses todavía no comprobados**, sin imputación. Los años completos son **1996–2002, 2011, 2018 y 2025**, distribuidos desigualmente entre décadas:
+
+| Periodo | Años completos CHIRPS 9P | Límite |
+|---|---:|---|
+| 1996–2005 | **7/10** | Falta 2003–2005 |
+| 2006–2015 | **1/10** | Solo 2011: no es un perfil decenal |
+| 2016–2025 | **2/10** | 2018 y 2025: insuficiente para inferir estabilidad decenal |
+| **1996–2025** | **10/30 años; 120/360 meses** | **NO existe normal completa CHIRPS de 30 años** |
+
+### Sensibilidad temporal de los pares hidrofísicos
+
+El contraste *leave-one-year-out* repite las correlaciones con nueve años cada vez, retirando un año de los diez observados. Se conservan los pares 9M previamente seleccionados, sin escoger puntos por su resultado:
+
+| Sectores y unidad | Correlación histórica CHIRPS | Rango leave-one-year-out | Diferencia de lluvia media |
+|---|---:|---:|---:|
+| **S002–S003**, intercuenca 137779 | **0,94820** | **0,91569–0,95519** | **3,326 %** |
+| **S003–S004**, intercuenca 137773 | **0,94323** | **0,93119–0,95557** | **11,505 %** |
+
+Aunque las correlaciones sobre estos años permanecen relativamente altas, la diferencia de lluvia entre S003 y S004 sigue siendo material. En particular, los tres decenios tienen cobertura profundamente desigual (7/1/2 años), por lo que este experimento **no certifica estabilidad interdecenal de 30 años**. El parecido retrospectivo puede originarse por señal atmosférica común y por la estructura de la misma malla CHIRPS; no equivale a verificación meteorológica espacial independiente ni demuestra habilidad de pronóstico.
+
+**Estado de validación:** 0 zonas climáticas homogéneas certificadas, 0 cuencas operativas oficialmente ratificadas, 0 ajustes NMME por sector con habilidad prospectiva demostrada y 0 alertas fitosanitarias derivadas.
+
 ## 2. Fuente oficial alternativa y control de identidad antes de fusionar
 
 Se identificó el directorio **USGS/FEWS NET, CHIRPS v3 FINAL mensual GLOBAL (GeoTIFF, 0,05°)**: [archivo institucional USGS](https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/).
