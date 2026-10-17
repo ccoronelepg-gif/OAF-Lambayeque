@@ -1,0 +1,71 @@
+name: OAF 9P - Estabilidad climática y acceso CHIRPS v3
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/mirror_chirps_9p.py'
+      - 'modelos/estabilidad_climatica_9p.py'
+      - 'tests/test_estabilidad_9p.py'
+      - '.github/workflows/oaf_estabilidad_9p.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-estabilidad-9p
+  cancel-in-progress: false
+jobs:
+  cotejar-estabilidad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SIG numérico reproducible
+        run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2
+      - name: Comprobar fuente oficial USGS frente a dos meses originales CHC
+        run: |
+          python modelos/mirror_chirps_9p.py --batch 4
+          python modelos/mirror_chirps_9p.py --check
+      - name: Calcular estabilidad entre décadas sin imputar meses faltantes
+        run: |
+          python modelos/estabilidad_climatica_9p.py
+          python modelos/estabilidad_climatica_9p.py --check
+      - name: Comprobaciones científicas y de navegación
+        run: |
+          python -m unittest discover -s tests -p 'test_estabilidad_9p.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_estabilidad_9p.js
+      - name: Garantizar fechas, fuentes y no certificación
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("datos/continuidad_9p")
+          s=json.loads((base/"estado_estabilidad_9p.json").read_text("utf8"))
+          d=json.loads((base/"fuentes_adicionales_chirps_9p.json").read_text("utf8"))
+          assert s["n_meses_chirps_comprobados_total"]+s["n_meses_no_comprobados"]==360
+          assert s["n_zonas_climaticamente_homogeneas_certificadas"]==0
+          assert not s["alertas_fitosanitarias_emitidas"]
+          assert d["n_meses_9p_nuevos"]==0 or d["mirroring_verificado"]
+          assert not s["precision_predictiva_de_alertas_validada"]
+          print("9P historicos:",s["n_meses_chirps_comprobados_total"],"/360")
+          print("9P años completos:",s["n_anios_fuente_completos"])
+          print("9P espejo comprobado:",d["mirroring_verificado"],"; nuevos:",d["n_meses_9p_nuevos"])
+          PY
+      - name: Publicar solo fuentes verificadas y tablas de análisis
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --mixed origin/main
+          git add datos/continuidad_9p/
+          if git diff --cached --quiet; then
+            echo '9P sin datos nuevos'
+          else
+            git commit -m 'data(9P): cotejo CHIRPS USGS y estabilidad interdecenal verificable'
+            git push origin HEAD:main
+          fi
