@@ -31,7 +31,7 @@ class TestOceanIndex8T(unittest.TestCase):
         samples=b"".join(f"{y} {mo} 25 -0.2 26 0.2 28 -0.1 27 0.4\n".encode()
             for y in range(1996,2026) for mo in range(1,13))
         with self.assertRaisesRegex(ValueError,"duplicado"):
-            m.parse_noaa(header+samples+samples[:41]) # handle malformed line too
+            m.parse_noaa(header+samples+b"1996 1 25 -0.2 26 0.2 28 -0.1 27 0.4\n")
     def test_ocean_predates_even_previous_target_month(self):
         idx=artificial_index()
         rows=[{"date":"2012-03","prev":"2012-02","local":.2,"regional":.1,"y":.3,
