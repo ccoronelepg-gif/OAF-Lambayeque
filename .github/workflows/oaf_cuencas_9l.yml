@@ -1,0 +1,53 @@
+name: OAF 9L - Consulta exploratoria de unidades hidrográficas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/consulta_cuencas_9l.py'
+      - '.github/workflows/oaf_cuencas_9l.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9l-hidrografia
+  cancel-in-progress: false
+jobs:
+  unidades-hidrograficas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Paquetes de geometría
+        run: pip install shapely==2.1.2
+      - name: Consultar fuente institucional y conservar ausencia si falla
+        run: python modelos/consulta_cuencas_9l.py
+      - name: Validar publicación responsable
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('datos/relieve_9l')
+          a=json.loads((p/'consulta_unidades_hidrograficas_9l.json').read_text('utf8'))
+          b=json.loads((p/'intersecciones_cuencas_9l.geojson').read_text('utf8'))
+          assert a['fase']=='9L'
+          assert a['n_intersecciones_sector_unidad_referencial']==len(b['features'])
+          assert a['n_unidades_institucionales_certificadas_para_zonificacion']==0
+          assert not a['separacion_por_cuenca_operativa_validada']
+          assert not b['metadata']['cuencas_certificadas']
+          print("Intersecciones referenciales:",len(b['features']))
+          PY
+      - name: Publicar registros con procedencia
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/relieve_9l/consulta_unidades_hidrograficas_9l.json datos/relieve_9l/intersecciones_cuencas_9l.geojson
+          if git diff --cached --quiet; then
+            echo '9L sin nuevos resultados ANA'
+          else
+            git commit -m 'data(9L): registrar unidades hidrográficas referenciales y estado de validación'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
