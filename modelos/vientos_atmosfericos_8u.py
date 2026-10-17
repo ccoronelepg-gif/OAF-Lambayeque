@@ -76,7 +76,7 @@ def validate(raw,start,end):
                 raise ValueError("Viento diario incompleto: "+name)
             if any(type(v) not in (int,float) or not math.isfinite(v) for v in arr):
                 raise ValueError("Viento faltante o no numérico")
-        if any(not(0<=v<360) for v in d["wind_direction_10m_dominant"]):
+        if any(not(0<=v<=360) for v in d["wind_direction_10m_dominant"]):
             raise ValueError("Dirección del viento fuera de 0..360")
         if any(v<0 or v>70 for v in d["wind_speed_10m_mean"]):
             raise ValueError("Velocidad media del viento inverosímil")
@@ -154,7 +154,7 @@ def calculate(root):
             d=obs["daily"]
             for i,day in enumerate(d["time"]):
                 speed=d["wind_speed_10m_mean"][i]
-                angle=math.radians(d["wind_direction_10m_dominant"][i])
+                angle=math.radians(d["wind_direction_10m_dominant"][i]%360)
                 # Daily mean speed × daily dominant FROM-direction approximates
                 # a daily mean u/v; it is NOT a true hourly/vector average.
                 east=-speed*math.sin(angle)
