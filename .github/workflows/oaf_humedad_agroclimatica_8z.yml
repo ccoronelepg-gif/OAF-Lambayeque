@@ -1,0 +1,62 @@
+name: OAF 8Z - Humedad relativa y VPD ERA5
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/humedad_agroclimatica_8z.py'
+      - 'tests/test_humedad_agroclimatica_8z.py'
+      - '.github/workflows/oaf_humedad_agroclimatica_8z.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-humedad-8z
+  cancel-in-progress: false
+jobs:
+  humedad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cinco pruebas unitarias sin red
+        run: python -m unittest discover -s tests -p 'test_humedad_agroclimatica_8z.py' -v
+      - name: Obtener ERA5 diario 1996-2025 con QA, sin rellenar datos
+        continue-on-error: true
+        run: |
+          for site in Chiclayo Jayanca Motupe Olmos; do
+            python modelos/humedad_agroclimatica_8z.py --fetch --site "$site" || echo "ERA5 sin cobertura validada para $site"
+            sleep 3
+          done
+      - name: Comprobar y publicar originales primero
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/humedad_8z/fuentes/
+          if ! git diff --cached --quiet; then
+            git commit -m 'data(oaf): fuentes ERA5 RH y VPD de 1996-2025 con SHA'
+          fi
+          # Rebuild derived CSV against the most recent repository main.
+          git restore --ignore-unmatch datos/humedad_8z/humedad_vpd_mensual_8z.csv datos/humedad_8z/estado_humedad_8z.json
+          git pull --rebase origin main
+          python modelos/humedad_agroclimatica_8z.py
+          python modelos/humedad_agroclimatica_8z.py --check
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          obj=json.loads(Path('datos/humedad_8z/estado_humedad_8z.json').read_text())
+          assert obj['no_alertas_fitosanitarias'] is True
+          assert obj['no_validacion_instrumental_senamhi'] is True
+          assert obj['registros_mes_sitio'] in (0,360,720,1080,1440)
+          print('Meses sitio auditados',obj['registros_mes_sitio'])
+          PY
+          git add datos/humedad_8z/
+          if ! git diff --cached --quiet; then
+            git commit -m 'data(oaf): humedad relativa y VPD mensuales ERA5 de fuentes sincronizadas'
+          fi
+          git push origin HEAD:main
