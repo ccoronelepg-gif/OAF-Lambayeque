@@ -1,0 +1,285 @@
+{
+  "fase": "8R",
+  "tipo": "backtest_cronologico_pseudoprospectivo_un_mes",
+  "modelo_fuente": "ERA5-Land via Open-Meteo, mismo proveedor histórico",
+  "periodo_normales_exclusivo_calibracion": "1996–2010",
+  "periodo_ajuste_coeficientes": "1997–2010",
+  "periodo_seleccion_estrategia": "2011–2015",
+  "periodo_prueba_estrictamente_reservado": "2016–2025",
+  "fecha_corte_train": "2010-12",
+  "fecha_corte_validacion": "2015-12",
+  "horizonte": "un_mes_calendario_adelante",
+  "n_meses_prueba_por_sitio": 120,
+  "n_sitios": 10,
+  "n_centros_celda_era5land_distintos": 7,
+  "n_sitios_pseudoreplicados": 3,
+  "conteo_valoracion_seleccion_por_celda_no_por_consulta": true,
+  "periodo_de_entrenamiento_val_test_no_solapado": true,
+  "variables_explicativas_disponibles_t_menos_1": true,
+  "modelo_regional_excluye_el_pixel_del_objetivo": true,
+  "senal_regional_promedio_pixels_distintos": true,
+  "normal_de_validacion_test_no_utilizada_en_entrenamiento": true,
+  "estrategias": {
+    "climatologia": "anomalía cero con normal fija 1996–2010",
+    "persistencia": "anomalía propia del mes previo, observada/reanálisis",
+    "regional_rezago": "media del mes anterior en otros píxeles T2m de ERA5-Land (sin el píxel objetivo)",
+    "jerarquico": "regresión ridge global con retrasos local + otros píxeles, calibrada hasta 2010"
+  },
+  "coeficientes_ridge_congelados": {
+    "intercepto": 0.0002421,
+    "rezago_local": 0.75774688,
+    "rezago_regional": 0.12363183
+  },
+  "penalizacion_ridge": 1.0,
+  "evaluacion_validacion_rmse_por_celda": {
+    "climatologia": {
+      "n": 420,
+      "mae_c": 0.48086,
+      "rmse_c": 0.645432,
+      "sesgo_c": -0.22826
+    },
+    "persistencia": {
+      "n": 420,
+      "mae_c": 0.340942,
+      "rmse_c": 0.416145,
+      "sesgo_c": -0.043134
+    },
+    "regional_rezago": {
+      "n": 420,
+      "mae_c": 0.350349,
+      "rmse_c": 0.441655,
+      "sesgo_c": -0.043134
+    },
+    "jerarquico": {
+      "n": 420,
+      "mae_c": 0.322244,
+      "rmse_c": 0.400824,
+      "sesgo_c": -0.064851
+    }
+  },
+  "estrategia_seleccionada_por_validacion": "jerarquico",
+  "evaluacion_prueba_por_celda": {
+    "climatologia": {
+      "n": 840,
+      "mae_c": 0.567104,
+      "rmse_c": 0.748643,
+      "sesgo_c": -0.437431
+    },
+    "persistencia": {
+      "n": 840,
+      "mae_c": 0.299992,
+      "rmse_c": 0.381327,
+      "sesgo_c": 0.016544
+    },
+    "regional_rezago": {
+      "n": 840,
+      "mae_c": 0.355181,
+      "rmse_c": 0.458211,
+      "sesgo_c": 0.016544
+    },
+    "jerarquico": {
+      "n": 840,
+      "mae_c": 0.284107,
+      "rmse_c": 0.363584,
+      "sesgo_c": -0.037065
+    }
+  },
+  "comparacion_prueba": {
+    "rmse_seleccionado_c": 0.363584,
+    "skill_rmse_frente_climatologia": 0.514343,
+    "skill_rmse_frente_persistencia": 0.04653,
+    "mejora_frente_climatologia": true,
+    "mejora_frente_persistencia": true
+  },
+  "evaluacion_prueba_por_testigo": [
+    {
+      "id": "M0179",
+      "transecto": "V1a",
+      "centro_celda_era5land": [
+        -6.4,
+        -79.6
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.422923,
+      "mae_seleccionado_c": 0.325114,
+      "rmse_climatologia_c": 0.897003,
+      "rmse_persistencia_c": 0.437212,
+      "rmse_jerarquico_c": 0.422923,
+      "replica_de_celda_compartida": true
+    },
+    {
+      "id": "M0184",
+      "transecto": "V1a",
+      "centro_celda_era5land": [
+        -6.4,
+        -79.6
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.422396,
+      "mae_seleccionado_c": 0.323705,
+      "rmse_climatologia_c": 0.896692,
+      "rmse_persistencia_c": 0.436599,
+      "rmse_jerarquico_c": 0.422396,
+      "replica_de_celda_compartida": true
+    },
+    {
+      "id": "M0202",
+      "transecto": "V1a",
+      "centro_celda_era5land": [
+        -6.4,
+        -79.5
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.398037,
+      "mae_seleccionado_c": 0.311865,
+      "rmse_climatologia_c": 0.953352,
+      "rmse_persistencia_c": 0.400031,
+      "rmse_jerarquico_c": 0.398037,
+      "replica_de_celda_compartida": true
+    },
+    {
+      "id": "M0203",
+      "transecto": "V1b",
+      "centro_celda_era5land": [
+        -6.4,
+        -79.5
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.398742,
+      "mae_seleccionado_c": 0.312558,
+      "rmse_climatologia_c": 0.953915,
+      "rmse_persistencia_c": 0.400773,
+      "rmse_jerarquico_c": 0.398742,
+      "replica_de_celda_compartida": true
+    },
+    {
+      "id": "M0205",
+      "transecto": "V1b",
+      "centro_celda_era5land": [
+        -6.3,
+        -79.6
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.418624,
+      "mae_seleccionado_c": 0.31848,
+      "rmse_climatologia_c": 0.860455,
+      "rmse_persistencia_c": 0.435778,
+      "rmse_jerarquico_c": 0.418624,
+      "replica_de_celda_compartida": false
+    },
+    {
+      "id": "M0206",
+      "transecto": "V1a",
+      "centro_celda_era5land": [
+        -6.3,
+        -79.5
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.340272,
+      "mae_seleccionado_c": 0.269443,
+      "rmse_climatologia_c": 0.7103,
+      "rmse_persistencia_c": 0.357217,
+      "rmse_jerarquico_c": 0.340272,
+      "replica_de_celda_compartida": false
+    },
+    {
+      "id": "M0253",
+      "transecto": "V2",
+      "centro_celda_era5land": [
+        -6.3,
+        -79.4
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.329294,
+      "mae_seleccionado_c": 0.277688,
+      "rmse_climatologia_c": 0.561718,
+      "rmse_persistencia_c": 0.356813,
+      "rmse_jerarquico_c": 0.329294,
+      "replica_de_celda_compartida": false
+    },
+    {
+      "id": "M0262",
+      "transecto": "V2",
+      "centro_celda_era5land": [
+        -6.2,
+        -79.4
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.289639,
+      "mae_seleccionado_c": 0.230048,
+      "rmse_climatologia_c": 0.546576,
+      "rmse_persistencia_c": 0.3125,
+      "rmse_jerarquico_c": 0.289639,
+      "replica_de_celda_compartida": false
+    },
+    {
+      "id": "M0281",
+      "transecto": "V2",
+      "centro_celda_era5land": [
+        -6.2,
+        -79.29999
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.323571,
+      "mae_seleccionado_c": 0.256109,
+      "rmse_climatologia_c": 0.592105,
+      "rmse_persistencia_c": 0.352436,
+      "rmse_jerarquico_c": 0.323571,
+      "replica_de_celda_compartida": true
+    },
+    {
+      "id": "M0290",
+      "transecto": "V2",
+      "centro_celda_era5land": [
+        -6.2,
+        -79.29999
+      ],
+      "n_meses_2016_2025": 120,
+      "rmse_seleccionado_c": 0.322824,
+      "mae_seleccionado_c": 0.255607,
+      "rmse_climatologia_c": 0.592113,
+      "rmse_persistencia_c": 0.35161,
+      "rmse_jerarquico_c": 0.322824,
+      "replica_de_celda_compartida": true
+    }
+  ],
+  "n_registros_prueba_por_sitio": 1200,
+  "pronostico_operativo_validado_senamhi": false,
+  "evaluacion_prospectiva_real": false,
+  "validacion_instrumental_independiente": false,
+  "zonas_agroclimaticas_homogeneas_certificadas": 0,
+  "capacidad_predictiva_ENFEN_demostrada": false,
+  "riesgo_fitosanitario_validado": false,
+  "cautelas": [
+    "Calibración y validación usan reanálisis ERA5-Land; resultados no son habilidad instrumental ni independencia espacial.",
+    "Las series del test retrospectivo permiten conocer las observaciones de meses ya transcurridos para predecir t+1; no hay predicciones realmente emitidas en 2015.",
+    "Escoger el mejor modelo en validación no garantiza superar climatología o persistencia en 2016-2025.",
+    "Los centros de rejilla pueden repetirse o ser autocorrelacionados. El promedio regional excluye el píxel objetivo y pondera píxeles distintos una sola vez.",
+    "Los parámetros 1996–2010 no representan la normal climática final OAF 1996–2025; es una ventana de calibración necesaria para no contaminar el test.",
+    "No se ha usado una fuente independiente SENAMHI y los transectos no son regiones cartográficas certificadas."
+  ],
+  "trazabilidad": {
+    "archivos_fuente_sha256": [
+      {
+        "modelo": "era5_land",
+        "inicio": 1996,
+        "fin": 2005,
+        "sha256_archivo_original_comprimido": "7bd29b7dec05adcd9a57c495273708309713a9276cc0d1aed0b6f47584e08171"
+      },
+      {
+        "modelo": "era5_land",
+        "inicio": 2006,
+        "fin": 2015,
+        "sha256_archivo_original_comprimido": "830800e6695f0a4bff2c675f3cc6591e39145cba63e7bfea6b64e59cb27e7b27"
+      },
+      {
+        "modelo": "era5_land",
+        "inicio": 2016,
+        "fin": 2025,
+        "sha256_archivo_original_comprimido": "f5d557fb11d37fa27c2d88aa3072daedcbf5ea71532b5ce37f38c3c37fc079b5"
+      }
+    ],
+    "fase_fuente": "8Q",
+    "inspeccion_validada": true
+  }
+}
