@@ -40,6 +40,9 @@ function setPlace(value){
    sel.dispatchEvent(new Event("change",{bubbles:true}));
   }
  }
+ document.querySelectorAll("[data-oaf-set-city]").forEach(button=>{
+  button.setAttribute("aria-pressed",String(button.dataset.oafSetCity===value));
+ });
  document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:value}}));
 }
 function hashAccess(){
