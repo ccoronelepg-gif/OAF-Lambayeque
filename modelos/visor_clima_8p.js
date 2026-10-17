@@ -85,14 +85,16 @@ function draw(){
    num(Number(r.distancia_geografica_km)),num(Number(r.desnivel_dem_m)),
    num(Number(r.distancia_climatica_estandarizada)),
    num(Math.abs(Number(r.diferencia_tmedia_anual_c))),
-   num(Math.abs(Number(r.diferencia_precipitacion_anual_mm))),"No"]){
+   num(Math.abs(Number(r.diferencia_precipitacion_anual_mm))),
+   r.igual_celda_era5==="si"||r.igual_celda_era5land==="si"?"Sí":
+   (r.igual_celda_era5==="desconocido"||r.igual_celda_era5land==="desconocido"?"Sin comprobar":"No"),"No"]){
     const td=document.createElement("td");td.textContent=String(val);tr.append(td);
   }
   tbody.append(tr);
  }
  if(!pairs.length){
   const tr=document.createElement("tr");const td=document.createElement("td");
-  td.colSpan=7;td.textContent="Aún no hay pares que cumplan el filtro descriptivo; se esperan más fuentes climáticas 8P.";
+  td.colSpan=8;td.textContent="Aún no hay pares que cumplan el filtro descriptivo; se esperan más fuentes climáticas 8P.";
   tr.append(td);tbody.append(tr);
  }
 }
@@ -122,7 +124,9 @@ async function load(){
   dem=base;newPoints=up;complete=full;pairs=similar;boundary=g;summary=s;
   state.textContent="Muestreo 8P: 62 testigos nuevos; "+s.testigos_nuevos_con_30_anios+
    " nuevos con clima 1996–2025 completo; "+s.lotes_climaticos_verificados+
-   "/24 fuentes históricas verificadas. Criterios de proximidad y clima son exploratorios, no zonas agroclimáticas certificadas.";
+   "/24 fuentes históricas verificadas. De los "+s.pares_que_superan_filtro_exploratorio+
+   " pares que pasan cribado, "+s.pares_filtrados_con_celda_repetida_era5_o_era5land+
+   " comparten alguna celda del reanálisis; no son evidencias independientes de campo ni zonas certificadas.";
   draw();
  }catch(err){
   tbody.replaceChildren();map.replaceChildren();
