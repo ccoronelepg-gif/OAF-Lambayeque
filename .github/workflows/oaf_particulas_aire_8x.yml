@@ -28,10 +28,12 @@ jobs:
       - name: Ampliar fuente CAMS Global 2025 a cuatro referencias (sin imputar)
         continue-on-error: true
         run: |
-          for site in Chiclayo Jayanca Motupe Olmos; do
-            echo "Solicitando PM de $site"
-            python modelos/particulas_aire_8x.py --fetch --year 2025 --site "$site" || echo "Sin datos validables en $site"
-            sleep 5
+          for year in 2023 2024 2025; do
+            for site in Chiclayo Jayanca Motupe Olmos; do
+              echo "Solicitando PM de $site año $year"
+              python modelos/particulas_aire_8x.py --fetch --year "$year" --site "$site" || echo "Sin datos validables en $site año $year"
+              sleep 4
+            done
           done
       - name: Recomputar datos realmente archivados y verificar
         run: |
