@@ -6,6 +6,8 @@ on:
     paths:
       - 'modelos/relacion_pm_humedad_8z.py'
       - 'tests/test_relacion_pm_humedad_8z.py'
+      - 'modelos/visor_humedad_merra_8z.js'
+      - 'index.html'
       - 'datos/aire_8x/particulas_mensuales_8x.csv'
       - 'datos/humedad_8z/humedad_vpd_mensual_8z.csv'
       - '.github/workflows/oaf_relacion_pm_humedad_8z.yml'
@@ -31,6 +33,19 @@ jobs:
         run: |
           python modelos/relacion_pm_humedad_8z.py
           python modelos/relacion_pm_humedad_8z.py --check
+      - name: Validar panel 8Z y sintaxis JavaScript
+        run: |
+          node --check modelos/visor_humedad_merra_8z.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          for key in ('oaf-8z-humedad','oaf-8z-site','oaf-8z-variable','oaf-8z-graph',
+                      'oaf-8z-count','oaf-8z-nasa','oaf-8z-coincidence',
+                      'oaf-8z-pm-relations','oaf-8z-status'):
+              assert html.count('id="'+key+'"')==1,key
+          assert html.count('src="modelos/visor_humedad_merra_8z.js"')==1
+          print('Interfaz 8Z y selectors verificados')
+          PY
       - name: Revisar fuentes y publicar resultados
         run: |
           python - <<'PY'
