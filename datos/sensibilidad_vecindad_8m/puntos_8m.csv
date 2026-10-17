@@ -17,3 +17,12 @@ Jayanca,NE,-6.34278,-79.7728,7.83846,-6.299995,-79.799995,11.12029,75.0,13.0,tru
 Jayanca,NW,-6.34278,-79.8728,7.83846,-6.299995,-79.9,15.67813,58.0,-4.0,true,360,0.63055,0.63055,0.66712,1.43571,0.0935,241,19,comparacion_descriptiva_sin_validacion_instrumental
 Jayanca,SE,-6.44278,-79.7728,7.83808,-6.400002,-79.799995,0.0,67.0,5.0,false,360,-0.03106,0.03106,0.03229,0.05667,0.00707,0,0,comparacion_descriptiva_sin_validacion_instrumental
 Jayanca,SW,-6.44278,-79.8728,7.83808,-6.400002,-79.9,11.05076,47.0,-15.0,true,360,0.62238,0.62238,0.68833,1.475,0.11376,214,49,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,C,-6.15083,-79.7142,0.0,-6.199997,-79.7,0.0,132.0,0.0,false,360,0.0,0.0,0.0,0.0,0.0,0,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,N,-6.10083,-79.7142,5.55975,-6.099998,-79.7,11.1194,173.0,41.0,true,360,0.09223,0.20506,0.23961,0.53226,0.06904,2,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,S,-6.20083,-79.7142,5.55975,-6.199997,-79.7,0.0,114.0,-18.0,false,360,0.11623,0.11623,0.11644,0.14194,0.00554,0,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,E,-6.15083,-79.6642,5.52775,-6.199997,-79.7,0.0,171.0,39.0,false,360,-0.25435,0.25435,0.25452,0.27742,0.00732,0,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,W,-6.15083,-79.7642,5.52775,-6.199997,-79.799995,11.05392,124.0,-8.0,true,360,0.40628,0.40628,0.4367,0.86774,0.10002,107,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,NE,-6.10083,-79.6642,7.84026,-6.099998,-79.7,11.1194,176.0,44.0,true,360,0.07296,0.19986,0.23213,0.54839,0.06876,3,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,NW,-6.10083,-79.7642,7.84026,-6.099998,-79.799995,15.6797,422.0,290.0,true,360,-0.91775,0.91775,0.93664,1.46129,0.09459,359,109,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,SE,-6.20083,-79.6642,7.8399,-6.199997,-79.7,0.0,150.0,18.0,false,360,-0.1172,0.1172,0.11742,0.13871,0.00565,0,0,comparacion_descriptiva_sin_validacion_instrumental
+Motupe,SW,-6.20083,-79.7642,7.8399,-6.199997,-79.799995,11.05392,107.0,-25.0,true,360,0.51662,0.51662,0.54099,0.97419,0.10007,197,0,comparacion_descriptiva_sin_validacion_instrumental

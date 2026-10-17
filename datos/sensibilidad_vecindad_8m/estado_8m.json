@@ -15,13 +15,14 @@
   "meses_por_punto": 360,
   "n_puntos_esperados": 36,
   "n_pares_mensuales_esperados": 11520,
-  "n_pares_mensuales_comparados": 5760,
+  "n_pares_mensuales_comparados": 8640,
   "resultados_disponibles": false,
   "localidades_con_periodo_completo": [
     "Chiclayo",
-    "Jayanca"
+    "Jayanca",
+    "Motupe"
   ],
-  "bloques_presentes": 8,
+  "bloques_presentes": 10,
   "celdas_originales_8d_certificadas": false,
   "validacion_instrumental": false,
   "habilidad_prospectiva_8e_demostrada": false,
@@ -56,13 +57,13 @@
       "max_distancia_centro_celda_km": 15.67813
     },
     "Motupe": {
-      "n_puntos": 0,
-      "n_vecinos_con_celda_distinta": null,
-      "n_vecinos_misma_celda": null,
-      "max_mae_tmedia_c": null,
-      "max_diferencia_mensual_absoluta_c": null,
-      "max_mae_diferencia_anomalias_c": null,
-      "max_distancia_centro_celda_km": null
+      "n_puntos": 9,
+      "n_vecinos_con_celda_distinta": 5,
+      "n_vecinos_misma_celda": 3,
+      "max_mae_tmedia_c": 0.91775,
+      "max_diferencia_mensual_absoluta_c": 1.46129,
+      "max_mae_diferencia_anomalias_c": 0.10007,
+      "max_distancia_centro_celda_km": 15.6797
     },
     "Olmos": {
       "n_puntos": 0,
@@ -172,6 +173,57 @@
         "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278%2C-6.34278%2C-6.44278%2C-6.39278%2C-6.39278%2C-6.34278%2C-6.34278%2C-6.44278%2C-6.44278&longitude=-79.8228%2C-79.8228%2C-79.8228%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728%2C-79.7728%2C-79.8728&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
         "sha256_respuesta_original": "1fbda7f3901cecec04c5c64a78f9b27ae75d3a82457f7aad31e03b15cbd65437",
         "consulta_utc": "2026-10-16T23:40:48+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Motupe",
+        "periodo": [
+          1996,
+          2005
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083%2C-6.10083%2C-6.20083%2C-6.15083%2C-6.15083%2C-6.10083%2C-6.10083%2C-6.20083%2C-6.20083&longitude=-79.7142%2C-79.7142%2C-79.7142%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "1c29e6be4ae1f8e3c9d4f9ecb7b28298010d60839f6549cabed13a48802d8a59",
+        "consulta_utc": "2026-10-17T01:35:00+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Motupe",
+        "periodo": [
+          2006,
+          2015
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083%2C-6.10083%2C-6.20083%2C-6.15083%2C-6.15083%2C-6.10083%2C-6.10083%2C-6.20083%2C-6.20083&longitude=-79.7142%2C-79.7142%2C-79.7142%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "9d25212d5454bb13d53c8711a32ce65f589fde5d20df3e19536b3b3b7b810c68",
+        "consulta_utc": "2026-10-17T01:35:01+00:00",
+        "variable": "temperature_2m_mean",
+        "modelo": "era5_land",
+        "seleccion": "land",
+        "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+        "sin_validacion_instrumental": true,
+        "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+      },
+      {
+        "fase": "8M",
+        "ciudad": "Motupe",
+        "periodo": [
+          2016,
+          2025
+        ],
+        "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083%2C-6.10083%2C-6.20083%2C-6.15083%2C-6.15083%2C-6.10083%2C-6.10083%2C-6.20083%2C-6.20083&longitude=-79.7142%2C-79.7142%2C-79.7142%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+        "sha256_respuesta_original": "bb0a8b3d941041e6af6c95e821c5ce79e646bda909e1eb3cc2cde97acfce94d5",
+        "consulta_utc": "2026-10-17T01:35:36+00:00",
         "variable": "temperature_2m_mean",
         "modelo": "era5_land",
         "seleccion": "land",

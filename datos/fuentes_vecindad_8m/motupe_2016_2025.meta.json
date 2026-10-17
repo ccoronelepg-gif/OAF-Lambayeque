@@ -1,0 +1,17 @@
+{
+  "fase": "8M",
+  "ciudad": "Motupe",
+  "periodo": [
+    2016,
+    2025
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083%2C-6.10083%2C-6.20083%2C-6.15083%2C-6.15083%2C-6.10083%2C-6.10083%2C-6.20083%2C-6.20083&longitude=-79.7142%2C-79.7142%2C-79.7142%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642%2C-79.6642%2C-79.7642&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+  "sha256_respuesta_original": "bb0a8b3d941041e6af6c95e821c5ce79e646bda909e1eb3cc2cde97acfce94d5",
+  "consulta_utc": "2026-10-17T01:35:36+00:00",
+  "variable": "temperature_2m_mean",
+  "modelo": "era5_land",
+  "seleccion": "land",
+  "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+  "sin_validacion_instrumental": true,
+  "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+}
