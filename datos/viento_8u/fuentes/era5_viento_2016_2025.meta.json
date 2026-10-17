@@ -1,0 +1,20 @@
+{
+  "fase": "8U",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714%2C-6.39278%2C-6.15083%2C-5.98825&longitude=-79.8409%2C-79.8228%2C-79.7142%2C-79.74723&start_date=2016-01-01&end_date=2025-12-31&timezone=America%2FLima&daily=wind_speed_10m_mean%2Cwind_speed_10m_max%2Cwind_direction_10m_dominant&models=era5&cell_selection=land&wind_speed_unit=ms",
+  "periodo": [
+    2016,
+    2025
+  ],
+  "sha256_original": "33d05c53c6920a06483a914fdd67e3a1dab091c05b373778d015867a4c91d93b",
+  "localidades": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "consultado_utc": "2026-10-17T03:45:41+00:00",
+  "modelo": "ERA5 vía Open-Meteo",
+  "reanalisis_no_estacion": true,
+  "direccion_es_de_donde_sopla": true,
+  "vector_a_partir_de_media_diaria_y_dominante_es_aproximado": true
+}

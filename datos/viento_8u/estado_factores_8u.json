@@ -1,6 +1,6 @@
 {
   "fase": "8U",
-  "estado": "viento_historico_parcial",
+  "estado": "viento_historico_completo",
   "periodo": "1996–2025",
   "localidades": [
     "Chiclayo",
@@ -8,7 +8,7 @@
     "Motupe",
     "Olmos"
   ],
-  "bloques_viento_obtenidos": 2,
+  "bloques_viento_obtenidos": 3,
   "bloques_viento_previstos": 3,
   "periodos_archivados": [
     [
@@ -18,11 +18,48 @@
     [
       2006,
       2015
+    ],
+    [
+      2016,
+      2025
     ]
   ],
-  "meses_localidad_obtenidos": 960,
-  "testigos_viento_historico_completos": 0,
-  "resumen_viento_por_localidad": [],
+  "meses_localidad_obtenidos": 1440,
+  "testigos_viento_historico_completos": 4,
+  "resumen_viento_por_localidad": [
+    {
+      "localidad": "Chiclayo",
+      "viento_media_ms": 3.138,
+      "viento_max_diario_prom_ms": 4.985,
+      "dias_totales": 10958,
+      "meses": 360,
+      "n_centros_era5_distintos": 1
+    },
+    {
+      "localidad": "Jayanca",
+      "viento_media_ms": 2.41,
+      "viento_max_diario_prom_ms": 4.003,
+      "dias_totales": 10958,
+      "meses": 360,
+      "n_centros_era5_distintos": 1
+    },
+    {
+      "localidad": "Motupe",
+      "viento_media_ms": 1.89,
+      "viento_max_diario_prom_ms": 3.453,
+      "dias_totales": 10958,
+      "meses": 360,
+      "n_centros_era5_distintos": 1
+    },
+    {
+      "localidad": "Olmos",
+      "viento_media_ms": 1.393,
+      "viento_max_diario_prom_ms": 2.989,
+      "dias_totales": 10958,
+      "meses": 360,
+      "n_centros_era5_distintos": 1
+    }
+  ],
   "unidad_velocidad_viento": "m/s",
   "direccion_de_donde_sopla": true,
   "componentes_vectoriales_aproximadas_con_promedios_diarios": true,
