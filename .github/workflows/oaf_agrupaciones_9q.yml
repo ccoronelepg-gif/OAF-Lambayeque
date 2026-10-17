@@ -1,0 +1,75 @@
+name: OAF 9Q - CHIRPS 360 meses y grupos de pisos altitudinales
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/recuperar_chirps_9q.py'
+      - 'modelos/agrupar_pisos_9q.py'
+      - 'tests/test_agrupacion_9q.py'
+      - '.github/workflows/oaf_agrupaciones_9q.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-historico-9q
+  cancel-in-progress: false
+jobs:
+  recuperar-y-analizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar geoprocesamiento y Git
+        run: |
+          pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Recuperar todos los meses faltantes 1996-2025 de USGS CHIRPS v3 FINAL
+        run: |
+          python modelos/recuperar_chirps_9q.py --workers 4 --batch 24 --max-months 240
+          python modelos/recuperar_chirps_9q.py --check
+      - name: Comparar pisos y evaluar agrupaciones de cuenca sin circularidad
+        run: |
+          python modelos/agrupar_pisos_9q.py
+          python modelos/agrupar_pisos_9q.py --check
+      - name: Pruebas de ciencia, GIS y portal
+        run: |
+          python -m unittest discover -s tests -p 'test_agrupacion_9q.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_pisos_9q.js
+      - name: Verificación de meses sin inventar datos
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("datos/recuperacion_9q")
+          source=json.loads((p/"fuentes_chirps_9q.json").read_text("utf8"))
+          summary=json.loads((p/"diagnostico_pisos_y_agrupaciones_9q.json").read_text("utf8"))
+          geo=json.loads((p/"agrupaciones_exploratorias_9q.geojson").read_text("utf8"))
+          assert source["n_meses_chirps_verificados"]+source["n_meses_no_comprobados"]==360
+          assert summary["meses_chirps_360"]==source["n_meses_chirps_verificados"]
+          assert summary["n_sectores"]==42
+          assert summary["n_zonas_homogeneas_instrumentalmente_certificadas"]==0
+          assert not summary["habilidad_pronostico_exante_validada"]
+          assert not source["alertas_fitosanitarias_emitidas"]
+          assert len(geo["features"])==summary["n_grupos_propuestos"]
+          print("CHIRPS v3 final:",source["n_meses_chirps_verificados"],"meses")
+          print("Pendientes SIN imputar:",source["n_meses_no_comprobados"])
+          print("Agrupaciones exploratorias:",summary["n_grupos_propuestos"])
+          PY
+      - name: Publicar resultados finales (los meses se preservan en checkpoints)
+        run: |
+          git fetch origin main
+          git reset --mixed origin/main
+          git add datos/recuperacion_9q/
+          if git diff --cached --quiet; then
+            echo 'Análisis climático ya actualizado'
+          else
+            git commit -m 'data(9Q): perfiles de pisos y agrupaciones climáticas no certificadas'
+            git push origin HEAD:main
+          fi
