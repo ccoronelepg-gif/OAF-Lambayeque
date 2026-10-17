@@ -135,7 +135,7 @@ def get():
    "r_loyo_max":max(valid) if valid else None,
    "variacion_r_loyo_max_min":round(max(valid)-min(valid),5) if valid else None,
    "diferencia_lluvia_anual_pct":gap,
-   **{f"periodo_{per}_n_anios":sum(y in yr for y in common)
+   **{"periodo_"+per.replace("-","_")+"_n_anios":sum(y in yr for y in common)
       for per,yr in PERIODS.items()},
    "estabilidad_climatica_certificada":"false"}
   out.append(row)
