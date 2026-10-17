@@ -1,0 +1,424 @@
+{
+  "fase": "9H",
+  "submodulo": "ERA5-Land-temperatura_y_ERA5-atmosferico-precipitacion",
+  "fecha_proceso_utc": "2026-10-17T15:27:51.466510+00:00",
+  "productos": {
+    "ERA5_atmosferico": "era5",
+    "ERA5-Land_temperatura": "era5_land"
+  },
+  "fuentes_sha256": [
+    {
+      "producto": "ERA5_atmosferico",
+      "periodo": "1996-2005",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=1996-01-01&end_date=2005-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land",
+      "sha256": "1ac9081210d9137a84a6f0133e76546ed8fd75992dd09fcb2080447e394c8723",
+      "bytes": 398619,
+      "utc": "2026-10-17T15:27:13.458396+00:00"
+    },
+    {
+      "producto": "ERA5_atmosferico",
+      "periodo": "2006-2013",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=2006-01-01&end_date=2013-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land",
+      "sha256": "6a0131d5f0cc01c5836ceda941461ebbe55d01dda2f342766e58778b40cb3262",
+      "bytes": 318834,
+      "utc": "2026-10-17T15:27:15.323157+00:00"
+    }
+  ],
+  "errores_descarga": {
+    "ERA5-Land_temperatura": "RuntimeError: HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=15)"
+  },
+  "n_pares_total": 1276,
+  "n_pares_era5_precipitacion": 1276,
+  "n_pares_era5_land_temperatura": 0,
+  "observaciones_mensuales_solo_cobertura_diaria_100pct": true,
+  "periodo": "1996-01/2013-12",
+  "normal_1996_2025_completa": false,
+  "emplazamientos_historicos_9g_resueltos": false,
+  "convencion_dia_pluviometrico_verificada": false,
+  "estaciones_sin_temperaturas_no_imputadas": true,
+  "era5_land_precipitacion": "No soportada directamente por el endpoint Open-Meteo; ERA5 atmósfera NO se etiqueta como ERA5-Land.",
+  "producto_CHIRPS_en_archivo_separado": "comparacion_observacional_9h.json",
+  "validacion_predictiva_operativa": false,
+  "sintesis": [
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_1",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -6.75,
+        -79.25
+      ],
+      "n_pares": 215,
+      "metricas_periodo": {
+        "n_meses": 215,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 73.543,
+        "sesgo": 73.281,
+        "rmse": 105.974,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 94.85,
+        "sesgo": 94.85,
+        "rmse": 148.895,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_2",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -6.75,
+        -79.25
+      ],
+      "n_pares": 215,
+      "metricas_periodo": {
+        "n_meses": 215,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 73.543,
+        "sesgo": 73.281,
+        "rmse": 105.974,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 94.85,
+        "sesgo": 94.85,
+        "rmse": 148.895,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_1",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -6.5,
+        -79.5
+      ],
+      "n_pares": 207,
+      "metricas_periodo": {
+        "n_meses": 207,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 93.056,
+        "sesgo": 92.866,
+        "rmse": 207.243,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 368.092,
+        "sesgo": 368.075,
+        "rmse": 680.07,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_2",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -6.25,
+        -79.5
+      ],
+      "n_pares": 207,
+      "metricas_periodo": {
+        "n_meses": 207,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 155.147,
+        "sesgo": 155.061,
+        "rmse": 295.678,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 515.808,
+        "sesgo": 515.808,
+        "rmse": 901.089,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_1",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -5.5,
+        -80.0
+      ],
+      "n_pares": 216,
+      "metricas_periodo": {
+        "n_meses": 216,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 22.77,
+        "sesgo": 13.418,
+        "rmse": 57.945,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 81.473,
+        "sesgo": 39.258,
+        "rmse": 164.45,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_2",
+      "producto": "ERA5_atmosferico",
+      "variable": "precipitation_sum",
+      "centro_celda": [
+        -5.5,
+        -80.0
+      ],
+      "n_pares": 216,
+      "metricas_periodo": {
+        "n_meses": 216,
+        "inicio": "1996-01",
+        "fin": "2013-12",
+        "mae": 22.77,
+        "sesgo": 13.418,
+        "rmse": 57.945,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "metricas_1998": {
+        "n_meses": 12,
+        "inicio": "1998-01",
+        "fin": "1998-12",
+        "mae": 81.473,
+        "sesgo": 39.258,
+        "rmse": 164.45,
+        "unidad": "mm",
+        "validacion_independiente": false,
+        "es_pronostico": false
+      },
+      "estado": "comparacion_retroactiva_descriptiva",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_1",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_max",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "escenario": "documental_2",
+      "producto": "ERA5-Land_temperatura",
+      "variable": "temperature_2m_min",
+      "centro_celda": null,
+      "n_pares": 0,
+      "metricas_periodo": null,
+      "metricas_1998": null,
+      "estado": "sin_meses_pareados",
+      "autorizacion_validacion_operacional": false
+    }
+  ],
+  "advertencias": [
+    "ERA5 precipitación atmósfera 0,25° no es ERA5-Land 0,1°; su pixel y fuente son distintos.",
+    "ERA5-Land temperatura a 2 metros modelada no es temperatura observada por termómetro en garita de estación.",
+    "Los desplazamientos entre coordenadas publicadas y el manejo de altitud pueden cambiar la celda devuelta.",
+    "Muestreo ERA5 mediante Open-Meteo, no producto ECMWF de estación individual.",
+    "Condición del día meteorológico de estación y unidades originales pendiente de documentación instrumentada.",
+    "Los valores reanalizados son retrospectivos, no pronósticos archivados con su fecha de emisión."
+  ]
+}
