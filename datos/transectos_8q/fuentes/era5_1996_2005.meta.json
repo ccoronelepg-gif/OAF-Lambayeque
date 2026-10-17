@@ -1,0 +1,24 @@
+{
+  "fase": "8Q",
+  "modelo": "era5",
+  "periodo": [
+    1996,
+    2005
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.40625%2C-6.375%2C-6.34375%2C-6.375%2C-6.34375%2C-6.25%2C-6.21875%2C-6.1875%2C-6.15625&longitude=-79.5625%2C-79.53125%2C-79.5625%2C-79.53125%2C-79.5%2C-79.59375%2C-79.375%2C-79.34375%2C-79.375%2C-79.34375&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=precipitation_sum%2Crelative_humidity_2m_mean%2Cshortwave_radiation_sum&models=era5&cell_selection=land",
+  "ids": [
+    "M0179",
+    "M0184",
+    "M0202",
+    "M0206",
+    "M0203",
+    "M0205",
+    "M0253",
+    "M0262",
+    "M0281",
+    "M0290"
+  ],
+  "sha256_original": "1d91bb839c1b46feea695a49fe12db2a430a1ad0238d4c0844000805228e8543",
+  "consulta_utc": "2026-10-17T02:51:14+00:00",
+  "reanálisis_no_instrumental": true
+}
