@@ -1,0 +1,3 @@
+punto_marino,punto_viento_atmosferico,n_meses_2017_2025,r_anomalia_u_viento_vs_u_geostrofica,r_anomalia_v_viento_vs_v_geostrofica,r_anomalia_velocidad_viento_vs_rapidez_geostrofica,r_anomalia_sst_nino12_t_menos_2_vs_u_geostrofica,r_anomalia_sst_nino12_t_menos_2_vs_v_geostrofica,correlaciones_solo_descriptivas_no_predictivas
+Aguas_frente_Pimentel,Mar_frente_Pimentel,108,0.2582,0.17916,0.22285,-0.08923,0.08461,true
+Aguas_norte_Lambayeque,Mar_norte_Lambayeque,108,0.04878,0.0819,0.06039,0.00582,0.0534,true

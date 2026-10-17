@@ -1,0 +1,47 @@
+{
+  "fase": "8U",
+  "estado": "108_meses_por_punto_correlacion_descriptiva",
+  "n_puntos_marinos": 2,
+  "n_meses_por_punto": 108,
+  "n_parejas_mes_punto": 216,
+  "periodo": "2017–2025",
+  "normal_descriptiva_estacional": "2017–2025",
+  "normal_no_apta_para_backtest_porque_contiene_futuro": true,
+  "uso_indice_nino12_rezagado_dos_meses": true,
+  "vientos_aire_ERA5_no_corrientes_marinas": true,
+  "corrientes_solo_componente_geostrofica": true,
+  "no_asume_coincidencia_exacta_de_celdas_aire_y_mar": true,
+  "asociacion_estadistica_no_causalidad": true,
+  "habilidad_predictiva_evaluada": false,
+  "validacion_instrumental_SENAMHI_IMARPE": false,
+  "zonas_homogeneas_certificadas": 0,
+  "perfiles": [
+    {
+      "punto_marino": "Aguas_frente_Pimentel",
+      "punto_viento_atmosferico": "Mar_frente_Pimentel",
+      "n_meses_2017_2025": 108,
+      "r_anomalia_u_viento_vs_u_geostrofica": 0.2582,
+      "r_anomalia_v_viento_vs_v_geostrofica": 0.17916,
+      "r_anomalia_velocidad_viento_vs_rapidez_geostrofica": 0.22285,
+      "r_anomalia_sst_nino12_t_menos_2_vs_u_geostrofica": -0.08923,
+      "r_anomalia_sst_nino12_t_menos_2_vs_v_geostrofica": 0.08461,
+      "correlaciones_solo_descriptivas_no_predictivas": "true"
+    },
+    {
+      "punto_marino": "Aguas_norte_Lambayeque",
+      "punto_viento_atmosferico": "Mar_norte_Lambayeque",
+      "n_meses_2017_2025": 108,
+      "r_anomalia_u_viento_vs_u_geostrofica": 0.04878,
+      "r_anomalia_v_viento_vs_v_geostrofica": 0.0819,
+      "r_anomalia_velocidad_viento_vs_rapidez_geostrofica": 0.06039,
+      "r_anomalia_sst_nino12_t_menos_2_vs_u_geostrofica": 0.00582,
+      "r_anomalia_sst_nino12_t_menos_2_vs_v_geostrofica": 0.0534,
+      "correlaciones_solo_descriptivas_no_predictivas": "true"
+    }
+  ],
+  "sha256_csv_entrada": {
+    "viento": "4896f590a2306b16251b5ab80f6ff359da48c6169ed334ef04e2c3a6e092afbd",
+    "sst": "0ad5523732bf96813c54b7908a5eca05c335eaafc8df5c8ee509fa653fe341b4",
+    "corrientes": "dfb875642636c54a0a16e38f604bef366e30096080b442e43e3b89b4d2c3ada3"
+  }
+}
