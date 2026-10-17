@@ -4,17 +4,18 @@
   "periodo": "1996–2025",
   "nuevos_testigos_planeados": 62,
   "testigos_climaticos_reutilizados_8o": 19,
-  "testigos_nuevos_con_30_anios": 32,
-  "testigos_total_con_30_anios": 51,
+  "testigos_nuevos_con_30_anios": 48,
+  "testigos_total_con_30_anios": 67,
   "lotes_climaticos_esperados": 24,
-  "lotes_climaticos_verificados": 17,
+  "lotes_climaticos_verificados": 18,
   "grupos_de_descarga_completos": [
     1,
-    2
+    2,
+    3
   ],
-  "pares_vecinos_hasta_20km_comparados": 61,
-  "pares_que_superan_filtro_exploratorio": 13,
-  "n_nucleos_vecindad_exploratorios": 2,
+  "pares_vecinos_hasta_20km_comparados": 182,
+  "pares_que_superan_filtro_exploratorio": 26,
+  "n_nucleos_vecindad_exploratorios": 3,
   "nucleos_vecindad_exploratorios": [
     {
       "id": "V1",
@@ -50,10 +51,27 @@
       "evidencia_instrumental_independiente": false,
       "no_extrapolar_al_espacio_entre_nodos": true,
       "interpretacion": "nucleo_exploratorio_para_muestreo_mas_denso"
+    },
+    {
+      "id": "V3",
+      "n_testigos": 2,
+      "ids": [
+        "M0288",
+        "M0333"
+      ],
+      "altitud_dem_min_m": 2225.0,
+      "altitud_dem_max_m": 2302.0,
+      "n_pares_con_celdas_distintas": 1,
+      "distancia_climatica_media_de_enlaces": 0.25329,
+      "poligono_contiguo_verificado": false,
+      "paisaje_agricola_confirmado": false,
+      "evidencia_instrumental_independiente": false,
+      "no_extrapolar_al_espacio_entre_nodos": true,
+      "interpretacion": "nucleo_exploratorio_para_muestreo_mas_denso"
     }
   ],
-  "pares_filtrados_con_celda_repetida_era5_o_era5land": 10,
-  "pares_filtrados_con_celdas_distintas_en_ambos_modelos": 3,
+  "pares_filtrados_con_celda_repetida_era5_o_era5land": 22,
+  "pares_filtrados_con_celdas_distintas_en_ambos_modelos": 4,
   "n_pares_sin_celdas_correspondientes_determinadas": 0,
   "tener_celdas_distintas_no_prueba_independencia_espacial": true,
   "umbrales_filtro_exploratorio_no_normativos": {
