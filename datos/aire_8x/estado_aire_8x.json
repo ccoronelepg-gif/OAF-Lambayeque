@@ -12,8 +12,8 @@
     "Motupe",
     "Olmos"
   ],
-  "filas_mes_sitio": 48,
-  "meses_pm_80pct_aptos": 48,
+  "filas_mes_sitio": 144,
+  "meses_pm_80pct_aptos": 144,
   "n_celdas_modelo_unicas": 4,
   "series_pm_identicas": [
     {
@@ -21,7 +21,7 @@
         "Motupe",
         "Olmos"
       ],
-      "meses_identicos": 12,
+      "meses_identicos": 36,
       "interpretacion": "Series PM idénticas; no tratarlas como réplicas independientes"
     }
   ],
@@ -69,11 +69,39 @@
   "uso_modelo_anomalias_1996_2025": false,
   "fuentes_sha256": [
     {
+      "file": "datos/aire_8x/fuentes/cams_global_Chiclayo_2023.json.gz",
+      "sha256": "8db1684667050d8cb2e70a1df2aa9731029b4b913393df803c38c029bcbda881",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Chiclayo",
+      "year": 2023
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Chiclayo_2024.json.gz",
+      "sha256": "b8d06555d43ab7a4c0c7be799500c364e9b398f0ecd9dee2aff6e5455ea733b4",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Chiclayo",
+      "year": 2024
+    },
+    {
       "file": "datos/aire_8x/fuentes/cams_global_Chiclayo_2025.json.gz",
       "sha256": "1cbd295419389989172cb238c1ca30aa03ed5150fb43a54e71494e9ccde5b579",
       "modelo": "CAMS Global forecast archive via Open-Meteo",
       "sitio": "Chiclayo",
       "year": 2025
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Jayanca_2023.json.gz",
+      "sha256": "28f4448fde5ba8ae2a2cfb7cd931468faec45ccc2fd375983802c046f442ec6a",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Jayanca",
+      "year": 2023
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Jayanca_2024.json.gz",
+      "sha256": "d517c1c62848770a33dfbeda852af9f8e7db0516de2c07c276c27dae8b36754d",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Jayanca",
+      "year": 2024
     },
     {
       "file": "datos/aire_8x/fuentes/cams_global_Jayanca_2025.json.gz",
@@ -83,11 +111,39 @@
       "year": 2025
     },
     {
+      "file": "datos/aire_8x/fuentes/cams_global_Motupe_2023.json.gz",
+      "sha256": "63785b5d277dc18fca63eafc293fa10b81d202dcdb7fa09b2af7d2f981b5c887",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Motupe",
+      "year": 2023
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Motupe_2024.json.gz",
+      "sha256": "cdc6da6fa094ed7e974556ee844f53345b5e0b1a13b11b2f0322caba28853866",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Motupe",
+      "year": 2024
+    },
+    {
       "file": "datos/aire_8x/fuentes/cams_global_Motupe_2025.json.gz",
       "sha256": "854fb35e4999057874b12e05149bddf5c334a836187d52948f921e8f39c60205",
       "modelo": "CAMS Global forecast archive via Open-Meteo",
       "sitio": "Motupe",
       "year": 2025
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Olmos_2023.json.gz",
+      "sha256": "447994fbf5a14a3adfc31417e9bbfa38029a83eaddcb4a248e9f018c7e0b2b72",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Olmos",
+      "year": 2023
+    },
+    {
+      "file": "datos/aire_8x/fuentes/cams_global_Olmos_2024.json.gz",
+      "sha256": "9a6d419041d20b01ff28c115c1c9b124580100d66fff7d09f724f6a3ac4ffdb3",
+      "modelo": "CAMS Global forecast archive via Open-Meteo",
+      "sitio": "Olmos",
+      "year": 2024
     },
     {
       "file": "datos/aire_8x/fuentes/cams_global_Olmos_2025.json.gz",
