@@ -375,6 +375,9 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div id="oaf-8q-map" aria-live="polite"></div>
 <h3>Muestreo de altitudes y clima a lo largo de V1 y V2</h3>
 <div class="scroller"><table><thead><tr><th>Transecto</th><th>Punto DEM</th><th>Elevación (m)</th><th>Diferencia frente a pendiente lineal (m)</th><th>Distancia a objetivo (km)</th><th>Tmedia 30 años (°C)</th><th>Lluvia media anual (mm)</th></tr></thead><tbody id="oaf-8q-table"></tbody></table></div>
+<h3>Coherencia de anomalías térmicas mensuales 1996–2025</h3>
+<p class="small">Cada sitio utiliza su propia normal por mes calendario. Una correlación alta entre series modeladas no equivale a habilidad predictiva: varias ubicaciones pueden compartir el mismo píxel ERA5 o ERA5-Land.</p>
+<div class="scroller"><table><thead><tr><th>Transecto</th><th>Par</th><th>Correlación Tmedia anómala</th><th>MAE de diferencia anómala (°C)</th><th>¿Misma celda térmica?</th><th>¿Misma celda de lluvia?</th><th>Validación instrumental</th></tr></thead><tbody id="oaf-8q-coherence"></tbody></table></div>
 <div class="notice"><b>Limitaciones decisivas:</b> los puntos son consultas de un DEM aproximado y no forman una ruta topográfica continua. La cartografía regional simplificada aún requiere contraste con INEI/IGN; no se conocen aquí exposición de laderas, uso agrícola ni observaciones termométricas independientes. Semejanzas puntuales no prueban homogeneidad de polígonos ni capacidad de predicción del Niño Costero o brotes fitosanitarios.</div>
 <div class="links"><a href="FASE_8Q_TRANSECTOS_CONTINUIDAD.md">Método y resultados físicos 8Q ↗</a><a href="datos/transectos_8q/estado_transectos_8q.json">Auditoría DEM y climatología ↗</a><a href="datos/transectos_8q/muestras_intermedias_8q.csv">CSV de puntos intermedios ↗</a><a href="datos/transectos_8q/comparacion_climatica_8q.csv">Climatología histórica verificable ↗</a></div>
 </div></details>
