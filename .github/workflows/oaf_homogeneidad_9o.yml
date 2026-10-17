@@ -45,11 +45,14 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Avanzar índice a la versión más reciente SIN sobrescribir archivos
+          # calculados; evita conflicto add/add de jobs CI solapados.
+          git fetch origin main
+          git reset --mixed origin/main
           git add datos/homogeneidad_9o/
           if git diff --cached --quiet; then
             echo 'Series 9O sin modificaciones'
           else
             git commit -m 'data(9O): observación CHIRPS v3 histórica y perfiles 30 años con trazabilidad'
-            git pull --rebase origin main
             git push origin HEAD:main
           fi
