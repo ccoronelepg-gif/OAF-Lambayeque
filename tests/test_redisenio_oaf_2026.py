@@ -31,8 +31,8 @@ TARGETS={
     'wx-data':'clima',
     'oaf-dash-place':'clima',
     'oaf-hist-plot':'clima',
-    'oaf-altitudinal-map':'clima',
-    'oaf-map-stats':'clima',
+    'oaf-altitudinal-map':'inicio',
+    'oaf-map-stats':'inicio',
     'oaf-zones-8n':'clima',
     'oaf-homogeneity-8o':'clima',
     'oaf-neighbors-8p':'clima',
@@ -130,13 +130,17 @@ class Redisenio(unittest.TestCase):
         self.assertEqual(HTML.count('id="oaf-altitudinal-map"'),1)
         self.assertIn('no son zonas climáticas homogéneas certificadas',HTML)
     def test_home_indicators_and_current_source(self):
-        src=(ROOT/'assets/oaf-redesign-8f.js').read_text()
-        self.assertIn("shortwave_radiation,wind_speed_10m",src)
-        self.assertIn("vpdEstimate",src)
-        self.assertNotIn("wind_speed_10m,vapour_pressure_deficit",src)
-        self.assertIn("$('#oaf-home-location')",src)
-        self.assertIn("'#oaf-live-vpd'",src)
-        self.assertIn("'#oaf-live-wind'",src)
+        current=(ROOT/'assets/oaf-inicio-climatico-2026.js').read_text(encoding='utf8')
+        forecast=(ROOT/'assets/oaf-ux-data-2026.js').read_text(encoding='utf8')
+        for name in ('temperature_2m','relative_humidity_2m','precipitation',
+                     'shortwave_radiation','wind_speed_10m'):
+            self.assertIn(name,current)
+        for name in ('oaf-home-location','oaf-live-vpd','oaf-live-wind','oaf-meta-temp',
+                     'oaf-meta-air'):
+            self.assertIn(name,HTML)
+        self.assertIn('domains:"cams_global"',current)
+        self.assertIn('forecast_days:"7"',forecast)
+        self.assertIn('No es un sensor local',current)
     def test_inline_navigation_javascript_syntax(self):
         scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',HTML)
         source='\n'.join(script for script in scripts if script.strip())
