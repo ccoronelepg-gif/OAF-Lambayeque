@@ -23,6 +23,23 @@ Según el [Climate Hazards Center](https://www.chc.ucsb.edu/data/chirps3), CHIRP
 - El contraste es contra CHIRPS, que combina estaciones pluviométricas. **No se ha validado instrumentalmente** y **no se emitirán alertas automáticas**.
 - La calificación como «mejor» de un modelo debe atender también errores en episodios extremos, sesgos y cobertura espacial, nunca solo al MAE agregado.
 
+## Primeros resultados del reentrenamiento (GitHub Actions)
+La ejecución de entrenamiento sobre cinco bloques terminó y comunicó los siguientes valores retrospectivos sobre los **mismos 39 sectores × 60 meses (2021–2025)**:
+
+| Modelo | MAE anterior 9X, mm | MAE nuevo 10C, mm | Diferencia, mm |
+|---|---:|---:|---:|
+| Random Forest | 17,1634 | 18,1443 | +0,9809 |
+| GCN | 18,6207 | 17,6452 | −0,9755 |
+| Climatología por piso | 20,3708 | 20,3708 | 0,0000 |
+
+En **2023**, tras calibrar en 2019–2020, la cobertura observada de intervalos nominales 90 % fue **79,49 % para GCN**, **85,04 % para Random Forest** y **89,96 % para climatología por piso**. Ninguno de esos tres modelos alcanzó el 90 % ese año.
+
+En **2021–2025**, sobre **137** observaciones sector-mes con lluvia ≥100 mm, la regla exploratoria sobre pronóstico puntual detectó **32** para GCN, **13** para Random Forest y **34** para climatología por piso. Las series vecinas no representan 137 fenómenos independientes.
+
+**Advertencia de inferencia:** entre 9X y 10C cambian simultáneamente **las variables rezagadas y el periodo de selección de hiperparámetros** (9X 2016–2020 frente a 10C 2016–2018). Por ello, el contraste identifica el resultado de **dos diseños distintos**, no el efecto causal aislado de eliminar t−1. Una futura comparación factorial con idéntico periodo de tuning es necesaria.
+
+**Estado de publicación:** el entrenamiento fue ejecutado con éxito; la subida permanente de los CSV/JSON se valida separadamente en la automatización.
+
 ## Resultados y ejecución
 **Resultados verificables solo cuando termine la ejecución automática.** La corrida genera:
 - [Métricas completas 10C](datos/reentrenamiento_10c/evaluacion_lag2_10c.json).
