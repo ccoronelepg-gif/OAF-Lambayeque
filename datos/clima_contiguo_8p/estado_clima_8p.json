@@ -4,13 +4,15 @@
   "periodo": "1996–2025",
   "nuevos_testigos_planeados": 62,
   "testigos_climaticos_reutilizados_8o": 19,
-  "testigos_nuevos_con_30_anios": 0,
-  "testigos_total_con_30_anios": 19,
+  "testigos_nuevos_con_30_anios": 16,
+  "testigos_total_con_30_anios": 35,
   "lotes_climaticos_esperados": 24,
-  "lotes_climaticos_verificados": 5,
-  "grupos_de_descarga_completos": [],
-  "pares_vecinos_hasta_20km_comparados": 11,
-  "pares_que_superan_filtro_exploratorio": 1,
+  "lotes_climaticos_verificados": 6,
+  "grupos_de_descarga_completos": [
+    1
+  ],
+  "pares_vecinos_hasta_20km_comparados": 19,
+  "pares_que_superan_filtro_exploratorio": 5,
   "umbrales_filtro_exploratorio_no_normativos": {
     "distancia_km": 20,
     "distancia_climatica_estandarizada": 0.6,
