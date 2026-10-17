@@ -4,7 +4,7 @@
 const panel=document.getElementById("oaf-regional-8s");if(!panel)return;
 const $=id=>document.getElementById(id);
 const status=$("oaf-8s-status"),folds=$("oaf-8s-folds"),alt=$("oaf-8s-altitude"),
-      graphic=$("oaf-8s-graphic"),spatial=$("oaf-8s-spatial");
+      graphic=$("oaf-8s-graphic"),spatial=$("oaf-8s-spatial-table");
 const pretty=x=>Number.isFinite(Number(x))?
  Number(x).toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:3}):"—";
 function row(where,cells){
