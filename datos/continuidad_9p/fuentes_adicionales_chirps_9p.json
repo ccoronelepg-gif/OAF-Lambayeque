@@ -1,0 +1,113 @@
+{
+  "fase": "9P",
+  "fecha_corte": "2026-10-17",
+  "fuente_alternativa": "USGS FEWS NET CHIRPS v3 FINAL GLOBAL GeoTIFF",
+  "url_raiz": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/",
+  "sonda_repositorio": true,
+  "mirroring_verificado": true,
+  "comparaciones_equivalencia": [
+    {
+      "mes": "1996-01",
+      "url_mirror": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.1996.01.tif",
+      "sha256_mirror": "df70aa62bfad7691845431e7c608137db7a8a746339a2f184e4022961a3d4541",
+      "sha256_latam_original": "0c208a692755ad8ce1d64a9dac9da4f81ecf2645648c0d908e837513d1f5bdbd",
+      "n_sectores_con_datos_comparados": 39,
+      "max_diferencia_promedios_sector_mm": 5e-06,
+      "tolerancia_mm": 0.04,
+      "producto_equivalente_en_celdas_lambayeque": true
+    },
+    {
+      "mes": "2025-12",
+      "url_mirror": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2025.12.tif",
+      "sha256_mirror": "a1eddbfc09e60a065f70ee73549441c69a7bedaf7abfad13e5826c4381f060b6",
+      "sha256_latam_original": "e8c180c5dd99166cfa7f3e9905ed492c343bac7dab12ab006f620889e11a42ae",
+      "n_sectores_con_datos_comparados": 39,
+      "max_diferencia_promedios_sector_mm": 4e-06,
+      "tolerancia_mm": 0.04,
+      "producto_equivalente_en_celdas_lambayeque": true
+    }
+  ],
+  "n_meses_referencia_9o": 108,
+  "n_meses_9p_nuevos": 4,
+  "n_meses_objetivo": 360,
+  "n_meses_pendientes": 248,
+  "meses_intentados_lote": [
+    "2001-01",
+    "2001-02",
+    "2001-03",
+    "2001-04"
+  ],
+  "problema_sonda": null,
+  "nuevos": [
+    {
+      "mes": "2001-01",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.01.tif",
+      "sha256": "d692a976fc0153c35174ebcab3cc6d617071a52aaaf1f7bd8eb1809bbadfcb5b",
+      "bytes": 22341038,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-02",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.02.tif",
+      "sha256": "e73261e5bae533796acb6d2f4b216e5d002378ec45d81209cb2aacb457d092c6",
+      "bytes": 22903858,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-03",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.03.tif",
+      "sha256": "a7e1826f858f1fde958083dcebcb3ebff4cd801f05c3ee59d3fc936c3952676c",
+      "bytes": 22824312,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    },
+    {
+      "mes": "2001-04",
+      "url": "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/chirps/final/downloads/monthly/chirps-v3.0.2001.04.tif",
+      "sha256": "43ad6b8040c042271e1c65f12892c16787d79c77aefc5779f2270a30b5f10653",
+      "bytes": 22912518,
+      "formato": "GeoTIFF global v3 final, validado contra LATAM 9O",
+      "n_sectores": 42,
+      "n_testigos": 81,
+      "crs": 4326,
+      "transform": [
+        0.05,
+        -0.05,
+        -80.74999852,
+        -5.45000098
+      ]
+    }
+  ],
+  "errores": [],
+  "ninguna_equivalencia_asumida_sin_prueba": true,
+  "no_mezcla_productos_CHIRPS_v2_prelim": true,
+  "calibracion_zonal_validada": false,
+  "zonas_climaticas_certificadas": 0,
+  "nota": "La comprobación del espejo compara físicamente lluvia en 42 polígonos y 81 puntos en 2 meses superpuestos. Si no coincide, 0 meses nuevos."
+}
