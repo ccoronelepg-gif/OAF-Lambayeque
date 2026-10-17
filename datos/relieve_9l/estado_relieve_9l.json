@@ -1,0 +1,75 @@
+{
+  "fase": "9L",
+  "fecha_corte": "2026-10-17",
+  "estado": "relieve_continuo_local_tres_familias_exploratorio",
+  "fuente": "Copernicus GLO-90 DSM 2021, Cloud Optimized GeoTIFF (AWS Open Data)",
+  "doi": "10.5270/ESA-c5d3d65",
+  "origen_url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S07_00_W080_00_DEM/Copernicus_DSM_COG_30_S07_00_W080_00_DEM.tif",
+  "sha256_tiff_original": "c4d78e481f80927d72886787e422ed02214ffb0d5739e67a25facd2c874f7532",
+  "bytes_tiff_original": 5354601,
+  "resolucion_modelo_m_aprox": 90,
+  "resolucion_analisis_m_aprox": 270,
+  "muestra_restringida_a_nucleos_9k": true,
+  "n_sectores_9k_auditados": 5,
+  "n_familias": 3,
+  "familias": [
+    {
+      "familia": "C01",
+      "n_sectores_9k": 1,
+      "pixeles_total": 3190,
+      "pixeles_compatibles": 2089,
+      "fraccion_compatible": 0.65486,
+      "recomendacion": "verificar_cuenca_exposicion_y_estaciones"
+    },
+    {
+      "familia": "C02",
+      "n_sectores_9k": 2,
+      "pixeles_total": 2169,
+      "pixeles_compatibles": 2075,
+      "fraccion_compatible": 0.95666,
+      "recomendacion": "verificar_cuenca_exposicion_y_estaciones"
+    },
+    {
+      "familia": "C03",
+      "n_sectores_9k": 2,
+      "pixeles_total": 944,
+      "pixeles_compatibles": 534,
+      "fraccion_compatible": 0.56568,
+      "recomendacion": "verificar_cuenca_exposicion_y_estaciones"
+    }
+  ],
+  "comparacion_nmme": {
+    "n_celdas_noaa_para_4_localidades": 2,
+    "celdas": [
+      {
+        "lat": -7.0,
+        "lon_east": 280.0
+      },
+      {
+        "lat": -6.0,
+        "lon_east": 280.0
+      }
+    ],
+    "periodo_base_local": "1996-2025 ERA5/ERA5-Land",
+    "anomalias_noaa_normal_modelo_diferente": true,
+    "ajuste_altitudinal_entrenado": false,
+    "prediccion_por_sector_generada": false,
+    "habilidad_prospectiva_demostrada": false
+  },
+  "zonas_homogeneas_instrumentales_certificadas": 0,
+  "cuencas_hidrograficas_confirmadas": 0,
+  "limite_region_ine_i_ign_validado": false,
+  "umbrales_de_filtro_experimentales": {
+    "max_pendiente_grados": 30.0,
+    "altitud_exige_banda_de_9k": true,
+    "agregacion_dem_3x": true
+  },
+  "sha256_geojson_9k": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+  "observaciones": [
+    "Es un DSM de superficie: vegetación y construcciones pueden afectar pendientes.",
+    "Cada píxel filtrado corresponde a la banda altitudinal nominal y pendiente, no a continuidad climática observada.",
+    "El límite y las categorías 9K son referenciales; la máscara es una hipótesis para focalizar campo.",
+    "Sin cuencas oficiales independientes verificadas, no se afirma que las piezas compartan drenaje.",
+    "NMME 1° no permite un pronóstico diferente por cada ladera sin método de transferencia validado."
+  ]
+}
