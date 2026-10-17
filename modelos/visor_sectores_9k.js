@@ -88,6 +88,60 @@ function initMap(geo,report){
    " piezas geométricas. "+report.n_nodos_no_asociados+
    " puntos DEM sin testigo climático cercano del mismo piso. No representan porcentajes de superficie.";
 }
+function initNOAA(j){
+ const city=$("oaf-9k-site"),target=$("oaf-9k-target");
+ const out=$("oaf-9k-noaa-detail");
+ if(j.fuentes_netcdf_comprobadas!==2||j.mes_objetivo_cf_validado!==true){
+  out.textContent="Los NetCDF todavía no completan controles de temporalidad. No se muestran valores.";return;
+ }
+ const temp=j.fuentes.find(s=>s.variable_etiqueta==="temp");
+ const rain=j.fuentes.find(s=>s.variable_etiqueta==="lluvia");
+ if(!temp||!rain||temp.metadatos_unidades.units!=="K"||
+    rain.metadatos_unidades.units!=="mm/s")throw Error("NOAA unidades inesperadas");
+ const months=temp.meses_con_campo_numerico.filter(m=>
+   rain.meses_con_campo_numerico.includes(m)&&m>"2026-10");
+ for(const m of months){
+  const opt=document.createElement("option");opt.value=m;opt.textContent=m;target.append(opt);
+ }
+ if(!months.length){out.textContent="No hay pronósticos NOAA futuros mensuales con malla verificada.";return;}
+ target.value=months[0];
+ const delta=v=>(v>0?"+":"")+n(v);
+ function render(){
+  const m=target.value,name=city.value;
+  const get=s=>{
+   const ix=s.meses_objetivo_verificados_por_eje_CF.indexOf(m);
+   const site=s.sitios_celda.find(x=>x.localidad_referencial===name);
+   if(ix<0||!site)return null;
+   const raw=site.valores_anomalia_original[ix];
+   return Number.isFinite(raw)?{raw,site}:null;
+  };
+  const a=get(temp),b=get(rain);
+  if(!a||!b){out.textContent="Mes NOAA sin datos confirmados: no se estima un valor.";return;}
+  const c=document.createElement("div");c.className="oaf-9k-nmme-grid";
+  const card=(title,value,unit,sub)=>{
+   const q=document.createElement("article");
+   const label=document.createElement("small");label.textContent=title;
+   const strong=document.createElement("strong");strong.textContent=value+" "+unit;
+   const desc=document.createElement("span");desc.textContent=sub;
+   q.append(label,strong,desc);c.append(q);
+  };
+  card("Anomalía NMME de Tmedia (respecto a la climatología del modelo)",
+       delta(a.raw),"°C de diferencia",
+       "Archivo original en K; un incremento de 1 K equivale a 1 °C de cambio.");
+  card("Anomalía NMME de tasa de precipitación",
+       delta(b.raw*86400),"mm/día",
+       "Convertido de mm/s multiplicando por 86 400 s/día; NO es lluvia mensual total.");
+  out.replaceChildren(c);
+  const detail=document.createElement("p");detail.className="oaf-figure-caption";
+  detail.textContent="Emisión NMME 2026-10 · objetivo "+m+
+    ". Celda atmosférica "+a.site.celda_latitud+"°, "+a.site.celda_longitud_archivo+
+    "° E (0–360). Esta celda se comparte entre múltiples localidades y pisos altitudinales. "+
+    "No supone predicción local, corrección por altura, normal OMM, observación o habilidad comprobada.";
+  out.append(detail);
+ }
+ city.addEventListener("change",render);target.addEventListener("change",render);
+ render();
+}
 async function init(){
  if(!$("oaf-9k-visor"))return;
  const status=$("oaf-9k-status");
@@ -110,6 +164,7 @@ async function init(){
      " de "+j.fuentes_netcdf_esperadas+" NetCDF de anomalías 2026-10 inspeccionados. "+
      "Es una señal de escala regional (~1°) y NO un pronóstico por altitud o por polígono. "+
      (j.errores_consulta.length?"Incidencias de acceso: "+j.errores_consulta.length+".":"");
+   initNOAA(j);
   }catch(e){$("oaf-9k-nmme").textContent="Lectura NOAA NMME pendiente: "+e.message+
     ". No se imputan predicciones a los sectores."}
  }catch(e){status.textContent="Mapa 9K pendiente: "+e.message+
