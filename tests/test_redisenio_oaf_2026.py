@@ -102,8 +102,8 @@ class Redisenio(unittest.TestCase):
           'https://open-meteo.com/en/docs','https://www.cpc.ncep.noaa.gov/',
           'https://www.chc.ucsb.edu/data/chirps','https://atmosphere.copernicus.eu/'):
             self.assertIn(link,HTML)
-        self.assertIn('todavía requieren validación instrumental',HTML)
-        self.assertIn('no son mediciones de estación',HTML)
+        self.assertIn('Los modelos desarrollados por el observatorio son experimentales',HTML)
+        self.assertIn('no son mediciones de SENAMHI',HTML)
         self.assertIn('No es un',HTML)
     def test_subtabs_and_navigation_compatibility(self):
         self.assertEqual(HTML.count('role="tab"'),2)
