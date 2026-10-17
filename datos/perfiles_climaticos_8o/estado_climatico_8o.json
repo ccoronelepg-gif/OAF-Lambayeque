@@ -62,6 +62,9 @@
         "distancia_climatica_interna_maxima": 0.6235,
         "diametro_geografico_testigos_km": 21.856,
         "rango_altitudinal_testigos_m": 1.0,
+        "testigos_cota_dem_menor_o_igual_cero": 2,
+        "evaluacion_mascara_tierra_costa_pendiente": true,
+        "viabilidad_de_zona_agricola_verificada": false,
         "poligono_homogeneo_demostrado": false
       },
       {
@@ -71,6 +74,9 @@
         "distancia_climatica_interna_maxima": 1.9036,
         "diametro_geografico_testigos_km": 174.131,
         "rango_altitudinal_testigos_m": 3164.0,
+        "testigos_cota_dem_menor_o_igual_cero": 0,
+        "evaluacion_mascara_tierra_costa_pendiente": true,
+        "viabilidad_de_zona_agricola_verificada": false,
         "poligono_homogeneo_demostrado": false
       }
     ],
@@ -82,6 +88,8 @@
     "estabilidad_temporal_exploratoria_evaluada": true,
     "estabilidad_espacial_y_contigüidad_certificadas": false,
     "estabilidad_temporal_y_espacial_evaluada": false,
+    "grupos_aptos_para_zonificacion_agricola_operativa": 0,
+    "interpretacion_cautelar": "El menor contraste climático interno no demuestra continuidad territorial, suelo agrícola ni coherencia de lluvia; revisar nodos costeros de cota <=0 m y el grupo muy extenso de varias altitudes.",
     "poligonos_homogeneos_certificados": false
   },
   "restricciones": [
