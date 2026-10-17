@@ -1,0 +1,173 @@
+{
+  "fase": "9J",
+  "corte_local": "2026-10-17",
+  "zona_horaria": "America/Lima",
+  "tipo": "auditoria_de_temporalidad_y_preparacion_prospectiva",
+  "estado": "sin_verificaciones_maduras_al_corte",
+  "oaf_habilidad_prospectiva_demostrada": false,
+  "enso_nino_costero_predictivo_validado": false,
+  "alertas_fitosanitarias_derivadas": false,
+  "normal_1996_2025_validada_instrumentalmente": false,
+  "pronosticos_sst_nino12_no_son_ICEN": true,
+  "diarios_externos": {
+    "producto": "Open-Meteo Forecast API (externo, no modelo OAF)",
+    "n_emisiones": 4,
+    "n_localidad_dia_pronosticados": 112,
+    "n_localidad_dia_valido_unicos": 40,
+    "n_emisiones_con_commit_y_bytes_comprobados": 4,
+    "fecha_primer_contraste_posible": "2026-10-22",
+    "n_comparables_temporalmente_al_corte": 0,
+    "estado": "pendiente_de_reanalisis",
+    "emisiones": [
+      {
+        "fecha_emision_local": "2026-10-14",
+        "emision_utc": "2026-10-15T04:55:55+00:00",
+        "commit_git": "79e92c9aac669e37599e868ff371aa67d9799ec5",
+        "commit_utc": "2026-10-15T04:55:57Z",
+        "archivo": "datos/pronosticos_emitidos/2026-10-14.json",
+        "sha256_contenido": "5fa1c5760382ec782ba0cb76754dbb8c94b32d684d652fb49fddb8a0e904aee6",
+        "n_localidad_dia_pronosticados": 28,
+        "primera_fecha_valida": "2026-10-15",
+        "primera_fecha_elegible": "2026-10-22",
+        "conteo_verificable_al_corte": 0
+      },
+      {
+        "fecha_emision_local": "2026-10-15",
+        "emision_utc": "2026-10-15T05:06:31+00:00",
+        "commit_git": "864d2bc94ea653ad51ecb11001e9decdee80268d",
+        "commit_utc": "2026-10-15T05:06:33Z",
+        "archivo": "datos/pronosticos_emitidos/2026-10-15.json",
+        "sha256_contenido": "4b59665fa758d1b7afa7d54b67a3291a27ec443b613b49fbe728c6304f87ab6d",
+        "n_localidad_dia_pronosticados": 28,
+        "primera_fecha_valida": "2026-10-16",
+        "primera_fecha_elegible": "2026-10-23",
+        "conteo_verificable_al_corte": 0
+      },
+      {
+        "fecha_emision_local": "2026-10-16",
+        "emision_utc": "2026-10-16T13:58:23+00:00",
+        "commit_git": "699bd04852691fe39e79140c37afcced9c38aa71",
+        "commit_utc": "2026-10-16T13:58:26Z",
+        "archivo": "datos/pronosticos_emitidos/2026-10-16.json",
+        "sha256_contenido": "16e47fc823708c2aa92a1b1f12a018aef414a6d3d7cf464bc901e000d5e51711",
+        "n_localidad_dia_pronosticados": 28,
+        "primera_fecha_valida": "2026-10-17",
+        "primera_fecha_elegible": "2026-10-24",
+        "conteo_verificable_al_corte": 0
+      },
+      {
+        "fecha_emision_local": "2026-10-17",
+        "emision_utc": "2026-10-17T13:47:24+00:00",
+        "commit_git": "02445eb630eb77b4a1c4bb2b466230356c8b4a66",
+        "commit_utc": "2026-10-17T13:47:27Z",
+        "archivo": "datos/pronosticos_emitidos/2026-10-17.json",
+        "sha256_contenido": "2f32920fef89bb656e4a83e667d17bcb0bd4e310dedd59c0ea3a6868d436dce5",
+        "n_localidad_dia_pronosticados": 28,
+        "primera_fecha_valida": "2026-10-18",
+        "primera_fecha_elegible": "2026-10-25",
+        "conteo_verificable_al_corte": 0
+      }
+    ]
+  },
+  "temperatura_mensual_propia": {
+    "producto": "Modelo OAF 8E temperatura mensual experimental",
+    "n_emisiones": 1,
+    "n_predicciones_premes": 8,
+    "n_nowcasts_intramensuales": 4,
+    "n_temporalmente_elegibles": 0,
+    "n_contrastes_en_libro_8e": 0,
+    "primera_fecha_elegible_teorica": "2026-11-10",
+    "primera_validacion_premes_teorica": "2026-12-10",
+    "clasificacion": "temperatura de rejilla frente a ERA5-Land, no sensor SENAMHI",
+    "emisiones": [
+      {
+        "mes_origen": "2026-09",
+        "fecha_emision_utc": "2026-10-15T06:41:18+00:00",
+        "sha256": "1a8c6f628151c9ede4049b358029dbdc156a34427380d369629e5daebe1de90d",
+        "n_registros": 12
+      }
+    ]
+  },
+  "sst_mensual_propia": {
+    "producto": "AR(1) propio de SST Niño 1+2 (no ICEN ni alerta ENFEN)",
+    "n_emisiones": 1,
+    "n_predicciones_premes": 2,
+    "n_nowcasts_intramensuales": 1,
+    "n_contrastes_realizados_en_fase_9j": 0,
+    "primera_fecha_objetivo_para_contrastar": "2026-10",
+    "nota": "La publicación/revisión del índice NOAA determina la disponibilidad de su observación, no un plazo inventado.",
+    "emisiones": [
+      {
+        "origen": "2026-09",
+        "emision_utc": "2026-10-15T05:53:43+00:00",
+        "sha256": "b6bc83e2a0c564959fbfb9a4bd3fdfd36d90810900ca3d249ec23778d047f5ea"
+      }
+    ]
+  },
+  "verificacion_externa_6g": {
+    "n_dias_verificados": 0,
+    "reporte_fase": "6G",
+    "fuente_contraste": "ERA5 / ERA5-Land posterior; no estación"
+  },
+  "verificacion_temperatura_8g": {
+    "n_pronosticos_verificados": 0,
+    "reporte_fase": "8G",
+    "fuente_contraste": "ERA5-Land posterior; no estación"
+  },
+  "metricas_predictivas_observadas": {
+    "MAE": null,
+    "RMSE": null,
+    "sesgo": null,
+    "mejora_frente_persistencia": null,
+    "probabilidades_calibradas": null
+  },
+  "fechas_control": [
+    {
+      "evento": "Primer pronóstico diario Open-Meteo elegible contra ERA5/ERA5-Land",
+      "fecha_minima": "2026-10-22",
+      "estado": "futuro_al_corte"
+    },
+    {
+      "evento": "Temperatura OAF octubre 2026 (intramensual, no premés)",
+      "fecha_minima": "2026-11-10",
+      "estado": "futuro_al_corte"
+    },
+    {
+      "evento": "Temperatura OAF noviembre 2026 (emisión premes)",
+      "fecha_minima": "2026-12-10",
+      "estado": "futuro_al_corte"
+    }
+  ],
+  "inventario_estacional_NOAA_C3S": [
+    {
+      "nombre": "NOAA CPC NMME — archivo de emisiones en tiempo real",
+      "tipo": "forecast_archive",
+      "url": "https://ftp.cpc.ncep.noaa.gov/NMME/archive/",
+      "inicio_documentado": "2011-08",
+      "verificacion_numerica_oaf": false,
+      "riesgo": "Las imágenes publicadas no bastan para extraer un valor regional numérico; requieren productos numéricos asociados y fecha inequívoca de emisión."
+    },
+    {
+      "nombre": "NOAA CPC NMME — acceso a datos",
+      "tipo": "guia_datos",
+      "url": "https://www.cpc.ncep.noaa.gov/products/NMME/data.html",
+      "verificacion_numerica_oaf": false
+    },
+    {
+      "nombre": "Copernicus C3S — pronósticos estacionales",
+      "tipo": "catalogo_cds",
+      "url": "https://www.ecmwf.int/en/forecasts/datasets/seasonal-forecast-monthly-statistics-single-levels",
+      "verificacion_numerica_oaf": false,
+      "riesgo": "Los hindcasts y las emisiones reales deben separarse con metadatos originales de inicialización, sistema y versión."
+    }
+  ],
+  "predicciones_estacionales_NOAA_descargadas_y_verificadas_n": 0,
+  "advertencias": [
+    "La comprobación git demuestra que se conservan bytes idénticos en commits históricos; no certifica horas externas al repositorio ni la exactitud meteorológica.",
+    "Las múltiples emisiones de una misma fecha válida no constituyen observaciones independientes.",
+    "Los pronósticos diarios archivados corresponden a Open-Meteo, no a un modelo propio del OAF.",
+    "Las emisiones OAF de octubre sobre octubre son intramensuales, no predicciones anteriores al mes.",
+    "NMME real-time y sus hindcasts se deben separar por tipo, inicialización, modelo, resolución y emisión original.",
+    "No hay validación sobre parcelas, pluviómetros ni enfermedades de arándano o vid."
+  ]
+}
