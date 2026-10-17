@@ -137,7 +137,6 @@ def fetch(root,max_new=2):
                 if counter<max_new:time.sleep(2)
 
 def candidate(a,b,norma,scaling,limit=20):
-    distance=ref.math.sqrt(1) if False else 0 # deterministic only; no implicit skills
     from math import sin,cos,asin,sqrt,pi
     x=sin((b["latitud"]-a["latitud"])*pi/360)**2+cos(a["latitud"]*pi/180)*cos(b["latitud"]*pi/180)*sin((b["longitud"]-a["longitud"])*pi/360)**2
     distance=12742.0176*asin(min(1,sqrt(x)))
@@ -157,7 +156,7 @@ def candidate(a,b,norma,scaling,limit=20):
       "diferencia_precipitacion_anual_mm":round(rain,3),
       "diferencia_humedad_pct":round(rh,3),
       "igual_celda_temperatura_referencia":"desconocido",
-      "criterio_filtro_vecindad":"<=20km y ambos perfiles 30 anios, sin afirmar contigüidad ecológica",
+      "criterio_filtro_vecindad":"distancia<=20km;perfil_30anios;no_afirma_contiguidad_ecologica",
       "zona_homogenea_verificada":"false"}
 
 def textcsv(rows,fields):
