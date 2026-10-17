@@ -1,19 +1,19 @@
 {
   "fase": "8O",
-  "estado": "muestra_dem_incompleta_sin_zonas_climaticas",
+  "estado": "inventario_fisico_completo_listo_para_muesteo_climatico",
   "nodos_diseno": 420,
-  "nodos_dem_verificados": 400,
+  "nodos_dem_verificados": 420,
   "n_referencias_8n": 69,
   "n_anclas_refuerzo": 33,
   "n_refuerzos": 127,
   "n_lotes_esperados": 9,
-  "n_lotes_archivados": 8,
+  "n_lotes_archivados": 9,
   "paso_regional_grados": 0.0625,
   "paso_refuerzo_grados": 0.03125,
   "tipos_muestreo_no_son_celdas_climaticas_independientes": true,
   "area_departamental_calculada": false,
   "limite_administrativo_validado_inei_ign": false,
-  "n_testigos_climaticos_seleccionados": 0,
+  "n_testigos_climaticos_seleccionados": 19,
   "zonas_homogeneas_demostradas": 0,
   "series_climaticas_multivariables_1996_2025_completas": 0,
   "validacion_espacial_independiente": false,
@@ -25,12 +25,12 @@
       "altitud_max_m": 98.0
     },
     "valle_bajo": {
-      "n_puntos": 105,
+      "n_puntos": 121,
       "altitud_min_m": 100.0,
       "altitud_max_m": 293.0
     },
     "piedemonte": {
-      "n_puntos": 60,
+      "n_puntos": 64,
       "altitud_min_m": 304.0,
       "altitud_max_m": 785.0
     },
@@ -97,6 +97,10 @@
       {
         "index": 8,
         "sha256_archivo_comprimido": "ce7c335e85c103f790f15ab13ab887f320801abf142743307dea9a4f2a2c013e"
+      },
+      {
+        "index": 9,
+        "sha256_archivo_comprimido": "c7d987e4b0c50920490ec3f72abcfb86627780b408e543048fa2ba4380468a12"
       }
     ]
   }
