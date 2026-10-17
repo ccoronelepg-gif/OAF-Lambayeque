@@ -1,0 +1,64 @@
+name: OAF 9I - Ampliacion y contraste CHIRPS multianual
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/contraste_multianual_chirps_9i.py'
+      - 'modelos/analisis_multianual_9i.py'
+      - '.github/workflows/oaf_contraste_multianual_9i.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9i-ampliacion
+  cancel-in-progress: false
+jobs:
+  multiyear-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias científicas
+        run: pip install requests==2.32.5 rasterio==1.4.3
+      - name: Extraer CHIRPS v3 en años preregistrados sin interpolar
+        run: |
+          python modelos/contraste_multianual_chirps_9i.py
+          python modelos/contraste_multianual_chirps_9i.py --check
+      - name: Analisis estrictamente sobre meses comunes con ERA5 9H
+        run: |
+          python modelos/analisis_multianual_9i.py
+          python modelos/analisis_multianual_9i.py --check
+      - name: Pruebas científicas y sintaxis
+        run: |
+          python -m unittest discover -s tests -p 'test_multianual_9i.py' -v
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("datos/validacion_estaciones_9i")
+          a=json.loads((base/"fuentes_chirps_ampliacion_9i.json").read_text("utf8"))
+          b=json.loads((base/"diagnostico_multianual_9i.json").read_text("utf8"))
+          assert b["meses_estacion_unicos_emparejados"]>=36
+          assert b["total_chirps_pares"]>=72
+          assert not b["independencia_CHIRPS_validada"]
+          assert not b["pronosticos_archivados_con_vintage"]
+          assert a["anios_descarga_nueva"]==[1996,2002,2007,2011,2013]
+          print("Meses externos nuevos:", a["meses_tiff_exitosos"], "/ 60")
+          print("Errores/ausencias:", len(a["problemas"]))
+          PY
+      - name: Publicar solo datos con trazabilidad y reproducibilidad
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9i/pares_chirps_ampliacion_9i.csv datos/validacion_estaciones_9i/fuentes_chirps_ampliacion_9i.json datos/validacion_estaciones_9i/diagnostico_multianual_9i.json
+          if git diff --cached --quiet; then
+            echo '9I: no hay datos nuevos'
+          else
+            git commit -m 'data(9I): ampliar CHIRPS y comparar solo meses equivalentes con ERA5'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
