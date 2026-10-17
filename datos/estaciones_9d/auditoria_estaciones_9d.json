@@ -1,0 +1,244 @@
+{
+  "fase": "9D",
+  "fecha_procesamiento": "2026-10-17",
+  "estado": "series_diarias_con_ingesta_verificada_por_SHA; identidad_geografica_por_verificar",
+  "fuente": "tres archivos diarios aportados por usuario; no hay cabeceras ni ficha oficial adjunta",
+  "orden_columnas_inferido": [
+    "anio",
+    "mes",
+    "dia",
+    "precipitacion_mm",
+    "temperatura_maxima_c",
+    "temperatura_minima_c"
+  ],
+  "sentinel_sin_dato": -99.9,
+  "control_calidad": {
+    "reglas": "6 columnas; fechas consecutivas y unicas; SHA-256; centinelas a NA; precip negativa rechazada; plausibilidad termica y Tmax<Tmin marcadas; lluvia >=150mm señalada para revision pero conservada",
+    "mes_completo": "al menos 90 % de dias del mes calendario para cada variable por separado; no imputacion ni escalamiento",
+    "anual": "suma de 12 meses completos; si falta alguno -> null",
+    "prohibido": "convertir -99.9 a cero, normal 1996-2025 truncada, homogeneizacion no realizada, validar grilla espacial sin coordenadas"
+  },
+  "totales": {
+    "archivos": 3,
+    "registros_diarios": 55200,
+    "meses_en_csv": 1814
+  },
+  "estaciones": [
+    {
+      "codigo": "00000340",
+      "nombre": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "metadatos_senamhi_verificados": false,
+      "origen": "archivo enviado por usuario; operador y licencia no corroborados",
+      "archivo_original": "datos/estaciones_9d/originales/qc00000340.txt",
+      "raw_sha256": "3805b295c8a6eddaf9606caf200747b814b7898fc561f7da40936827d0574618",
+      "rows": 18156,
+      "inicio": "1964-11-15",
+      "fin": "2014-07-31",
+      "validos": {
+        "precip": 16028,
+        "tmax": 15573,
+        "tmin": 16129
+      },
+      "ausentes": {
+        "precip": 2128,
+        "tmax": 2583,
+        "tmin": 2027
+      },
+      "controles_manual": [],
+      "extremos_lluvia_150mm": [],
+      "precip_cobertura_total_pct": 88.2794,
+      "tmax_cobertura_total_pct": 85.7733,
+      "tmin_cobertura_total_pct": 88.8356,
+      "meses_precip_utilizables": 522,
+      "meses_tmax_utilizables": 505,
+      "meses_tmin_utilizables": 523,
+      "periodo_1996_2013": {
+        "meses_posibles": 216,
+        "meses_precip_utilizables": 215,
+        "meses_tmax_utilizables": 214,
+        "meses_tmin_utilizables": 214,
+        "no_es_normal_climatologica_1996_2025": true
+      },
+      "lluvia_anual_mm_si_12_meses_validos": {
+        "1982": null,
+        "1983": null,
+        "1997": 378.1,
+        "1998": 1847.1,
+        "2012": 489.4,
+        "2013": 321.8
+      }
+    },
+    {
+      "codigo": "00153114",
+      "nombre": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "metadatos_senamhi_verificados": false,
+      "origen": "archivo enviado por usuario; operador y licencia no corroborados",
+      "archivo_original": "datos/estaciones_9d/originales/qc00153114.txt",
+      "raw_sha256": "8a85d663750cbc4d361f62e5f4a43e338de24373a21c55337e9076f5ca740c0a",
+      "rows": 18781,
+      "inicio": "1963-03-01",
+      "fin": "2014-07-31",
+      "validos": {
+        "precip": 18374,
+        "tmax": 5407,
+        "tmin": 5416
+      },
+      "ausentes": {
+        "precip": 407,
+        "tmax": 13374,
+        "tmin": 13365
+      },
+      "controles_manual": [],
+      "extremos_lluvia_150mm": [
+        {
+          "fecha": "1983-03-26",
+          "precipitacion_mm": 150.0,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1998-01-06",
+          "precipitacion_mm": 150.2,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        }
+      ],
+      "precip_cobertura_total_pct": 97.8329,
+      "tmax_cobertura_total_pct": 28.7897,
+      "tmin_cobertura_total_pct": 28.8377,
+      "meses_precip_utilizables": 604,
+      "meses_tmax_utilizables": 178,
+      "meses_tmin_utilizables": 178,
+      "periodo_1996_2013": {
+        "meses_posibles": 216,
+        "meses_precip_utilizables": 213,
+        "meses_tmax_utilizables": 171,
+        "meses_tmin_utilizables": 171,
+        "no_es_normal_climatologica_1996_2025": true
+      },
+      "lluvia_anual_mm_si_12_meses_validos": {
+        "1982": 121.0,
+        "1983": 1836.0,
+        "1997": 204.1,
+        "1998": 2258.0,
+        "2012": null,
+        "2013": 143.13
+      }
+    },
+    {
+      "codigo": "00152107",
+      "nombre": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "metadatos_senamhi_verificados": false,
+      "origen": "archivo enviado por usuario; operador y licencia no corroborados",
+      "archivo_original": "datos/estaciones_9d/originales/qc00152107.txt",
+      "raw_sha256": "0434dbc67f01fbb8013d95881452f567feffa9e2542a04eae6f9dc175e715b31",
+      "rows": 18263,
+      "inicio": "1964-01-01",
+      "fin": "2013-12-31",
+      "validos": {
+        "precip": 17834,
+        "tmax": 0,
+        "tmin": 0
+      },
+      "ausentes": {
+        "precip": 429,
+        "tmax": 18263,
+        "tmin": 18263
+      },
+      "controles_manual": [],
+      "extremos_lluvia_150mm": [
+        {
+          "fecha": "1983-01-26",
+          "precipitacion_mm": 165.0,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1983-03-09",
+          "precipitacion_mm": 172.0,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1983-04-24",
+          "precipitacion_mm": 150.0,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1983-05-17",
+          "precipitacion_mm": 180.3,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1983-05-20",
+          "precipitacion_mm": 172.8,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1998-01-25",
+          "precipitacion_mm": 152.8,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1998-02-18",
+          "precipitacion_mm": 201.3,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "1998-03-10",
+          "precipitacion_mm": 230.7,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        },
+        {
+          "fecha": "2012-02-10",
+          "precipitacion_mm": 330.0,
+          "evaluacion": "conservar; confirmar con metadatos/informe QC"
+        }
+      ],
+      "precip_cobertura_total_pct": 97.651,
+      "tmax_cobertura_total_pct": 0.0,
+      "tmin_cobertura_total_pct": 0.0,
+      "meses_precip_utilizables": 586,
+      "meses_tmax_utilizables": 0,
+      "meses_tmin_utilizables": 0,
+      "periodo_1996_2013": {
+        "meses_posibles": 216,
+        "meses_precip_utilizables": 216,
+        "meses_tmax_utilizables": 0,
+        "meses_tmin_utilizables": 0,
+        "no_es_normal_climatologica_1996_2025": true
+      },
+      "lluvia_anual_mm_si_12_meses_validos": {
+        "1982": null,
+        "1983": 3046.55,
+        "1997": 260.7,
+        "1998": 3367.4,
+        "2012": 968.96,
+        "2013": 165.0
+      }
+    }
+  ],
+  "modelo_y_territorio": {
+    "comparacion_directa_con_9A_9C": false,
+    "razon": "no hay coordenadas ni altitud verificadas, ventanas 9A en 2011-2025 y las fuentes terminan en 2013/2014; reanalisis y estaciones no emparejados",
+    "lluvias_el_nino": "solo retrospectiva; comparar episodios 1983 y 1998 sin atribucion causal automatica",
+    "pisos_altitudinales_verificados": false,
+    "alertas_operativas": false
+  },
+  "metadatos_pendientes": [
+    "nombre oficial",
+    "codigo institucional y equivalencia",
+    "latitud",
+    "longitud",
+    "altitud",
+    "tipo instrumento",
+    "procedencia exacta",
+    "licencia/restricciones",
+    "fecha de actualizacion y control de calidad original"
+  ]
+}
