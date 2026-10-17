@@ -1,0 +1,38 @@
+{
+  "fase": "8P",
+  "estado": "muestreo_adicional_definido_esperando_perfiles_climaticos",
+  "periodo_climatologia": "1996–2025",
+  "n_nodos_dem_region": 420,
+  "n_testigos_climaticos_8o_existentes": 19,
+  "n_testigos_climaticos_nuevos_8p": 62,
+  "n_testigos_totales_propuestos": 81,
+  "n_candidatos_con_cota_dem_negativa_admitidos": 0,
+  "n_testigos_nuevos_por_estrato": {
+    "llanura_costa": 10,
+    "valle_bajo": 10,
+    "piedemonte": 12,
+    "montana_baja": 10,
+    "montana_media": 8,
+    "montana_alta": 12
+  },
+  "aristas_cercania_fisica": 1244,
+  "distancia_maxima_para_cercania_km": 8.5,
+  "arista_significa_solo_proximidad_no_afinidad_climatica": true,
+  "zona_climatica_homogenea_demostrada": false,
+  "n_poligonos_agricolas_certificados": 0,
+  "cuencas_y_costa_verificadas_con_cartografia_oficial": false,
+  "predicciones_zonales_verificadas": false,
+  "validacion_SENAMHI_instrumental": false,
+  "procedimiento": "Maximin de separación geográfica, con estratos DEM de diseño; alta prioridad 300 m+",
+  "advertencias": [
+    "Nodos con DEM <=5 m no se seleccionan para nuevos testigos: no implica que sean mar, solo cribado preventivo sin máscara agua/tierra.",
+    "La franja 1600–2499 m tiene pocos puntos; 8 de 8 elegibles se incorporan sin pretender representar cada subcuenca.",
+    "La densificación es muestreo de localizaciones, no 62 series instrumentales ni delimitación climática válida.",
+    "La separación espacial <=8,5 km es solo un grafo de posibles vecinos; no verifica un camino libre de barreras o cuencas.",
+    "Los centros de celdas ERA5/ERA5-Land pueden ser compartidos entre ubicaciones distintas y los datos no son independientes."
+  ],
+  "trazabilidad": {
+    "csv_dem_sha256": "42a1b32e4221c9401a1c4d003fa4ff90e2290a4870aed8feb0f7bfe65da819fd",
+    "csv_testigos_8o_sha256": "9f932d1a325663f93431f08a405adcebf8f39f144b15f53cf50718ec2694cf79"
+  }
+}
