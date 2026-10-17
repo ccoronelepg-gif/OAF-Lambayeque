@@ -50,7 +50,7 @@ def months_from_axis(ds,axis):
     if axis not in ds.variables:raise ValueError("No se pudo leer eje target")
     v=ds.variables[axis]
     units=str(getattr(v,"units",""))
-    found=re.fullmatch(r"months since (\\d{4})-(\\d{2})-\\d{2}.*",units)
+    found=re.fullmatch(r"months since ([0-9]{4})-([0-9]{2})-[0-9]{2}.*",units)
     if not found:raise ValueError("Unidad temporal NOAA no reconocida: "+units)
     origin=int(found.group(1))*12+int(found.group(2))-1
     months=[]
