@@ -62,6 +62,19 @@ class TestClimate8P(unittest.TestCase):
   self.assertEqual(pair2["centros_de_ambos_modelos_diferentes"],"true")
   self.assertEqual(pair2["zona_homogenea_verificada"],"false")
 
+ def test_graph_components_use_distinct_source_cells_but_are_not_polygons(self):
+  profiles={x:{"altitud_dem_m":z} for x,z in [
+   ("A",250),("B",350),("C",500),("D",3020),("E",3250)]}
+  pairs=[{"nodo_a":"A","nodo_b":"B","centros_de_ambos_modelos_diferentes":"true","distancia_climatica_estandarizada":0.2},
+   {"nodo_a":"B","nodo_b":"C","centros_de_ambos_modelos_diferentes":"true","distancia_climatica_estandarizada":0.25},
+   {"nodo_a":"D","nodo_b":"E","centros_de_ambos_modelos_diferentes":"true","distancia_climatica_estandarizada":0.28},
+   {"nodo_a":"A","nodo_b":"D","centros_de_ambos_modelos_diferentes":"false","distancia_climatica_estandarizada":0.1}]
+  groups=m.nucleos_vecindad(pairs,profiles)
+  self.assertEqual(len(groups),2)
+  self.assertEqual([x["n_testigos"] for x in groups],[3,2])
+  self.assertTrue(all(g["poligono_contiguo_verificado"] is False for g in groups))
+  self.assertTrue(all(g["evidencia_instrumental_independiente"] is False for g in groups))
+
  def test_far_locations_cannot_be_called_neighbor(self):
   a={"id":"a","latitud":-6.5,"longitud":-79.5,"altitud_dem_m":100}
   b={"id":"b","latitud":-5.0,"longitud":-79.0,"altitud_dem_m":100}
