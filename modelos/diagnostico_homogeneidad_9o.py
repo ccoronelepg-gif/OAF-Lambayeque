@@ -124,10 +124,13 @@ def analyse():
   unique_cell[coord].add(pid)
   if x["precipitacion_pixel_mm"]!="":
    pixs[pid][month]=float(x["precipitacion_pixel_mm"])
- if len(series)!=42:raise ValueError("No hay píxeles CHIRPS en alguno de los sectores")
  geo=obj(SECTORS)
  sectorprops={f["properties"]["id_sector"]:f["properties"] for f in geo["features"]}
  if len(sectorprops)!=42:raise ValueError("GeoJSON SIG 9K alterado")
+ if set(series)-set(sectorprops):raise ValueError("ID CHIRPS de sector inexistente")
+ for sid in sectorprops:series.setdefault(sid,{})
+ # Celdas marinas o sectores más pequeños que la malla CHIRPS: registrar null,
+ # NUNCA convertir ausencia de píxel terrestre en precipitación 0.
  years_complete=sorted(y for y in DEF_YEARS if
        all(f"{y}-{m:02d}" in index for m in range(1,13)))
  month_csv=[]
@@ -217,6 +220,8 @@ def analyse():
     "n_testigos_chirps_con_pixel_unico":len(unique_cell),
     "n_celdas_chirps_compartidas_entre_testigos":sum(len(ids)>1 for ids in unique_cell.values()),
     "n_sectores":len(sector_status),
+    "sectores_sin_pixel_chirps_valido":sorted(sid for sid in sectorprops if not series[sid]),
+    "n_sectores_sin_pixel_chirps_valido":sum(not series[sid] for sid in sectorprops),
     "n_familias_comparadas":len(families),
     "n_pares_testigos_agrupados_chirps":len(comparisons),
     "n_pares_sector_misma_unidad_hidrografica":len(candidate),
