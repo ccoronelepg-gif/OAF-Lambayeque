@@ -180,6 +180,18 @@ def execute(root='.',fetch=False,year=2025,site=None,check=False):
     unique_cells=sorted({(x['celda_cams_lat'],x['celda_cams_lon']) for x in records})
     result_csv=write_csv(records) if records else None
     valid=sum(bool(x['mes_pm_completo_80pct']) for x in records)
+    # Malla publicada y series numéricas idénticas NO significan sitios independientes.
+    coincident=[]
+    for i,site_a in enumerate(SITES):
+        for site_b in list(SITES)[i+1:]:
+            a={r['mes']:(r['pm25_media_ug_m3'],r['pm10_media_ug_m3'])
+               for r in records if r['localidad']==site_a and r['mes_pm_completo_80pct']}
+            b={r['mes']:(r['pm25_media_ug_m3'],r['pm10_media_ug_m3'])
+               for r in records if r['localidad']==site_b and r['mes_pm_completo_80pct']}
+            common=set(a)&set(b)
+            if len(common)>=12 and all(a[m]==b[m] for m in common):
+                coincident.append({'sitios':[site_a,site_b], 'meses_identicos':len(common),
+                    'interpretacion':'Series PM idénticas; no tratarlas como réplicas independientes'})
     status={
         'fase':'8X','variable_nueva':'material_particulado_PM2.5_PM10',
         'fuente':'CAMS Global via Open-Meteo air quality API',
@@ -190,6 +202,8 @@ def execute(root='.',fetch=False,year=2025,site=None,check=False):
         'sitios_referencia':list(SITES),
         'filas_mes_sitio':len(records),'meses_pm_80pct_aptos':valid,
         'n_celdas_modelo_unicas':len(unique_cells),
+        'series_pm_identicas':coincident,
+        'n_pares_sitio_series_pm_identicas':len(coincident),
         'centros_celda_cams': [{'latitud':lat,'longitud':lon} for lat,lon in unique_cells],
         'asignaciones_localidad_a_celda':{
             site: {'latitud':next(x['celda_cams_lat'] for x in records if x['localidad']==site),
