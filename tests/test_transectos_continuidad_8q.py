@@ -31,7 +31,7 @@ class TestCorridors8Q(unittest.TestCase):
   self.assertGreater(max(p["altitud_dem_m"] for p in v2),3236)
   self.assertLess(min(p["altitud_dem_m"] for p in v2),2978)
  def test_no_incomplete_meteorology_claims_climate_continuity(self):
-  status,positions,comparison,cellrows=m.evaluate(self.root)
+  status,positions,comparison,cellrows,covar=m.evaluate(self.root)
   self.assertEqual(status["fuentes_climaticas_verificadas"],0)
   self.assertEqual(status["n_testigos_intermedios_30_anios_completos"],0)
   self.assertEqual(comparison,[])
@@ -60,13 +60,32 @@ class TestCorridors8Q(unittest.TestCase):
   p.write_text(contents.replace(",false\n",",true\n",1),encoding="utf-8")
   with self.assertRaisesRegex(ValueError,"no declara zonas"):
    m.evaluate(self.root)
+ def test_monthly_site_anomaly_subtracts_own_calendar_baseline(self):
+  selected=[{"testigo_id":"A","transecto":"V1a","latitud":-6.5,
+    "longitud":-79.5,"altitud_dem_m":400.},
+    {"testigo_id":"B","transecto":"V1a","latitud":-6.53,
+     "longitud":-79.52,"altitud_dem_m":500.}]
+  months={}
+  for y in range(1996,2026):
+   for mon in range(1,13):
+    for pid in ("A","B"):
+     months[(pid,f"{y}-{mon:02d}")]={"temperature_2m_mean":20.+mon+.3*(y-1996)+
+       (5. if pid=="B" else 0.),
+       "precipitation_sum":30.+mon+(y-1996)*2.}
+  result=m.coherence(months,selected,{})
+  self.assertEqual(len(result),1)
+  self.assertAlmostEqual(result[0]["correlacion_anomalia_tmedia_360_meses"],1.)
+  self.assertAlmostEqual(result[0]["mae_diferencia_anomalia_tmedia_c"],0.)
+  self.assertEqual(result[0]["independencia_instrumental_verificada"],"false")
+ def test_anomaly_correlation_undefined_for_static_series(self):
+  self.assertIsNone(m.corr([0.,0.,0.],[1.,2.,3.]))
  def test_reference_graph_selection_is_repeatable(self):
   a,route=m.samples(self.root)
   b,route2=m.samples(self.root)
   self.assertEqual(a,b)
   self.assertEqual(route,route2)
  def test_report_is_only_sampling_not_instrument_validation(self):
-  state,p,_,cellrows=m.evaluate(self.root)
+  state,p,_,cellrows,covar=m.evaluate(self.root)
   self.assertEqual(state["poligonos_agroclimaticos_certificados"],0)
   self.assertEqual(state["instrumentos_SENAMHI_confirmados"],0)
   self.assertTrue(state["interpolacion_de_coordenadas_no_es_ruta_topografica"])
