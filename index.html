@@ -437,6 +437,12 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 
 <div class="notice"><b>Limitación científica:</b> viento del reanálisis no equivale a registros de estaciones SENAMHI; la dirección meteorológica indica de dónde procede el viento. El índice Niño 1+2 es una media de un sector amplio del Pacífico y no representa directamente la temperatura frente a toda la costa lambayecana. Corrientes superficiales requieren observaciones/reanálisis u/v, con resolución y máscara tierra-mar conocidas. No se han demostrado pronósticos operativos usando las nuevas variables.</div>
 <p><a href="FASE_8U_VIENTO_SST_CORRIENTES.md">Metodología y estado 8U ↗</a> · <a href="datos/viento_8u/estado_factores_8u.json">Inventario de fuentes y sus límites ↗</a> · <a href="datos/viento_8u/viento_mensual_8u.csv">Archivo de viento mensual ↗</a> · <a href="https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0">Corrientes NASA OSCAR v2 ↗</a> · <a href="https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description">Copernicus Marine ↗</a></p>
+<h3>Corrientes superficiales y SST en tres puntos marinos (producto modelado)</h3>
+<p class="small">Instantánea archivada de Open-Meteo Marine. En las corrientes, la dirección indica <b>hacia dónde fluye</b> el agua; en el viento atmosférico indica de dónde sopla. Estas cifras describen horas de un modelo marino, no los 30 años 1996–2025 ni boyas de medición.</p>
+<p><button class="btn dark" type="button" id="oaf-8u-marine-refresh">Actualizar instantánea marina ↻</button></p>
+<p id="oaf-8u-marine-status" class="small" role="status">Abre el módulo para comprobar los archivos marinos archivados.</p>
+<div class="scroller"><table><thead><tr><th>Punto oceánico de prueba</th><th>SST media (°C)</th><th>Rapidez de corriente (m/s)</th><th>Componente este u (m/s)</th><th>Componente norte v (m/s)</th><th>Horas completas</th></tr></thead><tbody id="oaf-8u-marine"></tbody></table></div>
+<p class="small">Los valores corresponden a datos modelados de aproximadamente 72 horas y no deben llamarse «Corriente de Humboldt observada». <a href="datos/marino_8u/estado_marino_8u.json">Reporte y procedencia SHA ↗</a></p>
 </details>
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
 <div class="panel oaf-tech-archive"><h2>Autoría y fundamentos del OAF</h2><p>La presentación completa del proyecto y su procedimiento metodológico se mantienen en este archivo de consulta.</p><div class="oaf-archive-list"><details><summary>Presentación completa y autoría</summary><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
@@ -795,4 +801,5 @@ nav();
 <script src="modelos/visor_anomalias_8r.js" defer></script>
 <script src="modelos/visor_regional_8s.js" defer></script>
 <script src="modelos/visor_oceanico_8t.js" defer></script>
-<script src="modelos/visor_factores_8u.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_factores_8u.js" defer></script>
+<script src="modelos/visor_marino_8u.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
