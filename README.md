@@ -5,6 +5,16 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Fase 9D · Estaciones reales, trazabilidad y disponibilidad (17/10/2026)
+
+Tres series diarias originales aportadas al OAF-Lambayeque se preservaron en [datos/estaciones_9d/originales/](datos/estaciones_9d/originales/) y se incorporaron a una ingesta reproducible con SHA-256, separación por variable de faltantes (-99.9), revisión de extremos y calendario diario sin duplicados.
+
+**55 200 registros diarios**, **1 814 registros mensuales** con cobertura; los tres archivos tienen lluvia útil pero el código 00152107 carece de cualquier temperatura, y 00000340 no tiene lluvia registrada en 1983. La máxima lluvia diaria identificada, **330 mm en 00152107 el 10/02/2012**, permanece señalada para revisión y **no se ha eliminado**.
+
+Para 1996–2013, meses válidos de precipitación (umbral interno de 90 % de días): 00000340 **215/216**, 00153114 **213/216** y 00152107 **216/216**. Las series llegan como máximo a julio de 2014: **no ofrecen una normal de 30 años 1996–2025**, ni han demostrado habilidad predictiva o verificación de 9A/9C. La identidad, nombres, latitud, longitud, altitud y licencia siguen sin corroboración; **no se asignan puntos inventados en mapas**.
+
+**Publicados:** [informe y límites 9D](FASE_9D_ESTACIONES_REALES.md), [control de calidad y SHA](datos/estaciones_9d/auditoria_estaciones_9d.json), [mensuales auditados CSV](datos/estaciones_9d/series_mensuales_9d.csv), [motor Python](modelos/estaciones_instrumentales_9d.py), [automatización de auditoría](.github/workflows/oaf_estaciones_instrumentales_9d.yml). Dashboard en **Análisis de clima regional → Fase 9D** de la [web pública](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#clima).
+
 ## Fase 9C · Validación robusta con intervalos (17/10/2026)
 
 Se recuperaron las matrices **reales, retrospectivas y reanalizadas** de 9A y se verificaron **4 320 parejas de predicción continua** y **720 parejas probabilísticas** comparando el benchmark 8W viento+SST frente a HR+VPD. Se calcularon MAE/Brier y 10 000 remuestreos en bloques circulares de tres años, análisis a un año, sensibilidad a 2017/2023 e intervalos exploratorios con ajuste conservador Bonferroni.
