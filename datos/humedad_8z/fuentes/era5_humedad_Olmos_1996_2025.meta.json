@@ -1,0 +1,12 @@
+{
+  "localidad": "Olmos",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-5.98825&longitude=-79.74723&daily=relative_humidity_2m_mean%2Cvapour_pressure_deficit_max&start_date=1996-01-01&end_date=2025-12-31&timezone=America%2FLima&models=era5",
+  "modelo": "ERA5",
+  "hash_sha256_original": "6ce7f8e2e0995ce646e33ad3f2debda2413d69564515d9c66ea4cf475622497a",
+  "timestamp_descarga_utc": "2026-10-17T05:33:12.166765+00:00",
+  "intervalo": "1996-01-01/2025-12-31",
+  "registros_mensuales": 360,
+  "fuente_modelada": true,
+  "observacion_instrumental": false,
+  "unidades": "RH %, VPD kPa"
+}

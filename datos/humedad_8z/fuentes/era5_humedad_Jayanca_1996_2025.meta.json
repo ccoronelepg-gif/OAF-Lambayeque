@@ -1,0 +1,12 @@
+{
+  "localidad": "Jayanca",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278&longitude=-79.8228&daily=relative_humidity_2m_mean%2Cvapour_pressure_deficit_max&start_date=1996-01-01&end_date=2025-12-31&timezone=America%2FLima&models=era5",
+  "modelo": "ERA5",
+  "hash_sha256_original": "5061cb442f76cbd7736445dc10388eef6f9021b18e550fceadc1b43729aedcf7",
+  "timestamp_descarga_utc": "2026-10-17T05:32:58.695250+00:00",
+  "intervalo": "1996-01-01/2025-12-31",
+  "registros_mensuales": 360,
+  "fuente_modelada": true,
+  "observacion_instrumental": false,
+  "unidades": "RH %, VPD kPa"
+}

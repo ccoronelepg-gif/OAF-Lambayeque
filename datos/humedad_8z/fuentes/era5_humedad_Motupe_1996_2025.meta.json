@@ -1,0 +1,12 @@
+{
+  "localidad": "Motupe",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083&longitude=-79.7142&daily=relative_humidity_2m_mean%2Cvapour_pressure_deficit_max&start_date=1996-01-01&end_date=2025-12-31&timezone=America%2FLima&models=era5",
+  "modelo": "ERA5",
+  "hash_sha256_original": "8df0a47cb67af97f6bef082950a710bcfd3c13e7e424ddf60997aac2ce2a9519",
+  "timestamp_descarga_utc": "2026-10-17T05:33:05.423563+00:00",
+  "intervalo": "1996-01-01/2025-12-31",
+  "registros_mensuales": 360,
+  "fuente_modelada": true,
+  "observacion_instrumental": false,
+  "unidades": "RH %, VPD kPa"
+}

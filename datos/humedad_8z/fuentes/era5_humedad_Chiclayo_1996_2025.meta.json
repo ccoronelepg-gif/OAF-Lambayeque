@@ -1,0 +1,12 @@
+{
+  "localidad": "Chiclayo",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714&longitude=-79.8409&daily=relative_humidity_2m_mean%2Cvapour_pressure_deficit_max&start_date=1996-01-01&end_date=2025-12-31&timezone=America%2FLima&models=era5",
+  "modelo": "ERA5",
+  "hash_sha256_original": "4320ff88b4c66bb86eca92ca6b3bfb53f5f3c57134cc66389d455f0a6462cb3f",
+  "timestamp_descarga_utc": "2026-10-17T05:32:52.077493+00:00",
+  "intervalo": "1996-01-01/2025-12-31",
+  "registros_mensuales": 360,
+  "fuente_modelada": true,
+  "observacion_instrumental": false,
+  "unidades": "RH %, VPD kPa"
+}
