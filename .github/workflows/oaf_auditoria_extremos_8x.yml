@@ -1,0 +1,63 @@
+name: OAF 8X - Auditoria retrospectiva de extremos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/auditoria_extremos_8x.py'
+      - 'tests/test_auditoria_extremos_8x.py'
+      - '.github/workflows/oaf_auditoria_extremos_8x.yml'
+      - 'datos/benchmark_8w/predicciones_mensuales_8w.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8x-extremos
+  cancel-in-progress: false
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verificar procedimientos con pruebas sinteticas
+        run: python -m unittest discover -s tests -p 'test_auditoria_extremos_8x.py' -v
+      - name: Evaluar errores de 2017 y 2023 sin usar 1998 como prueba
+        run: |
+          python modelos/auditoria_extremos_8x.py
+          python modelos/auditoria_extremos_8x.py --check
+      - name: Confirmar naturaleza retrospectiva
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('datos/extremos_8x/estado_extremos_8x.json').read_text())
+          assert d['evento_1997_1998_no_tiene_holdout_en_8w']
+          assert d['prediccion_operativa'] is False
+          assert d['n_grupos_mae_estacional']==480
+          print('Estudio de extremos 2017 y 2023 realizado sin inventar test 1998')
+          PY
+      - name: Publicar diagnostico real y verificar portal
+        run: |
+          node --check modelos/visor_aire_extremos_8x.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text()
+          for x in ('oaf-aire-extremos-8x','oaf-8x-status','oaf-8x-air-graph','oaf-8x-extreme-table'):
+              assert html.count('id="'+x+'"')==1,x
+          assert html.count('src="modelos/visor_aire_extremos_8x.js"')==1
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/extremos_8x/
+          if git diff --cached --quiet; then
+            echo 'Sin nuevos resultados'
+          else
+            git commit -m 'data(oaf): errores por estacion 2017 y 2023 fase 8X'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
