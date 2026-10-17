@@ -1,0 +1,58 @@
+name: OAF 9K - Auditoria final de SIG y NOAA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/oaf-sectores-9k.css'
+      - 'modelos/visor_sectores_9k.js'
+      - 'modelos/sectores_altitudinales_9k.py'
+      - 'modelos/inspeccion_nmme_9k.py'
+      - 'datos/sectores_agroclimaticos_9k/**'
+      - 'tests/test_sectores_altitudinales_9k.py'
+      - 'FASE_9K_ZONAS_Y_NMME.md'
+      - '.github/workflows/oaf_auditoria_9k.yml'
+permissions:
+  contents: read
+jobs:
+  verificacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias geométricas verificadas
+        run: pip install shapely==2.1.2 pyproj==3.7.2 numpy==2.2.6 netCDF4==1.7.3
+      - name: Determinismo de polígonos y valores NOAA
+        run: |
+          python modelos/sectores_altitudinales_9k.py --check
+          python modelos/inspeccion_nmme_9k.py --check
+          python -m unittest discover -s tests -p 'test_sectores_altitudinales_9k.py' -v
+      - name: Integridad visual sin perder navegación ni confundir producto NOAA con local
+        run: |
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_sectores_9k.js
+          node tests/test_portada_2026.js
+      - name: Invariantes de homogeneidad y pronóstico
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=Path('datos/sectores_agroclimaticos_9k')
+          zones=json.loads((r/'estado_sectores_9k.json').read_text('utf8'))
+          nmme=json.loads((r/'inventario_nmme_9k.json').read_text('utf8'))
+          assert zones['n_nodos_dem']==420
+          assert zones['n_testigos_con_360_meses']==81
+          assert zones['n_poligonos_graficos_exploratorios']==42
+          assert zones['n_familias_multicelda_exploratorias']==3
+          assert zones['n_zonas_homogeneas_certificadas']==0
+          assert zones['n_sectores_agricolas_certificados']==0
+          assert nmme['fuentes_netcdf_comprobadas']==2
+          assert all(len(src['meses_con_ceros_globales_sin_dato'])==3 for src in nmme['fuentes'])
+          assert not nmme['downscaling_zonal_aplicado']
+          assert not nmme['habilidad_noaa_para_zonas_lambayeque_demostrada']
+          print('9K: polígonos y señales NOAA publicados con límites explícitos.')
+          PY
