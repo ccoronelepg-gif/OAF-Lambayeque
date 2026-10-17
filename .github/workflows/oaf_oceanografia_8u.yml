@@ -1,0 +1,55 @@
+name: OAF 8U - TSM NOAA y corrientes marinas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/oceanografia_fuentes_8u.py'
+      - 'modelos/corrientes_geostroficas_8u.py'
+      - 'tests/test_oceanografia_8u.py'
+      - '.github/workflows/oaf_oceanografia_8u.yml'
+  schedule:
+    - cron: '43 19 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8u-oceanography
+  cancel-in-progress: false
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar datos NOAA originales
+        run: git pull --ff-only origin main
+      - name: Verificar diferenciación de TSM, viento y corrientes marinas
+        run: python -m unittest discover -s tests -p 'test_oceanografia_8u.py' -v
+      - name: Publicar TSM Niño1+2 y catálogo de corrientes comprobable
+        run: |
+          python modelos/oceanografia_fuentes_8u.py
+          python modelos/oceanografia_fuentes_8u.py --check
+      - name: Recuperar máximo un subconjunto geostrófico NOAA/AOML
+        run: python modelos/corrientes_geostroficas_8u.py --fetch --max-new 1
+      - name: Auditar cobertura de corrientes geostróficas sin imputar faltantes
+        run: |
+          python modelos/corrientes_geostroficas_8u.py
+          python modelos/corrientes_geostroficas_8u.py --check
+      - name: Guardar NOAA fuente original, resultados y su estado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/oceanografia_8u/ datos/corrientes_8u/
+          if git diff --cached --quiet; then
+            echo "NOAA originales y resultados ya coinciden."
+          else
+            git commit -m "data(oaf): TSM NOAA y corrientes geostróficas trazables, sin imputaciones"
+            git pull --rebase origin main
+            git push
+          fi
