@@ -4,6 +4,7 @@
 (() => {
   "use strict";
   const el = id => document.getElementById(id);
+  const STATION_NAMES={"00000340":"El Espinal","00153114":"Puchaca","00152107":"Virrey"};
   const numeric = x => x === "" || x == null ? null : Number(x);
   const fmt = (n, dp = 1) =>
     n === null || !Number.isFinite(n) ? "Sin datos" :
@@ -51,7 +52,7 @@
     if(report.fase!=="9D"||report.totales.archivos!==3)throw Error("Esquema o version de 9D incorrectos");
     const data=parse(monthly),site=el("oaf-9d-site"),variable=el("oaf-9d-var"),period=el("oaf-9d-period");
     for(const row of report.estaciones){
-      const op=document.createElement("option");op.value=row.codigo;op.textContent="Estación "+row.codigo;site.append(op);
+      const op=document.createElement("option");op.value=row.codigo;op.textContent=(STATION_NAMES[row.codigo]||"Estación")+" · "+row.codigo;site.append(op);
     }
     for(const [value,label] of [["precip","Lluvia acumulada (mm/año)"],["tmax","Temperatura máxima media (°C)"],["tmin","Temperatura mínima media (°C)"]]){
       const op=document.createElement("option");op.value=value;op.textContent=label;variable.append(op);
@@ -85,7 +86,7 @@
       el("oaf-9d-caption").textContent="Leyenda: cada barra representa "+measurement+". Una barra gris es falta de datos suficientes, no un valor cero. "+ 
         "Se exige cobertura mensual ≥90 % y 12 meses válidos por año; los extremos conservados requieren verificación instrumental. "+
         "Las tres series solo llegan hasta 2013 o julio de 2014; no sirven para calcular la normal completa 1996–2025. "+
-        "Estación "+code+": "+station.extremos_lluvia_150mm.length+" registros de lluvia ≥150 mm/día señalados para revisión.";
+        (STATION_NAMES[code]||"Estación")+" ("+code+"): "+station.extremos_lluvia_150mm.length+" registros de lluvia ≥150 mm/día señalados para revisión.";
       el("oaf-9d-qc").textContent="Precipitación válida en archivo: "+fmt(station.precip_cobertura_total_pct,1)+
         " %. Temperatura máxima: "+fmt(station.tmax_cobertura_total_pct,1)+
         " %. Periodo instrumental: "+station.inicio+" a "+station.fin+". Sin coordenadas ni altitud verificadas.";
