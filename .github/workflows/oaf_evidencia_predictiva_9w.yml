@@ -1,0 +1,75 @@
+name: OAF 9W - Evidencia predictiva auditada
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/puente_validacion_9w.py'
+      - 'tests/test_puente_predictivo_9w.py'
+      - '.github/workflows/oaf_evidencia_predictiva_9w.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-evidencia-predictiva-9w
+  cancel-in-progress: false
+jobs:
+  reproducir-matriz-y-metricas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias comparables
+        run: pip install numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - name: Unir 9O,9P,9Q y comprobar los 2340 objetivos 9R
+        run: python modelos/puente_validacion_9w.py --bridge
+      - name: Ejecutar benchmark 9T real con 39 sectores
+        run: |
+          python modelos/fase_9t_pipeline.py \
+            --input datos/validacion_9w/matriz_sectores_chirps_9w.csv \
+            --out resultados/9t
+      - name: Seleccionar por evidencia 9U solo en el protocolo 9T
+        run: |
+          python modelos/seleccion_modelo_9u.py \
+            --predicciones resultados/9t/predicciones_fuera_muestra.csv \
+            --salida resultados/9u
+      - name: Reevaluar 9R vs climatología con bloque temporal anual y 9T como control
+        run: |
+          python modelos/puente_validacion_9w.py --evaluate
+          python modelos/puente_validacion_9w.py --check
+      - name: Pruebas de correspondencia de fuentes, periodos y no certificación
+        run: |
+          python -m unittest discover -s tests -p 'test_puente_predictivo_9w.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_evidencia_9w.js
+      - name: Protección de honestidad científica
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('datos/validacion_9w/evaluacion_bloques_9w.json').read_text())
+          assert a['fase']=='9W'
+          assert len(a['modelos_y_pruebas'])==3
+          assert a['auditoria_matriz_9q_sectorial']['filas_matriz_auditada']==39*360
+          assert not a['modelo_operativo_habilitado']
+          assert not a['validacion_espacial_con_sectores_ausentes_en_entrenamiento']
+          assert not a['verificacion_as_issued_de_variables_rezagadas']
+          assert not a['alertas_fitosanitarias_emitidas']
+          PY
+      - name: Publicar evidencia y evitar archivos temporales fuera de repositorio
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --mixed origin/main
+          git add datos/validacion_9w/ resultados/9t/ resultados/9u/
+          if git diff --cached --quiet; then
+            echo '9W sin nuevos datos'
+          else
+            git commit -m 'data(9W): puente CHIRPS 360 meses, RF 9T y bootstrap temporal de GCN 9R'
+            git push origin HEAD:main
+          fi
