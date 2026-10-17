@@ -1,0 +1,17 @@
+{
+  "fase": "8M",
+  "ciudad": "Olmos",
+  "periodo": [
+    2006,
+    2015
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-5.98825%2C-5.93825%2C-6.03825%2C-5.98825%2C-5.98825%2C-5.93825%2C-5.93825%2C-6.03825%2C-6.03825&longitude=-79.74723%2C-79.74723%2C-79.74723%2C-79.69723%2C-79.79723%2C-79.69723%2C-79.79723%2C-79.69723%2C-79.79723&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean&models=era5_land&cell_selection=land",
+  "sha256_respuesta_original": "1fb3d15b4e1bb39ae9a4ca517359ae5919d23150bc73818a0a3351231d608551",
+  "consulta_utc": "2026-10-17T01:37:43+00:00",
+  "variable": "temperature_2m_mean",
+  "modelo": "era5_land",
+  "seleccion": "land",
+  "ajuste_elevacion": "valor_predeterminado_openmeteo_90m",
+  "sin_validacion_instrumental": true,
+  "documentacion": "https://open-meteo.com/en/docs/historical-weather-api"
+}
