@@ -8,6 +8,8 @@ on:
       - 'tests/test_auditoria_extremos_8x.py'
       - '.github/workflows/oaf_auditoria_extremos_8x.yml'
       - 'datos/benchmark_8w/predicciones_mensuales_8w.csv'
+      - 'index.html'
+      - 'modelos/visor_aire_extremos_8x.js'
 permissions:
   contents: write
 concurrency:
