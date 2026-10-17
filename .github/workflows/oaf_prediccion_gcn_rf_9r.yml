@@ -6,6 +6,9 @@ on:
     paths:
       - 'modelos/comparacion_gcn_rf_9r.py'
       - 'tests/test_comparacion_gcn_rf_9r.py'
+      - 'modelos/visor_comparacion_9r.js'
+      - 'index.html'
+      - 'FASE_9R_COMPARACION_GCN_RANDOM_FOREST.md'
       - '.github/workflows/oaf_prediccion_gcn_rf_9r.yml'
 permissions:
   contents: write
