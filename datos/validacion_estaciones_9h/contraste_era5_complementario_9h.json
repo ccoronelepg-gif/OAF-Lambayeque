@@ -1,7 +1,7 @@
 {
   "fase": "9H",
   "submodulo": "ERA5-Land-temperatura_y_ERA5-atmosferico-precipitacion",
-  "fecha_proceso_utc": "2026-10-17T15:27:51.466510+00:00",
+  "fecha_proceso_utc": "2026-10-17T15:29:45.127882+00:00",
   "productos": {
     "ERA5_atmosferico": "era5",
     "ERA5-Land_temperatura": "era5_land"
@@ -10,18 +10,18 @@
     {
       "producto": "ERA5_atmosferico",
       "periodo": "1996-2005",
-      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=1996-01-01&end_date=2005-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land",
-      "sha256": "1ac9081210d9137a84a6f0133e76546ed8fd75992dd09fcb2080447e394c8723",
-      "bytes": 398619,
-      "utc": "2026-10-17T15:27:13.458396+00:00"
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=1996-01-01&end_date=2005-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land&temperature_unit=celsius",
+      "sha256": "4a27d681dbfc2434e9871509bcf8114a2a706df33f5af25906b6ef6decad6edd",
+      "bytes": 398624,
+      "utc": "2026-10-17T15:29:21.931719+00:00"
     },
     {
       "producto": "ERA5_atmosferico",
       "periodo": "2006-2013",
-      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=2006-01-01&end_date=2013-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land",
-      "sha256": "6a0131d5f0cc01c5836ceda941461ebbe55d01dda2f342766e58778b40cb3262",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=2006-01-01&end_date=2013-12-31&daily=precipitation_sum&models=era5&timezone=America%2FLima&cell_selection=land&temperature_unit=celsius",
+      "sha256": "f8170b24750b63e236a3681f322ed7b1eb03ea34a2f737f43881570197cab9c4",
       "bytes": 318834,
-      "utc": "2026-10-17T15:27:15.323157+00:00"
+      "utc": "2026-10-17T15:29:23.329506+00:00"
     }
   ],
   "errores_descarga": {
