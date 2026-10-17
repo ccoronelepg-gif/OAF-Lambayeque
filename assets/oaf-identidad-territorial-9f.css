@@ -1,0 +1,15 @@
+/* Referencias instrumentales y relieve: layout editorial compacto */
+.oaf-9f-graphic{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.95fr);gap:18px;margin-top:16px;align-items:start}
+.oaf-9f-info{border:1px solid #dbeae7;background:#f7fbfa;border-radius:15px;padding:17px 20px}
+.oaf-9f-info h3{font-size:20px;color:#164760;margin:0 0 8px}
+.oaf-9f-info p{font-size:12px;color:#4b6a76;line-height:1.75;margin:7px 0}
+.oaf-9f-info p.oaf-9f-extreme{margin:8px 0;font-size:13px}
+.oaf-9f-info .oaf-9f-extreme strong{font-size:25px;color:#136d85}
+.oaf-9f-info a{font-size:12px;font-weight:700;display:inline-block;margin-top:8px}
+.oaf-9f-compare{height:12px;border-radius:8px;background:#e1ebed;overflow:hidden;margin:13px 0}
+.oaf-9f-bar{background:linear-gradient(90deg,#137b9a,#57aab2);height:100%;border-radius:8px}
+.oaf-9f-location{background:#f8fbfc;border-radius:14px;border:1px solid #dfebe9;padding:15px}
+.oaf-9f-location svg{display:block;width:100%;height:auto}
+.oaf-9f-location p{font-size:12px;color:#627883;margin:6px 0 0;line-height:1.6}
+.oaf-9f-legend{font-size:12px;color:#536c7d;line-height:1.75}
+@media(max-width:900px){.oaf-9f-graphic{grid-template-columns:1fr}}
