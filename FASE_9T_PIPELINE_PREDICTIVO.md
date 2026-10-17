@@ -1,5 +1,8 @@
 # Fase 9T — Implementación del benchmark temporal
 
+> **Actualización verificable 9W (17/10/2026):** este texto registra el estado previo de búsqueda o de diseño metodológico y **ya no describe la disponibilidad actual de datos**. Existen 360 meses CHIRPS v3 final en 9O+9P+9Q, predicciones GCN y Random Forest realmente ejecutadas en 9R, y una segunda ejecución RF 9T/selección 9U sobre 39 sectores con enlace de procedencia comprobado en [FASE_9W_RECONCILIACION_PREDICTIVA.md](FASE_9W_RECONCILIACION_PREDICTIVA.md). El mejor MAE observado en 9R es de la climatología, no de IA. Estos ensayos son **retrospectivos y NO constituyen habilidad operativa validada**. Conservar las recomendaciones de validación espacial como tareas pendientes.
+
+
 **Fecha:** 17/10/2026. **Estado:** código de benchmark incorporado; ejecución sobre matriz sectorial real **pendiente**.
 
 Se comprobaron rutas del repositorio: existe `datos/chirps_v3_reciente_3z.csv` con cinco puntos de referencia y meses recientes. No se localizaron bajo los nombres comprobados las matrices sectoriales 9Q/9R ni las geometrías. Estas cinco estaciones referenciales NO equivalen a los sectores S001–S042 y no se utilizarán para simular resultados sectoriales.
