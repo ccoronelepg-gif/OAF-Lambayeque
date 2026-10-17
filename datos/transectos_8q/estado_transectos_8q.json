@@ -7,6 +7,10 @@
   "fuentes_climaticas_verificadas": 6,
   "fuentes_climaticas_previstas": 6,
   "n_testigos_intermedios_30_anios_completos": 10,
+  "n_comparaciones_de_anomalias_por_pares": 13,
+  "comparaciones_con_celda_temperatura_compartida": 2,
+  "comparaciones_con_celda_precipitacion_compartida": 9,
+  "covariacion_de_anomalias_no_es_habilidad_predictiva": true,
   "periodo": "1996–2025",
   "transectos": [
     {

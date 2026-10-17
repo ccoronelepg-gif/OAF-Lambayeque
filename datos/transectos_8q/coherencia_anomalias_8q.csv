@@ -1,0 +1,14 @@
+transecto,testigo_a,testigo_b,distancia_geografica_km,desnivel_dem_m,correlacion_anomalia_tmedia_360_meses,mae_diferencia_anomalia_tmedia_c,correlacion_anomalia_precipitacion_360_meses,igual_celda_temperatura,igual_celda_precipitacion,independencia_instrumental_verificada
+V1a,M0179,M0184,4.8988,399.0,0.99998,0.00344,1.0,true,true,false
+V1a,M0179,M0202,6.9497,85.0,0.95274,0.18748,1.0,false,true,false
+V1a,M0179,M0206,10.9816,509.0,0.93603,0.22296,0.99304,false,false,false
+V1a,M0184,M0202,4.8989,484.0,0.95281,0.18726,1.0,false,true,false
+V1a,M0184,M0206,6.9497,908.0,0.93605,0.22257,0.99304,false,false,false
+V1a,M0202,M0206,4.8991,424.0,0.95987,0.17379,0.99304,false,false,false
+V1b,M0203,M0205,10.9276,255.0,0.96507,0.15014,0.99227,false,false,false
+V2,M0253,M0262,4.8997,531.0,0.97074,0.102,1.0,false,true,false
+V2,M0253,M0281,6.9497,1653.0,0.93823,0.1482,1.0,false,true,false
+V2,M0253,M0290,10.982,1360.0,0.93827,0.14805,1.0,false,true,false
+V2,M0262,M0281,4.8998,1122.0,0.98773,0.06903,1.0,false,true,false
+V2,M0262,M0290,6.9497,829.0,0.98771,0.06933,1.0,false,true,false
+V2,M0281,M0290,4.9,293.0,0.99998,0.0028,1.0,true,true,false
