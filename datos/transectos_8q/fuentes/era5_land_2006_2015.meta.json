@@ -1,0 +1,24 @@
+{
+  "fase": "8Q",
+  "modelo": "era5_land",
+  "periodo": [
+    2006,
+    2015
+  ],
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.4375%2C-6.40625%2C-6.375%2C-6.34375%2C-6.375%2C-6.34375%2C-6.25%2C-6.21875%2C-6.1875%2C-6.15625&longitude=-79.5625%2C-79.53125%2C-79.5625%2C-79.53125%2C-79.5%2C-79.59375%2C-79.375%2C-79.34375%2C-79.375%2C-79.34375&start_date=2006-01-01&end_date=2015-12-31&timezone=America%2FLima&daily=temperature_2m_mean%2Ctemperature_2m_max%2Ctemperature_2m_min&models=era5_land&cell_selection=land",
+  "ids": [
+    "M0179",
+    "M0184",
+    "M0202",
+    "M0206",
+    "M0203",
+    "M0205",
+    "M0253",
+    "M0262",
+    "M0281",
+    "M0290"
+  ],
+  "sha256_original": "35e2629b5d97e7c1b34e08a963a81271fa5351d046a7fca1b31096c8ad7a1ebd",
+  "consulta_utc": "2026-10-17T02:48:59+00:00",
+  "reanálisis_no_instrumental": true
+}

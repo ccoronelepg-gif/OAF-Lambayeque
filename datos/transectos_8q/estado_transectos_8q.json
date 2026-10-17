@@ -4,7 +4,7 @@
   "segmentos_originales_ex_ante": 3,
   "testigos_intermedios_dem_seleccionados": 10,
   "n_muestras_previas_8p": 1,
-  "fuentes_climaticas_verificadas": 1,
+  "fuentes_climaticas_verificadas": 2,
   "fuentes_climaticas_previstas": 6,
   "n_testigos_intermedios_30_anios_completos": 0,
   "periodo": "1996–2025",
@@ -152,7 +152,8 @@
       ]
     ],
     "fuentes_SHA_original": {
-      "era5_land_1996_2005": "8a682dde46b6ee64b5f39ff30561d00cb0631d742dc54dd244c89dc9d9f176c6"
+      "era5_land_1996_2005": "8a682dde46b6ee64b5f39ff30561d00cb0631d742dc54dd244c89dc9d9f176c6",
+      "era5_land_2006_2015": "35e2629b5d97e7c1b34e08a963a81271fa5351d046a7fca1b31096c8ad7a1ebd"
     }
   }
 }
