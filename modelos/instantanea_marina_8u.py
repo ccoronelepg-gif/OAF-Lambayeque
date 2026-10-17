@@ -55,8 +55,10 @@ def check(raw):
     raise ValueError("Falta variable marina "+k)
   if units.get("sea_surface_temperature") not in ("°C","C"):
    raise ValueError("SST con unidad desconocida")
-  if units.get("ocean_current_velocity") not in ("m/s","ms"):
-   raise ValueError("Velocidad marina no está en m/s")
+  unit_current=units.get("ocean_current_velocity")
+  if unit_current not in ("m/s","ms","km/h","kmh"):
+   raise ValueError("Unidad de velocidad marina desconocida")
+  multiplier=1.0 if unit_current in ("m/s","ms") else 1/3.6
   if units.get("ocean_current_direction") not in ("°","deg"):
    raise ValueError("Dirección marina sin grados")
   # Null values are legitimately absent; do not manufacture inshore currents.
@@ -66,15 +68,17 @@ def check(raw):
    if any(z is None for z in (a,b,c)):continue
    if any(type(z) not in (int,float) or not math.isfinite(z) for z in (a,b,c)):
     raise ValueError("Variable marina fuera de límites numéricos")
-   if not(-3<a<38 and 0<=b<=5 and 0<=c<=360):
+   speed=b*multiplier
+   if not(-3<a<38 and 0<=speed<=5 and 0<=c<=360):
     raise ValueError("Variable marina fuera de rango de seguridad")
    rad=math.radians(c)
    # marine TO heading, positive east/north
-   u=b*math.sin(rad);v=b*math.cos(rad)
-   valid.append({"time":t,"sst_c":a,"speed_ms":b,"heading_to_deg":c,"u_east_ms":u,"v_north_ms":v})
+   u=speed*math.sin(rad);v=speed*math.cos(rad)
+   valid.append({"time":t,"sst_c":a,"speed_ms":speed,"heading_to_deg":c,"u_east_ms":u,"v_north_ms":v})
   parsed.append({"id":p["id"],"latitud_solicitada":p["latitude"],
      "longitud_solicitada":p["longitude"],
      "latitud_celda":positions[0],"longitud_celda":positions[1],
+     "unidad_entrada_velocidad_corriente":unit_current,
      "n_horas_con_las_3_variables":len(valid),
      "n_horas_totales":len(times),
      "sst_media_modelada_c":round(statistics.mean(r["sst_c"] for r in valid),4) if valid else None,
