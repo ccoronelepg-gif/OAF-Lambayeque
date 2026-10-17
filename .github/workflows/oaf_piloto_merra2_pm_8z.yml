@@ -1,0 +1,52 @@
+name: OAF 8Z - NASA MERRA2 PM formulas y CMR
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/piloto_merra2_pm_8z.py'
+      - 'tests/test_piloto_merra2_pm_8z.py'
+      - '.github/workflows/oaf_piloto_merra2_pm_8z.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-merra-8z
+  cancel-in-progress: false
+jobs:
+  nasa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verificar fórmulas de PM2.5 y PM10 NASA
+        run: python -m unittest discover -s tests -p 'test_piloto_merra2_pm_8z.py' -v
+      - name: Cotejar catálogos de granulos de NASA CMR sin descargar NetCDF
+        run: python modelos/piloto_merra2_pm_8z.py --fetch-metadata
+      - name: Certificar que no se ha inventado ninguna serie de PM
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('datos/merra2_8z/estado_piloto_merra2_8z.json').read_text())
+          assert j['metadatos_CMR_no_equivalen_a_valores_PM'] is True
+          assert j['serie_merra2_pm_mensual_archivada'] is False
+          assert j['colecciones_1996_2025_descargadas_en_oaf'] is False
+          assert j['capa_pm10_3d_numero']==72
+          print('Consultas CMR',len(j['catalogo_metadatos_nasa']))
+          PY
+      - name: Archivar evidencia de metadatos
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/merra2_8z/
+          if ! git diff --cached --quiet; then
+            git commit -m 'data(oaf): inventario MERRA2 CMR de granulos no valores PM'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
