@@ -1,0 +1,55 @@
+name: OAF 9I - Auditoria cientifica y regresion UX
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'modelos/visor_contraste_9i.js'
+      - 'assets/oaf-contraste-9i.css'
+      - 'modelos/analisis_multianual_9i.py'
+      - 'modelos/contraste_multianual_chirps_9i.py'
+      - 'datos/validacion_estaciones_9i/**'
+      - 'tests/test_multianual_9i.py'
+      - 'FASE_9I_CONTRASTE_MULTIANUAL.md'
+      - '.github/workflows/oaf_auditoria_9i.yml'
+permissions:
+  contents: read
+jobs:
+  offline-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Tests de integridad 9I y 9H
+        run: |
+          python -m unittest discover -s tests -p 'test_multianual_9i.py' -v
+          python -m unittest discover -s tests -p 'test_contraste_instrumental_9h.py' -v
+          python modelos/analisis_multianual_9i.py --check
+          python modelos/contraste_multianual_chirps_9i.py --check
+      - name: Accesibilidad y preservacion de la web
+        run: |
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_contraste_9i.js
+          node --check modelos/visor_contraste_estaciones_9h.js
+      - name: Comprobar que las 60 respuestas son reales y no falsas alarmas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("datos/validacion_estaciones_9i")
+          manifest=json.loads((p/"fuentes_chirps_ampliacion_9i.json").read_text("utf8"))
+          report=json.loads((p/"diagnostico_multianual_9i.json").read_text("utf8"))
+          assert manifest["meses_tiff_solicitados"]==60
+          assert manifest["meses_tiff_exitosos"]==60
+          assert manifest["pares_adicionales"]==354
+          assert len(manifest["problemas"])==0
+          assert report["meses_estacion_unicos_emparejados"]==213
+          assert report["pares_chirps_era5_mes_escenario"]==426
+          assert not report["pronosticos_archivados_con_vintage"]
+          assert not report["independencia_CHIRPS_validada"]
+          print("9I: 60 fuentes reales, 213 meses-estacion, 426 escenarios auditados.")
+          PY
