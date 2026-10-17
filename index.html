@@ -127,7 +127,7 @@ details.panel{scroll-margin-top:120px}
 @media(max-width:800px){.oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-heading-line{flex-wrap:wrap}.oaf-news-grid,.oaf-research-intro{grid-template-columns:1fr}.oaf-home-module{padding:18px}.oaf-hero-2026 .herotxt{padding:28px 25px}nav a{max-width:none;min-width:148px;flex-shrink:0}}
 @media(max-width:400px){.oaf-home-metrics{grid-template-columns:1fr 1fr;gap:7px}.oaf-home-metrics .oaf-metric{padding:11px;min-height:98px}.oaf-home-metrics .oaf-metric strong{font-size:22px}}
 
-</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"><link rel="stylesheet" href="assets/oaf-identidad-territorial-9f.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9h.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-9i.css?v=1"><link rel="stylesheet" href="assets/oaf-sectores-9k.css?v=1"><link rel="stylesheet" href="assets/oaf-zonas-9m.css?v=1"><link rel="stylesheet" href="assets/oaf-auditoria-9j.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-shell-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-home-2026.css?v=1"></head><body>
+</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"><link rel="stylesheet" href="assets/oaf-identidad-territorial-9f.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9h.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-9i.css?v=1"><link rel="stylesheet" href="assets/oaf-sectores-9k.css?v=1"><link rel="stylesheet" href="assets/oaf-zonas-9m.css?v=1"><link rel="stylesheet" href="assets/oaf-multitesela-9n.css?v=1"><link rel="stylesheet" href="assets/oaf-auditoria-9j.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-shell-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-ux-home-2026.css?v=1"></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo"><img src="assets/logo-cecg.svg" alt="Logo CECG" width="48" height="48"></span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <button type="button" id="oaf-mobile-menu" aria-label="Mostrar u ocultar menú" aria-expanded="false" aria-controls="oaf-primary-nav">☰ Menú</button>
 <nav id="oaf-primary-nav" aria-label="Secciones principales"><a data-tab="inicio" href="#inicio">Inicio</a><a data-tab="clima" href="#clima">Análisis de clima regional</a><a data-tab="nino" href="#nino">Monitoreo del Niño y anomalías climáticas</a><a data-tab="cultivos" href="#cultivos">Sanidad vegetal</a><a data-tab="verificaciones" href="#verificaciones">Investigación y datos</a></nav><div class="oaf-view-switch" role="group" aria-label="Nivel de lectura">
@@ -575,6 +575,33 @@ details.panel{scroll-margin-top:120px}
 <a href="datos/sensibilidad_9m/sectores_filtrados_tesela_9m.geojson">Geometrías filtradas · GeoJSON ↗</a>
 <a href="datos/sensibilidad_9m/estado_cuencas_ana_9m.json">Trazabilidad hidrográfica ↗</a>
 <a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/FeatureServer/7" target="_blank" rel="noopener noreferrer">Fuente oficial publicada en IDEP ↗</a>
+</div>
+</details>
+<details class="panel" id="oaf-9n-visor">
+<summary><strong>¿Qué sectores tienen suficiente información del relieve?</strong> · cobertura multitesela</summary>
+<p>El OAF amplía el análisis de pendientes y altitud a los cuadrantes Copernicus GLO-90 que faltaban. Puedes explorar los <strong>42 sectores</strong> originales, diferenciando áreas estudiadas, zonas con cobertura parcial y lugares sin un DEM comprobado. <strong>Que un sector tenga cobertura no significa que su clima sea homogéneo.</strong></p>
+<div class="kpis">
+<div class="kpi"><small>Cobertura comprobada en los 42 sectores</small><b id="oaf-9n-summary">—</b></div>
+</div>
+<p id="oaf-9n-status" class="small" role="status">Leyendo teselas originales de Copernicus y contrastes topográficos…</p>
+<p id="oaf-9n-tile-status" class="oaf-figure-caption">Sin asumir altitud cero donde falten teselas o exista mar.</p>
+<div class="oaf-9n-controls">
+<label for="oaf-9n-floor">Piso altitudinal<select id="oaf-9n-floor"><option value="todos">Todos los pisos</option></select></label>
+<label for="oaf-9n-coverage">Cobertura de elevación<select id="oaf-9n-coverage"><option value="todos">Todas las coberturas</option><option value="completa">Completa</option><option value="parcial">Parcial</option><option value="sin_dem">Sin DEM verificado</option></select></label>
+</div>
+<div id="oaf-9n-legend" aria-label="Leyenda altitudinal de sectores examinados"></div>
+<div id="oaf-9n-map" aria-label="Mapa regional de máscara DEM y sectores con o sin elevación contrastada"></div>
+<p id="oaf-9n-shown" class="small">Selecciona los filtros para comparar sectores físicos del muestreo.</p>
+<p id="oaf-9n-detail">Selecciona un polígono para consultar pendiente, orientación, piso y diferencia por resolución.</p>
+<div class="scroller"><table><thead><tr><th>Sector</th><th>Piso</th><th>Cobertura</th><th>Píxeles compatibles (30°)</th><th>Diferencia 270–450 m</th></tr></thead><tbody id="oaf-9n-table"></tbody></table></div>
+<div class="notice"><strong>Interpretación:</strong> polígonos de influencia exploratorios, pendientes estimadas del modelo digital de superficie y cobertura evaluada con dos resoluciones. No son límites legales, áreas agrícolas, zonas climáticas homogéneas certificadas ni pronósticos por cultivo. Se preservan por separado las unidades hidrográficas de ANA/IDEP, cuya vigencia institucional aún requiere confirmación.</div>
+<div class="links">
+<a href="FASE_9N_COBERTURA_MULTITESELA.md">Metodología 9N ↗</a>
+<a href="datos/cobertura_multitesela_9n/estado_cobertura_9n.json">Cobertura comprobada · JSON ↗</a>
+<a href="datos/cobertura_multitesela_9n/evaluacion_42_sectores_9n.json">Detalle de 42 sectores · JSON ↗</a>
+<a href="datos/cobertura_multitesela_9n/mascaras_multitesela_9n.geojson">Polígonos evaluados · GeoJSON ↗</a>
+<a href="datos/cobertura_multitesela_9n/fuentes_dem_9n.json">Origen y huella de las teselas · JSON ↗</a>
+<a href="https://registry.opendata.aws/copernicus-dem/" target="_blank" rel="noopener noreferrer">Fuente original Copernicus ↗</a>
 </div>
 </details>
 </section>
@@ -1340,4 +1367,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="modelos/visor_identificacion_9f.js" defer></script><script src="modelos/visor_contraste_estaciones_9h.js" defer></script><script src="modelos/visor_contraste_9i.js" defer></script><script src="modelos/visor_sectores_9k.js" defer></script><script src="modelos/visor_relieve_9l.js" defer></script><script src="modelos/visor_zonas_9m.js" defer></script><script src="modelos/visor_auditoria_9j.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script><script src="assets/oaf-ux-shell-2026.js?v=1" defer></script><script src="assets/oaf-ux-data-2026.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="modelos/visor_identificacion_9f.js" defer></script><script src="modelos/visor_contraste_estaciones_9h.js" defer></script><script src="modelos/visor_contraste_9i.js" defer></script><script src="modelos/visor_sectores_9k.js" defer></script><script src="modelos/visor_relieve_9l.js" defer></script><script src="modelos/visor_zonas_9m.js" defer></script><script src="modelos/visor_multitesela_9n.js" defer></script><script src="modelos/visor_auditoria_9j.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script><script src="assets/oaf-ux-shell-2026.js?v=1" defer></script><script src="assets/oaf-ux-data-2026.js?v=1" defer></script></body></html>
