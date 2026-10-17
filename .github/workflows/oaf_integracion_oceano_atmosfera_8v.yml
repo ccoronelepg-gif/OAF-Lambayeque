@@ -1,0 +1,59 @@
+name: OAF 8V - Integracion historica oceano atmosfera
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/integracion_oceano_atmosfera_8v.py'
+      - 'tests/test_integracion_oceano_atmosfera_8v.py'
+      - '.github/workflows/oaf_integracion_oceano_atmosfera_8v.yml'
+      - 'datos/meteorologia_8u/vientos_mensuales_8u.csv'
+      - 'datos/oceanografia_8u/tsm_nino12_mensual_8u.csv'
+      - 'datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv'
+      - 'datos/lambayeque_mensual_era5_8d.csv'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8v-integration
+  cancel-in-progress: false
+jobs:
+  integrar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Seis tests sinteticos independientes de servicios web
+        run: python -m unittest discover -s tests -p 'test_integracion_oceano_atmosfera_8v.py' -v
+      - name: Integrar archivos historicos de fuente real y verificar SHA
+        run: |
+          python modelos/integracion_oceano_atmosfera_8v.py
+          python modelos/integracion_oceano_atmosfera_8v.py --check
+      - name: QA y condiciones no operativas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('datos/integracion_8v/estado_integracion_8v.json').read_text())
+          assert s['filas_matriz_terrestre']==1440
+          assert s['filas_matriz_marina']==720
+          assert s['no_hay_validacion_prospectiva_de_prediccion'] is True
+          assert s['corrientes_marinas_30_anios_completas'] is False
+          print('8V integrado y auditado, sin emitir alertas.')
+          PY
+      - name: Archivar matrices generadas sin forzar cambios de fuentes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/integracion_8v/
+          if git diff --cached --quiet; then
+            echo 'Datos 8V sin cambios'
+          else
+            git commit -m 'data(oaf): actualizar 8V matrices con trazabilidad'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
