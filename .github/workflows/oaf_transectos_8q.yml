@@ -1,4 +1,4 @@
-# Fase 8Q: procesar quinto bloque histórico de los transectos.
+# Fase 8Q: verificar bloque histórico sexto/final de los transectos.
 name: OAF 8Q - Continuidad altitudinal y climatica V1 V2
 on:
   workflow_dispatch:
