@@ -37,6 +37,13 @@ CMP_FIELDS=("transecto","testigo_id","altitud_dem_m","tmedia_1996_2025_c",
 CELL_FIELDS=("transecto","testigo_id","modelo","latitud_celda_api",
              "longitud_celda_api","n_centros_distintos_en_decadas",
              "coincide_con_otra_muestra_mismo_transecto","valor_de_celda_no_es_sensor")
+COH_FIELDS=("transecto","testigo_a","testigo_b",
+            "distancia_geografica_km","desnivel_dem_m",
+            "correlacion_anomalia_tmedia_360_meses",
+            "mae_diferencia_anomalia_tmedia_c",
+            "correlacion_anomalia_precipitacion_360_meses",
+            "igual_celda_temperatura","igual_celda_precipitacion",
+            "independencia_instrumental_verificada")
 
 def csv_data(path):
     with path.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
@@ -175,6 +182,62 @@ def fetch(root,max_new=1):
             print("Bloque 8Q validado",model,start,end,flush=True)
             if added<max_new:time.sleep(3)
 
+def corr(x,y):
+    """Pearson without numpy; undefined when either anomaly variance is zero."""
+    if len(x)!=len(y) or len(x)<2:raise ValueError("Series de anomalía incompatibles")
+    mx=statistics.mean(x);my=statistics.mean(y)
+    a=[v-mx for v in x];b=[v-my for v in y]
+    sx=math.sqrt(sum(v*v for v in a));sy=math.sqrt(sum(v*v for v in b))
+    return None if sx<1e-9 or sy<1e-9 else sum(v*w for v,w in zip(a,b))/(sx*sy)
+
+def coherence(months,selected,centers):
+    """Only descriptive covariability of matched monthly anomalies 1996–2025.
+
+    Baseline is EACH site's 1996–2025 calendar-month mean, not a blended
+    regional normal. No forecasting/hindcast accuracy is inferred.
+    """
+    keys=sorted({mon for _,mon in months})
+    if len(keys)!=360:raise ValueError("Anomalías requieren 360 meses históricos")
+    bysite={}
+    for p in selected:
+        pid=p["testigo_id"]
+        sequences={}
+        for variable in ("temperature_2m_mean","precipitation_sum"):
+            norm={m:statistics.mean(months[(pid,key)][variable] for key in keys
+                    if int(key[5:7])==m) for m in range(1,13)}
+            if any(sum(int(key[5:7])==m for key in keys)!=30 for m in range(1,13)):
+                raise ValueError("Cada normal mensual necesita 30 años")
+            sequences[variable]=[months[(pid,k)][variable]-norm[int(k[5:7])] for k in keys]
+        bysite[pid]=sequences
+    rows=[]
+    for name in sorted(set(p["transecto"] for p in selected)):
+        group=[p for p in selected if p["transecto"]==name]
+        for i,a in enumerate(group):
+            for b in group[i+1:]:
+                aid=a["testigo_id"];bid=b["testigo_id"]
+                tempA=bysite[aid]["temperature_2m_mean"]
+                tempB=bysite[bid]["temperature_2m_mean"]
+                rainA=bysite[aid]["precipitation_sum"]
+                rainB=bysite[bid]["precipitation_sum"]
+                rT=corr(tempA,tempB);rP=corr(rainA,rainB)
+                tSame=(len(centers.get(("era5_land",aid),set()))==1 and
+                        centers.get(("era5_land",aid))==centers.get(("era5_land",bid)))
+                pSame=(len(centers.get(("era5",aid),set()))==1 and
+                        centers.get(("era5",aid))==centers.get(("era5",bid)))
+                rows.append({
+                  "transecto":name,"testigo_a":aid,"testigo_b":bid,
+                  "distancia_geografica_km":round(design.haversine(
+                    a["latitud"],a["longitud"],b["latitud"],b["longitud"]),4),
+                  "desnivel_dem_m":round(abs(a["altitud_dem_m"]-b["altitud_dem_m"]),1),
+                  "correlacion_anomalia_tmedia_360_meses":round(rT,5) if rT is not None else "",
+                  "mae_diferencia_anomalia_tmedia_c":round(statistics.mean(
+                     abs(x-y) for x,y in zip(tempA,tempB)),5),
+                  "correlacion_anomalia_precipitacion_360_meses":round(rP,5) if rP is not None else "",
+                  "igual_celda_temperatura":"true" if tSame else "false",
+                  "igual_celda_precipitacion":"true" if pSame else "false",
+                  "independencia_instrumental_verificada":"false"})
+    return rows
+
 def evaluate(root):
     selected,layout=samples(root);pts=points(selected)
     sources={}
@@ -213,12 +276,14 @@ def evaluate(root):
               "valor_de_celda_no_es_sensor":"true"})
     complete=len(sources)==6
     comparables=[]
+    covariation=[]
     if complete:
         months={}
         for (model,start,end),blob in sources.items():
             for key,records in climate.monthly(blob,model,pts).items():
                 months.setdefault(key,{}).update(records)
         if len(months)!=360*len(pts):raise ValueError("8Q periodos mensuales incompletos")
+        covariation=coherence(months,selected,centers)
         for p in selected:
             values=[r for (id,month),r in months.items() if id==p["testigo_id"]]
             if len(values)!=360:raise ValueError("8Q faltan 360 meses")
@@ -239,6 +304,12 @@ def evaluate(root):
        "fuentes_climaticas_verificadas":len(sources),
        "fuentes_climaticas_previstas":6,
        "n_testigos_intermedios_30_anios_completos":len(comparables),
+       "n_comparaciones_de_anomalias_por_pares":len(covariation),
+       "comparaciones_con_celda_temperatura_compartida":sum(
+           r["igual_celda_temperatura"]=="true" for r in covariation),
+       "comparaciones_con_celda_precipitacion_compartida":sum(
+           r["igual_celda_precipitacion"]=="true" for r in covariation),
+       "covariacion_de_anomalias_no_es_habilidad_predictiva":True,
        "periodo":"1996–2025",
        "transectos":layout,
        "centros_de_celda_api_revisados":len(cellrows),
@@ -273,16 +344,17 @@ def evaluate(root):
           "fuentes_SHA_original":{f"{m}_{a}_{b}":sha(gzip.decompress(source_paths(root,m,a,b)[0].read_bytes()))
              for (m,a,b) in sources}}
     }
-    return report,selected,comparables,cellrows
+    return report,selected,comparables,cellrows,covariation
 
 def publish(root,check=False):
-    state,samples_,metrics,cellrows=evaluate(root)
+    state,samples_,metrics,cellrows,covariation=evaluate(root)
     base=root/BASE
     outputs={
       base/"estado_transectos_8q.json":json.dumps(state,ensure_ascii=False,indent=2)+"\n",
       base/"muestras_intermedias_8q.csv":csv_text(samples_,FIELDS),
       base/"comparacion_climatica_8q.csv":csv_text(metrics,CMP_FIELDS),
-      base/"centros_modelados_8q.csv":csv_text(cellrows,CELL_FIELDS)
+      base/"centros_modelados_8q.csv":csv_text(cellrows,CELL_FIELDS),
+      base/"coherencia_anomalias_8q.csv":csv_text(covariation,COH_FIELDS)
     }
     if not check:base.mkdir(parents=True,exist_ok=True)
     for path,contents in outputs.items():
