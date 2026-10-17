@@ -1,0 +1,16 @@
+{
+  "fase": "8U",
+  "site": "Aguas_norte_Lambayeque",
+  "intervalo": [
+    2017,
+    2020
+  ],
+  "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/miamicurrents.csv?u_current[(2017-01-01T00:00:00Z):1:(2020-12-31T00:00:00Z)][(-5.9)][(-81.5)],v_current[(2017-01-01T00:00:00Z):1:(2020-12-31T00:00:00Z)][(-5.9)][(-81.5)]",
+  "sha256_original": "2e740c2daa031f3f7a5ac711e92b2ae5ef57b8d8e7bf604255388b1b59dced95",
+  "consulta_utc": "2026-10-17T04:14:08+00:00",
+  "dias_con_vectores_validos": 1461,
+  "dias_total_calendario": 1461,
+  "fuente": "NOAA CoastWatch AOML miamicurrents, corrientes geostróficas",
+  "no_es_OSCAR_total": true,
+  "no_es_instrumento_campo": true
+}

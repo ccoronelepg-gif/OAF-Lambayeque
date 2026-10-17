@@ -1,0 +1,16 @@
+{
+  "fase": "8U",
+  "site": "Aguas_frente_Pimentel",
+  "intervalo": [
+    2021,
+    2025
+  ],
+  "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/miamicurrents.csv?u_current[(2021-01-01T00:00:00Z):1:(2025-12-31T00:00:00Z)][(-6.7)][(-81.1)],v_current[(2021-01-01T00:00:00Z):1:(2025-12-31T00:00:00Z)][(-6.7)][(-81.1)]",
+  "sha256_original": "b28ddb9d3b9c07fd43cd4054356017a0c80a18519fa13044cafcce2555cde18e",
+  "consulta_utc": "2026-10-17T04:13:45+00:00",
+  "dias_con_vectores_validos": 1826,
+  "dias_total_calendario": 1826,
+  "fuente": "NOAA CoastWatch AOML miamicurrents, corrientes geostróficas",
+  "no_es_OSCAR_total": true,
+  "no_es_instrumento_campo": true
+}

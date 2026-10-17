@@ -5,9 +5,36 @@
   "periodo_fuente_disponible": "2016-07 hasta 2026-10 (según catálogo consultado)",
   "periodo_muestreo": "2017–2025",
   "n_series_punto_periodo_previstas": 4,
-  "n_series_punto_periodo_verificadas": 1,
+  "n_series_punto_periodo_verificadas": 3,
+  "periodos_realmente_archivados": [
+    {
+      "punto": "Aguas_frente_Pimentel",
+      "periodo": [
+        2017,
+        2020
+      ],
+      "dias_verificados": 1461
+    },
+    {
+      "punto": "Aguas_frente_Pimentel",
+      "periodo": [
+        2021,
+        2025
+      ],
+      "dias_verificados": 1826
+    },
+    {
+      "punto": "Aguas_norte_Lambayeque",
+      "periodo": [
+        2017,
+        2020
+      ],
+      "dias_verificados": 1461
+    }
+  ],
+  "resultados_mensuales_parciales_permitidos_y_marcados": true,
   "n_meses_con_viento_o_corriente_simulada": 0,
-  "n_filas_geostroficas_reales_fuente_modelada_publicadas": 0,
+  "n_filas_geostroficas_reales_fuente_modelada_publicadas": 156,
   "periodo_1996_2025_de_corrientes_completo": false,
   "corrientes_completas_para_muestreo_2017_2025": false,
   "no_incluye_corrientes_ekman_y_marea": true,
