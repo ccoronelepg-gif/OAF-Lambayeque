@@ -1,0 +1,65 @@
+name: OAF 8R - Validacion retrospectiva sin fuga temporal
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/validacion_anomalias_8r.py'
+      - 'tests/test_validacion_anomalias_8r.py'
+      - 'modelos/visor_anomalias_8r.js'
+      - '.github/workflows/oaf_validacion_8r.yml'
+      - 'index.html'
+  schedule:
+    - cron: '31 18 3 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-anomalias-8r
+  cancel-in-progress: false
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar archivos de ERA5-Land auditados
+        run: git pull --ff-only origin main
+      - name: Verificar fuga temporal y evaluación por píxeles distintos
+        run: python -m unittest discover -s tests -p 'test_validacion_anomalias_8r.py' -v
+      - name: Backtest temporal real con referencia 8Q
+        run: |
+          python modelos/validacion_anomalias_8r.py
+          python modelos/validacion_anomalias_8r.py --check
+      - name: Verificar interfaz si ya fue incorporada
+        run: |
+          if test -f modelos/visor_anomalias_8r.js; then
+            node --check modelos/visor_anomalias_8r.js
+            python - <<'PY'
+          from pathlib import Path
+          doc=Path("index.html").read_text(encoding="utf-8")
+          for item in ("oaf-forecast-8r","oaf-8r-status","oaf-8r-strategy","oaf-8r-rmse",
+                       "oaf-8r-skill","oaf-8r-table","oaf-8r-refresh"):
+              assert doc.count('id="'+item+'"')==1,item
+          assert 'src="modelos/visor_anomalias_8r.js"' in doc
+          assert "FASE_8R_VALIDACION_PREDICTIVA.md" in doc
+          print("Panel 8R de resultados íntegro")
+          PY
+          fi
+      - name: Archivar evaluación retrospectiva reproducible
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/validacion_predictiva_8r/
+          if git diff --cached --quiet; then
+            echo "Backtest coincide con las fuentes ya publicadas"
+          else
+            git commit -m "data(oaf): resultado cronológico 8R y errores predictivos de reanálisis"
+            git pull --rebase origin main
+            git push
+          fi
