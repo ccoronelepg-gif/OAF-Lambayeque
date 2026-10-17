@@ -1,0 +1,79 @@
+{
+  "fase": "8O",
+  "estado": "muestra_dem_incompleta_sin_zonas_climaticas",
+  "nodos_diseno": 420,
+  "nodos_dem_verificados": 100,
+  "n_referencias_8n": 69,
+  "n_anclas_refuerzo": 33,
+  "n_refuerzos": 127,
+  "n_lotes_esperados": 9,
+  "n_lotes_archivados": 2,
+  "paso_regional_grados": 0.0625,
+  "paso_refuerzo_grados": 0.03125,
+  "tipos_muestreo_no_son_celdas_climaticas_independientes": true,
+  "area_departamental_calculada": false,
+  "limite_administrativo_validado_inei_ign": false,
+  "n_testigos_climaticos_seleccionados": 0,
+  "zonas_homogeneas_demostradas": 0,
+  "series_climaticas_multivariables_1996_2025_completas": 0,
+  "validacion_espacial_independiente": false,
+  "pronosticos_zonales_certificados": false,
+  "bloques_altitudinales_preliminares": {
+    "llanura_costa": {
+      "n_puntos": 41,
+      "altitud_min_m": 4.0,
+      "altitud_max_m": 91.0
+    },
+    "valle_bajo": {
+      "n_puntos": 32,
+      "altitud_min_m": 101.0,
+      "altitud_max_m": 293.0
+    },
+    "piedemonte": {
+      "n_puntos": 22,
+      "altitud_min_m": 324.0,
+      "altitud_max_m": 742.0
+    },
+    "montana_baja": {
+      "n_puntos": 4,
+      "altitud_min_m": 802.0,
+      "altitud_max_m": 1568.0
+    },
+    "montana_media": {
+      "n_puntos": 1,
+      "altitud_min_m": 1715.0,
+      "altitud_max_m": 1715.0
+    },
+    "montana_alta": {
+      "n_puntos": 0,
+      "altitud_min_m": null,
+      "altitud_max_m": null
+    },
+    "cota_negativa_revisar": {
+      "n_puntos": 0,
+      "altitud_min_m": null,
+      "altitud_max_m": null
+    }
+  },
+  "advertencias": [
+    "Malla recortada con límite departamental histórico simplificado de fuente secundaria; NO superficie cartográfica oficial.",
+    "Refinar alrededor de relieve detectado en 8N no excluye picos o transiciones DEM omitidos por la malla gruesa.",
+    "Elevación DEM GLO-90 no equivale a altitud instrumental ni separa efecto del downscaling de Open-Meteo.",
+    "Sin perfiles mensuales multivariables 1996–2025 y pruebas espaciales no existe homogeneidad climática demostrada.",
+    "La selección de testigos climáticos es piloto maximin; no representa el área real de los estratos ni justifica extrapolación zonal."
+  ],
+  "trazabilidad": {
+    "limite_sha256": "83f8f4f0ff578da3414c4a033640020fbd4185614105958c1848695c2a9a288a",
+    "8n_sha256": "677f738158c4583b5613b0ee779cad70c754706c020cdf2cc9ca01226563922a",
+    "lotes": [
+      {
+        "index": 1,
+        "sha256_archivo_comprimido": "57abdae1f6d23cde16f3a39e604f186188c8b2e9e8c145bd6fc63f63193e38b7"
+      },
+      {
+        "index": 2,
+        "sha256_archivo_comprimido": "2e8a884ce9982fa0b9247b2878cf42be09990a30a51651b77a4717a4004b6573"
+      }
+    ]
+  }
+}
