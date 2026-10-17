@@ -1,0 +1,23 @@
+name: OAF Fase 10B - Intervalos temporales retrospectivos
+on:
+  push:
+    paths:
+      - "modelos/calibracion_temporal_10b.py"
+      - "tests/test_calibracion_10b.py"
+      - "datos/calibracion_10b/**"
+      - ".github/workflows/oaf_10b_evaluacion.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Pruebas numéricas unitarias
+        run: python -m unittest discover -s tests -p test_calibracion_10b.py -v
+      - name: Reproducir resultados desde CHIRPS revisado 9X
+        run: python modelos/calibracion_temporal_10b.py --repo .
