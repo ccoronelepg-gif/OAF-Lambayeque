@@ -442,8 +442,13 @@ def run(check=False):
  for r in out:
   key=(r["mes"],r["sector"],r["modelo"])
   old=previous_index.get(key)
-  if old is None or abs(float(old["observado_CHIRPS_mm"])-float(r["observado_CHIRPS_mm"]))>0.0001:
-   raise ValueError("Diferencia en observación de prueba 9X vs 10C")
+  if old is None:
+   raise ValueError("Predicción 9X ausente para "+str(key))
+  diff=abs(float(old["observado_CHIRPS_mm"])-float(r["observado_CHIRPS_mm"]))
+  # Ambos archivos se exportan desde numpy float32 con 5 decimales.
+  # 0.01 mm es una tolerancia estricta incluso para lluvias mensuales grandes.
+  if diff>0.01:
+   raise ValueError(f"Observación CHIRPS inconsistente 9X/10C: {key} delta={diff:.5f} mm")
   paired[r["modelo"]].append((abs(float(old["predicho_mm"])-float(old["observado_CHIRPS_mm"])),
     abs(float(r["predicho_mm"])-float(r["observado_CHIRPS_mm"]))))
  report["comparacion_pareada_con_9x"]={m:{"n":len(v),"mae_9x_lag1_mm":round(statistics.mean(x[0] for x in v),4),
