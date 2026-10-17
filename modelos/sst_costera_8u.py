@@ -20,7 +20,7 @@ import perfiles_climaticos_8o as common
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA="datos/sst_costera_8u"
-API="https://upwell.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.csv"
+API="https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.csv"
 SOURCE="NOAA NCEI OISST v2.1 AVHRR-only final 0.25deg"
 PERIODS=((1996,2005),(2006,2015),(2016,2025))
 POINTS=(("Pacifico_sur_Lambayeque",-6.625,-80.625),
