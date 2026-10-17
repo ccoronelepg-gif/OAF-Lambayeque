@@ -5,6 +5,11 @@
   "datos_pm_fuente": "CAMS Global modelado, no sensor",
   "clima_fuente": "ERA5 ERA5-Land y NOAA CPC revisados, reanalisis",
   "n_meses_pm_con_cobertura": 144,
+  "anios_pm_archivados_con_cobertura": [
+    2023,
+    2024,
+    2025
+  ],
   "n_series_localidad_disponibles": 4,
   "n_series_pm_unicas_en_periodo": 3,
   "parejas_series_identicas": [
