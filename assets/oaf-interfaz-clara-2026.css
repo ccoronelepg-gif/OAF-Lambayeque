@@ -1,0 +1,64 @@
+/* OAF-Lambayeque | Lectura sencilla y portada minimalista (octubre 2026).
+   No modifica los cálculos ni las fuentes de los tableros científicos. */
+.oaf-home-shell{max-width:1220px;margin-inline:auto;gap:22px}
+.oaf-hero-2026{min-height:270px;grid-template-columns:1.05fr .95fr;overflow:hidden;border-radius:22px}
+.oaf-hero-2026 .herotxt{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:40px 46px;gap:13px}
+.oaf-hero-2026 h1{margin:0;max-width:670px;font-size:clamp(27px,3.25vw,43px);line-height:1.13;letter-spacing:-.7px}
+.oaf-hero-2026 h1::after,.oaf-hero-2026 .heroimg::after{content:none!important;display:none!important}
+.oaf-hero-2026 .heroimg span{display:none!important}
+.oaf-hero-2026 .oaf-hero-tagline{margin:0;color:#e4fff1;font-size:clamp(16px,2vw,22px);font-weight:600;line-height:1.4;letter-spacing:0}
+.oaf-hero-2026 .heroimg{overflow:hidden}
+.oaf-hero-2026 .heroimg img{min-height:100%;object-fit:cover}
+.oaf-home-module{padding:25px 27px;border-radius:19px}
+.oaf-home-module .oaf-heading-line{align-items:flex-end}
+.oaf-home-controls{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.oaf-home-reload{padding:9px 14px;border:1px solid #b8d7d4;border-radius:10px;min-height:42px;white-space:nowrap}
+.oaf-home-reload:disabled{opacity:.55;cursor:wait}
+.oaf-home-metrics{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.oaf-home-metrics .oaf-metric{min-height:128px;padding:15px;background:#f8fbfa;border:1px solid #e2edea;border-radius:15px;transition:box-shadow .2s,border-color .2s,transform .2s}
+.oaf-home-metrics .oaf-metric:hover{transform:translateY(-2px);box-shadow:0 8px 18px #15485c12;border-color:#abd3c8}
+.oaf-home-metrics .oaf-metric strong{font-size:clamp(21px,2.3vw,30px);overflow-wrap:anywhere}
+.oaf-home-metrics .oaf-metric-air{grid-column:span 2;background:#f6f9ff;border-color:#dfeaf7}
+.oaf-home-metrics .oaf-metric-air strong{font-size:clamp(19px,2vw,27px)}
+.oaf-home-live-source{margin-top:17px!important;background:#f8fbfc!important;font-size:12px!important;line-height:1.7!important}
+.oaf-home-interpretation{margin-top:14px;border:1px solid #d7e7e5;border-left:4px solid #377d83;border-radius:12px;padding:17px 20px;background:#fff}
+.oaf-home-interpretation h3{margin:0 0 7px;font-size:17px;line-height:1.3;color:#133b51}
+.oaf-home-interpretation p{margin:0;font-size:13px;line-height:1.75;color:#476776}
+.oaf-source-intro{border-left:1px solid #dcece5;padding:24px 28px}
+.oaf-source-intro h2{font-size:clamp(19px,2.1vw,25px);line-height:1.35}
+.oaf-source-intro p{margin-bottom:0!important;max-width:1100px;line-height:1.86!important}
+[data-page] .viewhead{max-width:1080px;margin-bottom:12px}
+[data-page] .viewhead>p{font-size:14px;line-height:1.75}
+details.panel{scroll-margin-top:122px;margin-bottom:17px;border-radius:16px}
+details.panel>summary{cursor:pointer;position:relative;padding-right:46px;line-height:1.55;transition:background-color .16s ease}
+details.panel>summary::after{content:"⌄";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:600;color:#257786;transition:transform .17s}
+details.panel[open]>summary::after{transform:translateY(-50%) rotate(180deg)}
+details.panel>summary:hover{background-color:#f2faf9}
+details.panel>summary:focus-visible{outline:3px solid #9fcdc4;outline-offset:3px}
+details.panel[open]{box-shadow:0 11px 30px #1f64700c}
+details.panel>.oaf-figure-caption{margin-top:18px!important}
+.oaf-section-transition{margin-top:27px}
+@media(max-width:1040px){
+ .oaf-home-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .oaf-home-metrics .oaf-metric-air{grid-column:auto}
+}
+@media(max-width:800px){
+ .oaf-hero-2026{grid-template-columns:1fr;min-height:0}
+ .oaf-hero-2026 .herotxt{padding:28px 28px 22px}
+ .oaf-hero-2026 .heroimg{height:215px}
+ .oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .oaf-home-metrics .oaf-metric-air{grid-column:span 2}
+ .oaf-home-controls{width:100%;justify-content:space-between}
+ .oaf-home-module{padding:21px}
+}
+@media(max-width:440px){
+ .oaf-hero-2026 .herotxt{padding:26px 23px}
+ .oaf-hero-2026 .heroimg{height:170px}
+ .oaf-home-metrics{gap:9px}
+ .oaf-home-metrics .oaf-metric{padding:13px;min-height:112px}
+ .oaf-home-metrics .oaf-metric small{font-size:11px}
+ .oaf-home-metrics .oaf-metric strong{font-size:21px}
+ .oaf-home-metrics .oaf-metric-air{grid-column:span 2}
+ .oaf-home-controls select{min-width:150px}
+ .oaf-home-module{padding:17px}
+}
