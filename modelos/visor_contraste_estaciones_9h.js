@@ -57,7 +57,7 @@ function details(report,summary,variable){
  summaryCell("CHIRPS v3 · lluvia 1998",ch?.episodio_1998,"mm","Pendiente de extracción");
  summaryCell("ERA5 atmósfera · lluvia 1996–2013",p?.metricas_periodo,"mm","Sin meses pareados");
  summaryCell("ERA5-Land · temperatura máxima",mx?.metricas_periodo,"°C","Temperatura ERA5-Land sin extracción válida");
- summaryCell("ERA5-Land · temperatura mínima",mn?.metricas_periodo,"°C","Sin observaciones completas");
+ summaryCell("ERA5-Land · temperatura mínima",mn?.metricas_periodo,"°C","Temperatura ERA5-Land sin extracción válida");
  title.append(grid);
  const compare=node("p","CHIRPS: "+(base?.mismo_centro_celda_entre_escenarios===true?
    "las dos ubicaciones documentales devuelven el mismo píxel; no son dos validaciones independientes.":
