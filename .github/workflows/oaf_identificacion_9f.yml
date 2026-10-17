@@ -1,0 +1,73 @@
+name: OAF 9F - Identidad instrumental y territorio
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/identificacion_instrumental_9f.py'
+      - 'modelos/visor_identificacion_9f.js'
+      - 'datos/estaciones_9d/originales/**'
+      - 'datos/estaciones_9d/series_mensuales_9d.csv'
+      - 'datos/validacion_estaciones_9e/metadatos_identidad_9e.json'
+      - '.github/workflows/oaf_identificacion_9f.yml'
+      - 'index.html'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-identidad-9f
+  cancel-in-progress: false
+jobs:
+  scientific-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Revalidar originales por SHA e identificar máximos exactos
+        run: |
+          python modelos/identificacion_instrumental_9f.py
+          python modelos/identificacion_instrumental_9f.py --check
+      - name: Comprobar nombres, fuentes y restricciones
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('datos/validacion_estaciones_9f/identificacion_territorial_9f.json').read_text('utf8'))
+          x={v['codigo_archivo']:v for v in r['estaciones']}
+          assert len(x)==3 and r['identidad_verificada_por_3_coincidencias_diarias']
+          assert (x['00152107']['nombre'],x['00152107']['dia_maximo_coincidente']['lluvia_mm'])==('Virrey',330)
+          assert (x['00153114']['nombre'],x['00153114']['dia_maximo_coincidente']['lluvia_mm'])==('Puchaca',150.2)
+          assert (x['00000340']['nombre'],x['00000340']['dia_maximo_coincidente']['lluvia_mm'])==('El Espinal',107)
+          assert not r['coordenadas_historicas_sin_incertidumbre']
+          assert not r['estimaciones_reanalisis_verificadas']
+          assert not r['normal_1996_2025_completa']
+          assert all(len(v['altitudes_alternativas_publicadas_m'])>=1 for v in x.values())
+          assert all(v['resumen_1998']['lluvia_1998_mm']>1000 for v in x.values())
+          print('Identificación documental con 3 máximos exactos y ambigüedad espacial preservada.')
+          PY
+      - name: Mantener bloqueo de la validación ERA5/CHIRPS sin emplazamiento conciliado
+        run: |
+          if python modelos/emparejamiento_reanalisis_9e.py > /tmp/oaf-9f-block.log 2>&1; then
+            echo 'Comparación geográfica no acreditada quedó abierta.'
+            exit 1
+          fi
+          grep -q 'carece de identidad institucional documentada' /tmp/oaf-9f-block.log
+      - name: Comprobar visualización de nombres institucionales
+        run: |
+          if test -f modelos/visor_identificacion_9f.js; then node --check modelos/visor_identificacion_9f.js; fi
+      - name: Guardar auditoría pública como resultado reproducible
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9f/identificacion_territorial_9f.json
+          if git diff --cached --quiet; then
+            echo 'Resultado sin cambios'
+          else
+            git commit -m 'data(9F): máximos diarios cotejados y referencias territoriales'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
