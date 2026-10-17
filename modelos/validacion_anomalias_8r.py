@@ -54,7 +54,7 @@ def cell_groups(centers):
         bycell[tuple(center)].append(name)
     return {k:sorted(ids) for k,ids in sorted(bycell.items())}
 
-def features(monthly,centers):
+def features(monthly,centers,peer_exclude=None):
     ids=sorted(monthly)
     if len(ids)<3 or set(ids)!=set(centers):
         raise ValueError("Testigos/centros no concuerdan")
@@ -84,7 +84,7 @@ def features(monthly,centers):
         for pid in ids:
             pixel=byid[pid]
             peer=[anomalies[pick][previous] for cell,pick in representative.items()
-                  if cell!=pixel]
+                  if cell!=pixel and cell!=peer_exclude]
             rows.append({
              "pid":pid,"date":month,"prev":previous,"year":year,"cell":pixel,
              "y":anomalies[pid][month],
@@ -133,6 +133,60 @@ def score(rows,pred):
     return {"n":len(errors),"mae_c":round(statistics.mean(abs(e) for e in errors),6),
             "rmse_c":round(math.sqrt(statistics.mean(e*e for e in errors)),6),
             "sesgo_c":round(statistics.mean(errors),6)}
+
+def spatial_transfer(monthly,centers):
+    """Leave one ERA5-Land cell out of coefficient fit AND val/model selection.
+
+    All other-site regional lag features exclude the holdout pixel entirely,
+    so its temperature history cannot influence model coefficients indirectly.
+    At holdout the site's OWN 1996-2010 climatology and t-1 observation are
+    deliberately available, because this tests transfer of model weights to a
+    locally calibrated but unseen grid cell, not fully new geography.
+    """
+    groups=cell_groups(centers)
+    samples=[]
+    folds=[]
+    for pixel,names in groups.items():
+        allrows,gg,_=features(monthly,centers,peer_exclude=pixel)
+        reps=representative_rows(allrows,gg)
+        train=[r for r in reps if r["cell"]!=pixel and TRAIN[0]<=r["year"]<=TRAIN[1]]
+        valid=[r for r in reps if r["cell"]!=pixel and VAL[0]<=r["year"]<=VAL[1]]
+        held=[r for r in reps if r["cell"]==pixel and TEST[0]<=r["year"]<=TEST[1]]
+        if len(held)!=120:raise ValueError("Falta prueba espacial retenida")
+        coefficients=fit_ridge(train)
+        loss={model:score(valid,lambda r,key=model:predictions(r,coefficients)[key])["rmse_c"]
+              for model in MODELS}
+        model=min(MODELS,key=lambda n:(loss[n],MODELS.index(n)))
+        metrics={}
+        for key in MODELS:
+            metrics[key]=score(held,lambda r,key=key:predictions(r,coefficients)[key])
+        for row in held:
+            estimates=predictions(row,coefficients)
+            samples.append({**row,**{key+"_pred":value for key,value in estimates.items()},
+                            "selected_pred":estimates[model],"selected_model":model})
+        folds.append({"centro_celda_era5land":list(pixel),"testigo_representante":names[0],
+            "n_predicciones_retenidas":len(held),"seleccionado_sin_pixel_retenido":model,
+            "rmse_validacion_otros_pixeles":round(loss[model],6),
+            "rmse_prueba_retenido_c":metrics[model]["rmse_c"],
+            "rmse_persistencia_prueba_retenido_c":metrics["persistencia"]["rmse_c"],
+            "rmse_climatologia_prueba_retenido_c":metrics["climatologia"]["rmse_c"],
+            "coeficientes_sin_pixel_retenido":[round(v,7) for v in coefficients],
+            "climatologia_local_historica_si_disponible":True})
+    common={
+       "seleccionado":score(samples,lambda r:r["selected_pred"]),
+       "persistencia":score(samples,lambda r:r["persistencia_pred"]),
+       "climatologia":score(samples,lambda r:r["climatologia_pred"])}
+    skill=1-common["seleccionado"]["rmse_c"]/common["persistencia"]["rmse_c"]
+    return {"metodo":"dejar_una_celda_fuera_para_coeficientes_y_validacion",
+      "n_celdas_retenidas_por_turno":len(folds),
+      "n_pronosticos_retenidos":len(samples),
+      "climatologia_local_1996_2010_y_rezago_local_del_pixel_retenido_utilizados":True,
+      "variables_regionales_del_ajuste_excluyen_la_celda_retenida":True,
+      "esta_validacion_no_equivale_a_estacion_instrumental_independiente":True,
+      "no_demuestra_extrapolacion_a_puntos_sin_historial_local":True,
+      "evaluacion_global_puntos_retenidos":common,
+      "skill_rmse_ante_persistencia":round(skill,6),
+      "pliegues":folds}
 
 def exercise(monthly,centers,transects):
     rows,groups,normals=features(monthly,centers)
@@ -184,6 +238,7 @@ def exercise(monthly,centers,transects):
               "seleccionado_pred_c":round(p[chosen],5),
               "metodo_seleccionado":chosen,
               "ultimo_mes_observado":r["prev"]})
+    transfer=spatial_transfer(monthly,centers)
     summary={
       "fase":"8R","tipo":"backtest_cronologico_pseudoprospectivo_un_mes",
       "modelo_fuente":"ERA5-Land via Open-Meteo, mismo proveedor histórico",
@@ -210,6 +265,7 @@ def exercise(monthly,centers,transects):
       "evaluacion_prueba_por_celda":testing,
       "comparacion_prueba":comparison,
       "evaluacion_prueba_por_testigo":perSite,
+      "prueba_transferencia_espacial_de_coeficientes":transfer,
       "n_registros_prueba_por_sitio":len(csvrows),
       "pronostico_operativo_validado_senamhi":False,
       "evaluacion_prospectiva_real":False,
