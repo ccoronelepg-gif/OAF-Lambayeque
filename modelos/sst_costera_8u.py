@@ -40,7 +40,7 @@ def paths(root,site,period):
     stem=f"{s}_{first}_{last}"
     return root/DATA/"fuentes"/(stem+".csv.gz"),root/DATA/"fuentes"/(stem+".meta.json")
 
-def validate(blob,site,period):
+def validate(blob,site,period,require_full=True):
     try:
         raw=blob.decode("utf-8-sig")
         entries=list(csv.reader(io.StringIO(raw)))
@@ -50,18 +50,24 @@ def validate(blob,site,period):
     rows=entries[1:]
     if rows and rows[0][0].strip() in ("UTC","UTC (ISO 8601)"):rows=rows[1:]
     expected=common.dates(*period)
-    if len(rows)!=len(expected):raise ValueError(f"No hay un valor SST diario por día de década: {len(rows)} vs {len(expected)}; primer={rows[0][:1] if rows else []}; ultimo={rows[-1][:1] if rows else []}")
+    if len(rows)>len(expected) or (require_full and len(rows)!=len(expected)):
+        raise ValueError("No hay un valor SST diario por día de década")
+    expected_dates=set(expected)
     result={}
-    for expected_date,row in zip(expected,rows):
-        if len(row)!=5 or row[0][:10]!=expected_date or not row[0].endswith("Z"):
+    last=""
+    for row in rows:
+        date=row[0][:10] if row else ""
+        if (len(row)!=5 or date not in expected_dates or not row[0].endswith("Z")
+           or date<=last):
             raise ValueError("SST NOAA con días desordenados o duplicados")
+        last=date
         try:z,lat,lon,temp=map(float,row[1:])
         except (ValueError,TypeError) as e:raise ValueError("SST NOAA sin coordenadas/válidos") from e
         if (not all(map(math.isfinite,(z,lat,lon,temp))) or z!=0 or
             abs(lat-site[1])>.15 or abs(lon-site[2])>.15 or
             not -2.5<temp<38):
             raise ValueError("Dato SST inválido, máscara terrestre o celda distinta")
-        result[expected_date]=temp
+        result[date]=temp
     return result
 
 def load(root,site,period):
@@ -75,7 +81,12 @@ def load(root,site,period):
         meta.get("url")!=request(site,period) or meta.get("sha256_original")!=hash256(blob) or
         meta.get("sitio")!=site[0] or meta.get("periodo")!=list(period)):
         raise ValueError("SST NOAA con SHA o geometría inconsistentes")
-    return validate(blob,site,period)
+    cleaned=validate(blob,site,period,require_full=False)
+    if (meta.get("n_dias")!=len(cleaned) or
+        meta.get("dias_esperados")!=len(common.dates(*period)) or
+        meta.get("registro_temporal_completo")!=(len(cleaned)==len(common.dates(*period)))):
+        raise ValueError("Archivo NOAA OISST con metadatos de cobertura alterados")
+    return cleaned
 
 def fetch(root,max_new=1):
     added=0
@@ -89,7 +100,9 @@ def fetch(root,max_new=1):
                     if response.status!=200:raise ValueError("SST NOAA HTTP inadecuado")
                     raw=response.read(2_500_001)
                 if len(raw)>2_500_000:raise ValueError("SST supera 2,5 MB")
-                clean=validate(raw,site,period)
+                clean=validate(raw,site,period,require_full=False)
+                if len(clean)<len(common.dates(*period))//2:
+                    raise ValueError("Respuesta NOAA demasiado incompleta para archivarse")
             except HTTPError as exc:
                 print("No se recupera SST: HTTP",exc.code,"No se inventan valores.");return
             except (ValueError,URLError,OSError,TimeoutError) as exc:
@@ -98,20 +111,28 @@ def fetch(root,max_new=1):
             info={"fase":"8U","origen":SOURCE,"sitio":site[0],
                   "periodo":list(period),"url":uri,"sha256_original":hash256(raw),
                   "fecha_consulta_utc":datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                  "n_dias":len(clean),"no_sensor_individual":True,"mar_criterio_sst_finita":True,
+                  "n_dias":len(clean),"dias_esperados":len(common.dates(*period)),
+                  "dias_faltantes":len(common.dates(*period))-len(clean),
+                  "registro_temporal_completo":len(clean)==len(common.dates(*period)),
+                  "no_sensor_individual":True,"mar_criterio_sst_finita":True,
                   "revision_retroactiva_posible":True}
             path.write_bytes(gzip.compress(raw,mtime=0))
             meta.write_text(json.dumps(info,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             print("SST oceánica validada:",site[0],period,len(clean),hash256(raw)[:12]);added+=1
 
 def report(root):
-    output=[];completed={};source_count=0;missing=[]
+    output=[];completed={};source_count=0;missing=[];coverage=[]
     for site in POINTS:
         days={}
         for period in PERIODS:
             sub=load(root,site,period)
             if sub is not None:
                 source_count+=1
+                expected_days=len(common.dates(*period))
+                coverage.append({"sitio":site[0],"periodo":list(period),
+                    "dias_validos":len(sub),"dias_esperados":expected_days,
+                    "dias_faltantes":expected_days-len(sub),
+                    "cobertura_completa":len(sub)==expected_days})
                 days.update(sub)
             else:missing.append({"sitio":site[0],"bloque":list(period)})
         if len(days)==len(common.dates(1996,2025)):
@@ -138,6 +159,10 @@ def report(root):
        "sitios_con_sst_30anios_completa":len(completed),
        "resumen_sst_oceanica":completed,
        "bloques_pendientes":missing,
+       "cobertura_diaria_por_archivo":coverage,
+       "n_dias_de_sst_historicos_verificados":sum(p["dias_validos"] for p in coverage),
+       "n_dias_faltantes_en_archivos_recibidos":sum(p["dias_faltantes"] for p in coverage),
+       "archivos_parciales_no_completan_climatologia":True,
        "n_meses_oceanicos_publicados":len(output),
        "coordenadas_marinas_pendientes_de_mascara_oficial":True,
        "sst_no_es_velocidad_de_corrientes":True,
