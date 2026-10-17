@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'modelos/instantanea_marina_8u.py'
+      - 'modelos/visor_marino_8u.js'
+      - 'index.html'
       - 'modelos/relacion_viento_sst_8u.py'
       - 'tests/test_instantanea_marina_8u.py'
       - 'tests/test_relacion_viento_sst_8u.py'
@@ -54,6 +56,17 @@ jobs:
               print('Pronóstico marino archivado, no observado.')
           else:
               print('Sin pronóstico marino validable, se conserva ausencia de dato.')
+          PY
+      - name: Verificar integración de corrientes modeladas en portal
+        run: |
+          node --check modelos/visor_marino_8u.js
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("index.html").read_text(encoding="utf-8")
+          for item in ("oaf-factors-8u","oaf-8u-marine","oaf-8u-marine-refresh","oaf-8u-marine-status"):
+              assert s.count('id="'+item+'"')==1,item
+          assert 'src="modelos/visor_marino_8u.js"' in s
+          print("Módulo 8U corrientes y SST integrado y sin ID duplicado")
           PY
       - name: Guardar fuentes originales y reportes solo cuando existan
         run: |
