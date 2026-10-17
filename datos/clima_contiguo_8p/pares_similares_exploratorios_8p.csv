@@ -1,0 +1,2 @@
+nodo_a,nodo_b,distancia_geografica_km,desnivel_dem_m,distancia_climatica_estandarizada,diferencia_tmedia_anual_c,diferencia_precipitacion_anual_mm,diferencia_humedad_pct,igual_celda_temperatura_referencia,criterio_filtro_vecindad,zona_homogenea_verificada
+M0308,M0234,17.7143,258.0,0.24979,-1.0457,-53.237,1.249,desconocido,"<=20km y ambos perfiles 30 anios, sin afirmar contigüidad ecológica",false

@@ -1,0 +1,33 @@
+{
+  "fase": "8P",
+  "estado": "ampliacion_climatica_en_ejecucion",
+  "periodo": "1996–2025",
+  "nuevos_testigos_planeados": 62,
+  "testigos_climaticos_reutilizados_8o": 19,
+  "testigos_nuevos_con_30_anios": 0,
+  "testigos_total_con_30_anios": 19,
+  "lotes_climaticos_esperados": 24,
+  "lotes_climaticos_verificados": 2,
+  "grupos_de_descarga_completos": [],
+  "pares_vecinos_hasta_20km_comparados": 11,
+  "pares_que_superan_filtro_exploratorio": 1,
+  "umbrales_filtro_exploratorio_no_normativos": {
+    "distancia_km": 20,
+    "distancia_climatica_estandarizada": 0.6,
+    "desnivel_m": 300,
+    "diferencia_tmedia_anual_abs_c": 1.5,
+    "diferencia_precipitacion_anual_abs_mm": 150
+  },
+  "zonas_homogeneas_geograficas_certificadas": 0,
+  "n_poligonos_agricolas_validados": 0,
+  "validacion_instrumental": false,
+  "precision_predictiva_zonal_demostrada": false,
+  "mascara_tierra_mar_ine_i_ign_verificada": false,
+  "reanalisis_ERA5_y_ERA5Land_no_estaciones": true,
+  "testigos_no_independientes_entre_pixeles_demostrado": false,
+  "nota": "Los pares comparan perfiles 30 años y proximidad; no establecen polígonos contiguos, sensores independientes o zonas productivas.",
+  "trazabilidad": {
+    "sha256_muestreo": "3189211cb75e366cc8ac64b5361e695570e3693302fc840c0faf0515eb71c3cf",
+    "sha256_8o_normales": "d0279eb1ec0d78f3e9a603bf6eb7204e65fedb5c09afa54ecbf7b94e51895a6e"
+  }
+}
