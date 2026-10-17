@@ -1,0 +1,67 @@
+name: OAF 9H - Estaciones frente a ERA5-Land y CHIRPS
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/contraste_instrumental_9h.py'
+      - 'datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json'
+      - 'datos/estaciones_9d/series_mensuales_9d.csv'
+      - '.github/workflows/oaf_contraste_instrumental_9h.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-contraste-9h
+  cancel-in-progress: false
+jobs:
+  scientific-contrast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar lector geotiff y cliente HTTP
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests==2.32.5 rasterio==1.4.3
+      - name: Contrastar archivos originales frente a modelos externos reales
+        run: |
+          python modelos/contraste_instrumental_9h.py
+          python modelos/contraste_instrumental_9h.py --check
+      - name: Verificar restricciones por identidad y comparacion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('datos/validacion_estaciones_9h/comparacion_observacional_9h.json').read_text('utf8'))
+          assert j['fase']=='9H'
+          assert len(j['resumen_por_producto_y_escenario'])==12
+          assert len(j['sensibilidad_de_celdas'])==6
+          assert j['habilidad_predictiva_operativa_certificada'] is False
+          assert j['emplazamiento_historico_9g_certificado'] is False
+          assert j['comparacion_chirps_independiente'] is False
+          for entry in j['resumen_por_producto_y_escenario']:
+              assert entry['admisible_como_validacion_predictiva'] is False
+              if entry['episodio_1998']:
+                  assert entry['episodio_1998']['n_meses']>=3
+          print('Fuentes originales descargadas:',j['n_archivos_fuente_reales_con_sha256'])
+          print('Pares ERA5:',j['n_pares_era5'],'pares CHIRPS:',j['n_pares_chirps'])
+          if j['problemas_descarga']:
+              print('Descargas pendientes:',j['problemas_descarga'])
+          PY
+      - name: Persistir sólo CSV y JSON auditados, nunca valores inventados
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9h/comparacion_observacional_9h.json datos/validacion_estaciones_9h/pares_mensuales_9h.csv
+          if git diff --cached --quiet; then
+            echo 'Resultado científico sin cambios'
+          else
+            git commit -m 'data(9H): extracción georreferenciada y contraste experimental con QA'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
