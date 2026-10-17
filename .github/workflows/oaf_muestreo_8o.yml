@@ -1,4 +1,4 @@
-# Ampliación 8O: lotes siguientes 5 y 6
+# Ampliación 8O: lotes siguientes 7 y 8
 name: OAF 8O - Muestreo regional adaptativo DEM
 on:
   workflow_dispatch:
