@@ -482,6 +482,29 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Control de calidad:</b> los valores excepcionales de lluvia modelada (incluido marzo de 1998 en Motupe) están marcados para contraste con SENAMHI; NO son alertas. Las corrientes geostróficas de 2017–2025 proceden de celdas marinas diferentes a las del viento; se conservan en matriz separada para evitar mezclar ubicaciones. La SST Niño 1+2 no es una medición de una playa, ni equivale al ICEN oficial de ENFEN.</div>
 <p><a href="datos/integracion_8v/matriz_terrestre_8v.csv">Matriz terrestre CSV ↗</a> · <a href="datos/integracion_8v/matriz_marina_8v.csv">Matriz marina CSV ↗</a> · <a href="datos/integracion_8v/estado_integracion_8v.json">Cobertura y SHA-256 ↗</a> · <a href="FASE_8V_INTEGRACION_OCEANO_ATMOSFERA.md">Protocolo 8V ↗</a></p>
 </details>
+<details class="panel" id="oaf-benchmark-8w">
+<summary><strong>Fase 8W · ¿Mejoran el pronóstico el viento y el océano?</strong> · cinco cortes cronológicos verificados</summary>
+<p>Ensayo retrospectivo de anomalías con modelos climatología, persistencia, local, local + viento y local + viento + SST. Los modelos se entrenan con años anteriores a cada corte y pronostican meses de prueba posteriores; <b>NO son pronósticos emitidos históricamente ni predicciones operativas validadas con SENAMHI</b>.</p>
+<div class="kpis"><div class="kpi"><small>Pronósticos retrospectivos continuos</small><b id="oaf-8w-forecast-count">—</b></div><div class="kpi"><small>Estimaciones probabilísticas</small><b id="oaf-8w-event-count">—</b></div><div class="kpi"><small>Ensayos marinos limitados a 2017–2025</small><b id="oaf-8w-current-count">—</b></div></div>
+<div class="split">
+<label>Localidad<br><select id="oaf-8w-site"><option>Chiclayo</option><option>Jayanca</option><option selected>Motupe</option><option>Olmos</option></select></label>
+<label>Horizonte<br><select id="oaf-8w-h"><option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option></select></label>
+<label>Variable<br><select id="oaf-8w-target"><option value="temperatura_aire_c">Temperatura del aire</option><option value="precipitacion_mes_mm">Precipitación mensual</option></select></label>
+</div>
+<h3>Comparación de error predictivo retrospectivo</h3>
+<p class="small" id="oaf-8w-unit">Errores en °C · Valores menores indican mejor ajuste en prueba.</p>
+<div class="scroller"><table><thead><tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>Mejora MAE frente al local</th><th>Casos</th></tr></thead><tbody id="oaf-8w-table"></tbody></table></div>
+<h3>Evento exploratorio: precipitación de enero–abril por encima del P90 local del entrenamiento</h3>
+<p class="small">Las probabilidades retrospectivas se evalúan con Brier (menor es mejor); Brier Skill positivo significa menor error que la climatología de eventos calculada en cada entrenamiento. No equivale a riesgo de inundación ni probabilidad de enfermedad.</p>
+<div class="scroller"><table><thead><tr><th>Modelo</th><th>Brier</th><th>Brier Skill</th><th>Eventos / evaluaciones</th></tr></thead><tbody id="oaf-8w-events"></tbody></table></div>
+<h3>Ensayo independiente de corrientes marinas geostróficas</h3>
+<p class="small">Solo se compara un experimento adicional entrenado con datos 2017–2022 y probado en 2023–2025. Las componentes oceánicas vienen de mallas separadas, no de instrumentos de campo y NO son la Corriente de Humboldt completa.</p>
+<div class="scroller"><table><thead><tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>Casos</th></tr></thead><tbody id="oaf-8w-currents"></tbody></table></div>
+<p id="oaf-8w-status" class="small" role="status">Abra el panel para leer datos 8W auditados.</p>
+<div class="notice"><b>Regla científica:</b> mejorar en una prueba de reanálisis NO demuestra predicción operacional, causalidad, señal El Niño Costero ni validez fitosanitaria. Las normales, P90 y escalados se calculan con el entrenamiento anterior; se necesita contrastar con SENAMHI, múltiples periodos y observaciones de campo.</div>
+<p><a href="FASE_8W_BENCHMARK_MULTIVARIABLE.md">Informe técnico fase 8W ↗</a> · <a href="datos/benchmark_8w/estado_benchmark_8w.json">Métricas completas y trazabilidad ↗</a> · <a href="datos/benchmark_8w/predicciones_mensuales_8w.csv">Predicciones evaluadas CSV ↗</a> · <a href="datos/benchmark_8w/probabilidades_lluvia_p90_8w.csv">Evaluación de eventos CSV ↗</a></p>
+</details>
+
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
 <div class="panel oaf-tech-archive"><h2>Autoría y fundamentos del OAF</h2><p>La presentación completa del proyecto y su procedimiento metodológico se mantienen en este archivo de consulta.</p><div class="oaf-archive-list"><details><summary>Presentación completa y autoría</summary><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
 <p>Como ingeniero agrónomo, desarrollo el Observatorio Agroclimático y Fitosanitario de Lambayeque para acercar información climática confiable a la toma de decisiones agrícolas. El proyecto integra datos meteorológicos abiertos, boletines oficiales e investigaciones científicas para comprender cómo la temperatura, la humedad y las precipitaciones pueden favorecer el desarrollo de enfermedades de los cultivos, inicialmente en arándano y vid. Su importancia radica en transformar estos datos en información útil para productores, profesionales e investigadores. Mi objetivo es construir y validar progresivamente modelos que permitan anticipar condiciones de riesgo fitosanitario, contribuir a la prevención de pérdidas y fortalecer la capacidad de adaptación de la agricultura de Lambayeque frente a la variabilidad climática y fenómenos como El Niño.</p>
@@ -841,4 +864,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
