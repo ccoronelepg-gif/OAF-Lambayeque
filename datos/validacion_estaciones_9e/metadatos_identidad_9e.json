@@ -1,7 +1,7 @@
 {
-  "fase": "9E",
+  "fase": "9E_actualizado_identidad_en_9F",
   "fecha_revision": "2026-10-17",
-  "politica": "No deducir la identidad espacial desde un código o desde diferencias de lluvia; los registros fueron aportados sin ficha oficial.",
+  "politica": "Nombres/codigos confirmados mediante tres máximos diarios que coinciden con SENAMHI; coordenadas no se aplican en comparador 9E porque publicadas por distintas fuentes presentan divergencias e historial instrumental pendiente. No activar geolocalización de parcela ni comparación espacial automáticamente.",
   "fuentes_consultadas": [
     {
       "institucion": "SENAMHI",
@@ -32,48 +32,66 @@
   "estaciones": [
     {
       "codigo_archivo": "00000340",
-      "nombre": null,
-      "codigo_oficial": null,
+      "nombre": "El Espinal",
+      "codigo_oficial": "000340",
       "latitud": null,
       "longitud": null,
       "altitud_m": null,
-      "operador": null,
+      "operador": "No certificado para estos archivos; fuente de correspondencia documental: SENAMHI",
       "certificado": false,
-      "url_ficha": null,
-      "metodo_coincidencia": null,
+      "url_ficha": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "metodo_coincidencia": "prefijo cero del archivo + nombre indicado por usuario + fecha y lluvia extrema idénticas en SENAMHI",
       "calidad_original_certificada": false,
       "licencia_republicacion": null,
-      "estado": "sin_correspondencia_documental_verificada"
+      "estado": "nombre_y_codigo_corroborados_en_fuente_SENAMHI_georreferencia_auditoria_pendiente",
+      "evidencia_maximo_diario": {
+        "fecha": "1998-02-20",
+        "precipitacion_mm": 107
+      },
+      "evidencia_senamhi_url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "fecha_verificacion": "2026-10-17"
     },
     {
       "codigo_archivo": "00153114",
-      "nombre": null,
-      "codigo_oficial": null,
+      "nombre": "Puchaca",
+      "codigo_oficial": "153114",
       "latitud": null,
       "longitud": null,
       "altitud_m": null,
-      "operador": null,
+      "operador": "No certificado para estos archivos; fuente de correspondencia documental: SENAMHI",
       "certificado": false,
-      "url_ficha": null,
-      "metodo_coincidencia": null,
+      "url_ficha": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "metodo_coincidencia": "prefijo cero del archivo + nombre indicado por usuario + fecha y lluvia extrema idénticas en SENAMHI",
       "calidad_original_certificada": false,
       "licencia_republicacion": null,
-      "estado": "sin_correspondencia_documental_verificada"
+      "estado": "nombre_y_codigo_corroborados_en_fuente_SENAMHI_georreferencia_auditoria_pendiente",
+      "evidencia_maximo_diario": {
+        "fecha": "1998-01-06",
+        "precipitacion_mm": 150.2
+      },
+      "evidencia_senamhi_url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "fecha_verificacion": "2026-10-17"
     },
     {
       "codigo_archivo": "00152107",
-      "nombre": null,
-      "codigo_oficial": null,
+      "nombre": "Virrey",
+      "codigo_oficial": "152107",
       "latitud": null,
       "longitud": null,
       "altitud_m": null,
-      "operador": null,
+      "operador": "No certificado para estos archivos; fuente de correspondencia documental: SENAMHI",
       "certificado": false,
-      "url_ficha": null,
-      "metodo_coincidencia": null,
+      "url_ficha": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "metodo_coincidencia": "prefijo cero del archivo + nombre indicado por usuario + fecha y lluvia extrema idénticas en SENAMHI",
       "calidad_original_certificada": false,
       "licencia_republicacion": null,
-      "estado": "sin_correspondencia_documental_verificada"
+      "estado": "nombre_y_codigo_corroborados_en_fuente_SENAMHI_georreferencia_auditoria_pendiente",
+      "evidencia_maximo_diario": {
+        "fecha": "2012-02-10",
+        "precipitacion_mm": 330
+      },
+      "evidencia_senamhi_url": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf",
+      "fecha_verificacion": "2026-10-17"
     }
   ],
   "geolocalizacion_publica_permitida": false,
@@ -85,5 +103,6 @@
     "Confirmar licencia y restricciones de reutilización de las series compartidas",
     "Comparar precipitación mensual sobre mismo período y versión del producto",
     "Controlar dependencia en CHIRPS por posible incorporación de esa misma estación a los productos grillados"
-  ]
+  ],
+  "fuente_confirmacion_extremos": "https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf"
 }
