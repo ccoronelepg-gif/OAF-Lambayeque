@@ -6,6 +6,13 @@
 
 
 
+
+## Fase 10B · Incertidumbre y sensibilidad en años extremos (17/10/2026)
+
+Se ejecutó una calibración conformal **retrospectiva**, empleando las 11.700 predicciones de 9X, calibración **2021–2022** y prueba posterior **2023–2025**, con radio de orden 23/24 por sector/modelo. En 2023, la cobertura observada cayó a **80,13 % en Random Forest**, **82,26 % en GCN** y **85,68 % en climatología por piso**, frente al 90 % nominal. Entre 91 observaciones sector-mes con precipitación mensual ≥100 mm durante 2023–2025, el pronóstico puntual también alcanzó ese umbral en 15 (RF), 4 (GCN) y 17 (climatología por piso). Son criterios exploratorios, no alertas oficiales. Las predicciones utilizan **CHIRPS v3 FINAL retroprocesado**, no un conjunto de versiones originales as-issued; no se reentrenaron todavía con rezagos operativos ni existe validación instrumental independiente. **Ningún modelo operativo está autorizado**.
+
+[Visor de incertidumbre](evaluacion-temporal.html) · [Evidencia JSON](datos/calibracion_10b/evaluacion_temporal_10b.json) · [Informe 10B](FASE_10B_CALIBRACION_TEMPORAL.md) · [Código reproductor](modelos/calibracion_temporal_10b.py) · [QA 10B](.github/workflows/oaf_10b_evaluacion.yml).
+
 ## Evaluación territorial 10A · 17/10/2026
 Se auditaron y reconciliaron **11.700 registros reales de CHIRPS v3 FINAL** (39 sectores × 60 meses × cinco modelos, prueba 2021–2025) contra la fase 9X. Random Forest tuvo MAE de **17,1634 mm**, GCN **18,6207 mm** y la climatología por piso **20,3708 mm**. **RF supera a GCN en 29/39 sectores, pero a la climatología solo en 21/39**; en 2023 la climatología por piso obtuvo menor MAE regional (29,0583 mm) que ambos modelos complejos. **No son predicciones operativas as-issued ni intervalos conformales calibrados; no se activaron alertas**. [Panel comparativo](evaluacion-territorial.html) · [Datos auditados](datos/integracion_10a/diagnostico_reconciliado_10a.json) · [Informe técnico](FASE_10A_RECONSTRUCCION_PREDICTIVA.md) · [Código replicable](modelos/auditoria_integrada_10a.py) · [Pruebas CI](.github/workflows/oaf_10a_auditoria.yml).
 
