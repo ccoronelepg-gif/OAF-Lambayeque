@@ -1,0 +1,17 @@
+/* 9K — visor de sectores altitudinales: contrastes accesibles sobre tema claro. */
+#oaf-9k-visor{border:1px solid #c9e3d9;background:#fff}
+#oaf-9k-visor summary{cursor:pointer;color:#103842;font-weight:760}
+.oaf-9k-controls{display:flex;gap:18px;flex-wrap:wrap;align-items:end;margin:12px 0}
+.oaf-9k-controls label{display:flex;flex-direction:column;font-weight:700;font-size:12px;gap:5px;color:#476a72}
+.oaf-9k-controls select{min-width:250px}
+.oaf-9k-check{display:flex!important;flex-direction:row!important;align-items:center;gap:8px!important}
+.oaf-9k-check input{width:18px;height:18px}
+#oaf-9k-map{min-height:230px;background:#f2f7f4;border:1px solid #dcebe5;border-radius:14px;padding:5px}
+.oaf-9k-svg{display:block;width:100%;max-height:590px}
+.oaf-9k-svg path{cursor:pointer;transition:fill-opacity .16s}
+.oaf-9k-svg path:hover,.oaf-9k-svg path:focus{fill-opacity:1;stroke:#163942;stroke-width:2.5px;outline:none}
+#oaf-9k-legend{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.oaf-9k-key{display:inline-flex;gap:6px;align-items:center;font-size:12px}
+.oaf-9k-key i{display:inline-block;width:11px;height:11px;border-radius:3px}
+#oaf-9k-detail{padding:13px 16px;border:1px solid #d3e7de;border-radius:12px;background:#f4f9f7}
+@media(max-width:680px){.oaf-9k-controls{display:block}.oaf-9k-controls select{width:100%}.oaf-9k-check{margin-top:10px}}
