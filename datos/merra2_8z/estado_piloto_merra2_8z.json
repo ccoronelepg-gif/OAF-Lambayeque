@@ -1,0 +1,100 @@
+{
+  "fase": "8Z",
+  "coleccion_nasa_aerosol_superficie": "M2T1NXAER",
+  "coleccion_nasa_pm10_3d": "M2I3NVAER",
+  "faq_nasa": "https://gmao.gsfc.nasa.gov/gmao-products/merra-2/faq_merra-2/",
+  "malla_grados": {
+    "lat": 0.5,
+    "lon": 0.625
+  },
+  "marco_climatico": "1996-2025",
+  "unidad_componentes_25": "kg/m3",
+  "unidad_componentes_10": "kg/kg con AIRDENS kg/m3",
+  "unidad_resultado": "µg/m3",
+  "conversion_kg_m3_a_ug_m3": 1000000000.0,
+  "pm25_seco_sin_agua_higroscopica": true,
+  "capa_pm10_3d_numero": 72,
+  "no_usar_pm25_para_estimar_pm10": true,
+  "colecciones_1996_2025_descargadas_en_oaf": false,
+  "serie_merra2_pm_mensual_archivada": false,
+  "metadatos_CMR_no_equivalen_a_valores_PM": true,
+  "catalogo_metadatos_nasa": {
+    "M2T1NXAER_1998-03-15": {
+      "consulta_url": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=M2T1NXAER&version=5.12.4&temporal=1998-03-15T00%3A00%3A00Z%2C1998-03-15T23%3A59%3A59Z&page_size=2",
+      "entries": [
+        {
+          "id": "G1277305117-GES_DISC",
+          "title": "M2T1NXAER.5.12.4:MERRA2_200.tavg1_2d_aer_Nx.19980315.nc4",
+          "start_time": "1998-03-15T00:00:00.000Z",
+          "data_links": [
+            "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXAER.5.12.4/1998/03/MERRA2_200.tavg1_2d_aer_Nx.19980315.nc4",
+            "https://data.gesdisc.earthdata.nasa.gov/s3credentials",
+            "https://opendap.earthdata.nasa.gov/collections/C1276812830-GES_DISC/granules/M2T1NXAER.5.12.4%3AMERRA2_200.tavg1_2d_aer_Nx.19980315.nc4"
+          ]
+        }
+      ],
+      "n_granulos_muestra": 1,
+      "sha256_respuesta": "3cfe0e28aa06266a8f2bcb7e3d0c7d0ad463e73566b5713b7b8cabf79f9ad666"
+    },
+    "M2T1NXAER_2025-07-15": {
+      "consulta_url": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=M2T1NXAER&version=5.12.4&temporal=2025-07-15T00%3A00%3A00Z%2C2025-07-15T23%3A59%3A59Z&page_size=2",
+      "entries": [
+        {
+          "id": "G3672294974-GES_DISC",
+          "title": "M2T1NXAER.5.12.4:MERRA2_400.tavg1_2d_aer_Nx.20250715.nc4",
+          "start_time": "2025-07-15T00:00:00.000Z",
+          "data_links": [
+            "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2T1NXAER.5.12.4/2025/07/MERRA2_400.tavg1_2d_aer_Nx.20250715.nc4",
+            "https://data.gesdisc.earthdata.nasa.gov/s3credentials",
+            "https://opendap.earthdata.nasa.gov/collections/C1276812830-GES_DISC/granules/M2T1NXAER.5.12.4%3AMERRA2_400.tavg1_2d_aer_Nx.20250715.nc4"
+          ]
+        }
+      ],
+      "n_granulos_muestra": 1,
+      "sha256_respuesta": "1830673969d733e6d03ae801bdb567976c3accb526656791a8677591a4ab2ade"
+    },
+    "M2I3NVAER_1998-03-15": {
+      "consulta_url": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=M2I3NVAER&version=5.12.4&temporal=1998-03-15T00%3A00%3A00Z%2C1998-03-15T23%3A59%3A59Z&page_size=2",
+      "entries": [
+        {
+          "id": "G1277045664-GES_DISC",
+          "title": "M2I3NVAER.5.12.4:MERRA2_200.inst3_3d_aer_Nv.19980315.nc4",
+          "start_time": "1998-03-15T00:00:00.000Z",
+          "data_links": [
+            "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2I3NVAER.5.12.4/1998/03/MERRA2_200.inst3_3d_aer_Nv.19980315.nc4",
+            "https://data.gesdisc.earthdata.nasa.gov/s3credentials",
+            "https://opendap.earthdata.nasa.gov/collections/C1276812882-GES_DISC/granules/M2I3NVAER.5.12.4%3AMERRA2_200.inst3_3d_aer_Nv.19980315.nc4"
+          ]
+        }
+      ],
+      "n_granulos_muestra": 1,
+      "sha256_respuesta": "a1729eaedc3ee7c2a92e9848218c2bebf5901c79ee8faef0d9dda15e4171ea82"
+    },
+    "M2I3NVAER_2025-07-15": {
+      "consulta_url": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=M2I3NVAER&version=5.12.4&temporal=2025-07-15T00%3A00%3A00Z%2C2025-07-15T23%3A59%3A59Z&page_size=2",
+      "entries": [
+        {
+          "id": "G3672409934-GES_DISC",
+          "title": "M2I3NVAER.5.12.4:MERRA2_400.inst3_3d_aer_Nv.20250715.nc4",
+          "start_time": "2025-07-15T00:00:00.000Z",
+          "data_links": [
+            "https://data.gesdisc.earthdata.nasa.gov/data/MERRA2/M2I3NVAER.5.12.4/2025/07/MERRA2_400.inst3_3d_aer_Nv.20250715.nc4",
+            "https://data.gesdisc.earthdata.nasa.gov/s3credentials",
+            "https://opendap.earthdata.nasa.gov/collections/C1276812882-GES_DISC/granules/M2I3NVAER.5.12.4%3AMERRA2_400.inst3_3d_aer_Nv.20250715.nc4"
+          ]
+        }
+      ],
+      "n_granulos_muestra": 1,
+      "sha256_respuesta": "c252045e0e82c6d0e0dc89dd6bf7de1ab79b48a9824e05eaf6d8719fa15a8b42"
+    }
+  },
+  "errores_consulta_CMR": [],
+  "limitaciones": [
+    "PM10 exige variables de mezcla inst3_3d_aer_Nv nivel 72 y densidad del aire",
+    "PM2.5 seco calculado según FAQ NASA sin crecimiento higroscópico",
+    "Sin descarga de NetCDF NASA no declarar promedios PM ni tendencias",
+    "NASA Earthdata puede exigir autenticación para descargar datos y subsetting",
+    "La validación SENAMHI de contaminantes sigue pendiente",
+    "Centro de celda MERRA-2 distinto de parcela y pisos topográficos"
+  ]
+}
