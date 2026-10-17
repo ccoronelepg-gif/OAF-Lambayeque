@@ -25,9 +25,14 @@ jobs:
           python-version: '3.11'
       - name: Unit tests PM2.5 PM10 sin red
         run: python -m unittest discover -s tests -p 'test_particulas_aire_8x.py' -v
-      - name: Descargar como maximo un punto-anio valido de CAMS
+      - name: Ampliar fuente CAMS Global 2025 a cuatro referencias (sin imputar)
         continue-on-error: true
-        run: python modelos/particulas_aire_8x.py --fetch --year 2025
+        run: |
+          for site in Chiclayo Jayanca Motupe Olmos; do
+            echo "Solicitando PM de $site"
+            python modelos/particulas_aire_8x.py --fetch --year 2025 --site "$site" || echo "Sin datos validables en $site"
+            sleep 5
+          done
       - name: Recomputar datos realmente archivados y verificar
         run: |
           python modelos/particulas_aire_8x.py
