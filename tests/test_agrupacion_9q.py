@@ -56,7 +56,7 @@ class Fase9Q(unittest.TestCase):
   self.assertEqual(h.count("<section data-page="),5)
   for id in ("oaf-9q-visor","oaf-9q-months","oaf-9q-annual","oaf-9q-groups",
      "oaf-9q-status","oaf-9q-plot-type","oaf-9q-graphic","oaf-9q-floor-table",
-     "oaf-9q-group-table","oaf-9q-science"):
+     "oaf-9q-group-table","oaf-9q-science","oaf-9q-map","oaf-9q-map-detail"):
    self.assertEqual(h.count('id="'+id+'"'),1,id)
   self.assertIn("visor_pisos_9q.js",h)
   self.assertIn("FASE_9Q_PISOS_Y_AGRUPACIONES.md",h)
