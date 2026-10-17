@@ -1,0 +1,287 @@
+{
+  "fase": "8Z",
+  "estado": "analisis_PM_y_humedad_solo_descriptivo",
+  "periodo_coincidente": "2023-2025",
+  "serie_RH_30_anios_completa": true,
+  "serie_PM_30_anios_completa": false,
+  "pm_instrumental": false,
+  "rh_instrumental": false,
+  "numero_comparaciones": 16,
+  "comparaciones_evaluables": 16,
+  "pares_pm_series_identicas": [
+    {
+      "sitios": [
+        "Motupe",
+        "Olmos"
+      ],
+      "meses_identicos": 36,
+      "interpretacion": "Series PM idénticas; no tratarlas como réplicas independientes"
+    }
+  ],
+  "correlacion_causal": false,
+  "habilidad_predictiva_validada": false,
+  "humedad_dosel_cultivo": false,
+  "riesgo_fitosanitario_validado": false,
+  "fuente_sha256": {
+    "pm": "f0b882659f6125b723ea37f6aedc5d7bece08ca15e86aa0c92f5be2b1655d370",
+    "humedad": "6392b4e827dfeaed27b89c2a5ea4d6bbb6fc6ef6ae7559904357e3e9986c22cd"
+  },
+  "comparaciones": [
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": 0.233255,
+      "pearson_deseasonalizado": 0.00797,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.253239,
+        "2024": 0.165068,
+        "2025": -0.354571
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.373253,
+      "pearson_deseasonalizado": -0.184673,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.42231,
+        "2024": -0.345061,
+        "2025": 0.305153
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": 0.289779,
+      "pearson_deseasonalizado": -0.156723,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.262745,
+        "2024": -0.227587,
+        "2025": -0.412869
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.462178,
+      "pearson_deseasonalizado": 0.013438,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.381336,
+        "2024": 0.047856,
+        "2025": 0.399613
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.001064,
+      "pearson_deseasonalizado": 0.152038,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.423834,
+        "2024": 0.131362,
+        "2025": -0.208976
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.105152,
+      "pearson_deseasonalizado": -0.21082,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.444204,
+        "2024": -0.281508,
+        "2025": 0.240938
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.142228,
+      "pearson_deseasonalizado": -0.107106,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.32767,
+        "2024": -0.38302,
+        "2025": -0.33375
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Jayanca",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.160379,
+      "pearson_deseasonalizado": 0.094035,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.309593,
+        "2024": 0.284005,
+        "2025": 0.398319
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": false
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.173848,
+      "pearson_deseasonalizado": -0.107754,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.081169,
+        "2024": 0.155313,
+        "2025": -0.592425
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.010993,
+      "pearson_deseasonalizado": 0.009558,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.088053,
+        "2024": -0.333202,
+        "2025": 0.552553
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.479328,
+      "pearson_deseasonalizado": -0.584729,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.533964,
+        "2024": -0.601823,
+        "2025": -0.622551
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Motupe",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": 0.247144,
+      "pearson_deseasonalizado": 0.568136,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.57156,
+        "2024": 0.480586,
+        "2025": 0.623212
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.076284,
+      "pearson_deseasonalizado": -0.007716,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.102112,
+        "2024": 0.250721,
+        "2025": -0.465805
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm25_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.047416,
+      "pearson_deseasonalizado": -0.096947,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.113062,
+        "2024": -0.342473,
+        "2025": 0.290245
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "rh_2m_media_pct",
+      "meses_solapados": 36,
+      "pearson_bruto": -0.38069,
+      "pearson_deseasonalizado": -0.499419,
+      "coeficiente_tras_excluir_anio": {
+        "2023": -0.459924,
+        "2024": -0.552934,
+        "2025": -0.510031
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    },
+    {
+      "localidad": "Olmos",
+      "particula": "pm10_media_ug_m3",
+      "covariable": "vpd_max_diario_media_mes_kpa",
+      "meses_solapados": 36,
+      "pearson_bruto": 0.235878,
+      "pearson_deseasonalizado": 0.428698,
+      "coeficiente_tras_excluir_anio": {
+        "2023": 0.426579,
+        "2024": 0.486242,
+        "2025": 0.406438
+      },
+      "interpretacion": "descriptiva_no_causal",
+      "apto_analisis_descriptivo": true,
+      "serie_pm_coincidente_otro_sitio": true
+    }
+  ]
+}
