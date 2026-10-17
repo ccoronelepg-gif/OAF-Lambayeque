@@ -355,6 +355,29 @@ details.panel{scroll-margin-top:120px}
 <p><a href="FASE_8Z_HUMEDAD_AEROSOLES_MERRA2.md">Informe científico 8Z ↗</a> · <a href="datos/humedad_8z/humedad_vpd_mensual_8z.csv">RH/VPD mensual ERA5 ↗</a> · <a href="datos/humedad_8z/estado_humedad_8z.json">SHA-256 y cobertura ↗</a> · <a href="datos/merra2_8z/estado_piloto_merra2_8z.json">Inventario NASA MERRA-2 ↗</a> · <a href="datos/relaciones_pm_humedad_8z/estado_relacion_pm_humedad_8z.json">Correlaciones PM-humedad ↗</a> · <a href="https://gmao.gsfc.nasa.gov/gmao-products/merra-2/faq_merra-2/">Fórmulas originales NASA ↗</a></p>
 <p class="oaf-figure-caption">Cómo interpretar: RH y VPD ERA5 representan aire libre a 2 m y no humedad dentro del dosel. Los metadatos NASA MERRA-2 no son una serie PM ya procesada.</p></details>
 </section>
+
+<details class="panel" id="oaf-9d-estaciones">
+<summary><strong>Fase 9D · Observaciones meteorológicas históricas</strong> · 3 archivos diarios originales, 1963–2014</summary>
+<p>Series históricas aportadas por un colaborador, identificadas por código de archivo. Formato inferido: precipitación (mm), temperatura máxima y mínima (°C); <b>−99.9 se interpreta como dato ausente</b>. Los nombres, las coordenadas, la altitud, el operador y la licencia <b>no están confirmados</b>. Por ello, estos registros no se ubican en un mapa ni se asignan a pisos altitudinales.</p>
+<div class="kpis">
+<div class="kpi"><small>Registros diarios auditados</small><b>55 200</b></div>
+<div class="kpi"><small>Filas mensuales con cobertura por variable</small><b>1 814</b></div>
+<div class="kpi"><small>Estaciones identificadas por código</small><b>3</b></div>
+</div>
+<div class="split">
+<label>Archivo de estación<br><select id="oaf-9d-site" aria-label="Elegir archivo de estación"></select></label>
+<label>Variable observada<br><select id="oaf-9d-var" aria-label="Variable de estación"></select></label>
+<label>Periodo gráfico<br><select id="oaf-9d-period" aria-label="Periodo histórico"></select></label>
+</div>
+<p class="small" id="oaf-9d-count" aria-live="polite">—</p>
+<div role="img" aria-label="Comparación interactiva de totales y promedios meteorológicos anuales" id="oaf-9d-chart"><p>Abra este panel para cargar las series históricas.</p></div>
+<p id="oaf-9d-caption" class="oaf-figure-caption">Leyenda: se muestran solo años con 12 meses de observaciones que superan 90 % de cobertura mensual; una ausencia nunca se transforma en precipitación cero.</p>
+<p class="small" id="oaf-9d-qc">Control de cobertura pendiente de cargar.</p>
+<div class="notice"><b>Interpretación científica:</b> las lluvias intensas registradas durante 1983 y 1998 son evidencia observacional histórica dentro de estas series, no demostración de habilidad predictiva. La estación 00000340 carece de precipitación válida de 1983. Un dato diario de 330 mm en la estación 00152107 (10/02/2012) está señalado para revisión, no eliminado. Se requiere ficha de estación y control independiente antes de comparar con celdas ERA5 o extrapolar a zonas homogéneas.</div>
+<p><a href="FASE_9D_ESTACIONES_REALES.md">Informe fase 9D ↗</a> · <a href="datos/estaciones_9d/auditoria_estaciones_9d.json">Auditoría original y SHA-256 ↗</a> · <a href="datos/estaciones_9d/series_mensuales_9d.csv">Descargar serie mensual con cobertura CSV ↗</a> · <a href="datos/estaciones_9d/originales/qc00000340.txt">Original 00000340 ↗</a> · <a href="datos/estaciones_9d/originales/qc00153114.txt">Original 00153114 ↗</a> · <a href="datos/estaciones_9d/originales/qc00152107.txt">Original 00152107 ↗</a></p>
+<p class="small" role="status" id="oaf-9d-state">Cargando resultados de la fase 9D…</p>
+</details>
+
 <section data-page="nino" id="nino" hidden>
 
 <div class="viewhead"><span class="eyebrow">Información institucional</span><h1>Monitoreo del Niño y anomalías climáticas</h1><p>Información oficial de ENFEN y SENAMHI, anomalías oceánicas históricas y relaciones con temperatura, lluvias y vientos en Lambayeque. Las predicciones experimentales del OAF se identifican por separado.</p></div><div class="panel"><span class="oaf-chip">Comunicado oficial consultado</span><h2 style="margin-top:10px">Archivo oficial de comunicados ENFEN</h2><p>Consulte los últimos comunicados directamente con ENFEN. Una referencia histórica del OAF identificó el comunicado N.º 17-2026 del 28 de septiembre de 2026, pero ese registro no garantiza que siga siendo el más reciente. El estado oficial solo se muestra tras comprobar su procedencia y fecha.</p><div class="links"><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">Consultar y descargar el comunicado oficial ↗</a></div></div>
@@ -1084,4 +1107,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
