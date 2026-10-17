@@ -49,6 +49,30 @@ Se recomienda interpretar primero **los benchmarks por separado**. El 9R origina
 
 Las diferencias temporales, CIs emparejados y resultados desagregados por piso se reportan directamente desde la ejecución reproducible del 9W, no se inventan ni se seleccionan retrospectivamente para proclamar un modelo mejor.
 
+## 5A. Resultados del remuestreo anual y diagnóstico de robustez
+
+El puente 9W verificó **14 040 filas** (39 sectores × 360 meses), los **2340 objetivos 9R** y una deriva máxima de representación numérica de **0,00011 mm**, dentro del límite de 0,001 mm fijado para las conversiones a float32. El CI confirmó la reproducción íntegra de estos datos.
+
+| Protocolo / años de prueba | Climatología MAE | Random Forest MAE | GCN MAE | Persistencia MAE |
+|---|---:|---:|---:|---:|
+| 9R: 2021–2025 | **14,29568** | 15,53971 | 18,46820 | No se calculó |
+| 9R: 2022–2025 (subconjunto de los mismos modelos) | **14,97053** | 16,14954 | 18,03108 | No se calculó |
+| 9T: modelos entrenados hasta 2018, prueba 2022–2025 | **14,82932** | 16,27165 | No reentrenada | 22,61547 |
+
+Los valores son MAE de lluvia mensual en milímetros sobre **39 sectores**, no porcentajes de clasificación. La prueba 9T contiene **1872 comparaciones por modelo**. Aunque RF 9T tiene MAE superior a climatología, su RMSE fue ligeramente inferior (**31,71264** frente a **32,04035 mm**), lo que sugiere comportamientos diferentes en errores extremos; esto no basta para seleccionar RF cuando el criterio principal preespecificado es MAE.
+
+**Contrastes emparejados dentro del protocolo 9R original, remuestreo exacto de cinco años (3125 combinaciones):**
+
+| Diferencial de MAE | Estimación (mm) | Intervalo percentil 95 % por años completos (mm) | Interpretación |
+|---|---:|---:|---|
+| RF menos climatología | **+1,24403** | **[−2,56120; +4,42268]** | Contiene cero; diferencia incierta |
+| GCN menos climatología | **+4,17252** | **[+0,09517; +7,56704]** | GCN tiende a mayor error |
+| GCN menos RF | **+2,92849** | **[+1,61231; +5,06973]** | GCN muestra mayor MAE en los años examinados |
+
+Estas bandas solo reflejan **variabilidad entre años** y no capturan dependencia espacial, revisiones retrospectivas de CHIRPS ni incertidumbre de nuevos sectores. No se deben leer como cobertura probabilística de un pronóstico futuro. En el protocolo 9T, el diferencial RF − climatología fue **+1,44232 mm**, con intervalo de cuatro años **[−1,78013; +4,56272] mm**; su ventaja o desventaja no es concluyente con esa muestra.
+
+**Decisión 9U ejecutada sobre la matriz real 9W:** `RF_NO_SUPERA_CLIMATOLOGIA`. Como estrategia pública prudente, mantener la climatología histórica como referencia, estudiar RF para ciertos pisos o magnitudes de lluvia y no promover GCN hasta contar con pruebas de transferencia espacial, predictores con vintage real y estaciones independientes.
+
 ## 6. Publicación, pruebas e integridad
 
 Archivos generados: matriz 39×360; manifiesto SHA; tres protocolos de evaluación; predicciones 9T de validación/prueba; decisión 9U; métricas por piso y año. Su ejecución está automatizada en [GitHub Actions](.github/workflows/oaf_evidencia_predictiva_9w.yml), con [tests de protección](tests/test_puente_predictivo_9w.py), y el módulo [visor_evidencia_9w.js](modelos/visor_evidencia_9w.js) se publica en **Análisis de clima regional**.
