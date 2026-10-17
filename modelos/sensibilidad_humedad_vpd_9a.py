@@ -71,9 +71,9 @@ def load(root):
         if k in evt:raise ValueError('8W P90 evento duplicado')
         evt[k]=r
     if len(evt)!=4*5*3*12:raise ValueError('8W evento incompleto')
-    return land,sea,index,old,evt,dict(
-        8w_land=landhash,8w_marine=seahash,humidity=hhash,
-        baseline=oldhash,events=eventhash)
+    return land,sea,index,old,evt,{
+        '8w_land':landhash,'8w_marine':seahash,'humidity':hhash,
+        'baseline':oldhash,'events':eventhash}
 
 def means(training_months, humidity):
     if not training_months:raise ValueError('Sin entrenamiento')
