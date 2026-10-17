@@ -243,6 +243,171 @@
       "replica_de_celda_compartida": true
     }
   ],
+  "prueba_transferencia_espacial_de_coeficientes": {
+    "metodo": "dejar_una_celda_fuera_para_coeficientes_y_validacion",
+    "n_celdas_retenidas_por_turno": 7,
+    "n_pronosticos_retenidos": 840,
+    "climatologia_local_1996_2010_y_rezago_local_del_pixel_retenido_utilizados": true,
+    "variables_regionales_del_ajuste_excluyen_la_celda_retenida": true,
+    "esta_validacion_no_equivale_a_estacion_instrumental_independiente": true,
+    "no_demuestra_extrapolacion_a_puntos_sin_historial_local": true,
+    "evaluacion_global_puntos_retenidos": {
+      "seleccionado": {
+        "n": 840,
+        "mae_c": 0.284121,
+        "rmse_c": 0.363771,
+        "sesgo_c": -0.037765
+      },
+      "persistencia": {
+        "n": 840,
+        "mae_c": 0.299992,
+        "rmse_c": 0.381327,
+        "sesgo_c": 0.016544
+      },
+      "climatologia": {
+        "n": 840,
+        "mae_c": 0.567104,
+        "rmse_c": 0.748643,
+        "sesgo_c": -0.437431
+      }
+    },
+    "skill_rmse_ante_persistencia": 0.046039,
+    "pliegues": [
+      {
+        "centro_celda_era5land": [
+          -6.4,
+          -79.6
+        ],
+        "testigo_representante": "M0179",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.400154,
+        "rmse_prueba_retenido_c": 0.423432,
+        "rmse_persistencia_prueba_retenido_c": 0.437212,
+        "rmse_climatologia_prueba_retenido_c": 0.897003,
+        "coeficientes_sin_pixel_retenido": [
+          0.0005272,
+          0.7479577,
+          0.1249012
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.4,
+          -79.5
+        ],
+        "testigo_representante": "M0202",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.400628,
+        "rmse_prueba_retenido_c": 0.397757,
+        "rmse_persistencia_prueba_retenido_c": 0.400031,
+        "rmse_climatologia_prueba_retenido_c": 0.953352,
+        "coeficientes_sin_pixel_retenido": [
+          0.0002922,
+          0.7605178,
+          0.1202465
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.3,
+          -79.6
+        ],
+        "testigo_representante": "M0205",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.400723,
+        "rmse_prueba_retenido_c": 0.418608,
+        "rmse_persistencia_prueba_retenido_c": 0.435778,
+        "rmse_climatologia_prueba_retenido_c": 0.860455,
+        "coeficientes_sin_pixel_retenido": [
+          0.0007523,
+          0.7600133,
+          0.1161584
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.3,
+          -79.5
+        ],
+        "testigo_representante": "M0206",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.401901,
+        "rmse_prueba_retenido_c": 0.340363,
+        "rmse_persistencia_prueba_retenido_c": 0.357217,
+        "rmse_climatologia_prueba_retenido_c": 0.7103,
+        "coeficientes_sin_pixel_retenido": [
+          0.0003823,
+          0.7644683,
+          0.1188306
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.3,
+          -79.4
+        ],
+        "testigo_representante": "M0253",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.395871,
+        "rmse_prueba_retenido_c": 0.330141,
+        "rmse_persistencia_prueba_retenido_c": 0.356813,
+        "rmse_climatologia_prueba_retenido_c": 0.561718,
+        "coeficientes_sin_pixel_retenido": [
+          4.65e-05,
+          0.7675427,
+          0.1184802
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.2,
+          -79.4
+        ],
+        "testigo_representante": "M0262",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.405517,
+        "rmse_prueba_retenido_c": 0.289633,
+        "rmse_persistencia_prueba_retenido_c": 0.3125,
+        "rmse_climatologia_prueba_retenido_c": 0.546576,
+        "coeficientes_sin_pixel_retenido": [
+          -3.67e-05,
+          0.755338,
+          0.1264406
+        ],
+        "climatologia_local_historica_si_disponible": true
+      },
+      {
+        "centro_celda_era5land": [
+          -6.2,
+          -79.29999
+        ],
+        "testigo_representante": "M0281",
+        "n_predicciones_retenidas": 120,
+        "seleccionado_sin_pixel_retenido": "jerarquico",
+        "rmse_validacion_otros_pixeles": 0.401265,
+        "rmse_prueba_retenido_c": 0.323786,
+        "rmse_persistencia_prueba_retenido_c": 0.352436,
+        "rmse_climatologia_prueba_retenido_c": 0.592105,
+        "coeficientes_sin_pixel_retenido": [
+          1.74e-05,
+          0.7620127,
+          0.1192867
+        ],
+        "climatologia_local_historica_si_disponible": true
+      }
+    ]
+  },
   "n_registros_prueba_por_sitio": 1200,
   "pronostico_operativo_validado_senamhi": false,
   "evaluacion_prospectiva_real": false,
