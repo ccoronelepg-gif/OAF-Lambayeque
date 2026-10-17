@@ -61,6 +61,52 @@ Resultados generados mediante el workflow y los modelos incluidos en este reposi
 
 La ventaja o desventaja de un modelo solamente se confirma después de publicar valores de prueba reales; jamás se presupone que una GCN superará a Random Forest. El baseline también puede superar a ambos.
 
+## Resultados reales obtenidos con datos CHIRPS (auditoría 9R)
+
+Se entrenaron ambos modelos sobre **39 de los 42 sectores** (S028, S032 y S034 no disponen de 360 valores sectoriales CHIRPS válidos), con **46 aristas físicas estáticas** en la GCN. El conjunto de prueba es **2021-01 a 2025-12**: 60 meses × 39 sectores = **2340 predicciones sector-mes** comparables. La métrica de referencia es el **MAE en mm mensuales (menor es mejor)**.
+
+| Método | MAE (mm) | RMSE (mm) | Sesgo medio (mm) | Skill MAE vs climatología |
+|---|---:|---:|---:|---:|
+| **Climatología mensual del entrenamiento** | **14,2957** | **30,6393** | −0,0589 | 0 % |
+| **Random Forest** | **15,5397** | **34,3094** | −8,4337 | **−8,702 %** |
+| **GCN de dos capas** | **18,4682** | **39,6384** | −6,2141 | **−29,187 %** |
+
+**Ganador entre los dos métodos de IA: Random Forest. Ganador general: la climatología mensual histórica.** La GCN obtuvo MAE aproximadamente **2,93 mm** más alto que Random Forest. Esto NO permite concluir que todas las arquitecturas GCN sean peores en cualquier periodo o con mejores predictores; sólo aplica al protocolo preespecificado y las fuentes disponibles.
+
+### Desagregación por pisos físicos preliminares
+
+| Piso de 9K | N.º sectores | Climatología MAE | Random Forest MAE | GCN MAE |
+|---|---:|---:|---:|---:|
+| Costa baja, 0–99 m | 4 | 5,1239 | **3,9605** | 4,8934 |
+| Valle bajo, 100–299 m | 6 | **9,7580** | 9,8810 | 12,3506 |
+| Piedemonte, 300–799 m | 11 | **12,5809** | 13,0466 | 15,5825 |
+| Ladera baja, 800–1599 m | 6 | **12,1502** | 13,7201 | 15,6958 |
+| Ladera media, 1600–2499 m | 8 | **21,8805** | 24,3652 | 30,9741 |
+| Montaña alta, ≥2500 m | 3 | **29,0929** | 35,4076 | 36,1313 |
+| Cota DEM negativa: revisar | 1 | 4,8734 | **3,9435** | 4,8139 |
+
+**Interpretación:** la climatología sigue siendo el menor error en cinco de las seis franjas principales, especialmente en montaña. En costa baja Random Forest logra menor MAE. El sector de cota negativa no debe asignarse directamente a un ecosistema productivo ni considerarse validación agrícola.
+
+### Sensibilidad entre años y precipitación excepcionalmente alta
+
+| Año de prueba | Climatología MAE | Random Forest MAE | GCN MAE |
+|---|---:|---:|---:|
+| 2021 | **11,5963** | 13,1004 | 20,2167 |
+| 2022 | **12,1021** | 12,3926 | 14,8172 |
+| 2023 | **24,8143** | 30,9409 | 32,3255 |
+| 2024 | 15,7262 | **10,0285** | 12,1702 |
+| 2025 | **7,2394** | 11,2362 | 12,8114 |
+
+En 2023 todos los métodos fueron considerablemente menos precisos; el RF subestimó precipitación en promedio (**sesgo −23,976 mm/mes**) y la GCN también (**−22,621 mm/mes**). Los modelos NO deben usarse todavía para alarmas tempranas de extremos.
+
+Se definieron meses de lluvia anormalmente alta mediante el **percentil 80 por sector y mes calendario exclusivamente en el entrenamiento**. En las 2340 combinaciones sector-mes hubo **688 casos positivos**. El RF identificó correctamente **157** (precisión **0,4337**, exhaustividad **0,2282**, F1 **0,2990**). La GCN detectó **109** (precisión **0,2839**, exhaustividad **0,1584**, F1 **0,2034**). La climatología detectó **167** (precisión **0,3443**, exhaustividad **0,2427**, F1 **0,2847**). Ningún modelo tiene rendimiento suficientemente confiable para avisos de riesgo a nivel de productor.
+
+Los resultados y la desagregación por las **siete parejas cartográficas 9Q** están en [comparacion_modelos_9r.json](datos/validacion_predictiva_9r/comparacion_modelos_9r.json), junto con la serie de predicciones [2021–2025](datos/validacion_predictiva_9r/predicciones_prueba_2021_2025_9r.csv).
+
+### Implicación para el desarrollo del OAF
+
+En lugar de reemplazar la climatología por una IA sin ventaja robusta, **mantener el baseline climático como método de referencia**. El próximo experimento debería enriquecer Random Forest y la GCN con señales realmente disponibles antes del mes de pronóstico: índices oceánicos ENSO publicados con fecha, temperaturas previas, humedad y radiación anteriores, topografía/exposición de laderas y estado del suelo, además de corregir la dependencia por píxeles y sesgos de precipitación extrema. Para comparar arquitecturas en términos de generalización se necesitan más bloques históricos fuera de muestra, evaluación por evento y estaciones meteorológicas independientes. No publicar un pronóstico 2026 como verificado utilizando retrospectivamente CHIRPS final de los años 2021–2025.
+
 ## Limitaciones para la futura predicción agroclimática y fitosanitaria
 
 El resultado mide acierto al **reconstruir lluvia CHIRPS v3 final** desde meses retrospectivos anteriores, no al predecir pluviómetros independientes de Lambayeque. La asociación espacial entre nodos puede reforzar errores satelitales compartidos; tampoco demuestra por sí sola que dos sectores sean microclimáticamente homogéneos. El estudio aún no utiliza señales futuras verificadas de **ENFEN, océano Niño 1+2, presión, humedad y radiación atmosférica** como pronósticos emitidos antes de su fecha de validez. Estas podrían añadirse solamente con fechas de emisión y un protocolo de validación prospectiva.
