@@ -1,0 +1,52 @@
+name: OAF UX 2026 - Regressions and scientific integrity
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/oaf-ux-*.js'
+      - 'assets/oaf-ux-*.css'
+      - 'assets/oaf-inicio-climatico-2026.js'
+      - 'tests/test_ux_oaf_2026.py'
+      - 'tests/test_portada_2026.js'
+      - 'tests/test_redisenio_oaf_2026.py'
+      - 'datos/ux_2026/auditoria_base_2026.json'
+      - '.github/workflows/oaf_ux_integrity_2026.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Contrato UX - todos los IDs, rutas y scripts
+        run: python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+      - name: Compatibilidad del rediseño preexistente
+        run: python -m unittest discover -s tests -p 'test_redisenio_oaf_2026.py' -v
+      - name: Modelos externos y estados no verificados
+        run: node tests/test_portada_2026.js
+      - name: Comprobar sintaxis de los 45 visores originales y nuevos módulos
+        run: |
+          for js in assets/*.js modelos/*.js; do
+            node --check "$js" || exit 1
+          done
+      - name: Verificar inventario sin archivos de datos modificados
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('.')
+          audit=json.loads((root/'datos/ux_2026/auditoria_base_2026.json').read_text('utf8'))
+          h=(root/'index.html').read_text('utf8')
+          missing=[x for x in audit['ids_conservar'] if ('id="'+x+'"') not in h]
+          assert not missing,missing
+          assert h.count('id="oaf-altitudinal-map"')==1
+          assert h.count('<section data-page=')==5
+          assert (root/'datos/validacion_estaciones_9f/identificacion_territorial_9f.json').exists()
+          print('Conservados',len(audit['ids_conservar']),'IDs originales y datos de estaciones.')
+          PY
