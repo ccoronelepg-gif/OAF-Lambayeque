@@ -1,0 +1,66 @@
+name: OAF 9J - Auditoria de emisiones antes del evento
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/auditoria_vintage_9j.py'
+      - 'datos/auditoria_vintage_9j/manifiesto_fuentes_9j.json'
+      - 'tests/test_auditoria_vintage_9j.py'
+      - 'FASE_9J_AUDITORIA_VINTAGE.md'
+      - '.github/workflows/oaf_auditoria_vintage_9j.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-auditoria-vintage-9j
+  cancel-in-progress: false
+jobs:
+  verify-original-emissions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # requerido: git show <SHA>:ruta confirma bytes históricos
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Comprobar historial Git, emisiones y tiempos antes del evento
+        run: |
+          python modelos/auditoria_vintage_9j.py
+          python modelos/auditoria_vintage_9j.py --check
+      - name: Pruebas de integridad y no regresión
+        run: |
+          python -m unittest discover -s tests -p 'test_auditoria_vintage_9j.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_auditoria_9j.js
+      - name: Invariantes críticos sin inventar habilidad
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("datos/auditoria_vintage_9j/estado_prospectivo_9j.json").read_text("utf8"))
+          assert j["fase"]=="9J" and j["corte_local"]=="2026-10-17"
+          assert j["diarios_externos"]["n_emisiones"]==4
+          assert j["diarios_externos"]["n_localidad_dia_pronosticados"]==112
+          assert j["diarios_externos"]["n_comparables_temporalmente_al_corte"]==0
+          assert j["temperatura_mensual_propia"]["n_predicciones_premes"]==8
+          assert j["temperatura_mensual_propia"]["n_nowcasts_intramensuales"]==4
+          assert j["sst_mensual_propia"]["n_predicciones_premes"]==2
+          assert j["predicciones_estacionales_NOAA_descargadas_y_verificadas_n"]==0
+          assert not j["oaf_habilidad_prospectiva_demostrada"]
+          assert all(x is None for x in j["metricas_predictivas_observadas"].values())
+          print("9J: evidencia fechada íntegra, no hay pronósticos con verificación madura.")
+          PY
+      - name: Publicar estado auditado sin modificar ninguna emisión original
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/auditoria_vintage_9j/estado_prospectivo_9j.json
+          if git diff --cached --quiet; then
+            echo 'Sin cambios de estado 9J'
+          else
+            git commit -m 'data(9J): registrar elegibilidad real de emisiones, métricas no evaluables'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
