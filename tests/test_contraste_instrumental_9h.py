@@ -78,7 +78,7 @@ class Contraste9H(unittest.TestCase):
             for r in rows:
                 station=observed[(r["codigo_archivo"],r["mes"])]
                 self.assertEqual(int(station["precip_dias_validos"]) if "precipitation_sum" in r.get("variable","precipitation_sum") or r.get("variable")=="" else int(station["tmax_dias_validos"] if "max" in r["variable"] else station["tmin_dias_validos"]),int(station["dias_calendario"]))
-                if "producto_mm" in r:
+                if "precipitacion_producto_mm" in r:
                     v=float(r["precipitacion_producto_mm"]);o=float(r["precipitacion_estacion_mm"]);diff=float(r["diferencia_producto_menos_estacion_mm"])
                 else:
                     v=float(r["reanálisis"]);o=float(r["observado"]);diff=float(r["diferencia_reanalisis_menos_observado"])
