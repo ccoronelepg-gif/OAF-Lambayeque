@@ -136,6 +136,7 @@ def analyze(root="."):
         "periodo":"2023-2025","datos_pm_fuente":"CAMS Global modelado, no sensor",
         "clima_fuente":"ERA5 ERA5-Land y NOAA CPC revisados, reanalisis",
         "n_meses_pm_con_cobertura":sum(len(v) for v in bysite.values()),
+        "anios_pm_archivados_con_cobertura":sorted({int(r["mes"][:4]) for rs in bysite.values() for r in rs}),
         "n_series_localidad_disponibles":sum(bool(bysite[x]) for x in SITES),
         "n_series_pm_unicas_en_periodo":unique_pm,
         "parejas_series_identicas":dup_pairs,
