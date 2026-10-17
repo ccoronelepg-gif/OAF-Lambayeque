@@ -1,0 +1,26 @@
+name: OAF fase 9V auditoría de insumos sectoriales
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/auditar_insumos_sectoriales_9v.py'
+      - 'datos/**'
+      - 'modelos/**'
+      - '.github/workflows/oaf_auditoria_sectorial_9v.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Auditar cobertura e insumos
+        run: python scripts/auditar_insumos_sectoriales_9v.py
+      - name: Guardar auditoría (no publicar habilidad sin datos)
+        uses: actions/upload-artifact@v4
+        with:
+          name: oaf-fase-9v-auditoria
+          path: resultados/9v/
