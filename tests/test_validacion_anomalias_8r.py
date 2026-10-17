@@ -86,6 +86,21 @@ class TestChronology8R(unittest.TestCase):
         obj=fixture()
         a,_=m.exercise(*obj);b,_=m.exercise(*obj)
         self.assertEqual(a,b)
+    def test_spatial_holdout_fits_weights_without_any_target_pixel_regional_lag(self):
+        monthly,centers,tr=fixture()
+        target=centers["S00"]
+        rows,group,normals=m.features(monthly,centers,peer_exclude=target)
+        a=next(r for r in rows if r["pid"]=="S02" and r["date"]=="2009-06")
+        others=[monthly[f"S{i:02d}"]["2009-05"]-normals[f"S{i:02d}"][5]
+                for i in (4,6,8)]
+        self.assertAlmostEqual(a["regional"],statistics.mean(others))
+        original=m.spatial_transfer(monthly,centers)
+        self.assertEqual(original["n_celdas_retenidas_por_turno"],5)
+        self.assertEqual(original["n_pronosticos_retenidos"],600)
+        self.assertTrue(original["variables_regionales_del_ajuste_excluyen_la_celda_retenida"])
+        self.assertFalse(original["no_demuestra_extrapolacion_a_puntos_sin_historial_local"] is False)
+        self.assertTrue(all(fold["n_predicciones_retenidas"]==120 for fold in original["pliegues"]))
+
     def test_gaussian_solver_handles_simple_system(self):
         solution=m.solve3([[4.,1.,0.],[1.,3.,1.],[0.,1.,2.]],[5.,5.,3.])
         self.assertAlmostEqual(sum((4,1,0)[j]*solution[j] for j in range(3)),5,places=8)
