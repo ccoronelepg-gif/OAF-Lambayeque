@@ -1,0 +1,56 @@
+name: OAF 9C - Incertidumbre retrospectiva y QA del panel
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/evaluacion_pareada_9c.py'
+      - 'modelos/visor_validacion_9c.js'
+      - 'datos/benchmark_9a/pronosticos_pareados_9a.csv'
+      - 'datos/benchmark_9a/eventos_p90_pareados_9a.csv'
+      - 'datos/validacion_9c/resultados_9c.json'
+      - '.github/workflows/oaf_validacion_9c.yml'
+      - 'index.html'
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproducir 36 comparaciones estadisticas con datos reales
+        run: |
+          python modelos/evaluacion_pareada_9c.py --verificar datos/validacion_9c/resultados_9c.json
+      - name: Comprobar que no se declaran alertas operativas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('datos/validacion_9c/resultados_9c.json').read_text(encoding='utf8'))
+          assert data['conteos']['parejas_continuas_8w_vs_rh_vpd']==4320
+          assert data['conteos']['parejas_probabilisticas']==720
+          assert data['resumen']['continuas_ic_bonferroni_positivo']==0
+          assert data['resumen']['prob_ic_bonferroni_positivo']==0
+          assert data['resumen']['grupos_extremos_eventos_suficientes']==0
+          assert data['resumen']['sin_habilidad_prospectiva_declarada'] is True
+          assert all(not x['evidencia_de_extremos_suficiente'] for x in data['extremos'])
+          print('9C: todas las metricas verificadas y alcance estrictamente retrospectivo.')
+          PY
+      - name: Auditar JS y arquitectura del panel
+        run: |
+          node --check modelos/visor_validacion_9c.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf8')
+          ids=['oaf-validacion-9c','oaf-9c-score','oaf-9c-extreme-score','oaf-9c-approved',
+               'oaf-9c-site','oaf-9c-h','oaf-9c-variable','oaf-9c-visual',
+               'oaf-9c-legend','oaf-9c-status']
+          assert all(html.count('id="'+k+'"')==1 for k in ids), 'Duplicacion o ausencia de ids 9C'
+          assert html.count('src="modelos/visor_validacion_9c.js"')==1
+          assert "FASE_9C_RESULTADOS_VALIDACION.md" in html
+          print('Panel de investigacion 9C integrado sin alterar estructura de fuentes.')
+          PY
