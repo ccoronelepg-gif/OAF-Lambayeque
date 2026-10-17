@@ -1,0 +1,48 @@
+{
+  "fase": "8U",
+  "submodulo": "viento_atmosferico",
+  "estado": "fuentes_viento_incompletas",
+  "modelo": "ERA5 vía Open-Meteo Historical Archive",
+  "variables": [
+    "wind_speed_10m_mean",
+    "wind_speed_10m_max",
+    "wind_direction_10m_dominant"
+  ],
+  "periodo": "1996–2025",
+  "n_bloques_esperados": 3,
+  "n_bloques_verificados": 0,
+  "n_ubicaciones_de_referencia": 6,
+  "n_ubicaciones_maritimas": 2,
+  "meses_por_ubicacion_completa": 0,
+  "n_filas_publicadas": 0,
+  "numero_celdas_era5_unicas": 0,
+  "procedimiento_componentes": "velocidad_media_diaria × direccion_dominante_diaria (FROM), estimación aproximada de u/v",
+  "viento_inferido_no_es_corriente_oceanica": true,
+  "interpretacion_celda_offshore_sin_verificacion_mascara_oceanica": true,
+  "registro_instrumental_SENAMHI": false,
+  "habilidad_predictiva_verificada": false,
+  "informe_8U_no_asegura_seis_sensores": true,
+  "sha_fuentes_originales": [
+    {
+      "periodo": [
+        1996,
+        2005
+      ],
+      "sha256_original_comprimido": null
+    },
+    {
+      "periodo": [
+        2006,
+        2015
+      ],
+      "sha256_original_comprimido": null
+    },
+    {
+      "periodo": [
+        2016,
+        2025
+      ],
+      "sha256_original_comprimido": null
+    }
+  ]
+}
