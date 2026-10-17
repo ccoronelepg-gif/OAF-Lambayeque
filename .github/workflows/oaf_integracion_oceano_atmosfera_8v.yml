@@ -6,6 +6,7 @@ on:
     paths:
       - 'modelos/integracion_oceano_atmosfera_8v.py'
       - 'tests/test_integracion_oceano_atmosfera_8v.py'
+      - 'modelos/visor_integracion_8v.js'
       - '.github/workflows/oaf_integracion_oceano_atmosfera_8v.yml'
       - 'datos/meteorologia_8u/vientos_mensuales_8u.csv'
       - 'datos/oceanografia_8u/tsm_nino12_mensual_8u.csv'
@@ -44,6 +45,17 @@ jobs:
           assert s['no_hay_validacion_prospectiva_de_prediccion'] is True
           assert s['corrientes_marinas_30_anios_completas'] is False
           print('8V integrado y auditado, sin emitir alertas.')
+          PY
+      - name: Integracion visual 8V y estructura del portal
+        run: |
+          node --check modelos/visor_integracion_8v.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          for ident in ('oaf-integracion-8v','oaf-8v-status','oaf-8v-chart','oaf-8v-site','oaf-8v-variable','oaf-8v-window','oaf-8v-nland','oaf-8v-nsea','oaf-8v-ncurrent','oaf-8v-nextreme'):
+              assert html.count('id="'+ident+'"')==1,ident
+          assert html.count('src="modelos/visor_integracion_8v.js"')==1
+          print('Panel 8V incorporado sin identificadores repetidos.')
           PY
       - name: Archivar matrices generadas sin forzar cambios de fuentes
         run: |
