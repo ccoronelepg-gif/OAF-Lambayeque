@@ -5,6 +5,16 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## Fase 9E · Contraste instrumental entre tres series (17/10/2026)
+
+Se realizó un segundo control de 3 registros de estación aportados por usuario, usando solo meses con **100 % de días observados**. Sobre los 216 meses de 1996–2013, la precipitación estricta está disponible en **215 (00000340), 207 (00153114) y 216 (00152107)**. Los tres archivos tienen 1998 completo; 1983 solo está completo en 00153114 y 00152107.
+
+**Correlaciones descriptivas de log(1+mm) mensuales, entre pares:** **0,81128**, **0,78934** y **0,87053** (n pareados 206, 215 y 207). Tales similitudes temporales no prueban que las estaciones estén cercanas, geográficamente localizadas, climáticamente homogéneas, ni que un modelo haya pronosticado las lluvias.
+
+Se consultaron fuentes institucionales para identificación de estaciones, pero **no se acreditó la correspondencia exacta de los códigos originales con nombre, coordenadas, altitud y licencia**. El motor de comparación ERA5-Land/CHIRPS se entregó **con bloqueo deliberado** hasta disponer de fichas geográficas verificadas; **no hay sesgo/MAE estación-grilla calculados**. CHIRPS v3 incluye pluviómetros, por lo que hay que analizar la independencia del contraste si la propia estación fue asimilada en el producto.
+
+Recursos: [informe y resultados 9E](FASE_9E_CONTRASTE_INSTRUMENTAL.md) · [matriz de comparación temporal JSON](datos/validacion_estaciones_9e/contraste_observacional_9e.json) · [fichas pendientes](datos/validacion_estaciones_9e/metadatos_identidad_9e.json) · [comparador geoespacial preparado](modelos/emparejamiento_reanalisis_9e.py). El público puede explorar las lluvias y correlaciones en **Análisis de clima regional → Comparación histórica de lluvias entre estaciones**, sin códigos de fase en los títulos.
+
 ## Fase 9D · Estaciones reales, trazabilidad y disponibilidad (17/10/2026)
 
 Tres series diarias originales aportadas al OAF-Lambayeque se preservaron en [datos/estaciones_9d/originales/](datos/estaciones_9d/originales/) y se incorporaron a una ingesta reproducible con SHA-256, separación por variable de faltantes (-99.9), revisión de extremos y calendario diario sin duplicados.
