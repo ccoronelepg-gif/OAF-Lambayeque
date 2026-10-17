@@ -120,9 +120,9 @@ def define_grid(geoms,points,sh,transform):
   seen.setdefault((row,col),[]).append(p["id"])
  return masks,locations,seen
 
-def build(max_months=360,workers=6):
+def build(max_months=360,workers=6,years=None):
  geoms,points=inputs()
- selected=MONTHS[:max_months]
+ selected=[m for m in MONTHS if years is None or int(m[:4]) in years][:max_months]
  BASE.mkdir(parents=True,exist_ok=True)
  sources=[];s_rows=[];p_rows=[];errors=[]
  signature=None;mask=None;location=None;duplicated=None
@@ -177,6 +177,8 @@ def build(max_months=360,workers=6):
    w=csv.DictWriter(file,fieldnames=cols);w.writeheader();w.writerows(rows)
  report={"fase":"9O","producto":"CHIRPS v3 final mensual LATAM a 0.05°",
      "periodo_solicitado":"1996-01 a 2025-12",
+     "anios_preseleccionados":[int(y) for y in years] if years is not None else YEARS,
+     "meses_objetivo_total_30anios":360,
      "n_meses_solicitados":len(selected),"n_meses_reales":len(sources),
      "n_meses_faltantes":len(errors),"n_sectores":42,"n_testigos_reanalisis":81,
      "periodo_climatologico_30anios_completo":len(sources)==360,
@@ -218,9 +220,13 @@ if __name__=="__main__":
  ap.add_argument("--check",action="store_true")
  ap.add_argument("--max-months",type=int,default=360)
  ap.add_argument("--workers",type=int,default=6)
+ ap.add_argument("--years",default=None,help="años íntegros preespecificados separados por comas")
  args=ap.parse_args()
+ years=[int(v) for v in args.years.split(",")] if args.years else None
+ if years and (len(set(years))!=len(years) or any(v not in YEARS for v in years)):
+  raise SystemExit("Años fuera de 1996–2025 o repetidos")
  if not 1<=args.max_months<=360 or not 1<=args.workers<=8:
   raise SystemExit("Fuera de cuotas")
- report=check() if args.check else build(max_months=args.max_months,workers=args.workers)
+ report=check() if args.check else build(max_months=args.max_months,workers=args.workers,years=years)
  print("9O CHIRPS: meses reales",report["n_meses_reales"],"/",report["n_meses_solicitados"],
        "píxeles distintos",report["n_pixeles_chirps_distintos_en_testigos"])
