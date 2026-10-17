@@ -1,0 +1,54 @@
+name: OAF 8Z - Asociaciones PM humedad y VPD
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/relacion_pm_humedad_8z.py'
+      - 'tests/test_relacion_pm_humedad_8z.py'
+      - 'datos/aire_8x/particulas_mensuales_8x.csv'
+      - 'datos/humedad_8z/humedad_vpd_mensual_8z.csv'
+      - '.github/workflows/oaf_relacion_pm_humedad_8z.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-relacion-pm-rh-8z
+  cancel-in-progress: false
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: QA estadistico PM vs RH y VPD
+        run: python -m unittest discover -s tests -p 'test_relacion_pm_humedad_8z.py' -v
+      - name: Cruzar CAMS 2023-2025 con ERA5 RH-VPD sin imputar
+        run: |
+          python modelos/relacion_pm_humedad_8z.py
+          python modelos/relacion_pm_humedad_8z.py --check
+      - name: Revisar fuentes y publicar resultados
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=json.loads(Path('datos/relaciones_pm_humedad_8z/estado_relacion_pm_humedad_8z.json').read_text())
+          assert d['numero_comparaciones']==16
+          assert d['serie_RH_30_anios_completa'] is True
+          assert d['serie_PM_30_anios_completa'] is False
+          assert d['correlacion_causal'] is False
+          assert d['riesgo_fitosanitario_validado'] is False
+          print('Comparaciones con cobertura',d['comparaciones_evaluables'])
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/relaciones_pm_humedad_8z/
+          if ! git diff --cached --quiet; then
+            git commit -m 'data(oaf): relaciones PM humedad y VPD modelados 8Z'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
