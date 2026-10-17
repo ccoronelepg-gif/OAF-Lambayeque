@@ -64,6 +64,29 @@ Se aplica un cribado **provisional, descriptivo, no normativo**: distancia ≤20
 
 El número de polígonos geográficos certificados y predicciones zonales comprobadas es **0**.
 
+## 5A. Primera ampliación climática efectivamente calculada y control de píxeles (corte octubre 2026)
+
+Se han descargado y validado **las seis fuentes decenales completas del primer grupo de 16 testigos nuevos**, por lo que existen ahora **35 testigos con 360 meses completos**: 19 de 8O y 16 de 8P. Se calcularon **19 pares con separación de hasta 20 km** y **cinco pares que superaron el cribado multivariable preliminar**.
+
+**Auditoría fundamental de pseudorreplicación:** al revisar las coordenadas del centro de celda efectivamente devueltas por los JSON originales de ERA5 y ERA5-Land, se encontró que **cuatro de los cinco pares** comparten **la misma celda de ERA5** (fuente de lluvia, humedad y radiación). Aunque las coordenadas consultadas sean diferentes, estas variables no constituyen allí dos datos de reanálisis espacialmente independientes. Para esos pares las diferencias anuales de precipitación resultaron exactamente 0 mm. **No deben declararse zonas homogéneas por esa coincidencia artificial.** Los cinco pares aparecen en el CSV con los campos `igual_celda_era5`, `igual_celda_era5land` y `centros_de_ambos_modelos_diferentes`.
+
+El par que **no** comparte centros de celda en ninguno de los dos modelos es **M0308–M0234**, ambos puntos altos de la muestra (DEM **3.236 y 2.978 m**). El contraste descriptivo entregó:
+
+| Métrica | Valor |
+|---|---:|
+| Separación geográfica | **17,714 km** |
+| Diferencia de altitud DEM | **258 m** |
+| Distancia climática estandarizada | **0,24979** |
+| Diferencia de temperatura media anual | **−1,046 °C** |
+| Diferencia de precipitación anual promedio | **−53,237 mm** |
+| Diferencia de humedad relativa media | **1,249 puntos porcentuales** |
+| Identidad de celda ERA5 / ERA5-Land | **Diferentes / diferentes** |
+| Zona montañosa homogénea certificada | **No** |
+
+Este par es un **candidato prioritario para investigar continuidad climática de alta montaña**. Los 17,7 km de separación no garantizan que las laderas, vertientes y microcuencas intermedias sean homogéneas. Tampoco garantiza exactitud instrumental ni independencia estadística por autocorrelación espacial: celdas distintas pueden tener errores correlacionados.
+
+La ampliación hacia los **46 testigos nuevos restantes** seguirá mediante la automatización, de acuerdo con el límite de consultas del proveedor. La cifra dinámica de lotes cargados y pares está en [`estado_clima_8p.json`](datos/clima_contiguo_8p/estado_clima_8p.json). No atribuir como validada ninguna zona ni emitir pronósticos por grupo todavía.
+
 ## 6. Archivos y automatización
 
 - [Muestreo de nuevos testigos y grafo](modelos/muestreo_zonas_contiguas_8p.py).
