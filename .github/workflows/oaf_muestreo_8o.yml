@@ -1,0 +1,57 @@
+name: OAF 8O - Muestreo regional adaptativo DEM
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/muestreo_homogeneidad_8o.py'
+      - 'tests/test_muestreo_homogeneidad_8o.py'
+      - '.github/workflows/oaf_muestreo_8o.yml'
+      - 'datos/zonificacion_8n/limite_lambayeque_referencial.geojson'
+      - 'datos/zonificacion_8n/nodos_altitudinales_8n.csv'
+  schedule:
+    - cron: '21 16 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-sampling-8o
+  cancel-in-progress: false
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar datos desde main
+        run: git pull --ff-only origin main
+      - name: Validar diseño adaptativo y límites científicos
+        run: python -m unittest discover -s tests -p 'test_muestreo_homogeneidad_8o.py' -v
+      - name: Recuperar máximo dos lotes DEM por ejecución
+        run: |
+          if python modelos/muestreo_homogeneidad_8o.py --fetch-dem --max-new-batches 2; then
+            echo "DEM de Open-Meteo auditado."
+          else
+            echo "::warning::Proveedor DEM temporalmente no disponible; sin reemplazos sintéticos."
+          fi
+      - name: Calcular malla y selección de testigos sin atribuir clima homogéneo
+        run: |
+          python modelos/muestreo_homogeneidad_8o.py
+          python modelos/muestreo_homogeneidad_8o.py --check
+      - name: Archivar solo respuestas reales auditadas y productos deterministas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/muestreo_8o/
+          if git diff --cached --quiet; then
+            echo "Sin fuentes nuevas de elevación."
+          else
+            git commit -m "data(oaf): muestreo 8O y DEM geográfico auditable"
+            git pull --rebase origin main
+            git push
+          fi
