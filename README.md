@@ -11,6 +11,16 @@ Se implementó una interfaz por **Vista rápida/Vista técnica**, con navegació
 
 **[Plan de implementación](PLAN_UX_OAF_2026.md)** · **[Entrega y limitaciones](ENTREGA_UX_OAF_OCTUBRE_2026.md)** · **[QA integral](.github/workflows/oaf_ux_integrity_2026.yml)** · **[Portal interactivo](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#inicio)**.
 
+## Fase 9H · Contraste instrumental de CHIRPS y ERA5 (17/10/2026)
+
+Se extrajeron valores **reales** de 12 GeoTIFF mensuales CHIRPS v3 de 1998 (72 parejas estación–píxel, **36 meses observacionales únicos**) y ERA5 atmosférico vía Open-Meteo 1996–2013 (1 276 parejas, **638 meses observacionales únicos**) para Virrey, Puchaca y El Espinal, evaluando **dos ubicaciones publicadas** por estación. Cada fuente conserva URL, SHA-256, fecha de consulta, centro de píxel, cobertura y error mensual. Se calculan MAE, RMSE y sesgo **solo en meses realmente pareados**; no son métricas de pronósticos OAF.
+
+Puchaca es espacialmente sensible: las coordenadas alternativas devuelven **dos celdas ERA5 atmosféricas distintas** y el MAE mensual pasa de **93,06 a 155,15 mm**; CHIRPS también cambia de píxel aunque su MAE 1998 varía menos (**84,80 a 85,16 mm**). Esta diferencia no acredita un emplazamiento ni permite escoger a posteriori la mejor celda.
+
+**No confundir productos:** ERA5 atmosférico (lluvia, ~0,25°) ≠ ERA5-Land (tierra, ~0,1°). La precipitación ERA5-Land no estuvo disponible directamente en la API histórica de Open-Meteo seleccionada; el intento complementario con temperaturas ERA5-Land sufrió **timeout**, por lo que **no se presentaron errores inexistentes**. CHIRPS combina pluviómetros, así que la independencia del contraste sigue sin demostrarse. Los archivos diarios originales no incluyen información suficiente para certificar el día pluviométrico o los cambios históricos del sensor.
+
+[Informe 9H](FASE_9H_CONTRASTE_INSTRUMENTAL.md) · [CHIRPS y procedencia](datos/validacion_estaciones_9h/comparacion_observacional_9h.json) · [ERA5 y estado de temperaturas ERA5-Land](datos/validacion_estaciones_9h/contraste_era5_complementario_9h.json) · [QA 9H](.github/workflows/oaf_auditoria_9h.yml) · [Panel interactivo](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#oaf-9h-visor).
+
 ## Fase 9G · Sensibilidad geográfica instrumental (17/10/2026)
 
 Las referencias documentales de Virrey, Puchaca y El Espinal tienen separación entre coordenadas alternativas de **1,531; 2,647; y 1,860 km**, respectivamente. Las alturas publicadas difieren **61, 445 y 38 m**; el caso Puchaca podría cambiar de franja exploratoria según qué cota histórica corresponda al instrumental. Estos valores no son distancias medidas de traslado, ni MAE/RMSE contra ERA5/CHIRPS: **los modelos grillados aún no se han extraído para estas candidatas**. [Auditoría reproducible 9G](datos/validacion_estaciones_9g/sensibilidad_geografica_9g.json) · [método](FASE_9G_SENSIBILIDAD_GEOGRAFICA.md).
