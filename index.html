@@ -536,6 +536,29 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <div class="notice"><b>Advertencia de calidad y normativa:</b> los ECA de aire establecidos en el D.S. 003-2017-MINAM requieren criterios de medición y periodos de evaluación específicos. Promedios mensuales del modelo CAMS <b>no son una prueba de cumplimiento ECA</b>, ni activan alertas médicas o fitosanitarias. No se han validado concentraciones PM con estaciones instrumentales locales.</div>
 <p><a href="FASE_8X_EXTREMOS_AIRE.md">Informe técnico 8X ↗</a> · <a href="datos/aire_8x/estado_aire_8x.json">Estado y fuente PM ↗</a> · <a href="datos/aire_8x/particulas_mensuales_8x.csv">PM mensual CSV ↗</a> · <a href="datos/extremos_8x/estado_extremos_8x.json">Auditoría de anomalías ↗</a> · <a href="https://www.gob.pe/institucion/minam/normas-legales/3670-003-2017-minam">Normativa MINAM ↗</a></p>
 </details>
+<details class="panel" id="oaf-diagnostico-8y">
+<summary><strong>Fase 8Y · Partículas, viento y anomalías agroclimáticas</strong> · análisis científico sin causalidad</summary>
+<p>Contraste exploratorio entre partículas <b>PM₂.₅/PM₁₀ CAMS</b> y viento, precipitación, temperatura del aire, radiación y el indicador regional oceánico Niño 1+2. Los cálculos comparan únicamente meses comunes en 2023–2025, con dos medidas: correlación bruta y correlación tras restar el ciclo mensual. Ninguna implica causalidad o capacidad de predicción.</p>
+<div class="kpis">
+<div class="kpi"><small>Meses-localidad PM con cobertura archivada</small><b id="oaf-8y-overlap">—</b></div>
+<div class="kpi"><small>Comparaciones descriptivamente evaluables</small><b id="oaf-8y-evaluable">—</b></div>
+<div class="kpi"><small>Series PM distintas en el periodo</small><b id="oaf-8y-cell-unique">—</b></div>
+</div>
+<div class="split">
+<label>Localidad de referencia<br><select id="oaf-8y-localidad"><option>Chiclayo</option><option>Jayanca</option><option selected>Motupe</option><option>Olmos</option></select></label>
+<label>Concentración estimada<br><select id="oaf-8y-pm"><option value="pm25_media_ug_m3">PM₂.₅</option><option value="pm10_media_ug_m3">PM₁₀</option></select></label>
+</div>
+<h3>Correlación desestacionalizada (−1 a +1)</h3>
+<p class="small">Barras positivas y negativas describen asociación histórica, NO el efecto de la contaminación sobre los cultivos ni sobre El Niño. Los coeficientes se omiten si no hay al menos 24 meses emparejados.</p>
+<svg id="oaf-8y-correlations" role="img" aria-label="Asociación desestacionalizada entre PM y meteorología" viewBox="0 0 750 350" width="100%" style="max-height:380px"></svg>
+<div class="scroller"><table><thead><tr><th>Variable</th><th>r bruta</th><th>r sin ciclo</th><th>Meses</th><th>Signo estable al excluir un año</th></tr></thead><tbody id="oaf-8y-table"></tbody></table></div>
+<p class="small" role="status" id="oaf-8y-message">Abra este panel para verificar si ya se publicó la serie compatible.</p>
+<div class="notice"><b>Limitaciones científicas:</b> series PM globales modeladas no son sensores in situ. Tres años son insuficientes para atribuir mecanismos o estimar asociaciones robustas bajo ENSO. Algunas localidades muestran series PM idénticas. La humedad relativa no se ha integrado históricamente en esta matriz 8Y y no se infiere de otras variables. No publicar alertas agrícolas ni declaraciones de cumplimiento ECA.</div>
+<h3>Fuentes oficiales para completar 1996–2025</h3>
+<p><b>NASA MERRA-2</b> publica diagnósticos de aerosol desde 1980, pero PM₂.₅ y PM₁₀ requieren aplicar correctamente fórmulas y unidades oficiales. <b>Copernicus CAMS EAC4</b> dispone de reanálisis desde 2003, pero su rejilla es demasiado gruesa para representar directamente una parcela.</p>
+<p><a href="FASE_8Y_AEROSOLES_Y_CLIMA.md">Informe técnico fase 8Y ↗</a> · <a href="datos/diagnostico_pm_8y/estado_diagnostico_pm_8y.json">Evaluación y trazabilidad ↗</a> · <a href="datos/diagnostico_pm_8y/catalogo_fuentes_aerosoles_8y.json">Inventario de fuentes PM ↗</a> · <a href="https://www.ecmwf.int/en/research/climate-reanalysis/cams-reanalysis">ECMWF EAC4 ↗</a> · <a href="https://access.earthdata.nasa.gov/collections/C1276812830-GES_DISC">NASA MERRA-2 ↗</a></p>
+</details>
+
 
 
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
@@ -897,4 +920,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
