@@ -61,3 +61,23 @@
 @media(max-width:920px){.oaf-source-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.oaf-scheme-steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){.oaf-quick-grid,.oaf-forecast-grid,.oaf-home-news{grid-template-columns:1fr}.oaf-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-scheme-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-quick-card{padding:16px}.oaf-enfen-card{grid-template-columns:1fr}.oaf-forecast-card{padding:12px}.oaf-hero-2026 .herotxt{padding:25px 21px}}
 @media(max-width:430px){.oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-home-metrics .oaf-metric{min-height:142px;padding:12px}.oaf-home-metrics .oaf-metric strong{font-size:20px}.oaf-home-metrics .oaf-metric small{font-size:12px}.oaf-source-grid{grid-template-columns:1fr}.oaf-quick-card{min-height:auto}}
+
+/* UX-4 · Índice desplegable de archivo técnico sin eliminar contenido */
+.oaf-research-categories{background:#fff;padding:24px;margin:15px 0;border-radius:17px;border:1px solid #dce9df}
+.oaf-research-categories h2{color:#194e44}
+.oaf-research-family-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:16px}
+.oaf-research-family{min-width:0;border:1px solid #d9e7df;background:#f8fbf9;border-radius:13px;overflow:hidden}
+.oaf-research-family>summary{cursor:pointer;list-style:none;font-size:17px;font-weight:800;color:#1c6051;padding:17px 19px;line-height:1.45}
+.oaf-research-family>summary::-webkit-details-marker{display:none}
+.oaf-research-family>summary:after{content:"＋";float:right;color:#4d8b6a}
+.oaf-research-family[open]>summary:after{content:"−"}
+.oaf-research-family>summary small{display:block;font-size:12px;font-weight:500;color:#637e74}
+.oaf-research-family>div{padding:0 19px 19px;display:grid;gap:8px}
+.oaf-research-family>div p{font-size:13px;color:#58766a;line-height:1.6}
+.oaf-research-family>div a{font-size:13px;font-weight:750;color:#226b55;min-height:26px}
+.oaf-science-deeper{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;border-radius:11px;background:#ebf5ed;padding:16px}
+.oaf-science-deeper p{margin:0;font-size:13px;color:#486f5a}
+[data-oaf-view="rapida"] .oaf-tech-archive{display:none!important}
+[data-oaf-view="tecnica"] #oaf-research-deep{display:block}
+[data-oaf-view="tecnica"] .oaf-science-deeper{display:none}
+@media(max-width:670px){.oaf-research-family-grid{grid-template-columns:1fr}.oaf-research-categories{padding:16px}.oaf-science-deeper{flex-direction:column;align-items:stretch}.oaf-science-deeper button{min-height:44px}}
