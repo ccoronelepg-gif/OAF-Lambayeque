@@ -47,13 +47,16 @@ function details(report,summary,variable){
  const summaryCell=(heading,score,unit,sub)=>{
    const cell=node("article",undefined,"oaf-9h-number");
    cell.append(node("small",heading));
-   cell.append(node("strong",score?fmt(score.mae,2)+" "+unit:"Sin pares"));
-   cell.append(node("span",score?"MAE · "+score.n_meses+" meses · sesgo "+fmt(score.sesgo??score.sesgo_producto_menos_estacion_mm,2)+" "+unit:sub));
+   const mae=score?.mae??score?.mae_mm;
+   const sesgo=score?.sesgo??score?.sesgo_producto_menos_estacion_mm;
+   const available=Number.isFinite(mae);
+   cell.append(node("strong",available?fmt(mae,2)+" "+unit:"Sin pares"));
+   cell.append(node("span",available?"MAE · "+score.n_meses+" meses · sesgo "+fmt(sesgo,2)+" "+unit:sub));
    grid.append(cell);
  };
  summaryCell("CHIRPS v3 · lluvia 1998",ch?.episodio_1998,"mm","Pendiente de extracción");
  summaryCell("ERA5 atmósfera · lluvia 1996–2013",p?.metricas_periodo,"mm","Sin meses pareados");
- summaryCell("ERA5-Land · temperatura máxima",mx?.metricas_periodo,"°C","Sin observaciones completas");
+ summaryCell("ERA5-Land · temperatura máxima",mx?.metricas_periodo,"°C","Temperatura ERA5-Land sin extracción válida");
  summaryCell("ERA5-Land · temperatura mínima",mn?.metricas_periodo,"°C","Sin observaciones completas");
  title.append(grid);
  const compare=node("p","CHIRPS: "+(base?.mismo_centro_celda_entre_escenarios===true?
