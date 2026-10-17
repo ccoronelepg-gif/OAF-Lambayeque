@@ -40,5 +40,39 @@ El [Climate Hazards Center de UCSB](https://www.chc.ucsb.edu/data/chirps3) docum
 ## Artefactos
 [Comparador interactivo](evaluacion-extremos.html) · [Python controlado](modelos/experimento_factorial_10d.py) · [Pruebas de integridad](tests/test_factorial_10d.py) · [RONI fuente NOAA](datos/experimentos_10d/roni_noaa_2021_2025.json) · [Predicciones de ambos brazos](datos/experimentos_10d/predicciones_factorial_10d.csv) · [Métricas y matrices de confusión](datos/experimentos_10d/evaluacion_controlada_10d.json) · [GitHub Actions](.github/workflows/oaf_10d_factorial.yml).
 
+## Resultados ejecutados y verificaciones (GitHub Actions)
+
+La [corrida 10D](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39080924683) completó **ocho pruebas unitarias**, entrenó ambos brazos de RF y GCN, verificó matrices emparejadas, SHA, ausencia de alertas y publicó **5.616 registros de calibración** y **14.040 registros de prueba** (39 sectores × [24+60] meses × tres modelos × dos brazos).
+
+### Error histórico bajo el mismo periodo de ajuste
+
+| Modelo | MAE L1 (mm) | MAE L2 (mm) | Cambio L2−L1 (mm) |
+|---|---:|---:|---:|
+| Random Forest | 17,0241 | 18,1443 | +1,1202 |
+| GCN | 18,7739 | 17,6452 | −1,1287 |
+| Climatología por piso | 20,3708 | 20,3708 | 0,0000 |
+
+El **bootstrap exploratorio igualmente ponderado por cinco bloques** obtiene para `MAE L2−L1`:
+- Random Forest **+0,9766 mm**, rango exploratorio 95 % **[+0,4137; +1,4447] mm**.
+- GCN **−0,7592 mm**, rango exploratorio 95 % **[−2,7164; +0,8257] mm**. Incluye cero, por lo que no se confirma ventaja generalizable en todos los bloques.
+
+### Umbral exploratorio de precipitación mensual ≥100 mm
+En los **2.340 pares sector-mes de prueba** se observaron **137 pares con lluvia ≥100 mm**. Los siguientes resultados usan solo el brazo L2:
+
+| Modelo | Regla de pronóstico puntual ≥100 mm: TP/FN/FP | Corte calibrado 2019–2020 (mm) | Regla calibrada: TP/FN/FP | Sensibilidad calibrada | Precisión calibrada |
+|---|---|---:|---|---:|---:|
+| Random Forest | 13 / 124 / 22 | 30 | 113 / 24 / 205 | 82,48 % | 35,53 % |
+| GCN | 32 / 105 / 28 | 20 | 123 / 14 / 438 | 89,78 % | 21,93 % |
+| Climatología por piso | 34 / 103 / 36 | 45 | 106 / 31 / 314 | 77,37 % | 25,24 % |
+
+**No ocultar falsas alarmas:** la sensibilidad mayor de GCN requiere 438 falsas alarmas a escala sector-mes. Un criterio F2 premia la sensibilidad y puede ser inadecuado para avisos costosos al agricultor. Ningún corte calibrado es un umbral oficial fitosanitario o hidrometeorológico.
+
+### Análisis altitudinal y oceánico
+La GCN con rezagos L2 tiene MAE de **4,24 mm** en llanura costera, **14,32 mm** en piedemonte, **30,09 mm** en montaña media y **38,45 mm** en montaña alta. En montaña media la climatología por piso obtuvo **25,39 mm**, de modo que NO se recomienda extrapolar el menor MAE global de GCN como una mejora en todo piso.
+
+Estratificación RONI retrospectiva para GCN L2: **14,73 mm** (RONI cálido, n=312), **17,11 mm** (frío, n=1.677) y **22,80 mm** (neutro, n=351). Estas diferencias descriptivas están afectadas por periodos, composición de sectores y régimen meteorológico; **no prueban que el índice RONI cause cambios en el error**, ni equivalen a validación de El Niño costero.
+
+**Resultado metodológico:** ahora sí es posible aislar el efecto de cambiar la configuración de rezagos bajo el mismo protocolo de entrenamiento y validación *retrospectivo*. Persisten las restricciones por ausencia de datos CHIRPS as-issued y contraste de estaciones independientes. El estado permanece **experimental**, con **cero alertas y cero modelos operativos certificados**.
+
 ## Criterio de paso a fase 10E
 La siguiente etapa deberá validar científicamente el tratamiento de extremos con umbrales hidrometeorológicos contextualizados por sector, incorporar datos instrumentales externos, formar un registro real de emisiones con fecha, y explorar modelos de clasificación extremo/normal con validación temporal-espacial estricta. Mantener **cero alertas automáticas** mientras falten pruebas operativas y de campo.
