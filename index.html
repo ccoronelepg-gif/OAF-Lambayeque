@@ -698,6 +698,28 @@ details.panel{scroll-margin-top:120px}
 <p><a href="FASE_9A_BENCHMARK_HUMEDAD_VPD.md">Informe completo fase 9A ↗</a> · <a href="datos/benchmark_9a/estado_benchmark_9a.json">Resultados de error y estabilidad ↗</a> · <a href="datos/benchmark_9a/pronosticos_pareados_9a.csv">Hindcasts temperatura/lluvia CSV ↗</a> · <a href="datos/benchmark_9a/eventos_p90_pareados_9a.csv">Probabilidades eventos P90 CSV ↗</a></p>
 </details>
 
+<details class="panel" id="oaf-validacion-9c">
+<summary><strong>Fase 9C · Incertidumbre, eventos extremos y validación temporal</strong> · 10 000 remuestreos por bloques anuales</summary>
+<p>Evaluación real de archivos retrospectivos 9A (2011–2025), con <b>4 320 comparaciones continuas emparejadas</b> y <b>720 pares probabilísticos</b>, a 1, 2 y 3 meses. Se conserva como referencia el modelo viento + SST Niño 1+2/3.4 (8W) y se examina HR+VPD. <b>No es verificación prospectiva ni con estaciones SENAMHI.</b></p>
+<div class="kpis">
+<div class="kpi"><small>Combinaciones MAE con mejora</small><b id="oaf-9c-score">—</b></div>
+<div class="kpi"><small>Combinaciones Brier con mejora</small><b id="oaf-9c-extreme-score">—</b></div>
+<div class="kpi"><small>Mejoras que pasan control familiar</small><b id="oaf-9c-approved">—</b></div>
+</div>
+<div class="split">
+<label>Localidad<br><select id="oaf-9c-site" aria-label="Localidad 9C"><option>Jayanca</option></select></label>
+<label>Horizonte<br><select id="oaf-9c-h" aria-label="Horizonte 9C"><option value="3">3 meses</option></select></label>
+<label>Variable<br><select id="oaf-9c-variable" aria-label="Variable 9C"><option value="precipitacion_mes_mm">Precipitación (mm)</option></select></label>
+</div>
+<div id="oaf-9c-visual" role="region" aria-label="Gráfico comparativo 9C" aria-live="polite"><p>Abra este panel para consultar resultados.</p></div>
+<p class="oaf-figure-caption" id="oaf-9c-legend">Leyenda: menor MAE significa menor error, no significa predicción operativa. Las zonas agroclimáticas homogéneas de toda Lambayeque todavía no están validadas.</p>
+<div class="notice"><b>Dictamen:</b> ninguna de 36 combinaciones (24 MAE y 12 Brier) presenta evidencia robusta de mejora tras control conservador por comparaciones múltiples. Solo 4–7 eventos de lluvia P90 por localidad en la muestra de enero–abril. Los intervalos no permiten declarar alertas ni estimar ocurrencia real de enfermedades.</div>
+<p><a href="FASE_9C_RESULTADOS_VALIDACION.md">Informe científico 9C ↗</a> · <a href="datos/validacion_9c/resultados_9c.json">Matriz JSON y control de multiplicidad ↗</a> · <a href="modelos/evaluacion_pareada_9c.py">Motor de verificación reproducible ↗</a></p>
+<p class="small" id="oaf-9c-status">Cargando la matriz 9C del repositorio…</p>
+</details>
+
+
+
 
 
 
@@ -1062,4 +1084,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
