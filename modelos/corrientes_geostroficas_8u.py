@@ -130,31 +130,30 @@ def evaluate(root):
             obj=inspect(root,name,lat,lon,a,b)
             if obj is not None:blocks.append((name,lat,lon,a,b,obj[0]))
     all_complete=len(blocks)==len(POINTS)*len(BLOCKS)
-    if all_complete:
-        values=defaultdict(list)
-        for name,lat,lon,a,b,obs in blocks:
-            for d,(u,v) in obs.items():values[(name,d[:7])].append((u,v))
-        for name,lat,lon in POINTS:
-            for y in range(2017,2026):
-                for m in range(1,13):
-                    period=f"{y}-{m:02d}"
-                    number=(date(y+(m==12),m%12+1,1)-date(y,m,1)).days
-                    vals=values.get((name,period),[])
-                    # This is not a gap-filled continuous series.
-                    if len(vals)<max(10,math.ceil(number*.55)):
-                        continue
-                    u=statistics.mean(p[0] for p in vals)
-                    v=statistics.mean(p[1] for p in vals)
-                    rows.append({
-                      "mes":period,"punto":name,"latitude":lat,"longitude":lon,
-                      "u_este_geostrofica_m_s":round(u,6),
-                      "v_norte_geostrofica_m_s":round(v,6),
-                      "magnitud_vector_media_m_s":round(math.hypot(u,v),6),
-                      "direccion_flujo_hacia_grados_desde_norte":round(
-                        (math.degrees(math.atan2(u,v))+360)%360,2),
-                      "dias_con_dato":len(vals),"dias_calendario":number,
-                      "modelo_geostrofico_no_corriente_total":"true",
-                      "observacion_directa_campo":"false"})
+    values=defaultdict(list)
+    for name,lat,lon,a,b,obs in blocks:
+        for d,(u,v) in obs.items():values[(name,d[:7])].append((u,v))
+    for name,lat,lon in POINTS:
+        for y in range(2017,2026):
+            for m in range(1,13):
+                period=f"{y}-{m:02d}"
+                number=(date(y+(m==12),m%12+1,1)-date(y,m,1)).days
+                vals=values.get((name,period),[])
+                # This is not a gap-filled continuous series.
+                if len(vals)<max(10,math.ceil(number*.55)):
+                    continue
+                u=statistics.mean(p[0] for p in vals)
+                v=statistics.mean(p[1] for p in vals)
+                rows.append({
+                  "mes":period,"punto":name,"latitude":lat,"longitude":lon,
+                  "u_este_geostrofica_m_s":round(u,6),
+                  "v_norte_geostrofica_m_s":round(v,6),
+                  "magnitud_vector_media_m_s":round(math.hypot(u,v),6),
+                  "direccion_flujo_hacia_grados_desde_norte":round(
+                    (math.degrees(math.atan2(u,v))+360)%360,2),
+                  "dias_con_dato":len(vals),"dias_calendario":number,
+                  "modelo_geostrofico_no_corriente_total":"true",
+                  "observacion_directa_campo":"false"})
     state={
       "fase":"8U","submodulo":"corrientes_geostroficas",
       "fuente":"NOAA/AOML CoastWatch near-real-time geostrophic currents",
@@ -162,6 +161,8 @@ def evaluate(root):
       "periodo_muestreo":"2017–2025",
       "n_series_punto_periodo_previstas":len(POINTS)*len(BLOCKS),
       "n_series_punto_periodo_verificadas":len(blocks),
+      "periodos_realmente_archivados":[{"punto":name,"periodo":[a,b],"dias_verificados":len(obs)} for name,lat,lon,a,b,obs in blocks],
+      "resultados_mensuales_parciales_permitidos_y_marcados":True,
       "n_meses_con_viento_o_corriente_simulada":0,
       "n_filas_geostroficas_reales_fuente_modelada_publicadas":len(rows),
       "periodo_1996_2025_de_corrientes_completo":False,
