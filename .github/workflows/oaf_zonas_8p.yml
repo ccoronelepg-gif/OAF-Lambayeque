@@ -1,0 +1,48 @@
+name: OAF 8P - Diseño de vecindades climáticas regionales
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/muestreo_zonas_contiguas_8p.py'
+      - 'tests/test_muestreo_zonas_8p.py'
+      - '.github/workflows/oaf_zonas_8p.yml'
+  schedule:
+    - cron: '22 16 27 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8p-disenio-testigos
+  cancel-in-progress: false
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar fuentes
+        run: git pull --ff-only origin main
+      - name: Evaluar calidad de diseño y no fabricar zonas agrícolas
+        run: python -m unittest discover -s tests -p 'test_muestreo_zonas_8p.py' -v
+      - name: Generar inventario de muestras y enlaces geográficos deterministas
+        run: |
+          python modelos/muestreo_zonas_contiguas_8p.py
+          python modelos/muestreo_zonas_contiguas_8p.py --check
+      - name: Archivar resultados reproducibles solo cuando cambien
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/zonas_contiguas_8p/
+          if git diff --cached --quiet; then
+            echo "El diseño de vecindades coincide."
+          else
+            git commit -m "data(oaf): 62 testigos adicionales y vecindades físicas preliminares"
+            git pull --rebase origin main
+            git push
+          fi
