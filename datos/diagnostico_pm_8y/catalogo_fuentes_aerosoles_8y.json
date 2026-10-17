@@ -1,0 +1,52 @@
+{
+  "fase": "8Y",
+  "objetivo": "inventario técnico de productos aerosol y alcance histórico verificado documentalmente",
+  "consulta_documental": "2026-10-17",
+  "productos": [
+    {
+      "clave": "CAMS Global via Open-Meteo",
+      "fuente_url": "https://open-meteo.com/en/docs/air-quality-api",
+      "variables": "pm2_5, pm10 en µg/m³",
+      "tipo": "pronóstico/archivo del modelo atmosférico, no sensor",
+      "periodo_archivado_oaf": "2025 completo, 2023–2024 solo al comprobar estado_aire_8x.json",
+      "disponibilidad_para_baseline_1996_2025": false,
+      "advertencias": [
+        "series por localidad pueden coincidir aunque centros de celda difieran",
+        "no usar concentraciones mensuales como cumplimiento ECA"
+      ]
+    },
+    {
+      "clave": "Copernicus CAMS EAC4 reanálisis",
+      "fuente_url": "https://www.ecmwf.int/en/research/climate-reanalysis/cams-reanalysis",
+      "anuncio_cierre_2025_url": "https://forum.ecmwf.int/t/cams-global-reanalysis-eac4-data-from-september-to-december-2025-now-available-on-the-ads/15099",
+      "cobertura_documentada": "2003–2025",
+      "resolucion_aprox_km": 80,
+      "resolucion_redistribuida_grados": 0.75,
+      "acceso": "Atmosphere Data Store ADS; no se ha descargado ni QA en OAF",
+      "datos_actualmente_archivados_en_oaf": false,
+      "limitaciones": [
+        "2003–2025 cubre 23 años, NO clima completo 1996–2025",
+        "homologación de unidades de material particulado, niveles, coordenadas y versión antes de comparar"
+      ]
+    },
+    {
+      "clave": "NASA MERRA-2 M2T1NXAER",
+      "fuente_url": "https://access.earthdata.nasa.gov/collections/C1276812830-GES_DISC",
+      "cobertura_documentada": "desde 1980, hasta periodos publicados",
+      "malla_lat_grados": 0.5,
+      "malla_lon_grados": 0.625,
+      "tipo": "reanálisis aerosoles/hora",
+      "acceso": "NASA Earthdata/GES DISC; no descargado ni homologado en OAF",
+      "datos_actualmente_archivados_en_oaf": false,
+      "limitaciones": [
+        "PM2.5/PM10 total se deriva de componentes siguiendo fórmulas oficiales, no de un campo directo homologado",
+        "verificar accesos credenciales Earthdata, máscara terrestre, unidades kg/m³ a µg/m³ (×1e9) cuando corresponda",
+        "no tratar un píxel como parcela ni medición de estación"
+      ]
+    }
+  ],
+  "prioridad_metodologica": "examinar MERRA-2 por abarcar 1996–2025; EAC4 para verificación cruzada 2003–2025; CAMS Global para piloto 2023–2025; instrumental SENAMHI para validación independiente",
+  "ninguna_serie_reanalisis_1996_2025_de_pm_descargada_en_8y": true,
+  "apto_alerta_pm": false,
+  "apto_pronostico_agrario": false
+}
