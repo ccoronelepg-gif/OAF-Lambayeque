@@ -95,8 +95,12 @@ async function map(){
   const longitude=all.map(p=>p[0]),latitude=all.map(p=>p[1]);
   const minX=Math.min(...longitude),maxX=Math.max(...longitude);
   const minY=Math.min(...latitude),maxY=Math.max(...latitude);
-  const sx=x=>48+(x-minX)/Math.max(.01,maxX-minX)*622;
-  const sy=y=>430-(y-minY)/Math.max(.01,maxY-minY)*388;
+  // Proyección local equirectangular: escala compartida, corrige longitud por cos(lat).
+  const midLon=(minX+maxX)/2,midLat=(minY+maxY)/2;
+  const lonFactor=Math.cos(midLat*Math.PI/180);
+  const scale=Math.min(622/Math.max(.01,(maxX-minX)*lonFactor),388/Math.max(.01,maxY-minY));
+  const sx=x=>360+(x-midLon)*lonFactor*scale;
+  const sy=y=>235-(y-midLat)*scale;
   const draw=()=>{
    const filter=sel.value;
    plot.replaceChildren();
