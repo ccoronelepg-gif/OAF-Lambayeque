@@ -1,0 +1,76 @@
+name: OAF 8N - Preestratificacion regional por altitud y DEM
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/zonificacion_preliminar_8n.py'
+      - 'modelos/visor_zonificacion_8n.js'
+      - 'tests/test_zonificacion_8n.py'
+      - 'datos/zonificacion_8n/limite_lambayeque_referencial.geojson'
+      - '.github/workflows/oaf_zonificacion_8n.yml'
+      - 'index.html'
+  schedule:
+    - cron: '17 19 26 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8n-zonificacion
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar fuentes existentes con la rama principal
+        run: git pull --ff-only origin main
+      - name: Pruebas de límite regional, altitudes, fechas y no homologación falsa
+        run: python -m unittest discover -s tests -p 'test_zonificacion_8n.py' -v
+      - name: Descargar DEM del proveedor para la malla regional, sin forzar rate limit
+        run: |
+          if python modelos/zonificacion_preliminar_8n.py --fetch-elevations --max-new-batches 2; then
+            echo "Altitudes DEM geográficas incorporadas con hash"
+          else
+            echo "::warning::DEM no disponible; conservar fuentes previas y estado honesto"
+          fi
+      - name: Recalcular resultados de elevación verificables
+        run: |
+          python modelos/zonificacion_preliminar_8n.py
+          python modelos/zonificacion_preliminar_8n.py --check
+      - name: Validar módulo 8N visible
+        run: |
+          if test -f modelos/visor_zonificacion_8n.js; then
+            node --check modelos/visor_zonificacion_8n.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          js=Path("modelos/visor_zonificacion_8n.js").read_text(encoding="utf-8")
+          for k in ("oaf-zones-8n","oaf-8n-status","oaf-8n-map","oaf-8n-table",
+                    "oaf-8n-nodes","oaf-8n-elevated","oaf-8n-certified",
+                    "oaf-8n-filter","oaf-8n-refresh"):
+              assert html.count('id="'+k+'"')==1,k
+          assert 'src="modelos/visor_zonificacion_8n.js"' in html
+          assert 'FASE_8N_ZONIFICACION_AGROCLIMATICA.md' in html
+          assert 'zonificacion_8n/estado_8n.json' in js
+          print("Módulo 8N correctamente integrado")
+          PY
+          fi
+      - name: Guardar DEM y reportes sin alterar fuentes originales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/zonificacion_8n/elevacion_fuentes/ datos/zonificacion_8n/estado_8n.json datos/zonificacion_8n/nodos_altitudinales_8n.csv datos/zonificacion_8n/malla_geografica_8n.csv
+          if git diff --cached --quiet; then
+            echo "Sin nuevas elevaciones regionales"
+          else
+            git commit -m "data(oaf): inventario altitudinal DEM de malla regional 8N"
+            git pull --rebase origin main
+            git push
+          fi
