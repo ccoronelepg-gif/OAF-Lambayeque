@@ -1,0 +1,53 @@
+name: OAF 9O - Homogeneidad climática CHIRPS y reanálisis
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/chirps_homogeneidad_9o.py'
+      - 'modelos/diagnostico_homogeneidad_9o.py'
+      - 'tests/test_homogeneidad_9o.py'
+      - '.github/workflows/oaf_homogeneidad_9o.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-homogeneidad-9o
+  cancel-in-progress: false
+jobs:
+  evaluacion-espacial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bibliotecas SIG y números
+        run: pip install numpy==2.2.6 rasterio==1.4.3 shapely==2.1.2
+      - name: Extraer CHIRPS v3 histórico real por 42 sectores y 81 testigos
+        run: |
+          python modelos/chirps_homogeneidad_9o.py --workers 5
+          python modelos/chirps_homogeneidad_9o.py --check
+      - name: Diagnóstico climático 1996–2025 y prueba de estabilidad temporal
+        run: |
+          python modelos/diagnostico_homogeneidad_9o.py
+          python modelos/diagnostico_homogeneidad_9o.py --check
+      - name: Verificaciones físicas y no-certificación
+        run: |
+          python -m unittest discover -s tests -p 'test_homogeneidad_9o.py' -v
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          node --check modelos/visor_homogeneidad_9o.js
+      - name: Guardar series derivadas y huellas (sin incorporar 1,5 GB de TIFF)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/homogeneidad_9o/
+          if git diff --cached --quiet; then
+            echo 'Series 9O sin modificaciones'
+          else
+            git commit -m 'data(9O): observación CHIRPS v3 histórica y perfiles 30 años con trazabilidad'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
