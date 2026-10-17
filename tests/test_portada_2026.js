@@ -5,7 +5,7 @@ const vm=require("node:vm");
 
 const html=fs.readFileSync("index.html","utf8");
 const home=html.split('<section data-page="inicio" id="inicio">')[1].split('<section data-page="clima" id="clima" hidden>')[0];
-assert.equal((home.match(/<section\b/g)||[]).length,(home.match(/<\/section>/g)||[]).length,"Los módulos de inicio deben estar balanceados");
+assert.equal((home.match(/<section\b/g)||[]).length+1,(home.match(/<\/section>/g)||[]).length,"Los módulos de inicio y su sección contenedora deben estar balanceados");
 assert.equal((home.match(/<div\b/g)||[]).length,(home.match(/<\/div>/g)||[]).length,"DIV balanceados");
 assert.equal((home.match(/class="oaf-metric(?:\s|")/g)||[]).length,7);
 assert.match(home,/Ciencia Climática al servicio del campo/);
