@@ -4,8 +4,9 @@
 "use strict";
 const details=document.getElementById("oaf-transects-8q");if(!details)return;
 const el=id=>document.getElementById(id),status=el("oaf-8q-status"),
-      map=el("oaf-8q-map"),table=el("oaf-8q-table");
-let state=null,samples=[],metrics=[],shape=null;
+      map=el("oaf-8q-map"),table=el("oaf-8q-table"),
+      coherenceTable=el("oaf-8q-coherence");
+let state=null,samples=[],metrics=[],coherence=[],shape=null;
 const fmt=x=>typeof x==="number"&&Number.isFinite(x)?x.toLocaleString("es-PE",{maximumFractionDigits:1}):"—";
 const parseCsv=s=>{
  const lines=s.trim().split(/\r?\n/),heads=lines.shift().split(",");
@@ -23,7 +24,7 @@ const svg=(tag,attrs={},tip)=>{
 };
 function render(){
  if(!state||!shape)return;
- map.replaceChildren();table.replaceChildren();
+ map.replaceChildren();table.replaceChildren();coherenceTable.replaceChildren();
  const coords=shape.features[0].geometry.coordinates[0];
  const xmin=Math.min(...coords.map(p=>p[0])),xmax=Math.max(...coords.map(p=>p[0]));
  const ymin=Math.min(...coords.map(p=>p[1])),ymax=Math.max(...coords.map(p=>p[1]));
@@ -75,6 +76,19 @@ function render(){
   for(const text of values){const td=document.createElement("td");td.textContent=String(text);tr.append(td)}
   table.append(tr);
  }
+ for(const pair of coherence){
+   const tr=document.createElement("tr");
+   const fields=[pair.transecto,pair.testigo_a+"–"+pair.testigo_b,
+      Number(pair.correlacion_anomalia_tmedia_360_meses).toFixed(3),
+      Number(pair.mae_diferencia_anomalia_tmedia_c).toFixed(3),
+      pair.igual_celda_temperatura==="true"?"Sí":"No",
+      pair.igual_celda_precipitacion==="true"?"Sí":"No",
+      "No"];
+   for(const value of fields){
+      const td=document.createElement("td");td.textContent=value;tr.append(td);
+   }
+   coherenceTable.append(tr);
+ }
 }
 async function load(){
  status.textContent="Comprobando diez puntos intermedios y sus fuentes climáticas originales…";
@@ -82,10 +96,11 @@ async function load(){
   const paths=["datos/transectos_8q/estado_transectos_8q.json",
    "datos/transectos_8q/muestras_intermedias_8q.csv",
    "datos/transectos_8q/comparacion_climatica_8q.csv",
-   "datos/zonificacion_8n/limite_lambayeque_referencial.geojson"];
+   "datos/zonificacion_8n/limite_lambayeque_referencial.geojson",
+   "datos/transectos_8q/coherencia_anomalias_8q.csv"];
   const resp=await Promise.all(paths.map(p=>fetch(p,{cache:"no-store"})));
   if(resp.some(r=>!r.ok))throw Error("Archivos fuente todavía no disponibles");
-  const [r,points,clima,geom]=await Promise.all(resp.map((v,i)=>
+  const [r,points,clima,geom,anom]=await Promise.all(resp.map((v,i)=>
     (i===0||i===3)?v.json():v.text()));
   if(r.fase!=="8Q"||r.zonas_contiguas_homogeneas_demostradas!==0||
     r.poligonos_agroclimaticos_certificados!==0||
@@ -93,9 +108,10 @@ async function load(){
     r.instrumentos_SENAMHI_confirmados!==0||
     geom.features?.[0]?.properties?.codigo_ubigeo!=="14")
     throw Error("Los límites científicos del estudio no concuerdan");
-  const p=parseCsv(points),m=parseCsv(clima);
+  const p=parseCsv(points),m=parseCsv(clima),corr=parseCsv(anom);
   if(p.length!==r.testigos_intermedios_dem_seleccionados||
-     m.length!==r.n_testigos_intermedios_30_anios_completos)
+     m.length!==r.n_testigos_intermedios_30_anios_completos||
+     corr.length!==r.n_comparaciones_de_anomalias_por_pares)
      throw Error("Datos y reportes de muestreo incompatibles");
   for(const o of p){
    for(const k of ["latitud","longitud","altitud_dem_m",
@@ -110,7 +126,14 @@ async function load(){
      {o[k]=Number(o[k]);if(!Number.isFinite(o[k]))throw Error("Clima no numérico")}
     if(o.clima_instrumental_verificado!=="false")throw Error("Reanálisis no es instrumento");
   }
-  state=r;samples=p;metrics=m;shape=geom;
+  for(const pair of corr){
+    if(pair.independencia_instrumental_verificada!=="false")
+      throw Error("Correlación modelada no equivale a prueba instrumental");
+    if(!Number.isFinite(Number(pair.correlacion_anomalia_tmedia_360_meses))||
+       !Number.isFinite(Number(pair.mae_diferencia_anomalia_tmedia_c)))
+      throw Error("Correlación mensual no numérica");
+  }
+  state=r;samples=p;metrics=m;coherence=corr;shape=geom;
   el("oaf-8q-sites").textContent=String(p.length);
   el("oaf-8q-sources").textContent=r.fuentes_climaticas_verificadas+"/6";
   el("oaf-8q-complete").textContent=String(m.length);
@@ -120,7 +143,7 @@ async function load(){
      r.fuentes_climaticas_verificadas+"/6). Sin declarar homogeneidad entre testigos.";
   render();
  }catch(err){
-  map.replaceChildren();table.replaceChildren();
+  map.replaceChildren();table.replaceChildren();coherenceTable.replaceChildren();
   status.textContent="Sin resultados presentables: "+err.message+". No se simulan perfiles o zonas.";
  }
 }
