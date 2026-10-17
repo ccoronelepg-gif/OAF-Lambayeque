@@ -41,6 +41,15 @@ Calculamos correlación de Pearson entre log(1 + precipitación mensual en mm). 
 | 00000340 y 00152107 | 215 | 0,78934 | 0,81028 |
 | 00153114 y 00152107 | 207 | 0,87053 | 0,85201 |
 
+Se ejecutó una sensibilidad adicional con el mismo calendario mensual:
+| Códigos | Correlación tras retirar media de cada mes calendario | Correlación excluyendo 1998 | Correlación excluyendo 1997 y 1998 |
+|---|---:|---:|---:|
+| 00000340 y 00153114 | 0,60552 | 0,79201 | 0,79917 |
+| 00000340 y 00152107 | 0,56640 | 0,77297 | 0,77370 |
+| 00153114 y 00152107 | 0,71677 | 0,85662 | 0,85833 |
+
+Las asociaciones se mantienen al excluir el año 1998, pero decrecen al retirar el ciclo medio calendario, lo que confirma que **parte de la similitud es estacional**. Los promedios utilizados aquí son descriptivos y están calculados sobre la muestra completa; no son una evaluación de predicción fuera de muestra ni una normal OMM.
+
 Las correlaciones **no son evidencia de habilidad de predicción**; comparten los mismos meses objetivo y no representan series de predicciones emitidas con antelación. Tampoco se han estimado intervalos de confianza de dependencia espacial; no utilizar r como prueba de regiones homogéneas.
 
 **Resultado reproducible:** [datos/validacion_estaciones_9e/contraste_observacional_9e.json](datos/validacion_estaciones_9e/contraste_observacional_9e.json), obtenido ejecutando [modelos/contraste_observacional_9e.py](modelos/contraste_observacional_9e.py). [GitHub Actions](.github/workflows/oaf_contraste_observacional_9e.yml) ejecuta el motor y publica la matriz.
