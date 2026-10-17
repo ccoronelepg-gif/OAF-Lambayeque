@@ -1,0 +1,2176 @@
+{
+  "fase": "8W",
+  "estatus": "hindcast_retrospectivo_no_operativo",
+  "periodo_referencia": "1996-2025",
+  "cortes": [
+    {
+      "train_hasta": "2010-12",
+      "test": "2011-01/2013-12"
+    },
+    {
+      "train_hasta": "2013-12",
+      "test": "2014-01/2016-12"
+    },
+    {
+      "train_hasta": "2016-12",
+      "test": "2017-01/2019-12"
+    },
+    {
+      "train_hasta": "2019-12",
+      "test": "2020-01/2022-12"
+    },
+    {
+      "train_hasta": "2022-12",
+      "test": "2023-01/2025-12"
+    }
+  ],
+  "horizontes_meses": [
+    1,
+    2,
+    3
+  ],
+  "datos_mes_origen_completos_no_vintage": true,
+  "aprendizaje_de_normales_umbral_y_escalado_solo_entrenamiento": true,
+  "indicadores_ensorevisados_t_no_vintage": true,
+  "viento_modelado_no_anemometro": true,
+  "precipitacion_modelada_no_pluviometro": true,
+  "eventos_lluvia_enero_abril_superacion_p90_training": true,
+  "eventos_condicionales_solo_meses_p90_positivo": true,
+  "corrientes_geostroficas_2017_2025_evaluadas_solo_sensibilidad": true,
+  "corrientes_no_colocalizadas_con_viento": true,
+  "prediccion_operativa_validada": false,
+  "alertas_agricolas_permitidas": false,
+  "n_predicciones_continuas": 21600,
+  "n_pronosticos_probabilisticos_eventos": 2880,
+  "n_predicciones_sensibilidad_corrientes": 1728,
+  "metricas_continuas": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 10.834349,
+      "rmse": 31.583439,
+      "sesgo": -6.443151
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 10.444918,
+      "rmse": 29.688256,
+      "sesgo": -5.448232
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 10.118171,
+      "rmse": 27.390142,
+      "sesgo": -4.814933
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 10.018625,
+      "rmse": 26.999736,
+      "sesgo": -4.971354
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 12.439121,
+      "rmse": 28.233776,
+      "sesgo": -0.173043
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.851756,
+      "rmse": 1.136984,
+      "sesgo": -0.454283
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.433522,
+      "rmse": 0.567616,
+      "sesgo": -0.066029
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.435244,
+      "rmse": 0.568827,
+      "sesgo": -0.091538
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.430439,
+      "rmse": 0.554785,
+      "sesgo": -0.123905
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.451435,
+      "rmse": 0.584895,
+      "sesgo": -0.001075
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 10.834349,
+      "rmse": 31.583439,
+      "sesgo": -6.443151
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 10.743612,
+      "rmse": 29.913072,
+      "sesgo": -5.370648
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 10.408197,
+      "rmse": 28.1464,
+      "sesgo": -4.858637
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 10.265045,
+      "rmse": 28.049678,
+      "sesgo": -5.157152
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 12.717636,
+      "rmse": 27.963068,
+      "sesgo": 1.146204
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.851756,
+      "rmse": 1.136984,
+      "sesgo": -0.454283
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.565554,
+      "rmse": 0.761433,
+      "sesgo": -0.123067
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.567703,
+      "rmse": 0.760627,
+      "sesgo": -0.12558
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.555916,
+      "rmse": 0.739589,
+      "sesgo": -0.139442
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.630072,
+      "rmse": 0.815639,
+      "sesgo": -0.009927
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 10.834349,
+      "rmse": 31.583439,
+      "sesgo": -6.443151
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 10.884938,
+      "rmse": 31.146161,
+      "sesgo": -5.469767
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 10.770154,
+      "rmse": 30.817237,
+      "sesgo": -5.055534
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 10.41581,
+      "rmse": 30.404514,
+      "sesgo": -5.30269
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 15.504813,
+      "rmse": 38.534215,
+      "sesgo": 1.688155
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.851756,
+      "rmse": 1.136984,
+      "sesgo": -0.454283
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.657984,
+      "rmse": 0.889486,
+      "sesgo": -0.182007
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.651631,
+      "rmse": 0.884391,
+      "sesgo": -0.125637
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.636573,
+      "rmse": 0.866717,
+      "sesgo": -0.13141
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.751005,
+      "rmse": 0.985183,
+      "sesgo": -0.021271
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 42.794768,
+      "rmse": 86.556641,
+      "sesgo": -10.450785
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 39.534967,
+      "rmse": 80.166709,
+      "sesgo": -9.021167
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 38.63257,
+      "rmse": 72.056587,
+      "sesgo": -3.077403
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 36.796392,
+      "rmse": 68.697912,
+      "sesgo": -4.323246
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 48.470611,
+      "rmse": 86.717835,
+      "sesgo": 2.711563
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.708486,
+      "rmse": 0.929902,
+      "sesgo": -0.313472
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.384192,
+      "rmse": 0.490228,
+      "sesgo": -0.055331
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.383038,
+      "rmse": 0.489824,
+      "sesgo": -0.072773
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.378756,
+      "rmse": 0.475805,
+      "sesgo": -0.094552
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.402331,
+      "rmse": 0.507364,
+      "sesgo": -0.00138
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 42.794768,
+      "rmse": 86.556641,
+      "sesgo": -10.450785
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 42.392585,
+      "rmse": 82.512017,
+      "sesgo": -8.126385
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 41.694015,
+      "rmse": 79.315731,
+      "sesgo": -6.271791
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 39.974446,
+      "rmse": 77.29019,
+      "sesgo": -8.820634
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 56.047211,
+      "rmse": 105.360061,
+      "sesgo": 12.430514
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.708486,
+      "rmse": 0.929902,
+      "sesgo": -0.313472
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.49774,
+      "rmse": 0.651119,
+      "sesgo": -0.095752
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.499668,
+      "rmse": 0.644283,
+      "sesgo": -0.103002
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.484776,
+      "rmse": 0.62325,
+      "sesgo": -0.102051
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.546296,
+      "rmse": 0.702434,
+      "sesgo": -0.008861
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 42.794768,
+      "rmse": 86.556641,
+      "sesgo": -10.450785
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 43.771834,
+      "rmse": 86.69368,
+      "sesgo": -6.814821
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 42.483218,
+      "rmse": 85.5729,
+      "sesgo": -7.590331
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 40.953582,
+      "rmse": 83.090001,
+      "sesgo": -10.168335
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 67.561979,
+      "rmse": 130.198992,
+      "sesgo": 20.452782
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.708486,
+      "rmse": 0.929902,
+      "sesgo": -0.313472
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.582136,
+      "rmse": 0.755007,
+      "sesgo": -0.131294
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.572035,
+      "rmse": 0.738523,
+      "sesgo": -0.107251
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.55305,
+      "rmse": 0.712144,
+      "sesgo": -0.098236
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.662489,
+      "rmse": 0.846832,
+      "sesgo": -0.017696
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 51.254517,
+      "rmse": 107.056678,
+      "sesgo": -12.294478
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 47.548796,
+      "rmse": 97.896265,
+      "sesgo": -7.710587
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 47.650037,
+      "rmse": 89.555747,
+      "sesgo": 1.060793
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 45.689133,
+      "rmse": 87.119545,
+      "sesgo": -3.993504
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 58.211105,
+      "rmse": 104.589555,
+      "sesgo": 2.962153
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.638852,
+      "rmse": 0.853923,
+      "sesgo": -0.416743
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.34152,
+      "rmse": 0.442193,
+      "sesgo": -0.07825
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.336881,
+      "rmse": 0.437028,
+      "sesgo": -0.090456
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.336764,
+      "rmse": 0.432607,
+      "sesgo": -0.130596
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.363184,
+      "rmse": 0.458894,
+      "sesgo": -0.004946
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 51.254517,
+      "rmse": 107.056678,
+      "sesgo": -12.294478
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 51.027919,
+      "rmse": 101.415228,
+      "sesgo": -7.503708
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 51.038238,
+      "rmse": 97.579312,
+      "sesgo": -4.094517
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 48.606145,
+      "rmse": 96.114224,
+      "sesgo": -10.014905
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 67.353342,
+      "rmse": 125.212161,
+      "sesgo": 12.993018
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.638852,
+      "rmse": 0.853923,
+      "sesgo": -0.416743
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.429958,
+      "rmse": 0.569244,
+      "sesgo": -0.121282
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.432909,
+      "rmse": 0.560642,
+      "sesgo": -0.12244
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.423342,
+      "rmse": 0.543772,
+      "sesgo": -0.123567
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.477767,
+      "rmse": 0.616285,
+      "sesgo": -0.013742
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 51.254517,
+      "rmse": 107.056678,
+      "sesgo": -12.294478
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 52.600346,
+      "rmse": 107.126223,
+      "sesgo": -5.873034
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 50.458492,
+      "rmse": 103.869269,
+      "sesgo": -5.14855
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 48.918246,
+      "rmse": 101.611531,
+      "sesgo": -9.081145
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 80.559803,
+      "rmse": 158.525317,
+      "sesgo": 22.19451
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.638852,
+      "rmse": 0.853923,
+      "sesgo": -0.416743
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.506264,
+      "rmse": 0.664122,
+      "sesgo": -0.165903
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.502927,
+      "rmse": 0.652212,
+      "sesgo": -0.156596
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.495522,
+      "rmse": 0.631605,
+      "sesgo": -0.141845
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.576166,
+      "rmse": 0.742954,
+      "sesgo": -0.021664
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 38.675036,
+      "rmse": 85.636691,
+      "sesgo": -9.867917
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 36.614411,
+      "rmse": 80.51529,
+      "sesgo": -8.20509
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 37.57487,
+      "rmse": 75.005914,
+      "sesgo": -3.75543
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 36.638134,
+      "rmse": 72.979879,
+      "sesgo": -6.651713
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 46.823151,
+      "rmse": 86.468111,
+      "sesgo": -0.837064
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.593117,
+      "rmse": 0.774684,
+      "sesgo": -0.366076
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.331983,
+      "rmse": 0.422843,
+      "sesgo": -0.070127
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.334087,
+      "rmse": 0.419525,
+      "sesgo": -0.078424
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.33374,
+      "rmse": 0.410791,
+      "sesgo": -0.141519
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.361674,
+      "rmse": 0.442176,
+      "sesgo": -0.003351
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 38.675036,
+      "rmse": 85.636691,
+      "sesgo": -9.867917
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 38.256693,
+      "rmse": 82.216503,
+      "sesgo": -8.195034
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 38.134905,
+      "rmse": 75.446863,
+      "sesgo": -5.504304
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 37.08026,
+      "rmse": 76.575807,
+      "sesgo": -10.13457
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 49.785602,
+      "rmse": 92.48609,
+      "sesgo": 4.020108
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.593117,
+      "rmse": 0.774684,
+      "sesgo": -0.366076
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.402762,
+      "rmse": 0.522952,
+      "sesgo": -0.104408
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.406037,
+      "rmse": 0.513339,
+      "sesgo": -0.108476
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.390683,
+      "rmse": 0.494902,
+      "sesgo": -0.139419
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.443551,
+      "rmse": 0.56577,
+      "sesgo": -0.013425
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 38.675036,
+      "rmse": 85.636691,
+      "sesgo": -9.867917
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 39.281106,
+      "rmse": 85.196415,
+      "sesgo": -6.418449
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 38.861649,
+      "rmse": 83.033849,
+      "sesgo": -5.70498
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 37.873103,
+      "rmse": 81.721905,
+      "sesgo": -8.037963
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 61.942995,
+      "rmse": 127.312681,
+      "sesgo": 13.236545
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "climatologia",
+      "n": 180,
+      "mae": 0.593117,
+      "rmse": 0.774684,
+      "sesgo": -0.366076
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_ridge",
+      "n": 180,
+      "mae": 0.454177,
+      "rmse": 0.59372,
+      "sesgo": -0.142967
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento",
+      "n": 180,
+      "mae": 0.457349,
+      "rmse": 0.577723,
+      "sesgo": -0.143053
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 180,
+      "mae": 0.441623,
+      "rmse": 0.556533,
+      "sesgo": -0.156581
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "persistencia",
+      "n": 180,
+      "mae": 0.521274,
+      "rmse": 0.661578,
+      "sesgo": -0.022243
+    }
+  ],
+  "metricas_eventos": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.10638926,
+      "prediccion_prob_media": 0.127586
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.09797063,
+      "prediccion_prob_media": 0.139613
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.09044482,
+      "prediccion_prob_media": 0.141858
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.08650496,
+      "prediccion_prob_media": 0.137462
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.10654035,
+      "prediccion_prob_media": 0.129215
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.10136409,
+      "prediccion_prob_media": 0.133943
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.09273859,
+      "prediccion_prob_media": 0.134026
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.09122329,
+      "prediccion_prob_media": 0.126616
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.1067034,
+      "prediccion_prob_media": 0.130888
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.11205749,
+      "prediccion_prob_media": 0.133355
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.11500068,
+      "prediccion_prob_media": 0.120302
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 7,
+      "brier": 0.11206237,
+      "prediccion_prob_media": 0.112637
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.06798538,
+      "prediccion_prob_media": 0.127586
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.0612442,
+      "prediccion_prob_media": 0.109912
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.05364699,
+      "prediccion_prob_media": 0.125496
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.0507929,
+      "prediccion_prob_media": 0.125086
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.0682545,
+      "prediccion_prob_media": 0.129215
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.06276279,
+      "prediccion_prob_media": 0.120698
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.05957471,
+      "prediccion_prob_media": 0.127827
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.05966283,
+      "prediccion_prob_media": 0.119777
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.06853804,
+      "prediccion_prob_media": 0.130888
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.0708985,
+      "prediccion_prob_media": 0.126852
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.07173702,
+      "prediccion_prob_media": 0.135889
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 4,
+      "brier": 0.07123133,
+      "prediccion_prob_media": 0.12894
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07965204,
+      "prediccion_prob_media": 0.127586
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07449896,
+      "prediccion_prob_media": 0.12268
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.0662093,
+      "prediccion_prob_media": 0.134854
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.06547514,
+      "prediccion_prob_media": 0.124688
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07983642,
+      "prediccion_prob_media": 0.129215
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07610256,
+      "prediccion_prob_media": 0.126468
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07551726,
+      "prediccion_prob_media": 0.13752
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07478832,
+      "prediccion_prob_media": 0.123351
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08003229,
+      "prediccion_prob_media": 0.130888
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08483597,
+      "prediccion_prob_media": 0.138412
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08454153,
+      "prediccion_prob_media": 0.144303
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08297145,
+      "prediccion_prob_media": 0.128958
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07921113,
+      "prediccion_prob_media": 0.127586
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07993769,
+      "prediccion_prob_media": 0.127508
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07522658,
+      "prediccion_prob_media": 0.127953
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07386706,
+      "prediccion_prob_media": 0.119338
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07940103,
+      "prediccion_prob_media": 0.129215
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07616158,
+      "prediccion_prob_media": 0.120559
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.06884521,
+      "prediccion_prob_media": 0.124472
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.06888875,
+      "prediccion_prob_media": 0.110768
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "modelo": "climatologia_evento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.07960278,
+      "prediccion_prob_media": 0.130888
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "modelo": "local_ridge",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08456793,
+      "prediccion_prob_media": 0.130995
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "modelo": "local_viento",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08183468,
+      "prediccion_prob_media": 0.134993
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "modelo": "local_viento_sst",
+      "n": 60,
+      "eventos": 5,
+      "brier": 0.08105165,
+      "prediccion_prob_media": 0.120434
+    }
+  ],
+  "metricas_sensibilidad_corrientes": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 15.837939,
+      "rmse": 33.563413,
+      "sesgo": -6.48789
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 16.284351,
+      "rmse": 35.717154,
+      "sesgo": -10.043934
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.668666,
+      "rmse": 0.853139,
+      "sesgo": -0.2568
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.67266,
+      "rmse": 0.83288,
+      "sesgo": -0.196141
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 17.260811,
+      "rmse": 39.078699,
+      "sesgo": -13.975223
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 17.16221,
+      "rmse": 38.560334,
+      "sesgo": -12.9568
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.889165,
+      "rmse": 1.166606,
+      "sesgo": -0.515966
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.826133,
+      "rmse": 1.063101,
+      "sesgo": -0.344494
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 18.906208,
+      "rmse": 42.280009,
+      "sesgo": -12.725604
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 17.837433,
+      "rmse": 41.399699,
+      "sesgo": -12.363838
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.972339,
+      "rmse": 1.341617,
+      "sesgo": -0.637737
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.923632,
+      "rmse": 1.235127,
+      "sesgo": -0.492901
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 55.32738,
+      "rmse": 102.180477,
+      "sesgo": -8.803445
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 55.944997,
+      "rmse": 100.741125,
+      "sesgo": -33.446516
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.534846,
+      "rmse": 0.704796,
+      "sesgo": -0.201244
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.526918,
+      "rmse": 0.693111,
+      "sesgo": -0.116862
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 59.547087,
+      "rmse": 115.077919,
+      "sesgo": -42.62138
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 60.283804,
+      "rmse": 115.892283,
+      "sesgo": -44.591789
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.673554,
+      "rmse": 0.910315,
+      "sesgo": -0.35633
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.623888,
+      "rmse": 0.84716,
+      "sesgo": -0.19817
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 70.12153,
+      "rmse": 127.914978,
+      "sesgo": -37.64483
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 62.10837,
+      "rmse": 121.021704,
+      "sesgo": -45.984051
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.751548,
+      "rmse": 1.041858,
+      "sesgo": -0.429914
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.707126,
+      "rmse": 0.981841,
+      "sesgo": -0.298708
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 64.837671,
+      "rmse": 118.536201,
+      "sesgo": -7.585444
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 66.286725,
+      "rmse": 116.248563,
+      "sesgo": -35.759187
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.462788,
+      "rmse": 0.669574,
+      "sesgo": -0.319505
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.464065,
+      "rmse": 0.667815,
+      "sesgo": -0.298138
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 73.834642,
+      "rmse": 146.05217,
+      "sesgo": -56.918145
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 72.710513,
+      "rmse": 141.103045,
+      "sesgo": -55.576048
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.569659,
+      "rmse": 0.84072,
+      "sesgo": -0.441321
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.52952,
+      "rmse": 0.797819,
+      "sesgo": -0.358748
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 82.214051,
+      "rmse": 151.830121,
+      "sesgo": -47.572024
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 73.41087,
+      "rmse": 142.655204,
+      "sesgo": -52.720794
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.620136,
+      "rmse": 0.963847,
+      "sesgo": -0.496101
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.588907,
+      "rmse": 0.948228,
+      "sesgo": -0.453678
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 49.401295,
+      "rmse": 86.624518,
+      "sesgo": -0.85342
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 46.73464,
+      "rmse": 72.545502,
+      "sesgo": -27.075211
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.418009,
+      "rmse": 0.550606,
+      "sesgo": -0.218694
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.419045,
+      "rmse": 0.554608,
+      "sesgo": -0.202092
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 49.124491,
+      "rmse": 81.317869,
+      "sesgo": -38.008662
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 52.323065,
+      "rmse": 86.551299,
+      "sesgo": -42.777338
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.474181,
+      "rmse": 0.696757,
+      "sesgo": -0.312988
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.458506,
+      "rmse": 0.668618,
+      "sesgo": -0.229168
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 57.165542,
+      "rmse": 96.623196,
+      "sesgo": -39.977003
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "precipitacion_mes_mm",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 54.389817,
+      "rmse": 89.306062,
+      "sesgo": -45.127588
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "con_corrientes",
+      "n": 36,
+      "mae": 0.538169,
+      "rmse": 0.799895,
+      "sesgo": -0.327673
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "objetivo": "temperatura_aire_c",
+      "modelo": "local_viento_sst",
+      "n": 36,
+      "mae": 0.521874,
+      "rmse": 0.782035,
+      "sesgo": -0.282513
+    }
+  ],
+  "sha_8v_entrada": {
+    "terrestre": "b07b30becfe6ff9b92b67f88782ca26e552ea06b627d324a62d76d4962a81d4e",
+    "marino": "ff34c094e90dd191f5d97b7333345865ccb8de79c2e1313e2421e04a18b0cb87"
+  },
+  "cautelas": [
+    "Hindcast reanalisis y datos oceanicos revisados, no emitidos en fecha historica",
+    "Evaluar habilidad en SENAMHI y episodios extremos antes de dar recomendaciones",
+    "Mes origen disponible tras cierre mensual: no pronostico antes del comienzo del mes siguiente",
+    "Mismo indice oceanico en cuatro localidades: pseudorreplicacion espacial",
+    "Corrientes geostroficas no equivalen a corriente total y no colocalizadas con viento",
+    "Resultados de lluvia P90 solo enero-abril y threshold con train; no diagnostico de inundacion"
+  ]
+}
