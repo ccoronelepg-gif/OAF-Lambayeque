@@ -55,7 +55,7 @@ jobs:
           import json
           html=Path('index.html').read_text(encoding='utf-8')
           for key in ('oaf-benchmark-8w','oaf-8w-site','oaf-8w-h','oaf-8w-target',
-                      'oaf-8w-table','oaf-8w-events','oaf-8w-currents','oaf-8w-status'):
+                      'oaf-8w-table','oaf-8w-events','oaf-8w-currents','oaf-8w-status','oaf-8w-stability','oaf-8w-folds-desc'):
               assert html.count('id="'+key+'"')==1,key
           assert html.count('src="modelos/visor_benchmark_8w.js"')==1
           d=json.loads(Path('datos/benchmark_8w/estado_benchmark_8w.json').read_text())
