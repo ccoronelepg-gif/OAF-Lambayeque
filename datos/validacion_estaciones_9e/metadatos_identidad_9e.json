@@ -1,0 +1,89 @@
+{
+  "fase": "9E",
+  "fecha_revision": "2026-10-17",
+  "politica": "No deducir la identidad espacial desde un código o desde diferencias de lluvia; los registros fueron aportados sin ficha oficial.",
+  "fuentes_consultadas": [
+    {
+      "institucion": "SENAMHI",
+      "url": "https://www.datosabiertos.gob.pe/dataset/datos-hidrometeorol%C3%B3gicos-de-libre-acceso",
+      "uso": "Portal institucional para consultar/descargar datos; no acredita vínculo con estos archivos"
+    },
+    {
+      "institucion": "INGEMMET - Estación Meteorológica SENAMHI",
+      "url": "https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_OTRAS_FUENTES/MapServer/1",
+      "uso": "Capa geográfica de estaciones; no se obtuvo coincidencia autenticada con los tres códigos"
+    },
+    {
+      "institucion": "SENAMHI - IDESEP",
+      "url": "https://idesep.senamhi.gob.pe/portalidesep/idesep_componente_catalogo_geoservicios_wfs.jsp",
+      "uso": "Servicio institucional WFS para catálogos geoespaciales"
+    },
+    {
+      "institucion": "WIS2 SENAMHI",
+      "url": "https://wis.senamhi.gob.pe/oapi/collections?f=html",
+      "uso": "Colecciones públicas para estaciones/observaciones; no prueba identidad de archivos históricos"
+    },
+    {
+      "institucion": "CHC UCSB - CHIRPS v3",
+      "url": "https://www.chc.ucsb.edu/data/chirps3",
+      "uso": "Datos de lluvia 0.05° (1981–actualidad), preliminar y final, con asimilación potencial de pluviómetros; contraste no estrictamente independiente si incorpora estación"
+    }
+  ],
+  "estaciones": [
+    {
+      "codigo_archivo": "00000340",
+      "nombre": null,
+      "codigo_oficial": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "operador": null,
+      "certificado": false,
+      "url_ficha": null,
+      "metodo_coincidencia": null,
+      "calidad_original_certificada": false,
+      "licencia_republicacion": null,
+      "estado": "sin_correspondencia_documental_verificada"
+    },
+    {
+      "codigo_archivo": "00153114",
+      "nombre": null,
+      "codigo_oficial": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "operador": null,
+      "certificado": false,
+      "url_ficha": null,
+      "metodo_coincidencia": null,
+      "calidad_original_certificada": false,
+      "licencia_republicacion": null,
+      "estado": "sin_correspondencia_documental_verificada"
+    },
+    {
+      "codigo_archivo": "00152107",
+      "nombre": null,
+      "codigo_oficial": null,
+      "latitud": null,
+      "longitud": null,
+      "altitud_m": null,
+      "operador": null,
+      "certificado": false,
+      "url_ficha": null,
+      "metodo_coincidencia": null,
+      "calidad_original_certificada": false,
+      "licencia_republicacion": null,
+      "estado": "sin_correspondencia_documental_verificada"
+    }
+  ],
+  "geolocalizacion_publica_permitida": false,
+  "extraccion_era5_chirps_en_punto_autorizada": false,
+  "condiciones_para_activacion": [
+    "Verificar identificador oficial inequívoco y ficha de estación asociada a los datos originales",
+    "Corroborar latitud longitud altitud y época/vigencia de la localización",
+    "Verificar unidades y día pluviométrico; UTC versus hora local",
+    "Confirmar licencia y restricciones de reutilización de las series compartidas",
+    "Comparar precipitación mensual sobre mismo período y versión del producto",
+    "Controlar dependencia en CHIRPS por posible incorporación de esa misma estación a los productos grillados"
+  ]
+}
