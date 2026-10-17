@@ -60,6 +60,26 @@ async function init(){
     hydro.n_sectores_9k_con_interseccion+
     " sectores con al menos un cruce referencial. No se ha validado la vigencia ni certificado el límite de cuencas.");
   }
+  let groupGeo=null,groupState=null;
+  try{
+    [groupGeo,groupState]=await Promise.all([
+      get("datos/sensibilidad_9m/grupos_hidrofisicos_9m.geojson"),
+      get("datos/sensibilidad_9m/estado_grupos_9m.json")]);
+    if(groupState.fase!=="9M"||groupState.n_zonas_homogeneas_validadas!==0||
+       groupState.n_cuencas_operativas_certificadas!==0||
+       groupGeo.features.length!==groupState.n_agrupaciones_hidrofisicas)
+      throw Error("Metadatos hidro-físicos incongruentes");
+    setText("oaf-9m-group-status",
+      groupState.n_agrupaciones_hidrofisicas+
+      " fragmentos hidrofísicos experimentales. "+
+      groupState.n_grupos_con_dos_o_mas_sectores+
+      " agrupan partes de dos o más sectores de 9K. "+
+      "No corresponden a zonas homogéneas validadas.");
+  }catch(e){
+    groupGeo=null;
+    setText("oaf-9m-group-status","Agrupación por piso y unidad hidrográfica pendiente: "+
+      e.message+". No se infieren asociaciones.");
+  }
   const select=$("oaf-9m-floor"),table=$("oaf-9m-table"),map=$("oaf-9m-map");
   for(const [key,[name]] of Object.entries(floors)){
    const o=document.createElement("option");o.value=key;o.textContent=name;select.append(o);
@@ -120,6 +140,25 @@ async function init(){
     table.append(row);
    }
    map.append(svg);
+   const groupTable=$("oaf-9m-group-table");groupTable.replaceChildren();
+   if(groupGeo){
+     const groupItems=groupGeo.features.filter(f=>select.value==="todas"||
+       f.properties.piso===select.value);
+     groupItems.sort((a,b)=>
+       b.properties.n_sectores_origen-a.properties.n_sectores_origen||
+       b.properties.area_aprox_km2-a.properties.area_aprox_km2);
+     for(const gf of groupItems.slice(0,30)){
+       const gp=gf.properties,tr=document.createElement("tr");
+       const values=[gp.id,gp.nombre_unidad+" ("+gp.codigo_hidrografico+")",
+           floors[gp.piso]?.[0]||gp.piso,
+           gp.nodos_sectores_origen.join(", "),
+           gp.familia_climatica||"Sin núcleo"];
+       for(const value of values){
+         const td=document.createElement("td");td.textContent=String(value);tr.append(td);
+       }
+       groupTable.append(tr);
+     }
+   }
    setText("oaf-9m-visible",display.length+" máscaras filtradas en la vista. "+
      "Los sectores no presentes no cuentan con cobertura procesada en esta tesela.");
   }
