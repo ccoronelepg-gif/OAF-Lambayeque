@@ -96,6 +96,11 @@ class Contraste9H(unittest.TestCase):
             "FASE_9H_CONTRASTE_INSTRUMENTAL.md",
             "datos/validacion_estaciones_9h/contraste_era5_complementario_9h.json"):
             self.assertIn(fragment,within)
+        js=(ROOT/"modelos/visor_contraste_estaciones_9h.js").read_text(encoding="utf8")
+        # Ambas estructuras de métricas deben renderizarse: ERA5 usa 'mae' y CHIRPS 'mae_mm'.
+        self.assertIn("score?.mae??score?.mae_mm",js)
+        self.assertIn("score?.sesgo??score?.sesgo_producto_menos_estacion_mm",js)
+        self.assertIn("Temperatura ERA5-Land sin extracción válida",js)
         self.assertIn('src="modelos/visor_contraste_estaciones_9h.js"',h)
         self.assertIn('href="assets/oaf-contraste-estaciones-9h.css?v=1"',h)
         self.assertEqual(h.count('id="oaf-9h-visor"'),1)
