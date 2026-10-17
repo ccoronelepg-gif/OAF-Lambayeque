@@ -1,0 +1,13 @@
+mes,localidad,fuente,modelado_no_instrumental,resolucion_horas,marcas_temporales_esperadas,n_pm25_validas,cobertura_pm25_pct,pm25_media_ug_m3,n_pm10_validas,cobertura_pm10_pct,pm10_media_ug_m3,mes_pm_completo_80pct
+2025-01,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,10.7315,744,100.0,17.2147,True
+2025-02,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,672,672,100.0,10.6068,672,100.0,14.3671,True
+2025-03,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,10.3794,744,100.0,15.7632,True
+2025-04,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,720,720,100.0,11.0167,720,100.0,19.7089,True
+2025-05,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,11.3835,744,100.0,18.5989,True
+2025-06,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,720,720,100.0,10.9275,720,100.0,17.5925,True
+2025-07,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,12.2642,744,100.0,20.3216,True
+2025-08,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,11.6664,744,100.0,19.0415,True
+2025-09,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,720,720,100.0,12.1163,720,100.0,20.0506,True
+2025-10,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,11.5772,744,100.0,19.3579,True
+2025-11,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,720,720,100.0,11.2185,720,100.0,19.4928,True
+2025-12,Chiclayo,"Open-Meteo CAMS Global modelado, NO estación",True,1,744,744,100.0,9.9945,744,100.0,17.4312,True
