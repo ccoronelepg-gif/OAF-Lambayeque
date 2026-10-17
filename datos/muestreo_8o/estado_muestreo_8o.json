@@ -2,12 +2,12 @@
   "fase": "8O",
   "estado": "muestra_dem_incompleta_sin_zonas_climaticas",
   "nodos_diseno": 420,
-  "nodos_dem_verificados": 300,
+  "nodos_dem_verificados": 400,
   "n_referencias_8n": 69,
   "n_anclas_refuerzo": 33,
   "n_refuerzos": 127,
   "n_lotes_esperados": 9,
-  "n_lotes_archivados": 6,
+  "n_lotes_archivados": 8,
   "paso_regional_grados": 0.0625,
   "paso_refuerzo_grados": 0.03125,
   "tipos_muestreo_no_son_celdas_climaticas_independientes": true,
@@ -20,32 +20,32 @@
   "pronosticos_zonales_certificados": false,
   "bloques_altitudinales_preliminares": {
     "llanura_costa": {
-      "n_puntos": 136,
+      "n_puntos": 161,
       "altitud_min_m": 0.0,
-      "altitud_max_m": 97.0
+      "altitud_max_m": 98.0
     },
     "valle_bajo": {
-      "n_puntos": 76,
+      "n_puntos": 105,
       "altitud_min_m": 100.0,
       "altitud_max_m": 293.0
     },
     "piedemonte": {
-      "n_puntos": 46,
+      "n_puntos": 60,
       "altitud_min_m": 304.0,
-      "altitud_max_m": 778.0
+      "altitud_max_m": 785.0
     },
     "montana_baja": {
-      "n_puntos": 16,
-      "altitud_min_m": 802.0,
-      "altitud_max_m": 1590.0
+      "n_puntos": 30,
+      "altitud_min_m": 801.0,
+      "altitud_max_m": 1594.0
     },
     "montana_media": {
-      "n_puntos": 6,
-      "altitud_min_m": 1681.0,
+      "n_puntos": 11,
+      "altitud_min_m": 1665.0,
       "altitud_max_m": 2447.0
     },
     "montana_alta": {
-      "n_puntos": 10,
+      "n_puntos": 23,
       "altitud_min_m": 2501.0,
       "altitud_max_m": 3839.0
     },
@@ -89,6 +89,14 @@
       {
         "index": 6,
         "sha256_archivo_comprimido": "65fbf3de692393e5899a9e6cc01bee4f93fc15fdd14940aaca7e919b0c13370f"
+      },
+      {
+        "index": 7,
+        "sha256_archivo_comprimido": "4e48670cc5b8f5524cafa30e37b29f11d0187581896d5e6b822a8375105ed284"
+      },
+      {
+        "index": 8,
+        "sha256_archivo_comprimido": "ce7c335e85c103f790f15ab13ab887f320801abf142743307dea9a4f2a2c013e"
       }
     ]
   }
