@@ -8,6 +8,9 @@ on:
       - 'modelos/corrientes_geostroficas_8u.py'
       - 'tests/test_oceanografia_8u.py'
       - '.github/workflows/oaf_oceanografia_8u.yml'
+      - 'modelos/visor_forzantes_8u.js'
+      - 'FASE_8U_VIENTO_TSM_CORRIENTES.md'
+      - 'index.html'
   schedule:
     - cron: '43 19 * * *'
 permissions:
@@ -41,6 +44,21 @@ jobs:
         run: |
           python modelos/corrientes_geostroficas_8u.py
           python modelos/corrientes_geostroficas_8u.py --check
+      - name: Comprobar nuevo complemento del visor 8U
+        run: |
+          node --check modelos/visor_forzantes_8u.js
+          python - <<'PY'
+          from pathlib import Path
+          text=Path("index.html").read_text(encoding="utf-8")
+          for name in ("oaf-8u-extra-wind","oaf-8u-extra-sst","oaf-8u-extra-currents",
+                       "oaf-8u-extra-refresh","oaf-8u-extra-status",
+                       "oaf-8u-extra-wind-table","oaf-8u-extra-ocean-table",
+                       "oaf-8u-extra-current-table"):
+              assert text.count('id="'+name+'"')==1,name
+          assert 'src="modelos/visor_forzantes_8u.js"' in text
+          assert 'FASE_8U_VIENTO_TSM_CORRIENTES.md' in text
+          print("Complemento 8U: idempotente y montado")
+          PY
       - name: Guardar NOAA fuente original, resultados y su estado
         run: |
           git config user.name "github-actions[bot]"
