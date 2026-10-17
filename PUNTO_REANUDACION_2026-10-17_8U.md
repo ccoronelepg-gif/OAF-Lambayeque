@@ -45,3 +45,17 @@ Objetivo vigente: anticipar anomalías agroclimáticas, El Niño Costero y event
 5. Para arándano/vid, exigir incidencia real de enfermedad, cultivo/fenología y microclima antes de modelos de riesgos fitosanitarios operativos.
 
 El usuario prefiere avanzar implementando realmente en GitHub sin preguntas ni ejercicios.
+
+## Anexo verificable 8U: vientos mar abierto, corrientes históricas 2017–2025 y SST
+
+Se amplió en el mismo repositorio el análisis usando **tres archivos históricos ERA5 de 1996–2025 para seis ubicaciones de viento** (Chiclayo, Jayanca, Motupe, Olmos y dos puntos marinos offshore), correspondientes a **2.160 meses de viento** con centros de píxel y SHA originales. Medias 10m modeladas (m/s): Chiclayo **3,138**; Jayanca **2,410**; Motupe **1,890**; Olmos **1,393**; mar oeste de Pimentel **4,994**; mar norte Lambayeque **5,134**. Las componentes aproximadas u/v de viento se construyen con velocidad media diaria y dirección dominante meteorológica **FROM**, no con corrientes marinas.
+
+Se extrajo de la misma fuente NOAA CPC de 8T **SST absoluta y anomalía mensual de Niño1+2 y Niño3.4 para 360 meses** (1996–2025). **No es temperatura medida directamente en la costa ni ICEN/ENFEN.** Otra vía piloto NOAA OISST por celdas frente a costa tenía archivos parciales y 511 días faltantes en una década: **no publicar como climatología costera completa** sin QA.
+
+Se añadió una nueva fuente oceánica histórica **NOAA/AOML CoastWatch `miamicurrents`**, explícitamente **geostrófica (no corriente marina total)**, cuyo catálogo solo permite desde julio de 2016. Se recuperaron con SHA de fuente original **4 subconjuntos: 2 ubicaciones offshore × bloques 2017–2020 y 2021–2025**, total **6.574 valores día-punto, 3.287 días por punto, 108 meses por ubicación y 216 meses-punto**. Valores medios modelados u/v (m/s): oeste Pimentel **−0,0480/+0,0908**, mar norte Lambayeque **+0,0668/+0,0120**. No se puede extrapolar como corriente de Humboldt total ni historia 1996–2025.
+
+Se alinearon luego los **108 meses comunes 2017–2025** por ubicación entre vientos ERA5, corrientes geostróficas AOML y anomalía SST Niño1+2 `t-2` para correlaciones **solo descriptivas** tras descontar el ciclo estacional 2017–2025. Correlación viento-u con corriente-u: oeste Pimentel **r=0,25820**, norte **r=0,04878**. SST t-2 con corriente u: oeste **−0,08923**, norte **+0,00582**; correlaciones no uniformes, no predictivas, normales descriptivas con conocimiento ex post. No se estimaron influencias causales ni alertas Niño Costero.
+
+Artefactos reales: `modelos/vientos_atmosfericos_8u.py`, `modelos/oceanografia_fuentes_8u.py`, `modelos/corrientes_geostroficas_8u.py`, `modelos/relaciones_oceano_viento_8u.py`, sus cuatro juegos de tests/workflows, carpetas `datos/meteorologia_8u/`, `datos/oceanografia_8u/`, `datos/corrientes_8u/`, `datos/relaciones_fisicas_8u/`, informe complementario `FASE_8U_VIENTO_TSM_CORRIENTES.md`. Portal `#verificaciones`, complemento dentro de `#oaf-factors-8u`, `modelos/visor_forzantes_8u.js`.
+
+Fuentes pendientes para extender corrientes a 1996–2025: **NASA OSCAR v2 final** y **Copernicus Marine**, que requieren acceso y extracción verificable de NetCDF por píxel marino y fecha, sin inventar serie. La fase predictiva futura (8V) debe comprobar con evidencia independiente lluvia/extremos y capacidad añadida de viento/SST/corrientes vs persistencia, reservando cortes de entrenamiento/validación/test; **no usar normales 2017–2025 con fuga temporal**.
