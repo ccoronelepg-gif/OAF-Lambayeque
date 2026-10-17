@@ -1,0 +1,63 @@
+/* UX-2/3 OAF · lectura agrícola visual, sin cambiar visores científicos */
+.oaf-home-shell{display:grid;gap:19px}
+.oaf-home-shell>.oaf-home-module{margin:0}
+.oaf-home-module{background:#fff;border:1px solid #dfebe5;box-shadow:0 6px 24px #194d3a0a}
+.oaf-home-module h2{color:#174d45;font-size:clamp(20px,2.25vw,27px);line-height:1.24;margin:4px 0 10px}
+.oaf-home-module h3{color:#214e46;line-height:1.35}
+.oaf-hero-2026{background:linear-gradient(125deg,#123f3e,#236b5c 72%,#3a7f65);box-shadow:0 14px 30px #143e3322}
+.oaf-hero-2026 .oaf-hero-tagline{color:#d6efe1}
+.oaf-home-intro{font-size:14px;line-height:1.7;color:#587469;margin-top:5px;max-width:780px}
+.oaf-zone-main{background:linear-gradient(115deg,#f0f8f1,#ffffff);border:1px solid #cedfd6}
+.oaf-location-panel{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between}
+.oaf-zone-main .oaf-home-controls{display:flex;align-items:center}
+.oaf-zone-main .oaf-location-control select{min-height:45px;padding:9px 12px;font-size:15px;border-radius:11px;min-width:182px;color:#1e6051}
+.oaf-home-metrics .oaf-metric{border-left-color:#317e66;background:#fbfdfb;min-height:156px}
+.oaf-metric .oaf-metric-meta{font-size:11px;color:#52756d;line-height:1.6;display:block;border-top:1px solid #e2ece6;padding-top:8px;margin-top:10px}
+.oaf-home-metrics .oaf-metric-air{grid-column:span 2;background:#f5fafc}
+.oaf-home-interpretation{background:#f5faf6}
+.oaf-home-interpretation>h3{font-size:19px}
+.oaf-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.oaf-quick-card{padding:20px;border:1px solid #dce9df;border-radius:17px;background:#fbfdfb;display:flex;flex-direction:column;gap:9px}
+.oaf-quick-card h3{font-size:19px;margin:0}
+.oaf-quick-card p{font-size:13px;color:#59736b;line-height:1.67;margin:0}
+.oaf-quick-card>a,.oaf-quick-card .oaf-btn-link{margin-top:auto;font-size:13px;font-weight:800;color:#176952}
+.oaf-quick-status{padding:7px 10px;border-radius:8px;background:#f9f3e6;color:#745826;font-size:12px;align-self:flex-start;font-weight:750}
+.oaf-quick-status[data-status="pending"]{background:#fbeeee;color:#9a4945}
+.oaf-quick-status[data-status="model"]{background:#e6f2fb;color:#215d87}
+.oaf-enfen-card{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.oaf-enfen-card p{max-width:780px}
+.oaf-info-guard{padding:13px 16px;margin:12px 0 0;border:1px solid #eadfc5;border-left:3px solid #c5a15c;background:#fffaf0;border-radius:10px;font-size:12px!important;line-height:1.7!important;color:#685b3f!important}
+.oaf-map-home .oaf-map-frame{background:#fafdfa;overflow:hidden}
+.oaf-map-home .oaf-map-controls{margin:10px 0}
+.oaf-map-home .oaf-map-key{margin-top:8px}
+.oaf-map-focus{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13px;color:#31584f;background:#eaf5ed;padding:11px 14px;border-radius:11px}
+.oaf-map-focus strong{color:#145f50}
+.oaf-home-module .oaf-quick-footer{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
+.oaf-home-module .oaf-quick-footer a{font-size:13px;font-weight:750}
+.oaf-forecast-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.oaf-forecast-card{background:#f8fbf9;padding:17px;border-radius:14px;border:1px solid #dce8e0;min-width:0}
+.oaf-forecast-card h3{margin:0 0 5px;font-size:16px}
+.oaf-forecast-card svg{display:block;width:100%;max-height:230px;margin:8px auto}
+.oaf-forecast-card .oaf-figure-caption{margin:6px 0!important}
+.oaf-forecast-card .oaf-forecast-meta{font-size:12px;line-height:1.6;color:#5b766f}
+.oaf-scheme-steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;align-items:stretch}
+.oaf-scheme-step{background:#f1f8f3;border:1px solid #d5e6db;border-radius:11px;padding:14px 8px;text-align:center;display:grid;gap:6px;align-content:center}
+.oaf-scheme-step strong{font-size:12px;color:#225c4d;line-height:1.5}.oaf-scheme-step small{font-size:11px;color:#6a8074}
+.oaf-scheme-step+.oaf-scheme-step:before{content:"→";font-size:15px;color:#789b80;display:block}
+.oaf-source-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.oaf-source-card{border:1px solid #dce8e0;border-radius:12px;padding:14px;background:#f8fbf9;text-decoration:none;display:grid;gap:5px}
+.oaf-source-card strong{font-size:14px;color:#175746}.oaf-source-card span{font-size:12px;line-height:1.6;color:#637b72}
+.oaf-home-news{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.oaf-home-news article{padding:17px;border:1px solid #dde9e4;border-radius:13px;background:#f8fbf9}
+.oaf-home-news article>small{color:#527d6e;font-weight:700;display:block}
+.oaf-home-news article>strong{display:block;color:#235e51;font-size:17px;margin:6px 0}
+.oaf-home-news article>p{font-size:12px;line-height:1.65;color:#637872}
+.oaf-anomaly-scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;margin-top:10px}
+.oaf-anomaly-scale span{text-align:center;padding:9px 4px;font-weight:700;font-size:11px;background:#edf3f0;color:#5a766d;border-radius:6px}
+.oaf-anomaly-scale span:nth-child(1){background:#dce9f5;color:#2a5374}.oaf-anomaly-scale span:nth-child(2){background:#eaf1f5;color:#486678}
+.oaf-anomaly-scale span:nth-child(4){background:#f4eddb;color:#896a2e}.oaf-anomaly-scale span:nth-child(5){background:#f5e0d6;color:#9c5340}
+.oaf-home-credits{font-size:12px;line-height:1.65;color:#6a8078}
+.oaf-hero-2026 .heroimg img{object-position:center}
+@media(max-width:920px){.oaf-source-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.oaf-scheme-steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){.oaf-quick-grid,.oaf-forecast-grid,.oaf-home-news{grid-template-columns:1fr}.oaf-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-scheme-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-quick-card{padding:16px}.oaf-enfen-card{grid-template-columns:1fr}.oaf-forecast-card{padding:12px}.oaf-hero-2026 .herotxt{padding:25px 21px}}
+@media(max-width:430px){.oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-home-metrics .oaf-metric{min-height:142px;padding:12px}.oaf-home-metrics .oaf-metric strong{font-size:20px}.oaf-home-metrics .oaf-metric small{font-size:12px}.oaf-source-grid{grid-template-columns:1fr}.oaf-quick-card{min-height:auto}}
