@@ -1,0 +1,17 @@
+{
+  "fase": "8X",
+  "analisis": "diagnostico_temporal_extremos_retrospectivo",
+  "anios_prueba_diagnosticados": [
+    2017,
+    2023
+  ],
+  "evento_1997_1998_no_tiene_holdout_en_8w": true,
+  "eventos_2017_2023_son_subgrupos_de_la_misma_prueba_8w": true,
+  "validacion_instrumental_SENAMHI": false,
+  "prediccion_operativa": false,
+  "n_grupos_mae_estacional": 480,
+  "periodo_historico_incorporado_a_modelo": "1996-2025",
+  "n_celdas_homogeneas_certificadas": 0,
+  "interpretacion": "Analisis de errores retrospectivos en anos/eventos conocidos; no demuestra anticipacion de extremos no vistos.",
+  "archivo_csv": "error_extremos_2017_2023_8x.csv"
+}
