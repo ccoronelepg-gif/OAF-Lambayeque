@@ -201,6 +201,26 @@ def silhouette(vec,clusters):
         scores.append((b-a)/max(a,b) if max(a,b)>0 else 0)
     return statistics.mean(scores)
 
+def adjusted_rand(full,other):
+    """ARI de contingencia entre particiones; 1 equivale a identidad."""
+    if len(full)!=len(other):raise ValueError("Comparación ARI de distinta longitud")
+    n=len(full)
+    if n<2:return None
+    def c2(x):return x*(x-1)/2
+    row={}
+    col={}
+    cont={}
+    for a,b in zip(full,other):
+        row[a]=row.get(a,0)+1
+        col[b]=col.get(b,0)+1
+        cont[(a,b)]=cont.get((a,b),0)+1
+    obs=sum(c2(v) for v in cont.values())
+    sumsA=sum(c2(v) for v in row.values())
+    sumsB=sum(c2(v) for v in col.values())
+    expected=sumsA*sumsB/c2(n)
+    maximum=(sumsA+sumsB)/2
+    return 1.0 if abs(maximum-expected)<1e-12 else (obs-expected)/(maximum-expected)
+
 def csv_text(rows,cols):
     b=io.StringIO(newline="")
     w=csv.DictWriter(b,fieldnames=cols,lineterminator="\n")
@@ -295,11 +315,59 @@ def build(root):
     out["estado"]="núcleos_de_similitud_multivariable_exploratorios"
     out["n_testigos_con_perfil_30anios"]=len(selected)
     out["n_grupos_similitud_exploratorios"]=k
+    # Más homogéneo significa menor distancia climática interna entre
+    # testigos, no un polígono operativo ni continuidad geográfica demostrada.
+    ranking=[]
+    for index,group in enumerate(groups,1):
+        pairs=[math.sqrt(sum((x-y)**2 for x,y in zip(vectors[i],vectors[j]))/len(vectors[i]))
+                for a,i in enumerate(group) for j in group[a+1:]]
+        positions=[selected[j] for j in group]
+        geographic=[6371.0088*2*math.asin(min(1.0,math.sqrt(
+            math.sin((p["latitud"]-q["latitud"])*math.pi/360)**2+
+            math.cos(p["latitud"]*math.pi/180)*math.cos(q["latitud"]*math.pi/180)*
+            math.sin((p["longitud"]-q["longitud"])*math.pi/360)**2)))
+            for a,p in enumerate(positions) for q in positions[a+1:]]
+        ranking.append({"grupo":f"C{index}","n_testigos":len(group),
+            "distancia_climatica_interna_media":round(statistics.mean(pairs),5),
+            "distancia_climatica_interna_maxima":round(max(pairs),5),
+            "diametro_geografico_testigos_km":round(max(geographic),3),
+            "rango_altitudinal_testigos_m":round(max(p["altitud_dem_m"] for p in positions)-
+                                               min(p["altitud_dem_m"] for p in positions),1),
+            "poligono_homogeneo_demostrado":False})
+    ranking.sort(key=lambda g:(g["distancia_climatica_interna_media"],g["grupo"]))
+    # Estabilidad exploratoria al reagrupar por tres décadas de diez años,
+    # comparada por ARI con la partición completa 1996–2025.
+    full_part=[next(i for i,g in enumerate(groups) if t in g) for t in range(len(ids))]
+    decade_ari={}
+    for start,end in BLOCKS:
+        vdec=[]
+        for pid in ids:
+            vector=[]
+            for feat in FEATS:
+                for mon in range(1,13):
+                    vals=[profile for (loc,month),profile in profiles.items()
+                        if loc==pid and start<=int(month[:4])<=end and int(month[-2:])==mon]
+                    if len(vals)!=10:raise ValueError("Década incompleta para estabilidad climática")
+                    if feat=="tmedia_c":v=statistics.mean(z["temperature_2m_mean"] for z in vals)
+                    elif feat=="amplitud_termica_c":v=statistics.mean(
+                           z["temperature_2m_max"]-z["temperature_2m_min"] for z in vals)
+                    elif feat=="precipitacion_mm":v=statistics.mean(z["precipitation_sum"] for z in vals)
+                    elif feat=="humedad_relativa_pct":v=statistics.mean(z["relative_humidity_2m_mean"] for z in vals)
+                    else:v=statistics.mean(z["shortwave_radiation_sum"] for z in vals)
+                    vector.append(round((v-scaling[feat][0])/scaling[feat][1],8))
+            vdec.append(vector)
+        groups_dec=agglomerate(vdec,k)
+        partition_dec=[next(i for i,g in enumerate(groups_dec) if t in g) for t in range(len(ids))]
+        decade_ari[str(start)+"-"+str(end)]=round(adjusted_rand(full_part,partition_dec),5)
     out["analisis"]={
       "metodo":"agglomerative average-linkage; normal 1996-2025; variables escaladas",
       "k_seleccionado":k,"coeficiente_silueta":round(quality,5),
       "grupos":[{"nombre":f"C{i+1}","n_testigos":len(group),
                  "ids":[ids[p] for p in group]} for i,group in enumerate(groups)],
+      "ranking_cohesion_climatica_no_zonas":ranking,
+      "ari_temporal_comparado_con_periodo_completo":decade_ari,
+      "estabilidad_temporal_exploratoria_evaluada":True,
+      "estabilidad_espacial_y_contigüidad_certificadas":False,
       "estabilidad_temporal_y_espacial_evaluada":False,
       "poligonos_homogeneos_certificados":False
     }
