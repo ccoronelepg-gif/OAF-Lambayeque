@@ -1,0 +1,158 @@
+{
+  "fase": "8Q",
+  "estado": "transectos_dem_con_clima_historico_pendiente",
+  "segmentos_originales_ex_ante": 3,
+  "testigos_intermedios_dem_seleccionados": 10,
+  "n_muestras_previas_8p": 1,
+  "fuentes_climaticas_verificadas": 1,
+  "fuentes_climaticas_previstas": 6,
+  "n_testigos_intermedios_30_anios_completos": 0,
+  "periodo": "1996–2025",
+  "transectos": [
+    {
+      "transecto": "V1a",
+      "inicio": "M0163",
+      "fin": "M0224",
+      "distancia_entre_extremos_km": 17.714,
+      "altitud_extremo_inicio_m": 521.0,
+      "altitud_extremo_fin_m": 307.0,
+      "numero_nodos_intermedios_dem": 4,
+      "muestras": [
+        {
+          "fraccion_objetivo": 0.2,
+          "id": "M0179",
+          "altitud_dem_m": 611.0,
+          "desviacion_alt_lineal_m": 132.8
+        },
+        {
+          "fraccion_objetivo": 0.4,
+          "id": "M0184",
+          "altitud_dem_m": 212.0,
+          "desviacion_alt_lineal_m": -223.4
+        },
+        {
+          "fraccion_objetivo": 0.6,
+          "id": "M0202",
+          "altitud_dem_m": 696.0,
+          "desviacion_alt_lineal_m": 303.4
+        },
+        {
+          "fraccion_objetivo": 0.8,
+          "id": "M0206",
+          "altitud_dem_m": 1120.0,
+          "desviacion_alt_lineal_m": 770.2
+        }
+      ],
+      "altitud_maxima_muestra_intermedia_m": 1120.0,
+      "altitud_minima_muestra_intermedia_m": 212.0,
+      "continuidad_climatica_demostrada": false,
+      "distancia_objetivo_interpolada_no_camino_real": true
+    },
+    {
+      "transecto": "V1b",
+      "inicio": "M0184",
+      "fin": "M0224",
+      "distancia_entre_extremos_km": 10.982,
+      "altitud_extremo_inicio_m": 212.0,
+      "altitud_extremo_fin_m": 307.0,
+      "numero_nodos_intermedios_dem": 2,
+      "muestras": [
+        {
+          "fraccion_objetivo": 0.2,
+          "id": "M0203",
+          "altitud_dem_m": 526.0,
+          "desviacion_alt_lineal_m": 295.0
+        },
+        {
+          "fraccion_objetivo": 0.6,
+          "id": "M0205",
+          "altitud_dem_m": 271.0,
+          "desviacion_alt_lineal_m": 2.0
+        }
+      ],
+      "altitud_maxima_muestra_intermedia_m": 526.0,
+      "altitud_minima_muestra_intermedia_m": 271.0,
+      "continuidad_climatica_demostrada": false,
+      "distancia_objetivo_interpolada_no_camino_real": true
+    },
+    {
+      "transecto": "V2",
+      "inicio": "M0234",
+      "fin": "M0308",
+      "distancia_entre_extremos_km": 17.714,
+      "altitud_extremo_inicio_m": 2978.0,
+      "altitud_extremo_fin_m": 3236.0,
+      "numero_nodos_intermedios_dem": 4,
+      "muestras": [
+        {
+          "fraccion_objetivo": 0.2,
+          "id": "M0253",
+          "altitud_dem_m": 2186.0,
+          "desviacion_alt_lineal_m": -843.6
+        },
+        {
+          "fraccion_objetivo": 0.4,
+          "id": "M0262",
+          "altitud_dem_m": 2717.0,
+          "desviacion_alt_lineal_m": -364.2
+        },
+        {
+          "fraccion_objetivo": 0.6,
+          "id": "M0281",
+          "altitud_dem_m": 3839.0,
+          "desviacion_alt_lineal_m": 706.2
+        },
+        {
+          "fraccion_objetivo": 0.8,
+          "id": "M0290",
+          "altitud_dem_m": 3546.0,
+          "desviacion_alt_lineal_m": 361.6
+        }
+      ],
+      "altitud_maxima_muestra_intermedia_m": 3839.0,
+      "altitud_minima_muestra_intermedia_m": 2186.0,
+      "continuidad_climatica_demostrada": false,
+      "distancia_objetivo_interpolada_no_camino_real": true
+    }
+  ],
+  "zonas_contiguas_homogeneas_demostradas": 0,
+  "poligonos_agroclimaticos_certificados": 0,
+  "instrumentos_SENAMHI_confirmados": 0,
+  "modelo_predictivo_zonal_validado": false,
+  "mascara_tierra_agua_y_limite_oficial_confirmados": false,
+  "laderas_orientacion_cuencas_verificadas": false,
+  "elevaciones_es_dem_modelado_no_sensor": true,
+  "diferencias_fisicas_no_prueban_diferencias_climaticas": true,
+  "interpolacion_de_coordenadas_no_es_ruta_topografica": true,
+  "todas_las_zonas_homogeneas_pendientes": true,
+  "advertencias": [
+    "Transectos lineales son muestreo ex ante, no perfiles continuos del terreno.",
+    "Elevaciones del DEM evidencian heterogeneidad física; la altitud de un punto no permite inferir clima en otro.",
+    "El mismo centro ERA5-Land o ERA5 puede repetirse entre puntos intermedios. Debe verificarse antes de inferir independencia.",
+    "Sin cartografía oficial, máscara de mar, orientación de laderas y cuencas no se delimitan polígonos agrícolas.",
+    "Datos de reanálisis no sustituyen observaciones instrumentales SENAMHI ni campo, ni respaldan alertas operativas."
+  ],
+  "proveniencia": {
+    "dem_csv_sha256": "42a1b32e4221c9401a1c4d003fa4ff90e2290a4870aed8feb0f7bfe65da819fd",
+    "segmentos": [
+      [
+        "V1a",
+        "M0163",
+        "M0224"
+      ],
+      [
+        "V1b",
+        "M0184",
+        "M0224"
+      ],
+      [
+        "V2",
+        "M0234",
+        "M0308"
+      ]
+    ],
+    "fuentes_SHA_original": {
+      "era5_land_1996_2005": "8a682dde46b6ee64b5f39ff30561d00cb0631d742dc54dd244c89dc9d9f176c6"
+    }
+  }
+}
