@@ -90,6 +90,13 @@ class IntegrationTest(unittest.TestCase):
         self.save()
         self.assertEqual(m.build(self.root)['meses_corriente_geostrofica_integrados'], 215)
 
+    def test_lluvia_extrema_modelada_se_conserva_sin_validar(self):
+        self.rows['clima'][0]['precipitacion_mm'] = 2913.8
+        self.save()
+        state = m.build(self.root)
+        self.assertEqual(state['meses_sitio_lluvia_modelada_ge_1000_mm_revision'], 1)
+        self.assertEqual(state['registro_max_lluvia_modelada']['precipitacion_mes_mm'], 2913.8)
+
     def test_indice_noaa_duplicado(self):
         self.rows['sst'].append(self.rows['sst'][0].copy())
         self.save()
