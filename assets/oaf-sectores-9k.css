@@ -15,3 +15,9 @@
 .oaf-9k-key i{display:inline-block;width:11px;height:11px;border-radius:3px}
 #oaf-9k-detail{padding:13px 16px;border:1px solid #d3e7de;border-radius:12px;background:#f4f9f7}
 @media(max-width:680px){.oaf-9k-controls{display:block}.oaf-9k-controls select{width:100%}.oaf-9k-check{margin-top:10px}}
+
+.oaf-9k-nmme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.oaf-9k-nmme-grid article{border:1px solid #dbe9e3;background:#f3f8f6;border-radius:13px;padding:15px}
+.oaf-9k-nmme-grid article small,.oaf-9k-nmme-grid article span{display:block;color:#56777b;font-size:12px}
+.oaf-9k-nmme-grid article strong{font-size:21px;display:block;color:#103842}
+@media(max-width:680px){.oaf-9k-nmme-grid{grid-template-columns:1fr}}
