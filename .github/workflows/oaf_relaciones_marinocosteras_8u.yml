@@ -1,0 +1,47 @@
+name: OAF 8U - Relaciones viento SST corrientes
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/relaciones_oceano_viento_8u.py'
+      - 'tests/test_relaciones_oceano_viento_8u.py'
+      - '.github/workflows/oaf_relaciones_marinocosteras_8u.yml'
+  schedule:
+    - cron: '08 20 15 * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8u-coastal-associations
+  cancel-in-progress: false
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar datos reales
+        run: git pull --ff-only origin main
+      - name: Probar 108 meses y anomalias locales no prospectivas
+        run: python -m unittest discover -s tests -p 'test_relaciones_oceano_viento_8u.py' -v
+      - name: Recalcular correlaciones de SST viento y corrientes
+        run: |
+          python modelos/relaciones_oceano_viento_8u.py
+          python modelos/relaciones_oceano_viento_8u.py --check
+      - name: Guardar estimaciones descriptivas con SHA original
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/relaciones_fisicas_8u/
+          if git diff --cached --quiet; then
+            echo "Relaciones fisicas 8U sin cambios"
+          else
+            git commit -m "data(oaf): relaciones no causales SST viento corrientes con 108 meses por punto"
+            git pull --rebase origin main
+            git push
+          fi
