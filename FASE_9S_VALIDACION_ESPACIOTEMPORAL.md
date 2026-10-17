@@ -1,5 +1,8 @@
 # Fase 9S — Protocolo de validación espacial y temporal (17/10/2026)
 
+> **Actualización verificable 9W (17/10/2026):** este texto registra el estado previo de búsqueda o de diseño metodológico y **ya no describe la disponibilidad actual de datos**. Existen 360 meses CHIRPS v3 final en 9O+9P+9Q, predicciones GCN y Random Forest realmente ejecutadas en 9R, y una segunda ejecución RF 9T/selección 9U sobre 39 sectores con enlace de procedencia comprobado en [FASE_9W_RECONCILIACION_PREDICTIVA.md](FASE_9W_RECONCILIACION_PREDICTIVA.md). El mejor MAE observado en 9R es de la climatología, no de IA. Estos ensayos son **retrospectivos y NO constituyen habilidad operativa validada**. Conservar las recomendaciones de validación espacial como tareas pendientes.
+
+
 ## Estado
 **Diseño metodológico documentado; experimentos NO ejecutados en esta fase.**
 No declarar vencedor GCN o Random Forest, porcentajes de acierto, mapas de habilidad ni alertas sin archivos de predicción y observación reproducibles.
