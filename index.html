@@ -560,6 +560,11 @@ details.panel{scroll-margin-top:120px}
 <p id="oaf-9m-visible" class="small">La capa muestra únicamente las geometrías descargadas y auditadas.</p>
 <p id="oaf-9m-detail">Selecciona un polígono para conocer la orientación del relieve y la fracción de píxeles compatibles.</p>
 <div class="scroller"><table><thead><tr><th>Sector</th><th>Piso</th><th>Orientación</th><th>Píxeles compatibles</th><th>Cobertura de tesela</th></tr></thead><tbody id="oaf-9m-table"></tbody></table></div>
+<h3>Agrupaciones de sectores por piso y unidad hidrográfica</h3>
+<p class="oaf-figure-caption">Estos grupos reúnen porciones cartográficas del mismo piso y código de unidad hidrográfica, sin fusionar fragmentos desconectados. Las familias climáticas C01–C03 conservan sus propios identificadores. Un grupo no equivale a una región agroclimática validada.</p>
+<p id="oaf-9m-group-status" class="small" role="status">Leyendo agrupaciones físicas preliminares…</p>
+<div class="scroller"><table><thead><tr><th>Grupo</th><th>Unidad hidrográfica (capa IDEP)</th><th>Piso</th><th>Sectores origen</th><th>Núcleo climático</th></tr></thead><tbody id="oaf-9m-group-table"></tbody></table></div>
+<div class="links"><a href="datos/sensibilidad_9m/grupos_hidrofisicos_9m.geojson">Agrupaciones exploratorias · GeoJSON ↗</a><a href="datos/sensibilidad_9m/estado_grupos_9m.json">Criterios de agrupación · JSON ↗</a><a href="datos/sensibilidad_9m/grupos_territoriales_9m.csv">Inventario de grupos · CSV ↗</a></div>
 <h3>Contraste con unidades hidrográficas de ANA / IDEP</h3>
 <p id="oaf-9m-catchments" class="small">Comprobando si se recuperó la cartografía institucional de unidades hidrográficas…</p>
 <div class="notice"><strong>Cómo interpretar el mapa:</strong> el análisis topográfico utiliza una tesela del Copernicus GLO-90 y no debe extrapolarse a toda Lambayeque. La orientación describe hacia dónde desciende el terreno, no el viento dominante ni la insolación. Una intersección con una capa hidrográfica no acredita un límite de parcela ni demuestra que las enfermedades de vid o arándano se comporten igual en una cuenca.</div>
