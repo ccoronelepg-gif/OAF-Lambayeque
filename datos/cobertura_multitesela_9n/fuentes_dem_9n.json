@@ -1,0 +1,149 @@
+{
+  "fase": "9N",
+  "organizacion": "AWS Open Data Copernicus DEM GLO-90",
+  "fuente": "https://registry.opendata.aws/copernicus-dem/",
+  "teselas_requeridas": [
+    {
+      "id": "S06W080",
+      "lat": -6,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S06_00_W080_00_DEM/Copernicus_DSM_COG_30_S06_00_W080_00_DEM.tif"
+    },
+    {
+      "id": "S06W081",
+      "lat": -6,
+      "lon": -81,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S06_00_W081_00_DEM/Copernicus_DSM_COG_30_S06_00_W081_00_DEM.tif"
+    },
+    {
+      "id": "S07W080",
+      "lat": -7,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S07_00_W080_00_DEM/Copernicus_DSM_COG_30_S07_00_W080_00_DEM.tif"
+    },
+    {
+      "id": "S07W081",
+      "lat": -7,
+      "lon": -81,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S07_00_W081_00_DEM/Copernicus_DSM_COG_30_S07_00_W081_00_DEM.tif"
+    },
+    {
+      "id": "S08W080",
+      "lat": -8,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S08_00_W080_00_DEM/Copernicus_DSM_COG_30_S08_00_W080_00_DEM.tif"
+    },
+    {
+      "id": "S08W081",
+      "lat": -8,
+      "lon": -81,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S08_00_W081_00_DEM/Copernicus_DSM_COG_30_S08_00_W081_00_DEM.tif"
+    }
+  ],
+  "teselas_que_pudieron_abrirse": [
+    {
+      "id": "S06W080",
+      "lat": -6,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S06_00_W080_00_DEM/Copernicus_DSM_COG_30_S06_00_W080_00_DEM.tif",
+      "ancho": 1200,
+      "alto": 1200,
+      "crs": "EPSG:4326",
+      "bounds": [
+        -80.00041666666667,
+        -5.999583333333334,
+        -79.00041666666667,
+        -4.999583333333334
+      ],
+      "bytes": 5483634,
+      "sha256": "5e6836bc50effc9f2ee5675e4a186634d1f72a455b9aaf364aaf66b3f2f3f8a1",
+      "procedencia": "original_9N_con_SHA",
+      "path": "datos/cobertura_multitesela_9n/fuentes/S06W080.tif"
+    },
+    {
+      "id": "S06W081",
+      "lat": -6,
+      "lon": -81,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S06_00_W081_00_DEM/Copernicus_DSM_COG_30_S06_00_W081_00_DEM.tif",
+      "ancho": 1200,
+      "alto": 1200,
+      "crs": "EPSG:4326",
+      "bounds": [
+        -81.00041666666667,
+        -5.999583333333334,
+        -80.00041666666667,
+        -4.999583333333334
+      ],
+      "bytes": 5226747,
+      "sha256": "abaddc7c5da53c02053babd9cae6574040da632b1510edff17cdfe3e671384b3",
+      "procedencia": "original_9N_con_SHA",
+      "path": "datos/cobertura_multitesela_9n/fuentes/S06W081.tif"
+    },
+    {
+      "id": "S07W080",
+      "lat": -7,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S07_00_W080_00_DEM/Copernicus_DSM_COG_30_S07_00_W080_00_DEM.tif",
+      "ancho": 1200,
+      "alto": 1200,
+      "crs": "EPSG:4326",
+      "bounds": [
+        -80.00041666666667,
+        -6.999583333333334,
+        -79.00041666666667,
+        -5.999583333333334
+      ],
+      "bytes": 5354601,
+      "sha256": "c4d78e481f80927d72886787e422ed02214ffb0d5739e67a25facd2c874f7532",
+      "procedencia": "original_9L_con_SHA",
+      "path": "datos/relieve_9l/fuentes/copernicus_glo90_s07_w080.tif"
+    },
+    {
+      "id": "S07W081",
+      "lat": -7,
+      "lon": -81,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S07_00_W081_00_DEM/Copernicus_DSM_COG_30_S07_00_W081_00_DEM.tif",
+      "ancho": 1200,
+      "alto": 1200,
+      "crs": "EPSG:4326",
+      "bounds": [
+        -81.00041666666667,
+        -6.999583333333334,
+        -80.00041666666667,
+        -5.999583333333334
+      ],
+      "bytes": 2650139,
+      "sha256": "1e7ab571f3d756cb56d9e5f1fb9fb34096c1e6a49e3409c6c3a657e295804f00",
+      "procedencia": "original_9N_con_SHA",
+      "path": "datos/cobertura_multitesela_9n/fuentes/S07W081.tif"
+    },
+    {
+      "id": "S08W080",
+      "lat": -8,
+      "lon": -80,
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S08_00_W080_00_DEM/Copernicus_DSM_COG_30_S08_00_W080_00_DEM.tif",
+      "ancho": 1200,
+      "alto": 1200,
+      "crs": "EPSG:4326",
+      "bounds": [
+        -80.00041666666667,
+        -7.999583333333334,
+        -79.00041666666667,
+        -6.999583333333334
+      ],
+      "bytes": 2968545,
+      "sha256": "221d8988f5c3b9969c8b91be9845baa532bf7eb9d886ab92212288ad708918ae",
+      "procedencia": "original_9N_con_SHA",
+      "path": "datos/cobertura_multitesela_9n/fuentes/S08W080.tif"
+    }
+  ],
+  "teselas_que_no_pudieron_comprobarse": [
+    {
+      "id": "S08W081",
+      "url": "https://copernicus-dem-90m.s3.amazonaws.com/Copernicus_DSM_COG_30_S08_00_W081_00_DEM/Copernicus_DSM_COG_30_S08_00_W081_00_DEM.tif",
+      "razon": "HTTPError: HTTP Error 404: Not Found",
+      "no_inferir_elevacion_cero": true
+    }
+  ],
+  "nota": "Los GeoTIFF originales se conservan íntegros con SHA-256, sin reemplazar los originales 9L."
+}

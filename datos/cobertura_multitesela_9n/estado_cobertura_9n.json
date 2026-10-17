@@ -1,0 +1,124 @@
+{
+  "fase": "9N",
+  "corte_peru": "2026-10-17",
+  "proposito": "Completar cobertura GLO90 por teselas sin imputación falsa",
+  "n_sectores_9k": 42,
+  "n_sectores_cobertura_completa": 42,
+  "n_sectores_cobertura_parcial": 0,
+  "n_sectores_sin_dem": 0,
+  "n_sectores_evaluables": 42,
+  "n_geometrias_filtro": 42,
+  "cobertura_por_estado": {
+    "completa": 42
+  },
+  "teselas_necesarias": 6,
+  "teselas_archivadas_validas": 5,
+  "teselas_no_disponibles": 1,
+  "sectores_con_algun_fragmento_en_tesela_no_disponible": [],
+  "n_sectores_con_tesela_ausente_en_limite": 0,
+  "criterio_cobertura_completa_fraccion_min": 0.995,
+  "n_teselas_nuevas_validas": 4,
+  "n_teselas_reutilizadas_9L": 1,
+  "resoluciones_de_evaluacion_aprox_m": [
+    270,
+    450
+  ],
+  "umbrales_pendiente_grados": [
+    20,
+    30,
+    40
+  ],
+  "mediana_diferencia_30grados_resoluciones": 0.01459,
+  "max_diferencia_30grados_resoluciones": 0.17957,
+  "comparacion_9M": {
+    "n_sectores_evaluables_previamente": 35,
+    "n_sectores_cobertura_completa_previamente": 26
+  },
+  "cuencas_ana_oficialmente_ratificadas": 0,
+  "n_zonas_agroclimaticas_homogeneas_validadas": 0,
+  "ajuste_altitudinal_nmme_validado": false,
+  "alertas_fitosanitarias_derivadas": false,
+  "estado_fuentedem": "parcial_si_hay_teselas_ausentes",
+  "fragmentos_sensibles": [
+    {
+      "sector": "S019",
+      "diferencia": 0.17957,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S018",
+      "diferencia": 0.09505,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S022",
+      "diferencia": 0.06955,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S016",
+      "diferencia": 0.06209,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S015",
+      "diferencia": 0.05143,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S020",
+      "diferencia": 0.05035,
+      "piso": "montana_media",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S027",
+      "diferencia": 0.04452,
+      "piso": "piedemonte",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S025",
+      "diferencia": 0.03892,
+      "piso": "piedemonte",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S024",
+      "diferencia": 0.03598,
+      "piso": "piedemonte",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S014",
+      "diferencia": 0.03359,
+      "piso": "montana_baja",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S034",
+      "diferencia": 0.03062,
+      "piso": "piedemonte",
+      "cobertura": "completa"
+    },
+    {
+      "sector": "S028",
+      "diferencia": 0.02451,
+      "piso": "piedemonte",
+      "cobertura": "completa"
+    }
+  ],
+  "advertencias": [
+    "Teselas faltantes o zonas oceánicas sin teselas DEM son valores desconocidos, no cota cero.",
+    "El DEM GLO90 es un DSM; la pendiente estimada no es de terreno desnudo ni determina cultivos.",
+    "La agregación 270/450m y los límites 20/30/40° son pruebas metodológicas, no umbrales agronómicos.",
+    "Una cobertura geométrica completa no equivale a cobertura de estaciones ni microclima validado.",
+    "La comparación con 9M varía ligeramente al leer ventanas con márgenes de pendiente diferentes.",
+    "No se extrapola una señal NOAA NMME 1° a sectores de montaña."
+  ]
+}
