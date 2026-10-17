@@ -4,8 +4,8 @@
 const details=document.getElementById("oaf-factors-8u");
 if(!details)return;
 const $=id=>document.getElementById(id);
-const marine=$("oaf-8u-marine"),assoc=$("oaf-8u-association"),text=$("oaf-8u-marine-status");
-if(!marine||!assoc||!text)return;
+const marine=$("oaf-8u-marine"),text=$("oaf-8u-marine-status");
+if(!marine||!text)return;
 const fmt=v=>typeof v==="number"&&Number.isFinite(v)?
  v.toLocaleString("es-PE",{maximumFractionDigits:3}):"—";
 function write(table,values){
@@ -16,14 +16,11 @@ function write(table,values){
  table.append(tr);
 }
 async function load(){
- marine.replaceChildren();assoc.replaceChildren();
+ marine.replaceChildren();
  text.textContent="Comprobando procedencia y cobertura de las fuentes marinas…";
  const result=await Promise.allSettled([
   fetch("datos/marino_8u/estado_marino_8u.json",{cache:"no-store"}).then(r=>{
    if(!r.ok)throw Error("Sin archivo marino auditado");return r.json();
-  }),
-  fetch("datos/viento_8u/correlaciones_viento_sst_8u.json",{cache:"no-store"}).then(r=>{
-   if(!r.ok)throw Error("Sin cruce climático auditado");return r.json();
   })]);
  const remarks=[];
  if(result[0].status==="fulfilled"){
@@ -43,18 +40,6 @@ async function load(){
        " (72 horas, NO 30 años ni boyas reales).");
   }else remarks.push("La fuente marina disponible no supera los controles de interpretación.");
  }else remarks.push("Aún no hay pronóstico marino modelado validado.");
- if(result[1].status==="fulfilled"){
-  const data=result[1].value;
-  if(data.fase==="8U"&&data.correlaciones_no_son_pronosticos===true&&
-    data.corrientes_marinas_no_estimadas_en_cruce===true&&data.correlaciones?.length===4){
-    for(const p of data.correlaciones){
-      write(assoc,[p.localidad,p.n_meses_emparejados,
-       fmt(p.correlacion_anomalia_viento_sst_nino12_rezago_2),
-       fmt(p.correlacion_anomalia_zonal_sst_nino12_rezago_2)]);
-    }
-    remarks.push("Correlaciones viento–Niño1+2: asociación descriptiva, no causal ni predictiva.");
-  }else remarks.push("Las correlaciones no cumplen los controles de 8U.");
- }else remarks.push("Sin correlaciones históricas contrastadas.");
  text.textContent=remarks.join(" ");
 }
 $("oaf-8u-marine-refresh")?.addEventListener("click",load);
