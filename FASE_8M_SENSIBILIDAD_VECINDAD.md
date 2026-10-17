@@ -34,24 +34,27 @@ La distancia métrica real de 0,05° depende de la dirección y la latitud. Se c
 
 **Diseño previsto:** 4 localidades × 9 posiciones = **36 puntos**. Para cada posición se requieren 360 meses completos de 1996–2025. La comparación vecino–centro produce, si todas las fuentes están disponibles, **11.520 pares mensuales** (4 × 8 × 360), además de 1.440 meses base de los centros.
 
-## Resultados instrumentados al primer corte (16/10/2026)
+## Resultados completos del estudio 1996–2025 (última actualización: 16/10/2026)
 
-La API limitó temporalmente nuevas consultas con HTTP 429. Por ello, la adquisición se reparte en **un máximo de dos bloques decenales por ejecución programada** y el resumen regional se mantiene pendiente hasta contar con los 12 bloques de las cuatro localidades.
+La ejecución de los lotes pendientes recuperó y verificó las **12 respuestas históricas completas**: cuatro localidades, nueve puntos por localidad y tres décadas por punto. Se archivaron los JSON originales comprimidos, URL de consulta, sello UTC y SHA-256. Las pruebas automatizadas y la comparación con la serie central histórica de 8L aprobaron. El estado regional `resultados_disponibles=true` equivale a **completitud de los datos del experimento**, NO a validación de habilidad predictiva ni instrumental.
 
-Ya se obtuvieron seis bloques íntegros, equivalentes a **360 meses completos en Chiclayo y Jayanca**. La comparación produce **18 puntos y 5.760 pares mensuales vecino–centro**; **Motupe y Olmos siguen pendientes**.
+Se obtuvieron **36 puntos con 360 meses completos cada uno** y **11.520 comparaciones mensuales vecino–centro** (cuatro localidades × ocho direcciones × 360 meses). Cada localidad cuenta con 2.880 pares.
 
-| Indicador descriptivo de reanálisis | Chiclayo | Jayanca |
-|---|---:|---:|
-| Vecinos con otro píxel de Open-Meteo | 5/8 | 5/8 |
-| Mayor MAE de Tmedia vecino–centro por rumbo | 0,59889 °C | 0,63055 °C |
-| Máxima diferencia absoluta mensual | 1,12333 °C | 1,47500 °C |
-| Mayor MAE de diferencias de anomalía por rumbo | 0,11058 °C | 0,11376 °C |
+| Indicador de sensibilidad histórica del reanálisis | Chiclayo | Jayanca | Motupe | Olmos |
+|---|---:|---:|---:|---:|
+| Puntos por localidad | 9 | 9 | 9 | 9 |
+| Vecinos cuya celda devuelta cambió | 5/8 | 5/8 | 5/8 | 5/8 |
+| **Mayor MAE de Tmedia por rumbo (°C)** | **0,59889** | **0,63055** | **0,91775** | **2,04997** |
+| Mayor diferencia absoluta de un mes (°C) | 1,12333 | 1,47500 | 1,46129 | 2,52000 |
+| Mayor MAE de diferencias de anomalía por rumbo (°C) | 0,11058 | 0,11376 | 0,10007 | 0,13105 |
 
-En Chiclayo, al desplazar el punto **al oeste**, el píxel cambió y la diferencia media fue aproximadamente **−0,563 °C**; al desplazarlo al norte, el píxel también cambió y la diferencia media fue aproximadamente **+0,596 °C**. En Jayanca, el desplazamiento **al noroeste** presentó un MAE de **0,63055 °C**.
+En **Olmos**, la mayor diferencia media se observó hacia el **oeste**, con aproximadamente **−2,04997 °C** (punto occidental menos centro). La respuesta API reportó otra celda y una elevación de **554 m** frente a **177 m** para el punto central. Estas elevaciones son **valores proporcionados por Open-Meteo**, no elevaciones certificadas del sensor SENAMHI ni evidencia suficiente para atribuir los 2,05 °C exclusivamente a topografía: en este experimento cambian a la vez coordenada solicitada, celda elegida y ajuste de elevación del proveedor.
 
-**Hallazgo metodológico adicional:** algunos puntos que mantuvieron **la misma celda informada** también presentaron diferencias térmicas menores, congruentes con que la API utiliza un ajuste espacial/elevacional adicional. No atribuir estas diferencias exclusivamente a la selección de celda ni a un gradiente térmico físico sin un nuevo ensayo con downscaling desactivado.
+En **Motupe**, el mayor MAE de temperatura por rumbo fue **0,91775 °C**, con máximo absoluto mensual **1,46129 °C**. En cada una de las cuatro localidades, **cinco vecinos** seleccionaron un centro de celda distinto y tres conservaron el mismo centro; incluso algunos de estos últimos presentan diferencias pequeñas de temperatura por el procedimiento de elevación/ajuste del proveedor.
 
-Todos estos indicadores son **sensibilidad espacial del reanálisis**, no errores de temperatura respecto a SENAMHI ni medición fitosanitaria. El estado actualizable debe consultarse en [`estado_8m.json`](datos/sensibilidad_vecindad_8m/estado_8m.json), pues el número de localidades completas aumentará con los nuevos bloques verificables.
+**Conclusión metodológica:** la invariancia de la fase 8L al alternar `land` y `nearest` en el mismo punto NO significa invariancia espacial. Los desplazamientos de ~5,5–7,8 km en el punto solicitado muestran diferencias térmicas importantes en algunas direcciones, especialmente Olmos. Sin embargo, ninguno de estos resultados es una medición de campo, un sesgo frente a SENAMHI o un umbral válido de enfermedad/El Niño.
+
+El informe actualizado y sus series comprobables están en [`estado_8m.json`](datos/sensibilidad_vecindad_8m/estado_8m.json), [`puntos_8m.csv`](datos/sensibilidad_vecindad_8m/puntos_8m.csv) y [`pares_mensuales_8m.csv`](datos/sensibilidad_vecindad_8m/pares_mensuales_8m.csv). No se han modificado las emisiones originales del pronosticador 8E.
 
 ## 3. Datos, proveedores y precaución sobre elevación
 
@@ -105,7 +108,7 @@ Esto permite distinguir diferencia media sistemática del sitio respecto de dife
 - [Fuentes originales comprimidas y metadatos](datos/fuentes_vecindad_8m/), sujeto a disponibilidad y respuesta de la API.
 - [Visor público de la fase 8M](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#verificaciones), pestaña **Verificación de datos**.
 
-La acción automatizada se activa ante cambios de código y mensualmente. Si faltan fuentes, se muestran **únicamente localidades que cuentan individualmente con los tres bloques completos y 360 meses**; nunca se presenta la región como finalizada hasta reunir las cuatro localidades. No se mezclan fuentes sintéticas ni se imputan meses.
+La acción automatizada verifica los archivos al cambiar el código y periódicamente. Los doce bloques originales ya fueron incorporados y no se descargan de nuevo automáticamente mientras sus verificaciones de integridad sean válidas. Cada localidad se publica únicamente si posee **sus tres bloques íntegros con 360 meses**. La región está actualmente completa (4/4). Si se detecta una fuente ausente o alterada, la auditoría debe rechazarla sin imputar meses ni sustituirla por datos sintéticos.
 
 ## 6. Interpretación científica y continuidad
 
