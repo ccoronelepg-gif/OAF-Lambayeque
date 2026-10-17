@@ -446,6 +446,17 @@ nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--teal)}
 <p id="oaf-8u-marine-status" class="small" role="status">Abre el módulo para comprobar los archivos marinos archivados.</p>
 <div class="scroller"><table><thead><tr><th>Punto oceánico de prueba</th><th>SST media (°C)</th><th>Rapidez de corriente (m/s)</th><th>Componente este u (m/s)</th><th>Componente norte v (m/s)</th><th>Horas completas</th></tr></thead><tbody id="oaf-8u-marine"></tbody></table></div>
 <p class="small">Los valores corresponden a datos modelados de aproximadamente 72 horas y no deben llamarse «Corriente de Humboldt observada». <a href="datos/marino_8u/estado_marino_8u.json">Reporte y procedencia SHA ↗</a></p>
+<h3>Ampliación 8U: series regionales y vectores marinos históricos</h3>
+<p class="small">Este complemento documenta seis referencias de viento ERA5 (cuatro sobre tierra y dos marítimas), la temperatura regional Niño 1+2 de NOAA y un conjunto independiente de corrientes geostróficas NOAA/AOML. <b>Las corrientes no derivan de los vientos y no son mediciones instrumentales locales.</b></p>
+<div class="kpis"><div class="kpi"><small>Décadas de viento ERA5</small><b id="oaf-8u-extra-wind">—</b></div><div class="kpi"><small>Meses SST Niño1+2</small><b id="oaf-8u-extra-sst">—</b></div><div class="kpi"><small>Fuentes de corriente 2017–2025</small><b id="oaf-8u-extra-currents">—</b></div></div>
+<p><button type="button" class="btn dark" id="oaf-8u-extra-refresh">Actualizar el complemento oceanográfico ↻</button></p><p class="small" role="status" id="oaf-8u-extra-status">Abre el módulo y revisa las fuentes originales auditadas.</p>
+<h4>Viento: componentes aproximadas a 10 m (ERA5)</h4>
+<div class="scroller"><table><thead><tr><th>Referencia</th><th>Ambiente</th><th>Velocidad media (m/s)</th><th>Este (m/s)</th><th>Norte (m/s)</th></tr></thead><tbody id="oaf-8u-extra-wind-table"></tbody></table></div>
+<h4>SST regional Niño 1+2 (NOAA CPC; ejemplos históricos, °C)</h4>
+<div class="scroller"><table><thead><tr><th>Mes</th><th>Temperatura del mar (°C)</th><th>Anomalía (°C)</th></tr></thead><tbody id="oaf-8u-extra-ocean-table"></tbody></table></div>
+<h4>Corriente geostrófica de superficie NOAA/AOML (2017–2025)</h4>
+<div class="scroller"><table><thead><tr><th>Referencia marítima</th><th>Meses verificables</th><th>Componente este (m/s)</th><th>Componente norte (m/s)</th><th>Limitación física</th></tr></thead><tbody id="oaf-8u-extra-current-table"></tbody></table></div>
+<p class="small">No se presenta una climatología de corrientes 1996–2025 porque NOAA/AOML no tiene esa cobertura. Los vectores geostróficos no representan por sí solos la corriente costera total, el transporte de Ekman ni el flujo inducido por mareas. <a href="FASE_8U_VIENTO_TSM_CORRIENTES.md">Informe científico complementario 8U ↗</a> · <a href="datos/corrientes_8u/estado_corrientes_8u.json">Cobertura geostrófica ↗</a></p>
 </details>
 <div class="split"><div class="panel"><h2>Verificación metodológica</h2><p>SENAMHI (observaciones), CHIRPS (estimaciones), ERA5 (reanálisis), fechas, cobertura y posibles sesgos documentados por separado.</p><a href="CRITERIO_COBERTURA_OFICIAL.md" class="small">Leer criterios de cobertura ↗</a></div><div class="panel"><h2>Archivo histórico completo</h2><p>Conserva los gráficos, comparaciones de estaciones, auditorías y verificaciones que antes aparecían en la portada.</p><a href="archivo-analisis-historico.html" class="btn">Abrir análisis históricos →</a></div></div>
 <div class="panel oaf-tech-archive"><h2>Autoría y fundamentos del OAF</h2><p>La presentación completa del proyecto y su procedimiento metodológico se mantienen en este archivo de consulta.</p><div class="oaf-archive-list"><details><summary>Presentación completa y autoría</summary><div class="autor-presentacion" aria-label="Presentación del proyecto por su autor">
@@ -805,4 +816,5 @@ nav();
 <script src="modelos/visor_regional_8s.js" defer></script>
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
-<script src="modelos/visor_marino_8u.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
+<script src="modelos/visor_marino_8u.js" defer></script>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script></body></html>
