@@ -79,9 +79,9 @@ def samples(root):
             lat=start["latitud"]*(1-f)+end["latitud"]*f
             lon=start["longitud"]*(1-f)+end["longitud"]*f
             expected=start["altitud_dem_m"]*(1-f)+end["altitud_dem_m"]*f
-            candidates=sorted((design.haversine(lat,lon,p["latitud"],p["longitud"]),p)
+            candidates=sorted(((design.haversine(lat,lon,p["latitud"],p["longitud"]),p)
                for p in nodes if p["id"] not in (a,b) and p["altitud_dem_m"]>5
-               and p["id"] not in seen)
+               and p["id"] not in seen),key=lambda item:(item[0],item[1]["id"]))
             if not candidates or candidates[0][0]>5:
                 recorded.append({"fraccion":f,"sin_punto_cercano":True})
                 continue
