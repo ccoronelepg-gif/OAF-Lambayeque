@@ -1,0 +1,555 @@
+{
+  "fase": "9H",
+  "fecha_proceso_utc": "2026-10-17T15:24:24.518311+00:00",
+  "objetivo": "contraste_estacion_vs_celda_en_sensibilidad_a_dos_coordenadas_documentales",
+  "rango_estaciones_completas": "1996-2013",
+  "era5_periodo_solicitado": "1996-01/2013-12",
+  "chirps_periodo_piloto_solicitado": "1998-01/1998-12",
+  "metodos": "lluvia estación solo meses con 100% de días, reanálisis Open-Meteo ERA5-Land diaria sumada por mes; CHIRPS v3 ráster mensual un píxel; no interpolación; excluye todos los meses de estación incompletos",
+  "convencion_dia_pluviometrico_estacion_verificada": false,
+  "emisiones_historicas_pronostico_con_vintage": false,
+  "ajuste_altitud_realizado": false,
+  "licencias_fuente_original_estacion_verificadas": false,
+  "comparacion_chirps_independiente": false,
+  "motivo_dependencia_chirps": "CHIRPS integra pluviómetros; no se ha establecido si los tres contribuyeron a la calibración/fusión del producto.",
+  "identidad_estacion_9f_corroborada": true,
+  "emplazamiento_historico_9g_certificado": false,
+  "mae_rmse_exploratorios_solo_si_existen_pares": true,
+  "habilidad_predictiva_operativa_certificada": false,
+  "n_archivos_fuente_reales_con_sha256": 14,
+  "fuentes_descargadas": [
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "periodo": "1996-01-01/2005-12-31",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=1996-01-01&end_date=2005-12-31&timezone=America%2FLima&daily=precipitation_sum&models=era5_land&cell_selection=land",
+      "sha256": "7a780a2386772fe5578f69d0a5ead01f3a55f139b0a696ab876b31960cb78835",
+      "bytes_recibidos": 396318,
+      "fecha_consulta_utc": "2026-10-17T15:24:13.336648+00:00",
+      "respuesta_celdas": 6
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "periodo": "2006-01-01/2013-12-31",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.817527778%2C-6.825555556%2C-6.373638889%2C-6.35%2C-5.580833333%2C-5.575833333&longitude=-79.201611111%2C-79.216388889%2C-79.4695%2C-79.466666667%2C-79.969888889%2C-79.982777778&start_date=2006-01-01&end_date=2013-12-31&timezone=America%2FLima&daily=precipitation_sum&models=era5_land&cell_selection=land",
+      "sha256": "e8132ccbac975629dd0ae3aef6c93b49e0db92704f1d9f3221732407432e5563",
+      "bytes_recibidos": 317372,
+      "fecha_consulta_utc": "2026-10-17T15:24:14.141046+00:00",
+      "respuesta_celdas": 6
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif",
+      "sha256": "5717d77fabce5699d911257a1124fb6858fcf0bc06216dd8656a82ace9501bed",
+      "bytes_recibidos": 4126842,
+      "fecha_consulta_utc": "2026-10-17T15:24:15.221756+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif",
+      "sha256": "a2426538af864290baf74dbcc32046c5422281503e5dc9cc18b75eed3cbde6e7",
+      "bytes_recibidos": 4201136,
+      "fecha_consulta_utc": "2026-10-17T15:24:16.020862+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif",
+      "sha256": "7c415a3f138903e7af0cd831e90c296e5893f02a4ffc0db542437f802101a7e2",
+      "bytes_recibidos": 4262574,
+      "fecha_consulta_utc": "2026-10-17T15:24:16.953428+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif",
+      "sha256": "5fe9a2a3ca74ef335101af2a92d20881abb2a5cb230bcaf47b42014f9046c5b7",
+      "bytes_recibidos": 3889264,
+      "fecha_consulta_utc": "2026-10-17T15:24:17.907175+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif",
+      "sha256": "eeacb95def80634df2635d196dc40bd770c167831b466f051e3a5d4fc1fe9e67",
+      "bytes_recibidos": 4197854,
+      "fecha_consulta_utc": "2026-10-17T15:24:18.664578+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif",
+      "sha256": "743b89d0e87e626cca6d3246e934278ae0fd8f59f95425e2b58370b97557595e",
+      "bytes_recibidos": 4074238,
+      "fecha_consulta_utc": "2026-10-17T15:24:19.414452+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif",
+      "sha256": "926721c3929f4791f386338a9700420ad2c86202c90ba2091b47f5af36f4ffa9",
+      "bytes_recibidos": 4051586,
+      "fecha_consulta_utc": "2026-10-17T15:24:20.179961+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif",
+      "sha256": "e8cfe846565d13411af658698ed3aa6b7635ed44a0efe75df8a1823401f99359",
+      "bytes_recibidos": 4214986,
+      "fecha_consulta_utc": "2026-10-17T15:24:21.096950+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif",
+      "sha256": "06f1357ce82218c6ed085f5bfee9ddf51e754211e94c7e7143e94051bc3dfe68",
+      "bytes_recibidos": 4262816,
+      "fecha_consulta_utc": "2026-10-17T15:24:21.859294+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif",
+      "sha256": "21b5bdd17cac9ae97a7f1f05d3ff38524ea78e50f0bb54a7d8d1cfb6e2eba040",
+      "bytes_recibidos": 4255368,
+      "fecha_consulta_utc": "2026-10-17T15:24:22.831255+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif",
+      "sha256": "8d999b84901d37be21a69902ee3a39365a0ba435c3e59db5834b0201745e3ac7",
+      "bytes_recibidos": 4195968,
+      "fecha_consulta_utc": "2026-10-17T15:24:23.582718+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mes": "1998-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif",
+      "sha256": "ddeb9c28cd0a1fdf3ac9e8aca6b3cd9cb0d7be220ac925ab20cf2b1a7db36457",
+      "bytes_recibidos": 4099260,
+      "fecha_consulta_utc": "2026-10-17T15:24:24.517068+00:00",
+      "tipo_producto": "CHIRPS v3 mensual latam/tifs; condición final/preliminar no certificada individualmente"
+    }
+  ],
+  "problemas_descarga": {},
+  "resumen_por_producto_y_escenario": [
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00000340",
+      "nombre": "El Espinal",
+      "escenario": "documental_1",
+      "lat_consulta": -6.817527778,
+      "lon_consulta": -79.201611111,
+      "centro_celda_devuelto": {
+        "lat": -6.7999954,
+        "lon": -79.299995,
+        "elevation_grilla_m": 369.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 11.036,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00000340",
+      "nombre": "El Espinal",
+      "escenario": "documental_2",
+      "lat_consulta": -6.825555556,
+      "lon_consulta": -79.216388889,
+      "centro_celda_devuelto": {
+        "lat": -6.7999954,
+        "lon": -79.299995,
+        "elevation_grilla_m": 417.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 9.659,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00153114",
+      "nombre": "Puchaca",
+      "escenario": "documental_1",
+      "lat_consulta": -6.373638889,
+      "lon_consulta": -79.4695,
+      "centro_celda_devuelto": {
+        "lat": -6.4000015,
+        "lon": -79.5,
+        "elevation_grilla_m": 329.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 4.467,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00153114",
+      "nombre": "Puchaca",
+      "escenario": "documental_2",
+      "lat_consulta": -6.35,
+      "lon_consulta": -79.466666667,
+      "centro_celda_devuelto": {
+        "lat": -6.2999954,
+        "lon": -79.5,
+        "elevation_grilla_m": 876.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 6.67,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00152107",
+      "nombre": "Virrey",
+      "escenario": "documental_1",
+      "lat_consulta": -5.580833333,
+      "lon_consulta": -79.969888889,
+      "centro_celda_devuelto": {
+        "lat": -5.5999985,
+        "lon": -80.0,
+        "elevation_grilla_m": 257.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 3.955,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "ERA5-Land vía Open-Meteo",
+      "codigo_archivo": "00152107",
+      "nombre": "Virrey",
+      "escenario": "documental_2",
+      "lat_consulta": -5.575833333,
+      "lon_consulta": -79.982777778,
+      "centro_celda_devuelto": {
+        "lat": -5.5999985,
+        "lon": -80.0,
+        "elevation_grilla_m": 257.0,
+        "timezone": "America/Lima",
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 3.294,
+      "n_meses_pareados": 0,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": null,
+      "estado": "sin_datos_del_producto",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00000340",
+      "nombre": "El Espinal",
+      "escenario": "documental_1",
+      "lat_consulta": -6.817527778,
+      "lon_consulta": -79.201611111,
+      "centro_celda_devuelto": {
+        "lat": -6.82500062,
+        "lon": -79.22499939,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 2.713,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 70.273,
+        "sesgo_producto_menos_estacion_mm": -66.131,
+        "rmse_mm": 125.265,
+        "precipitacion_estacion_total_mm": 1847.1,
+        "precipitacion_producto_total_mm": 1053.529,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00000340",
+      "nombre": "El Espinal",
+      "escenario": "documental_2",
+      "lat_consulta": -6.825555556,
+      "lon_consulta": -79.216388889,
+      "centro_celda_devuelto": {
+        "lat": -6.82500062,
+        "lon": -79.22499939,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 0.953,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 70.273,
+        "sesgo_producto_menos_estacion_mm": -66.131,
+        "rmse_mm": 125.265,
+        "precipitacion_estacion_total_mm": 1847.1,
+        "precipitacion_producto_total_mm": 1053.529,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00153114",
+      "nombre": "Puchaca",
+      "escenario": "documental_1",
+      "lat_consulta": -6.373638889,
+      "lon_consulta": -79.4695,
+      "centro_celda_devuelto": {
+        "lat": -6.37500062,
+        "lon": -79.4749994,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 0.626,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 84.799,
+        "sesgo_producto_menos_estacion_mm": -57.123,
+        "rmse_mm": 165.056,
+        "precipitacion_estacion_total_mm": 2258.0,
+        "precipitacion_producto_total_mm": 1572.525,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00153114",
+      "nombre": "Puchaca",
+      "escenario": "documental_2",
+      "lat_consulta": -6.35,
+      "lon_consulta": -79.466666667,
+      "centro_celda_devuelto": {
+        "lat": -6.32500062,
+        "lon": -79.4749994,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 2.928,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 85.158,
+        "sesgo_producto_menos_estacion_mm": -46.589,
+        "rmse_mm": 169.824,
+        "precipitacion_estacion_total_mm": 2258.0,
+        "precipitacion_producto_total_mm": 1698.926,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00152107",
+      "nombre": "Virrey",
+      "escenario": "documental_1",
+      "lat_consulta": -5.580833333,
+      "lon_consulta": -79.969888889,
+      "centro_celda_devuelto": {
+        "lat": -5.5750006,
+        "lon": -79.9749994,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 0.861,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 169.3,
+        "sesgo_producto_menos_estacion_mm": -164.269,
+        "rmse_mm": 315.025,
+        "precipitacion_estacion_total_mm": 3367.4,
+        "precipitacion_producto_total_mm": 1396.17,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    },
+    {
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "codigo_archivo": "00152107",
+      "nombre": "Virrey",
+      "escenario": "documental_2",
+      "lat_consulta": -5.575833333,
+      "lon_consulta": -79.982777778,
+      "centro_celda_devuelto": {
+        "lat": -5.5750006,
+        "lon": -79.9749994,
+        "rain_unit": "mm"
+      },
+      "distancia_punto_centro_celda_km": 0.866,
+      "n_meses_pareados": 12,
+      "periodo_completo_1996_2013": null,
+      "episodio_1998": {
+        "n_meses": 12,
+        "mes_inicial": "1998-01",
+        "mes_final": "1998-12",
+        "mae_mm": 169.3,
+        "sesgo_producto_menos_estacion_mm": -164.269,
+        "rmse_mm": 315.025,
+        "precipitacion_estacion_total_mm": 3367.4,
+        "precipitacion_producto_total_mm": 1396.17,
+        "errores_mensuales": true,
+        "independencia_y_calidad_original_certificadas": false
+      },
+      "estado": "comparacion_exploratoria_real_no_independiente",
+      "admisible_como_validacion_predictiva": false,
+      "ubicacion_historica_sensor_certificada": false
+    }
+  ],
+  "sensibilidad_de_celdas": [
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "producto": "ERA5-Land vía Open-Meteo",
+      "mismo_centro_celda_entre_escenarios": true,
+      "centros_separados_km": 0.0,
+      "n_meses_1998_escenario_1": 0,
+      "n_meses_1998_escenario_2": 0,
+      "diferencia_mae_1998_escenario2_menos1_mm": null,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": null,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "producto": "ERA5-Land vía Open-Meteo",
+      "mismo_centro_celda_entre_escenarios": true,
+      "centros_separados_km": 0.0,
+      "n_meses_1998_escenario_1": 0,
+      "n_meses_1998_escenario_2": 0,
+      "diferencia_mae_1998_escenario2_menos1_mm": null,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": null,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "producto": "ERA5-Land vía Open-Meteo",
+      "mismo_centro_celda_entre_escenarios": false,
+      "centros_separados_km": 11.12,
+      "n_meses_1998_escenario_1": 0,
+      "n_meses_1998_escenario_2": 0,
+      "diferencia_mae_1998_escenario2_menos1_mm": null,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": null,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    },
+    {
+      "nombre": "El Espinal",
+      "codigo_archivo": "00000340",
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mismo_centro_celda_entre_escenarios": true,
+      "centros_separados_km": 0.0,
+      "n_meses_1998_escenario_1": 12,
+      "n_meses_1998_escenario_2": 12,
+      "diferencia_mae_1998_escenario2_menos1_mm": 0.0,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": 0.0,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    },
+    {
+      "nombre": "Virrey",
+      "codigo_archivo": "00152107",
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mismo_centro_celda_entre_escenarios": true,
+      "centros_separados_km": 0.0,
+      "n_meses_1998_escenario_1": 12,
+      "n_meses_1998_escenario_2": 12,
+      "diferencia_mae_1998_escenario2_menos1_mm": 0.0,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": 0.0,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    },
+    {
+      "nombre": "Puchaca",
+      "codigo_archivo": "00153114",
+      "producto": "CHIRPS-v3 mensual LATAM",
+      "mismo_centro_celda_entre_escenarios": false,
+      "centros_separados_km": 5.56,
+      "n_meses_1998_escenario_1": 12,
+      "n_meses_1998_escenario_2": 12,
+      "diferencia_mae_1998_escenario2_menos1_mm": 0.359,
+      "diferencia_sesgo_1998_escenario2_menos1_mm": 10.534,
+      "nota": "Si un producto retorna la misma celda, dos emplazamientos no proporcionan réplicas independientes."
+    }
+  ],
+  "n_pares_totales": 72,
+  "n_pares_era5": 0,
+  "n_pares_chirps": 72,
+  "advertencias": [
+    "Dos coordenadas históricas documentales no equivalen a dos estaciones independientes.",
+    "Open-Meteo expone ERA5-Land de forma interpolada/asignada a su celda elegida; el centro reportado no demuestra sensor real.",
+    "Precipitación ERA5-Land procede de forzantes atmosféricos de ERA5, no de observaciones del sitio.",
+    "CHIRPS v3 contiene información de pluviómetros; el contraste puede compartir datos con la estación.",
+    "Convención de día pluviométrico de archivos originales no documentada; un calendario coincidente no garantiza misma ventana diaria.",
+    "Los años posteriores a 2013/2014 no están presentes en los originales y no se reemplazan por reanálisis.",
+    "Comparación retrospectiva de producto de grilla != validación de pronóstico emitido antes del evento."
+  ]
+}
