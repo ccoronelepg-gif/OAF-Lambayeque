@@ -51,6 +51,32 @@ class Evaluacion9I(unittest.TestCase):
                     self.assertGreaterEqual(score["mae_mm_mes"],0)
                     self.assertGreaterEqual(score["rmse_mm_mes"]+0.002,score["mae_mm_mes"])
 
+    def test_datos_chirps_rastreables(self):
+        if not mod.EXTRA_MANIFEST.exists():
+            return
+        manifest=json.loads(mod.EXTRA_MANIFEST.read_text("utf8"))
+        self.assertEqual(manifest["anios_descarga_nueva"],[1996,2002,2007,2011,2013])
+        self.assertEqual(manifest["meses_tiff_solicitados"],60)
+        self.assertEqual(manifest["meses_tiff_exitosos"]+len(manifest["problemas"]),60)
+        self.assertFalse(manifest["independencia_chirps_certificada"])
+        self.assertFalse(manifest["capacidad_predictiva_certificada"])
+        shas={r["mes"]:r["sha256"] for r in manifest["fuentes"]}
+        self.assertEqual(len(shas),manifest["meses_tiff_exitosos"])
+        pairs=mod.read_csv(mod.CHIRPS_EXTRA)
+        self.assertEqual(len(pairs),manifest["pares_adicionales"])
+        self.assertTrue(all(r["sha256_respuesta"]==shas[r["mes"]] for r in pairs))
+
+    def test_panel_web_conserva_rutas_y_fuentes(self):
+        html=(ROOT/"index.html").read_text("utf8")
+        c=html.split('<section data-page="clima"')[1].split('<section data-page="nino"')[0]
+        for id in ("oaf-9h-visor","oaf-9i-visor","oaf-9i-results","oaf-9i-site",
+                   "oaf-9i-year","oaf-9i-scenario","oaf-9i-status"):
+            self.assertEqual(c.count('id="'+id+'"'),1,id)
+        self.assertIn("FASE_9I_CONTRASTE_MULTIANUAL.md",c)
+        self.assertIn("modelos/visor_contraste_9i.js",html)
+        self.assertIn("assets/oaf-contraste-9i.css",html)
+        self.assertEqual(html.count('<section data-page='),5)
+
     def test_salida_reproducible_si_publicada(self):
         if mod.FILE.exists():
             self.assertEqual(json.loads(mod.FILE.read_text("utf8")),mod.generate())
