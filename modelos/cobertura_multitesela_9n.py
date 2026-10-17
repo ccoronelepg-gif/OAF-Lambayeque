@@ -304,6 +304,14 @@ def compute(allow_download=True):
     prev=load_json(PREV_STATUS)
     candidate=[r for r in rows if r["cobertura"]!="sin_dem"]
     differences=[r["diferencia_abs_30_270_vs_450"] for r in candidate]
+    missing_footprints=[box(next(t["lon"] for t in manifest.values() if t["id"]==m["id"]),
+                          next(t["lat"] for t in manifest.values() if t["id"]==m["id"]),
+                          next(t["lon"] for t in manifest.values() if t["id"]==m["id"])+1,
+                          next(t["lat"] for t in manifest.values() if t["id"]==m["id"])+1)
+                         for m in failures]
+    sector_missing_tiles=sorted(f["properties"]["id_sector"] for f in geo["features"]
+       if any(shape(f["geometry"]).intersection(footprint).area>1e-10
+              for footprint in missing_footprints))
     report={"fase":"9N","corte_peru":"2026-10-17",
         "proposito":"Completar cobertura GLO90 por teselas sin imputación falsa",
         "n_sectores_9k":42,"n_sectores_cobertura_completa":counts.get("completa",0),
@@ -314,6 +322,9 @@ def compute(allow_download=True):
         "cobertura_por_estado":counts,
         "teselas_necesarias":len(manifest),"teselas_archivadas_validas":len(details),
         "teselas_no_disponibles":len(failures),
+        "sectores_con_algun_fragmento_en_tesela_no_disponible":sector_missing_tiles,
+        "n_sectores_con_tesela_ausente_en_limite":len(sector_missing_tiles),
+        "criterio_cobertura_completa_fraccion_min":0.995,
         "n_teselas_nuevas_validas":sum(t["id"]!="S07W080" for t in details),
         "n_teselas_reutilizadas_9L":int("S07W080" in sources),
         "resoluciones_de_evaluacion_aprox_m":[270,450],
