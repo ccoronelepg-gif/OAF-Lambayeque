@@ -4,7 +4,7 @@
 
 ## Punto de partida verificado en la fase 9A
 
-La fase 9A comparó el modelo de referencia con viento + SST frente a extensiones con humedad relativa (HR), déficit de presión de vapor (VPD) y HR+VPD. Se reportaron 17 280 predicciones retrospectivas, 1 440 evaluaciones probabilísticas y cinco periodos. HR+VPD mejoró el MAE en 6/12 comparaciones para temperatura y precipitación, pero el Brier de extremos en solo 1/12; en las otras 11/12 comparaciones de extremos se deterioró. Esos resultados **no acreditan mejora estadísticamente significativa**, no justifican sustituir la referencia y requieren auditar sus archivos y la definición de evento.
+La fase 9A comparó el modelo de referencia con viento + SST frente a extensiones con humedad relativa (HR), déficit de presión de vapor (VPD) y HR+VPD. Se reportaron 17 280 predicciones retrospectivas, 1 440 evaluaciones probabilísticas y cinco periodos. HR+VPD mejoró el MAE en **5/12 comparaciones de temperatura y 6/12 de precipitación**, pero el Brier de extremos en solo 1/12; en las otras 11/12 comparaciones de extremos se deterioró. Esos resultados **no acreditan mejora estadísticamente significativa**, no justifican sustituir la referencia y requieren auditar sus archivos y la definición de evento.
 
 ## Preguntas de investigación
 
@@ -45,3 +45,5 @@ Incluir en **Investigación y datos → Validación científica** las tablas de 
 - OMM, *Joint Working Group on Forecast Verification Research*: https://community.wmo.int/site/knowledge-hub/governance/research-board/scientific-steering-committee-ssc/joint-working-group-forecast-verification-research
 - WMO Lead Centre for Sub-seasonal Prediction: https://confluence.ecmwf.int/spaces/WLS/pages/394992254/Verification
 - OMM, *Guidelines on the Definition and Characterization of Extreme Weather and Climate Events* (2023): https://digitallibrary.un.org/record/4012890
+
+**Actualización tras fase 9C (17/10/2026):** se ejecutó la validación retrospectiva con 10 000 remuestreos anuales y 36 contrastes de error. Ninguna de las 36 comparaciones superó el control conservador de multiplicidad; los 12 conjuntos P90 tuvieron menos de 20 eventos. Ver [resultados completos de fase 9C](FASE_9C_RESULTADOS_VALIDACION.md) y [matriz estadística](datos/validacion_9c/resultados_9c.json).
