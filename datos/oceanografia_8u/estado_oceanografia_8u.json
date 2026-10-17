@@ -1,0 +1,60 @@
+{
+  "fase": "8U",
+  "estado": "tsm_nino12_recuperada_viento_y_corrientes_en_integracion",
+  "meses_tsm_historia": 360,
+  "periodo_tsm": "1996–2025",
+  "fuente_tsm": "NOAA CPC SSTOI indices archivada por fase 8T",
+  "sha256_fuente_original": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "tsm_costa_lambayeque_medido": false,
+  "tsm_nino12_es_region_no_punto": true,
+  "indice_serie_oceanica_vintage_realtime": false,
+  "n_series_corriente_marina_1996_2025_descargadas_y_validadas": 0,
+  "NO_confundir_corriente_marina_con_viento": true,
+  "catalogo_fuentes": [
+    {
+      "nombre": "NOAA CPC Niño 1+2 (TSM histórica)",
+      "variable": "temperatura_superficial_mar_C / anomalía_C",
+      "estado": "360_meses_verificados_SHA_y_cubierta_region_amplia",
+      "cobertura": "1996–2025",
+      "zona": "Pacífico oriental Niño1+2; no Pimentel/Santa Rosa",
+      "fuente": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
+      "prediccion_prospectiva": false
+    },
+    {
+      "nombre": "Viento atmosférico 10 m",
+      "variable": "velocidad/dirección (no velocidad de corriente)",
+      "estado": "consultar estado_viento_8u.json",
+      "fuente": "ERA5 Open-Meteo Historical Archive",
+      "prediccion_prospectiva": false
+    },
+    {
+      "nombre": "OSCAR versión 2 NASA/PO.DAAC",
+      "variable": "corriente superficial u,v (m/s), capa mezclada ~30 m",
+      "estado": "fuente_confirmada_acceso_y_descarga_granulos_pendientes",
+      "fuente": "https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0",
+      "distribucion": "NetCDF-4; acceso sujeto a servicios y credenciales Earthdata",
+      "cobertura_catalogo": "1993–2026; cobertura local 1996–2025 NO verificada",
+      "observacion_local_verificada": false,
+      "prediccion_prospectiva": false
+    },
+    {
+      "nombre": "Copernicus Marine Global Ocean Physics Reanalysis",
+      "variable": "corriente este/norte y temperatura marina por nivel",
+      "estado": "producto_elegible_acceso_y_subconjunto_pendiente",
+      "fuente": "https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description",
+      "observacion_local_verificada": false,
+      "prediccion_prospectiva": false
+    },
+    {
+      "nombre": "NOAA CoastWatch OSCAR histórico antiguo jplOscar",
+      "estado": "DESCARTADO_serie_ERDDAP_real_2011_2014_no_30_anos",
+      "fuente": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplOscar.html",
+      "observacion_local_verificada": false
+    }
+  ],
+  "series_corrientes_pendientes": true,
+  "zonas_agrícolas_homogeneas_certificadas": 0,
+  "validacion_senamhi_o_imarpe_real": false,
+  "habilidad_predictiva_meteorologica_8u_demostrada": false,
+  "advertencia": "TSM es Niño1+2, no sensor frente a Lambayeque; corrientes requerirán vectores u/v genuinos de agua de mar para el mismo periodo, no vectores ERA5 de viento."
+}

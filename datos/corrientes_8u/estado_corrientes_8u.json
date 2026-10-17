@@ -1,0 +1,30 @@
+{
+  "fase": "8U",
+  "submodulo": "corrientes_geostroficas",
+  "fuente": "NOAA/AOML CoastWatch near-real-time geostrophic currents",
+  "periodo_fuente_disponible": "2016-07 hasta 2026-10 (según catálogo consultado)",
+  "periodo_muestreo": "2017–2025",
+  "n_series_punto_periodo_previstas": 4,
+  "n_series_punto_periodo_verificadas": 1,
+  "n_meses_con_viento_o_corriente_simulada": 0,
+  "n_filas_geostroficas_reales_fuente_modelada_publicadas": 0,
+  "periodo_1996_2025_de_corrientes_completo": false,
+  "corrientes_completas_para_muestreo_2017_2025": false,
+  "no_incluye_corrientes_ekman_y_marea": true,
+  "no_equivale_a_corriente_costera_in_situ": true,
+  "n_fuentes_instrumentales_locales": 0,
+  "prediccion_validada": false,
+  "advertencia": "Solo componente geostrófica superficial de NOAA/AOML; no corriente total de Humboldt, no observación in situ, no cobertura 1996–2025.",
+  "muestras": [
+    {
+      "id": "Aguas_frente_Pimentel",
+      "lat": -6.7,
+      "lon": -81.1
+    },
+    {
+      "id": "Aguas_norte_Lambayeque",
+      "lat": -5.9,
+      "lon": -81.5
+    }
+  ]
+}
