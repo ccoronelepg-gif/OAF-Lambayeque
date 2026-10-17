@@ -15,6 +15,17 @@
   "filas_mes_sitio": 48,
   "meses_pm_80pct_aptos": 48,
   "n_celdas_modelo_unicas": 4,
+  "series_pm_identicas": [
+    {
+      "sitios": [
+        "Motupe",
+        "Olmos"
+      ],
+      "meses_identicos": 12,
+      "interpretacion": "Series PM idénticas; no tratarlas como réplicas independientes"
+    }
+  ],
+  "n_pares_sitio_series_pm_identicas": 1,
   "centros_celda_cams": [
     {
       "latitud": -6.7999954,
