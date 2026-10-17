@@ -127,7 +127,7 @@ details.panel{scroll-margin-top:120px}
 @media(max-width:800px){.oaf-home-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-heading-line{flex-wrap:wrap}.oaf-news-grid,.oaf-research-intro{grid-template-columns:1fr}.oaf-home-module{padding:18px}.oaf-hero-2026 .herotxt{padding:28px 25px}nav a{max-width:none;min-width:148px;flex-shrink:0}}
 @media(max-width:400px){.oaf-home-metrics{grid-template-columns:1fr 1fr;gap:7px}.oaf-home-metrics .oaf-metric{padding:11px;min-height:98px}.oaf-home-metrics .oaf-metric strong{font-size:22px}}
 
-</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"></head><body>
+</style><link rel="stylesheet" href="assets/oaf-redesign-8f.css?v=1"><link rel="stylesheet" href="assets/oaf-interfaz-clara-2026.css?v=1"><link rel="stylesheet" href="assets/oaf-contraste-estaciones-9e.css?v=1"><link rel="stylesheet" href="assets/oaf-identidad-territorial-9f.css?v=1"></head><body>
 <header><div class="head"><a class="brand" href="#inicio" aria-label="Volver a la portada"><span class="logo"><img src="assets/logo-cecg.svg" alt="Logo CECG" width="48" height="48"></span><span><b>OAF · LAMBAYEQUE</b><small>OBSERVATORIO AGROCLIMÁTICO Y FITOSANITARIO</small></span></a>
 <nav aria-label="Secciones principales"><a data-tab="inicio" href="#inicio">Inicio</a><a data-tab="clima" href="#clima">Análisis de clima regional</a><a data-tab="nino" href="#nino">Monitoreo del Niño y anomalías climáticas</a><a data-tab="cultivos" href="#cultivos">Sanidad vegetal</a><a data-tab="verificaciones" href="#verificaciones">Investigación y datos</a></nav></div></header>
 <main>
@@ -347,15 +347,13 @@ details.panel{scroll-margin-top:120px}
 <div class="notice"><b>NASA MERRA-2:</b> existe inventario de archivos para 1998 y 2025, pero todavía no se extrajo un histórico de concentraciones desde NetCDF. PM₂.₅ deriva de especies de aerosol a nivel superficial; PM₁₀ necesita concentraciones calculadas con los mezclados de aerosoles tridimensionales, densidad del aire y nivel inferior 72. No usar el producto CAMS 2023–2025 como sustituto de una normal de 30 años, ni publicar alertas por contaminación o fitosanitarias.</div>
 <p><a href="FASE_8Z_HUMEDAD_AEROSOLES_MERRA2.md">Informe científico 8Z ↗</a> · <a href="datos/humedad_8z/humedad_vpd_mensual_8z.csv">RH/VPD mensual ERA5 ↗</a> · <a href="datos/humedad_8z/estado_humedad_8z.json">SHA-256 y cobertura ↗</a> · <a href="datos/merra2_8z/estado_piloto_merra2_8z.json">Inventario NASA MERRA-2 ↗</a> · <a href="datos/relaciones_pm_humedad_8z/estado_relacion_pm_humedad_8z.json">Correlaciones PM-humedad ↗</a> · <a href="https://gmao.gsfc.nasa.gov/gmao-products/merra-2/faq_merra-2/">Fórmulas originales NASA ↗</a></p>
 <p class="oaf-figure-caption">Cómo interpretar: RH y VPD ERA5 representan aire libre a 2 m y no humedad dentro del dosel. Los metadatos NASA MERRA-2 no son una serie PM ya procesada.</p></details>
-</section>
-
 <details class="panel" id="oaf-9d-estaciones">
 <summary><strong>Observaciones meteorológicas históricas</strong> · 3 archivos diarios originales, 1963–2014</summary>
-<p>Series históricas aportadas por un colaborador, identificadas por código de archivo. Formato inferido: precipitación (mm), temperatura máxima y mínima (°C); <b>−99.9 se interpreta como dato ausente</b>. Los nombres, las coordenadas, la altitud, el operador y la licencia <b>no están confirmados</b>. Por ello, estos registros no se ubican en un mapa ni se asignan a pisos altitudinales.</p>
+<p>Series históricas aportadas por un colaborador, identificadas por código de archivo. Formato inferido: precipitación (mm), temperatura máxima y mínima (°C); <b>−99.9 se interpreta como dato ausente</b>. Los nombres se corroboraron como <b>El Espinal, Puchaca y Virrey</b> mediante tres máximos diarios publicados por SENAMHI. Las coordenadas y alturas se citan como referencias de fuentes institucionales discrepantes, <b>no como posición histórica exacta del instrumento</b>. Operador de cada archivo y derechos de uso aún deben acreditarse.</p>
 <div class="kpis">
 <div class="kpi"><small>Registros diarios auditados</small><b>55 200</b></div>
 <div class="kpi"><small>Filas mensuales con cobertura por variable</small><b>1 814</b></div>
-<div class="kpi"><small>Estaciones identificadas por código</small><b>3</b></div>
+<div class="kpi"><small>Estaciones con nombre corroborado</small><b>3</b></div>
 </div>
 <div class="split">
 <label>Archivo de estación<br><select id="oaf-9d-site" aria-label="Elegir archivo de estación"></select></label>
@@ -367,22 +365,40 @@ details.panel{scroll-margin-top:120px}
 <p id="oaf-9d-caption" class="oaf-figure-caption">Leyenda: se muestran solo años con 12 meses de observaciones que superan 90 % de cobertura mensual; una ausencia nunca se transforma en precipitación cero.</p>
 <p class="small" id="oaf-9d-qc">Control de cobertura pendiente de cargar.</p>
 <div class="notice"><b>Interpretación científica:</b> las lluvias intensas registradas durante 1983 y 1998 son evidencia observacional histórica dentro de estas series, no demostración de habilidad predictiva. La estación 00000340 carece de precipitación válida de 1983. Un dato diario de 330 mm en la estación 00152107 (10/02/2012) está señalado para revisión, no eliminado. Se requiere ficha de estación y control independiente antes de comparar con celdas ERA5 o extrapolar a zonas homogéneas.</div>
-<p><a href="FASE_9D_ESTACIONES_REALES.md">Informe fase 9D ↗</a> · <a href="datos/estaciones_9d/auditoria_estaciones_9d.json">Auditoría original y SHA-256 ↗</a> · <a href="datos/estaciones_9d/auditoria_temporal_9d.json">Disponibilidad histórica (vintage) ↗</a> · <a href="datos/estaciones_9d/series_mensuales_9d.csv">Descargar serie mensual con cobertura CSV ↗</a> · <a href="datos/estaciones_9d/originales/qc00000340.txt">Original 00000340 ↗</a> · <a href="datos/estaciones_9d/originales/qc00153114.txt">Original 00153114 ↗</a> · <a href="datos/estaciones_9d/originales/qc00152107.txt">Original 00152107 ↗</a></p>
-<p class="small" role="status" id="oaf-9d-state">Cargando resultados de la fase 9D…</p>
+<p><a href="FASE_9D_ESTACIONES_REALES.md">Informe de observaciones ↗</a> · <a href="datos/estaciones_9d/auditoria_estaciones_9d.json">Auditoría original y SHA-256 ↗</a> · <a href="datos/estaciones_9d/auditoria_temporal_9d.json">Disponibilidad histórica (vintage) ↗</a> · <a href="datos/estaciones_9d/series_mensuales_9d.csv">Descargar serie mensual con cobertura CSV ↗</a> · <a href="datos/estaciones_9d/originales/qc00000340.txt">Original 00000340 ↗</a> · <a href="datos/estaciones_9d/originales/qc00153114.txt">Original 00153114 ↗</a> · <a href="datos/estaciones_9d/originales/qc00152107.txt">Original 00152107 ↗</a></p>
+<p class="small" role="status" id="oaf-9d-state">Consultando observaciones diarias históricas…</p>
 </details>
 <details class="panel" id="oaf-contraste-estaciones">
 <summary><strong>Comparación histórica de lluvias entre estaciones</strong> · datos diarios auditados y meses completos</summary>
-<p>Consulta los acumulados anuales de tres series aportadas al observatorio y observa qué tan sincronizada es la precipitación registrada en 1996–2013. Estos códigos todavía no tienen coordenadas, altitud ni nombres institucionales verificados; por ese motivo <strong>no se muestran puntos geográficos inventados</strong>.</p>
+<p>Consulta los acumulados anuales de tres series aportadas al observatorio y observa qué tan sincronizada es la precipitación registrada en 1996–2013. Los nombres y códigos de las tres estaciones ya tienen respaldo en registros de SENAMHI, pero existen <strong>discrepancias de coordenadas y altitudes entre publicaciones históricas</strong>. Este gráfico compara lluvia en el tiempo y no demuestra homogeneidad geográfica.</p>
 <div class="tools"><label for="oaf-compare-year">Año histórico</label><select id="oaf-compare-year" aria-label="Elegir año histórico del contraste"></select></div>
 <div class="oaf-compare-chart" id="oaf-compare-chart" role="img" aria-label="Comparación de lluvia anual de tres series codificadas"></div>
 <p class="oaf-figure-caption" id="oaf-compare-legend">Leyenda: cada barra representa lluvia registrada en meses con 100 % de días válidos. Los faltantes no son ceros.</p>
 <h3>Similitud de las series mensuales</h3>
 <div class="oaf-compare-correlations" id="oaf-compare-correlations" aria-label="Correlación temporal entre pares de estaciones"></div>
 <p class="oaf-figure-caption">Cómo interpretar: los valores representan correlación de Pearson de log(1 + lluvia mensual), únicamente en meses coincidentes con todos los días disponibles (1996–2013). Correlación elevada no demuestra cercanía geográfica, zonas homogéneas ni capacidad predictiva.</p>
-<div class="notice"><strong>Control de calidad:</strong> las tres series no están georreferenciadas documentalmente. Aún no se ha calculado MAE, sesgo ni RMSE contra ERA5-Land o CHIRPS en estaciones identificadas. Las comparaciones se habilitarán solamente con ficha oficial y coincidencia espacial verificadas.</div>
+<div class="notice"><strong>Control de calidad:</strong> las tres series no están georreferenciadas documentalmente. Aún no se ha calculado MAE, sesgo ni RMSE contra ERA5-Land o CHIRPS para emplazamientos históricos conciliados. Los nombres sí están corroborados, pero la validación geoespacial requiere resolver las discrepancias de ubicación y metadatos.</div>
 <p id="oaf-compare-status" class="small" role="status">Preparando datos históricos…</p>
 <p><a href="FASE_9E_CONTRASTE_INSTRUMENTAL.md">Informe científico y límites ↗</a> · <a href="datos/validacion_estaciones_9e/contraste_observacional_9e.json">Resultados auditados ↗</a> · <a href="datos/validacion_estaciones_9e/metadatos_identidad_9e.json">Estado de las fichas de estación ↗</a></p>
 </details>
+<details class="panel" id="oaf-stations-identified">
+<summary><strong>Virrey, Puchaca y El Espinal: estaciones y territorio</strong> · registros históricos y referencias cartográficas</summary>
+<p>Las tres series meteorológicas fueron vinculadas con los nombres y códigos de SENAMHI al comprobar <strong>tres valores diarios extremos exactamente iguales en fecha y magnitud</strong>. El mapa esquemático muestra coordenadas documentales de una publicación institucional, pero las fuentes históricas discrepan en emplazamiento y altitud: <strong>no equivale a localizar el instrumento con exactitud</strong>.</p>
+<div class="tools"><label for="oaf-9f-site">Estación meteorológica</label><select id="oaf-9f-site" aria-label="Seleccionar estación identificada"></select></div>
+<div class="oaf-9f-graphic">
+<div class="oaf-9f-info" id="oaf-9f-detail" aria-live="polite"><p>Consultando fichas documentales…</p></div>
+<div class="oaf-9f-location">
+<h3>Ubicación regional aproximada</h3>
+<div id="oaf-9f-position" role="group" aria-label="Esquema orientativo de latitud y longitud de tres estaciones"><p>Preparando esquema norte-sur…</p></div>
+<p>Esquema con coordenadas publicadas en un boletín SENAMHI. No es un mapa de parcelas, límites distritales ni ubicación histórica exacta del equipo.</p>
+</div>
+</div>
+<p class="oaf-figure-caption oaf-9f-legend" id="oaf-9f-caption">Leyenda: comparación exploratoria del año 1998 con otros años completos disponibles; no son normales climáticas de 30 años.</p>
+<p class="small" role="status" id="oaf-9f-status">Consultando correspondencia instrumental y procedencia…</p>
+<p><a href="FASE_9F_IDENTIDAD_TERRITORIAL.md">Informe de identificación y limitaciones ↗</a> · <a href="datos/validacion_estaciones_9f/identificacion_territorial_9f.json">Ficha auditable de las tres estaciones ↗</a> · <a href="https://www.senamhi.gob.pe/load/file/02245SENA-4.pdf" target="_blank" rel="noopener noreferrer">Registro SENAMHI de extremos ↗</a></p>
+</details>
+
+</section>
 
 <section data-page="nino" id="nino" hidden>
 
@@ -1113,4 +1129,4 @@ nav();
 <script src="modelos/visor_oceanico_8t.js" defer></script>
 <script src="modelos/visor_factores_8u.js" defer></script>
 <script src="modelos/visor_marino_8u.js" defer></script>
-<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
+<script src="modelos/visor_forzantes_8u.js" defer></script><script src="modelos/visor_integracion_8v.js" defer></script><script src="modelos/visor_benchmark_8w.js" defer></script><script src="modelos/visor_aire_extremos_8x.js" defer></script><script src="modelos/visor_diagnostico_pm_8y.js" defer></script><script src="modelos/visor_humedad_merra_8z.js" defer></script><script src="modelos/visor_benchmark_9a.js" defer></script><script src="modelos/visor_validacion_9c.js" defer></script><script src="modelos/visor_estaciones_9d.js" defer></script><script src="modelos/visor_contraste_estaciones_9e.js" defer></script><script src="modelos/visor_identificacion_9f.js" defer></script><script src="assets/oaf-redesign-8f.js?v=1" defer></script><script src="assets/oaf-inicio-climatico-2026.js?v=1" defer></script><script src="assets/oaf-interfaz-clara-2026.js?v=1" defer></script><script src="assets/oaf-arquitectura-2026.js?v=1" defer></script></body></html>
