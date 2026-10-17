@@ -4,11 +4,12 @@
 const root=document.getElementById("oaf-factors-8u");if(!root)return;
 const $=id=>document.getElementById(id);
 const status=$("oaf-8u-status");
-const tbody=$("oaf-8u-wind"), correlations=$("oaf-8u-correlations");
+const tbody=$("oaf-8u-wind"), correlations=$("oaf-8u-correlations"),
+      coverage=$("oaf-8u-coverage");
 const fmt=n=>typeof n==="number"&&Number.isFinite(n)?
  n.toLocaleString("es-PE",{maximumFractionDigits:3}):"—";
 function show(report,associations,coastal){
- tbody.replaceChildren();correlations.replaceChildren();
+ tbody.replaceChildren();correlations.replaceChildren();coverage.replaceChildren();
  $("oaf-8u-blocks").textContent=report.bloques_viento_obtenidos+"/3";
  $("oaf-8u-cities").textContent=report.testigos_viento_historico_completos+"/4";
  $("oaf-8u-current").textContent=report.corrientes_marinas_serie_historica_verificada?
@@ -35,13 +36,25 @@ function show(report,associations,coastal){
    correlations.append(tr);
  }
  $("oaf-8u-sst").textContent=coastal.archivos_sst_verificados+"/"+coastal.archivos_sst_previstos;
+ for(const record of coastal.cobertura_diaria_por_archivo||[]){
+  const row=document.createElement("tr");
+  for(const value of [record.sitio,record.periodo.join("–"),
+        record.dias_validos,record.dias_faltantes,
+        record.cobertura_completa?"Década completa":"Archivo parcial, no climatología"]){
+    const td=document.createElement("td");td.textContent=String(value);row.append(td);
+  }
+  coverage.append(row);
+ }
  status.textContent="Viento ERA5: "+report.bloques_viento_obtenidos+
    " de 3 décadas archivadas; "+report.meses_localidad_obtenidos+
    " meses-localidad verificables. SST Niño 1+2 NOAA: "+
    (report.indices_sst_noaa_1996_2025_archivados?"360 meses históricos disponibles (serie revisable).":"pendiente")+
    ". Corrientes oceánicas u/v: "+
    (report.corrientes_marinas_serie_historica_verificada?"verificadas.":"no disponibles todavía para inferir dinámica marina.")+
-   " SST oceánica local OISST verificada: "+coastal.archivos_sst_verificados+"/6 archivos. No hay pronóstico conjunto ni validación instrumental.";
+   " SST oceánica OISST: "+coastal.archivos_sst_verificados+"/6 archivos recibidos, "+
+   (coastal.n_dias_faltantes_en_archivos_recibidos||0)+" días faltantes en archivos recuperados; "+
+   coastal.sitios_con_sst_30anios_completa+" sitios con 30 años completos. "+
+   "No hay pronóstico conjunto ni validación instrumental.";
 }
 async function load(){
  status.textContent="Auditando fuentes originales de viento, SST y catálogo de corrientes…";
@@ -69,7 +82,7 @@ async function load(){
        throw Error("Asociaciones o SST costera sin procedencia metodológica");
    show(r,associations,coastal);
  }catch(e){
-   tbody.replaceChildren();correlations.replaceChildren();
+   tbody.replaceChildren();correlations.replaceChildren();coverage.replaceChildren();
    status.textContent="Sin fuente 8U presentable: "+e.message;
  }
 }
