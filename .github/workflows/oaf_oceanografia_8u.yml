@@ -35,8 +35,8 @@ jobs:
         run: |
           python modelos/oceanografia_fuentes_8u.py
           python modelos/oceanografia_fuentes_8u.py --check
-      - name: Recuperar máximo un subconjunto geostrófico NOAA/AOML
-        run: python modelos/corrientes_geostroficas_8u.py --fetch --max-new 1
+      - name: Recuperar hasta dos subconjuntos geostróficos NOAA/AOML
+        run: python modelos/corrientes_geostroficas_8u.py --fetch --max-new 2
       - name: Auditar cobertura de corrientes geostróficas sin imputar faltantes
         run: |
           python modelos/corrientes_geostroficas_8u.py
