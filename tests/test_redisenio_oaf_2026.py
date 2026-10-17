@@ -1,5 +1,7 @@
 """QA público OAF 2026, diseño sin pérdida de modelos/datos existentes."""
 import re
+import subprocess
+import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -135,6 +137,17 @@ class Redisenio(unittest.TestCase):
         self.assertIn("$('#oaf-home-location')",src)
         self.assertIn("'#oaf-live-vpd'",src)
         self.assertIn("'#oaf-live-wind'",src)
+    def test_inline_navigation_javascript_syntax(self):
+        scripts=re.findall(r'<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>',HTML)
+        source='\\n'.join(script for script in scripts if script.strip())
+        self.assertIn('function nav()',source)
+        with tempfile.TemporaryDirectory() as folder:
+            dest=Path(folder)/'inline-oaf.js'
+            dest.write_text(source,encoding='utf-8')
+            output=subprocess.run(['node','--check',str(dest)],
+                    capture_output=True,text=True,check=False)
+            self.assertEqual(output.returncode,0,output.stderr)
+
     def test_no_orphaned_old_sections(self):
         for match in re.finditer(r'<section data-page="([^"]+)"',HTML):
             self.assertIn(match.group(1),ROUTES)
