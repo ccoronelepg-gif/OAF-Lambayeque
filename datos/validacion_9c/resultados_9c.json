@@ -1,0 +1,966 @@
+{
+  "fase": "9C",
+  "fecha_analisis": "2026-10-17",
+  "dictamen": "validacion_retro_9C_con_insuficiencia_extremos_y_sin_habilidad_prospectiva_demostrada",
+  "fuente_reanalisis": "ERA5 y ERA5-Land; NOAA SST revisadas historicamente. No son observaciones instrumentales SENAMHI ni versiones archivadas en fecha de supuesta emision.",
+  "entradas": [
+    {
+      "ruta": "datos/benchmark_9a/pronosticos_pareados_9a.csv",
+      "sha_blob_git": "eead493f0cb2d23f2390ef210929792dfaa80510",
+      "filas": 17280
+    },
+    {
+      "ruta": "datos/benchmark_9a/eventos_p90_pareados_9a.csv",
+      "sha_blob_git": "7193075d5dfe8594a9b1ab9f4bfffbe7ac5d4e54",
+      "filas": 1440
+    }
+  ],
+  "evaluacion": {
+    "periodo": "2011-2025",
+    "horizontes_meses": [
+      1,
+      2,
+      3
+    ],
+    "localidades": [
+      "Chiclayo",
+      "Jayanca",
+      "Motupe",
+      "Olmos"
+    ],
+    "bloques_anuales": 3,
+    "replicas_bootstrap": 10000,
+    "semilla_bootstrap": 917,
+    "intervalo": "bootstrap circular de bloques anuales sobre perdidas pareadas, medias anuales (12 meses en continuas, 4 meses en P90); IC percentil exploratorio",
+    "ajuste_comparaciones": "intervalos conservadores Bonferroni al 95% por familia (24 pruebas de MAE, 12 de Brier); exploratorio, no inferencia prospectiva"
+  },
+  "conteos": {
+    "pronosticos_continuos_modelo_fecha": 17280,
+    "parejas_continuas_8w_vs_rh_vpd": 4320,
+    "pronosticos_probabilisticos": 1440,
+    "parejas_probabilisticas": 720
+  },
+  "resumen": {
+    "continuas_mejoras_mae": 11,
+    "continuas_grupos": 24,
+    "continuas_ic95_3_anios_positivo": 1,
+    "continuas_ic_bonferroni_positivo": 0,
+    "prob_mejoras_brier": 1,
+    "prob_grupos": 12,
+    "prob_ic95_3_anios_positivo": 0,
+    "prob_ic_bonferroni_positivo": 0,
+    "grupos_extremos_eventos_suficientes": 0,
+    "sin_habilidad_prospectiva_declarada": true
+  },
+  "continuo": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 10.018625217,
+      "candidato_rh_vpd": 10.258645794,
+      "mejora_referencia_menos_candidato": -0.240020578,
+      "ic95_bloques_3_anios": [
+        -0.682543006,
+        0.123867411
+      ],
+      "ic95_bloques_1_anio": [
+        -0.928572522,
+        0.247511728
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.913231089,
+        0.268290517
+      ],
+      "mejora_sin_2017": 0.038273833,
+      "mejora_sin_2023": -0.281525256
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.430439467,
+      "candidato_rh_vpd": 0.4279341,
+      "mejora_referencia_menos_candidato": 0.002505367,
+      "ic95_bloques_3_anios": [
+        -0.002692728,
+        0.007085611
+      ],
+      "ic95_bloques_1_anio": [
+        -0.003284739,
+        0.007738328
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.005497544,
+        0.008654839
+      ],
+      "mejora_sin_2017": 0.00259475,
+      "mejora_sin_2023": 0.003237536
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 10.265045117,
+      "candidato_rh_vpd": 10.363392661,
+      "mejora_referencia_menos_candidato": -0.098347544,
+      "ic95_bloques_3_anios": [
+        -0.321890711,
+        0.060010833
+      ],
+      "ic95_bloques_1_anio": [
+        -0.364834906,
+        0.068096139
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.446592561,
+        0.111028311
+      ],
+      "mejora_sin_2017": 0.018280851,
+      "mejora_sin_2023": -0.096306351
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.555916206,
+      "candidato_rh_vpd": 0.560548767,
+      "mejora_referencia_menos_candidato": -0.004632561,
+      "ic95_bloques_3_anios": [
+        -0.011701761,
+        0.002285861
+      ],
+      "ic95_bloques_1_anio": [
+        -0.010589267,
+        0.000814644
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.014684028,
+        0.005201361
+      ],
+      "mejora_sin_2017": -0.004485649,
+      "mejora_sin_2023": -0.003933125
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 10.415809806,
+      "candidato_rh_vpd": 10.4252286,
+      "mejora_referencia_menos_candidato": -0.009418794,
+      "ic95_bloques_3_anios": [
+        -0.0577966,
+        0.030375717
+      ],
+      "ic95_bloques_1_anio": [
+        -0.060702594,
+        0.0384883
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.08724115,
+        0.047859544
+      ],
+      "mejora_sin_2017": -0.015292631,
+      "mejora_sin_2023": -0.012587881
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.636573383,
+      "candidato_rh_vpd": 0.644516278,
+      "mejora_referencia_menos_candidato": -0.007942894,
+      "ic95_bloques_3_anios": [
+        -0.023790172,
+        0.007115172
+      ],
+      "ic95_bloques_1_anio": [
+        -0.020429939,
+        0.003934967
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.032083389,
+        0.013676006
+      ],
+      "mejora_sin_2017": -0.005031875,
+      "mejora_sin_2023": -0.007508625
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 36.796391744,
+      "candidato_rh_vpd": 38.560248878,
+      "mejora_referencia_menos_candidato": -1.763857133,
+      "ic95_bloques_3_anios": [
+        -4.507670761,
+        0.642803272
+      ],
+      "ic95_bloques_1_anio": [
+        -5.353777694,
+        0.859585306
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -6.059164556,
+        1.718911567
+      ],
+      "mejora_sin_2017": -0.343626542,
+      "mejora_sin_2023": -1.901431607
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.378756094,
+      "candidato_rh_vpd": 0.37803335,
+      "mejora_referencia_menos_candidato": 0.000722744,
+      "ic95_bloques_3_anios": [
+        -0.002702911,
+        0.003865039
+      ],
+      "ic95_bloques_1_anio": [
+        -0.004187772,
+        0.005988089
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.004748722,
+        0.005152694
+      ],
+      "mejora_sin_2017": 0.001465756,
+      "mejora_sin_2023": 0.001490827
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 39.97444565,
+      "candidato_rh_vpd": 39.830545506,
+      "mejora_referencia_menos_candidato": 0.143900144,
+      "ic95_bloques_3_anios": [
+        -1.176414589,
+        1.38420355
+      ],
+      "ic95_bloques_1_anio": [
+        -1.842193239,
+        1.706341672
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -1.869344444,
+        2.085300278
+      ],
+      "mejora_sin_2017": 0.908643542,
+      "mejora_sin_2023": -0.192219815
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.484776261,
+      "candidato_rh_vpd": 0.489471394,
+      "mejora_referencia_menos_candidato": -0.004695133,
+      "ic95_bloques_3_anios": [
+        -0.013578111,
+        0.003441817
+      ],
+      "ic95_bloques_1_anio": [
+        -0.013401972,
+        0.003145567
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.019103267,
+        0.006913317
+      ],
+      "mejora_sin_2017": -0.002460732,
+      "mejora_sin_2023": -0.005135214
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 40.953582494,
+      "candidato_rh_vpd": 40.598777283,
+      "mejora_referencia_menos_candidato": 0.354805211,
+      "ic95_bloques_3_anios": [
+        0.013531989,
+        0.782149339
+      ],
+      "ic95_bloques_1_anio": [
+        -0.016349417,
+        0.866119894
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.08808295,
+        1.016311333
+      ],
+      "mejora_sin_2017": 0.388935119,
+      "mejora_sin_2023": 0.148810881
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.553050144,
+      "candidato_rh_vpd": 0.561486778,
+      "mejora_referencia_menos_candidato": -0.008436633,
+      "ic95_bloques_3_anios": [
+        -0.017021811,
+        0.000730656
+      ],
+      "ic95_bloques_1_anio": [
+        -0.015808828,
+        -0.001895394
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.02055615,
+        0.0047632
+      ],
+      "mejora_sin_2017": -0.008743262,
+      "mejora_sin_2023": -0.008207512
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 45.689133294,
+      "candidato_rh_vpd": 46.603207356,
+      "mejora_referencia_menos_candidato": -0.914074061,
+      "ic95_bloques_3_anios": [
+        -2.077359961,
+        0.505357311
+      ],
+      "ic95_bloques_1_anio": [
+        -2.175892428,
+        0.593331344
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -2.504666894,
+        1.175157944
+      ],
+      "mejora_sin_2017": -1.043594958,
+      "mejora_sin_2023": -0.978279952
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.336763783,
+      "candidato_rh_vpd": 0.338334761,
+      "mejora_referencia_menos_candidato": -0.001570978,
+      "ic95_bloques_3_anios": [
+        -0.004354583,
+        0.001278644
+      ],
+      "ic95_bloques_1_anio": [
+        -0.005168794,
+        0.002070811
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.005412411,
+        0.002689789
+      ],
+      "mejora_sin_2017": -0.001365238,
+      "mejora_sin_2023": -0.001217708
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 48.606145167,
+      "candidato_rh_vpd": 48.758284506,
+      "mejora_referencia_menos_candidato": -0.152139339,
+      "ic95_bloques_3_anios": [
+        -1.286925083,
+        0.796955578
+      ],
+      "ic95_bloques_1_anio": [
+        -1.714670644,
+        1.208176656
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -1.933226967,
+        1.186978883
+      ],
+      "mejora_sin_2017": 0.420573077,
+      "mejora_sin_2023": -0.293788732
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.423341806,
+      "candidato_rh_vpd": 0.424294161,
+      "mejora_referencia_menos_candidato": -0.000952356,
+      "ic95_bloques_3_anios": [
+        -0.003192978,
+        0.00076385
+      ],
+      "ic95_bloques_1_anio": [
+        -0.002817289,
+        0.00086275
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.004573183,
+        0.001346544
+      ],
+      "mejora_sin_2017": -0.001363125,
+      "mejora_sin_2023": -0.000910714
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 48.918246339,
+      "candidato_rh_vpd": 48.828240106,
+      "mejora_referencia_menos_candidato": 0.090006233,
+      "ic95_bloques_3_anios": [
+        -0.203519267,
+        0.356716794
+      ],
+      "ic95_bloques_1_anio": [
+        -0.355015372,
+        0.533903378
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.375809906,
+        0.497865222
+      ],
+      "mejora_sin_2017": 0.109560994,
+      "mejora_sin_2023": 0.096616268
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.495521544,
+      "candidato_rh_vpd": 0.497101122,
+      "mejora_referencia_menos_candidato": -0.001579578,
+      "ic95_bloques_3_anios": [
+        -0.003954711,
+        0.000657411
+      ],
+      "ic95_bloques_1_anio": [
+        -0.003843844,
+        0.000549856
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.005231817,
+        0.001726472
+      ],
+      "mejora_sin_2017": -0.001513262,
+      "mejora_sin_2023": -0.001670435
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 36.638134356,
+      "candidato_rh_vpd": 36.576656744,
+      "mejora_referencia_menos_candidato": 0.061477611,
+      "ic95_bloques_3_anios": [
+        -0.744076239,
+        0.863137961
+      ],
+      "ic95_bloques_1_anio": [
+        -0.535374628,
+        0.666204039
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -1.052730244,
+        1.212692972
+      ],
+      "mejora_sin_2017": -0.039115292,
+      "mejora_sin_2023": 0.1045445
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.333739772,
+      "candidato_rh_vpd": 0.330774006,
+      "mejora_referencia_menos_candidato": 0.002965767,
+      "ic95_bloques_3_anios": [
+        -0.001798511,
+        0.007652422
+      ],
+      "ic95_bloques_1_anio": [
+        -0.001102811,
+        0.007173933
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.004041911,
+        0.009717217
+      ],
+      "mejora_sin_2017": 0.002828304,
+      "mejora_sin_2023": 0.00225147
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 37.080259522,
+      "candidato_rh_vpd": 36.828477189,
+      "mejora_referencia_menos_candidato": 0.251782333,
+      "ic95_bloques_3_anios": [
+        -0.263368339,
+        0.874943094
+      ],
+      "ic95_bloques_1_anio": [
+        -0.274491489,
+        0.812278928
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.428095306,
+        1.3028804
+      ],
+      "mejora_sin_2017": 0.373233893,
+      "mejora_sin_2023": 0.069006512
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.390682844,
+      "candidato_rh_vpd": 0.390034444,
+      "mejora_referencia_menos_candidato": 0.0006484,
+      "ic95_bloques_3_anios": [
+        -0.000172078,
+        0.001455867
+      ],
+      "ic95_bloques_1_anio": [
+        -0.000351772,
+        0.001758394
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.000593411,
+        0.001927833
+      ],
+      "mejora_sin_2017": 0.000745464,
+      "mejora_sin_2023": 0.000808958
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_mes_mm",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 37.873102622,
+      "candidato_rh_vpd": 37.614553856,
+      "mejora_referencia_menos_candidato": 0.258548767,
+      "ic95_bloques_3_anios": [
+        -0.216026044,
+        0.8442776
+      ],
+      "ic95_bloques_1_anio": [
+        -0.354345428,
+        0.923905956
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.385367467,
+        1.188087228
+      ],
+      "mejora_sin_2017": 0.290693054,
+      "mejora_sin_2023": 0.073825065
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "variable": "temperatura_aire_c",
+      "meses": 180,
+      "anios": 15,
+      "referencia_8w": 0.441623072,
+      "candidato_rh_vpd": 0.439088333,
+      "mejora_referencia_menos_candidato": 0.002534739,
+      "ic95_bloques_3_anios": [
+        -0.000359983,
+        0.005334567
+      ],
+      "ic95_bloques_1_anio": [
+        -0.000028194,
+        0.005141578
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.002046778,
+        0.0066776
+      ],
+      "mejora_sin_2017": 0.002613161,
+      "mejora_sin_2023": 0.00178856
+    }
+  ],
+  "extremos": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.086504956,
+      "candidato_rh_vpd": 0.091807509,
+      "mejora_referencia_menos_candidato": -0.005302554,
+      "ic95_bloques_3_anios": [
+        -0.020200528,
+        0.003553873
+      ],
+      "ic95_bloques_1_anio": [
+        -0.02288826,
+        0.004917924
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.027456717,
+        0.004977042
+      ],
+      "mejora_sin_2017": 0.002851613,
+      "mejora_sin_2023": -0.005360898,
+      "eventos": 7,
+      "prevalencia": 0.11666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.091223293,
+      "candidato_rh_vpd": 0.092259165,
+      "mejora_referencia_menos_candidato": -0.001035872,
+      "ic95_bloques_3_anios": [
+        -0.006135191,
+        0.002593753
+      ],
+      "ic95_bloques_1_anio": [
+        -0.006853887,
+        0.003034567
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.008415605,
+        0.003557902
+      ],
+      "mejora_sin_2017": 0.001430227,
+      "mejora_sin_2023": -0.002112761,
+      "eventos": 7,
+      "prevalencia": 0.11666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.112062373,
+      "candidato_rh_vpd": 0.114387933,
+      "mejora_referencia_menos_candidato": -0.00232556,
+      "ic95_bloques_3_anios": [
+        -0.00552523,
+        0.000427378
+      ],
+      "ic95_bloques_1_anio": [
+        -0.006339971,
+        0.000735121
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.006943265,
+        0.001185966
+      ],
+      "mejora_sin_2017": -0.000827047,
+      "mejora_sin_2023": -0.001717808,
+      "eventos": 7,
+      "prevalencia": 0.11666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.050792902,
+      "candidato_rh_vpd": 0.05434403,
+      "mejora_referencia_menos_candidato": -0.003551128,
+      "ic95_bloques_3_anios": [
+        -0.015168055,
+        0.002736998
+      ],
+      "ic95_bloques_1_anio": [
+        -0.016202792,
+        0.003426212
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.020935987,
+        0.003189165
+      ],
+      "mejora_sin_2017": 0.00243576,
+      "mejora_sin_2023": -0.004063761,
+      "eventos": 4,
+      "prevalencia": 0.06666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.059662828,
+      "candidato_rh_vpd": 0.061009897,
+      "mejora_referencia_menos_candidato": -0.00134707,
+      "ic95_bloques_3_anios": [
+        -0.004735373,
+        0.000908899
+      ],
+      "ic95_bloques_1_anio": [
+        -0.005837745,
+        0.001444141
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.006419458,
+        0.001394297
+      ],
+      "mejora_sin_2017": 0.00064689,
+      "mejora_sin_2023": -0.001268994,
+      "eventos": 4,
+      "prevalencia": 0.06666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.071231328,
+      "candidato_rh_vpd": 0.072555634,
+      "mejora_referencia_menos_candidato": -0.001324305,
+      "ic95_bloques_3_anios": [
+        -0.003772287,
+        0.000409484
+      ],
+      "ic95_bloques_1_anio": [
+        -0.004486057,
+        0.000658537
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.004976446,
+        0.000780338
+      ],
+      "mejora_sin_2017": 0.000059961,
+      "mejora_sin_2023": -0.001191794,
+      "eventos": 4,
+      "prevalencia": 0.06666667,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.065475145,
+      "candidato_rh_vpd": 0.06745484,
+      "mejora_referencia_menos_candidato": -0.001979695,
+      "ic95_bloques_3_anios": [
+        -0.005928434,
+        0.001259136
+      ],
+      "ic95_bloques_1_anio": [
+        -0.007769045,
+        0.001991827
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.007532679,
+        0.002082318
+      ],
+      "mejora_sin_2017": 0.000362679,
+      "mejora_sin_2023": -0.002124718,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.074788315,
+      "candidato_rh_vpd": 0.076159226,
+      "mejora_referencia_menos_candidato": -0.001370911,
+      "ic95_bloques_3_anios": [
+        -0.003848693,
+        0.000612104
+      ],
+      "ic95_bloques_1_anio": [
+        -0.005101196,
+        0.001169494
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.005098958,
+        0.001259771
+      ],
+      "mejora_sin_2017": 0.000213144,
+      "mejora_sin_2023": -0.001132702,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.082971446,
+      "candidato_rh_vpd": 0.084556649,
+      "mejora_referencia_menos_candidato": -0.001585203,
+      "ic95_bloques_3_anios": [
+        -0.004157664,
+        0.000383137
+      ],
+      "ic95_bloques_1_anio": [
+        -0.005232817,
+        0.000879135
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.005411051,
+        0.000856643
+      ],
+      "mejora_sin_2017": -0.000084557,
+      "mejora_sin_2023": -0.001241735,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 1,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.073867063,
+      "candidato_rh_vpd": 0.073385888,
+      "mejora_referencia_menos_candidato": 0.000481175,
+      "ic95_bloques_3_anios": [
+        -0.000881517,
+        0.00185244
+      ],
+      "ic95_bloques_1_anio": [
+        -0.000893189,
+        0.001808613
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.001460411,
+        0.002376673
+      ],
+      "mejora_sin_2017": 0.00036428,
+      "mejora_sin_2023": 0.000806947,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 2,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.068888754,
+      "candidato_rh_vpd": 0.069938189,
+      "mejora_referencia_menos_candidato": -0.001049435,
+      "ic95_bloques_3_anios": [
+        -0.00269441,
+        0.000600163
+      ],
+      "ic95_bloques_1_anio": [
+        -0.003799781,
+        0.001069439
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.00330769,
+        0.001219621
+      ],
+      "mejora_sin_2017": -0.000050172,
+      "mejora_sin_2023": -0.00047584,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_meses": 3,
+      "variable": "precipitacion_p90_enero_abril",
+      "meses": 60,
+      "anios": 15,
+      "referencia_8w": 0.081051654,
+      "candidato_rh_vpd": 0.081907189,
+      "mejora_referencia_menos_candidato": -0.000855536,
+      "ic95_bloques_3_anios": [
+        -0.002505892,
+        0.00035112
+      ],
+      "ic95_bloques_1_anio": [
+        -0.003147387,
+        0.001009154
+      ],
+      "ic_familiar_bonferroni_bloques_3_anios": [
+        -0.003374698,
+        0.000778145
+      ],
+      "mejora_sin_2017": -0.000781201,
+      "mejora_sin_2023": -0.000041196,
+      "eventos": 5,
+      "prevalencia": 0.08333333,
+      "evidencia_de_extremos_suficiente": false
+    }
+  ],
+  "advertencias": [
+    "Los datos origen retrospectivos pueden no haber estado disponibles antes del objetivo: el hindcast no constituye emision vintage real.",
+    "La estratificacion solo representa 4 celdas de reanalisis de la franja baja; no mapas validados de la region ni pisos de montana.",
+    "Se excluye 1997-1998 como prueba independiente: aparece en el entrenamiento de los modelos 9A.",
+    "Ninguna conclusion sobre ocurrencia real de enfermedades de arandano o vid.",
+    "No genera alertas ENSO ni meteorologicas oficiales."
+  ]
+}
