@@ -1,0 +1,30 @@
+{
+  "fase": "8N",
+  "api": "https://api.open-meteo.com/v1/elevation",
+  "url": "https://api.open-meteo.com/v1/elevation?latitude=-6.125%2C-6.125%2C-6.125%2C-6.125%2C-6.125%2C-6.0%2C-6.0%2C-6.0%2C-6.0%2C-6.0%2C-6.0%2C-6.0%2C-6.0%2C-5.875%2C-5.875%2C-5.875%2C-5.75%2C-5.75%2C-5.625&longitude=-79.875%2C-79.75%2C-79.625%2C-79.5%2C-79.375%2C-80.25%2C-80.125%2C-80.0%2C-79.875%2C-79.75%2C-79.625%2C-79.5%2C-79.375%2C-80.0%2C-79.875%2C-79.75%2C-79.875%2C-79.75%2C-79.875",
+  "fuente_de_elevacion": "Open-Meteo Elevation API; DEM, no instrumento",
+  "fecha_consulta_utc": "2026-10-17T01:48:39+00:00",
+  "puntos": [
+    "P051",
+    "P052",
+    "P053",
+    "P054",
+    "P055",
+    "P056",
+    "P057",
+    "P058",
+    "P059",
+    "P060",
+    "P061",
+    "P062",
+    "P063",
+    "P064",
+    "P065",
+    "P066",
+    "P067",
+    "P068",
+    "P069"
+  ],
+  "sha256_json_original": "0b9b5aa0ac5d00deb41069a5280b756e8b8175c9870139f0654956019016c082",
+  "cartografia_es_referencial": true
+}

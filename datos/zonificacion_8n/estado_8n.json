@@ -1,0 +1,124 @@
+{
+  "fase": "8N",
+  "estado": "malla_dem_completa_solo_estratificacion_fisica",
+  "region": "Lambayeque",
+  "nodos_en_malla_regional_referencial": 69,
+  "nodos_con_elevacion_dem_verificada": 69,
+  "n_lotes_dem_esperados": 2,
+  "n_lotes_dem_archivados": 2,
+  "cobertura_puntual_completa": true,
+  "puntos_son_centros_de_muestreo_no_poligonos": true,
+  "cobertura_espacial_polinomio_porcentual_certificada": false,
+  "clasificacion": "estratos_altitudinales_candidatos_NO_zonas_agroclimaticas_homogeneas",
+  "homogeneidad_climatica_estadistica_demostrada": false,
+  "pronosticos_8e_recalibrados": false,
+  "validacion_instrumental_SENAMHI": false,
+  "zonas_operativas_aprobadas": 0,
+  "umbrales_altitudinales_preliminares_m": [
+    [
+      0,
+      100,
+      "planicie_muy_baja"
+    ],
+    [
+      100,
+      300,
+      "planicie_valle_interior"
+    ],
+    [
+      300,
+      800,
+      "piedemonte"
+    ],
+    [
+      800,
+      1600,
+      "ladera_baja"
+    ],
+    [
+      1600,
+      2500,
+      "ladera_media"
+    ],
+    [
+      2500,
+      9000,
+      "zona_alta_andina"
+    ]
+  ],
+  "estratos": {
+    "planicie_muy_baja": {
+      "n_puntos_dem": 35,
+      "alt_min_m": 0.0,
+      "alt_max_m": 93.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "planicie_valle_interior": {
+      "n_puntos_dem": 18,
+      "alt_min_m": 100.0,
+      "alt_max_m": 258.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "piedemonte": {
+      "n_puntos_dem": 6,
+      "alt_min_m": 418.0,
+      "alt_max_m": 722.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "ladera_baja": {
+      "n_puntos_dem": 3,
+      "alt_min_m": 934.0,
+      "alt_max_m": 1291.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "ladera_media": {
+      "n_puntos_dem": 4,
+      "alt_min_m": 1665.0,
+      "alt_max_m": 2406.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "zona_alta_andina": {
+      "n_puntos_dem": 1,
+      "alt_min_m": 3236.0,
+      "alt_max_m": 3236.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    },
+    "cota_negativa_dem_verificar": {
+      "n_puntos_dem": 2,
+      "alt_min_m": -2.0,
+      "alt_max_m": -1.0,
+      "zona_climatica_homogenea_demostrada": false,
+      "apto_para_pronostico_por_zona": false
+    }
+  },
+  "condiciones_pendientes_para_zonas_homogeneas": [
+    "Confirmar límite regional vigente con INEI/IGN y ajustar celdas limítrofes.",
+    "Cruzar topografía con exposición, distancia real al mar, cuencas y laderas.",
+    "Obtener climatologías 1996–2025 por nodo de T2m, Tmax/Tmin, precipitación, humedad, radiación y ET0 con misma procedencia temporal.",
+    "Agrupar similitud climática con escalamiento documentado, validación espacial por bloques y continuidad geográfica.",
+    "Verificar cambio de régimen costa/valle/piedemonte/Andes y umbrales en estaciones SENAMHI cuando existan registros.",
+    "Para pronosticar, entrenar modelos por zona con evaluación retrospectiva y prospectiva sin fuga temporal."
+  ],
+  "limite_regional_fuente": "juaneladio/peru-geojson, límite simplificado histórico NO oficial validado 2026; capa de cribado",
+  "elevacion_fuente": "Open-Meteo Elevation API, DEM de referencia, no sensor real",
+  "toda_lambayeque_no_cubierta_por_8m": true,
+  "trazabilidad": {
+    "limite_sha256": "83f8f4f0ff578da3414c4a033640020fbd4185614105958c1848695c2a9a288a",
+    "lotes": [
+      {
+        "lote": 1,
+        "hash": "e8535e561e4f1ea60ad023fecf5ba59c3fc1bc1dab5201bc23e3bb2b39edcb15"
+      },
+      {
+        "lote": 2,
+        "hash": "2ef74ca08190882145c47ab1b0a9ba4091ebc7fbdc67362d9b4b41ce9fbcfc19"
+      }
+    ]
+  }
+}
