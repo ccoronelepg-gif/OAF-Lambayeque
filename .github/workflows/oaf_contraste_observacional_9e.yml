@@ -1,0 +1,60 @@
+name: OAF 9E - Contraste observacional estricto
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/contraste_observacional_9e.py'
+      - 'datos/estaciones_9d/series_mensuales_9d.csv'
+      - 'datos/estaciones_9d/auditoria_estaciones_9d.json'
+      - 'datos/validacion_estaciones_9e/metadatos_identidad_9e.json'
+      - '.github/workflows/oaf_contraste_observacional_9e.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-9e-constraste
+  cancel-in-progress: false
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Comparación reproducible de meses completos
+        run: |
+          python modelos/contraste_observacional_9e.py
+          python modelos/contraste_observacional_9e.py --check
+      - name: Auditar la integridad cientifica
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('datos/validacion_estaciones_9e/contraste_observacional_9e.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          assert len(data['estaciones'])==3 and len(data['pares'])==3
+          assert not data['tres_estaciones_certificadas']
+          assert not data['comparacion_directa_era5_chirps_ejecutada']
+          assert all(x['meses_lluvia_100pct']<=x['meses_lluvia_90pct'] for x in data['estaciones'])
+          assert all(x['no_implica_cercania_espacial'] for x in data['pares'])
+          assert all(x['no_indica_capacidad_predictiva'] for x in data['pares'])
+          for x in data['estaciones']:
+              assert x['n_meses_1996_2013']==216
+          print('Tres pares temporalmente auditados sin falsear correspondencia espacial.')
+          PY
+      - name: Commit para consulta y dashboard
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9e/contraste_observacional_9e.json
+          if git diff --cached --quiet; then
+            echo 'Sin cambios pendientes'
+          else
+            git commit -m 'data(9E): contraste temporal interinstrumental con cobertura diaria completa'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
