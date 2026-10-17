@@ -74,7 +74,7 @@ class Agrozonas9M(unittest.TestCase):
  def test_archivos_y_frontend_sin_perder_cinco_rutas(self):
   h=(ROOT/"index.html").read_text("utf8")
   self.assertEqual(h.count('<section data-page='),5)
-  i=h.indexOf('<section data-page="clima"')
+  i=h.index('<section data-page="clima"')
   j=h.indexOf('<section data-page="nino"',i)
   part=h[i:j]
   for key in ("oaf-9m-visor","oaf-9m-map","oaf-9m-floor","oaf-9m-table",
