@@ -1,0 +1,50 @@
+name: OAF 8U - SST costera NOAA OISST
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/sst_costera_8u.py'
+      - 'tests/test_sst_costera_8u.py'
+      - '.github/workflows/oaf_sst_costera_8u.yml'
+      - 'modelos/visor_factores_8u.js'
+  schedule:
+    - cron: '41 17 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8u-oisst
+  cancel-in-progress: false
+jobs:
+  sst:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar fuentes originales
+        run: git pull --ff-only origin main
+      - name: Verificar NOAA SST y datos de agua no imputados
+        run: python -m unittest discover -s tests -p 'test_sst_costera_8u.py' -v
+      - name: Recuperar como máximo un punto-década NOAA SST
+        run: python modelos/sst_costera_8u.py --fetch --max-new 1
+      - name: Verificar datos, SHA-256 y reproducibilidad
+        run: |
+          python modelos/sst_costera_8u.py
+          python modelos/sst_costera_8u.py --check
+      - name: Guardar datos NOAA SST sin alterar fuentes originales
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/sst_costera_8u/
+          if git diff --cached --quiet; then
+            echo "Sin datos costeros nuevos, no se imputan registros."
+          else
+            git commit -m "data(oaf): NOAA OISST offshore 8U con verificación por días y SHA"
+            git pull --rebase origin main
+            git push
+          fi
