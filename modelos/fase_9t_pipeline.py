@@ -69,7 +69,7 @@ def prepare(d):
         g["sin"] = np.sin(2 * np.pi * g["month"] / 12)
         g["cos"] = np.cos(2 * np.pi * g["month"] / 12)
         parts.append(g)
-    d = pd.concat(parts, ignore_index=True).dropna()
+    d = pd.concat(parts, ignore_index=True).dropna(subset=["lluvia_mm","lag_1","lag_2","lag_3","lag_6","lag_12","rolling_3","rolling_12"])
     return d[(d.mes <= TEST_END)].copy()
 
 def score(df, pred, model, split):
