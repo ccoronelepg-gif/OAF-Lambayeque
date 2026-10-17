@@ -36,6 +36,7 @@ STATE = BASE / "estado_cobertura_9n.json"
 GEO = BASE / "mascaras_multitesela_9n.geojson"
 MANIFEST = BASE / "fuentes_dem_9n.json"
 MISSING = BASE / "teselas_no_disponibles_9n.json"
+ROW_FILE = BASE / "evaluacion_42_sectores_9n.json"
 BASE_URL = "https://copernicus-dem-90m.s3.amazonaws.com"
 FLOORS = {
     "llanura_costa": (0,100), "valle_bajo": (100,300),
@@ -359,12 +360,15 @@ def run(check=False):
             raise ValueError("Metadatos o manifiesto 9N no se reproducen")
         if len(load_json(MISSING))!=len(inventory["teselas_que_no_pudieron_comprobarse"]):
             raise ValueError("Faltantes de DEM sin inventario")
+        if load_json(ROW_FILE)!=rows:
+            raise ValueError("Tabla completa de 42 sectores no reproducible")
     else:
         BASE.mkdir(parents=True,exist_ok=True)
         GEO.write_text(json.dumps(geo,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf8")
         STATE.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
         MANIFEST.write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
         MISSING.write_text(json.dumps(inventory["teselas_que_no_pudieron_comprobarse"],ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+        ROW_FILE.write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     print("9N:",report["n_sectores_cobertura_completa"],"sectores completos;",
           report["n_sectores_cobertura_parcial"],"parciales;",
           report["n_sectores_sin_dem"],"sin DEM;",
