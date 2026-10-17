@@ -56,7 +56,7 @@ PCOLS=("sector_a","sector_b","piso","codigos_hidrograficos_comunes",
 
 def j(path):return json.loads(path.read_text(encoding="utf8"))
 def csvrows(path):
- with path.open(encoding="utf8-sig",newline="") as f:return list(csv.DictReader(f))
+ with path.open(encoding="utf-8-sig",newline="") as f:return list(csv.DictReader(f))
 def rounded(v,dec=3):return round(float(v),dec) if v is not None and math.isfinite(float(v)) else None
 def pearson(a,b):
  if len(a)<24:return None
