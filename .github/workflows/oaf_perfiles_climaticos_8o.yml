@@ -1,3 +1,4 @@
+# Ejecución focalizada 8O: completar bloque climático 2 de 6
 name: OAF 8O - Perfiles climáticos homogéneos multivariables
 on:
   workflow_dispatch:
