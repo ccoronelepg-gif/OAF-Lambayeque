@@ -1,0 +1,72 @@
+name: OAF 8Q - Continuidad altitudinal y climatica V1 V2
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/transectos_continuidad_8q.py'
+      - 'tests/test_transectos_continuidad_8q.py'
+      - '.github/workflows/oaf_transectos_8q.yml'
+      - 'modelos/visor_transectos_8q.js'
+      - 'index.html'
+  schedule:
+    - cron: '42 17 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-transectos-climaticos-8q
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Obtener la versión más reciente de los datos originales
+        run: git pull --ff-only origin main
+      - name: Pruebas de transectos con DEM real y clima sintético temporal aislado
+        run: python -m unittest discover -s tests -p 'test_transectos_continuidad_8q.py' -v
+      - name: Consultar una fuente real como máximo por ciclo
+        run: |
+          if python modelos/transectos_continuidad_8q.py --fetch --max-new 1; then
+            echo "Captura auditada o pendiente de API."
+          else
+            echo "::warning::API no verificable; no imputar perfiles."
+          fi
+      - name: Generar inventario de transectos y comparar solo 30 años completos
+        run: |
+          python modelos/transectos_continuidad_8q.py
+          python modelos/transectos_continuidad_8q.py --check
+      - name: Comprobar visor geográfico 8Q
+        run: |
+          if test -f modelos/visor_transectos_8q.js; then
+            node --check modelos/visor_transectos_8q.js
+            python - <<'PY'
+          from pathlib import Path
+          h=Path("index.html").read_text(encoding="utf-8")
+          for x in ("oaf-transects-8q","oaf-8q-status","oaf-8q-sites",
+                    "oaf-8q-sources","oaf-8q-complete","oaf-8q-table",
+                    "oaf-8q-map","oaf-8q-reload"):
+              assert h.count('id="'+x+'"')==1,x
+          assert 'src="modelos/visor_transectos_8q.js"' in h
+          print("Visor 8Q validado")
+          PY
+          fi
+      - name: Guardar DEM, metadatos climáticos y reportes deterministas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/transectos_8q/
+          if git diff --cached --quiet; then
+            echo "Sin fuentes nuevas de clima."
+          else
+            git commit -m "data(oaf): evidencia altitudinal y clima auditado de transectos 8Q"
+            git pull --rebase origin main
+            git push
+          fi
