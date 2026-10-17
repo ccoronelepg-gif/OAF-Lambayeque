@@ -1,0 +1,73 @@
+{
+  "fase": "8U",
+  "estado": "pronostico_marino_modelado_archivado",
+  "fecha_de_consulta_utc": "2026-10-17T03:51:48+00:00",
+  "archivo_fecha": "2026-10-17",
+  "periodo": "hasta 3 días de pronóstico, no climatología 1996–2025",
+  "fuente": "Open-Meteo Marine / corrientes y SST modeladas MeteoFrance",
+  "sha256_respuesta_marina_original": "1459507b8405ea5d9dab9a2b1e42622e38a0a81a1dfc13bdb9bd0729559c693e",
+  "n_puntos_marinos": 3,
+  "puntos": [
+    {
+      "id": "Norte_mar_abierto",
+      "latitud_solicitada": -6.1,
+      "longitud_solicitada": -80.7,
+      "latitud_celda": -6.208336,
+      "longitud_celda": -80.79166,
+      "unidad_entrada_velocidad_corriente": "km/h",
+      "n_horas_con_las_3_variables": 72,
+      "n_horas_totales": 72,
+      "sst_media_modelada_c": 26.0569,
+      "velocidad_media_modelada_ms": 0.1701,
+      "u_media_modelada_ms": -0.0998,
+      "v_media_modelada_ms": 0.1316,
+      "primer_horario": "2026-10-16T00:00",
+      "ultimo_horario": "2026-10-18T23:00"
+    },
+    {
+      "id": "Centro_mar_abierto",
+      "latitud_solicitada": -6.5,
+      "longitud_solicitada": -80.7,
+      "latitud_celda": -6.458336,
+      "longitud_celda": -80.70833,
+      "unidad_entrada_velocidad_corriente": "km/h",
+      "n_horas_con_las_3_variables": 72,
+      "n_horas_totales": 72,
+      "sst_media_modelada_c": 25.5903,
+      "velocidad_media_modelada_ms": 0.1636,
+      "u_media_modelada_ms": -0.1033,
+      "v_media_modelada_ms": 0.1193,
+      "primer_horario": "2026-10-16T00:00",
+      "ultimo_horario": "2026-10-18T23:00"
+    },
+    {
+      "id": "Sur_mar_abierto",
+      "latitud_solicitada": -6.9,
+      "longitud_solicitada": -80.7,
+      "latitud_celda": -6.875,
+      "longitud_celda": -80.70833,
+      "unidad_entrada_velocidad_corriente": "km/h",
+      "n_horas_con_las_3_variables": 72,
+      "n_horas_totales": 72,
+      "sst_media_modelada_c": 24.9319,
+      "velocidad_media_modelada_ms": 0.1782,
+      "u_media_modelada_ms": -0.1346,
+      "v_media_modelada_ms": 0.0624,
+      "primer_horario": "2026-10-16T00:00",
+      "ultimo_horario": "2026-10-18T23:00"
+    }
+  ],
+  "corrientes_historicas_30_anios_integradas": false,
+  "vientos_modelados_son_distintos_de_corrientes_marinas": true,
+  "celdas_modeladas_no_son_boyas": true,
+  "validacion_instrumental_independiente": false,
+  "habilidad_pronostico_marino_demostrada": false,
+  "modelo_integrado_viento_sst_corriente_retrovalidado": false,
+  "advertencias": [
+    "Pronóstico generado por modelos marinos, no observación instrumental ni verificación futura.",
+    "No extrapolar tres puntos marinos a la corriente de Humboldt ni al frente costero.",
+    "Dirección marina HACIA donde fluye, viento meteorológico DESDE donde sopla.",
+    "Los modelos cercanos a costa presentan incertidumbre elevada.",
+    "No utilizar en backtest 1996-2025, esta fuente no cubre ese periodo."
+  ]
+}
