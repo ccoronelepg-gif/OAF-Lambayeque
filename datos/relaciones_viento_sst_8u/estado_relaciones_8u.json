@@ -1,0 +1,64 @@
+{
+  "fase": "8U",
+  "estado": "asociacion_descriptiva_1996_2025_sin_pronostico",
+  "periodo": "1996–2025",
+  "n_comparaciones": 1440,
+  "n_fuentes_viento_era5_archivadas": 3,
+  "n_fuentes_sst_noaa": 1,
+  "sha256_noaa_sst": "4cf4938114c9f6130566d76ef280cddb3e601444d26d47237a9d2348628e5317",
+  "referencia_normales_viento_1996_2025": "solo_descriptiva",
+  "localidades": [
+    {
+      "localidad": "Chiclayo",
+      "n_meses_contemporaneos": 360,
+      "n_meses_rezago_2": 358,
+      "r_anomalia_viento_sst_mismo_mes": 0.09224,
+      "r_anomalia_viento_sst_menos_2": 0.17252,
+      "r_componente_u_aproximada_sst_menos_2": -0.40218,
+      "r_componente_v_aproximada_sst_menos_2": 0.11805
+    },
+    {
+      "localidad": "Jayanca",
+      "n_meses_contemporaneos": 360,
+      "n_meses_rezago_2": 358,
+      "r_anomalia_viento_sst_mismo_mes": 0.1508,
+      "r_anomalia_viento_sst_menos_2": 0.21774,
+      "r_componente_u_aproximada_sst_menos_2": -0.30892,
+      "r_componente_v_aproximada_sst_menos_2": 0.1189
+    },
+    {
+      "localidad": "Motupe",
+      "n_meses_contemporaneos": 360,
+      "n_meses_rezago_2": 358,
+      "r_anomalia_viento_sst_mismo_mes": 0.10441,
+      "r_anomalia_viento_sst_menos_2": 0.15706,
+      "r_componente_u_aproximada_sst_menos_2": -0.26237,
+      "r_componente_v_aproximada_sst_menos_2": 0.13544
+    },
+    {
+      "localidad": "Olmos",
+      "n_meses_contemporaneos": 360,
+      "n_meses_rezago_2": 358,
+      "r_anomalia_viento_sst_mismo_mes": 0.19927,
+      "r_anomalia_viento_sst_menos_2": 0.19407,
+      "r_componente_u_aproximada_sst_menos_2": -0.16926,
+      "r_componente_v_aproximada_sst_menos_2": 0.20262
+    }
+  ],
+  "corrientes_marinas_vectoriales_utilizadas": false,
+  "el_indice_sst_no_mide_corrientes": true,
+  "mismo_mes_no_es_predictor_ex_ante": true,
+  "sst_rezagada_no_demuestra_predictibilidad": true,
+  "correlacion_descriptiva_no_demuestra_causalidad": true,
+  "datos_senamhi_instrumentales_independientes": false,
+  "habilidad_predictiva_validada": false,
+  "mascara_mar_y_viento_maritimo_en_puntos_regionales_verificados": false,
+  "advertencias": [
+    "Anomalías de viento normalizadas 1996–2025 usan datos posteriores a cada fecha; SOLO para diagnóstico, no entrenar un backtest con ellas.",
+    "Niño1+2 NOAA es SST regional, no temperatura local de Lambayeque.",
+    "El viento ERA5 proviene de cuadrícula terrestre y no mide forzamiento oceánico sobre agua.",
+    "La misma climatología y reanálisis pueden contener autocorrelación y tendencias; no se aplican pruebas de significación aquí.",
+    "Ninguna variable u/v de corrientes marinas reales se ha usado en los cálculos.",
+    "Para modelos pronóstico ex ante, recalcular normales y parámetros exclusivamente con datos anteriores al periodo de prueba."
+  ]
+}
