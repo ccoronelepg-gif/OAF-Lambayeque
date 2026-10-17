@@ -154,6 +154,14 @@ def api_get(url):
                 if r.status!=200:raise ValueError("HTTP "+str(r.status))
                 raw=r.read(16_000_001)
             if len(raw)>16_000_000:raise ValueError("Respuesta muy grande")
+            # HTTP 200 no significa que el JSON esté íntegro. El proveedor
+            # puede devolver un cuerpo malformado: reintentar sin archivarlo.
+            try:
+                result=json.loads(raw)
+            except json.JSONDecodeError as exc:
+                raise ValueError("Respuesta JSON incompleta o malformada") from exc
+            if not isinstance(result,list):
+                raise ValueError("Respuesta histórica de proveedor no es lista de ubicaciones")
             return raw
         except HTTPError as exc:
             if exc.code==429:
