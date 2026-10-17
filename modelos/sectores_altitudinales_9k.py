@@ -13,7 +13,7 @@ import json
 from collections import defaultdict, Counter
 from pathlib import Path
 from shapely.geometry import shape, mapping, MultiPoint, Point, Polygon, MultiPolygon
-from shapely import voronoi_polygons
+from shapely import voronoi_polygons, make_valid
 from shapely.ops import transform, unary_union
 from pyproj import Transformer
 
@@ -179,7 +179,12 @@ def build():
             state=("hipotesis_nucleo_conectado" if supported else
                    "influencia_altitudinal_exploratoria")
             g=transform(UNPROJ,part)
-            if not g.is_valid:raise ValueError("Salida geométrica no válida")
+            if not g.is_valid:
+                # Algunos anillos casi tangentes se vuelven autointersectantes por la
+                # inversión UTM->WGS84. Reparar solo el aspecto geométrico de dibujo.
+                g=unary_union(polygon_parts(make_valid(g)))
+            if g.is_empty or not g.is_valid or g.area<=0:
+                raise ValueError("Salida geométrica no reparable")
             z=[d[code]["alt"] for code in pids]
             name=f"S{len(feats)+1:03d}"
             prop={
