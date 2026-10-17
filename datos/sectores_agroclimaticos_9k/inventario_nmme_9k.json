@@ -1,0 +1,439 @@
+{
+  "fase": "9K",
+  "fuente": "NOAA/CPC NMME real-time ensemble anomaly 2026-10",
+  "fecha_descripcion_utc": "2026-10-17T00:00:00+00:00",
+  "fecha_corte_modelo": "2026-10",
+  "periodo_modelo_historico_desde": "2011-08",
+  "fuentes_netcdf_comprobadas": 2,
+  "fuentes_netcdf_esperadas": 2,
+  "fuentes": [
+    {
+      "variable_etiqueta": "temp",
+      "nombre_variable_netcdf": "fcst",
+      "dimensiones_originales": [
+        "target",
+        "lat",
+        "lon"
+      ],
+      "forma_original": [
+        12,
+        181,
+        360
+      ],
+      "metadatos_unidades": {
+        "long_name": "NMME tmp2m 202610 ensemble mean anomaly",
+        "units": "K"
+      },
+      "lat_nombre": "lat",
+      "lon_nombre": "lon",
+      "fuente_url": "https://ftp.cpc.ncep.noaa.gov/NMME/realtime_anom/ENSMEAN/2026100800/NMME.tmp2m.202610.ENSMEAN.anom.nc",
+      "sha256": "727b2bbe15b22a57f2143276a66b5d98896293677dd790a06256b58b34410773",
+      "bytes": 3130744,
+      "resolucion_latitud_deg": 1.0,
+      "resolucion_longitud_deg": 1.0,
+      "tipo_emision": "pronostico_anomalia_realtime_archivo_NOAA_NMME",
+      "fecha_inicializacion_en_nombre": "2026-10",
+      "caracterización_vintage": "directorio publicacion NOAA 2026100800, no timestamp de creación de cada valor certificado externamente",
+      "sitios_celda": [
+        {
+          "localidad_referencial": "Chiclayo",
+          "celda_latitud": -7.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            4.462095,
+            4.309945,
+            4.179622,
+            3.760761,
+            3.068947,
+            2.633342,
+            2.695091,
+            2.807129,
+            2.629658,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Jayanca",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            2.930477,
+            2.878711,
+            3.069109,
+            2.899462,
+            2.409843,
+            1.996703,
+            1.96293,
+            1.915289,
+            1.925532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Motupe",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            2.930477,
+            2.878711,
+            3.069109,
+            2.899462,
+            2.409843,
+            1.996703,
+            1.96293,
+            1.915289,
+            1.925532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Olmos",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            2.930477,
+            2.878711,
+            3.069109,
+            2.899462,
+            2.409843,
+            1.996703,
+            1.96293,
+            1.915289,
+            1.925532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        }
+      ]
+    },
+    {
+      "variable_etiqueta": "lluvia",
+      "nombre_variable_netcdf": "fcst",
+      "dimensiones_originales": [
+        "target",
+        "lat",
+        "lon"
+      ],
+      "forma_original": [
+        12,
+        181,
+        360
+      ],
+      "metadatos_unidades": {
+        "long_name": "NMME prate 202610 ensemble mean anomaly",
+        "units": "mm/s"
+      },
+      "lat_nombre": "lat",
+      "lon_nombre": "lon",
+      "fuente_url": "https://ftp.cpc.ncep.noaa.gov/NMME/realtime_anom/ENSMEAN/2026100800/NMME.prate.202610.ENSMEAN.anom.nc",
+      "sha256": "29d45684a049a2f14d7a84f93879221e7b49195812aa0cac8442b1e7982cb57b",
+      "bytes": 3130748,
+      "resolucion_latitud_deg": 1.0,
+      "resolucion_longitud_deg": 1.0,
+      "tipo_emision": "pronostico_anomalia_realtime_archivo_NOAA_NMME",
+      "fecha_inicializacion_en_nombre": "2026-10",
+      "caracterización_vintage": "directorio publicacion NOAA 2026100800, no timestamp de creación de cada valor certificado externamente",
+      "sitios_celda": [
+        {
+          "localidad_referencial": "Chiclayo",
+          "celda_latitud": -7.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            6e-06,
+            1e-05,
+            1.7e-05,
+            2.8e-05,
+            4.1e-05,
+            4.1e-05,
+            3.4e-05,
+            2e-05,
+            5e-06,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Jayanca",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            1.1e-05,
+            1.9e-05,
+            2.3e-05,
+            3.2e-05,
+            4.1e-05,
+            3.7e-05,
+            3.1e-05,
+            2.5e-05,
+            1e-05,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Motupe",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            1.1e-05,
+            1.9e-05,
+            2.3e-05,
+            3.2e-05,
+            4.1e-05,
+            3.7e-05,
+            3.1e-05,
+            2.5e-05,
+            1e-05,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        },
+        {
+          "localidad_referencial": "Olmos",
+          "celda_latitud": -6.0,
+          "celda_longitud_archivo": 280.0,
+          "dimensiones_restantes": [
+            "target"
+          ],
+          "ejes_nativos": {
+            "target": {
+              "valores": [
+                801.0,
+                802.0,
+                803.0,
+                804.0,
+                805.0,
+                806.0,
+                807.0,
+                808.0,
+                809.0,
+                810.0,
+                811.0,
+                812.0
+              ],
+              "unidades": "months since 1960-01-02 21:00:00",
+              "long_name": "Forecast target month"
+            }
+          },
+          "valores_anomalia_original": [
+            1.1e-05,
+            1.9e-05,
+            2.3e-05,
+            3.2e-05,
+            4.1e-05,
+            3.7e-05,
+            3.1e-05,
+            2.5e-05,
+            1e-05,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n_finitos": 12,
+          "mes_valido_interpretado": null,
+          "prediccion_altitudinal_por_sector": false
+        }
+      ]
+    }
+  ],
+  "errores_consulta": [],
+  "pronostico_oaf_propio": false,
+  "n_pares_con_observacion_validada": 0,
+  "habilidad_noaa_para_zonas_lambayeque_demostrada": false,
+  "downscaling_zonal_aplicado": false,
+  "probabilidad_calibrada_por_poligono": false,
+  "mes_objetivo_cf_validado": false,
+  "nota": "Los valores originales no se comparan con 1996–2025 hasta confirmar unidad, eje lead, normal/anomalía de modelo y tiempo válido; una celda NMME gruesa cubre varios pisos altitudinales."
+}

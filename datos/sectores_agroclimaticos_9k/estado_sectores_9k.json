@@ -1,0 +1,91 @@
+{
+  "fase": "9K",
+  "metodo": "Voronoi de 420 nodos en UTM 17S, recortado al polígono secundario y a buffers de 5,5 km; disolución por franja y familia climática; no es extensión exacta de relieve real.",
+  "periodo_climatico_perfiles": "1996-2025",
+  "referencia_comparable_OMM": "1991-2020",
+  "n_nodos_dem": 420,
+  "n_testigos_con_360_meses": 81,
+  "n_pares_8p_similares": 51,
+  "n_enlaces_con_celdas_reanalisis_compartidas": 45,
+  "n_enlaces_distintos_y_dentro_del_mismo_piso": 5,
+  "n_familias_multicelda_exploratorias": 3,
+  "familias": [
+    {
+      "id": "C01",
+      "ids_testigos": [
+        "M0163",
+        "M0224"
+      ],
+      "estrato": "piedemonte",
+      "n_testigos": 2,
+      "enlaces_celdas_ambos_modelos_distintas": 1,
+      "contigüidad_cartográfica_validada": false,
+      "homogeneidad_instrumental_validada": false
+    },
+    {
+      "id": "C02",
+      "ids_testigos": [
+        "M0234",
+        "M0282",
+        "M0308"
+      ],
+      "estrato": "montana_alta",
+      "n_testigos": 3,
+      "enlaces_celdas_ambos_modelos_distintas": 2,
+      "contigüidad_cartográfica_validada": false,
+      "homogeneidad_instrumental_validada": false
+    },
+    {
+      "id": "C03",
+      "ids_testigos": [
+        "M0280",
+        "M0288",
+        "M0333"
+      ],
+      "estrato": "montana_media",
+      "n_testigos": 3,
+      "enlaces_celdas_ambos_modelos_distintas": 2,
+      "contigüidad_cartográfica_validada": false,
+      "homogeneidad_instrumental_validada": false
+    }
+  ],
+  "n_poligonos_graficos_exploratorios": 42,
+  "n_sectores_nucleo_conectado": 3,
+  "n_nodos_asociados_a_testigos": 286,
+  "n_nodos_no_asociados": 134,
+  "nodos_por_piso": {
+    "cota_negativa_revisar": 10,
+    "llanura_costa": 161,
+    "montana_alta": 23,
+    "montana_baja": 30,
+    "montana_media": 11,
+    "piedemonte": 64,
+    "valle_bajo": 121
+  },
+  "area_km2_solo_influencia_grafica": 14114.68,
+  "cobertura_territorial_oficial_estimada": false,
+  "n_zonas_homogeneas_certificadas": 0,
+  "n_sectores_agricolas_certificados": 0,
+  "validacion_espacial_de_pronosticos": false,
+  "geometria_referencial_no_oficial": true,
+  "dem_90m_puntos_no_pendiente_ni_cuenca_verificadas": true,
+  "altitud_solo_nodo_no_altitud_continua_de_todo_poligono": true,
+  "independencia_estaciones_no_certificada": true,
+  "prediccion_elnino_costero_zonal_validada": false,
+  "fuentes_sha256": {
+    "muestra_dem_420": "42a1b32e4221c9401a1c4d003fa4ff90e2290a4870aed8feb0f7bfe65da819fd",
+    "perfiles_climaticos_81": "044ed951bb2277ca63ab532792fe7a0df613ca559742e0e5bd374c5ce4b32f5e",
+    "pares_similares_8p": "49511ce2ad3b4bb80e90e9c66801eba16c46e4fb93d4aaee8897968a51818ef8",
+    "limite_departamental_referencial": "83f8f4f0ff578da3414c4a033640020fbd4185614105958c1848695c2a9a288a"
+  },
+  "limitaciones": [
+    "Voronoi es superficie gráfica asociada al nodo, no unidad natural de clima, vertiente, cuenca ni catastro.",
+    "Buffer máximo 5,5 km evita extrapolar celdas lejanas; áreas sumadas NO son porcentajes de superficie por piso altitudinal.",
+    "El apoyo climático de un testigo se limita a <=12 km, desnivel <=180 m y MISMO estrato físico.",
+    "Cruzar un umbral físico de altitud impide disolver una pieza incluso si el reanálisis es parecido.",
+    "Un píxel compartido de ERA5/ERA5-Land no acredita corroboración independiente.",
+    "Las piezas con soporte de un único testigo no prueban continuidad climatológica.",
+    "Faltan límite IGN/INEI vigente, DEM ráster continuo, vertientes/cuencas y estaciones SENAMHI con metadatos confiables.",
+    "NO hay downscaling validado de NOAA NMME a estas piezas; 1° NMME no resuelve pisos de altitud de Lambayeque."
+  ]
+}
