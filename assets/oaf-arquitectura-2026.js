@@ -20,7 +20,7 @@ async function news(){
      ". Estimación CHIRPS, no estación ni lluvia actual.");
   },"oaf-news-chirps","oaf-news-chirps-detail"],
   ["datos/estado_enfen_3z.json",data=>{
-   const valid=data.verificacion==="exito"&&data.fecha_emision&&data.estado_institucional;
+   const valid=data.verificacion==="verificada"&&data.fecha_emision&&data.estado_institucional&&/^https:\/\//.test(data.url_comunicado||"");
    assign("oaf-news-enfen",valid?"Verificado: "+data.estado_institucional:"Estado oficial por confirmar");
    assign("oaf-news-enfen-detail",valid?
      "Boletín "+(data.numero??"")+" emitido "+data.fecha_emision+
