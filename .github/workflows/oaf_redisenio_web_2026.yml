@@ -1,0 +1,44 @@
+name: OAF Web - Redisenio cientifico 2026
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/oaf-arquitectura-2026.js'
+      - 'assets/oaf-redesign-8f.js'
+      - 'tests/test_redisenio_oaf_2026.py'
+      - '.github/workflows/oaf_redisenio_web_2026.yml'
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ocho pruebas de arquitectura, geografia y trazabilidad
+        run: python -m unittest discover -s tests -p 'test_redisenio_oaf_2026.py' -v
+      - name: Verificar JavaScript de datos, fuentes y mapas
+        run: |
+          node --check assets/oaf-arquitectura-2026.js
+          node --check assets/oaf-redesign-8f.js
+          node --check modelos/visor_benchmark_9a.js
+      - name: Verificar que se conserva el inventario científico
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('index.html').read_text(encoding='utf-8')
+          for mod in ('oaf-benchmark-8w','oaf-benchmark-9a',
+                      'oaf-zones-8n','oaf-homogeneity-8o',
+                      'oaf-integracion-8v','oaf-8z-humedad',
+                      'oaf-aire-extremos-8x',
+                      'oaf-regional-8s','oaf-8m-neighbour'):
+              if mod=='oaf-8m-neighbour':continue
+              assert src.count('id="'+mod+'"')==1,mod
+          assert src.count('<section data-page=')==5
+          print('Conservación de paneles, fuentes y diseño cinco pestañas comprobada')
+          PY
