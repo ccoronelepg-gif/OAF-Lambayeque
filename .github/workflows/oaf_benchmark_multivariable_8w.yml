@@ -6,6 +6,7 @@ on:
     paths:
       - 'modelos/benchmark_multivariable_8w.py'
       - 'tests/test_benchmark_multivariable_8w.py'
+      - 'modelos/visor_benchmark_8w.js'
       - '.github/workflows/oaf_benchmark_multivariable_8w.yml'
       - 'datos/integracion_8v/estado_integracion_8v.json'
       - 'datos/integracion_8v/matriz_terrestre_8v.csv'
@@ -45,6 +46,23 @@ jobs:
           assert d['n_predicciones_continuas']>5000
           assert d['n_pronosticos_probabilisticos_eventos']>100
           print('Retrospectivo completo, sin alerta operacional.')
+          PY
+      - name: Validar visor cientifico y reporte temporal
+        run: |
+          node --check modelos/visor_benchmark_8w.js
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          html=Path('index.html').read_text(encoding='utf-8')
+          for key in ('oaf-benchmark-8w','oaf-8w-site','oaf-8w-h','oaf-8w-target',
+                      'oaf-8w-table','oaf-8w-events','oaf-8w-currents','oaf-8w-status'):
+              assert html.count('id="'+key+'"')==1,key
+          assert html.count('src="modelos/visor_benchmark_8w.js"')==1
+          d=json.loads(Path('datos/benchmark_8w/estado_benchmark_8w.json').read_text())
+          assert len(d['metricas_por_corte'])==600
+          assert len(d['estabilidad_variantes'])==48
+          assert all(x['total_cortes']==5 for x in d['estabilidad_variantes'])
+          print('Dashboard 8W y estabilidad por corte acreditados.')
           PY
       - name: Archivar salidas verificadas
         run: |
