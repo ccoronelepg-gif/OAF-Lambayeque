@@ -1,0 +1,2520 @@
+{
+  "fase": "9O",
+  "producto": "CHIRPS v3 final mensual LATAM a 0.05°",
+  "periodo_solicitado": "1996-01 a 2025-12",
+  "anios_preseleccionados": [
+    1996,
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "meses_objetivo_total_30anios": 360,
+  "n_meses_solicitados": 360,
+  "n_meses_reales": 60,
+  "n_meses_faltantes": 300,
+  "n_sectores": 42,
+  "n_testigos_reanalisis": 81,
+  "periodo_climatologico_30anios_completo": false,
+  "n_registros_sector_mes": 2520,
+  "n_registros_testigo_mes": 4860,
+  "n_pixeles_chirps_distintos_en_testigos": 80,
+  "n_testigos_duplican_pixel_chirps": 1,
+  "errores": [
+    {
+      "mes": "2001-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2001-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2001.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2002-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2002.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2003-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2003.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2004-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2004.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2005-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2005.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2006-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2006.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2007-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2007.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2008-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2008.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2009-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2009.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2010-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2010.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2011-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2011.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2012-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2012.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2013-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2013.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2014-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2014.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2015-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2015.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2016-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2016.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2017-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2017.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2018-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2018.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2019-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2019.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2020-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2020.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2021-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2021.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2022-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2022.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2023-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2023.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2024-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2024.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.01.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.02.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.03.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.04.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.05.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.06.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.07.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.08.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.09.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.10.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.11.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "mes": "2025-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2025.12.tif",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    }
+  ],
+  "fuentes": [
+    {
+      "mes": "1996-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.01.tif",
+      "sha256": "0c208a692755ad8ce1d64a9dac9da4f81ecf2645648c0d908e837513d1f5bdbd",
+      "bytes": 4182414,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.02.tif",
+      "sha256": "f3f6b6239b016f90677e165999918a84c27f8503dc9f38d09e0a880b0dfaa42b",
+      "bytes": 4166736,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.03.tif",
+      "sha256": "b959a47a2c1ec676f4839753b2e1dfe2252bded6e57d465711cc14cac89561a7",
+      "bytes": 4248542,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.04.tif",
+      "sha256": "83a0c7a78e999b4ff35a3cc9d129e2a2f225133bd565eb6e400648b7860dc76e",
+      "bytes": 4087358,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.05.tif",
+      "sha256": "aa9926db9bba6e03cd4f45ab00376f52976bb25aa934c1d2c3168183901f60be",
+      "bytes": 4082986,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.06.tif",
+      "sha256": "6fb7d6021d7fd1ade6067cdc69076b3f11a9dd40e9be9e645088397adf77767b",
+      "bytes": 4126448,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.07.tif",
+      "sha256": "2e0d189bb0a0ef61559382ce34d1b055c6efe1d71a00e09907af9c8036c220b8",
+      "bytes": 4080484,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.08.tif",
+      "sha256": "957f3428fc9f2365a59364cc2f320361e145b7c9c97e42efb532a96529908134",
+      "bytes": 4157498,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.09.tif",
+      "sha256": "9e6b7bc676928b7c10571249fa981e152118dc3c686d9d9f97add14d4d615f58",
+      "bytes": 4266566,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.10.tif",
+      "sha256": "2f8b5961b620a855267ab967490c32cb348d7daebf52aacb2b34d81acd2c947c",
+      "bytes": 4230610,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.11.tif",
+      "sha256": "ad37c0fa762c8e07664ac7ced2f4352adf04166059038ea2c61507f5016231bb",
+      "bytes": 4210980,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1996-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1996.12.tif",
+      "sha256": "fd7049db3e390d90e9bc8d9b2fbe14f9bca4caa182ad292b6fe52d46d9c8b464",
+      "bytes": 4191830,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.01.tif",
+      "sha256": "9f866e90c8e5d01336cccef4e0d994552906903e6cf018da57fa648d08b8d360",
+      "bytes": 4213852,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.02.tif",
+      "sha256": "ff44924390d337df0ad47accb8d3b7d13a5d3691b42718bd75171f71eee6a447",
+      "bytes": 4165882,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.03.tif",
+      "sha256": "3a4c449e349dd5f9bd357ee5b8b2f066aac211e82f99940823d089042ca38687",
+      "bytes": 4262468,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.04.tif",
+      "sha256": "c15ccc0a4d6f0443441d1f986e1020c0afc27d5b83775b081e435c8cc0bef5fb",
+      "bytes": 4130334,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.05.tif",
+      "sha256": "aa8693e8988df764d7cdbb240f800908d72d6e65fd78549969219e19d5bec911",
+      "bytes": 4203502,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.06.tif",
+      "sha256": "57b30a515bc3ca15ff164022e373f71d15d190df2dc50a052dbf36959b0e1735",
+      "bytes": 4165776,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.07.tif",
+      "sha256": "43dcc5fac0053b1b055b9f080c88c18e7118dbd15c273789e9f9cf22514488f7",
+      "bytes": 4168246,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.08.tif",
+      "sha256": "0b1e8542e4d9cb702b0639e84ecc3d48f6293b2bbfd952bcccdcc3f703dc4890",
+      "bytes": 4336084,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.09.tif",
+      "sha256": "29977d846945585f42fca2e696729b99a2658b91b9f54d76be259f090ca12000",
+      "bytes": 4266810,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.10.tif",
+      "sha256": "707751820ca7e41cf5dc7e8dfc57ca9130023f0c061c5fbab2fa5821d5bb2763",
+      "bytes": 4270320,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.11.tif",
+      "sha256": "b9bf0b507b3f11d2626c19ad95d82a18afd12b380ae5953a650558fc4e557840",
+      "bytes": 4269212,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1997-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1997.12.tif",
+      "sha256": "1929497c0fa1223e4ab637d7129b73b96858ec4f986308e320ba0d93131daaa4",
+      "bytes": 4198454,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.01.tif",
+      "sha256": "5717d77fabce5699d911257a1124fb6858fcf0bc06216dd8656a82ace9501bed",
+      "bytes": 4126842,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.02.tif",
+      "sha256": "a2426538af864290baf74dbcc32046c5422281503e5dc9cc18b75eed3cbde6e7",
+      "bytes": 4201136,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.03.tif",
+      "sha256": "7c415a3f138903e7af0cd831e90c296e5893f02a4ffc0db542437f802101a7e2",
+      "bytes": 4262574,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.04.tif",
+      "sha256": "5fe9a2a3ca74ef335101af2a92d20881abb2a5cb230bcaf47b42014f9046c5b7",
+      "bytes": 3889264,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.05.tif",
+      "sha256": "eeacb95def80634df2635d196dc40bd770c167831b466f051e3a5d4fc1fe9e67",
+      "bytes": 4197854,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.06.tif",
+      "sha256": "743b89d0e87e626cca6d3246e934278ae0fd8f59f95425e2b58370b97557595e",
+      "bytes": 4074238,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.07.tif",
+      "sha256": "926721c3929f4791f386338a9700420ad2c86202c90ba2091b47f5af36f4ffa9",
+      "bytes": 4051586,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.08.tif",
+      "sha256": "e8cfe846565d13411af658698ed3aa6b7635ed44a0efe75df8a1823401f99359",
+      "bytes": 4214986,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.09.tif",
+      "sha256": "06f1357ce82218c6ed085f5bfee9ddf51e754211e94c7e7143e94051bc3dfe68",
+      "bytes": 4262816,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.10.tif",
+      "sha256": "21b5bdd17cac9ae97a7f1f05d3ff38524ea78e50f0bb54a7d8d1cfb6e2eba040",
+      "bytes": 4255368,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.11.tif",
+      "sha256": "8d999b84901d37be21a69902ee3a39365a0ba435c3e59db5834b0201745e3ac7",
+      "bytes": 4195968,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1998-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1998.12.tif",
+      "sha256": "ddeb9c28cd0a1fdf3ac9e8aca6b3cd9cb0d7be220ac925ab20cf2b1a7db36457",
+      "bytes": 4099260,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.01.tif",
+      "sha256": "814d4ef8b16c5edf25adc0174392069ef2e561c4337695cc1f502a9edc40af7c",
+      "bytes": 4092816,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.02.tif",
+      "sha256": "7d5ecdd1dc78b5b078dbc3d1fce96bd780f1281b0f28f6d303bf3bbb7e4b79e8",
+      "bytes": 4157526,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.03.tif",
+      "sha256": "c1ba7221704dc86d4fae8381b4d2800add3f9de20e6382e6d3b84e5f90b80751",
+      "bytes": 4149926,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.04.tif",
+      "sha256": "3b1417ac56169f6655a47bf4d9692c6bc65051af9510c90e93f65a2718eaaa9e",
+      "bytes": 4204196,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.05.tif",
+      "sha256": "f81bebcb601a4efefd84eb9614ac73b0d42d8139d68271b56d65211f9b71e776",
+      "bytes": 4146640,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.06.tif",
+      "sha256": "6cc79e45dc55b66372f2c949b89e4599b401061df85670a13a344e187e68c3a2",
+      "bytes": 4097152,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.07.tif",
+      "sha256": "cdbcf7c47d94c21735275246d19521d51e2922c73efd7bd7f2f1ed0cd23c0279",
+      "bytes": 4102618,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.08.tif",
+      "sha256": "6b3fcd13b47d7a9a62970aa3b349eb8b1bf13fcf5c7b74b5ec45fac7c1bfb471",
+      "bytes": 4082368,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.09.tif",
+      "sha256": "91e0fd0d2cc220ed69db7807dfa978688bb959e5d7adabed4916a601c685c4f3",
+      "bytes": 4265356,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.10.tif",
+      "sha256": "b9f97f088e8263e57b2a0b93b2641aa291cf315d5f6e9941f44778deefca1629",
+      "bytes": 4244866,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.11.tif",
+      "sha256": "9fd77b3a94ccaafcf6b41c7bce1e02a847125102a14dca66c424b46ecce155fb",
+      "bytes": 4132862,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "1999-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.1999.12.tif",
+      "sha256": "5af811dff6817153e200f53dcb7d15b69dd7f09e3ca9bccf55de015264536be7",
+      "bytes": 4061802,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-01",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.01.tif",
+      "sha256": "39c53788f3fdfbc54df1cb8c7fe820f89f7f627f0949a5c088453c0bb9f085b3",
+      "bytes": 4058140,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-02",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.02.tif",
+      "sha256": "85e30a2d8acda2a703cebd0f50d593893bfafd87692afceb78f4825347dd2588",
+      "bytes": 4122992,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-03",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.03.tif",
+      "sha256": "b9795c9dcb0026b59091ded17435f8f281ad4ad2c309b02fdfb7cc4006d190aa",
+      "bytes": 4181636,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-04",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.04.tif",
+      "sha256": "71caa2b1ff4b364bb51823b4105e96cace2286eba0b5833644f7505068ecd76c",
+      "bytes": 4209684,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-05",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.05.tif",
+      "sha256": "5e5b3e8831e0ccdf906b83a6414b6ac14b7a7fe99fb36ddffcec47b9aed94fd3",
+      "bytes": 4184768,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-06",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.06.tif",
+      "sha256": "137c088abbdc4792843c12b2d38f6dda261c38c9883e40ce813d1a080cbb48ea",
+      "bytes": 4220758,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-07",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.07.tif",
+      "sha256": "08e3d11ac4d175bba0fadc9c31cb935a3cf5ea4265213f6a1832256bd9a8ba13",
+      "bytes": 4193660,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-08",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.08.tif",
+      "sha256": "242b1a9f441c5c057ba7140edfc1df99740fa00304004f643e8f0cbd27b6fb73",
+      "bytes": 4241790,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-09",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.09.tif",
+      "sha256": "b06b0a44fc8edc6e7e0b215e1e6e669f01aee55d83de2f514570c7affc4bccff",
+      "bytes": 4317848,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-10",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.10.tif",
+      "sha256": "2d174d8ab8473634db8a6f3f26a7404957bd49d429622b957e6a99b46d8e95bf",
+      "bytes": 4263978,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-11",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.11.tif",
+      "sha256": "6bc190067a1d6f629183b2e735ff89fcd282f7e2ece93635eb54b8e1e4e71479",
+      "bytes": 4221514,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    },
+    {
+      "mes": "2000-12",
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2000.12.tif",
+      "sha256": "31703d77cbf401f4209f78244a3b6a71876b72d6b0f9af691c6d57d487df61e0",
+      "bytes": 4245378,
+      "pixeles_nativos_reutilizados": 80,
+      "n_pixeles_lambayeque_validos": 941,
+      "n_sectores_sin_pixel_terrestre": 3,
+      "raster_transform": [
+        0.05,
+        -0.05,
+        -80.74999942,
+        -5.4500006
+      ],
+      "epsg": 4326
+    }
+  ],
+  "raw_geotiff_archivado_en_github": false,
+  "reproduccion_fuente": "Descargar URL mensual original; comparar SHA256 conservado antes de re-extraer.",
+  "primera_descarga_con_fecha_UTC": "2026-10-17T18:20:23+00:00",
+  "mascara_terrestre_chirps_no_terreno_dem": true,
+  "superficie_pixel_media_no_ponderada_por_area": true,
+  "calibracion_de_pronosticos_zonales": false,
+  "estaciones_meteorologicas_independientes": false,
+  "advertencia": "La lluvia gridded CHIRPS incorpora estaciones: ni sectores contiguos ni píxeles contiguos son réplicas independientes. Los polígonos SIG 9K no son terrenos homogéneos certificados."
+}
