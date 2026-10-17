@@ -1,0 +1,73 @@
+name: OAF 8P - Climática de vecindades y continuidad
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/clima_vecindades_8p.py'
+      - 'tests/test_clima_vecindades_8p.py'
+      - '.github/workflows/oaf_clima_8p.yml'
+      - 'modelos/visor_clima_8p.js'
+      - 'index.html'
+  schedule:
+    - cron: '38 16 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-8p-historic-climate
+  cancel-in-progress: false
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sincronizar fuentes verificadas
+        run: git pull --ff-only origin main
+      - name: Probar controles de vecindad, 19 testigos originales y nuevos lotes
+        run: python -m unittest discover -s tests -p 'test_clima_vecindades_8p.py' -v
+      - name: Recuperar dos bloques históricos nuevos máximo y respetar límite API
+        run: |
+          if python modelos/clima_vecindades_8p.py --fetch --max-new 2; then
+            echo "Reanálisis nuevo descargado o ya verificado."
+          else
+            echo "::warning::Proveedor no disponible. No imputar observaciones."
+          fi
+      - name: Recalcular pares vecinos con cobertura completa por grupo
+        run: |
+          python modelos/clima_vecindades_8p.py
+          python modelos/clima_vecindades_8p.py --check
+      - name: Comprobar panel web 8P
+        run: |
+          if test -f modelos/visor_clima_8p.js; then
+            node --check modelos/visor_clima_8p.js
+            python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          for item in ("oaf-neighbors-8p","oaf-8p-state","oaf-8p-samples",
+                       "oaf-8p-new","oaf-8p-similar","oaf-8p-table","oaf-8p-map",
+                       "oaf-8p-refresh"):
+              assert html.count('id="'+item+'"')==1,item
+          assert 'src="modelos/visor_clima_8p.js"' in html
+          assert "FASE_8P_VECINDADES_AGROCLIMATICAS.md" in html
+          print("Comprobación de interfaz 8P completa")
+          PY
+          fi
+      - name: Guardar fuentes originales y estado incremental verificable
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/clima_contiguo_8p/
+          if git diff --cached --quiet; then
+            echo "No hay nuevos datos históricos de vecindades"
+          else
+            git commit -m "data(oaf): perfiles 8P por lotes y pares geoclimáticos verificables"
+            git pull --rebase origin main
+            git push
+          fi
