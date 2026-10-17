@@ -1,0 +1,19 @@
+{
+  "fase": "8U",
+  "origen": "NOAA NCEI OISST v2.1 AVHRR-only final 0.25deg",
+  "sitio": "Pacifico_sur_Lambayeque",
+  "periodo": [
+    2006,
+    2015
+  ],
+  "url": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.csv?sst%5B%282006-01-01T12:00:00Z%29:1:%282015-12-31T12:00:00Z%29%5D%5B%280.0%29%5D%5B%28-6.625%29%5D%5B%28-80.625%29%5D",
+  "sha256_original": "7bd0935d80bd1161e6cbba2adbb23e0d0a2a88b0ca34d1e13313894f9d74d743",
+  "fecha_consulta_utc": "2026-10-17T03:59:47+00:00",
+  "n_dias": 3652,
+  "dias_esperados": 3652,
+  "dias_faltantes": 0,
+  "registro_temporal_completo": true,
+  "no_sensor_individual": true,
+  "mar_criterio_sst_finita": true,
+  "revision_retroactiva_posible": true
+}
