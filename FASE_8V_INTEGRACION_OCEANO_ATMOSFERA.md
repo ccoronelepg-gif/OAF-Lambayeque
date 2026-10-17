@@ -32,3 +32,11 @@ Evaluar objetivos de lluvia y temperaturas extremas por localidad y, posteriorme
 **Límites:** viento y meteorología son reanálisis, corrientes NOAA/AOML son geostróficas y no todas las corrientes, SST NOAA CPC es regional, los 1440 meses-sitio comparten información y autocorrelación. Ningún resultado 8V equivale a una alerta predictiva validada o demuestra causalidad.
 
 **Fuentes:** [Copernicus/ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels), [NOAA Niño1+2/3.4](https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices), [NOAA AOML/CoastWatch](https://coastwatch.pfeg.noaa.gov/erddap/griddap/miamicurrents.html), [ICEN oficial y metodología](https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen).
+
+## Ejecución verificada el 17/10/2026 (hora UTC)
+
+La automatización [GitHub Actions OAF 8V](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39003458908) finalizó con éxito tras corregir un filtro excesivamente restrictivo de lluvia. El nuevo motor no descarta automáticamente extremos de precipitación por superar 2500 mm; admite la cifra modelada y activa un indicador de revisión si es igual o superior a 1000 mm.
+
+**Conteos archivados, no estimaciones:** 1440 meses-localidad terrestre (cuatro localidades, 360 meses cada una); 720 meses-punto de viento de rejilla marina de ensayo; 216 registros mensuales de corrientes geostróficas completos y 504 filas marinas sin esas corrientes (mayoritariamente anteriores a 2017). **11 meses-localidad** de lluvia mensual modelada se marcaron para revisión por alcanzar ≥1000 mm; máximo declarado por la fuente ERA5 en Motupe, **marzo de 1998, 2913,8 mm**. Esa cifra NO ha sido validada con pluviómetros SENAMHI ni debe usarse todavía como umbral real de parcela.
+
+En el portal se añadió un gráfico de la **matriz terrestre** con filtros de localidad, variable y ventana temporal: [Verificación de datos](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#verificaciones), panel «Fase 8V». El panel informa su fuente y advierte que ni los índices SST regionales ni el reanálisis equivalen a alertas OAF. Los datos marinos permanecen en CSV separado.
