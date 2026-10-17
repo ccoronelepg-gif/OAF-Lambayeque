@@ -68,7 +68,7 @@ Archivos reales: [diagnóstico por localidad](datos/relaciones_viento_sst_8u/est
 
 **SST regional ya disponible:** 360 anomalías mensuales 1996–2025 del índice **Niño 1+2 NOAA CPC**, con archivo y SHA congelados en [fase 8T](datos/oceano_8t/noaa_cpc_sstoi_indices.meta.json). Es un índice revisado hasta 2026, no la versión necesariamente conocida al emitir un pronóstico en cada año histórico y **no equivale al ICEN de ENFEN**.
 
-**SST local frente a Lambayeque — fuente identificada, extracción y QA pendientes:** [NOAA NCEI OISST versión 2.1](https://upwell.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.html), malla 0,25° con valores diarios desde 1981. Las posibles ubicaciones marinas deberán seleccionarse en celdas realmente oceánicas y a diferentes distancias de la costa, y comprobar máscara tierra/mar. No se permite atribuir a una playa una celda de SST que en realidad sea terrestre, ni tratar el índice Niño 1+2 como temperatura costera medida.
+**SST local frente a Lambayeque — extracción efectuada con cobertura parcial, QA sin imputación:** [NOAA NCEI OISST versión 2.1](https://upwell.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg_LonPM180.html), malla 0,25° con valores diarios desde 1981. Las posibles ubicaciones marinas deberán seleccionarse en celdas realmente oceánicas y a diferentes distancias de la costa, y comprobar máscara tierra/mar. No se permite atribuir a una playa una celda de SST que en realidad sea terrestre, ni tratar el índice Niño 1+2 como temperatura costera medida.
 
 ## 4A. Cruce cuantitativo viento–Niño 1+2 (realizado con datos archivados)
 
@@ -82,6 +82,26 @@ Se contrastaron **358 meses emparejados** por cada una de las cuatro localidades
 | Olmos | +0,194071 | −0,311165 |
 
 Los índices son descriptivos de series históricas reanalizadas/revisadas: no son causalidad, no controlan automáticamente tendencias, dependencia temporal, ENSO de otras regiones, perturbaciones costeras ni exposición de laderas, y no demuestran capacidad de anticipar lluvias o vientos de campo. La componente zonal estimada usa dirección dominante diaria y velocidad media diaria, por lo cual tampoco equivale a una observación vectorial instantánea. Los coeficientes y su SHA quedan en [correlaciones_viento_sst_8u.json](datos/viento_8u/correlaciones_viento_sst_8u.json).
+
+### Datos SST marinos que el proveedor efectivamente entregó
+
+Se creó [`modelos/sst_costera_8u.py`](modelos/sst_costera_8u.py) y [su flujo de descarga](.github/workflows/oaf_sst_costera_8u.yml) para consultar SST diaria NOAA NCEI OISST v2.1 en **dos puntos oceánicos de ensayo**: −6,625°S/−80,625°O y −6,125°S/−80,625°O. Ambos son puntos fijos de rejilla offshore, no playas, muelles ni estaciones peruanas; su máscara marina oficial aún está pendiente de cartografía más detallada.
+
+El primer espejo de NOAA bloqueó la descarga automática con **HTTP 403**. El segundo, NOAA CoastWatch, respondió con archivo CSV parcialmente cubierto. Para el **primer punto y década 1996–2005**, la auditoría comprobó:
+
+| Control del archivo costero | Resultado |
+|---|---:|
+| Fechas esperadas | 3.653 días |
+| Fechas NOAA válidas recibidas | **3.142 días** |
+| Fechas faltantes | **511 días** |
+| Cobertura calendario aproximada | **86,0 %** |
+| Fuente | NOAA NCEI OISST v2.1 vía CoastWatch ERDDAP |
+| Década completa acreditada | **No** |
+| Climatología oceánica 1996–2025 acreditada | **No** |
+
+El archivo parcial fue archivado con **URL, SHA-256, días de cobertura, fechas y coordenadas**, sin interpolar los 511 días ausentes ni calcular una climatología de 30 años engañosa. El [estado de SST offshore](datos/sst_costera_8u/estado_sst_8u.json) y la [lista de archivos gz y metadatos originales](datos/sst_costera_8u/fuentes/) registran las nuevas fuentes a medida que terminan de revisarse. Los demás bloques aún pueden estar pendientes o presentar huecos: consultar el JSON dinámico antes de citar un periodo como completo.
+
+Un archivo con cobertura parcial puede orientar inspecciones, pero no habilita medias anuales comparables sin cuantificar sesgos por fechas ausentes; por ahora los indicadores de SST marina local a 30 años siguen **bloqueados**.
 
 ## 5. Corrientes marinas: revisión de fuentes y control anti-datos-ficticios
 
@@ -141,7 +161,7 @@ Especial atención: **el efecto de SST y viento sobre temperatura media no tiene
 
 - Viento ERA5 1996–2025: **completado, 3 bloques archivados y 1.440 meses-localidad auditados**.
 - SST histórica regional Niño 1+2: **disponible, versión histórica revisable**.
-- SST local OISST y corriente oceánica u/v 1996–2025: **acceso/ingesta y verificación todavía pendientes**.
+- SST local OISST: **primera fuente parcial original archivada (3.142/3.653 días; aún sin climatología completa)**; corriente oceánica u/v: **sin descarga validada, pendiente**.
 - Reanálisis no sustituye estación SENAMHI ni monitoreo oceánico local; estaciones instrumentales independientes utilizadas = **0**.
 - Predicción integrada multivariable validada de Niño Costero = **no demostrada**.
 - Polígonos agroclimáticos homogéneos certificados = **0**.
