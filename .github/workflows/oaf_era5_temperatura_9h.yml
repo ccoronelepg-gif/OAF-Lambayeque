@@ -1,0 +1,56 @@
+name: OAF 9H - Complemento ERA5 y temperaturas ERA5-Land
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'modelos/contraste_temperatura_era5_9h.py'
+      - '.github/workflows/oaf_era5_temperatura_9h.yml'
+permissions:
+  contents: write
+concurrency:
+  group: oaf-complemento-9h
+  cancel-in-progress: false
+jobs:
+  real-products:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests==2.32.5
+      - name: Contraste 1996-2013 de ERA5 atmosferico y ERA5-Land temperatura
+        run: |
+          python modelos/contraste_temperatura_era5_9h.py
+          python modelos/contraste_temperatura_era5_9h.py --check
+      - name: Confirmar metadatos y pares reales
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('datos/validacion_estaciones_9h/contraste_era5_complementario_9h.json').read_text('utf8'))
+          assert j['fase']=='9H'
+          assert j['era5_land_precipitacion'].startswith('No soportada')
+          assert not j['validacion_predictiva_operativa']
+          assert not j['emplazamientos_historicos_9g_resueltos']
+          assert len(j['sintesis'])==18
+          print('Pares reales 9H ERA5 atmosférico:',j['n_pares_era5_precipitacion'])
+          print('Pares reales 9H temperaturas ERA5-Land:',j['n_pares_era5_land_temperatura'])
+          print('Errores:',j['errores_descarga'])
+          PY
+      - name: Publicar datos verificables sin modificar originales
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datos/validacion_estaciones_9h/contraste_era5_complementario_9h.json datos/validacion_estaciones_9h/pares_era5_complementarios_9h.csv
+          if git diff --cached --quiet; then
+            echo 'Datos iguales'
+          else
+            git commit -m 'data(9H): contraste retrospectivo real de ERA5 y temperaturas ERA5-Land'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
