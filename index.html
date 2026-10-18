@@ -1003,6 +1003,19 @@ details.panel{scroll-margin-top:120px}
 <p><strong>Investigación del autor:</strong> procesa datos abiertos para entrenar Random Forest, GCN y otros algoritmos, verificando su habilidad con pruebas históricas independientes y explicando su incertidumbre. El entrenamiento no significa que un organismo oficial haya certificado el resultado.</p>
 <div class="notice"><strong>Estado general:</strong> investigación en validación. Ningún modelo autoriza hoy alertas automáticas, recomendaciones de fumigación o pronósticos oficiales de El Niño.</div>
 </div>
+<div class="panel" id="oaf-rf-unico-lluvias-10i">
+<span class="eyebrow">Módulo principal del autor · Predicción exclusivamente de precipitaciones</span>
+<h2>Random Forest — lluvia mensual (mm) y probabilidad de meses lluviosos</h2>
+<p>Este es el <strong>único algoritmo de IA elegido para desarrollar la predicción de lluvia</strong> del observatorio. RF se entrena exclusivamente con series de precipitación CHIRPS, temperatura y humedad de aire, radiación, presión, viento, temperatura de rocío, VPD físico derivado, anomalías de temperatura oceánica NOAA Niño 1+2/Niño 3.4, SOI, alisios y señales marinas verificadas. Las variables dependientes del tiempo se incorporan con dos meses o más de rezago.</p>
+<p>El modelo tiene <strong>dos salidas únicamente meteorológicas</strong>: <strong>lluvia mensual esperada en milímetros</strong> y <strong>probabilidad de superar el percentil 90 de lluvia del sector</strong>. Se comparan los grupos de factores lluvia, océano, atmósfera y su combinación, frente a climatología sectorial, antes de escoger qué variables aportan habilidad real.</p>
+<div class="notice"><strong>Separación del módulo fitosanitario:</strong> este Random Forest NO predice enfermedades ni infecciones. La consulta futura de horas con humedad relativa elevada requiere series <strong>horarias</strong>; las horas de hoja mojada tampoco pueden deducirse directamente de la lluvia mensual ni de RH mensual. Las estimaciones no son avisos meteorológicos operativos ni pronósticos oficiales de ENFEN.</div>
+<div class="links">
+<a href="random-forest-lluvias.html">Abrir comparador principal de Random Forest y precipitación ↗</a>
+<a href="FASE_10I_RF_SOLO_LLUVIA.md">Diseño, variables y límites de validación ↗</a>
+<a href="datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json">Resultados auditados RF (JSON) ↗</a>
+</div>
+<p class="oaf-figure-caption">Los paneles de fases 10E–10H que siguen se conservan exclusivamente como histórico comparativo de investigación; GCN no se usará para generar la nueva salida de lluvia del portal. Para El Niño costero y fuentes oficiales, consulte la sección institucional.</p>
+</div>
 <div class="panel" id="oaf-modelo-lluvia-10e">
 <span class="eyebrow">Módulo experimental A</span><h2>Probabilidad de lluvia mensual elevada</h2>
 <p>El modelo combina precipitación previa, temperatura, radiación solar, vientos terrestres y marinos, humedad, déficit de presión de vapor, anomalías de temperatura del Pacífico Niño 1+2 y Niño 3.4, SOI y alisios. Los predictores se utilizan con al menos dos meses de rezago para evitar recurrir a valores del mes pronosticado.</p>
