@@ -78,8 +78,8 @@ def parse_staged(folder,sectors,now=None):
     "n_sectores":len(recorded),
     "originales_sha256_declarados":sorted(set(row["sha256_fuente_original"] for row in rows)),
     "nota":"Los SHA originales provienen del manifiesto aportado; verificación independiente del URL NO demostrada."})
- allmonths=list(itertools.islice(months_between(2026,1),len(requested)))
  requested=sorted(months)
+ allmonths=list(itertools.islice(months_between(2026,1),len(requested)))
  if requested != allmonths[:len(requested)]:
   raise ValueError("Faltan meses contiguos desde 2026-01; no interpolar")
  return months,details,{"estado":"MES_COMPLETO_CON_PROCEDENCIA_APORTADA",
