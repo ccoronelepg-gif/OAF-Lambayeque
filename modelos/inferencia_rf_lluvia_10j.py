@@ -7,7 +7,7 @@ t-4, t-6, and t-12. No use of t-1 or target y. A target-month forecast with
 missing history fails closed. Historical replays are NOT original as-issued.
 """
 from __future__ import annotations
-import argparse,datetime as dt,json,math
+import argparse,datetime as dt,json,math,itertools
 from pathlib import Path
 import joblib
 import numpy as np
@@ -71,7 +71,7 @@ def main():
  model=joblib.load(MODEL) # ONLY own verified CI model.
  nodes,_,_,_,_,_,data,_=base.previous.inputs()
  history={month:{sid:data[sid][month] for sid in nodes}
-   for month in (list(updates.months_between(1996,1))[:360])}
+   for month in (list(itertools.islice(updates.months_between(1996,1),360)))}
  # New source data must be validated monthly, not invented.
  later,_,_=updates.parse_staged(updates.INPUT,set(nodes))
  history.update(later)
