@@ -1038,6 +1038,25 @@ details.panel{scroll-margin-top:120px}
 <a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Proveedor de reanálisis ERA5 ↗</a>
 </div>
 </div>
+<div class="panel" id="oaf-modelos-completos-10h">
+<span class="eyebrow">Módulo experimental A4 · entrenamiento 10H terminado</span>
+<h2>Random Forest frente a GCN: precipitación, océano y variables atmosféricas</h2>
+<p>Entrenamiento científico terminado con <strong>39 sectores y series 1996–2025</strong>. Se compararon Random Forest y una red convolucional de grafos (GCN), utilizando lluvia CHIRPS con rezagos, indicadores oceánicos regionales (anomalías Niño 1+2/Niño 3.4, SOI, alisios y viento marino) y temperatura, humedad, radiación, presión, viento y temperatura de rocío derivados de <strong>NASA POWER</strong>.</p>
+<div class="scroller"><table><thead><tr><th>Método</th><th>Brier Score (↓)</th><th>PR-AUC (↑)</th></tr></thead><tbody>
+<tr><td>Climatología sectorial, referencia</td><td><strong>0,062884</strong></td><td><strong>0,60414</strong></td></tr>
+<tr><td>Random Forest con lluvia y océano (10F)</td><td>0,069247</td><td>0,43511</td></tr>
+<tr><td><strong>Random Forest con todos los factores disponibles (10H)</strong></td><td><strong>0,072036</strong></td><td><strong>0,39737</strong></td></tr>
+<tr><td>GCN con todos los factores disponibles (10H)</td><td>0,077423</td><td>0,35626</td></tr>
+</tbody></table></div>
+<p class="oaf-figure-caption">Prueba retrospectiva 2021–2025: 2.340 casos sector-mes y 247 con lluvia ≥percentil 90 histórico. Random Forest es la IA con mejor resultado entre los dos algoritmos completos, pero el RF anterior y la climatología son mejores referencias globales. Los resultados y diferencias por año se archivan con pruebas y código reproducible.</p>
+<div class="notice"><strong>Advertencia para productores:</strong> los modelos se han entrenado por el autor y están en investigación; NO son avisos oficiales ni han demostrado habilidad operativa con archivos emitidos originalmente ni con estaciones independientes. NASA POWER agrupa 39 sectores en solo siete unidades aproximadas de muestreo. Las predicciones de lluvia P90 no constituyen predicción validada de El Niño costero ni de infección de cultivos.</div>
+<div class="links">
+<a href="evaluacion-modelos-atmosfericos-10h.html">Comparar modelos y examinar cada año ↗</a>
+<a href="FASE_10H_COMPARACION_MULTIVARIABLE.md">Informe científico y limitaciones ↗</a>
+<a href="datos/modelos_multivariables_10h/evaluacion_rf_gcn_nasa_10h.json">Resultados auditados de RF y GCN ↗</a>
+<a href="datos/nasa_power_10h/auditoria_fuentes_10h.json">Fuentes reales NASA POWER ↗</a>
+</div>
+</div>
 <div class="panel" id="oaf-modelo-enso-10e">
 <span class="eyebrow">Módulo experimental B · en investigación</span>
 <h2>Escenarios del fenómeno El Niño costero y El Niño global</h2>
