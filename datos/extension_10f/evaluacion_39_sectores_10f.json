@@ -1,0 +1,2077 @@
+{
+  "fase": "10F",
+  "fecha_corte": "2026-10-17",
+  "objetivo": "Probabilidad de exceder P90 lluvia mensual CHIRPS histórico POR SECTOR, referencia 1997–2015",
+  "n_sectores": 39,
+  "n_bloques_geograficos": 5,
+  "n_predicciones_prueba": 11700,
+  "n_sector_mes_objetivo": 2340,
+  "n_modelos": 5,
+  "p90_referencia": "1997-01/2015-12 solo CHIRPS del sector",
+  "uso_historia_holdout": "Normal P90 y climatologia usan observaciones históricas anteriores a 2016 del sector reservado; NO en ajuste RF/GCN",
+  "periodos": {
+    "entrenamiento": [
+      "1997-01",
+      "2015-12"
+    ],
+    "ajuste": [
+      "2016-01",
+      "2018-12"
+    ],
+    "calibracion_platt": [
+      "2019-01",
+      "2020-12"
+    ],
+    "prueba": [
+      "2021-01",
+      "2025-12"
+    ]
+  },
+  "predictoras_rainfall_t2mas": [
+    "precipitacion_t2",
+    "precipitacion_t3",
+    "precipitacion_t4",
+    "precipitacion_t6",
+    "precipitacion_t12",
+    "media_lluvia_t2t4",
+    "estacionalidad",
+    "atributos_geograficos"
+  ],
+  "predictoras_regionales_t2": [
+    "nino12_anom_t2",
+    "nino34_anom_t2",
+    "soi_t2",
+    "alisios_central_t2",
+    "alisios_oriental_t2",
+    "viento_marino_pimentel_t2",
+    "viento_marino_norte_t2"
+  ],
+  "regionales_mismas_en_los_39_sectores": true,
+  "covariables_locales_39_sectores_ausentes": [
+    "temperatura_aire",
+    "radiacion_solar",
+    "humedad_vpd",
+    "viento_local_homologado"
+  ],
+  "corrientes_marinas_incluidas": false,
+  "razon": "Corrientes geostroficas solo 2017–2025 y sin co-localización con puntos terrestres; no imputar",
+  "fuentes_sha256": {
+    "datos/validacion_9w/matriz_sectores_chirps_9w.csv": "5717e77a141114a2ce62f1ba5db1153b8ca59e112710a87daa8af173581b5bc8",
+    "datos/integracion_8v/matriz_terrestre_8v.csv": "b07b30becfe6ff9b92b67f88782ca26e552ea06b627d324a62d76d4962a81d4e",
+    "datos/noaa_cpc_predictores_atmosfericos_8b.csv": "af0ef57a50f84878cc37c4c8376328248ec42d7e6d05448cf3915ffd4bfd1349",
+    "datos/integracion_8v/matriz_marina_8v.csv": "ff34c094e90dd191f5d97b7333345865ccb8de79c2e1313e2421e04a18b0cb87",
+    "datos/experimentos_10d/roni_noaa_2021_2025.json": "f407c8fd5f86714b8d94ca9afbff024d29845a7a2f7d5c0cf6a4e04e0410da53"
+  },
+  "evaluacion": {
+    "global": [
+      {
+        "modelo": "GCN_lluvia",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.084757,
+        "logloss": 0.271542,
+        "pr_auc": 0.29251,
+        "roc_auc": 0.84332
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.078348,
+        "logloss": 0.251041,
+        "pr_auc": 0.35446,
+        "roc_auc": 0.86646
+      },
+      {
+        "modelo": "RF_lluvia",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.074842,
+        "logloss": 0.242483,
+        "pr_auc": 0.44542,
+        "roc_auc": 0.88586
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.069247,
+        "logloss": 0.221652,
+        "pr_auc": 0.43511,
+        "roc_auc": 0.9052
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.062884,
+        "logloss": 0.210639,
+        "pr_auc": 0.60414,
+        "roc_auc": 0.93172
+      }
+    ],
+    "por_ano": [
+      {
+        "modelo": "GCN_lluvia",
+        "anio": "2021",
+        "n": 468,
+        "eventos": 37,
+        "prevalencia_pct": 7.91,
+        "brier": 0.06782,
+        "logloss": 0.235097,
+        "pr_auc": 0.21414,
+        "roc_auc": 0.79366
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "anio": "2022",
+        "n": 468,
+        "eventos": 43,
+        "prevalencia_pct": 9.19,
+        "brier": 0.067845,
+        "logloss": 0.211392,
+        "pr_auc": 0.43533,
+        "roc_auc": 0.91858
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "anio": "2023",
+        "n": 468,
+        "eventos": 107,
+        "prevalencia_pct": 22.86,
+        "brier": 0.16552,
+        "logloss": 0.504422,
+        "pr_auc": 0.6868,
+        "roc_auc": 0.88949
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "anio": "2024",
+        "n": 468,
+        "eventos": 6,
+        "prevalencia_pct": 1.28,
+        "brier": 0.032121,
+        "logloss": 0.132492,
+        "pr_auc": 0.02314,
+        "roc_auc": 0.69462
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "anio": "2025",
+        "n": 468,
+        "eventos": 54,
+        "prevalencia_pct": 11.54,
+        "brier": 0.090478,
+        "logloss": 0.274307,
+        "pr_auc": 0.39194,
+        "roc_auc": 0.88263
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "anio": "2021",
+        "n": 468,
+        "eventos": 37,
+        "prevalencia_pct": 7.91,
+        "brier": 0.051114,
+        "logloss": 0.167481,
+        "pr_auc": 0.47203,
+        "roc_auc": 0.94259
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "anio": "2022",
+        "n": 468,
+        "eventos": 43,
+        "prevalencia_pct": 9.19,
+        "brier": 0.05761,
+        "logloss": 0.177275,
+        "pr_auc": 0.50703,
+        "roc_auc": 0.95119
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "anio": "2023",
+        "n": 468,
+        "eventos": 107,
+        "prevalencia_pct": 22.86,
+        "brier": 0.149943,
+        "logloss": 0.485973,
+        "pr_auc": 0.74499,
+        "roc_auc": 0.87858
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "anio": "2024",
+        "n": 468,
+        "eventos": 6,
+        "prevalencia_pct": 1.28,
+        "brier": 0.048532,
+        "logloss": 0.167294,
+        "pr_auc": 0.05551,
+        "roc_auc": 0.80069
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "anio": "2025",
+        "n": 468,
+        "eventos": 54,
+        "prevalencia_pct": 11.54,
+        "brier": 0.084544,
+        "logloss": 0.257179,
+        "pr_auc": 0.42253,
+        "roc_auc": 0.9104
+      },
+      {
+        "modelo": "RF_lluvia",
+        "anio": "2021",
+        "n": 468,
+        "eventos": 37,
+        "prevalencia_pct": 7.91,
+        "brier": 0.054106,
+        "logloss": 0.17124,
+        "pr_auc": 0.56281,
+        "roc_auc": 0.94287
+      },
+      {
+        "modelo": "RF_lluvia",
+        "anio": "2022",
+        "n": 468,
+        "eventos": 43,
+        "prevalencia_pct": 9.19,
+        "brier": 0.061425,
+        "logloss": 0.182619,
+        "pr_auc": 0.47587,
+        "roc_auc": 0.94008
+      },
+      {
+        "modelo": "RF_lluvia",
+        "anio": "2023",
+        "n": 468,
+        "eventos": 107,
+        "prevalencia_pct": 22.86,
+        "brier": 0.169208,
+        "logloss": 0.561531,
+        "pr_auc": 0.64717,
+        "roc_auc": 0.85549
+      },
+      {
+        "modelo": "RF_lluvia",
+        "anio": "2024",
+        "n": 468,
+        "eventos": 6,
+        "prevalencia_pct": 1.28,
+        "brier": 0.021962,
+        "logloss": 0.102159,
+        "pr_auc": 0.04584,
+        "roc_auc": 0.8189
+      },
+      {
+        "modelo": "RF_lluvia",
+        "anio": "2025",
+        "n": 468,
+        "eventos": 54,
+        "prevalencia_pct": 11.54,
+        "brier": 0.067506,
+        "logloss": 0.194864,
+        "pr_auc": 0.57212,
+        "roc_auc": 0.95084
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "anio": "2021",
+        "n": 468,
+        "eventos": 37,
+        "prevalencia_pct": 7.91,
+        "brier": 0.059511,
+        "logloss": 0.19429,
+        "pr_auc": 0.37882,
+        "roc_auc": 0.93585
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "anio": "2022",
+        "n": 468,
+        "eventos": 43,
+        "prevalencia_pct": 9.19,
+        "brier": 0.068912,
+        "logloss": 0.219113,
+        "pr_auc": 0.32596,
+        "roc_auc": 0.90397
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "anio": "2023",
+        "n": 468,
+        "eventos": 107,
+        "prevalencia_pct": 22.86,
+        "brier": 0.12115,
+        "logloss": 0.366289,
+        "pr_auc": 0.80975,
+        "roc_auc": 0.92534
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "anio": "2024",
+        "n": 468,
+        "eventos": 6,
+        "prevalencia_pct": 1.28,
+        "brier": 0.035584,
+        "logloss": 0.141058,
+        "pr_auc": 0.18906,
+        "roc_auc": 0.78175
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "anio": "2025",
+        "n": 468,
+        "eventos": 54,
+        "prevalencia_pct": 11.54,
+        "brier": 0.061077,
+        "logloss": 0.187508,
+        "pr_auc": 0.62676,
+        "roc_auc": 0.94503
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "anio": "2021",
+        "n": 468,
+        "eventos": 37,
+        "prevalencia_pct": 7.91,
+        "brier": 0.038893,
+        "logloss": 0.147934,
+        "pr_auc": 0.88848,
+        "roc_auc": 0.9874
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "anio": "2022",
+        "n": 468,
+        "eventos": 43,
+        "prevalencia_pct": 9.19,
+        "brier": 0.048325,
+        "logloss": 0.170604,
+        "pr_auc": 0.76576,
+        "roc_auc": 0.96925
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "anio": "2023",
+        "n": 468,
+        "eventos": 107,
+        "prevalencia_pct": 22.86,
+        "brier": 0.136595,
+        "logloss": 0.405048,
+        "pr_auc": 0.81694,
+        "roc_auc": 0.936
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "anio": "2024",
+        "n": 468,
+        "eventos": 6,
+        "prevalencia_pct": 1.28,
+        "brier": 0.032336,
+        "logloss": 0.137277,
+        "pr_auc": 0.04041,
+        "roc_auc": 0.8088
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "anio": "2025",
+        "n": 468,
+        "eventos": 54,
+        "prevalencia_pct": 11.54,
+        "brier": 0.058272,
+        "logloss": 0.192329,
+        "pr_auc": 0.82194,
+        "roc_auc": 0.97379
+      }
+    ],
+    "por_piso": [
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "cota_negativa_revisar",
+        "n": 60,
+        "eventos": 10,
+        "prevalencia_pct": 16.67,
+        "brier": 0.136793,
+        "logloss": 0.433057,
+        "pr_auc": 0.44,
+        "roc_auc": 0.864
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "llanura_costa",
+        "n": 240,
+        "eventos": 29,
+        "prevalencia_pct": 12.08,
+        "brier": 0.110813,
+        "logloss": 0.362759,
+        "pr_auc": 0.31541,
+        "roc_auc": 0.8454
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_alta",
+        "n": 180,
+        "eventos": 19,
+        "prevalencia_pct": 10.56,
+        "brier": 0.095859,
+        "logloss": 0.342674,
+        "pr_auc": 0.18012,
+        "roc_auc": 0.66427
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_baja",
+        "n": 360,
+        "eventos": 37,
+        "prevalencia_pct": 10.28,
+        "brier": 0.078791,
+        "logloss": 0.248496,
+        "pr_auc": 0.28926,
+        "roc_auc": 0.85415
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_media",
+        "n": 480,
+        "eventos": 50,
+        "prevalencia_pct": 10.42,
+        "brier": 0.08726,
+        "logloss": 0.288841,
+        "pr_auc": 0.19553,
+        "roc_auc": 0.75181
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "piedemonte",
+        "n": 660,
+        "eventos": 66,
+        "prevalencia_pct": 10.0,
+        "brier": 0.073239,
+        "logloss": 0.221419,
+        "pr_auc": 0.36371,
+        "roc_auc": 0.90289
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "valle_bajo",
+        "n": 360,
+        "eventos": 36,
+        "prevalencia_pct": 10.0,
+        "brier": 0.076906,
+        "logloss": 0.240115,
+        "pr_auc": 0.34071,
+        "roc_auc": 0.88092
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "cota_negativa_revisar",
+        "n": 60,
+        "eventos": 10,
+        "prevalencia_pct": 16.67,
+        "brier": 0.13455,
+        "logloss": 0.429315,
+        "pr_auc": 0.45012,
+        "roc_auc": 0.848
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "llanura_costa",
+        "n": 240,
+        "eventos": 29,
+        "prevalencia_pct": 12.08,
+        "brier": 0.108809,
+        "logloss": 0.366778,
+        "pr_auc": 0.28862,
+        "roc_auc": 0.80896
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_alta",
+        "n": 180,
+        "eventos": 19,
+        "prevalencia_pct": 10.56,
+        "brier": 0.062627,
+        "logloss": 0.198999,
+        "pr_auc": 0.76911,
+        "roc_auc": 0.9575
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_baja",
+        "n": 360,
+        "eventos": 37,
+        "prevalencia_pct": 10.28,
+        "brier": 0.072597,
+        "logloss": 0.235415,
+        "pr_auc": 0.415,
+        "roc_auc": 0.87465
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_media",
+        "n": 480,
+        "eventos": 50,
+        "prevalencia_pct": 10.42,
+        "brier": 0.064398,
+        "logloss": 0.20721,
+        "pr_auc": 0.64477,
+        "roc_auc": 0.92995
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "piedemonte",
+        "n": 660,
+        "eventos": 66,
+        "prevalencia_pct": 10.0,
+        "brier": 0.078248,
+        "logloss": 0.242129,
+        "pr_auc": 0.32436,
+        "roc_auc": 0.87177
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "valle_bajo",
+        "n": 360,
+        "eventos": 36,
+        "prevalencia_pct": 10.0,
+        "brier": 0.081073,
+        "logloss": 0.260594,
+        "pr_auc": 0.2966,
+        "roc_auc": 0.84165
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "cota_negativa_revisar",
+        "n": 60,
+        "eventos": 10,
+        "prevalencia_pct": 16.67,
+        "brier": 0.140088,
+        "logloss": 0.493739,
+        "pr_auc": 0.44426,
+        "roc_auc": 0.757
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "llanura_costa",
+        "n": 240,
+        "eventos": 29,
+        "prevalencia_pct": 12.08,
+        "brier": 0.09858,
+        "logloss": 0.342551,
+        "pr_auc": 0.42258,
+        "roc_auc": 0.81247
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_alta",
+        "n": 180,
+        "eventos": 19,
+        "prevalencia_pct": 10.56,
+        "brier": 0.065908,
+        "logloss": 0.200971,
+        "pr_auc": 0.52655,
+        "roc_auc": 0.9307
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_baja",
+        "n": 360,
+        "eventos": 37,
+        "prevalencia_pct": 10.28,
+        "brier": 0.067459,
+        "logloss": 0.213645,
+        "pr_auc": 0.51531,
+        "roc_auc": 0.92022
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_media",
+        "n": 480,
+        "eventos": 50,
+        "prevalencia_pct": 10.42,
+        "brier": 0.067961,
+        "logloss": 0.218012,
+        "pr_auc": 0.53073,
+        "roc_auc": 0.90674
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "piedemonte",
+        "n": 660,
+        "eventos": 66,
+        "prevalencia_pct": 10.0,
+        "brier": 0.069115,
+        "logloss": 0.216167,
+        "pr_auc": 0.49067,
+        "roc_auc": 0.91711
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "valle_bajo",
+        "n": 360,
+        "eventos": 36,
+        "prevalencia_pct": 10.0,
+        "brier": 0.079665,
+        "logloss": 0.264362,
+        "pr_auc": 0.32618,
+        "roc_auc": 0.85082
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "cota_negativa_revisar",
+        "n": 60,
+        "eventos": 10,
+        "prevalencia_pct": 16.67,
+        "brier": 0.103112,
+        "logloss": 0.366531,
+        "pr_auc": 0.53126,
+        "roc_auc": 0.844
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "llanura_costa",
+        "n": 240,
+        "eventos": 29,
+        "prevalencia_pct": 12.08,
+        "brier": 0.076725,
+        "logloss": 0.26639,
+        "pr_auc": 0.46286,
+        "roc_auc": 0.86166
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_alta",
+        "n": 180,
+        "eventos": 19,
+        "prevalencia_pct": 10.56,
+        "brier": 0.065048,
+        "logloss": 0.214294,
+        "pr_auc": 0.50805,
+        "roc_auc": 0.92252
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_baja",
+        "n": 360,
+        "eventos": 37,
+        "prevalencia_pct": 10.28,
+        "brier": 0.063705,
+        "logloss": 0.201716,
+        "pr_auc": 0.51834,
+        "roc_auc": 0.9339
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_media",
+        "n": 480,
+        "eventos": 50,
+        "prevalencia_pct": 10.42,
+        "brier": 0.062839,
+        "logloss": 0.205422,
+        "pr_auc": 0.54273,
+        "roc_auc": 0.93
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "piedemonte",
+        "n": 660,
+        "eventos": 66,
+        "prevalencia_pct": 10.0,
+        "brier": 0.069894,
+        "logloss": 0.211301,
+        "pr_auc": 0.40997,
+        "roc_auc": 0.92048
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "valle_bajo",
+        "n": 360,
+        "eventos": 36,
+        "prevalencia_pct": 10.0,
+        "brier": 0.073619,
+        "logloss": 0.231909,
+        "pr_auc": 0.37045,
+        "roc_auc": 0.89172
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "cota_negativa_revisar",
+        "n": 60,
+        "eventos": 10,
+        "prevalencia_pct": 16.67,
+        "brier": 0.124832,
+        "logloss": 0.398362,
+        "pr_auc": 0.4231,
+        "roc_auc": 0.78
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "llanura_costa",
+        "n": 240,
+        "eventos": 29,
+        "prevalencia_pct": 12.08,
+        "brier": 0.091414,
+        "logloss": 0.298664,
+        "pr_auc": 0.34599,
+        "roc_auc": 0.82767
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_alta",
+        "n": 180,
+        "eventos": 19,
+        "prevalencia_pct": 10.56,
+        "brier": 0.056546,
+        "logloss": 0.184782,
+        "pr_auc": 0.68012,
+        "roc_auc": 0.96093
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_baja",
+        "n": 360,
+        "eventos": 37,
+        "prevalencia_pct": 10.28,
+        "brier": 0.054627,
+        "logloss": 0.186176,
+        "pr_auc": 0.70246,
+        "roc_auc": 0.96021
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_media",
+        "n": 480,
+        "eventos": 50,
+        "prevalencia_pct": 10.42,
+        "brier": 0.056669,
+        "logloss": 0.189492,
+        "pr_auc": 0.66479,
+        "roc_auc": 0.94791
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "piedemonte",
+        "n": 660,
+        "eventos": 66,
+        "prevalencia_pct": 10.0,
+        "brier": 0.056832,
+        "logloss": 0.193132,
+        "pr_auc": 0.62405,
+        "roc_auc": 0.94964
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "valle_bajo",
+        "n": 360,
+        "eventos": 36,
+        "prevalencia_pct": 10.0,
+        "brier": 0.064348,
+        "logloss": 0.218348,
+        "pr_auc": 0.54462,
+        "roc_auc": 0.91731
+      }
+    ],
+    "por_bloque": [
+      {
+        "modelo": "GCN_lluvia",
+        "bloque": 0,
+        "n": 720,
+        "eventos": 69,
+        "prevalencia_pct": 9.58,
+        "brier": 0.084383,
+        "logloss": 0.290807,
+        "pr_auc": 0.15553,
+        "roc_auc": 0.70939
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "bloque": 1,
+        "n": 480,
+        "eventos": 54,
+        "prevalencia_pct": 11.25,
+        "brier": 0.088019,
+        "logloss": 0.277732,
+        "pr_auc": 0.39593,
+        "roc_auc": 0.86672
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "bloque": 2,
+        "n": 480,
+        "eventos": 40,
+        "prevalencia_pct": 8.33,
+        "brier": 0.058689,
+        "logloss": 0.171426,
+        "pr_auc": 0.31978,
+        "roc_auc": 0.91196
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "bloque": 3,
+        "n": 300,
+        "eventos": 39,
+        "prevalencia_pct": 13.0,
+        "brier": 0.116009,
+        "logloss": 0.376819,
+        "pr_auc": 0.33681,
+        "roc_auc": 0.85239
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "bloque": 4,
+        "n": 360,
+        "eventos": 45,
+        "prevalencia_pct": 12.5,
+        "brier": 0.08987,
+        "logloss": 0.270514,
+        "pr_auc": 0.46017,
+        "roc_auc": 0.90981
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "bloque": 0,
+        "n": 720,
+        "eventos": 69,
+        "prevalencia_pct": 9.58,
+        "brier": 0.056225,
+        "logloss": 0.183621,
+        "pr_auc": 0.65882,
+        "roc_auc": 0.95534
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "bloque": 1,
+        "n": 480,
+        "eventos": 54,
+        "prevalencia_pct": 11.25,
+        "brier": 0.08609,
+        "logloss": 0.262192,
+        "pr_auc": 0.32201,
+        "roc_auc": 0.87624
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "bloque": 2,
+        "n": 480,
+        "eventos": 40,
+        "prevalencia_pct": 8.33,
+        "brier": 0.066433,
+        "logloss": 0.209594,
+        "pr_auc": 0.3384,
+        "roc_auc": 0.89145
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "bloque": 3,
+        "n": 300,
+        "eventos": 39,
+        "prevalencia_pct": 13.0,
+        "brier": 0.113957,
+        "logloss": 0.379285,
+        "pr_auc": 0.31261,
+        "roc_auc": 0.81811
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "bloque": 4,
+        "n": 360,
+        "eventos": 45,
+        "prevalencia_pct": 12.5,
+        "brier": 0.098486,
+        "logloss": 0.319403,
+        "pr_auc": 0.33002,
+        "roc_auc": 0.83284
+      },
+      {
+        "modelo": "RF_lluvia",
+        "bloque": 0,
+        "n": 720,
+        "eventos": 69,
+        "prevalencia_pct": 9.58,
+        "brier": 0.061083,
+        "logloss": 0.192299,
+        "pr_auc": 0.52218,
+        "roc_auc": 0.93395
+      },
+      {
+        "modelo": "RF_lluvia",
+        "bloque": 1,
+        "n": 480,
+        "eventos": 54,
+        "prevalencia_pct": 11.25,
+        "brier": 0.081113,
+        "logloss": 0.259408,
+        "pr_auc": 0.52866,
+        "roc_auc": 0.89311
+      },
+      {
+        "modelo": "RF_lluvia",
+        "bloque": 2,
+        "n": 480,
+        "eventos": 40,
+        "prevalencia_pct": 8.33,
+        "brier": 0.061616,
+        "logloss": 0.192797,
+        "pr_auc": 0.39867,
+        "roc_auc": 0.91
+      },
+      {
+        "modelo": "RF_lluvia",
+        "bloque": 3,
+        "n": 300,
+        "eventos": 39,
+        "prevalencia_pct": 13.0,
+        "brier": 0.106881,
+        "logloss": 0.372788,
+        "pr_auc": 0.41124,
+        "roc_auc": 0.799
+      },
+      {
+        "modelo": "RF_lluvia",
+        "bloque": 4,
+        "n": 360,
+        "eventos": 45,
+        "prevalencia_pct": 12.5,
+        "brier": 0.084931,
+        "logloss": 0.277943,
+        "pr_auc": 0.54221,
+        "roc_auc": 0.8951
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "bloque": 0,
+        "n": 720,
+        "eventos": 69,
+        "prevalencia_pct": 9.58,
+        "brier": 0.056363,
+        "logloss": 0.190579,
+        "pr_auc": 0.58541,
+        "roc_auc": 0.94759
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "bloque": 1,
+        "n": 480,
+        "eventos": 54,
+        "prevalencia_pct": 11.25,
+        "brier": 0.074313,
+        "logloss": 0.233652,
+        "pr_auc": 0.53646,
+        "roc_auc": 0.9136
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "bloque": 2,
+        "n": 480,
+        "eventos": 40,
+        "prevalencia_pct": 8.33,
+        "brier": 0.062892,
+        "logloss": 0.18589,
+        "pr_auc": 0.37645,
+        "roc_auc": 0.9283
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "bloque": 3,
+        "n": 300,
+        "eventos": 39,
+        "prevalencia_pct": 13.0,
+        "brier": 0.082002,
+        "logloss": 0.286418,
+        "pr_auc": 0.46864,
+        "roc_auc": 0.85721
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "bloque": 4,
+        "n": 360,
+        "eventos": 45,
+        "prevalencia_pct": 12.5,
+        "brier": 0.086105,
+        "logloss": 0.261507,
+        "pr_auc": 0.4783,
+        "roc_auc": 0.91457
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "bloque": 0,
+        "n": 720,
+        "eventos": 69,
+        "prevalencia_pct": 9.58,
+        "brier": 0.051194,
+        "logloss": 0.174566,
+        "pr_auc": 0.6878,
+        "roc_auc": 0.96345
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "bloque": 1,
+        "n": 480,
+        "eventos": 54,
+        "prevalencia_pct": 11.25,
+        "brier": 0.063734,
+        "logloss": 0.213115,
+        "pr_auc": 0.65195,
+        "roc_auc": 0.94308
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "bloque": 2,
+        "n": 480,
+        "eventos": 40,
+        "prevalencia_pct": 8.33,
+        "brier": 0.053627,
+        "logloss": 0.184682,
+        "pr_auc": 0.47813,
+        "roc_auc": 0.9392
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "bloque": 3,
+        "n": 300,
+        "eventos": 39,
+        "prevalencia_pct": 13.0,
+        "brier": 0.098098,
+        "logloss": 0.318604,
+        "pr_auc": 0.35716,
+        "roc_auc": 0.81339
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "bloque": 4,
+        "n": 360,
+        "eventos": 45,
+        "prevalencia_pct": 12.5,
+        "brier": 0.06813,
+        "logloss": 0.224118,
+        "pr_auc": 0.66543,
+        "roc_auc": 0.93774
+      }
+    ],
+    "por_regimen_roni": [
+      {
+        "modelo": "GCN_lluvia",
+        "regimen_roni": "calido_RONI",
+        "n": 312,
+        "eventos": 4,
+        "prevalencia_pct": 1.28,
+        "brier": 0.030596,
+        "logloss": 0.150195,
+        "pr_auc": 0.0111,
+        "roc_auc": 0.31981
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "regimen_roni": "frio_RONI",
+        "n": 1677,
+        "eventos": 200,
+        "prevalencia_pct": 11.93,
+        "brier": 0.090856,
+        "logloss": 0.284047,
+        "pr_auc": 0.38507,
+        "roc_auc": 0.86552
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "regimen_roni": "neutro_RONI",
+        "n": 351,
+        "eventos": 43,
+        "prevalencia_pct": 12.25,
+        "brier": 0.10376,
+        "logloss": 0.319658,
+        "pr_auc": 0.27835,
+        "roc_auc": 0.83362
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "regimen_roni": "calido_RONI",
+        "n": 312,
+        "eventos": 4,
+        "prevalencia_pct": 1.28,
+        "brier": 0.057787,
+        "logloss": 0.208255,
+        "pr_auc": 0.01027,
+        "roc_auc": 0.2431
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "regimen_roni": "frio_RONI",
+        "n": 1677,
+        "eventos": 200,
+        "prevalencia_pct": 11.93,
+        "brier": 0.075881,
+        "logloss": 0.232352,
+        "pr_auc": 0.53943,
+        "roc_auc": 0.92673
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "regimen_roni": "neutro_RONI",
+        "n": 351,
+        "eventos": 43,
+        "prevalencia_pct": 12.25,
+        "brier": 0.108413,
+        "logloss": 0.378362,
+        "pr_auc": 0.2518,
+        "roc_auc": 0.77118
+      },
+      {
+        "modelo": "RF_lluvia",
+        "regimen_roni": "calido_RONI",
+        "n": 312,
+        "eventos": 4,
+        "prevalencia_pct": 1.28,
+        "brier": 0.022474,
+        "logloss": 0.121822,
+        "pr_auc": 0.01267,
+        "roc_auc": 0.40503
+      },
+      {
+        "modelo": "RF_lluvia",
+        "regimen_roni": "frio_RONI",
+        "n": 1677,
+        "eventos": 200,
+        "prevalencia_pct": 11.93,
+        "brier": 0.077891,
+        "logloss": 0.238529,
+        "pr_auc": 0.54351,
+        "roc_auc": 0.91895
+      },
+      {
+        "modelo": "RF_lluvia",
+        "regimen_roni": "neutro_RONI",
+        "n": 351,
+        "eventos": 43,
+        "prevalencia_pct": 12.25,
+        "brier": 0.106823,
+        "logloss": 0.368628,
+        "pr_auc": 0.28229,
+        "roc_auc": 0.83049
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "regimen_roni": "calido_RONI",
+        "n": 312,
+        "eventos": 4,
+        "prevalencia_pct": 1.28,
+        "brier": 0.034943,
+        "logloss": 0.160465,
+        "pr_auc": 0.01171,
+        "roc_auc": 0.26258
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "regimen_roni": "frio_RONI",
+        "n": 1677,
+        "eventos": 200,
+        "prevalencia_pct": 11.93,
+        "brier": 0.072434,
+        "logloss": 0.228749,
+        "pr_auc": 0.49415,
+        "roc_auc": 0.91693
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "regimen_roni": "neutro_RONI",
+        "n": 351,
+        "eventos": 43,
+        "prevalencia_pct": 12.25,
+        "brier": 0.084511,
+        "logloss": 0.242129,
+        "pr_auc": 0.41852,
+        "roc_auc": 0.90894
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "regimen_roni": "calido_RONI",
+        "n": 312,
+        "eventos": 4,
+        "prevalencia_pct": 1.28,
+        "brier": 0.023575,
+        "logloss": 0.120165,
+        "pr_auc": 0.01378,
+        "roc_auc": 0.46834
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "regimen_roni": "frio_RONI",
+        "n": 1677,
+        "eventos": 200,
+        "prevalencia_pct": 11.93,
+        "brier": 0.060393,
+        "logloss": 0.201612,
+        "pr_auc": 0.81306,
+        "roc_auc": 0.96468
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "regimen_roni": "neutro_RONI",
+        "n": 351,
+        "eventos": 43,
+        "prevalencia_pct": 12.25,
+        "brier": 0.109726,
+        "logloss": 0.334186,
+        "pr_auc": 0.29193,
+        "roc_auc": 0.82804
+      }
+    ],
+    "por_piso_2023": [
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "cota_negativa_revisar",
+        "n": 12,
+        "eventos": 5,
+        "prevalencia_pct": 41.67,
+        "brier": 0.329603,
+        "logloss": 1.220913,
+        "pr_auc": 0.96667,
+        "roc_auc": 0.97143
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "llanura_costa",
+        "n": 48,
+        "eventos": 16,
+        "prevalencia_pct": 33.33,
+        "brier": 0.269882,
+        "logloss": 0.97597,
+        "pr_auc": 0.90659,
+        "roc_auc": 0.93164
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_alta",
+        "n": 36,
+        "eventos": 6,
+        "prevalencia_pct": 16.67,
+        "brier": 0.145963,
+        "logloss": 0.47991,
+        "pr_auc": 0.45,
+        "roc_auc": 0.8
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_baja",
+        "n": 72,
+        "eventos": 15,
+        "prevalencia_pct": 20.83,
+        "brier": 0.146188,
+        "logloss": 0.419016,
+        "pr_auc": 0.5851,
+        "roc_auc": 0.89357
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "montana_media",
+        "n": 96,
+        "eventos": 17,
+        "prevalencia_pct": 17.71,
+        "brier": 0.139431,
+        "logloss": 0.42586,
+        "pr_auc": 0.34209,
+        "roc_auc": 0.79523
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "piedemonte",
+        "n": 132,
+        "eventos": 30,
+        "prevalencia_pct": 22.73,
+        "brier": 0.144006,
+        "logloss": 0.388743,
+        "pr_auc": 0.88854,
+        "roc_auc": 0.97092
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "piso": "valle_bajo",
+        "n": 72,
+        "eventos": 18,
+        "prevalencia_pct": 25.0,
+        "brier": 0.171936,
+        "logloss": 0.485129,
+        "pr_auc": 0.86691,
+        "roc_auc": 0.95679
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "cota_negativa_revisar",
+        "n": 12,
+        "eventos": 5,
+        "prevalencia_pct": 41.67,
+        "brier": 0.345072,
+        "logloss": 1.210735,
+        "pr_auc": 0.85286,
+        "roc_auc": 0.88571
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "llanura_costa",
+        "n": 48,
+        "eventos": 16,
+        "prevalencia_pct": 33.33,
+        "brier": 0.282644,
+        "logloss": 1.007903,
+        "pr_auc": 0.78672,
+        "roc_auc": 0.84375
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_alta",
+        "n": 36,
+        "eventos": 6,
+        "prevalencia_pct": 16.67,
+        "brier": 0.075568,
+        "logloss": 0.217887,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_baja",
+        "n": 72,
+        "eventos": 15,
+        "prevalencia_pct": 20.83,
+        "brier": 0.128894,
+        "logloss": 0.428517,
+        "pr_auc": 0.75392,
+        "roc_auc": 0.86667
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "montana_media",
+        "n": 96,
+        "eventos": 17,
+        "prevalencia_pct": 17.71,
+        "brier": 0.098793,
+        "logloss": 0.298186,
+        "pr_auc": 0.89974,
+        "roc_auc": 0.93671
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "piedemonte",
+        "n": 132,
+        "eventos": 30,
+        "prevalencia_pct": 22.73,
+        "brier": 0.143776,
+        "logloss": 0.443992,
+        "pr_auc": 0.76581,
+        "roc_auc": 0.92288
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "piso": "valle_bajo",
+        "n": 72,
+        "eventos": 18,
+        "prevalencia_pct": 25.0,
+        "brier": 0.166695,
+        "logloss": 0.536073,
+        "pr_auc": 0.75281,
+        "roc_auc": 0.90432
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "cota_negativa_revisar",
+        "n": 12,
+        "eventos": 5,
+        "prevalencia_pct": 41.67,
+        "brier": 0.358317,
+        "logloss": 1.375471,
+        "pr_auc": 0.82619,
+        "roc_auc": 0.85714
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "llanura_costa",
+        "n": 48,
+        "eventos": 16,
+        "prevalencia_pct": 33.33,
+        "brier": 0.275759,
+        "logloss": 1.004449,
+        "pr_auc": 0.81437,
+        "roc_auc": 0.86328
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_alta",
+        "n": 36,
+        "eventos": 6,
+        "prevalencia_pct": 16.67,
+        "brier": 0.089791,
+        "logloss": 0.252773,
+        "pr_auc": 0.81052,
+        "roc_auc": 0.95
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_baja",
+        "n": 72,
+        "eventos": 15,
+        "prevalencia_pct": 20.83,
+        "brier": 0.150799,
+        "logloss": 0.486578,
+        "pr_auc": 0.61619,
+        "roc_auc": 0.89181
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "montana_media",
+        "n": 96,
+        "eventos": 17,
+        "prevalencia_pct": 17.71,
+        "brier": 0.106003,
+        "logloss": 0.341129,
+        "pr_auc": 0.75745,
+        "roc_auc": 0.879
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "piedemonte",
+        "n": 132,
+        "eventos": 30,
+        "prevalencia_pct": 22.73,
+        "brier": 0.171241,
+        "logloss": 0.54077,
+        "pr_auc": 0.78172,
+        "roc_auc": 0.91127
+      },
+      {
+        "modelo": "RF_lluvia",
+        "piso": "valle_bajo",
+        "n": 72,
+        "eventos": 18,
+        "prevalencia_pct": 25.0,
+        "brier": 0.205322,
+        "logloss": 0.691857,
+        "pr_auc": 0.67142,
+        "roc_auc": 0.84465
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "cota_negativa_revisar",
+        "n": 12,
+        "eventos": 5,
+        "prevalencia_pct": 41.67,
+        "brier": 0.258094,
+        "logloss": 0.921322,
+        "pr_auc": 0.94286,
+        "roc_auc": 0.94286
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "llanura_costa",
+        "n": 48,
+        "eventos": 16,
+        "prevalencia_pct": 33.33,
+        "brier": 0.18214,
+        "logloss": 0.631234,
+        "pr_auc": 0.9175,
+        "roc_auc": 0.9248
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_alta",
+        "n": 36,
+        "eventos": 6,
+        "prevalencia_pct": 16.67,
+        "brier": 0.070345,
+        "logloss": 0.2298,
+        "pr_auc": 0.89722,
+        "roc_auc": 0.97778
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_baja",
+        "n": 72,
+        "eventos": 15,
+        "prevalencia_pct": 20.83,
+        "brier": 0.116518,
+        "logloss": 0.334553,
+        "pr_auc": 0.8218,
+        "roc_auc": 0.94737
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "montana_media",
+        "n": 96,
+        "eventos": 17,
+        "prevalencia_pct": 17.71,
+        "brier": 0.087431,
+        "logloss": 0.267399,
+        "pr_auc": 0.86897,
+        "roc_auc": 0.94862
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "piedemonte",
+        "n": 132,
+        "eventos": 30,
+        "prevalencia_pct": 22.73,
+        "brier": 0.117358,
+        "logloss": 0.329296,
+        "pr_auc": 0.84273,
+        "roc_auc": 0.96193
+      },
+      {
+        "modelo": "RF_lluvia_oceano",
+        "piso": "valle_bajo",
+        "n": 72,
+        "eventos": 18,
+        "prevalencia_pct": 25.0,
+        "brier": 0.139614,
+        "logloss": 0.39681,
+        "pr_auc": 0.88683,
+        "roc_auc": 0.95782
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "cota_negativa_revisar",
+        "n": 12,
+        "eventos": 5,
+        "prevalencia_pct": 41.67,
+        "brier": 0.308165,
+        "logloss": 0.947842,
+        "pr_auc": 0.74762,
+        "roc_auc": 0.77143
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "llanura_costa",
+        "n": 48,
+        "eventos": 16,
+        "prevalencia_pct": 33.33,
+        "brier": 0.233799,
+        "logloss": 0.690616,
+        "pr_auc": 0.77876,
+        "roc_auc": 0.84766
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_alta",
+        "n": 36,
+        "eventos": 6,
+        "prevalencia_pct": 16.67,
+        "brier": 0.084324,
+        "logloss": 0.246895,
+        "pr_auc": 0.81944,
+        "roc_auc": 0.96111
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_baja",
+        "n": 72,
+        "eventos": 15,
+        "prevalencia_pct": 20.83,
+        "brier": 0.115355,
+        "logloss": 0.342549,
+        "pr_auc": 0.8792,
+        "roc_auc": 0.9655
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "montana_media",
+        "n": 96,
+        "eventos": 17,
+        "prevalencia_pct": 17.71,
+        "brier": 0.098407,
+        "logloss": 0.299412,
+        "pr_auc": 0.77101,
+        "roc_auc": 0.92554
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "piedemonte",
+        "n": 132,
+        "eventos": 30,
+        "prevalencia_pct": 22.73,
+        "brier": 0.130499,
+        "logloss": 0.381994,
+        "pr_auc": 0.87793,
+        "roc_auc": 0.96601
+      },
+      {
+        "modelo": "climatologia_sector_estacional",
+        "piso": "valle_bajo",
+        "n": 72,
+        "eventos": 18,
+        "prevalencia_pct": 25.0,
+        "brier": 0.152662,
+        "logloss": 0.448894,
+        "pr_auc": 0.87488,
+        "roc_auc": 0.95988
+      }
+    ],
+    "comparaciones_temporales": {
+      "RF_lluvia_oceano_menos_GCN_lluvia_oceano": {
+        "delta_brier": -0.009101,
+        "por_anio": {
+          "2021": 0.008398,
+          "2022": 0.011302,
+          "2023": -0.028792,
+          "2024": -0.012948,
+          "2025": -0.023467
+        },
+        "advertencia": "Cinco años, correlación por sector; descriptivo y NO intervalo confirmatorio"
+      },
+      "RF_lluvia_oceano_menos_climatologia_sector_estacional": {
+        "delta_brier": 0.006363,
+        "por_anio": {
+          "2021": 0.020618,
+          "2022": 0.020588,
+          "2023": -0.015444,
+          "2024": 0.003248,
+          "2025": 0.002805
+        },
+        "advertencia": "Cinco años, correlación por sector; descriptivo y NO intervalo confirmatorio"
+      },
+      "RF_lluvia_oceano_menos_RF_lluvia": {
+        "delta_brier": -0.005595,
+        "por_anio": {
+          "2021": 0.005405,
+          "2022": 0.007487,
+          "2023": -0.048058,
+          "2024": 0.013621,
+          "2025": -0.006429
+        },
+        "advertencia": "Cinco años, correlación por sector; descriptivo y NO intervalo confirmatorio"
+      },
+      "GCN_lluvia_oceano_menos_GCN_lluvia": {
+        "delta_brier": -0.006408,
+        "por_anio": {
+          "2021": -0.016706,
+          "2022": -0.010235,
+          "2023": -0.015577,
+          "2024": 0.016411,
+          "2025": -0.005935
+        },
+        "advertencia": "Cinco años, correlación por sector; descriptivo y NO intervalo confirmatorio"
+      }
+    },
+    "ranking_ia_por_brier": [
+      {
+        "modelo": "RF_lluvia_oceano",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.069247,
+        "logloss": 0.221652,
+        "pr_auc": 0.43511,
+        "roc_auc": 0.9052
+      },
+      {
+        "modelo": "RF_lluvia",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.074842,
+        "logloss": 0.242483,
+        "pr_auc": 0.44542,
+        "roc_auc": 0.88586
+      },
+      {
+        "modelo": "GCN_lluvia_oceano",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.078348,
+        "logloss": 0.251041,
+        "pr_auc": 0.35446,
+        "roc_auc": 0.86646
+      },
+      {
+        "modelo": "GCN_lluvia",
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.084757,
+        "logloss": 0.271542,
+        "pr_auc": 0.29251,
+        "roc_auc": 0.84332
+      }
+    ],
+    "modelo_ia_destacado_si_supera_climatologia": null
+  },
+  "folds": [
+    {
+      "bloque": 0,
+      "sectores_holdout": [
+        "S006",
+        "S007",
+        "S008",
+        "S010",
+        "S012",
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S019",
+        "S020",
+        "S021"
+      ],
+      "train_nodes": 27,
+      "holdout_nodes": 12,
+      "hiperparametros_y_calibracion": {
+        "RF_lluvia": {
+          "rf": {
+            "brier_validacion": 0.043067,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.4983,
+            "intercepto": -1.01379
+          }
+        },
+        "GCN_lluvia": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.067856,
+            "mejor_epoca": 2,
+            "epoca_parada": 20
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.71197,
+            "intercepto": -0.87077
+          }
+        },
+        "RF_lluvia_oceano": {
+          "rf": {
+            "brier_validacion": 0.066603,
+            "min_samples_leaf": 9
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.47756,
+            "intercepto": -0.95467
+          }
+        },
+        "GCN_lluvia_oceano": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.067792,
+            "mejor_epoca": 18,
+            "epoca_parada": 36
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.39392,
+            "intercepto": -0.83548
+          }
+        }
+      }
+    },
+    {
+      "bloque": 1,
+      "sectores_holdout": [
+        "S011",
+        "S023",
+        "S030",
+        "S031",
+        "S033",
+        "S039",
+        "S040",
+        "S041"
+      ],
+      "train_nodes": 31,
+      "holdout_nodes": 8,
+      "hiperparametros_y_calibracion": {
+        "RF_lluvia": {
+          "rf": {
+            "brier_validacion": 0.046951,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.43407,
+            "intercepto": -1.77111
+          }
+        },
+        "GCN_lluvia": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.062053,
+            "mejor_epoca": 10,
+            "epoca_parada": 28
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.58098,
+            "intercepto": -1.59068
+          }
+        },
+        "RF_lluvia_oceano": {
+          "rf": {
+            "brier_validacion": 0.061028,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.4836,
+            "intercepto": -0.90498
+          }
+        },
+        "GCN_lluvia_oceano": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.049535,
+            "mejor_epoca": 32,
+            "epoca_parada": 50
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.48912,
+            "intercepto": -1.42617
+          }
+        }
+      }
+    },
+    {
+      "bloque": 2,
+      "sectores_holdout": [
+        "S009",
+        "S024",
+        "S025",
+        "S026",
+        "S027",
+        "S029",
+        "S037",
+        "S038"
+      ],
+      "train_nodes": 31,
+      "holdout_nodes": 8,
+      "hiperparametros_y_calibracion": {
+        "RF_lluvia": {
+          "rf": {
+            "brier_validacion": 0.042536,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.98285,
+            "intercepto": -1.16149
+          }
+        },
+        "GCN_lluvia": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.071809,
+            "mejor_epoca": 18,
+            "epoca_parada": 36
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.90563,
+            "intercepto": -1.33795
+          }
+        },
+        "RF_lluvia_oceano": {
+          "rf": {
+            "brier_validacion": 0.054395,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 1.10973,
+            "intercepto": -0.24441
+          }
+        },
+        "GCN_lluvia_oceano": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.064008,
+            "mejor_epoca": 18,
+            "epoca_parada": 36
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.86607,
+            "intercepto": -0.22182
+          }
+        }
+      }
+    },
+    {
+      "bloque": 3,
+      "sectores_holdout": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005"
+      ],
+      "train_nodes": 34,
+      "holdout_nodes": 5,
+      "hiperparametros_y_calibracion": {
+        "RF_lluvia": {
+          "rf": {
+            "brier_validacion": 0.042925,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 0.51032,
+            "intercepto": -1.98203
+          }
+        },
+        "GCN_lluvia": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.057827,
+            "mejor_epoca": 60,
+            "epoca_parada": 78
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 0.73795,
+            "intercepto": -1.65308
+          }
+        },
+        "RF_lluvia_oceano": {
+          "rf": {
+            "brier_validacion": 0.057214,
+            "min_samples_leaf": 9
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 1.1605,
+            "intercepto": -0.91517
+          }
+        },
+        "GCN_lluvia_oceano": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.051921,
+            "mejor_epoca": 25,
+            "epoca_parada": 43
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 0.60221,
+            "intercepto": -1.45697
+          }
+        }
+      }
+    },
+    {
+      "bloque": 4,
+      "sectores_holdout": [
+        "S013",
+        "S014",
+        "S022",
+        "S035",
+        "S036",
+        "S042"
+      ],
+      "train_nodes": 33,
+      "holdout_nodes": 6,
+      "hiperparametros_y_calibracion": {
+        "RF_lluvia": {
+          "rf": {
+            "brier_validacion": 0.048201,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.59163,
+            "intercepto": -1.54102
+          }
+        },
+        "GCN_lluvia": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.068271,
+            "mejor_epoca": 36,
+            "epoca_parada": 54
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.3849,
+            "intercepto": -1.88059
+          }
+        },
+        "RF_lluvia_oceano": {
+          "rf": {
+            "brier_validacion": 0.061335,
+            "min_samples_leaf": 4
+          },
+          "gcn": null,
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.41206,
+            "intercepto": -1.34603
+          }
+        },
+        "GCN_lluvia_oceano": {
+          "rf": null,
+          "gcn": {
+            "brier_validacion": 0.054906,
+            "mejor_epoca": 34,
+            "epoca_parada": 52
+          },
+          "calibration": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.45823,
+            "intercepto": -1.48515
+          }
+        }
+      }
+    }
+  ],
+  "verificacion_instrumental_independiente": false,
+  "instantaneas_as_issued": false,
+  "modelo_operativo_ganador": null,
+  "alertas_habilitadas": false,
+  "limitaciones": [
+    "NO reconstruye temperaturas, humedad, radiacion ni viento local para los 39 sectores.",
+    "NO usa corrientes marinas sin datos historicos completos e iguales unidades de soporte.",
+    "CHIRPS v3 FINAL fue reprocesado historicamente: no constituye as-issued.",
+    "NOAA regional Niño1+2/3.4 y viento marino NO equivalen a SST y viento de cada poligono.",
+    "SOI y SST regional históricas revisadas, con t−2 para evitar mes objetivo.",
+    "P90 por sector calculado de historia CHIRPS incluso para sector holdout; se permite climatologia local histórica, no etiquetas objetivo del periodo de prueba.",
+    "La calibracion Platt del holdout usa 2019–2020: no es extrapolacion a un lugar SIN registros previos.",
+    "Ensayo binario de precipitacion elevada NO estima evento ENFEN ni infecciones fitosanitarias.",
+    "Estratos altitudinales preliminares, cota_negativa_revisar pendiente.",
+    "Con cinco pliegues y sesenta meses, no hay garantía de habilidad prospectiva ni intervalos confirmatorios.",
+    "Uso investigativo; publicar todas las métricas y comparación con climatología, cero alertas."
+  ],
+  "sha256_predicciones": "07ac4f6ed434a4580e45d8a6a48372c14758e2f92819f3bc906d13b45582b941"
+}
