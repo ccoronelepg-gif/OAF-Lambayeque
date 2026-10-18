@@ -11,6 +11,8 @@ on:
       - 'tests/test_ux_oaf_2026.py'
       - 'tests/test_portada_2026.js'
       - 'tests/test_redisenio_oaf_2026.py'
+      - 'assets/oaf-divulgacion-2026.js'
+      - 'assets/oaf-divulgacion-2026.css'
       - 'datos/ux_2026/auditoria_base_2026.json'
       - '.github/workflows/oaf_ux_integrity_2026.yml'
 permissions:
@@ -46,7 +48,7 @@ jobs:
           missing=[x for x in audit['ids_conservar'] if ('id="'+x+'"') not in h]
           assert not missing,missing
           assert h.count('id="oaf-altitudinal-map"')==1
-          assert h.count('<section data-page=')==5
+          assert h.count('<section data-page=')==6
           assert (root/'datos/validacion_estaciones_9f/identificacion_territorial_9f.json').exists()
           print('Conservados',len(audit['ids_conservar']),'IDs originales y datos de estaciones.')
           PY
