@@ -139,8 +139,13 @@ def targeted_evaluation():
   for landscape in TARGET:
    training_sites=[i for i,j in enumerate(ix) if lookup[nodes[j]]==landscape]
    held_sites=[i for i,j in enumerate(ho) if lookup[nodes[j]]==landscape]
-   if not training_sites and held_sites:
-    raise ValueError("No geographically independent training strata "+landscape)
+   # All three high-mountain sectors can fall into the same spatial fold.
+   # Without ANY independent high-mountain training sites, default to
+   # historical climatology; no terrain transfer is claimed to be validated.
+   high_alt_without_training=bool(not training_sites and held_sites)
+   if high_alt_without_training:
+    training_sites=[i for i,j in enumerate(ix) if lookup[nodes[j]]=="ladera_media"]
+    if not training_sites:raise ValueError("No middle-altitude analogues to audit")
    if not training_sites:continue
    pairs=[]
    for name,(variant,train_pred,hold_pred,meta) in alternatives.items():
@@ -150,7 +155,7 @@ def targeted_evaluation():
     # Prefer a no-correction competitor over RF if tuning has no evidence.
     pairs.append((value,name,w))
    baseline_mae=float(np.mean(np.abs(raw[va][:,ix][:,training_sites]-ref[va][:,ix][:,training_sites])))
-   options=[(baseline_mae,"climatologia",0.)]+pairs
+   options=[(baseline_mae,"climatologia",0.)]+([] if high_alt_without_training else pairs)
    validation,name,weight=min(options,key=lambda v:(v[0],v[2],v[1]))
    if name=="climatologia" or weight==0:
     chosen_pred=ref[:,ho]
@@ -163,7 +168,9 @@ def targeted_evaluation():
    # Calibration only on 2019-20, held-out sectors of the same terrain band.
    radius=rain.finite_interval(raw[ca][:,ho][:,held_sites]-chosen_pred[ca][:,held_sites]) if held_sites else None
    decisions.append({"fold":fold,"paisaje":landscape,"n_train_sites":len(training_sites),
-     "n_hold_sites":len(held_sites),"validation_mae_mm":round(validation,5),
+     "n_hold_sites":len(held_sites),"sin_sector_alto_independiente":high_alt_without_training,
+     "validacion_grupo":("ladera_media_solo_diagnostico_no_transferible" if high_alt_without_training else landscape),
+     "validation_mae_mm":round(validation,5),
      "baseline_validation_mae_mm":round(baseline_mae,5),"chosen_arm":mode,
      "chosen_weight":weight,"interval_90_cal_radius_mm":round(radius,3) if radius is not None else None,
      "candidates":{k:round(v,5) for v,k,w in options}})
@@ -235,6 +242,7 @@ def targeted_evaluation():
    "notas":["Se usan las 11 vertientes 9K de montaña media y alta, no una malla de estaciones.",
      "La climatología histórica por sector proviene de 1997-2015, incluso en el área withheld.",
      "Elegir por validación temporal no implica un pronóstico nuevo as-issued.",
+     "Los 3 sectores de alta montaña pueden quedar juntos en un bloque: fallback obligatorio climatológico si no existe entrenamiento independiente.",
      "Se prohíbe forzar mejoras si falla el criterio MAE de validación.",
      "Dependencia espacial entre sectores y celdas NASA, prueba prospectiva pendiente."]}
  # Keep each polygon with scores, not invented geophysical boundaries.
