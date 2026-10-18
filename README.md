@@ -9,6 +9,17 @@
 
 
 
+
+## Fase 10E · Fuentes oficiales separadas y predicciones probabilísticas del autor (17/10/2026)
+
+El sitio distingue explícitamente **[Información y avisos oficiales](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino)**, donde se identifica el emisor institucional SENAMHI/ENFEN, de **[Modelos experimentales desarrollados por el autor](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#autor)**, donde se muestran los algoritmos y sus verificaciones sin atribuirles respaldo oficial. El módulo del autor distingue lluvia intensa, escenarios ENSO/El Niño costero y factores para enfermedades de arándano y vid; solo el primero fue objeto de un **nuevo benchmark probabilístico** en 10E.
+
+El ensayo utilizó ERA5/ERA5-Land, radiación, temperatura, viento (tierra/mar), humedad/VPD y anomalías NOAA Niño 1+2/3.4 más SOI/alisios en **cuatro localidades (Chiclayo, Jayanca, Motupe, Olmos)** con entradas t−2+, entrenamiento **1997–2015**, ajuste **2016–2018**, calibración **2019–2020** y prueba **2021–2025**. Se analizaron **240 casos de prueba**, 30 de ellos con lluvia ERA5 por encima del percentil 90 aprendido en entrenamiento.
+
+**Brier Score (menor es mejor):** climatología local **0,077467**, **Random Forest multivariable 0,088183**, GCN multivariable **0,111878**. Entre los algoritmos de IA, RF obtiene mejor Brier y PR-AUC que GCN; pero **no supera la climatología**, por lo que **no se designa ganador operativo ni se habilitan avisos**. Los contrastes anuales pareados con solo cinco años son exploratorios y no prueban una diferencia robusta. Las corrientes geostróficas 2017–2025 no se imputaron a décadas anteriores; la matriz multivariable de cuatro localidades no se extrapola a los 39 sectores CHIRPS.
+
+[Informe 10E](FASE_10E_MODELOS_PROBABILISTICOS_MULTIVARIABLES.md) · [Evaluación Brier/PR-AUC](datos/probabilidades_10e/evaluacion_probabilistica_10e.json) · [Auditoría de incertidumbre](datos/probabilidades_10e/auditoria_incertidumbre_10e.json) · [Probabilidades retrospectivas CSV](datos/probabilidades_10e/predicciones_probabilisticas_10e.csv) · [Motor RF-GCN](modelos/probabilidad_multivariable_10e.py) · [Tests](tests/test_probabilidad_10e.py) · [CI validada](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39081906133).
+
 ## Fase 10D · Prueba factorial de rezagos y sensibilidad a extremos (17/10/2026)
 
 La evaluación de ambos diseños con **idénticas ventanas de entrenamiento 1997–2015, ajuste 2016–2018, calibración 2019–2020 y prueba 2021–2025** se ejecutó con éxito, con **5.616 predicciones de calibración y 14.040 predicciones de prueba** sobre 39 sectores y cinco bloques. MAE 2021–2025: **RF L1 17,0241 mm / L2 18,1443 mm**, **GCN L1 18,7739 mm / L2 17,6452 mm**; climatología por piso 20,3708 mm. El intervalo espacial exploratorio GCN L2−L1 **[−2,7164; +0,8257] mm** contiene cero, por lo que no confirma una ganancia homogénea.
