@@ -28,6 +28,9 @@ La **base diaria, horaria, CSV originales con huellas SHA-256, auditoría Excel 
 
 [**Panel de pluviómetros y meses observados**](observaciones-senamhi-10m.html) · [Informe 10M](FASE_10M_INTEGRACION_SENAMHI.md) · [CSV mensual para dashboard](datos/senamhi_estaciones_10m/resumen_mensual_senamhi_observado.csv) · [Manifiesto fuente SHA y auditoría](datos/senamhi_estaciones_10m/manifest_fuentes_10m.json) · [Verificador de integridad](modelos/auditar_integracion_senamhi_10m.py) · [Control automatizado](.github/workflows/oaf_10m_senamhi_fuentes.yml).
 
+**Base relacional:** también existe una base **SQLite** con ocho tablas/vistas (inventario, observaciones diarias/horarias, meses, fuentes SHA, duplicados, conflictos y metadatos). Se archivó en la biblioteca como `/OAF-Lambayeque/SENAMHI/OAF_SENAMHI_10M.sqlite`, junto a `OAF_SENAMHI_10M_Base_Integrada_2026-10-17.zip`, que incluye originales, SQLite y auditoría Excel. **El archivo SQLite no está publicado como base de predicciones operativas ni conectado para reentrenamiento**.
+
+
 ## Fase 10L · Mejora de las lluvias en vertientes medias y altas (17/10/2026)
 
 La fase 10L se ejecutó sobre **11 sectores montañosos del OAF** (8 de vertientes medias y 3 de alturas), con **660 observaciones sector-mes de 2021–2025**, confrontadas directamente con el modelo Random Forest geográfico 10K y la climatología mensual de cada sector.
