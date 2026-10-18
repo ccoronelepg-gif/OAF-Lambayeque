@@ -44,6 +44,18 @@ La [ejecución de GitHub Actions 39084097579](https://github.com/ccoronelepg-gif
 
 El inventario mantiene el aviso de altitud DEM bajo cero para S001; un valor distinto de elevación del proveedor no resolvería por sí solo el origen de la discrepancia.
 
+## Estado de cierre 10G: limitación externa de descarga histórica
+
+La consulta ERA5 de **2023 se completó**, pero la [corrida automática para todo 1996–2025](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39084353890) se **detuvo por HTTP 429 Too Many Requests de Open-Meteo**, después de seis solicitudes completas de las 24 previstas. La ventana de 1996–2005 no terminó (se habían consultado 30/39 sectores). Como el procedimiento masivo inicial verificaba todo antes de publicar, **NO existe una matriz histórica de 14.040 filas certificada ni deben anunciarse resultados nuevos de RF/GCN basados en ella**. Los datos parciales no se conservaron en el repositorio.
+
+La API gratuita tiene límites de uso que deben respetarse: [condiciones y cuotas del proveedor](https://open-meteo.com/en/pricing). Un HTTP 429 puede responder a cuota, concurrencia o capacidad; no atribuir automáticamente el error a un origen específico que no esté verificado.
+
+**Medida correctiva implementada:** `modelos/ingesta_fragmentada_10g.py` realiza **una sola consulta de máximo cinco puntos y diez años por ejecución**, guarda inmediatamente un CSV parcial con su SHA y una ficha de solicitud; prohíbe sobrescribir fragmentos inconsistentes, acepta reanudar sin repetir el archivo ya validado y **solo ensambla la matriz final cuando existen los 24 fragmentos completos**. Se añadió la [ejecución controlada bajo demanda](.github/workflows/oaf_10g_fragmentos.yml), sin extracción masiva automática ni fabricación de datos faltantes.
+
+La [evaluación RF/GCN con siete nuevas covariables ERA5](modelos/comparacion_atmosferica_rf_gcn_10g.py) y su [prueba de integridad](tests/test_comparacion_atmosferica_10g.py) están implementadas, pero **se bloquean en ausencia de la matriz completa y auditada**. Hasta entonces permanecen vigentes, en categoría experimental, los resultados de la fase 10F. La [auditoría de estado](datos/atmosfera_sectorial_10g/estado_ejecucion_10g.json) explicita qué quedó realmente ejecutado.
+
+**Riesgo adicional sobre pliegues:** la [auditoría de solapamiento ERA5](datos/atmosfera_sectorial_10g/solapamiento_celdas_folds_10g.json) detectó una celda atmosférica `(-6,0°, -79,5°)` compartida por S008/S010/S016/S017/S018/S029, sectores asignados a los pliegues CHIRPS 0 y 2. Antes de afirmar transferencia atmosférica fuera de muestra debe evaluarse una partición que agrupe por celda ERA5 además de por píxel CHIRPS.
+
 ## 4. Limitaciones vigentes
 
 - Son **reanalisis/modelos ERA5**, no sensores, estaciones de SENAMHI, datos exactos del cultivo ni promedios areales.
