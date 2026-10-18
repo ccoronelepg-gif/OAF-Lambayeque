@@ -21,7 +21,7 @@ MODEL=ROOT/"modelos/candidatos_10n/rf_estaciones_cumbre_10n.joblib"
 LEAVES=[2,3,5];DEPTH={2:3,3:4,5:4};WEIGHTS=[0,.25,.5,.75,1.]
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def read(p):
- with p.open(newline="",encoding="utf8-sig") as f:return list(csv.DictReader(f))
+ with p.open(newline="",encoding="utf-8-sig") as f:return list(csv.DictReader(f))
 def records():
  rows=read(STATION);grid=read(REFERENCE)
  assert len(rows)==40 and all(x["observacion_sin_qc"]=="true" for x in rows)
