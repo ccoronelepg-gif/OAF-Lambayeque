@@ -10,11 +10,14 @@ ROOT=Path(__file__).resolve().parents[1]
 HTML=(ROOT/'index.html').read_text(encoding='utf-8')
 ROUTES={
     'inicio':'Inicio',
-    'clima':'Análisis de clima regional',
-    'nino':'Monitoreo del Niño y anomalías climáticas',
-    'cultivos':'Sanidad vegetal',
-    'verificaciones':'Investigación y datos'
+    'clima':'Clima regional',
+    'nino':'Boletines oficiales',
+    'cultivos':'Cultivos y sanidad',
+    'autor':'Predicciones y anomalías',
+    'verificaciones':'Metadatos y trazabilidad'
 }
+NAV_ORDER=('inicio','clima','autor','cultivos','nino','verificaciones')
+
 TARGETS={
     'oaf-home-location':'inicio',
     'oaf-live-temp':'inicio',
@@ -87,9 +90,9 @@ class Redisenio(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.dom=Inventory();cls.dom.feed(HTML)
-    def test_five_top_level_pages_only(self):
+    def test_six_top_level_pages_and_order(self):
         self.assertEqual(self.dom.route,list(ROUTES))
-        self.assertEqual(self.dom.navigation,[(k,'#'+k) for k in ROUTES])
+        self.assertEqual(self.dom.navigation,[(k,'#'+k) for k in NAV_ORDER])
         for name in ('dashboard','control'):
             self.assertNotIn(name,self.dom.route)
     def test_every_important_module_belongs_to_correct_page(self):
@@ -102,7 +105,7 @@ class Redisenio(unittest.TestCase):
           'https://open-meteo.com/en/docs','https://www.cpc.ncep.noaa.gov/',
           'https://www.chc.ucsb.edu/data/chirps','https://atmosphere.copernicus.eu/'):
             self.assertIn(link,HTML)
-        self.assertIn('Los modelos desarrollados por el observatorio son experimentales',HTML)
+        self.assertIn('Los resultados experimentales no sustituyen',HTML)
         self.assertIn('no son mediciones de SENAMHI',HTML)
         self.assertIn('No es un',HTML)
     def test_subtabs_and_navigation_compatibility(self):
@@ -142,8 +145,8 @@ class Redisenio(unittest.TestCase):
         self.assertIn('forecast_days:"7"',forecast)
         self.assertIn('No es un sensor local',current)
     def test_inline_navigation_javascript_syntax(self):
-        scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',HTML)
-        source='\n'.join(script for script in scripts if script.strip())
+        scripts=re.findall(r'<script([^>]*)>([\s\S]*?)</script>',HTML)
+        source='\n'.join(script for attrs,script in scripts if script.strip() and 'application/ld+json' not in attrs)
         self.assertIn('function nav()',source)
         with tempfile.TemporaryDirectory() as folder:
             dest=Path(folder)/'inline-oaf.js'
