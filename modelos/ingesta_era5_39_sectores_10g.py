@@ -83,7 +83,8 @@ def request(params):
   except (urllib.error.HTTPError,urllib.error.URLError,TimeoutError) as err:
    last=err
    if isinstance(err,urllib.error.HTTPError) and err.code not in (429,500,502,503,504):
-    raise RuntimeError("Open-Meteo solicitud inválida "+str(err)) from err
+    detail=err.read(3000).decode("utf8","replace")
+    raise RuntimeError("Open-Meteo solicitud inválida "+str(err)+"; detalle: "+detail+"; parametros: "+url) from err
    time.sleep(min(30,3*(attempt+1)**2))
  raise RuntimeError("No se pudo obtener ERA5 tras 5 intentos: "+str(last))
 def chunks(seq,n):
