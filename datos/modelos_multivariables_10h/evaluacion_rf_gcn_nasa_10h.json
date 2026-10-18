@@ -1,0 +1,407 @@
+{
+  "fase": "10H",
+  "tipo": "EXPERIMENTO_PAREADO_DE_ABLACION_MULTIVARIABLE_RETROSPECTIVA",
+  "n_sector_mes_prueba": 2340,
+  "n_predicciones": 4680,
+  "n_sectores": 39,
+  "periodos": {
+    "train": [
+      "1997-01",
+      "2015-12"
+    ],
+    "tuning": [
+      "2016-01",
+      "2018-12"
+    ],
+    "calibracion": [
+      "2019-01",
+      "2020-12"
+    ],
+    "prueba": [
+      "2021-01",
+      "2025-12"
+    ]
+  },
+  "variables_nasa_t_minus_2": [
+    "temperatura_c",
+    "humedad_pct",
+    "viento_10m_m_s",
+    "radiacion_nasa_kwh_m2_dia",
+    "presion_superficie_kpa",
+    "temperatura_rocio_c"
+  ],
+  "resolucion_nasa": "NASA POWER MERRA2 0.5x0.625 grados; radiacion SRB/CERES aprox 1 grado. Una muestra por grupo.",
+  "numero_bins_nasa_aproximados": 7,
+  "sectores_en_bins_compartidos": 38,
+  "fuentes_sha256": {
+    "atmosfera_10h": "6120250907da9e156382a71359b7b3ba8809c31ea448e2b64b4ea59581d6c684",
+    "probabilidades_10f": "07ac4f6ed434a4580e45d8a6a48372c14758e2f92819f3bc906d13b45582b941"
+  },
+  "resultados_modelos_nuevos": {
+    "RF_lluvia_oceano_nasa": {
+      "global": {
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.072036,
+        "logloss": 0.230438,
+        "pr_auc": 0.39737,
+        "roc_auc": 0.89277
+      },
+      "por_anio": {
+        "2021": {
+          "n": 468,
+          "eventos": 37,
+          "prevalencia_pct": 7.91,
+          "brier": 0.053971,
+          "logloss": 0.178214,
+          "pr_auc": 0.41318,
+          "roc_auc": 0.94011
+        },
+        "2022": {
+          "n": 468,
+          "eventos": 43,
+          "prevalencia_pct": 9.19,
+          "brier": 0.067478,
+          "logloss": 0.213876,
+          "pr_auc": 0.31521,
+          "roc_auc": 0.8974
+        },
+        "2023": {
+          "n": 468,
+          "eventos": 107,
+          "prevalencia_pct": 22.86,
+          "brier": 0.138358,
+          "logloss": 0.417628,
+          "pr_auc": 0.75617,
+          "roc_auc": 0.91542
+        },
+        "2024": {
+          "n": 468,
+          "eventos": 6,
+          "prevalencia_pct": 1.28,
+          "brier": 0.035775,
+          "logloss": 0.142945,
+          "pr_auc": 0.02583,
+          "roc_auc": 0.66198
+        },
+        "2025": {
+          "n": 468,
+          "eventos": 54,
+          "prevalencia_pct": 11.54,
+          "brier": 0.064599,
+          "logloss": 0.199526,
+          "pr_auc": 0.59998,
+          "roc_auc": 0.93935
+        }
+      }
+    },
+    "GCN_lluvia_oceano_nasa": {
+      "global": {
+        "n": 2340,
+        "eventos": 247,
+        "prevalencia_pct": 10.56,
+        "brier": 0.077423,
+        "logloss": 0.257209,
+        "pr_auc": 0.35626,
+        "roc_auc": 0.86583
+      },
+      "por_anio": {
+        "2021": {
+          "n": 468,
+          "eventos": 37,
+          "prevalencia_pct": 7.91,
+          "brier": 0.049689,
+          "logloss": 0.153402,
+          "pr_auc": 0.44805,
+          "roc_auc": 0.94159
+        },
+        "2022": {
+          "n": 468,
+          "eventos": 43,
+          "prevalencia_pct": 9.19,
+          "brier": 0.061013,
+          "logloss": 0.178178,
+          "pr_auc": 0.4638,
+          "roc_auc": 0.94473
+        },
+        "2023": {
+          "n": 468,
+          "eventos": 107,
+          "prevalencia_pct": 22.86,
+          "brier": 0.153523,
+          "logloss": 0.574002,
+          "pr_auc": 0.60072,
+          "roc_auc": 0.81822
+        },
+        "2024": {
+          "n": 468,
+          "eventos": 6,
+          "prevalencia_pct": 1.28,
+          "brier": 0.045194,
+          "logloss": 0.155271,
+          "pr_auc": 0.0251,
+          "roc_auc": 0.71483
+        },
+        "2025": {
+          "n": 468,
+          "eventos": 54,
+          "prevalencia_pct": 11.54,
+          "brier": 0.077697,
+          "logloss": 0.225191,
+          "pr_auc": 0.47737,
+          "roc_auc": 0.93434
+        }
+      }
+    }
+  },
+  "referencia_10f_brier": {
+    "GCN_lluvia": 0.084757,
+    "GCN_lluvia_oceano": 0.078348,
+    "RF_lluvia": 0.074842,
+    "RF_lluvia_oceano": 0.069247,
+    "climatologia_sector_estacional": 0.062884
+  },
+  "contraste_pareado_10f": {
+    "GCN_lluvia_oceano_nasa": {
+      "n": 2340,
+      "delta_brier_nasa_menos_10f": -0.000925,
+      "deltas_anuales": {
+        "2021": -0.001425,
+        "2022": 0.003403,
+        "2023": 0.00358,
+        "2024": -0.003338,
+        "2025": -0.006847
+      },
+      "interpretacion": "Negativo favorece incluir NASA. Cinco años con dependencia espacial: descriptivo, NO causalidad ni certificacion."
+    },
+    "RF_lluvia_oceano_nasa": {
+      "n": 2340,
+      "delta_brier_nasa_menos_10f": 0.002789,
+      "deltas_anuales": {
+        "2021": -0.005541,
+        "2022": -0.001434,
+        "2023": 0.017208,
+        "2024": 0.000191,
+        "2025": 0.003522
+      },
+      "interpretacion": "Negativo favorece incluir NASA. Cinco años con dependencia espacial: descriptivo, NO causalidad ni certificacion."
+    }
+  },
+  "bloques": [
+    {
+      "bloque": 0,
+      "holdout": [
+        "S006",
+        "S007",
+        "S008",
+        "S010",
+        "S012",
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S019",
+        "S020",
+        "S021"
+      ],
+      "modelo": {
+        "RF_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.060512,
+            "min_samples_leaf": 4
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.47793,
+            "intercepto": -0.84599
+          }
+        },
+        "GCN_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.060889,
+            "mejor_epoca": 15,
+            "epoca_parada": 33
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 25,
+            "coeficiente": 0.53619,
+            "intercepto": -0.7851
+          }
+        }
+      }
+    },
+    {
+      "bloque": 1,
+      "holdout": [
+        "S011",
+        "S023",
+        "S030",
+        "S031",
+        "S033",
+        "S039",
+        "S040",
+        "S041"
+      ],
+      "modelo": {
+        "RF_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.063325,
+            "min_samples_leaf": 4
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.59791,
+            "intercepto": -0.90412
+          }
+        },
+        "GCN_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.051975,
+            "mejor_epoca": 45,
+            "epoca_parada": 63
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 0.56739,
+            "intercepto": -1.52209
+          }
+        }
+      }
+    },
+    {
+      "bloque": 2,
+      "holdout": [
+        "S009",
+        "S024",
+        "S025",
+        "S026",
+        "S027",
+        "S029",
+        "S037",
+        "S038"
+      ],
+      "modelo": {
+        "RF_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.051483,
+            "min_samples_leaf": 4
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 1.22462,
+            "intercepto": -0.63324
+          }
+        },
+        "GCN_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.053293,
+            "mejor_epoca": 19,
+            "epoca_parada": 37
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 12,
+            "coeficiente": 1.48727,
+            "intercepto": -1.80537
+          }
+        }
+      }
+    },
+    {
+      "bloque": 3,
+      "holdout": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005"
+      ],
+      "modelo": {
+        "RF_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.053661,
+            "min_samples_leaf": 4
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 0.96566,
+            "intercepto": -0.93977
+          }
+        },
+        "GCN_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.048317,
+            "mejor_epoca": 39,
+            "epoca_parada": 57
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 5,
+            "coeficiente": 0.39573,
+            "intercepto": -1.77728
+          }
+        }
+      }
+    },
+    {
+      "bloque": 4,
+      "holdout": [
+        "S013",
+        "S014",
+        "S022",
+        "S035",
+        "S036",
+        "S042"
+      ],
+      "modelo": {
+        "RF_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.071025,
+            "min_samples_leaf": 4
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.50697,
+            "intercepto": -1.25692
+          }
+        },
+        "GCN_lluvia_oceano_nasa": {
+          "fit": {
+            "brier_validacion": 0.05452,
+            "mejor_epoca": 13,
+            "epoca_parada": 31
+          },
+          "calibracion": {
+            "estado": "ajuste_platt_calibracion_independiente",
+            "n_eventos_cal": 8,
+            "coeficiente": 0.64458,
+            "intercepto": -1.40571
+          }
+        }
+      }
+    }
+  ],
+  "sha256_predicciones": "068f097add12bb695b79b2a864a9ccd85854f4ef4ce7a8400bce8f959ec11fe8",
+  "mejora_predictiva_operativa_certificada": false,
+  "as_issued_preservado": false,
+  "sector_datos_instrumentales": false,
+  "modelo_operativo_ganador": null,
+  "alertas_habilitadas": false,
+  "limitaciones": [
+    "NASA POWER 0.5x0.625 grados agrupa sectores; radiación de fuente aparte más gruesa.",
+    "El punto interior del poligono experimental no es promedio areal ni cultivo individual.",
+    "Los datos MERRA2, SRB/CERES y CHIRPS FINAL pueden haber sido revisados tras la fecha pronosticada.",
+    "Los rezagos t−2 reducen riesgo de fuga temporal, pero no certifican snapshots originales.",
+    "La comparación usa mismas 2340 etiquetas de prueba de 10F y cinco bloques geograficos.",
+    "La calibracion en sectores de prueba 2019-2020 presupone registro histórico local previo.",
+    "El mejor Brier observado no demuestra habilidad operativa o enfermedades agrícolas reales."
+  ]
+}
