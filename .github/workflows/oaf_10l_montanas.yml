@@ -1,0 +1,62 @@
+name: OAF 10L — Optimización RF de lluvia en montaña media y alta
+on:
+  push:
+    paths:
+      - modelos/optimizacion_montana_rf_10l.py
+      - tests/test_optimizacion_montana_10l.py
+      - .github/workflows/oaf_10l_montanas.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf-10l-montana-lluvia
+  cancel-in-progress: false
+jobs:
+  evaluar_alta_montana:
+    runs-on: ubuntu-latest
+    timeout-minutes: 42
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependencias científicas
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Validar 11 sectores altos, variables sin fuga y no enfermedades
+        run: python -m unittest discover -s tests -p test_optimizacion_montana_10l.py -v
+      - name: Ajustar opciones RF ponderadas orográficas y especialistas
+        run: python -u modelos/optimizacion_montana_rf_10l.py
+      - name: Auditar archivos nuevos, métricas y bloqueos operativos
+        run: |
+          python modelos/optimizacion_montana_rf_10l.py --check
+          python - <<'PY'
+          import json
+          d=json.load(open('datos/montanas_10l/evaluacion_montanas_10l.json',encoding='utf8'))
+          assert d['fase']=='10L' and d['n_sectores_objetivo']==11 and d['n_sector_mes']==660
+          assert d['restricciones']['alertas_habilitadas'] is False
+          assert d['restricciones']['modelo_enfermedades'] is False
+          for sector in ('vertiente_media','alta_montana','total_montana'):
+            print('10L_EVALUACION',sector,d['resultados'][sector])
+          print('10L_SELECCION_VALIDACION',d['seleccion_solo_2016_2018'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10l-montanas-probabilistic-rf-validation
+          path: |
+            datos/montanas_10l/evaluacion_montanas_10l.json
+            datos/montanas_10l/predicciones_lluvia_montanas_10l.csv
+            datos/montanas_10l/series_montana_10l.json
+            datos/montanas_10l/sectores_mejora_montana_10l.geojson
+          retention-days: 90
+      - name: Publicar solamente resultados retrospectivos auditados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/montanas_10l
+          git diff --cached --quiet || git commit -m "data(10L): RF montano ajustado frente a climatologia y fase 10K"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
