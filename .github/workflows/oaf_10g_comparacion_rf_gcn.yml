@@ -1,0 +1,62 @@
+name: OAF 10G — Reentrenamiento con ERA5 sectorial
+on:
+  push:
+    paths:
+      - "datos/atmosfera_sectorial_10g/muestra_era5_mensual_10g.csv"
+      - ".github/workflows/oaf_10g_comparacion_rf_gcn.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf-10g-ablacion
+  cancel-in-progress: false
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Numérico y geoespacial reproducible
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Verificar fuente ERA5 completa y aislamiento de mes objetivo
+        run: python -m unittest discover -s tests -p test_comparacion_atmosferica_10g.py -v
+      - name: Ajustar y comparar RF-GCN con ERA5 rezagado dos meses
+        run: python modelos/comparacion_atmosferica_rf_gcn_10g.py
+      - name: Comprobar integridad y bloqueo operativo
+        run: python modelos/comparacion_atmosferica_rf_gcn_10g.py --check
+      - name: Asegurar comparación frente a 10F
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("datos/experimento_multivariable_10g/evaluacion_rf_gcn_era5_10g.json",encoding="utf8"))
+          assert r["fase"]=="10G"
+          assert r["n_sectores"]==39 and r["n_predicciones"]==4680
+          assert r["as_issued_preservado"] is False
+          assert r["modelo_operativo_ganador"] is None and r["alertas_habilitadas"] is False
+          assert r["numero_celdas_era5_distintas"]<39
+          assert len(r["contraste_pareado_10f"])==2
+          print("10G_PAREADO_RF_GCN",json.dumps(r["contraste_pareado_10f"],ensure_ascii=False))
+          print("10G_SCORES",json.dumps(r["resultados_modelos_nuevos"],ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10g-rf-gcn-era5-ablacion
+          path: |
+            datos/experimento_multivariable_10g/evaluacion_rf_gcn_era5_10g.json
+            datos/experimento_multivariable_10g/probabilidades_rf_gcn_era5_10g.csv
+          retention-days: 90
+      - name: Publicar exclusivamente evidencia validada
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/experimento_multivariable_10g
+          git diff --cached --quiet || git commit -m "data(10G): ablation pareada ERA5 RF-GCN sobre 39 sectores"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
