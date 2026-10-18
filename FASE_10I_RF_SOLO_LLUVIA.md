@@ -68,3 +68,35 @@ No publicar como «mejor pronóstico validado» un modelo RF que no mejora la cl
 
 ## Próxima evaluación de validez antes de alertas
 Recuperar estaciones pluviométricas SENAMHI externas, versiones históricas de emisiones y sus retrasos, y datos meteorológicos horarios si se implementa duración de condiciones húmedas; evaluar estratos altitudinales y un bloqueo que incluya celdas NASA compartidas; obtener un periodo de prueba prospectivo que no se utilice para elegir entre las cuatro configuraciones.
+
+## 6. Resultados reales de entrenamiento — finalizados y auditados
+
+[GitHub Actions 10I](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39091613534) finalizó **correctamente**: siete pruebas de integridad, entrenamiento de Random Forest Regressor y Random Forest Classifier (ningún GCN), cuatro familias de covariables, cinco bloques geográficos, **9.360 registros de pronósticos** correspondientes a **2.340 pares sector-mes × cuatro familias**.
+
+La prueba cubre 2021–2025; los eventos positivos (lluvia observada CHIRPS ≥P90 histórico del sector) fueron 247.
+
+| Familia Random Forest | MAE lluvia mm ↓ | Brier RF ↓ | PR-AUC RF ↑ |
+|---|---:|---:|---:|
+| L — solo lluvia CHIRPS rezagada | **18,0442** | 0,075266 | 0,42518 |
+| LO — lluvia + océano y viento marino | 18,4406 | **0,068131** | 0,42678 |
+| LA — lluvia + atmósfera NASA | 19,3196 | 0,070902 | **0,48356** |
+| LOA — lluvia + océano + atmósfera NASA | 18,5796 | 0,071832 | 0,43411 |
+| **Climatología sectorial mensual (sin IA)** | **14,2957** | **0,062884** | **0,60414** |
+
+**Resultados por objetivo:**
+- Para **pronosticar cantidad de precipitación mensual en mm**, la variante RF basada solo en lluvia histórica obtuvo el menor MAE entre las cuatro: **18,0442 mm**, con **sesgo de −11,3853 mm** (subestimación sistemática en esta prueba). La climatología logró MAE **14,2957 mm**, mejor que todas las variantes RF.
+- Para **probabilidad de excedencia P90**, el mejor Brier entre las cuatro variantes RF fue **LO (lluvia + océano): 0,068131**, pero la climatología obtuvo **0,062884**. La variante de solo lluvia posee Brier **0,075266**.
+- La mayor PR-AUC entre los RF fue **LA (lluvia + atmósfera): 0,48356**, aun inferior a climatología (**0,60414**). Por tanto, cuál «mejor RF» depende de la métrica.
+- **En 2023**, lluvia+océano obtuvo Brier **0,121486** mejor que climatología **0,136595** (solo para ese año), pero el MAE de lluvia+océano fue **30,1755 mm** frente a climatología **24,8143 mm**, y el sesgo fue **−27,8218 mm**. No confundir habilidad de clasificación y estimación en mm.
+- **Añadir indiscriminadamente todas las variables NASA y oceánicas NO mejoró RF** respecto a las versiones más simples en MAE ni Brier global.
+
+### Control adicional: selección sin usar el periodo 2021–2025
+
+[Auditoría por pliegue usando exclusivamente ajuste 2016–2018](datos/rf_precipitacion_10i/seleccion_solo_validacion_10i.json):
+- Para regresión mm, validación eligió lluvia sola en **cuatro de cinco bloques** y lluvia+océano en uno. El MAE posterior combinado de esas elecciones fue **18,2248 mm**, frente a climatología **14,2957 mm**.
+- Para clasificación P90, validación eligió **solo lluvia en los cinco bloques**, con Brier posterior **0,075266**, frente a climatología **0,062884**. Es relevante: la preferencia por lluvia+océano calculada observando 2021–2025 **no puede emplearse como selección ciega** para ese mismo periodo.
+
+**Decisión científicamente defendible para el portal:** Random Forest se conserva como el **único algoritmo de IA experimental dedicado a lluvia**. Puede exponer dos objetivos (mm y P90) y todas las cuatro familias como resultados de investigación. **La climatología sigue siendo el mejor método validado retrospectivamente en ambas métricas principales y no se habilita ninguna predicción operativa**. Antes de proclamar un RF como ganador se requieren nuevas evaluaciones fuera de muestra, datos de emisión y estaciones independientes.
+
+La evaluación de horas de alta humedad relativa y humedad foliar queda **fuera del entrenamiento RF** y solo podrá implementarse con datos horarios. La [utilidad meteorológica de horas RH](modelos/horas_humedad_horarias_10i.py) cuenta horas cuando existan 24 observaciones por día, devolviendo por separado `horas_humedad_foliar=null` y `prediccion_enfermedad=null` porque esos valores no están medidos ni inferidos por el algoritmo.
+
