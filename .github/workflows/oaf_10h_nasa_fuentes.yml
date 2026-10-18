@@ -1,0 +1,43 @@
+name: OAF 10H — Fuente NASA POWER completa
+on:
+  push:
+    paths:
+      - "modelos/ingesta_nasa_power_10h.py"
+      - ".github/workflows/oaf_10h_nasa_fuentes.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf-nasa-power-source-10h
+  cancel-in-progress: false
+jobs:
+  ingesta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Geometrías
+        run: python -m pip install shapely==2.1.2
+      - name: Descargar NASA POWER meteorología y radiación mensual sin solicitudes redundantes
+        run: python -u modelos/ingesta_nasa_power_10h.py
+      - name: Exigir 39 sectores, 360 meses y SHA trazable
+        run: python modelos/ingesta_nasa_power_10h.py --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10h-nasa-multivariable-1996-2025
+          path: |
+            datos/nasa_power_10h/atmosfera_power_mensual_39_sectores_10h.csv
+            datos/nasa_power_10h/auditoria_fuentes_10h.json
+          retention-days: 90
+      - name: Publicar solo serie completa y auditada
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/nasa_power_10h
+          git diff --cached --quiet || git commit -m "data(10H): NASA POWER mensual real y auditado en 39 sectores"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
