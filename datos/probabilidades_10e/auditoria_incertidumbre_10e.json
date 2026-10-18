@@ -1,0 +1,97 @@
+{
+  "fase": "10E",
+  "tipo": "AUDITORIA_EXPLORATORIA_DE_INCERTIDUMBRE_DE_MODELOS_PROBABILISTICOS",
+  "fuente": "datos/probabilidades_10e/predicciones_probabilisticas_10e.csv",
+  "n_filas_csv": 1200,
+  "n_objetivos_emparejados": 240,
+  "n_modelos": 5,
+  "n_inconsistencias": 0,
+  "n_anios": 1,
+  "n_localidades": 1,
+  "metrica": "Diferencia de Brier por pares sobre exactamente las mismas localidades-mes; intervalos de remuestreo anuales (5^5) y espaciales (4^4), misma ponderación por año/localidad",
+  "comparaciones": [
+    {
+      "modelo_a": "RF_multivariable",
+      "modelo_b": "GCN_multivariable",
+      "delta_brier_a_menos_b": -0.023695,
+      "intervalo_anual_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "intervalo_localidades_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "deltas_anuales": {
+        "2": -0.023695
+      },
+      "deltas_por_localidad": {
+        "0": -0.023695
+      },
+      "interpretacion": "Negativo favorece modelo A; intervalos de solo 5 años/4 localidades son exploratorios, no confirmatorios."
+    },
+    {
+      "modelo_a": "RF_multivariable",
+      "modelo_b": "climatologia_local_estacional",
+      "delta_brier_a_menos_b": 0.010716,
+      "intervalo_anual_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "intervalo_localidades_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "deltas_anuales": {
+        "2": 0.010716
+      },
+      "deltas_por_localidad": {
+        "0": 0.010716
+      },
+      "interpretacion": "Negativo favorece modelo A; intervalos de solo 5 años/4 localidades son exploratorios, no confirmatorios."
+    },
+    {
+      "modelo_a": "RF_multivariable",
+      "modelo_b": "RF_solo_lluvia",
+      "delta_brier_a_menos_b": -0.016968,
+      "intervalo_anual_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "intervalo_localidades_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "deltas_anuales": {
+        "2": -0.016968
+      },
+      "deltas_por_localidad": {
+        "0": -0.016968
+      },
+      "interpretacion": "Negativo favorece modelo A; intervalos de solo 5 años/4 localidades son exploratorios, no confirmatorios."
+    },
+    {
+      "modelo_a": "GCN_multivariable",
+      "modelo_b": "GCN_solo_lluvia",
+      "delta_brier_a_menos_b": 0.00503,
+      "intervalo_anual_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "intervalo_localidades_exploratorio_95_pct": [
+        null,
+        null
+      ],
+      "deltas_anuales": {
+        "2": 0.00503
+      },
+      "deltas_por_localidad": {
+        "0": 0.00503
+      },
+      "interpretacion": "Negativo favorece modelo A; intervalos de solo 5 años/4 localidades son exploratorios, no confirmatorios."
+    }
+  ],
+  "cuidado": "Los reanálisis y las etiquetas son retrospectivos; no demuestran independencia instrumental ni habilidad operativa. No hay corrección por comparación múltiple ni independencia entre años/localidades.",
+  "modelo_operativo": null,
+  "alertas_activadas": false
+}
