@@ -1,0 +1,63 @@
+name: OAF 10H — RF vs GCN multivariable verificado
+on:
+  push:
+    paths:
+      - "modelos/comparacion_rf_gcn_nasa_10h.py"
+      - "tests/test_nasa_multivariable_10h.py"
+      - "datos/nasa_power_10h/atmosfera_power_mensual_39_sectores_10h.csv"
+      - ".github/workflows/oaf_10h_comparacion.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ajustar_y_evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 42
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias fijadas
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Testear cobertura, procedencia NASA POWER, P90 y rezagos sin fuga
+        run: python -m unittest discover -s tests -p test_nasa_multivariable_10h.py -v
+      - name: Entrenar Random Forest y GCN con lluvia, océano y atmosfera NASA a t-2
+        run: python -u modelos/comparacion_rf_gcn_nasa_10h.py
+      - name: Comprobar SHA, muestras y restricciones de publicación
+        run: python modelos/comparacion_rf_gcn_nasa_10h.py --check
+      - name: Exigir comparación pareada contra climatología y 10F
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("datos/modelos_multivariables_10h/evaluacion_rf_gcn_nasa_10h.json",encoding="utf8"))
+          assert r["fase"]=="10H" and r["n_predicciones"]==4680
+          assert r["n_sector_mes_prueba"]==2340 and r["n_sectores"]==39
+          assert r["numero_bins_nasa_aproximados"]<39
+          assert r["modelo_operativo_ganador"] is None
+          assert r["as_issued_preservado"] is False
+          assert r["alertas_habilitadas"] is False
+          for model,met in r["resultados_modelos_nuevos"].items():
+            print("MODELO_NASA_10H",model,met["global"],met["por_anio"]["2023"])
+          print("10H_REFERENCIA",r["referencia_10f_brier"])
+          print("10H_DIFERENCIA_PAREADA",r["contraste_pareado_10f"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10h-rf-gcn-nasa-pruebas
+          path: |
+            datos/modelos_multivariables_10h/evaluacion_rf_gcn_nasa_10h.json
+            datos/modelos_multivariables_10h/probabilidades_rf_gcn_nasa_10h.csv
+          retention-days: 90
+      - name: Publicar datos SOLO si pasan todas las comprobaciones
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/modelos_multivariables_10h
+          git diff --cached --quiet || git commit -m "data(10H): RF GCN con NASA MERRA2 océano CHIRPS y climatologia"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
