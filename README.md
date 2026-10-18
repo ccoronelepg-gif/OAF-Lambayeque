@@ -17,6 +17,17 @@
 
 
 
+
+## Fase 10M · Incorporación de pluviómetros SENAMHI (17/10/2026)
+
+**Integración efectiva a la base observacional del OAF.** Se examinaron **2.956 registros** (1.441 anteriores y 1.515 de **50 nuevos CSV**: 32 de Cueva Blanca, 18 de Incahuasi). Se identificaron **303 claves repetidas** con **362 copias extras idénticas**, **cero contradicciones de precipitación** y quedaron **2.594 observaciones únicas** (**1.386 diarias + 1.208 horarias**) de 13 estaciones.
+
+**Montaña:** Cueva Blanca (3.300 m) ofrece **26 meses completos** entre oct-2021 y sep-2026, e Incahuasi (3.052 m) **14 meses completos** entre feb-2024 y may-2026. **No son series mensuales continuas**. Se auditaron completos por día; los archivos declaran **«Datos sin control de calidad»**. No se ha comprobado su independencia frente a CHIRPS ni su autenticidad directamente desde SENAMHI. Por ello **aún no se introducen al entrenamiento RF ni se anuncian predicciones operativas**.
+
+La **base diaria, horaria, CSV originales con huellas SHA-256, auditoría Excel y protocolo de importación** se almacenó en la **biblioteca personal persistente** bajo `/OAF-Lambayeque/SENAMHI/`. El repositorio incluye una **tabla pública de 48 meses-estación (43 completos)** y un manifiesto con los SHA-256 de los 50 CSV para futura georreferenciación/QC. No imputar meses ausentes ni convertir `T` o `S/D` en cero.
+
+[**Panel de pluviómetros y meses observados**](observaciones-senamhi-10m.html) · [Informe 10M](FASE_10M_INTEGRACION_SENAMHI.md) · [CSV mensual para dashboard](datos/senamhi_estaciones_10m/resumen_mensual_senamhi_observado.csv) · [Manifiesto fuente SHA y auditoría](datos/senamhi_estaciones_10m/manifest_fuentes_10m.json) · [Verificador de integridad](modelos/auditar_integracion_senamhi_10m.py) · [Control automatizado](.github/workflows/oaf_10m_senamhi_fuentes.yml).
+
 ## Fase 10L · Mejora de las lluvias en vertientes medias y altas (17/10/2026)
 
 La fase 10L se ejecutó sobre **11 sectores montañosos del OAF** (8 de vertientes medias y 3 de alturas), con **660 observaciones sector-mes de 2021–2025**, confrontadas directamente con el modelo Random Forest geográfico 10K y la climatología mensual de cada sector.
