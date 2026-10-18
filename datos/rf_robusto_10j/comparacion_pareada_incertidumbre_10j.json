@@ -1,13 +1,93 @@
 {
   "fase": "10J",
-  "estado": "PENDIENTE_RECALCULO_CI",
-  "razon": "Las predicciones CSV ocupan más de 1 MB y no se obtuvieron por el método de lectura inicial. Se retiraron métricas no verificadas. Se recalculará directamente en GitHub Actions desde el CSV original completo.",
-  "n_objetivos_esperados": 2340,
-  "medidas_pendientes": [
-    "MAE RF vs climatología",
-    "Brier P90 y P95 pareados",
-    "intervalos por año y bloque"
-  ],
-  "comparaciones_publicadas": false,
+  "estado": "AUDITORIA_RECALCULADA_DESDE_CSV_COMPLETO",
+  "comparacion": "Se eligen familias por validación 2016-2018; comparación por pares en 2021-2025",
+  "fuente": "datos/rf_robusto_10j/predicciones_rf_tres_objetivos_10j.csv",
+  "sha256_fuente": "13cbc704ef5a451abca2cddc84e369fd1a9da348c899751bdd69dc62459cbee0",
+  "comparaciones": {
+    "mm": {
+      "diferencia_global_RF_menos_climatologia": 6.7759112,
+      "por_anio": {
+        "2021": 13.161088,
+        "2022": 4.855295,
+        "2023": 4.4271742,
+        "2024": 3.9984495,
+        "2025": 7.4375492
+      },
+      "por_bloque": {
+        "0": 15.7157122,
+        "1": 0.8710703,
+        "2": 5.6144557,
+        "3": -0.1771668,
+        "4": 4.1122694
+      },
+      "intervalo_exploratorio_anual_95": [
+        4.3413085,
+        10.1838525
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        1.1000153,
+        10.7265325
+      ],
+      "tamanio_muestra": 2340,
+      "interpretacion": "Negativo favorece RF; 5 años/bloques dependientes, NO intervalos confirmatorios"
+    },
+    "p90": {
+      "diferencia_global_RF_menos_climatologia": -4.09e-05,
+      "por_anio": {
+        "2021": 0.0052532,
+        "2022": -0.0001688,
+        "2023": -0.0145294,
+        "2024": 0.0217077,
+        "2025": -0.0124674
+      },
+      "por_bloque": {
+        "0": 0.0025346,
+        "1": -0.0026346,
+        "2": 0.0041548,
+        "3": -0.0073459,
+        "4": -0.0012405
+      },
+      "intervalo_exploratorio_anual_95": [
+        -0.0108325,
+        0.0115818
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        -0.0044275,
+        0.0024729
+      ],
+      "tamanio_muestra": 2340,
+      "interpretacion": "Negativo favorece RF; 5 años/bloques dependientes, NO intervalos confirmatorios"
+    },
+    "p95": {
+      "diferencia_global_RF_menos_climatologia": 0.0001349,
+      "por_anio": {
+        "2021": 0.0047226,
+        "2022": -0.0019893,
+        "2023": -0.0171216,
+        "2024": 0.0141792,
+        "2025": 0.0008835
+      },
+      "por_bloque": {
+        "0": 0.0035512,
+        "1": -0.0077283,
+        "2": 0.0030791,
+        "3": 0.0006862,
+        "4": -0.0005986
+      },
+      "intervalo_exploratorio_anual_95": [
+        -0.0097263,
+        0.0085052
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        -0.0041409,
+        0.0027894
+      ],
+      "tamanio_muestra": 2340,
+      "interpretacion": "Negativo favorece RF; 5 años/bloques dependientes, NO intervalos confirmatorios"
+    }
+  },
+  "clase_de_intervalos": "Remuestreo exhaustivo de 5 años/bloques. Pocos conglomerados, dependencia entre observaciones. Exploratorios, NO garantía de p-valor.",
+  "habilidad_operativa_certificada": false,
   "alertas_activadas": false
 }
