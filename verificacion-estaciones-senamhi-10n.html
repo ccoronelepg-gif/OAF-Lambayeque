@@ -1,0 +1,52 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OAF Lambayeque | Estaciones SENAMHI montaña y Random Forest</title>
+<style>body{margin:0;background:#f3f7f4;color:#183d32;font:15px/1.6 system-ui,sans-serif}*{box-sizing:border-box}
+header{padding:2rem max(1rem,calc((100% - 1050px)/2));background:#17483c;color:#fff}
+header h1{font-size:clamp(1.5rem,3.5vw,2.3rem);line-height:1.2;margin:.45rem 0}header a{color:#c7f6de}
+main{max-width:1050px;margin:auto;padding:1rem 1rem 3rem}.warning{border-left:4px solid #c48d34;background:#fff4e4;padding:.9rem 1.1rem}
+.box{border-radius:11px;border:1px solid #d4e6d9;padding:1.1rem;margin:1rem 0;background:white}
+.box h2{margin:.15rem 0 .6rem;font-size:1.25rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem}
+.stat{padding:.9rem;border:1px solid #d6e4da;border-radius:8px;background:#eaf4eb}.stat b{font-size:1.43rem;display:block}
+.stat small{color:#597364}select{min-height:40px;border:1px solid #a5c8b4;padding:.4rem;border-radius:8px;background:white}
+label{display:block;font-weight:600;font-size:.82rem}.controls{display:flex;gap:1rem;flex-wrap:wrap}
+.scroll{overflow:auto}table{width:100%;border-collapse:collapse;min-width:690px;font-size:.85rem}th,td{padding:.65rem;border-bottom:1px solid #e4eae5;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#edf4ee}
+.muted{font-size:.85rem;color:#5b7064}a{color:#117654}
+</style></head><body><header><small>OAF-LAMBAYEQUE · VERIFICACIÓN DE DATOS EN ESTACIONES</small>
+<h1>Mediciones SENAMHI y entrenamiento experimental RF</h1>
+<p>Datos de alta montaña de Incahuasi y Cueva Blanca, con comparación entre la climatología sectorial y una nueva corrección Random Forest.</p>
+<a href="./optimizacion-lluvia-montana-10l.html">← Regresar al panel de montaña</a></header>
+<main><p class="warning"><strong>Investigación, no pronóstico actual.</strong> Los CSV SENAMHI recibidos indican «datos sin control de calidad». Se integraron sin inventar meses faltantes. La climatología CHIRPS sectorial no equivale a medición puntual de estación. El nuevo modelo no está certificado ni habilitado para alertas, enfermedades o estimaciones de hora de lluvia.</p>
+<div class="grid">
+<div class="stat"><b>13</b><small>Estaciones en la base local de investigación</small></div>
+<div class="stat"><b>2</b><small>Estaciones terrestres en alta montaña</small></div>
+<div class="stat"><b>40</b><small>Meses completos de alta montaña</small></div>
+<div class="stat"><b>8</b><small>Meses reservados para prueba 2026</small></div>
+</div>
+<div class="box"><h2>¿Aportan precisión las estaciones al Random Forest?</h2><p id="decision" class="muted">Recuperando informe…</p>
+<div class="grid"><div class="stat"><b id="mae2025">—</b><small>MAE validación 2025 RF (mm)</small></div>
+<div class="stat"><b id="mae2026">—</b><small>MAE prueba 2026 RF (mm)</small></div>
+<div class="stat"><b id="maeRef">—</b><small>MAE climatología en prueba 2026 (mm)</small></div>
+<div class="stat"><b id="peso">—</b><small>Peso RF seleccionado con validación 2025</small></div></div>
+<p class="muted">Un peso cero significa que la corrección RF no mejoró la referencia en validación y el sistema se abstuvo de usarla. No es una mejora atribuible a Random Forest.</p></div>
+<div class="box"><h2>Observaciones y comprobaciones por estación</h2>
+<div class="controls"><div><label for="station">Estación</label><select id="station"><option value="todas">Ambas estaciones</option><option value="153102">Cueva Blanca · S008 · 3.300 m</option><option value="000307">Incahuasi · S007 · 3.052 m</option></select></div>
+<div><label for="part">Periodo</label><select id="part"><option value="todas">2025 y 2026</option><option value="validation">Validación 2025</option><option value="test">Prueba 2026</option></select></div></div>
+<div class="scroll"><table><thead><tr><th>Estación y sector</th><th>Mes</th><th>SENAMHI (mm)</th><th>RF experimental (mm)</th><th>Climatología sector (mm)</th><th>Error RF (mm)</th></tr></thead><tbody id="rows"><tr><td colspan="6">Cargando filas auditadas…</td></tr></tbody></table></div>
+<p class="muted">Se muestran únicamente meses disponibles. El registro de 2026 no fue usado para entrenamiento ni para elegir hiperparámetros.</p></div>
+<div class="box"><h2>Archivos y metodología</h2>
+<p><a href="datos/senamhi_10n/meses_pluviometricos_completos_10n.csv">40 meses de lluvia terrestre</a> ·
+<a href="datos/senamhi_10n/evaluacion_rf_estacion_10n.json">Métricas auditadas</a> ·
+<a href="datos/senamhi_10n/evaluacion_mensual_rf_estacion_10n.csv">Predicciones 2025–2026</a> ·
+<a href="modelos/entrenar_rf_estaciones_senamhi_10n.py">Código de entrenamiento reproducible</a> ·
+<a href="FASE_10N_SENAMHI_RF_MONTAÑA.md">Informe de integración SENAMHI</a></p>
+<p>Los nuevos datos permiten una comparación puntual inicial, pero aún faltan controles instrumentales y varias temporadas completas. El modelo de precipitación regional 10L permanece separado y sin modificación automática.</p></div>
+</main>
+<script>(()=>{const $=id=>document.getElementById(id),nf=n=>Number(n).toLocaleString("es-PE",{maximumFractionDigits:2,minimumFractionDigits:2});let rows=[];
+function draw(){const where=$("station").value,period=$("part").value,filtered=rows.filter(x=>(where==="todas"||x.estacion_codigo===where)&&(period==="todas"||x.etapa===period));const tbody=$("rows");tbody.replaceChildren();for(const r of filtered){const tr=document.createElement("tr");for(const x of [r.estacion+" · "+r.sector,r.mes,nf(r.lluvia_estacion_mm),nf(r.lluvia_normal_sector_chirps_mm),nf(r.lluvia_rf_ajustada_mm),nf(Math.abs(+r.lluvia_estacion_mm-(+r.lluvia_rf_ajustada_mm)))]){const td=document.createElement("td");td.textContent=x;tr.append(td)}tbody.append(tr)}}
+Promise.all([fetch("./datos/senamhi_10n/evaluacion_rf_estacion_10n.json",{cache:"no-store"}),fetch("./datos/senamhi_10n/evaluacion_mensual_rf_estacion_10n.csv",{cache:"no-store"})]).then(async ([r,s])=>{if(!r.ok||!s.ok)throw Error("Resultados pendientes de publicación");const data=await r.json(),csv=(await s.text()).trim().split(/\r?\n/);
+if(data.fase!=="10N"||data.alertas_habilitadas!==false||data.reentrenamiento_regional!==false)throw Error("Evaluación insegura");
+$("mae2025").textContent=nf(data.resultado_validation.mae_rf_mm);$("mae2026").textContent=nf(data.resultado_2026.mae_rf_mm);
+$("maeRef").textContent=nf(data.resultado_2026.mae_climatologia_mm);$("peso").textContent=nf(data.seleccion_validacion.peso_rf);
+$("decision").textContent=data.seleccion_validacion.peso_rf===0?"No se demostró mejora con RF. La estrategia conserva la climatología y mantiene el modelo como candidato experimental.":"Se detectó una corrección RF candidata; requiere revisión instrumental y más años antes de habilitarse.";
+const hdr=csv.shift().split(",");rows=csv.map(line=>Object.fromEntries(line.split(",").map((v,i)=>[hdr[i],v])));$("station").addEventListener("change",draw);$("part").addEventListener("change",draw);draw()}).catch(e=>{$("decision").textContent="No se pudo verificar el informe: "+e.message;$("rows").textContent="Resultados auditados todavía no disponibles.";});
+})();</script></body></html>
