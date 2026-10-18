@@ -32,7 +32,7 @@ TRAIN=("1997-01","2015-12");VAL=("2016-01","2018-12")
 CAL=("2019-01","2020-12");TEST=("2021-01","2025-12")
 torch.set_num_threads(2)
 def read(p):
- with p.open(newline="",encoding="utf8-sig") as f:return list(csv.DictReader(f))
+ with p.open(newline="",encoding="utf-8-sig") as f:return list(csv.DictReader(f))
 def load(p):return json.loads(p.read_text("utf8"))
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def finite(v,name):
