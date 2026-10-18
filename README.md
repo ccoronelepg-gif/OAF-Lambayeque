@@ -11,6 +11,19 @@
 
 
 
+
+## Fase 10G · Control espacial de siete variables ERA5 en 39 sectores (17/10/2026)
+
+El observatorio incorporó [control de procedencia atmosférica](verificacion-atmosferica.html) para consultar **ERA5 histórico 0,25°** (Open-Meteo/ECMWF) de forma trazable en **un punto interior de cada uno de los 39 polígonos experimentales**. Variables: temperatura, radiación de onda corta, humedad relativa, viento a 10 m, nubosidad, presión media al nivel del mar y déficit de presión de vapor. La API devuelve coordenadas de celdas reales, que no necesariamente coinciden con centros de parcelas o medias de cada polígono.
+
+**Piloto real de 2023:** 468 registros mensuales (39 sectores × 12 meses), **17 celdas ERA5 distintas** y **32 sectores en celdas compartidas**. Por tanto, no existen 39 observaciones espaciales independientes de esas siete variables a esta resolución. Se conserva la cota negativa del sector S001 para revisión. [Auditoría del piloto](datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json) · [Puntos de muestreo](datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json) · [GitHub Actions del piloto exitoso](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39084097579).
+
+**Extensión 1996–2025:** el motor automatizado comprueba 360 meses por sector (14.040 filas), siete variables, unidades originales, coincidencia temporal, duplicados de celda y SHA. La publicación de [matriz](datos/atmosfera_sectorial_10g/muestra_era5_mensual_10g.csv) y [auditoría completa](datos/atmosfera_sectorial_10g/auditoria_atmosfera_10g.json) queda condicionada a pasar todos los controles. [Código de extracción](modelos/ingesta_era5_39_sectores_10g.py) · [Workflow](.github/workflows/oaf_10g_completo.yml).
+
+**Reevaluación predictiva:** la [ablación RF/GCN con ERA5](modelos/comparacion_atmosferica_rf_gcn_10g.py) contrasta las mismas 2.340 etiquetas de 10F con siete variables ERA5 de t−2, solo cuando exista la matriz completa. [Pruebas de comparación](tests/test_comparacion_atmosferica_10g.py) · [Workflow predictivo](.github/workflows/oaf_10g_comparacion_rf_gcn.yml). **No hay mejoras demostradas por el mero hecho de incorporar variables; son reanálisis ex post y NO estaciones instrumentales, y las alertas siguen inactivas.**
+
+[Informe metodológico y cautelas](FASE_10G_INGESTA_ATMOSFERICA_SECTORES.md).
+
 ## Fase 10F · Probabilidad de lluvia alta en 39 sectores (17/10/2026)
 
 **Fase ejecutada y verificada:** cinco modelos probabilísticos en 39 sectores, **2.340 objetivos sector-mes** de prueba 2021–2025 y **247 eventos de precipitación ≥P90 histórico sectorial**. Se mantienen cinco bloques geográficos y ventanas independientes: entrenamiento 1997–2015, ajuste 2016–2018, calibración 2019–2020 y prueba 2021–2025.
