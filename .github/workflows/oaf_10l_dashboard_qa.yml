@@ -1,0 +1,35 @@
+name: OAF 10L — Verificar dashboard andino
+on:
+  push:
+    paths:
+      - "optimizacion-lluvia-montana-10l.html"
+      - "index.html"
+      - ".github/workflows/oaf_10l_dashboard_qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar navegación, mapa, filtros y ausencia de pronósticos actuales
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('optimizacion-lluvia-montana-10l.html').read_text(encoding='utf8')
+          portal=Path('index.html').read_text(encoding='utf8')
+          for k in ('id="map"','id="zona"','id="year"','id="sector"','id="summary"','id="annual"','id="plot"','climatologia','10K','2023'):
+            assert k in h,k
+          for k in ('id="oaf-montana-rf-10l"','id="oaf-montanas-autor-10l"'):
+            assert k in portal,k
+          assert h.count('optimizacion-lluvia-montana-10l')>=0
+          m=re.findall(r'<script[^>]*>(.*?)</script>',h,re.S)
+          assert m and len(m[-1])>4000
+          Path('/tmp/oaf-10l-dashboard.cjs').write_text(m[-1])
+          print('10L_DASHBOARD_ENLACES_Y_METODOS_OK')
+          PY
+      - name: Revisar sintaxis JavaScript de las gráficas y filtros
+        run: node --check /tmp/oaf-10l-dashboard.cjs
