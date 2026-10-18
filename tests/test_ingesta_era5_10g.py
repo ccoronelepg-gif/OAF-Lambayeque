@@ -20,7 +20,7 @@ class Test10G(unittest.TestCase):
  def test_api_requires_homogeneous_model(self):
   args=m.build_params(self.m["puntos"][:3],"2023-01-01","2023-12-31")
   self.assertEqual(args["models"],"era5")
-  self.assertEqual(args["elevation"],"nan")
+  self.assertEqual(args["elevation"],"nan,nan,nan")
   self.assertEqual(args["cell_selection"],"nearest")
   self.assertEqual(args["timezone"],"GMT")
   self.assertEqual(args["wind_speed_unit"],"ms")
