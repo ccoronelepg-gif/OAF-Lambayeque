@@ -1,0 +1,33 @@
+name: OAF 10M — Integridad estaciones SENAMHI recibidas
+on:
+  push:
+    paths:
+      - "datos/senamhi_estaciones_10m/**"
+      - "modelos/auditar_integracion_senamhi_10m.py"
+      - ".github/workflows/oaf_10m_senamhi_fuentes.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar 48 meses, 40 meses completos de montaña, SHA y controles
+        run: python modelos/auditar_integracion_senamhi_10m.py
+      - name: Impedir confusión de datos sin QC con predictibilidad operativa
+        run: |
+          python - <<'PY'
+          import json
+          p='datos/senamhi_estaciones_10m/manifest_fuentes_10m.json'
+          m=json.load(open(p,encoding='utf8'))
+          assert m['resumen']['claves_con_duplicidad_identica']==303
+          assert m['resumen']['copias_extras_identicas']==362
+          assert m['resumen']['conflictos_de_precipitacion']==0
+          assert m['resumen']['registros_unicos_totales']==2594
+          assert m['validacion']['control_calidad_formal'] is False
+          assert m['validacion']['independencia_de_CHIRPS'] is False
+          assert m['validacion']['entrenamiento_RF_activado'] is False
+          print('10M_SENAMHI_LIBRERIA_NO_REENTRENADA')
+          PY
