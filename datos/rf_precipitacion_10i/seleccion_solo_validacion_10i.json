@@ -1,0 +1,83 @@
+{
+  "fase": "10I",
+  "tipo": "SELECCION_DE_FAMILIA_DE_FACTORES_SOLO_CON_VALIDACION_2016_2018",
+  "origen": "datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json y evaluacion_emparejada_10i.csv",
+  "descripcion": "Para cada bloque espacial se selecciona la familia RF usando exclusivamente 2016–2018 (MAE de regresion y Brier de clasificacion por separado); despues se calculan 2021–2025 sin seleccionar con el test. Dos objetivos de lluvia, cero enfermedades.",
+  "n_bloques": 5,
+  "familias": [
+    "lluvia",
+    "lluvia_oceano",
+    "lluvia_atmosfera",
+    "lluvia_oceano_atmosfera"
+  ],
+  "eleccion_por_bloque_y_objetivo": {
+    "regression": {
+      "0": "lluvia",
+      "1": "lluvia",
+      "2": "lluvia",
+      "3": "lluvia",
+      "4": "lluvia_oceano"
+    },
+    "classification": {
+      "0": "lluvia",
+      "1": "lluvia",
+      "2": "lluvia",
+      "3": "lluvia",
+      "4": "lluvia"
+    }
+  },
+  "evaluacion_prueba": {
+    "regresion_mm": {
+      "n": 2340,
+      "MAE_RF": 18.2248,
+      "MAE_climatologia": 14.2957,
+      "sesgo_RF": -11.4013
+    },
+    "probabilidad_p90": {
+      "n": 2340,
+      "Brier_RF": 0.075266,
+      "Brier_climatologia": 0.062884
+    },
+    "por_anio": {
+      "2021": {
+        "n": 468,
+        "MAE_RF": 16.4272,
+        "MAE_climatologia": 11.5963,
+        "Brier_RF": 0.054045,
+        "Brier_climatologia": 0.038893
+      },
+      "2022": {
+        "n": 468,
+        "MAE_RF": 14.0865,
+        "MAE_climatologia": 12.1021,
+        "Brier_RF": 0.061728,
+        "Brier_climatologia": 0.048325
+      },
+      "2023": {
+        "n": 468,
+        "MAE_RF": 32.3221,
+        "MAE_climatologia": 24.8143,
+        "Brier_RF": 0.170492,
+        "Brier_climatologia": 0.136595
+      },
+      "2024": {
+        "n": 468,
+        "MAE_RF": 13.3335,
+        "MAE_climatologia": 15.7262,
+        "Brier_RF": 0.02307,
+        "Brier_climatologia": 0.032336
+      },
+      "2025": {
+        "n": 468,
+        "MAE_RF": 14.955,
+        "MAE_climatologia": 7.2394,
+        "Brier_RF": 0.066995,
+        "Brier_climatologia": 0.058272
+      }
+    }
+  },
+  "modelo_RF_valido_operativamente": false,
+  "selector_prospectivo_listo": false,
+  "nota": "Aunque la familia se escoge solo con validación, los datos NASA/CHIRPS actuales son retrospectivos y el propio desarrollo fue iterado con informes 2021–25, así que no sustituye prueba prospectiva y estaciones independientes.",
+  "alertas_activas": false
+}
