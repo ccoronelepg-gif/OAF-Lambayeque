@@ -1008,6 +1008,14 @@ details.panel{scroll-margin-top:120px}
 <h2>Random Forest — lluvia mensual (mm) y probabilidad de meses lluviosos</h2>
 <p>Este es el <strong>único algoritmo de IA elegido para desarrollar la predicción de lluvia</strong> del observatorio. RF se entrena exclusivamente con series de precipitación CHIRPS, temperatura y humedad de aire, radiación, presión, viento, temperatura de rocío, VPD físico derivado, anomalías de temperatura oceánica NOAA Niño 1+2/Niño 3.4, SOI, alisios y señales marinas verificadas. Las variables dependientes del tiempo se incorporan con dos meses o más de rezago.</p>
 <p>El modelo tiene <strong>dos salidas únicamente meteorológicas</strong>: <strong>lluvia mensual esperada en milímetros</strong> y <strong>probabilidad de superar el percentil 90 de lluvia del sector</strong>. Se comparan los grupos de factores lluvia, océano, atmósfera y su combinación, frente a climatología sectorial, antes de escoger qué variables aportan habilidad real.</p>
+<div class="scroller"><table><thead><tr><th>Familia RF</th><th>MAE lluvia, mm ↓</th><th>Brier lluvia ≥P90 ↓</th></tr></thead><tbody>
+<tr><td>Solo lluvia histórica</td><td><strong>18,0442</strong></td><td>0,075266</td></tr>
+<tr><td>Lluvia + océano y vientos</td><td>18,4406</td><td><strong>0,068131</strong></td></tr>
+<tr><td>Lluvia + atmósfera NASA</td><td>19,3196</td><td>0,070902</td></tr>
+<tr><td>Lluvia + océano + atmósfera NASA</td><td>18,5796</td><td>0,071832</td></tr>
+<tr><td><strong>Climatología sectorial (referencia)</strong></td><td><strong>14,2957</strong></td><td><strong>0,062884</strong></td></tr>
+</tbody></table></div>
+<p class="oaf-figure-caption">Evaluación retrospectiva 2021–2025 de 2.340 sector-mes. El mejor RF para milímetros utiliza lluvia histórica, mientras el menor Brier retrospectivo de RF se obtiene con océano; <strong>ningún RF supera a la climatología</strong>. Seleccionar familias solo con ajuste 2016–2018 favoreció lluvia histórica en todos los pliegues para P90, con Brier 0,075266. No declarar habilidad operativa validada ni alertas automáticas.</p>
 <div class="notice"><strong>Separación del módulo fitosanitario:</strong> este Random Forest NO predice enfermedades ni infecciones. La consulta futura de horas con humedad relativa elevada requiere series <strong>horarias</strong>; las horas de hoja mojada tampoco pueden deducirse directamente de la lluvia mensual ni de RH mensual. Las estimaciones no son avisos meteorológicos operativos ni pronósticos oficiales de ENFEN.</div>
 <div class="links">
 <a href="random-forest-lluvias.html">Abrir comparador principal de Random Forest y precipitación ↗</a>
