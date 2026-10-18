@@ -1,0 +1,41 @@
+{
+  "fase": "10G",
+  "fecha": "2026-10-17",
+  "estado": "PILOTO_2023_VALIDADO_HISTORICO_30_ANOS_BLOQUEADO_PROVEEDOR",
+  "piloto": {
+    "meses": 12,
+    "sectores": 39,
+    "registros": 468,
+    "celdas_distintas": 17,
+    "sectores_celda_compartida": 32,
+    "ejecucion": "https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39084097579",
+    "archivo": "datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json"
+  },
+  "extraccion_historica": {
+    "objetivo_sectores": 39,
+    "objetivo_meses": 360,
+    "objetivo_filas": 14040,
+    "peticiones_planeadas": 24,
+    "peticiones_respondidas_antes_del_error": 6,
+    "meses_temporales_respondidos": "1996-01 a 2005-12 para 30 de 39 sectores",
+    "respuestas_parciales_conservadas_en_repositorio": false,
+    "error": "HTTP 429 Too Many Requests",
+    "corrida": "https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39084353890",
+    "matriz_completa_publicada": false,
+    "validacion_1996_2025_completada": false
+  },
+  "evaluacion_rf_gcn": {
+    "codigo_preparado": "modelos/comparacion_atmosferica_rf_gcn_10g.py",
+    "ejecucion_completa": false,
+    "resultado_demostrado": false
+  },
+  "decision": "Sin matriz ERA5 completa y auditada no se comparan ni se declaran modelos atmosféricos superiores.",
+  "proveedor": "https://open-meteo.com/en/docs/historical-weather-api",
+  "limite_consulta": "https://open-meteo.com/en/pricing",
+  "siguiente_metodo": "Particionar, controlar cuota y fecha de extracción, conservar respuestas con hash, reagrupar por celdas distintas ERA5 y solo entrenar después de 39x360 completo.",
+  "riesgo_espacial": {
+    "n_grupos_celdas_cruzan_bloques": 1,
+    "archivo": "datos/atmosfera_sectorial_10g/solapamiento_celdas_folds_10g.json"
+  },
+  "alertas_activadas": false
+}
