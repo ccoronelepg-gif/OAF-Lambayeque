@@ -1,0 +1,55 @@
+name: OAF 10G — Piloto ERA5 por sector
+on:
+  push:
+    paths:
+      - modelos/ingesta_era5_39_sectores_10g.py
+      - tests/test_ingesta_era5_10g.py
+      - .github/workflows/oaf_10g_piloto.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencia geográfica
+        run: python -m pip install shapely==2.1.2
+      - name: Validación espacial y física sin descargas
+        run: python -m unittest discover -s tests -p test_ingesta_era5_10g.py -v
+      - name: Crear manifiesto de 39 puntos dentro de sectores
+        run: python modelos/ingesta_era5_39_sectores_10g.py --mode manifest
+      - name: Verificar acceso real a ERA5 e integración de 2023
+        run: python modelos/ingesta_era5_39_sectores_10g.py --mode pilot
+      - name: Asegurar cobertura, modelo y cero alertas
+        run: |
+          python - <<'PY'
+          import json
+          p='datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json'
+          j=json.load(open(p,encoding='utf8'))
+          s=j['resumen']
+          assert s['n_sectores']==39 and s['n_meses_por_sector']==12
+          assert s['filas']==468 and s['n_celdas_era5_distintas']>=2
+          assert not s['alertas_activadas']
+          assert not j['alertas_activadas']
+          print('10G_PILOTO_VALIDADO',s)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 10g-piloto-2023-atmosfera-sectorial
+          path: |
+            datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json
+            datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json
+      - name: Publicar ubicación, metadatos y auditoría del piloto
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json
+          git diff --cached --quiet || git commit -m "data(10G): muestreo piloto atmosférico ERA5 en 39 sectores"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
