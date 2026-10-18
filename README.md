@@ -15,6 +15,17 @@
 
 
 
+
+## Fase 10K · Ecorregiones experimentales, Random Forest y dashboard cartográfico (17/10/2026)
+
+**Fase ejecutada con ocho pruebas exitosas** y **4.680 estimaciones retrospectivas** de lluvia mensual en 39 sectores. Se definieron **cinco paisajes ecoclimáticos operativos**, como agrupación trazable de los **siete pisos altitudinales experimentales 9K**: costa árida/valles (11 sectores), piedemonte/transición bosque seco (11), vertientes bajas (6), medias (8) y cumbres altas (3). **Estos polígonos NO son ecorregiones oficialmente delimitadas por MINAM**: requieren futura homologación con su [Mapa Nacional de Ecosistemas del Perú](https://www.gob.pe/institucion/minam/informes-publicaciones/277146-mapa-nacional-de-ecosistemas-del-peru).
+
+Se reentrenaron **solo Random Forest** con variables de lluvia/localización del paisaje frente a lluvia+océano+NASA+paisaje, usando cinco bloques CHIRPS, entrenamiento 1997–2015, selección 2016–2018, calibración 2019–2020 y prueba 2021–2025. Para mm, P90 y P95 los cinco pliegues seleccionaron la opción RF lluvia + ecopaisaje (sin imponer innecesariamente otros factores). **MAE RF global 20,4298 mm** (mejora respecto a 10J: 21,0716), pero climatología logra **14,2957 mm**. Brier P90 RF **0,061688** vs clima **0,062884** y P95 RF **0,046705** vs clima **0,046996**: mejoras pequeñas no acreditan habilidad operativa.
+
+**El año 2023** tuvo 107 eventos sector-mes ≥P90; lluvia media observada 42,946 mm frente a 29,993 mm estimados con RF, **sesgo de −12,954 mm**, MAE RF 28,8097 vs clima 24,8143 mm y banda de incertidumbre 90 % que cubrió solo **81,20 %**. En alta montaña el MAE RF fue **52,28 mm** frente a 29,09 climatológico, por lo que la discriminación geográfica es clave.
+
+[**Dashboard interactivo de ecorregiones y predicción de lluvias**](ecorregiones-clima-10k.html) ofrece **mapa Leaflet de 39 polígonos**, filtros de cinco paisajes, periodo, color de lluvia observada/estimada/error/eventos P90, selección sectorial, serie mensual y cuadro resumen por paisaje y piso. Los mapas son experimentales y muestran evaluación histórica, **NO pronóstico de 2026** ni alerta por El Niño costero. [Informe científico](FASE_10K_ECOPAISAJES_RF.md) · [Informe JSON por paisaje](datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json) · [Capa GeoJSON](datos/ecopaisajes_10k/paisajes_ecoclimaticos_10k.geojson) · [Series JSON](datos/ecopaisajes_10k/series_sector_mes_10k.json) · [Código entrenamiento](modelos/rf_ecopaisajes_10k.py) · [Pruebas](tests/test_rf_ecopaisajes_10k.py) · [CI 10K exitosa](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39094686704).
+
 ## Fase 10J · RF conservador para precipitación y extremos P90/P95 con automejora (17/10/2026)
 
 **Nuevo entrenamiento ejecutado y verificado:** cinco pliegues espaciales, **39 sectores × 60 meses = 2.340 casos históricos**, cuatro familias de covariables, **9.360 filas de estimaciones**. Objetivos únicos: **lluvia mensual (mm)**, **probabilidad de lluvia elevada ≥P90 local** y **probabilidad de lluvia excepcional ≥P95 local**. Se utilizan únicamente modelos **Random Forest**; las futuras enfermedades de cultivos se analizarán de forma separada con observaciones reales de campo, sin usar este modelo como clasificador de patógenos.
