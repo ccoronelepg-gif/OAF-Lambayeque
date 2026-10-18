@@ -4,18 +4,11 @@
   "periodo": "1996–2025",
   "puntos_oceanicos_de_ensayo": 2,
   "estaciones_mareas_o_marinas_instrumentales": 0,
-  "archivos_sst_verificados": 2,
+  "archivos_sst_verificados": 3,
   "archivos_sst_previstos": 6,
   "sitios_con_sst_30anios_completa": 0,
   "resumen_sst_oceanica": {},
   "bloques_pendientes": [
-    {
-      "sitio": "Pacifico_sur_Lambayeque",
-      "bloque": [
-        2016,
-        2025
-      ]
-    },
     {
       "sitio": "Pacifico_norte_Lambayeque",
       "bloque": [
@@ -60,10 +53,21 @@
       "dias_esperados": 3652,
       "dias_faltantes": 0,
       "cobertura_completa": true
+    },
+    {
+      "sitio": "Pacifico_sur_Lambayeque",
+      "periodo": [
+        2016,
+        2025
+      ],
+      "dias_validos": 3636,
+      "dias_esperados": 3653,
+      "dias_faltantes": 17,
+      "cobertura_completa": false
     }
   ],
-  "n_dias_de_sst_historicos_verificados": 6794,
-  "n_dias_faltantes_en_archivos_recibidos": 511,
+  "n_dias_de_sst_historicos_verificados": 10430,
+  "n_dias_faltantes_en_archivos_recibidos": 528,
   "archivos_parciales_no_completan_climatologia": true,
   "n_meses_oceanicos_publicados": 0,
   "coordenadas_marinas_pendientes_de_mascara_oficial": true,
