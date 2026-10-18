@@ -230,6 +230,17 @@ details.panel{scroll-margin-top:120px}
 <section data-page="clima" id="clima" hidden>
 
 <div class="viewhead"><span class="eyebrow">Territorio · Variabilidad y análisis de clima</span><h1>Análisis de clima regional</h1><p>Consulta el clima actual, la evolución prevista, las anomalías históricas y las diferencias entre costa, valles, piedemonte y montaña de Lambayeque. Cada gráfico presenta su fuente, interpretación y limitaciones.</p></div>
+<div class="panel" id="oaf-ecopaisajes-10k">
+<span class="eyebrow">Nuevo · Fase 10K · Geografía climática y análisis territorial</span>
+<h2>Ecorregiones y paisajes ecoclimáticos: mapa, filtros y resumen de lluvias</h2>
+<p>Explora <strong>cinco paisajes ecoclimáticos experimentales</strong> construidos a partir de siete pisos altitudinales y <strong>39 sectores con datos CHIRPS</strong>. El dashboard incluye <strong>mapa de polígonos filtrable</strong>, tabla comparativa por paisaje, variación por año y series de lluvia mensual observada, climatología y estimaciones Random Forest.</p>
+<div class="notice"><strong>Alcance científico:</strong> los límites 9K <strong>NO son ecorregiones oficiales MINAM</strong>, y las evaluaciones 2021–2025 <strong>NO son pronósticos meteorológicos vigentes</strong>. RF no superó a la climatología en MAE global de lluvia: 20,43 mm frente a 14,30 mm. Los resultados sirven para identificar diferencias entre costa, piedemonte y montaña y mejorar futuros modelos, sin emitir alertas.</div>
+<div class="links">
+<a href="ecorregiones-clima-10k.html">Abrir dashboard interactivo: mapa y cuadro de ecorregiones ↗</a>
+<a href="FASE_10K_ECOPAISAJES_RF.md">Informe geográfico y validación RF ↗</a>
+<a href="datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json">Resultados técnicos por paisaje y piso ↗</a>
+<a href="https://www.gob.pe/institucion/minam/informes-publicaciones/277146-mapa-nacional-de-ecosistemas-del-peru" target="_blank" rel="noopener noreferrer">Referencia cartográfica institucional MINAM ↗</a>
+</div></div>
 <div class="panel"><div class="tools"><label for="localidad">Localidad</label><select id="localidad"><option value="Chiclayo">Chiclayo</option><option value="Jayanca">Jayanca</option><option value="Motupe">Motupe</option><option value="Olmos">Olmos</option></select><button class="btn dark" id="actualizar" type="button">Actualizar datos ↻</button></div><p class="small" id="wx-status" role="status">La consulta requiere Internet.</p>
 <div id="wx-data" hidden><div class="kpis"><div class="kpi"><small>Temperatura actual modelada</small><b id="wx-t">—</b></div><div class="kpi"><small>Humedad relativa</small><b id="wx-h">—</b></div><div class="kpi"><small>Precipitación reciente</small><b id="wx-p">—</b></div></div>
 <h2>Variables agroclimáticas complementarias</h2>
@@ -1002,6 +1013,12 @@ details.panel{scroll-margin-top:120px}
 <p><strong>Fuentes oficiales:</strong> presentan los datos, productos y avisos publicados por sus instituciones emisoras. <a href="#nino">Consultar información institucional ↗</a></p>
 <p><strong>Investigación del autor:</strong> procesa datos abiertos para entrenar Random Forest, GCN y otros algoritmos, verificando su habilidad con pruebas históricas independientes y explicando su incertidumbre. El entrenamiento no significa que un organismo oficial haya certificado el resultado.</p>
 <div class="notice"><strong>Estado general:</strong> investigación en validación. Ningún modelo autoriza hoy alertas automáticas, recomendaciones de fumigación o pronósticos oficiales de El Niño.</div>
+</div>
+<div class="panel" id="oaf-ecopaisajes-autor-10k">
+<span class="eyebrow">Fase 10K · RF geoespacial de precipitación</span>
+<h2>Explora la precisión de lluvia en cada paisaje de Lambayeque</h2>
+<p>Nuevo experimento Random Forest con perfiles ecológicos preliminares para 39 sectores; prueba 2021–2025 y análisis especial de 2023. Se muestran cinco paisajes: <strong>costa y valles, piedemonte, vertientes bajas, vertientes medias y cumbres</strong>. El RF con información geográfica redujo su MAE global de 21,07 a <strong>20,43 mm</strong>, todavía inferior en habilidad a climatología (14,30 mm). No se predicen enfermedades.</p>
+<div class="links"><a href="ecorregiones-clima-10k.html">Ver mapa interactivo de 39 polígonos y resumen territorial ↗</a><a href="FASE_10K_ECOPAISAJES_RF.md">Metodología y resultados por ecorregión aproximada ↗</a></div>
 </div>
 <div class="panel" id="oaf-rf-lluvias-riguroso-10j">
 <span class="eyebrow">Modelo predictivo del autor · Fase 10J · entrenamiento auditado</span>
