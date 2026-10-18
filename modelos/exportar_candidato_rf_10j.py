@@ -62,7 +62,7 @@ def prepare():
    idx=tr&(months==m)
    result[m-1]=array[idx].mean(axis=0)
   baseline[name]=result
- payload={"regressor_residual":reg,"classificadores":clfs,
+ payload={"regressor_residual":reg,"clasificadores":clfs,
    "sector_ids":nodes,"adjacency_raw":graph,"static_9k":fixed,
    "baseline_1997_2015":baseline,"p90_umbral":p90,"p95_umbral":p95,
    "lag_temporal_min_meses":2,"pesos_fijados_validacion_2016_18":weights,
