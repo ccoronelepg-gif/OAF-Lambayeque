@@ -1,0 +1,160 @@
+{
+  "fase": "10H",
+  "periodo": "1996-01/2025-12",
+  "estado": "INGESTA_MENSUAL_REANALISIS_COMPLETA_NO_VALIDACION_CAMPO",
+  "fuente": "https://power.larc.nasa.gov/docs/services/api/temporal/monthly/",
+  "meteorologia": "NASA POWER MERRA-2 (0.5 x 0.625 aprox)",
+  "radiacion": "NASA SRB historico y CERES; quiebre de origen alrededor de 2001",
+  "n_sectores": 39,
+  "n_meses_por_sector": 360,
+  "n_filas": 14040,
+  "n_bins_aproximados": 7,
+  "n_peticion_fuente": 7,
+  "resolucion": "Varios sectores reciben las mismas series de celda aproximada; NO 39 estaciones independientes.",
+  "variables": [
+    "T2M",
+    "RH2M",
+    "WS10M",
+    "ALLSKY_SFC_SW_DWN",
+    "PS",
+    "T2MDEW"
+  ],
+  "peticiones": [
+    {
+      "bin": [
+        166,
+        159
+      ],
+      "sector_sample": "S004",
+      "sectores_comparten_muestra": [
+        "S004"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-80.30908&latitude=-6.518698&start=1996&end=2025&format=JSON",
+      "response_sha256": "d75a43c20a2cb216a9ca941206f0f0a367a63df21026143f072fc8fd308df60f",
+      "bytes": 35375,
+      "descargado_utc": "2026-10-18T01:11:26.658167+00:00"
+    },
+    {
+      "bin": [
+        166,
+        160
+      ],
+      "sector_sample": "S011",
+      "sectores_comparten_muestra": [
+        "S011",
+        "S030",
+        "S031",
+        "S033",
+        "S039"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-79.53125&latitude=-6.65625&start=1996&end=2025&format=JSON",
+      "response_sha256": "d2c02b7bbf481c0d350284b595468806b572b18688c29a670cf976ebfdb52441",
+      "bytes": 35371,
+      "descargado_utc": "2026-10-18T01:11:29.272062+00:00"
+    },
+    {
+      "bin": [
+        166,
+        161
+      ],
+      "sector_sample": "S013",
+      "sectores_comparten_muestra": [
+        "S013",
+        "S014",
+        "S022",
+        "S035",
+        "S036",
+        "S042"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-79.326985&latitude=-6.995658&start=1996&end=2025&format=JSON",
+      "response_sha256": "e3d69a869f8d24ce711587bb359d4b7030288753e69edacfad46b8540b0e931e",
+      "bytes": 35401,
+      "descargado_utc": "2026-10-18T01:11:31.930167+00:00"
+    },
+    {
+      "bin": [
+        167,
+        159
+      ],
+      "sector_sample": "S001",
+      "sectores_comparten_muestra": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-80.28125&latitude=-6.437499&start=1996&end=2025&format=JSON",
+      "response_sha256": "86f933f565e6d0e57d404c53814818e85299f3b92f05046f0e55285a450b2d2d",
+      "bytes": 35375,
+      "descargado_utc": "2026-10-18T01:11:34.360205+00:00"
+    },
+    {
+      "bin": [
+        167,
+        160
+      ],
+      "sector_sample": "S005",
+      "sectores_comparten_muestra": [
+        "S005",
+        "S008",
+        "S009",
+        "S010",
+        "S012",
+        "S015",
+        "S016",
+        "S018",
+        "S019",
+        "S020",
+        "S023",
+        "S026",
+        "S029",
+        "S037",
+        "S040",
+        "S041"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-79.960939&latitude=-6.45312&start=1996&end=2025&format=JSON",
+      "response_sha256": "d3e42a41f79aad37c9068927a89939cc437c50ef64de87b9f06c400db6ffd2b2",
+      "bytes": 35375,
+      "descargado_utc": "2026-10-18T01:11:36.805404+00:00"
+    },
+    {
+      "bin": [
+        167,
+        161
+      ],
+      "sector_sample": "S006",
+      "sectores_comparten_muestra": [
+        "S006",
+        "S007",
+        "S021"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-79.359375&latitude=-6.140624&start=1996&end=2025&format=JSON",
+      "response_sha256": "d346bf5b76ba93c84acfeebf2be1e0bb20ee8817122442e55f73e15ac16c4e78",
+      "bytes": 35400,
+      "descargado_utc": "2026-10-18T01:11:39.325255+00:00"
+    },
+    {
+      "bin": [
+        168,
+        160
+      ],
+      "sector_sample": "S017",
+      "sectores_comparten_muestra": [
+        "S017",
+        "S024",
+        "S025",
+        "S027",
+        "S038"
+      ],
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M%2CRH2M%2CWS10M%2CALLSKY_SFC_SW_DWN%2CPS%2CT2MDEW&community=AG&longitude=-79.5&latitude=-5.984375&start=1996&end=2025&format=JSON",
+      "response_sha256": "2b8cdf393a779436b225050f6337a91327967e7e2dd7022759ae5d32dfda3ac0",
+      "bytes": 35408,
+      "descargado_utc": "2026-10-18T01:11:42.249167+00:00"
+    }
+  ],
+  "sha256_csv": "6120250907da9e156382a71359b7b3ba8809c31ea448e2b64b4ea59581d6c684",
+  "sha256_geometria_9k": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+  "no_pretender_era5": true,
+  "datos_as_issued": false,
+  "validado_con_estaciones_independientes": false,
+  "ninguna_alerta_automatica": true
+}
