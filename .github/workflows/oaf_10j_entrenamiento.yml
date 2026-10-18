@@ -1,0 +1,64 @@
+name: OAF 10J — Random Forest robusto lluvia P90 P95
+on:
+  push:
+    paths:
+      - modelos/rf_lluvia_extremos_10j.py
+      - tests/test_rf_lluvia_10j.py
+      - .github/workflows/oaf_10j_entrenamiento.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf-10j-rf-candidate
+  cancel-in-progress: false
+jobs:
+  evaluacion_retrospectiva:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias numéricas fijas
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Comprobar objetivos lluvia, test temporal, 39 sectores, P90 y P95
+        run: python -m unittest discover -s tests -p test_rf_lluvia_10j.py -v
+      - name: Entrenar Random Forest y seleccionar pesos usando SOLO validación 2016–18
+        run: python -u modelos/rf_lluvia_extremos_10j.py
+      - name: Comprobar integridad de resultados y ninguna alerta operacional
+        run: python modelos/rf_lluvia_extremos_10j.py --check
+      - name: Auditar 2340 casos sector-mes y separación de entrenamiento
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('datos/rf_robusto_10j/auditoria_y_seleccion_10j.json',encoding='utf8'))
+          assert d['fase']=='10J' and d['n_sectores']==39 and d['n_sector_mes']==2340
+          assert d['n_predicciones']==9360 and d['predice_enfermedades'] is False
+          assert d['despliegue_operativo_autorizado'] is False
+          assert d['as_issued_demostrado'] is False
+          assert all(len(v['por_anio'])==5 for v in d['resultados'].values())
+          print('10J_DECISION',json.dumps(d['decision'],ensure_ascii=False))
+          for k,v in d['resultados'].items():print('10J_FAMILIA',k,json.dumps(v['global']))
+          for k,v in d['seleccion_por_bloque'].items():print('10J_SELECCION_VALIDACION',k,json.dumps(v,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10j-modelo-lluvia-extremos-investigacion
+          path: |
+            datos/rf_robusto_10j/auditoria_y_seleccion_10j.json
+            datos/rf_robusto_10j/predicciones_rf_tres_objetivos_10j.csv
+            datos/rf_robusto_10j/estado_publicacion_10j.json
+          retention-days: 90
+      - name: Publicar evidencias exclusivamente retrospectivas validadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/rf_robusto_10j
+          git diff --cached --quiet || git commit -m "data(10J): RF lluvia mm P90 P95 con climatologia, validacion y intervalos"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
