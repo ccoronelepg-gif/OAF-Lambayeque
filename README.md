@@ -16,11 +16,21 @@
 
 ## Fase 10I · Random Forest exclusivo para precipitaciones, sin enfermedades (17/10/2026)
 
-El módulo de predicción propia de lluvias utiliza **solamente Random Forest** y distingue **(1) volumen de precipitación mensual CHIRPS en mm** con RandomForestRegressor y **(2) probabilidad de que la lluvia supere el P90 histórico sectorial** con RandomForestClassifier. No genera pronósticos de plagas, enfermedades o infecciones: la humedad, humedad relativa y eventuales horas de HR elevada se tratan como información meteorológica para otra sección, nunca como diagnóstico. Las **horas de humedad relativa alta requieren datos horarios** y las **horas de humectación foliar no pueden derivarse solo de la lluvia mensual**.
+**Entrenamiento comprobado de un único algoritmo predictivo: Random Forest.** RF tiene dos tareas meteorológicas: predicción de **lluvia mensual CHIRPS en mm** y probabilidad de que el mes supere el **P90 de lluvia histórico del sector**. No predice infecciones ni enfermedades. El módulo de consulta futura de horas de humedad necesita series horarias; la lluvia mensual no determina cuánto tiempo está mojada la hoja.
 
-La evaluación empareja cuatro familias de covariables: solo lluvia CHIRPS, lluvia + océano regional NOAA/SOI/alisios/viento marino, lluvia + atmósfera NASA POWER (temperatura, RH, radiación, presión, viento, punto de rocío y VPD derivado), y combinación completa. Se mantiene la comparación contra **climatología sectorial**, cinco bloques geográficos, entrenamiento 1997–2015, tuning 2016–2018, calibración 2019–2020 y prueba 2021–2025. Las versiones CHIRPS y NASA utilizadas son retrospectivas y NO certifican predicciones operativas. GCN queda en el archivo científico como referencia histórica, sin participar en la generación de lluvia por RF.
+Cuatro grupos físicos de predictores con rezagos t−2+: lluvia CHIRPS histórica, NOAA SST Niño 1+2/3.4, SOI, alisios y viento marino regional; NASA POWER temperatura, RH, viento, radiación solar, presión y temperatura de rocío, más VPD y diferencia T−Td calculados a partir de esos registros. Los 39 sectores comparten siete grupos NASA aproximados (no estaciones independientes). No se imputaron corrientes marinas históricas ni humedad foliar. Entrenamiento 1997–2015, ajuste 2016–2018, calibración 2019–2020, prueba 2021–2025.
 
-[**Módulo principal RF para lluvia**](random-forest-lluvias.html) · [Informe de metodología](FASE_10I_RF_SOLO_LLUVIA.md) · [Motor exclusivamente RF](modelos/random_forest_lluvia_multivariable_10i.py) · [Tests](tests/test_rf_solo_lluvia_10i.py) · [Entrenamiento automatizado](.github/workflows/oaf_10i_rf_precipitacion.yml) · [Resultados al terminar CI](datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json).
+| Familia RF | MAE mensual mm ↓ | Brier probabilidad P90 ↓ |
+|---|---:|---:|
+| **Solo lluvia histórica** | **18,0442** | 0,075266 |
+| **Lluvia + océano/viento** | 18,4406 | **0,068131** |
+| Lluvia + atmósfera NASA | 19,3196 | 0,070902 |
+| Lluvia + océano + atmósfera NASA | 18,5796 | 0,071832 |
+| **Climatología sectorial (referencia)** | **14,2957** | **0,062884** |
+
+**Hallazgo:** la mejor variante RF para estimar mm usa lluvia histórica, mientras la mejor probabilidad P90 retrospectiva RF utiliza océano. **Ninguna supera a la climatología** en estas métricas principales. Una selección de familias por bloque usando solo ajuste 2016–2018 eligió lluvia histórica en todos los bloques para clasificación, cuyo Brier en test fue **0,075266** (climatología 0,062884). En 2023 lluvia+océano redujo Brier a 0,121486 frente a climatología 0,136595, aunque en MAE fue peor (30,1755 vs. 24,8143 mm). No publicar todavía alertas, predicción oficial El Niño, diagnósticos de enfermedades ni habilidad de emisión prospectiva. GCN solo se conserva como experimento comparativo histórico.
+
+[**Panel principal RF de lluvia**](random-forest-lluvias.html) · [Informe RF 10I](FASE_10I_RF_SOLO_LLUVIA.md) · [Programa del entrenamiento](modelos/random_forest_lluvia_multivariable_10i.py) · [Métricas auditadas](datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json) · [9.360 predicciones CSV](datos/rf_precipitacion_10i/evaluacion_emparejada_10i.csv) · [Selección por validación](datos/rf_precipitacion_10i/seleccion_solo_validacion_10i.json) · [Utilidad separada horas de RH con datos horarios](modelos/horas_humedad_horarias_10i.py) · [GitHub Actions exitoso](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39091613534).
 
 ## Fase 10H · Random Forest vs GCN: entrenamiento completado con NASA, CHIRPS y océano (17/10/2026)
 
