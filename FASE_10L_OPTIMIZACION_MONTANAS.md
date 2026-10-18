@@ -76,3 +76,37 @@ La literatura científica indica que la complejidad topográfica y la ausencia d
 
 **No habilitar predicciones actuales ni alertas por lluvia fuerte con estos ensayos.** La siguiente validación independiente debe incluir estaciones de montaña, metadatos de resolución de CHIRPS y archivo de pronósticos emitidos antes del fenómeno.
 
+
+## Resultados comprobados de la ejecución 10L
+
+El workflow de reentrenamiento y las ocho pruebas de integridad terminaron correctamente en [GitHub Actions (fase 10L)](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39095822082). Se publicaron **660 pares sector-mes** (11 sectores, 2021–2025), comparados exactamente con Random Forest fase 10K y climatología de entrenamiento 1997–2015.
+
+| Métrica (2021–2025) | RF anterior 10K MAE | Estrategia optimizada 10L MAE | Climatología MAE | Cambio 10K→10L |
+|---|---:|---:|---:|---:|
+| **Vertientes medias: 8 sectores, 480 casos** | 33,3271 mm | **23,4626 mm** | 21,8805 mm | **−29,6 %** |
+| **Alturas: 3 sectores, 180 casos** | 52,2841 mm | **29,0930 mm** | 29,0930 mm | **−44,4 %** |
+| **Montaña total: 11 sectores, 660 casos** | 38,4972 mm | **24,9982 mm** | **23,8475 mm** | **−35,1 %** |
+
+**Interpretación rigurosa:** los tres sectores altos quedaron todos en el bloque espacial 0, sin muestras independientes de cumbres en su entrenamiento. Por ello **la estrategia 10L se abstuvo de utilizar un Random Forest no validado y devolvió climatología**, que explica la caída de MAE de 52,28 a 29,09 mm en esa banda. **No declarar un entrenamiento exitoso de especialista RF alta montaña.** La reducción en vertientes medias sí procede de modelos RF con rasgos orográficos y correcciones logarítmicas seleccionados con datos 2016–2018.
+
+Para vertientes medias, el bloque 0 reservó siete sectores y conservó **solo un sector medio para validación** (insuficiente para defender una robustez espacial amplia). Se escogió RF global con océano+NASA y anomalías logarítmicas (peso 0,8); en el bloque 4 se reservó un sector medio y se eligió un RF especialista de montaña logarítmico (peso 0,6). Los demás pliegues no reservaron sectores medios, por lo que sus elecciones no impactan el MAE medio de prueba. La evaluación debe interpretarse bajo estas condiciones de fuerte concentración geográfica.
+
+### Análisis de lluvias intensas de 2023
+
+En 2023, los **132 casos sector-mes** de montaña registraron una media observada de **72,652 mm/mes**. La estrategia nueva estimó **45,541 mm/mes**, con **sesgo −27,1107 mm** (subestimación importante). Su MAE fue **38,4764 mm**, frente a **44,3427 mm** de RF 10K y **36,7938 mm** de climatología. Se observaron **23 casos ≥P90 y 21 ≥P95** (umbrales históricos por sector, no alertas oficiales).
+
+| Franja en 2023 | MAE RF 10K | MAE 10L | MAE climatología | Sesgo 10L |
+|---|---:|---:|---:|---:|
+| Vertientes medias | 40,5985 mm | **36,8267 mm** | 34,5131 mm | **−29,2219 mm** |
+| Alturas y cumbres | 54,3273 mm | **42,8756 mm** | 42,8756 mm | **−21,4807 mm** |
+
+El intervalo empírico de «90 %» de la estrategia 10L obtuvo 94,85 % de cobertura agregada y 89,39 % durante 2023. **No interpretar esta cobertura como garantía nominal**, pues se usaron periodos con dependencia temporal/espacial, muestras pequeñas en altura y una política de abstención.
+
+### Decisión
+
+1. **Adoptar para investigación el mecanismo 10L de abstención por franja**, que impide que RF empeore la referencia en la evaluación histórica de cumbres sin datos de entrenamiento independientes.
+2. **Conservar los modelos RF de vertientes medias como candidatos experimentales**, no como pronóstico apto para productores: MAE 23,46 mm, todavía superior a climatología 21,88 mm.
+3. **No presentar que se mejoró la detección P90/P95 gracias a 10L**: esas probabilidades permanecen heredadas de 10K, sin reentrenamiento de clasificadores.
+4. **Priorizar la validación con estaciones reales SENAMHI** y un nuevo particionamiento de alta montaña cuando se consigan más sectores independientes (actualmente solo tres en un mismo fold). Las series CHIRPS recopiladas ex post tampoco certifican pronósticos *as-issued*.
+5. Mantener la separación absoluta entre el algoritmo de precipitación y cualquier modelo futuro de enfermedades con datos de campo.
+
