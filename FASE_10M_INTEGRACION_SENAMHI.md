@@ -55,3 +55,7 @@ Las filas horarias se mantienen separadas de las diarias y no se imputan como va
 7. El modelo de lluvias se mantiene separado de cualquier futuro algoritmo de enfermedades que use observaciones de campo.
 
 **Estado técnico:** incorporado como base de observaciones para análisis de montaña, **pendiente de validación formal y sin alertas meteorológicas habilitadas**.
+
+## Base de datos relacional importable
+
+Se ha generado y verificado `OAF_SENAMHI_10M.sqlite` (SQLite 3): tablas `estaciones` (13), `observaciones_diarias` (1.386), `observaciones_horarias` (1.208), `totales_mensuales` (48), `archivos_fuente` (50), `duplicados_identicos` (303), `conflictos` (0), `metadata_integracion`, y vista `v_lluvia_alta_montana` (40 meses-estación). Integridad de SQLite verificada con `PRAGMA integrity_check = ok`. SHA-256 del archivo: `1aa6f54c713644c6981b18d1d7bde6abbf20ff4a664173bfc54e1bd7396ad750`. Se almacena de manera persistente en la Biblioteca: `/OAF-Lambayeque/SENAMHI/OAF_SENAMHI_10M.sqlite`, dentro de paquete maestro `OAF_SENAMHI_10M_Base_Integrada_2026-10-17.zip` con los 50 CSV originales y la auditoría Excel. **No se modifica por esto el Random Forest 10L**.
