@@ -1,0 +1,83 @@
+/* OAF Lambayeque · capa de divulgación pública 2026-10-18.
+   No afecta los datos, modelos, mapas ni IDs de los módulos científicos. */
+:root{--oaf-ink:#173c39;--oaf-sea:#0b5f59;--oaf-leaf:#3e8060;--oaf-soft:#eff7f2;--oaf-line:#d6e4dc;--oaf-cream:#fbfcf9}
+body{background:linear-gradient(180deg,#edf5ee 0,#f6f9f6 520px,#f8faf8 100%);color:#24423f}
+header{border-bottom:1px solid #d9e9df;box-shadow:0 8px 26px #163d3210}
+.head{max-width:1400px}
+.brand b{letter-spacing:.01em}
+#oaf-primary-nav{gap:4px}
+#oaf-primary-nav a{padding:11px 12px;border-radius:10px;font-size:12px;max-width:none}
+#oaf-primary-nav a:hover,#oaf-primary-nav a[aria-current="page"]{background:#e4f1e8;color:#14594b}
+main{max-width:1300px;padding-top:28px}
+.oaf-hero-2026{border-radius:24px;background:linear-gradient(125deg,#123d43,#195b4d);box-shadow:0 25px 52px #153e2e22;overflow:hidden}
+.oaf-hero-2026 .herotxt{flex-direction:column;align-items:flex-start;justify-content:center}
+.oaf-hero-2026 h1{font-size:clamp(32px,3.4vw,48px);letter-spacing:-1.6px;line-height:1.12}
+.oaf-hero-2026 .oaf-hero-tagline{color:#d1eddf;font-size:clamp(14px,1.5vw,18px);font-weight:500;letter-spacing:.02em}
+.oaf-editorial-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#bae6ca;font-weight:800;margin-bottom:13px}
+.oaf-editorial-intro{background:#fff;border:1px solid var(--oaf-line);border-radius:18px;padding:20px 26px;margin-top:16px;display:flex;gap:18px;align-items:center;justify-content:space-between;box-shadow:0 9px 32px #123d3010}
+.oaf-editorial-intro p{font-size:14px;color:#425e55;line-height:1.7;max-width:840px;margin:0}
+.oaf-editorial-intro strong{color:#135b4e}
+.oaf-editorial-intro a{border:1px solid #b6d6c6;color:#165c4e;background:#f1f8f3;border-radius:11px;padding:11px 16px;text-decoration:none;font-size:12px;font-weight:800;white-space:nowrap}
+.oaf-editorial-intro a:hover{background:#e2f2e7}
+.oaf-source-split .panel{border-radius:17px!important;border:1px solid #dce8df;box-shadow:0 8px 26px #213d2810}
+.oaf-source-split .panel:first-child{border-top:4px solid #3b769c}
+.oaf-source-split .panel:last-child{border-top:4px solid #51916d}
+.oaf-source-split .panel h2{font-size:20px}
+.oaf-source-split .panel p{font-size:13px}
+.oaf-home-module,.oaf-regional-map-panel{border-radius:18px;border-color:#dae8df}
+.oaf-home-metrics .oaf-metric{border:1px solid #d6e6db;background:linear-gradient(135deg,#f7fbf7,#edf6f1);border-radius:14px;position:relative;padding-top:19px}
+.oaf-home-metrics .oaf-metric strong{font-variant-numeric:tabular-nums}
+.oaf-home-metrics .oaf-metric .oaf-metric-meta{margin-top:10px;padding-top:8px;border-top:1px solid #d9e7de;line-height:1.35;overflow-wrap:anywhere}
+.oaf-provenance-inline{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;border-radius:999px;padding:6px 11px;letter-spacing:.02em}
+.oaf-provenance-inline[data-provenance="external"]{color:#184f77;background:#e9f4fa}
+.oaf-provenance-inline[data-provenance="oaf"]{color:#236342;background:#e6f5e9}
+.oaf-provenance-inline[data-provenance="official"]{color:#73511c;background:#fff5dc}
+.oaf-provenance-inline[data-provenance="review"]{color:#73501f;background:#fff1d6}
+.oaf-figure-caption{border-radius:0 9px 9px 0;line-height:1.65!important}
+.oaf-home-deep{border:1px solid var(--oaf-line);border-radius:14px;background:#fff;overflow:hidden}
+.oaf-home-deep>summary{cursor:pointer;font-weight:750;font-size:14px;padding:16px 22px;color:#1d6556}
+.oaf-home-deep>summary:hover{background:#f2f8f4}
+.oaf-home-deep>.oaf-home-module{box-shadow:none;margin:0;border-radius:0;border:0;border-top:1px solid var(--oaf-line)}
+.oaf-home-deep>.oaf-home-module+.oaf-home-module{border-top:1px solid #e8eee8}
+.oaf-home-credits{max-width:1100px}
+.oaf-meta-hub{display:grid;gap:21px;margin-bottom:25px}
+.oaf-meta-intro{background:linear-gradient(125deg,#103e43,#236651);color:white;border-radius:22px;padding:30px 34px}
+.oaf-meta-intro .eyebrow{color:#b7e3c9}
+.oaf-meta-intro h1{font-size:clamp(28px,3vw,40px);letter-spacing:-.8px;line-height:1.16;margin:10px 0}
+.oaf-meta-intro p{color:#e1eee6;margin:0;max-width:850px;line-height:1.8}
+.oaf-meta-search{background:#fff;border:1px solid var(--oaf-line);padding:19px;border-radius:15px}
+.oaf-meta-search label{display:block;color:#244e42;font-weight:800;font-size:13px;margin-bottom:9px}
+.oaf-meta-search input{display:block;width:100%;border-radius:10px;border:1px solid #a8caba;padding:13px 15px;max-width:790px;color:#24423f;background:#fff;font:inherit}
+.oaf-meta-search input:focus-visible{outline:3px solid #9ad4be;outline-offset:2px}
+.oaf-meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.oaf-meta-card{display:flex;flex-direction:column;gap:9px;border:1px solid #d8e5df;background:#fff;border-radius:15px;padding:20px 21px;min-width:0;box-shadow:0 9px 24px #1a432d09}
+.oaf-meta-card h2{font-size:18px;line-height:1.3;color:#22483c;margin:0}
+.oaf-meta-card p{font-size:13px;line-height:1.65;color:#62736c;margin:0;flex:1}
+.oaf-meta-card a{font-weight:800;color:#196b58;font-size:12px;overflow-wrap:anywhere}
+.oaf-meta-card[hidden]{display:none!important}
+.oaf-meta-card .oaf-meta-kind{font-size:10px;color:#58756a;text-transform:uppercase;letter-spacing:.12em;font-weight:900}
+.oaf-meta-standards{padding:20px 23px;background:#f0f7f1;border:1px solid #cfe4d3;border-radius:14px;line-height:1.7;color:#3c5b49;font-size:13px}
+.oaf-meta-standards strong{color:#164f43}
+.oaf-meta-archive-control{background:#fff;border:1px solid #d7e5db;border-radius:16px;padding:17px 20px;margin-bottom:13px}
+.oaf-meta-archive-control button{background:#195d4e;color:white;font-weight:800;font-size:13px;border:0;border-radius:10px;padding:11px 16px}
+.oaf-meta-archive-control p{font-size:13px;color:#60716d;margin:9px 0 0}
+.oaf-meta-legacy:not(.oaf-meta-visible){display:none}
+html[data-oaf-view="tecnica"] .oaf-meta-legacy{display:block}
+.oaf-meta-legacy{scroll-margin-top:125px}
+.oaf-meta-none{display:none;color:#805323;font-size:13px;padding:10px}
+.oaf-meta-none.is-visible{display:block}
+.oaf-scope-banner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#f1f7f4;border:1px solid #d9e6de;padding:12px 16px;border-radius:12px;margin:0 0 19px;color:#4a6759;font-size:13px}
+.oaf-scope-banner strong{color:#145647}
+[data-page="autor"] .viewhead{margin-bottom:17px}
+.oaf-forecast-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 19px}
+.oaf-forecast-split article{background:#fff;border:1px solid #d7e5de;border-radius:15px;padding:19px 22px}
+.oaf-forecast-split h2{font-size:19px;color:#245245;margin:11px 0 8px}
+.oaf-forecast-split p{font-size:13px;color:#607069;line-height:1.7}
+.oaf-forecast-split a{color:#1a6657;font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.oaf-forecast-split article:first-child{border-top:4px solid #4e8ab1}
+.oaf-forecast-split article:last-child{border-top:4px solid #4c9474}
+.oaf-portal-skip{position:absolute;left:-100vw;top:0;z-index:100;background:#fff;color:#174c43;padding:9px 13px}
+.oaf-portal-skip:focus{left:10px;top:10px}
+@media(max-width:980px){.oaf-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-editorial-intro{flex-direction:column;align-items:flex-start}.oaf-forecast-split{grid-template-columns:1fr}}
+@media(max-width:620px){main{padding-left:13px;padding-right:13px}.oaf-meta-grid{grid-template-columns:1fr}.oaf-meta-intro{padding:23px 20px}.oaf-editorial-intro{padding:16px}.oaf-hero-2026 .herotxt{padding:26px 23px!important}.oaf-hero-2026 h1{font-size:31px}.oaf-meta-card{padding:17px}.oaf-home-deep>summary{padding:16px}.oaf-scope-banner{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important}}
