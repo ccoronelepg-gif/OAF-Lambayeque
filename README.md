@@ -10,6 +10,15 @@
 
 
 
+
+## Fase 10F · Comparación probabilística RF/GCN para 39 sectores CHIRPS (17/10/2026)
+
+La fase 10F extiende el análisis de **lluvias intensas relativas a P90** a los **39 sectores agroclimáticos** con historia de precipitación CHIRPS v3 FINAL 1996–2025. Se comparan RF, GCN y climatología sectorial, con modelos que utilizan **solo lluvia pasada** y variantes que añaden indicadores **regionales del Pacífico** SST Niño 1+2, Niño 3.4, SOI, alisios y viento marino, disponibles con rezago t−2. El experimento conserva cinco bloques espaciales, entrenamiento 1997–2015, selección 2016–2018, calibración 2019–2020 y evaluación 2021–2025. La auditoría preejecución identifica **247 pares sector-mes de lluvia >= P90 entre los 2.340 casos de prueba**.
+
+**Distinción esencial:** las variables de temperatura, radiación, humedad/VPD y vientos terrestres están homologadas solo para **cuatro localidades** (fase 10E); no se asignan artificialmente a los 39 sectores. Las corrientes geostróficas de 2017–2025 tampoco permiten imputar décadas faltantes. **Todos los resultados son experimentales CHIRPS v3 Final retrospectivo; no existe un modelo operativo certificado ni avisos activados.**
+
+[Vista territorial 10F](evaluacion-sectores-10f.html) · [Informe científico 10F](FASE_10F_PROBABILIDAD_39_SECTORES.md) · [Código del experimento](modelos/probabilidad_39_sectores_10f.py) · [Pruebas de procedencia](tests/test_probabilidad_10f.py) · [Automatización 10F](.github/workflows/oaf_10f_39_sectores.yml) · [Resultados cuando se publiquen](datos/extension_10f/evaluacion_39_sectores_10f.json). La pestaña [Modelos del autor](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#autor) distingue explícitamente el experimento sectorial de la evaluación de cuatro localidades.
+
 ## Fase 10E · Fuentes oficiales separadas y predicciones probabilísticas del autor (17/10/2026)
 
 El sitio distingue explícitamente **[Información y avisos oficiales](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#nino)**, donde se identifica el emisor institucional SENAMHI/ENFEN, de **[Modelos experimentales desarrollados por el autor](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#autor)**, donde se muestran los algoritmos y sus verificaciones sin atribuirles respaldo oficial. El módulo del autor distingue lluvia intensa, escenarios ENSO/El Niño costero y factores para enfermedades de arándano y vid; solo el primero fue objeto de un **nuevo benchmark probabilístico** en 10E.
