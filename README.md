@@ -11,13 +11,15 @@
 
 
 
-## Fase 10F · Comparación probabilística RF/GCN para 39 sectores CHIRPS (17/10/2026)
+## Fase 10F · Probabilidad de lluvia alta en 39 sectores (17/10/2026)
 
-La fase 10F extiende el análisis de **lluvias intensas relativas a P90** a los **39 sectores agroclimáticos** con historia de precipitación CHIRPS v3 FINAL 1996–2025. Se comparan RF, GCN y climatología sectorial, con modelos que utilizan **solo lluvia pasada** y variantes que añaden indicadores **regionales del Pacífico** SST Niño 1+2, Niño 3.4, SOI, alisios y viento marino, disponibles con rezago t−2. El experimento conserva cinco bloques espaciales, entrenamiento 1997–2015, selección 2016–2018, calibración 2019–2020 y evaluación 2021–2025. La auditoría preejecución identifica **247 pares sector-mes de lluvia >= P90 entre los 2.340 casos de prueba**.
+**Fase ejecutada y verificada:** cinco modelos probabilísticos en 39 sectores, **2.340 objetivos sector-mes** de prueba 2021–2025 y **247 eventos de precipitación ≥P90 histórico sectorial**. Se mantienen cinco bloques geográficos y ventanas independientes: entrenamiento 1997–2015, ajuste 2016–2018, calibración 2019–2020 y prueba 2021–2025.
 
-**Distinción esencial:** las variables de temperatura, radiación, humedad/VPD y vientos terrestres están homologadas solo para **cuatro localidades** (fase 10E); no se asignan artificialmente a los 39 sectores. Las corrientes geostróficas de 2017–2025 tampoco permiten imputar décadas faltantes. **Todos los resultados son experimentales CHIRPS v3 Final retrospectivo; no existe un modelo operativo certificado ni avisos activados.**
+**Brier Score global, menor es mejor:** climatología sectorial **0,062884** (PR-AUC 0,60414), RF lluvia + señales oceánicas **0,069247** (PR-AUC 0,43511), RF solo lluvia 0,074842, GCN lluvia + océano 0,078348, GCN solo lluvia 0,084757. **RF con océano es el mejor modelo de IA de esta prueba por Brier, pero NO supera a la climatología ni queda aprobado operativamente.** En 2023 RF + océano alcanzó Brier 0,121150 frente a climatología 0,136595; esta mejora no se mantiene todos los años.
 
-[Vista territorial 10F](evaluacion-sectores-10f.html) · [Informe científico 10F](FASE_10F_PROBABILIDAD_39_SECTORES.md) · [Código del experimento](modelos/probabilidad_39_sectores_10f.py) · [Pruebas de procedencia](tests/test_probabilidad_10f.py) · [Automatización 10F](.github/workflows/oaf_10f_39_sectores.yml) · [Resultados cuando se publiquen](datos/extension_10f/evaluacion_39_sectores_10f.json). La pestaña [Modelos del autor](https://ccoronelepg-gif.github.io/OAF-Lambayeque/#autor) distingue explícitamente el experimento sectorial de la evaluación de cuatro localidades.
+**Advertencia territorial:** los 39 sectores tienen CHIRPS, y el modelo recibe indicadores oceánicos **regionales compartidos** (anomalías Niño1+2/Niño3.4, SOI, alisios y vientos marinos) con rezago ≥2 meses. La temperatura, radiación, humedad, VPD y viento local siguen homologados solo en cuatro localidades; NO se fabricaron datos de esas variables para los 39 sectores. No se usaron corrientes geostróficas incompletas. CHIRPS Final es retrospectivo, faltan archivos *as-issued* y estación instrumental independiente, y **no se activan alertas** de lluvia, Niño o enfermedades.
+
+[Explorador por piso](evaluacion-sectores-10f.html) · [Informe científico 10F](FASE_10F_PROBABILIDAD_39_SECTORES.md) · [Métricas JSON](datos/extension_10f/evaluacion_39_sectores_10f.json) · [11.700 probabilidades CSV](datos/extension_10f/probabilidades_39_sectores_10f.csv) · [Código](modelos/probabilidad_39_sectores_10f.py) · [Pruebas](tests/test_probabilidad_10f.py) · [CI concluida](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39083056802).
 
 ## Fase 10E · Fuentes oficiales separadas y predicciones probabilísticas del autor (17/10/2026)
 
