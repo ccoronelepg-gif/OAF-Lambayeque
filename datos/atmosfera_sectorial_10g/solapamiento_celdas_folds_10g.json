@@ -1,0 +1,169 @@
+{
+  "fase": "10G",
+  "fecha_corte": "2026-10-17",
+  "origen_era5": "datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json",
+  "origen_folds": "datos/reentrenamiento_10c/bloques_geograficos_10c.json",
+  "n_sectores": 39,
+  "n_celdas_era5_distintas": 17,
+  "n_sectores_comparten_celda": 32,
+  "n_grupos_compartidos": 10,
+  "n_celdas_compartidas_que_cruzan_folds": 1,
+  "grupos": [
+    {
+      "celda_era5": [
+        -6.5,
+        -80.25
+      ],
+      "sectores": [
+        "S001",
+        "S003",
+        "S004"
+      ],
+      "bloques": [
+        3
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.25,
+        -79.25
+      ],
+      "sectores": [
+        "S006",
+        "S007"
+      ],
+      "bloques": [
+        0
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6,
+        -79.5
+      ],
+      "sectores": [
+        "S008",
+        "S010",
+        "S016",
+        "S017",
+        "S018",
+        "S029"
+      ],
+      "bloques": [
+        0,
+        2
+      ],
+      "cruza_folds": true
+    },
+    {
+      "celda_era5": [
+        -6,
+        -79.75
+      ],
+      "sectores": [
+        "S009",
+        "S025"
+      ],
+      "bloques": [
+        2
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.75,
+        -79.5
+      ],
+      "sectores": [
+        "S011",
+        "S030"
+      ],
+      "bloques": [
+        1
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.25,
+        -79.5
+      ],
+      "sectores": [
+        "S012",
+        "S015",
+        "S019",
+        "S020"
+      ],
+      "bloques": [
+        0
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -7,
+        -79.25
+      ],
+      "sectores": [
+        "S013",
+        "S036",
+        "S042"
+      ],
+      "bloques": [
+        4
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.75,
+        -79.25
+      ],
+      "sectores": [
+        "S014",
+        "S022",
+        "S035"
+      ],
+      "bloques": [
+        4
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.5,
+        -79.5
+      ],
+      "sectores": [
+        "S023",
+        "S031",
+        "S033",
+        "S040",
+        "S041"
+      ],
+      "bloques": [
+        1
+      ],
+      "cruza_folds": false
+    },
+    {
+      "celda_era5": [
+        -6.25,
+        -79.75
+      ],
+      "sectores": [
+        "S026",
+        "S037"
+      ],
+      "bloques": [
+        2
+      ],
+      "cruza_folds": false
+    }
+  ],
+  "implicacion": "Los folds de 10C/10F son disjuntos en píxeles CHIRPS, pero no totalmente independientes en rejilla atmosférica ERA5. Una celda repetida entre sectores de distintos folds implica dependencia espacial de covariables. No se atribuye habilidad prospectiva u homogeneidad validada.",
+  "separacion_por_celda_era5_certificada": false,
+  "alertas_habilitadas": false
+}
