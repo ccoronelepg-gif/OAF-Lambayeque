@@ -16,6 +16,23 @@
 
 
 
+
+## Fase 10L · Mejora de las lluvias en vertientes medias y altas (17/10/2026)
+
+La fase 10L se ejecutó sobre **11 sectores montañosos del OAF** (8 de vertientes medias y 3 de alturas), con **660 observaciones sector-mes de 2021–2025**, confrontadas directamente con el modelo Random Forest geográfico 10K y la climatología mensual de cada sector.
+
+Se ensayaron **seis opciones RF**: aprendizaje regional ponderado por altitud, especialistas de montaña, objetivos de anomalía logarítmica/normalizada, y un brazo completo con variables oceánicas NOAA y atmosféricas NASA POWER, siempre con rezago mínimo de dos meses; se añadieron climatología, dispersión histórica, relieve y altitud DEM preliminar como características fijas. **Entrenamiento 1997–2015, selección exclusiva 2016–2018, calibración 2019–2020 y evaluación retrospectiva 2021–2025**. Las geometrías representan paisajes experimentales 9K, no polígonos oficiales de ecorregiones MINAM.
+
+| Paisaje | MAE RF fase 10K | MAE estrategia 10L | MAE climatología |
+|---|---:|---:|---:|
+| Vertientes medias, 8 sectores | 33,3271 mm | **23,4626 mm** | **21,8805 mm** |
+| Cumbres altas, 3 sectores | 52,2841 mm | **29,0930 mm** | **29,0930 mm** |
+| **Montaña total** | 38,4972 mm | **24,9982 mm** | **23,8475 mm** |
+
+**Interpretación obligatoria:** la reducción del MAE en las vertientes medias procede de variantes RF seleccionadas con validación temporal, aunque climatología todavía es superior. En **alta montaña los tres sectores pertenecen al mismo bloque espacial de prueba**: sin muestras independientes de cumbres para entrenar, la fase implementó **una abstención automática y uso de climatología**, que explica la caída de 52,28 a 29,09 mm. **No se ha validado un nuevo especialista Random Forest para cumbres**. En 2023 la estrategia todavía subestimó la lluvia media de montaña en **27,11 mm/mes**, con MAE 38,48 mm (climatología 36,79 mm). No declarar predicciones operativas, lluvias horarias intensas ni alertas de ENSO; tampoco se entrenaron modelos de enfermedades.
+
+[**Dashboard de lluvia en vertientes medias y altas**](optimizacion-lluvia-montana-10l.html) · [Informe científico 10L](FASE_10L_OPTIMIZACION_MONTANAS.md) · [RF Python de alta montaña](modelos/optimizacion_montana_rf_10l.py) · [Evaluación por franja/año/sector](datos/montanas_10l/evaluacion_montanas_10l.json) · [CSV 660 pares de prueba](datos/montanas_10l/predicciones_lluvia_montanas_10l.csv) · [Mapa altitudinal GeoJSON](datos/montanas_10l/sectores_mejora_montana_10l.geojson) · [Entrenamiento y ocho tests exitosos](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39095822082) · [Auditoría de mapa y MAE](.github/workflows/oaf_10l_auditoria.yml).
+
 ## Fase 10K · Ecorregiones experimentales, Random Forest y dashboard cartográfico (17/10/2026)
 
 **Fase ejecutada con ocho pruebas exitosas** y **4.680 estimaciones retrospectivas** de lluvia mensual en 39 sectores. Se definieron **cinco paisajes ecoclimáticos operativos**, como agrupación trazable de los **siete pisos altitudinales experimentales 9K**: costa árida/valles (11 sectores), piedemonte/transición bosque seco (11), vertientes bajas (6), medias (8) y cumbres altas (3). **Estos polígonos NO son ecorregiones oficialmente delimitadas por MINAM**: requieren futura homologación con su [Mapa Nacional de Ecosistemas del Perú](https://www.gob.pe/institucion/minam/informes-publicaciones/277146-mapa-nacional-de-ecosistemas-del-peru).
