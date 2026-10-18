@@ -85,7 +85,7 @@ def run():
   for row,y in zip(group,pred):
    sample.append(dict(estacion_codigo=row["code"],estacion=row["name"],sector=row["sector"],
     mes=row["month"],etapa=row["split"],lluvia_estacion_mm=row["rain"],
-    lluvia_normal_sector_chirps_mm":row["clim"],lluvia_rf_ajustada_mm":round(float(y),5),
+    lluvia_normal_sector_chirps_mm=row["clim"],lluvia_rf_ajustada_mm=round(float(y),5),
     datos_calidad_formal=False,alerta_operativa=False))
  with PRED.open("w",newline="",encoding="utf8") as f:
   flds=list(sample[0]);wr=csv.DictWriter(f,fieldnames=flds);wr.writeheader();wr.writerows(sorted(sample,key=lambda x:(x["mes"],x["estacion_codigo"])))
