@@ -12,7 +12,7 @@ RF rather than recycling 2025 ocean/meteorological signals as current data.
 Models saved as internal trusted joblib CI artifacts, not public forecasts.
 """
 from __future__ import annotations
-import argparse,csv,datetime as dt,hashlib,json,math,re
+import argparse,csv,datetime as dt,hashlib,json,math,re,itertools
 from collections import defaultdict
 from pathlib import Path
 import numpy as np
@@ -67,7 +67,8 @@ def parse_staged(folder,sectors,now=None):
    if published.tzinfo is None or published>now:raise ValueError("Publicación sin zona UTC o futura")
    # Final published after the target month. Reject next-day 'Final' to reduce
    # accidental use of preliminary vintages; does NOT independently verify URL.
-   following=dt.datetime(*next_month(year,mo),1,tzinfo=dt.timezone.utc)
+   ny,nm=next_month(year,mo)
+   following=dt.datetime(ny,nm,1,tzinfo=dt.timezone.utc)
    if published < following+dt.timedelta(days=8):
     raise ValueError("Final declarado demasiado pronto; auditar vintage "+expected)
    recorded[sid]=num
@@ -77,7 +78,7 @@ def parse_staged(folder,sectors,now=None):
     "n_sectores":len(recorded),
     "originales_sha256_declarados":sorted(set(row["sha256_fuente_original"] for row in rows)),
     "nota":"Los SHA originales provienen del manifiesto aportado; verificación independiente del URL NO demostrada."})
- allmonths=list(months_between(2026,1))
+ allmonths=list(itertools.islice(months_between(2026,1),len(requested)))
  requested=sorted(months)
  if requested != allmonths[:len(requested)]:
   raise ValueError("Faltan meses contiguos desde 2026-01; no interpolar")
@@ -151,7 +152,7 @@ def run(mode):
   print("10J_AUTO_INSPECCION",json.dumps(state,ensure_ascii=False),flush=True)
   return
  allrain={m:{sid:historical[sid][m] for sid in nodes}
-          for m in (list(months_between(1996,1))[:360])}
+          for m in (list(itertools.islice(months_between(1996,1),360)))}
  allrain.update(new)
  dates,X,Y=prepare_static(nodes,fixed,allrain)
  baseline,labels,threshold=baselines(Y,dates)
