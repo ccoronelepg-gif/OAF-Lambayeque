@@ -12,6 +12,24 @@
 
 
 
+
+## Fase 10H · Random Forest vs GCN: entrenamiento completado con NASA, CHIRPS y océano (17/10/2026)
+
+**Entrenamiento y pruebas realmente ejecutados.** Se recuperó un histórico completo de **39 sectores × 360 meses = 14.040 filas** de NASA POWER (1996–2025) y se entrenaron cinco bloques espaciales de Random Forest y Graph Convolutional Network. Los modelos usan precipitaciones CHIRPS rezagadas, índices oceánicos NOAA (anomalías Niño 1+2 y Niño 3.4, SOI, alisios y viento marino) y seis campos físicos NASA (temperatura, humedad, viento, radiación, presión superficial y temperatura de rocío), todos con **rezagos de al menos dos meses**. La nueva evaluación tiene **2.340 casos de prueba 2021–2025, 247 lluviosos ≥P90 por sector**, y 4.680 probabilidades almacenadas.
+
+| Evaluación | Brier ↓ | PR-AUC ↑ |
+|---|---:|---:|
+| Climatología sectorial estacional | **0,062884** | **0,60414** |
+| Random Forest lluvia + océano (10F) | 0,069247 | 0,43511 |
+| **Random Forest lluvia + océano + atmósfera NASA (10H)** | **0,072036** | **0,39737** |
+| **GCN lluvia + océano + atmósfera NASA (10H)** | 0,077423 | 0,35626 |
+
+**Conclusión:** entre las dos IA con todos los factores disponibles, **Random Forest obtuvo mejores resultados**. Pero incluir meteorología NASA POWER no mejoró RF frente al modelo con lluvia + océano, y **ninguna IA superó a la climatología** globalmente. El intervalo exploratorio de la diferencia de Brier RF−GCN por cinco años fue **[−0,013189; +0,002415]**, que incluye cero. Por ello el modelo recomendado es **RF como candidato de investigación**, no un algoritmo validado para alertas o pronóstico meteorológico operativo.
+
+**Cobertura y límites:** NASA POWER solo generó **siete agrupaciones gruesas de muestreo para 39 sectores**. Los reanálisis NASA/MERRA-2 y los datos satelitales de radiación SRB/CERES son ex post, y la fuente de radiación cambia cerca de 2001. CHIRPS Final también fue revisado retrospectivamente. Faltan predicciones reales *as-issued* y validación con estaciones SENAMHI independientes. Las etiquetas P90 de lluvia **NO equivalen a El Niño costero ni diagnósticos de enfermedades de arándano/vid**; esos proyectos necesitarán objetivos y registros propios.
+
+[Comparador en línea cuando GitHub Pages lo despliegue](evaluacion-modelos-atmosfericos-10h.html) · [Informe y ficha científica](FASE_10H_COMPARACION_MULTIVARIABLE.md) · [CSV de 4.680 probabilidades](datos/modelos_multivariables_10h/probabilidades_rf_gcn_nasa_10h.csv) · [Métricas JSON](datos/modelos_multivariables_10h/evaluacion_rf_gcn_nasa_10h.json) · [Incertidumbre emparejada](datos/modelos_multivariables_10h/auditoria_comparacion_10h.json) · [Fuentes NASA POWER](datos/nasa_power_10h/auditoria_fuentes_10h.json) · [Código RF/GCN](modelos/comparacion_rf_gcn_nasa_10h.py) · [CI de ingesta](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39085555539) · [CI de entrenamiento](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39085711303).
+
 ## Fase 10G · Control espacial de siete variables ERA5 en 39 sectores (17/10/2026)
 
 El observatorio incorporó [control de procedencia atmosférica](verificacion-atmosferica.html) para consultar **ERA5 histórico 0,25°** (Open-Meteo/ECMWF) de forma trazable en **un punto interior de cada uno de los 39 polígonos experimentales**. Variables: temperatura, radiación de onda corta, humedad relativa, viento a 10 m, nubosidad, presión media al nivel del mar y déficit de presión de vapor. La API devuelve coordenadas de celdas reales, que no necesariamente coinciden con centros de parcelas o medias de cada polígono.
