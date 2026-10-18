@@ -1,0 +1,701 @@
+{
+  "fase": "10E",
+  "fecha_corte": "2026-10-17",
+  "objeto": "probabilidad experimental de lluvia mensual >= percentil 90 LOCAL calculado SOLO en train",
+  "unidad_evaluacion": "4 localidades ERA5; NO 39 sectores CHIRPS",
+  "localidades": [
+    "Chiclayo",
+    "Jayanca",
+    "Motupe",
+    "Olmos"
+  ],
+  "historico": "1996–2025",
+  "periodos": {
+    "train": [
+      "1997-01",
+      "2015-12"
+    ],
+    "tuning": [
+      "2016-01",
+      "2018-12"
+    ],
+    "calibracion": [
+      "2019-01",
+      "2020-12"
+    ],
+    "test": [
+      "2021-01",
+      "2025-12"
+    ]
+  },
+  "sectores_o_zonas_certificadas": 0,
+  "variables_predictores_t_rezagados_dos_meses": [
+    "lluvia_t2",
+    "lluvia_t3",
+    "lluvia_t6",
+    "lluvia_t12",
+    "lluvia_media_t2t4",
+    "temperatura_t2",
+    "radiacion_t2",
+    "viento_t2",
+    "viento_u_t2",
+    "viento_v_t2",
+    "humedad_t2",
+    "vpd_t2",
+    "anomalia_nino12_t2",
+    "anomalia_nino34_t2",
+    "soi_t2",
+    "alisios_orientales_t2",
+    "viento_marino_t2",
+    "latitud",
+    "longitud",
+    "mes_seno",
+    "mes_coseno",
+    "id_Chiclayo",
+    "id_Jayanca",
+    "id_Motupe",
+    "id_Olmos"
+  ],
+  "fuentes_sha256": {
+    "datos/integracion_8v/matriz_terrestre_8v.csv": "b07b30becfe6ff9b92b67f88782ca26e552ea06b627d324a62d76d4962a81d4e",
+    "datos/humedad_8z/humedad_vpd_mensual_8z.csv": "6392b4e827dfeaed27b89c2a5ea4d6bbb6fc6ef6ae7559904357e3e9986c22cd",
+    "datos/integracion_8v/matriz_marina_8v.csv": "ff34c094e90dd191f5d97b7333345865ccb8de79c2e1313e2421e04a18b0cb87",
+    "datos/noaa_cpc_predictores_atmosfericos_8b.csv": "af0ef57a50f84878cc37c4c8376328248ec42d7e6d05448cf3915ffd4bfd1349",
+    "datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv": "dfb875642636c54a0a16e38f604bef366e30096080b442e43e3b89b4d2c3ada3"
+  },
+  "corrientes_marinas": {
+    "estado": "NO_INCLUIDAS_EN_ENTRENAMIENTO",
+    "motivo": "serie parcial 2017-2025 y puntos geostróficos sin colocalización con costa/modelos terrestres",
+    "serie": "datos/corrientes_8u/corrientes_geostroficas_2017_2025.csv"
+  },
+  "presion_msl_nubosidad_humedad_dosel": {
+    "estado": "NO DISPONIBLE EN ESTA MATRIZ HOMOLOGADA",
+    "accion": "preparar ingesta y fuentes con timestamp"
+  },
+  "objetivo_umbral_p90_local_mm": {
+    "Chiclayo": 32.61,
+    "Jayanca": 237.03,
+    "Motupe": 287.25,
+    "Olmos": 229.12
+  },
+  "n_muestras_por_modelo": {
+    "entrenamiento": 912,
+    "ajuste": 144,
+    "calibracion": 96,
+    "prueba": 240
+  },
+  "n_episodios_lluvia_ge1000_marcados_en_archivo": 11,
+  "n_banderas_ge1000_en_test": 0,
+  "resultados": {
+    "RF_multivariable": {
+      "global": {
+        "n": 240,
+        "eventos": 30,
+        "prevalencia_pct": 12.5,
+        "brier": 0.088183,
+        "logloss": 0.350141,
+        "pr_auc": 0.57437,
+        "roc_auc": 0.90048
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 60,
+          "eventos": 11,
+          "prevalencia_pct": 18.33,
+          "brier": 0.141811,
+          "logloss": 0.58674,
+          "pr_auc": 0.62456,
+          "roc_auc": 0.89796
+        },
+        "Jayanca": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.064925,
+          "logloss": 0.247654,
+          "pr_auc": 0.6266,
+          "roc_auc": 0.91975
+        },
+        "Motupe": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.065778,
+          "logloss": 0.241485,
+          "pr_auc": 0.5702,
+          "roc_auc": 0.91358
+        },
+        "Olmos": {
+          "n": 60,
+          "eventos": 7,
+          "prevalencia_pct": 11.67,
+          "brier": 0.080219,
+          "logloss": 0.324686,
+          "pr_auc": 0.62399,
+          "roc_auc": 0.90296
+        }
+      },
+      "por_anio": {
+        "2021": {
+          "n": 48,
+          "eventos": 2,
+          "prevalencia_pct": 4.17,
+          "brier": 0.030611,
+          "logloss": 0.100171,
+          "pr_auc": 0.5,
+          "roc_auc": 0.96739
+        },
+        "2022": {
+          "n": 48,
+          "eventos": 6,
+          "prevalencia_pct": 12.5,
+          "brier": 0.051779,
+          "logloss": 0.197402,
+          "pr_auc": 0.89646,
+          "roc_auc": 0.97619
+        },
+        "2023": {
+          "n": 48,
+          "eventos": 10,
+          "prevalencia_pct": 20.83,
+          "brier": 0.114716,
+          "logloss": 0.443746,
+          "pr_auc": 0.7488,
+          "roc_auc": 0.91053
+        },
+        "2024": {
+          "n": 48,
+          "eventos": 0,
+          "prevalencia_pct": 0.0,
+          "brier": 0.018599,
+          "logloss": 0.0713,
+          "pr_auc": null,
+          "roc_auc": null
+        },
+        "2025": {
+          "n": 48,
+          "eventos": 12,
+          "prevalencia_pct": 25.0,
+          "brier": 0.22521,
+          "logloss": 0.938087,
+          "pr_auc": 0.77905,
+          "roc_auc": 0.9375
+        }
+      },
+      "corte_probabilistico_calibrado": 0.25,
+      "deteccion_2021_2025": {
+        "tp": 13,
+        "fn": 17,
+        "fp": 15,
+        "tn": 195,
+        "sensibilidad_pct": 43.33,
+        "precision_pct": 46.43,
+        "fpr_pct": 7.14
+      },
+      "ajuste": {
+        "entrenamiento": {
+          "brier_ajuste": 0.07937,
+          "hoja": 4
+        },
+        "calibracion": {
+          "estado": "ajuste_platt_calibracion_independiente",
+          "n_eventos_cal": 2,
+          "coeficiente": 1.37115,
+          "intercepto": -1.48641
+        }
+      }
+    },
+    "GCN_multivariable": {
+      "global": {
+        "n": 240,
+        "eventos": 30,
+        "prevalencia_pct": 12.5,
+        "brier": 0.111878,
+        "logloss": 0.417316,
+        "pr_auc": 0.3756,
+        "roc_auc": 0.86063
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 60,
+          "eventos": 11,
+          "prevalencia_pct": 18.33,
+          "brier": 0.167358,
+          "logloss": 0.652942,
+          "pr_auc": 0.45143,
+          "roc_auc": 0.84045
+        },
+        "Jayanca": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.088506,
+          "logloss": 0.324243,
+          "pr_auc": 0.35685,
+          "roc_auc": 0.86111
+        },
+        "Motupe": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.088423,
+          "logloss": 0.324961,
+          "pr_auc": 0.43214,
+          "roc_auc": 0.86728
+        },
+        "Olmos": {
+          "n": 60,
+          "eventos": 7,
+          "prevalencia_pct": 11.67,
+          "brier": 0.103226,
+          "logloss": 0.367117,
+          "pr_auc": 0.51035,
+          "roc_auc": 0.89488
+        }
+      },
+      "por_anio": {
+        "2021": {
+          "n": 48,
+          "eventos": 2,
+          "prevalencia_pct": 4.17,
+          "brier": 0.03527,
+          "logloss": 0.1132,
+          "pr_auc": 0.41667,
+          "roc_auc": 0.95652
+        },
+        "2022": {
+          "n": 48,
+          "eventos": 6,
+          "prevalencia_pct": 12.5,
+          "brier": 0.108444,
+          "logloss": 0.383876,
+          "pr_auc": 0.83618,
+          "roc_auc": 0.95635
+        },
+        "2023": {
+          "n": 48,
+          "eventos": 10,
+          "prevalencia_pct": 20.83,
+          "brier": 0.181137,
+          "logloss": 0.657283,
+          "pr_auc": 0.67558,
+          "roc_auc": 0.88158
+        },
+        "2024": {
+          "n": 48,
+          "eventos": 0,
+          "prevalencia_pct": 0.0,
+          "brier": 0.003764,
+          "logloss": 0.036148,
+          "pr_auc": null,
+          "roc_auc": null
+        },
+        "2025": {
+          "n": 48,
+          "eventos": 12,
+          "prevalencia_pct": 25.0,
+          "brier": 0.230775,
+          "logloss": 0.896072,
+          "pr_auc": 0.50458,
+          "roc_auc": 0.81481
+        }
+      },
+      "corte_probabilistico_calibrado": 0.05,
+      "deteccion_2021_2025": {
+        "tp": 15,
+        "fn": 15,
+        "fp": 29,
+        "tn": 181,
+        "sensibilidad_pct": 50.0,
+        "precision_pct": 34.09,
+        "fpr_pct": 13.81
+      },
+      "ajuste": {
+        "entrenamiento": {
+          "brier_ajuste": 0.06724,
+          "epoch": 6,
+          "parada": 26
+        },
+        "calibracion": {
+          "estado": "ajuste_platt_calibracion_independiente",
+          "n_eventos_cal": 2,
+          "coeficiente": 0.75065,
+          "intercepto": -2.67696
+        }
+      }
+    },
+    "RF_solo_lluvia": {
+      "global": {
+        "n": 240,
+        "eventos": 30,
+        "prevalencia_pct": 12.5,
+        "brier": 0.105151,
+        "logloss": 0.393262,
+        "pr_auc": 0.53832,
+        "roc_auc": 0.86206
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 60,
+          "eventos": 11,
+          "prevalencia_pct": 18.33,
+          "brier": 0.163988,
+          "logloss": 0.597903,
+          "pr_auc": 0.58236,
+          "roc_auc": 0.89796
+        },
+        "Jayanca": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.082776,
+          "logloss": 0.279724,
+          "pr_auc": 0.6631,
+          "roc_auc": 0.91667
+        },
+        "Motupe": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.07621,
+          "logloss": 0.306997,
+          "pr_auc": 0.57471,
+          "roc_auc": 0.83488
+        },
+        "Olmos": {
+          "n": 60,
+          "eventos": 7,
+          "prevalencia_pct": 11.67,
+          "brier": 0.09763,
+          "logloss": 0.388424,
+          "pr_auc": 0.55578,
+          "roc_auc": 0.82749
+        }
+      },
+      "por_anio": {
+        "2021": {
+          "n": 48,
+          "eventos": 2,
+          "prevalencia_pct": 4.17,
+          "brier": 0.035488,
+          "logloss": 0.11776,
+          "pr_auc": 0.58333,
+          "roc_auc": 0.97826
+        },
+        "2022": {
+          "n": 48,
+          "eventos": 6,
+          "prevalencia_pct": 12.5,
+          "brier": 0.091219,
+          "logloss": 0.305611,
+          "pr_auc": 0.80882,
+          "roc_auc": 0.93651
+        },
+        "2023": {
+          "n": 48,
+          "eventos": 10,
+          "prevalencia_pct": 20.83,
+          "brier": 0.163238,
+          "logloss": 0.510325,
+          "pr_auc": 0.77712,
+          "roc_auc": 0.92895
+        },
+        "2024": {
+          "n": 48,
+          "eventos": 0,
+          "prevalencia_pct": 0.0,
+          "brier": 0.002358,
+          "logloss": 0.026513,
+          "pr_auc": null,
+          "roc_auc": null
+        },
+        "2025": {
+          "n": 48,
+          "eventos": 12,
+          "prevalencia_pct": 25.0,
+          "brier": 0.233453,
+          "logloss": 1.0061,
+          "pr_auc": 0.56457,
+          "roc_auc": 0.82176
+        }
+      },
+      "corte_probabilistico_calibrado": 0.05,
+      "deteccion_2021_2025": {
+        "tp": 19,
+        "fn": 11,
+        "fp": 29,
+        "tn": 181,
+        "sensibilidad_pct": 63.33,
+        "precision_pct": 39.58,
+        "fpr_pct": 13.81
+      },
+      "ajuste": {
+        "entrenamiento": {
+          "brier_ajuste": 0.11011,
+          "hoja": 4
+        },
+        "calibracion": {
+          "estado": "ajuste_platt_calibracion_independiente",
+          "n_eventos_cal": 2,
+          "coeficiente": 0.68722,
+          "intercepto": -2.45455
+        }
+      }
+    },
+    "GCN_solo_lluvia": {
+      "global": {
+        "n": 240,
+        "eventos": 30,
+        "prevalencia_pct": 12.5,
+        "brier": 0.106848,
+        "logloss": 0.386677,
+        "pr_auc": 0.39052,
+        "roc_auc": 0.86032
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 60,
+          "eventos": 11,
+          "prevalencia_pct": 18.33,
+          "brier": 0.15738,
+          "logloss": 0.568255,
+          "pr_auc": 0.48127,
+          "roc_auc": 0.84601
+        },
+        "Jayanca": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.08723,
+          "logloss": 0.317487,
+          "pr_auc": 0.3451,
+          "roc_auc": 0.87346
+        },
+        "Motupe": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.085644,
+          "logloss": 0.323153,
+          "pr_auc": 0.47269,
+          "roc_auc": 0.83025
+        },
+        "Olmos": {
+          "n": 60,
+          "eventos": 7,
+          "prevalencia_pct": 11.67,
+          "brier": 0.097136,
+          "logloss": 0.337814,
+          "pr_auc": 0.56604,
+          "roc_auc": 0.90836
+        }
+      },
+      "por_anio": {
+        "2021": {
+          "n": 48,
+          "eventos": 2,
+          "prevalencia_pct": 4.17,
+          "brier": 0.037009,
+          "logloss": 0.122183,
+          "pr_auc": 0.24286,
+          "roc_auc": 0.90217
+        },
+        "2022": {
+          "n": 48,
+          "eventos": 6,
+          "prevalencia_pct": 12.5,
+          "brier": 0.103421,
+          "logloss": 0.375164,
+          "pr_auc": 0.43009,
+          "roc_auc": 0.83532
+        },
+        "2023": {
+          "n": 48,
+          "eventos": 10,
+          "prevalencia_pct": 20.83,
+          "brier": 0.167921,
+          "logloss": 0.509916,
+          "pr_auc": 0.75681,
+          "roc_auc": 0.92368
+        },
+        "2024": {
+          "n": 48,
+          "eventos": 0,
+          "prevalencia_pct": 0.0,
+          "brier": 0.002833,
+          "logloss": 0.02768,
+          "pr_auc": null,
+          "roc_auc": null
+        },
+        "2025": {
+          "n": 48,
+          "eventos": 12,
+          "prevalencia_pct": 25.0,
+          "brier": 0.223054,
+          "logloss": 0.898442,
+          "pr_auc": 0.82892,
+          "roc_auc": 0.89583
+        }
+      },
+      "corte_probabilistico_calibrado": 0.05,
+      "deteccion_2021_2025": {
+        "tp": 23,
+        "fn": 7,
+        "fp": 32,
+        "tn": 178,
+        "sensibilidad_pct": 76.67,
+        "precision_pct": 41.82,
+        "fpr_pct": 15.24
+      },
+      "ajuste": {
+        "entrenamiento": {
+          "brier_ajuste": 0.07525,
+          "epoch": 46,
+          "parada": 66
+        },
+        "calibracion": {
+          "estado": "ajuste_platt_calibracion_independiente",
+          "n_eventos_cal": 2,
+          "coeficiente": 0.60064,
+          "intercepto": -2.23013
+        }
+      }
+    },
+    "climatologia_local_estacional": {
+      "global": {
+        "n": 240,
+        "eventos": 30,
+        "prevalencia_pct": 12.5,
+        "brier": 0.077467,
+        "logloss": 0.246074,
+        "pr_auc": 0.59098,
+        "roc_auc": 0.92421
+      },
+      "por_localidad": {
+        "Chiclayo": {
+          "n": 60,
+          "eventos": 11,
+          "prevalencia_pct": 18.33,
+          "brier": 0.11518,
+          "logloss": 0.347621,
+          "pr_auc": 0.62576,
+          "roc_auc": 0.88961
+        },
+        "Jayanca": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.063238,
+          "logloss": 0.209182,
+          "pr_auc": 0.53333,
+          "roc_auc": 0.94753
+        },
+        "Motupe": {
+          "n": 60,
+          "eventos": 6,
+          "prevalencia_pct": 10.0,
+          "brier": 0.063595,
+          "logloss": 0.20923,
+          "pr_auc": 0.53333,
+          "roc_auc": 0.94753
+        },
+        "Olmos": {
+          "n": 60,
+          "eventos": 7,
+          "prevalencia_pct": 11.67,
+          "brier": 0.067856,
+          "logloss": 0.218264,
+          "pr_auc": 0.6619,
+          "roc_auc": 0.95148
+        }
+      },
+      "por_anio": {
+        "2021": {
+          "n": 48,
+          "eventos": 2,
+          "prevalencia_pct": 4.17,
+          "brier": 0.032352,
+          "logloss": 0.137245,
+          "pr_auc": 0.5,
+          "roc_auc": 0.97826
+        },
+        "2022": {
+          "n": 48,
+          "eventos": 6,
+          "prevalencia_pct": 12.5,
+          "brier": 0.065398,
+          "logloss": 0.208977,
+          "pr_auc": 0.94444,
+          "roc_auc": 0.99008
+        },
+        "2023": {
+          "n": 48,
+          "eventos": 10,
+          "prevalencia_pct": 20.83,
+          "brier": 0.128617,
+          "logloss": 0.387813,
+          "pr_auc": 0.77073,
+          "roc_auc": 0.89737
+        },
+        "2024": {
+          "n": 48,
+          "eventos": 0,
+          "prevalencia_pct": 0.0,
+          "brier": 0.020858,
+          "logloss": 0.113613,
+          "pr_auc": null,
+          "roc_auc": null
+        },
+        "2025": {
+          "n": 48,
+          "eventos": 12,
+          "prevalencia_pct": 25.0,
+          "brier": 0.140111,
+          "logloss": 0.382724,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0
+        }
+      },
+      "corte_probabilistico_calibrado": 0.2,
+      "deteccion_2021_2025": {
+        "tp": 24,
+        "fn": 6,
+        "fp": 21,
+        "tn": 189,
+        "sensibilidad_pct": 80.0,
+        "precision_pct": 53.33,
+        "fpr_pct": 10.0
+      },
+      "ajuste": {
+        "metodo": "climatologia_entrenada_solo_hasta_2015"
+      }
+    }
+  },
+  "ranking_descriptivo_por_brier": [
+    "RF_multivariable",
+    "RF_solo_lluvia",
+    "GCN_solo_lluvia",
+    "GCN_multivariable"
+  ],
+  "modelo_destacado_experimental_si_supera_climatologia": null,
+  "regla_de_eleccion": "Brier inferior y PR-AUC superior a climatología local estacional, al menos 15 positivos en test; no certificación ni despliegue de alertas.",
+  "as_issued_disponible": false,
+  "verificacion_instrumental_independiente": false,
+  "transferencia_espacial_validada": false,
+  "modelo_operativo_certificado": null,
+  "alertas_habilitadas": false,
+  "limitaciones": [
+    "ERA5/ERA5-Land y otros insumos son retrospectivos; no emisiones originales.",
+    "NOAA Niño1+2/3.4 son índices oceánicos regionales, NO SST costera local.",
+    "Cuatro localidades con datos de modelo/reanálisis, no pluviómetros ni 39 sectores con covariables completas.",
+    "Los datos de corrientes geostróficas comienzan 2017, se omiten para evitar rellenar 1996–2016.",
+    "P90 local de entrenamiento no es umbral oficial SENAMHI ni evento ENSO, las salidas son riesgo mensual de lluvia alta.",
+    "GCN sobre grafo simple de cuatro localidades, NO CNN bidimensional ni extrapolación a pisos ecológicos.",
+    "La etiqueta objetivo usa reanálisis ERA5, no CHIRPS: no comparar directamente habilidad con fase 10D.",
+    "No confundir probabilidades de lluvia intensa con pronósticos de enfermedades agrícolas o del Niño Costero.",
+    "Modelos calibrados sobre 2019-20, resultado no garantiza cobertura ante 2023.",
+    "Las variables de radiación, mar, viento etc se observan con lag de 2 meses y nunca incluyen valores del objetivo.",
+    "Valores de lluvia >=1000 mm del reanálisis existen y se señalizan para revisión, sin borrarlos silenciosamente."
+  ],
+  "sha256_predicciones": "3073b540de2389a33167a2f72f73c474709e41fe6e0fc039e7352d0143f93490"
+}
