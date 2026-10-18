@@ -19,7 +19,7 @@ PARAM=("T2M","RH2M","WS10M","ALLSKY_SFC_SW_DWN","PS","T2MDEW")
 SECTORS=ten_g.manifest()["puntos"]
 COLS=("mes","sector","celda_aprox","consulta_lat","consulta_lon",
       "fuente_grid_lat","fuente_grid_lon","temperatura_c","humedad_pct",
-      "viento_10m_m_s","radiacion_mj_m2_dia","presion_superficie_kpa",
+      "viento_10m_m_s","radiacion_nasa_kwh_m2_dia","presion_superficie_kpa",
       "temperatura_rocio_c","es_estacion","fuente","descargado_utc")
 def hashfile(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def indices(p):
@@ -77,7 +77,7 @@ def parse_response(blob,p,rec,ids):
    records.append({"mes":month,"sector":sector,"celda_aprox":str(indices(p)),
     "consulta_lat":p["lat"],"consulta_lon":p["lon"],"fuente_grid_lat":geo[1],
     "fuente_grid_lon":geo[0],"temperatura_c":t,"humedad_pct":rh,
-    "viento_10m_m_s":wind,"radiacion_mj_m2_dia":rad,
+    "viento_10m_m_s":wind,"radiacion_nasa_kwh_m2_dia":rad,
     "presion_superficie_kpa":ps,"temperatura_rocio_c":dew,
     "es_estacion":"false",
     "fuente":"NASA_POWER_MERRA2_Meteorologia_SRB_CERES_Radiacion",
