@@ -106,6 +106,7 @@ def baseline(raw,Y,tr,dates,held):
 
 def group_scores(rows):
  def scored(group):
+  if not group:return None
   y=np.array([float(v["lluvia_chirps_observada_mm"]) for v in group])
   yh=np.array([float(v["lluvia_rf_predicha_mm"]) for v in group])
   yclim=np.array([float(v["lluvia_climatologia_mm"]) for v in group])
