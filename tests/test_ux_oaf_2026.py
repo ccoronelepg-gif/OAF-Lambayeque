@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 HTML=(ROOT/"index.html").read_text(encoding="utf8")
 BASE=json.loads((ROOT/"datos/ux_2026/auditoria_base_2026.json").read_text(encoding="utf8"))
-ROUTES=("inicio","clima","nino","cultivos","verificaciones")
+ROUTES=("inicio","clima","nino","cultivos","autor","verificaciones")
 
 class Tracker(HTMLParser):
     def __init__(self):
@@ -54,7 +54,7 @@ class UXContract(unittest.TestCase):
         for url in names:
             self.assertTrue((ROOT/url.split("?")[0]).is_file(),url)
 
-    def test_five_routes_and_deep_categorization(self):
+    def test_six_routes_and_deep_categorization(self):
         self.assertEqual(tuple(self.dom.pages),ROUTES)
         for id in ("oaf-ux-view-quick","oaf-ux-view-technical","oaf-mobile-menu",
                    "oaf-current-city","oaf-trust-legend"):
@@ -99,6 +99,17 @@ class UXContract(unittest.TestCase):
         self.assertIn("Zonificación exploratoria — no oficial",HTML)
         self.assertIn("no emite alertas oficiales",HTML)
         self.assertNotIn("IA predictiva validada",HTML)
+
+    def test_divulgacion_and_metadata_catalog(self):
+        self.assertIn('id="oaf-meta-hub"',HTML)
+        self.assertIn('id="oaf-meta-search"',HTML)
+        self.assertIn('id="oaf-meta-legacy"',HTML)
+        self.assertIn('Metadatos y trazabilidad',HTML)
+        self.assertIn('Proveedor externo',HTML)
+        self.assertIn('Investigación del autor',HTML)
+        self.assertIn('rel="canonical"',HTML)
+        for path in ("assets/oaf-divulgacion-2026.css","assets/oaf-divulgacion-2026.js"):
+            self.assertTrue((ROOT/path).is_file())
 
     def test_data_sources_and_no_duplicate_map(self):
         assert "420" in HTML and "datos/muestreo_8o/nodos_dem_8o.csv" in HTML
