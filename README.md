@@ -18,6 +18,15 @@
 
 
 
+
+## Fase 10N · Incorporación SENAMHI y entrenamiento RF en montaña (18/10/2026)
+
+Se incorporaron **16 nuevos CSV** (archivos 50–65, todos de Cueva Blanca), comprobados por SHA-256 contra el manifiesto de la base de investigación SENAMHI 10M. El consolidado SQLite contiene **13 estaciones, 1.386 observaciones diarias y 1.208 horarias**, sin conflictos de precipitación tras deduplicar 303 claves repetidas idénticas (362 copias extra). La base terrestre incluye **40 meses completos no necesariamente consecutivos** en **Cueva Blanca 153102, 3300 m, sector S008 (26 meses)** e **Incahuasi 000307, 3052 m, sector S007 (14 meses)**. La fuente indica **SIN control de calidad** y las intersecciones con S007/S008 son experimentales.
+
+Se entrenó **RandomForestRegressor como corrector pluviométrico puntual**, NO como sustituto de RF regional 10L. Predictores: climatología sectorial CHIRPS de 1997–2015, estacionalidad, altitud y sector; observaciones de estaciones solo como etiquetas. Entrenamiento 2021–2024 (**17 meses**), validación 2025 (**15 meses**), prueba 2026 (**8 meses**). El RF se reentrenó hasta 2025 y se evaluó contra 2026 sin datos de 2026 como entrada. **La validación favoreció un peso RF de 0**: MAE 2025 **55,95 mm** frente a climatología **55,95 mm**; MAE 2026 **63,56 mm** frente a climatología **63,56 mm**. El RF entrenado queda archivado **solo como candidato**, pues no hay mejora de habilidad demostrada. Faltan QC instrumental, independencia de CHIRPS y evaluaciones as-issued.
+
+[**Comparador SENAMHI — estaciones, meses y error**](verificacion-estaciones-senamhi-10n.html) · [Informe de integración 10N](FASE_10N_SENAMHI_RF_MONTAÑA.md) · [Datos mensuales terrestres](datos/senamhi_10n/meses_pluviometricos_completos_10n.csv) · [Código de entrenamiento RF](modelos/entrenar_rf_estaciones_senamhi_10n.py) · [Evaluación real de RF](datos/senamhi_10n/evaluacion_rf_estacion_10n.json) · [Predicciones históricas](datos/senamhi_10n/evaluacion_mensual_rf_estacion_10n.csv) · [CI exitosa](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39100634790).
+
 ## Fase 10M · Incorporación de pluviómetros SENAMHI (17/10/2026)
 
 **Integración efectiva a la base observacional del OAF.** Se examinaron **2.956 registros** (1.441 anteriores y 1.515 de **50 nuevos CSV**: 32 de Cueva Blanca, 18 de Incahuasi). Se identificaron **303 claves repetidas** con **362 copias extras idénticas**, **cero contradicciones de precipitación** y quedaron **2.594 observaciones únicas** (**1.386 diarias + 1.208 horarias**) de 13 estaciones.
