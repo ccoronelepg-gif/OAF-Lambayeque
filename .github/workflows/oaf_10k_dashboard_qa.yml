@@ -1,0 +1,32 @@
+name: OAF 10K — Auditar el dashboard cartográfico
+on:
+  push:
+    paths:
+      - "ecorregiones-clima-10k.html"
+      - "modelos/auditoria_dashboard_ecologico_10k.py"
+      - "datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json"
+      - ".github/workflows/oaf_10k_dashboard_qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar geografía, 2340 meses, fuentes y coberturas
+        run: python modelos/auditoria_dashboard_ecologico_10k.py
+      - name: Validar sintaxis JavaScript de filtros y mapa Leaflet
+        run: node --check datos/ecopaisajes_10k/_qa_javascript_10k.cjs
+      - name: Confirmar enlaces internos y estado de fuentes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          h=Path('index.html').read_text(encoding='utf8')
+          for url in ('ecorregiones-clima-10k.html','FASE_10K_ECOPAISAJES_RF.md'):
+            assert h.count(url)>=2, f'enlace insuficiente {url}'
+          assert 'id="oaf-ecopaisajes-10k"' in h
+          assert 'id="oaf-ecopaisajes-autor-10k"' in h
+          print('10K_PORTAL_CON_ENLACES_Y_SECCIONES_CONFIRMADAS')
+          PY
