@@ -1,0 +1,43 @@
+name: OAF 10J — Auditoría pareada desde archivo completo
+on:
+  push:
+    paths:
+      - "modelos/auditoria_pareada_10j.py"
+      - ".github/workflows/oaf_10j_auditoria.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recalculo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recalcular diferencias Brier y MAE desde CSV de 9.360 registros
+        run: python modelos/auditoria_pareada_10j.py
+      - name: Comprobar que no existan nulos ni declaración operativa
+        run: |
+          python - <<'PY'
+          import json,math
+          p='datos/rf_robusto_10j/comparacion_pareada_incertidumbre_10j.json'
+          j=json.load(open(p))
+          assert j['fase']=='10J' and not j['alertas_activadas']
+          assert not j['habilidad_operativa_certificada']
+          for k,v in j['comparaciones'].items():
+            assert v['tamanio_muestra']==2340
+            assert math.isfinite(v['diferencia_global_RF_menos_climatologia'])
+            assert all(math.isfinite(x) for x in v['intervalo_exploratorio_anual_95'])
+          print('10J_PAREADO_AUDITADO',j['comparaciones'])
+          PY
+      - name: Publicar auditoría solo cuando cálculo real haya superado el control
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/rf_robusto_10j/comparacion_pareada_incertidumbre_10j.json
+          git diff --cached --quiet || git commit -m "data(10J): contrastes pareados recalculados desde predicciones completas"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
