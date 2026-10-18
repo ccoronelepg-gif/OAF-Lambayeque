@@ -144,7 +144,7 @@ def main(check=False):
   "variables_nasa_t_minus_2":list(FEATURES),
   "resolucion_nasa":"NASA POWER MERRA2 0.5x0.625 grados; radiacion SRB/CERES aprox 1 grado. Una muestra por grupo.",
   "numero_bins_nasa_aproximados":audit_atm["n_bins_aproximados"],
-  "sectores_en_celdas_compartidas":audit_atm["resumen"]["sectores_en_celdas_nasa_compartidas"],
+  "sectores_en_bins_compartidos":sum(len(k["sectores_comparten_muestra"]) for k in audit_atm["peticiones"] if len(k["sectores_comparten_muestra"])>1),
   "fuentes_sha256":{"atmosfera_10h":sha(ATM),"probabilidades_10f":sha(ORIG)},
   "resultados_modelos_nuevos":res,
   "referencia_10f_brier":brierref,
@@ -154,9 +154,9 @@ def main(check=False):
   "sector_datos_instrumentales":False,
   "modelo_operativo_ganador":None,"alertas_habilitadas":False,
   "limitaciones":[
-   "La selección de NASA 0.25° produce celdas compartidas, no 39 estaciones independientes.",
+   "NASA POWER 0.5x0.625 grados agrupa sectores; radiación de fuente aparte más gruesa.",
    "El punto interior del poligono experimental no es promedio areal ni cultivo individual.",
-   "Los datos de NASA y CHIRPS FINAL pueden haber sido revisados tras la fecha pronosticada.",
+   "Los datos MERRA2, SRB/CERES y CHIRPS FINAL pueden haber sido revisados tras la fecha pronosticada.",
    "Los rezagos t−2 reducen riesgo de fuga temporal, pero no certifican snapshots originales.",
    "La comparación usa mismas 2340 etiquetas de prueba de 10F y cinco bloques geograficos.",
    "La calibracion en sectores de prueba 2019-2020 presupone registro histórico local previo.",
@@ -165,7 +165,7 @@ def main(check=False):
  REPORT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
  print("10H_MODELOS",json.dumps({"brier":{m:d["global"]["brier"] for m,d in res.items()},
   "delta":dif,"referencia":brierref,
-  "n_celdas":result["numero_celdas_nasa_distintas"]},ensure_ascii=False),flush=True)
+  "n_bins":result["numero_bins_nasa_aproximados"]},ensure_ascii=False),flush=True)
 if __name__=="__main__":
  a=argparse.ArgumentParser();a.add_argument("--check",action="store_true");args=a.parse_args()
  main(check=args.check)
