@@ -59,3 +59,34 @@ Un **modelo se puede destacar para consulta científica** solo si mejora el Brie
 [Motor y configuración](modelos/probabilidad_multivariable_10e.py) · [Tests de QA](tests/test_probabilidad_10e.py) · [CI verificable](.github/workflows/oaf_10e_probabilidad.yml) · [Métricas JSON al finalizar ejecución](datos/probabilidades_10e/evaluacion_probabilistica_10e.json) · [Probabilidades retrospectivas](datos/probabilidades_10e/predicciones_probabilisticas_10e.csv).
 
 Los textos del portal diferencian **fuente oficial** y **modelo experimental entrenado por el autor**, sin atribuirse aprobación institucional ni certificación externa.
+
+## VII. Resultados de la evaluación reproducida (ejecución 10E)
+
+[GitHub Actions verificado](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39081906133) ejecutó satisfactoriamente **siete pruebas**, entrenó dos RF y dos GCN con distintas familias de covariables y creó el informe y las 1.200 predicciones retrospectivas (cuatro localidades × 60 meses de test × cinco métodos). La clase positiva se definió con el percentil 90 local estimado solo a partir de 1997–2015.
+
+| Modelo | Brier ↓ | PR-AUC ↑ | ROC-AUC ↑ | 2023 Brier ↓ |
+|---|---:|---:|---:|---:|
+| Climatología local estacional | **0,077467** | **0,59098** | **0,92421** | 0,128617 |
+| Random Forest multivariable | 0,088183 | 0,57437 | 0,90048 | **0,114716** |
+| Random Forest solo lluvia | 0,105151 | 0,53832 | 0,86206 | 0,163238 |
+| GCN solo lluvia | 0,106848 | 0,39052 | 0,86032 | 0,167921 |
+| GCN multivariable | 0,111878 | 0,37560 | 0,86063 | 0,181137 |
+
+Prueba 2021–2025: **240 casos localidad-mes; 30 positivos (12,5 %)**; 2023: 48 casos, 10 positivos.
+
+**El mejor de los modelos de IA** según Brier, PR-AUC y ROC-AUC de este benchmark es **Random Forest multivariable**, y utilizar covariables océano-atmósfera se asocia a menor Brier para RF que usar solo lluvia. Pero **la climatología estacional local obtiene menor Brier y mayor PR-AUC que cualquier algoritmo de IA**. La decisión codificada es, por tanto, `modelo_destacado_experimental_si_supera_climatologia: null`: **no hay modelo elegido para publicación como pronóstico validado**. Se puede visualizar RF multivariable como el modelo de IA con mejor resultado descriptivo, con el contraste completo y sin avisos.
+
+Umbrales de evento de lluvia mensual ≥P90 (mm), obtenidos solamente en train: **Chiclayo 32,61; Jayanca 237,03; Motupe 287,25; Olmos 229,12**. La marcada heterogeneidad refleja diferencias de series ERA5 y no define umbrales reglamentarios de riesgo. En el archivo existen 11 observaciones de lluvia modelada ≥1000 mm marcadas para revisión (ninguna corresponde a 2021–2025); su influencia sobre entrenamiento merece análisis robusto posterior.
+
+En prueba, usando cortes probabilísticos fijados solo con 2019–2020:
+- **RF multivariable:** 13 detecciones correctas, 17 omisiones, 15 falsas alarmas; sensibilidad 43,33 %, precisión 46,43 %.
+- **GCN multivariable:** 15 detecciones, 15 omisiones, 29 falsas alarmas; sensibilidad 50 %, precisión 34,09 %.
+- **Climatología estacional:** 24 detecciones, 6 omisiones, 21 falsas alarmas; sensibilidad 80 %, precisión 53,33 %.
+
+La prueba es sobre una etiqueta **percentil-90 local ERA5**; no comparar esas tasas con los 137 casos CHIRPS de la fase 10D ni presentar ambos como el mismo evento.
+
+### Análisis de incertidumbre emparejado (cinco años)
+[Auditoría complementaria de diferencias Brier](datos/probabilidades_10e/auditoria_incertidumbre_10e.json): RF multivariable menos GCN multivariable **−0,023695**, intervalo exploratorio con bloques anuales **[−0,052118; +0,002957]**. El intervalo incluye cero; **no se demuestra con significación confirmatoria una ventaja temporalmente robusta**. RF multivariable menos climatología local **+0,010716**, intervalo anual **[−0,011460; +0,047987]**; tampoco permite concluir superioridad a la referencia.
+
+**Conclusión científica:** RF es el candidato de IA a seguir investigando para estas cuatro localidades, pero no ha superado el modelo sencillo de referencia. La web debe permitir evaluar las cinco alternativas, su sensibilidad ante extremos, sus variables de entrada y sus limitaciones. La GCN conserva un lugar comparativo, no de despliegue.
+
