@@ -36,6 +36,14 @@ La consulta usa `timezone=GMT`, `models=era5`, `cell_selection=nearest`, `elevat
 
 **Etapa C — comparación predictiva (posterior):** para evitar filtración temporal, toda variable meteorológica incorporada a RF/GCN debe usarse **únicamente con el rezago que realmente pudiera haberse observado en la fecha histórica de emisión**; los archivos ERA5 actuales fueron reprocesados después de los eventos. Se requerirá validar si las nuevas covariables aportan habilidad frente a lluvia CHIRPS + océano y climatología (fase 10F), con particiones 1997–2015 entrenamiento, 2016–2018 ajuste, 2019–2020 calibración, 2021–2025 prueba; y cinco bloques espaciales. **No afirmar mejoras predictivas si todavía no se ha reentrenado.**
 
+## Primer resultado comprobado: piloto de 2023
+
+La [ejecución de GitHub Actions 39084097579](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39084097579) **terminó con éxito**, ejecutó las pruebas de geometría y unidades y obtuvo del proveedor **468 registros de 2023**. La [auditoría de respuestas](datos/atmosfera_sectorial_10g/piloto_era5_2023_10g.json) contiene SHA y URL de ocho solicitudes y el inventario de puntos consultados.
+
+**Hallazgo geográfico clave:** de los 39 sectores se obtuvieron **17 celdas ERA5 distintas** y **32 sectores pertenecen a grupos de celdas compartidas**. Por ejemplo, S008/S010/S016/S017/S018/S029 tienen la misma celda ERA5 a latitud −6,00°, longitud −79,50°. Esta dependencia no autoriza atribuir seis registros espaciales instrumentales independientes; tampoco convierte a esos sectores en una unidad agroclimática homogénea certificada.
+
+El inventario mantiene el aviso de altitud DEM bajo cero para S001; un valor distinto de elevación del proveedor no resolvería por sí solo el origen de la discrepancia.
+
 ## 4. Limitaciones vigentes
 
 - Son **reanalisis/modelos ERA5**, no sensores, estaciones de SENAMHI, datos exactos del cultivo ni promedios areales.
