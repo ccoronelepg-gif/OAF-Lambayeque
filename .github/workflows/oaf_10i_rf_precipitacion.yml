@@ -1,0 +1,65 @@
+name: OAF 10I — SOLO Random Forest para lluvias
+on:
+  push:
+    paths:
+      - modelos/random_forest_lluvia_multivariable_10i.py
+      - tests/test_rf_solo_lluvia_10i.py
+      - .github/workflows/oaf_10i_rf_precipitacion.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf-10i-rf-precipitacion
+  cancel-in-progress: false
+jobs:
+  entrenamiento_rf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias científicas reproducibles
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Comprobar variables, ventanas y ausencia de predicciones fitosanitarias
+        run: python -m unittest discover -s tests -p test_rf_solo_lluvia_10i.py -v
+      - name: Entrenar RF regresión lluvia mm y RF clasificación de lluvia alta para 4 familias de datos
+        run: python -u modelos/random_forest_lluvia_multivariable_10i.py
+      - name: Verificar predicciones, SHA y bloqueo de alertas
+        run: python modelos/random_forest_lluvia_multivariable_10i.py --check
+      - name: Exigir ablación completa contra climatología y sin enfermedades
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json",encoding="utf8"))
+          assert d["fase"]=="10I"
+          assert d["n_predicciones_4_familias"]==9360
+          assert d["n_sector_mes_test"]==2340 and d["n_sectores"]==39
+          assert len(d["resultados"])==4
+          assert not d["alertas_operativas_habilitadas"]
+          assert d["modelo_validado_operativamente"] is None
+          assert not d["validacion_externa_instrumental"]
+          assert d["destino_fitosanitario"].startswith("No se pronostica enfermedad")
+          for g,s in d["resultados"].items():print("10I_RESULTADO",g,s["global"])
+          print("10I_SELECCION",d["seleccion"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf-10i-random-forest-lluvia-multivariable
+          path: |
+            datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json
+            datos/rf_precipitacion_10i/evaluacion_emparejada_10i.csv
+          retention-days: 90
+      - name: Registrar solo resultados científicos auditados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json datos/rf_precipitacion_10i/evaluacion_emparejada_10i.csv
+          git diff --cached --quiet || git commit -m "data(10I): RF solo lluvia regresion mm y P90 con 4 grupos fisicos"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
