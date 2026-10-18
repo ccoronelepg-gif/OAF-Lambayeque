@@ -1,0 +1,197 @@
+{
+  "fase": "10H",
+  "tipo": "AUDITORIA_PAREADA_DE_HABILIDAD_ESTADISTICA_NO_OPERATIVA",
+  "fuente_predicciones": "datos/modelos_multivariables_10h/probabilidades_rf_gcn_nasa_10h.csv",
+  "sha256_predicciones": "068f097add12bb695b79b2a864a9ccd85854f4ef4ce7a8400bce8f959ec11fe8",
+  "comparadores": [
+    "RF_lluvia_oceano_nasa",
+    "GCN_lluvia_oceano_nasa"
+  ],
+  "diferencia_definicion": "Brier RF - Brier GCN; valor negativo favorece a RF",
+  "n_casos_emparejados": 2340,
+  "eventos_positivos": 247,
+  "brier_rf_global": 0.072036,
+  "brier_gcn_global": 0.077423,
+  "delta_global_rf_menos_gcn": -0.005387,
+  "por_anio": {
+    "2021": {
+      "n": 468,
+      "brier_rf": 0.053971,
+      "brier_gcn": 0.049689,
+      "delta": 0.004282
+    },
+    "2022": {
+      "n": 468,
+      "brier_rf": 0.067478,
+      "brier_gcn": 0.061013,
+      "delta": 0.006465
+    },
+    "2023": {
+      "n": 468,
+      "brier_rf": 0.138358,
+      "brier_gcn": 0.153523,
+      "delta": -0.015165
+    },
+    "2024": {
+      "n": 468,
+      "brier_rf": 0.035775,
+      "brier_gcn": 0.045194,
+      "delta": -0.009419
+    },
+    "2025": {
+      "n": 468,
+      "brier_rf": 0.064599,
+      "brier_gcn": 0.077697,
+      "delta": -0.013098
+    }
+  },
+  "por_bloque": {
+    "0": {
+      "n": 720,
+      "brier_rf": 0.059092,
+      "brier_gcn": 0.057968,
+      "delta": 0.001124
+    },
+    "1": {
+      "n": 480,
+      "brier_rf": 0.072816,
+      "brier_gcn": 0.085309,
+      "delta": -0.012492
+    },
+    "2": {
+      "n": 480,
+      "brier_rf": 0.061983,
+      "brier_gcn": 0.06842,
+      "delta": -0.006437
+    },
+    "3": {
+      "n": 300,
+      "brier_rf": 0.103142,
+      "brier_gcn": 0.108912,
+      "delta": -0.00577
+    },
+    "4": {
+      "n": 360,
+      "brier_rf": 0.084366,
+      "brier_gcn": 0.091582,
+      "delta": -0.007215
+    }
+  },
+  "por_celda_aprox_nasa": {
+    "166|159": {
+      "n": 60,
+      "brier_rf": 0.134313,
+      "brier_gcn": 0.13958,
+      "delta": -0.005267
+    },
+    "166|160": {
+      "n": 300,
+      "brier_rf": 0.082633,
+      "brier_gcn": 0.091322,
+      "delta": -0.008689
+    },
+    "166|161": {
+      "n": 360,
+      "brier_rf": 0.084366,
+      "brier_gcn": 0.091582,
+      "delta": -0.007215
+    },
+    "167|159": {
+      "n": 180,
+      "brier_rf": 0.098996,
+      "brier_gcn": 0.102065,
+      "delta": -0.00307
+    },
+    "167|160": {
+      "n": 960,
+      "brier_rf": 0.060332,
+      "brier_gcn": 0.066173,
+      "delta": -0.005842
+    },
+    "167|161": {
+      "n": 180,
+      "brier_rf": 0.065811,
+      "brier_gcn": 0.05946,
+      "delta": 0.006352
+    },
+    "168|160": {
+      "n": 300,
+      "brier_rf": 0.059201,
+      "brier_gcn": 0.066094,
+      "delta": -0.006892
+    }
+  },
+  "por_piso": {
+    "cota_negativa_revisar": {
+      "n": 60,
+      "brier_rf": 0.135054,
+      "brier_gcn": 0.134303,
+      "delta": 0.000751
+    },
+    "llanura_costa": {
+      "n": 240,
+      "brier_rf": 0.095164,
+      "brier_gcn": 0.102565,
+      "delta": -0.007401
+    },
+    "montana_alta": {
+      "n": 180,
+      "brier_rf": 0.066863,
+      "brier_gcn": 0.059211,
+      "delta": 0.007652
+    },
+    "montana_baja": {
+      "n": 360,
+      "brier_rf": 0.064738,
+      "brier_gcn": 0.071585,
+      "delta": -0.006847
+    },
+    "montana_media": {
+      "n": 480,
+      "brier_rf": 0.064689,
+      "brier_gcn": 0.063936,
+      "delta": 0.000752
+    },
+    "piedemonte": {
+      "n": 660,
+      "brier_rf": 0.068405,
+      "brier_gcn": 0.078349,
+      "delta": -0.009944
+    },
+    "valle_bajo": {
+      "n": 360,
+      "brier_rf": 0.072452,
+      "brier_gcn": 0.082411,
+      "delta": -0.009958
+    }
+  },
+  "intervalo_remuestreo_anual": {
+    "nRemuestreos": 3125,
+    "limites_pct_95": [
+      -0.013189,
+      0.002415
+    ],
+    "media_no_ponderada": -0.005387
+  },
+  "intervalo_remuestreo_grupos_atmosfericos": {
+    "nRemuestreos": 823543,
+    "limites_pct_95": [
+      -0.007116,
+      -0.000484
+    ],
+    "media_no_ponderada": -0.004375
+  },
+  "interpretacion": "IC por solo cinco años y siete grupos espaciales aproximados. Dependencia interanual y celdas NOAA/NASA compartidas, no independencia ni prueba confirmatoria. Ambos intervalos pueden contener cero.",
+  "modelo_ia_con_menor_brier": "Random Forest con lluvia + océano + NASA POWER",
+  "modelo_ia_con_mejor_brier_global_en_todas_variantes": "RF lluvia+océano de 10F",
+  "modelo_referencia_superior": "Climatologia sectorial estacional de 10F",
+  "modelo_operativo_validado": null,
+  "alertas_habilitadas": false,
+  "advertencias": [
+    "No cubre todas las variables meteorologicas posibles; usa las verificadas de NASA POWER y NOAA.",
+    "NASA POWER MERRA2 meteorologia se muestrea en 7 grupos espaciales aproximados para 39 sectores y radiacion solar en malla mas gruesa.",
+    "Las series NASA CHIRPS y NOAA actuales son retrospectivas, no as-issued.",
+    "No hay validacion externa independiente en estaciones de campo ni pronosticos prospectivos.",
+    "Las etiquetas P90 CHIRPS son eventos de lluvia elevada relativa y NO son etiquetas de El Nino ni de infecciones."
+  ]
+}
