@@ -13,6 +13,15 @@
 
 
 
+
+## Fase 10I · Random Forest exclusivo para precipitaciones, sin enfermedades (17/10/2026)
+
+El módulo de predicción propia de lluvias utiliza **solamente Random Forest** y distingue **(1) volumen de precipitación mensual CHIRPS en mm** con RandomForestRegressor y **(2) probabilidad de que la lluvia supere el P90 histórico sectorial** con RandomForestClassifier. No genera pronósticos de plagas, enfermedades o infecciones: la humedad, humedad relativa y eventuales horas de HR elevada se tratan como información meteorológica para otra sección, nunca como diagnóstico. Las **horas de humedad relativa alta requieren datos horarios** y las **horas de humectación foliar no pueden derivarse solo de la lluvia mensual**.
+
+La evaluación empareja cuatro familias de covariables: solo lluvia CHIRPS, lluvia + océano regional NOAA/SOI/alisios/viento marino, lluvia + atmósfera NASA POWER (temperatura, RH, radiación, presión, viento, punto de rocío y VPD derivado), y combinación completa. Se mantiene la comparación contra **climatología sectorial**, cinco bloques geográficos, entrenamiento 1997–2015, tuning 2016–2018, calibración 2019–2020 y prueba 2021–2025. Las versiones CHIRPS y NASA utilizadas son retrospectivas y NO certifican predicciones operativas. GCN queda en el archivo científico como referencia histórica, sin participar en la generación de lluvia por RF.
+
+[**Módulo principal RF para lluvia**](random-forest-lluvias.html) · [Informe de metodología](FASE_10I_RF_SOLO_LLUVIA.md) · [Motor exclusivamente RF](modelos/random_forest_lluvia_multivariable_10i.py) · [Tests](tests/test_rf_solo_lluvia_10i.py) · [Entrenamiento automatizado](.github/workflows/oaf_10i_rf_precipitacion.yml) · [Resultados al terminar CI](datos/rf_precipitacion_10i/informe_rf_lluvia_10i.json).
+
 ## Fase 10H · Random Forest vs GCN: entrenamiento completado con NASA, CHIRPS y océano (17/10/2026)
 
 **Entrenamiento y pruebas realmente ejecutados.** Se recuperó un histórico completo de **39 sectores × 360 meses = 14.040 filas** de NASA POWER (1996–2025) y se entrenaron cinco bloques espaciales de Random Forest y Graph Convolutional Network. Los modelos usan precipitaciones CHIRPS rezagadas, índices oceánicos NOAA (anomalías Niño 1+2 y Niño 3.4, SOI, alisios y viento marino) y seis campos físicos NASA (temperatura, humedad, viento, radiación, presión superficial y temperatura de rocío), todos con **rezagos de al menos dos meses**. La nueva evaluación tiene **2.340 casos de prueba 2021–2025, 247 lluviosos ≥P90 por sector**, y 4.680 probabilidades almacenadas.
