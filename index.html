@@ -230,6 +230,13 @@ details.panel{scroll-margin-top:120px}
 <section data-page="clima" id="clima" hidden>
 
 <div class="viewhead"><span class="eyebrow">Territorio · Variabilidad y análisis de clima</span><h1>Análisis de clima regional</h1><p>Consulta el clima actual, la evolución prevista, las anomalías históricas y las diferencias entre costa, valles, piedemonte y montaña de Lambayeque. Cada gráfico presenta su fuente, interpretación y limitaciones.</p></div>
+<div class="panel" id="oaf-montana-rf-10l">
+<span class="eyebrow">Mejora de precipitación 10L · Vertientes andinas medias y altas</span>
+<h2>Comparar Random Forest de montaña con climatología histórica</h2>
+<p>Desarrollamos una evaluación más exigente de precipitación en las <strong>vertientes medias (8 sectores) y alturas andinas (3 sectores)</strong>. Se probaron especialistas Random Forest, ponderación de sectores altos, anomalías normalizadas y logarítmicas, atributos DEM, estacionalidad y señales oceanoatmosféricas. Cada opción se selecciona usando solo 2016–2018 y se contrasta con los años 2021–2025 y la referencia 10K.</p>
+<p><strong>Control territorial:</strong> cuando los tres sectores de alta montaña quedan en el mismo bloque espacial y no existe entrenamiento independiente de ese piso, se emplea climatología en lugar de atribuirle a RF habilidad no demostrada. La sección presenta <strong>mapa interactivo, cuadro comparativo y evaluación de 2023</strong>, sin emitir pronósticos actuales.</p>
+<div class="links"><a href="optimizacion-lluvia-montana-10l.html">Abrir mapa de montaña y comparación detallada ↗</a><a href="FASE_10L_OPTIMIZACION_MONTANAS.md">Auditoría de validación y resultados ↗</a><a href="datos/montanas_10l/evaluacion_montanas_10l.json">Datos comprobables por franja y año ↗</a></div>
+<div class="notice"><strong>Único objetivo del algoritmo:</strong> lluvia mensual y análisis histórico de precipitaciones. No se predicen enfermedades, ni tormentas horarias, ni alertas oficiales de ENSO.</div></div>
 <div class="panel" id="oaf-ecopaisajes-10k">
 <span class="eyebrow">Nuevo · Fase 10K · Geografía climática y análisis territorial</span>
 <h2>Ecorregiones y paisajes ecoclimáticos: mapa, filtros y resumen de lluvias</h2>
@@ -1014,7 +1021,10 @@ details.panel{scroll-margin-top:120px}
 <p><strong>Investigación del autor:</strong> procesa datos abiertos para entrenar Random Forest, GCN y otros algoritmos, verificando su habilidad con pruebas históricas independientes y explicando su incertidumbre. El entrenamiento no significa que un organismo oficial haya certificado el resultado.</p>
 <div class="notice"><strong>Estado general:</strong> investigación en validación. Ningún modelo autoriza hoy alertas automáticas, recomendaciones de fumigación o pronósticos oficiales de El Niño.</div>
 </div>
-<div class="panel" id="oaf-ecopaisajes-autor-10k">
+<div class="panel" id="oaf-montanas-autor-10l">
+<span class="eyebrow">Fase 10L · especialización altitudinal</span><h2>Predicción de lluvia en vertientes medias y altas</h2>
+<p>Comparación de Random Forest especializado, Random Forest anterior y climatología, con decisiones basadas solo en validación histórica. El mapa y las métricas muestran cuando el algoritmo debe <strong>abstenerse y usar la referencia climática</strong> por falta de sectores independientes de alta montaña.</p>
+<div class="links"><a href="optimizacion-lluvia-montana-10l.html">Ver mapa y resultados de montaña ↗</a><a href="FASE_10L_OPTIMIZACION_MONTANAS.md">Ver metodología y evaluación ↗</a></div></div><div class="panel" id="oaf-ecopaisajes-autor-10k">
 <span class="eyebrow">Fase 10K · RF geoespacial de precipitación</span>
 <h2>Explora la precisión de lluvia en cada paisaje de Lambayeque</h2>
 <p>Nuevo experimento Random Forest con perfiles ecológicos preliminares para 39 sectores; prueba 2021–2025 y análisis especial de 2023. Se muestran cinco paisajes: <strong>costa y valles, piedemonte, vertientes bajas, vertientes medias y cumbres</strong>. El RF con información geográfica redujo su MAE global de 21,07 a <strong>20,43 mm</strong>, todavía inferior en habilidad a climatología (14,30 mm). No se predicen enfermedades.</p>
