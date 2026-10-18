@@ -1,0 +1,264 @@
+{
+  "fase": "10G",
+  "modo": "piloto_2023",
+  "fuente_geometria_sha256": "8e15df92c608647d2a8c46d8eb5fc04c158b00e0f0ef2c3068ca90ca86b82fd1",
+  "proveedor": "Open-Meteo ERA5 0.25°",
+  "campos_requeridos": [
+    "temperature_2m_mean",
+    "relative_humidity_2m_mean",
+    "wind_speed_10m_mean",
+    "shortwave_radiation_sum",
+    "pressure_msl_mean",
+    "cloud_cover_mean",
+    "vapour_pressure_deficit_max"
+  ],
+  "resumen": {
+    "n_sectores": 39,
+    "n_meses_por_sector": 12,
+    "filas": 468,
+    "n_celdas_era5_distintas": 17,
+    "sectores_en_celdas_era5_compartidas": 32,
+    "grupos_celdas_compartidas": [
+      {
+        "celda": [
+          -6.5,
+          -80.25
+        ],
+        "sectores": [
+          "S001",
+          "S003",
+          "S004"
+        ]
+      },
+      {
+        "celda": [
+          -6.25,
+          -79.25
+        ],
+        "sectores": [
+          "S006",
+          "S007"
+        ]
+      },
+      {
+        "celda": [
+          -6.0,
+          -79.5
+        ],
+        "sectores": [
+          "S008",
+          "S010",
+          "S016",
+          "S017",
+          "S018",
+          "S029"
+        ]
+      },
+      {
+        "celda": [
+          -6.0,
+          -79.75
+        ],
+        "sectores": [
+          "S009",
+          "S025"
+        ]
+      },
+      {
+        "celda": [
+          -6.75,
+          -79.5
+        ],
+        "sectores": [
+          "S011",
+          "S030"
+        ]
+      },
+      {
+        "celda": [
+          -6.25,
+          -79.5
+        ],
+        "sectores": [
+          "S012",
+          "S015",
+          "S019",
+          "S020"
+        ]
+      },
+      {
+        "celda": [
+          -7.0,
+          -79.25
+        ],
+        "sectores": [
+          "S013",
+          "S036",
+          "S042"
+        ]
+      },
+      {
+        "celda": [
+          -6.75,
+          -79.25
+        ],
+        "sectores": [
+          "S014",
+          "S022",
+          "S035"
+        ]
+      },
+      {
+        "celda": [
+          -6.5,
+          -79.5
+        ],
+        "sectores": [
+          "S023",
+          "S031",
+          "S033",
+          "S040",
+          "S041"
+        ]
+      },
+      {
+        "celda": [
+          -6.25,
+          -79.75
+        ],
+        "sectores": [
+          "S026",
+          "S037"
+        ]
+      }
+    ],
+    "observacion": "Un punto interior por polígono. NO promedio espacial, ni estación; 0.25° puede compartirse.",
+    "altitud_inconsistente": "S001 cota negativa DEM revisar; ERA5 elevation es atributo diferente, no validación DEM.",
+    "dataset_completo": false,
+    "fecha_original_as_issued_disponible": false,
+    "verificacion_instrumental": false,
+    "alertas_activadas": false
+  },
+  "auditoria_respuestas": [
+    {
+      "batch": 0,
+      "period": "2023-2023",
+      "sectores": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.437499%2C-6.371148%2C-6.437499%2C-6.518698%2C-6.45312&longitude=-80.28125%2C-80.540339%2C-80.375%2C-80.30908%2C-79.960939&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "84cc0f35fe5bfb953272bb59bc1e54ad72e563cb2e06b8b3fbd0540bf47cfd6f",
+      "response_bytes": 88867,
+      "downloaded_utc": "2026-10-18T00:48:14.674136+00:00"
+    },
+    {
+      "batch": 1,
+      "period": "2023-2023",
+      "sectores": [
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.140624%2C-6.256529%2C-6.101783%2C-6.109375%2C-6.125&longitude=-79.359375%2C-79.3298%2C-79.414298%2C-79.820312%2C-79.625&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "91f5dc7f1e66520af3c1f695215989446231023e8a07c8d2ed78460eca3282e2",
+      "response_bytes": 88904,
+      "downloaded_utc": "2026-10-18T00:48:15.934103+00:00"
+    },
+    {
+      "batch": 2,
+      "period": "2023-2023",
+      "sectores": [
+        "S011",
+        "S012",
+        "S013",
+        "S014",
+        "S015"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.65625%2C-6.203125%2C-6.995658%2C-6.710819%2C-6.171875&longitude=-79.53125%2C-79.53125%2C-79.326985%2C-79.218742%2C-79.453124&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "1e3dd8400cb5721398f131c05c7e59e4c794832dc858ef81b0679c68328af46b",
+      "response_bytes": 88875,
+      "downloaded_utc": "2026-10-18T00:48:17.774540+00:00"
+    },
+    {
+      "batch": 3,
+      "period": "2023-2023",
+      "sectores": [
+        "S016",
+        "S017",
+        "S018",
+        "S019",
+        "S020"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.0625%2C-5.984375%2C-6.125%2C-6.28125%2C-6.265625&longitude=-79.4375%2C-79.5%2C-79.5%2C-79.46875%2C-79.390626&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "82694fa0c0a24485b88ad53ad602da4ef039b27a419c4def332f27662310a9c1",
+      "response_bytes": 88907,
+      "downloaded_utc": "2026-10-18T00:48:19.014739+00:00"
+    },
+    {
+      "batch": 4,
+      "period": "2023-2023",
+      "sectores": [
+        "S021",
+        "S022",
+        "S023",
+        "S024",
+        "S025"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.015607%2C-6.745924%2C-6.421875%2C-5.547129%2C-5.984375&longitude=-79.375%2C-79.176379%2C-79.5%2C-79.882645%2C-79.820312&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "6dcb2ecc47a602f981f1806f998d489b748263932bd162ffad1f1778ed2026ac",
+      "response_bytes": 88879,
+      "downloaded_utc": "2026-10-18T00:48:20.272255+00:00"
+    },
+    {
+      "batch": 5,
+      "period": "2023-2023",
+      "sectores": [
+        "S026",
+        "S027",
+        "S029",
+        "S030",
+        "S031"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.21875%2C-5.744674%2C-6.078125%2C-6.6875%2C-6.625&longitude=-79.828113%2C-79.752488%2C-79.609374%2C-79.625%2C-79.625&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "2f7da5d15023d75dc2b8c7f56563e997ec1978e2283accc449cfa0a255aa02d1",
+      "response_bytes": 88897,
+      "downloaded_utc": "2026-10-18T00:51:25.392332+00:00"
+    },
+    {
+      "batch": 6,
+      "period": "2023-2023",
+      "sectores": [
+        "S033",
+        "S035",
+        "S036",
+        "S037",
+        "S038"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.53125%2C-6.681583%2C-6.946666%2C-6.187499%2C-5.793933&longitude=-79.53125%2C-79.340793%2C-79.355322%2C-79.875%2C-79.899645&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "b6d4630e6c6d37eb447c23f5ecf165746ca51c9472c2efca7230c0a351fb1d04",
+      "response_bytes": 88865,
+      "downloaded_utc": "2026-10-18T00:51:26.646991+00:00"
+    },
+    {
+      "batch": 7,
+      "period": "2023-2023",
+      "sectores": [
+        "S039",
+        "S040",
+        "S041",
+        "S042"
+      ],
+      "request_url": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.874999%2C-6.4375%2C-6.40625%2C-6.88818&longitude=-79.6875%2C-79.62499%2C-79.53125%2C-79.357689&start_date=2023-01-01&end_date=2023-12-31&timezone=GMT&daily=temperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum%2Cpressure_msl_mean%2Ccloud_cover_mean%2Cvapour_pressure_deficit_max&models=era5&wind_speed_unit=ms&cell_selection=nearest&elevation=nan%2Cnan%2Cnan%2Cnan",
+      "response_sha256": "019a3e3e2e66cd8b58273a37a0d63ab997ae8f4f11d81844f0fc9c4d8f63163f",
+      "response_bytes": 71082,
+      "downloaded_utc": "2026-10-18T00:51:27.831577+00:00"
+    }
+  ],
+  "alertas_activadas": false
+}
