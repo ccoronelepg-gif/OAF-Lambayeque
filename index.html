@@ -1003,6 +1003,25 @@ details.panel{scroll-margin-top:120px}
 <p><strong>Investigación del autor:</strong> procesa datos abiertos para entrenar Random Forest, GCN y otros algoritmos, verificando su habilidad con pruebas históricas independientes y explicando su incertidumbre. El entrenamiento no significa que un organismo oficial haya certificado el resultado.</p>
 <div class="notice"><strong>Estado general:</strong> investigación en validación. Ningún modelo autoriza hoy alertas automáticas, recomendaciones de fumigación o pronósticos oficiales de El Niño.</div>
 </div>
+<div class="panel" id="oaf-rf-lluvias-riguroso-10j">
+<span class="eyebrow">Modelo predictivo del autor · Fase 10J · entrenamiento auditado</span>
+<h2>Random Forest para lluvia mensual y meses con lluvia elevada</h2>
+<p>El <strong>único algoritmo de IA del OAF para predicción de precipitaciones es Random Forest</strong>. Se reentrenó con cuatro familias de variables y pruebas separadas para <strong>cantidad de lluvia en mm/mes</strong>, <strong>probabilidad de lluvia alta P90</strong> y <strong>probabilidad de lluvia excepcional P95</strong> relativa al sector. La selección de parámetros y ponderaciones se realizó exclusivamente con validación 2016–2018; se evaluaron 39 sectores durante 2021–2025.</p>
+<div class="scroller"><table><thead><tr><th>Evaluación sin selección en test</th><th>RF lluvia</th><th>Climatología</th></tr></thead><tbody>
+<tr><td>MAE predicción lluvia mensual (mm) ↓</td><td>21,0716</td><td><strong>14,2957</strong></td></tr>
+<tr><td>Brier probabilidad ≥P90 ↓</td><td><strong>0,062843</strong></td><td>0,062884</td></tr>
+<tr><td>Brier probabilidad ≥P95 ↓</td><td>0,047131</td><td><strong>0,046996</strong></td></tr>
+</tbody></table></div>
+<p class="oaf-figure-caption">Ensayo retrospectivo: 2.340 sector-mes de prueba. La ventaja RF para P90 es mínima, mientras climatología supera RF en MAE y P95; <strong>no se declara habilidad operativa superior</strong>. Los pesos pueden regresar a climatología cuando el RF empeora la validación.</p>
+<div class="notice"><strong>Separación definitiva:</strong> este Random Forest NO predice enfermedades ni infecciones. Las condiciones de humedad relativa y horas húmedas serán información meteorológica complementaria con registros horarios. Los umbrales P90/P95 NO equivalen a alertas de SENAMHI o ENFEN, ni a lluvias torrenciales horarias.</div>
+<p>Las mejoras automáticas futuras se realizan como <strong>modelos candidatos</strong> cuando se aportan nuevos meses de CHIRPS completos y trazables. No se permite reemplazar automáticamente un pronóstico público sin nuevos controles prospectivos, pruebas contra climatología y verificación de fuentes.</p>
+<div class="links">
+<a href="evaluacion-rf-lluvias-10j.html">Ver gráfico por sector: lluvia RF, climatología, P90 y P95 ↗</a>
+<a href="FASE_10J_RF_PRECIPITACION_EXTREMOS_AUTOMEJORA.md">Informe científico y protocolo de automejora ↗</a>
+<a href="datos/rf_robusto_10j/auditoria_y_seleccion_10j.json">Evaluación íntegra y parámetros ↗</a>
+<a href="datos/rf_robusto_10j/estado_publicacion_10j.json">Estado de validación y publicación ↗</a>
+</div>
+</div>
 <div class="panel" id="oaf-rf-unico-lluvias-10i">
 <span class="eyebrow">Módulo principal del autor · Predicción exclusivamente de precipitaciones</span>
 <h2>Random Forest — lluvia mensual (mm) y probabilidad de meses lluviosos</h2>
