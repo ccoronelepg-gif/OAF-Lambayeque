@@ -1,0 +1,30 @@
+name: OAF 10L — Auditoría íntegra montaña y portal
+on:
+  push:
+    paths:
+      - "modelos/auditoria_montanas_portal_10l.py"
+      - "optimizacion-lluvia-montana-10l.html"
+      - ".github/workflows/oaf_10l_auditoria.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recalcular métricas en 660 pares y verificar abstención en alta montaña
+        run: python modelos/auditoria_montanas_portal_10l.py
+      - name: Comprobar JavaScript del mapa y la tabla
+        run: node --check datos/montanas_10l/_10l_js_validation.cjs
+      - name: Confirmar que los documentos se publicaron
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          doc=Path('FASE_10L_OPTIMIZACION_MONTANAS.md').read_text(encoding='utf8')
+          assert '23,4626' in doc and '29,0930' in doc
+          assert 'Climatología' in doc or 'climatología' in doc
+          assert 'SIN' not in doc[:20]
+          print('10L_PUBLICACION_DOCUMENTAL_VERIFICADA')
+          PY
