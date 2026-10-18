@@ -95,7 +95,7 @@ def build_params(points,start,end):
   "start_date":start,"end_date":end,"timezone":"GMT",
   "daily":",".join(VARS),"models":"era5",
   "wind_speed_unit":"ms","cell_selection":"nearest",
-  "elevation":"nan"}
+  "elevation":",".join(["nan"]*len(points))}
 def mean(values):return sum(values)/len(values)
 def convert(node,response,metadata,expected_first,expected_last):
  daily=response.get("daily")
