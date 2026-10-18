@@ -1,0 +1,90 @@
+{
+  "fase": "10J",
+  "estado": "auditoria_de_intervalos_exploratorios_no_concluyentes",
+  "n_objetivos": 0,
+  "comparacion": "RF familia lluvia que seleccionó la validación 2016–2018 vs climatología 1997–2015",
+  "periodo": "2021-2025",
+  "intervalos": "remuestreo discreto exhaustivo de 5 grupos temporales (5^5) y de 5 bloques espaciales (5^5), dependencia no corregida, NO inferencia confirmatoria",
+  "metricas": {
+    "MAE_rfc_menos_clim": {
+      "delta_global": null,
+      "deltas_anuales": {
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": null
+      },
+      "deltas_bloques": {
+        "0": null,
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null
+      },
+      "intervalo_exploratorio_anios_95": [
+        null,
+        null
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        null,
+        null
+      ],
+      "convencion": "delta negativo favorece RF"
+    },
+    "brier_p90_rfc_menos_clim": {
+      "delta_global": null,
+      "deltas_anuales": {
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": null
+      },
+      "deltas_bloques": {
+        "0": null,
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null
+      },
+      "intervalo_exploratorio_anios_95": [
+        null,
+        null
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        null,
+        null
+      ],
+      "convencion": "delta negativo favorece RF"
+    },
+    "brier_p95_rfc_menos_clim": {
+      "delta_global": null,
+      "deltas_anuales": {
+        "2021": null,
+        "2022": null,
+        "2023": null,
+        "2024": null,
+        "2025": null
+      },
+      "deltas_bloques": {
+        "0": null,
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null
+      },
+      "intervalo_exploratorio_anios_95": [
+        null,
+        null
+      ],
+      "intervalo_exploratorio_bloques_95": [
+        null,
+        null
+      ],
+      "convencion": "delta negativo favorece RF"
+    }
+  },
+  "alertas_activadas": false,
+  "demostracion_de_superioridad_operativa": false
+}
