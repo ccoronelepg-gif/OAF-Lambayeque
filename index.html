@@ -239,7 +239,16 @@ details.panel{scroll-margin-top:120px}
 <a href="observaciones-senamhi-10m.html">Consultar registros de lluvia de montaña y filtros por año ↗</a>
 <a href="FASE_10M_INTEGRACION_SENAMHI.md">Leer auditoría y método de incorporación ↗</a>
 <a href="datos/senamhi_estaciones_10m/resumen_mensual_senamhi_observado.csv">Descargar acumulados mensuales por estación ↗</a>
-</div></div><div class="panel" id="oaf-montana-rf-10l">
+</div></div><div class="panel" id="oaf-estaciones-senamhi-rf-10n">
+<span class="eyebrow">Nuevo · 10N · Pluviómetros de montaña SENAMHI</span>
+<h2>Datos terrestres integrados: Incahuasi y Cueva Blanca</h2>
+<p>Incorporamos <strong>40 meses completos de precipitación mensual</strong> procedentes de archivos SENAMHI/DRD aportados para Incahuasi (S007, 3.052 m) y Cueva Blanca (S008, 3.300 m). Se verificaron archivos, duplicados y correspondencia geográfica con los sectores experimentales del OAF. Los archivos señalan <strong>datos sin control de calidad</strong>.</p>
+<p>Se entrenó un nuevo <strong>Random Forest de corrección puntual</strong> con separación temporal 2021–2024, validación 2025 y prueba 2026. <strong>No mejoró la climatología en validación</strong> (peso RF elegido: 0; MAE prueba 2026: 63,56 mm). Por ello se conserva únicamente como experimento, <strong>sin sustituir el Random Forest regional de montaña</strong> ni activar avisos.</p>
+<div class="links"><a href="verificacion-estaciones-senamhi-10n.html">Ver estaciones, meses y precisión del nuevo experimento ↗</a>
+<a href="FASE_10N_SENAMHI_RF_MONTAÑA.md">Informe de integración y entrenamiento ↗</a>
+<a href="datos/senamhi_10n/evaluacion_rf_estacion_10n.json">Métricas comprobables ↗</a></div>
+</div>
+<div class="panel" id="oaf-montana-rf-10l">
 <span class="eyebrow">Mejora de precipitación 10L · Vertientes andinas medias y altas</span>
 <h2>Comparar Random Forest de montaña con climatología histórica</h2>
 <p>Desarrollamos una evaluación más exigente de precipitación en las <strong>vertientes medias (8 sectores) y alturas andinas (3 sectores)</strong>. Se probaron especialistas Random Forest, ponderación de sectores altos, anomalías normalizadas y logarítmicas, atributos DEM, estacionalidad y señales oceanoatmosféricas. Cada opción se selecciona usando solo 2016–2018 y se contrasta con los años 2021–2025 y la referencia 10K.</p>
@@ -1033,7 +1042,10 @@ details.panel{scroll-margin-top:120px}
 <div class="panel" id="oaf-senamhi-confrontacion-10m">
 <span class="eyebrow">Validación de precipitación · Observaciones terrestres recibidas</span><h2>Datos de pluviómetros para la próxima evaluación de Random Forest</h2>
 <p>Cueva Blanca e Incahuasi aportan 40 meses de lluvia terrestre completa de 2021–2026, no consecutivos y todavía sin control de calidad. Se preservan los datos originales y sus SHA-256; el próximo paso será comparar las mediciones puntuales con el sector georreferenciado, dejando fuera del entrenamiento los periodos de evaluación.</p>
-<div class="links"><a href="observaciones-senamhi-10m.html">Ver datos de estaciones ↗</a><a href="datos/senamhi_estaciones_10m/manifest_fuentes_10m.json">Auditoría de archivos recibidos ↗</a></div></div><div class="panel" id="oaf-montanas-autor-10l">
+<div class="links"><a href="observaciones-senamhi-10m.html">Ver datos de estaciones ↗</a><a href="datos/senamhi_estaciones_10m/manifest_fuentes_10m.json">Auditoría de archivos recibidos ↗</a></div></div><div class="panel" id="oaf-senamhi-autor-10n">
+<span class="eyebrow">Datos terrestres contrastados · Fase 10N</span><h2>Cómo cambian las estimaciones frente a pluviómetros reales</h2>
+<p>Auditoría de estaciones SENAMHI Incahuasi y Cueva Blanca con 40 meses completos. Se probó un Random Forest de corrección puntual por sector; al no mejorar la referencia, la elección de validación fue **peso cero** y no se modifica el modelo regional 10L. Las series todavía requieren control instrumental independiente.</p>
+<div class="links"><a href="verificacion-estaciones-senamhi-10n.html">Consultar estación y meses de validación ↗</a><a href="FASE_10N_SENAMHI_RF_MONTAÑA.md">Ver método reproducible y límites ↗</a></div></div><div class="panel" id="oaf-montanas-autor-10l">
 <span class="eyebrow">Fase 10L · especialización altitudinal</span><h2>Predicción de lluvia en vertientes medias y altas</h2>
 <p>Comparación de Random Forest especializado, Random Forest anterior y climatología, con decisiones basadas solo en validación histórica. El mapa y las métricas muestran cuando el algoritmo debe <strong>abstenerse y usar la referencia climática</strong> por falta de sectores independientes de alta montaña.</p>
 <div class="links"><a href="optimizacion-lluvia-montana-10l.html">Ver mapa y resultados de montaña ↗</a><a href="FASE_10L_OPTIMIZACION_MONTANAS.md">Ver metodología y evaluación ↗</a></div></div><div class="panel" id="oaf-ecopaisajes-autor-10k">
