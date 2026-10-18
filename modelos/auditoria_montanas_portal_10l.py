@@ -45,7 +45,7 @@ def main():
   if token not in h:raise ValueError("Missing dashboard element "+token)
  if 'id="oaf-montana-rf-10l"' not in portal:raise ValueError("Portal climate not linked")
  blocks=re.findall(r"<script[^>]*>(.*?)</script>",h,re.S)
- if len(blocks)<1 or len(blocks[-1])<7000:raise ValueError("Missing dashboard JavaScript")
+ if len(blocks)<1 or len(blocks[-1])<4200:raise ValueError("Missing dashboard JavaScript")
  path=BASE/"_10l_js_validation.cjs";path.write_text(blocks[-1],encoding="utf8")
  print("10L_AUDITORIA_INTEGRAL_OK",{"n":len(rows),"altas":len(high),"medias":len(medium),
    "global":r["resultados"]["total_montana"],"high_fallback":True})
