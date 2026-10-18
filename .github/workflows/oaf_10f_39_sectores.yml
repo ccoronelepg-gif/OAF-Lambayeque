@@ -1,0 +1,64 @@
+name: OAF 10F — Probabilidad territorial 39 sectores
+on:
+  push:
+    paths:
+      - "modelos/probabilidad_39_sectores_10f.py"
+      - "tests/test_probabilidad_10f.py"
+      - ".github/workflows/oaf_10f_39_sectores.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  evaluacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencias numéricas reproducibles
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy==2.4.6 scikit-learn==1.9.1 shapely==2.2.0
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - name: Siete pruebas de separación, rezagos y procedencia
+        run: python -m unittest discover -s tests -p test_probabilidad_10f.py -v
+      - name: Entrenar RF y GCN en cinco bloques espaciales
+        run: python modelos/probabilidad_39_sectores_10f.py
+      - name: Verificación de integridad y prevención de avisos operativos
+        run: python modelos/probabilidad_39_sectores_10f.py --check
+      - name: Validación de métricas y cobertura territorial
+        run: |
+          python - <<'PY'
+          import json
+          p="datos/extension_10f/evaluacion_39_sectores_10f.json"
+          d=json.load(open(p,encoding="utf8"))
+          assert d["n_sectores"]==39
+          assert d["n_bloques_geograficos"]==5
+          assert d["n_predicciones_prueba"]==11700
+          assert d["n_sector_mes_objetivo"]==2340
+          assert d["alertas_habilitadas"] is False
+          assert d["modelo_operativo_ganador"] is None
+          assert d["instantaneas_as_issued"] is False
+          assert d["verificacion_instrumental_independiente"] is False
+          assert len(d["evaluacion"]["global"])==5
+          for r in d["evaluacion"]["global"]:print("10F_GLOBAL",r)
+          print("10F_SELECCION",d["evaluacion"]["modelo_ia_destacado_si_supera_climatologia"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf-10f-prueba-territorial-39-sectores
+          path: |
+            datos/extension_10f/evaluacion_39_sectores_10f.json
+            datos/extension_10f/probabilidades_39_sectores_10f.csv
+          retention-days: 90
+      - name: Publicar únicamente resultados retrospectivos auditados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/extension_10f/evaluacion_39_sectores_10f.json datos/extension_10f/probabilidades_39_sectores_10f.csv
+          git diff --cached --quiet || git commit -m "data(10F): evaluar RF GCN en 39 sectores y océano regional"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
