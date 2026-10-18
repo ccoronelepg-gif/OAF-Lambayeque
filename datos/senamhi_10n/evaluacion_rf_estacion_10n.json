@@ -1,0 +1,71 @@
+{
+  "fase": "10N",
+  "fuente": "SENAMHI/DRD aportado sin QC instrumental",
+  "estaciones": 2,
+  "estaciones_codigos": [
+    "153102",
+    "000307"
+  ],
+  "sectores": [
+    "S008",
+    "S007"
+  ],
+  "meses_completos": 40,
+  "entrenamiento_2021_2024": 17,
+  "ajuste_2025": 15,
+  "prueba_2026": 8,
+  "resultado_validation": {
+    "n": 15,
+    "mae_rf_mm": 55.9538,
+    "mae_climatologia_mm": 55.9538,
+    "sesgo_rf_mm": -50.6171
+  },
+  "resultado_2026": {
+    "n": 8,
+    "mae_rf_mm": 63.5568,
+    "mae_climatologia_mm": 63.5568,
+    "sesgo_rf_mm": -0.6037
+  },
+  "resultado_2026_por_estacion": {
+    "153102": {
+      "n": 4,
+      "mae_rf_mm": 58.5979,
+      "mae_climatologia_mm": 58.5979,
+      "sesgo_rf_mm": -1.8179
+    },
+    "000307": {
+      "n": 4,
+      "mae_rf_mm": 68.5157,
+      "mae_climatologia_mm": 68.5157,
+      "sesgo_rf_mm": 0.6104
+    }
+  },
+  "seleccion_validacion": {
+    "peso_rf": 0,
+    "hoja_minima": 2,
+    "profundidad": 3,
+    "arboles": 250,
+    "mae_validacion_mm": 55.95379
+  },
+  "sha256": {
+    "csv_senamhi": "17ea187bf764b528a2433d4bcefbacc315e09f0989403dbab197ef6e8e1cd005",
+    "referencia_10l": "f0a5323704f13566223293c21112d14c49fd51dce1ebad48b91880abed637dbf",
+    "modelo_binario_interno": "56ded3b20ae0b7901ba58fa3c879f289a91729611085c5fb7a84b9b186992259",
+    "predicciones_mensuales": "f1eb05f610086376870437b89d50dbce3b43a1fddcd23f37ce3bad626dd2ceb2"
+  },
+  "lectura_correcta": "RF entrenado como corrector puntual, con peso 0 si no mejora la climatología. No es el RF territorial reentrenado.",
+  "fecha_de_emision_historica_verificada": false,
+  "independencia_de_CHIRPS_verificada": false,
+  "QC_instrumental_formal_aprobado": false,
+  "reentrenamiento_regional": false,
+  "pronosticos_actuales_habilitados": false,
+  "alertas_habilitadas": false,
+  "prediccion_enfermedades": false,
+  "limitaciones": [
+    "17 meses iniciales y 15 de validacion de solo dos estaciones, periodos discontinuos",
+    "8 pares de 2026 para test, insuficientes para habilidad robusta",
+    "climatologia CHIRPS sectorial ≠ precipitacion puntual de la estacion",
+    "las entradas y observaciones se recopilaron retrospectivamente y no son as-issued",
+    "necesario control instrumental SENAMHI y estaciones ajenas a CHIRPS antes de activar uso publico"
+  ]
+}
