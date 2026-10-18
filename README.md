@@ -14,6 +14,27 @@
 
 
 
+
+## Fase 10J · RF conservador para precipitación y extremos P90/P95 con automejora (17/10/2026)
+
+**Nuevo entrenamiento ejecutado y verificado:** cinco pliegues espaciales, **39 sectores × 60 meses = 2.340 casos históricos**, cuatro familias de covariables, **9.360 filas de estimaciones**. Objetivos únicos: **lluvia mensual (mm)**, **probabilidad de lluvia elevada ≥P90 local** y **probabilidad de lluvia excepcional ≥P95 local**. Se utilizan únicamente modelos **Random Forest**; las futuras enfermedades de cultivos se analizarán de forma separada con observaciones reales de campo, sin usar este modelo como clasificador de patógenos.
+
+La nueva arquitectura usa **climatología de 1997–2015 como referencia** y RF como corrector cuyo peso puede ser cero si empeora la validación. Se fijan hiperparámetros y ponderaciones solo con 2016–2018, se construyen bandas empíricas con 2019–2020 y se evalúa retrospectivamente en 2021–2025. Las series atmosféricas NASA POWER/NOAA y precipitación CHIRPS incluyen revisiones y no constituyen datos originales *as-issued*. Los cinco bloques CHIRPS tampoco representan validación independiente de las celdas meteorológicas NASA compartidas.
+
+**Resultados de la selección fijada en validación (misma familia lluvia histórica en los cinco pliegues):**
+
+| Indicador | RF (10J) | Climatología |
+|---|---:|---:|
+| MAE lluvia mensual mm, menor mejor | 21,07159 | **14,29568** |
+| Brier ≥P90, menor mejor | **0,0628431** | 0,0628840 |
+| Brier ≥P95, menor mejor | 0,0471307 | **0,0469958** |
+
+La mejora del Brier P90 es **muy pequeña** y no prueba superioridad robusta. Las bandas empíricas al 90 % tuvieron **86,75 %** de cobertura total y **80,77 %** en 2023 (no cumplen cobertura nominal en ese año). El RF de mm tiene un MAE superior a climatología. En consecuencia **no hay pronósticos operativos ni alertas activadas** y el proyecto publica el benchmark como investigación transparente.
+
+**Automejora futura:** [GitHub Actions mensual](.github/workflows/oaf_10j_automejora.yml) revisa cada día 26 si existen nuevos archivos CHIRPS v3 Final completos por 39 sectores en `datos/nuevos_meses_chirps_10j/`. Si los hay, [genera un RF candidato](modelos/actualizacion_automatica_rf_10j.py) con trazabilidad, prueba retrospectiva reciente si se dispone de 12 o más meses nuevos y almacena el modelo internamente. **Sin nuevos datos no reentrena ni inventa valores**; sin covariables actualizadas de NASA/NOAA la versión futura identifica explícitamente su entrada como solo lluvia. Ningún candidato se promueve automáticamente a avisos públicos: se requieren pronósticos archivados antes del evento, estaciones independientes y revisión científica.
+
+[**Visor sectorial nuevo**](evaluacion-rf-lluvias-10j.html) · [Informe metodológico](FASE_10J_RF_PRECIPITACION_EXTREMOS_AUTOMEJORA.md) · [Código de RF mm/P90/P95](modelos/rf_lluvia_extremos_10j.py) · [Evaluación JSON real](datos/rf_robusto_10j/auditoria_y_seleccion_10j.json) · [CSV de 9.360 estimaciones](datos/rf_robusto_10j/predicciones_rf_tres_objetivos_10j.csv) · [Estado de publicación](datos/rf_robusto_10j/estado_publicacion_10j.json) · [Fuente adicional de incertidumbre](datos/rf_robusto_10j/comparacion_pareada_incertidumbre_10j.json) · [CI de entrenamiento exitosa](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39092829210) · [CI de automejora exitosa (sin nuevos meses aún)](https://github.com/ccoronelepg-gif/OAF-Lambayeque/actions/runs/39093176254).
+
 ## Fase 10I · Random Forest exclusivo para precipitaciones, sin enfermedades (17/10/2026)
 
 **Entrenamiento comprobado de un único algoritmo predictivo: Random Forest.** RF tiene dos tareas meteorológicas: predicción de **lluvia mensual CHIRPS en mm** y probabilidad de que el mes supere el **P90 de lluvia histórico del sector**. No predice infecciones ni enfermedades. El módulo de consulta futura de horas de humedad necesita series horarias; la lluvia mensual no determina cuánto tiempo está mojada la hoja.
