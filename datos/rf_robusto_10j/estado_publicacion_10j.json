@@ -1,0 +1,14 @@
+{
+  "fase": "10J",
+  "modo": "INVESTIGACION_RF_LLUVIA",
+  "puede_mostrar_metricas_retrospectivas": true,
+  "puede_emitir_predicciones_operativas": false,
+  "permite_reentrenamiento_automatico_candidato": true,
+  "promocion_a_produccion_automatica": false,
+  "requiere_observaciones_nuevas_2026_o_posteriores": true,
+  "requiere_verificacion_as_issued_y_estaciones": true,
+  "modelo_reemplazado_automaticamente": false,
+  "prohibida_prediccion_enfermedades": true,
+  "sha256_informe": "2cc404c3061135e030707a96b6c7eea37423a877b1cb584840e0a10a47be9c1f",
+  "sha256_predicciones": "13cbc704ef5a451abca2cddc84e369fd1a9da348c899751bdd69dc62459cbee0"
+}
