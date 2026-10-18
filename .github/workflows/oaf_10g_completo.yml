@@ -1,0 +1,62 @@
+name: OAF 10G — Serie atmosférica ERA5 1996–2025
+on:
+  push:
+    paths:
+      - .github/workflows/oaf_10g_completo.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: oaf10g-full
+  cancel-in-progress: false
+jobs:
+  reanalisis_historico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar Shapely para puntos interiores
+        run: python -m pip install shapely==2.1.2
+      - name: Validar polígonos, controles físicos y unidades
+        run: python -m unittest discover -s tests -p test_ingesta_era5_10g.py -v
+      - name: Descargar ERA5 histórico únicamente para 39 puntos auditados
+        run: python modelos/ingesta_era5_39_sectores_10g.py --mode full
+      - name: Comprobar 14 040 registros, celdas compartidas, SHA y ningún aviso
+        run: python modelos/ingesta_era5_39_sectores_10g.py --mode verify
+      - name: Revisión obligatoria de procedencia y periodos
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("datos/atmosfera_sectorial_10g/auditoria_atmosfera_10g.json",encoding="utf8"))
+          inv=json.load(open("datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json",encoding="utf8"))
+          assert d["resumen"]["n_sectores"]==39
+          assert d["resumen"]["filas"]==14040
+          assert d["resumen"]["n_meses_por_sector"]==360
+          assert d["resumen"]["n_celdas_era5_distintas"]>=2
+          assert len(d["auditoria_respuestas"])==24
+          assert d["alertas_activadas"] is False
+          assert d["modelo_operativo_ganador"] is None
+          assert d["verdaderos_promedios_poligonales"] is False
+          assert inv["n_sectores"]==39
+          print("10G_MUESTREO_VERIFICADO",json.dumps(d["resumen"],ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oaf10g-era5-sectorial-completo
+          path: |
+            datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json
+            datos/atmosfera_sectorial_10g/muestra_era5_mensual_10g.csv
+            datos/atmosfera_sectorial_10g/auditoria_atmosfera_10g.json
+          retention-days: 90
+      - name: Publicar fuentes verificadas, sin reentrenar modelos aún
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/atmosfera_sectorial_10g/puntos_y_advertencias_10g.json datos/atmosfera_sectorial_10g/muestra_era5_mensual_10g.csv datos/atmosfera_sectorial_10g/auditoria_atmosfera_10g.json
+          git diff --cached --quiet || git commit -m "data(10G): muestreo historico ERA5 1996-2025 auditado para 39 sectores"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
