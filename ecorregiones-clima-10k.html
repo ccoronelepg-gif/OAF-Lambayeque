@@ -1,0 +1,213 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143d36">
+<title>OAF Lambayeque — Ecorregiones y lluvia | Fase 10K</title>
+<meta name="description" content="Dashboard científico interactivo de cinco paisajes ecoclimáticos experimentales de Lambayeque, con mapa de 39 sectores, lluvia CHIRPS, Random Forest, P90/P95 y validación temporal.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzX9T9tb0DjwP72XTEnr9XwZc=" crossorigin="">
+<style>
+:root{--navy:#143d36;--deep:#0e2c2e;--teal:#167769;--gold:#c79437;--paper:#f3f7f4;--line:#dce9df;--ink:#24413c;--muted:#536e64;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:#126f61}button,select{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(120deg,var(--deep),#14624e);color:#fff;padding:1.8rem max(1.1rem,calc((100% - 1320px)/2))}
+header h1{font-size:clamp(1.55rem,3vw,2.5rem);line-height:1.18;margin:.38rem 0;letter-spacing:-.02em}header p{max-width:780px;margin:.55rem 0;color:#d7ebe2}
+header a{color:#d0f4df;font-size:.89rem}
+main{max-width:1320px;padding:1.15rem;margin:auto}
+.notice{background:#fff5e4;border-left:4px solid #c88a29;border-radius:0 10px 10px 0;padding:.95rem 1.15rem;margin:1rem 0;color:#5a4828}
+.panel{border:1px solid var(--line);border-radius:14px;background:var(--white);padding:1.1rem;min-width:0}
+.panel h2{font-size:1.17rem;margin:.15rem 0 .7rem}
+.grid{display:grid;gap:.8rem;grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpi{background:white;border:1px solid var(--line);padding:.9rem;border-radius:12px}
+.kpi .v{display:block;font-size:1.5rem;font-weight:750;letter-spacing:-.025em;color:var(--navy)}
+.kpi .lab{display:block;font-size:.8rem;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(340px,.95fr);gap:1rem;margin:1rem 0}
+#map{height:530px;border-radius:10px;background:#e5eee5;z-index:0}
+.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:.4rem 0 1rem}
+.control label{display:block;font-size:.78rem;font-weight:700;margin-bottom:.26rem}
+.control select{width:100%;min-height:41px;border:1px solid #aac8bc;border-radius:8px;padding:.45rem .6rem;background:#fff;color:var(--ink)}
+.control select:focus-visible,.btn:focus-visible,tr:focus-visible{outline:3px solid #8ebeb1;outline-offset:1px}
+.badge{display:inline-flex;padding:.25rem .55rem;border:1px solid #d8e7d9;border-radius:20px;font-size:.73rem;background:#ebf3eb;color:#30614a;white-space:nowrap}
+.legend{display:flex;gap:.65rem;flex-wrap:wrap;margin:.65rem 0}.legend span{display:inline-flex;gap:.38rem;align-items:center;font-size:.76rem}.dot{display:inline-block;width:13px;height:13px;border-radius:3px}
+.muted{font-size:.83rem;color:var(--muted)}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.84rem;min-width:740px}
+thead th{background:#edf4ee;color:#3b5848;text-align:right;font-weight:700}
+th,td{border-bottom:1px solid #e4eee6;padding:.66rem .54rem;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}tbody tr[data-landscape]{cursor:pointer}tbody tr[data-landscape]:hover,tbody tr[data-landscape]:focus{background:#eff9f1}tbody tr.active{background:#e3f3e9}
+.table-line{display:inline-flex;align-items:center;gap:.55rem}.color{width:10px;height:10px;border-radius:3px;display:inline-block}
+.infoBlock{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:.75rem 0}
+.infoCell{border-radius:9px;background:#eef5f0;padding:.75rem}.infoCell strong{display:block;font-size:1.28rem}.infoCell small{color:#577266;font-size:.75rem}
+#chart{width:100%;height:auto;aspect-ratio:710/320;border:1px solid var(--line);background:#fdfefd;border-radius:9px}
+.key{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.4rem;font-size:.76rem}
+.key b{display:inline-block;width:11px;height:11px;margin-right:.35rem;border-radius:2px}
+.below{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:1rem;margin:1rem 0}
+.btn{border:1px solid #bbd7c5;background:#f1f7f1;color:#165746;padding:.48rem .8rem;border-radius:8px;font-weight:600}
+.facts{margin:.3rem 0;padding-left:1.1rem}.facts li{margin:.4rem 0}
+#status{margin:.7rem 0;color:var(--muted)}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1000px){.layout,.below{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}#map{height:440px}}
+@media(max-width:620px){.controls{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}#map{height:370px}.infoBlock{grid-template-columns:1fr 1fr}.panel{padding:.75rem}}
+</style></head><body>
+<header>
+<div style="font-size:.76rem;letter-spacing:.08em;opacity:.92">OAF LAMBAYEQUE · CIENCIA CLIMÁTICA ABIERTA · FASE 10K</div>
+<h1>Ecorregiones y precipitaciones de Lambayeque</h1>
+<p>Mapa interactivo de paisajes ecoclimáticos, análisis comparativo de lluvia y evaluación de Random Forest por pisos altitudinales y sectores de investigación.</p>
+<a href="./index.html#clima">← Volver a Análisis de clima regional</a>
+</header>
+<main>
+<p class="notice"><strong>Interpretación científica:</strong> las cinco agrupaciones son <strong>paisajes ecoclimáticos provisionales derivados de pisos altitudinales 9K</strong>; los polígonos NO son límites oficiales de ecorregiones del MINAM. Los valores mostrados corresponden a <strong>evaluaciones retrospectivas 2021–2025</strong>, no a pronósticos actuales ni a alertas de lluvias intensas. P90 y P95 describen lluvias mensuales altas según la historia de cada sector, no tormentas horarias.</p>
+<div class="grid" aria-label="Indicadores principales">
+<div class="kpi"><span class="v" id="k-land">5</span><span class="lab">Paisajes operativos</span></div>
+<div class="kpi"><span class="v" id="k-sectors">39</span><span class="lab">Sectores con datos completos</span></div>
+<div class="kpi"><span class="v" id="k-mae">—</span><span class="lab">MAE RF, mm/mes en el filtro</span></div>
+<div class="kpi"><span class="v" id="k-clim">—</span><span class="lab">MAE climatología, mm/mes</span></div>
+</div>
+<section class="panel" style="margin:1rem 0">
+<h2>Selecciona un paisaje, un periodo y la variable del mapa</h2>
+<div class="controls">
+<div class="control"><label for="paisaje">Paisaje ecoclimático (experimental)</label><select id="paisaje"><option value="todos">Todos los paisajes</option></select></div>
+<div class="control"><label for="periodo">Año de evaluación</label><select id="periodo"><option value="todos">2021–2025 completo</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023 (episodios intensos)</option><option value="2024">2024</option><option value="2025">2025</option></select></div>
+<div class="control"><label for="metric">Color de polígonos</label><select id="metric"><option value="paisaje">Paisaje ecológico experimental</option><option value="mae">Error mensual RF (MAE mm)</option><option value="observado">Lluvia mensual observada (mm)</option><option value="predicho">Lluvia mensual estimada RF (mm)</option><option value="eventos">Eventos ≥P90 observados (cantidad)</option></select></div>
+</div>
+<button id="reset" class="btn" type="button">Mostrar todos los paisajes</button>
+<p id="status" role="status" aria-live="polite">Recuperando el mapa y las evaluaciones auditadas…</p>
+</section>
+<div class="layout">
+<section class="panel"><h2>Mapa territorial y filtros <span class="badge">Polígonos 9K experimentales</span></h2>
+<div id="map" role="region" aria-label="Mapa interactivo de los 39 sectores de Lambayeque"></div>
+<div id="legend" class="legend" aria-label="Leyenda de colores"></div>
+<p class="muted">Selecciona un polígono para examinar el sector. Los colores indican paisajes operativos o valores estadísticos, no límites MINAM certificados. Se excluyeron S028, S032 y S034 por cobertura CHIRPS insuficiente. S001 mantiene una cota DEM negativa pendiente de revisión.</p>
+</section>
+<section class="panel">
+<h2 id="detail-title">Resultados por sector</h2>
+<div class="control"><label for="sector">Seleccionar sector con historial de lluvia</label><select id="sector"><option value="">Cargando sectores…</option></select></div>
+<div class="infoBlock">
+<div class="infoCell"><strong id="d-obs">—</strong><small>Media mensual observada (mm)</small></div>
+<div class="infoCell"><strong id="d-rf">—</strong><small>Media mensual RF (mm)</small></div>
+<div class="infoCell"><strong id="d-mae">—</strong><small>Error MAE RF (mm)</small></div>
+<div class="infoCell"><strong id="d-p90">—</strong><small>Meses observados ≥P90 (n)</small></div>
+</div>
+<svg id="chart" viewBox="0 0 710 320" role="img" aria-label="Serie mensual comparando lluvia observada, Random Forest y climatología"></svg>
+<div class="key">
+<span><b style="background:#277dc0"></b>CHIRPS observado</span>
+<span><b style="background:#cc8130"></b>Random Forest</span>
+<span><b style="background:#348a6c"></b>Climatología</span>
+</div>
+<p class="muted" id="detail-note">Se muestran promedios mensuales del periodo seleccionado, no escenarios futuros.</p>
+</section>
+</div>
+<section class="panel">
+<h2>Cuadro resumen por paisaje ecoclimático</h2>
+<p class="muted">Promedios por sector-mes, no ponderados por superficie. Brier de P90 más bajo significa mejor estimación probabilística. Seleccionar una fila centra el mapa y filtra el detalle.</p>
+<div class="scroll"><table aria-label="Resumen comparativo de los cinco paisajes">
+<thead><tr><th>Paisaje experimental</th><th>Sectores</th><th>Obs. media mm</th><th>RF media mm</th><th>MAE RF mm ↓</th><th>MAE clima mm ↓</th><th>Brier RF P90 ↓</th><th>Eventos P90</th></tr></thead>
+<tbody id="table-land"><tr><td colspan="8">Consultando resultados auditados…</td></tr></tbody></table></div>
+</section>
+<div class="below">
+<section class="panel"><h2>Comparación adicional por piso altitudinal</h2>
+<p class="muted">Los siete estratos se analizan aparte de los cinco paisajes; el piso con cota negativa se conserva para revisión.</p>
+<div class="scroll"><table aria-label="Resumen de los siete pisos altitudinales">
+<thead><tr><th>Piso 9K</th><th>Sectores</th><th>Obs. mm</th><th>RF mm</th><th>MAE RF</th><th>MAE clima</th><th>P90 observados</th></tr></thead>
+<tbody id="table-floor"></tbody></table></div>
+</section>
+<section class="panel"><h2>Qué significan estos mapas</h2>
+<ul class="facts">
+<li><strong>RF:</strong> modelo de lluvia exclusivamente meteorológica; estima mm y probabilidad de superar P90/P95 histórico local.</li>
+<li><strong>Ecorregión:</strong> el <a href="https://www.gob.pe/institucion/minam/informes-publicaciones/277146-mapa-nacional-de-ecosistemas-del-peru" target="_blank" rel="noopener noreferrer">Mapa Nacional de Ecosistemas del MINAM</a> es la fuente oficial para una futura homologación; esta capa es exploratoria.</li>
+<li><strong>Heterogeneidad:</strong> altitud, valle, laderas y costa muestran lluvias diferentes; no se asume una media de estación independiente por polígono.</li>
+<li><strong>Precisión:</strong> cada zona exhibe desempeño RF frente a climatología. Una ventaja descriptiva no acredita pronósticos operativos.</li>
+<li><strong>Alerta:</strong> no se predicen infecciones agrícolas. La futura estimación de humedad y horas foliares requiere series horarias independientes.</li>
+</ul>
+<p class="muted">CHIRPS v3 Final, NASA POWER y NOAA son series recopiladas retrospectivamente. Faltan pruebas as-issued, estaciones SENAMHI independientes y nuevas observaciones prospectivas para emitir avisos.</p>
+</section>
+</div>
+<section class="panel">
+<h2>Descargar y verificar evidencia</h2>
+<p><a href="FASE_10K_ECOPAISAJES_RF.md">Informe científico y metodología</a> ·
+<a href="datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json">Informe de métricas por paisaje, piso y sector</a> ·
+<a href="datos/ecopaisajes_10k/paisajes_ecoclimaticos_10k.geojson">Polígonos GeoJSON del mapa</a> ·
+<a href="datos/ecopaisajes_10k/series_sector_mes_10k.json">Series mensuales para reproducir el dashboard</a> ·
+<a href="https://sinia.minam.gob.pe/mapas/mapa-nacional-ecosistemas-peru" target="_blank" rel="noopener noreferrer">Referencia ecológica institucional MINAM</a></p>
+</section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const nm={costa_valle:"Costa árida y valles bajos",piedemonte:"Piedemonte y transición de bosque seco",ladera_baja:"Vertientes andinas bajas",ladera_media:"Vertientes andinas medias",cumbres:"Alturas y cumbres andinas"};
+const colors={costa_valle:"#d8a94a",piedemonte:"#8da852",ladera_baja:"#4a9b7c",ladera_media:"#5383af",cumbres:"#8d83b0"};
+const floors={cota_negativa_revisar:"Cota negativa por revisar",llanura_costa:"Llanura costera",valle_bajo:"Valle bajo",piedemonte:"Piedemonte",montana_baja:"Montaña baja",montana_media:"Montaña media",montana_alta:"Montaña alta"};
+let metrics=null,geo=null,rows=[],map=null,layer=null,chosenSector="",group="todos",period="todos",display="paisaje";
+const number=(v,d=1)=>v==null||!isFinite(+v)?"—":Number(v).toLocaleString("es-PE",{minimumFractionDigits:d,maximumFractionDigits:d});
+const periodRows=()=>rows.filter(r=>(group==="todos"||r.paisaje===group)&&(period==="todos"||r.mes.slice(0,4)===period));
+function calc(data){if(!data.length)return null;
+ const avg=fn=>data.reduce((s,r)=>s+fn(r),0)/data.length;
+ const y=data.map(r=>+r.observado_mm),p=data.map(r=>+r.rf_mm),c=data.map(r=>+r.climatologia_mm);
+ return {n:data.length,sites:new Set(data.map(r=>r.sector)).size,
+  obs:avg(r=>+r.observado_mm),rf:avg(r=>+r.rf_mm),clim:avg(r=>+r.climatologia_mm),
+  mae:avg(r=>Math.abs(+r.rf_mm-(+r.observado_mm))),maeClim:avg(r=>Math.abs(+r.climatologia_mm-(+r.observado_mm))),
+  brier90:avg(r=>(+r.p90-(+r.e90))**2),brierRef90:avg(r=>(+r.ref_p90-(+r.e90))**2),
+  p90:data.reduce((s,r)=>s+(+r.e90),0),p95:data.reduce((s,r)=>s+(+r.e95),0)}}
+function metricFor(s,kind){return kind==="observado"?s?.obs:kind==="predicho"?s?.rf:kind==="mae"?s?.mae:kind==="eventos"?s?.p90:null}
+function polygonColor(f){if(display==="paisaje")return colors[f.properties.paisaje_id]||"#a1b5a6";
+ const stats=calc(periodRows().filter(x=>x.sector===f.properties.sector));const val=metricFor(stats,display);
+ if(val==null)return "#ddd";const all=[...new Set(periodRows().map(x=>x.sector))].map(s=>metricFor(calc(periodRows().filter(x=>x.sector===s)),display)).filter(v=>v!=null);
+ const lo=Math.min(...all),hi=Math.max(...all),t=(val-lo)/(hi-lo||1);
+ const from=[225,243,226],to=[25,115,86];return "rgb("+from.map((c,i)=>Math.round(c+t*(to[i]-c))).join(",")+")"}
+function legend(){const host=$("legend");host.replaceChildren();
+ if(display==="paisaje"){for(const [id,name] of Object.entries(nm)){const s=document.createElement("span"),dot=document.createElement("i");dot.className="dot";dot.style.background=colors[id];s.append(dot,document.createTextNode(name));host.append(s)}}else{
+  const label=document.createElement("span");label.textContent="Menor valor ";const a=document.createElement("i");a.className="dot";a.style.background="rgb(225,243,226)";const b=document.createElement("i");b.className="dot";b.style.background="rgb(25,115,86)";label.append(a,document.createTextNode(" → mayor valor "),b);host.append(label)}}
+function selectedLayers(){if(!layer)return;layer.eachLayer(l=>{const p=l.feature.properties,active=group==="todos"||p.paisaje_id===group;
+ l.setStyle({color:chosenSector===p.sector?"#103b31":"#476359",weight:chosenSector===p.sector?3:1,fillOpacity:active?.72:.07,opacity:active?1:.22,fillColor:polygonColor(l.feature)});
+ if(active&&chosenSector===p.sector)l.bringToFront()})}
+function updateMap(){if(!geo||!window.L){$("status").textContent="El listado funciona; mapa interactivo no disponible por conexión con el proveedor cartográfico.";return}
+ if(!map){map=L.map("map",{scrollWheelZoom:false,zoomControl:true});
+ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+ layer=L.geoJSON(geo,{style:f=>({fillColor:colors[f.properties.paisaje_id]||"#aaa",fillOpacity:.67,color:"#3d6d5c",weight:1}),
+ onEachFeature:(f,l)=>{l.bindTooltip(f.properties.sector+" · "+nm[f.properties.paisaje_id]);l.on("click",()=>{chosenSector=f.properties.sector;$("sector").value=chosenSector;update();if(map&&l.getBounds)map.fitBounds(l.getBounds(),{padding:[20,20],maxZoom:12})})}}).addTo(map);
+ map.fitBounds(layer.getBounds(),{padding:[10,10]});}
+ selectedLayers();
+ if(group!=="todos"){let active=L.featureGroup();layer.eachLayer(l=>{if(l.feature.properties.paisaje_id===group)active.addLayer(l)});if(active.getLayers().length)map.fitBounds(active.getBounds(),{padding:[30,30],maxZoom:12})}
+}
+function cell(tr,val){const td=document.createElement("td");td.textContent=String(val);tr.append(td)}
+function drawTables(){const visible=periodRows();
+ const land=$("table-land");land.replaceChildren();for(const [id,name] of Object.entries(nm)){if(group!=="todos"&&group!==id)continue;
+ const rr=calc(visible.filter(r=>r.paisaje===id));if(!rr)continue;
+ const tr=document.createElement("tr");tr.tabIndex=0;tr.dataset.landscape=id;tr.className=group===id?"active":"";
+ const td=document.createElement("td"),sp=document.createElement("span"),dot=document.createElement("i");sp.className="table-line";dot.className="color";dot.style.background=colors[id];sp.append(dot,document.createTextNode(name));td.append(sp);tr.append(td);
+ for(const v of [rr.sites,number(rr.obs),number(rr.rf),number(rr.mae),number(rr.maeClim),number(rr.brier90,5),rr.p90])cell(tr,v);
+ const action=()=>{group=id;$("paisaje").value=id;chosenSector="";update()};tr.addEventListener("click",action);tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();action()}});land.append(tr)}
+ const floor=$("table-floor");floor.replaceChildren();for(const id of Object.keys(floors)){const s=calc(visible.filter(r=>r.estrato===id));if(!s)continue;const tr=document.createElement("tr");cell(tr,floors[id]);for(const v of [s.sites,number(s.obs),number(s.rf),number(s.mae),number(s.maeClim),s.p90])cell(tr,v);floor.append(tr)}}
+function chart(data){const el=$("chart");el.replaceChildren();const ns="http://www.w3.org/2000/svg";
+ const line=(name,a)=>{const o=document.createElementNS(ns,name);for(const [k,v] of Object.entries(a))o.setAttribute(k,String(v));el.append(o);return o};
+ if(!data.length)return;const months=Array.from({length:12},(_,i)=>i+1);
+ const agg=months.map(m=>{const rr=data.filter(r=>+r.mes.slice(-2)===m);return{mes:m,obs:rr.reduce((s,r)=>s+(+r.observado_mm),0)/Math.max(rr.length,1),rf:rr.reduce((s,r)=>s+(+r.rf_mm),0)/Math.max(rr.length,1),clim:rr.reduce((s,r)=>s+(+r.climatologia_mm),0)/Math.max(rr.length,1)}});
+ const max=Math.max(1,...agg.flatMap(o=>[o.obs,o.rf,o.clim]))*1.12;
+ const x=i=>55+i*58,y=v=>260-220*v/max;
+ for(let t=0;t<=4;t++){const val=max*t/4;line("line",{x1:55,x2:700,y1:y(val),y2:y(val),stroke:"#e0eae1"});const lab=line("text",{x:49,y:y(val)+4,"text-anchor":"end","font-size":11,fill:"#547064"});lab.textContent=number(val,0)}
+ for(const [key,color] of [["obs","#277dc0"],["rf","#cc8130"],["clim","#348a6c"]]){
+  const pts=agg.map((r,i)=>x(i)+","+y(r[key])).join(" ");line("polyline",{points:pts,stroke:color,"stroke-width":2.6,fill:"none","stroke-linejoin":"round"})}
+ for(let i=0;i<12;i++){const t=line("text",{x:x(i),y:285,"font-size":11,fill:"#547064","text-anchor":"middle"});t.textContent=String(i+1)}
+ const tag=line("text",{x:7,y:16,"font-size":11,fill:"#547064"});tag.textContent="mm/mes";}
+function update(){if(!metrics)return;
+ let all=periodRows(),total=calc(all);
+ $("k-land").textContent=group==="todos"?"5":"1";$("k-sectors").textContent=total?.sites||"—";$("k-mae").textContent=total?number(total.mae,2):"—";$("k-clim").textContent=total?number(total.maeClim,2):"—";
+ const sel=$("sector");const available=[...new Set(all.map(r=>r.sector))].sort(),keep=chosenSector&&available.includes(chosenSector)?chosenSector:available[0]||"";
+ sel.replaceChildren();for(const sid of available){const o=document.createElement("option");o.value=sid;o.textContent=sid+" · "+nm[metrics.paisajes[all.find(r=>r.sector===sid)?.paisaje]?.id] ;o.textContent=sid;sel.append(o)}
+ chosenSector=keep;sel.value=keep;
+ drawTables();legend();updateMap();drawDetail();
+ $("status").textContent="Datos evaluados 2021–2025: "+(total?.n||0)+" sector-mes. Sin pronósticos en vivo ni ecorregiones oficiales.";}
+function drawDetail(){const arr=periodRows().filter(r=>r.sector===chosenSector);
+ const s=calc(arr);$("detail-title").textContent="Sector "+(chosenSector||"—")+(arr.length?" · "+nm[arr[0].paisaje]:"");
+ $("d-obs").textContent=s?number(s.obs)+" mm":"—";$("d-rf").textContent=s?number(s.rf)+" mm":"—";
+ $("d-mae").textContent=s?number(s.mae)+" mm":"—";$("d-p90").textContent=s?s.p90:"—";
+ chart(arr);
+ $("detail-note").textContent="Media mensual de "+(period==="todos"?"2021–2025":period)+", reconstrucción fuera de muestra por bloques. RF y clima comparados sobre el mismo sector y periodo.";}
+async function getJSON(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status+" "+path);return r.json()}
+Promise.all([getJSON("./datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json"),getJSON("./datos/ecopaisajes_10k/paisajes_ecoclimaticos_10k.geojson"),getJSON("./datos/ecopaisajes_10k/series_sector_mes_10k.json")]).then(([d,g,s])=>{
+ if(d.fase!=="10K"||d.n_sectores!==39||d.n_paisajes!==5||d.ecorregiones_oficiales_intersectadas!==false||d.controles_operativos.pronostico_en_tiempo_real_habilitado!==false||g.features.length!==39||s.datos.length!==2340)throw Error("Falló la integridad ecológica/predictiva.");
+ metrics=d;geo=g;rows=s.datos;const options=$("paisaje");
+ for(const [id,label] of Object.entries(nm)){const opt=document.createElement("option");opt.value=id;opt.textContent=label;options.append(opt)}
+ $("paisaje").addEventListener("change",()=>{group=$("paisaje").value;chosenSector="";update()});
+ $("periodo").addEventListener("change",()=>{period=$("periodo").value;update()});
+ $("metric").addEventListener("change",()=>{display=$("metric").value;update()});
+ $("sector").addEventListener("change",()=>{chosenSector=$("sector").value;drawDetail();selectedLayers();if(layer&&map){layer.eachLayer(l=>{if(l.feature.properties.sector===chosenSector)map.fitBounds(l.getBounds(),{padding:[20,20],maxZoom:12})})}});
+ $("reset").addEventListener("click",()=>{group="todos";period="todos";display="paisaje";chosenSector="";$("paisaje").value=group;$("periodo").value=period;$("metric").value=display;update();if(layer)map.fitBounds(layer.getBounds(),{padding:[10,10]})});
+ update();
+ }).catch(err=>{$("status").textContent="No se pueden mostrar cifras sin los archivos 10K verificados: "+err.message;$("table-land").textContent="Evaluación regional pendiente.";});
+})();</script>
+</body></html>
