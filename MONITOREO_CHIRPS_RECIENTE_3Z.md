@@ -5,11 +5,11 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 ## Periodo y disponibilidad verificada
 
-- Fecha de consulta UTC: 2026-10-14T23:06:12+00:00
+- Fecha de consulta UTC: 2026-10-19T15:49:59+00:00
 - Ventana de 12 meses calendarios CERRADOS: 2025-10 a 2026-09.
-- Meses con raster descargado y cinco valores revisados: **11**.
-- Meses con raster no disponible/fallido: **1**.
-- Último mes CHIRPS realmente accesible: **2026-08**.
+- Meses con raster descargado y cinco valores revisados: **12**.
+- Meses con raster no disponible/fallido: **0**.
+- Último mes CHIRPS realmente accesible: **2026-09**.
 - Estado de actualización: disponible_para_ventana_consultada.
 - La clasificación final/preliminar exacta del archivo no se afirma hasta consultar su metadato oficial; puede revisarse posteriormente.
 
@@ -28,10 +28,11 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 | 2026-06 | 0.000 | 0.140 | 0.000 | 0.106 | 0.000 |
 | 2026-07 | 0.000 | 1.287 | 0.224 | 0.454 | 0.000 |
 | 2026-08 | 2.376 | 1.269 | 1.497 | 2.211 | 9.385 |
+| 2026-09 | 0.000 | 0.000 | 0.000 | 0.000 | 13.935 |
 
 ## Meses no disponibles
 
-- **2026-09**: FileNotFoundError: Archivo no publicado HTTP 404 (https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.09.tif)
+No se encontraron faltantes en los doce meses cerrados consultados.
 
 ## Condiciones científicas
 

@@ -133,9 +133,14 @@
   },
   {
     "mes": "2026-09",
-    "estado": "no_disponible",
+    "estado": "descargado_y_extraido",
     "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.09.tif",
-    "estaciones_extraidas": 0,
-    "error": "FileNotFoundError: Archivo no publicado HTTP 404"
+    "bytes": 4314912,
+    "sha256": "f67fa04a559f9fad986f7e5fe04b09805d6710b14c08b30727e0d822e7e5f150",
+    "last_modified_http": "Thu, 15 Oct 2026 16:47:37 GMT",
+    "etag_http": "\"6ad103a9-41d720\"",
+    "estaciones_extraidas": 5,
+    "unidad": "mm/mes",
+    "tipo_dato": "ESTIMADO_SATELITAL_GAUGE_BLEND"
   }
 ]
