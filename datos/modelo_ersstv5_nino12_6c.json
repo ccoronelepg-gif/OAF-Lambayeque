@@ -1,6 +1,6 @@
 {
   "fase": "6C",
-  "fecha_procesamiento_utc": "2026-10-15T04:28:20+00:00",
+  "fecha_procesamiento_utc": "2026-10-19T14:23:12+00:00",
   "fuente": "NOAA CPC",
   "url_fuente": "https://www.cpc.ncep.noaa.gov/data/indices/ersst5.nino.mth.91-20.ascii",
   "producto": "ERSSTv5 SST mensual Niño 1+2, anomalías base 1991-2020",
