@@ -1,7 +1,7 @@
 {
   "fase": "8A",
   "estado": "pendiente_maduracion_oceanica",
-  "ultima_actualizacion_utc": "2026-10-15T05:53:43+00:00",
+  "ultima_actualizacion_utc": "2026-10-19T16:06:27+00:00",
   "ultima_emision_almacenada": "datos/pronosticos_oceanicos_emitidos/2026-09.json",
   "ultimo_mes_observado": "2026-09",
   "numero_emisiones": 1,
