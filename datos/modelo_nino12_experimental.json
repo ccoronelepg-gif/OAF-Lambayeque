@@ -7,7 +7,7 @@
   "es_icen": false,
   "es_pronostico_institucional": false,
   "estado_modelo": "EXPERIMENTAL_NO_VALIDADO_OPERATIVAMENTE",
-  "fecha_procesamiento_utc": "2026-10-15T04:16:10+00:00",
+  "fecha_procesamiento_utc": "2026-10-19T14:01:54+00:00",
   "archivo_fuente": "https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices",
   "mes_primero": "1982-01",
   "mes_ultimo_observado": "2026-09",
