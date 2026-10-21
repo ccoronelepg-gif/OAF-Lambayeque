@@ -25,7 +25,7 @@ SOURCES = {
     "cenepred": ("CENEPRED", "https://sigrid.cenepred.gob.pe/sigridv3/", "Escenarios de riesgo; su edición se consulta en el documento"),
 }
 HEADERS = {"User-Agent": "OAF-Lambayeque/2.0 (+https://ccoronelepg-gif.github.io/OAF-Lambayeque/; auditoria fuentes cientificas)"}
-ISSUE = re.compile(r"Comunicado\s+Oficial\s+Enfen\s+N\s*[°ºo.]?\s*(\d{1,2})\s*[-–]\s*(20\d{2})", re.I)
+ISSUE = re.compile(r"Comunicado\s+Oficial\s+Enfen\s+N\s*[°ºo.]*\s*(\d{1,2})\s*[-–]\s*(20\d{2})", re.I)
 
 def latest_enfen(html):
     """Solo lee números presentes en enlaces del dominio institucional."""
@@ -42,6 +42,8 @@ def latest_enfen(html):
             continue
         url = urljoin(ENFEN, a.get("href",""))
         if urlparse(url).hostname not in ("enfen.imarpe.gob.pe","www.enfen.imarpe.gob.pe"):
+            continue
+        if "/download/comunicado-oficial-enfen-" not in url.lower():
             continue
         num,year = map(int,match.groups())
         if num>30 or year>datetime.now(timezone.utc).year+1:
@@ -85,7 +87,7 @@ def run():
             rec["respuesta_http"]=res.status_code
             res.raise_for_status()
             final=urlparse(res.url)
-            if final.scheme!="https" or not final.hostname or not final.hostname.endswith(urlparse(url).hostname.split(".",1)[-1]):
+            if final.scheme!="https" or not final.hostname or (final.hostname!=urlparse(url).hostname and not final.hostname.endswith("."+urlparse(url).hostname)):
                 raise ValueError("Redirección a dominio no autorizado")
             rec["huella_sha256_html"]=hashlib.sha256(res.content).hexdigest()
             prev_source=previous.get("fuentes",{}).get(id,{})
