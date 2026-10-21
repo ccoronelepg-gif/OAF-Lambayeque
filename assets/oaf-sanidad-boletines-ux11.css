@@ -149,3 +149,36 @@ body{padding-top:var(--oaf-header-fijo-altura,88px)}
  .head nav a{font-size:11px;padding:8px 10px}
 }
 @media(max-width:450px){.oaf-ux12-product-layout{grid-template-columns:1fr}.oaf-ux12-envase{max-width:165px}.oaf-ux12-envase img{height:150px}}
+
+
+/* OAF UX13 · comprobación de vigencia, mejores fotografías y gráfica interactiva */
+.oaf-ux13-panel{background:#f4faf8;border:1px solid #d2e5dd;border-radius:16px;padding:18px;margin:14px 0 22px}
+.oaf-ux13-panel>h3{color:#15574e;font-size:19px;margin:0 0 5px}
+.oaf-ux13-panel>p{font-size:12px;color:#58756d;margin:6px 0 14px}
+.oaf-ux13-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.oaf-ux13-source{background:#fff;border:1px solid #d2e2db;border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.oaf-ux13-source strong{font-size:15px;color:#1a5e54}
+.oaf-ux13-source .oaf-ux13-status{font-size:11px;color:#9a6125;font-weight:800}
+.oaf-ux13-source p{font-size:12px;color:#4c685d;margin:0;line-height:1.55}
+.oaf-ux13-source small{font-size:10px;color:#668075}
+.oaf-ux13-source a{font-size:11px;color:#237763;font-weight:800}
+.oaf-ux13-warning{background:#fff0dc;border-left:3px solid #d99449;padding:10px 12px;border-radius:6px;color:#81552d!important}
+.oaf-ux13-model-detail{margin:16px 0;padding:15px;background:#f7faf8;border:1px solid #d2e4dc;border-radius:12px}
+.oaf-ux13-model-detail>summary{cursor:pointer;font-size:15px;font-weight:800;color:#1a574b}
+.oaf-ux13-model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:13px}
+.oaf-ux13-model{background:white;border:1px solid #d8e6df;border-radius:10px;padding:12px}
+.oaf-ux13-model strong{color:#19594a;font-size:13px}
+.oaf-ux13-model p{color:#526f63;font-size:12px;margin:6px 0}
+.oaf-ux13-model small{color:#917044;font-size:11px}
+.oaf-ux13-note{font-size:12px;color:#557166;line-height:1.7}
+.oaf-ux13-period-label{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;font-weight:800;color:#215a4c;padding:8px 0 11px}
+.oaf-ux13-period-label select{background:white;border:1px solid #bbd6c7;color:#205e4d;border-radius:8px;padding:7px 12px;min-width:185px}
+.oaf-ux13-chart-detail{font-size:12px;color:#1d5a4b;background:#e9f6ec;border:1px solid #d1ead7;padding:10px 13px;border-radius:10px;line-height:1.65}
+#oaf-bol-chart svg rect[role=button]{cursor:pointer;transition:filter .16s,opacity .16s}
+#oaf-bol-chart svg rect[role=button]:hover{opacity:.73;filter:drop-shadow(0 1px 2px #264e4b66)}
+#oaf-bol-chart svg rect[role=button]:focus-visible{outline:none;stroke:#183e36;stroke-width:3}
+.oaf-ux12-photo-error{background:#eaf4ee;border:1px dashed #afcbbb}
+.oaf-ux12-unavailable{display:flex;flex-direction:column;gap:6px;justify-content:center;align-items:center;text-align:center;min-height:140px;font-size:12px;background:radial-gradient(circle at 20% 25%,#e2f6e3,#f6f9f3);color:#4b6b5d;padding:17px}
+.oaf-ux12-unavailable-icon{font-size:27px;color:#36896d}
+@media(max-width:850px){.oaf-ux13-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.oaf-ux13-source-grid,.oaf-ux13-model-grid{grid-template-columns:1fr}.oaf-ux13-panel{padding:13px}}
