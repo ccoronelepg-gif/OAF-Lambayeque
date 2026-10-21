@@ -58,3 +58,16 @@
  .oaf-ux14-metrics{grid-template-columns:1fr}
  .oaf-ux14-controls select{width:100%}
 }
+
+/* ICEN: porcentajes mensuales reportados por ENFEN, no lluvia */
+.oaf-ux14-prob-bars{display:grid;gap:6px;margin:8px 0}
+.oaf-ux14-probline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px;font-size:10px;color:#526f64}
+.oaf-ux14-probline b{color:#1d5b49}
+.oaf-ux14-probtrack{grid-column:1/-1;height:7px;border-radius:8px;background:#e3ece5;overflow:hidden}
+.oaf-ux14-probtrack i{display:block;height:100%;border-radius:8px}
+#oaf-ux14-home-prob strong{display:block;font-size:11px;color:#6a5130}
+#oaf-ux14-home-prob small{display:block;line-height:1.4;font-size:10px}
+.oaf-ux14-counter{border:1px solid #d3e4d8;background:#f1faf4;border-radius:12px;display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin:14px auto 0;padding:11px 18px;max-width:1160px}
+.oaf-ux14-counter strong{font-size:12px;color:#246354}
+.oaf-ux14-counter .counterapi{font-weight:800;min-height:30px;font-size:16px;color:#175b48}
+.oaf-ux14-counter small{font-size:11px;color:#607b6d}
