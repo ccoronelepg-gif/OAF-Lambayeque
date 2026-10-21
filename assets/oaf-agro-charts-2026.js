@@ -78,19 +78,21 @@ async function regionMap(){
 async function stationMap(){
  const field=$("oaf-stations-floor"),target=$("oaf-stations-map"),list=$("oaf-stations-list");if(!field||!target||!list)return;
  try{
- const [f9,f10]=await Promise.all([req("datos/validacion_estaciones_9f/identificacion_territorial_9f.json").then(r=>r.json()),req("datos/senamhi_estaciones_10m/manifest_fuentes_10m.json").then(r=>r.json())]);
+ const [f9,f10,geo]=await Promise.all([req("datos/validacion_estaciones_9f/identificacion_territorial_9f.json").then(r=>r.json()),req("datos/senamhi_estaciones_10m/manifest_fuentes_10m.json").then(r=>r.json()),req("datos/zonificacion_8n/limite_lambayeque_referencial.geojson").then(r=>r.json())]);
  const stations=[];
  for(const s of f9.estaciones||[]){const c=s.coordenadas_dereferencia;if(c?.length===2&&Number.isFinite(s.altitud_de_referencia_m))stations.push({name:s.nombre,lat:c[0],lon:c[1],h:s.altitud_de_referencia_m,source:"Auditoría territorial 9F",note:s.estado_cartografico||""})}
  const dms=s=>{const parts=String(s).match(/\d+(?:\.\d+)?/g);if(!parts)return NaN;return -(Number(parts[0])+Number(parts[1]||0)/60+Number(parts[2]||0)/3600)};
  const seen=new Set(stations.map(s=>s.name.toUpperCase()));
  for(const s of f10.fuentes_nuevas||[]){const name=String(s.estacion||"").toUpperCase();if(!name||seen.has(name))continue;const lat=dms(s.latitud_dms),lon=dms(s.longitud_dms),h=Number(s.altitud_m);if(![lat,lon,h].every(Number.isFinite))continue;stations.push({name:s.estacion,lat,lon,h,source:"SENAMHI/DRD 10M",note:"Archivo documental recibido; control instrumental pendiente"});seen.add(name)}
  if(!stations.length)throw Error("Estaciones sin posición verificable");
- const pr=viewBoxProjection([...stations.map(p=>[p.lon,p.lat]),...Object.values(city).map(p=>[p[1],p[0]])],720,420);
+ const ring=geo?.features?.find(f=>f.geometry?.type==="Polygon")?.geometry.coordinates?.[0]||[];
+ const pr=viewBoxProjection([...stations.map(p=>[p.lon,p.lat]),...Object.values(city).map(p=>[p[1],p[0]]),...ring],720,420);
  const draw=()=>{
   const [lo,hi]=field.value==="all"?[-1000,10000]:field.value.split("-").map(Number);
   const ss=stations.filter(p=>p.h>=lo&&p.h<hi);
   const map=svg("svg",{viewBox:"0 0 720 420",role:"img","aria-label":"Estaciones meteorológicas por pisos altitudinales"});
   map.append(svg("rect",{x:0,y:0,width:720,height:420,fill:"#f0f8f2",rx:14}));
+  if(ring.length>2)map.append(svg("polygon",{points:ring.map(p=>pr.x(p[0]).toFixed(1)+","+pr.y(p[1]).toFixed(1)).join(" "),class:"oaf-map-outline"}));
   for(const s of ss){const x=pr.x(s.lon),y=pr.y(s.lat);const c=svg("circle",{cx:x,cy:y,r:8,class:"oaf-map-symbol",tabindex:0,role:"button","aria-label":`${s.name} ${s.h} metros`});c.append(svg("title",{},`${s.name} · ${s.h} m · ${s.source}`));const select=()=>{list.textContent=`${s.name}: ${s.h} m de altitud de referencia. ${s.source}. ${s.note}. Consulta metadatos para la resolución geográfica.`};c.addEventListener("click",select);c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select()}});map.append(c);map.append(svg("text",{x:x+12,y:y-9,fill:"#1b5346","font-size":12},s.name))}
   for(const [name,[lat,lon]] of Object.entries(city))map.append(svg("circle",{cx:pr.x(lon),cy:pr.y(lat),r:2.5,fill:"#899c93"}));
   const p=document.createElement("p");p.className="oaf-agro-caption";p.textContent=`${ss.length} estaciones con posición documental en el filtro seleccionado. Fuente: inventarios 9F y 10M.`;
