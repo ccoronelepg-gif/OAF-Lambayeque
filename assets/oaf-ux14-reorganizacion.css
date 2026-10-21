@@ -110,3 +110,16 @@
  #inicio .oaf-ux14-home-side .oaf-ux14-tile{min-height:250px}
 }
 @media(max-width:600px){.oaf-ux15-future-calendar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* UX15 - tarjetas diferenciadas para salidas reales de Random Forest */
+.oaf-ux15-rf-out{margin:19px 0 8px;background:linear-gradient(150deg,#fbf9ff,#f1f8f7);border:1px solid #d8cce7;border-left:4px solid #8c6aac;border-radius:13px;padding:17px 18px;min-width:0}
+.oaf-ux15-rf-out .oaf-ux15-rf-chip{display:inline-flex;background:#eee5f9;border:1px solid #d8caeb;color:#6c4887;border-radius:999px;font-size:10px;font-weight:850;padding:5px 9px;text-transform:uppercase;letter-spacing:.03em}
+.oaf-ux15-rf-out h3{font-size:19px;color:#4b4a72;margin:10px 0 5px}
+.oaf-ux15-rf-out .oaf-ux15-rf-sub{font-size:12px;color:#667079;line-height:1.75}
+.oaf-ux15-rf-out .oaf-ux14-chart{min-height:180px;background:#fff}
+.oaf-ux15-rf-out .oaf-ux15-future-month{background:#fff}
+#oaf-ux14-rf-mes .oaf-ux15-rf-out .oaf-ux15-future-month{min-width:0}
+.oaf-ux15-future-month .oaf-ux15-future-badge{font-size:10px;align-self:start}
+.oaf-ux15-rf-out .oaf-ux14-chart svg{display:block;width:100%;height:auto;max-height:330px}
+#oaf-ux15-counter{display:flex;align-items:center;justify-content:center;gap:8px 18px;flex-wrap:wrap;flex:1}
+@media(max-width:560px){.oaf-ux15-rf-out{padding:12px}.oaf-ux15-rf-out h3{font-size:17px}}
