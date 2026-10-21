@@ -66,7 +66,7 @@ async function update(){
   const button=ids("oaf-home-refresh");
   if(button)button.disabled=true;
   reset();
-  put("oaf-home-source","Fuente: Open-Meteo (modelos meteorológico y de calidad del aire) · "+city+" · consultando fecha y hora…");
+  put("oaf-home-source","Actualizando información de "+city+"…");
   put("oaf-home-analysis","Consultando las condiciones actuales para elaborar una lectura breve y orientativa.");
   const [lat,lon]=coords[city];
   const wUrl=url("https://api.open-meteo.com/v1/forecast",lat,lon,{
@@ -104,9 +104,7 @@ async function update(){
     put("oaf-meta-"+id,weather?wt:"Sin dato · Open-Meteo (modelo meteorológico)");
   put("oaf-meta-air",air?at:"Sin dato · Open-Meteo/CAMS global (modelo)");
   const time=wtime||atime;
-  put("oaf-home-source","Fuente: Open-Meteo (modelo meteorológico) · Calidad del aire: Open-Meteo/CAMS global (modelo) · "+city+
-      " · "+dateText(time)+
-      ". Calidad del aire: AQI europeo, no sensor local. Valores de validez modelada.");
+  put("oaf-home-source","Consulta de "+city+" · "+dateText(time)+". Son valores estimados, no mediciones locales.");
   const outlook=analysis(weather,air,city);
   const pm=(air&&finite(air.pm2_5)&&finite(air.pm10))
     ? " PM₂.₅: "+format(air.pm2_5)+" µg/m³; PM₁₀: "+format(air.pm10)+" µg/m³ (estimaciones).":"";
@@ -114,7 +112,7 @@ async function update(){
   if(typeof CustomEvent==="function" && typeof document.dispatchEvent==="function")
     document.dispatchEvent(new CustomEvent("oaf:weather",{detail:{localidad:city,current:weather,air,time}}));
   if(!weather && !air){
-    put("oaf-home-source","Fuente: Open-Meteo (modelo externo) · "+city+" · sin conexión o datos actuales. No se muestran valores inventados.");
+    put("oaf-home-source","No hay datos recientes disponibles para "+city+".");
   }
 }
 function init(){
