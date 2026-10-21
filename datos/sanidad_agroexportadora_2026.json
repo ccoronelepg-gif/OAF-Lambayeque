@@ -51,7 +51,7 @@
       "productos": [
         {
           "tipo": "Químico de origen biológico / cebo",
-          "nombre": "GF-120™ (ejemplo comercial en Perú)",
+          "nombre": "GF-120™ (Spinosad en cebo, Perú)",
           "ingrediente": "spinosad; cebo atrayente para moscas de la fruta",
           "registro": "Comercialización documentada por Farmex Perú. Etiqueta cultivo–plaga y registro vigente: comprobar en SENASA.",
           "fuente": "https://www.farmex.com.pe/producto/gf-120/",
@@ -148,6 +148,34 @@
           "grupo": "Control biológico microbiano",
           "fuente_laboratorio": "https://silvestre.com.pe/wp-content/uploads/FT-BIO-SPLENT-70-WP-35.pdf",
           "ficha_confirmada": false
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "SCORE® 250 EC",
+          "ingrediente": "difenoconazol",
+          "grupo": "FRAC 3",
+          "modo": "FRAC 3",
+          "mecanismo": "Inhibe la esterol 14-alfa-desmetilasa (CYP51), limitando la síntesis de ergosterol necesario para membranas fúngicas.",
+          "fabricante": "Syngenta Perú",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+          "registro": "Ficha de Syngenta Perú lista Mango · antracnosis. Comprobar formulación y vigencia exacta en SIGIA/SENASA.",
+          "nota": "Producto adicional documentado; compartir FRAC con otros productos no representa una rotación antiresistencia. No se publica dosis sin etiqueta vigente.",
+          "ficha_confirmada": false
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "QUADRIS® 50 WG",
+          "ingrediente": "azoxistrobina",
+          "grupo": "FRAC 11 (QoI)",
+          "modo": "FRAC 11 (QoI)",
+          "mecanismo": "Interrumpe la respiración mitocondrial al inhibir el complejo III (sitio Qo); mismo mecanismo que Amistar.",
+          "fabricante": "Syngenta Perú",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "registro": "Ficha de Syngenta Perú lista Mango · antracnosis. Comprobar formulación y vigencia exacta en SIGIA/SENASA.",
+          "nota": "Producto adicional documentado; compartir FRAC con otros productos no representa una rotación antiresistencia. No se publica dosis sin etiqueta vigente.",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -155,7 +183,9 @@
         "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
         "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
         "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
-        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9"
+        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg"
       ]
     },
     {
@@ -316,6 +346,34 @@
           "grupo": "Control biológico microbiano",
           "fuente_laboratorio": "https://silvestre.com.pe/wp-content/uploads/FT-BIO-SPLENT-70-WP-35.pdf",
           "ficha_confirmada": false
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "SCORE® 250 EC",
+          "ingrediente": "difenoconazol",
+          "grupo": "FRAC 3",
+          "modo": "FRAC 3",
+          "mecanismo": "Inhibe la esterol 14-alfa-desmetilasa (CYP51) y la biosíntesis de ergosterol del hongo; alternar grupos FRAC.",
+          "fabricante": "Syngenta Perú",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+          "registro": "Ficha de Syngenta Perú lista Vid · oídio. Comprobar formulación y vigencia exacta en SIGIA/SENASA.",
+          "nota": "Producto adicional documentado; compartir FRAC con otros productos no representa una rotación antiresistencia. No se publica dosis sin etiqueta vigente.",
+          "ficha_confirmada": false
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "QUADRIS® 50 WG",
+          "ingrediente": "azoxistrobina",
+          "grupo": "FRAC 11 (QoI)",
+          "modo": "FRAC 11 (QoI)",
+          "mecanismo": "Inhibe la respiración mitocondrial fúngica, complejo III; no constituye rotación de modo de acción respecto a otros QoI.",
+          "fabricante": "Syngenta Perú",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "registro": "Ficha de Syngenta Perú lista Vid · oídio. Comprobar formulación y vigencia exacta en SIGIA/SENASA.",
+          "nota": "Producto adicional documentado; compartir FRAC con otros productos no representa una rotación antiresistencia. No se publica dosis sin etiqueta vigente.",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -323,7 +381,9 @@
         "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
         "https://www.mdpi.com/2073-4395/10/5/622",
         "https://doi.org/10.3390/su15032837",
-        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9"
+        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/score-250-ec",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg"
       ]
     },
     {
@@ -688,12 +748,27 @@
           "grupo": "FRAC 11",
           "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
           "ficha_confirmada": false
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "QUADRIS® 50 WG",
+          "ingrediente": "azoxistrobina",
+          "grupo": "FRAC 11 (QoI)",
+          "modo": "FRAC 11 (QoI)",
+          "mecanismo": "Interrumpe la respiración mitocondrial del hongo al inhibir el sitio Qo del complejo III; misma familia FRAC que Amistar.",
+          "fabricante": "Syngenta Perú",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg",
+          "registro": "Ficha de Syngenta Perú lista Palto · muerte regresiva. Comprobar formulación y vigencia exacta en SIGIA/SENASA.",
+          "nota": "Producto adicional documentado; compartir FRAC con otros productos no representa una rotación antiresistencia. No se publica dosis sin etiqueta vigente.",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
         "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/quadrisr-50-wg"
       ]
     },
     {
@@ -905,5 +980,6 @@
   ],
   "revision_documental": "2026-10-21",
   "criterio_fuentes": "Prioridad a publicaciones científicas desde 2020, SENASA e institutos oficiales; fuentes históricas solo para contextualizar. No se extrapolan eficacias a Lambayeque sin datos locales.",
-  "aclaracion_fotos": "Las fotografías de envases ilustran presentaciones comerciales, no constituyen prueba del registro ni autorizan automáticamente el uso. Es necesario verificar el registro para la especie, cultivo y formulación exacta en SENASA."
+  "aclaracion_fotos": "Las fotografías de envases ilustran presentaciones comerciales, no constituyen prueba del registro ni autorizan automáticamente el uso. Es necesario verificar el registro para la especie, cultivo y formulación exacta en SENASA.",
+  "nota_resistencia": "Rotar productos por FRAC/IRAC, NO por marca comercial. No combinar productos con el mismo blanco celular suponiendo mecanismos independientes."
 }
