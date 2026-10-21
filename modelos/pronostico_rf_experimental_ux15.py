@@ -228,6 +228,45 @@ def fit_month(history):
     mae_clim=float(np.mean(np.abs(obs-local_ref)))
     mae_temp=float(np.mean(np.abs(yt[test]-temp.predict(X[test]))))
     mae_temp_clim=float(np.mean(np.abs(yt[test]-tref)))
+    # Auditoría adicional: recorrido verdaderamente recursivo de seis meses,
+    # con orígenes enero/julio 2021-25 y modelo entrenado solo hasta 2020.
+    # No interviene en la selección (2019-20) ni modifica los parámetros elegidos.
+    multistep=[]
+    for city,series in history.items():
+        for year in range(2021,2026):
+            for first_month in (1,7):
+                start=f"{year:04d}-{first_month:02d}"
+                if start not in series:continue
+                known={key:dict(value) for key,value in series.items() if key<start}
+                yy,mm=year,first_month
+                for lead in range(1,7):
+                    key=f"{yy:04d}-{mm:02d}"
+                    actual=series.get(key)
+                    feat=monthly_features(known,yy,mm,city)
+                    if actual is None or feat is None:break
+                    xstep=np.asarray([feat],float)
+                    raw=max(0,math.expm1(float(rain.predict(xstep)[0])))
+                    normal=ref[(city,mm)][0]
+                    estimate=max(0,weight*raw+(1-weight)*normal)
+                    t_est=float(temp.predict(xstep)[0])
+                    multistep.append({"h":lead,"err_rf_mm":abs(actual["rain"]-estimate),
+                        "err_clim_mm":abs(actual["rain"]-normal),
+                        "err_temp_c":abs(actual["temp"]-t_est)})
+                    known[key]={"rain":estimate,"temp":t_est}
+                    yy,mm=next_month(yy,mm)
+    if not multistep:raise ValueError("No se pudo evaluar horizonte prospectivo recursivo")
+    metrics["evaluacion_multihorizonte"]={
+       "metodo":"modelo congelado entrenado hasta 2020; orígenes enero/julio de 2021-2025; sin usar valores futuros como retardos",
+       "tipo":"backtest recursivo fuera de muestra; no es validación as-issued ni instrumental",
+       "n_puntos":len(multistep),
+       "por_horizonte":[{
+           "meses_adelante":h,
+           "n":len(sub),
+           "mae_rf_mm":round(float(np.mean([x["err_rf_mm"] for x in sub])),2),
+           "mae_climatologia_local_mm":round(float(np.mean([x["err_clim_mm"] for x in sub])),2),
+           "mae_temperatura_c":round(float(np.mean([x["err_temp_c"] for x in sub])),2)
+       } for h in range(1,7) if (sub:=[x for x in multistep if x["h"]==h])]
+    }
     # After reporting the untouched test, fit candidate on all completed records.
     rain.fit(X,yr);temp.fit(X,yt)
     metrics={
