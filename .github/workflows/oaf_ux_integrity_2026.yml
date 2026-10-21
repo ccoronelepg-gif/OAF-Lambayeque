@@ -31,6 +31,13 @@ on:
       - 'assets/oaf-ux9-predicciones.js'
       - 'datos/estado_enso_verificado_ux9_2026.json'
       - 'tests/test_ux9_refinamiento_2026.py'
+      - 'assets/oaf-sanidad-boletines-ux11.css'
+      - 'assets/oaf-ux11-estructura.js'
+      - 'assets/oaf-ux11-sanidad.js'
+      - 'assets/oaf-ux11-boletines.js'
+      - 'datos/sanidad_agroexportadora_2026.json'
+      - 'datos/boletines_institucionales_2026.json'
+      - 'tests/test_ux11_sanidad_boletines_2026.py'
       - 'guia-lectura-agroclimatica.html'
       - 'sitemap.xml'
       - 'tests/test_divulgacion_seo_2026.py'
@@ -59,6 +66,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_agroexportacion_2026.py' -v
       - name: UX-9 mapa, imagen, lectura agroclimática y pronósticos documentados
         run: python -m unittest discover -s tests -p 'test_ux9_refinamiento_2026.py' -v
+      - name: Integridad de sanidad agroexportadora y boletines oficiales
+        run: python -m unittest discover -s tests -p 'test_ux11_sanidad_boletines_2026.py' -v
       - name: Modelos externos y estados no verificados
         run: node tests/test_portada_2026.js
       - name: Comprobar sintaxis de los 45 visores originales y nuevos módulos
