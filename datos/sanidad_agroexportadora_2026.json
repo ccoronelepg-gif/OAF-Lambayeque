@@ -1,0 +1,579 @@
+{
+  "version": "2026-10-21",
+  "region": "Lambayeque",
+  "tipo": "catálogo técnico de vigilancia, no autorización de producto",
+  "n_cultivos": 6,
+  "cultivos": [
+    {
+      "id": "mango",
+      "nombre": "Mango"
+    },
+    {
+      "id": "vid",
+      "nombre": "Vid"
+    },
+    {
+      "id": "arandano",
+      "nombre": "Arándano"
+    },
+    {
+      "id": "palto",
+      "nombre": "Palto"
+    },
+    {
+      "id": "maracuya",
+      "nombre": "Maracuyá"
+    },
+    {
+      "id": "banano",
+      "nombre": "Banano"
+    }
+  ],
+  "total_organismos": 23,
+  "aviso": "Las fichas describen condiciones favorables para vigilancia, no presencia, brote, incidencia, probabilidad cuantificada ni aumento poblacional observado. Registros de plaguicidas deben verificarse para cultivo, plaga, formulación, fecha y etiqueta vigentes en SIGIA/SENASA; respetar LMR del mercado de destino.",
+  "consulta_senasa": "https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html",
+  "biocontrol_senasa": "https://www.senasa.gob.pe/senasa/especies-beneficas-producidas-por-laboratorios-en-convenio/",
+  "organismos": [
+    {
+      "nombre": "Moscas de la fruta",
+      "agentes": "Ceratitis capitata y Anastrepha spp.",
+      "vigilancia": "Trampas, fruta infestada y caída de frutos",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
+      "tipo": "plaga",
+      "crop_id": "mango",
+      "crop_nombre": "Mango",
+      "scientific_crop": "Mangifera indica",
+      "id": "mango-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "Las moscas de la fruta dañan internamente el fruto: las larvas se alimentan de la pulpa, provocan pudrición y rechazo de exportación.",
+      "modelo_nota": "La temperatura y la maduración pueden influir en actividad y desarrollo; sin capturas por trampa y revisión de frutos no se estima la población.",
+      "manejo_cultural": "Retirar fruta caída e infestada, vigilar trampas y respetar el programa oficial de control integrado.",
+      "productos": [
+        {
+          "tipo": "Químico / cebo",
+          "nombre": "Spinosad formulado en cebo",
+          "ingrediente": "spinosad",
+          "registro": "Adquisición institucional documentada, Resolución SENASA 141-2025",
+          "fuente": "https://www.gob.pe/institucion/senasa/normas-legales/7660481-141-2025-midagri-senasa-jn",
+          "nota": "Adquisición para control integrado de moscas de fruta; no determina por sí sola dosis o registro de formulación/cultivo."
+        }
+      ],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+      ]
+    },
+    {
+      "nombre": "Cochinillas o queresas",
+      "agentes": "Diversas especies de hemípteros",
+      "vigilancia": "Monitoreo de hojas, ramas y frutos; identificación en campo",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
+      "tipo": "plaga",
+      "crop_id": "mango",
+      "crop_nombre": "Mango",
+      "scientific_crop": "Mangifera indica",
+      "id": "mango-plaga-2",
+      "clasificacion": "temperatura",
+      "dano": "Las queresas succionan savia; la melaza puede facilitar fumagina y depreciar frutos y follaje.",
+      "modelo_nota": "La temperatura puede modificar los ciclos, pero hormigas, enemigos naturales y densidad real deben registrarse en campo.",
+      "manejo_cultural": "Monitorear ramas/hojas, conservar enemigos naturales, controlar hormigas y podar focos cuando sea pertinente.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+      ]
+    },
+    {
+      "nombre": "Antracnosis",
+      "agentes": "Colletotrichum spp.",
+      "vigilancia": "Lesiones en inflorescencias y frutos; humedad y periodos de mojado",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
+      "tipo": "enfermedad",
+      "crop_id": "mango",
+      "crop_nombre": "Mango",
+      "scientific_crop": "Mangifera indica",
+      "id": "mango-enfermedad-1",
+      "clasificacion": "humedad",
+      "dano": "La antracnosis afecta flores y frutos, causa lesiones oscuras y pérdidas poscosecha.",
+      "modelo_nota": "Lluvia, alta humedad y mojado de inflorescencias/frutos son señales para intensificar observaciones; el clima no confirma la infección.",
+      "manejo_cultural": "Manejar ventilación, retirar restos enfermos, observar panículas y confirmar agente antes de decidir tratamiento.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Serenade® ASO",
+          "ingrediente": "Bacillus subtilis cepa QST713",
+          "registro": "PBUA 090-SENASA, según fabricante",
+          "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
+          "nota": "Ejemplo comercial peruano de biofungicida; el cultivo y patógeno específicos requieren verificación de etiqueta SENASA."
+        }
+      ],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+      ]
+    },
+    {
+      "nombre": "Cochinilla harinosa de la vid",
+      "agentes": "Planococcus ficus y Pseudococcus spp.",
+      "vigilancia": "Inspección de racimos, corteza, hormigas y melaza; identificación taxonómica",
+      "fuente": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+      "tipo": "plaga",
+      "crop_id": "vid",
+      "crop_nombre": "Vid",
+      "scientific_crop": "Vitis vinifera",
+      "id": "vid-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "La cochinilla harinosa se refugia en racimos y corteza, succiona savia, deja melaza y reduce la calidad comercial.",
+      "modelo_nota": "El calor puede modificar el desarrollo, pero el nivel poblacional requiere muestreo de racimos/corteza y presencia de hormigas.",
+      "manejo_cultural": "Inspeccionar focos y racimos, manejar hormigas y favorecer enemigos naturales; revisar exportación/cuarentena.",
+      "productos": [],
+      "referencias": [
+        "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+      ]
+    },
+    {
+      "nombre": "Trips y ácaros",
+      "agentes": "Diversos Thysanoptera y Acari",
+      "vigilancia": "Muestreo por brotación, floración y estado del racimo",
+      "fuente": "https://ipm.ucanr.edu/agriculture/grape/",
+      "tipo": "plaga",
+      "crop_id": "vid",
+      "crop_nombre": "Vid",
+      "scientific_crop": "Vitis vinifera",
+      "id": "vid-plaga-2",
+      "clasificacion": "temperatura",
+      "dano": "Trips y ácaros dañan tejidos tiernos y frutos, dejan cicatrices y pueden reducir apariencia y rendimiento.",
+      "modelo_nota": "Periodos cálidos y secos pueden favorecer algunos ácaros; no todos los trips responden igual y deben identificarse.",
+      "manejo_cultural": "Evaluar brotes, flores y racimos; ajustar manejo por especie y umbral local.",
+      "productos": [],
+      "referencias": [
+        "https://ipm.ucanr.edu/agriculture/grape/",
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+      ]
+    },
+    {
+      "nombre": "Oídio",
+      "agentes": "Erysiphe necator",
+      "vigilancia": "Temperatura, brotación y síntomas; la humedad superficial no es único predictor",
+      "fuente": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+      "tipo": "enfermedad",
+      "crop_id": "vid",
+      "crop_nombre": "Vid",
+      "scientific_crop": "Vitis vinifera",
+      "id": "vid-enfermedad-1",
+      "clasificacion": "temperatura",
+      "dano": "El oídio coloniza hojas y racimos con micelio blanquecino, afecta fotosíntesis, desarrollo y calidad.",
+      "modelo_nota": "Temperaturas templadas a cálidas favorecen la evolución; el índice UC IPM exige fenología y datos horarios; lluvia no es necesaria para todas las infecciones.",
+      "manejo_cultural": "Monitorear brotación y racimos, mejorar ventilación, rotar modos FRAC y proteger polinizadores/operarios.",
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Luna Experience®",
+          "ingrediente": "fluopyram + tebuconazol",
+          "registro": "PQUA 684-SENASA (según fabricante)",
+          "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/luna_experience",
+          "nota": "Fabricante peruano lo relaciona con oídio en vid; comprobar vigencia, cultivo, blanco, periodo de carencia y etiqueta en SIGIA."
+        }
+      ],
+      "referencias": [
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+      ]
+    },
+    {
+      "nombre": "Botrytis del racimo",
+      "agentes": "Botrytis cinerea",
+      "vigilancia": "Humedad, lluvias, aireación del racimo y evidencia en campo",
+      "fuente": "https://ipm.ucanr.edu/agriculture/grape/",
+      "tipo": "enfermedad",
+      "crop_id": "vid",
+      "crop_nombre": "Vid",
+      "scientific_crop": "Vitis vinifera",
+      "id": "vid-enfermedad-2",
+      "clasificacion": "humedad",
+      "dano": "Botrytis pudre y ablanda las bayas del racimo, sobre todo en racimos compactos y antes de cosecha.",
+      "modelo_nota": "La humedad prolongada y el mojado favorecen infecciones, pero la compactación y las heridas son determinantes.",
+      "manejo_cultural": "Mejorar aireación del racimo, evitar heridas y restos, vigilar la fenología y la resistencia fungicida.",
+      "productos": [],
+      "referencias": [
+        "https://ipm.ucanr.edu/agriculture/grape/",
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+      ]
+    },
+    {
+      "nombre": "Trips",
+      "agentes": "Frankliniella spp. y Thrips spp.",
+      "vigilancia": "Evaluación de flores y brotes según fenología",
+      "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+      "tipo": "plaga",
+      "crop_id": "arandano",
+      "crop_nombre": "Arándano",
+      "scientific_crop": "Vaccinium corymbosum y otros híbridos",
+      "id": "arandano-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "Los trips raspan flores y tejidos tiernos, pueden provocar deformaciones, manchas y menor calidad del fruto.",
+      "modelo_nota": "La temperatura modifica actividad y ciclos; el monitoreo de flores y trampas es necesario para valorar aumento poblacional.",
+      "manejo_cultural": "Revisar flores/brotes por variedad y fenología, reconocer enemigos naturales.",
+      "productos": [],
+      "referencias": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+      ]
+    },
+    {
+      "nombre": "Mosca blanca y cochinillas",
+      "agentes": "Bemisia tabaci y pseudocóccidos",
+      "vigilancia": "Inspección en brotes, hojas y frutos",
+      "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+      "tipo": "plaga",
+      "crop_id": "arandano",
+      "crop_nombre": "Arándano",
+      "scientific_crop": "Vaccinium corymbosum y otros híbridos",
+      "id": "arandano-plaga-2",
+      "clasificacion": "temperatura",
+      "dano": "Mosca blanca y cochinillas se alimentan de savia, originan melaza y pueden afectar vigor y calidad.",
+      "modelo_nota": "La temperatura puede favorecer generaciones; densidad, depredadores y estado del cultivo deben medirse.",
+      "manejo_cultural": "Muestrear envés, brotes y racimos; tratar solo tras identificación y umbral técnico.",
+      "productos": [],
+      "referencias": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+      ]
+    },
+    {
+      "nombre": "Moho gris",
+      "agentes": "Botrytis cinerea",
+      "vigilancia": "Humedad, ventilación, periodos húmedos y diagnóstico",
+      "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+      "tipo": "enfermedad",
+      "crop_id": "arandano",
+      "crop_nombre": "Arándano",
+      "scientific_crop": "Vaccinium corymbosum y otros híbridos",
+      "id": "arandano-enfermedad-1",
+      "clasificacion": "humedad",
+      "dano": "Moho gris afecta flores y frutos causando podredumbre y pérdidas en poscosecha.",
+      "modelo_nota": "Una sucesión de horas húmedas o lluvias eleva la necesidad de inspeccionar; sin mojado foliar medido no hay predicción de infección.",
+      "manejo_cultural": "Ventilar la canopia, manejar riego y restos infectados; vigilar frutos y flores.",
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Switch® 62.5 WG",
+          "ingrediente": "ciprodinil + fludioxonil",
+          "registro": "PQUA 262-SENASA (ficha 2024)",
+          "fuente": "https://www.tqc.com.pe/wp-content/uploads/2024/07/FT-SWITCH-62.5-WG-ABR.2024.pdf",
+          "nota": "El fabricante lista arándano/moho gris; confirmar actualización de etiqueta y mercado de destino antes del uso."
+        }
+      ],
+      "referencias": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+      ]
+    },
+    {
+      "nombre": "Pudrición radicular",
+      "agentes": "Phytophthora cinnamomi",
+      "vigilancia": "Drenaje, humedad del sustrato y síntomas radiculares",
+      "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+      "tipo": "enfermedad",
+      "crop_id": "arandano",
+      "crop_nombre": "Arándano",
+      "scientific_crop": "Vaccinium corymbosum y otros híbridos",
+      "id": "arandano-enfermedad-2",
+      "clasificacion": "suelo",
+      "dano": "Phytophthora daña raíces, disminuye absorción y puede causar marchitez y muerte de plantas.",
+      "modelo_nota": "El drenaje y la saturación del sustrato importan más que una estimación superficial de humedad del aire.",
+      "manejo_cultural": "Evaluar raíces y drenajes, usar material sano y controlar riegos; requerir confirmación de laboratorio.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Trichoderma viride (agente antagonista)",
+          "ingrediente": "Trichoderma spp.",
+          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
+        }
+      ],
+      "referencias": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+      ]
+    },
+    {
+      "nombre": "Trips",
+      "agentes": "Diversas especies de trips",
+      "vigilancia": "Inspección de frutos pequeños, brotes y flores",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+      "tipo": "plaga",
+      "crop_id": "palto",
+      "crop_nombre": "Palto",
+      "scientific_crop": "Persea americana",
+      "id": "palto-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "Trips generan lesiones y cicatrices en frutos pequeños y tejidos tiernos, deteriorando su valor de exportación.",
+      "modelo_nota": "La actividad cambia con temperatura y brotación; sin conteos no se deduce daño económico.",
+      "manejo_cultural": "Inspeccionar floración y frutos, podas y manejo biológico compatible con exportación.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+      ]
+    },
+    {
+      "nombre": "Queresas y ácaros",
+      "agentes": "Hemípteros fitófagos y ácaros",
+      "vigilancia": "Muestreo de hojas y ramas; identificación de la especie",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+      "tipo": "plaga",
+      "crop_id": "palto",
+      "crop_nombre": "Palto",
+      "scientific_crop": "Persea americana",
+      "id": "palto-plaga-2",
+      "clasificacion": "temperatura",
+      "dano": "Queresas y ácaros pueden manchar hojas, extraer savia y reducir el área fotosintética.",
+      "modelo_nota": "Con tiempo cálido o seco algunos ácaros pueden reproducirse más rápidamente, pero es necesario identificar especie.",
+      "manejo_cultural": "Inspección de hojas y brotes, conservar controladores naturales y mitigar polvo.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+      ]
+    },
+    {
+      "nombre": "Tristeza / pudrición de raíces",
+      "agentes": "Phytophthora cinnamomi",
+      "vigilancia": "Drenaje, saturación del suelo y síntomas en raíces",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+      "tipo": "enfermedad",
+      "crop_id": "palto",
+      "crop_nombre": "Palto",
+      "scientific_crop": "Persea americana",
+      "id": "palto-enfermedad-1",
+      "clasificacion": "suelo",
+      "dano": "Phytophthora cinnamomi causa necrosis radicular, decaimiento, menor productividad y muerte de árboles.",
+      "modelo_nota": "La lluvia puede acompañar saturación, pero el indicador principal es la condición efectiva de suelo/drenaje y riego.",
+      "manejo_cultural": "Corregir drenaje, evitar encharcamientos, usar plantas sanas y monitorear raíces.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Trichoderma viride (agente antagonista)",
+          "ingrediente": "Trichoderma spp.",
+          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
+        }
+      ],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+      ]
+    },
+    {
+      "nombre": "Muerte regresiva",
+      "agentes": "Lasiodiplodia theobromae (según diagnóstico)",
+      "vigilancia": "Necrosis en brotes, ramas y lesiones de madera",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+      "tipo": "enfermedad",
+      "crop_id": "palto",
+      "crop_nombre": "Palto",
+      "scientific_crop": "Persea americana",
+      "id": "palto-enfermedad-2",
+      "clasificacion": "estres",
+      "dano": "Lasiodiplodia y otros hongos de madera pueden ocasionar cancros, muerte regresiva y pérdidas de ramas o plantas.",
+      "modelo_nota": "La predisposición puede aumentar con estrés térmico/hídrico y heridas; la meteorología sola no prueba presencia.",
+      "manejo_cultural": "Evitar heridas, proteger podas, retirar ramas afectadas y confirmar el agente por laboratorio.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+      ]
+    },
+    {
+      "nombre": "Mosca del ovario",
+      "agentes": "Dasiops spp.",
+      "vigilancia": "Flores y frutos jóvenes; identificación por muestreo",
+      "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+      "tipo": "plaga",
+      "crop_id": "maracuya",
+      "crop_nombre": "Maracuyá",
+      "scientific_crop": "Passiflora edulis",
+      "id": "maracuya-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "Dasiops spp. se asocia con daño en ovarios y flores, aborto y caída de frutos jóvenes.",
+      "modelo_nota": "La fenología de floración y actividad de adultos pesan más que una relación climática general; las capturas deben cuantificarse.",
+      "manejo_cultural": "Monitorear flores, frutos recién cuajados y trampas, recolectar material dañado.",
+      "productos": [],
+      "referencias": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+      ]
+    },
+    {
+      "nombre": "Gusano defoliador",
+      "agentes": "Dione juno y Agraulis spp.",
+      "vigilancia": "Muestreo de huevos y larvas; defoliación",
+      "fuente": "https://repositorio.inia.gob.pe/bitstreams/c335afc1-2062-4ee4-8e84-4d958539d7c6/download",
+      "tipo": "plaga",
+      "crop_id": "maracuya",
+      "crop_nombre": "Maracuyá",
+      "scientific_crop": "Passiflora edulis",
+      "id": "maracuya-plaga-2",
+      "clasificacion": "temperatura",
+      "dano": "Larvas defoliadoras consumen hojas, reducen superficie fotosintética y, con infestaciones fuertes, debilitan plantas.",
+      "modelo_nota": "El calor puede acortar desarrollo larval, pero sin recuentos de huevos y larvas no se estima fluctuación poblacional.",
+      "manejo_cultural": "Inspeccionar huevos/larvas y preservar enemigos naturales; evaluar opciones de Bacillus thuringiensis solo con etiqueta aplicable.",
+      "productos": [],
+      "referencias": [
+        "https://repositorio.inia.gob.pe/bitstreams/c335afc1-2062-4ee4-8e84-4d958539d7c6/download",
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+      ]
+    },
+    {
+      "nombre": "Antracnosis",
+      "agentes": "Colletotrichum spp.",
+      "vigilancia": "Lesiones y condiciones cálidas y húmedas",
+      "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+      "tipo": "enfermedad",
+      "crop_id": "maracuya",
+      "crop_nombre": "Maracuyá",
+      "scientific_crop": "Passiflora edulis",
+      "id": "maracuya-enfermedad-1",
+      "clasificacion": "humedad",
+      "dano": "Colletotrichum provoca lesiones en hojas, tallos y frutos, pudiendo causar depreciación severa.",
+      "modelo_nota": "La lluvia y las horas húmedas son señales de vigilancia; la tasa real depende de variedad, heridas y tejido susceptible.",
+      "manejo_cultural": "Manejar poda, ventilación, fruta enferma y humedad; confirmar agente.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Serenade® ASO",
+          "ingrediente": "Bacillus subtilis cepa QST713",
+          "registro": "PBUA 090-SENASA, según fabricante",
+          "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
+          "nota": "Ejemplo comercial peruano de biofungicida; el cultivo y patógeno específicos requieren verificación de etiqueta SENASA."
+        }
+      ],
+      "referencias": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+      ]
+    },
+    {
+      "nombre": "Marchitez / secadera",
+      "agentes": "Fusarium spp. (confirmar aislamiento)",
+      "vigilancia": "Raíces, cuello y drenaje; diagnóstico diferencial",
+      "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+      "tipo": "enfermedad",
+      "crop_id": "maracuya",
+      "crop_nombre": "Maracuyá",
+      "scientific_crop": "Passiflora edulis",
+      "id": "maracuya-enfermedad-2",
+      "clasificacion": "suelo",
+      "dano": "Fusarium y otros agentes de secadera afectan vasos o raíces; pueden causar marchitez y muerte.",
+      "modelo_nota": "Saturación, temperatura del suelo y estrés pueden modular daño; la humedad aérea no confirma marchitez por Fusarium.",
+      "manejo_cultural": "Usar material sano, sanidad de suelo, buen drenaje y diagnóstico diferencial.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Trichoderma viride (agente antagonista)",
+          "ingrediente": "Trichoderma spp.",
+          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
+        }
+      ],
+      "referencias": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+      ]
+    },
+    {
+      "nombre": "Picudo negro",
+      "agentes": "Cosmopolites sordidus",
+      "vigilancia": "Trampas, perforaciones en cormos y vigor de plantas",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
+      "tipo": "plaga",
+      "crop_id": "banano",
+      "crop_nombre": "Banano",
+      "scientific_crop": "Musa spp.",
+      "id": "banano-plaga-1",
+      "clasificacion": "temperatura",
+      "dano": "El picudo negro perfora el cormo y el pseudotallo; reduce vigor, facilita volcamiento y pérdida productiva.",
+      "modelo_nota": "La temperatura y humedad influyen en actividad, pero su fluctuación poblacional se determina con trampas y daño en cormos.",
+      "manejo_cultural": "Trampas de pseudotallo, material sano, higiene y control biológico adaptado.",
+      "productos": [
+        {
+          "tipo": "Biológico",
+          "nombre": "Beauveria bassiana (agente de control biológico)",
+          "ingrediente": "hongo entomopatógeno",
+          "registro": "Uso divulgado por SENASA (2020); elegir formulación de origen y calidad verificados",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/productores-emplean-control-biologico-para-combatir-plagas-en-el-cultivo-de-banano/",
+          "nota": "Uso documentado por SENASA frente al picudo negro en banano; no significa que cualquier formulación esté autorizada."
+        }
+      ],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
+        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
+      ]
+    },
+    {
+      "nombre": "Nematodos fitoparásitos",
+      "agentes": "Radopholus similis y otros nematodos",
+      "vigilancia": "Muestreo radicular y diagnóstico",
+      "fuente": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
+      "tipo": "plaga",
+      "crop_id": "banano",
+      "crop_nombre": "Banano",
+      "scientific_crop": "Musa spp.",
+      "id": "banano-plaga-2",
+      "clasificacion": "suelo",
+      "dano": "Nematodos lesionan raíces, dificultan absorción y favorecen volcamiento y menor rendimiento.",
+      "modelo_nota": "La temperatura y humedad del suelo pueden influir en poblaciones, pero se requiere muestreo de raíces y laboratorio.",
+      "manejo_cultural": "Muestrear raíces, usar material certificado y prácticas de manejo del suelo; verificar cualquier nematicida en SIGIA.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
+        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
+      ]
+    },
+    {
+      "nombre": "Fusariosis Raza 4 Tropical",
+      "agentes": "Fusarium oxysporum f. sp. cubense R4T",
+      "vigilancia": "Bioseguridad, síntomas vasculares y confirmación por SENASA",
+      "fuente": "https://www.gob.pe/institucion/senasa/noticias/967156-senasa-trabaja-en-la-contencion-de-plaga-que-afecta-a-bananos-y-platanos",
+      "tipo": "enfermedad",
+      "crop_id": "banano",
+      "crop_nombre": "Banano",
+      "scientific_crop": "Musa spp.",
+      "id": "banano-enfermedad-1",
+      "clasificacion": "bioseguridad",
+      "dano": "Fusarium R4T invade tejidos vasculares, genera marchitez, necrosis y puede matar la planta, contaminando el suelo durante años.",
+      "modelo_nota": "No es correcto predecir R4T a partir de lluvia o temperatura: ingreso de material contaminado y movimiento de suelo/agua son prioritarios.",
+      "manejo_cultural": "Bioseguridad estricta, evitar traslado de hijuelos y herramientas, informar síntomas a SENASA. No existe fungicida curativo comprobado para erradicar R4T de la plantación.",
+      "productos": [],
+      "referencias": [
+        "https://www.gob.pe/institucion/senasa/noticias/967156-senasa-trabaja-en-la-contencion-de-plaga-que-afecta-a-bananos-y-platanos",
+        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
+      ]
+    },
+    {
+      "nombre": "Sigatoka negra",
+      "agentes": "Pseudocercospora fijiensis",
+      "vigilancia": "Severidad foliar, humedad y registros de periodos húmedos",
+      "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
+      "tipo": "enfermedad",
+      "crop_id": "banano",
+      "crop_nombre": "Banano",
+      "scientific_crop": "Musa spp.",
+      "id": "banano-enfermedad-2",
+      "clasificacion": "humedad",
+      "dano": "Sigatoka negra daña hojas, reduce fotosíntesis y puede adelantar maduración, perjudicando calidad y rendimiento.",
+      "modelo_nota": "Lluvia y humedad prolongada pueden favorecer la evolución foliar; no se conoce infección por solo datos horarios externos.",
+      "manejo_cultural": "Evaluar severidad foliar, deshoje sanitario y manejo de cobertura; fungicidas requieren rotación FRAC y registro específico.",
+      "productos": [],
+      "referencias": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
+        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
+      ]
+    }
+  ]
+}
