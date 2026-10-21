@@ -24,6 +24,8 @@ jobs:
           python-version: "3.11"
       - name: Instalar herramientas NumPy, scikit-learn y solicitudes HTTPS
         run: python -m pip install numpy scikit-learn requests
+      - name: Verificación estática de la implementación en Python
+        run: python -m py_compile modelos/pronostico_rf_experimental_ux15.py
       - name: Entrenar RF y comprobar pronósticos solo como candidatos
         run: python modelos/pronostico_rf_experimental_ux15.py
       - name: Verificar procedencia y que nunca se activen alertas
