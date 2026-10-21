@@ -38,10 +38,10 @@
       "exact": false
     },
     "vid-enfermedad-1": {
-      "url": "https://pnwhandbooks.org/sites/pnwhandbooks/files/plant/images/conidiophore/conidiaonleaf.jpg",
-      "source": "https://pnwhandbooks.org/plantdisease/host-disease/grape-vitis-spp-powdery-mildew",
-      "credit": "Pacific Northwest Plant Disease Handbook · fotografía patológica",
-      "caption": "Conidióforos del oídio de la vid sobre hoja, fotografía técnica real",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/UncinulaNecatorOnGrapes.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:UncinulaNecatorOnGrapes.jpg",
+      "credit": "Oliver Macdonald (Maccheek) · Wikimedia Commons",
+      "caption": "Oídio de la vid (Erysiphe necator / Uncinula necator) visible en racimos de uva",
       "exact": true
     },
     "vid-enfermedad-2": {
@@ -136,10 +136,10 @@
       "exact": true
     },
     "banano-plaga-1": {
-      "url": "https://tiracoon.fr/_data/i/galleries/Insectes/Insectesdiv/DSC00089M-me.jpg",
-      "source": "https://tiracoon.fr/picture.php?/3391",
-      "credit": "Tiracoon · fotografía naturalista",
-      "caption": "Picudo negro del banano, Cosmopolites sordidus; ejemplar adulto",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolites_sordidus%2C_banana_weevil_%28Mindanao%2C_Philippines%29_01.jpg?width=800",
+      "source": "https://commons.wikimedia.org/wiki/File:Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg",
+      "credit": "Obsidian Soul · Wikimedia Commons · CC0",
+      "caption": "Adulto de Cosmopolites sordidus, picudo negro del banano, fotografía naturalista real",
       "exact": true
     },
     "banano-plaga-2": {
