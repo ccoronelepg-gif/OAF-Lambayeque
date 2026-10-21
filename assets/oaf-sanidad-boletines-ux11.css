@@ -1,0 +1,75 @@
+/* UX-11: Sanidad vegetal + Boletines oficiales. Sólo dos bloques visibles por pestaña.
+   Datos experimentales y módulos heredados íntegros en Metadatos. */
+.oaf-ux11-page{display:grid;gap:22px;margin:20px 0 30px;min-width:0}
+.oaf-ux11-section{background:#fff;border:1px solid #d0e5d8;border-radius:22px;padding:26px;box-shadow:0 12px 36px #123e3412;min-width:0}
+.oaf-ux11-section:nth-child(2){border-top:4px solid #479b8a}
+.oaf-ux11-head{padding-bottom:19px;margin-bottom:20px;border-bottom:1px solid #e2eee6}
+.oaf-ux11-kicker{display:inline-block;font-size:11px;font-weight:850;letter-spacing:.1em;color:#24765c;text-transform:uppercase}
+.oaf-ux11-head h2{font-size:clamp(25px,3vw,34px);line-height:1.2;letter-spacing:-.6px;color:#154941;margin:6px 0 10px}
+.oaf-ux11-head p{max-width:920px;color:#567064;line-height:1.72;font-size:14px;margin:0}
+.oaf-ux11-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:17px 0 20px;padding:17px 18px;border-radius:16px;background:linear-gradient(135deg,#eff8f0,#edf8f9);border:1px solid #d1e5dd}
+.oaf-ux11-controls.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.oaf-ux11-controls label{display:grid;gap:7px;color:#315d4f;font-size:12px;font-weight:800}
+.oaf-ux11-controls select{width:100%;min-width:0;border:1px solid #b2cebe;border-radius:10px;background:#fff;color:#174c41;padding:11px 12px;font:inherit;font-size:13px}
+.oaf-ux11-controls select:focus-visible{outline:3px solid #4a9c7e;outline-offset:2px}
+.oaf-ux11-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.oaf-ux11-card{background:linear-gradient(160deg,#fff,#f7fbf9);border:1px solid #d6e8de;padding:19px;border-radius:16px;min-width:0}
+.oaf-ux11-card h3{font-size:18px;color:#164d42;margin:0 0 9px}
+.oaf-ux11-card h4{font-size:15px;color:#276453;margin:0 0 8px}
+.oaf-ux11-card p,.oaf-ux11-card li{font-size:13px;line-height:1.7;color:#4d685a}
+.oaf-ux11-card p{margin:7px 0}
+.oaf-ux11-card strong{color:#154b3e}
+.oaf-ux11-badge{display:inline-flex;border-radius:20px;padding:6px 10px;margin:0 5px 8px 0;font-size:11px;font-weight:850;background:#d8f0e1;color:#1c6b52}
+.oaf-ux11-badge.blue{background:#deefff;color:#246997}
+.oaf-ux11-badge.amber{background:#fff2d9;color:#976527}
+.oaf-ux11-badge.gray{background:#edf2ef;color:#66796d}
+.oaf-ux11-species{font-size:13px;color:#66796d;font-style:italic;margin:0 0 8px}
+.oaf-ux11-illustration{display:flex;justify-content:center;align-items:center;height:118px;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 32% 30%,#d8eed9,#6da897);margin-bottom:11px}
+.oaf-ux11-illustration svg{width:100%;height:100%}
+.oaf-ux11-signal{border:1px solid #c8dfd2;border-left:5px solid #43a087;border-radius:0 14px 14px 0;background:#f0faf3;padding:16px 20px;margin:16px 0;line-height:1.7;color:#345e4b;font-size:14px}
+.oaf-ux11-signal strong{color:#155742}
+.oaf-ux11-signal[data-state="attention"]{border-color:#f5c98b;border-left-color:#cf873a;background:#fff7e9;color:#795831}
+.oaf-ux11-signal[data-state="unavailable"]{border-color:#d7e4e0;border-left-color:#83978e;background:#f4f6f4;color:#667a6f}
+.oaf-ux11-mini{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.oaf-ux11-mini div{background:#fff;border:1px solid #d4e4d9;border-radius:12px;min-width:110px;flex:1;padding:11px 13px}
+.oaf-ux11-mini small{display:block;color:#6e8479;font-size:11px}
+.oaf-ux11-mini strong{display:block;color:#1a5d4c;font-size:20px;margin-top:3px}
+.oaf-ux11-plot{min-height:255px;border:1px solid #dfece5;background:linear-gradient(180deg,#fff,#f4faf6);border-radius:14px;overflow:hidden;padding:6px}
+.oaf-ux11-plot svg{display:block;width:100%;height:auto}
+.oaf-ux11-plot .axis{fill:#638175;font-size:11px}
+.oaf-ux11-plot .gridline{stroke:#e0ebe4;stroke-width:1}
+.oaf-ux11-bar{fill:#4eabd3}
+.oaf-ux11-bar.hot{fill:#e39b52}
+.oaf-ux11-bar:hover{fill:#246b92}
+.oaf-ux11-key{display:flex;gap:14px;flex-wrap:wrap;color:#607c6e;font-size:11px;margin:9px 0}
+.oaf-ux11-key i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.oaf-ux11-note{font-size:12px;line-height:1.68;color:#63776d;margin:13px 0 0}
+.oaf-ux11-note a,.oaf-ux11-card a{font-weight:750;color:#236f5c}
+.oaf-ux11-sources{display:flex;gap:8px 16px;flex-wrap:wrap;margin:13px 0 5px}
+.oaf-ux11-sources a{color:#246b57;font-size:12px;font-weight:800}
+.oaf-ux11-steps{padding-left:19px;margin:5px 0}
+.oaf-ux11-steps li{margin:6px 0}
+.oaf-ux11-products{display:grid;gap:10px;margin-top:12px}
+.oaf-ux11-product{padding:13px 14px;border:1px solid #d8e6da;border-radius:12px;background:#fdfefe}
+.oaf-ux11-product strong{font-size:14px;display:block;color:#1c5846}
+.oaf-ux11-product small{display:block;font-size:11px;color:#608174;margin:5px 0}
+.oaf-ux11-product p{font-size:12px;color:#587063;margin:4px 0}
+.oaf-ux11-product a{font-size:12px}
+.oaf-ux11-institutions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.oaf-ux11-institution{display:flex;flex-direction:column;background:linear-gradient(150deg,#f4fbf6,#eaf4f6);padding:18px;border:1px solid #d0e3dc;border-radius:15px;gap:8px}
+.oaf-ux11-institution h3{font-size:17px;color:#16584a;margin:0}
+.oaf-ux11-institution p{font-size:13px;color:#506d60;line-height:1.65;margin:0}
+.oaf-ux11-institution small{font-size:11px;color:#677f73;font-weight:750}
+.oaf-ux11-institution a{font-size:13px;font-weight:850;color:#196a58;margin-top:auto}
+.oaf-ux11-calls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:16px 0}
+.oaf-ux11-calls>article{padding:17px;border-radius:13px;border:1px solid #d8e5db;background:#f4faf6}
+.oaf-ux11-calls strong{display:block;font-size:16px;color:#225e50;margin:7px 0}
+.oaf-ux11-calls span{font-size:12px;line-height:1.5;color:#607b6f}
+.oaf-ux11-conclusion{background:linear-gradient(135deg,#155a53,#226c61);border-radius:17px;padding:20px 23px;color:#eafff1}
+.oaf-ux11-conclusion h3{font-size:20px;color:#fff;margin:0 0 9px}
+.oaf-ux11-conclusion p{font-size:13px;line-height:1.75;color:#e8f6ed;margin:0 0 6px}
+.oaf-ux11-conclusion a{color:#fff8c8;font-weight:800}
+.oaf-ux11-archive>summary{cursor:pointer}
+#oaf-sanidad-ux11 .oaf-ux11-controls{position:relative}
+@media(max-width:920px){.oaf-ux11-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-ux11-controls.three{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-ux11-grid,.oaf-ux11-institutions{grid-template-columns:1fr}.oaf-ux11-calls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.oaf-ux11-section{padding:17px 13px;border-radius:16px}.oaf-ux11-controls,.oaf-ux11-controls.three{grid-template-columns:1fr;padding:13px}.oaf-ux11-calls{grid-template-columns:1fr}.oaf-ux11-plot{min-height:210px}}
