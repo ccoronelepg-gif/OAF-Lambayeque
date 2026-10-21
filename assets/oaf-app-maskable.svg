@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Ícono enmascarable OAF Lambayeque">
+<rect width="512" height="512" fill="#13594f"/>
+<circle cx="256" cy="243" r="166" fill="#1c7263"/>
+<circle cx="323" cy="159" r="36" fill="#f0d28c"/>
+<path d="M114 309Q215 243 284 302Q349 334 398 275V372H114Z" fill="#b2dbb2"/>
+<path d="M114 333Q232 302 295 339Q349 364 398 323V380H114Z" fill="#61a982"/>
+<path d="M194 270Q209 216 259 203Q263 254 231 285Z" fill="#e8f2da"/>
+<path d="M197 273Q218 259 253 218" fill="none" stroke="#41876a" stroke-width="7" stroke-linecap="round"/>
+<text x="256" y="414" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="58" font-weight="800" fill="#fff">OAF</text></svg>
