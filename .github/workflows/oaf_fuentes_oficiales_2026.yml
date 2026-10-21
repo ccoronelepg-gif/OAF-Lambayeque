@@ -1,0 +1,55 @@
+name: OAF - Vigencia diaria de fuentes oficiales
+on:
+  schedule:
+    - cron: "27 13 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/actualizar_fuentes_oaf_2026.py"
+      - "tests/test_fuentes_auto_2026.py"
+      - ".github/workflows/oaf_fuentes_oficiales_2026.yml"
+permissions:
+  contents: write
+concurrency:
+  group: oaf-fuentes-oficiales-2026
+  cancel-in-progress: false
+jobs:
+  consultar_y_publicar_estado:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Preparar dependencias de extracción
+        run: python -m pip install requests==2.32.5 beautifulsoup4==4.14.2
+      - name: Pruebas offline de extracción y control de enlaces
+        run: python -m unittest discover -s tests -p 'test_fuentes_auto_2026.py' -v
+      - name: Consultar portales institucionales sin inferir pronósticos
+        run: python scripts/actualizar_fuentes_oaf_2026.py
+      - name: Verificar que se registren fallos o estados auditables
+        run: |
+          python - <<'PY'
+          import json
+          data=json.load(open('datos/estado_fuentes_oficiales_auto.json',encoding='utf-8'))
+          assert set(data['fuentes'])=={'enfen','noaa','senamhi','cenepred'}
+          assert all(x['estado_consulta'] for x in data['fuentes'].values())
+          assert all(x['no_equivale_a_pronostico_local'] is True for x in data['fuentes'].values())
+          assert all(m['operativo_oaf'] is False for m in data['catalogo_modelos'])
+          print('El reporte distingue alcance y errores de consulta')
+          PY
+      - name: Publicar informe de estado sin modificar conclusiones científicas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/estado_fuentes_oficiales_auto.json
+          if git diff --cached --quiet; then
+            echo "Sin variaciones"
+          else
+            git commit -m "data(oaf): estado diario de enlaces ENFEN NOAA SENAMHI CENEPRED"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
