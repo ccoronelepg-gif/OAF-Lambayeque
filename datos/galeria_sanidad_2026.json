@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21-fotografia-real",
+  "version": "2026-10-21-fotografias-actualizadas",
   "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente.",
   "organismos": {
     "mango-plaga-1": {
@@ -180,7 +180,12 @@
       "exact": true
     },
     "scholar": null,
-    "biosplent": null,
+    "biosplent": {
+      "url": "https://silvestre.com.pe/wp-content/uploads/bio_splent.jpg",
+      "source": "https://silvestre.com.pe/productos/bio-splent-70-wp/",
+      "credit": "Silvestre Perú · imagen oficial del fabricante",
+      "caption": "Envase BIO-SPLENT 70 WP, formulación del laboratorio"
+    },
     "akron": {
       "url": "https://www.agrobesser.com/5843-large_default/akron-1kg-acetamipridbuprofezin-insecticida-accion-por-contacto-e-ingestion-silvestre.jpg",
       "source": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
@@ -228,7 +233,7 @@
       "url": "https://www.nutriferza.com/web/image/product.template/2565/image_1920?unique=d416108",
       "source": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
       "credit": "Bayer · imagen de distribuidor (presentación sujeta a cambios)",
-      "caption": "Aliette, presentación de empaque referencial",
+      "caption": "Envase referencial Aliette 80 WG; la formulación y registro pueden diferir de la ficha Aliette WP. Comprobar etiqueta vigente.",
       "exact": true
     },
     "engeo": {
