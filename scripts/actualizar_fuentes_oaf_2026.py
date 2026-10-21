@@ -24,6 +24,8 @@ SOURCES = {
     "senamhi": ("SENAMHI", "https://www.senamhi.gob.pe/main.php?dp=lambayeque&p=aviso-meteorologico-vigente", "Portal de avisos regionales; vigencia de cada aviso no inferida"),
     "cenepred": ("CENEPRED", "https://sigrid.cenepred.gob.pe/sigridv3/", "Escenarios de riesgo; su edición se consulta en el documento"),
 }
+ALTERNATIVAS_OFICIALES = {"senamhi": "https://www.gob.pe/institucion/senamhi/colecciones/48131-avisos-meteorologicos-dz2",
+ "enfen": "https://enfen.imarpe.gob.pe/archivo-enfen/"}
 HEADERS = {"User-Agent": "OAF-Lambayeque/2.0 (+https://ccoronelepg-gif.github.io/OAF-Lambayeque/; auditoria fuentes cientificas)"}
 ISSUE = re.compile(r"Comunicado\s+Oficial\s+Enfen\s+N\s*[°ºo.]*\s*(\d{1,2})\s*[-–]\s*(20\d{2})", re.I)
 
@@ -81,7 +83,7 @@ def run():
     for id,(name,url,description) in SOURCES.items():
         rec={"organismo":name,"url":url,"tipo":description,"estado_consulta":"no_verificado","ultima_consulta_utc":now,
              "fecha_ultimo_documento":None,"ultimo_documento":None,"error":None,"respuesta_http":None,"huella_sha256_html":None,"cambio_html_desde_ultima_consulta":None,
-             "no_equivale_a_pronostico_local":True}
+             "no_equivale_a_pronostico_local":True,"url_alternativa_oficial":ALTERNATIVAS_OFICIALES.get(id)}
         try:
             res=session.get(url,headers=HEADERS,timeout=(10,25))
             rec["respuesta_http"]=res.status_code
