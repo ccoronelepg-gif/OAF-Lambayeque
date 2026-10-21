@@ -156,11 +156,13 @@
       "exact": true
     },
     "banano-enfermedad-1": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana_(variety-_Koa_e%27_Kea)-_Fusarium_wilt_(Panama_disease).jpg?width=960",
+      "url": "assets/fotos_cc/fusariosis_banano_scot_nelson_cc0.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Banana_(variety-_Koa_e%27_Kea)-_Fusarium_wilt_(Panama_disease).jpg",
       "credit": "Scot Nelson · Wikimedia Commons · CC0",
       "caption": "Banano con síntomas de marchitez por Fusarium (enfermedad de Panamá). La imagen no confirma raza 4 tropical.",
-      "exact": false
+      "exact": false,
+      "copia_local_licencia": "Scot Nelson, CC0",
+      "sha256_copia_local": "ba61e8ea8c936c785d2d9c52b05f1d801a88cd6313660edde2a746d0bae9a27f"
     },
     "banano-enfermedad-2": {
       "url": "https://www.koppert.com/content/global/Challenges/Diseases/Mycosphaerella_fijiensis/black_sigatoka_mycosphaerella_fijiensis_damage_2_koppert.jpg",
