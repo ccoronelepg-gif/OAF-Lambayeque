@@ -80,8 +80,8 @@ class UXContract(unittest.TestCase):
         home=HTML.split('<section data-page="inicio" id="inicio">')[1].split('<section data-page="clima"')[0]
         self.assertLess(home.index('id="oaf-zone-primary"'),home.index('id="oaf-main-indicators"'))
         self.assertLess(home.index('id="oaf-home-nino"'),home.index('id="oaf-regional-map-heading"'))
-        self.assertIn("Blueberry_close_up.jpg",home)
-        self.assertIn("Bunch_Of_Grapes_On_Vine.jpg",home)
+        self.assertIn("oaf-hero-monitoreo-agroclimatico.svg",home)
+        self.assertIn("monitoreo",home)
 
     def test_no_pseudo_evidence_or_false_alert(self):
         src=(ROOT/"assets/oaf-ux-data-2026.js").read_text(encoding="utf8")
