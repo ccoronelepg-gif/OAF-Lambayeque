@@ -70,6 +70,48 @@ html,body{overflow-x:hidden}
 .legend .oaf-ux17-legend-values{display:flex;align-items:center;gap:9px}
 .legend .oaf-ux17-gradient{display:inline-block;min-width:128px;height:13px;border-radius:7px;border:1px solid #d8dfe0}
 @media(max-width:620px){.oaf-ux17-map-layers{gap:10px}.oaf-ux17-map-layers label{flex-wrap:wrap}}
+/* UX19: geometría, leyendas y controles adaptados a celulares y orientación */
+html,body{max-width:100%;overflow-x:clip}
+.panel,.layout,.controls,.grid,.below,.oaf-ux17-map-layers{min-width:0;max-width:100%}
+#map{width:100%;height:clamp(315px,72vw,470px);min-height:315px;touch-action:pan-x pan-y}
+#chart{max-width:100%;min-width:0}
+button,select,input[type=range]{touch-action:manipulation}
+@media(max-width:760px){
+ header{padding:18px 13px}
+ header h1{font-size:clamp(22px,6vw,31px)!important}
+ header p{font-size:13px;line-height:1.6}
+ main{width:100%;max-width:100%;padding:12px 10px 30px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .kpi{padding:11px 10px}
+ .kpi .v{font-size:19px}
+ .kpi .lab{font-size:11px}
+ .layout,.below{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+ .panel{padding:13px 10px!important;min-width:0}
+ .panel h2{font-size:18px!important}
+ .controls{grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
+ .control select{min-width:0!important;width:100%!important;min-height:44px!important;font-size:16px!important}
+ .oaf-ux17-map-layers{padding:10px!important;gap:9px!important}
+ .oaf-ux17-map-layers label{display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-height:40px}
+ .oaf-ux17-map-layers input[type=range]{width:130px}
+ .oaf-ux17-map-layers button{min-height:44px}
+ #map{height:clamp(315px,85vw,415px);min-height:315px;max-width:100%}
+ #chart{display:block;width:100%;height:auto;min-width:0!important}
+ #legend{display:flex;gap:8px;flex-wrap:wrap}
+ #legend span{white-space:normal}
+ .notice{padding:12px 11px!important;font-size:12px}
+ .table-scroll,.scroller,.table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{font-size:12px}
+ th,td{padding:8px 7px;overflow-wrap:anywhere}
+}
+@media(max-width:390px){
+ header{padding:16px 10px}
+ main{padding:10px 8px 25px}
+ .panel{padding:11px 8px!important}
+ .grid{gap:6px}
+ #map{height:320px}
+ .oaf-ux17-map-layers input[type=range]{width:110px}
+}
+
 </style></head><body>
 <header>
 <div style="font-size:.76rem;letter-spacing:.08em;opacity:.92">OAF LAMBAYEQUE · CIENCIA CLIMÁTICA ABIERTA · FASE 10K</div>
@@ -281,6 +323,13 @@ Promise.all([getJSON("./datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json")
  $("oaf-ux17-borders").addEventListener("change",e=>{drawBorders=e.target.checked;selectedLayers()});
  $("oaf-ux17-reset-view").addEventListener("click",()=>{if(layer&&map)map.fitBounds(layer.getBounds(),{padding:[10,10]})});
  update();
+ const mapNode=$("map");
+ const fixMapSize=()=>{if(map&&mapNode?.offsetWidth>0)map.invalidateSize({pan:false})};
+ if(typeof ResizeObserver!=="undefined"&&mapNode){
+  new ResizeObserver(()=>window.requestAnimationFrame(fixMapSize)).observe(mapNode);
+ }
+ window.addEventListener("orientationchange",()=>window.setTimeout(fixMapSize,200),{passive:true});
+ window.addEventListener("resize",()=>window.requestAnimationFrame(fixMapSize),{passive:true});
  }).catch(err=>{$("status").textContent="No se pueden mostrar cifras sin los archivos 10K verificados: "+err.message;$("table-land").textContent="Evaluación regional pendiente.";});
 })();</script>
 </body></html>
