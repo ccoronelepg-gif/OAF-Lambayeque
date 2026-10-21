@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-21-v1";
-const STATIC="oaf-pwa-static-2026-10-21-v1";
+const RELEASE="oaf-pwa-shell-2026-10-21-v2";
+const STATIC="oaf-pwa-static-2026-10-21-v2";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -63,14 +63,16 @@ async function navigate(req){
     status:503,headers:{"Content-Type":"text/plain; charset=utf-8"}});
  }
 }
-async function staticFirst(req){
+async function staticFirst(req,event){
  const cache=await caches.open(STATIC);
- const saved=await cache.match(req);
+ // Core resources are precached in RELEASE; newly fetched assets live in STATIC.
+ const saved=(await cache.match(req))||(await caches.match(req));
  const refresh=fetch(req).then(async res=>{
   if(res.ok)await save(cache,req,res);
   return res;
  }).catch(()=>null);
- if(saved){/* Refresh only if the service worker was triggered by a real fetch. */
+ if(saved){
+  event.waitUntil(refresh);
   return saved;
  }
  return (await refresh)||Response.error();
@@ -85,7 +87,7 @@ self.addEventListener("fetch",event=>{
   event.respondWith(navigate(req));return;
  }
  if(isStatic(url)){
-  event.respondWith(staticFirst(req));return;
+  event.respondWith(staticFirst(req,event));return;
  }
  // All other site endpoints follow the browser's native network behavior.
 });
