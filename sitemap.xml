@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/</loc><lastmod>2026-10-18</lastmod></url>
-  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/ecorregiones-clima-10k.html</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/observaciones-senamhi-10m.html</loc><lastmod>2026-10-17</lastmod></url>
-  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/verificacion-estaciones-senamhi-10n.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/guia-lectura-agroclimatica.html</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/ecorregiones-clima-10k.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/observaciones-senamhi-10m.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/verificacion-estaciones-senamhi-10n.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/evaluacion-modelos-atmosfericos-10h.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/evaluacion-rf-lluvias-10j.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/optimizacion-lluvia-montana-10l.html</loc></url>
+  <url><loc>https://ccoronelepg-gif.github.io/OAF-Lambayeque/random-forest-lluvias.html</loc></url>
 </urlset>
