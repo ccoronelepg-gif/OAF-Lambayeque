@@ -89,3 +89,89 @@
 #inicio .oaf-home-shell > .oaf-source-split{display:none!important}
 #inicio #oaf-home-summary-static{display:block!important;columns:auto!important;column-count:1!important}
 #inicio #oaf-home-summary-static>p{display:block!important;max-width:105ch;text-align:justify!important;text-justify:inter-word;hyphens:auto}
+
+/* UX-10: banner del usuario, sin recorte ni doble titular superpuesto */
+#inicio .oaf-home-shell>.oaf-hero-2026{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:0!important;
+  overflow:hidden;
+  border-radius:17px;
+}
+#inicio .oaf-hero-2026 .herotxt{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+#inicio .oaf-hero-2026 .heroimg{
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  position:relative!important;
+  display:block!important;
+  overflow:hidden;
+  aspect-ratio:16 / 9;
+  background:#163e48;
+}
+#inicio .oaf-hero-2026 .heroimg img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+#inicio .oaf-hero-2026 .oaf-banner-note{
+  position:absolute;
+  right:10px;
+  bottom:8px;
+  z-index:2;
+  font-size:10px;
+  color:#f6fff5;
+  background:#092e37bf;
+  border-radius:5px;
+  padding:4px 9px;
+  max-width:90%;
+  line-height:1.3;
+}
+#inicio #oaf-home-summary-static{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  padding:27px 34px!important;
+}
+#inicio #oaf-home-summary-static h2{
+  width:100%;
+  max-width:980px;
+  margin:0 auto 14px!important;
+  text-align:center!important;
+}
+#inicio #oaf-home-summary-static>p{
+  width:100%;
+  max-width:920px!important;
+  text-align:center!important;
+  text-justify:auto!important;
+  margin:0 auto!important;
+  font-size:15px;
+  line-height:1.7;
+  hyphens:none;
+}
+@media(max-width:670px){
+  #inicio #oaf-home-summary-static{padding:19px 16px!important}
+  #inicio #oaf-home-summary-static h2{font-size:21px!important}
+  #inicio #oaf-home-summary-static>p{font-size:13px!important;line-height:1.58!important}
+  #inicio .oaf-hero-2026 .oaf-banner-note{font-size:8px;bottom:5px;right:5px;max-width:86%}
+}
