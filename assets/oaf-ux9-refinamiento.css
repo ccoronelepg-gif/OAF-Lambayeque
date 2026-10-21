@@ -1,0 +1,69 @@
+/* OAF UX-9 · Rediseño editorial, resúmenes comprensibles y dashboards científicos.
+   Se usan sombras sutiles y gradientes para dar profundidad sin deformar los datos. */
+.oaf-hero-2026 .heroimg{position:relative;min-height:320px;background:#154650;overflow:hidden;display:block}
+.oaf-hero-2026 .heroimg img{display:block;width:100%;height:100%;min-height:320px;object-fit:cover;object-position:54% 50%;max-width:none;min-width:0}
+.oaf-hero-2026 .herotxt{position:relative;z-index:1}
+.oaf-agro-summary{position:relative;background:linear-gradient(140deg,#fff,#f6faf7 60%,#edf6ee);border:1px solid #b9d9c7;border-top:5px solid #36836c;padding:30px 35px;box-shadow:0 16px 34px #1a4c3a13}
+.oaf-agro-summary:before{content:"";position:absolute;top:0;right:16px;width:165px;height:165px;border-radius:50%;background:radial-gradient(circle,#c5e8ce75,transparent 70%);pointer-events:none}
+.oaf-agro-summary h2{font-size:clamp(23px,2.7vw,32px)!important;letter-spacing:-.6px;max-width:960px;padding-bottom:16px;border-bottom:1px solid #c6e1d2;margin-bottom:19px!important}
+.oaf-agro-summary p{text-align:justify;text-justify:inter-word;hyphens:auto;line-height:1.75;font-size:14px;margin:0 0 9px;max-width:none}
+.oaf-agro-summary .oaf-intro-columns{column-count:2;column-gap:32px;column-rule:1px solid #dfebe2}
+.oaf-agro-summary .oaf-intro-columns p{break-inside:avoid;margin:0 0 13px}
+#oaf-bloque-clima-actual #oaf-agro-home-metrics .oaf-metric{box-shadow:0 4px 15px #1746340b}
+.oaf-plain-weather{background:linear-gradient(130deg,#f2f9f1,#e8f4ee);border:1px solid #c9dfd0;border-radius:15px;padding:18px 20px;margin:14px 0}
+.oaf-plain-weather h3{font-size:18px;color:#1b6049;margin:0 0 9px}
+.oaf-plain-weather p{font-size:13px;line-height:1.67;color:#3c6151;margin:0 0 12px}
+.oaf-plain-weather ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0;list-style:none;margin:0}
+.oaf-plain-weather li{font-size:13px;line-height:1.55;background:#fff;padding:11px 13px;border-radius:10px;border:1px solid #dbe9df}
+.oaf-plain-weather li strong{display:block;color:#175946;margin-bottom:3px}
+.oaf-plain-weather .oaf-weather-advice{background:#deefdf;border-radius:11px;padding:13px 16px;margin-top:12px;font-size:13px}
+.oaf-color-dash{border:1px solid #d1e2d9;background:linear-gradient(160deg,#fff,#f4faf6);border-radius:16px;box-shadow:0 8px 26px #123d3210;min-width:0;padding:16px}
+.oaf-color-dash h3{font-size:17px;color:#185445;margin:0 0 9px}
+.oaf-color-dash p{font-size:13px;line-height:1.65;color:#527066}
+.oaf-ux9-form{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:8px 0 14px}
+.oaf-ux9-form label{font-size:13px;font-weight:800;color:#245c4d}
+.oaf-ux9-form select{border:1px solid #afcdbf;border-radius:9px;padding:10px 14px;background:#fff;color:#184f43;font:inherit;font-size:13px;max-width:100%}
+.oaf-ux9-data{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.oaf-ux9-data article{padding:11px 12px;background:linear-gradient(135deg,#e4f2f9,#f5faf5);border-radius:12px;border:1px solid #d5e4df}
+.oaf-ux9-data span{display:block;font-size:11px;color:#527066}
+.oaf-ux9-data strong{display:block;font-size:18px;color:#194b50;line-height:1.3}
+.oaf-ux9-dates{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0 5px}
+.oaf-ux9-dates span{background:#e7f3ed;color:#235a4b;font-size:12px;padding:8px 10px;border-radius:9px;border:1px solid #cce2d3}
+.oaf-ux9-dates .rain{background:#e2f2fd;color:#125f88;border-color:#bbddec;font-weight:800}
+.oaf-ux9-chart{min-height:285px;overflow:hidden;border-radius:12px;background:#fbfdfa;border:1px solid #dfebe4}
+.oaf-ux9-chart svg{display:block;width:100%;height:auto}
+.oaf-ux9-chart svg [tabindex]:focus-visible{outline:3px solid #90bea8}
+.oaf-ux9-legend{display:flex;gap:9px 18px;flex-wrap:wrap;margin-top:7px;color:#537064;font-size:11px}
+.oaf-ux9-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin-right:4px}
+.oaf-ux9-source{font-size:12px;line-height:1.65;color:#557163;border-top:1px solid #dfebe2;padding-top:10px;margin-top:12px}
+.oaf-ux9-source a{font-weight:800}
+.oaf-ux9-enso-summary{border:1px solid #e5d1a8;background:linear-gradient(120deg,#fff6dc,#fff);border-radius:13px;padding:15px 17px;margin:13px 0;color:#6a552b;line-height:1.7;font-size:13px}
+.oaf-ux9-enso-summary strong{color:#79521e}
+.oaf-ux9-overview{padding:15px 18px;border-radius:13px;background:linear-gradient(120deg,#eaf5ee,#f7fbf7);border-left:4px solid #4a9c72;font-size:14px;line-height:1.75;color:#3c6250}
+.oaf-ux9-final{border-radius:19px;padding:23px 26px;background:linear-gradient(130deg,#164e57,#1d694f);color:white;box-shadow:0 13px 32px #123d3425}
+.oaf-ux9-final h2{color:#f0fff5;font-size:26px;margin:2px 0 15px}
+.oaf-ux9-final h3{color:#d6efe3;margin:0 0 6px;font-size:16px}
+.oaf-ux9-final p{color:#ebf5ec;line-height:1.75;font-size:14px;margin:0}
+.oaf-ux9-final section{border-top:1px solid #ffffff30;padding:12px 0}
+.oaf-ux9-final section:first-of-type{border-top:0}
+.oaf-ux9-final a{color:#fff3bd;font-weight:850}
+.oaf-ux9-map-wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(225px,.6fr);gap:15px;align-items:start}
+.oaf-ux9-map{border:1px solid #cbdfd7;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#ebf4ec,#c5dfd6);min-height:300px}
+.oaf-ux9-map svg{display:block;width:100%;height:auto;max-height:600px;filter:drop-shadow(0px 10px 9px #1e5c4d22)}
+.oaf-ux9-map path{cursor:pointer;transition:filter .15s,opacity .15s}
+.oaf-ux9-map path:hover,.oaf-ux9-map path:focus{filter:brightness(1.13);stroke:#163f4d;stroke-width:2.4;outline:none}
+.oaf-ux9-map-info{border:1px solid #d5e6dc;background:#fff;border-radius:13px;padding:15px;color:#3e6254;font-size:13px;line-height:1.7}
+.oaf-ux9-map-info strong{color:#185342}
+.oaf-ux9-map-legend{display:grid;gap:6px;margin:12px 0}
+.oaf-ux9-map-legend span{display:flex;align-items:center;gap:7px;font-size:12px;line-height:1.5;color:#486459}
+.oaf-ux9-map-legend i{width:14px;height:14px;display:inline-block;border-radius:4px;border:1px solid #ffffff}
+.oaf-ux9-links{font-size:13px;color:#4e6c60;margin:13px 0 0}
+.oaf-ux9-links a{font-weight:800}
+#oaf-ux9-predicciones{display:grid;gap:22px}
+#oaf-ux9-predicciones .oaf-agro-split{gap:15px}
+#oaf-agro-home .oaf-agro-split.oaf-ux9-one-chart{display:block}
+#oaf-agro-home .oaf-ux9-one-chart>.oaf-agro-tile{max-width:100%}
+@media(max-width:1000px){.oaf-ux9-map-wrap{grid-template-columns:1fr}}
+@media(max-width:720px){.oaf-agro-summary .oaf-intro-columns{column-count:1;column-rule:none}.oaf-agro-summary{padding:19px 18px}.oaf-plain-weather ul{grid-template-columns:1fr}.oaf-ux9-data{grid-template-columns:1fr 1fr}.oaf-ux9-final{padding:20px 18px}}
+@media(max-width:420px){.oaf-ux9-data{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.oaf-ux9-map path{transition:none}}
