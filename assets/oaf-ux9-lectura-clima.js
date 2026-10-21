@@ -43,9 +43,8 @@ function classify(d){
  const lead=document.createElement("p");lead.textContent=`Así se encuentra el ambiente en ${city}, según la información meteorológica disponible:`;
  const list=document.createElement("ul");
  for(const [title,description] of content){const li=document.createElement("li");const strong=document.createElement("strong");strong.textContent=title;li.append(strong,document.createTextNode(description));list.append(li)}
- const tip=document.createElement("p");tip.className="oaf-weather-advice";tip.textContent=advice.length?`Consejo práctico: ${advice.slice(0,2).join(" ")}`:"Consejo práctico: revisa las condiciones y el suelo de tu parcela antes de ajustar el riego, la ventilación o las labores agrícolas.";
- const foot=document.createElement("p");foot.className="oaf-ux9-source";foot.textContent="Lectura orientativa elaborada por OAF a partir de los valores horarios disponibles de Open-Meteo y, cuando hay datos, CAMS. Las etiquetas de calor, humedad y radiación son descriptivas, no anomalías climáticas ni diagnósticos.";
- current.append(lead,list,tip,foot);
+ const tip=document.createElement("p");tip.className="oaf-weather-advice";const strongTip=document.createElement("strong");strongTip.textContent="Consejo práctico: ";tip.append(strongTip,document.createTextNode(advice.length?advice.slice(0,2).join(" "):"Revisa las condiciones y el suelo de tu parcela antes de ajustar el riego, la ventilación o las labores agrícolas."));
+ current.append(lead,list,tip);
 }
 document.addEventListener("oaf:weather",e=>classify(e.detail));
 })();
