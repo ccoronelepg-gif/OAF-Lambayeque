@@ -1,0 +1,56 @@
+name: OAF 10O - RF experimental diario y mensual
+on:
+  schedule:
+    - cron: "41 15 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "modelos/pronostico_rf_experimental_ux15.py"
+      - ".github/workflows/oaf_rf_experimental_ux15.yml"
+permissions:
+  contents: write
+concurrency:
+  group: oaf-rf-experimental-ux15
+  cancel-in-progress: false
+jobs:
+  entrenamiento_y_publicacion_experimental:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar herramientas NumPy, scikit-learn y solicitudes HTTPS
+        run: python -m pip install numpy scikit-learn requests
+      - name: Entrenar RF y comprobar pronósticos solo como candidatos
+        run: python modelos/pronostico_rf_experimental_ux15.py
+      - name: Verificar procedencia y que nunca se activen alertas
+        run: |
+          python - <<'PY'
+          import json
+          j=json.load(open('datos/rf_experimental_ux15.json',encoding='utf8'))
+          assert j['alertas_automaticas'] is False
+          assert j['operativo_certificado'] is False
+          if j['estado']=='candidato_experimental_generado':
+              assert j['horizonte_semanal']==7
+              assert all(len(v)==7 for v in j['pronostico_diario_rf_experimental'].values())
+              assert all(len(v)==6 and v[0]['mes']>='2026-11' for v in j['escenarios_mensuales_rf_experimentales'].values())
+          else:
+              assert j['estado']=='no_disponible'
+          print("ESTADO_CANDIDATO_RF:",j['estado'])
+          PY
+      - name: Publicar resultado experimental fechado sin promover modelo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/rf_experimental_ux15.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios en informe RF."
+          else
+            git commit -m "data(oaf): nuevo candidato RF experimental con estado y validacion"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
