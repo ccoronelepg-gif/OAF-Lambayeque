@@ -2,11 +2,11 @@
   "tipo": "RandomForestRegressor original reproducible de investigación, NO modelo operativo",
   "unidades_temperatura": "Diario Tmax; mensual temperatura media (no promedio de Tmax)",
   "estrategia_mejora": "Características de localidad explicitas; climatologia mensual local y prueba temporal para lluvia y temperatura.",
-  "fecha_generacion_utc": "2026-10-21T21:39:23+00:00",
+  "fecha_generacion_utc": "2026-10-21T21:41:55+00:00",
   "fecha_local": "2026-10-21",
   "fuente_historica": "ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
   "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
-  "interpretacion": "Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas.",
+  "interpretacion": "Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas. Los meses Nov-Abr parten de una base ERA5 en septiembre 2026; octubre es un paso puente del modelo.",
   "alertas_automaticas": false,
   "operativo_certificado": false,
   "horizonte_semanal": 7,
@@ -273,37 +273,55 @@
         "mes": "2026-11",
         "precipitacion_mm": 15.3,
         "temperatura_media_c": 25.3,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 2,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2026-12",
         "precipitacion_mm": 9.2,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 3,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-01",
         "precipitacion_mm": 25.8,
         "temperatura_media_c": 25.7,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 4,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-02",
         "precipitacion_mm": 48.7,
         "temperatura_media_c": 26.0,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 5,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-03",
         "precipitacion_mm": 49.2,
         "temperatura_media_c": 26.1,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 6,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-04",
         "precipitacion_mm": 34.5,
         "temperatura_media_c": 25.0,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 7,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       }
     ],
     "Jayanca": [
@@ -311,37 +329,55 @@
         "mes": "2026-11",
         "precipitacion_mm": 28.8,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 2,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2026-12",
         "precipitacion_mm": 24.1,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 3,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-01",
         "precipitacion_mm": 87.4,
         "temperatura_media_c": 25.7,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 4,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-02",
         "precipitacion_mm": 95.7,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 5,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-03",
         "precipitacion_mm": 90.3,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 6,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-04",
         "precipitacion_mm": 75.7,
         "temperatura_media_c": 24.8,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 7,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       }
     ],
     "Motupe": [
@@ -349,37 +385,55 @@
         "mes": "2026-11",
         "precipitacion_mm": 29.1,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 2,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2026-12",
         "precipitacion_mm": 24.6,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 3,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-01",
         "precipitacion_mm": 87.2,
         "temperatura_media_c": 25.7,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 4,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-02",
         "precipitacion_mm": 94.9,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 5,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-03",
         "precipitacion_mm": 89.3,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 6,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-04",
         "precipitacion_mm": 77.9,
         "temperatura_media_c": 24.8,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 7,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       }
     ],
     "Olmos": [
@@ -387,37 +441,55 @@
         "mes": "2026-11",
         "precipitacion_mm": 42.3,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 2,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2026-12",
         "precipitacion_mm": 24.6,
         "temperatura_media_c": 25.4,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 3,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-01",
         "precipitacion_mm": 82.5,
         "temperatura_media_c": 25.7,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 4,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-02",
         "precipitacion_mm": 96.9,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 5,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-03",
         "precipitacion_mm": 90.1,
         "temperatura_media_c": 25.9,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 6,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       },
       {
         "mes": "2027-04",
         "precipitacion_mm": 56.4,
         "temperatura_media_c": 24.8,
-        "recursivo": true
+        "recursivo": true,
+        "adelanto_desde_ultimo_mes_observado": 7,
+        "horizonte_evaluado_hasta_meses": 6,
+        "requiere_validacion_prospectiva": true
       }
     ]
   }
