@@ -30,6 +30,13 @@ Revisión estructural del portal `index.html` (6 secciones principales y 77 refe
 - **Imágenes**: `datos/galeria_sanidad_2026.json` y `assets/oaf-galeria-mecanismos-2026.js`. Se mantiene atribución y se muestra un recuadro explicativo si falla una imagen.
 - **Navegación**: se conservaron 6 pestañas y los módulos de metadatos; Cultivos y Sanidad y Boletines conservan dos bloques principales.
 
+
+## Primera ejecución real del monitor diario
+
+La bitácora pública `datos/estado_fuentes_oficiales_auto.json` registró una primera comprobación el **21/10/2026 a las 19:35:24 UTC**. Resultado observado: **NOAA CPC HTTP 200**, **CENEPRED HTTP 200**, **ENFEN error de resolución DNS**, y **SENAMHI tiempo de conexión agotado**. HTTP 200 solo acredita acceso a la página, no novedad ni fecha de un pronóstico. La automatización queda operativa como **monitor de intentos**, no como garantía de consultas exitosas.
+
+Para ENFEN se conserva el vínculo oficial al archivo de comunicados; para SENAMHI se añade un enlace alternativo al compendio estatal DZ2. Si el servidor institucional falla, el panel muestra incidencia y no presenta nuevas afirmaciones de actualidad.
+
 ## Pendientes que no deben ocultarse
 
 1. Confirmar una **ejecución exitosa real** del nuevo workflow y los anteriores; una programación GitHub Actions podría fallar por DNS, cambios de HTML, cuotas o permisos.
