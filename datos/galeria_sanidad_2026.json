@@ -193,7 +193,12 @@
       "caption": "Envase de AKRON 500 WG",
       "exact": true
     },
-    "wonder": null,
+    "wonder": {
+      "url": "https://www.novagro-ag.com/panel/public/images/productos/producto1696/Wonder-barrera-2-1756791256.jpeg",
+      "source": "https://www.novagro-ag.com/cajarapida/vistas/cajarapida.php?nom_prod=wonder_-_botella_lt&producto=3545",
+      "credit": "Novagro-AG Perú · imagen promocional oficial",
+      "caption": "Presentación comercial de WONDER; fotografía publicitaria del fabricante."
+    },
     "vertimec": {
       "url": "https://stcroperproduction.blob.core.windows.net/uploads-public/images/64304t-4dvnsatw6fwjf3/lg.webp",
       "source": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
