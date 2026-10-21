@@ -34,17 +34,36 @@ function dependent(prefix){
  refill(`oaf-${prefix}-patogeno`,optionsFor(typ,typ,crop),null);
 }
 const getCurrent=prefix=>state.organisms.find(r=>r.id===$(`oaf-${prefix}-patogeno`)?.value);
+function renderConditions(r){
+ const area=$("oaf-sm-condiciones");if(!area)return;
+ const types={
+ temperatura:["Temperatura y actividad biológica","La temperatura modifica la tasa de desarrollo o actividad del organismo, pero no equivale a una curva de población. Para determinar fluctuación poblacional se necesitan trampas, conteos repetidos, fenología y abundancia de hospedantes."],
+ humedad:["Humedad y periodos de mojado","Lluvia y humedad relativa pueden favorecer procesos epidemiológicos, pero no miden directamente el mojado foliar ni confirman infección. La fenología, el inóculo y la ventilación modifican la respuesta."],
+ suelo:["Saturación y drenaje del suelo","La lluvia pronosticada no representa la humedad real del sustrato ni el riego. Son necesarias observaciones en raíces, humedad del suelo, drenaje y diagnóstico."],
+ estres:["Estrés y heridas","Calor, déficit hídrico y heridas son factores de predisposición; el clima por sí solo no permite concluir infección de madera ni muerte regresiva."],
+ bioseguridad:["Ingreso y dispersión","La presencia de R4T depende de la introducción y dispersión del patógeno. No se emite predicción de ocurrencia a partir de una serie meteorológica."]
+ };
+ const t=types[r.clasificacion]||["Vigilancia integrada","Es necesaria observación directa del cultivo."];
+ area.replaceChildren();area.append(element("strong",null,t[0]),element("p",null,t[1]),element("small",null,"Comprobación de campo: "+r.vigilancia));
+}
+function renderTable(j){
+ const box=$("oaf-sm-tabla");if(!box)return;box.replaceChildren();
+ const table=element("table","oaf-ux11-weather-table"),head=document.createElement("thead"),body=document.createElement("tbody");
+ const tr=document.createElement("tr");["Día","Lluvia prevista","T. media","HR media"].forEach(v=>tr.append(element("th",null,v)));head.append(tr);
+ j.days.forEach((date,i)=>{const row=document.createElement("tr");[dname(date),nfmt(j.precip[i])+" mm",nfmt(j.temp[i])+" °C",nfmt(j.hum[i],0)+" %"].forEach(value=>row.append(element("td",null,value)));body.append(row)});
+ table.append(head,body);box.append(table);
+}
 function renderManage(){
  const r=getCurrent("mg");if(!r)return;
  set("oaf-mg-title",r.nombre);set("oaf-mg-species",r.agentes);set("oaf-mg-tipo-badge",r.tipo==="plaga"?"Plaga · "+r.crop_nombre:"Enfermedad · "+r.crop_nombre);
- set("oaf-mg-dano",r.dano);set("oaf-mg-cultural",r.manejo_cultural);renderSource("oaf-mg-fuentes",r);
+ set("oaf-mg-dano",r.dano);set("oaf-mg-cultural",r.manejo_cultural);renderSource("oaf-mg-fuentes",r);set("oaf-mg-clima",r.modelo_nota);
  const area=$("oaf-mg-productos");if(!area)return;area.replaceChildren();
  if(!r.productos?.length){
   const c=element("div","oaf-ux11-product");c.append(element("strong",null,"Sin producto específico de etiqueta confirmada en esta ficha"),element("p",null,"No se debe recomendar automáticamente un plaguicida para este cultivo y organismo. Consulta SIGIA por nombre del cultivo y plaga, o a SENASA y a un especialista en MIP."));area.append(c);
  }else for(const p of r.productos){
   const c=element("div","oaf-ux11-product");
   const chip=element("span","oaf-ux11-badge "+(p.tipo.startsWith("Biol")?"":"amber"),p.tipo);
-  c.append(chip,element("strong",null,p.nombre),element("small",null,p.ingrediente),element("p",null,p.registro),element("p",null,p.nota),link("Abrir documentación del producto ↗",p.fuente));area.append(c);
+  c.append(chip,element("strong",null,p.nombre),element("small",null,p.ingrediente),element("p",null,p.registro),element("p",null,p.nota));if(p.modo)c.append(element("small",null,"Modo de acción: "+p.modo));c.append(link("Consultar ficha / documento ↗",p.fuente));area.append(c);
  }
 }
 function plot(rain,humidity,dates){
@@ -87,19 +106,19 @@ function renderConclusion(r,weekData,place){
  case "bioseguridad":status="unavailable";msg="Fusarium R4T NO puede predecirse por temperatura o lluvia únicamente. Prioriza higiene, cuarentena, material sano, control de movimientos y reporte de síntomas a SENASA.";break;
  default: msg="La fenología y el manejo del cultivo son esenciales para interpretar esta semana. Acompaña estos datos con muestreo y diagnóstico.";
  }
- const c=$("oaf-sm-conclusion");if(c){c.dataset.state=status;c.textContent=details+" "+msg+" Conclusión OAF: coincidencia de señales meteorológicas para vigilancia, no probabilidad de infección ni infestación observada."}
+ const c=$("oaf-sm-conclusion");if(c){c.dataset.state=status;c.textContent=details+" "+msg+" Vigilancia específica para ${r.nombre}: ${r.vigilancia}. Señales meteorológicas orientativas, no una probabilidad validada de infección, incidencia o infestación."}
 }
 let sequence=0;
 async function renderModel(){
  const r=getCurrent("sm"),place=$("oaf-sm-localidad")?.value||"Chiclayo";if(!r)return;const q=++sequence;
- set("oaf-sm-clase",(r.tipo==="plaga"?"Plaga":"Enfermedad")+" · "+r.crop_nombre);set("oaf-sm-titulo",r.nombre);set("oaf-sm-agente",r.agentes);set("oaf-sm-principio",r.modelo_nota);renderSource("oaf-sm-fuentes",r);drawIllustration(r);
+ set("oaf-sm-clase",(r.tipo==="plaga"?"Plaga":"Enfermedad")+" · "+r.crop_nombre);set("oaf-sm-titulo",r.nombre);set("oaf-sm-agente",r.agentes);set("oaf-sm-principio",r.modelo_nota);renderSource("oaf-sm-fuentes",r);drawIllustration(r);renderConditions(r);
  set("oaf-sm-conclusion","Consultando el pronóstico meteorológico para "+place+"…");
  try{const j=await week(place);if(q!==sequence)return;const total=j.precip.reduce((a,b)=>a+b,0),mean=j.hum.reduce((a,b)=>a+b,0)/7,tmax=Math.max(...j.max);
   const ms=$("oaf-sm-datos");ms?.replaceChildren();
   for(const [lbl,n,unit] of [["Lluvia prevista 7 días",total,"mm"],["Humedad media",mean,"%"],["Temperatura máxima",tmax,"°C"]]){const d=element("div");d.append(element("small",null,lbl),element("strong",null,nfmt(n,1)+" "+unit));ms?.append(d)}
-  plot(j.precip,j.hum,j.days);renderConclusion(r,j,place);
+  plot(j.precip,j.hum,j.days);renderTable(j);renderConclusion(r,j,place);
   set("oaf-sm-metadato",`Datos de Open-Meteo consultados por OAF para ${place}: ${j.days[0]} a ${j.days.at(-1)}. Estos son insumos del proveedor, no un pronóstico fitosanitario validado por Random Forest. ${r.vigilancia}. Las conclusiones se basan en relaciones de literatura y requieren comprobación parcelaria. En Metadatos permanece el método completo.`);
- }catch(e){if(q!==sequence)return;set("oaf-sm-conclusion","Sin pronóstico verificable para esta localidad: "+e.message+". No se asigna un riesgo artificial.");set("oaf-sm-chart","Pronóstico temporalmente no disponible.");$("oaf-sm-datos")?.replaceChildren();}
+ }catch(e){if(q!==sequence)return;set("oaf-sm-conclusion","Sin pronóstico verificable para esta localidad: "+e.message+". No se asigna un riesgo artificial.");set("oaf-sm-chart","Pronóstico temporalmente no disponible.");$("oaf-sm-datos")?.replaceChildren();$("oaf-sm-tabla")?.replaceChildren();}
 }
 function init(){
  if(!$("oaf-sanidad-ux11")||$("oaf-sanidad-ux11").dataset.ready)return;
