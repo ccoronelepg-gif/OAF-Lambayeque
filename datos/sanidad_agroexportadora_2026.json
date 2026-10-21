@@ -338,16 +338,16 @@
       "productos": [
         {
           "tipo": "Biológico",
-          "nombre": "Trichoderma viride (agente antagonista)",
-          "ingrediente": "Trichoderma spp.",
-          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
-          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
+          "nombre": "Trichoderma spp. (control biológico documentado)",
+          "ingrediente": "T. harzianum (evaluación peruana 2026) / T. viride (experiencia SENASA)",
+          "registro": "Evidencia experimental peruana; no acredita registro de una formulación concreta",
+          "fuente": "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
+          "nota": "Investigación UNPRG 2026 in vitro/casa malla con T. harzianum; no extrapolar eficacia a campos de Lambayeque ni reemplazar drenaje, diagnóstico, registro y etiqueta SENASA."
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+        "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979"
       ]
     },
     {
