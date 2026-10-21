@@ -1,0 +1,48 @@
+(function script11(){
+"use strict";
+const $=id=>document.getElementById(id);
+const block=(id,idx,kicker,title,explain,body)=>`<section class="oaf-ux11-section" id="${id}"><header class="oaf-ux11-head"><span class="oaf-ux11-kicker">${idx} · ${kicker}</span><h2>${title}</h2><p>${explain}</p></header>${body}</section>`;
+const selector=(id,label)=>`<label for="${id}">${label}<select id="${id}"></select></label>`;
+const model=block("oaf-sanidad-modelo","01","Investigación y vigilancia agroclimática","Modelo Agroclimático Predictivo","Explora siete días de lluvia, temperatura y humedad según localidad, cultivo y organismo. El OAF interpreta señales meteorológicas para orientar la vigilancia, sin afirmar presencia, incidencia o brote a partir del clima.",
+`<div class="oaf-ux11-controls">${selector("oaf-sm-localidad","Localidad")}${selector("oaf-sm-cultivo","Cultivo")}${selector("oaf-sm-tipo","Tipo de organismo")}${selector("oaf-sm-patogeno","Plaga o enfermedad")}</div>
+<div class="oaf-ux11-grid">
+<article class="oaf-ux11-card"><div class="oaf-ux11-illustration" id="oaf-sm-ilustracion"></div><span class="oaf-ux11-badge blue" id="oaf-sm-clase">Organismo</span><h3 id="oaf-sm-titulo">Selecciona un cultivo</h3><p class="oaf-ux11-species" id="oaf-sm-agente"></p><p id="oaf-sm-principio"></p><div class="oaf-ux11-sources" id="oaf-sm-fuentes"></div></article>
+<article class="oaf-ux11-card"><h3>Perspectiva agroclimática de 7 días</h3><div id="oaf-sm-datos" class="oaf-ux11-mini"></div><div class="oaf-ux11-plot" id="oaf-sm-chart" role="img" aria-label="Serie de lluvia prevista y humedad relativa para siete días">Consultando modelos meteorológicos…</div><div class="oaf-ux11-key"><span><i style="background:#4eabd3"></i>Lluvia prevista</span><span><i style="background:#e49d50"></i>Humedad relativa media</span></div></article></div>
+<div class="oaf-ux11-signal" id="oaf-sm-conclusion" role="status">La conclusión aparecerá después de consultar los datos del proveedor.</div>
+<p class="oaf-ux11-note" id="oaf-sm-metadato">Los pronósticos meteorológicos se consultan mediante Open-Meteo. No existen conteos de plagas ni diagnósticos asociados a estos valores. Las asociaciones con el clima se apoyan en literatura científica y requieren validación en Lambayeque. <a href="#verificaciones">Ver metodología y fuentes →</a></p>`);
+const management=block("oaf-sanidad-manejo","02","Guía de manejo integrado","Manejo Sanitario","Consulta el daño de cada plaga o enfermedad, medidas culturales y biológicas, y ejemplos de insumos documentados en Perú. Ninguna ficha sustituye la revisión de la etiqueta vigente de SENASA ni los límites de residuos del mercado de exportación.",
+`<div class="oaf-ux11-controls three">${selector("oaf-mg-cultivo","Cultivo")}${selector("oaf-mg-tipo","Plaga o enfermedad")}${selector("oaf-mg-patogeno","Organismo que deseas consultar")}</div>
+<div class="oaf-ux11-grid">
+<article class="oaf-ux11-card"><span class="oaf-ux11-badge" id="oaf-mg-tipo-badge">Manejo integrado</span><h3 id="oaf-mg-title">Selecciona un organismo</h3><p class="oaf-ux11-species" id="oaf-mg-species"></p><h4>¿Cómo afecta al cultivo?</h4><p id="oaf-mg-dano"></p><h4>Prevención y manejo integrado</h4><p id="oaf-mg-cultural"></p><div class="oaf-ux11-sources" id="oaf-mg-fuentes"></div></article>
+<article class="oaf-ux11-card"><h3>Opciones documentadas para Perú</h3><p>Ejemplos técnicos de productos o agentes biológicos; la posibilidad de uso depende de la etiqueta vigente para la combinación exacta cultivo–plaga–producto.</p><div id="oaf-mg-productos" class="oaf-ux11-products"></div><p class="oaf-ux11-note"><a href="https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html" target="_blank" rel="noopener noreferrer">Verificar productos por cultivo y plaga en SIGIA / SENASA ↗</a></p></article></div>
+<div class="oaf-ux11-signal" data-state="attention">Consulta de seguridad: identifica correctamente el organismo, confirma registro y etiqueta SENASA, tiempo de carencia, reingreso, compatibilidad y límites máximos de residuos exigidos por el país de destino. Ante Fusarium R4T, no improvisar tratamientos: seguir el protocolo de bioseguridad y comunicar sospechas a SENASA.</div>
+<p class="oaf-ux11-note">Información científica de elaboración documental propia. No se indican dosis de aplicación sin etiqueta específica. <a href="#verificaciones">Bibliografía y trazabilidad completa →</a></p>`);
+const bullets=block("oaf-boletines-informacion","01","Instituciones especializadas","Información del Niño","Comunicados e informes emitidos por ENFEN, NOAA, SENAMHI y CENEPRED. Revisa la fecha y abre el documento completo desde su organismo emisor.",
+`<div class="oaf-ux11-institutions" id="oaf-boletines-tarjetas"><p>Consultando el catálogo institucional…</p></div>
+<p class="oaf-ux11-note">Los enlaces a portales de avisos se actualizan por sus instituciones. El OAF los reúne para facilitar la consulta; no sustituye los nuevos comunicados oficiales.</p>`);
+const bulletinAnal=block("oaf-boletines-evolucion","02","Síntesis y evolución","¿Qué indican los boletines sobre el clima?","Lectura sencilla de los comunicados, de sus cambios y del seguimiento oceánico. Un pronóstico estacional no puede indicar por sí solo en qué día lloverá en una parcela.",
+`<div class="oaf-ux11-calls" id="oaf-bol-mensajes"><article><span>ENFEN</span><strong>Consultando…</strong></article></div>
+<div class="oaf-ux11-grid"><article class="oaf-ux11-card"><h3>Evolución del océano cerca de Perú</h3><p>Anomalías históricas Niño 1+2, referencia 1991–2020. Un mes aislado no determina por sí solo la magnitud oficial de El Niño Costero.</p><div class="oaf-ux11-plot" id="oaf-bol-chart" role="img" aria-label="Serie histórica de anomalías oceánicas Niño 1 más 2">Leyendo archivo NOAA…</div><div class="oaf-ux11-key"><span><i style="background:#da7b53"></i>Mar más cálido que la referencia</span><span><i style="background:#398bb7"></i>Mar más frío</span></div><p id="oaf-bol-noaa-meta" class="oaf-ux11-note"></p></article>
+<article class="oaf-ux11-card"><h3>¿Qué puede cambiar en Lambayeque?</h3><div id="oaf-bol-interpretaciones" class="oaf-ux11-steps" role="status">Preparando el resumen de documentos oficiales…</div><p class="oaf-ux11-note">Para comprobar avisos de lluvias, viento o temperatura adversa, utiliza el portal vigente de SENAMHI. Las situaciones de cada distrito requieren comprobación específica.</p></article></div>
+<div class="oaf-ux11-conclusion"><h3>Conclusión para productores</h3><p id="oaf-bol-conclusion">Consultando las fuentes institucionales verificadas…</p><p>¿Necesitas saber los días próximos? <a href="#autor">Consulta Predicciones y anomalías →</a>. ¿Deseas la serie y su origen? <a href="#verificaciones">Metadatos y trazabilidad →</a>.</p></div>`);
+function start(){
+ const crop=$("cultivos"),nino=$("nino"),meta=$("verificaciones");
+ if(!crop||!nino||!meta||$("oaf-sanidad-ux11"))return;
+ const hub=$("oaf-meta-legacy")||meta;
+ const root=document.createElement("div");root.id="oaf-ux11-archivo";root.className="oaf-agro-archive";
+ root.innerHTML='<h2>Archivo histórico de sanidad vegetal y boletines</h2><p class="oaf-ux11-note">Se conservan los exploradores, evaluaciones y gráficos anteriores para consulta científica; las vistas principales presentan únicamente los dos bloques solicitados.</p>';
+ const mk=(id,title)=>{const details=document.createElement("details");details.id=id;details.className="oaf-agro-meta-collapsed oaf-ux11-archive";details.innerHTML="<summary>"+title+"</summary><div></div>";root.append(details);return details.lastElementChild};
+ const ac=mk("oaf-archivo-cultivos-ux11","Fichas, tablas y modelos fitosanitarios anteriores");
+ const an=mk("oaf-archivo-boletines-ux11","Series océano-atmósfera y boletines anteriores");
+ hub.prepend(root);
+ for(const child of [...crop.children])if(!child.matches("script,style"))ac.append(child);
+ for(const child of [...nino.children])if(!child.matches("script,style"))an.append(child);
+ const s=document.createElement("div");s.id="oaf-sanidad-ux11";s.className="oaf-ux11-page";s.innerHTML=model+management;crop.append(s);
+ const b=document.createElement("div");b.id="oaf-boletines-ux11";b.className="oaf-ux11-page";b.innerHTML=bullets+bulletinAnal;nino.append(b);
+ for(const link of document.querySelectorAll('#oaf-home-six-crops .oaf-agro-crop-card'))link.href="#cultivos";
+ document.documentElement.dataset.oafUx11="activo";
+ document.dispatchEvent(new CustomEvent("oaf:ux11-ready"));
+}
+document.addEventListener("oaf:agro-ready",start);
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
+})();
