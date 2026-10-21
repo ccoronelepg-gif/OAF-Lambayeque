@@ -46,10 +46,11 @@ function init(){
  const aa=bucket("Experimentos, modelos y comparaciones técnicas anteriores","oaf-agro-archive-autor");
  const shell=home.querySelector(".oaf-home-shell"),guide=shell?.querySelector(".oaf-guide-link");
  if(!shell||!guide)return;
- guide.after(intro);
- const hs=node("div","oaf-agro-shell","oaf-agro-home");hs.append(home1,home2,home3);intro.after(hs);
+ const summary=$("oaf-home-summary-static")||intro;
+ if(!summary.parentElement)guide.after(summary);
+ const hs=node("div","oaf-agro-shell","oaf-agro-home");hs.append(home1,home2,home3);summary.after(hs);
  move("oaf-zone-primary","oaf-agro-home-zone");hoist("oaf-main-indicators","oaf-agro-home-metrics");hoist("oaf-regional-map-heading","oaf-agro-home-map");move("oaf-forecast-home","oaf-agro-home-existing-forecast");
- relocate(ah,shell,new Set([shell.querySelector(".hero"),guide,intro,hs]));
+ relocate(ah,shell,new Set([shell.querySelector(".hero"),guide,summary,hs]));
  const cs=node("div","oaf-agro-shell","oaf-agro-clima");cs.append(clima1,clima2,clima3);
  const viewhead=clima.querySelector(".viewhead");(viewhead||clima.firstElementChild)?.after(cs);
  move("oaf-9k-visor","oaf-regional-own-map");move("oaf-ecopaisajes-10k","oaf-regional-own-map");const ownMap=$("oaf-9k-visor");if(ownMap?.tagName==="DETAILS")ownMap.open=true;
