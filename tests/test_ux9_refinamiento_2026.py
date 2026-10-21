@@ -6,21 +6,32 @@ import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
 PAGE=(ROOT/"index.html").read_text(encoding="utf-8")
-FILES=["assets/oaf-hero-monitoreo-agroclimatico.svg",
-       "assets/oaf-ux9-refinamiento.css",
+FILES=["assets/oaf-ux9-refinamiento.css",
        "assets/oaf-ux9-estructura.js",
        "assets/oaf-ux9-lectura-clima.js",
        "assets/oaf-ux9-mapa-sectores.js",
        "assets/oaf-ux9-predicciones.js"]
 
 class UX9(unittest.TestCase):
-    def test_hero_replaced_by_scientific_illustration(self):
-        self.assertIn('src="assets/oaf-hero-monitoreo-agroclimatico.svg"',PAGE)
-        self.assertNotIn('src="https://commons.wikimedia.org/wiki/Special:FilePath/Blueberry_close_up.jpg?width=700"',PAGE)
-        svg=(ROOT/FILES[0]).read_text("utf-8")
-        for text in ("MONITOREO AGROCLIMÁTICO","Territorio y estaciones","Análisis y predicción"):
-            self.assertIn(text,svg)
-        self.assertIn("<svg",svg)
+    def test_real_photo_replaces_illustration_with_credit(self):
+        self.assertIn('src="https://upload.wikimedia.org/wikipedia/commons/1/16/Weather_Station_USDA.jpg"',PAGE)
+        self.assertIn('Fotografía referencial: USDA-ARS / Scott Bauer',PAGE)
+        self.assertIn('https://commons.wikimedia.org/wiki/File:Weather_Station_USDA.jpg',PAGE)
+        self.assertNotIn('src="assets/oaf-hero-monitoreo-agroclimatico.svg"',PAGE)
+
+    def test_intro_single_justified_paragraph(self):
+        agro=(ROOT/"assets/oaf-agroexportacion-2026.js").read_text("utf-8")
+        structure=(ROOT/"assets/oaf-ux9-estructura.js").read_text("utf-8")
+        css=(ROOT/"assets/oaf-ux9-refinamiento.css").read_text("utf-8")
+        self.assertIn('const intro=node("div","oaf-agro-summary"',agro)
+        self.assertIn('Ciencia de datos y agricultura de agroexportación',agro)
+        self.assertNotIn("const ten=[",agro)
+        self.assertNotIn("oaf-intro-columns",structure)
+        self.assertNotIn("column-count:2",css)
+        self.assertIn("text-align:justify",css)
+        paragraph=agro.split('const intro=node("div","oaf-agro-summary"',1)[1].split(";\n",1)[0]
+        self.assertEqual(paragraph.count("<p>"),1)
+        self.assertLessEqual(len(paragraph.split()),90)
 
     def test_all_ux9_assets_exist_and_loaded(self):
         for f in FILES:
