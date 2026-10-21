@@ -3,22 +3,33 @@
 const $=id=>document.getElementById(id);
 const create=(tag,cls,txt)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(txt!==undefined)el.textContent=String(txt);return el};
 const validLink=x=>typeof x==='string'&&/^https:\/\//.test(x);
+const validLocalPhoto=x=>typeof x==='string'&&/^assets\/(?:fotos_cc\/[a-z0-9_-]+\.(?:jpg|jpeg|png|webp)|oaf-sin-foto-(?:patogeno|envase)\.svg)$/i.test(x);
+const validPhoto=x=>validLink(x)||validLocalPhoto(x);
+const fallbackPath=scope=>scope==='producto'?'assets/oaf-sin-foto-envase.svg':'assets/oaf-sin-foto-patogeno.svg';
 const a=(title,url)=>{const node=create('a',null,title);if(validLink(url)){node.href=url;node.target='_blank';node.rel='noopener noreferrer'}return node};
 let gallery=null,cat=null;
 function photographic(media,scope){
  const figure=create('figure','oaf-ux12-photo '+(scope==='producto'?'oaf-ux12-envase':'oaf-ux12-fauna'));
- if(!media||!validLink(media.url))return figure;
- const img=create('img');img.src=media.url;img.alt=media.caption||'Fotografía de referencia';img.loading=scope==='modelo'?'eager':'lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.dataset.oafExternalPhoto='1';
- const caption=create('figcaption');caption.append(create('span',null,media.caption||'Fotografía documentada'));
- if(media.exact===false)caption.append(create('small',null,'Fotografía ilustrativa de una especie o síntoma; no confirma diagnóstico.'));
- if(validLink(media.source))caption.append(a('Crédito: '+(media.credit||'Fuente técnica')+' ↗',media.source));
+ const original=media&&validPhoto(media.url)?media.url:null;
+ const isReal=Boolean(original);
+ const img=create('img');
+ img.alt=isReal?(media.caption||'Fotografía documentada'):'Ilustración de respaldo; foto comercial o científica no verificada';
+ img.loading=scope==='modelo'?'eager':'lazy';img.decoding='async';
+ if(original&&validLink(original)){img.referrerPolicy='no-referrer';img.dataset.oafExternalPhoto='1'}
+ img.src=original||fallbackPath(scope);
+ const caption=create('figcaption');
+ caption.append(create('span',null,media?.caption||'Imagen ilustrativa, pendiente de fotografía verificada'));
+ if(media?.exact===false)caption.append(create('small',null,'Fotografía ilustrativa; no confirma diagnóstico ni identifica otras especies.'));
+ if(!original)caption.append(create('small','oaf-ux12-photo-notice','Sin fotografía verificada. Se muestra una ilustración local, no un ejemplar ni un envase real.'));
+ if(validLink(media?.source))caption.append(a('Fuente: '+(media.credit||'documentación original')+' ↗',media.source));
+ else if(validLink(media?.fuente_laboratorio))caption.append(a('Ficha del fabricante ↗',media.fuente_laboratorio));
  img.onerror=()=>{
    if(img.dataset.oafFallback==='1'){
      img.remove();figure.prepend(create('p','oaf-ux12-unavailable','Imagen temporalmente no disponible; consulta la ficha original.'));
      return;
    }
    img.dataset.oafFallback='1';img.removeAttribute('referrerpolicy');
-   img.src=scope==='producto'?'assets/oaf-sin-foto-envase.svg':'assets/oaf-sin-foto-patogeno.svg';
+   img.src=fallbackPath(scope);
    img.alt=scope==='producto'?'Ilustración de envase genérico sin foto comercial verificada':'Ilustración informativa, no fotografía del organismo';
    figure.classList.add('oaf-ux12-photo-error');
    const note=create('p','oaf-ux12-photo-notice',scope==='producto'?
@@ -36,8 +47,11 @@ function keyFor(n){
  return '';
 }
 function pestPhoto(area,id,scope){
- if(!area||!gallery||!id||!gallery.organismos[id])return;
- area.replaceChildren(photographic(gallery.organismos[id],scope));area.classList.add('oaf-ux12-has-photo');
+ if(!area||!gallery||!id)return;
+ const media=gallery.organismos?.[id]||null;
+ if(area.dataset.oafPhotoId===id&&area.querySelector('.oaf-ux12-photo'))return;
+ area.replaceChildren(photographic(media,scope));
+ area.dataset.oafPhotoId=id;area.classList.add('oaf-ux12-has-photo');
 }
 function productCard(card,p){
  const wrap=create('div','oaf-ux12-product-layout');const photo=gallery?.productos?.[keyFor(p.nombre)];
