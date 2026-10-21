@@ -13,6 +13,9 @@ on:
       - 'tests/test_redisenio_oaf_2026.py'
       - 'assets/oaf-divulgacion-2026.js'
       - 'assets/oaf-divulgacion-2026.css'
+      - 'guia-lectura-agroclimatica.html'
+      - 'sitemap.xml'
+      - 'tests/test_divulgacion_seo_2026.py'
       - 'datos/ux_2026/auditoria_base_2026.json'
       - '.github/workflows/oaf_ux_integrity_2026.yml'
 permissions:
@@ -30,6 +33,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
       - name: Compatibilidad del rediseño preexistente
         run: python -m unittest discover -s tests -p 'test_redisenio_oaf_2026.py' -v
+      - name: Divulgación accesible, enlaces y sitemap
+        run: python -m unittest discover -s tests -p 'test_divulgacion_seo_2026.py' -v
       - name: Modelos externos y estados no verificados
         run: node tests/test_portada_2026.js
       - name: Comprobar sintaxis de los 45 visores originales y nuevos módulos
