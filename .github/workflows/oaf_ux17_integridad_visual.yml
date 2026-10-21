@@ -12,6 +12,8 @@ on:
       - "datos/galeria_sanidad_2026.json"
       - "datos/rf_experimental_ux15.json"
       - "tests/test_ux17_fotos_mapa_rf.py"
+      - "tests/test_sanidad_imagenes_2026.js"
+      - "assets/oaf-galeria-mecanismos-2026.js"
       - ".github/workflows/oaf_ux17_integridad_visual.yml"
 permissions:
   contents: read
@@ -26,3 +28,5 @@ jobs:
           python-version: "3.11"
       - name: Probar integridad de fotos y modelo sin emitir alertas
         run: python -m unittest discover -s tests -p test_ux17_fotos_mapa_rf.py -v
+      - name: Simular el visor de fotos con Node.js sin navegador ni dependencias
+        run: node tests/test_sanidad_imagenes_2026.js
