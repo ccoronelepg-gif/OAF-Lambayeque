@@ -34,7 +34,9 @@ async function ready(){
    if(q.estado_consulta==="cambio_html_requiere_lectura")label="Cambió la página: verificar nuevo boletín";
    if(q.estado_consulta==="consulta_fallida")label="Consulta fallida";
    const memo=id==="enfen"&&q.ultimo_documento? q.ultimo_documento.titulo+" · el resumen del boletín no cambia automáticamente con este monitor.":q.tipo||"Estado documental según última ejecución del monitor.";
-   grid.append(item(name,label,memo,q.url,ts||q.ultima_consulta_utc));
+   const sourceCard=item(name,label,memo,q.url,ts||q.ultima_consulta_utc);
+   if(q.estado_consulta==="consulta_fallida"&&q.url_alternativa_oficial)sourceCard.append(link("Portal institucional alternativo ↗",q.url_alternativa_oficial));
+   grid.append(sourceCard);
   }
   const notice=el("p","oaf-ux13-notice","Importante: la síntesis meteorológica del OAF se revisa documentalmente. No se generan automáticamente conclusiones oficiales a partir de cambios de una página.");bar.append(notice);
   const models=state.catalogo_modelos?.length?state.catalogo_modelos:[
