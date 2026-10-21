@@ -1,0 +1,73 @@
+{
+  "edicion": "2026-10-21",
+  "titulo": "Boletines y pronósticos institucionales de referencia para Lambayeque",
+  "advertencia": "El resumen es una interpretación divulgativa preparada por OAF a partir de documentos fechados. No sustituye la vigencia de avisos meteorológicos o recomendaciones de ENFEN/SENAMHI. La posible ocurrencia de lluvias en un distrito no puede deducirse de una alerta oceánica sola.",
+  "boletines": [
+    {
+      "id": "enfen18",
+      "categoria": "El Niño Costero",
+      "institucion": "ENFEN",
+      "titulo": "Comunicado Oficial ENFEN N.º 18-2026",
+      "fecha": "2026-10-16",
+      "tipo": "Comunicado oficial",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/",
+      "resumen": "Mantiene el estado de Alerta de El Niño Costero y recomienda utilizar escenarios de riesgo y avisos meteorológicos para la preparación. La clasificación de alerta no fija por sí sola la lluvia que ocurrirá en Lambayeque.",
+      "clave": "Alerta de El Niño Costero",
+      "implicacion": "Reforzar vigilancia, planes de contingencia y consulta de avisos SENAMHI; siguiente comunicado previsto el 30 de octubre de 2026."
+    },
+    {
+      "id": "enfen18tech",
+      "categoria": "Evaluación técnica",
+      "institucion": "ENFEN",
+      "titulo": "Informe Técnico ENFEN Año 12, N.º 18",
+      "fecha": "2026-10-18",
+      "tipo": "Informe técnico",
+      "url": "https://enfen.imarpe.gob.pe/download/informe-tecnico-enfen-ano-12-n18-al-13-de-octubre-de-2026-2/",
+      "resumen": "Compila análisis de océano, atmósfera, hidrología e impactos asociados con la evolución de El Niño, con mayor detalle metodológico que un comunicado.",
+      "clave": "Revisión oceanoatmosférica",
+      "implicacion": "Consultar indicadores y su alcance territorial antes de inferir efectos de lluvia o temperatura a escala de parcela."
+    },
+    {
+      "id": "noaa",
+      "categoria": "ENSO global",
+      "institucion": "NOAA CPC",
+      "titulo": "Discusión diagnóstica ENOS — octubre de 2026",
+      "fecha": "2026-10-08",
+      "tipo": "Pronóstico institucional",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc_Sp.shtml",
+      "resumen": "NOAA informa un El Niño fortaleciéndose en el Pacífico ecuatorial; proyecta alta probabilidad de fase fuerte a muy fuerte hasta enero-marzo de 2027. Esta perspectiva global no es una predicción de lluvia local.",
+      "clave": "El Niño global en fortalecimiento",
+      "implicacion": "Seguimiento estacional de temperatura y precipitación, siempre considerando los pronósticos regionales."
+    },
+    {
+      "id": "senamhi",
+      "categoria": "Avisos meteorológicos",
+      "institucion": "SENAMHI",
+      "titulo": "Avisos preventivos para Lambayeque",
+      "fecha": null,
+      "tipo": "Portal de actualización",
+      "url": "https://www.senamhi.gob.pe/main.php?dp=lambayeque&p=aviso-meteorologico-vigente",
+      "resumen": "El portal reúne avisos de viento, temperaturas y otras condiciones potencialmente adversas para Lambayeque. Cada aviso indica su propio nivel, fecha de emisión y vigencia.",
+      "clave": "Consultar avisos vigentes",
+      "implicacion": "Confirmar en el portal si tu distrito aparece en un aviso antes de interpretar un riesgo meteorológico inmediato."
+    },
+    {
+      "id": "cenepred",
+      "categoria": "Lluvias estacionales",
+      "institucion": "CENEPRED / SENAMHI",
+      "titulo": "Escenario de riesgo de lluvias octubre–diciembre 2026",
+      "fecha": "2026-10",
+      "tipo": "Escenario institucional",
+      "url": "https://sigrid.cenepred.gob.pe/sigridv3/documento/22910",
+      "resumen": "Escenario nacional elaborado desde una perspectiva de lluvias estacionales de SENAMHI; sirve para gestión de riesgos, no para fijar fechas concretas de lluvia local.",
+      "clave": "Perspectiva trimestral",
+      "implicacion": "Examinar susceptibilidad territorial, drenajes y rutas agrícolas; complementar con pronósticos por distrito."
+    }
+  ],
+  "conclusion_general": "ENFEN señala Alerta de El Niño Costero al 16/10/2026, mientras NOAA describe un El Niño global fortaleciéndose al 08/10/2026. Para Lambayeque esto justifica vigilancia y preparación, pero no permite afirmar una cantidad ni una fecha de lluvia solo con estos boletines. La información operativa de avisos se consulta en SENAMHI.",
+  "fuentes_primarias": [
+    "https://enfen.imarpe.gob.pe/",
+    "https://www.senamhi.gob.pe/",
+    "https://www.cpc.ncep.noaa.gov/"
+  ]
+}
