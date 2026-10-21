@@ -19,6 +19,8 @@ function attach(){
   b2.querySelector(".oaf-agro-split")?.classList.add("oaf-ux9-one-chart");
   for(const q of [...b2.querySelectorAll(":scope > .oaf-agro-facts,:scope > .oaf-agro-interpretation")])archivedHome.append(q);
   archive("oaf-home-predictive-brief");
+  // Esta evolución histórica ya está disponible en Clima Regional. Quitar la tarjeta de Inicio sin borrar su análisis.
+  archivedHome.append(b2);
  }
  // El visor histórico 9K puede quedar en Metadatos; el nuevo mapa usa directamente el archivo GeoJSON publicado.
  archive("oaf-9k-visor", $("oaf-agro-archive-clima")?.querySelector("div")||legacy);
