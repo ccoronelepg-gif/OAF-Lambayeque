@@ -8,14 +8,24 @@ let gallery=null,cat=null;
 function photographic(media,scope){
  const figure=create('figure','oaf-ux12-photo '+(scope==='producto'?'oaf-ux12-envase':'oaf-ux12-fauna'));
  if(!media||!validLink(media.url))return figure;
- const img=create('img');img.src=media.url;img.alt=media.caption||'Fotografía real de referencia';img.loading=scope==='modelo'?'eager':'lazy';img.decoding='async';
+ const img=create('img');img.src=media.url;img.alt=media.caption||'Fotografía de referencia';img.loading=scope==='modelo'?'eager':'lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.dataset.oafExternalPhoto='1';
  const caption=create('figcaption');caption.append(create('span',null,media.caption||'Fotografía documentada'));
  if(media.exact===false)caption.append(create('small',null,'Fotografía ilustrativa de una especie o síntoma; no confirma diagnóstico.'));
  if(validLink(media.source))caption.append(a('Crédito: '+(media.credit||'Fuente técnica')+' ↗',media.source));
- img.onerror=()=>{img.remove();figure.classList.add('oaf-ux12-photo-error');const msg=create('div','oaf-ux12-unavailable');
-const emblem=create('span','oaf-ux12-unavailable-icon',scope==='producto'?'▣':'✿');
-msg.append(emblem,create('span',null,'Fotografía externa temporalmente no disponible. Abre la ficha original para identificar el organismo o el envase.'));
-figure.prepend(msg)};
+ img.onerror=()=>{
+   if(img.dataset.oafFallback==='1'){
+     img.remove();figure.prepend(create('p','oaf-ux12-unavailable','Imagen temporalmente no disponible; consulta la ficha original.'));
+     return;
+   }
+   img.dataset.oafFallback='1';img.removeAttribute('referrerpolicy');
+   img.src=scope==='producto'?'assets/oaf-sin-foto-envase.svg':'assets/oaf-sin-foto-patogeno.svg';
+   img.alt=scope==='producto'?'Ilustración de envase genérico sin foto comercial verificada':'Ilustración informativa, no fotografía del organismo';
+   figure.classList.add('oaf-ux12-photo-error');
+   const note=create('p','oaf-ux12-photo-notice',scope==='producto'?
+     'La fotografía comercial externa no cargó. Se muestra un esquema, no el envase real.':
+     'La fotografía científica externa no cargó. Ilustración de respaldo, no prueba diagnóstica.');
+   figure.querySelector('figcaption')?.prepend(note);
+ };
  figure.append(img,caption);return figure;
 }
 function keyFor(n){
@@ -32,6 +42,14 @@ function pestPhoto(area,id,scope){
 function productCard(card,p){
  const wrap=create('div','oaf-ux12-product-layout');const photo=gallery?.productos?.[keyFor(p.nombre)];
  if(photo)wrap.append(photographic(photo,'producto'));
+ else{
+  const figure=create('figure','oaf-ux12-photo oaf-ux12-envase oaf-ux12-photo-error');
+  const image=create('img');image.src='assets/oaf-sin-foto-envase.svg';
+  image.alt='Ilustración del envase comercial: no sustituye la fotografía verificada';
+  image.loading='lazy';image.decoding='async';
+  const label=create('figcaption');label.append(create('span',null,'Envase sin fotografía verificada · dibujo ilustrativo'));
+  figure.append(image,label);wrap.append(figure);
+ }
  const info=create('div','oaf-ux12-product-info');
  info.append(create('span','oaf-ux11-badge '+(p.tipo.startsWith('Biol')?'':'amber'),p.tipo));
  info.append(create('strong',null,p.nombre));
