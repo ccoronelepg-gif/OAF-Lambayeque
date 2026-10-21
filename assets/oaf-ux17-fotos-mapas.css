@@ -95,3 +95,14 @@ img[src$=".svg"]{object-fit:contain}
  .oaf-ux12-photo:not(.oaf-ux12-envase) img{height:240px!important}
 }
 @media(max-width:430px){.oaf-ux12-product-layout{grid-template-columns:1fr!important}.oaf-ux12-envase{max-width:180px!important}}
+
+/* Auditoría explícita de habilidad RF por horizonte */
+.oaf-ux17-lead-note{
+ color:#805d37!important;line-height:1.55;font-size:10px;
+ background:#fff4e5;border-left:3px solid #e3a65b;padding:7px 8px;border-radius:3px 7px 7px 3px;
+}
+.oaf-ux15-future-month .oaf-ux17-lead-note{display:block;margin-top:5px}
+.oaf-ux14-chart svg polyline[stroke="#aa65b4"]{stroke:#9055b0;stroke-width:4.4}
+.oaf-ux14-chart svg polyline[stroke="#278eb8"]{stroke:#147db9;stroke-width:4}
+.oaf-ux14-chart svg polyline[stroke="#339878"]{stroke:#258f70;stroke-width:4}
+.oaf-ux14-chart svg circle[role="img"]:focus{outline:3px solid #dfad51;outline-offset:1px}
