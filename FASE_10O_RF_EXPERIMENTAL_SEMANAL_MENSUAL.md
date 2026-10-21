@@ -20,7 +20,7 @@ El candidato 10O es una **nueva extensión entrenada de la familia Random Forest
 
 **Limitación fundamental:** la validación implementada es retrospectiva a un paso, con rezagos reales en el periodo de prueba. **NO prueba la habilidad de una predicción encadenada a 7 días o 6 meses**, ni representa evaluación as-issued. Faltan comparaciones prospectivas congeladas, evaluación instrumental independiente y comprobación de utilidad superior a climatología antes de emitir alertas. Las proyecciones pueden subestimar extremos y no deben decidir por sí solas riegos, fumigaciones o acciones de emergencia.
 
-El estado inicial de RF 10O queda publicado como `pendiente_primera_ejecucion`. El flujo GitHub Actions tiene horario diario y disparador de cambios, pero la agenda no garantiza finalización o acceso continuo a la API externa.
+La primera ejecución RF 10O quedó registrada el **21/10/2026 a las 20:49:17 UTC**. El archivo actual indica `candidato_experimental_generado`, con siete días y seis meses en cuatro localidades, sin declarar operación certificada. El flujo GitHub Actions tiene horario diario y disparador de cambios, pero la agenda no garantiza finalización o acceso continuo a la API externa.
 
 ## Contador público de visitas
 
@@ -41,3 +41,17 @@ El estado inicial de RF 10O queda publicado como `pendiente_primera_ejecucion`. 
 2. Evaluación prospectiva real de 7 días y por horizonte mensual, con versiones congeladas de datos e independencia instrumental.
 3. Revisar en navegador real el mapa de cinco paisajes en móvil y escritorio, la respuesta CounterAPI y la publicación GitHub Pages.
 4. Actualizar automáticamente la ficha probabilística ENFEN solo después de verificar un comunicado oficial nuevo y su tabla de categorías, sin reutilizar porcentajes de meses antiguos como actualidad.
+
+## Primera evaluación y corrección científica
+
+Se detectó y corrigió antes del cierre una incompatibilidad inicial: el archivo histórico mensual `temperatura_c` representa temperatura media, por lo que en 2026 no se debe introducir la media de las máximas diarias. El proceso 10O utiliza ahora **`temperature_2m_mean` para el candidato mensual** y mantiene **`temperature_2m_max` para el candidato diario**. El frontend rechaza salidas mensuales anteriores que no certifiquen expresamente esta corrección.
+
+**Pruebas retrospectivas de un paso, no habilidad de los horizontes múltiples:**
+
+- Diario, test 2025: MAE lluvia **2,34 mm/día** y temperatura máxima **0,83 °C**, con 1460 registros de prueba. Comparación de referencia global simple: 3,16 mm/día y 1,55 °C. Esa referencia global NO es la climatología local más rigurosa ni un pronóstico emitido de 7 días.
+- Mensual, test 2021–2025: MAE lluvia **47,31 mm/mes** y temperatura media **0,46 °C**, con 240 pares de prueba. Línea de base global simple 65,88 mm/mes. No equivalen a precisión de predicción recursiva 6 meses.
+- Entradas ERA5 diarias archivadas hasta **14/10/2026**, con latencia de publicación; el RF avanza de manera autorregresiva desde allí y acumula incertidumbre hasta la semana 21–27 de octubre. El último mes completo integrado es **septiembre de 2026** y octubre es un paso RF interno antes de calcular noviembre.
+
+**Ejemplo de salida candidata para Chiclayo:** noviembre de 2026, precipitación **20,0 mm/mes** y temperatura media **25,6 °C**; diciembre 2026, **33,9 mm** y **25,7 °C**. Son cálculos efectivamente ejecutados, pero **no constituyen pronósticos confiables para decisiones agrícolas**, especialmente en un episodio Niño o eventos extremos.
+
+La actualización del archivo está condicionada a ejecuciones correctas de la fuente ERA5 y GitHub Actions. En ningún caso se afirma habilidad prospectiva instrumental independiente ni se emiten alertas OAF.
