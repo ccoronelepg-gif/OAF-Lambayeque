@@ -1,0 +1,44 @@
+name: OAF - Verificar web en celulares
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "ecorregiones-clima-10k.html"
+      - "assets/oaf-responsive-celulares-ux19.css"
+      - "assets/oaf-responsive-celulares-ux19.js"
+      - "tests/test_movil_ux19_browser.cjs"
+      - ".github/workflows/oaf_responsive_mobile_ux19.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  navegacion_y_pantallas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Instalar navegador de pruebas
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Servir proyecto GitHub Pages sin requerir Internet externo
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/oaf-ux19-server.log 2>&1 &
+          echo $! > /tmp/oaf-ux19-server.pid
+          sleep 2
+      - name: Comprobar pantallas y navegación táctil
+        run: |
+          node tests/test_movil_ux19.js
+          node tests/test_movil_ux19_browser.cjs
+      - name: Conservar capturas para revisión visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oaf-mobile-ux19-screenshots
+          path: artifacts/mobile-ux19/
+          if-no-files-found: ignore
+          retention-days: 14
