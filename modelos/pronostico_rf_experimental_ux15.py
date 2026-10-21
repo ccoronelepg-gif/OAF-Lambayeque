@@ -300,7 +300,7 @@ def predict_month(model,series,city):
     rain,temp,weight,climatology=model;s=dict(series)
     latest=max(s);y,m=map(int,latest.split("-"))
     horizon=[]
-    for _ in range(18):
+    for paso in range(1,19):
         y,m=next_month(y,m);key=f"{y:04d}-{m:02d}"
         feat=monthly_features(s,y,m,city)
         if feat is None:raise ValueError("Sin retardos mensuales "+key)
@@ -310,7 +310,9 @@ def predict_month(model,series,city):
         r=round(weight*rf_raw+(1-weight)*clim,1)
         t=round(float(temp.predict(xr)[0]),1)
         s[key]={"rain":r,"temp":t}
-        if key>="2026-11":horizon.append({"mes":key,"precipitacion_mm":r,"temperatura_media_c":t,"recursivo":True})
+        if key>="2026-11":horizon.append({"mes":key,"precipitacion_mm":r,"temperatura_media_c":t,"recursivo":True,
+             "adelanto_desde_ultimo_mes_observado":paso,"horizonte_evaluado_hasta_meses":6,
+             "requiere_validacion_prospectiva":True})
         if len(horizon)>=6:break
     if len(horizon)!=6:raise ValueError("No se pudo obtener Nov-Abr")
     return horizon,latest
@@ -323,7 +325,7 @@ def main():
            "fecha_generacion_utc":now,"fecha_local":TODAY.isoformat(),
            "fuente_historica":"ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
            "documentacion":"https://open-meteo.com/en/docs/historical-weather-api",
-           "interpretacion":"Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas.",
+           "interpretacion":"Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas. Los meses Nov-Abr parten de una base ERA5 en septiembre 2026; octubre es un paso puente del modelo.",
            "alertas_automaticas":False,"operativo_certificado":False,
            "horizonte_semanal":7,"horizonte_mensual_inicio":"2026-11","estado":"en_calculo"}
     try:
