@@ -1,5 +1,5 @@
 {
-  "edicion": "2026-10-21",
+  "edicion": "Revisión editorial 21 de octubre de 2026; no es una actualización en tiempo real",
   "titulo": "Boletines y pronósticos institucionales de referencia para Lambayeque",
   "advertencia": "El resumen es una interpretación divulgativa preparada por OAF a partir de documentos fechados. No sustituye la vigencia de avisos meteorológicos o recomendaciones de ENFEN/SENAMHI. La posible ocurrencia de lluvias en un distrito no puede deducirse de una alerta oceánica sola.",
   "boletines": [
@@ -22,7 +22,7 @@
       "titulo": "Informe Técnico ENFEN Año 12, N.º 18",
       "fecha": "2026-10-18",
       "tipo": "Informe técnico",
-      "url": "https://enfen.imarpe.gob.pe/download/informe-tecnico-enfen-ano-12-n18-al-13-de-octubre-de-2026-2/",
+      "url": "https://enfen.imarpe.gob.pe/download/informe-tecnico-enfen-ano-12-n17-al-25-de-setiembre-de-2026-2/",
       "resumen": "Compila análisis de océano, atmósfera, hidrología e impactos asociados con la evolución de El Niño, con mayor detalle metodológico que un comunicado.",
       "clave": "Revisión oceanoatmosférica",
       "implicacion": "Consultar indicadores y su alcance territorial antes de inferir efectos de lluvia o temperatura a escala de parcela."
@@ -64,10 +64,40 @@
       "implicacion": "Examinar susceptibilidad territorial, drenajes y rutas agrícolas; complementar con pronósticos por distrito."
     }
   ],
-  "conclusion_general": "ENFEN señala Alerta de El Niño Costero al 16/10/2026, mientras NOAA describe un El Niño global fortaleciéndose al 08/10/2026. Para Lambayeque esto justifica vigilancia y preparación, pero no permite afirmar una cantidad ni una fecha de lluvia solo con estos boletines. La información operativa de avisos se consulta en SENAMHI.",
+  "conclusion_general": "Al 21/10/2026, el comunicado ENFEN 18 (16/10) mantiene la Alerta de El Niño Costero. El comunicado ENFEN 16 (14/09) señalaba temperaturas costeras muy superiores a lo normal y lluvias por encima del promedio en la costa norte, con episodios moderados a fuertes posibles desde noviembre. Estos son escenarios regionales sujetos a actualización, NO fechas ni acumulados de lluvia garantizados para Lambayeque. Revisar los avisos SENAMHI para decisiones inmediatas. Próximo comunicado ENFEN anunciado para el 30/10/2026.",
   "fuentes_primarias": [
     "https://enfen.imarpe.gob.pe/",
     "https://www.senamhi.gob.pe/",
     "https://www.cpc.ncep.noaa.gov/"
+  ],
+  "evolucion": [
+    {
+      "fecha": "2026-08-28",
+      "etiqueta": "ENFEN 15-2026",
+      "estado": "Alerta de El Niño Costero",
+      "detalle": "Previó temperaturas muy superiores a lo normal en la costa y lluvias superiores a lo normal en la costa norte, con episodios desde noviembre.",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-15-2026/"
+    },
+    {
+      "fecha": "2026-09-14",
+      "etiqueta": "ENFEN 16-2026",
+      "estado": "Se mantiene la alerta",
+      "detalle": "Actualizó la perspectiva de lluvias de moderada a fuerte intensidad desde noviembre en la costa norte y temperaturas muy superiores a las habituales.",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-16-2026/"
+    },
+    {
+      "fecha": "2026-09-28",
+      "etiqueta": "ENFEN 17-2026",
+      "estado": "Se mantiene la alerta",
+      "detalle": "Reiteró el uso de escenarios de riesgo y pronósticos estacionales para prepararse. No proporciona una fecha exacta de lluvia para Lambayeque.",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-17-2026/"
+    },
+    {
+      "fecha": "2026-10-16",
+      "etiqueta": "ENFEN 18-2026",
+      "estado": "Alerta vigente en la revisión",
+      "detalle": "Ratificó la alerta y destacó los avisos meteorológicos y escenarios actualizados. Indicó el siguiente comunicado para el 30 de octubre.",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/"
+    }
   ]
 }
