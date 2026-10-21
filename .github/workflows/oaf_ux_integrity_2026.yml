@@ -20,6 +20,7 @@ on:
       - 'assets/oaf-agroexportacion-2026.css'
       - 'assets/oaf-agro-charts-2026.js'
       - 'assets/oaf-agro-crops-2026.js'
+      - 'assets/oaf-agro-evidencia-2026.js'
       - 'datos/catalogo_cultivos_agroexportacion_2026.json'
       - 'tests/test_agroexportacion_2026.py'
       - 'guia-lectura-agroclimatica.html'
