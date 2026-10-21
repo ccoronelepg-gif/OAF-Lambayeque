@@ -1,0 +1,50 @@
+name: OAF - Aviso de cambios del portal
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  correo_de_actualizacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Enviar resumen por correo si estan configurados los secretos
+        env:
+          OAF_EMAIL_TO: ${{ secrets.OAF_EMAIL_TO }}
+          OAF_GMAIL_USER: ${{ secrets.OAF_GMAIL_USER }}
+          OAF_GMAIL_APP_PASSWORD: ${{ secrets.OAF_GMAIL_APP_PASSWORD }}
+          OAF_REPO: ${{ github.repository }}
+          OAF_SHA: ${{ github.sha }}
+          OAF_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          python - <<'PY'
+          import os, smtplib, subprocess
+          from email.message import EmailMessage
+          needed=("OAF_EMAIL_TO","OAF_GMAIL_USER","OAF_GMAIL_APP_PASSWORD")
+          if not all(os.getenv(x) for x in needed):
+              print("PENDIENTE: configurar secretos OAF_EMAIL_TO, OAF_GMAIL_USER y OAF_GMAIL_APP_PASSWORD en Settings > Secrets and variables > Actions.")
+              raise SystemExit(0)
+          paths=subprocess.run(["git","show","--format=","--name-only","HEAD"],capture_output=True,text=True,check=True).stdout.strip()
+          msg=EmailMessage()
+          msg["From"]=os.environ["OAF_GMAIL_USER"]
+          msg["To"]=os.environ["OAF_EMAIL_TO"]
+          msg["Subject"]="OAF-Lambayeque: actualización del sitio web"
+          msg.set_content(
+              "Nueva modificación registrada en OAF-Lambayeque.\n\n"+
+              "Mensaje: "+os.getenv("OAF_MESSAGE","Sin descripción")+"\n"+
+              "Repositorio: https://github.com/"+os.getenv("OAF_REPO","")+"\n"+
+              "Commit: "+os.getenv("OAF_SHA","")+"\n"+
+              "Archivos:\n"+paths+"\n\n"+
+              "Web: https://ccoronelepg-gif.github.io/OAF-Lambayeque/\n"+
+              "Un commit confirma cambios en GitHub, no el fin del despliegue de GitHub Pages.\n"
+          )
+          with smtplib.SMTP_SSL("smtp.gmail.com",465,timeout=20) as smtp:
+              smtp.login(os.environ["OAF_GMAIL_USER"],os.environ["OAF_GMAIL_APP_PASSWORD"])
+              smtp.send_message(msg)
+          print("Correo enviado; la direccion privada no se muestra en los logs")
+          PY
