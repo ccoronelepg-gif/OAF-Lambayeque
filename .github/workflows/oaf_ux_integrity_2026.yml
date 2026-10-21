@@ -16,6 +16,12 @@ on:
       - 'assets/oaf-estructura-pestanas-2026.js'
       - 'assets/oaf-estructura-pestanas-2026.css'
       - 'tests/test_estructura_pestanas_2026.py'
+      - 'assets/oaf-agroexportacion-2026.js'
+      - 'assets/oaf-agroexportacion-2026.css'
+      - 'assets/oaf-agro-charts-2026.js'
+      - 'assets/oaf-agro-crops-2026.js'
+      - 'datos/catalogo_cultivos_agroexportacion_2026.json'
+      - 'tests/test_agroexportacion_2026.py'
       - 'guia-lectura-agroclimatica.html'
       - 'sitemap.xml'
       - 'tests/test_divulgacion_seo_2026.py'
@@ -40,6 +46,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_divulgacion_seo_2026.py' -v
       - name: Índices temáticos de las seis pestañas y no regresión
         run: python -m unittest discover -s tests -p 'test_estructura_pestanas_2026.py' -v
+      - name: Biblioteca agroexportadora y conservación científica
+        run: python -m unittest discover -s tests -p 'test_agroexportacion_2026.py' -v
       - name: Modelos externos y estados no verificados
         run: node tests/test_portada_2026.js
       - name: Comprobar sintaxis de los 45 visores originales y nuevos módulos
