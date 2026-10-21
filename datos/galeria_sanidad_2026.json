@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-21-fotografias-actualizadas",
-  "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente.",
+  "version": "2026-10-21-correccion-de-enlaces-fotograficos",
+  "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente. Se descartó una imagen previa de Engeo que correspondía a un logotipo genérico, no al producto.",
   "organismos": {
     "mango-plaga-1": {
       "url": "https://prod.senasica.gob.mx/ALERTAS/imagenes/noticias/5f106a635d2e5.jpg",
@@ -38,10 +38,10 @@
       "exact": false
     },
     "vid-enfermedad-1": {
-      "url": "https://ephytia.inra.fr/en/I/8420/oidium-rav1",
-      "source": "https://ephytia.inra.fr/en/D/1928",
-      "credit": "INRAE · e-phytia",
-      "caption": "Oídio: micelio blanco sobre hojas de vid",
+      "url": "https://pnwhandbooks.org/sites/pnwhandbooks/files/plant/images/conidiophore/conidiaonleaf.jpg",
+      "source": "https://pnwhandbooks.org/plantdisease/host-disease/grape-vitis-spp-powdery-mildew",
+      "credit": "Pacific Northwest Plant Disease Handbook · fotografía patológica",
+      "caption": "Conidióforos del oídio de la vid sobre hoja, fotografía técnica real",
       "exact": true
     },
     "vid-enfermedad-2": {
@@ -136,10 +136,10 @@
       "exact": true
     },
     "banano-plaga-1": {
-      "url": "https://apps.lucidcentral.org/pppw_v10/images/entities/banana_weevil_109/5aut117_cosmsord_ckrr1_gmccormack1_zbx9x6.jpg",
-      "source": "https://apps.lucidcentral.org/pppw_v10/text/web_full/entities/banana_weevil_109.htm",
-      "credit": "Lucidcentral · Pacific Pests",
-      "caption": "Picudo negro del banano, Cosmopolites sordidus",
+      "url": "https://tiracoon.fr/_data/i/galleries/Insectes/Insectesdiv/DSC00089M-me.jpg",
+      "source": "https://tiracoon.fr/picture.php?/3391",
+      "credit": "Tiracoon · fotografía naturalista",
+      "caption": "Picudo negro del banano, Cosmopolites sordidus; ejemplar adulto",
       "exact": true
     },
     "banano-plaga-2": {
@@ -241,12 +241,12 @@
       "caption": "Envase referencial Aliette 80 WG; la formulación y registro pueden diferir de la ficha Aliette WP. Comprobar etiqueta vigente.",
       "exact": true
     },
-    "engeo": {
-      "url": "https://isteresita.com/images/uploads/logo_1609621851.jpg",
-      "source": "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo",
-      "credit": "Syngenta · fotografía de distribuidor",
-      "caption": "Engeo presentación referencial",
-      "exact": true
+    "engeo": null,
+    "score": {
+      "url": "https://www.nutriferza.com/web/image/product.template/3665/image_1024?unique=0e0f577",
+      "source": "https://www.nutriferza.com/shop/01tqc128-score-250-ec-x-1-lt-difenoconazol-3665",
+      "credit": "Nutriferza Perú · fotografía de empaque Score® 250 EC",
+      "caption": "Envase comercial de SCORE 250 EC, presentación peruana de 1 L"
     }
   }
 }
