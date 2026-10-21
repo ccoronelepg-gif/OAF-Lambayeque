@@ -73,3 +73,26 @@
 #oaf-sanidad-ux11 .oaf-ux11-controls{position:relative}
 @media(max-width:920px){.oaf-ux11-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-ux11-controls.three{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-ux11-grid,.oaf-ux11-institutions{grid-template-columns:1fr}.oaf-ux11-calls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.oaf-ux11-section{padding:17px 13px;border-radius:16px}.oaf-ux11-controls,.oaf-ux11-controls.three{grid-template-columns:1fr;padding:13px}.oaf-ux11-calls{grid-template-columns:1fr}.oaf-ux11-plot{min-height:210px}}
+
+/* UX-11 revisión 21/10: indicadores científicos, tabla legible y evolución documental */
+.oaf-ux11-evidence{background:#edf8f0;border:1px solid #cbe4d2;border-left:4px solid #2d9a81;border-radius:12px;padding:12px 14px;margin:12px 0}
+.oaf-ux11-evidence strong{font-size:14px;color:#165c48;display:block}
+.oaf-ux11-evidence p{font-size:12px;margin:6px 0;color:#496d5c}
+.oaf-ux11-evidence small{display:block;font-size:11px;color:#59756a;font-weight:700}
+.oaf-ux11-scroller{overflow-x:auto;scrollbar-color:#accfc2 transparent;margin:12px 0 3px}
+.oaf-ux11-weather-table{width:100%;min-width:420px;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #dcece2;border-radius:11px;overflow:hidden}
+.oaf-ux11-weather-table thead th{background:#e5f3ed;color:#29614e;font-size:10px;text-transform:none;letter-spacing:0;padding:9px 11px}
+.oaf-ux11-weather-table tbody td{color:#406553;font-size:11px;font-weight:550;padding:8px 11px;border-bottom:1px solid #ebf1ed}
+.oaf-ux11-weather-table tbody tr:nth-child(even){background:#f6fbf8}
+.oaf-ux11-weather-table tbody tr:last-child td{border-bottom:0}
+.oaf-ux11-subhead{color:#1a5647;font-size:17px;margin:21px 0 11px}
+.oaf-ux11-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.oaf-ux11-timeline-item{position:relative;background:linear-gradient(165deg,#fff,#f0f9f4);border:1px solid #ccded4;border-top:4px solid #399c82;border-radius:13px;padding:14px 13px;display:flex;flex-direction:column;gap:7px}
+.oaf-ux11-timeline-item:last-child{border-top-color:#c97841;background:linear-gradient(165deg,#fffdf8,#fdf4e9)}
+.oaf-ux11-timeline-item time{font-size:11px;font-weight:800;color:#5c8475}
+.oaf-ux11-timeline-item strong{font-size:12px;line-height:1.45;color:#205847}
+.oaf-ux11-timeline-item p{font-size:12px;color:#526c60;margin:0;line-height:1.6}
+.oaf-ux11-timeline-item a{margin-top:auto;color:#28745f;font-weight:800;font-size:12px}
+.oaf-ux11-products .oaf-ux11-product:hover{box-shadow:0 6px 15px #20564114;border-color:#a9d7be}
+@media(max-width:990px){.oaf-ux11-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.oaf-ux11-timeline{grid-template-columns:1fr}.oaf-ux11-timeline-item{padding:12px}}
