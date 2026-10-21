@@ -91,7 +91,20 @@ function renderHome(){
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
    $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+". Condición costera; no indica lluvia diaria por sí sola.";
-   $("oaf-ux14-home-prob").replaceChildren(document.createTextNode("Porcentajes por intensidad: no publicados aquí sin tabla probabilística oficial vigente. "),L("Consultar ENFEN ↗",d.enfen?.fuente||"https://enfen.imarpe.gob.pe/comunicados/"));
+   const prob=$("oaf-ux14-home-prob");
+   fetch("datos/enfen_probabilidades_portada_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No hay cuadro");return r.json()}).then(p=>{
+     if(p.comunicado!==d.enfen.numero||p.fecha_publicacion!==d.enfen.fecha_emision)throw Error("Ediciones distintas");
+     const row=p.meses.find(x=>x.mes==="2026-10");if(!row)throw Error("Mes faltante");
+     prob.replaceChildren();
+     prob.append(E("strong",null,"Probabilidades oficiales ICEN · octubre 2026"));
+     const bars=E("div","oaf-ux14-prob-bars");
+     for(const [key,label,color] of [["extraordinaria","Extraordinaria","#ac3f38"],["fuerte","Fuerte","#d88248"],["moderada","Moderada","#e3b952"]]){
+       const value=row[key],item=E("div","oaf-ux14-probline");
+       item.append(E("span",null,label),E("b",null,value+" %"));
+       const bar=E("div","oaf-ux14-probtrack"),inner=E("i");inner.style.width=value+"%";inner.style.background=color;bar.append(inner);item.append(bar);bars.append(item);}
+     prob.append(bars,E("small",null,"Fuente: ENFEN 18-2026, figura 2a, región Niño 1+2. Son probabilidades de categoría oceánica, NO de lluvias ni daños."));
+     prob.append(L("Ver figura y nuevo comunicado ↗",p.fuente));
+   }).catch(()=>{prob.replaceChildren(E("span",null,"Probabilidades no verificables para este comunicado; revisa el gráfico oficial."),L("ENFEN ↗",d.enfen?.fuente||"https://enfen.imarpe.gob.pe/comunicados/"))});
  }).catch(()=>$("oaf-ux14-home-enso").textContent="No se pudo verificar una actualización del organismo oficial. Consulta ENFEN.");
  initHomeWeather();
 }
