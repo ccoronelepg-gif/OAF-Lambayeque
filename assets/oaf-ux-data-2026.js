@@ -65,9 +65,9 @@ function renderChart(slot,dates,vals,entry,city,consulted){
   });
  }
  slot.append(svg);
- set("oaf-forecast-"+entry.id+"-meta","Fuente: Open-Meteo · "+city+
+ set("oaf-forecast-"+entry.id+"-meta",""+city+
       " · "+dates[0]+" a "+dates[6]+" · "+entry.unit+
-      " · consulta "+consulted+" (hora de Lima).");
+      " · actualizado "+consulted+" (hora de Lima).");
 }
 async function forecast(city){
  if(!coords[city]||!g("oaf-forecast-grid"))return;
@@ -87,11 +87,11 @@ async function forecast(city){
   for(const e of series){
    const values=response.daily[e.key];
    if(!Array.isArray(values)||values.length!==7||!values.every(Number.isFinite)){
-    set("oaf-forecast-"+e.id+"-meta","Serie no disponible en esta consulta. Fuente prevista: Open-Meteo; sin datos simulados.");continue;
+    set("oaf-forecast-"+e.id+"-meta","No hay datos disponibles para este gráfico.");continue;
    }
    renderChart(g("oaf-forecast-"+e.id),dates,values,e,city,consulted);
   }
-  set("oaf-forecast-state","Pronóstico externo para "+city+" · siete días · fuente Open-Meteo. No es un pronóstico desarrollado por OAF.");
+  set("oaf-forecast-state","Pronóstico para "+city+" · siete días. Son valores estimados.");
  }catch(e){
   if(order!==seq)return;
   set("oaf-forecast-state","No se dispone de pronósticos externos para "+city+". No se generan valores alternativos.");
