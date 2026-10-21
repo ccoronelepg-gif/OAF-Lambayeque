@@ -1,0 +1,206 @@
+{
+  "version": "2026-10-21",
+  "proyecto": "OAF-Lambayeque",
+  "enfoque": "fichas informativas para agroexportación; sin diagnóstico ni tasas de incidencia",
+  "aclaracion": "Listado de organismos de importancia reportada, no evidencia de presencia actual en Lambayeque ni predicción cuantificada de brotes.",
+  "cultivos": [
+    {
+      "id": "mango",
+      "nombre": "Mango",
+      "scientific": "Mangifera indica",
+      "plagas": [
+        {
+          "nombre": "Moscas de la fruta",
+          "agentes": "Ceratitis capitata y Anastrepha spp.",
+          "vigilancia": "Trampas, fruta infestada y caída de frutos",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+        },
+        {
+          "nombre": "Cochinillas o queresas",
+          "agentes": "Diversas especies de hemípteros",
+          "vigilancia": "Monitoreo de hojas, ramas y frutos; identificación en campo",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Antracnosis",
+          "agentes": "Colletotrichum spp.",
+          "vigilancia": "Lesiones en inflorescencias y frutos; humedad y periodos de mojado",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/"
+        }
+      ],
+      "lectura": "Las lluvias y la humedad pueden orientar el monitoreo de antracnosis, pero la presencia de moscas de fruta exige vigilancia directa y registros de trampas."
+    },
+    {
+      "id": "vid",
+      "nombre": "Vid",
+      "scientific": "Vitis vinifera",
+      "plagas": [
+        {
+          "nombre": "Cochinilla harinosa de la vid",
+          "agentes": "Planococcus ficus y Pseudococcus spp.",
+          "vigilancia": "Inspección de racimos, corteza, hormigas y melaza; identificación taxonómica",
+          "fuente": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/"
+        },
+        {
+          "nombre": "Trips y ácaros",
+          "agentes": "Diversos Thysanoptera y Acari",
+          "vigilancia": "Muestreo por brotación, floración y estado del racimo",
+          "fuente": "https://ipm.ucanr.edu/agriculture/grape/"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Oídio",
+          "agentes": "Erysiphe necator",
+          "vigilancia": "Temperatura, brotación y síntomas; la humedad superficial no es único predictor",
+          "fuente": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+        },
+        {
+          "nombre": "Botrytis del racimo",
+          "agentes": "Botrytis cinerea",
+          "vigilancia": "Humedad, lluvias, aireación del racimo y evidencia en campo",
+          "fuente": "https://ipm.ucanr.edu/agriculture/grape/"
+        }
+      ],
+      "lectura": "Los modelos térmicos de oídio son herramientas de apoyo y deben adaptarse a condiciones y variedades locales."
+    },
+    {
+      "id": "arandano",
+      "nombre": "Arándano",
+      "scientific": "Vaccinium corymbosum y otros híbridos",
+      "plagas": [
+        {
+          "nombre": "Trips",
+          "agentes": "Frankliniella spp. y Thrips spp.",
+          "vigilancia": "Evaluación de flores y brotes según fenología",
+          "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+        },
+        {
+          "nombre": "Mosca blanca y cochinillas",
+          "agentes": "Bemisia tabaci y pseudocóccidos",
+          "vigilancia": "Inspección en brotes, hojas y frutos",
+          "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Moho gris",
+          "agentes": "Botrytis cinerea",
+          "vigilancia": "Humedad, ventilación, periodos húmedos y diagnóstico",
+          "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+        },
+        {
+          "nombre": "Pudrición radicular",
+          "agentes": "Phytophthora cinnamomi",
+          "vigilancia": "Drenaje, humedad del sustrato y síntomas radiculares",
+          "fuente": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+        }
+      ],
+      "lectura": "La relación humedad–Botrytis todavía necesita contrastes de campo antes de asignar probabilidades de brote."
+    },
+    {
+      "id": "palto",
+      "nombre": "Palto",
+      "scientific": "Persea americana",
+      "plagas": [
+        {
+          "nombre": "Trips",
+          "agentes": "Diversas especies de trips",
+          "vigilancia": "Inspección de frutos pequeños, brotes y flores",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/"
+        },
+        {
+          "nombre": "Queresas y ácaros",
+          "agentes": "Hemípteros fitófagos y ácaros",
+          "vigilancia": "Muestreo de hojas y ramas; identificación de la especie",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Tristeza / pudrición de raíces",
+          "agentes": "Phytophthora cinnamomi",
+          "vigilancia": "Drenaje, saturación del suelo y síntomas en raíces",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+        },
+        {
+          "nombre": "Muerte regresiva",
+          "agentes": "Lasiodiplodia theobromae (según diagnóstico)",
+          "vigilancia": "Necrosis en brotes, ramas y lesiones de madera",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/"
+        }
+      ],
+      "lectura": "Para Phytophthora, combinar clima con drenaje y manejo del riego; el ambiente atmosférico solo es insuficiente."
+    },
+    {
+      "id": "maracuya",
+      "nombre": "Maracuyá",
+      "scientific": "Passiflora edulis",
+      "plagas": [
+        {
+          "nombre": "Mosca del ovario",
+          "agentes": "Dasiops spp.",
+          "vigilancia": "Flores y frutos jóvenes; identificación por muestreo",
+          "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+        },
+        {
+          "nombre": "Gusano defoliador",
+          "agentes": "Dione juno y Agraulis spp.",
+          "vigilancia": "Muestreo de huevos y larvas; defoliación",
+          "fuente": "https://repositorio.inia.gob.pe/bitstreams/c335afc1-2062-4ee4-8e84-4d958539d7c6/download"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Antracnosis",
+          "agentes": "Colletotrichum spp.",
+          "vigilancia": "Lesiones y condiciones cálidas y húmedas",
+          "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+        },
+        {
+          "nombre": "Marchitez / secadera",
+          "agentes": "Fusarium spp. (confirmar aislamiento)",
+          "vigilancia": "Raíces, cuello y drenaje; diagnóstico diferencial",
+          "fuente": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+        }
+      ],
+      "lectura": "La fenología, la lluvia y el drenaje orientan la vigilancia; no se dispone de un modelo local de brotes validado."
+    },
+    {
+      "id": "banano",
+      "nombre": "Banano",
+      "scientific": "Musa spp.",
+      "plagas": [
+        {
+          "nombre": "Picudo negro",
+          "agentes": "Cosmopolites sordidus",
+          "vigilancia": "Trampas, perforaciones en cormos y vigor de plantas",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/"
+        },
+        {
+          "nombre": "Nematodos fitoparásitos",
+          "agentes": "Radopholus similis y otros nematodos",
+          "vigilancia": "Muestreo radicular y diagnóstico",
+          "fuente": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf"
+        }
+      ],
+      "enfermedades": [
+        {
+          "nombre": "Fusariosis Raza 4 Tropical",
+          "agentes": "Fusarium oxysporum f. sp. cubense R4T",
+          "vigilancia": "Bioseguridad, síntomas vasculares y confirmación por SENASA",
+          "fuente": "https://www.gob.pe/institucion/senasa/noticias/967156-senasa-trabaja-en-la-contencion-de-plaga-que-afecta-a-bananos-y-platanos"
+        },
+        {
+          "nombre": "Sigatoka negra",
+          "agentes": "Pseudocercospora fijiensis",
+          "vigilancia": "Severidad foliar, humedad y registros de periodos húmedos",
+          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/"
+        }
+      ],
+      "lectura": "El monitoreo climático puede apoyar la vigilancia de Sigatoka; Fusarium R4T requiere principalmente bioseguridad, diagnóstico y protocolos fitosanitarios."
+    }
+  ]
+}
