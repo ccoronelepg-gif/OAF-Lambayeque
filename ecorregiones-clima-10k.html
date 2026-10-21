@@ -59,6 +59,17 @@ html,body{overflow-x:hidden}
 @media(max-width:1050px){.layout,.below{grid-template-columns:1fr}#map{height:420px}}
 @media(max-width:650px){main{padding:10px}.panel{padding:12px}#map{height:340px;min-height:310px}#chart{min-height:170px}.layout .infoBlock{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}}
 
+/* UX17: capas temáticas comparables e identificación de series */
+.oaf-ux17-map-layers{display:flex;align-items:center;gap:12px 21px;flex-wrap:wrap;margin:0 0 11px;padding:12px 14px;background:#f2f8f4;border:1px solid #d4e6d9;border-radius:11px}
+.oaf-ux17-map-layers label{font-weight:750;font-size:12px;color:#285f4f;display:flex;align-items:center;gap:7px}
+.oaf-ux17-map-layers input[type="range"]{accent-color:#177b6d;width:126px}
+.oaf-ux17-map-layers button{background:#fff;color:#275e50;padding:7px 12px;font-size:12px;font-weight:750;border:1px solid #b5d4be;border-radius:8px}
+#map{isolation:isolate;border:1px solid #d1e3d9}
+#map .leaflet-pane,#map .leaflet-map-pane{max-width:none}
+.legend{background:#f5faf6;padding:10px;border-radius:9px;border:1px solid #dbe8de}
+.legend .oaf-ux17-legend-values{display:flex;align-items:center;gap:9px}
+.legend .oaf-ux17-gradient{display:inline-block;min-width:128px;height:13px;border-radius:7px;border:1px solid #d8dfe0}
+@media(max-width:620px){.oaf-ux17-map-layers{gap:10px}.oaf-ux17-map-layers label{flex-wrap:wrap}}
 </style></head><body>
 <header>
 <div style="font-size:.76rem;letter-spacing:.08em;opacity:.92">OAF LAMBAYEQUE · CIENCIA CLIMÁTICA ABIERTA · FASE 10K</div>
@@ -90,7 +101,7 @@ html,body{overflow-x:hidden}
 </section>
 <div class="layout">
 <section class="panel"><h2>Mapa territorial y filtros <span class="badge">Polígonos 9K experimentales</span></h2>
-<div id="map" role="region" aria-label="Mapa interactivo de los 39 sectores de Lambayeque"></div>
+<div class="oaf-ux17-map-layers" aria-label="Controles de visualización cartográfica"><label>Intensidad del color <input id="oaf-ux17-opacity" type="range" min="25" max="100" value="78" step="5"><output id="oaf-ux17-opacity-number">78 %</output></label><label class="oaf-ux17-layer-checkbox"><input type="checkbox" id="oaf-ux17-borders" checked> Límites de sectores</label><button type="button" id="oaf-ux17-reset-view">Centrar mapa</button></div><div id="map" role="region" aria-label="Mapa interactivo de los 39 sectores de Lambayeque"></div>
 <div id="legend" class="legend" aria-label="Leyenda de colores"></div>
 <p class="muted">Selecciona un polígono para examinar el sector. Los colores indican paisajes operativos o valores estadísticos, no límites MINAM certificados. Se excluyeron S028, S032 y S034 por cobertura CHIRPS insuficiente. S001 mantiene una cota DEM negativa pendiente de revisión.</p>
 </section>
@@ -150,9 +161,9 @@ html,body{overflow-x:hidden}
 <script>(()=>{"use strict";
 const $=id=>document.getElementById(id);
 const nm={costa_valle:"Costa árida y valles bajos",piedemonte:"Piedemonte y transición de bosque seco",ladera_baja:"Vertientes andinas bajas",ladera_media:"Vertientes andinas medias",cumbres:"Alturas y cumbres andinas"};
-const colors={costa_valle:"#d8a94a",piedemonte:"#8da852",ladera_baja:"#4a9b7c",ladera_media:"#5383af",cumbres:"#8d83b0"};
+const colors={costa_valle:"#e9a23d",piedemonte:"#58a754",ladera_baja:"#15a4a4",ladera_media:"#3d78c4",cumbres:"#9169c7"};
 const floors={cota_negativa_revisar:"Cota negativa por revisar",llanura_costa:"Llanura costera",valle_bajo:"Valle bajo",piedemonte:"Piedemonte",montana_baja:"Montaña baja",montana_media:"Montaña media",montana_alta:"Montaña alta"};
-let metrics=null,geo=null,rows=[],map=null,layer=null,chosenSector="",group="todos",period="todos",display="paisaje";
+let metrics=null,geo=null,rows=[],map=null,layer=null,chosenSector="",group="todos",period="todos",display="paisaje",fillPercent=.78,drawBorders=true;
 const number=(v,d=1)=>v==null||!isFinite(+v)?"—":Number(v).toLocaleString("es-PE",{minimumFractionDigits:d,maximumFractionDigits:d});
 const periodRows=()=>rows.filter(r=>(group==="todos"||r.paisaje===group)&&(period==="todos"||r.mes.slice(0,4)===period));
 function calc(data){if(!data.length)return null;
@@ -164,17 +175,55 @@ function calc(data){if(!data.length)return null;
   brier90:avg(r=>(+r.p90-(+r.e90))**2),brierRef90:avg(r=>(+r.ref_p90-(+r.e90))**2),
   p90:data.reduce((s,r)=>s+(+r.e90),0),p95:data.reduce((s,r)=>s+(+r.e95),0)}}
 function metricFor(s,kind){return kind==="observado"?s?.obs:kind==="predicho"?s?.rf:kind==="mae"?s?.mae:kind==="eventos"?s?.p90:null}
-function polygonColor(f){if(display==="paisaje")return colors[f.properties.paisaje_id]||"#a1b5a6";
- const stats=calc(periodRows().filter(x=>x.sector===f.properties.sector));const val=metricFor(stats,display);
- if(val==null)return "#ddd";const all=[...new Set(periodRows().map(x=>x.sector))].map(s=>metricFor(calc(periodRows().filter(x=>x.sector===s)),display)).filter(v=>v!=null);
- const lo=Math.min(...all),hi=Math.max(...all),t=(val-lo)/(hi-lo||1);
- const from=[225,243,226],to=[25,115,86];return "rgb("+from.map((c,i)=>Math.round(c+t*(to[i]-c))).join(",")+")"}
-function legend(){const host=$("legend");host.replaceChildren();
- if(display==="paisaje"){for(const [id,name] of Object.entries(nm)){const s=document.createElement("span"),dot=document.createElement("i");dot.className="dot";dot.style.background=colors[id];s.append(dot,document.createTextNode(name));host.append(s)}}else{
-  const label=document.createElement("span");label.textContent="Menor valor ";const a=document.createElement("i");a.className="dot";a.style.background="rgb(225,243,226)";const b=document.createElement("i");b.className="dot";b.style.background="rgb(25,115,86)";label.append(a,document.createTextNode(" → mayor valor "),b);host.append(label)}}
-function selectedLayers(){if(!layer)return;layer.eachLayer(l=>{const p=l.feature.properties,active=group==="todos"||p.paisaje_id===group;
- l.setStyle({color:chosenSector===p.sector?"#103b31":"#476359",weight:chosenSector===p.sector?3:1,fillOpacity:active?.72:.07,opacity:active?1:.22,fillColor:polygonColor(l.feature)});
- if(active&&chosenSector===p.sector)l.bringToFront()})}
+function metricRange(){
+ const values=[...new Set(periodRows().map(r=>r.sector))]
+  .map(s=>metricFor(calc(periodRows().filter(r=>r.sector===s)),display))
+  .filter(Number.isFinite);
+ return values.length?[Math.min(...values),Math.max(...values)]:[0,1];
+}
+function scale(val){
+ const [lo,hi]=metricRange(),t=Math.max(0,Math.min(1,(val-lo)/(hi-lo||1)));
+ const interpolate=(from,to)=>"rgb("+from.map((v,i)=>Math.round(v+t*(to[i]-v))).join(",")+")";
+ if(display==="mae")return interpolate([51,158,105],[200,58,66]); // higher error = coral
+ if(display==="eventos")return interpolate([247,228,162],[156,76,151]);
+ if(display==="observado")return interpolate([220,239,252],[23,103,180]);
+ return interpolate([226,243,234],[11,130,104]);
+}
+function polygonColor(f){
+ if(display==="paisaje")return colors[f.properties.paisaje_id]||"#a1b5a6";
+ const val=metricFor(calc(periodRows().filter(x=>x.sector===f.properties.sector)),display);
+ return Number.isFinite(val)?scale(val):"#e5e7e9";
+}
+function legend(){
+ const host=$("legend");host.replaceChildren();
+ if(display==="paisaje"){
+  for(const [id,name] of Object.entries(nm)){
+   const s=document.createElement("span"),dot=document.createElement("i");
+   dot.className="dot";dot.style.background=colors[id];s.append(dot,document.createTextNode(name));host.append(s)
+  }
+ }else{
+  const [low,high]=metricRange();const wrapper=document.createElement("div");wrapper.className="oaf-ux17-legend-values";
+  const a=document.createElement("strong"),b=document.createElement("strong"),bar=document.createElement("span");bar.className="oaf-ux17-gradient";
+  a.textContent=number(low,1);b.textContent=number(high,1);
+  const lowColor=scale(low),hiColor=scale(high);
+  bar.style.background="linear-gradient(90deg,"+lowColor+","+hiColor+")";
+  wrapper.append(a,bar,b);host.append(wrapper);
+  const note=document.createElement("span");note.textContent=(display==="mae"?"Verde = menor error; rojo = mayor error.":display==="eventos"?"Amarillo = menos eventos; violeta = más.":display==="observado"?"Azul más intenso = mayor lluvia observada.":"Verde más intenso = mayor lluvia estimada RF.")+" Valores resumidos por sector y periodo; no son avisos.";
+  host.append(note);
+ }
+}
+function selectedLayers(){
+ if(!layer)return;
+ layer.eachLayer(l=>{
+  const p=l.feature.properties,active=group==="todos"||p.paisaje_id===group,selected=chosenSector===p.sector;
+  const val=metricFor(calc(periodRows().filter(x=>x.sector===p.sector)),display);
+  l.setStyle({color:drawBorders?(selected?"#163b35":"#52796c"):"transparent",weight:drawBorders?(selected?3.2:1):0,
+   fillOpacity:active?fillPercent:Math.min(.1,fillPercent/5),opacity:active?1:.18,fillColor:polygonColor(l.feature)});
+  const extra=display==="paisaje"?"":Number.isFinite(val)?" · "+display+": "+number(val,1):" · sin dato";
+  l.setTooltipContent(p.sector+" · "+nm[p.paisaje_id]+extra);
+  if(active&&selected)l.bringToFront();
+ })
+}
 function updateMap(){if(!geo||!window.L){$("status").textContent="El listado funciona; mapa interactivo no disponible por conexión con el proveedor cartográfico.";return}
  if(!map){map=L.map("map",{scrollWheelZoom:false,zoomControl:true});
  /* Mapa vectorial limpio: sin teselas de terceros que produzcan mosaicos superpuestos. */
@@ -228,6 +277,9 @@ Promise.all([getJSON("./datos/ecopaisajes_10k/evaluacion_ecoclimatica_10k.json")
  $("metric").addEventListener("change",()=>{display=$("metric").value;update()});
  $("sector").addEventListener("change",()=>{chosenSector=$("sector").value;drawDetail();selectedLayers();if(layer&&map){layer.eachLayer(l=>{if(l.feature.properties.sector===chosenSector)map.fitBounds(l.getBounds(),{padding:[20,20],maxZoom:12})})}});
  $("reset").addEventListener("click",()=>{group="todos";period="todos";display="paisaje";chosenSector="";$("paisaje").value=group;$("periodo").value=period;$("metric").value=display;update();if(layer)map.fitBounds(layer.getBounds(),{padding:[10,10]})});
+ $("oaf-ux17-opacity").addEventListener("input",e=>{fillPercent=Number(e.target.value)/100;$("oaf-ux17-opacity-number").textContent=e.target.value+" %";selectedLayers()});
+ $("oaf-ux17-borders").addEventListener("change",e=>{drawBorders=e.target.checked;selectedLayers()});
+ $("oaf-ux17-reset-view").addEventListener("click",()=>{if(layer&&map)map.fitBounds(layer.getBounds(),{padding:[10,10]})});
  update();
  }).catch(err=>{$("status").textContent="No se pueden mostrar cifras sin los archivos 10K verificados: "+err.message;$("table-land").textContent="Evaluación regional pendiente.";});
 })();</script>
