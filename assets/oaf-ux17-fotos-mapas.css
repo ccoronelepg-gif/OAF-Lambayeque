@@ -1,0 +1,97 @@
+/* OAF UX17: imagen íntegra, contraste cartográfico y gráficos accesibles */
+:root{
+  --oaf-map-azure:#2379b9;--oaf-map-teal:#12967d;--oaf-map-lime:#78aa51;
+  --oaf-map-gold:#e2a83f;--oaf-map-rust:#cd6658;--oaf-map-purple:#886cc3;
+}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg{
+  position:relative!important;isolation:isolate;background:#e7f2ea!important;
+  display:flex!important;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden!important;border-radius:14px
+}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg::before{
+  content:"";position:absolute;inset:-18px;z-index:0;
+  background-image:var(--oaf-hero-background,linear-gradient(115deg,#e1ede5,#bfd8cb));
+  background-size:cover;background-position:center;
+  filter:blur(22px) saturate(.8);opacity:.5;pointer-events:none
+}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg img{
+  position:relative;z-index:1;object-fit:contain!important;object-position:center!important;
+  width:100%!important;height:100%!important;max-height:430px!important;
+  margin:0!important;padding:0!important;border-radius:8px
+}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg .oaf-banner-note{
+  position:relative;z-index:2;max-width:100%;margin-top:2px
+}
+.oaf-ux12-photo{
+ display:flex!important;flex-direction:column;align-items:stretch;
+ background:linear-gradient(155deg,#f9fbf8,#eaf3ed)!important;min-width:0;
+}
+.oaf-ux12-photo img,.oaf-ux12-photo:not(.oaf-ux12-envase) img{
+ box-sizing:border-box;display:block;width:100%!important;height:auto!important;
+ max-height:360px;min-height:170px;object-fit:contain!important;object-position:center!important;
+ padding:10px;background:#f3f8f2;border-radius:10px 10px 0 0;
+}
+.oaf-ux12-photo:not(.oaf-ux12-envase) img{
+ height:clamp(215px,30vw,345px)!important;
+}
+.oaf-ux12-envase,.oaf-ux12-envase img{background:#fff!important}
+.oaf-ux12-envase img{
+ width:100%!important;height:170px!important;min-height:0!important;max-height:190px!important;
+ object-fit:contain!important;padding:9px!important
+}
+.oaf-ux12-photo figcaption{
+ display:flex;flex-direction:column;gap:5px;margin-top:auto;
+ overflow-wrap:anywhere;white-space:normal;line-height:1.5
+}
+.oaf-ux12-photo-notice{
+ background:#f7efde;color:#765b2b;padding:7px 9px;
+ font-size:11px;font-weight:500;margin:0;border-radius:7px
+}
+.oaf-ux12-photo-error img{
+ object-fit:contain!important;background:#ecf6ef!important
+}
+.oaf-ux12-product-layout{grid-template-columns:minmax(130px,160px) minmax(0,1fr);align-items:start}
+.oaf-ux12-product-info,.oaf-ux12-photo{min-width:0}
+.oaf-ux12-fauna{max-width:100%}
+.oaf-ux11-illustration.oaf-ux12-has-photo{height:auto!important;max-height:none!important;overflow:visible!important}
+#oaf-sm-ilustracion,#oaf-mg-foto{min-width:0}
+#oaf-sm-ilustracion .oaf-ux12-photo,#oaf-mg-foto .oaf-ux12-photo{max-width:100%}
+.oaf-ux17-image-unavailable{
+ display:block;background:#f9efdc;color:#7a6236;padding:6px 9px;
+ border-radius:7px;font-size:11px
+}
+.oaf-ux17-pictogram{
+ object-fit:contain!important;object-position:center!important;min-height:155px;
+ background:#f1f7f1;border-radius:12px
+}
+#inicio img.oaf-ux17-pictogram,#cultivos img.oaf-ux17-pictogram{object-fit:contain!important}
+img[src$=".svg"]{object-fit:contain}
+.oaf-ux14-chart{border-color:#cee3db;background:linear-gradient(170deg,#fff,#f0f8f5)}
+.oaf-ux14-chart svg [role="img"]:focus-visible{outline:3px solid #6da7b4;outline-offset:3px}
+.oaf-ux14-key span{font-weight:650}
+#oaf-ux9-map svg path[role="button"]{
+ cursor:pointer;transition:fill-opacity .18s ease,stroke-width .15s ease;
+ stroke:#fff;stroke-width:1.3
+}
+#oaf-ux9-map svg path[role="button"]:hover,#oaf-ux9-map svg path[role="button"]:focus-visible{
+ stroke:#173f44;stroke-width:3;fill-opacity:1;outline:none
+}
+.oaf-ux17-map-tools{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:10px;padding:10px 12px;border-radius:12px;
+ border:1px solid #d0e2d5;background:#f4faf7;margin:12px 0
+}
+.oaf-ux17-map-tools label{display:flex;align-items:center;gap:9px;color:#1b6658;font-size:12px;font-weight:750}
+.oaf-ux17-map-tools input[type=range]{accent-color:#138b78;cursor:pointer;width:128px}
+.oaf-ux17-map-tools button{padding:7px 12px;border:1px solid #acd0c0;
+ background:white;border-radius:9px;color:#1d6758;font-size:12px;font-weight:750;cursor:pointer}
+.oaf-ux9-map-legend span{cursor:pointer;transition:transform .12s}
+.oaf-ux9-map-legend span:hover{transform:translateY(-1px)}
+@media(max-width:650px){
+ #inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg img{height:auto!important;max-height:360px!important}
+ .oaf-ux12-product-layout{grid-template-columns:105px minmax(0,1fr)!important;gap:10px}
+ .oaf-ux12-envase{max-width:105px!important}
+ .oaf-ux12-envase img{height:140px!important}
+ .oaf-ux12-photo:not(.oaf-ux12-envase) img{height:240px!important}
+}
+@media(max-width:430px){.oaf-ux12-product-layout{grid-template-columns:1fr!important}.oaf-ux12-envase{max-width:180px!important}}
