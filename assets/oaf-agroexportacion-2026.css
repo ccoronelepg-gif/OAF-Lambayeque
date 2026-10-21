@@ -1,0 +1,84 @@
+/* UX-8: portada agroexportadora de tres bloques + clima regional de tres bloques.
+   La capa reorganiza módulos y conserva los originales como archivo técnico. */
+.oaf-agro-summary{display:block!important;border:1px solid #c8dfd2;background:#fff;padding:25px 29px;border-radius:19px;box-shadow:0 10px 28px #15453212;margin:18px 0 23px}
+.oaf-agro-summary h2{margin:0 0 11px!important;font-size:clamp(19px,2.4vw,26px)!important;color:#174e42;line-height:1.28}
+.oaf-agro-summary p{margin:0 0 7px!important;line-height:1.75;font-size:14px;color:#435f55;max-width:1080px}
+.oaf-agro-summary p:last-child{margin-bottom:0!important}
+.oaf-agro-shell{display:grid;gap:21px;margin:18px 0 24px}
+.oaf-agro-block{border:1px solid #cddfd5;border-radius:20px;padding:24px 25px;background:#fff;box-shadow:0 11px 30px #133e3010;min-width:0}
+.oaf-agro-block-head{border-bottom:1px solid #e0eae4;padding-bottom:17px;margin-bottom:19px}
+.oaf-agro-block-head .oaf-agro-kicker{color:#37715d;font-size:11px;letter-spacing:.13em;font-weight:850;text-transform:uppercase}
+.oaf-agro-block-head h2{margin:7px 0 8px;font-size:clamp(23px,3vw,32px);line-height:1.22;color:#173f3d;letter-spacing:-.5px}
+.oaf-agro-block-head p{margin:0;font-size:14px;line-height:1.7;color:#5a6d68;max-width:900px}
+.oaf-agro-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;align-items:stretch}
+.oaf-agro-split>.oaf-agro-tile{min-width:0}
+.oaf-agro-tile{background:#fbfdfb;border:1px solid #ddebe1;border-radius:15px;padding:18px 20px}
+.oaf-agro-tile h3{color:#1b5546;margin:0 0 9px;font-size:17px}
+.oaf-agro-tile p{font-size:13px;line-height:1.68;color:#516b60;margin:0 0 10px}
+.oaf-agro-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:15px;background:#e9f5ed;font-size:11px;font-weight:800;color:#1c6451}
+.oaf-agro-chip.external{color:#195c7d;background:#eaf4fa}
+.oaf-agro-chip.official{color:#785922;background:#fff2d9}
+.oaf-agro-interpretation{background:#eef7f1;border-left:4px solid #66a384;border-radius:0 10px 10px 0;font-size:13px;color:#436359;padding:12px 16px;line-height:1.65;margin:13px 0}
+.oaf-agro-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.oaf-agro-fact{border:1px solid #d7e5db;background:#f5faf6;padding:13px 15px;border-radius:11px}
+.oaf-agro-fact small{font-size:11px;color:#63786c;display:block;line-height:1.5}
+.oaf-agro-fact strong{font-size:14px;color:#1b5947}
+.oaf-agro-crop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.oaf-agro-crop-card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#194d3f;background:linear-gradient(145deg,#f7fbf8,#eaf3ee);padding:20px;border-radius:15px;border:1px solid #d4e5d8;min-height:142px}
+.oaf-agro-crop-card:hover{border-color:#2d8a63;background:#eaf6ee}
+.oaf-agro-crop-card strong{font-size:19px;color:#165542}
+.oaf-agro-crop-card span{font-size:12px;line-height:1.6;color:#516c5c}
+.oaf-agro-crop-card small{font-size:11px;margin-top:auto;color:#21694f;font-weight:850}
+.oaf-agro-crop-browser{border:1px solid #d2e5d8;border-radius:15px;padding:17px;background:#f9fcfa}
+.oaf-agro-crop-browser label{display:block;font-size:13px;font-weight:800;color:#22594a;margin-bottom:7px}
+.oaf-agro-crop-browser select,.oaf-agro-controls select{background:white;border:1px solid #a5caba;border-radius:10px;font-size:14px;color:#1b4e42;padding:11px;max-width:100%}
+.oaf-agro-browser-output{margin-top:16px}
+.oaf-agro-crop-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.oaf-agro-crop-columns article{border:1px solid #d6e5db;border-radius:13px;padding:15px;background:white}
+.oaf-agro-crop-columns h4{margin:0 0 9px;color:#174a3b}
+.oaf-agro-crop-columns ul{margin:0;padding-left:19px}
+.oaf-agro-crop-columns li{margin-bottom:11px;font-size:13px;line-height:1.55;color:#425c51}
+.oaf-agro-crop-columns li a{display:inline-block;font-weight:700;font-size:12px}
+.oaf-agro-browser-title{font-size:19px;color:#1a5444;margin:8px 0}
+.oaf-agro-caption{font-size:12px;line-height:1.6;color:#60766a;margin:12px 0}
+.oaf-agro-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}
+.oaf-agro-controls label{font-size:12px;color:#365e50;font-weight:800}
+.oaf-agro-chart{width:100%;min-height:250px;border:1px solid #dcebe0;background:linear-gradient(180deg,#fff,#f6fbf7);border-radius:13px;overflow:hidden}
+.oaf-agro-chart svg{display:block;width:100%;height:auto;max-height:360px}
+.oaf-agro-chart button{font:inherit}
+.oaf-agro-chart figcaption{padding:8px 12px;color:#5c766d;font-size:11px}
+.oaf-agro-chart .oaf-chart-axis{font-size:11px;fill:#668074}
+.oaf-agro-chart .oaf-chart-grid{stroke:#dfebe4;stroke-width:1}
+.oaf-agro-chart .oaf-chart-line{stroke:#237e66;stroke-width:3;fill:none}
+.oaf-agro-chart .oaf-chart-bar{fill:#5fa788}
+.oaf-agro-chart .oaf-chart-bar:hover{fill:#257c61;opacity:1}
+.oaf-agro-chart .oaf-chart-marker{fill:#1b6754}
+.oaf-agro-chart .oaf-chart-dot{fill:#28735b;stroke:#fff;stroke-width:1}
+.oaf-agro-map-frame{border:1px solid #d9e8df;background:#f5faf7;border-radius:13px;padding:8px;min-height:250px}
+.oaf-agro-map-frame svg{width:100%;display:block;height:auto;max-height:430px}
+.oaf-agro-map-frame circle{cursor:pointer}
+.oaf-agro-map-frame circle:focus{stroke:#1e6556;stroke-width:3}
+.oaf-agro-map-frame .oaf-map-symbol{fill:#287c65;stroke:white;stroke-width:1.5}
+.oaf-agro-map-frame text{font-family:system-ui,sans-serif}
+.oaf-agro-map-frame .oaf-map-outline{fill:#e3f1e5;stroke:#76a88c;stroke-width:2}
+.oaf-agro-map-frame .oaf-map-dot{fill:#4a8768;stroke:#fff;stroke-width:1}
+.oaf-agro-map-frame .oaf-map-detail{color:#395f50;font-size:12px;padding:7px 9px;line-height:1.6}
+.oaf-agro-progress{font-size:13px;color:#5c716b;padding:13px;background:#f4f7f4;border-radius:9px}
+.oaf-agro-link{font-size:12px;font-weight:800;display:inline-block;margin:9px 12px 5px 0;color:#1e6654}
+.oaf-agro-read-more{display:inline-flex;gap:8px;align-items:center;padding:10px 13px;border-radius:10px;background:#eaf5ed;color:#1c5d49;font-weight:800;font-size:12px;text-decoration:none}
+.oaf-agro-meta-collapsed{border:1px solid #d5e7dd;border-radius:13px;padding:14px 18px;background:#fff;margin:15px 0}
+.oaf-agro-meta-collapsed>summary{cursor:pointer;font-weight:800;color:#24574b;font-size:14px}
+.oaf-agro-meta-collapsed>div{margin-top:14px}
+.oaf-agro-meta-collapsed .oaf-home-module,.oaf-agro-meta-collapsed .panel{margin-top:12px}
+.oaf-agro-block .oaf-home-module{margin:12px 0!important}
+.oaf-agro-block .oaf-home-metrics{margin-bottom:12px}
+.oaf-agro-block .oaf-zone-main{background:#f6faf6;border:1px solid #dce7dc;padding:15px;border-radius:13px}
+.oaf-agro-block .oaf-home-interpretation{border-top:1px solid #dce7df;margin-top:10px}
+#oaf-agro-home .oaf-home-shell{display:contents}
+#oaf-agro-home .oaf-regional-map-panel{margin:0;border:none;background:transparent;padding:0;box-shadow:none}
+#oaf-agro-clima .oaf-scope-banner{margin:4px 0}
+.oaf-agro-archive{margin:16px 0 24px}
+.oaf-agro-archive h2{font-size:20px}
+@media(max-width:960px){.oaf-agro-split{grid-template-columns:1fr}.oaf-agro-crop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-agro-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.oaf-agro-block{padding:16px 13px}.oaf-agro-summary{padding:18px 16px}.oaf-agro-crop-grid,.oaf-agro-crop-columns,.oaf-agro-facts{grid-template-columns:1fr}.oaf-agro-chart{min-height:205px}.oaf-agro-crop-card{min-height:100px}.oaf-agro-map-frame{min-height:205px}}
+@media(prefers-reduced-motion:reduce){.oaf-agro-crop-card{transition:none}}
