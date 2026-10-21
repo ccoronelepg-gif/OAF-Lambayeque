@@ -8,6 +8,15 @@ on:
       - "assets/oaf-responsive-celulares-ux19.css"
       - "assets/oaf-responsive-celulares-ux19.js"
       - "tests/test_movil_ux19_browser.cjs"
+      - "manifest.webmanifest"
+      - "sw.js"
+      - "offline.html"
+      - "assets/oaf-pwa.css"
+      - "assets/oaf-pwa.js"
+      - "assets/oaf-app-icon*"
+      - "assets/oaf-app-maskable*"
+      - "tests/test_pwa_ux20.cjs"
+      - "tests/test_pwa_ux20_browser.cjs"
       - ".github/workflows/oaf_responsive_mobile_ux19.yml"
   workflow_dispatch:
 permissions:
@@ -34,6 +43,11 @@ jobs:
         run: |
           node tests/test_movil_ux19.js
           node tests/test_movil_ux19_browser.cjs
+      - name: Verificar manifiesto PWA, iconos e instalación en Chromium
+        if: always()
+        run: |
+          node tests/test_pwa_ux20.cjs
+          node tests/test_pwa_ux20_browser.cjs
       - name: Conservar capturas para revisión visual
         if: always()
         uses: actions/upload-artifact@v4
