@@ -27,6 +27,7 @@ const home2=block("oaf-bloque-prediccion-inicio",heading("02","Evolución histó
 `<div class="oaf-agro-split"><article class="oaf-agro-tile"><span class="oaf-agro-chip external">Pronóstico externo · 7 días</span><h3>Lluvia prevista</h3><div class="oaf-agro-controls"><label for="oaf-h7-place">Localidad</label>${placeSel("oaf-h7-place")}</div>${chart("oaf-h7-chart")}<p class="oaf-agro-caption" id="oaf-h7-status">Fuente y vigencia pendientes de consulta.</p></article>
 <article class="oaf-agro-tile"><span class="oaf-agro-chip">Análisis histórico OAF</span><h3>Evolución de lluvia y temperatura</h3><div class="oaf-agro-controls"><label for="oaf-historical-place">Localidad</label>${placeSel("oaf-historical-place")}<label for="oaf-historical-var">Variable</label>${variSel("oaf-historical-var")}</div>${chart("oaf-historical-chart")}<p class="oaf-agro-caption">Archivo retrospectivo ERA5 1996–2025 analizado por OAF; no constituye una proyección multianual.</p></article></div>
 <div class="oaf-agro-facts"><div class="oaf-agro-fact"><small>Modelo del autor</small><strong>Random Forest · investigación</strong></div><div class="oaf-agro-fact"><small>Lluvia mensual alta</small><strong>Probabilidad en evaluación</strong></div><div class="oaf-agro-fact"><small>El Niño</small><strong>Señales océano-atmósfera</strong></div></div>
+<div id="oaf-home-predictive-brief" class="oaf-agro-interpretation" role="status">Resumen predictivo OAF: consultando evaluación Random Forest y fuentes con fecha verificable…</div>
 <p class="oaf-agro-interpretation">${note}</p><div id="oaf-agro-home-existing-forecast"></div><a class="oaf-agro-read-more" href="#autor">Modelos del autor y evaluación →</a>`);
 const home3=block("oaf-bloque-cultivos-inicio",heading("03","Sanidad agroexportadora","Cultivos priorizados y situación fitosanitaria","Resumen de seis cultivos. Accede a las fichas de plagas y enfermedades con respaldo científico y enlaces a sus fuentes."),
 `<div id="oaf-home-six-crops" class="oaf-agro-crop-grid"></div><p class="oaf-agro-caption">La información documental no confirma incidencia actual de organismos en una parcela.</p><a class="oaf-agro-read-more" href="#oaf-cultivos-catalogo">Abrir biblioteca fitosanitaria por cultivo →</a>`);
@@ -63,7 +64,7 @@ function init(){
  relocate(ah,shell,new Set([shell.querySelector(".hero"),guide,intro,hs]));
  const cs=node("div","oaf-agro-shell","oaf-agro-clima");cs.append(clima1,clima2,clima3);
  const viewhead=clima.querySelector(".viewhead");(viewhead||clima.firstElementChild)?.after(cs);
- move("oaf-9k-visor","oaf-regional-own-map");move("oaf-ecopaisajes-10k","oaf-regional-own-map");
+ move("oaf-9k-visor","oaf-regional-own-map");move("oaf-ecopaisajes-10k","oaf-regional-own-map");const ownMap=$("oaf-9k-visor");if(ownMap?.tagName==="DETAILS")ownMap.open=true;
  for(const e of [...clima.children])if(e!==viewhead&&e!==cs)ac.append(e);
  const ps=node("div","oaf-agro-shell","oaf-agro-autor");ps.append(autor1);author.prepend(ps);
  move("oaf-rf-unico-lluvias-10i","oaf-autor-rf-main");move("oaf-modelo-lluvia-10e","oaf-autor-rf-prob");
