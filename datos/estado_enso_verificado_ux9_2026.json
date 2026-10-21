@@ -1,0 +1,21 @@
+{
+  "fecha_revision": "2026-10-21",
+  "enfen": {
+    "fecha_emision": "2026-10-16",
+    "numero": "18-2026",
+    "estado": "Alerta de El Niño Costero",
+    "fuente": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/",
+    "fuente_archivo": "https://enfen.imarpe.gob.pe/downloads/comunicados/",
+    "nota": "Estado del sistema de alerta de ENFEN. No se infiere una categoría de magnitud fuerte/moderada/extrema a partir del encabezado o solo de SST. Verificar siguiente comunicado en la fuente."
+  },
+  "noaa": {
+    "fecha_emision": "2026-10-08",
+    "estado": "El Niño Advisory",
+    "descripcion": "NOAA CPC: El Niño global se intensifica y es probable un evento fuerte a muy fuerte hasta enero-marzo de 2027 (pronóstico publicado el 8 de octubre de 2026).",
+    "fuente": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+    "probabilidades": "https://cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities/",
+    "nota": "NOAA se refiere al Pacífico ecuatorial central. No es una categoría de magnitud para El Niño Costero peruano ni determina lluvia local."
+  },
+  "fuente_series_noaa": "datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv",
+  "limite": "La verificación editorial es puntual y fechada. La situación puede cambiar; consultar portales emisores. El archivo OAF 3Z tiene una comprobación fallida y no puede utilizarse para afirmar ausencia de alerta."
+}
