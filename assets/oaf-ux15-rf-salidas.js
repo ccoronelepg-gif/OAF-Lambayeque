@@ -80,25 +80,6 @@ function future(){
  const lead3=multi.find(x=>x.meses_adelante===3),lead6=multi.find(x=>x.meses_adelante===6);
  status.textContent="Localidad: "+city+". RF candidato "+rows[0].mes+"–"+rows[5].mes+", desde último mes ERA5 completo: "+(rf.ultimo_mes_con_datos?.[city]||"sin fecha")+". Los 6 meses mostrados implican entre "+(rows[0].adelanto_desde_ultimo_mes_observado||2)+" y "+(rows[5].adelanto_desde_ultimo_mes_observado||7)+" pasos autoregresivos. MAE retrospectivo de 1 paso RF "+(mae?.mae_lluvia_mm??"s/d")+" mm/mes frente a climatología "+(mae?.mae_climatologia_local_mm??"s/d")+" mm/mes. "+(lead3?"Backtest recursivo del mes 3: RF "+fmt(lead3.mae_rf_mm)+" mm y climatología "+fmt(lead3.mae_climatologia_local_mm)+" mm. ":"")+(lead6?"En el mes 6: RF "+fmt(lead6.mae_rf_mm)+" mm y climatología "+fmt(lead6.mae_climatologia_local_mm)+" mm. ":"")+"El mes 7 de anticipación no dispone todavía de comprobación comparable. No utilizar como pronóstico operativo ni alerta.";
 }
-function cards(){
- const area=$("oaf-ux16-future-cards"),city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo";if(!area)return;
- area.replaceChildren();
- const rows=records()?rf?.escenarios_mensuales_rf_experimentales?.[city]:null;
- if(!Array.isArray(rows)||rows.length<6){area.append(E("p",null,"Esperando resultados RF experimentales mensuales verificados para esta localidad."));return}
- for(const row of rows.slice(0,6)){
-  const tile=E("article","oaf-ux15-future-month"),month=MONTHS[Number(row.mes.slice(-2))-1]+" "+row.mes.slice(0,4);
-  tile.append(E("strong",null,month),E("span",null,"Lluvia RF: "+fmt(row.precipitacion_mm)+" mm/mes"),E("span",null,"T. media RF: "+fmt(row.temperatura_media_c)+" °C"),E("small","oaf-ux15-future-badge","Candidato · no operativo"));
-  const lead=row.adelanto_desde_ultimo_mes_observado;
-  if(Number.isInteger(lead)){
-   const diag=rf?.metrica_mensual?.evaluacion_multihorizonte?.por_horizonte?.find(x=>x.meses_adelante===lead);
-   const note=lead>6?"7 meses desde dato real · sin validación a este horizonte":diag?
-    "Paso "+lead+" · MAE RF "+fmt(diag.mae_rf_mm)+" mm frente a clima "+fmt(diag.mae_climatologia_local_mm)+" mm en backtest":
-    "Paso "+lead+" desde último mes observado";
-   tile.append(E("small","oaf-ux17-lead-note",note));
-  }
-  area.append(tile);
- }
-}
 function hist(){
  const current=$("oaf-ux14-metric");if(current)current.dispatchEvent(new Event("change",{bubbles:true}));
  const key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");
@@ -115,7 +96,7 @@ function month(){
  if(futureControls)futureControls.hidden=vista!=="futuro";
  const historicalKpis=$("oaf-ux14-kpis");if(historicalKpis)historicalKpis.hidden=vista==="futuro";
  if(vista==="futuro")future();else hist();
- cards();
+ 
 }
 async function climatology(){
  try{
@@ -144,6 +125,7 @@ function setup(){
  const label=E("label",null,"Vista del gráfico mensual"),selector=E("select");
  selector.id="oaf-ux16-vista";
  for(const [value,title] of [["historico","Evaluación 2021–2025 · por paisaje"],["futuro","Noviembre 2026–abril 2027 · por localidad"]]){const option=E("option",null,title);option.value=value;selector.append(option)}
+ selector.value="futuro"; // Abrir noviembre 2026–abril 2027 por defecto, sin borrar la vista retrospectiva.
  label.htmlFor=selector.id;wrapper.append(label,selector);
  const historical=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-controls");
  if(historical){historical.id="oaf-ux16-historical-controls";historical.before(wrapper)}
@@ -155,29 +137,20 @@ function setup(){
  for(const [val,txt] of [["rain","Precipitación mensual (mm)"],["temp","Temperatura media mensual (°C)"]]){const opt=E("option",null,txt);opt.value=val;varSel.append(opt)}
  futureControl.append(cityLabel,citySel,varLabel,varSel);
  if(historical)historical.after(futureControl);else wrapper.after(futureControl);
- const predictions=E("section","oaf-ux16-future-panel");predictions.id="oaf-ux16-months";
- predictions.append(E("small","oaf-ux15-rf-chip","03 · Random Forest experimental"),E("h3",null,"Predicción de noviembre de 2026 a abril de 2027, por localidad"),
- E("p",null,"Precipitación y temperatura media mensual derivadas del candidato RF 10O. Selecciona una localidad y cambia arriba la vista del gráfico para compararla con su climatología histórica."));
- const controls=E("div","oaf-ux14-controls"),label2=E("label",null,"Localidad para próximos meses"),sel2=E("select");sel2.id="oaf-ux16-months-city";
- for(const name of places){const op=E("option",null,name);sel2.append(op)}
- controls.append(label2,sel2);predictions.append(controls);
- const cardsRoot=E("div","oaf-ux15-future-calendar");cardsRoot.id="oaf-ux16-future-cards";predictions.append(cardsRoot);
- predictions.append(E("p","oaf-ux14-source","Random Forest 10O: investigación y mejora continua. Las emisiones futuras necesitan evaluación prospectiva; no sustituyen los avisos SENAMHI ni constituyen recomendaciones operativas."));
- block.after(predictions);
- const redraw=()=>{const a=citySel.value;if(sel2.value!==a)sel2.value=a;month()};
+ // Se conservan las proyecciones en el gráfico mensual con filtros; se elimina la cuadrícula repetida de seis tarjetas.
+ const redraw=()=>month();
  selector.addEventListener("change",month);
  citySel.addEventListener("change",redraw);
  varSel.addEventListener("change",month);
- sel2.addEventListener("change",()=>{citySel.value=sel2.value;month()});
  const varWeek=$("oaf-ux14-variable");
  varWeek?.addEventListener("change",()=>queueMicrotask(week));
  $("oaf-ux14-ciudad")?.addEventListener("change",()=>{external=null;week()});
  fetch("datos/rf_experimental_ux15.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("RF "+r.status);return r.json()}).then(d=>{
   if(d.operativo_certificado!==false||d.alertas_automaticas!==false)throw Error("RF no identificado como candidato");
-  rf=d;week();cards();if(selector.value==="futuro")future();
- }).catch(e=>{rf={estado:"datos_no_disponibles"};week();cards();console.warn("OAF RF",e)});
+  rf=d;week();if(selector.value==="futuro")future();
+ }).catch(e=>{rf={estado:"datos_no_disponibles"};week();console.warn("OAF RF",e)});
  climatology();
- cards();
+ month();
 }
 document.addEventListener("oaf:ux16-externo-diario",event=>{external=event.detail;week()});
 document.addEventListener("oaf:ux9-ready",()=>queueMicrotask(setup));
