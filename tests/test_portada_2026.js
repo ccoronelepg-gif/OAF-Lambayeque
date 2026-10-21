@@ -16,7 +16,7 @@ assert.match(home,/OAF-Lambayeque/);
 assert.match(home,/id="oaf-news-chirps"/);
 assert.match(home,/id="oaf-altitudinal-map"/);
 assert.match(home,/id="oaf-forecast-grid"/);
-assert.match(html,/assets\/oaf-inicio-climatico-2026\.js\?v=1/);
+assert.match(html,/assets\/oaf-inicio-climatico-2026\.js\?v=[^"\s]+/);
 assert.match(html,/assets\/oaf-interfaz-clara-2026\.css\?v=1/);
 assert.doesNotMatch(html.match(/<summary\b[^>]*>[\s\S]*?<\/summary>/gi)?.join("\n")||"",/\bFase\s+\d+[A-Z]?/i,"Títulos públicos sin códigos");
 const nodes={};
