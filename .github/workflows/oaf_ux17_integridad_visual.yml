@@ -1,0 +1,28 @@
+name: OAF - Integridad imagenes mapas y RF
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "assets/oaf-ux17-*"
+      - "assets/oaf-sin-foto-*.svg"
+      - "assets/fotos_cc/**"
+      - "ecorregiones-clima-10k.html"
+      - "datos/galeria_sanidad_2026.json"
+      - "datos/rf_experimental_ux15.json"
+      - "tests/test_ux17_fotos_mapa_rf.py"
+      - ".github/workflows/oaf_ux17_integridad_visual.yml"
+permissions:
+  contents: read
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Probar integridad de fotos y modelo sin emitir alertas
+        run: python -m unittest discover -s tests -p test_ux17_fotos_mapa_rf.py -v
