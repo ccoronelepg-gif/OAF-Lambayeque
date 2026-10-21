@@ -56,7 +56,13 @@
           "registro": "Comercialización documentada por Farmex Perú. Etiqueta cultivo–plaga y registro vigente: comprobar en SENASA.",
           "fuente": "https://www.farmex.com.pe/producto/gf-120/",
           "nota": "El cebo complementa trampas, recojo de frutos y control oficial; no estima ni elimina por sí solo la población.",
-          "modo": "IRAC 5; modulador alostérico nicotínico"
+          "modo": "IRAC 5; modulador alostérico nicotínico",
+          "fabricante": "Corteva Agriscience · Farmex (distribución)",
+          "mecanismo": "Cebo alimenticio de ingestión: spinosad modula alostéricamente receptores nicotínicos de acetilcolina del insecto; altera la transmisión nerviosa.",
+          "grupo": "IRAC 5",
+          "fuente_laboratorio": "https://www.corteva.com/pe/productos-y-soluciones/proteccion-de-cultivos/gf120.html",
+          "verificacion": "Ficha técnica Farmex 2024; contrastar registro 099-SENASA y combinación cultivo–plaga.",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -108,7 +114,12 @@
           "registro": "Syngenta Perú lista mango–antracnosis. Verificar etiqueta/registro vigente SIGIA.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
           "nota": "Ejemplo para manejo preventivo integrado; evitar repeticiones continuas de mismo FRAC.",
-          "modo": "FRAC 11 (QoI)"
+          "modo": "FRAC 11 (QoI)",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Azoxistrobina inhibe la respiración mitocondrial fúngica al bloquear el sitio Qo del complejo III, reduciendo la producción energética.",
+          "grupo": "FRAC 11",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Químico",
@@ -117,7 +128,12 @@
           "registro": "Syngenta Perú publica mango–antracnosis para tratamiento de poscosecha (2025).",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
           "nota": "Solo contexto de poscosecha antes de empaque, no extrapolar a aspersión en campo.",
-          "modo": "FRAC 12"
+          "modo": "FRAC 12",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Fludioxonil interfiere en la regulación osmótica y señalización de estrés del hongo, dañando funciones de membrana; acción de contacto solo poscosecha.",
+          "grupo": "FRAC 12",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico",
@@ -126,7 +142,12 @@
           "registro": "Directorio técnico Perú consigna mango / Colletotrichum gloeosporioides (antracnosis), PBUA 176-SENASA; confirmar ficha actual en SIGIA.",
           "fuente": "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
           "nota": "Ejemplo de fungicida microbiológico de orientación preventiva; no sustituye identificación, saneamiento y fenología.",
-          "modo": "Antagonismo microbiano: competencia e inhibición"
+          "modo": "Antagonismo microbiano: competencia e inhibición",
+          "fabricante": "Silvestre Perú",
+          "mecanismo": "Bacillus subtilis AP-01 antagoniza patógenos por competencia por nutrientes y espacio, colonización e inducción de defensas; puede interferir con germinación y tubo germinativo.",
+          "grupo": "Control biológico microbiano",
+          "fuente_laboratorio": "https://silvestre.com.pe/wp-content/uploads/FT-BIO-SPLENT-70-WP-35.pdf",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -159,7 +180,12 @@
           "registro": "Directorio técnico Perú identifica vid / cochinilla harinosa Pseudococcus viburni, PQUA 1066-SENASA; comprobar vigencia en SIGIA.",
           "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
           "nota": "La cochinilla debe identificarse a especie; no extrapolar eficacia de P. viburni a otros insectos.",
-          "modo": "IRAC 4A + 16"
+          "modo": "IRAC 4A + 16",
+          "fabricante": "Silvestre Perú",
+          "mecanismo": "Acetamiprid actúa sobre los receptores nicotínicos de acetilcolina; buprofezin altera la biosíntesis de quitina y la muda en insectos inmaduros.",
+          "grupo": "IRAC 4A + 16",
+          "fuente_laboratorio": "https://silvestre.com.pe/",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico de origen vegetal",
@@ -168,7 +194,12 @@
           "registro": "Directorio técnico Perú identifica vid / Planococcus citri, PBUA 343-SENASA.",
           "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
           "nota": "Verificar el insecto a especie, ficha de etiqueta vigente y conservación de enemigos naturales.",
-          "modo": "Repelencia y contacto"
+          "modo": "Repelencia y contacto",
+          "fabricante": "Formulado de extractos vegetales; verificar titular en SIGIA",
+          "mecanismo": "Extractos de ajo y ají con actividad repelente y por contacto. La eficacia depende del organismo y de la etiqueta; no corresponde asignarles un blanco molecular específico comprobado.",
+          "grupo": "Botánico / mecanismos múltiples no clasificados",
+          "fuente_laboratorio": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -200,7 +231,12 @@
           "registro": "Ficha Syngenta Perú 05/05/2026: vid–Colomerus vitis/Tetranychus urticae; NO se acredita aquí su uso para trips.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
           "nota": "El grupo de la ficha incluye trips y ácaros: este ejemplo corresponde únicamente a ácaros especificados por la etiqueta.",
-          "modo": "IRAC 6"
+          "modo": "IRAC 6",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Abamectina activa canales de cloruro regulados por glutamato en nervios y músculos de artrópodos; produce parálisis.",
+          "grupo": "IRAC 6",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico de origen vegetal",
@@ -209,7 +245,12 @@
           "registro": "Directorio técnico Perú identifica vid / Thrips tabaci, PBUA 343-SENASA.",
           "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
           "nota": "Este producto de la ficha se asocia específicamente a Thrips tabaci, no al grupo entero de ácaros.",
-          "modo": "Repelencia y contacto"
+          "modo": "Repelencia y contacto",
+          "fabricante": "Formulado de extractos vegetales; verificar titular en SIGIA",
+          "mecanismo": "Extractos de ajo y ají con actividad repelente y por contacto. La eficacia depende del organismo y de la etiqueta; no corresponde asignarles un blanco molecular específico comprobado.",
+          "grupo": "Botánico / mecanismos múltiples no clasificados",
+          "fuente_laboratorio": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -240,7 +281,13 @@
           "ingrediente": "fluopyram + tebuconazol",
           "registro": "PQUA 684-SENASA (según fabricante)",
           "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/luna_experience",
-          "nota": "Fabricante peruano lo relaciona con oídio en vid; comprobar vigencia, cultivo, blanco, periodo de carencia y etiqueta en SIGIA."
+          "nota": "Fabricante peruano lo relaciona con oídio en vid; comprobar vigencia, cultivo, blanco, periodo de carencia y etiqueta en SIGIA.",
+          "fabricante": "Bayer Perú",
+          "mecanismo": "Fluopyram inhibe la succinato deshidrogenasa (respiración mitocondrial, complejo II); tebuconazol inhibe la desmetilación de esteroles, necesaria para el ergosterol fúngico.",
+          "grupo": "FRAC 7 + 3",
+          "fuente_laboratorio": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/luna_experience",
+          "modo": "FRAC 7 + 3",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico",
@@ -249,7 +296,12 @@
           "registro": "Ficha técnica peruana incluye vid–oídio; verificar estado de PBUA y etiqueta actual en SIGIA.",
           "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.label.html/fungicide/serenade_aso.html",
           "nota": "Alternativa preventiva dentro de un programa de rotación y vigilancia; la ficha del fabricante es evidencia documental, no recomendación de dosis.",
-          "modo": "Acción microbiana múltiple"
+          "modo": "Acción microbiana múltiple",
+          "fabricante": "Bayer Perú",
+          "mecanismo": "Bacillus amyloliquefaciens QST713 produce sustancias antimicrobianas (incluidos lipopéptidos) y coloniza superficies; afecta germinación y micelio del patógeno.",
+          "grupo": "FRAC BM02 (ver clasificación vigente); Bayer ficha histórica cita grupo 44",
+          "fuente_laboratorio": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico",
@@ -258,7 +310,12 @@
           "registro": "Directorio técnico Perú consigna vid / Erysiphe necator (oídio), PBUA 176-SENASA.",
           "fuente": "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
           "nota": "Alternativa preventiva en manejo integrado y rotación, su vigencia debe confirmarse por cultivo y etiqueta.",
-          "modo": "Antagonismo microbiano"
+          "modo": "Antagonismo microbiano",
+          "fabricante": "Silvestre Perú",
+          "mecanismo": "Bacillus subtilis AP-01 antagoniza patógenos por competencia por nutrientes y espacio, colonización e inducción de defensas; puede interferir con germinación y tubo germinativo.",
+          "grupo": "Control biológico microbiano",
+          "fuente_laboratorio": "https://silvestre.com.pe/wp-content/uploads/FT-BIO-SPLENT-70-WP-35.pdf",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -291,7 +348,12 @@
           "registro": "Ficha de Syngenta Perú actualizada el 05/05/2026: vid–pudrición gris. Verificar etiqueta SENASA.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-r-top",
           "nota": "Rotar FRAC y realizar evaluación del racimo antes de decidir intervención.",
-          "modo": "FRAC 11 + 3"
+          "modo": "FRAC 11 + 3",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Azoxistrobina interrumpe la respiración mitocondrial en el complejo III (sitio Qo); difenoconazol inhibe la desmetilación del ergosterol de la membrana fúngica.",
+          "grupo": "FRAC 11 + 3",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-r-top",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -322,7 +384,12 @@
           "registro": "Directorio técnico Perú identifica arándano / Thrips spp., PBUA 343-SENASA; verificar etiqueta vigente.",
           "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
           "nota": "Producto de acción repelente/contacto, complementario al muestreo y control preventivo.",
-          "modo": "Repelencia y contacto de extractos vegetales"
+          "modo": "Repelencia y contacto de extractos vegetales",
+          "fabricante": "Formulado de extractos vegetales; verificar titular en SIGIA",
+          "mecanismo": "Extractos de ajo y ají con actividad repelente y por contacto. La eficacia depende del organismo y de la etiqueta; no corresponde asignarles un blanco molecular específico comprobado.",
+          "grupo": "Botánico / mecanismos múltiples no clasificados",
+          "fuente_laboratorio": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -353,7 +420,12 @@
           "registro": "Directorio técnico Perú identifica arándano / Bemisia tabaci, PQUA 1066-SENASA; confirmar registro vigente.",
           "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
           "nota": "Ejemplo únicamente para mosca blanca Bemisia tabaci; no afirma control de cochinillas en arándano.",
-          "modo": "IRAC 4A + 16"
+          "modo": "IRAC 4A + 16",
+          "fabricante": "Silvestre Perú",
+          "mecanismo": "Acetamiprid actúa sobre los receptores nicotínicos de acetilcolina; buprofezin altera la biosíntesis de quitina y la muda en insectos inmaduros.",
+          "grupo": "IRAC 4A + 16",
+          "fuente_laboratorio": "https://silvestre.com.pe/",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -383,7 +455,13 @@
           "ingrediente": "ciprodinil + fludioxonil",
           "registro": "PQUA 262-SENASA (ficha 2024)",
           "fuente": "https://www.tqc.com.pe/wp-content/uploads/2024/07/FT-SWITCH-62.5-WG-ABR.2024.pdf",
-          "nota": "El fabricante lista arándano/moho gris; confirmar actualización de etiqueta y mercado de destino antes del uso."
+          "nota": "El fabricante lista arándano/moho gris; confirmar actualización de etiqueta y mercado de destino antes del uso.",
+          "fabricante": "Syngenta Perú / TQC",
+          "mecanismo": "Ciprodinil (anilinopirimidina) altera biosíntesis de metionina y procesos de infección; fludioxonil afecta la osmorregulación y señalización de estrés del hongo.",
+          "grupo": "FRAC 9 + 12",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+          "modo": "FRAC 9 + 12",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Químico",
@@ -392,7 +470,12 @@
           "registro": "Syngenta Perú (2025) lista arándanos–Botrytis cinerea para tratamiento poscosecha.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
           "nota": "Aplicación poscosecha, no tratar como opción de campo; revisar mercado destino y etiqueta.",
-          "modo": "FRAC 12"
+          "modo": "FRAC 12",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Fludioxonil interfiere en la regulación osmótica y señalización de estrés del hongo, dañando funciones de membrana; acción de contacto solo poscosecha.",
+          "grupo": "FRAC 12",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -425,7 +508,12 @@
           "registro": "Bayer Perú lista arándano–pudrición radicular (Phytophthora cinnamomi). N.º 309-96-AG-SENASA informado por fabricante.",
           "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
           "nota": "Requiere diagnóstico de raíz, manejo de drenaje y confirmar etiqueta/LMR; no soluciona saturación del suelo.",
-          "modo": "FRAC P07"
+          "modo": "FRAC P07",
+          "fabricante": "Bayer Perú",
+          "mecanismo": "Fosetil-Al (fosfonato) se mueve sistémicamente por la planta; inhibe etapas de desarrollo de oomicetos y favorece respuestas defensivas de la planta.",
+          "grupo": "FRAC P07",
+          "fuente_laboratorio": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -456,7 +544,12 @@
           "registro": "Syngenta Perú lista palto–trips; consultar registro, etiqueta, LMR y restricciones del destino comercial.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo",
           "nota": "No generalizar a todas las especies de trips; priorizar MIP y protección de polinizadores.",
-          "modo": "IRAC 4A + 3A"
+          "modo": "IRAC 4A + 3A",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Tiametoxam actúa sobre receptores nicotínicos de acetilcolina; lambda-cihalotrina altera canales de sodio dependientes de voltaje del sistema nervioso.",
+          "grupo": "IRAC 4A + 3A",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -487,7 +580,12 @@
           "registro": "Ficha Syngenta Perú 05/05/2026: palto–ácaro marrón; no presupone control de queresas.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
           "nota": "Control específico del ácaro; registrar incidencia y conservar enemigos naturales.",
-          "modo": "IRAC 6"
+          "modo": "IRAC 6",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Abamectina activa canales de cloruro regulados por glutamato en nervios y músculos de artrópodos; produce parálisis.",
+          "grupo": "IRAC 6",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Químico",
@@ -496,7 +594,12 @@
           "registro": "Directorio técnico Perú identifica palto / Fiorinia fioriniae, PQUA 1066-SENASA.",
           "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
           "nota": "Ejemplo para queresa, no el grupo conjunto de ácaros; consultar SENASA y mercado de exportación.",
-          "modo": "IRAC 4A + 16"
+          "modo": "IRAC 4A + 16",
+          "fabricante": "Silvestre Perú",
+          "mecanismo": "Acetamiprid actúa sobre los receptores nicotínicos de acetilcolina; buprofezin altera la biosíntesis de quitina y la muda en insectos inmaduros.",
+          "grupo": "IRAC 4A + 16",
+          "fuente_laboratorio": "https://silvestre.com.pe/",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -527,7 +630,13 @@
           "ingrediente": "T. harzianum (evaluación peruana 2026) / T. viride (experiencia SENASA)",
           "registro": "Evidencia experimental peruana; no acredita registro de una formulación concreta",
           "fuente": "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
-          "nota": "Investigación UNPRG 2026 in vitro/casa malla con T. harzianum; no extrapolar eficacia a campos de Lambayeque ni reemplazar drenaje, diagnóstico, registro y etiqueta SENASA."
+          "nota": "Investigación UNPRG 2026 in vitro/casa malla con T. harzianum; no extrapolar eficacia a campos de Lambayeque ni reemplazar drenaje, diagnóstico, registro y etiqueta SENASA.",
+          "fabricante": "Agente documentado experimentalmente (no es una marca ni formulación registrada)",
+          "mecanismo": "Trichoderma spp. puede actuar por micoparasitismo, competencia y antibiosis; eficacia condicionada a cepa, suelo y formulación validada.",
+          "grupo": "Control biológico: no asignar FRAC comercial",
+          "fuente_laboratorio": "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
+          "modo": "Control biológico: no asignar FRAC comercial",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Químico",
@@ -536,7 +645,12 @@
           "registro": "Bayer Perú lista palto–pudrición radicular (Phytophthora cinnamomi). N.º 309-96-AG-SENASA según fabricante.",
           "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
           "nota": "Manejo integrado de drenaje, material sano, diagnóstico y etiqueta vigente.",
-          "modo": "FRAC P07"
+          "modo": "FRAC P07",
+          "fabricante": "Bayer Perú",
+          "mecanismo": "Fosetil-Al (fosfonato) se mueve sistémicamente por la planta; inhibe etapas de desarrollo de oomicetos y favorece respuestas defensivas de la planta.",
+          "grupo": "FRAC P07",
+          "fuente_laboratorio": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -568,7 +682,12 @@
           "registro": "Syngenta Perú lista palto–muerte regresiva. Registro/etiqueta requieren verificación actual.",
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
           "nota": "Confirmar diagnóstico causal y manejo de heridas; fungicidas no sustituyen poda adecuada y desinfección.",
-          "modo": "FRAC 11 (QoI)"
+          "modo": "FRAC 11 (QoI)",
+          "fabricante": "Syngenta Perú",
+          "mecanismo": "Azoxistrobina inhibe la respiración mitocondrial fúngica al bloquear el sitio Qo del complejo III, reduciendo la producción energética.",
+          "grupo": "FRAC 11",
+          "fuente_laboratorio": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -599,7 +718,13 @@
           "registro": "Farmex Perú lo describe para moscas de la fruta y del ovario; revisar etiqueta exacta para maracuyá.",
           "fuente": "https://www.farmex.com.pe/producto/gf-120/",
           "nota": "La página comercial no equivale a autorización automática en maracuyá; consultar SIGIA antes de usar.",
-          "modo": "IRAC 5"
+          "modo": "IRAC 5",
+          "fabricante": "Corteva Agriscience · Farmex (distribución)",
+          "mecanismo": "Cebo alimenticio de ingestión: spinosad modula alostéricamente receptores nicotínicos de acetilcolina del insecto; altera la transmisión nerviosa.",
+          "grupo": "IRAC 5",
+          "fuente_laboratorio": "https://www.corteva.com/pe/productos-y-soluciones/proteccion-de-cultivos/gf120.html",
+          "verificacion": "Ficha técnica Farmex 2024; contrastar registro 099-SENASA y combinación cultivo–plaga.",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -688,7 +813,13 @@
           "ingrediente": "hongo entomopatógeno",
           "registro": "Uso divulgado por SENASA (2020); elegir formulación de origen y calidad verificados",
           "fuente": "https://www.senasa.gob.pe/senasacontigo/productores-emplean-control-biologico-para-combatir-plagas-en-el-cultivo-de-banano/",
-          "nota": "Uso documentado por SENASA frente al picudo negro en banano; no significa que cualquier formulación esté autorizada."
+          "nota": "Uso documentado por SENASA frente al picudo negro en banano; no significa que cualquier formulación esté autorizada.",
+          "fabricante": "Agente biológico; elegir formulación registrada en SENASA",
+          "mecanismo": "Las conidias adheridas a la cutícula del insecto germinan, la penetran y colonizan el interior; puede causar su muerte bajo condiciones favorables.",
+          "grupo": "Entomopatógeno microbiano",
+          "fuente_laboratorio": "https://www.senasa.gob.pe/senasacontigo/productores-emplean-control-biologico-para-combatir-plagas-en-el-cultivo-de-banano/",
+          "modo": "Entomopatógeno microbiano",
+          "ficha_confirmada": false
         },
         {
           "tipo": "Biológico / controlador",
@@ -696,7 +827,13 @@
           "ingrediente": "Hongo entomopatógeno",
           "registro": "SENASA lo incluye entre controladores biológicos para Cosmopolites sordidus en su guía de plátano (2020). Producto comercial y etiqueta: verificación pendiente.",
           "fuente": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
-          "nota": "Uso técnico documentado junto a trampas; no sustituye identificación ni comprobación de calidad/registro del formulado."
+          "nota": "Uso técnico documentado junto a trampas; no sustituye identificación ni comprobación de calidad/registro del formulado.",
+          "fabricante": "Agente biológico; elegir formulación registrada en SENASA",
+          "mecanismo": "Esporas del hongo penetran la cutícula del insecto y se desarrollan en sus tejidos, causando mortalidad; necesita condiciones adecuadas.",
+          "grupo": "Entomopatógeno microbiano",
+          "fuente_laboratorio": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
+          "modo": "Entomopatógeno microbiano",
+          "ficha_confirmada": false
         }
       ],
       "referencias": [
@@ -767,5 +904,6 @@
     }
   ],
   "revision_documental": "2026-10-21",
-  "criterio_fuentes": "Prioridad a publicaciones científicas desde 2020, SENASA e institutos oficiales; fuentes históricas solo para contextualizar. No se extrapolan eficacias a Lambayeque sin datos locales."
+  "criterio_fuentes": "Prioridad a publicaciones científicas desde 2020, SENASA e institutos oficiales; fuentes históricas solo para contextualizar. No se extrapolan eficacias a Lambayeque sin datos locales.",
+  "aclaracion_fotos": "Las fotografías de envases ilustran presentaciones comerciales, no constituyen prueba del registro ni autorizan automáticamente el uso. Es necesario verificar el registro para la especie, cultivo y formulación exacta en SENASA."
 }
