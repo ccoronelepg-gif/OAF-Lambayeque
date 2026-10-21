@@ -9,8 +9,7 @@ assert.equal((home.match(/<section\b/g)||[]).length+1,(home.match(/<\/section>/g
 assert.equal((home.match(/<div\b/g)||[]).length,(home.match(/<\/div>/g)||[]).length,"DIV balanceados");
 assert.equal((home.match(/class="oaf-metric(?:\s|")/g)||[]).length,7);
 assert.match(home,/Ciencia Climática al servicio del campo/);
-assert.match(home,/Blueberry_close_up\.jpg/);
-assert.match(home,/Bunch_Of_Grapes_On_Vine\.jpg/);
+assert.match(home,/oaf-hero-monitoreo-agroclimatico\.svg/);
 assert.match(home,/id="oaf-live-air"/);
 assert.match(home,/id="oaf-home-analysis"/);
 assert.match(home,/OAF-Lambayeque/);
