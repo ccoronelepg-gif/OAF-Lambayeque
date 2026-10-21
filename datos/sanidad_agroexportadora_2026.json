@@ -30,7 +30,7 @@
     }
   ],
   "total_organismos": 23,
-  "aviso": "Las fichas describen condiciones favorables para vigilancia, no presencia, brote, incidencia, probabilidad cuantificada ni aumento poblacional observado. Registros de plaguicidas deben verificarse para cultivo, plaga, formulación, fecha y etiqueta vigentes en SIGIA/SENASA; respetar LMR del mercado de destino.",
+  "aviso": "Las fichas describen condiciones favorables para vigilancia, no presencia, brote, incidencia, probabilidad cuantificada ni aumento poblacional observado. Registros de plaguicidas deben verificarse para cultivo, plaga, formulación, fecha y etiqueta vigentes en SIGIA/SENASA; respetar LMR del mercado de destino. Un producto documentado para otro cultivo no puede asumirse eficaz o autorizado en mango, arándano o maracuyá sin respaldo de etiqueta y ensayos aplicables.",
   "consulta_senasa": "https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html",
   "biocontrol_senasa": "https://www.senasa.gob.pe/senasa/especies-beneficas-producidas-por-laboratorios-en-convenio/",
   "organismos": [
@@ -97,16 +97,7 @@
       "dano": "La antracnosis afecta flores y frutos, causa lesiones oscuras y pérdidas poscosecha.",
       "modelo_nota": "Lluvia, alta humedad y mojado de inflorescencias/frutos son señales para intensificar observaciones; el clima no confirma la infección.",
       "manejo_cultural": "Manejar ventilación, retirar restos enfermos, observar panículas y confirmar agente antes de decidir tratamiento.",
-      "productos": [
-        {
-          "tipo": "Biológico",
-          "nombre": "Serenade® ASO",
-          "ingrediente": "Bacillus subtilis cepa QST713",
-          "registro": "PBUA 090-SENASA, según fabricante",
-          "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
-          "nota": "Ejemplo comercial peruano de biofungicida; el cultivo y patógeno específicos requieren verificación de etiqueta SENASA."
-        }
-      ],
+      "productos": [],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
         "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
@@ -284,16 +275,7 @@
       "dano": "Phytophthora daña raíces, disminuye absorción y puede causar marchitez y muerte de plantas.",
       "modelo_nota": "El drenaje y la saturación del sustrato importan más que una estimación superficial de humedad del aire.",
       "manejo_cultural": "Evaluar raíces y drenajes, usar material sano y controlar riegos; requerir confirmación de laboratorio.",
-      "productos": [
-        {
-          "tipo": "Biológico",
-          "nombre": "Trichoderma viride (agente antagonista)",
-          "ingrediente": "Trichoderma spp.",
-          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
-          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
-        }
-      ],
+      "productos": [],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
         "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
@@ -442,16 +424,7 @@
       "dano": "Colletotrichum provoca lesiones en hojas, tallos y frutos, pudiendo causar depreciación severa.",
       "modelo_nota": "La lluvia y las horas húmedas son señales de vigilancia; la tasa real depende de variedad, heridas y tejido susceptible.",
       "manejo_cultural": "Manejar poda, ventilación, fruta enferma y humedad; confirmar agente.",
-      "productos": [
-        {
-          "tipo": "Biológico",
-          "nombre": "Serenade® ASO",
-          "ingrediente": "Bacillus subtilis cepa QST713",
-          "registro": "PBUA 090-SENASA, según fabricante",
-          "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
-          "nota": "Ejemplo comercial peruano de biofungicida; el cultivo y patógeno específicos requieren verificación de etiqueta SENASA."
-        }
-      ],
+      "productos": [],
       "referencias": [
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
@@ -471,16 +444,7 @@
       "dano": "Fusarium y otros agentes de secadera afectan vasos o raíces; pueden causar marchitez y muerte.",
       "modelo_nota": "Saturación, temperatura del suelo y estrés pueden modular daño; la humedad aérea no confirma marchitez por Fusarium.",
       "manejo_cultural": "Usar material sano, sanidad de suelo, buen drenaje y diagnóstico diferencial.",
-      "productos": [
-        {
-          "tipo": "Biológico",
-          "nombre": "Trichoderma viride (agente antagonista)",
-          "ingrediente": "Trichoderma spp.",
-          "registro": "Experiencia divulgada por SENASA en palto; comprobar formulación y uso autorizado",
-          "fuente": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-          "nota": "Complemento del drenaje y material sano; no reemplaza diagnóstico de Phytophthora ni etiqueta."
-        }
-      ],
+      "productos": [],
       "referencias": [
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
