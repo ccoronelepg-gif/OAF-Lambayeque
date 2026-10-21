@@ -83,9 +83,24 @@ def fit_daily(data):
     et=float(np.mean(np.abs(np.asarray(y2)[test]-temp.predict(X[test]))))
     baseline_r=float(np.mean(np.abs(observed_r-np.median(np.expm1(np.asarray(y1)[train])))))
     baseline_t=float(np.mean(np.abs(np.asarray(y2)[test]-np.median(np.asarray(y2)[train]))))
+    # Competidor más exigente: referencia local por mes y estación (solo 2021-24).
+    from collections import defaultdict as _defaultdict
+    local=_defaultdict(lambda:{"r":[],"t":[]})
+    for i,(site,day) in enumerate(zip(sites,days)):
+        if train[i]:
+            local[(site,day.month)]["r"].append(math.expm1(y1[i]))
+            local[(site,day.month)]["t"].append(y2[i])
+    sample_idx=np.flatnonzero(test)
+    base_r_loc=np.asarray([np.mean(local[sites[i],days[i].month]["r"]) for i in sample_idx])
+    base_t_loc=np.asarray([np.mean(local[sites[i],days[i].month]["t"]) for i in sample_idx])
+    mae_local_r=float(np.mean(np.abs(observed_r-base_r_loc)))
+    mae_local_t=float(np.mean(np.abs(np.asarray(y2)[test]-base_t_loc)))
     # Refit through all available observed archive ONLY after closed holdout.
     rain.fit(X,np.asarray(y1));temp.fit(X,np.asarray(y2))
     return rain,temp,{"mae_lluvia_mm":round(er,2),"mae_temperatura_c":round(et,2),
+                      "mae_climatologia_local_lluvia_mm":round(mae_local_r,2),
+                      "mae_climatologia_local_temperatura_c":round(mae_local_t,2),
+                      "rf_supera_climatologia_local_diaria":bool(er<mae_local_r),
                       "baseline_global_lluvia_mm":round(baseline_r,2),
                       "baseline_global_temperatura_c":round(baseline_t,2),
                       "periodo_prueba":"2025 completo","tipo_prueba":"retrospectiva un paso con rezagos reales, NO pronosticos as-issued",
