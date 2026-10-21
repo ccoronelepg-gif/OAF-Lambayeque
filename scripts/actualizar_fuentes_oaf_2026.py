@@ -11,6 +11,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 import json
+import hashlib
 import re
 import requests
 
@@ -77,7 +78,7 @@ def run():
     session=requests.Session()
     for id,(name,url,description) in SOURCES.items():
         rec={"organismo":name,"url":url,"tipo":description,"estado_consulta":"no_verificado","ultima_consulta_utc":now,
-             "fecha_ultimo_documento":None,"ultimo_documento":None,"error":None,"respuesta_http":None,
+             "fecha_ultimo_documento":None,"ultimo_documento":None,"error":None,"respuesta_http":None,"huella_sha256_html":None,"cambio_html_desde_ultima_consulta":None,
              "no_equivale_a_pronostico_local":True}
         try:
             res=session.get(url,headers=HEADERS,timeout=(10,25))
@@ -86,6 +87,10 @@ def run():
             final=urlparse(res.url)
             if final.scheme!="https" or not final.hostname or not final.hostname.endswith(urlparse(url).hostname.split(".",1)[-1]):
                 raise ValueError("Redirección a dominio no autorizado")
+            rec["huella_sha256_html"]=hashlib.sha256(res.content).hexdigest()
+            prev_source=previous.get("fuentes",{}).get(id,{})
+            prev_sha=prev_source.get("huella_sha256_html")
+            rec["cambio_html_desde_ultima_consulta"]=rec["huella_sha256_html"]!=prev_sha if prev_sha else None
             if id=="enfen":
                 latest=latest_enfen(res.text)
                 rec["ultimo_documento"]=latest
@@ -97,7 +102,7 @@ def run():
                 rec["url"]=latest["url"]
             else:
                 # Se verificó disponibilidad del sitio, NO emisión ni fecha de un aviso.
-                rec["estado_consulta"]="sitio_accesible_fecha_aviso_no_verificada"
+                rec["estado_consulta"]="cambio_html_requiere_lectura" if rec["cambio_html_desde_ultima_consulta"] is True else "sitio_accesible_fecha_aviso_no_verificada"
         except (requests.RequestException,ValueError,TypeError) as ex:
             rec["error"]=f"{type(ex).__name__}: {str(ex)[:160]}"
             rec["estado_consulta"]="consulta_fallida"
