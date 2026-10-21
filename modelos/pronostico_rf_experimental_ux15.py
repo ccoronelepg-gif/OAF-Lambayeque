@@ -50,20 +50,24 @@ def angles(d):
     return [math.sin(2*math.pi*doy/365.25),math.cos(2*math.pi*doy/365.25),
             math.sin(2*math.pi*d.month/12),math.cos(2*math.pi*d.month/12)]
 
-def daily_features(series,day):
+def city_features(name):
+    """Identidad geográfica explícita de la localidad, fija antes de entrenar."""
+    return [1.0 if name==city else 0.0 for city in PLACES]
+
+def daily_features(series,day,city):
     hist=[]
     for days in (1,2,3,7,14):
         s=series.get((day-dt.timedelta(days=days)).isoformat())
         if s is None:return None
         hist.extend([math.log1p(max(0,s["rain"])),s["temp"]])
-    return hist+angles(day)
+    return hist+angles(day)+city_features(city)
 
 def fit_daily(data):
     X=[];y1=[];y2=[];days=[];sites=[]
     for loc,series in data.items():
         for key,row in series.items():
             day=dt.date.fromisoformat(key)
-            feat=daily_features(series,day)
+            feat=daily_features(series,day,loc)
             if feat is None:continue
             X.append(feat);y1.append(math.log1p(row["rain"]));y2.append(row["temp"])
             days.append(day);sites.append(loc)
@@ -77,7 +81,7 @@ def fit_daily(data):
     observed_r=np.expm1(np.asarray(y1)[test])
     er=float(np.mean(np.abs(observed_r-np.maximum(0,np.expm1(rain.predict(X[test]))))))
     et=float(np.mean(np.abs(np.asarray(y2)[test]-temp.predict(X[test]))))
-    baseline_r=float(np.mean(np.abs(observed_r-np.median(observed_r))))
+    baseline_r=float(np.mean(np.abs(observed_r-np.median(np.expm1(np.asarray(y1)[train])))))
     baseline_t=float(np.mean(np.abs(np.asarray(y2)[test]-np.median(np.asarray(y2)[train]))))
     # Refit through all available observed archive ONLY after closed holdout.
     rain.fit(X,np.asarray(y1));temp.fit(X,np.asarray(y2))
@@ -87,7 +91,7 @@ def fit_daily(data):
                       "periodo_prueba":"2025 completo","tipo_prueba":"retrospectiva un paso con rezagos reales, NO pronosticos as-issued",
                       "n_entrenamiento":int(train.sum()),"n_prueba":int(test.sum())}
 
-def predict_daily(models,series):
+def predict_daily(models,series,city):
     rain,temp=models
     s=dict(series)
     last=dt.date.fromisoformat(max(s))
@@ -95,7 +99,7 @@ def predict_daily(models,series):
     result=[]
     date=last+dt.timedelta(days=1)
     while date<=target_end:
-        X=daily_features(s,date)
+        X=daily_features(s,date,city)
         if X is None:raise ValueError("Faltan retardos para generar siguiente día")
         x=np.asarray([X],float)
         val1=round(max(0,min(800,math.expm1(float(rain.predict(x)[0])))),2)
@@ -107,7 +111,7 @@ def predict_daily(models,series):
     if len(result)!=7:raise ValueError("Horizonte semanal incompleto")
     return result
 
-def monthly_features(series,year,month):
+def monthly_features(series,year,month,city):
     result=[]
     for offset in (1,2,3,6,12):
         y=year; m=month-offset
@@ -116,7 +120,7 @@ def monthly_features(series,year,month):
         if record is None:return None
         result.extend([math.log1p(max(0,record["rain"])),record["temp"]])
     result.extend([math.sin(2*math.pi*month/12),math.cos(2*math.pi*month/12)])
-    return result
+    return result+city_features(city)
 
 def from_csv():
     path=ROOT/"datos"/"lambayeque_mensual_era5_8d.csv"
@@ -143,13 +147,13 @@ def latest_monthly_era5(history,archives):
     return history
 
 def fit_month(history):
-    X=[];yr=[];yt=[];times=[]
+    X=[];yr=[];yt=[];times=[];cities=[]
     for city,series in history.items():
         for key,record in series.items():
             y,m=map(int,key.split("-"))
-            features=monthly_features(series,y,m)
+            features=monthly_features(series,y,m,city)
             if features is None:continue
-            X.append(features);yr.append(math.log1p(record["rain"]));yt.append(record["temp"]);times.append(key)
+            X.append(features);yr.append(math.log1p(record["rain"]));yt.append(record["temp"]);times.append(key);cities.append(city)
     X=np.asarray(X,float)
     train=np.asarray([x<"2021-01" for x in times])
     test=np.asarray(["2021-01"<=x<"2026-01" for x in times])
@@ -166,12 +170,21 @@ def fit_month(history):
         for m in range(1,13):
             vals=[x for key,x in series.items() if key<"2021-01" and key.endswith(f"-{m:02d}")]
             if vals:clim[(city,m)]=(np.mean([x["rain"] for x in vals]),np.mean([x["temp"] for x in vals]))
-    base_r=[];base_t=[]
-    for key,city in zip(times,[None]*len(times)):pass
-    # Holdout persistence baseline (median of training) is intentionally weak; present transparently.
+    # Línea base más justa: promedio histórico por localidad y mes calendario, 1996-2020.
+    clim_test=np.asarray([clim.get((city,int(key[-2:])),(np.nan,np.nan))[0] for city,key in zip(cities,times)])[test]
+    clim_temp=np.asarray([clim.get((city,int(key[-2:])),(np.nan,np.nan))[1] for city,key in zip(cities,times)])[test]
+    if not np.isfinite(clim_test).all() or not np.isfinite(clim_temp).all():raise ValueError("Climatologia local incompleta")
+    mae_clim=float(np.mean(np.abs(observed-clim_test)))
+    mae_tclim=float(np.mean(np.abs(np.asarray(yt)[test]-clim_temp)))
+    # La baseline global se conserva únicamente para comparabilidad con la fase anterior.
     baseline=float(np.mean(np.abs(observed-np.median(np.expm1(np.asarray(yr)[train])))))
     r.fit(X,np.asarray(yr));t.fit(X,np.asarray(yt))
     return (r,t),{"mae_lluvia_mm":round(er,2),"mae_temp_c":round(et,2),
+                  "mae_climatologia_local_mm":round(mae_clim,2),
+                  "mae_temperatura_climatologia_local_c":round(mae_tclim,2),
+                  "ventaja_rf_frente_a_climatologia_local_mm":round(mae_clim-er,2),
+                  "rf_supera_climatologia_local_en_prueba":bool(er<mae_clim),
+                  "mejora_candidata":"Identidad de localidad como 4 indicadores binarios; comparar MAE local temporal",
                   "baseline_global_mm":round(baseline,2),
                   "periodo_prueba":"2021-2025","tipo_prueba":"retrospectiva un paso con datos previos, no recorrido autoregresivo",
                   "n_entrenamiento":int(train.sum()),"n_prueba":int(test.sum())}
@@ -180,13 +193,13 @@ def next_month(year,month):
     if month==12:return year+1,1
     return year,month+1
 
-def predict_month(model,series):
+def predict_month(model,series,city):
     rain,temp=model;s=dict(series)
     latest=max(s);y,m=map(int,latest.split("-"))
     horizon=[]
     for _ in range(18):
         y,m=next_month(y,m);key=f"{y:04d}-{m:02d}"
-        feat=monthly_features(s,y,m)
+        feat=monthly_features(s,y,m,city)
         if feat is None:raise ValueError("Sin retardos mensuales "+key)
         xr=np.asarray([feat],float)
         r=round(max(0,min(2000,math.expm1(float(rain.predict(xr)[0])))),1)
@@ -201,6 +214,7 @@ def main():
     now=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     audit={"tipo":"RandomForestRegressor original reproducible de investigación, NO modelo operativo",
            "unidades_temperatura":"Diario Tmax; mensual temperatura media (no promedio de Tmax)",
+           "estrategia_mejora":"Características de localidad explicitas; climatologia mensual local y prueba temporal para lluvia y temperatura.",
            "fecha_generacion_utc":now,"fecha_local":TODAY.isoformat(),
            "fuente_historica":"ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
            "documentacion":"https://open-meteo.com/en/docs/historical-weather-api",
@@ -215,9 +229,9 @@ def main():
         history,sha=from_csv()
         history=latest_monthly_era5(history,data)
         mmodel,monthskill=fit_month(history)
-        daily={name:predict_daily(models[:2],series) for name,series in data.items()}
+        daily={name:predict_daily(models[:2],series,name) for name,series in data.items()}
         monthly={};lastdates={}
-        for name,series in history.items():monthly[name],lastdates[name]=predict_month(mmodel,series)
+        for name,series in history.items():monthly[name],lastdates[name]=predict_month(mmodel,series,name)
         audit.update({"estado":"candidato_experimental_generado","metrica_diaria":models[2],
                       "metrica_mensual":monthskill,"datos_fuente":urls,"sha256_matriz_mensual":sha,
                       "ultimo_mes_con_datos":lastdates,"ultimos_dias_era5":{name:max(d) for name,d in data.items()},
