@@ -1,12 +1,12 @@
 {
-  "version": "2026-10-21-correccion-de-enlaces-fotograficos",
-  "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente. Se descartó una imagen previa de Engeo que correspondía a un logotipo genérico, no al producto.",
+  "version": "2026-10-21-ux17-fotografias-integras",
+  "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente. Se descartó una imagen previa de Engeo que correspondía a un logotipo genérico, no al producto. Las fuentes fotográficas se alojan en servicios externos que pueden bloquear la carga. Cuando esto ocurre, se presenta una ilustración local declarada, sin pretender fotografía diagnóstica.",
   "organismos": {
     "mango-plaga-1": {
-      "url": "https://prod.senasica.gob.mx/ALERTAS/imagenes/noticias/5f106a635d2e5.jpg",
-      "source": "https://prod.senasica.gob.mx/ALERTAS/inicio/pages/single.php?noticia=4952",
-      "credit": "SENASICA (México)",
-      "caption": "Ceratitis capitata, especie representativa de moscas de la fruta",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_adult.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_adult.jpg",
+      "credit": "Daniel Feliciano · Wikimedia Commons · CC BY-SA 4.0",
+      "caption": "Adulto de Ceratitis capitata (mosca mediterránea de la fruta) · fotografía real documentada",
       "exact": true
     },
     "mango-plaga-2": {
