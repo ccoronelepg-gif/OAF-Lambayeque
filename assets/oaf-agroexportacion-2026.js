@@ -8,19 +8,7 @@ const placeSel=id=>`<select id="${id}"><option>Chiclayo</option><option>Jayanca<
 const variSel=id=>`<select id="${id}"><option value="precipitacion_mm">Precipitación (mm)</option><option value="temperatura_c">Temperatura (°C)</option></select>`;
 const chart=(id)=>`<figure class="oaf-agro-chart" id="${id}"><p class="oaf-agro-progress">Cargando información documentada…</p></figure>`;
 const note="Los resultados de elaboración propia se contrastan con modelos de referencia, fechas de prueba y fuentes abiertas. No se generan pronósticos multianuales numéricos sin validación suficiente.";
-const ten=[
-"OAF-Lambayeque es una plataforma de divulgación científica centrada en los cultivos de agroexportación y el clima regional.",
-"Integra datos meteorológicos, oceánicos y territoriales de SENAMHI, ENFEN, NOAA, Copernicus, CHIRPS, Open-Meteo y otros proveedores documentados.",
-"La información se revisa cuidadosamente según su cobertura, resolución, periodo, procedencia y limitaciones.",
-"El responsable realiza análisis originales mediante estadística, ciencia de datos, Python, programación y sistemas de información geográfica.",
-"Se investigan algoritmos de inteligencia artificial como Random Forest y se comparan con redes neuronales y referencias climatológicas.",
-"Los estudios examinan lluvia, temperatura, humedad, radiación y viento en costa, valles, piedemonte y montaña de Lambayeque.",
-"También se investigan las señales oceánicas de El Niño, anomalías climáticas y posibles episodios de lluvia regional.",
-"El trabajo fitosanitario prioriza mango, vid, arándano, palto, maracuyá y banano, con literatura científica sobre plagas y enfermedades.",
-"El propósito es estudiar la predicción de precipitación y de condiciones favorables para enfermedades, verificando su desempeño e incertidumbre.",
-"El observatorio publica gráficos, mapas y resultados técnicos de elaboración propia, con metodología y trazabilidad para consulta e investigación."
-];
-const intro=node("div","oaf-agro-summary",null,`<h2>Ciencia de datos y agricultura de agroexportación en Lambayeque</h2>${ten.map(x=>`<p>${x}</p>`).join("")}`);
+const intro=node("div","oaf-agro-summary",null,`<h2>Ciencia de datos y agricultura de agroexportación en Lambayeque</h2><p>OAF-Lambayeque es una plataforma de divulgación agroclimática y fitosanitaria para mango, vid, arándano, palto, maracuyá y banano. Integra datos abiertos de SENAMHI, ENFEN, NOAA, Copernicus y CHIRPS, analizados mediante estadística, SIG, Python e inteligencia artificial, incluido Random Forest. Su responsable estudia el clima regional, El Niño y las condiciones que podrían favorecer plagas y enfermedades. Comparte mapas, resultados y gráficos de elaboración propia, con fuentes y métodos verificables.</p>`);
 const home1=block("oaf-bloque-clima-actual",heading("01","Monitoreo agroclimático","¿Cómo está el clima?","Consulta indicadores y un mapa interactivo por localidad. Cada variable conserva su proveedor, periodo y fecha de actualización."),
 `<div id="oaf-agro-home-zone"></div><div id="oaf-agro-home-metrics"></div><div id="oaf-agro-home-map"></div><p class="oaf-agro-interpretation">El mapa muestra altitudes y puntos de muestreo territorial, no mediciones instrumentales en cada parcela. La lectura meteorológica procede de proveedores identificados.</p>`);
 const home2=block("oaf-bloque-prediccion-inicio",heading("02","Evolución histórica y predicciones","¿Cómo está cambiando el clima?","Dos dashboards: pronóstico del proveedor para siete días y serie histórica analizada por OAF. Los modelos propios de lluvia se identifican por separado."),
