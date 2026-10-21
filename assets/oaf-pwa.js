@@ -89,7 +89,7 @@ function offerUpdate(){
 async function connectWorker(){
  if(!("serviceWorker" in navigator)||!window.isSecureContext)return;
  try{
-  registration=await navigator.serviceWorker.register("./sw.js",{scope:"./",updateViaCache:"none"});
+  registration=await navigator.serviceWorker.register(new URL("app/sw.js",document.baseURI).href,{scope:new URL("app/",document.baseURI).href,updateViaCache:"none"});
   if(registration.waiting)offerUpdate();
   registration.addEventListener("updatefound",()=>{
    const worker=registration.installing;
