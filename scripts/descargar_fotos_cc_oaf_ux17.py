@@ -17,6 +17,7 @@ COMMONS={
     "mango-plaga-1":("Ceratitis_capitata_-_adult.jpg","ceratitis_capitata_cc_by_sa.jpg","Daniel Feliciano, CC BY-SA 4.0"),
     "vid-enfermedad-1":("UncinulaNecatorOnGrapes.jpg","oidio_vid_cc_by_sa.jpg","Oliver Macdonald, CC BY-SA 3.0"),
     "banano-plaga-1":("Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg","picudo_banano_cc0.jpg","Obsidian Soul, CC0"),
+    "banano-enfermedad-1":("Banana (variety- Koa e\' Kea)- Fusarium wilt (Panama disease).jpg","fusariosis_banano_scot_nelson_cc0.jpg","Scot Nelson, CC0"),
 }
 def run():
     data=json.loads(GALLERY.read_text(encoding="utf-8"))
