@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" role="img" aria-labelledby="title desc">
+<title id="title">Monitoreo agroclimático y fitosanitario de Lambayeque</title><desc id="desc">Ilustración editorial de campos agrícolas, cordillera, nubes, una estación meteorológica, mapa territorial y gráficos de datos conectados. No muestra mediciones reales.</desc>
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#123e51"/><stop offset=".65" stop-color="#247b80"/><stop offset="1" stop-color="#d5e6bb"/></linearGradient>
+<linearGradient id="land" x2="0" y2="1"><stop stop-color="#8ebcad"/><stop offset="1" stop-color="#387967"/></linearGradient>
+<linearGradient id="field" x2="0" y2="1"><stop stop-color="#477f63"/><stop offset="1" stop-color="#203f47"/></linearGradient>
+<linearGradient id="screen" x2="0" y2="1"><stop stop-color="#0a353f"/><stop offset="1" stop-color="#163e52"/></linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+<filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#082a36" flood-opacity=".36"/></filter>
+<pattern id="dots" width="33" height="33" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#d5fff0" opacity=".18"/></pattern>
+</defs>
+<rect width="1100" height="760" fill="url(#sky)"/>
+<rect width="1100" height="760" fill="url(#dots)"/>
+<circle cx="891" cy="175" r="104" fill="#ffdfa0" opacity=".17" filter="url(#blur)"/>
+<circle cx="884" cy="171" r="67" fill="#fcecc7" opacity=".85"/>
+<path d="M0 407L100 339 156 389 261 281 339 357 428 244 548 385 623 291 727 380 814 322 944 410 1100 337V620H0Z" fill="#497b7e" opacity=".77"/>
+<path d="M0 481L108 430 220 465 302 365 436 449 565 371 698 450 789 403 906 472 998 422 1100 457V650H0Z" fill="url(#land)" opacity=".97"/>
+<path d="M0 529Q231 472 447 539T1100 517V760H0Z" fill="url(#field)"/>
+<g fill="none" stroke-linecap="round"><path d="M0 605Q340 550 700 610T1100 588" stroke="#a4c38b" stroke-width="20" opacity=".65"/><path d="M0 656Q380 602 703 660T1100 641" stroke="#b9c989" stroke-width="20" opacity=".57"/><path d="M0 718Q351 666 744 725T1100 704" stroke="#b5ce90" stroke-width="17" opacity=".5"/></g>
+<g transform="translate(67 110)" opacity=".93">
+<path d="M8 36c0-24 20-44 45-44 10-21 31-34 55-34 31 0 55 19 61 46 25 0 46 16 46 38 0 24-21 39-47 39H46C24 81 8 63 8 36Z" fill="#e0f4ef"/>
+<g stroke="#b9eff2" stroke-width="6" stroke-linecap="round"><path d="m75 103-8 22m47-22-8 22m47-22-8 22"/></g>
+</g>
+<!-- estación agrometeorológica -->
+<g transform="translate(273 390)" stroke="#e5f7e6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M64 1v197M18 200h91M30 44h77" fill="none" stroke-width="9"/>
+<path d="M64 1V-21" stroke-width="7"/><path d="M64-21l-15-11h30Z" fill="#e9efe7" stroke-width="3"/>
+<rect x="43" y="47" width="43" height="50" rx="6" fill="#edf6f1" stroke-width="4"/>
+<path d="M42 64h47M42 79h47" stroke="#609a8d" stroke-width="3"/>
+<circle cx="103" cy="15" r="13" fill="#dbf5ed" stroke-width="4"/>
+<path d="M103 1v28M89 15h28" stroke="#388f85" stroke-width="3"/>
+<path d="m17 198 47-107 49 107" fill="none" stroke-width="4"/>
+</g>
+<!-- conexión científica -->
+<g fill="none" stroke="#b9f3d4" stroke-width="3" stroke-dasharray="7 10" opacity=".7">
+<path d="M344 412Q414 327 531 280"/><path d="M341 460Q481 489 572 441"/><path d="M685 241Q757 228 808 289"/>
+</g><g fill="#c8efd4"><circle cx="531" cy="280" r="8"/><circle cx="572" cy="441" r="7"/><circle cx="808" cy="289" r="8"/></g>
+<!-- panel científico central -->
+<g transform="translate(503 100)" filter="url(#shadow)">
+<rect width="516" height="370" rx="24" fill="url(#screen)" stroke="#98cfc6" stroke-opacity=".6" stroke-width="2"/>
+<rect x="22" y="21" width="472" height="51" rx="12" fill="#195764"/>
+<circle cx="46" cy="46" r="9" fill="#79d6a8"/><text x="64" y="51" font-size="20" font-weight="700" fill="#ddf3eb" font-family="system-ui, sans-serif">MONITOREO AGROCLIMÁTICO</text>
+<g transform="translate(29 92)">
+<rect width="225" height="237" rx="15" fill="#134c57" stroke="#4a958e" stroke-width="1"/>
+<text x="17" y="27" font-size="16" fill="#e0efe9" font-family="system-ui">Territorio y estaciones</text>
+<path d="M125 52 173 63 199 111 181 143 196 185 133 208 77 189 40 157 62 103 83 84Z" fill="#5fa389" stroke="#c5ead1" stroke-width="2"/>
+<path d="M84 84 133 206M57 117 185 148M81 189 163 67" fill="none" stroke="#d6efc1" stroke-width="3" opacity=".5"/>
+<g fill="#ffe1a9" stroke="#124552" stroke-width="2"><circle cx="95" cy="104" r="8"/><circle cx="153" cy="137" r="8"/><circle cx="104" cy="178" r="8"/><circle cx="134" cy="78" r="7"/></g>
+</g>
+<g transform="translate(272 92)">
+<rect width="217" height="109" rx="15" fill="#134c57" stroke="#4a958e" stroke-width="1"/>
+<text x="15" y="26" font-size="15" fill="#def1ec" font-family="system-ui">Evolución del clima</text>
+<g fill="none" stroke="#436e7b" stroke-width="1"><path d="M16 47H200M16 74H200M16 94H200"/></g>
+<path d="M17 81 44 69 66 81 91 47 120 62 142 43 164 58 200 31" fill="none" stroke="#f9cf82" stroke-width="5" stroke-linecap="round"/>
+<g fill="#f7d48e"><circle cx="91" cy="47" r="5"/><circle cx="142" cy="43" r="5"/><circle cx="200" cy="31" r="5"/></g>
+</g>
+<g transform="translate(272 220)">
+<rect width="217" height="109" rx="15" fill="#134c57" stroke="#4a958e" stroke-width="1"/>
+<text x="15" y="25" font-size="15" fill="#def1ec" font-family="system-ui">Análisis y predicción</text>
+<g fill="#64c9a3"><rect x="18" y="68" width="18" height="25" rx="3"/><rect x="45" y="50" width="18" height="43" rx="3"/><rect x="72" y="60" width="18" height="33" rx="3"/><rect x="99" y="39" width="18" height="54" rx="3"/></g>
+<g fill="#f6c976"><rect x="126" y="51" width="18" height="42" rx="3"/><rect x="153" y="31" width="18" height="62" rx="3"/><rect x="180" y="40" width="18" height="53" rx="3"/></g>
+</g>
+</g>
+<!-- identificación inferior -->
+<g transform="translate(505 513)"><rect width="514" height="76" rx="18" fill="#123e4c" opacity=".87" stroke="#8fbfa4" stroke-opacity=".6"/><g font-family="system-ui, sans-serif" font-size="17" fill="#d8efe2" font-weight="600"><text x="28" y="31">CLIMA</text><text x="196" y="31">TERRITORIO</text><text x="375" y="31">SANIDAD</text></g><g stroke="#7bd3a1" stroke-width="4"><path d="M28 47h115M196 47h126M375 47h95"/></g></g>
+</svg>
