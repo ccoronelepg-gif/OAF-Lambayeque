@@ -3,11 +3,13 @@
   "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente. Se descartó una imagen previa de Engeo que correspondía a un logotipo genérico, no al producto. Las fuentes fotográficas se alojan en servicios externos que pueden bloquear la carga. Cuando esto ocurre, se presenta una ilustración local declarada, sin pretender fotografía diagnóstica.",
   "organismos": {
     "mango-plaga-1": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_adult.jpg?width=960",
+      "url": "assets/fotos_cc/ceratitis_capitata_cc_by_sa.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_adult.jpg",
       "credit": "Daniel Feliciano · Wikimedia Commons · CC BY-SA 4.0",
       "caption": "Adulto de Ceratitis capitata (mosca mediterránea de la fruta) · fotografía real documentada",
-      "exact": true
+      "exact": true,
+      "copia_local_licencia": "Daniel Feliciano, CC BY-SA 4.0",
+      "sha256_copia_local": "9f74ef08ff2350c60cbba70ae0866e41655686ac253be6858c518bfb741af447"
     },
     "mango-plaga-2": {
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/276258922/large.jpeg",
@@ -38,11 +40,13 @@
       "exact": false
     },
     "vid-enfermedad-1": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/UncinulaNecatorOnGrapes.jpg?width=960",
+      "url": "assets/fotos_cc/oidio_vid_cc_by_sa.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:UncinulaNecatorOnGrapes.jpg",
       "credit": "Oliver Macdonald (Maccheek) · Wikimedia Commons",
       "caption": "Oídio de la vid (Erysiphe necator / Uncinula necator) visible en racimos de uva",
-      "exact": true
+      "exact": true,
+      "copia_local_licencia": "Oliver Macdonald, CC BY-SA 3.0",
+      "sha256_copia_local": "c63ccef79987d983a86b96ff11dceba3d9920796f785cc288984eb42c3aa1dec"
     },
     "vid-enfermedad-2": {
       "url": "https://www.ivr.si/app/uploads/2022/12/Botrytis_trta_grozd_sl3-scaled.jpg",
@@ -136,11 +140,13 @@
       "exact": true
     },
     "banano-plaga-1": {
-      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolites_sordidus%2C_banana_weevil_%28Mindanao%2C_Philippines%29_01.jpg?width=800",
+      "url": "assets/fotos_cc/picudo_banano_cc0.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg",
       "credit": "Obsidian Soul · Wikimedia Commons · CC0",
       "caption": "Adulto de Cosmopolites sordidus, picudo negro del banano, fotografía naturalista real",
-      "exact": true
+      "exact": true,
+      "copia_local_licencia": "Obsidian Soul, CC0",
+      "sha256_copia_local": "a8b24c4c1e3a0b3453d0d8d09a1c00701471c1637495416aa862d49bc3f6eb2b"
     },
     "banano-plaga-2": {
       "url": "https://apps.lucidcentral.org/ppp_v9/images/entities/banana_burrowing_nematode_257/g15roots1.jpg",
