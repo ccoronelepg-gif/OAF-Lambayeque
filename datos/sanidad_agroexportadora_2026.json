@@ -118,13 +118,23 @@
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
           "nota": "Solo contexto de poscosecha antes de empaque, no extrapolar a aspersión en campo.",
           "modo": "FRAC 12"
+        },
+        {
+          "tipo": "Biológico",
+          "nombre": "BIO-SPLENT® 70 WP",
+          "ingrediente": "Bacillus subtilis cepa AP-01",
+          "registro": "Directorio técnico Perú consigna mango / Colletotrichum gloeosporioides (antracnosis), PBUA 176-SENASA; confirmar ficha actual en SIGIA.",
+          "fuente": "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
+          "nota": "Ejemplo de fungicida microbiológico de orientación preventiva; no sustituye identificación, saneamiento y fenología.",
+          "modo": "Antagonismo microbiano: competencia e inhibición"
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
         "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
         "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
+        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9"
       ]
     },
     {
@@ -141,10 +151,31 @@
       "dano": "La cochinilla harinosa se refugia en racimos y corteza, succiona savia, deja melaza y reduce la calidad comercial.",
       "modelo_nota": "El calor puede modificar el desarrollo, pero el nivel poblacional requiere muestreo de racimos/corteza y presencia de hormigas.",
       "manejo_cultural": "Inspeccionar focos y racimos, manejar hormigas y favorecer enemigos naturales; revisar exportación/cuarentena.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "AKRON® 500 WG (Pseudococcus viburni)",
+          "ingrediente": "acetamiprid + buprofezin",
+          "registro": "Directorio técnico Perú identifica vid / cochinilla harinosa Pseudococcus viburni, PQUA 1066-SENASA; comprobar vigencia en SIGIA.",
+          "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
+          "nota": "La cochinilla debe identificarse a especie; no extrapolar eficacia de P. viburni a otros insectos.",
+          "modo": "IRAC 4A + 16"
+        },
+        {
+          "tipo": "Biológico de origen vegetal",
+          "nombre": "WONDER® (Planococcus citri)",
+          "ingrediente": "Extractos de ajo y ají",
+          "registro": "Directorio técnico Perú identifica vid / Planococcus citri, PBUA 343-SENASA.",
+          "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "nota": "Verificar el insecto a especie, ficha de etiqueta vigente y conservación de enemigos naturales.",
+          "modo": "Repelencia y contacto"
+        }
+      ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
-        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+        "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
+        "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9"
       ]
     },
     {
@@ -170,12 +201,22 @@
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
           "nota": "El grupo de la ficha incluye trips y ácaros: este ejemplo corresponde únicamente a ácaros especificados por la etiqueta.",
           "modo": "IRAC 6"
+        },
+        {
+          "tipo": "Biológico de origen vegetal",
+          "nombre": "WONDER® (trips)",
+          "ingrediente": "Extractos de ajo y ají",
+          "registro": "Directorio técnico Perú identifica vid / Thrips tabaci, PBUA 343-SENASA.",
+          "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "nota": "Este producto de la ficha se asocia específicamente a Thrips tabaci, no al grupo entero de ácaros.",
+          "modo": "Repelencia y contacto"
         }
       ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/",
         "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
-        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec"
+        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+        "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9"
       ]
     },
     {
@@ -209,13 +250,23 @@
           "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.label.html/fungicide/serenade_aso.html",
           "nota": "Alternativa preventiva dentro de un programa de rotación y vigilancia; la ficha del fabricante es evidencia documental, no recomendación de dosis.",
           "modo": "Acción microbiana múltiple"
+        },
+        {
+          "tipo": "Biológico",
+          "nombre": "BIO-SPLENT® 70 WP",
+          "ingrediente": "Bacillus subtilis cepa AP-01",
+          "registro": "Directorio técnico Perú consigna vid / Erysiphe necator (oídio), PBUA 176-SENASA.",
+          "fuente": "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9",
+          "nota": "Alternativa preventiva en manejo integrado y rotación, su vigencia debe confirmarse por cultivo y etiqueta.",
+          "modo": "Antagonismo microbiano"
         }
       ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
         "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
         "https://www.mdpi.com/2073-4395/10/5/622",
-        "https://doi.org/10.3390/su15032837"
+        "https://doi.org/10.3390/su15032837",
+        "https://www.agroquimicos-organicosplm.com/peru/biosplent_70_wp/247/1/5087/101/9"
       ]
     },
     {
@@ -263,10 +314,21 @@
       "dano": "Los trips raspan flores y tejidos tiernos, pueden provocar deformaciones, manchas y menor calidad del fruto.",
       "modelo_nota": "La temperatura modifica actividad y ciclos; el monitoreo de flores y trampas es necesario para valorar aumento poblacional.",
       "manejo_cultural": "Revisar flores/brotes por variedad y fenología, reconocer enemigos naturales.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Biológico de origen vegetal",
+          "nombre": "WONDER® (trips)",
+          "ingrediente": "Extractos de ajo y ají",
+          "registro": "Directorio técnico Perú identifica arándano / Thrips spp., PBUA 343-SENASA; verificar etiqueta vigente.",
+          "fuente": "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9",
+          "nota": "Producto de acción repelente/contacto, complementario al muestreo y control preventivo.",
+          "modo": "Repelencia y contacto de extractos vegetales"
+        }
+      ],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+        "https://www.agroquimicos-organicosplm.com/peru/wonder/286/1/8014/76/9"
       ]
     },
     {
@@ -283,10 +345,21 @@
       "dano": "Mosca blanca y cochinillas se alimentan de savia, originan melaza y pueden afectar vigor y calidad.",
       "modelo_nota": "La temperatura puede favorecer generaciones; densidad, depredadores y estado del cultivo deben medirse.",
       "manejo_cultural": "Muestrear envés, brotes y racimos; tratar solo tras identificación y umbral técnico.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "AKRON® 500 WG (mosca blanca)",
+          "ingrediente": "acetamiprid + buprofezin",
+          "registro": "Directorio técnico Perú identifica arándano / Bemisia tabaci, PQUA 1066-SENASA; confirmar registro vigente.",
+          "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
+          "nota": "Ejemplo únicamente para mosca blanca Bemisia tabaci; no afirma control de cochinillas en arándano.",
+          "modo": "IRAC 4A + 16"
+        }
+      ],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+        "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3"
       ]
     },
     {
@@ -415,12 +488,22 @@
           "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
           "nota": "Control específico del ácaro; registrar incidencia y conservar enemigos naturales.",
           "modo": "IRAC 6"
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "AKRON® 500 WG (queresa)",
+          "ingrediente": "acetamiprid + buprofezin",
+          "registro": "Directorio técnico Perú identifica palto / Fiorinia fioriniae, PQUA 1066-SENASA.",
+          "fuente": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
+          "nota": "Ejemplo para queresa, no el grupo conjunto de ácaros; consultar SENASA y mercado de exportación.",
+          "modo": "IRAC 4A + 16"
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
         "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec"
+        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+        "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3"
       ]
     },
     {
