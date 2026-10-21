@@ -7,6 +7,7 @@ on:
       - "ecorregiones-clima-10k.html"
       - "assets/oaf-responsive-celulares-ux19.css"
       - "assets/oaf-responsive-celulares-ux19.js"
+      - "tests/test_movil_ux19.js"
       - "tests/test_movil_ux19_browser.cjs"
       - "manifest.webmanifest"
       - "sw.js"
