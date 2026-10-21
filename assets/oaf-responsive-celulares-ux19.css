@@ -193,6 +193,7 @@ button, select, input, textarea { max-width:100%; }
   max-width:100%!important;min-width:0!important;
  }
  .oaf-mobile-chart-host {
+  display:block!important;place-items:initial!important;
   position:relative;overflow-x:auto!important;overflow-y:hidden;
   overscroll-behavior-inline:contain;
   -webkit-overflow-scrolling:touch;
