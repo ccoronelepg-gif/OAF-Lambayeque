@@ -6,9 +6,7 @@
 .oaf-agro-summary{position:relative;background:linear-gradient(140deg,#fff,#f6faf7 60%,#edf6ee);border:1px solid #b9d9c7;border-top:5px solid #36836c;padding:30px 35px;box-shadow:0 16px 34px #1a4c3a13}
 .oaf-agro-summary:before{content:"";position:absolute;top:0;right:16px;width:165px;height:165px;border-radius:50%;background:radial-gradient(circle,#c5e8ce75,transparent 70%);pointer-events:none}
 .oaf-agro-summary h2{font-size:clamp(23px,2.7vw,32px)!important;letter-spacing:-.6px;max-width:960px;padding-bottom:16px;border-bottom:1px solid #c6e1d2;margin-bottom:19px!important}
-.oaf-agro-summary p{text-align:justify;text-justify:inter-word;hyphens:auto;line-height:1.75;font-size:14px;margin:0 0 9px;max-width:none}
-.oaf-agro-summary .oaf-intro-columns{column-count:2;column-gap:32px;column-rule:1px solid #dfebe2}
-.oaf-agro-summary .oaf-intro-columns p{break-inside:avoid;margin:0 0 13px}
+.oaf-agro-summary p{text-align:justify;text-justify:inter-word;hyphens:auto;line-height:1.78;font-size:14px;margin:0;max-width:105ch}
 #oaf-bloque-clima-actual #oaf-agro-home-metrics .oaf-metric{box-shadow:0 4px 15px #1746340b}
 .oaf-plain-weather{background:linear-gradient(130deg,#f2f9f1,#e8f4ee);border:1px solid #c9dfd0;border-radius:15px;padding:18px 20px;margin:14px 0}
 .oaf-plain-weather h3{font-size:18px;color:#1b6049;margin:0 0 9px}
@@ -64,7 +62,7 @@
 #oaf-agro-home .oaf-agro-split.oaf-ux9-one-chart{display:block}
 #oaf-agro-home .oaf-ux9-one-chart>.oaf-agro-tile{max-width:100%}
 @media(max-width:1000px){.oaf-ux9-map-wrap{grid-template-columns:1fr}}
-@media(max-width:720px){.oaf-agro-summary .oaf-intro-columns{column-count:1;column-rule:none}.oaf-agro-summary{padding:19px 18px}.oaf-plain-weather ul{grid-template-columns:1fr}.oaf-ux9-data{grid-template-columns:1fr 1fr}.oaf-ux9-final{padding:20px 18px}}
+@media(max-width:720px){.oaf-agro-summary{padding:19px 18px}.oaf-plain-weather ul{grid-template-columns:1fr}.oaf-ux9-data{grid-template-columns:1fr 1fr}.oaf-ux9-final{padding:20px 18px}}
 @media(max-width:420px){.oaf-ux9-data{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.oaf-ux9-map path{transition:none}}
 
@@ -76,3 +74,12 @@
 #oaf-agro-clima .oaf-agro-chart .oaf-chart-bar{fill:#4b97c8;filter:drop-shadow(0 2px 2px #28739430)}
 #oaf-agro-home .oaf-agro-chart .oaf-chart-bar{fill:#56a9af}
 #oaf-agro-clima .oaf-agro-chart{background:linear-gradient(180deg,#fffaf4,#f2faff)}
+
+/* Ajustes solicitados: fotografía documental real y un solo párrafo legible */
+.oaf-hero-2026 .heroimg{position:relative;isolation:isolate}
+.oaf-hero-2026 .heroimg img{width:100%;height:100%;object-fit:cover;object-position:52% 44%;display:block}
+.oaf-hero-2026 .oaf-photo-credit{position:absolute;bottom:12px;right:12px;left:12px;width:max-content;max-width:calc(100% - 24px);background:#122a34d9;color:#fff;padding:6px 9px;border-radius:8px;font-size:10px;line-height:1.4;z-index:2}
+.oaf-hero-2026 .oaf-photo-credit a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+.oaf-agro-summary{max-width:100%}
+.oaf-agro-summary>p{display:block!important;columns:auto!important;column-count:1!important;max-width:105ch;text-align:justify;text-justify:inter-word}
+@media(max-width:640px){.oaf-agro-summary>p{font-size:13px;line-height:1.63;text-align:justify}.oaf-hero-2026 .oaf-photo-credit{font-size:9px}}
