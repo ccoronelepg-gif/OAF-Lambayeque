@@ -42,12 +42,29 @@ th:first-child,td:first-child{text-align:left}tbody tr[data-landscape]{cursor:po
 #status{margin:.7rem 0;color:var(--muted)}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1000px){.layout,.below{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}#map{height:440px}}
 @media(max-width:620px){.controls{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}#map{height:370px}.infoBlock{grid-template-columns:1fr 1fr}.panel{padding:.75rem}}
+
+/* UX15: visualización vectorial estable y legible sin mosaicos de imágenes */
+html,body{overflow-x:hidden}
+.panel,.kpi,.layout>section,.below>section{min-width:0;overflow-wrap:anywhere}
+.layout{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:start}
+.layout .panel{min-width:0;overflow:hidden}
+#map{position:relative;z-index:0;height:490px;min-height:360px;width:100%;max-width:100%;overflow:hidden;background:radial-gradient(circle at 35% 20%,#e3f4e8,#cfe5d8 80%);isolation:isolate}
+#map .leaflet-container{background:transparent!important;max-width:100%}
+#map .leaflet-tile-pane{display:none!important}
+#map .leaflet-overlay-pane svg{max-width:none!important;position:absolute}
+#chart{display:block;width:100%;max-width:100%;height:auto;overflow:visible;aspect-ratio:710 / 320;min-height:220px}
+#chart>*{vector-effect:non-scaling-stroke}
+#legend{position:relative;z-index:1;padding:9px 0;border-bottom:1px solid #d8e8dd}
+.layout .infoBlock{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1050px){.layout,.below{grid-template-columns:1fr}#map{height:420px}}
+@media(max-width:650px){main{padding:10px}.panel{padding:12px}#map{height:340px;min-height:310px}#chart{min-height:170px}.layout .infoBlock{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}}
+
 </style></head><body>
 <header>
 <div style="font-size:.76rem;letter-spacing:.08em;opacity:.92">OAF LAMBAYEQUE · CIENCIA CLIMÁTICA ABIERTA · FASE 10K</div>
-<h1>Ecorregiones y precipitaciones de Lambayeque</h1>
+<h1>Paisajes agroclimáticos y Random Forest · Lambayeque</h1>
 <p>Mapa interactivo de paisajes ecoclimáticos, análisis comparativo de lluvia y evaluación de Random Forest por pisos altitudinales y sectores de investigación.</p>
-<a href="./index.html#clima">← Volver a Análisis de clima regional</a>
+<a href="./index.html#autor">← Volver a Predicciones y Anomalías</a>
 </header>
 <main><div class="panel" style="margin:1rem 0;border-left:4px solid #4e829b">
 <h2>Nuevo: ¿mejora Random Forest en montaña media y alta?</h2>
@@ -160,7 +177,7 @@ function selectedLayers(){if(!layer)return;layer.eachLayer(l=>{const p=l.feature
  if(active&&chosenSector===p.sector)l.bringToFront()})}
 function updateMap(){if(!geo||!window.L){$("status").textContent="El listado funciona; mapa interactivo no disponible por conexión con el proveedor cartográfico.";return}
  if(!map){map=L.map("map",{scrollWheelZoom:false,zoomControl:true});
- L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+ /* Mapa vectorial limpio: sin teselas de terceros que produzcan mosaicos superpuestos. */
  layer=L.geoJSON(geo,{style:f=>({fillColor:colors[f.properties.paisaje_id]||"#aaa",fillOpacity:.67,color:"#3d6d5c",weight:1}),
  onEachFeature:(f,l)=>{l.bindTooltip(f.properties.sector+" · "+nm[f.properties.paisaje_id]);l.on("click",()=>{chosenSector=f.properties.sector;$("sector").value=chosenSector;update();if(map&&l.getBounds)map.fitBounds(l.getBounds(),{padding:[20,20],maxZoom:12})})}}).addTo(map);
  map.fitBounds(layer.getBounds(),{padding:[10,10]});}
