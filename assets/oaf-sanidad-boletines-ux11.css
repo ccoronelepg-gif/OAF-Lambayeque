@@ -96,3 +96,56 @@
 .oaf-ux11-products .oaf-ux11-product:hover{box-shadow:0 6px 15px #20564114;border-color:#a9d7be}
 @media(max-width:990px){.oaf-ux11-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){.oaf-ux11-timeline{grid-template-columns:1fr}.oaf-ux11-timeline-item{padding:12px}}
+
+
+/* UX-12: fotografía documental, mecanismo de acción y menú superior persistente */
+body>header{position:fixed!important;top:0!important;left:0;right:0;width:100%;z-index:10020!important;background:#fff;box-shadow:0 7px 22px #102d3340}
+body{padding-top:var(--oaf-header-fijo-altura,88px)}
+.oaf-ux11-head{position:static!important;top:auto!important;box-shadow:none!important;background:transparent!important;z-index:auto!important}
+#cultivos,#nino,#verificaciones,#inicio,#clima,#autor,.oaf-ux11-section{scroll-margin-top:calc(var(--oaf-header-fijo-altura,88px) + 18px)}
+.oaf-ux12-pest-photo{margin-bottom:15px}
+.oaf-ux11-illustration.oaf-ux12-has-photo{height:auto;min-height:225px;padding:0;background:transparent;display:block;overflow:visible}
+.oaf-ux11-illustration.oaf-ux12-has-photo .oaf-ux12-photo{margin:0}
+.oaf-ux12-photo{margin:0;overflow:hidden;min-width:0;background:#f3f7f4;border:1px solid #d9e8dd;border-radius:13px}
+.oaf-ux12-photo img{display:block;width:100%;height:clamp(185px,23vw,280px);object-fit:cover;object-position:center;background:#f1f4f2}
+.oaf-ux12-photo figcaption{display:flex;flex-direction:column;gap:3px;padding:9px 12px;background:#f5faf7;font-size:11px;color:#345f52;line-height:1.5}
+.oaf-ux12-photo figcaption span{font-weight:750}
+.oaf-ux12-photo figcaption small{color:#8b5d32;font-size:10px}
+.oaf-ux12-photo figcaption a{color:#236b58;word-break:break-word;font-size:10px;font-weight:700}
+.oaf-ux12-unavailable{display:block;padding:23px;color:#617b71;font-size:12px}
+.oaf-ux12-product-layout{display:grid;grid-template-columns:156px minmax(0,1fr);gap:16px;align-items:start}
+.oaf-ux12-product-info{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.oaf-ux12-product-info>strong{font-size:16px;color:#174d42}
+.oaf-ux12-product-info>small{font-size:11px;color:#617b71}
+.oaf-ux12-product-info .oaf-ux12-laboratorio{font-weight:750;color:#366754}
+.oaf-ux12-product-info>p{font-size:12px;margin:2px 0;color:#526c60}
+.oaf-ux12-envase{background:#fff;max-width:156px}
+.oaf-ux12-envase img{height:166px;object-fit:contain;padding:6px;background:#fff}
+.oaf-ux12-envase figcaption{padding:7px 8px}
+.oaf-ux12-envase figcaption span{font-size:9px}
+.oaf-ux12-envase figcaption a{font-size:9px}
+.oaf-ux12-group{font-size:11px;font-weight:850;color:#5e532f;background:#fff1cb;border:1px solid #f0d495;padding:3px 9px;border-radius:999px}
+.oaf-ux12-mechanism{border-left:3px solid #41a187;background:#ecf8f0;padding:10px 12px;margin:7px 0;border-radius:0 9px 9px 0;width:100%}
+.oaf-ux12-mechanism>b{font-size:12px;color:#195745}
+.oaf-ux12-mechanism p{font-size:12px!important;line-height:1.7;margin:4px 0 0!important;color:#395d4e!important}
+.oaf-ux12-product-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
+.oaf-ux12-product-links a{font-size:12px;color:#216d5b;font-weight:850}
+.oaf-ux12-image-note{font-style:italic}
+.oaf-ux11-product{box-shadow:0 2px 9px #153c3110}
+@media(max-width:1050px){
+ .head nav,.head nav:not(.oaf-menu-open),.head nav.oaf-menu-open{grid-column:1/-1!important;grid-row:2!important;display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;max-height:none!important;width:100%!important;gap:4px}
+ .head nav a{flex:0 0 auto;white-space:nowrap;padding:7px 12px;min-height:38px;font-size:12px}
+ #oaf-mobile-menu{display:none!important}
+ .head{grid-template-columns:minmax(0,1fr) auto!important}
+ .head .oaf-view-switch{grid-column:2;grid-row:1}
+ .head nav{-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+}
+@media(max-width:700px){
+ .oaf-ux12-product-layout{grid-template-columns:120px minmax(0,1fr);gap:10px}
+ .oaf-ux12-envase{max-width:120px}
+ .oaf-ux12-envase img{height:140px}
+ .oaf-ux12-photo:not(.oaf-ux12-envase) img{height:210px}
+ .head{padding:8px 13px 5px!important}
+ .head nav a{font-size:11px;padding:8px 10px}
+}
+@media(max-width:450px){.oaf-ux12-product-layout{grid-template-columns:1fr}.oaf-ux12-envase{max-width:165px}.oaf-ux12-envase img{height:150px}}
