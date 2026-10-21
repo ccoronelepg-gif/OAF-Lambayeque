@@ -14,6 +14,9 @@ on:
       - "tests/test_ux17_fotos_mapa_rf.py"
       - "tests/test_sanidad_imagenes_2026.js"
       - "assets/oaf-galeria-mecanismos-2026.js"
+      - "assets/oaf-responsive-celulares-ux19.css"
+      - "assets/oaf-responsive-celulares-ux19.js"
+      - "tests/test_movil_ux19.js"
       - ".github/workflows/oaf_ux17_integridad_visual.yml"
 permissions:
   contents: read
@@ -30,3 +33,9 @@ jobs:
         run: python -m unittest discover -s tests -p test_ux17_fotos_mapa_rf.py -v
       - name: Simular el visor de fotos con Node.js sin navegador ni dependencias
         run: node tests/test_sanidad_imagenes_2026.js
+      - name: Verificar sintaxis y adaptabilidad móvil
+        run: |
+          node --check assets/oaf-responsive-celulares-ux19.js
+          node --check assets/oaf-ux15-rf-salidas.js
+          node --check assets/oaf-galeria-mecanismos-2026.js
+          node tests/test_movil_ux19.js
