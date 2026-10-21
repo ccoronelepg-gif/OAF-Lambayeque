@@ -98,6 +98,7 @@ function month(){
  const vista=$("oaf-ux16-vista")?.value||"historico",historicalControls=$("oaf-ux16-historical-controls"),futureControls=$("oaf-ux16-future-controls");
  if(historicalControls)historicalControls.hidden=vista==="futuro";
  if(futureControls)futureControls.hidden=vista!=="futuro";
+ const historicalKpis=$("oaf-ux14-kpis");if(historicalKpis)historicalKpis.hidden=vista==="futuro";
  if(vista==="futuro")future();else hist();
  cards();
 }
@@ -156,7 +157,6 @@ function setup(){
  const varWeek=$("oaf-ux14-variable");
  varWeek?.addEventListener("change",()=>queueMicrotask(week));
  $("oaf-ux14-ciudad")?.addEventListener("change",()=>{external=null;week()});
- if(historical)historical.querySelectorAll("select").forEach(s=>s.addEventListener("change",()=>{if(selector.value==="historico")queueMicrotask(hist)}));
  fetch("datos/rf_experimental_ux15.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("RF "+r.status);return r.json()}).then(d=>{
   if(d.operativo_certificado!==false||d.alertas_automaticas!==false)throw Error("RF no identificado como candidato");
   rf=d;week();cards();if(selector.value==="futuro")future();
