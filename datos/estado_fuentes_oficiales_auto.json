@@ -1,40 +1,113 @@
 {
   "esquema": "OAF-fuentes-operativas-2026-v1",
-  "fecha_comprobacion_utc": null,
-  "metodo": "Monitoreo diario programado en GitHub Actions; pendiente primera ejecución. Fecha editorial y vigencia institucional deben corroborarse.",
+  "fecha_comprobacion_utc": "2026-10-21T19:35:24+00:00",
+  "metodo": "Solicitudes HTTPS a páginas oficiales; respuesta HTTP no implica actualización editorial ni disponibilidad de avisos para cada distrito.",
   "fuentes": {
     "enfen": {
       "organismo": "ENFEN",
       "url": "https://enfen.imarpe.gob.pe/comunicados/",
-      "estado_consulta": "pendiente_primera_ejecucion",
-      "ultima_consulta_utc": null,
+      "tipo": "Comunicados institucionales",
+      "estado_consulta": "consulta_fallida",
+      "ultima_consulta_utc": "2026-10-21T19:35:24+00:00",
+      "fecha_ultimo_documento": null,
       "ultimo_documento": null,
-      "error": null
+      "error": "ConnectionError: HTTPSConnectionPool(host='enfen.imarpe.gob.pe', port=443): Max retries exceeded with url: /comunicados/ (Caused by NameResolutionError(\"HTTPSConnection(host='en",
+      "respuesta_http": null,
+      "huella_sha256_html": null,
+      "cambio_html_desde_ultima_consulta": null,
+      "no_equivale_a_pronostico_local": true
     },
     "noaa": {
       "organismo": "NOAA CPC",
       "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc_Sp.shtml",
-      "estado_consulta": "pendiente_primera_ejecucion",
-      "ultima_consulta_utc": null,
+      "tipo": "Discusión oficial ENOS",
+      "estado_consulta": "sitio_accesible_fecha_aviso_no_verificada",
+      "ultima_consulta_utc": "2026-10-21T19:35:24+00:00",
+      "fecha_ultimo_documento": null,
       "ultimo_documento": null,
-      "error": null
+      "error": null,
+      "respuesta_http": 200,
+      "huella_sha256_html": "deb2465d8631058375d58d4622299bb2782b55756dfd9ff0b93ae9b1a775358c",
+      "cambio_html_desde_ultima_consulta": null,
+      "no_equivale_a_pronostico_local": true
     },
     "senamhi": {
       "organismo": "SENAMHI",
       "url": "https://www.senamhi.gob.pe/main.php?dp=lambayeque&p=aviso-meteorologico-vigente",
-      "estado_consulta": "pendiente_primera_ejecucion",
-      "ultima_consulta_utc": null,
+      "tipo": "Portal de avisos regionales; vigencia de cada aviso no inferida",
+      "estado_consulta": "consulta_fallida",
+      "ultima_consulta_utc": "2026-10-21T19:35:24+00:00",
+      "fecha_ultimo_documento": null,
       "ultimo_documento": null,
-      "error": null
+      "error": "ConnectTimeout: HTTPSConnectionPool(host='www.senamhi.gob.pe', port=443): Max retries exceeded with url: /main.php?dp=lambayeque&p=aviso-meteorologico-vigente (Caused by Connec",
+      "respuesta_http": null,
+      "huella_sha256_html": null,
+      "cambio_html_desde_ultima_consulta": null,
+      "no_equivale_a_pronostico_local": true
     },
     "cenepred": {
       "organismo": "CENEPRED",
       "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
-      "estado_consulta": "pendiente_primera_ejecucion",
-      "ultima_consulta_utc": null,
+      "tipo": "Escenarios de riesgo; su edición se consulta en el documento",
+      "estado_consulta": "sitio_accesible_fecha_aviso_no_verificada",
+      "ultima_consulta_utc": "2026-10-21T19:35:24+00:00",
+      "fecha_ultimo_documento": null,
       "ultimo_documento": null,
-      "error": null
+      "error": null,
+      "respuesta_http": 200,
+      "huella_sha256_html": "59e06f91078e7778833df46552ddae60bca0b29aeca5b5e9ea98eb5a6dd72869",
+      "cambio_html_desde_ultima_consulta": null,
+      "no_equivale_a_pronostico_local": true
     }
   },
-  "catalogo_modelos": []
+  "catalogo_modelos": [
+    {
+      "id": "open_meteo",
+      "nombre": "Pronóstico diario Open-Meteo",
+      "frecuencia": "Consulta de API cuando se abre la pestaña",
+      "tipo": "pronostico_externo",
+      "estado": "dinamico_del_proveedor",
+      "operativo_oaf": false
+    },
+    {
+      "id": "chirps_3z",
+      "nombre": "CHIRPS v3 mensual",
+      "frecuencia": "Trabajo semanal programado (ver estado 3Z)",
+      "tipo": "estimacion_satelital",
+      "estado": "depende_de_job_y_publicacion",
+      "operativo_oaf": false
+    },
+    {
+      "id": "ncei_6d",
+      "nombre": "NOAA NCEI ERSSTv5 Niño 1+2",
+      "frecuencia": "Días 12 y 19 cada mes",
+      "tipo": "serie_historica_actualizable",
+      "estado": "depende_de_job_y_publicacion",
+      "operativo_oaf": false
+    },
+    {
+      "id": "rf_10j",
+      "nombre": "Random Forest 10J",
+      "frecuencia": "Día 26; requiere nuevos meses CHIRPS validados",
+      "tipo": "modelo_candidato",
+      "estado": "no_publicacion_automatica",
+      "operativo_oaf": false
+    },
+    {
+      "id": "rf_10n",
+      "nombre": "Random Forest corrector estaciones 10N",
+      "frecuencia": "Sin reentrenamiento automático operativo",
+      "tipo": "modelo_experimental",
+      "estado": "historico_sin_habilidad_aceptada",
+      "operativo_oaf": false
+    },
+    {
+      "id": "otros_experimentos",
+      "nombre": "Otros visores y comparaciones RF, GCN, CNN",
+      "frecuencia": "Reproducibles bajo cambios y auditoría, NO pronósticos nuevos por defecto",
+      "tipo": "evaluacion_historica",
+      "estado": "sin_actualizacion_operativa_automatica",
+      "operativo_oaf": false
+    }
+  ]
 }
