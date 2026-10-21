@@ -66,7 +66,7 @@ function hashAccess(){
  }
 }
 function init(){
- if(!byId("oaf-ux-view-quick"))return;
+ if(!byId("oaf-mobile-menu")||!byId("oaf-primary-nav"))return; // Barra de vistas retirada; mantener la navegación y filtros funcionales.
  controls.forEach(([id,value])=>byId(id)?.addEventListener("click",()=>applyView(value)));
  byId("oaf-mobile-menu")?.addEventListener("click",()=>{
   const menu=byId("oaf-mobile-menu");setMobile(menu.getAttribute("aria-expanded")!=="true");
