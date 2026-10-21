@@ -67,3 +67,12 @@
 @media(max-width:720px){.oaf-agro-summary .oaf-intro-columns{column-count:1;column-rule:none}.oaf-agro-summary{padding:19px 18px}.oaf-plain-weather ul{grid-template-columns:1fr}.oaf-ux9-data{grid-template-columns:1fr 1fr}.oaf-ux9-final{padding:20px 18px}}
 @media(max-width:420px){.oaf-ux9-data{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.oaf-ux9-map path{transition:none}}
+
+/* Colores diferenciados en series históricas y gráficos del clima regional */
+#oaf-agro-clima .oaf-agro-chart .oaf-chart-line,
+#oaf-agro-home .oaf-agro-chart .oaf-chart-line{stroke:#d97b4c;stroke-width:4;filter:drop-shadow(0 3px 3px #b7714b38)}
+#oaf-agro-clima .oaf-agro-chart .oaf-chart-dot,
+#oaf-agro-home .oaf-agro-chart .oaf-chart-dot{fill:#efad67;stroke:#fff;stroke-width:2}
+#oaf-agro-clima .oaf-agro-chart .oaf-chart-bar{fill:#4b97c8;filter:drop-shadow(0 2px 2px #28739430)}
+#oaf-agro-home .oaf-agro-chart .oaf-chart-bar{fill:#56a9af}
+#oaf-agro-clima .oaf-agro-chart{background:linear-gradient(180deg,#fffaf4,#f2faff)}
