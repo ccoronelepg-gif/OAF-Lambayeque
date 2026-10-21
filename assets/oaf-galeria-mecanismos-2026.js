@@ -12,14 +12,17 @@ function photographic(media,scope){
  const caption=create('figcaption');caption.append(create('span',null,media.caption||'Fotografía documentada'));
  if(media.exact===false)caption.append(create('small',null,'Fotografía ilustrativa de una especie o síntoma; no confirma diagnóstico.'));
  if(validLink(media.source))caption.append(a('Crédito: '+(media.credit||'Fuente técnica')+' ↗',media.source));
- img.onerror=()=>{img.remove();figure.classList.add('oaf-ux12-photo-error');figure.prepend(create('span','oaf-ux12-unavailable','Imagen externa no disponible. Consulta el enlace de la fuente.'))};
+ img.onerror=()=>{img.remove();figure.classList.add('oaf-ux12-photo-error');const msg=create('div','oaf-ux12-unavailable');
+const emblem=create('span','oaf-ux12-unavailable-icon',scope==='producto'?'▣':'✿');
+msg.append(emblem,create('span',null,'Fotografía externa temporalmente no disponible. Abre la ficha original para identificar el organismo o el envase.'));
+figure.prepend(msg)};
  figure.append(img,caption);return figure;
 }
 function keyFor(n){
  n=(n||'').toLowerCase();
  if(n.includes('gf-120'))return 'gf-120';
  if(n.includes('amistar')&&n.includes('top'))return 'amistar-top';
- for(const [term,key] of [['amistar','amistar'],['scholar','scholar'],['bio-splent','biosplent'],['akron','akron'],['wonder','wonder'],['vertimec','vertimec'],['luna experience','luna'],['serenade','serenade'],['switch','switch'],['aliette','aliette'],['engeo','engeo']])if(n.includes(term))return key;
+ for(const [term,key] of [['amistar','amistar'],['scholar','scholar'],['bio-splent','biosplent'],['akron','akron'],['wonder','wonder'],['vertimec','vertimec'],['luna experience','luna'],['serenade','serenade'],['switch','switch'],['aliette','aliette'],['engeo','engeo'],['score','score'],['quadris','quadris']])if(n.includes(term))return key;
  return '';
 }
 function pestPhoto(area,id,scope){
