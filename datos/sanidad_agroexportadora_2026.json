@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21",
+  "version": "ux11-revision-2026-10-21",
   "region": "Lambayeque",
   "tipo": "catálogo técnico de vigilancia, no autorización de producto",
   "n_cultivos": 6,
@@ -30,7 +30,7 @@
     }
   ],
   "total_organismos": 23,
-  "aviso": "Las fichas describen condiciones favorables para vigilancia, no presencia, brote, incidencia, probabilidad cuantificada ni aumento poblacional observado. Registros de plaguicidas deben verificarse para cultivo, plaga, formulación, fecha y etiqueta vigentes en SIGIA/SENASA; respetar LMR del mercado de destino. Un producto documentado para otro cultivo no puede asumirse eficaz o autorizado en mango, arándano o maracuyá sin respaldo de etiqueta y ensayos aplicables.",
+  "aviso": "Fichas científicas de orientación, no diagnósticos ni recomendaciones automáticas de tratamientos. Las opciones biológicas que no identifiquen registro comercial son agentes documentados, no productos autorizados. Verificar SIGIA/SENASA por cultivo y blanco antes de aplicar.",
   "consulta_senasa": "https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html",
   "biocontrol_senasa": "https://www.senasa.gob.pe/senasa/especies-beneficas-producidas-por-laboratorios-en-convenio/",
   "organismos": [
@@ -50,17 +50,20 @@
       "manejo_cultural": "Retirar fruta caída e infestada, vigilar trampas y respetar el programa oficial de control integrado.",
       "productos": [
         {
-          "tipo": "Químico / cebo",
-          "nombre": "Spinosad formulado en cebo",
-          "ingrediente": "spinosad",
-          "registro": "Adquisición institucional documentada, Resolución SENASA 141-2025",
-          "fuente": "https://www.gob.pe/institucion/senasa/normas-legales/7660481-141-2025-midagri-senasa-jn",
-          "nota": "Adquisición para control integrado de moscas de fruta; no determina por sí sola dosis o registro de formulación/cultivo."
+          "tipo": "Químico de origen biológico / cebo",
+          "nombre": "GF-120™ (ejemplo comercial en Perú)",
+          "ingrediente": "spinosad; cebo atrayente para moscas de la fruta",
+          "registro": "Comercialización documentada por Farmex Perú. Etiqueta cultivo–plaga y registro vigente: comprobar en SENASA.",
+          "fuente": "https://www.farmex.com.pe/producto/gf-120/",
+          "nota": "El cebo complementa trampas, recojo de frutos y control oficial; no estima ni elimina por sí solo la población.",
+          "modo": "IRAC 5; modulador alostérico nicotínico"
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
-        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
+        "https://datos.unjfsc.edu.pe/index.php/PeruvianAgriculturalResearch/article/view/1009",
+        "https://ojs.observatoriolatinoamericano.com/ojs/index.php/olel/article/view/6293"
       ]
     },
     {
@@ -165,11 +168,22 @@
           "registro": "PQUA 684-SENASA (según fabricante)",
           "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/luna_experience",
           "nota": "Fabricante peruano lo relaciona con oídio en vid; comprobar vigencia, cultivo, blanco, periodo de carencia y etiqueta en SIGIA."
+        },
+        {
+          "tipo": "Biológico",
+          "nombre": "Serenade® ASO",
+          "ingrediente": "Bacillus amyloliquefaciens cepa QST 713 (denominación de ficha Bayer)",
+          "registro": "Ficha técnica peruana incluye vid–oídio; verificar estado de PBUA y etiqueta actual en SIGIA.",
+          "fuente": "https://www.agro.bayer.pe/es-pe/productos/product-details.label.html/fungicide/serenade_aso.html",
+          "nota": "Alternativa preventiva dentro de un programa de rotación y vigilancia; la ficha del fabricante es evidencia documental, no recomendación de dosis.",
+          "modo": "Acción microbiana múltiple"
         }
       ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
-        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+        "https://www.mdpi.com/2073-4395/10/5/622",
+        "https://doi.org/10.3390/su15032837"
       ]
     },
     {
@@ -258,7 +272,9 @@
       ],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+        "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2024.1425392/full",
+        "https://doi.org/10.1016/j.fm.2024.104564"
       ]
     },
     {
@@ -347,7 +363,8 @@
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-        "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979"
+        "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
+        "https://www.senasa.gob.pe/senasacontigo/senasa-promueve-uso-de-controladores-biologicos-como-alternativa-para-el-control-de-plagas/"
       ]
     },
     {
@@ -384,7 +401,17 @@
       "dano": "Dasiops spp. se asocia con daño en ovarios y flores, aborto y caída de frutos jóvenes.",
       "modelo_nota": "La fenología de floración y actividad de adultos pesan más que una relación climática general; las capturas deben cuantificarse.",
       "manejo_cultural": "Monitorear flores, frutos recién cuajados y trampas, recolectar material dañado.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico de origen biológico / cebo",
+          "nombre": "GF-120™ (referencia comercial)",
+          "ingrediente": "spinosad; cebo atrayente",
+          "registro": "Farmex Perú lo describe para moscas de la fruta y del ovario; revisar etiqueta exacta para maracuyá.",
+          "fuente": "https://www.farmex.com.pe/producto/gf-120/",
+          "nota": "La página comercial no equivale a autorización automática en maracuyá; consultar SIGIA antes de usar.",
+          "modo": "IRAC 5"
+        }
+      ],
       "referencias": [
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
         "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
@@ -472,11 +499,20 @@
           "registro": "Uso divulgado por SENASA (2020); elegir formulación de origen y calidad verificados",
           "fuente": "https://www.senasa.gob.pe/senasacontigo/productores-emplean-control-biologico-para-combatir-plagas-en-el-cultivo-de-banano/",
           "nota": "Uso documentado por SENASA frente al picudo negro en banano; no significa que cualquier formulación esté autorizada."
+        },
+        {
+          "tipo": "Biológico / controlador",
+          "nombre": "Metarhizium anisopliae",
+          "ingrediente": "Hongo entomopatógeno",
+          "registro": "SENASA lo incluye entre controladores biológicos para Cosmopolites sordidus en su guía de plátano (2020). Producto comercial y etiqueta: verificación pendiente.",
+          "fuente": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
+          "nota": "Uso técnico documentado junto a trampas; no sustituye identificación ni comprobación de calidad/registro del formulado."
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
-        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
+        "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/",
+        "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf"
       ]
     },
     {
@@ -539,5 +575,7 @@
         "https://www.senasa.gob.pe/senasacontigo/piura-estrategias-fitosanitarias-permanentes-evitan-la-dispersion-del-fusarium-r4t/"
       ]
     }
-  ]
+  ],
+  "revision_documental": "2026-10-21",
+  "criterio_fuentes": "Prioridad a publicaciones científicas desde 2020, SENASA e institutos oficiales; fuentes históricas solo para contextualizar. No se extrapolan eficacias a Lambayeque sin datos locales."
 }
