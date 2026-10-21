@@ -156,10 +156,10 @@
       "exact": true
     },
     "banano-enfermedad-1": {
-      "url": "https://www.embrapa.br/image/journal/article?img_id=60861757&t=1619114758439&width=356",
-      "source": "https://www.embrapa.br/busca-de-noticias/-/noticia/60679338/ministerio-faz-alerta-para-conter-entrada--de-praga-quarentenaria-da-bananeira-no-brasil",
-      "credit": "Embrapa Brasil",
-      "caption": "Sección de pseudotallo de banano con síntomas de fusariosis; requiere diagnóstico para identificar R4T",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana_(variety-_Koa_e%27_Kea)-_Fusarium_wilt_(Panama_disease).jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Banana_(variety-_Koa_e%27_Kea)-_Fusarium_wilt_(Panama_disease).jpg",
+      "credit": "Scot Nelson · Wikimedia Commons · CC0",
+      "caption": "Banano con síntomas de marchitez por Fusarium (enfermedad de Panamá). La imagen no confirma raza 4 tropical.",
       "exact": false
     },
     "banano-enfermedad-2": {
