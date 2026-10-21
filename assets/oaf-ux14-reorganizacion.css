@@ -1,0 +1,60 @@
+/* UX14 OAF · jerarquía visual de clima y predicción científica */
+#inicio .oaf-ux14-home-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.84fr);gap:15px;align-items:stretch;margin:10px 0 22px}
+#inicio .oaf-ux14-home-hero>.oaf-hero-2026{width:100%!important;min-height:0!important;height:auto!important;aspect-ratio:auto;display:flex!important;align-self:stretch;border-radius:17px}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg{aspect-ratio:auto!important;width:100%!important;height:100%!important;min-height:0!important;max-height:400px!important;display:flex!important;align-items:center}
+#inicio .oaf-ux14-home-hero .oaf-hero-2026 .heroimg img{width:100%!important;height:100%!important;min-height:0!important;object-fit:contain!important;object-position:center!important}
+#inicio .oaf-ux14-home-side{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.oaf-ux14-tile{background:linear-gradient(145deg,#f2faf6,#e9f3ed);border:1px solid #c8e2d5;border-top:4px solid #318c77;border-radius:15px;padding:18px;box-shadow:0 8px 20px #11483210;display:flex;flex-direction:column;gap:7px;min-width:0}
+.oaf-ux14-tile.oaf-ux14-nino{background:linear-gradient(145deg,#fffaf0,#eff7f1);border-top-color:#c88d49}
+.oaf-ux14-tile small{font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:850;color:#26725f}
+.oaf-ux14-tile h2{font-size:18px;color:#184f42;line-height:1.25;margin:2px 0}
+.oaf-ux14-tile p{font-size:12px;color:#4e6b5f;line-height:1.6;margin:0}
+.oaf-ux14-tile a{color:#11684e;font-weight:800;font-size:12px;margin-top:auto}
+.oaf-ux14-dot{display:inline-block;background:#399873;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.oaf-ux14-intro{background:linear-gradient(112deg,#0e4146,#156b60 74%,#388774);color:#fff;border-radius:20px;padding:29px 32px;margin:5px 0 15px}
+.oaf-ux14-intro>span{color:#bce7d3;font-size:11px;letter-spacing:.13em;font-weight:850}
+.oaf-ux14-intro h1{font-size:clamp(27px,3vw,36px);line-height:1.2;color:#fff;margin:7px 0 10px}
+.oaf-ux14-intro p{color:#e6f4ec;max-width:105ch;margin:0;font-size:14px;line-height:1.78}
+.oaf-ux14-alert{border:1px solid #e4cfa6;border-left:5px solid #be9044;background:#fff9ef;border-radius:12px;padding:15px 18px;margin-bottom:15px;color:#71542d}
+.oaf-ux14-alert strong{font-size:14px;color:#644a22}
+.oaf-ux14-alert p{margin:5px 0 0;font-size:13px;line-height:1.7}
+.oaf-ux14-block{border:1px solid #cfe3d8;border-radius:19px;padding:22px 24px;background:#fff;box-shadow:0 10px 24px #113f3212;margin:16px 0;min-width:0}
+.oaf-ux14-heading{border-bottom:1px solid #deebe3;padding-bottom:14px;margin-bottom:15px}
+.oaf-ux14-heading small{font-size:11px;font-weight:850;letter-spacing:.1em;color:#208574;text-transform:uppercase}
+.oaf-ux14-heading h2{font-size:clamp(22px,2.3vw,29px);color:#155546;margin:5px 0}
+.oaf-ux14-heading p{font-size:13px;line-height:1.75;color:#547468;margin:0}
+.oaf-ux14-controls{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap;margin:13px 0}
+.oaf-ux14-controls label{color:#245e50;font-weight:800;font-size:12px}
+.oaf-ux14-controls select{background:#f8fbf8;border:1px solid #b6d9c6;border-radius:9px;padding:10px 13px;min-width:180px;color:#185245;font:inherit;font-size:13px}
+.oaf-ux14-chart{min-height:260px;border-radius:13px;background:linear-gradient(180deg,#fff,#f5faf9);border:1px solid #d8e7dc;padding:8px;overflow:hidden;display:grid;place-items:center;color:#637a70;font-size:13px}
+.oaf-ux14-chart svg{width:100%;height:auto}
+.oaf-ux14-chart svg [tabindex]:focus{outline:2px solid #266e5c}
+.oaf-ux14-key{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:12px;color:#537368;font-size:11px}
+.oaf-ux14-key i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.oaf-ux14-source{border-top:1px solid #e3eee7;padding-top:10px;font-size:12px;color:#547167;line-height:1.7}
+.oaf-ux14-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0}
+.oaf-ux14-metrics article{padding:15px;border-radius:12px;background:#edf7f3;border:1px solid #cde4d8}
+.oaf-ux14-metrics small{display:block;color:#557368;font-size:11px}
+.oaf-ux14-metrics strong{display:block;color:#145843;font-size:20px;margin-top:3px}
+.oaf-ux14-no-forecast{background:#f8f4eb;border-left:3px solid #bf9254;padding:12px 15px;font-size:12px;line-height:1.65;color:#725c35;border-radius:0 9px 9px 0}
+.oaf-ux14-no-forecast a{color:#1a6956;font-weight:800}
+.oaf-ux14-legacy>summary{font-size:14px;font-weight:800;cursor:pointer}
+.oaf-ux14-station-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px;font-size:11px;color:#47665b}
+.oaf-ux14-station-legend span{display:flex;align-items:center;gap:5px}
+.oaf-ux14-station-legend i{width:12px;height:12px;border-radius:50%;border:1px solid #fff;box-shadow:0 0 0 1px #c9d9d0}
+#oaf-stations-map svg circle.oaf-map-symbol{transition:filter .18s}
+#oaf-stations-map svg circle.oaf-map-symbol:hover{filter:drop-shadow(0 1px 4px #183e374a)}
+#autor #oaf-ux9-predicciones:empty{display:none}
+@media(max-width:950px){
+ #inicio .oaf-ux14-home-hero{grid-template-columns:1fr}
+ #inicio .oaf-ux14-home-side{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ #inicio .oaf-ux14-home-hero>.oaf-hero-2026{max-height:350px}
+}
+@media(max-width:650px){
+ #inicio .oaf-ux14-home-side{grid-template-columns:1fr}
+ #inicio .oaf-ux14-home-hero>.oaf-hero-2026{max-height:260px}
+ .oaf-ux14-intro{padding:22px 19px}
+ .oaf-ux14-block{padding:16px 14px}
+ .oaf-ux14-metrics{grid-template-columns:1fr}
+ .oaf-ux14-controls select{width:100%}
+}
