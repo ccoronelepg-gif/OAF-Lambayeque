@@ -49,7 +49,9 @@ class UXContract(unittest.TestCase):
         names=re.findall(r'<script\b[^>]*src="([^"]+)"',HTML)
         before=BASE["scripts_orden_de_carga"]
         self.assertEqual(len(before),45)
-        indices=[names.index(x) for x in before]
+        # Comparar rutas sin el parámetro de versión: cambia al actualizar la caché PWA.
+        names_base=[url.split('?')[0] for url in names]
+        indices=[names_base.index(x.split('?')[0]) for x in before]
         self.assertEqual(indices,sorted(indices))
         for url in names:
             self.assertTrue((ROOT/url.split("?")[0]).is_file(),url)
