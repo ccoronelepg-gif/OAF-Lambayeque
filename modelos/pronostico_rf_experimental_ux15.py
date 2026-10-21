@@ -147,54 +147,102 @@ def latest_monthly_era5(history,archives):
     return history
 
 def fit_month(history):
+    """Select RF hyperparameters and a conservative RF/climatology weight on 2019-20.
+    Evaluate 2021-25 exactly once AFTER choices are frozen.
+    A local seasonal baseline is more demanding than a global median.
+    """
     X=[];yr=[];yt=[];times=[];cities=[]
     for city,series in history.items():
         for key,record in series.items():
             y,m=map(int,key.split("-"))
             features=monthly_features(series,y,m,city)
             if features is None:continue
-            X.append(features);yr.append(math.log1p(record["rain"]));yt.append(record["temp"]);times.append(key);cities.append(city)
-    X=np.asarray(X,float)
-    train=np.asarray([x<"2021-01" for x in times])
-    test=np.asarray(["2021-01"<=x<"2026-01" for x in times])
-    if train.sum()<750 or test.sum()<190:raise ValueError("Serie mensual insuficiente")
-    opts={"n_estimators":240,"max_depth":10,"min_samples_leaf":5,"n_jobs":2,"random_state":20261021}
-    r=RandomForestRegressor(**opts).fit(X[train],np.asarray(yr)[train])
-    t=RandomForestRegressor(**opts).fit(X[train],np.asarray(yt)[train])
-    observed=np.expm1(np.asarray(yr)[test])
-    er=float(np.mean(np.abs(observed-np.maximum(0,np.expm1(r.predict(X[test]))))))
-    et=float(np.mean(np.abs(np.asarray(yt)[test]-t.predict(X[test]))))
-    # Evaluate same subset against month+city historical 1996–2020 references.
-    clim={}
-    for city,series in history.items():
-        for m in range(1,13):
-            vals=[x for key,x in series.items() if key<"2021-01" and key.endswith(f"-{m:02d}")]
-            if vals:clim[(city,m)]=(np.mean([x["rain"] for x in vals]),np.mean([x["temp"] for x in vals]))
-    # Línea base más justa: promedio histórico por localidad y mes calendario, 1996-2020.
-    clim_test=np.asarray([clim.get((city,int(key[-2:])),(np.nan,np.nan))[0] for city,key in zip(cities,times)])[test]
-    clim_temp=np.asarray([clim.get((city,int(key[-2:])),(np.nan,np.nan))[1] for city,key in zip(cities,times)])[test]
-    if not np.isfinite(clim_test).all() or not np.isfinite(clim_temp).all():raise ValueError("Climatologia local incompleta")
-    mae_clim=float(np.mean(np.abs(observed-clim_test)))
-    mae_tclim=float(np.mean(np.abs(np.asarray(yt)[test]-clim_temp)))
-    # La baseline global se conserva únicamente para comparabilidad con la fase anterior.
-    baseline=float(np.mean(np.abs(observed-np.median(np.expm1(np.asarray(yr)[train])))))
-    r.fit(X,np.asarray(yr));t.fit(X,np.asarray(yt))
-    return (r,t),{"mae_lluvia_mm":round(er,2),"mae_temp_c":round(et,2),
-                  "mae_climatologia_local_mm":round(mae_clim,2),
-                  "mae_temperatura_climatologia_local_c":round(mae_tclim,2),
-                  "ventaja_rf_frente_a_climatologia_local_mm":round(mae_clim-er,2),
-                  "rf_supera_climatologia_local_en_prueba":bool(er<mae_clim),
-                  "mejora_candidata":"Identidad de localidad como 4 indicadores binarios; comparar MAE local temporal",
-                  "baseline_global_mm":round(baseline,2),
-                  "periodo_prueba":"2021-2025","tipo_prueba":"retrospectiva un paso con datos previos, no recorrido autoregresivo",
-                  "n_entrenamiento":int(train.sum()),"n_prueba":int(test.sum())}
+            X.append(features);yr.append(math.log1p(record["rain"]))
+            yt.append(record["temp"]);times.append(key);cities.append(city)
+    X=np.asarray(X,float);yr=np.asarray(yr,float);yt=np.asarray(yt,float)
+    d=np.asarray(times)
+    train=d<"2019-01";validation=(d>="2019-01")&(d<"2021-01")
+    traintest=d<"2021-01";test=(d>="2021-01")&(d<"2026-01")
+    if train.sum()<800 or validation.sum()<60 or test.sum()<190:
+        raise ValueError("Separación temporal insuficiente para seleccionar RF")
+    def clim_table(end):
+        result={}
+        for city,series in history.items():
+            for month in range(1,13):
+                values=[x for key,x in series.items()
+                        if key<end and key.endswith(f"-{month:02d}")]
+                if not values:raise ValueError("Climatología incompleta "+city)
+                result[city,month]=(float(np.mean([v["rain"] for v in values])),
+                                    float(np.mean([v["temp"] for v in values])))
+        return result
+    def baseline(table,indices,col):
+        return np.asarray([table[cities[i],int(times[i][-2:])][col]
+                           for i in np.flatnonzero(indices)],float)
+    old=clim_table("2019-01")
+    valid_clim=baseline(old,validation,0)
+    observed_val=np.expm1(yr[validation])
+    params=[
+        {"n_estimators":160,"max_depth":8,"min_samples_leaf":12},
+        {"n_estimators":200,"max_depth":10,"min_samples_leaf":7},
+        {"n_estimators":200,"max_depth":14,"min_samples_leaf":4},
+    ]
+    val=[]
+    for conf in params:
+        model=RandomForestRegressor(**conf,n_jobs=2,random_state=20261021)
+        model.fit(X[train],yr[train])
+        predicted=np.maximum(0,np.expm1(model.predict(X[validation])))
+        raw=float(np.mean(np.abs(observed_val-predicted)))
+        # Retain a nonzero RF component in an explicit candidate, never pretend
+        # a 100% climatological baseline is a Random Forest forecast.
+        for weight in (0.2,0.4,0.6,0.8,1.0):
+            weighted=weight*predicted+(1-weight)*valid_clim
+            mae=float(np.mean(np.abs(observed_val-weighted)))
+            val.append((mae,raw,weight,conf))
+    val.sort(key=lambda x:(x[0],x[1],x[2],x[3]["max_depth"]))
+    valid_mae,valid_raw,weight,best=val[0]
+    params_best={**best,"n_jobs":2,"random_state":20261021}
+    rain=RandomForestRegressor(**params_best)
+    temp=RandomForestRegressor(**params_best)
+    rain.fit(X[traintest],yr[traintest]);temp.fit(X[traintest],yt[traintest])
+    ref=clim_table("2021-01")       # 1996-2020 only, frozen before the test.
+    obs=np.expm1(yr[test]);raw_rf=np.maximum(0,np.expm1(rain.predict(X[test])))
+    local_ref=baseline(ref,test,0);tref=baseline(ref,test,1)
+    hybrid=weight*raw_rf+(1-weight)*local_ref
+    mae_raw=float(np.mean(np.abs(obs-raw_rf)))
+    mae_hybrid=float(np.mean(np.abs(obs-hybrid)))
+    mae_clim=float(np.mean(np.abs(obs-local_ref)))
+    mae_temp=float(np.mean(np.abs(yt[test]-temp.predict(X[test]))))
+    mae_temp_clim=float(np.mean(np.abs(yt[test]-tref)))
+    # After reporting the untouched test, fit candidate on all completed records.
+    rain.fit(X,yr);temp.fit(X,yt)
+    metrics={
+        "mae_lluvia_mm":round(mae_raw,2),
+        "mae_rf_ajustado_mm":round(mae_hybrid,2),
+        "mae_temp_c":round(mae_temp,2),
+        "mae_climatologia_local_mm":round(mae_clim,2),
+        "mae_temperatura_climatologia_local_c":round(mae_temp_clim,2),
+        "peso_rf_ajustado":weight,
+        "ventaja_rf_frente_a_climatologia_local_mm":round(mae_clim-mae_raw,2),
+        "ventaja_hibrido_frente_a_climatologia_local_mm":round(mae_clim-mae_hybrid,2),
+        "rf_supera_climatologia_local_en_prueba":bool(mae_raw<mae_clim),
+        "rf_ajustado_supera_climatologia_en_prueba":bool(mae_hybrid<mae_clim),
+        "seleccion_hyperparametros":best,
+        "mae_validacion_2019_2020_ajustado_mm":round(valid_mae,2),
+        "mae_validacion_2019_2020_rf_crudo_mm":round(valid_raw,2),
+        "seleccion_solo_validacion":"2019-2020; test 2021-2025 no usado para seleccionar",
+        "periodo_prueba":"2021-2025",
+        "tipo_prueba":"retrospectiva a un paso con rezagos reales; 6 meses encadenados sin validacion",
+        "n_entrenamiento":int(traintest.sum()),
+        "n_prueba":int(test.sum()),
+    }
+    return (rain,temp,weight,ref),metrics
 
 def next_month(year,month):
     if month==12:return year+1,1
     return year,month+1
 
 def predict_month(model,series,city):
-    rain,temp=model;s=dict(series)
+    rain,temp,weight,climatology=model;s=dict(series)
     latest=max(s);y,m=map(int,latest.split("-"))
     horizon=[]
     for _ in range(18):
@@ -202,7 +250,9 @@ def predict_month(model,series,city):
         feat=monthly_features(s,y,m,city)
         if feat is None:raise ValueError("Sin retardos mensuales "+key)
         xr=np.asarray([feat],float)
-        r=round(max(0,min(2000,math.expm1(float(rain.predict(xr)[0])))),1)
+        rf_raw=max(0,min(2000,math.expm1(float(rain.predict(xr)[0]))))
+        clim=climatology.get((city,m),(rf_raw,0))[0]
+        r=round(weight*rf_raw+(1-weight)*clim,1)
         t=round(float(temp.predict(xr)[0]),1)
         s[key]={"rain":r,"temp":t}
         if key>="2026-11":horizon.append({"mes":key,"precipitacion_mm":r,"temperatura_media_c":t,"recursivo":True})
