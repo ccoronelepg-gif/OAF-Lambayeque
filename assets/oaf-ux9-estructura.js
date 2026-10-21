@@ -7,12 +7,6 @@ function attach(){
  const archivedHome=$("oaf-agro-archive-home")?.querySelector("div")||legacy;
  const archivedAutor=$("oaf-agro-archive-autor")?.querySelector("div")||legacy;
  const archive=(id,where=archivedHome)=>{const x=$(id);if(x)where.append(x)};
- const intro=document.querySelector(".oaf-agro-summary");
- if(intro&&!intro.querySelector(".oaf-intro-columns")){
-  const paragraphs=[...intro.querySelectorAll(":scope > p")];
-  const wrapper=document.createElement("div");wrapper.className="oaf-intro-columns";
-  intro.append(wrapper);paragraphs.forEach(p=>wrapper.append(p));
- }
  // Eliminar duplicaciones visibles sin borrar sus contenedores o fuentes científicas.
  archive("oaf-agro-home-map");archive("oaf-agro-home-existing-forecast");
  const b1=$("oaf-bloque-clima-actual");
