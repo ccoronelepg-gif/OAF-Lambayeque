@@ -76,7 +76,9 @@ function future(){
  plot(root,rows.slice(0,6).map(r=>MONTHS[Number(r.mes.slice(-2))-1]+" "+r.mes.slice(2,4)),series,unit);
  if(key)legend(key,[["#aa65b4","Random Forest 10O · futuro experimental"],["#339878","Climatología ERA5 1996–2020 · referencia histórica"]]);
  const mae=rf?.metrica_mensual;
- status.textContent="Localidad: "+city+". Candidato RF "+rows[0].mes+"–"+rows[5].mes+"; emitido "+(rf.fecha_generacion_utc||"sin fecha")+". Prueba temporal 2021–2025: MAE RF "+(mae?.mae_lluvia_mm??"s/d")+" mm/mes frente a climatología local "+(mae?.mae_climatologia_local_mm??"s/d")+" mm/mes. "+(mae?.rf_supera_climatologia_local_en_prueba===false?"El RF aún no supera la referencia climatológica. ":"")+"No se ha validado habilidad a seis meses; no emitir alertas con esta proyección.";
+ const multi=mae?.evaluacion_multihorizonte?.por_horizonte||[];
+ const lead3=multi.find(x=>x.meses_adelante===3),lead6=multi.find(x=>x.meses_adelante===6);
+ status.textContent="Localidad: "+city+". RF candidato "+rows[0].mes+"–"+rows[5].mes+", desde último mes ERA5 completo: "+(rf.ultimo_mes_con_datos?.[city]||"sin fecha")+". Los 6 meses mostrados implican entre "+(rows[0].adelanto_desde_ultimo_mes_observado||2)+" y "+(rows[5].adelanto_desde_ultimo_mes_observado||7)+" pasos autoregresivos. MAE retrospectivo de 1 paso RF "+(mae?.mae_lluvia_mm??"s/d")+" mm/mes frente a climatología "+(mae?.mae_climatologia_local_mm??"s/d")+" mm/mes. "+(lead3?"Backtest recursivo del mes 3: RF "+fmt(lead3.mae_rf_mm)+" mm y climatología "+fmt(lead3.mae_climatologia_local_mm)+" mm. ":"")+(lead6?"En el mes 6: RF "+fmt(lead6.mae_rf_mm)+" mm y climatología "+fmt(lead6.mae_climatologia_local_mm)+" mm. ":"")+"El mes 7 de anticipación no dispone todavía de comprobación comparable. No utilizar como pronóstico operativo ni alerta.";
 }
 function cards(){
  const area=$("oaf-ux16-future-cards"),city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo";if(!area)return;
@@ -86,6 +88,14 @@ function cards(){
  for(const row of rows.slice(0,6)){
   const tile=E("article","oaf-ux15-future-month"),month=MONTHS[Number(row.mes.slice(-2))-1]+" "+row.mes.slice(0,4);
   tile.append(E("strong",null,month),E("span",null,"Lluvia RF: "+fmt(row.precipitacion_mm)+" mm/mes"),E("span",null,"T. media RF: "+fmt(row.temperatura_media_c)+" °C"),E("small","oaf-ux15-future-badge","Candidato · no operativo"));
+  const lead=row.adelanto_desde_ultimo_mes_observado;
+  if(Number.isInteger(lead)){
+   const diag=rf?.metrica_mensual?.evaluacion_multihorizonte?.por_horizonte?.find(x=>x.meses_adelante===lead);
+   const note=lead>6?"7 meses desde dato real · sin validación a este horizonte":diag?
+    "Paso "+lead+" · MAE RF "+fmt(diag.mae_rf_mm)+" mm frente a clima "+fmt(diag.mae_climatologia_local_mm)+" mm en backtest":
+    "Paso "+lead+" desde último mes observado";
+   tile.append(E("small","oaf-ux17-lead-note",note));
+  }
   area.append(tile);
  }
 }
