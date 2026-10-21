@@ -37,12 +37,12 @@ class UX9(unittest.TestCase):
         for f in FILES:
             self.assertTrue((ROOT/f).is_file(),f)
             self.assertIn(f,PAGE)
-        css=(ROOT/FILES[1]).read_text("utf-8")
+        css=(ROOT/FILES[0]).read_text("utf-8")
         self.assertIn("text-align:justify",css)
         self.assertIn("oaf-plain-weather",css)
 
     def test_only_responsible_forecasts_and_enso(self):
-        js=(ROOT/FILES[5]).read_text("utf-8")
+        js=(ROOT/FILES[4]).read_text("utf-8")
         for text in ("forecast_days","precipitation_sum","temperature_2m_max",
                      "oaf-ux9-final-lluvia","oaf-ux9-final-enso",
                      "datos/estado_enso_verificado_ux9_2026.json",
