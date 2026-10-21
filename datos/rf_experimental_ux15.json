@@ -2,7 +2,7 @@
   "tipo": "RandomForestRegressor original reproducible de investigación, NO modelo operativo",
   "unidades_temperatura": "Diario Tmax; mensual temperatura media (no promedio de Tmax)",
   "estrategia_mejora": "Características de localidad explicitas; climatologia mensual local y prueba temporal para lluvia y temperatura.",
-  "fecha_generacion_utc": "2026-10-21T21:14:20+00:00",
+  "fecha_generacion_utc": "2026-10-21T21:15:56+00:00",
   "fecha_local": "2026-10-21",
   "fuente_historica": "ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
   "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
@@ -15,6 +15,9 @@
   "metrica_diaria": {
     "mae_lluvia_mm": 2.33,
     "mae_temperatura_c": 0.83,
+    "mae_climatologia_local_lluvia_mm": 3.06,
+    "mae_climatologia_local_temperatura_c": 1.0,
+    "rf_supera_climatologia_local_diaria": true,
     "baseline_global_lluvia_mm": 3.16,
     "baseline_global_temperatura_c": 1.55,
     "periodo_prueba": "2025 completo",
