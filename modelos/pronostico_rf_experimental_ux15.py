@@ -255,7 +255,7 @@ def fit_month(history):
                     known[key]={"rain":estimate,"temp":t_est}
                     yy,mm=next_month(yy,mm)
     if not multistep:raise ValueError("No se pudo evaluar horizonte prospectivo recursivo")
-    metrics["evaluacion_multihorizonte"]={
+    multistep_report={
        "metodo":"modelo congelado entrenado hasta 2020; orígenes enero/julio de 2021-2025; sin usar valores futuros como retardos",
        "tipo":"backtest recursivo fuera de muestra; no es validación as-issued ni instrumental",
        "n_puntos":len(multistep),
@@ -289,6 +289,7 @@ def fit_month(history):
         "n_entrenamiento":int(traintest.sum()),
         "n_prueba":int(test.sum()),
     }
+    metrics["evaluacion_multihorizonte"]=multistep_report
     return (rain,temp,weight,ref),metrics
 
 def next_month(year,month):
