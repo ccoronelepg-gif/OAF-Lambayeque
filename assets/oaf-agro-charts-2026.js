@@ -37,7 +37,7 @@ async function annual(id,placeId,varId){
  try{
  const rows=(await loadHistoric()).filter(r=>r.localidad===place&&/^(199[6-9]|20[0-2]\d)-\d\d$/.test(r.mes));
  const grouped=new Map();
- for(const r of rows){const yr=r.mes.slice(0,4);if(!grouped.has(yr))grouped.set(yr,[]);grouped.get(yr).push(Number(r[kind]))}
+ for(const r of rows){const yr=r.mes.slice(0,4);if(!grouped.has(yr))grouped.set(yr,[]);grouped.get(yr).push(r[kind]!==""?Number(r[kind]):NaN)}
  const years=[...grouped.keys()].sort().filter(y=>Number(y)<=2025), vals=years.map(y=>{const a=grouped.get(y);return a.length===12&&a.every(Number.isFinite)?(kind==="precipitacion_mm"?a.reduce((x,z)=>x+z,0):a.reduce((x,z)=>x+z,0)/12):NaN});
  plot(id,vals,years,{mode:"line",unit:kind==="precipitacion_mm"?"mm/año":"°C",source:`Análisis OAF de ERA5 · ${place} · datos históricos`});
  }catch(e){error(id,"No se pudo leer la serie histórica: "+e.message)}
@@ -102,7 +102,7 @@ async function stationMap(){
 }
 async function ninoSignal(){
  const box=$("oaf-nino-signal");if(!box)return;
- try{const rows=csv(await req("datos/noaa_ersstv5_nino12_mensual.csv").then(r=>r.text())).filter(r=>Number.isFinite(Number(r.anomalia_ersstv5_c)));const last=rows.at(-1);if(!last)throw Error("Sin anomalía válida");box.replaceChildren();
+ try{const rows=csv(await req("datos/noaa_ersstv5_nino12_mensual.csv").then(r=>r.text())).filter(r=>r.anomalia_ersstv5_c!==""&&Number.isFinite(Number(r.anomalia_ersstv5_c)));const last=rows.at(-1);if(!last)throw Error("Sin anomalía válida");box.replaceChildren();
  const small=document.createElement("small");small.textContent="NOAA ERSSTv5 · Niño 1+2 · último mes archivado";const value=document.createElement("strong");value.textContent=`${last.mes} · ${fmt(Number(last.anomalia_ersstv5_c),2)} °C de anomalía`;const p=document.createElement("p");p.className="oaf-agro-caption";p.textContent="Indicador oceánico histórico; no asigna por sí solo categoría de alerta ni pronostica lluvia en una parcela.";box.append(small,value,p);
  }catch(e){box.textContent="Serie oceánica no disponible: "+e.message}
 }
