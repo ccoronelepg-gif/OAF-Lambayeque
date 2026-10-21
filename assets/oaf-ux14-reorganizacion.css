@@ -123,3 +123,22 @@
 .oaf-ux15-rf-out .oaf-ux14-chart svg{display:block;width:100%;height:auto;max-height:330px}
 #oaf-ux15-counter{display:flex;align-items:center;justify-content:center;gap:8px 18px;flex-wrap:wrap;flex:1}
 @media(max-width:560px){.oaf-ux15-rf-out{padding:12px}.oaf-ux15-rf-out h3{font-size:17px}}
+
+/* UX16: solo dos graficas, vistas historica y futura, tarjetas mensuales por localidad */
+.oaf-ux14-controls[hidden],.oaf-ux14-metrics[hidden],#oaf-ux16-future-controls[hidden]{display:none!important}
+.oaf-ux16-month-view{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:15px 0 10px;padding:11px 13px;border:1px solid #c6ded0;border-radius:10px;background:#f1f8f3}
+.oaf-ux16-month-view label{color:#1d6654;font-size:12px;font-weight:800}
+.oaf-ux16-month-view select{flex:1 1 245px;max-width:550px;min-height:40px;border-radius:8px;border:1px solid #b7d6c3;background:white;color:#164f41;padding:7px 11px;font:inherit;font-size:13px}
+#oaf-ux14-rf-semana .oaf-ux14-chart svg,#oaf-ux14-rf-mes .oaf-ux14-chart svg{display:block;max-height:380px;width:100%;height:auto}
+#oaf-ux14-rf-semana .oaf-ux14-chart,#oaf-ux14-rf-mes .oaf-ux14-chart{min-height:280px;background:linear-gradient(160deg,#fff 20%,#f7fbf9)}
+#oaf-ux14-rf-semana .oaf-ux14-key,#oaf-ux14-rf-mes .oaf-ux14-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin:12px 0}
+.oaf-ux16-future-panel{margin:18px 0 28px;border-radius:17px;border:1px solid #d2e5d9;border-top:5px solid #826db1;background:linear-gradient(155deg,#f9f9fd,#f2f8f5);padding:21px 23px}
+.oaf-ux16-future-panel h3{color:#245749;font-size:clamp(20px,2.3vw,26px);margin:9px 0}
+.oaf-ux16-future-panel p{font-size:12px;line-height:1.7;color:#526c61}
+.oaf-ux16-future-panel .oaf-ux14-controls{margin:15px 0;display:flex}
+.oaf-ux16-future-panel .oaf-ux15-future-calendar{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.oaf-ux16-future-panel .oaf-ux15-future-month{background:#fff;border:1px solid #d1e1d6;padding:14px;box-shadow:0 3px 9px #123d3110}
+.oaf-ux16-future-panel .oaf-ux15-future-month strong{color:#295e4d}
+.oaf-ux16-future-panel .oaf-ux15-future-month span{font-size:12px}
+@media(max-width:690px){.oaf-ux16-future-panel{padding:15px 13px}.oaf-ux16-future-panel .oaf-ux15-future-calendar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.oaf-ux16-future-panel .oaf-ux15-future-calendar{grid-template-columns:1fr}.oaf-ux16-month-view select{min-width:0;width:100%}}
