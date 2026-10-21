@@ -76,7 +76,7 @@ function future(){
  plot(root,rows.slice(0,6).map(r=>MONTHS[Number(r.mes.slice(-2))-1]+" "+r.mes.slice(2,4)),series,unit);
  if(key)legend(key,[["#aa65b4","Random Forest 10O · futuro experimental"],["#339878","Climatología ERA5 1996–2020 · referencia histórica"]]);
  const mae=rf?.metrica_mensual;
- status.textContent="Localidad: "+city+". Proyección autoregresiva experimental "+rows[0].mes+"–"+rows[5].mes+" emitida "+(rf.fecha_generacion_utc||"sin fecha")+". MAE RF retrospectivo de UN paso: "+(mae?.mae_lluvia_mm??"s/d")+" mm/mes. No mide precisión a seis meses ni permite emitir alertas. La línea histórica NO es un pronóstico.";
+ status.textContent="Localidad: "+city+". Candidato RF "+rows[0].mes+"–"+rows[5].mes+"; emitido "+(rf.fecha_generacion_utc||"sin fecha")+". Prueba temporal 2021–2025: MAE RF "+(mae?.mae_lluvia_mm??"s/d")+" mm/mes frente a climatología local "+(mae?.mae_climatologia_local_mm??"s/d")+" mm/mes. "+(mae?.rf_supera_climatologia_local_en_prueba===false?"El RF aún no supera la referencia climatológica. ":"")+"No se ha validado habilidad a seis meses; no emitir alertas con esta proyección.";
 }
 function cards(){
  const area=$("oaf-ux16-future-cards"),city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo";if(!area)return;
@@ -92,7 +92,12 @@ function cards(){
 function hist(){
  const current=$("oaf-ux14-metric");if(current)current.dispatchEvent(new Event("change",{bubbles:true}));
  const key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");
- if(key)legend(key,[["#2e8ab8","Lluvia observada CHIRPS"],["#e49d4d","Random Forest 10K · retrospectivo"],["#43977a","Climatología histórica"]]);
+ if(key){
+ const option=current?.value||"all",labels=[["#2e8ab8","Lluvia observada CHIRPS"]];
+ if(option!=="ref")labels.push(["#e49d4d","Random Forest 10K · retrospectivo"]);
+ if(option!=="rf")labels.push(["#43977a","Climatología histórica"]);
+ legend(key,labels);
+ }
 }
 function month(){
  const vista=$("oaf-ux16-vista")?.value||"historico",historicalControls=$("oaf-ux16-historical-controls"),futureControls=$("oaf-ux16-future-controls");
