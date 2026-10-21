@@ -25,6 +25,19 @@ function render(data){
  a.href=b.url;a.target="_blank";a.rel="noopener noreferrer";article.append(chip,h,date,p,sign,a);grid.append(article);
  }
  set("oaf-bol-conclusion",data.conclusion_general);
+ set("oaf-bol-corte",data.edicion||"Verificar fecha del comunicado");
+ const timeline=$("oaf-bol-evolucion");
+ if(timeline){
+  timeline.replaceChildren();
+  for(const e of data.evolucion||[]){
+   const card=el("article",undefined,"oaf-ux11-timeline-item");
+   const date=el("time",e.fecha);date.dateTime=e.fecha;
+   const heading=el("strong",e.etiqueta+" · "+e.estado);
+   const description=el("p",e.detalle);
+   const anchor=el("a","Ver comunicado ↗");anchor.href=e.url;anchor.target="_blank";anchor.rel="noopener noreferrer";
+   card.append(date,heading,description,anchor);timeline.append(card);
+  }
+ }
  const summaries=$("oaf-bol-mensajes");if(summaries){
   summaries.replaceChildren();
   const kinds=[["ENFEN",data.boletines[0].clave,"Estado comunicado el 16/10/2026"],["NOAA",data.boletines[2].clave,"Perspectiva publicada el 08/10/2026"],["Lambayeque","Consultar avisos SENAMHI","La lluvia diaria exige un aviso con fecha y ubicación"]];
@@ -35,7 +48,7 @@ function render(data){
   for(const sentence of [
    "ENFEN mantiene el estado de Alerta de El Niño Costero en su comunicado del 16 de octubre; indica seguimiento y preparación, no lluvias automáticas en cada valle.",
    "NOAA describe un El Niño global fortaleciéndose al 8 de octubre. Su magnitud se refiere al Pacífico ecuatorial central, no directamente al grado de lluvia en Lambayeque.",
-   "El escenario CENEPRED/SENAMHI para octubre–diciembre ayuda a planificar el riesgo por lluvias, pero no predice la fecha exacta de un evento local.",
+   "ENFEN 16-2026 proyectó lluvias superiores al promedio en la costa norte y posibles episodios moderados a fuertes desde noviembre; el comunicado 18 conserva la alerta. Es una perspectiva regional, no un pronóstico diario.",
    "Para temperatura elevada, viento y precipitaciones puntuales, consulta los avisos vigentes de SENAMHI; las fechas del portal son distintas de la fecha de esta síntesis."
   ])ul.append(el("li",sentence));
   holder.append(ul);
