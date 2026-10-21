@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/"datos"
-INDEX="https://enfen.imarpe.gob.pe/downloads/comunicados/"
+INDEX="https://enfen.imarpe.gob.pe/comunicados/"
 CURRENT="https://enfen.imarpe.gob.pe/comunicados/"
 HEADERS={"User-Agent":"OAF-Lambayeque/2.0 academic ENSO institutional provenance"}
 MONTHS={
@@ -48,30 +48,11 @@ def fetch(url):
     return r.text
 
 def latest_index():
-    soup=BeautifulSoup(fetch(INDEX),"html.parser")
-    items=[]
-    for link in soup.find_all("a",href=True):
-        title=link.get_text(" ",strip=True)
-        cmp=re.search(r"Comunicado\s+Oficial\s+Enfen\s+N\s*[°ºo.]?\s*(\d+)\s*[-–]\s*(20\d{2})",title,re.I)
-        if not cmp:
-            continue
-        issue,year=map(int,cmp.groups())
-        href=urljoin(INDEX,link["href"])
-        if urlparse(href).hostname not in ("enfen.imarpe.gob.pe","www.enfen.imarpe.gob.pe"):
-            continue
-        heading=link.find_parent(["h2","h3","h4"])
-        section=heading.get_text(" ",strip=True) if heading else title
-        stamp=re.search(r"\b(\d{1,2})\s+(Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Set|Sep|Oct|Nov|Dic)\b",section,re.I)
-        when=None
-        if stamp:
-            try:
-                when=dt.date(year,MONTHS[stamp.group(2).lower()],int(stamp.group(1))).isoformat()
-            except ValueError:pass
-        items.append({"numero":issue,"anio":year,"titulo":title,"url":href,"fecha_emision":when})
-    if not items:
-        raise ValueError("No se reconocieron comunicados fechados en el archivo oficial")
-    items.sort(key=lambda x:(x["anio"],x["numero"]),reverse=True)
-    return items[0]
+    """Index actual ENFEN; usar solamente enlaces reconocidos en el portal oficial."""
+    from actualizar_fuentes_oaf_2026 import latest_enfen
+    entry=latest_enfen(fetch(INDEX))
+    entry["fecha_emision"]=None
+    return entry
 
 def classify_status(text):
     # El rótulo institucional es el único punto de extracción de estado;
