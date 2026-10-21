@@ -36,6 +36,18 @@ jobs:
           assert j['alertas_automaticas'] is False
           assert j['operativo_certificado'] is False
           if j['estado']=='candidato_experimental_generado':
+              from datetime import date, timedelta
+              assert set(j['pronostico_diario_rf_experimental'])=={'Chiclayo','Jayanca','Motupe','Olmos'}
+              assert set(j['escenarios_mensuales_rf_experimentales'])=={'Chiclayo','Jayanca','Motupe','Olmos'}
+              for city,rows in j['pronostico_diario_rf_experimental'].items():
+                  dates=[date.fromisoformat(x['fecha']) for x in rows]
+                  assert len(dates)==7 and all(b-a==timedelta(days=1) for a,b in zip(dates,dates[1:]))
+                  assert all(x['precipitacion_mm']>=0 and -5<=x['temperatura_max_c']<=55 for x in rows)
+              metric=j['metrica_mensual']
+              assert 0.2<=metric['peso_rf_ajustado']<=1.0
+              assert metric['mae_climatologia_local_mm']>=0
+              assert metric['seleccion_solo_validacion'].startswith('2019-2020')
+              assert 'as-issued' not in metric.get('seleccion_solo_validacion','')
               assert j['horizonte_semanal']==7
               assert all(len(v)==7 for v in j['pronostico_diario_rf_experimental'].values())
               assert all(len(v)==6 and v[0]['mes']>='2026-11' for v in j['escenarios_mensuales_rf_experimentales'].values())
