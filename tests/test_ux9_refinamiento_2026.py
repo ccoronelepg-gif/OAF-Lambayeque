@@ -57,7 +57,7 @@ class UX9(unittest.TestCase):
         self.assertIn("cpc.ncep.noaa.gov/",doc["noaa"]["fuente"])
 
     def test_independent_geographic_map_from_published_geojson(self):
-        js=(ROOT/FILES[4]).read_text("utf-8")
+        js=(ROOT/FILES[3]).read_text("utf-8")
         self.assertIn("sectores_muestreo_9k.geojson",js)
         self.assertIn("data.features.length!==42",js)
         self.assertIn('oaf-ux9-map',js)
@@ -73,7 +73,7 @@ class UX9(unittest.TestCase):
                     'data-page="clima"','data-page="autor"'):
             self.assertIn(key,PAGE)
         self.assertIn('oaf-agro-archive-autor',(ROOT/"assets/oaf-agroexportacion-2026.js").read_text("utf-8"))
-        structure=(ROOT/FILES[2]).read_text("utf-8")
+        structure=(ROOT/FILES[1]).read_text("utf-8")
         self.assertIn("archivedHome.append",structure)
         self.assertIn("archivedAutor.append",structure)
         self.assertIn("oaf:ux9-ready",structure)
