@@ -1,0 +1,35 @@
+/* OAF-Lambayeque · Fase UX-7 | Estructura temática de las seis pestañas
+ * Es una capa de navegación: no cambia datos ni desplaza los gráficos existentes. */
+.oaf-page-outline{margin:17px 0 27px;border:1px solid #cddfd5;background:linear-gradient(135deg,#fff 0%,#f4f9f5 100%);border-radius:19px;padding:22px 24px;box-shadow:0 8px 24px #153e3410;scroll-margin-top:140px}
+.oaf-page-outline .oaf-outline-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px}
+.oaf-page-outline .oaf-outline-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:850;color:#2c7a68}
+.oaf-page-outline h2{margin:4px 0 6px!important;font-size:clamp(19px,2.2vw,25px)!important;line-height:1.27!important;color:#14483e}
+.oaf-page-outline .oaf-outline-subtitle{font-size:13px;line-height:1.65;color:#547067;margin:0;max-width:810px}
+.oaf-outline-total{display:inline-flex;white-space:nowrap;align-items:center;background:#e1f0e7;color:#245b4e;border-radius:20px;font-size:11px;font-weight:850;padding:7px 12px}
+.oaf-outline-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.oaf-outline-item{display:flex;flex-direction:column;gap:5px;min-height:123px;border:1px solid #d7e5db;background:#fff;border-radius:12px;padding:14px 15px;text-decoration:none;color:#1a4942;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+.oaf-outline-item:hover,.oaf-outline-item:focus-visible{border-color:#6ca58d;box-shadow:0 7px 18px #175b4618;transform:translateY(-1px)}
+.oaf-outline-item[aria-current="location"]{border-color:#20785f;background:#eff8f1}
+.oaf-outline-item strong{font-size:14px;line-height:1.37;color:#1e5146}
+.oaf-outline-item small{font-size:12px;line-height:1.47;color:#667d72}
+.oaf-outline-item .oaf-outline-topic{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;line-height:1.35;text-transform:uppercase;letter-spacing:.05em;font-weight:850;color:#527368}
+.oaf-outline-source{font-size:10px;line-height:1.3;font-weight:850;width:max-content;max-width:100%;padding:4px 8px;border-radius:999px;margin-top:auto}
+.oaf-outline-source[data-kind="externo"]{color:#1a5c81;background:#e9f3fa}
+.oaf-outline-source[data-kind="oaf"]{color:#21664a;background:#e7f4eb}
+.oaf-outline-source[data-kind="oficial"]{color:#6c541d;background:#fff2d9}
+.oaf-outline-source[data-kind="mixto"]{color:#52676e;background:#edf1f2}
+.oaf-outline-footer{border-top:1px solid #deebe2;padding-top:13px;margin-top:16px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.oaf-outline-footer p{font-size:12px!important;line-height:1.55!important;color:#547167;margin:0!important}
+.oaf-outline-footer a{font-size:12px;color:#146a56;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.oaf-outline-group{border-left:4px solid #7cac90;background:#f1f7f2;padding:15px 18px;margin:28px 0 15px;border-radius:0 10px 10px 0;scroll-margin-top:140px}
+.oaf-outline-group h2{font-size:20px!important;line-height:1.3!important;margin:0 0 4px!important;color:#1a5447}
+.oaf-outline-group p{font-size:13px!important;line-height:1.58!important;margin:0!important;color:#597265}
+.oaf-outline-float{position:fixed;right:20px;bottom:23px;z-index:6;display:flex;align-items:center;gap:7px;background:#135b4e;color:white;padding:10px 15px;border-radius:30px;font-size:12px;font-weight:800;box-shadow:0 6px 24px #153f3655;text-decoration:none;border:1px solid #a3cfb7}
+.oaf-outline-float[hidden]{display:none!important}
+.oaf-outline-float:hover{background:#0e463d;color:white}
+.oaf-page-outline a:focus-visible,.oaf-outline-float:focus-visible{outline:3px solid #87c7aa;outline-offset:2px}
+html{scroll-padding-top:120px}
+.oaf-page-outline,.oaf-outline-group{content-visibility:visible}
+@media(max-width:1100px){.oaf-outline-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.oaf-page-outline{padding:16px 15px;margin:12px 0 20px}.oaf-page-outline .oaf-outline-intro{flex-direction:column;gap:7px}.oaf-outline-items{grid-template-columns:1fr;gap:8px}.oaf-outline-item{min-height:unset;padding:12px 13px}.oaf-outline-footer{display:block}.oaf-outline-footer a{display:inline-block;margin-top:8px}.oaf-outline-float{bottom:17px;right:12px;max-width:calc(100% - 24px)}.oaf-outline-group{margin-top:22px}}
+@media(prefers-reduced-motion:reduce){.oaf-outline-item{transition:none}.oaf-outline-item:hover{transform:none}}
