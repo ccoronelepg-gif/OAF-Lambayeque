@@ -1,0 +1,48 @@
+/* UX20 · OAF-Lambayeque instalable sin perder ninguna de las seis pestañas */
+#oaf-pwa-install-wrap{max-width:1200px;margin:8px auto 7px;padding:0 14px}
+.oaf-pwa-banner{display:flex;align-items:center;gap:13px 18px;flex-wrap:wrap;
+ border:1px solid #bedbc9;background:linear-gradient(110deg,#eef8f1,#e6f4f1);
+ border-radius:13px;padding:12px 15px;color:#275b4d}
+.oaf-pwa-logo{width:45px;height:45px;object-fit:contain;flex:0 0 45px;border-radius:10px}
+.oaf-pwa-copy{flex:1 1 200px;min-width:0}
+.oaf-pwa-copy strong{display:block;font-weight:850;font-size:14px;color:#144e43}
+.oaf-pwa-copy small{display:block;font-size:11px;line-height:1.55;color:#59756a;margin-top:2px}
+.oaf-pwa-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.oaf-pwa-action{display:inline-flex;align-items:center;justify-content:center;
+ font:inherit;font-size:12px;font-weight:850;min-height:41px;
+ color:#fff;background:#12634f;border:1px solid #12634f;border-radius:9px;
+ padding:9px 14px;cursor:pointer}
+.oaf-pwa-action:hover{background:#0e4b3c}
+.oaf-pwa-action:focus-visible,.oaf-pwa-dismiss:focus-visible{outline:3px solid #66ad97;outline-offset:2px}
+.oaf-pwa-dismiss{border:1px solid #cce1d3;min-width:37px;min-height:39px;border-radius:9px;
+ color:#326356;background:#fff;cursor:pointer;font-weight:800;font-size:16px}
+.oaf-pwa-instructions{flex:1 0 100%;border-top:1px solid #cce4d5;padding:9px 5px 2px;
+ margin-top:2px;color:#3b6152;font-size:12px;line-height:1.65}
+.oaf-pwa-instructions[hidden],#oaf-pwa-install-wrap[hidden]{display:none!important}
+.oaf-pwa-status{position:relative;max-width:1160px;margin:9px auto;padding:10px 14px;
+ border-radius:11px;border:1px solid #dec792;background:#fff7e7;color:#71522e;
+ font-size:12px;line-height:1.65}
+.oaf-pwa-status[hidden],.oaf-pwa-update[hidden]{display:none!important}
+.oaf-pwa-status strong{color:#795127}
+.oaf-pwa-update{position:fixed;z-index:85;bottom:max(16px,env(safe-area-inset-bottom));right:16px;
+ max-width:min(410px,calc(100vw - 32px));border-radius:13px;border:1px solid #c7dfd1;
+ background:#fff;box-shadow:0 12px 32px #123d3544;
+ display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:12px 13px;
+ color:#215a4b;font-size:12px;line-height:1.45}
+.oaf-pwa-update .oaf-pwa-action{min-height:39px}
+@media(max-width:700px){
+ #oaf-pwa-install-wrap{margin:8px 0;padding:0 11px}
+ .oaf-pwa-banner{padding:11px 10px;gap:8px 10px}
+ .oaf-pwa-logo{width:39px;height:39px;flex-basis:39px}
+ .oaf-pwa-copy{flex-basis:calc(100% - 55px)}
+ .oaf-pwa-copy strong{font-size:13px}
+ .oaf-pwa-copy small{font-size:11px}
+ .oaf-pwa-actions{margin-left:auto;flex:1 1 100%;justify-content:flex-end}
+ .oaf-pwa-action{min-height:44px}
+ .oaf-pwa-status{margin:7px 11px;padding:10px 12px}
+ .oaf-pwa-update{left:11px;right:11px;max-width:none;bottom:max(12px,env(safe-area-inset-bottom))}
+}
+@media(display-mode:standalone){
+ #oaf-pwa-install-wrap{display:none!important}
+ body{padding-bottom:max(0px,env(safe-area-inset-bottom))}
+}
