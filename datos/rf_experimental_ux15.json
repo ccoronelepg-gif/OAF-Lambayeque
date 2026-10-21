@@ -1,0 +1,15 @@
+{
+  "tipo": "RandomForestRegressor OAF 10O - candidato experimental",
+  "estado": "pendiente_primera_ejecucion",
+  "fecha_generacion_utc": null,
+  "fecha_local": null,
+  "operativo_certificado": false,
+  "alertas_automaticas": false,
+  "horizonte_semanal": 7,
+  "horizonte_mensual_inicio": "2026-11",
+  "pronostico_diario_rf_experimental": {},
+  "escenarios_mensuales_rf_experimentales": {},
+  "metrica_diaria": null,
+  "metrica_mensual": null,
+  "nota": "Flujo de reentrenamiento RF 10O implementado y programado. No hay cifras RF futuras verificadas hasta que haya datos meteorológicos completos y una ejecución correcta del código. No equivale a producto operativo."
+}
