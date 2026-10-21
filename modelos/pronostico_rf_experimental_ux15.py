@@ -21,6 +21,7 @@ PLACES={"Chiclayo":(-6.7714,-79.8409),"Jayanca":(-6.39278,-79.8228),
         "Motupe":(-6.15083,-79.7142),"Olmos":(-5.98825,-79.74723)}
 RAIN="precipitation_sum"
 TEMP="temperature_2m_max"
+TMEAN="temperature_2m_mean"
 TODAY=dt.datetime.now(dt.timezone(dt.timedelta(hours=-5))).date()
 
 def source(city):
@@ -28,20 +29,20 @@ def source(city):
     # ERA5 can lag 5 days; only completed days are ingested.
     latest=TODAY-dt.timedelta(days=7)
     params={"latitude":lat,"longitude":lon,"start_date":"2021-01-01",
-            "end_date":latest.isoformat(),"daily":f"{RAIN},{TEMP}",
+            "end_date":latest.isoformat(),"daily":f"{RAIN},{TEMP},{TMEAN}",
             "timezone":"America/Lima","models":"era5"}
     url=ERA5+"?"+urlencode(params)
     response=requests.get(url,timeout=(15,100),headers={"User-Agent":"OAF-Lambayeque/2.0 research"})
     response.raise_for_status()
     payload=response.json().get("daily",{})
-    dates=payload.get("time",[]);rain=payload.get(RAIN,[]);temp=payload.get(TEMP,[])
-    if len(dates)<1700 or len(dates)!=len(rain) or len(dates)!=len(temp):
+    dates=payload.get("time",[]);rain=payload.get(RAIN,[]);temp=payload.get(TEMP,[]);means=payload.get(TMEAN,[])
+    if len(dates)<1700 or len(dates)!=len(rain) or len(dates)!=len(temp) or len(dates)!=len(means):
         raise ValueError("Archivo ERA5 incompleto para "+city)
     rows={}
-    for key,p,t in zip(dates,rain,temp):
-        if p is None or t is None or not(0<=float(p)<=1200) or not(-5<=float(t)<=55):
+    for key,p,t,mean in zip(dates,rain,temp,means):
+        if p is None or t is None or mean is None or not(0<=float(p)<=1200) or not(-5<=float(t)<=55) or not(-5<=float(mean)<=55) or float(mean)>float(t)+1:
             raise ValueError("Dato diario faltante/fuera de rango: "+city+" "+key)
-        rows[key]={"rain":float(p),"temp":float(t)}
+        rows[key]={"rain":float(p),"temp":float(t),"mean":float(mean)}
     return rows,url
 
 def angles(d):
@@ -138,7 +139,7 @@ def latest_monthly_era5(history,archives):
             if len(rows)<28:continue
             if len(rows)!=(__import__("calendar").monthrange(yr,mo)[1]):continue
             history[city][key]={"rain":sum(x["rain"] for x in rows),
-                                "temp":sum(x["temp"] for x in rows)/len(rows)}
+                                "temp":sum(x["mean"] for x in rows)/len(rows)}
     return history
 
 def fit_month(history):
@@ -199,6 +200,7 @@ def predict_month(model,series):
 def main():
     now=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     audit={"tipo":"RandomForestRegressor original reproducible de investigación, NO modelo operativo",
+           "unidades_temperatura":"Diario Tmax; mensual temperatura media (no promedio de Tmax)",
            "fecha_generacion_utc":now,"fecha_local":TODAY.isoformat(),
            "fuente_historica":"ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
            "documentacion":"https://open-meteo.com/en/docs/historical-weather-api",
