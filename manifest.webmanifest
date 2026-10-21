@@ -1,0 +1,82 @@
+{
+  "id": "./",
+  "name": "OAF-Lambayeque · Observatorio Agroclimático y Fitosanitario",
+  "short_name": "OAF Lambayeque",
+  "description": "Datos abiertos y ciencia climática al servicio del campo. Clima regional, Random Forest experimental, paisajes agroclimáticos, cultivos y sanidad, El Niño y trazabilidad.",
+  "lang": "es-PE",
+  "dir": "ltr",
+  "start_url": "./?app=pwa#inicio",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#f2f8f5",
+  "theme_color": "#103842",
+  "orientation": "any",
+  "categories": [
+    "education",
+    "productivity",
+    "weather"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/oaf-app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/oaf-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/oaf-app-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/oaf-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Clima Regional",
+      "short_name": "Clima",
+      "url": "./#clima",
+      "description": "Observaciones, pronóstico de referencia y estaciones meteorológicas",
+      "icons": [
+        {
+          "src": "assets/oaf-app-icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Predicciones y Anomalías",
+      "short_name": "RF OAF",
+      "url": "./#autor",
+      "description": "Comparar el modelo Random Forest con referencias científicas"
+    },
+    {
+      "name": "Cultivos y Sanidad",
+      "short_name": "Sanidad",
+      "url": "./#cultivos",
+      "description": "Fichas fitosanitarias y manejo integrado"
+    },
+    {
+      "name": "Boletines El Niño",
+      "short_name": "El Niño",
+      "url": "./#nino",
+      "description": "Fuentes y comunicados oficiales"
+    }
+  ]
+}
