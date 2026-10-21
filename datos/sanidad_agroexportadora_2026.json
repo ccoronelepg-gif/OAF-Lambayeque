@@ -100,10 +100,31 @@
       "dano": "La antracnosis afecta flores y frutos, causa lesiones oscuras y pérdidas poscosecha.",
       "modelo_nota": "Lluvia, alta humedad y mojado de inflorescencias/frutos son señales para intensificar observaciones; el clima no confirma la infección.",
       "manejo_cultural": "Manejar ventilación, retirar restos enfermos, observar panículas y confirmar agente antes de decidir tratamiento.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Amistar® 50 WG",
+          "ingrediente": "azoxistrobina",
+          "registro": "Syngenta Perú lista mango–antracnosis. Verificar etiqueta/registro vigente SIGIA.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+          "nota": "Ejemplo para manejo preventivo integrado; evitar repeticiones continuas de mismo FRAC.",
+          "modo": "FRAC 11 (QoI)"
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "Scholar® 230 SC (poscosecha)",
+          "ingrediente": "fludioxonil",
+          "registro": "Syngenta Perú publica mango–antracnosis para tratamiento de poscosecha (2025).",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
+          "nota": "Solo contexto de poscosecha antes de empaque, no extrapolar a aspersión en campo.",
+          "modo": "FRAC 12"
+        }
+      ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
-        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/"
+        "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc"
       ]
     },
     {
@@ -140,10 +161,21 @@
       "dano": "Trips y ácaros dañan tejidos tiernos y frutos, dejan cicatrices y pueden reducir apariencia y rendimiento.",
       "modelo_nota": "Periodos cálidos y secos pueden favorecer algunos ácaros; no todos los trips responden igual y deben identificarse.",
       "manejo_cultural": "Evaluar brotes, flores y racimos; ajustar manejo por especie y umbral local.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Vertimec® 1.8 EC (para ácaros)",
+          "ingrediente": "abamectina",
+          "registro": "Ficha Syngenta Perú 05/05/2026: vid–Colomerus vitis/Tetranychus urticae; NO se acredita aquí su uso para trips.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+          "nota": "El grupo de la ficha incluye trips y ácaros: este ejemplo corresponde únicamente a ácaros especificados por la etiqueta.",
+          "modo": "IRAC 6"
+        }
+      ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/",
-        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec"
       ]
     },
     {
@@ -200,10 +232,21 @@
       "dano": "Botrytis pudre y ablanda las bayas del racimo, sobre todo en racimos compactos y antes de cosecha.",
       "modelo_nota": "La humedad prolongada y el mojado favorecen infecciones, pero la compactación y las heridas son determinantes.",
       "manejo_cultural": "Mejorar aireación del racimo, evitar heridas y restos, vigilar la fenología y la resistencia fungicida.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Amistar® Top",
+          "ingrediente": "azoxistrobina + difenoconazol",
+          "registro": "Ficha de Syngenta Perú actualizada el 05/05/2026: vid–pudrición gris. Verificar etiqueta SENASA.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-r-top",
+          "nota": "Rotar FRAC y realizar evaluación del racimo antes de decidir intervención.",
+          "modo": "FRAC 11 + 3"
+        }
+      ],
       "referencias": [
         "https://ipm.ucanr.edu/agriculture/grape/",
-        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-r-top"
       ]
     },
     {
@@ -268,13 +311,23 @@
           "registro": "PQUA 262-SENASA (ficha 2024)",
           "fuente": "https://www.tqc.com.pe/wp-content/uploads/2024/07/FT-SWITCH-62.5-WG-ABR.2024.pdf",
           "nota": "El fabricante lista arándano/moho gris; confirmar actualización de etiqueta y mercado de destino antes del uso."
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "Scholar® 230 SC (poscosecha)",
+          "ingrediente": "fludioxonil",
+          "registro": "Syngenta Perú (2025) lista arándanos–Botrytis cinerea para tratamiento poscosecha.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc",
+          "nota": "Aplicación poscosecha, no tratar como opción de campo; revisar mercado destino y etiqueta.",
+          "modo": "FRAC 12"
         }
       ],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
         "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
         "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2024.1425392/full",
-        "https://doi.org/10.1016/j.fm.2024.104564"
+        "https://doi.org/10.1016/j.fm.2024.104564",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/scholar-230-sc"
       ]
     },
     {
@@ -291,10 +344,21 @@
       "dano": "Phytophthora daña raíces, disminuye absorción y puede causar marchitez y muerte de plantas.",
       "modelo_nota": "El drenaje y la saturación del sustrato importan más que una estimación superficial de humedad del aire.",
       "manejo_cultural": "Evaluar raíces y drenajes, usar material sano y controlar riegos; requerir confirmación de laboratorio.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Aliette®",
+          "ingrediente": "fosetil-Al",
+          "registro": "Bayer Perú lista arándano–pudrición radicular (Phytophthora cinnamomi). N.º 309-96-AG-SENASA informado por fabricante.",
+          "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
+          "nota": "Requiere diagnóstico de raíz, manejo de drenaje y confirmar etiqueta/LMR; no soluciona saturación del suelo.",
+          "modo": "FRAC P07"
+        }
+      ],
       "referencias": [
         "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg"
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+        "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette"
       ]
     },
     {
@@ -311,10 +375,21 @@
       "dano": "Trips generan lesiones y cicatrices en frutos pequeños y tejidos tiernos, deteriorando su valor de exportación.",
       "modelo_nota": "La actividad cambia con temperatura y brotación; sin conteos no se deduce daño económico.",
       "manejo_cultural": "Inspeccionar floración y frutos, podas y manejo biológico compatible con exportación.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Engeo® (para Thrips tabaci)",
+          "ingrediente": "tiametoxam + lambda-cihalotrina",
+          "registro": "Syngenta Perú lista palto–trips; consultar registro, etiqueta, LMR y restricciones del destino comercial.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo",
+          "nota": "No generalizar a todas las especies de trips; priorizar MIP y protección de polinizadores.",
+          "modo": "IRAC 4A + 3A"
+        }
+      ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+        "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo"
       ]
     },
     {
@@ -331,10 +406,21 @@
       "dano": "Queresas y ácaros pueden manchar hojas, extraer savia y reducir el área fotosintética.",
       "modelo_nota": "Con tiempo cálido o seco algunos ácaros pueden reproducirse más rápidamente, pero es necesario identificar especie.",
       "manejo_cultural": "Inspección de hojas y brotes, conservar controladores naturales y mitigar polvo.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Vertimec® 1.8 EC (para ácaro marrón)",
+          "ingrediente": "abamectina",
+          "registro": "Ficha Syngenta Perú 05/05/2026: palto–ácaro marrón; no presupone control de queresas.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+          "nota": "Control específico del ácaro; registrar incidencia y conservar enemigos naturales.",
+          "modo": "IRAC 6"
+        }
+      ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+        "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec"
       ]
     },
     {
@@ -359,12 +445,22 @@
           "registro": "Evidencia experimental peruana; no acredita registro de una formulación concreta",
           "fuente": "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
           "nota": "Investigación UNPRG 2026 in vitro/casa malla con T. harzianum; no extrapolar eficacia a campos de Lambayeque ni reemplazar drenaje, diagnóstico, registro y etiqueta SENASA."
+        },
+        {
+          "tipo": "Químico",
+          "nombre": "Aliette®",
+          "ingrediente": "fosetil-Al",
+          "registro": "Bayer Perú lista palto–pudrición radicular (Phytophthora cinnamomi). N.º 309-96-AG-SENASA según fabricante.",
+          "fuente": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
+          "nota": "Manejo integrado de drenaje, material sano, diagnóstico y etiqueta vigente.",
+          "modo": "FRAC P07"
         }
       ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
         "https://repositorio.unprg.edu.pe/handle/20.500.12893/16979",
-        "https://www.senasa.gob.pe/senasacontigo/senasa-promueve-uso-de-controladores-biologicos-como-alternativa-para-el-control-de-plagas/"
+        "https://www.senasa.gob.pe/senasacontigo/senasa-promueve-uso-de-controladores-biologicos-como-alternativa-para-el-control-de-plagas/",
+        "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette"
       ]
     },
     {
@@ -381,10 +477,21 @@
       "dano": "Lasiodiplodia y otros hongos de madera pueden ocasionar cancros, muerte regresiva y pérdidas de ramas o plantas.",
       "modelo_nota": "La predisposición puede aumentar con estrés térmico/hídrico y heridas; la meteorología sola no prueba presencia.",
       "manejo_cultural": "Evitar heridas, proteger podas, retirar ramas afectadas y confirmar el agente por laboratorio.",
-      "productos": [],
+      "productos": [
+        {
+          "tipo": "Químico",
+          "nombre": "Amistar® 50 WG",
+          "ingrediente": "azoxistrobina",
+          "registro": "Syngenta Perú lista palto–muerte regresiva. Registro/etiqueta requieren verificación actual.",
+          "fuente": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+          "nota": "Confirmar diagnóstico causal y manejo de heridas; fungicidas no sustituyen poda adecuada y desinfección.",
+          "modo": "FRAC 11 (QoI)"
+        }
+      ],
       "referencias": [
         "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/"
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+        "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg"
       ]
     },
     {
