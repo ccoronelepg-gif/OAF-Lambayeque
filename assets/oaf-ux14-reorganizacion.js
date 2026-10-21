@@ -30,7 +30,13 @@ function moveStructure(){
       details.append(tiles[1]);archive?.append(details);
    }
    const landscape=own.querySelector(":scope > .oaf-agro-split > .oaf-agro-tile");
-   if(landscape){const p=landscape.querySelector("p");if(p)p.textContent="Selecciona uno de los cinco paisajes experimentales y compara lluvia observada, estimación retrospectiva RF y climatología. No son ecorregiones oficiales ni pronósticos nuevos.";const anchor=landscape.querySelector('a[href*="ecorregiones-clima-10k.html"]');if(anchor)anchor.textContent="Abrir dashboard técnico de 39 sectores ↗"}
+   if(landscape){
+     const p=landscape.querySelector("p");if(p)p.textContent="Panel resumido: consulta dentro de esta pestaña los cinco paisajes, la lluvia histórica, las salidas retrospectivas RF y la climatología. El mapa técnico de sectores conserva sus archivos originales.";
+     const anchor=landscape.querySelector('a[href*="ecorregiones-clima-10k.html"]');
+     if(anchor){anchor.href="#oaf-ux14-rf-mes";anchor.textContent="Consultar gráfico por paisaje, sin superposiciones ↓"}
+     const extra=L("Abrir cartografía técnica en página independiente ↗","ecorregiones-clima-10k.html");
+     extra.className="oaf-ux15-landscape-secondary";landscape.append(extra);
+   }
    autor.append(own);
  }
  const stations=$("oaf-clima-bloque-estaciones");
@@ -42,8 +48,7 @@ function moveStructure(){
  intro.innerHTML='<span>INTELIGENCIA ARTIFICIAL APLICADA AL CLIMA · LAMBAYEQUE</span><h1>Predicciones y Anomalías</h1><p>El OAF investiga cómo anticipar el comportamiento de la precipitación, temperatura y otras variables mediante <strong>Python, Machine Learning y Random Forest</strong>, junto con análisis geoespacial. Estamos entrenando y evaluando algoritmos con datos históricos de estaciones, CHIRPS y otros proveedores. <strong>Los modelos aún necesitan más datos y validación independiente:</strong> las pruebas históricas no equivalen a pronósticos operativos para los próximos días o meses.</p>';
  autor.prepend(intro);
  const status=E("div","oaf-ux14-alert");
- status.append(E("strong",null,"Estado científico: modelos Random Forest en investigación"));
- status.append(E("p",null,"No existe todavía un modelo diario de RF validado con predicciones emitidas de siete días, ni un pronóstico mensual prospectivo de RF autorizado para publicación. Los paneles distinguen resultados experimentales y referencias externas para no presentar datos simulados como reales."));
+ status.append(E("strong",null,"Estado científico: modelo Random Forest en investigación y mejora continua"));
  intro.after(status);
  const live=section("Horizonte de 7 días","01 · Próximos siete días","Panel de desarrollo del RF diario: cotejo con un pronóstico externo real. La referencia meteorológica de Open-Meteo no es una salida de Random Forest.","oaf-ux14-rf-semana");
  live.innerHTML+='<div class="oaf-ux14-controls"><label for="oaf-ux14-ciudad">Localidad</label><select id="oaf-ux14-ciudad"><option>Chiclayo</option><option>Jayanca</option><option>Motupe</option><option>Olmos</option></select><label for="oaf-ux14-variable">Variable</label><select id="oaf-ux14-variable"><option value="rain">Precipitación (mm/día)</option><option value="tmax">Temperatura máxima (°C)</option></select></div><div class="oaf-ux14-chart" id="oaf-ux14-weekchart" role="img" aria-label="Referencia externa para siete días"></div><div class="oaf-ux14-key"><span><i style="background:#419bd2"></i>Referencia meteorológica externa</span><span><i style="background:#b3c2ba"></i>Random Forest: pendiente de validación</span></div><p class="oaf-ux14-source" id="oaf-ux14-weekstatus">Consultando proveedor de referencia…</p>';
@@ -87,7 +92,7 @@ function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
  const parent=hero.parentElement,layout=E("div","oaf-ux14-home-hero");hero.before(layout);layout.append(hero);
  const side=E("aside","oaf-ux14-home-side");
- side.innerHTML='<article class="oaf-ux14-tile"><small><span class="oaf-ux14-dot"></span> CLIMA EN 7 DÍAS</small><h2>¿Qué tiempo se espera?</h2><p id="oaf-ux14-home-weather">Consultando lluvia y temperatura de Chiclayo…</p><a href="#clima">Ver pronóstico por localidad →</a></article><article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Los porcentajes por intensidad solo se muestran cuando proceden de un pronóstico probabilístico oficial, fechado y verificable; no se inventan.</p><a href="#nino">Consultar boletín completo →</a></article>';
+ side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Las probabilidades por intensidad se presentan únicamente cuando procede de un boletín oficial y están fechadas.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Las categorías representan temperaturas oceánicas de la región Niño 1+2; no indican la probabilidad de lluvias intensas en Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN · comunicados oficiales ↗</a></div><a href="#nino">Consultar boletín y seguimiento →</a></article>';
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
    $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+". Condición costera; no indica lluvia diaria por sí sola.";
@@ -103,10 +108,13 @@ function renderHome(){
        item.append(E("span",null,label),E("b",null,value+" %"));
        const bar=E("div","oaf-ux14-probtrack"),inner=E("i");inner.style.width=value+"%";inner.style.background=color;bar.append(inner);item.append(bar);bars.append(item);}
      prob.append(bars,E("small",null,"Fuente: ENFEN 18-2026, figura 2a, región Niño 1+2. Son probabilidades de categoría oceánica, NO de lluvias ni daños."));
-     prob.append(L("Ver figura y nuevo comunicado ↗",p.fuente));
+     prob.append(L("Ver figura del boletín ENFEN ↗",p.fuente));
+    const info=$("oaf-ux15-enfen-exp");
+    if(info)info.textContent="Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026, no la probabilidad de lluvia, inundación o afectación agrícola. El boletín fue emitido el 16/10/2026; consulta si existe uno posterior.";
+    const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation)citation.href=p.fuente;
    }).catch(()=>{prob.replaceChildren(E("span",null,"Probabilidades no verificables para este comunicado; revisa el gráfico oficial."),L("ENFEN ↗",d.enfen?.fuente||"https://enfen.imarpe.gob.pe/comunicados/"))});
  }).catch(()=>$("oaf-ux14-home-enso").textContent="No se pudo verificar una actualización del organismo oficial. Consulta ENFEN.");
- initHomeWeather();
+
 }
 const fmt=(v,dec=1)=>Number(v).toLocaleString("es-PE",{maximumFractionDigits:dec,minimumFractionDigits:dec});
 async function getForecast(city){
