@@ -23,6 +23,14 @@ on:
       - 'assets/oaf-agro-evidencia-2026.js'
       - 'datos/catalogo_cultivos_agroexportacion_2026.json'
       - 'tests/test_agroexportacion_2026.py'
+      - 'assets/oaf-hero-monitoreo-agroclimatico.svg'
+      - 'assets/oaf-ux9-refinamiento.css'
+      - 'assets/oaf-ux9-estructura.js'
+      - 'assets/oaf-ux9-lectura-clima.js'
+      - 'assets/oaf-ux9-mapa-sectores.js'
+      - 'assets/oaf-ux9-predicciones.js'
+      - 'datos/estado_enso_verificado_ux9_2026.json'
+      - 'tests/test_ux9_refinamiento_2026.py'
       - 'guia-lectura-agroclimatica.html'
       - 'sitemap.xml'
       - 'tests/test_divulgacion_seo_2026.py'
@@ -49,6 +57,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_estructura_pestanas_2026.py' -v
       - name: Biblioteca agroexportadora y conservación científica
         run: python -m unittest discover -s tests -p 'test_agroexportacion_2026.py' -v
+      - name: UX-9 mapa, imagen, lectura agroclimática y pronósticos documentados
+        run: python -m unittest discover -s tests -p 'test_ux9_refinamiento_2026.py' -v
       - name: Modelos externos y estados no verificados
         run: node tests/test_portada_2026.js
       - name: Comprobar sintaxis de los 45 visores originales y nuevos módulos
