@@ -18,10 +18,16 @@ def main():
         im=Image.open(io.BytesIO(png))
         if im.size!=(size,size):
             raise ValueError(f"Invalid icon shape: {output}")
-        # Installable icons should not be transparent so the OS never chooses an unwanted background.
+        # Rounded SVG has transparent corners. Flatten on the brand background for
+        # a fully opaque Android/iOS home-screen icon (no arbitrary OS backdrop).
         rgba=im.convert("RGBA")
-        if rgba.getextrema()[3]!=(255,255):
-            raise ValueError(f"Background is transparent: {output}")
+        opaque=Image.new("RGBA",(size,size),(19,89,79,255))
+        opaque.alpha_composite(rgba)
+        if opaque.getextrema()[3]!=(255,255):
+            raise ValueError(f"Icono no opaco: {output}")
+        result=io.BytesIO()
+        opaque.convert("RGB").save(result,format="PNG",optimize=True)
+        png=result.getvalue()
         (ASSETS/output).write_bytes(png)
         print(f"{output}: {size} x {size}, {len(png)} bytes")
 if __name__=="__main__":
