@@ -9,7 +9,7 @@ const css = read("assets/oaf-responsive-celulares-ux19.css");
 const js = read("assets/oaf-responsive-celulares-ux19.js");
 const map = read("ecorregiones-clima-10k.html");
 const routes = ["inicio", "clima", "nino", "cultivos", "autor", "verificaciones"];
-assert.match(html, /<meta\s+name="viewport"\s+content="width=device-width,initial-scale=1"/);
+assert.match(html, /<meta\s+name="viewport"\s+content="width=device-width,initial-scale=1(?:,viewport-fit=cover)?"/);
 for (const route of routes) {
  assert.ok(html.includes('data-page="' + route + '"'),"Falta pestaña " + route);
  assert.ok(html.includes('data-tab="' + route + '"'),"Falta navegación a " + route);
