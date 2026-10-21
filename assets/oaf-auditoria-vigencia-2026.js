@@ -31,6 +31,7 @@ async function ready(){
    if(q.estado_consulta==="indice_oficial_verificado")label="Índice consultado";
    if(q.estado_consulta==="nuevo_documento_por_interpretar")label="Documento nuevo: requiere lectura";
    if(q.estado_consulta==="sitio_accesible_fecha_aviso_no_verificada")label="Web accesible; fecha de aviso no comprobada";
+   if(q.estado_consulta==="cambio_html_requiere_lectura")label="Cambió la página: verificar nuevo boletín";
    if(q.estado_consulta==="consulta_fallida")label="Consulta fallida";
    const memo=id==="enfen"&&q.ultimo_documento? q.ultimo_documento.titulo+" · el resumen del boletín no cambia automáticamente con este monitor.":q.tipo||"Estado documental según última ejecución del monitor.";
    grid.append(item(name,label,memo,q.url,ts||q.ultima_consulta_utc));
