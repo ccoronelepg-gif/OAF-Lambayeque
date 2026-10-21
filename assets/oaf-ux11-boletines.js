@@ -6,15 +6,18 @@ const set=(id,t)=>{if($(id))$(id).textContent=t};
 const full=path=>fetch(path,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return /csv$/.test(path)?r.text():r.json()});
 const num=x=>Number(x).toLocaleString("es-PE",{minimumFractionDigits:2,maximumFractionDigits:2});
 function chartFrom(records){
- const root=$("oaf-bol-chart");if(!root)return;const months=records.slice(-24);if(months.length!==24){set("oaf-bol-chart","Serie incompleta: no se dibujan anomalías.");return}
- const W=740,H=295,L=53,R=14,T=22,B=52,values=months.map(x=>x.v),min=Math.min(-1,...values)-.3,max=Math.max(1,...values)+.4,x=i=>L+(i+.5)*(W-L-R)/24, y=v=>T+(max-v)/(max-min)*(H-T-B);
+ const root=$("oaf-bol-chart");if(!root)return;const n=Number($("oaf-bol-periodo")?.value||24);
+ const months=records.slice(-n);if(months.length!==n){set("oaf-bol-chart","La serie no contiene suficientes meses válidos para ese periodo.");return}
+ const W=740,H=295,L=53,R=14,T=22,B=52,values=months.map(x=>x.v),min=Math.min(-1,...values)-.3,max=Math.max(1,...values)+.4,x=i=>L+(i+.5)*(W-L-R)/months.length, y=v=>T+(max-v)/(max-min)*(H-T-B);
  const s=(name,attrs={},txt)=>{const n=document.createElementNS(SVG,name);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(txt!==undefined)n.textContent=txt;return n};
  const graph=s("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Anomalías mensuales NOAA NCEI ERSSTv5 de Niño 1+2 con base 1991–2020"});
  for(let i=0;i<=4;i++){let value=min+(max-min)*i/4,Y=y(value);graph.append(s("line",{x1:L,y1:Y,x2:W-R,y2:Y,class:"gridline"}));graph.append(s("text",{x:L-6,y:Y+4,"text-anchor":"end",class:"axis"},num(value)))}
  graph.append(s("line",{x1:L,y1:y(0),x2:W-R,y2:y(0),stroke:"#718f85","stroke-width":1.7}));
- months.forEach((r,i)=>{const yy=y(r.v),base=y(0),q=s("rect",{x:x(i)-9,y:Math.min(base,yy),width:18,height:Math.max(1,Math.abs(base-yy)),rx:2,fill:r.v>=0?"#db7d53":"#3b92bd"});q.append(s("title",{},r.m+" · "+num(r.v)+" °C"));graph.append(q);
- if(i%4===0||i===23)graph.append(s("text",{x:x(i),y:H-20,"text-anchor":"middle",class:"axis"},r.m.slice(2)))});
- root.replaceChildren(graph);
+ months.forEach((r,i)=>{const yy=y(r.v),base=y(0),q=s("rect",{x:x(i)-Math.max(8,(W-L-R)/months.length*.64)/2,y:Math.min(base,yy),width:Math.max(8,(W-L-R)/months.length*.64),height:Math.max(1,Math.abs(base-yy)),rx:4,tabindex:0,role:"button","aria-label":r.m+" anomalía "+num(r.v)+" grados Celsius",fill:r.v>=1?"#bd513f":r.v>=0?"#e59063":r.v<=-1?"#316996":"#67a9ce"});q.append(s("title",{},r.m+" · "+num(r.v)+" °C"));
+ const detail=()=>set("oaf-bol-grafico-dato","Mes "+r.m+": "+num(r.v)+" °C respecto de la base 1991–2020. "+(r.v>0?"Anomalía positiva (más cálido)":r.v<0?"Anomalía negativa (más frío)":"Sin anomalía")+". No representa pronóstico local.");
+ q.addEventListener("click",detail);q.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();detail()}});graph.append(q);
+ if(i%Math.max(1,Math.round(n/6))===0||i===months.length-1)graph.append(s("text",{x:x(i),y:H-20,"text-anchor":"middle",class:"axis"},r.m.slice(2)))});
+ root.replaceChildren(graph);const last=months.at(-1);set("oaf-bol-grafico-dato","Último mes en la serie archivada: "+last.m+" · anomalía "+num(last.v)+" °C. Barras rojas: cálido; azules: frío. Haz clic o pulsa Tab en cada barra.");
 }
 function render(data){
  const grid=$("oaf-boletines-tarjetas");if(!grid)return;grid.replaceChildren();
@@ -62,6 +65,9 @@ async function ocean(){
  }catch(e){set("oaf-bol-chart","No se puede mostrar la serie archivada: "+e.message)}
 }
 function init(){
+ const period=$("oaf-bol-periodo");
+ if(period&&!period.dataset.bound){period.dataset.bound="1";period.addEventListener("change",ocean)}
+
  if(!$("oaf-boletines-ux11")||$("oaf-boletines-ux11").dataset.ready)return;
  $("oaf-boletines-ux11").dataset.ready="1";
  full("datos/boletines_institucionales_2026.json").then(d=>{if(d.boletines?.length!==5)throw Error("Documentos incompletos");render(d)}).catch(e=>set("oaf-boletines-tarjetas","No se pudo recuperar el índice documental: "+e.message));
