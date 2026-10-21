@@ -1,0 +1,242 @@
+{
+  "version": "2026-10-21-fotografia-real",
+  "aviso": "Fotografías reales de referencia; la apariencia de una lesión no confirma diagnóstico ni procedencia de Lambayeque. Las fotos de envases son referenciales: pueden cambiar formulaciones, presentaciones o etiquetas. Consultar la ficha oficial y el registro vigente.",
+  "organismos": {
+    "mango-plaga-1": {
+      "url": "https://prod.senasica.gob.mx/ALERTAS/imagenes/noticias/5f106a635d2e5.jpg",
+      "source": "https://prod.senasica.gob.mx/ALERTAS/inicio/pages/single.php?noticia=4952",
+      "credit": "SENASICA (México)",
+      "caption": "Ceratitis capitata, especie representativa de moscas de la fruta",
+      "exact": true
+    },
+    "mango-plaga-2": {
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/276258922/large.jpeg",
+      "source": "https://www.inaturalist.org/taxa/716086-Aulacaspis-tubercularis",
+      "credit": "iNaturalist · observación de Aulacaspis tubercularis",
+      "caption": "Queresa blanca del mango: ejemplo de queresa",
+      "exact": false
+    },
+    "mango-enfermedad-1": {
+      "url": "https://4.bp.blogspot.com/-9xAauDt0dI0/WjaIviisVVI/AAAAAAAAAMw/dyy40PhO4w0LIN_kYdGvZEgSubNNUQWIQCLcBGAs/s1600/WhatsApp%2BImage%2B2017-12-17%2Bat%2B12.05.29.jpeg",
+      "source": "https://fitopatologiaunilab.blogspot.com/2017/12/antracnose-da-mangueira-colletotrichum.html",
+      "credit": "Herbario virtual fitopatología, Unilab",
+      "caption": "Lesiones compatibles con antracnosis en mango; requieren diagnóstico",
+      "exact": true
+    },
+    "vid-plaga-1": {
+      "url": "https://www.agrimag.it/wp-content/uploads/2022/07/Planococcus-ficus-danni-su-vite.jpg",
+      "source": "https://www.agrimag.it/cocciniglia-farinosa-della-vite/",
+      "credit": "Agrimag · Planococcus ficus",
+      "caption": "Cochinilla harinosa en racimo de vid",
+      "exact": true
+    },
+    "vid-plaga-2": {
+      "url": "https://www.koppert.mx/content/_processed_/3/a/csm_Frankliniella-occidentalis_Koppert-BIological-Systems-3_81d02c7bd2.jpg",
+      "source": "https://www.koppert.mx/conocimiento/control-eficaz-de-trips-con-acaros-depredadores/",
+      "credit": "Koppert Biological Systems",
+      "caption": "Frankliniella occidentalis, ejemplo de trips; no representa ácaros",
+      "exact": false
+    },
+    "vid-enfermedad-1": {
+      "url": "https://ephytia.inra.fr/en/I/8420/oidium-rav1",
+      "source": "https://ephytia.inra.fr/en/D/1928",
+      "credit": "INRAE · e-phytia",
+      "caption": "Oídio: micelio blanco sobre hojas de vid",
+      "exact": true
+    },
+    "vid-enfermedad-2": {
+      "url": "https://www.ivr.si/app/uploads/2022/12/Botrytis_trta_grozd_sl3-scaled.jpg",
+      "source": "https://www.ivr.si/skodljivec/siva-grozdna-plesen/",
+      "credit": "IVR · sanidad vegetal Eslovenia",
+      "caption": "Botrytis cinerea en racimos",
+      "exact": true
+    },
+    "arandano-plaga-1": {
+      "url": "https://www.koppert.mx/content/_processed_/3/a/csm_Frankliniella-occidentalis_Koppert-BIological-Systems-3_81d02c7bd2.jpg",
+      "source": "https://www.koppert.mx/conocimiento/control-eficaz-de-trips-con-acaros-depredadores/",
+      "credit": "Koppert Biological Systems",
+      "caption": "Frankliniella occidentalis, especie ilustrativa de trips",
+      "exact": false
+    },
+    "arandano-plaga-2": {
+      "url": "https://edis.ifas.ufl.edu/image/IN1171/Dua21aa0jb/I1uz6j6fyp/I1uz6j6fyp-2048.webp",
+      "source": "https://edis.ifas.ufl.edu/publication/IN1171",
+      "credit": "University of Florida · UF/IFAS",
+      "caption": "Bemisia tabaci: ejemplo de mosca blanca; no representa cochinillas",
+      "exact": false
+    },
+    "arandano-enfermedad-1": {
+      "url": "https://www.ivr.si/app/uploads/2022/09/Siva-plesen-ameriskih-borovnic_botrytis_sporulacija-2-scaled.jpg",
+      "source": "https://www.ivr.si/skodljivec/siva-plesen-ameriskih-borovnic/",
+      "credit": "IVR · sanidad vegetal Eslovenia",
+      "caption": "Moho gris con esporulación en fruto de arándano",
+      "exact": true
+    },
+    "arandano-enfermedad-2": {
+      "url": "https://pnwhandbooks.org/sites/pnwhandbooks/files/plant/images/blueberry-vaccinium-corymbosum-root-rot/blueberryphytophthora11-0516a.jpg",
+      "source": "https://pnwhandbooks.org/plantdisease/host-disease/blueberry-vaccinium-corymbosum-root-rot",
+      "credit": "Pacific Northwest Plant Disease Handbook",
+      "caption": "Pudrición de raíces de arándano: síntomas compatibles con Phytophthora",
+      "exact": true
+    },
+    "palto-plaga-1": {
+      "url": "https://www.koppert.mx/content/_processed_/3/a/csm_Frankliniella-occidentalis_Koppert-BIological-Systems-3_81d02c7bd2.jpg",
+      "source": "https://www.koppert.mx/conocimiento/control-eficaz-de-trips-con-acaros-depredadores/",
+      "credit": "Koppert Biological Systems",
+      "caption": "Frankliniella occidentalis: representante de trips, no diagnóstico específico",
+      "exact": false
+    },
+    "palto-plaga-2": {
+      "url": "https://api.gbif.org/v1/image/cache/x800/occurrence/5198529482/media/fdd06bdc8c084f55fbe036b1222340b1",
+      "source": "https://www.gbif.org/species/5161863",
+      "credit": "GBIF · registro de Fiorinia fioriniae",
+      "caption": "Fiorinia fioriniae, ejemplo de queresa; no representa ácaros",
+      "exact": false
+    },
+    "palto-enfermedad-1": {
+      "url": "https://www.avocadosource.com/slides/20040511/007100f.jpg",
+      "source": "https://www.avocadosource.com/slides/20040511/007100s.htm",
+      "credit": "AvocadoSource · ensayo de Phytophthora",
+      "caption": "Raíces de palto en ensayo de replantación bajo presión de Phytophthora; no diagnóstico fotográfico",
+      "exact": false
+    },
+    "palto-enfermedad-2": {
+      "url": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs40858-025-00700-9/MediaObjects/40858_2025_700_Fig1_HTML.jpg",
+      "source": "https://link.springer.com/article/10.1007/s40858-025-00700-9",
+      "credit": "Tropical Plant Pathology (2025)",
+      "caption": "Lesiones de tallo de palto inoculado con Lasiodiplodia theobromae",
+      "exact": true
+    },
+    "maracuya-plaga-1": {
+      "url": "https://www.biosani.com/uploads/subcanais/dasiops-1banner245245.png",
+      "source": "https://www.biosani.com/es/plagas-soluciones-para-las-principales/mosca-de-los-botones-florales-del-maracuya",
+      "credit": "Biosani · Dasiops",
+      "caption": "Mosca del botón floral / ovario, Dasiops spp.",
+      "exact": true
+    },
+    "maracuya-plaga-2": {
+      "url": "https://lh3.ggpht.com/2H9GOrXr9alOn9nT5v4VrAQm7uCpEdzaEXguKkJIzsIaF7qJranLpw5EiEGDprQ_LoUKNX7KS8b3X9J3iN_s%3Ds600",
+      "source": "https://www.projectnoah.org/spottings/13030562",
+      "credit": "Project Noah · observación de oruga",
+      "caption": "Larva defoliadora en planta de pasiflora",
+      "exact": true
+    },
+    "maracuya-enfermedad-1": {
+      "url": "https://cms.ctahr.hawaii.edu/portals/367/Images/Anthracnose%20of%20passion%20fruit_9567358600_o.jpg?ver=2024-11-27-113844-337",
+      "source": "https://cms.ctahr.hawaii.edu/ckm/Home/Crops/Fruits-and-Nuts/Passion-Fruit",
+      "credit": "University of Hawaii · CTAHR",
+      "caption": "Antracnosis en frutos de maracuyá",
+      "exact": true
+    },
+    "maracuya-enfermedad-2": {
+      "url": "https://infonet-biovision.org/sites/default/files/styles/full_image_popup/public/plant_health/cropsfruitsvegetables/1117_0.jpeg?itok=MOfc7Gcs",
+      "source": "https://infonet-biovision.org/plant_pests/fusarium-wilt",
+      "credit": "Infonet Biovision · A. M. Varela (icipe)",
+      "caption": "Corte de tallos de pasiflora con síntomas compatibles con marchitez",
+      "exact": true
+    },
+    "banano-plaga-1": {
+      "url": "https://apps.lucidcentral.org/pppw_v10/images/entities/banana_weevil_109/5aut117_cosmsord_ckrr1_gmccormack1_zbx9x6.jpg",
+      "source": "https://apps.lucidcentral.org/pppw_v10/text/web_full/entities/banana_weevil_109.htm",
+      "credit": "Lucidcentral · Pacific Pests",
+      "caption": "Picudo negro del banano, Cosmopolites sordidus",
+      "exact": true
+    },
+    "banano-plaga-2": {
+      "url": "https://apps.lucidcentral.org/ppp_v9/images/entities/banana_burrowing_nematode_257/g15roots1.jpg",
+      "source": "https://apps.lucidcentral.org/ppp_v9/text/web_full/entities/banana_burrowing_nematode_257.htm",
+      "credit": "Lucidcentral · Pacific Pests",
+      "caption": "Lesiones radiculares de banano vinculadas a Radopholus similis",
+      "exact": true
+    },
+    "banano-enfermedad-1": {
+      "url": "https://www.embrapa.br/image/journal/article?img_id=60861757&t=1619114758439&width=356",
+      "source": "https://www.embrapa.br/busca-de-noticias/-/noticia/60679338/ministerio-faz-alerta-para-conter-entrada--de-praga-quarentenaria-da-bananeira-no-brasil",
+      "credit": "Embrapa Brasil",
+      "caption": "Sección de pseudotallo de banano con síntomas de fusariosis; requiere diagnóstico para identificar R4T",
+      "exact": false
+    },
+    "banano-enfermedad-2": {
+      "url": "https://www.koppert.com/content/global/Challenges/Diseases/Mycosphaerella_fijiensis/black_sigatoka_mycosphaerella_fijiensis_damage_2_koppert.jpg",
+      "source": "https://www.koppert.com/plant-diseases/black-sigatoka-disease/",
+      "credit": "Koppert Biological Systems",
+      "caption": "Síntomas de sigatoka negra en hojas de banano",
+      "exact": true
+    }
+  },
+  "productos": {
+    "gf-120": {
+      "url": "https://dunasun.com/cdn/shop/files/gf120-total.png?v=1774138381&width=1445",
+      "source": "https://www.corteva.com/pe/productos-y-soluciones/proteccion-de-cultivos/gf120.html",
+      "credit": "Corteva / Farmex · envase fotografiado por distribuidor peruano",
+      "caption": "Envase referencial de GF-120™",
+      "exact": true
+    },
+    "amistar": {
+      "url": "https://www.nutriferza.com/web/image/product.template/2568/image_512/%5B01TQC011%5D%20AMISTAR%2050%20WG%20X%2040%20GR%20%28Azoxistrobina%29?unique=0e0f577",
+      "source": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-50-wg",
+      "credit": "Syngenta · imagen de distribuidor peruano",
+      "caption": "Envase comercial referencial Amistar 50 WG",
+      "exact": true
+    },
+    "scholar": null,
+    "biosplent": null,
+    "akron": {
+      "url": "https://www.agrobesser.com/5843-large_default/akron-1kg-acetamipridbuprofezin-insecticida-accion-por-contacto-e-ingestion-silvestre.jpg",
+      "source": "https://agroquimicos-organicosplm.com/peru/akron_500_wg/247/1/10141/24/3",
+      "credit": "Silvestre Perú · imagen de distribuidor",
+      "caption": "Envase de AKRON 500 WG",
+      "exact": true
+    },
+    "wonder": null,
+    "vertimec": {
+      "url": "https://stcroperproduction.blob.core.windows.net/uploads-public/images/64304t-4dvnsatw6fwjf3/lg.webp",
+      "source": "https://www.syngenta.com.pe/product/crop-protection/insecticida/vertimec-18-ec",
+      "credit": "Syngenta · imagen de distribuidor",
+      "caption": "Envase de Vertimec 1.8 EC",
+      "exact": true
+    },
+    "luna": {
+      "url": "https://buscador.portaltecnoagricola.com/app/imagenes_aplicacion/portaltecnoagricola-bayer-LUNA-EXPERIENCE-1L.jpg",
+      "source": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/luna_experience",
+      "credit": "Bayer · fotografía de catálogo comercial",
+      "caption": "Envase Luna Experience (presentación referencial)",
+      "exact": true
+    },
+    "serenade": {
+      "url": "https://finkloslaureles.com/web/image/product.template/920/image_1024?unique=9062225",
+      "source": "https://www.agro.bayer.pe/es-pe/productos/product-details.html/fungicide/serenade_aso.html",
+      "credit": "Bayer · fotografía de distribuidor",
+      "caption": "Envase Serenade ASO",
+      "exact": true
+    },
+    "amistar-top": {
+      "url": "https://agrojuntos.com/wp-content/uploads/2024/11/AMISTAR-TOP-600x600.jpg",
+      "source": "https://www.syngenta.com.pe/product/crop-protection/fungicida/amistar-r-top",
+      "credit": "Syngenta · imagen de distribuidor",
+      "caption": "Amistar Top presentación comercial",
+      "exact": true
+    },
+    "switch": {
+      "url": "https://www.nutriferza.com/web/image/product.template/3032/image_1024?unique=d416108",
+      "source": "https://www.syngenta.com.pe/product/crop-protection/fungicida/switchr-625-wg",
+      "credit": "Syngenta · imagen de distribuidor",
+      "caption": "Switch 62.5 WG",
+      "exact": true
+    },
+    "aliette": {
+      "url": "https://www.nutriferza.com/web/image/product.template/2565/image_1920?unique=d416108",
+      "source": "https://www.agro.bayer.pe/content/cropscience/latin-america/pe/es-pe/productos/product-details.html/fungicide/aliette",
+      "credit": "Bayer · imagen de distribuidor (presentación sujeta a cambios)",
+      "caption": "Aliette, presentación de empaque referencial",
+      "exact": true
+    },
+    "engeo": {
+      "url": "https://isteresita.com/images/uploads/logo_1609621851.jpg",
+      "source": "https://www.syngenta.com.pe/product/crop-protection/insecticida/engeo",
+      "credit": "Syngenta · fotografía de distribuidor",
+      "caption": "Engeo presentación referencial",
+      "exact": true
+    }
+  }
+}
