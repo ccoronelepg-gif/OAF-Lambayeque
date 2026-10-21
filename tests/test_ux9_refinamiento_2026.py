@@ -13,13 +13,14 @@ FILES=["assets/oaf-ux9-refinamiento.css",
        "assets/oaf-ux9-predicciones.js"]
 
 class UX9(unittest.TestCase):
-    def test_real_photo_replaces_illustration_with_credit(self):
-        self.assertIn('src="https://upload.wikimedia.org/wikipedia/commons/1/16/Weather_Station_USDA.jpg"',PAGE)
-        self.assertIn('Fotografía referencial: USDA-ARS / Scott Bauer',PAGE)
-        self.assertIn('https://commons.wikimedia.org/wiki/File:Weather_Station_USDA.jpg',PAGE)
+    def test_user_supplied_banner_is_local_and_uncropped(self):
+        self.assertIn('src="assets/oaf-portada-proporcionada-2026.jpg?v=ux10-20261021"',PAGE)
+        self.assertTrue((ROOT/"assets/oaf-portada-proporcionada-2026.jpg").is_file())
+        self.assertGreater((ROOT/"assets/oaf-portada-proporcionada-2026.jpg").stat().st_size, 250_000)
+        self.assertIn("Los números de esta imagen son ilustrativos.",PAGE)
         self.assertNotIn('src="assets/oaf-hero-monitoreo-agroclimatico.svg"',PAGE)
 
-    def test_intro_single_justified_paragraph(self):
+    def test_intro_single_centered_paragraph(self):
         agro=(ROOT/"assets/oaf-agroexportacion-2026.js").read_text("utf-8")
         structure=(ROOT/"assets/oaf-ux9-estructura.js").read_text("utf-8")
         css=(ROOT/"assets/oaf-ux9-refinamiento.css").read_text("utf-8")
@@ -28,10 +29,11 @@ class UX9(unittest.TestCase):
         self.assertNotIn("const ten=[",agro)
         self.assertNotIn("oaf-intro-columns",structure)
         self.assertNotIn("column-count:2",css)
-        self.assertIn("text-align:justify",css)
+        self.assertIn("text-align:center!important",css)
         paragraph=agro.split('const intro=node("div","oaf-agro-summary"',1)[1].split(";\n",1)[0]
         self.assertEqual(paragraph.count("<p>"),1)
-        self.assertLessEqual(len(paragraph.split()),90)
+        self.assertLessEqual(len(paragraph.split()),75)
+        self.assertIn('id="oaf-home-summary-static"',PAGE)
 
     def test_all_ux9_assets_exist_and_loaded(self):
         for f in FILES:
