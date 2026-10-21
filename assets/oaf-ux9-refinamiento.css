@@ -83,3 +83,9 @@
 .oaf-agro-summary{max-width:100%}
 .oaf-agro-summary>p{display:block!important;columns:auto!important;column-count:1!important;max-width:105ch;text-align:justify;text-justify:inter-word}
 @media(max-width:640px){.oaf-agro-summary>p{font-size:13px;line-height:1.63;text-align:justify}.oaf-hero-2026 .oaf-photo-credit{font-size:9px}}
+
+/* Resumen siempre visible: una sola columna incluso si los módulos dinámicos tardan. */
+#inicio .oaf-home-shell > .oaf-editorial-intro,
+#inicio .oaf-home-shell > .oaf-source-split{display:none!important}
+#inicio #oaf-home-summary-static{display:block!important;columns:auto!important;column-count:1!important}
+#inicio #oaf-home-summary-static>p{display:block!important;max-width:105ch;text-align:justify!important;text-justify:inter-word;hyphens:auto}
