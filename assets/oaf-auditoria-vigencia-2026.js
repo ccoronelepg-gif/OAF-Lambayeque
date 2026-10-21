@@ -13,7 +13,7 @@ async function ready(){
  if(!parent||!meta)return;
  const bar=el("div","oaf-ux13-panel");bar.id="oaf-fuentes-vigencia-2026";
  bar.append(el("h3",null,"Vigencia y comprobación automática de fuentes oficiales"),el("p",null,"La consulta del portal no confirma por sí sola que exista un aviso nuevo. Se muestran el estado del último intento y la fuente original; un fallo no se interpreta como normalidad climática."));
- const grid=el("div","oaf-ux13-source-grid");bar.append(grid);parent.after(bar);
+ const grid=el("div","oaf-ux13-source-grid");bar.append(grid);parent.append(bar);
  const details=el("details","oaf-ux13-model-detail");
  const summary=el("summary",null,"Actualización de modelos: qué es dinámico y qué sigue siendo experimental");
  const data=el("div","oaf-ux13-model-grid");
