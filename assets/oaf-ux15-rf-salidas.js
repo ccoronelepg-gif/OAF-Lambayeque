@@ -47,7 +47,7 @@ function drawMonth(){
  if(!root||!sel)return;
  root.replaceChildren();
  const rows=data?.escenarios_mensuales_rf_experimentales?.[sel.value];
- const good=data?.estado==="candidato_experimental_generado"&&Array.isArray(rows)&&rows.length>=6;
+ const good=data?.estado==="candidato_experimental_generado"&&data.unidades_temperatura==="Diario Tmax; mensual temperatura media (no promedio de Tmax)"&&Array.isArray(rows)&&rows.length>=6;
  const selected=good?rows.slice(0,6):Array.from({length:6},(_,i)=>({mes:i<2?"2026-"+(i+11):"2027-"+String(i-1).padStart(2,"0")}));
  selected.forEach((row,i)=>{
    const tile=el("article","oaf-ux15-future-month");
