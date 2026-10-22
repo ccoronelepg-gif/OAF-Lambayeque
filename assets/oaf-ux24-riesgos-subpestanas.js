@@ -102,6 +102,7 @@ function officialUI(){
  src.innerHTML='Susceptibilidad: <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024" target="_blank" rel="noopener noreferrer">CENEPRED · lluvias intensas (2021)</a> y <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090023" target="_blank" rel="noopener noreferrer">eventos El Niño (2021)</a>. '+ 
  'Puntos inventariados: <a href="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/hiroambienplanificacion/caracterizacion_territorio_riesgo_desastres/MapServer/3" target="_blank" rel="noopener noreferrer">MINAM</a> y <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5020500" target="_blank" rel="noopener noreferrer">INGEMMET/SIGRID (inventario actualizado a 2022)</a>. No equivale a una alerta vigente.';
  detail.after(src);
+ const m=el("a","oaf-ux24-source");m.href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_CAPAS_RIESGOS_UX25.md";m.target="_blank";m.rel="noopener noreferrer";m.textContent="Metodología y procedencia de capas UX25 ↗";src.after(m);
  $("oaf-ux25-raster").addEventListener("change",e=>{officialState.layers=e.target.value;drawOfficial()});
  $("oaf-ux25-minam").addEventListener("change",e=>{officialState.minam=e.target.checked;drawOfficial()});
  $("oaf-ux25-geologico").addEventListener("change",e=>{officialState.geologico=e.target.checked;drawOfficial()});
