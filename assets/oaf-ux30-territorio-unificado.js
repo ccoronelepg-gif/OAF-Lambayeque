@@ -6,6 +6,7 @@
 const $=id=>document.getElementById(id),node=(tag,cls)=>{const v=document.createElement(tag);if(cls)v.className=cls;return v};
 const layerSpec=[
  ["base","Mapa base y límites políticos",[
+  ["base","Mapa base de Lambayeque",true,"Visualiza el contorno regional simplificado de Lambayeque que sirve como referencia para ubicar las demás capas. No sustituye límites políticos oficiales ni mapas catastrales."],
   ["departamento","Límite departamental",true,"Límite político referencial de Lambayeque del INEI (2013). Ayuda a reconocer el territorio; no es una delimitación legal para un predio."],
   ["provincia","Límites provinciales",true,"Delimitaciones de las tres provincias de Lambayeque publicadas en SIGRID con base INEI. Sirven para estudiar la ubicación de los peligros."],
   ["distrito","Límites distritales",false,"Separa distritos y muestra nombres donde el servicio oficial lo permite. La precisión depende de la escala cartográfica INEI (2018)."]
@@ -64,6 +65,7 @@ function overlaySrc(service,layers){
 function makeTree(){
  const pane=$("oaf-ux29-territory"),tree=pane?.querySelector(".oaf-ux29-tree");
  if(!tree||$("oaf-ux30-layer-tree"))return;
+ pane.dataset.ux30Active="true";
  const legacy=node("div","oaf-ux30-legacy");legacy.id="oaf-ux30-legacy";
  while(tree.firstChild)legacy.append(tree.firstChild);
  pane.append(legacy);state.legacy=legacy;
@@ -89,8 +91,8 @@ function makeTree(){
  tree.prepend(area);
  const controls=node("div","oaf-ux30-layer-actions");
  const all=node("button");all.type="button";all.textContent="Limpiar selección";
- all.addEventListener("click",()=>{for(const k in state.on)state.on[k]=["departamento","provincia"].includes(k);refreshControls();applyLegacy();render();});
- const reset=node("button");reset.type="button";reset.textContent="Mapa base";reset.addEventListener("click",()=>{state.on=Object.fromEntries([...spec].map(([k])=>[k,["departamento","provincia"].includes(k)]));refreshControls();applyLegacy();render();});
+ all.addEventListener("click",()=>{for(const k in state.on)state.on[k]=["base","departamento","provincia"].includes(k);refreshControls();applyLegacy();render();});
+ const reset=node("button");reset.type="button";reset.textContent="Mapa base";reset.addEventListener("click",()=>{state.on=Object.fromEntries([...spec].map(([k])=>[k,["base","departamento","provincia"].includes(k)]));refreshControls();applyLegacy();render();});
  controls.append(all,reset);tree.prepend(controls);
  tree.addEventListener("change",ev=>{
   const key=ev.target?.dataset?.ux30Layer;if(!key)return;
@@ -133,6 +135,7 @@ function render(){
  const defs=sv("defs",{class:"oaf-ux30-layer"});
  const clip=sv("clipPath",{id:"oaf-ux30-clip-region",clipPathUnits:"userSpaceOnUse"});
  const boundary=map.querySelector('[data-oaf-ux24-boundary="true"]');
+ if(boundary){boundary.style.opacity=on("base")?"1":"0";}
  if(boundary)clip.append(sv("path",{d:boundary.getAttribute("d")}));
  defs.append(clip);map.append(defs);
  const back=sv("g",{class:"oaf-ux30-layer","clip-path":"url(#oaf-ux30-clip-region)"});
