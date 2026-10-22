@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-22-v24";
-const STATIC="oaf-pwa-static-2026-10-22-v24";
+const RELEASE="oaf-pwa-shell-2026-10-22-v25";
+const STATIC="oaf-pwa-static-2026-10-22-v25";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -27,6 +27,10 @@ const CORE=[
  "./assets/oaf-ux33-geocapas-etiquetas.js",
  "./assets/oaf-ux35-escenarios-multicapas.css",
  "./assets/oaf-ux35-escenarios-multicapas.js",
+ "./assets/oaf-ux36-vigilancia-hidrologica.css",
+ "./assets/oaf-ux36-vigilancia-hidrologica.js",
+ "./datos/hidrologia_ux36/referencias_cuencas_lambayeque.json",
+ "./datos/hidrologia_ux36/plantilla_observaciones_hidrometricas.csv",
  "./datos/riesgos_ux35/ubicaciones_agroindustriales_referenciales.geojson",
  "./datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson"
 ];
