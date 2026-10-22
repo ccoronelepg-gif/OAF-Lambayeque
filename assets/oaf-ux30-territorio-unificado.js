@@ -246,6 +246,78 @@ async function loadHistory(){
   state.pointsStatus="INGEMMET 2017: "+historicPoints.length+" puntos del ámbito consultado";
  }catch(e){state.pointsStatus="fuente no disponible";}finally{clearTimeout(timer);render()}
 }
+
+/* UX31 · Inventarios históricos verificados y climatología SENAMHI */
+const INDECI="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000";
+const SENAMHI_WMS="https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms";
+const SENAMHI_LAYER="g_01_06:01_06_001_03_001_512_0000_00_00"; // frecuencia de olas de calor, verano
+function heatWmsUrl(bounds){
+ if(!bounds)return "";
+ return SENAMHI_WMS+"?"+new URLSearchParams({
+  SERVICE:"WMS",VERSION:"1.1.1",REQUEST:"GetMap",LAYERS:SENAMHI_LAYER,STYLES:"",
+  SRS:"EPSG:4326",BBOX:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
+  WIDTH:"1100",HEIGHT:"535",FORMAT:"image/png",TRANSPARENT:"TRUE"
+ });
+}
+function historicNorm(value){
+ return String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+}
+async function loadDrought(){
+ if(state.droughtStatus!=="pendiente")return;
+ const b=state.scene?.bounds;if(!b)return;
+ state.droughtStatus="consultando inventario INDECI 2003–2020";diagnosis();
+ const query=new URLSearchParams({
+  where:"nom_dep LIKE '%LAMBAYEQUE%' AND (fenomeno LIKE '%equ%' OR fenomeno LIKE '%EQU%')",
+  outFields:"objectid_1,nom_dep,nom_prov,nom_dist,fecha,fenomeno,descrip,observ,fuente",
+  geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+  geometryType:"esriGeometryEnvelope",inSR:"4326",outSR:"4326",
+  spatialRel:"esriSpatialRelIntersects",returnGeometry:"true",f:"geojson",resultRecordCount:"2000"
+ });
+ const controller=new AbortController(),limit=setTimeout(()=>controller.abort(),17500);
+ try{
+  const response=await fetch(INDECI+"/query?"+query,{signal:controller.signal,cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  const data=await response.json();
+  if(data.error||!Array.isArray(data.features))throw Error("GeoJSON inválido");
+  const unique=new Set();
+  const events=data.features.map(feature=>{
+   const props=feature.properties||{},c=feature.geometry?.coordinates;
+   if(feature.geometry?.type!=="Point"||!Array.isArray(c)||!c.every(Number.isFinite))return null;
+   if(!historicNorm(props.fenomeno).includes("sequi"))return null;
+   const id=props.objectid_1||[c.join(","),props.fecha,props.fenomeno].join("|");
+   if(unique.has(id))return null;unique.add(id);
+   return {coords:c,category:"drought",color:"#c9892c",label:"Sequía histórica · "+(props.nom_dist||props.nom_prov||"Lambayeque"),
+    year:props.fecha||"2003–2020",type:String(props.fenomeno||"Sequía"),
+    detail:String(props.descrip||props.observ||"Emergencia histórica registrada").slice(0,300),
+    source:"INDECI, registro de emergencias 2003–2020",sourceUrl:INDECI};
+  }).filter(Boolean);
+  state.points=state.points.filter(p=>p.category!=="drought").concat(events);
+  state.droughtStatus=events.length+" emergencias históricas con geometría"+(data.features.length>=2000?" (consulta limitada por el servidor)":"");
+ }catch(e){state.droughtStatus="La consulta de INDECI no respondió; revisar enlace original."}
+ finally{clearTimeout(limit);render()}
+}
+async function loadHeat(){
+ if(state.heatStatus!=="pendiente")return;
+ state.heatStatus="consultando punto meteorológico SENAMHI";diagnosis();
+ try{
+  const response=await fetch("datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson",{cache:"no-store"});
+  if(!response.ok)throw Error("HTTP "+response.status);
+  const data=await response.json();
+  if(!Array.isArray(data.features))throw Error("GeoJSON inválido");
+  const entries=data.features.map(f=>{
+   const p=f.properties||{},coords=f.geometry?.coordinates;
+   if(f.geometry?.type!=="Point"||!Array.isArray(coords)||!coords.every(Number.isFinite))return null;
+   return {coords,category:"heat",color:"#dc583d",label:"Calor histórico · "+String(p.estacion||"Estación SENAMHI"),
+    year:p.fecha||"2024",type:p.tipo||"registro térmico",
+    detail:"Máxima registrada "+p.maxima_celsius+" °C ("+p.fecha+"); anomalía promedio de temperatura máxima de marzo 2024: +"+p.anomalia_maxima_marzo_2024_celsius+" °C.",
+    source:"SENAMHI, boletín climático marzo 2024",sourceUrl:p.fuente_url||"https://www.senamhi.gob.pe/"};
+  }).filter(Boolean);
+  state.points=state.points.filter(p=>p.category!=="heat").concat(entries);
+  state.heatStatus=entries.length+" estación/es con registro histórico documentado";
+ }catch(e){state.heatStatus="No disponible el registro SENAMHI incorporado."}
+ finally{render()}
+}
+
 function adaptOriginal(){
  const pane=$("oaf-ux29-territory");
  if(!pane)return;
