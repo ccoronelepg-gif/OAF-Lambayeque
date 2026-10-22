@@ -22,6 +22,8 @@ on:
       - "assets/oaf-app-maskable*"
       - "tests/test_pwa_ux20.cjs"
       - "tests/test_pwa_ux20_browser.cjs"
+      - "assets/oaf-ux22-editorial-justificada.css"
+      - "tests/test_editorial_ux22_browser.cjs"
       - ".github/workflows/oaf_responsive_mobile_ux19.yml"
   workflow_dispatch:
 permissions:
@@ -53,6 +55,7 @@ jobs:
         run: |
           node tests/test_pwa_ux20.cjs
           node tests/test_pwa_ux20_browser.cjs
+          node tests/test_editorial_ux22_browser.cjs
       - name: Confirmar simplificación editorial en versión web y aplicación
         run: |
           node tests/test_ux21_limpieza.cjs
