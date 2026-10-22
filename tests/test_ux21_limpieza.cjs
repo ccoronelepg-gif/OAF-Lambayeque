@@ -13,7 +13,7 @@ assert.ok(html.includes('id="oaf-home-summary-static"'),"Falta resumen central")
  // sin exigir etiquetas largas redundantes que el usuario pidió eliminar.
 const summary=html.match(/<p class="oaf-ux22-sintesis">([^<]*)<\/p>/)?.[1];
 assert.ok(summary,"Falta síntesis editorial en Inicio");
-assert.ok(summary.includes("productores")&&summary.includes("información"),"Falta propósito divulgativo");
+assert.ok(summary.includes("productores")&&summary.includes("especialistas"),"Falta propósito divulgativo");
 assert.ok(summary.includes("Python")&&summary.includes("SIG"),"Falta metodología propia");
 assert.ok(summary.includes("experiment")||summary.includes("en evaluación"),"Falta límite científico RF");
 assert.ok(summary.split(/\s+/).length<=70,"Síntesis supera el tamaño solicitado");
