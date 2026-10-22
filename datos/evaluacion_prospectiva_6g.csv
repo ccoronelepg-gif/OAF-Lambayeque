@@ -1,1 +1,13 @@
 fecha_emision_local,emision_utc,localidad,horizonte_dias,fecha_valida,variable,unidad,pronosticado,referencia_reanalisis,error,modelo_referencia,fuente_pronostico,fuente_referencia
+2026-10-14,2026-10-15T04:55:55+00:00,Chiclayo,1,2026-10-15,temperature_2m_mean,°C,25.6,25.6,0.0,ERA5-Land,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Chiclayo,1,2026-10-15,precipitation_sum,mm,0.0,0.0,0.0,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Chiclayo,1,2026-10-15,shortwave_radiation_sum,MJ/m²,25.72,24.11,1.61,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Jayanca,1,2026-10-15,temperature_2m_mean,°C,26.8,25.7,1.1,ERA5-Land,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Jayanca,1,2026-10-15,precipitation_sum,mm,0.0,0.1,-0.1,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Jayanca,1,2026-10-15,shortwave_radiation_sum,MJ/m²,24.9,23.59,1.31,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Motupe,1,2026-10-15,temperature_2m_mean,°C,25.1,24.9,0.2,ERA5-Land,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Motupe,1,2026-10-15,precipitation_sum,mm,0.0,0.2,-0.2,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Motupe,1,2026-10-15,shortwave_radiation_sum,MJ/m²,23.53,22.92,0.61,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Olmos,1,2026-10-15,temperature_2m_mean,°C,25.1,24.9,0.2,ERA5-Land,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Olmos,1,2026-10-15,precipitation_sum,mm,0.0,0.4,-0.4,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API
+2026-10-14,2026-10-15T04:55:55+00:00,Olmos,1,2026-10-15,shortwave_radiation_sum,MJ/m²,24.11,22.42,1.69,ERA5,"Open-Meteo Forecast API, emisión archivada",Open-Meteo Historical Weather API

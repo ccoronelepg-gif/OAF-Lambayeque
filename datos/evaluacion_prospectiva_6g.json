@@ -1,19 +1,19 @@
 {
   "fase": "6G",
-  "generado_utc": "2026-10-21T15:17:04+00:00",
-  "hoy_local_peru": "2026-10-21",
-  "estado": "pendiente_reanalisis",
+  "generado_utc": "2026-10-22T15:19:38+00:00",
+  "hoy_local_peru": "2026-10-22",
+  "estado": "con_resultados_reanalisis",
   "tipo": "verificacion_de_pronosticos_externos_emitidos_antes_del_evento",
   "son_predicciones_oaf": false,
   "validacion_instrumental": false,
   "retraso_seguridad_dias": 7,
   "primera_fecha_valida_archivada": "2026-10-15",
   "primera_fecha_elegible": "2026-10-22",
-  "jornadas_pronosticadas_en_archivo": 224,
-  "jornadas_elegibles": 0,
-  "jornadas_verificadas": 0,
+  "jornadas_pronosticadas_en_archivo": 252,
+  "jornadas_elegibles": 4,
+  "jornadas_verificadas": 4,
   "jornadas_con_referencia_incompleta": 0,
-  "emisiones_distintas_verificadas": 0,
+  "emisiones_distintas_verificadas": 1,
   "variables_evaluadas": [
     {
       "nombre": "temperature_2m_mean",
@@ -31,7 +31,140 @@
       "referencia": "ERA5"
     }
   ],
-  "metricas_por_localidad_horizonte_y_variable": [],
+  "metricas_por_localidad_horizonte_y_variable": [
+    {
+      "localidad": "Chiclayo",
+      "horizonte_dias": 1,
+      "variable": "precipitation_sum",
+      "unidad": "mm",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.0,
+      "sesgo": 0.0,
+      "rmse": 0.0,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_dias": 1,
+      "variable": "shortwave_radiation_sum",
+      "unidad": "MJ/m²",
+      "n_emisiones_verificadas": 1,
+      "mae": 1.61,
+      "sesgo": 1.61,
+      "rmse": 1.61,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Chiclayo",
+      "horizonte_dias": 1,
+      "variable": "temperature_2m_mean",
+      "unidad": "°C",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.0,
+      "sesgo": 0.0,
+      "rmse": 0.0,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_dias": 1,
+      "variable": "precipitation_sum",
+      "unidad": "mm",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.1,
+      "sesgo": -0.1,
+      "rmse": 0.1,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_dias": 1,
+      "variable": "shortwave_radiation_sum",
+      "unidad": "MJ/m²",
+      "n_emisiones_verificadas": 1,
+      "mae": 1.31,
+      "sesgo": 1.31,
+      "rmse": 1.31,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Jayanca",
+      "horizonte_dias": 1,
+      "variable": "temperature_2m_mean",
+      "unidad": "°C",
+      "n_emisiones_verificadas": 1,
+      "mae": 1.1,
+      "sesgo": 1.1,
+      "rmse": 1.1,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_dias": 1,
+      "variable": "precipitation_sum",
+      "unidad": "mm",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.2,
+      "sesgo": -0.2,
+      "rmse": 0.2,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_dias": 1,
+      "variable": "shortwave_radiation_sum",
+      "unidad": "MJ/m²",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.61,
+      "sesgo": 0.61,
+      "rmse": 0.61,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Motupe",
+      "horizonte_dias": 1,
+      "variable": "temperature_2m_mean",
+      "unidad": "°C",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.2,
+      "sesgo": 0.2,
+      "rmse": 0.2,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_dias": 1,
+      "variable": "precipitation_sum",
+      "unidad": "mm",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.4,
+      "sesgo": -0.4,
+      "rmse": 0.4,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_dias": 1,
+      "variable": "shortwave_radiation_sum",
+      "unidad": "MJ/m²",
+      "n_emisiones_verificadas": 1,
+      "mae": 1.69,
+      "sesgo": 1.69,
+      "rmse": 1.69,
+      "validacion_operativa": false
+    },
+    {
+      "localidad": "Olmos",
+      "horizonte_dias": 1,
+      "variable": "temperature_2m_mean",
+      "unidad": "°C",
+      "n_emisiones_verificadas": 1,
+      "mae": 0.2,
+      "sesgo": 0.2,
+      "rmse": 0.2,
+      "validacion_operativa": false
+    }
+  ],
   "referencias": {
     "temperatura": "Open-Meteo Historical Weather, ERA5-Land daily",
     "lluvia_y_radiacion": "Open-Meteo Historical Weather, ERA5 daily",
