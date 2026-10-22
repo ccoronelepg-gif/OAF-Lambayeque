@@ -81,6 +81,7 @@ function activate(){
  if(svg){
   state.zoomObserver=new MutationObserver(()=>applyZoomStyles(svg));
   state.zoomObserver.observe(svg,{attributes:true,attributeFilter:["viewBox"]});
+  navigation(svg);
  }
  window.addEventListener("oaf:geodata",()=>{if(state.ready)render()});
  window.addEventListener("oaf:emergencydata",()=>{if(state.ready)render()});
@@ -154,6 +155,40 @@ function attachTerritoryFilters(){
   target.addEventListener("change",()=>{sync();requestAnimationFrame(render)});
  }
 }
+function navigation(svg){
+ // ViewBox-based navigation, no distortion of map geometry or enlarged markers.
+ let pointer=null;
+ const bounds=()=>{const a=(svg.getAttribute("viewBox")||"0 0 700 380").split(/[\s,]+/).map(Number);
+  return a.length===4&&a.every(Number.isFinite)?a:[0,0,700,380]};
+ const set=(x,y,w,h)=>{
+  const nw=Math.min(700,Math.max(80,w)),nh=Math.min(380,Math.max(80*380/700,h));
+  const xx=Math.max(0,Math.min(700-nw,x)),yy=Math.max(0,Math.min(380-nh,y));
+  svg.setAttribute("viewBox",[xx,yy,nw,nh].map(q=>q.toFixed(2)).join(" "));
+ };
+ svg.addEventListener("wheel",e=>{
+  e.preventDefault();
+  const v=bounds(),factor=e.deltaY>0?1.2:.82,box=svg.getBoundingClientRect();
+  const fx=Math.min(1,Math.max(0,(e.clientX-box.left)/Math.max(1,box.width)));
+  const fy=Math.min(1,Math.max(0,(e.clientY-box.top)/Math.max(1,box.height)));
+  const w=v[2]*factor,h=v[3]*factor;
+  set(v[0]-(w-v[2])*fx,v[1]-(h-v[3])*fy,w,h);
+ },{passive:false});
+ svg.addEventListener("pointerdown",e=>{
+  if(e.pointerType==="mouse"&&e.button!==0)return;
+  if(e.target.closest("circle.oaf-ux35-point"))return;
+  pointer={id:e.pointerId,x:e.clientX,y:e.clientY,start:bounds()};
+  try{svg.setPointerCapture(e.pointerId)}catch{}
+ });
+ svg.addEventListener("pointermove",e=>{
+  if(!pointer||e.pointerId!==pointer.id)return;
+  const rect=svg.getBoundingClientRect(),[x,y,w,h]=pointer.start;
+  set(x-(e.clientX-pointer.x)*w/Math.max(1,rect.width),
+   y-(e.clientY-pointer.y)*h/Math.max(1,rect.height),w,h);
+ });
+ for(const ev of ["pointerup","pointercancel","lostpointercapture"])
+  svg.addEventListener(ev,e=>{if(pointer&&pointer.id===e.pointerId)pointer=null});
+}
+
 function handleChange(e){
  const target=e.target;
  if(target.dataset.ux35Key){
