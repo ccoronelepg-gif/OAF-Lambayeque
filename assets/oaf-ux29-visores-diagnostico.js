@@ -45,7 +45,7 @@ function diagram(type){
   "Combina la susceptibilidad territorial con pronósticos de lluvia por localidad y cartografía de apoyo. La respuesta del caudal y las áreas inundadas requieren modelos hidrológicos e hidráulicos validados.")+'</p></div>'+
   '<div class="oaf-ux29-layout">'+
   '<aside class="oaf-ux29-sidebar" aria-label="Árbol de capas del mapa"><div class="oaf-ux29-sidehead"><strong>CAPAS</strong><small>Marca o desmarca lo que deseas consultar</small></div><div class="oaf-ux29-tree"></div></aside>'+
-  '<section class="oaf-ux29-mapcolumn" aria-label="Mapa interactivo"><div class="oaf-ux29-maphead"><strong>Mapa del territorio</strong><span>Región Lambayeque · Perú</span></div><div class="oaf-ux29-mapcontent"></div><div class="oaf-ux29-bottom"><span><i class="oaf-ux29-north">N ↑</i> Base regional simplificada · EPSG:4326</span><a href="https://sigrid.cenepred.gob.pe/sigridv3/mapa" target="_blank" rel="noopener noreferrer">Contrastar con SIGRID ↗</a></div></section>'+
+  '<section class="oaf-ux29-mapcolumn" aria-label="Mapa interactivo"><div class="oaf-ux29-maphead"><strong>Mapa del territorio</strong><span>Región Lambayeque · Perú</span></div><div class="oaf-ux29-toolbar" aria-label="Controles del mapa"><button type="button" data-ux29-zoom="in" aria-label="Acercar mapa" title="Acercar mapa">+</button><button type="button" data-ux29-zoom="out" aria-label="Alejar mapa" title="Alejar mapa">−</button><button type="button" data-ux29-zoom="reset" aria-label="Restablecer extensión regional">Ajustar mapa</button><span>Capas consultables · OAF</span></div><div class="oaf-ux29-mapcontent"></div><div class="oaf-ux29-bottom"><span><i class="oaf-ux29-north">N ↑</i> Base regional simplificada · EPSG:4326</span><a href="https://sigrid.cenepred.gob.pe/sigridv3/mapa" target="_blank" rel="noopener noreferrer">Contrastar con SIGRID ↗</a></div></section>'+
   '<aside class="oaf-ux29-diagnosis" aria-label="Diagnóstico del territorio"><div class="oaf-ux29-diagnosishead"><span>ANÁLISIS CONTEXTUAL</span><h3>Diagnóstico del territorio</h3></div>'+
   '<div class="oaf-ux29-diagbody" role="status" aria-live="polite"></div>'+
   '<div class="oaf-ux29-diagextras"></div></aside></div>';
@@ -358,8 +358,27 @@ function watchScenario(){
  tab?.addEventListener("click",()=>setTimeout(wake,0));
  setTimeout(wake,300);
 }
+function mapToolbar(){
+ document.querySelectorAll(".oaf-ux29-workbench").forEach(panel=>{
+  const svgId=panel.dataset.ux29Type==="territory"?"oaf-ux24-region-map":"oaf-ux29-forecast-map";
+  const element=()=>$(svgId);
+  const fullWidth=700,fullHeight=panel.dataset.ux29Type==="territory"?340:380;
+  panel.querySelectorAll("[data-ux29-zoom]").forEach(button=>button.addEventListener("click",()=>{
+   const map=element();if(!map)return;
+   const raw=(map.getAttribute("viewBox")||"0 0 700 "+fullHeight).trim().split(/[,\\s]+/).map(Number);
+   if(raw.length!==4||raw.some(v=>!Number.isFinite(v)))return;
+   const [x,y,w,h]=raw;
+   if(button.dataset.ux29Zoom==="reset"){map.setAttribute("viewBox","0 0 700 "+fullHeight);return}
+   const scale=button.dataset.ux29Zoom==="in"?.8:1.25;
+   const nw=Math.min(fullWidth,Math.max(140,w*scale)),nh=Math.min(fullHeight,Math.max(fullHeight*.2,h*scale));
+   const nx=Math.min(fullWidth-nw,Math.max(0,x+(w-nw)/2));
+   const ny=Math.min(fullHeight-nh,Math.max(0,y+(h-nh)/2));
+   map.setAttribute("viewBox",[nx.toFixed(2),ny.toFixed(2),nw.toFixed(2),nh.toFixed(2)].join(" "));
+  }));
+ });
+}
 function init(){
- mountTerritory();attachScenario();watchScenario();
+ mountTerritory();attachScenario();mapToolbar();watchScenario();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
