@@ -60,3 +60,44 @@ background:#f4faf6;border:1px solid #c4ddd0;cursor:pointer}
  .oaf-ux24-mapframe svg{height:245px}
 }
 @media(prefers-reduced-motion:reduce){.oaf-ux24-tab{scroll-behavior:auto}}
+
+
+/* UX25 · controles de geoservicios oficiales y puntos consultables */
+.oaf-ux25-controls{
+ margin:12px 0 12px; padding:14px 15px;
+ background:#f4faf6;border:1px solid #cee3d7;border-radius:12px;
+ min-width:0;
+}
+.oaf-ux25-heading{display:flex;flex-direction:column;gap:3px;margin:0 0 10px}
+.oaf-ux25-heading strong{font-size:14px;color:#1a5946}
+.oaf-ux25-heading span{font-size:12px;line-height:1.45;color:#4b7362}
+.oaf-ux25-selectlabel{display:block;font-size:12px;font-weight:800;color:#255f4f;margin-bottom:5px}
+.oaf-ux25-controls select{width:100%;max-width:100%;font:inherit;font-size:13px;min-height:44px;
+ border:1px solid #a5cbb8;border-radius:9px;background:#fff;color:#1b5547;padding:9px}
+.oaf-ux25-toggles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.oaf-ux25-toggles label{display:flex;gap:8px;align-items:center;min-width:0;padding:10px 11px;
+ border:1px solid #d2e4db;border-radius:9px;background:#fff;cursor:pointer;font-size:12px;line-height:1.4;font-weight:700;color:#285a49}
+.oaf-ux25-toggles input{flex-shrink:0;accent-color:#167054;width:17px;height:17px}
+.oaf-ux25-map-status{font-size:12px!important;line-height:1.55!important;color:#415e56!important;
+ margin:7px 0!important;text-align:left!important}
+.oaf-ux25-legend{display:flex;gap:8px 14px;flex-wrap:wrap;margin:8px 0 0;color:#36594c;font-size:12px}
+.oaf-ux25-legend span{display:inline-flex;align-items:center;gap:5px}
+.oaf-ux25-dot{height:11px;width:11px;border:1px solid #fff;box-shadow:0 0 0 1px #647f70;border-radius:50%;display:inline-block}
+.oaf-ux25-flood{background:#cf6a25}
+.oaf-ux25-geo{background:#74449d}
+.oaf-ux25-point{cursor:pointer;transition:r .12s ease}
+.oaf-ux25-point:focus-visible{stroke:#222!important;stroke-width:3px!important;outline:none}
+.oaf-ux25-detail{margin:11px 0;padding:12px 13px;background:#eef7f0;border-radius:10px;border:1px solid #d0e4d5;
+ font-size:12.5px;line-height:1.55;color:#345748}
+.oaf-ux25-detail strong{font-size:13px;color:#174c3a}
+.oaf-ux25-detail p{margin:5px 0!important;text-align:left!important;font-size:12.5px!important;line-height:1.5!important}
+.oaf-ux25-detail a{display:inline-block;color:#126a50;font-size:12.5px;font-weight:800;margin-top:5px}
+.oaf-ux25-source-detail{font-size:12px!important;color:#517165!important;line-height:1.7!important;
+ margin:11px 0 0!important;text-align:justify!important;hyphens:auto}
+.oaf-ux25-source-detail a{color:#126e53;text-decoration:underline}
+@media(max-width:600px){
+ .oaf-ux25-controls{padding:12px 10px}
+ .oaf-ux25-toggles{grid-template-columns:minmax(0,1fr)}
+ .oaf-ux25-toggles label{min-height:44px}
+ .oaf-ux25-selectlabel{font-size:12px}
+}
