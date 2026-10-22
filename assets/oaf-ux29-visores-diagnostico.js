@@ -365,7 +365,7 @@ function mapToolbar(){
   const fullWidth=700,fullHeight=panel.dataset.ux29Type==="territory"?340:380;
   panel.querySelectorAll("[data-ux29-zoom]").forEach(button=>button.addEventListener("click",()=>{
    const map=element();if(!map)return;
-   const raw=(map.getAttribute("viewBox")||"0 0 700 "+fullHeight).trim().split(/[,\\s]+/).map(Number);
+   const raw=(map.getAttribute("viewBox")||"0 0 700 "+fullHeight).trim().split(/[,\s]+/).map(Number);
    if(raw.length!==4||raw.some(v=>!Number.isFinite(v)))return;
    const [x,y,w,h]=raw;
    if(button.dataset.ux29Zoom==="reset"){map.setAttribute("viewBox","0 0 700 "+fullHeight);return}
