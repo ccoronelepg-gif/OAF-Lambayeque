@@ -129,3 +129,14 @@
  .oaf-ux29-tree{max-height:310px}
  .oaf-ux29-bottom{font-size:10px}
 }
+
+
+.oaf-ux29-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:#f7faf8;
+ padding:7px 11px;border-bottom:1px solid #dae7df}
+.oaf-ux29-toolbar button{font:inherit;min-width:35px;min-height:35px;border:1px solid #bdd7c8;
+ border-radius:8px;background:#fff;color:#245946;font-weight:850;font-size:15px;cursor:pointer;padding:4px 10px}
+.oaf-ux29-toolbar button:hover{background:#e7f3ec}
+.oaf-ux29-toolbar button:focus-visible{outline:3px solid #e6b14c;outline-offset:2px}
+.oaf-ux29-toolbar button[data-ux29-zoom="reset"]{font-size:11.5px;min-width:96px}
+.oaf-ux29-toolbar span{margin-left:auto;color:#5b776a;font-size:10.5px}
+@media(max-width:480px){.oaf-ux29-toolbar span{width:100%;margin:0}}
