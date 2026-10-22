@@ -1,0 +1,131 @@
+/* UX29 · Sistema de información geográfica OAF · inspiración funcional SIGRID.
+   Panel de capas / mapa / diagnóstico, sin replicar diseños propietarios. */
+.oaf-ux29-workbench{
+ background:#f8fbfa;border:1px solid #c9ded4;border-radius:17px;
+ margin:18px 0 23px;padding:clamp(13px,2vw,21px);min-width:0;max-width:100%;box-sizing:border-box;
+ box-shadow:0 7px 26px #1747340d;scroll-margin-top:140px
+}
+.oaf-ux29-top{padding:0 3px 14px}
+.oaf-ux29-kicker{display:block;font-size:10px;letter-spacing:.13em;color:#2d876c;font-weight:850}
+.oaf-ux29-top h2{margin:5px 0 8px;color:#154c3e;font-size:clamp(22px,2.7vw,29px);line-height:1.27}
+.oaf-ux29-top p{margin:0;line-height:1.7;color:#4c6d60;font-size:13px;text-align:justify;hyphens:auto;max-width:none}
+.oaf-ux29-layout{display:grid;grid-template-columns:minmax(235px,.75fr) minmax(390px,1.85fr) minmax(245px,.78fr);
+ gap:10px;align-items:stretch;min-width:0}
+.oaf-ux29-sidebar,.oaf-ux29-mapcolumn,.oaf-ux29-diagnosis{
+ border:1px solid #d1e2db;border-radius:12px;min-width:0;overflow:hidden;background:#fff
+}
+.oaf-ux29-sidebar{background:#f9fbfa;display:flex;flex-direction:column}
+.oaf-ux29-sidehead{background:#f0f6f2;padding:14px 13px 11px;border-bottom:1px solid #d8e9de}
+.oaf-ux29-sidehead strong{display:block;color:#1b5544;font-size:14px;letter-spacing:.08em}
+.oaf-ux29-sidehead small{display:block;color:#668175;font-size:11.5px;line-height:1.5;margin-top:4px}
+.oaf-ux29-tree{padding:8px 9px 12px;max-height:720px;overflow-y:auto;overscroll-behavior:contain}
+.oaf-ux29-group{margin:6px 0;border:1px solid #d7e5dc;border-radius:10px;background:#fff;overflow:clip}
+.oaf-ux29-group>summary{cursor:pointer;list-style:none;font-size:12.5px;font-weight:850;
+ line-height:1.4;color:#215843;padding:11px 28px 11px 11px;background:#f1f7f3;position:relative}
+.oaf-ux29-group>summary::-webkit-details-marker{display:none}
+.oaf-ux29-group>summary:after{content:"▸";position:absolute;right:12px;top:10px;color:#3a8264}
+.oaf-ux29-group[open]>summary:after{content:"▾"}
+.oaf-ux29-group[open]>summary{border-bottom:1px solid #d8e8db}
+.oaf-ux29-group>summary:focus-visible{outline:3px solid #e0b64f;outline-offset:-3px}
+.oaf-ux29-group>.oaf-ux25-controls,
+.oaf-ux29-group>.oaf-ux26-filter-box,
+.oaf-ux29-group>.oaf-ux24-card{margin:7px!important;border:none!important;background:transparent!important;
+ border-radius:8px!important;box-shadow:none!important;padding:6px!important;width:auto!important;max-width:none!important}
+.oaf-ux29-group>.oaf-ux24-card h3{font-size:14px;margin:5px 0}
+.oaf-ux29-group>.oaf-ux24-card p{font-size:11.5px!important;line-height:1.55!important}
+.oaf-ux29-group .oaf-ux26-fields{grid-template-columns:minmax(0,1fr)!important;gap:8px}
+.oaf-ux29-group .oaf-ux25-toggles{grid-template-columns:minmax(0,1fr)!important}
+.oaf-ux29-group .oaf-ux25-heading strong{font-size:12.5px}
+.oaf-ux29-group .oaf-ux25-heading span{font-size:11px}
+.oaf-ux29-group .oaf-ux26-filter-head strong{font-size:13px}
+.oaf-ux29-group .oaf-ux26-switches label{min-width:0}
+.oaf-ux29-group .oaf-ux28-controls{display:contents}
+.oaf-ux29-group>fieldset{border:none;background:transparent;margin:5px;padding:7px}
+.oaf-ux29-group>fieldset legend{font-size:11px}
+.oaf-ux29-group>fieldset label{font-size:11.5px;display:flex;align-items:center;gap:5px;min-height:35px;line-height:1.38}
+.oaf-ux29-group>fieldset input{accent-color:#227b5d;width:16px;height:16px;flex-shrink:0}
+.oaf-ux29-check{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#365b4b;line-height:1.45;
+ padding:10px 9px;margin:0;border-bottom:1px solid #edf3ef;cursor:pointer}
+.oaf-ux29-check:last-child{border-bottom:0}
+.oaf-ux29-check input{flex-shrink:0;margin:1px 0 0;accent-color:#28765a;width:17px;height:17px}
+.oaf-ux29-field{display:block;padding:8px 10px;font-size:11.5px;font-weight:800;color:#365f4f;line-height:1.45}
+.oaf-ux29-field select{display:block;width:100%;max-width:100%;min-height:42px;border:1px solid #bed7c9;border-radius:8px;
+ font:inherit;font-size:12px;color:#235a45;padding:7px;margin:5px 0 0;background:#fff}
+.oaf-ux29-check:focus-within,.oaf-ux29-field:focus-within{outline:2px solid #efc066;outline-offset:-2px}
+.oaf-ux29-limit{margin:8px;background:#f3f8f5;border-left:3px solid #8bb89d;padding:9px 10px;border-radius:0 7px 7px 0}
+.oaf-ux29-limit strong{font-size:12px;color:#2c5f49}
+.oaf-ux29-limit p{font-size:11.5px;color:#53715f;line-height:1.6;margin:5px 0;text-align:justify}
+.oaf-ux29-limit a,.oaf-ux29-doclink{display:block;color:#147154;font-size:11.5px;font-weight:800;
+ padding:7px 10px;text-decoration:underline;line-height:1.4}
+.oaf-ux29-mapcolumn{display:flex;flex-direction:column;min-height:490px;position:relative}
+.oaf-ux29-maphead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+ border-bottom:1px solid #dae8e0;padding:10px 13px;background:#f6faf7}
+.oaf-ux29-maphead strong{color:#174e3c;font-size:13px}
+.oaf-ux29-maphead span{color:#5f7a6a;font-size:11px}
+.oaf-ux29-mapcontent{flex:1;min-height:0;padding:12px;display:flex;flex-direction:column;gap:8px}
+.oaf-ux29-mapcolumn .oaf-ux29-mainmapcard{border:none!important;box-shadow:none!important;padding:0!important;
+ margin:0!important;width:100%!important;flex:1;background:#fff}
+.oaf-ux29-mainmapcard>h3{font-size:13px!important;color:#27614b!important;line-height:1.35}
+.oaf-ux29-mainmapcard .oaf-ux24-mapframe{min-height:0!important;overflow:hidden;width:100%!important;
+ max-width:100%!important;border-color:#d8e7dc;border-radius:10px}
+.oaf-ux29-mainmapcard .oaf-ux24-mapframe svg{display:block;width:100%!important;height:auto!important;
+ min-height:320px;max-height:540px;aspect-ratio:700/340;background:#ebf4ef}
+.oaf-ux29-mainmapcard .oaf-ux24-map-note{font-size:11.5px}
+.oaf-ux29-mainmapcard .oaf-ux24-source{font-size:11px;margin:6px 6px 0 0}
+.oaf-ux29-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+ border-top:1px solid #ddebe1;padding:9px 12px;color:#61796d;font-size:11px;line-height:1.5;background:#fafcfb}
+.oaf-ux29-bottom a{color:#186951;font-size:11px;font-weight:800}
+.oaf-ux29-north{font-weight:800;font-style:normal;color:#257159}
+.oaf-ux29-diagnosis{display:flex;flex-direction:column;background:#fafcfb}
+.oaf-ux29-diagnosishead{background:#e9f3eb;border-bottom:1px solid #cfe4d6;padding:14px 13px}
+.oaf-ux29-diagnosishead span{display:block;font-size:10px;color:#467562;letter-spacing:.1em;font-weight:800}
+.oaf-ux29-diagnosishead h3{margin:4px 0 0;font-size:19px;color:#164934;line-height:1.27}
+.oaf-ux29-diagbody{padding:10px;max-height:630px;overflow-y:auto}
+.oaf-ux29-finding{margin:0 0 10px;padding:11px 10px;border:1px solid #dae9df;background:#fff;border-radius:9px}
+.oaf-ux29-finding strong{display:block;color:#206049;font-size:12.5px;line-height:1.35}
+.oaf-ux29-finding p{color:#4d6b5b;font-size:12px;line-height:1.65;text-align:justify;hyphens:auto;margin:6px 0 0;overflow-wrap:break-word}
+.oaf-ux29-diagextras{padding:0 10px 10px}
+.oaf-ux29-diagextras .oaf-ux25-detail,.oaf-ux29-diagextras .oaf-ux28-details{
+ background:#f1f7f2!important;border:1px solid #d7e7da!important;line-height:1.55!important;margin:8px 0!important;padding:10px!important;font-size:11.5px!important}
+.oaf-ux29-diagextras .oaf-ux28-status{font-size:11px;line-height:1.5}
+.oaf-ux29-diagnote{font-size:11px;line-height:1.5;color:#70857a;margin:9px}
+.oaf-ux29-scenemap{margin:2px 0;min-height:0;border:1px solid #d7e7dd;border-radius:10px;
+ overflow:hidden;background:#eef6f1;position:relative}
+.oaf-ux29-scenemap svg{display:block;width:100%;height:auto;aspect-ratio:700/380;min-height:315px}
+.oaf-ux29-scenemap circle[role="button"]{cursor:pointer;outline:none}
+.oaf-ux29-scenemap circle[role="button"]:focus-visible{stroke:#112f24;stroke-width:4}
+.oaf-ux29-mapcaption{border-top:1px solid #d8e7dd;background:#f5faf6;
+ font-size:11px;color:#557267;line-height:1.5;padding:8px 11px;text-align:justify}
+.oaf-ux29-scenestatus{background:#f4f9f5;border-radius:8px;font-size:11px;line-height:1.55;
+ padding:9px;color:#466b57}
+.oaf-ux29-calculation{border:1px solid #d6e7da;border-radius:8px;padding:11px;background:#eef7f0;font-size:12px;color:#265b45}
+.oaf-ux29-calculation p{font-size:11.5px;margin:5px 0;color:#4d6d5e}
+.oaf-ux29-links{font-size:11.5px;line-height:1.6;margin:10px 0}
+.oaf-ux29-links a{font-weight:750;color:#166c51}
+@media(max-width:1240px){
+ .oaf-ux29-layout{grid-template-columns:minmax(215px,.77fr) minmax(340px,1.65fr)}
+ .oaf-ux29-diagnosis{grid-column:1/-1}
+ .oaf-ux29-diagbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:none}
+ .oaf-ux29-finding{margin:0}
+}
+@media(max-width:790px){
+ .oaf-ux29-layout{grid-template-columns:minmax(0,1fr)}
+ .oaf-ux29-sidebar,.oaf-ux29-mapcolumn,.oaf-ux29-diagnosis{grid-column:1}
+ .oaf-ux29-tree{max-height:350px}
+ .oaf-ux29-mapcontent{padding:9px}
+ .oaf-ux29-mapcolumn{min-height:0}
+ .oaf-ux29-diagbody{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .oaf-ux29-mainmapcard .oaf-ux24-mapframe svg{min-height:270px}
+}
+@media(max-width:520px){
+ .oaf-ux29-workbench{padding:10px 8px}
+ .oaf-ux29-top{padding:0 4px 10px}
+ .oaf-ux29-top h2{font-size:21px}
+ .oaf-ux29-sidebar,.oaf-ux29-mapcolumn,.oaf-ux29-diagnosis{border-radius:9px}
+ .oaf-ux29-diagbody{display:block}
+ .oaf-ux29-finding{margin:0 0 8px}
+ .oaf-ux29-scenemap svg{min-height:220px}
+ .oaf-ux29-mainmapcard .oaf-ux24-mapframe svg{min-height:220px}
+ .oaf-ux29-tree{max-height:310px}
+ .oaf-ux29-bottom{font-size:10px}
+}
