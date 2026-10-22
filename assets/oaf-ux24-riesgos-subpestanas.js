@@ -401,6 +401,7 @@ function ux26Display(){
  ux26Metrics();
  // UX28 conserva la proyección y filtros existentes sin alterar el visor original.
  if(typeof window.oafUx28AfterDraw==='function')window.oafUx28AfterDraw({scene:sc,selected,contains:ux26Contains});
+ if(typeof window.oafUx30AfterDraw==="function")window.oafUx30AfterDraw({scene:sc,selected,contains:ux26Contains});
 }
 function ux26Metrics(){
  const node=$("oaf-ux26-kpis");if(!node)return;
