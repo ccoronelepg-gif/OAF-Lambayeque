@@ -262,6 +262,7 @@ function category(value){
 function drawLabels(){
  const ctx=S.ctx,group=S.labelGroup;if(!ctx||!group)return;
  group.replaceChildren();
+ if(S.showLabels===false)return;
  const [vx,vy,vw,vh]=view(),k=vw/700;
  const maxLabels=vw>500?24:vw>280?52:vw>120?94:160;
  const occupied=[];
@@ -324,6 +325,17 @@ function paintStatus(){
    state==="vacío"?"0 geometrías":state==="error"?"sin conexión":state);
  });
  bar.textContent=messages.join(" · ")+" — Etiquetas según atributos disponibles.";
+ const mapcol=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-mapcontent");
+ let legend=el("oaf-ux33-agri-legend");
+ if(mapcol&&!legend){legend=document.createElement("div");legend.id="oaf-ux33-agri-legend";
+  legend.className="oaf-ux33-legend";mapcol.insertBefore(legend,bar.nextSibling);}
+ if(legend){
+  legend.hidden=!needs("agri");
+  legend.replaceChildren();
+  if(!legend.hidden){const swatch=document.createElement("i");swatch.className="oaf-ux33-swatch";
+   const text=document.createElement("span");text.textContent="Superficie agrícola MINAM · referencia 2018 · naranja intenso";
+   legend.append(swatch,text);}
+ }
 }
 function appendDiagnosis(box){
  if(!box)return;
@@ -348,6 +360,15 @@ function retry(key){
  drawVectors();
 }
 function init(){
+ const toolbar=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-toolbar");
+ if(toolbar&&!el("oaf-ux33-label-toggle")){
+  const label=document.createElement("label");label.id="oaf-ux33-label-toggle";
+  label.className="oaf-ux33-label-toggle";
+  const input=document.createElement("input");input.type="checkbox";input.checked=true;
+  label.append(input,document.createTextNode("Mostrar nombres"));
+  input.addEventListener("change",()=>{S.showLabels=input.checked;drawLabels()});
+  toolbar.append(label);
+ }
  window.oafUx33AfterDraw=start;
  window.oafUx33OnZoom=()=>drawLabels();
  window.oafUx33LayerChange=(key)=>{
