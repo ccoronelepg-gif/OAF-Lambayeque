@@ -101,3 +101,10 @@ background:#f4faf6;border:1px solid #c4ddd0;cursor:pointer}
  .oaf-ux25-toggles label{min-height:44px}
  .oaf-ux25-selectlabel{font-size:12px}
 }
+
+
+.oaf-ux25-legend-foot{margin:9px 0 0!important;color:#466e5e!important;font-size:11.5px!important;
+ line-height:1.6!important;text-align:left!important}
+.oaf-ux25-legend-foot a{color:#0d7153;font-weight:750;text-decoration:underline}
+#oaf-ux24-region-map{touch-action:pan-y;user-select:none}
+#oaf-ux24-region-map .oaf-ux25-point:hover{stroke:#193b32;stroke-width:2.5}
