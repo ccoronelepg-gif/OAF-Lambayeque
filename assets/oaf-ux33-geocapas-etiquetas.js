@@ -56,9 +56,105 @@ function needs(k){
  if(k==="agri")return on("agricola")||on("exposicion");
  return false;
 }
+
+/* UX34 · Geometría hidrográfica por cuadrantes con transferencia progresiva.
+   GeoJSON voluminoso de toda la región había agotado el tiempo de consulta.
+   Este lector también acepta EsriJSON / geometry.paths (mismo servicio oficial).
+*/
+function hydroTiles(){
+ const b=bounds();if(!b)return [];
+ const midX=(b.minLon+b.maxLon)/2,midY=(b.minLat+b.maxLat)/2;
+ return [
+  [b.minLon,b.minLat,midX,midY],
+  [midX,b.minLat,b.maxLon,midY],
+  [b.minLon,midY,midX,b.maxLat],
+  [midX,midY,b.maxLon,b.maxLat]
+ ];
+}
+function makeHydroQuery(k,tile,fmt,offset=0){
+ const isRiver=k==="hydroRio";
+ const values=isRiver?"('R','RN','RI','RS','AC')":"('Q','Q1','QB','QQ','QI','QS')";
+ const q=new URLSearchParams({
+  where:"tipo IN "+values,
+  geometry:tile.join(","),geometryType:"esriGeometryEnvelope",
+  spatialRel:"esriSpatialRelIntersects",inSR:"4326",outSR:"4326",
+  outFields:"objectid,tipo,nombre,r_q_text",
+  returnGeometry:"true",maxAllowableOffset:"0.0012",geometryPrecision:"5",
+  resultRecordCount:"180",resultOffset:String(offset),f:fmt
+ });
+ return HOST+"/6030200/query?"+q.toString();
+}
+function convertHydro(response){
+ if(response?.error)throw Error(response.error.message||"ArcGIS rechazó la consulta");
+ if(!Array.isArray(response?.features))throw Error("Respuesta sin colección de elementos");
+ return response.features.map(f=>{
+  if(f.type==="Feature")return f;
+  const g=f.geometry||{},paths=g.paths;
+  if(!Array.isArray(paths)||!paths.length)return null;
+  return {type:"Feature",geometry:{
+    type:paths.length===1?"LineString":"MultiLineString",
+    coordinates:paths.length===1?paths[0]:paths
+   },properties:f.attributes||{}};
+ }).filter(Boolean);
+}
+async function requestHydroPage(k,tile,offset){
+ let firstError;
+ for(const fmt of ["json","geojson"]){
+  try{
+   const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),13500);
+   try{
+    const r=await fetch(makeHydroQuery(k,tile,fmt,offset),{signal:ctl.signal,cache:"no-store"});
+    if(!r.ok)throw Error("HTTP "+r.status);
+    return convertHydro(await r.json()).filter(f=>["LineString","MultiLineString"].includes(f.geometry?.type));
+   }finally{clearTimeout(timer)}
+  }catch(e){firstError=e}
+ }
+ throw firstError||Error("Sin respuesta oficial");
+}
+async function loadHydroPages(k){
+ const tiles=hydroTiles();if(!tiles.length)return;
+ const observed=new Set(),assembled=[];
+ S.phase[k]="cargando";S.note[k]="Consulta por sectores: formato EsriJSON/GeoJSON";paintStatus();
+ let failed=0,limited=0;
+ for(let i=0;i<tiles.length;i++){
+  if(!needs(k))break;
+  try{
+   let page=await requestHydroPage(k,tiles[i],0);
+   for(const f of page){
+    const p=f.properties||{},key=val(p,"objectid")||JSON.stringify(f.geometry?.coordinates?.[0]).slice(0,90);
+    if(observed.has(key))continue;
+    observed.add(key);assembled.push(f);
+   }
+   if(page.length>=180)limited++;
+   // Dibujar cada cuadrante apenas llega la respuesta, sin esperar toda la región.
+   S.features[k]=assembled.slice();
+   S.count[k]=assembled.length;S.phase[k]=assembled.length?"listo":"cargando";
+   S.partial[k]=true;
+   drawVectors();paintStatus();
+  }catch(e){failed++;S.note[k]="Error en "+failed+" de "+tiles.length+" sectores: "+String(e).slice(0,90)}
+ }
+ S.features[k]=assembled;
+ S.count[k]=assembled.length;
+ S.partial[k]=limited>0||failed>0;
+ S.phase[k]=assembled.length?"listo":failed===tiles.length?"error":"vacío";
+ S.note[k]=assembled.length?
+  "Se muestran "+assembled.length+" tramos oficiales recuperados en "+(tiles.length-failed)+" sectores; la consulta puede ser parcial.":
+  "No se recuperaron tramos. Comprueba el enlace IGN/SIGRID y la conexión a los geoservicios.";
+}
+
 async function ensure(k){
  if(!S.ctx||!needs(k)||S.phase[k]!=="pendiente"||S.started[k])return;
  S.started[k]=true;S.phase[k]="cargando";paintStatus();
+ if(k==="hydroRio"||k==="hydroQuebrada"){
+  try{await loadHydroPages(k)}
+  catch(e){S.phase[k]="error";S.note[k]="Error de carga: "+String(e).slice(0,120)}
+  finally{
+   S.started[k]=false;drawVectors();paintStatus();
+   const d=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-diagbody");
+   if(d){d.querySelectorAll('[data-ux33-status="true"]').forEach(x=>x.remove());appendDiagnosis(d)}
+  }
+  return;
+ }
  let where="1=1",fields="*",max=1700;
  if(k==="district"){where="IDDPTO='14'";fields="IDDPTO,IDPROV,NOMBPROV,IDDIST,NOMBDIST";max=220}
  else if(k==="hydroRio"){where="tipo IN ('R','RN','RI','RS','AC')";fields="tipo,nombre,r_q_text";max=2000}
