@@ -30,3 +30,18 @@
  #oaf-ux29-territory .oaf-ux33-status{font-size:11px;padding:8px 9px}
  #oaf-ux29-territory .oaf-ux33-label-toggle{margin-left:0}
 }
+
+
+/* UX34 · consulta de hidrografía por sectores y recuperación ante fallos */
+#oaf-ux29-territory #oaf-ux34-retry{
+ display:inline-flex;align-items:center;justify-content:center;
+ background:#ffffff;color:#15688c;border:1px solid #8db9cd;
+ border-radius:9px;padding:9px 14px;min-height:40px;
+ font-size:12px;font-weight:800;cursor:pointer;margin:2px 0 8px;
+}
+#oaf-ux29-territory #oaf-ux34-retry:hover{background:#eaf7fc}
+#oaf-ux29-territory #oaf-ux34-retry:focus-visible{outline:3px solid #e1ba54;outline-offset:2px}
+#oaf-ux29-territory #oaf-ux34-retry[hidden]{display:none!important}
+#oaf-ux29-territory .oaf-ux33-hydro path{
+ stroke-opacity:1;stroke-linecap:round;stroke-linejoin:round;
+}
