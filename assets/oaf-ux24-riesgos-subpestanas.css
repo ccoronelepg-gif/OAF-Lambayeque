@@ -1,0 +1,62 @@
+/* UX24 · arquitectura regional y escenarios de riesgos · web + PWA */
+main > section[data-page="clima"] > .oaf-ux24-subtabs,
+main > section[data-page="autor"] > .oaf-ux24-subtabs{
+  display:block;min-width:0;width:100%;max-width:none;box-sizing:border-box;
+  margin:12px 0 19px;padding:17px clamp(13px,2.5vw,24px);
+  border:1px solid #c9ded5;border-radius:17px;
+  background:linear-gradient(125deg,#f4faf6,#fff 72%);
+  box-shadow:0 5px 18px #164a3b0c;
+  scroll-margin-top:130px;
+}
+.oaf-ux24-kicker{font-size:11px;text-transform:uppercase;font-weight:850;letter-spacing:.10em;color:#427761;margin:0 0 3px}
+.oaf-ux24-subtabs h2{color:#164c3e;font-size:clamp(18px,2.25vw,25px);line-height:1.32;margin:0 0 5px}
+.oaf-ux24-subtabs p:not(.oaf-ux24-kicker){font-size:13px;line-height:1.66;color:#46685d;margin:0 0 13px;max-width:none;width:100%;text-align:justify;text-justify:inter-word;hyphens:auto}
+.oaf-ux24-tablist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.oaf-ux24-tab{display:flex;align-items:center;justify-content:center;min-height:50px;padding:11px 12px;border-radius:11px;
+ background:#fff;color:#1c5c48;text-decoration:none;text-align:center;font-weight:800;font-size:14px;
+ border:1px solid #bfdacc;line-height:1.3;overflow-wrap:anywhere}
+.oaf-ux24-tab:hover{border-color:#378b6e;background:#edf8f0}
+.oaf-ux24-tab[aria-current="page"]{background:#176f55;border-color:#176f55;color:#fff;box-shadow:0 3px 10px #176f5527}
+.oaf-ux24-tab:focus-visible,.oaf-ux24-source:focus-visible,.oaf-ux24-hazard:focus-visible{outline:3px solid #ecb343;outline-offset:3px}
+.oaf-ux24-primary-anchor{height:0;position:relative;scroll-margin-top:140px}
+main > section[data-page="clima"].oaf-ux24-risk-active > :not(.oaf-ux24-subtabs):not(.oaf-ux24-risk-pane),
+main > section[data-page="autor"].oaf-ux24-risk-active > :not(.oaf-ux24-subtabs):not(.oaf-ux24-risk-pane){display:none!important}
+.oaf-ux24-risk-pane{display:block;width:100%;min-width:0;max-width:100%;scroll-margin-top:145px;box-sizing:border-box}
+.oaf-ux24-intro{border:1px solid #cddfd5;border-radius:15px;background:#fff;padding:clamp(16px,2.3vw,26px);margin-bottom:15px}
+.oaf-ux24-intro h2{margin:4px 0 10px;color:#14483b;font-size:clamp(21px,2.5vw,29px);line-height:1.3}
+.oaf-ux24-intro p{margin:0;color:#3e6558;font-size:14px;line-height:1.75;text-align:justify;hyphens:auto;max-width:none}
+.oaf-ux24-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(285px,.8fr);gap:14px;margin:13px 0}
+.oaf-ux24-card{border:1px solid #d6e7de;border-radius:14px;background:#fff;padding:17px 18px;min-width:0}
+.oaf-ux24-card h3{font-size:18px;color:#184f40;margin:0 0 9px;line-height:1.32}
+.oaf-ux24-card p,.oaf-ux24-card li{font-size:13px;color:#43675d;line-height:1.7;text-align:justify;hyphens:auto}
+.oaf-ux24-card p{margin:5px 0 11px}
+.oaf-ux24-card ul{padding-left:19px;margin:6px 0 12px}
+.oaf-ux24-source{display:inline-block;font-size:13px;color:#0b6651;text-decoration:underline;text-underline-offset:3px;font-weight:800;margin:3px 10px 5px 0}
+.oaf-ux24-mapframe{border:1px solid #dbe9e2;border-radius:12px;background:#eff7f2;overflow:hidden;min-height:320px;display:flex;flex-direction:column}
+.oaf-ux24-mapframe svg{width:100%;height:300px;display:block}
+.oaf-ux24-mapframe .oaf-ux24-map-note{padding:7px 12px;border-top:1px solid #d2e5d9;font-size:12px;color:#4e7165;line-height:1.5}
+.oaf-ux24-hazard-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:10px 0 13px}
+.oaf-ux24-hazard{font:inherit;font-size:12.5px;text-align:left;line-height:1.35;min-height:44px;padding:9px 10px;border-radius:10px;color:#205b48;
+background:#f4faf6;border:1px solid #c4ddd0;cursor:pointer}
+.oaf-ux24-hazard[aria-pressed="true"]{border-color:#167054;background:#deefe4;font-weight:850}
+.oaf-ux24-hazard-detail{background:#f1f8f3;border-left:4px solid #318c6e;border-radius:0 9px 9px 0;padding:12px 13px}
+.oaf-ux24-hazard-detail strong{font-size:14px;color:#1e5745}
+.oaf-ux24-hazard-detail p{margin:4px 0 0!important}
+.oaf-ux24-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:13px 0}
+.oaf-ux24-tag{display:inline-block;font-weight:800;font-size:11px;letter-spacing:.04em;color:#206d56;background:#e7f4ed;border-radius:999px;padding:4px 10px;margin-bottom:7px}
+.oaf-ux24-disclaimer{border-left:4px solid #9bbbad;padding:10px 13px;margin:14px 0 7px;background:#f3f7f5;font-size:12.5px;line-height:1.7;color:#46665d}
+@media(max-width:780px){
+ .oaf-ux24-grid{grid-template-columns:minmax(0,1fr)}
+ .oaf-ux24-steps{grid-template-columns:minmax(0,1fr)}
+ .oaf-ux24-subtabs h2{font-size:20px}
+ .oaf-ux24-risk-pane .oaf-ux24-card{padding:14px}
+}
+@media(max-width:520px){
+ main > section[data-page="clima"] > .oaf-ux24-subtabs,main > section[data-page="autor"] > .oaf-ux24-subtabs{padding:13px 12px;margin:9px 0 13px}
+ .oaf-ux24-tablist{gap:6px}
+ .oaf-ux24-tab{font-size:12px;min-height:54px;padding:9px 6px}
+ .oaf-ux24-hazard-list{grid-template-columns:1fr 1fr}
+ .oaf-ux24-intro{padding:15px 13px}
+ .oaf-ux24-mapframe svg{height:245px}
+}
+@media(prefers-reduced-motion:reduce){.oaf-ux24-tab{scroll-behavior:auto}}
