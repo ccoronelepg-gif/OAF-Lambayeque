@@ -49,10 +49,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Clima Regional",
-      "short_name": "Clima",
+      "name": "Análisis de la región",
+      "short_name": "Región",
       "url": "./#clima",
-      "description": "Observaciones, pronóstico de referencia y estaciones meteorológicas",
+      "description": "Clima regional, territorio y riesgos climáticos de Lambayeque",
       "icons": [
         {
           "src": "assets/oaf-app-icon-192.png",
@@ -64,7 +64,7 @@
       "name": "Predicciones y Anomalías",
       "short_name": "RF OAF",
       "url": "./#autor",
-      "description": "Comparar el modelo Random Forest con referencias científicas"
+      "description": "Análisis agroclimático y escenarios territoriales en investigación"
     },
     {
       "name": "Cultivos y Sanidad",
