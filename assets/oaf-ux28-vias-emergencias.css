@@ -1,0 +1,60 @@
+/* OAF UX28 · Red vial y respuesta ante emergencias. Web + PWA. */
+.oaf-ux28-panel{border:1px solid #c5dcd2;background:#fff;border-radius:16px;
+ padding:clamp(14px,2vw,24px);margin:14px 0;min-width:0;box-sizing:border-box;scroll-margin-top:145px}
+.oaf-ux28-head h2{font-size:clamp(20px,2.5vw,27px);color:#154a3e;line-height:1.3;margin:5px 0 9px}
+.oaf-ux28-head p{font-size:13.2px;line-height:1.7;color:#486759;text-align:justify;hyphens:auto;margin:0 0 13px}
+.oaf-ux28-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:10px 0 14px}
+.oaf-ux28-controls fieldset{border:1px solid #d1e4d7;border-radius:12px;background:#f6faf7;
+ padding:12px 13px;min-width:0;margin:0}
+.oaf-ux28-controls legend{color:#235842;font-size:13px;font-weight:850;line-height:1.4;padding:0 5px}
+.oaf-ux28-controls label{display:flex;align-items:center;gap:8px;min-height:38px;line-height:1.3;
+ font-size:12.5px;font-weight:700;color:#345b4c;padding:6px 2px;cursor:pointer;min-width:0}
+.oaf-ux28-controls input[type="checkbox"]{flex-shrink:0;width:17px;height:17px;accent-color:#167058}
+.oaf-ux28-controls input:focus-visible{outline:3px solid #e6b754;outline-offset:3px}
+.oaf-ux28-line{display:inline-block;width:25px;flex-shrink:0;height:0;border-top:4px solid;border-radius:3px}
+.oaf-ux28-national{border-color:#bb6535}
+.oaf-ux28-regional{border-color:#366bb0}
+.oaf-ux28-vecinal{border-color:#38956d;border-top-style:dashed}
+.oaf-ux28-dot{display:inline-block;flex-shrink:0;width:12px;height:12px;border-radius:50%;border:1.5px solid #fff;
+ box-shadow:0 0 0 1px #7b9688}
+.oaf-ux28-status{font-size:12px;color:#3d6854;line-height:1.65;padding:10px 12px;border-left:3px solid #a7c8b7;
+ background:#f1f8f3;border-radius:0 9px 9px 0;margin:10px 0}
+.oaf-ux28-metrics{background:#e8f4ec;border:1px solid #cce4d5;border-radius:10px;
+ padding:12px 13px;line-height:1.55;font-size:12.5px;color:#315d49}
+.oaf-ux28-metrics strong{display:block;color:#174b39;font-size:13.5px;margin-bottom:5px}
+.oaf-ux28-metrics p{font-size:12.5px;margin:0 0 5px;text-align:justify;line-height:1.6}
+.oaf-ux28-metrics small{color:#496958;line-height:1.45;font-size:11.5px}
+.oaf-ux28-details{padding:13px 14px;margin:11px 0;background:#f8fbf9;border:1px solid #d3e5da;
+ border-radius:10px;font-size:12.5px;color:#3f6153}
+.oaf-ux28-details strong{display:block;font-size:14px;color:#184d39;margin-bottom:4px}
+.oaf-ux28-details p{font-size:12.5px;line-height:1.6;margin:6px 0;text-align:justify}
+.oaf-ux28-details a{font-size:12.5px;font-weight:800;color:#126c50;text-decoration:underline}
+.oaf-ux28-recordkind{display:block;font-size:11.5px;color:#497461}
+.oaf-ux28-defensa{padding:14px 15px;margin:13px 0;border:1px solid #d5e1ec;border-radius:12px;background:#f7f9fc}
+.oaf-ux28-defensa h3{font-size:17px;color:#365c78;margin:0 0 8px}
+.oaf-ux28-defensa>p{font-size:12.5px;color:#516877;text-align:justify;line-height:1.6;margin:6px 0 12px}
+.oaf-ux28-offices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0}
+.oaf-ux28-offices article{background:#fff;border:1px solid #d5e1ec;border-radius:10px;padding:12px;min-width:0}
+.oaf-ux28-offices strong{display:block;font-size:13px;color:#335c79;margin:0 0 7px}
+.oaf-ux28-offices span{display:block;font-size:12.5px;color:#546b75;line-height:1.55}
+.oaf-ux28-offices a{display:inline-block;color:#1c617d;font-size:12px;font-weight:750;
+ text-decoration:underline;margin:9px 0 0}
+.oaf-ux28-sources{font-size:12px!important;line-height:1.7!important;color:#527366!important;
+ text-align:justify!important;margin:12px 0 0!important;overflow-wrap:break-word}
+.oaf-ux28-sources a{color:#126b54;text-decoration:underline;font-weight:750}
+#oaf-ux24-region-map .oaf-ux28-emergency-marker{cursor:pointer}
+#oaf-ux24-region-map .oaf-ux28-emergency-marker:focus-visible{stroke:#182e29;stroke-width:3.2;outline:none}
+@media(max-width:750px){
+ .oaf-ux28-controls{grid-template-columns:1fr;gap:10px}
+ .oaf-ux28-offices{grid-template-columns:1fr}
+ .oaf-ux28-controls label{min-height:44px}
+}
+@media(max-width:450px){
+ .oaf-ux28-panel{padding:12px 10px}
+ .oaf-ux28-controls fieldset{padding:10px}
+ .oaf-ux28-controls legend{font-size:12px}
+ .oaf-ux28-defensa{padding:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ #oaf-ux24-region-map .oaf-ux28-emergency-marker{transition:none}
+}
