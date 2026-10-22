@@ -1,0 +1,91 @@
+/* OAF-Lambayeque UX35 · escenarios multicapa histórico y prospectivo */
+#oaf-escenarios-riesgo-agroclimatico.oaf-ux35-only-visor> :not(#oaf-ux29-scenario){display:none!important}
+#oaf-escenarios-riesgo-agroclimatico #oaf-ux29-scenario{margin:0!important;width:100%;max-width:100%;box-sizing:border-box}
+#oaf-ux29-scenario .oaf-ux29-layout{
+ display:grid;grid-template-columns:minmax(235px,.8fr) minmax(395px,1.8fr) minmax(270px,.9fr);
+ gap:12px;align-items:stretch;min-width:0
+}
+#oaf-ux29-scenario .oaf-ux29-tree{max-height:760px;overflow-y:auto;padding:10px;overscroll-behavior:contain}
+#oaf-ux29-scenario .oaf-ux29-sidebar{min-width:0}
+#oaf-ux29-scenario .oaf-ux35-tree-intro{background:#f2f8f3;color:#416854;font-size:11.5px;
+ line-height:1.55;border:1px solid #d6e9d9;border-radius:8px;padding:9px 10px;margin:2px 0 10px;text-align:justify}
+#oaf-ux29-scenario .oaf-ux35-group{background:#fff;border:1px solid #d1e5d8;
+ border-radius:10px;overflow:hidden;margin:0 0 9px;min-width:0}
+#oaf-ux29-scenario .oaf-ux35-group>summary{position:relative;list-style:none;cursor:pointer;
+ background:#edf6f0;color:#1a5c42;padding:12px 28px 12px 11px;
+ font-size:12.5px;font-weight:850;line-height:1.42;min-height:42px}
+#oaf-ux29-scenario .oaf-ux35-group>summary::-webkit-details-marker{display:none}
+#oaf-ux29-scenario .oaf-ux35-group>summary:after{content:"▸";position:absolute;right:11px;top:12px;color:#267251}
+#oaf-ux29-scenario .oaf-ux35-group[open]>summary:after{content:"▾"}
+#oaf-ux29-scenario .oaf-ux35-group[open]>summary{border-bottom:1px solid #d7e9df}
+#oaf-ux29-scenario .oaf-ux35-check{display:grid;grid-template-columns:17px minmax(0,1fr);
+ gap:6px 8px;align-items:start;padding:9px 10px;
+ color:#315947;font-size:11.8px;line-height:1.5;cursor:pointer;
+ border-bottom:1px solid #edf4ef;min-width:0}
+#oaf-ux29-scenario .oaf-ux35-check:hover{background:#f5faf5}
+#oaf-ux29-scenario .oaf-ux35-check input{grid-column:1;grid-row:1/3;
+ margin:2px 0 0;width:17px;height:17px;accent-color:#187455;cursor:pointer}
+#oaf-ux29-scenario .oaf-ux35-check span{grid-column:2;overflow-wrap:anywhere}
+#oaf-ux29-scenario .oaf-ux35-check small{grid-column:2;grid-row:2;color:#708878;line-height:1.45;font-size:10.5px}
+#oaf-ux29-scenario .oaf-ux35-check:focus-within{outline:2px solid #e3b954;outline-offset:-2px}
+#oaf-ux29-scenario .oaf-ux35-field{display:block;margin:9px 11px;color:#365e4c;font-size:11.5px;
+ font-weight:800;line-height:1.5}
+#oaf-ux29-scenario .oaf-ux35-field select{width:100%;display:block;margin:5px 0 0;
+ padding:8px 9px;min-height:42px;max-width:100%;min-width:0;background:#fff;
+ border:1px solid #bdd9c9;border-radius:8px;color:#235c43;font:inherit;font-size:12.5px}
+#oaf-ux29-scenario .oaf-ux35-field select:focus-visible{outline:3px solid #e9bd5a;outline-offset:2px}
+#oaf-ux29-scenario .oaf-ux35-sync-note{font-size:11px;color:#5a7968;line-height:1.5;margin:8px 11px;text-align:justify}
+#oaf-ux29-scenario .oaf-ux29-mapcontent{padding:10px;display:flex;flex-direction:column;gap:10px}
+#oaf-ux29-scenario .oaf-ux35-mapintro{padding:9px 11px;border-radius:9px;
+ font-size:11.5px;line-height:1.6;color:#416b58;background:#eaf6ed;border:1px solid #cee5d3;text-align:justify}
+#oaf-ux29-scenario .oaf-ux29-scenemap{width:100%;max-width:100%;min-width:0}
+#oaf-ux29-scenario #oaf-ux29-forecast-map{width:100%;height:auto;display:block;max-width:100%;
+ aspect-ratio:700/380;min-height:0!important;background:#edf5ee;touch-action:pan-y}
+#oaf-ux29-scenario .oaf-ux35-mapstatus{font-size:11.5px;line-height:1.65;color:#356b5a;
+ background:#eff7f1;border:1px solid #d4e9db;padding:11px 12px;border-radius:9px;overflow-wrap:anywhere}
+#oaf-ux29-scenario .oaf-ux35-diagnosis-section{display:block;margin:0 0 10px;padding:12px;
+ background:#fff;border:1px solid #d9e8dc;border-radius:10px}
+#oaf-ux29-scenario .oaf-ux35-diagnosis-section strong{font-size:12.8px;line-height:1.4;color:#1c6046;display:block}
+#oaf-ux29-scenario .oaf-ux35-diagnosis-section p{font-size:12.2px;line-height:1.67;color:#456858;
+ margin:6px 0 0;text-align:justify;hyphens:auto;overflow-wrap:break-word}
+#oaf-ux29-scenario .oaf-ux35-diagnosis-section small{display:block;color:#708375;font-size:11px;
+ line-height:1.5;margin-top:6px}
+#oaf-ux29-scenario .oaf-ux29-diagnosishead{position:sticky;top:0;z-index:1}
+#oaf-ux29-scenario .oaf-ux29-diagbody{display:block;max-height:760px;overflow-y:auto}
+#oaf-ux29-scenario .oaf-ux35-selected{background:#e9f4eb;color:#215744;border:1px solid #cadfce;
+ border-radius:9px;padding:11px;margin-bottom:9px;font-size:12px;line-height:1.6}
+#oaf-ux29-scenario .oaf-ux35-selected strong{display:block}
+#oaf-ux29-scenario .oaf-ux35-selected p{margin:4px 0;text-align:justify}
+#oaf-ux29-scenario .oaf-ux35-method{padding:11px;background:#f4f8f5;border-left:3px solid #a8c8b1;
+ border-radius:0 9px 9px 0;color:#547060;font-size:12px;line-height:1.6}
+#oaf-ux29-scenario .oaf-ux35-method p{margin:6px 0;text-align:justify}
+#oaf-ux29-scenario circle.oaf-ux35-point{cursor:pointer}
+#oaf-ux29-scenario circle.oaf-ux35-point:focus-visible{stroke:#1b3f30;stroke-width:3;outline:none}
+#oaf-ux29-scenario .oaf-ux29-bottom a{display:none!important}
+.oaf-ux35-metadatos{border:1px solid #d2e6d8;background:#f8fbf9;border-radius:12px;padding:16px 18px;margin:14px 0}
+.oaf-ux35-metadatos h2{margin:0 0 8px;font-size:19px;color:#1e6549}
+.oaf-ux35-metadatos li,.oaf-ux35-metadatos p{font-size:12.5px;line-height:1.68;color:#426855}
+.oaf-ux35-metadatos p{text-align:justify}
+.oaf-ux35-metadatos a{font-weight:750;color:#166d50;text-decoration:underline;overflow-wrap:anywhere}
+@media(max-width:1240px){
+ #oaf-ux29-scenario .oaf-ux29-layout{grid-template-columns:minmax(230px,.8fr) minmax(340px,1.8fr)}
+ #oaf-ux29-scenario .oaf-ux29-diagnosis{grid-column:1/-1}
+ #oaf-ux29-scenario .oaf-ux29-diagbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:none}
+ #oaf-ux29-scenario .oaf-ux35-diagnosis-section{margin:0}
+}
+@media(max-width:790px){
+ #oaf-ux29-scenario .oaf-ux29-layout{grid-template-columns:minmax(0,1fr)}
+ #oaf-ux29-scenario .oaf-ux29-sidebar,#oaf-ux29-scenario .oaf-ux29-mapcolumn,
+ #oaf-ux29-scenario .oaf-ux29-diagnosis{grid-column:1}
+ #oaf-ux29-scenario .oaf-ux29-tree{max-height:370px}
+ #oaf-ux29-scenario .oaf-ux29-diagbody{display:block}
+ #oaf-ux29-scenario .oaf-ux35-diagnosis-section{margin-bottom:9px}
+}
+@media(max-width:460px){
+ #oaf-ux29-scenario{padding:11px 8px}
+ #oaf-ux29-scenario .oaf-ux35-mapintro{font-size:11px}
+ #oaf-ux29-scenario .oaf-ux29-mapcontent{padding:7px}
+ #oaf-ux29-scenario .oaf-ux29-tree{max-height:340px}
+ #oaf-ux29-scenario .oaf-ux35-diagnosis-section{padding:9px}
+ .oaf-ux35-metadatos{padding:13px 11px}
+}
