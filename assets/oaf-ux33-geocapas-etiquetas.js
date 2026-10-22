@@ -93,6 +93,8 @@ async function ensure(k){
   }
  }finally{
   S.started[k]=false;drawVectors();paintStatus();
+  const diagnosis=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-diagbody");
+  if(diagnosis){diagnosis.querySelectorAll('[data-ux33-status="true"]').forEach(x=>x.remove());appendDiagnosis(diagnosis);}
  }
 }
 function loadAll(){
@@ -121,8 +123,11 @@ function centerOf(f){
  if(!outer.length)return null;
  const pts=outer.reduce((a,b)=>a.length>=b.length?a:b,[]);
  // BBox center approximate label anchor, not a geographic claim or a calculated centroid.
- const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
- return [(Math.min(...xs)+Math.max(...xs))/2,(Math.min(...ys)+Math.max(...ys))/2];
+ let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+ for(const p of pts){if(!Array.isArray(p)||p.length<2)continue;
+  minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0]);
+  minY=Math.min(minY,p[1]);maxY=Math.max(maxY,p[1]);}
+ return Number.isFinite(minX)?[(minX+maxX)/2,(minY+maxY)/2]:null;
 }
 function view(){
  const m=S.ctx?.map;const v=(m?.getAttribute("viewBox")||"0 0 700 340").trim().split(/[\s,]+/).map(Number);
@@ -168,16 +173,19 @@ function drawVectors(){
   for(const f of S.features.district){
    const province=val(f.properties||{},"NOMBPROV","nombprov");
    if(!province)continue;
-   const rings=polygonRings(f.geometry).flatMap(p=>p.filter(a=>Array.isArray(a)&&a.length>2));
-   const group=provinceGroups.get(province)||[];
-   group.push(...rings.flat());provinceGroups.set(province,group);
+   const group=provinceGroups.get(province)||{minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity};
+   for(const poly of polygonRings(f.geometry))for(const ring of poly)for(const p of ring){
+    if(!Array.isArray(p)||p.length<2)continue;
+    group.minX=Math.min(group.minX,p[0]);group.maxX=Math.max(group.maxX,p[0]);
+    group.minY=Math.min(group.minY,p[1]);group.maxY=Math.max(group.maxY,p[1]);
+   }
+   provinceGroups.set(province,group);
   }
   if(c.on("provincia")){
-   for(const [name,pts] of provinceGroups){
-    if(!pts.length)continue;
-    const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
-    candidates.push({kind:"province",text:"Prov. "+name,coord:[(Math.min(...xs)+Math.max(...xs))/2,
-      (Math.min(...ys)+Math.max(...ys))/2],priority:140});
+   for(const [name,box] of provinceGroups){
+    if(!Number.isFinite(box.minX))continue;
+    candidates.push({kind:"province",text:"Prov. "+name,
+      coord:[(box.minX+box.maxX)/2,(box.minY+box.maxY)/2],priority:140});
    }
   }
   if(c.on("departamento")&&!c.on("provincia")){
@@ -326,7 +334,7 @@ function appendDiagnosis(box){
  const name={district:"límites distritales",hydroRio:"ríos IGN",hydroQuebrada:"quebradas IGN",historical:"peligros INGEMMET",agri:"superficie agrícola MINAM"};
  desc.textContent=chosen.map(k=>name[k]+": "+(S.phase[k]==="listo"?S.count[k]+" registros"+(S.partial[k]?" (solo muestra)":""):S.phase[k])+(S.note[k]?" ("+S.note[k]+")":"")).join(" · ")+
  ". Los nombres se muestran únicamente cuando forman parte de los atributos oficiales. La falta de datos se indica; no se inventan ubicaciones.";
- part.append(heading,desc);box.append(part);
+ part.dataset.ux33Status="true";part.append(heading,desc);box.append(part);
 }
 function start(ctx){
  S.ctx=ctx;
