@@ -169,7 +169,8 @@ function render(){
  }
  // Insert underneath independent road and emergency point markers.
  const before=map.querySelector("circle.oaf-ux25-point, circle.oaf-ux28-emergency-marker");
- map.insertBefore(back,before||null);map.append(front);
+ const roads=[...map.children].find(e=>e.classList?.contains("oaf-ux28-overlay")&&e.querySelector?.(".oaf-ux28-roadimage"));
+ map.insertBefore(back,roads||before||null);map.append(front);
  diagnosis();adjustMarkerSizes();
  refreshDetailMap();
 }
