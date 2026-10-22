@@ -262,8 +262,16 @@ function category(value){
 function drawLabels(){
  const ctx=S.ctx,group=S.labelGroup;if(!ctx||!group)return;
  group.replaceChildren();
- if(S.showLabels===false)return;
  const [vx,vy,vw,vh]=view(),k=vw/700;
+ // Ajustar tamaño de símbolos aunque se hayan ocultado las etiquetas.
+ for(const dot of group.parentNode?.querySelectorAll("circle.oaf-ux33-historic-point")||[]){
+  dot.setAttribute("r",Math.max(.45,3.9*k).toFixed(3));
+  dot.setAttribute("stroke-width",Math.max(.14,1.1*k).toFixed(3));
+ }
+ for(const path of group.parentNode?.querySelectorAll("path")||[]){
+  path.setAttribute("stroke-width",Math.max(.13,1.5*k).toFixed(3));
+ }
+ if(S.showLabels===false)return;
  const maxLabels=vw>500?24:vw>280?52:vw>120?94:160;
  const occupied=[];
  const candidates=(S.labelCandidates||[]).slice().sort((a,b)=>b.priority-a.priority);
@@ -288,14 +296,6 @@ function drawLabels(){
     "stroke-linejoin":"round","pointer-events":"none"});
   t.textContent=str;group.append(t);count++;
  }
- // Keep clickable points, label sizes and stroke widths consistent during zoom.
- for(const dot of group.parentNode?.querySelectorAll("circle.oaf-ux33-historic-point")||[]){
-  dot.setAttribute("r",Math.max(.45,3.9*k).toFixed(3));
-  dot.setAttribute("stroke-width",Math.max(.14,1.1*k).toFixed(3));
- }
- for(const path of group.parentNode?.querySelectorAll("path")||[]){
-  path.setAttribute("stroke-width",Math.max(.13,1.5*k).toFixed(3));
- }
 }
 function writeDetail(subject,label,detail,source){
  const pane=el("oaf-ux29-territory"),existing=el("oaf-ux33-selected-detail");
@@ -316,7 +316,7 @@ function paintStatus(){
  if(!bar){bar=document.createElement("div");bar.id="oaf-ux33-status";bar.className="oaf-ux33-status";
   bar.setAttribute("role","status");host.prepend(bar)}
  const active=Object.keys(S.phase).filter(needs);
- if(!active.length){bar.hidden=true;return}
+ if(!active.length){bar.hidden=true;const leg=el("oaf-ux33-agri-legend");if(leg)leg.hidden=true;return}
  bar.hidden=false;
  const labels={district:"Distritos",hydroRio:"Ríos",hydroQuebrada:"Quebradas",historical:"Puntos INGEMMET",agri:"Agricultura"};
  const messages=active.map(key=>{
