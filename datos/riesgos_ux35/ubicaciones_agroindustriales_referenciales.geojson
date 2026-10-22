@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "name": "Instalaciones y áreas agroindustriales referenciales en Lambayeque",
+  "metadata": {
+    "alcance": "Muestra no exhaustiva de ubicaciones verificables en fuentes públicas abiertas; NO es padrón oficial de empresas formales ni catastro de predios.",
+    "consulta": "2026-10-22",
+    "sistema": "EPSG:4326",
+    "proveniencia": "OpenStreetMap a través de Mapcarta, con evidencia documental adicional para Agrovision",
+    "advertencia": "No interpretar los puntos como instalaciones activas, polígonos productivos ni certificados de formalidad para todas las empresas."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.99859,
+          -6.14502
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-1",
+        "nombre": "AGROVISION PERU S.A.C.",
+        "tipo": "oficina",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/N12903547120",
+        "observacion": "Certificación BASC 2026 documentada por WBO: https://sibasc.wbasco.org/mod_consulta_pag_wbo/consulta_empresa.php?capitulo_id=4&empresa_id=1647&session_nomidioma=",
+        "estatus_formal_verificado": "Certificación BASC 2026; formalidad tributaria actual requiere SUNAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.05236,
+          -6.17251
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-2",
+        "nombre": "COMPLEJO AGROINDUSTRIAL BETA S.A.",
+        "tipo": "oficina",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/N12903547760",
+        "observacion": "Ubicación de oficina según OpenStreetMap; no equivale al perímetro total de cultivos",
+        "estatus_formal_verificado": "No verificado contra SUNAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.97865,
+          -6.13625
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-3",
+        "nombre": "FRUSAN AGRO S.A.C.",
+        "tipo": "oficina",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/N12903418586",
+        "observacion": "Ubicación de oficina según OpenStreetMap",
+        "estatus_formal_verificado": "No verificado contra SUNAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.03461,
+          -6.1553
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-4",
+        "nombre": "Agrícola Chapi / ICCGSA Agroindustrial S.A.C.",
+        "tipo": "oficina",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/N12903547772",
+        "observacion": "Ubicación de oficina según OpenStreetMap",
+        "estatus_formal_verificado": "No verificado contra SUNAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0252,
+          -6.18436
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-5",
+        "nombre": "AGROLMOS S.A.",
+        "tipo": "terreno agrícola",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/W1465622784",
+        "observacion": "Punto representativo del polígono agrícola OSM; no es dirección de planta ni acceso",
+        "estatus_formal_verificado": "No verificado contra SUNAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.99838,
+          -6.17419
+        ]
+      },
+      "properties": {
+        "id": "OAF-UX35-6",
+        "nombre": "Fundo C5 AGV · Agrovision",
+        "tipo": "terreno agrícola",
+        "distrito": "Olmos",
+        "provincia": "Lambayeque",
+        "departamento": "Lambayeque",
+        "fuente_geografica": "OpenStreetMap / Mapcarta",
+        "fuente_url": "https://mapcarta.com/es/W1008256014",
+        "observacion": "Punto representativo de terreno agrícola identificado con operador Agrovision en OpenStreetMap",
+        "estatus_formal_verificado": "No verificado contra SUNAT"
+      }
+    }
+  ]
+}
