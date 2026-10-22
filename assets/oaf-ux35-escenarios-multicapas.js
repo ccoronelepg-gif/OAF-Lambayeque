@@ -22,12 +22,12 @@ const FALLBACK_PAGES={
  senamhi:"https://www.senamhi.gob.pe/"
 };
 const addKeys=[
- ["pastRain","Lluvia histórica · comparación 1983/1998/2017/2023","Estimación de lluvia acumulada enero–marzo por localidad de Open-Meteo Archive (reanálisis). No son datos medidos por una estación ni un mapa continuo."],
+ ["pastRain","Lluvia histórica · comparación 1983/1998/2017/2023","Estimación de lluvia acumulada enero–marzo por localidad de Open-Meteo Archive (reconstrucción modelada). No son datos medidos por una estación ni un mapa continuo."],
  ["pastFlood","Puntos históricos de inundación fluvial y pluvial · 2017","Registros geológicos históricos INGEMMET del Niño Costero 2017. Un punto señala un sitio registrado, no la superficie inundada."],
  ["pastMass","Deslizamientos y flujos documentados · 2017","Registros geológicos de flujos de detritos y movimientos en masa del Niño Costero 2017 cuando el inventario tiene esa clasificación."],
  ["past2023","Escenario de riesgo de El Niño · CENEPRED 2023","Estudio oficial de 2023 que considera 1983, 1998, 2017 y 2023 para analizar riesgos de inundación y movimientos en masa. La ficha enlaza el estudio; no se dibuja una geometría no verificada."],
  ["rain7","Lluvia pronosticada · próximos siete días","Pronóstico puntual Open-Meteo para Chiclayo, Jayanca, Motupe y Olmos. Se acumula en la ventana seleccionada; no representa toda la región."],
- ["seasonal","Perspectiva noviembre 2026–verano 2027 · ENFEN","Comunicado oficial ENFEN N.º 18-2026 del 16 de octubre. Es una perspectiva cualitativa regional, no cantidad de lluvia en mm por distrito ni fecha exacta de desborde."],
+ ["seasonal","Perspectiva noviembre 2026–verano 2027 · ENFEN","ENFEN N.º 18-2026 (16/10) anticipa lluvias sobre lo normal en costa norte, caudales altos en el río La Leche desde noviembre y altas temperaturas. Es una perspectiva cualitativa, sin mm mensuales por distrito."],
  ["futureFlood","Escenario orientativo: lluvia + susceptibilidad a inundación","Permite contrastar señales meteorológicas con zonas susceptibles cartografiadas. No predice dónde se inundará, ni niveles o probabilidades."],
  ["futureMass","Escenario orientativo: movimientos en masa","Contrasta la susceptibilidad de laderas con señales de lluvia. No calcula la probabilidad ni los lugares exactos de deslizamientos."],
  ["futureRiver","Vigilancia de crecidas y desbordes","Muestra ríos y zonas susceptibles. Sin caudal hidrométrico calibrado no es posible afirmar que un río se desbordará."],
@@ -80,6 +80,7 @@ function activate(){
   state.zoomObserver.observe(svg,{attributes:true,attributeFilter:["viewBox"]});
  }
  window.addEventListener("oaf:geodata",()=>{if(state.ready)render()});
+ window.addEventListener("oaf:emergencydata",()=>{if(state.ready)render()});
  loadCompanies();
  attachTerritoryFilters();
  meta();
@@ -336,6 +337,20 @@ function render(){
   if(!inFilter(p.coords))continue;
   points.push({lon:p.coords[0],lat:p.coords[1],label:p.label,color:p.color,detail:p.detail||p.source,type:"climate"});
  }
+ // Servicios de emergencia: mismas capas de IGN/IDEP que el visor territorial.
+ const services=window.oafUx28Points?.()?.points||{};
+ const colors={hospital:"#c24b49",posta:"#3e9f77",policia:"#315f9c",bomberos:"#ef9236"};
+ for(const kind of Object.keys(colors)){
+  if(!enabled(kind))continue;
+  for(const feature of services[kind]||[]){
+   const coords=feature.geometry?.coordinates;
+   if(!Array.isArray(coords)||!inFilter(coords))continue;
+   const p=feature.properties||{};
+   const name=p.NOMBRE||p.nombre||("Establecimiento "+kind);
+   points.push({lon:coords[0],lat:coords[1],label:name,color:colors[kind],type:"emergency",
+    detail:"Infraestructura IGN/IDEP: "+kind+". La posición cartográfica no confirma atención, horarios ni capacidad de emergencia."});
+  }
+ }
  for(const f of state.comp){
   if(!state.on.companies)break;
   const p=f.properties||{},coords=f.geometry.coordinates;
@@ -478,8 +493,9 @@ function diagnosis(){
   "CENEPRED evaluó potenciales afectaciones considerando lluvias de 1983, 1998, 2017 y 2023. Este es un estudio de escenarios de riesgo, no un polígono de eventos realmente inundados.",
   "La ficha original se encuentra en Metadatos y trazabilidad.");
  if(state.on.seasonal)section("Perspectiva de noviembre 2026 en adelante",
-  "ENFEN mantiene la alerta de El Niño Costero en su comunicado 18-2026 del 16 de octubre. Este escenario requiere seguimiento de SENAMHI y ENFEN: "+
-  "no se dispone aquí de un pronóstico validado de milímetros mensuales, localidad por localidad, ni de fechas precisas de inundación.",
+  "ENFEN (16/10/2026) prevé lluvias superiores a lo normal en la costa norte durante el resto de 2026 y el verano de 2027, y caudales sobre lo normal en el río La Leche principalmente desde noviembre. "+
+  "También señala temperaturas del aire muy elevadas en la costa y niveles bajos del reservorio Tinajones para la época. "+
+  "Es una perspectiva cualitativa regional: no son milímetros mensuales por distrito ni fechas precisas de desborde.",
   "Perspectiva cualitativa institucional · no alerta operativa por distrito");
  if(state.on.futureFlood||enabled("regional")||enabled("inundacionregion"))
   section("Inundaciones y anegamientos potenciales",
