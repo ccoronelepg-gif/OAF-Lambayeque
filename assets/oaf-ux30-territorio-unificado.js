@@ -25,8 +25,8 @@ const layerSpec=[
  ]],
  ["hidro","Cuencas, ríos y drenajes",[
   ["basin","Cuencas hidrográficas ANA",false,"Las cuencas agrupan superficies cuyo escurrimiento se dirige hacia una red de drenaje común. Son útiles para relacionar lluvias aguas arriba con sectores aguas abajo."],
-  ["drain","Ríos, quebradas y drenajes IGN",false,"Se visualiza la red hidrográfica de la Carta Nacional a escala 1:100 000. No indica el caudal actual ni confirma que un cauce tenga agua."],
-  ["quebradas","Quebradas y cauces menores",false,"Visualiza los trazos de quebradas y cauces de la cartografía del IGN, incluidos cursos estacionales. No predice activaciones ni flujos de detritos."]
+  ["drain","Ríos y drenajes IGN",false,"Trazos de ríos y acequias de la Carta Nacional del IGN 1:100 000. La geometría se dibuja directamente para que permanezca visible al cambiar el zoom; no representa caudal actual."],
+  ["quebradas","Quebradas y cauces estacionales IGN",false,"Dibuja los trazos de quebradas de la cartografía IGN 1:100 000, diferenciados de los ríos. No equivale a una activación actual ni predice flujos de detritos."]
  ]],
  ["vias","Red vial MTC",[
   ["nacional","Carreteras nacionales",false,"Carreteras de la red vial nacional registrada por el MTC. La línea dibujada no confirma que una carretera sea transitable durante una emergencia."],
@@ -41,15 +41,15 @@ const layerSpec=[
  ]],
  ["agri","Territorio agrícola y exposición",[
   ["agricola","Superficie agrícola · MINAM 2018",false,"Representa áreas agrícolas cartografiadas por MINAM con referencia de 2018. No identifica el cultivo sembrado actualmente."],
-  ["exposicion","Exposición agrícola a inundaciones · cruce visual",false,"Superpone superficie agrícola y susceptibilidad regional. Permite identificar coincidencias para revisión, pero no calcula hectáreas inundadas ni pérdidas."],
-  ["agroflood","Áreas agrícolas en zona susceptible · cruce visual",false,"Muestra conjuntamente agricultura y susceptibilidad fluvial. El cruce es visual; no delimita inundación prevista ni cuantifica superficie afectada."],
+  ["exposicion","Superposición agrícola y susceptibilidad a inundaciones",false,"Superpone la cartografía agrícola MINAM 2018 con la susceptibilidad regional a inundaciones. La coincidencia es visual; no representa hectáreas afectadas ni una predicción de daños."],
   ["inundacionregion","Susceptibilidad fluvial · polígonos INGEMMET",false,"Capa vectorial de polígonos de susceptibilidad fluvial a escala nacional 1:1 000 000. Cubre el ámbito regional por consulta; representa predisposición, no área que se inundará en un evento próximo."]
  ]]
 ];
 const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],group:g[1]}])));
 const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),scene:null,selected:[],contains:null,legacy:null,
- points:[],pointsStatus:"pendiente",droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
+ points:[],pointsStatus:"pendiente",hydroLines:[],hydroStatus:"pendiente",hydroLoading:false,droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
 const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
+ SIGRID_HYDRO="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
  HAZARD="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
  INGEMMET="https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer",
  MINAM="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
@@ -149,14 +149,14 @@ function render(){
   image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
   back.append(image);
  };
- if(on("regional")||on("exposicion")||on("agroflood"))add(HAZARD,5010502,.77,"Susceptibilidad regional");
+ if(on("regional")||on("exposicion"))add(HAZARD,5010502,.77,"Susceptibilidad regional");
  if(on("movmasa"))add(HAZARD,5090022,.42,"Movimientos en masa");
  if(on("inundacionregion"))add(INGEMMET,0,.54,"Susceptibilidad fluvial en polígonos");
- if(on("agricola")||on("exposicion")||on("agroflood"))add(MINAM,1,.35,"Superficie agrícola 2018");
+ if(on("agricola")||on("exposicion"))add(MINAM,1,.35,"Superficie agrícola 2018");
  const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
  if(political.length)add(SIGRID,political.join(","),.8,"Límites administrativos");
- if(on("basin"))add(SIGRID,6030100,.55,"Cuencas hidrográficas ANA");
- if(on("drain")||on("quebradas"))add(SIGRID,6030200,.84,"Red hidrográfica IGN 1:100 000");
+ if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
+ // Ríos y quebradas se dibujan desde GeoJSON, sin ocultarse por la escala mínima del MapServer.
  // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
  // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
  if(on("heat")){
@@ -229,7 +229,7 @@ function diagnosis(){
    "La superficie de frecuencia estival, cuando se descarga del WMS SENAMHI, tiene escala estacional y no equivale a una anomalía diaria.",
    state.heatStatus);
  }
- if(on("exposicion")||on("agroflood"))heading(box,"Importante sobre agricultura",
+ if(on("exposicion"))heading(box,"Importante sobre agricultura",
   "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
  if(failed)heading(box,"Algunas capas externas no respondieron",
