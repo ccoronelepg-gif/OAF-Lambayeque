@@ -96,3 +96,17 @@
 #oaf-ux29-territory .oaf-ux29-bottom:after{
  content:"Fuentes y metodología: pestaña Metadatos y trazabilidad";
  color:#537364;font-size:11px}
+
+
+/* UX31 · diferenciación visual de registros geográficos históricos */
+#oaf-ux29-territory .oaf-ux31-drought{stroke:#fff;stroke-width:1.35;cursor:pointer}
+#oaf-ux29-territory .oaf-ux31-heat{stroke:#fff;stroke-width:1.7;cursor:pointer}
+#oaf-ux29-territory .oaf-ux31-fluvial{stroke:#fff;cursor:pointer}
+#oaf-ux29-territory .oaf-ux31-pluvial{stroke:#fff;cursor:pointer}
+#oaf-ux29-territory .oaf-ux31-erosion{stroke:#fff;cursor:pointer}
+#oaf-ux29-territory .oaf-ux31-drought:focus-visible,
+#oaf-ux29-territory .oaf-ux31-heat:focus-visible{stroke:#1c392e;stroke-width:3;outline:none}
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="drought"]),
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="heat"]){border-left:3px solid #c5dccc;padding-left:7px}
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="drought"]:checked){border-left-color:#c9892c;background:#fffaf2}
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="heat"]:checked){border-left-color:#dc583d;background:#fff6f3}
