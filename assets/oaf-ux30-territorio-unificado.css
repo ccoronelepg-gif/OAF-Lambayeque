@@ -1,0 +1,90 @@
+/* UX30 · Visor territorial único, capas SIG tipo árbol, metadatos centralizados.
+ * En esta subpestaña permanece solo el visor; los datos y referencias están
+ * disponibles en "Metadatos y trazabilidad". */
+#oaf-territorio-riesgos > :not(#oaf-ux29-territory){display:none!important}
+#oaf-ux29-territory{margin:0!important;width:100%;max-width:none;box-sizing:border-box}
+#oaf-ux29-territory .oaf-ux30-legacy{display:none!important}
+#oaf-ux29-territory .oaf-ux29-tree{max-height:760px;overscroll-behavior:contain;padding:9px 10px}
+.oaf-ux30-layer-tree{display:flex;flex-direction:column;gap:8px}
+.oaf-ux30-section{background:#fff;border:1px solid #d3e5da;border-radius:11px;overflow:hidden;margin:0}
+.oaf-ux30-section>summary{cursor:pointer;list-style:none;position:relative;background:#edf7f0;
+ padding:12px 31px 12px 12px;color:#18563f;font-size:13px;font-weight:850;line-height:1.36}
+.oaf-ux30-section>summary::-webkit-details-marker{display:none}
+.oaf-ux30-section>summary:after{content:"▸";position:absolute;right:12px;top:10px;color:#4e8b71}
+.oaf-ux30-section[open]>summary:after{content:"▾"}
+.oaf-ux30-section[open]>summary{border-bottom:1px solid #d5e5db}
+.oaf-ux30-section>summary:focus-visible{outline:3px solid #e2ba5e;outline-offset:-3px}
+.oaf-ux30-options{padding:6px 8px 9px}
+.oaf-ux30-option{display:grid;grid-template-columns:18px minmax(0,1fr);align-items:start;gap:4px 8px;
+ padding:8px 5px;margin:1px 0;font-size:12px;line-height:1.46;color:#365949;cursor:pointer;
+ border-bottom:1px solid #eef4ef;min-width:0}
+.oaf-ux30-option:last-child{border:0}
+.oaf-ux30-option:hover{background:#f3f9f5;border-radius:6px}
+.oaf-ux30-option input{grid-row:1/3;grid-column:1;width:17px;height:17px;
+ accent-color:#177354;margin:0;cursor:pointer}
+.oaf-ux30-option input:focus-visible{outline:3px solid #f1bc63;outline-offset:2px}
+.oaf-ux30-option>span{grid-column:2;overflow-wrap:anywhere}
+.oaf-ux30-option>small{grid-column:2;grid-row:2;font-size:10px;color:#698276;line-height:1.35}
+.oaf-ux30-layer-actions{display:flex;flex-wrap:wrap;gap:7px;margin:5px 0 11px}
+.oaf-ux30-layer-actions button{flex:1 1 100px;font-size:11px;font-weight:800;
+ line-height:1.3;min-height:37px;border:1px solid #b6d4c4;border-radius:8px;
+ color:#236347;background:#fff;cursor:pointer;padding:7px 8px}
+.oaf-ux30-layer-actions button:hover{background:#edf8f0}
+.oaf-ux30-area>.oaf-ux30-filter-widget{margin:0!important;border:0!important;
+ border-radius:0!important;box-shadow:none!important;background:#fff!important;padding:12px!important}
+.oaf-ux30-area .oaf-ux26-fields{grid-template-columns:1fr!important}
+.oaf-ux30-area .oaf-ux26-fields select{min-height:42px;font-size:12px}
+.oaf-ux30-area .oaf-ux26-filter-head{display:none}
+.oaf-ux30-area .oaf-ux26-switches{display:none}
+.oaf-ux30-area .oaf-ux26-kpis{font-size:11.5px;padding:8px}
+.oaf-ux30-area .oaf-ux26-note,.oaf-ux30-area .oaf-ux26-provenance{display:none!important}
+.oaf-ux30-area .oaf-ux26-loadstatus{font-size:11px!important;line-height:1.4!important}
+#oaf-ux29-territory .oaf-ux29-layout{grid-template-columns:minmax(240px,.86fr) minmax(370px,1.8fr) minmax(260px,.86fr)}
+#oaf-ux29-territory .oaf-ux29-diagnosishead{position:sticky;top:0;z-index:1}
+#oaf-ux29-territory .oaf-ux29-diagbody{display:block!important;max-height:760px!important;overflow-y:auto!important}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item{display:block;margin:0 0 10px;padding:11px;
+ border:1px solid #d9e9df;border-radius:9px;background:#fff}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item strong{display:block;font-size:12.5px;line-height:1.4;color:#1b6548}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item p{font-size:12px;line-height:1.7;color:#436555;
+ margin:6px 0 0;text-align:justify;hyphens:auto;overflow-wrap:break-word}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item small{font-size:10.5px;line-height:1.5;
+ color:#5e796b;display:block;margin:6px 0 0}
+#oaf-ux29-territory .oaf-ux30-map-help{font-size:11px;line-height:1.55;margin:0;
+ padding:8px 11px;background:#eff7f1;border:1px solid #d8e8dd;border-radius:9px;color:#506f5d}
+#oaf-ux29-territory #oaf-ux24-region-map{cursor:grab;touch-action:none;user-select:none;
+ width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:700/340;
+ display:block;max-height:none!important;preserveAspectRatio:xMidYMid meet}
+#oaf-ux29-territory #oaf-ux24-region-map:active{cursor:grabbing}
+#oaf-ux29-territory .oaf-ux24-mapframe{background:#edf6ef}
+#oaf-ux29-territory .oaf-ux30-feature{cursor:pointer}
+#oaf-ux29-territory .oaf-ux30-feature:focus-visible{outline:3px solid #153a2b}
+#oaf-ux29-territory .oaf-ux29-top{padding-bottom:13px}
+#oaf-ux29-territory .oaf-ux29-top h2{margin-bottom:5px}
+#oaf-ux29-territory .oaf-ux29-diagextras .oaf-ux28-status{display:none!important}
+.oaf-ux30-metadata{border:1px solid #d3e6da;background:#f9fcfa;
+ padding:18px 21px;border-radius:13px;margin:18px 0;scroll-margin-top:120px}
+.oaf-ux30-metadata h2{color:#205d48;font-size:20px;margin:0 0 10px}
+.oaf-ux30-metadata p,.oaf-ux30-metadata li{font-size:13px;line-height:1.7;color:#47695a;text-align:justify}
+.oaf-ux30-metadata ul{padding-left:18px}
+.oaf-ux30-metadata a{color:#167254;font-weight:700;text-decoration:underline;overflow-wrap:anywhere}
+@media(max-width:1250px){
+ #oaf-ux29-territory .oaf-ux29-layout{grid-template-columns:minmax(220px,.8fr) minmax(345px,1.7fr)}
+ #oaf-ux29-territory .oaf-ux29-diagnosis{grid-column:1/-1}
+ #oaf-ux29-territory .oaf-ux29-diagbody{display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:none!important}
+ #oaf-ux29-territory .oaf-ux30-diagnosis-item{margin:0}
+}
+@media(max-width:790px){
+ #oaf-ux29-territory .oaf-ux29-layout{grid-template-columns:minmax(0,1fr)!important}
+ #oaf-ux29-territory .oaf-ux29-tree{max-height:390px}
+ #oaf-ux29-territory .oaf-ux29-diagbody{grid-template-columns:1fr}
+ #oaf-ux29-territory .oaf-ux29-mapcontent{padding:9px}
+}
+@media(max-width:500px){
+ #oaf-ux29-territory .oaf-ux29-diagbody{display:block!important}
+ #oaf-ux29-territory .oaf-ux30-diagnosis-item{margin-bottom:8px}
+ #oaf-ux29-territory .oaf-ux29-tree{max-height:360px}
+ #oaf-ux29-territory .oaf-ux29-mainmapcard{padding:0!important}
+ #oaf-ux29-territory .oaf-ux29-mapcontent{padding:7px}
+ .oaf-ux30-metadata{padding:13px}
+}
