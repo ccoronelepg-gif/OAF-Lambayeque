@@ -464,6 +464,7 @@ function render(){
  footer.textContent="Antecedentes y susceptibilidad ≠ pronóstico hidráulico de inundación";svg.append(footer);
  state.current=textCandidates;
  renderLabels();
+ if(typeof window.oafUx36AfterRender==="function")window.oafUx36AfterRender({scene,svg});
  status();
  diagnosis();
 }
@@ -586,6 +587,7 @@ function diagnosis(){
   "Prioriza la revisión de drenes urbanos, pasos por quebradas, accesos rurales, parcelas y sistemas de riego "+
   "cuando coexistan señales de lluvia con antecedentes o susceptibilidad. "+
   "Para avisos de emergencia consulta a SENAMHI, ANA, CENEPRED e INDECI; este visor no emite alertas automáticas.");
+ if(typeof window.oafUx36Diagnosis==="function")window.oafUx36Diagnosis(target);
 }
 function meta(){
  const area=$("oaf-ux30-metadatos")||document.querySelector('[data-page="verificaciones"]');
