@@ -1,0 +1,58 @@
+/* UX21 · experiencia editorial única en WEB + aplicación PWA */
+.oaf-ux21-summary{
+ margin:15px 0 22px!important;padding:clamp(18px,2vw,27px)!important;
+ border:1px solid #c9e0d3;border-left:5px solid #258e70;border-radius:17px;
+ background:linear-gradient(145deg,#f7fbf7,#eef7f1);box-shadow:0 5px 21px #124d3e0c;
+}
+.oaf-ux21-summary h2{
+ color:#194f43;font-size:clamp(20px,2.1vw,26px);
+ line-height:1.28;margin:0 0 15px;
+}
+.oaf-ux21-summary p{
+ font-size:clamp(13px,1.2vw,15px);line-height:1.75;
+ color:#335b4e;margin:11px 0;text-align:justify;text-justify:inter-word;
+}
+.oaf-ux21-summary p strong{font-weight:850;color:#195944}
+.oaf-ux21-summary a{color:#116c5a;text-decoration:underline;text-underline-offset:3px}
+.oaf-ux21-summary-link{margin-top:15px!important;font-weight:800}
+.oaf-ux21-summary-link a{display:inline-flex;padding:7px 0}
+/* Interpretaciones, conclusiones explicativas y advertencias científicas
+   destacadas sin alterar su contenido ni su vigencia. */
+.oaf-ux15-explain,
+.oaf-agro-interpretation,
+.oaf-home-interpretation p,
+#oaf-ux9-enso-interpretacion,
+#oaf-bol-interpretaciones p,
+.oaf-ux21-interpretation{
+ font-weight:700!important;
+ font-style:italic!important;
+ line-height:1.7!important;
+}
+.oaf-ux15-explain{font-size:12px!important;padding:12px 14px!important}
+.oaf-ux21-interpretation > strong:first-child,
+.oaf-ux21-interpretation > b:first-child{font-weight:900}
+.oaf-weather-advice strong{font-size:1em;font-weight:900;color:#195f4d}
+.oaf-ux14-heading p,.oaf-ux14-intro p{
+ max-width:100%!important;overflow-wrap:break-word;
+}
+.oaf-ux14-heading p{line-height:1.82;color:#4e6a61}
+#oaf-ux14-rf-mes .oaf-ux14-source,
+#oaf-ux14-rf-semana .oaf-ux14-source{
+ padding:10px 12px;border-left:3px solid #90b9a9;
+ border-radius:0 8px 8px 0;background:#f3f9f6;line-height:1.75
+}
+#oaf-ux14-rf-mes .oaf-ux14-chart{min-height:230px}
+.oaf-ux15-source{margin-top:8px}
+/* Distinguir el enlace oficial único de la leyenda oceanográfica */
+.oaf-ux15-source a{font-weight:800}
+@media(max-width:700px){
+ .head{grid-template-rows:auto auto!important}
+ .head #oaf-primary-nav{grid-row:2!important}
+ .oaf-ux21-summary{padding:16px 13px!important;margin:10px 0 16px!important}
+ .oaf-ux21-summary h2{font-size:21px!important}
+ .oaf-ux21-summary p{text-align:left!important;line-height:1.73;font-size:13px!important}
+ .oaf-ux14-heading p{line-height:1.75}
+ .oaf-ux15-explain{font-size:12px!important}
+}
+/* Sin conmutadores heredados aunque el navegador conserve una estructura anterior */
+.oaf-view-switch,.oaf-contextbar{display:none!important}
