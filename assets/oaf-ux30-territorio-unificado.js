@@ -14,14 +14,14 @@ const layerSpec=[
  ["peligros","Peligros y susceptibilidad",[
   ["regional","Susceptibilidad regional a inundaciones",true,"Muestra las zonas más o menos propensas a inundarse, según la cartografía regional elaborada por INGEMMET. No representa inundaciones actuales ni caudales pronosticados."],
   ["movmasa","Movimientos en masa por lluvia fuerte",false,"Señala laderas y vertientes susceptibles a deslizamientos y otros movimientos durante lluvias intensas. Es información de predisposición territorial de CENEPRED."],
-  ["fluvial","Inundación fluvial · puntos documentados",false,"Ubica registros históricos de inundación ocasionada por el desborde de ríos y cauces; los puntos proceden de evaluaciones geológicas del Niño Costero 2017."],
-  ["pluvial","Inundación pluvial · puntos documentados",false,"Ubica registros de acumulación o anegamiento asociado a lluvias, incluso sin desbordamiento de ríos. Son observaciones históricas, no polígonos de inundación futura."],
+  ["fluvial","Inundación fluvial · puntos INGEMMET 2017",false,"Ubica registros históricos de inundación ocasionada por el desborde de ríos y cauces; los puntos proceden de evaluaciones geológicas del Niño Costero 2017."],
+  ["pluvial","Inundación pluvial · puntos INGEMMET 2017",false,"Ubica registros de acumulación o anegamiento asociado a lluvias, incluso sin desbordamiento de ríos. Son observaciones históricas, no polígonos de inundación futura."],
   ["detritos","Quebradas y flujos de detritos · puntos",false,"Muestra registros geológicos de flujos de detritos y lodo. En quebradas, las lluvias intensas pueden movilizar piedras, tierra y agua; requiere vigilancia local."],
-  ["erosion","Erosión fluvial · puntos documentados",false,"Señala lugares con antecedentes de desgaste o socavación de riberas, potencialmente relevantes para terrenos agrícolas, puentes y canales."],
+  ["erosion","Erosión fluvial · puntos INGEMMET 2017",false,"Señala lugares con antecedentes de desgaste o socavación de riberas, potencialmente relevantes para terrenos agrícolas, puentes y canales."],
   ["floodpoints","Puntos críticos de inundación · MINAM",false,"Inventario georreferenciado de puntos críticos publicado por MINAM. Un punto es un lugar identificado para revisión; no representa la superficie completa del peligro."],
   ["geopoints","Zonas críticas geológicas · INGEMMET",false,"Inventario de zonas críticas geológicas de INGEMMET difundido por SIGRID. Permite identificar sectores documentados de inestabilidad."],
-  ["drought","Sequía y déficit hídrico · diagnóstico",false,"La sequía es un déficit persistente de agua o lluvia respecto al comportamiento habitual. Esta selección habilita una explicación, pero no dibuja una zonificación de sequía: aún falta una capa regional validada."],
-  ["heat","Anomalías de calor · diagnóstico",false,"Una anomalía de calor supone temperaturas superiores a una referencia climatológica. Esta selección no dibuja áreas cálidas porque aún no se ha integrado una geocapa regional validada."]
+  ["drought","Sequías históricas · puntos INDECI 2003–2020",false,"Muestra ubicaciones de emergencias históricas por sequía documentadas por INDECI entre 2003 y 2020. No es un mapa de sequía actual, ni representa el área afectada por cada evento. Los registros dependen de la disponibilidad del inventario." ],
+  ["heat","Calor histórico · SENAMHI",false,"Muestra un registro de la estación Jayanca–La Viña (37,8 °C el 18/03/2024 y anomalía media de máximas de +2,9 °C en marzo) y una capa estacional de frecuencia de olas de calor del SENAMHI cuando el servicio responde. No son pronósticos." ]
  ]],
  ["hidro","Cuencas, ríos y drenajes",[
   ["basin","Cuencas hidrográficas ANA",false,"Las cuencas agrupan superficies cuyo escurrimiento se dirige hacia una red de drenaje común. Son útiles para relacionar lluvias aguas arriba con sectores aguas abajo."],
@@ -48,8 +48,8 @@ const layerSpec=[
 ];
 const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],group:g[1]}])));
 const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),scene:null,selected:[],contains:null,legacy:null,
- points:[],pointsStatus:"pendiente", activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
-const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
+ points:[],pointsStatus:"pendiente",droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
+const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
  HAZARD="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
  INGEMMET="https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer",
  MINAM="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
@@ -77,7 +77,8 @@ function makeTree(){
   for(const [key,title,checked] of entries){
    const item=node("label","oaf-ux30-option"),check=node("input");check.type="checkbox";check.dataset.ux30Layer=key;check.checked=checked;
    const span=text(node("span"),title),tiny=node("small");
-   if(key==="drought"||key==="heat")tiny.textContent="Diagnóstico · sin polígono";
+   if(key==="drought")tiny.textContent="INDECI · emergencias 2003–2020";
+   if(key==="heat")tiny.textContent="SENAMHI · registro 2024 + frecuencia estacional";
    if(key==="exposicion"||key==="agroflood")tiny.textContent="Cruce visual";
    if(key==="fluvial"||key==="pluvial"||key==="detritos"||key==="erosion")tiny.textContent="Puntos históricos 2017";
    item.append(check,span);if(tiny.textContent)item.append(tiny);wrap.append(item);
