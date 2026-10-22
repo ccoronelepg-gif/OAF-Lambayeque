@@ -172,13 +172,13 @@ function mapHighlight(context){
   const next=svg("g",{"clip-path":"url(#oaf-ux35-filter-"+i+")"});current.append(next);current=next;
  });
  for(const f of rivers){
-  const p=f.properties||{},name=p.r_q_text||p.nombre||"";
+  const p=f.properties||{},name=p.nombre||p.NOMBRE||p.r_q_text||p.RASGO_PRIN||"";
   if(!selectedTraceName(name))continue;
   const g=f.geometry,arr=g?.type==="LineString"?[g.coordinates]:g?.type==="MultiLineString"?g.coordinates:[];
   for(const line of arr){
    const d=line.filter(c=>c?.length>=2).map((c,i)=>(i?"L":"M")+scene.x(c[0]).toFixed(2)+" "+scene.y(c[1]).toFixed(2)).join(" ");
    if(!d)continue;
-   const path=svg("path",{d,fill:"none",stroke:"#df781b","stroke-width":3.2,
+   const path=svg("path",{d,fill:"none",stroke:"#df781b","stroke-width":3.2,"vector-effect":"non-scaling-stroke",
     "stroke-linejoin":"round","stroke-linecap":"round","pointer-events":"none"});
    const nameTag=svg("title");nameTag.textContent="Cauce oficial IGN: "+name;path.append(nameTag);
    current.append(path);state.riverSegments++;
@@ -206,6 +206,12 @@ function appendDiagnosis(target){
   "Zaña requiere seguimiento hidrométrico propio. Los antecedentes de 1998 no se deben trasladar directamente a un pronóstico del verano de 2027.":
   "El contraste entre las tres cuencas es histórico y no constituye una jerarquía de amenaza actual.";
  box.append(more);target.append(box);
+ if(state.storage){
+  const reservoir=el("section","oaf-ux35-diagnosis-section oaf-ux36-diagnosis");
+  const heading=el("strong");heading.textContent="Tinajones · estado del monitoreo";
+  const note=el("p");note.textContent="La ficha ANA de agosto 2024–julio 2025 documenta un aumento neto de 40 MMC en ese periodo. No es el almacenamiento actual. Para conocer volumen, cota y descargas vigentes es necesario consultar PEOT y PHISIS; OAF no cuenta con una lectura automática verificada.";
+  reservoir.append(heading,note);target.append(reservoir);
+ }
 }
 function csvLine(line){
  const out=[];let str="",inside=false;
@@ -241,8 +247,9 @@ async function importCSV(file){
    const cols=csvLine(line),obj=Object.fromEntries(headers.map((h,i)=>[h,cols[i]||""]));
    const river=riverId(obj.rio),date=obj.fecha,source=obj.fuente?.trim();
    const flow=numerical(obj.caudal_m3s),level=numerical(obj.nivel_m),volume=numerical(obj.volumen_mmc);
-   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))||
-     Date.parse(date)>Date.now()||!river||!obj.estacion||!source||
+   const validDate=/^\d{4}-\d{2}-\d{2}$/.test(date)&&!Number.isNaN(Date.parse(date))&&
+     new Date(date+"T00:00:00Z").toISOString().slice(0,10)===date;
+   if(!validDate||Date.parse(date)>Date.now()||!river||!obj.estacion||!source||
      [flow,level,volume].every(v=>v===null)||
      [flow,level,volume].some(v=>Number.isNaN(v))){
     bad++;continue;
