@@ -8,6 +8,10 @@ on:
       - "assets/oaf-responsive-celulares-ux19.css"
       - "assets/oaf-responsive-celulares-ux19.js"
       - "tests/test_movil_ux19.js"
+      - "assets/oaf-ux21-editorial.js"
+      - "assets/oaf-ux21-lectura-limpia.css"
+      - "tests/test_ux21_limpieza.cjs"
+      - "tests/test_ux21_browser.cjs"
       - "tests/test_movil_ux19_browser.cjs"
       - "manifest.webmanifest"
       - "sw.js"
@@ -49,6 +53,10 @@ jobs:
         run: |
           node tests/test_pwa_ux20.cjs
           node tests/test_pwa_ux20_browser.cjs
+      - name: Confirmar simplificación editorial en versión web y aplicación
+        run: |
+          node tests/test_ux21_limpieza.cjs
+          node tests/test_ux21_browser.cjs
       - name: Conservar capturas para revisión visual
         if: always()
         uses: actions/upload-artifact@v4
