@@ -110,3 +110,24 @@
 #oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="heat"]){border-left:3px solid #c5dccc;padding-left:7px}
 #oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="drought"]:checked){border-left-color:#c9892c;background:#fffaf2}
 #oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="heat"]:checked){border-left-color:#dc583d;background:#fff6f3}
+
+
+/* UX32 · Estado visible de disponibilidad y red hidrográfica diferenciada */
+#oaf-ux29-territory .oaf-ux32-map-status{
+ margin:0 0 9px;padding:10px 12px;background:#f1f7fb;
+ border:1px solid #c5dce8;border-radius:9px;color:#2c5c72;
+ font-size:11.5px;line-height:1.6;text-align:left;overflow-wrap:break-word;
+}
+#oaf-ux29-territory .oaf-ux32-map-status[hidden]{display:none!important}
+#oaf-ux29-territory path.oaf-ux32-hydroline{
+ vector-effect:none;stroke-linejoin:round;stroke-linecap:round;
+}
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="drain"]:checked){
+ border-left:3px solid #125fa8;padding-left:5px
+}
+#oaf-ux29-territory .oaf-ux30-option:has([data-ux30-layer="quebradas"]:checked){
+ border-left:3px solid #258ac0;padding-left:5px
+}
+@media(max-width:520px){
+ #oaf-ux29-territory .oaf-ux32-map-status{padding:9px 10px;font-size:11px}
+}
