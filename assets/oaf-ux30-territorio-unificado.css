@@ -88,3 +88,11 @@
  #oaf-ux29-territory .oaf-ux29-mapcontent{padding:7px}
  .oaf-ux30-metadata{padding:13px}
 }
+
+
+/* Fuentes y documentación concentradas en Metadatos y trazabilidad. */
+#oaf-ux29-territory .oaf-ux29-mainmapcard a.oaf-ux24-source,
+#oaf-ux29-territory .oaf-ux29-bottom a{display:none!important}
+#oaf-ux29-territory .oaf-ux29-bottom:after{
+ content:"Fuentes y metodología: pestaña Metadatos y trazabilidad";
+ color:#537364;font-size:11px}
