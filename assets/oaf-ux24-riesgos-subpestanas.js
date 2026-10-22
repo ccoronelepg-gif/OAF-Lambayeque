@@ -89,11 +89,11 @@ function officialUI(){
  const controls=el("div","oaf-ux25-controls");controls.id="oaf-ux25-controls";
  controls.innerHTML='<div class="oaf-ux25-heading"><strong>Capas geográficas oficiales</strong><span>Selecciona qué información visualizar sobre el contorno regional</span></div>'+
  '<label class="oaf-ux25-selectlabel" for="oaf-ux25-raster">Susceptibilidad a inundaciones (CENEPRED)</label>'+
- '<select id="oaf-ux25-raster"><option value="5090024">Lluvias intensas · escenario de 2021</option><option value="5090023">Eventos El Niño · escenario de 2021</option><option value="5010502">Inundación y erosión fluvial · INGEMMET</option><option value="none">Solo mapa base</option></select>'+
+ '<select id="oaf-ux25-raster"><option value="5090024">Lluvias intensas · escenario de 2021</option><option value="5090023">Eventos El Niño · escenario de 2021</option><option value="5010502">Susceptibilidad regional a inundaciones · INGEMMET</option><option value="5090022">Movimientos en masa por lluvia fuerte · CENEPRED</option><option value="none">Solo mapa base</option></select>'+
  '<div class="oaf-ux25-toggles"><label><input type="checkbox" id="oaf-ux25-minam" checked> Puntos críticos de inundación · MINAM</label>'+
  '<label><input type="checkbox" id="oaf-ux25-geologico" checked> Zonas críticas geológicas · INGEMMET/SIGRID</label></div>'+
  '<p id="oaf-ux25-map-status" class="oaf-ux25-map-status" role="status">Preparando geoservicios oficiales…</p>'+
- '<div class="oaf-ux25-legend"><span><i class="oaf-ux25-dot oaf-ux25-flood"></i>Puntos de inundación</span><span><i class="oaf-ux25-dot oaf-ux25-geo"></i>Zonas geológicas</span></div>';
+ '<div class="oaf-ux25-legend"><span><i class="oaf-ux25-dot oaf-ux25-flood"></i>Puntos de inundación</span><span><i class="oaf-ux25-dot oaf-ux25-geo"></i>Zonas geológicas</span></div><p class="oaf-ux25-legend-foot">Categorías del raster CENEPRED: <b>muy alto, alto, medio y bajo</b>. Los colores oficiales se interpretan según la <a target="_blank" rel="noopener noreferrer" href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/legend">leyenda del geoservicio</a>.</p>';
  frame.before(controls);
  const detail=el("div","oaf-ux25-detail");detail.id="oaf-ux25-detail";
  detail.textContent="Selecciona un punto del mapa para consultar sus atributos, fecha y fuente original.";
@@ -193,7 +193,8 @@ async function officialPoints(which,layer,where){
   if(geo.error||!Array.isArray(geo.features))throw Error("respuesta no GeoJSON");
   officialState.points[which]=geo.features.map(geometryPoint).filter(Boolean).filter(f=>{
    const [x,y]=f.geometry.coordinates;
-   return x>=extent.minLon&&x<=extent.maxLon&&y>=extent.minLat&&y<=extent.maxLat;
+   const d=String(which==="minam"?f.properties?.nom_dpto||"":f.properties?.nom_dep||"").toLocaleUpperCase("es-PE");
+   return x>=extent.minLon&&x<=extent.maxLon&&y>=extent.minLat&&y<=extent.maxLat&&(!d||d.includes("LAMBAYEQUE"));
   }).slice(0,1500);
   officialState.loaded[which]=true;
  }catch(err){officialState.loaded[which]="error"}finally{clearTimeout(timer);drawOfficial()}
@@ -202,7 +203,7 @@ function officialStart(scene){
  officialState.scene=scene;officialStatus();drawOfficial();
  // Las capas de puntos se obtienen sin transformar ni fabricar coordenadas.
  officialPoints("minam",GIS.minam+"/3","1=1");
- officialPoints("geologico",GIS.geologico+"/5020500","nom_dep LIKE '%LAMBAYEQUE%'");
+ officialPoints("geologico",GIS.geologico+"/5020500","1=1");
 }
 
 function init(){
