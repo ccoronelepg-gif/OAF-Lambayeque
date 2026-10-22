@@ -9,7 +9,15 @@ const ux21=get("assets/oaf-ux21-editorial.js");
 assert.ok(!html.includes('class="oaf-view-switch"'),"Conmutador aún visible");
 assert.ok(!html.includes('class="oaf-contextbar"'),"Zona redundante aún visible");
 assert.ok(html.includes('id="oaf-home-summary-static"'),"Falta resumen central");
-for(const t of ["Objetivo del observatorio","¿De dónde provienen los datos?","¿Cómo se analiza la información?","ENFEN","SENAMHI","NOAA","CHIRPS","ERA5","Open-Meteo","CAMS","Random Forest"])assert.ok(html.includes(t),"Falta fuente u objetivo "+t);
+// UX22: el objetivo, las fuentes y la metodología están sintetizados en un único párrafo,
+ // sin exigir etiquetas largas redundantes que el usuario pidió eliminar.
+const summary=html.match(/<p class="oaf-ux22-sintesis">([^<]*)<\/p>/)?.[1];
+assert.ok(summary,"Falta síntesis editorial en Inicio");
+assert.ok(summary.includes("productores")&&summary.includes("información"),"Falta propósito divulgativo");
+assert.ok(summary.includes("Python")&&summary.includes("SIG"),"Falta metodología propia");
+assert.ok(summary.includes("experiment")||summary.includes("en evaluación"),"Falta límite científico RF");
+assert.ok(summary.split(/\s+/).length<=70,"Síntesis supera el tamaño solicitado");
+for(const t of ["ENFEN","SENAMHI","NOAA","CHIRPS","ERA5","Open-Meteo","CAMS","Random Forest"])assert.ok(summary.includes(t),"Falta fuente o modelo "+t);
 assert.ok(!html.includes('class="oaf-source-split"'),"Dos paneles con fuentes duplicadas");
 assert.ok(main.includes("archivedHome.append(b2)"),"Bloque histórico no archivado");
 assert.ok(!m.includes("oaf-ux16-future-panel"),"Se duplicaron tarjetas mensuales");
