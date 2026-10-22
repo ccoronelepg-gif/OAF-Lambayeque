@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-22-v19";
-const STATIC="oaf-pwa-static-2026-10-22-v19";
+const RELEASE="oaf-pwa-shell-2026-10-22-v20";
+const STATIC="oaf-pwa-static-2026-10-22-v20";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -23,6 +23,8 @@ const CORE=[
  "./assets/oaf-ux29-visores-diagnostico.js",
  "./assets/oaf-ux30-territorio-unificado.css",
  "./assets/oaf-ux30-territorio-unificado.js",
+ "./assets/oaf-ux33-geocapas-etiquetas.css",
+ "./assets/oaf-ux33-geocapas-etiquetas.js",
  "./datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson"
 ];
 const isInScope=url=>url.origin===SCOPE.origin&&url.pathname.startsWith(SCOPE.pathname);
