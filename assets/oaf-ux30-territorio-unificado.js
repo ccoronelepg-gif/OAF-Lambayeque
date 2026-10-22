@@ -377,7 +377,7 @@ async function loadDrought(){
   state.points=state.points.filter(p=>p.category!=="drought").concat(events);
   state.droughtStatus=events.length+" emergencias históricas con geometría"+(data.features.length>=2000?" (consulta limitada por el servidor)":"");
  }catch(e){state.droughtStatus="La consulta de INDECI no respondió; revisar enlace original."}
- finally{clearTimeout(limit);render()}
+ finally{clearTimeout(limit);render();window.dispatchEvent(new Event("oaf:geodata"))}
 }
 async function loadHeat(){
  if(state.heatStatus!=="pendiente")return;
@@ -398,7 +398,7 @@ async function loadHeat(){
   state.points=state.points.filter(p=>p.category!=="heat").concat(entries);
   state.heatStatus=entries.length+" estación/es con registro histórico documentado";
  }catch(e){state.heatStatus="No disponible el registro SENAMHI incorporado."}
- finally{render()}
+ finally{render();window.dispatchEvent(new Event("oaf:geodata"))}
 }
 
 function adaptOriginal(){
@@ -557,6 +557,8 @@ function init(){
   // La versión UX33 gestiona los registros geológicos y sus nombres, sin duplicar consultas.
   if(on("drought")&&state.droughtStatus==="pendiente")loadDrought();
   if(on("heat")&&state.heatStatus==="pendiente")loadHeat();
+  // Comparte eventos de sequía y calor con el visor de escenarios si están seleccionados.
+  window.oafUx30RequestHistoricalClimate?.();
   // La versión UX33 gestiona líneas y etiquetas de la red hidrográfica.
  };
  applyLegacy();adaptOriginal();
