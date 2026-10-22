@@ -106,7 +106,7 @@ function renderConclusion(r,weekData,place){
  case "bioseguridad":status="unavailable";msg="Fusarium R4T NO puede predecirse por temperatura o lluvia únicamente. Prioriza higiene, cuarentena, material sano, control de movimientos y reporte de síntomas a SENASA.";break;
  default: msg="La fenología y el manejo del cultivo son esenciales para interpretar esta semana. Acompaña estos datos con muestreo y diagnóstico.";
  }
- const c=$("oaf-sm-conclusion");if(c){c.dataset.state=status;c.textContent=details+" "+msg+" Vigilancia específica para "+r.nombre+": "+r.vigilancia+". Señales meteorológicas orientativas, no una probabilidad validada de infección, incidencia o infestación."}
+ const c=$("oaf-sm-conclusion");if(c){c.dataset.state=status;c.textContent=details+" "+msg+" Vigilancia específica para "+r.nombre+": "+r.vigilancia+". Señales meteorológicas para orientar la vigilancia fitosanitaria."}
 }
 let sequence=0;
 async function renderModel(){
