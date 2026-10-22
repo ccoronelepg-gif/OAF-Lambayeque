@@ -374,6 +374,11 @@ function refreshDetailMap(){
     img.setAttribute("width","700");img.setAttribute("height","340");
     img.setAttribute("href",overlaySrc(img.dataset.ux30Server,img.dataset.ux30Ids));
    }
+   for(const img of map.querySelectorAll('image[data-ux31-wms]')){
+    img.setAttribute("x","0");img.setAttribute("y","0");
+    img.setAttribute("width","700");img.setAttribute("height","340");
+    img.setAttribute("href",heatWmsUrl(b));
+   }
    return;
   }
   const geo={
@@ -392,6 +397,11 @@ function refreshDetailMap(){
    img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
    img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
    img.setAttribute("href",service+"/export?"+query);
+  }
+  for(const img of map.querySelectorAll('image[data-ux31-wms]')){
+   img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
+   img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
+   img.setAttribute("href",heatWmsUrl(geo));
   }
  },450);
 }
@@ -478,7 +488,10 @@ function init(){
  window.oafUx30AfterDraw=function(context){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
   if(!state.mapInit){state.mapInit=true;navigation(state.scene.svg);}
-  render();if(state.pointsStatus==="pendiente")loadHistory();
+  render();
+  if(state.pointsStatus==="pendiente")loadHistory();
+  if(on("drought")&&state.droughtStatus==="pendiente")loadDrought();
+  if(on("heat")&&state.heatStatus==="pendiente")loadHeat();
  };
  applyLegacy();adaptOriginal();
  const pane=$("oaf-ux29-territory");
