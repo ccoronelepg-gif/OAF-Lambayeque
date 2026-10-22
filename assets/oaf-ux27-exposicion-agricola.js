@@ -41,7 +41,7 @@ const panelHTML=[
  '<p><strong>Fuente y reproducibilidad:</strong> <a href="'+C.doc+'" target="_blank" rel="noopener noreferrer">CENEPRED · escenario de riesgos 2025–2027</a> · ',
  '<a href="'+C.report+'" target="_blank" rel="noopener noreferrer">reporte oficial de enero de 2026, página 4</a> · ',
  '<a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024" target="_blank" rel="noopener noreferrer">capa regionalizable de susceptibilidad 5090024</a> · ',
- '<a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5010502" target="_blank" rel="noopener noreferrer">capa regional INGEMMET 5010502</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EXPOSICION_INUNDACIONES_UX27.md" target="_blank" rel="noopener noreferrer">metodología completa UX27</a>.</p></div>'
+ '<a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5010502" target="_blank" rel="noopener noreferrer">capa regional INGEMMET 5010502</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EXPOSICION_INUNDACIONES_UX27.md" target="_blank" rel="noopener noreferrer">metodología completa UX27</a> · <a href="datos/riesgos_ux27/indicadores_cenepred_2025.csv" download>descargar indicadores CSV</a> · <a href="datos/riesgos_ux27/indicadores_cenepred_2025.json" target="_blank" rel="noopener noreferrer">metadatos JSON</a>.</p></div>'
 ].join("");
 function init(){
  const root=byId("oaf-territorio-riesgos");
