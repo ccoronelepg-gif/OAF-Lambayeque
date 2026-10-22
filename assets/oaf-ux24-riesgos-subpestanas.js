@@ -64,17 +64,151 @@ async function regionalOutline(){
   svg.replaceChildren(svgNode("rect",{x:0,y:0,width:700,height:340,fill:"#eef6f2"}));
   for(let x=70;x<700;x+=70)svg.append(svgNode("line",{x1:x,x2:x,y1:0,y2:340,stroke:"#dfeae3"}));
   for(let y=50;y<340;y+=50)svg.append(svgNode("line",{x1:0,x2:700,y1:y,y2:y,stroke:"#dfeae3"}));
-  for(const ring of rings)svg.append(svgNode("path",{d:ring.map((p,i)=>(i?"L":"M")+xx(p[0]).toFixed(2)+" "+yy(p[1]).toFixed(2)).join(" ")+" Z",fill:"#b9dec8",stroke:"#2c785b","stroke-width":2.5}));
+  for(const ring of rings)svg.append(svgNode("path",{d:ring.map((p,i)=>(i?"L":"M")+xx(p[0]).toFixed(2)+" "+yy(p[1]).toFixed(2)).join(" ")+" Z",fill:"#b9dec8",stroke:"#2c785b","stroke-width":2.5,"data-oaf-ux24-boundary":"true"}));
+  // Raster exportado por CENEPRED: el BBOX se calcula según esta misma proyección gráfica.
+  const bounds={minLon:(minX+maxX)/2-350/(cos*factor),maxLon:(minX+maxX)/2+350/(cos*factor),minLat:(minY+maxY)/2-170/factor,maxLat:(minY+maxY)/2+170/factor};
+  officialStart({svg,x:xx,y:yy,bounds});
   const north=svgNode("text",{x:645,y:32,fill:"#215b47","font-size":16,"font-weight":800,"text-anchor":"middle"});north.textContent="N ↑";svg.append(north);
   const label=svgNode("text",{x:350,y:315,fill:"#296852","font-size":15,"font-weight":750,"text-anchor":"middle"});label.textContent="LAMBAYEQUE · CONTORNO REFERENCIAL";svg.append(label);
  }catch(error){
   svg.replaceChildren();const t=svgNode("text",{x:350,y:170,fill:"#546d62","font-size":15,"text-anchor":"middle"});t.textContent="Contorno no disponible. Consulta SIGRID o INGEMMET.";svg.append(t);
  }
 }
+
+/* UX25 · capas oficiales en vivo: raster CENEPRED 2021 y puntos MINAM/INGEMMET.
+   Los datos se solicitan a sus geoservicios; OAF no produce las geometrías de peligros. */
+const officialState={scene:null,layers:"5090024",minam:true,geologico:true,points:{minam:[],geologico:[]},loaded:{minam:false,geologico:false},valid:false};
+const GIS={
+ raster:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
+ minam:"https://geoservidorperu.minam.gob.pe/arcgis/rest/services/hiroambienplanificacion/caracterizacion_territorio_riesgo_desastres/MapServer",
+ geologico:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer"
+};
+function officialUI(){
+ const frame=document.querySelector("#oaf-territorio-riesgos .oaf-ux24-mapframe");
+ if(!frame||$("oaf-ux25-controls"))return;
+ const controls=el("div","oaf-ux25-controls");controls.id="oaf-ux25-controls";
+ controls.innerHTML='<div class="oaf-ux25-heading"><strong>Capas geográficas oficiales</strong><span>Selecciona qué información visualizar sobre el contorno regional</span></div>'+
+ '<label class="oaf-ux25-selectlabel" for="oaf-ux25-raster">Susceptibilidad a inundaciones (CENEPRED)</label>'+
+ '<select id="oaf-ux25-raster"><option value="5090024">Lluvias intensas · escenario de 2021</option><option value="5090023">Eventos El Niño · escenario de 2021</option><option value="5010502">Inundación y erosión fluvial · INGEMMET</option><option value="none">Solo mapa base</option></select>'+
+ '<div class="oaf-ux25-toggles"><label><input type="checkbox" id="oaf-ux25-minam" checked> Puntos críticos de inundación · MINAM</label>'+
+ '<label><input type="checkbox" id="oaf-ux25-geologico" checked> Zonas críticas geológicas · INGEMMET/SIGRID</label></div>'+
+ '<p id="oaf-ux25-map-status" class="oaf-ux25-map-status" role="status">Preparando geoservicios oficiales…</p>'+
+ '<div class="oaf-ux25-legend"><span><i class="oaf-ux25-dot oaf-ux25-flood"></i>Puntos de inundación</span><span><i class="oaf-ux25-dot oaf-ux25-geo"></i>Zonas geológicas</span></div>';
+ frame.before(controls);
+ const detail=el("div","oaf-ux25-detail");detail.id="oaf-ux25-detail";
+ detail.textContent="Selecciona un punto del mapa para consultar sus atributos, fecha y fuente original.";
+ frame.after(detail);
+ const src=el("p","oaf-ux25-source-detail");
+ src.innerHTML='Susceptibilidad: <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024" target="_blank" rel="noopener noreferrer">CENEPRED · lluvias intensas (2021)</a> y <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090023" target="_blank" rel="noopener noreferrer">eventos El Niño (2021)</a>. '+ 
+ 'Puntos inventariados: <a href="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/hiroambienplanificacion/caracterizacion_territorio_riesgo_desastres/MapServer/3" target="_blank" rel="noopener noreferrer">MINAM</a> y <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5020500" target="_blank" rel="noopener noreferrer">INGEMMET/SIGRID (inventario actualizado a 2022)</a>. No equivale a una alerta vigente.';
+ detail.after(src);
+ $("oaf-ux25-raster").addEventListener("change",e=>{officialState.layers=e.target.value;drawOfficial()});
+ $("oaf-ux25-minam").addEventListener("change",e=>{officialState.minam=e.target.checked;drawOfficial()});
+ $("oaf-ux25-geologico").addEventListener("change",e=>{officialState.geologico=e.target.checked;drawOfficial()});
+}
+function officialStatus(){
+ const element=$("oaf-ux25-map-status");if(!element)return;
+ const a=officialState.loaded;
+ const status=Object.keys(a).map(k=>a[k]===true?(k==="minam"?"MINAM":"INGEMMET/SIGRID")+": "+officialState.points[k].length+" puntos registrados":
+ a[k]==="error"?(k==="minam"?"MINAM":"INGEMMET/SIGRID")+": servicio no disponible":"Cargando puntos "+(k==="minam"?"MINAM":"INGEMMET") );
+ const ras=officialState.layers==="none"?"Sin raster":officialState.rasterStatus||"Solicitando capa raster oficial";
+ element.textContent=ras+" · "+status.join(" · ")+".";
+}
+function mapRasterUrl(layer,scene,server){
+ const {bounds}=scene;
+ const query=new URLSearchParams({
+  bbox:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
+  bboxSR:"4326",imageSR:"4326",size:"900,438",
+  format:"png32",transparent:"true",dpi:"110",
+  layers:"show:"+layer,f:"image"
+ });
+ return server+"/export?"+query.toString();
+}
+function officialTooltip(record,which){
+ const p=record.properties||{};
+ const heading=which==="minam"?"Punto crítico por inundación · MINAM":"Zona crítica geológica · INGEMMET/SIGRID";
+ const title=[p.nom_lugar,p.paraje,p.nom_dist,p.nom_dpto,p.nom_dep].find(x=>typeof x==="string"&&x.trim())||"Ubicación sin nombre publicado";
+ const risk=[p.tip_peligr,p.tipo_pel,p.n_peligro].find(x=>typeof x==="string"&&x.trim())||"Peligro: consultar fuente";
+ const date=[p.fecha_actu,p.fecha_doc].find(x=>typeof x==="string"&&x.trim())||"Fecha: consultar ficha técnica";
+ const output=$("oaf-ux25-detail");if(!output)return;
+ output.replaceChildren();
+ const h=el("strong");h.textContent=heading+" · "+title;
+ const t=el("p");t.textContent="Tipo: "+risk+". "+date+".";
+ output.append(h,t);
+ const note=[p.descrip,p.e_expuesto,p.elemento].find(x=>typeof x==="string"&&x.trim());
+ if(note){const e=el("p");e.textContent=note.slice(0,350);output.append(e)}
+ const href=which==="minam"?GIS.minam+"/3":GIS.geologico+"/5020500";
+ const a=el("a");a.href=href;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Consultar geoservicio original ↗";output.append(a);
+}
+function drawOfficial(){
+ const sc=officialState.scene;if(!sc)return;
+ const svg=sc.svg;
+ svg.querySelectorAll(".oaf-ux25-maplayer").forEach(n=>n.remove());
+ if(officialState.layers!=="none"){
+  officialState.rasterStatus="Consultando raster CENEPRED";
+  const image=svgNode("image",{x:0,y:0,width:700,height:340,href:mapRasterUrl(officialState.layers,sc,GIS.raster),opacity:".75","preserveAspectRatio":"none"});
+  image.classList.add("oaf-ux25-maplayer");
+  image.addEventListener("load",()=>{if(!image.isConnected)return;officialState.rasterStatus="Capa raster solicitada a CENEPRED";officialStatus()});
+  image.addEventListener("error",()=>{if(!image.isConnected)return;officialState.rasterStatus="La capa raster no respondió; abre SIGRID";officialStatus()});
+  const boundary=svg.querySelector('[data-oaf-ux24-boundary="true"]');
+  svg.insertBefore(image,boundary||null);
+ }else officialState.rasterStatus="Vista sin raster";
+ for(const [key,enabled,color] of [["minam",officialState.minam,"#cf6a25"],["geologico",officialState.geologico,"#74449d"]]){
+  if(!enabled)continue;
+  for(const record of officialState.points[key]){
+   const pt=record.geometry?.coordinates;
+   if(!Array.isArray(pt)||pt.length<2||!pt.every(Number.isFinite))continue;
+   const cx=sc.x(pt[0]),cy=sc.y(pt[1]);
+   if(cx<0||cx>700||cy<0||cy>340)continue;
+   const dot=svgNode("circle",{cx:cx.toFixed(2),cy:cy.toFixed(2),r:5,fill:color,stroke:"#fff","stroke-width":1.25,tabindex:"0",role:"button","aria-label":"Consultar ubicación oficial de "+(key==="minam"?"inundación":"peligro geológico")});
+   dot.classList.add("oaf-ux25-maplayer","oaf-ux25-point");
+   const open=()=>officialTooltip(record,key);
+   dot.addEventListener("click",open);
+   dot.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open()}});
+   svg.append(dot);
+  }
+ }
+ officialStatus();
+}
+function geometryPoint(feature){
+ if(feature.geometry?.type==="Point")return feature;
+ if(Number.isFinite(feature.geometry?.x)&&Number.isFinite(feature.geometry?.y))return {type:"Feature",geometry:{type:"Point",coordinates:[feature.geometry.x,feature.geometry.y]},properties:feature.attributes||{}};
+ return null;
+}
+async function officialPoints(which,layer,where){
+ const sc=officialState.scene;if(!sc)return;
+ const extent=sc.bounds;
+ const params=new URLSearchParams({
+  where,geometry:[extent.minLon,extent.minLat,extent.maxLon,extent.maxLat].join(","),
+  geometryType:"esriGeometryEnvelope",inSR:"4326",spatialRel:"esriSpatialRelIntersects",
+  outFields:which==="minam"?"nom_dpto,nom_dist,paraje,tip_peligr,fecha_actu,fecha_doc,descrip":"nom_dep,nom_lugar,nom_dist,tipo_pel,fecha_doc,e_expuesto",
+  returnGeometry:"true",outSR:"4326",resultRecordCount:"1500",f:"geojson"
+ });
+ const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),18000);
+ try{
+  const url=layer+"/query?"+params.toString();
+  const res=await fetch(url,{cache:"no-store",signal:controller.signal});
+  if(!res.ok)throw Error("HTTP "+res.status);
+  const geo=await res.json();
+  if(geo.error||!Array.isArray(geo.features))throw Error("respuesta no GeoJSON");
+  officialState.points[which]=geo.features.map(geometryPoint).filter(Boolean).filter(f=>{
+   const [x,y]=f.geometry.coordinates;
+   return x>=extent.minLon&&x<=extent.maxLon&&y>=extent.minLat&&y<=extent.maxLat;
+  }).slice(0,1500);
+  officialState.loaded[which]=true;
+ }catch(err){officialState.loaded[which]="error"}finally{clearTimeout(timer);drawOfficial()}
+}
+function officialStart(scene){
+ officialState.scene=scene;officialStatus();drawOfficial();
+ // Las capas de puntos se obtienen sin transformar ni fabricar coordenadas.
+ officialPoints("minam",GIS.minam+"/3","1=1");
+ officialPoints("geologico",GIS.geologico+"/5020500","nom_dep LIKE '%LAMBAYEQUE%'");
+}
+
 function init(){
  configs.forEach(build);
  const nav=document.querySelector('#oaf-primary-nav a[data-tab="clima"]');if(nav)nav.textContent="Análisis de la región";
- hazardUI();sync();regionalOutline();
+ hazardUI();officialUI();sync();regionalOutline();
  window.addEventListener("hashchange",sync);
  // Abrir también los enlaces directos cuando la página se carga por primera vez.
  if(configs.some(c=>location.hash==="#"+c.risk||location.hash==="#"+c.base))window.dispatchEvent(new Event("hashchange"));
