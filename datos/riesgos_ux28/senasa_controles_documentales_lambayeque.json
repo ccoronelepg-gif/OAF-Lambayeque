@@ -1,0 +1,58 @@
+{
+  "proyecto": "OAF-Lambayeque",
+  "fase": "UX28",
+  "consulta": "2026-10-22",
+  "ambito": "Departamento de Lambayeque, Perú",
+  "significado": "Puestos documentados por SENASA para cuarentena interna de moscas de la fruta; son referencias históricas, no confirmación de operación en octubre 2026.",
+  "coordenadas_exactas_verificadas": false,
+  "referencias": [
+    {
+      "nombre": "Olmos",
+      "tipo": "Puesto de control fitosanitario / cuarentena interna de moscas de la fruta",
+      "distrito": "Olmos",
+      "provincia": "Lambayeque",
+      "departamento": "Lambayeque",
+      "ubicacion_documental": "Cruce de Olmos, antigua Panamericana Norte km 86 / carretera Interoceánica Norte (referencia documental)",
+      "fuente": "SENASA, Preguntas frecuentes de cuarentena interna (2015), y norma histórica de ubicación",
+      "documento": "https://www.senasa.gob.pe/senasa/descargasarchivos/2015/07/Preguntas-frecuentes_DSV.pdf",
+      "documento_ubicacion": "https://spij.minjus.gob.pe/Normas/textos/030310T.pdf",
+      "fecha_referencia": "2015",
+      "estado_actual": "No verificado",
+      "localizacion_en_mapa": "Distrito de Olmos, sin punto exacto"
+    },
+    {
+      "nombre": "Ñaupe",
+      "tipo": "Puesto de control fitosanitario / cuarentena interna de moscas de la fruta",
+      "distrito": "Olmos",
+      "provincia": "Lambayeque",
+      "departamento": "Lambayeque",
+      "ubicacion_documental": "Sector San Francisco, Ñaupe; antigua Panamericana Norte km 143,5 / carretera Interoceánica Norte (referencia documental)",
+      "fuente": "SENASA, Preguntas frecuentes de cuarentena interna (2015), y norma histórica de ubicación",
+      "documento": "https://www.senasa.gob.pe/senasa/descargasarchivos/2015/07/Preguntas-frecuentes_DSV.pdf",
+      "documento_ubicacion": "https://spij.minjus.gob.pe/Normas/textos/030310T.pdf",
+      "fecha_referencia": "2015",
+      "estado_actual": "No verificado",
+      "localizacion_en_mapa": "Distrito de Olmos, sin punto exacto"
+    }
+  ],
+  "puesto_relacionado_no_fitosanitario": {
+    "nombre": "Mocupe",
+    "tipo": "Puesto SENASA creado para funciones de sanidad animal",
+    "nota": "No se incorpora como puesto fitosanitario.",
+    "documento": "https://www.gob.pe/institucion/senasa/normas-legales/4092856-0060-2023-midagri-senasa",
+    "fecha": "2023-03-31"
+  },
+  "exclusion_explicita": "Las estaciones forestales/vida silvestre de SERFOR no se clasifican como controles fitosanitarios SENASA.",
+  "red_vial": {
+    "institucion": "MTC a través de la infraestructura de datos espaciales del Perú IDEP",
+    "url": "https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/MTC/MapServer",
+    "capas": {
+      "nacional": 10,
+      "departamental": 9,
+      "vecinal": 8,
+      "puentes": 7
+    },
+    "cobertura": "Nacional con recorte visual al contorno referencial Lambayeque",
+    "fecha_actualizacion": "Consulta octubre 2026; verificar fecha de edición de cada capa en servicio original"
+  }
+}
