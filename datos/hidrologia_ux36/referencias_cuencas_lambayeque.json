@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-10-22",
+  "reference_period": "Plan de Desarrollo Hidráulico de Lambayeque (PEOT/Gobierno Regional), documento de planificación difundido en 2018; periodo estadístico específico de la masa media no precisado en la tabla",
+  "units": "hm3/año (millones de m³ por año)",
+  "title": "Masas anuales históricas regionales — promedio referencial y FEN 1998",
+  "source": {
+    "institution": "Gobierno Regional de Lambayeque / PEOT",
+    "name": "Plan de Desarrollo Hidráulico de la Región Lambayeque",
+    "url": "https://siga.regionlambayeque.gob.pe/mysiganew/content/sisadportPublicaTema_mostrar.php?pass=MTA1Nw%3D%3D&poco_id=12546",
+    "year": 2018
+  },
+  "rivers": [
+    {
+      "id": "chancay",
+      "name": "Chancay–Lambayeque",
+      "official_names": [
+        "Chancay",
+        "Lambayeque",
+        "Reque"
+      ],
+      "normal_annual_hm3": 850,
+      "fen1998_annual_hm3": 3000,
+      "context": "Cuenca con regulación parcial por el Sistema Tinajones; el almacenamiento y las descargas responden también a la operación del sistema."
+    },
+    {
+      "id": "leche",
+      "name": "La Leche",
+      "official_names": [
+        "La Leche",
+        "Leche"
+      ],
+      "normal_annual_hm3": 203,
+      "fen1998_annual_hm3": 1800,
+      "context": "El plan regional destaca el valle La Leche por su vulnerabilidad histórica a desbordes y colmatación del cauce."
+    },
+    {
+      "id": "zana",
+      "name": "Zaña",
+      "official_names": [
+        "Zaña",
+        "Zana"
+      ],
+      "normal_annual_hm3": 224,
+      "fen1998_annual_hm3": 1200,
+      "context": "Cuenca con antecedentes de crecidas en eventos de El Niño; requieren observaciones propias para evaluar desbordes."
+    }
+  ],
+  "tinajones": {
+    "facility": "Reservorio Tinajones",
+    "system": "Sistema Hidráulico Mayor Tinajones",
+    "current_storage_mmc": null,
+    "current_as_of": null,
+    "period_note": "Agosto 2024 a julio 2025: ANA comunicó aumento neto de 40 MMC en almacenamiento durante el periodo; NO representa el volumen existente hoy.",
+    "reported_period": "2024-08/2025-07",
+    "reported_net_storage_change_mmc": 40,
+    "source": "https://www.gob.pe/institucion/ana/noticias/1244576-grupo-de-trabajo-padh-presenta-informe-de-evaluacion-2024-2025-en-la-cuenca-chancay-lambayeque",
+    "operational_data": "https://www.gob.pe/40915-acceder-al-sistema-de-informacion-hidrologica-tinajones"
+  },
+  "platforms": {
+    "phisis": "https://www.gob.pe/21712-consultar-la-informacion-hidrologica-peruana-en-la-plataforma-phisis-consultar-el-monitoreo-hidrologico-de-los-rios-peruanos",
+    "peot": "https://www.gob.pe/40915-acceder-al-sistema-de-informacion-hidrologica-tinajones",
+    "senamhi": "https://www.senamhi.gob.pe/servicios/?p=monitoreo-hidrologico",
+    "ana": "https://www.gob.pe/ana"
+  },
+  "warnings": [
+    "Las masas anuales (hm³/año) no equivalen a caudales instantáneos (m³/s).",
+    "La razón FEN 1998/promedio es histórica y NO es una probabilidad ni predicción de desborde.",
+    "Los valores no corresponden a observaciones vigentes en octubre de 2026.",
+    "Para pronosticar inundaciones se necesitan series hidrométricas, modelos calibrados y cotas/geomorfología verificadas."
+  ]
+}
