@@ -46,6 +46,8 @@ https://sigrid.cenepred.gob.pe/sigridv3/storage/escenario_climatico_llu/10_shape
 
 Este ZIP corresponde al escenario del Plan Multisectorial, que puede expresar **riesgo**, y no necesariamente los mismos polígonos/códigos del raster de **susceptibilidad** 5090024. Debe inspeccionarse su contenido, CRS, clases, año y procedencia antes de usarlo para intersección.
 
+Archivos de datos abiertos de los indicadores publicados: `datos/riesgos_ux27/indicadores_cenepred_2025.csv` y `datos/riesgos_ux27/indicadores_cenepred_2025.json`. Los valores calculados (porcentaje y diferencia aritmética) se distinguen explícitamente de los datos oficiales originales.
+
 ## 3. Capa de exposición agrícola
 
 **MINAM, ServicioGeoINEA / MapServer / capa 1, Superficie Agrícola Nacional**.
