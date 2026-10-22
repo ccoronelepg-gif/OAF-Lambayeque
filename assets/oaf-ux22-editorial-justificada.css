@@ -1,0 +1,67 @@
+/* UX22 · Síntesis centrada en contenido y lectura editorial, web y PWA comparten el mismo index.html */
+#inicio #oaf-home-summary-static.oaf-ux22-summary{
+ box-sizing:border-box;width:100%!important;max-width:none!important;min-height:0!important;
+ display:block!important;align-self:stretch!important;
+ padding:clamp(15px,1.65vw,22px)!important;margin:14px 0 19px!important;
+}
+#inicio #oaf-home-summary-static.oaf-ux22-summary h2{
+ max-width:100%!important;width:100%;margin:0 0 10px!important;
+ line-height:1.27!important;text-wrap:balance;
+}
+#inicio #oaf-home-summary-static .oaf-ux22-sintesis{
+ width:100%!important;max-width:none!important;
+ margin:0!important;padding:0!important;
+ font-size:clamp(13px,1.15vw,15px)!important;line-height:1.66!important;
+ color:#365f51!important;font-weight:450;
+ text-align:justify!important;text-justify:inter-word!important;
+ hyphens:auto;overflow-wrap:normal;white-space:normal;
+ text-wrap:pretty;
+}
+#inicio #oaf-home-summary-static .oaf-ux21-summary-link{
+ width:100%!important;max-width:none!important;
+ margin:8px 0 0!important;padding:0!important;
+ font-size:12px!important;line-height:1.35!important;
+ text-align:left!important;
+}
+#inicio #oaf-home-summary-static .oaf-ux21-summary-link a{
+ display:inline-flex;align-items:center;min-height:28px;padding:3px 0!important;
+ font-size:12px!important;
+}
+/* Alinear solamente párrafos narrativos de las fichas, sin deformar números, controles ni leyendas. */
+main [data-page] :is(
+ .panel>p,.card>p,.oaf-agro-tile>p,.oaf-agro-block>p,
+ .oaf-ux11-card>p,.oaf-ux11-section>.oaf-ux11-head>p,
+ .oaf-ux14-heading>p,.oaf-ux14-intro>p,
+ .oaf-ux16-future-panel>p,.oaf-home-interpretation>p,
+ .oaf-home-summary>p,.oaf-agro-summary>p:not(.oaf-ux21-summary-link)
+){
+ width:100%!important;max-width:none!important;
+ text-align:justify!important;text-justify:inter-word!important;
+ hyphens:auto;overflow-wrap:break-word;
+}
+main [data-page] :is(.panel,.card,.oaf-agro-tile,.oaf-agro-block,.oaf-ux11-section,.oaf-ux14-block,.oaf-ux16-future-panel){
+ min-width:0;max-width:100%;box-sizing:border-box;
+}
+main [data-page] :is(.oaf-agro-summary,.oaf-ux14-heading,.oaf-ux11-head){
+ width:100%;max-width:none;min-width:0;
+}
+@media(max-width:700px){
+ #inicio #oaf-home-summary-static.oaf-ux22-summary{
+   width:100%!important;padding:14px 12px!important;margin:11px 0 15px!important;
+ }
+ #inicio #oaf-home-summary-static.oaf-ux22-summary h2{font-size:20px!important;line-height:1.27}
+ #inicio #oaf-home-summary-static .oaf-ux22-sintesis{
+   font-size:12.5px!important;line-height:1.51!important;
+   text-align:justify!important;text-justify:inter-word!important;
+   hyphens:auto;
+ }
+ #inicio #oaf-home-summary-static .oaf-ux21-summary-link{margin-top:7px!important;}
+ /* El texto narrativo largo sí se justifica; los elementos breves se mantienen legibles. */
+ main [data-page] :is(.panel>p,.oaf-agro-tile>p,.oaf-ux11-card>p,.oaf-ux14-heading>p,.oaf-ux14-intro>p){
+  width:100%!important;max-width:none!important;text-align:justify!important;
+  hyphens:auto;line-height:1.62;
+ }
+}
+@media(max-width:360px){
+ #inicio #oaf-home-summary-static .oaf-ux22-sintesis{font-size:12px!important;line-height:1.49!important;}
+}
