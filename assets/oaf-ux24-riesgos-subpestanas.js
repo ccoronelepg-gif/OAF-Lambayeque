@@ -292,8 +292,16 @@ function ux26Load(which,url,params){
    items.sort((a,b)=>String(a.properties?.NOMBRE||"").localeCompare(String(b.properties?.NOMBRE||""),"es"));
    ux26Options("oaf-ux26-basin",items,"Todas las unidades",(_,i)=>String(i),f=>(f.properties?.NOMBRE||"Unidad sin nombre")+" · "+(f.properties?.CODIGO||"ANA"));
   }
-  ux26Status();if(officialState.scene)drawOfficial();
- }).catch(()=>{ux26.loaded[which]="error";ux26Status()});
+  ux26Status();
+  // Evitar descargar de nuevo el raster mientras solo llegan listas de provincias o cuencas.
+  if(officialState.scene&&(ux26.province||ux26.district||ux26.watershed))drawOfficial();
+  else ux26Metrics();
+ }).catch(()=>{
+  ux26.loaded[which]="error";
+  const id=which==="prov"?"oaf-ux26-prov":which==="dist"?"oaf-ux26-dist":"oaf-ux26-basin";
+  const control=$(id);if(control&&control.options.length)control.options[0].textContent="Servicio no disponible";
+  ux26Status();
+ });
 }
 function ux26Init(sc){
  ux26Panel();ux26Status();
