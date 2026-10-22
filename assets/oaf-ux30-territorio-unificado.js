@@ -365,12 +365,14 @@ function metadata(){
  tab.append(section);
 }
 function init(){
- makeTree();metadata();applyLegacy();adaptOriginal();
+ makeTree();metadata();
+ // Instalar primero el enlace de render: los filtros anteriores pueden redibujar el mapa de inmediato.
  window.oafUx30AfterDraw=function(context){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
   if(!state.mapInit){state.mapInit=true;navigation(state.scene.svg);}
   render();if(state.pointsStatus==="pendiente")loadHistory();
  };
+ applyLegacy();adaptOriginal();
  const pane=$("oaf-ux29-territory");
  if(pane){
   pane.addEventListener("change",e=>{
