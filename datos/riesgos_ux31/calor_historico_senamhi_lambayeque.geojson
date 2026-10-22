@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "name": "Estaciones con observaciones históricas de calor documentadas por SENAMHI",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.779,
+          -6.322
+        ]
+      },
+      "properties": {
+        "id": "SENAMHI-JAYANCA-LAVINA-2024-03-18",
+        "categoria": "calor",
+        "estacion": "Jayanca (La Viña)",
+        "region": "Lambayeque",
+        "tipo": "Registro de calor y anomalía térmica",
+        "fecha": "2024-03-18",
+        "maxima_celsius": 37.8,
+        "anomalia_maxima_marzo_2024_celsius": 2.9,
+        "normal_maxima_marzo_celsius": 33.1,
+        "coordenadas_fuente": "Reporte histórico de precipitación SENAMHI (estación Jayanca - La Viña, lat -6.322, lon -79.779)",
+        "fuente_valores": "SENAMHI Boletín de condiciones térmicas costeras marzo 2024",
+        "fuente_url": "https://www.senamhi.gob.pe/load/file/02221SENA-134.pdf",
+        "fuente_coordenadas": "https://www.senamhi.gob.pe/load/file/02245SENA-5.pdf",
+        "nota": "37.8 °C es un registro diario puntual; +2.9 °C corresponde a la anomalía promedio de las temperaturas máximas de marzo de 2024. No se debe representar como extensión de una ola de calor en toda Lambayeque."
+      }
+    }
+  ]
+}
