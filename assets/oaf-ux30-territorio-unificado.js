@@ -175,9 +175,30 @@ async function loadHydro(){
   (r.error?"servicio no disponible":r.lines.length+" trazos"+(r.partial?" (consulta parcial)":""))).join(" · ");
  state.hydroLoading=false;render();
 }
+function updateLoadStatus(){
+ const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");
+ if(!container)return;
+ let bar=$("oaf-ux32-map-status");
+ if(!bar){
+  bar=node("div","oaf-ux32-map-status");bar.id="oaf-ux32-map-status";
+  bar.setAttribute("role","status");bar.setAttribute("aria-live","polite");
+  container.prepend(bar);
+ }
+ const activeGeo=["fluvial","pluvial","erosion","detritos"].filter(on);
+ const activeHydro=["basin","drain","quebradas"].filter(on);
+ if(!activeGeo.length&&!activeHydro.length){bar.hidden=true;return}
+ bar.hidden=false;
+ const status=[];
+ if(activeGeo.length)status.push("Puntos INGEMMET 2017: "+state.pointsStatus);
+ if(on("basin"))status.push("Cuencas: capa oficial ANA consultada en SIGRID");
+ if(on("drain")||on("quebradas"))status.push("Hidrografía IGN: "+state.hydroStatus);
+ bar.textContent=status.join(" · ")+". Al activar una capa, el diagnóstico indica su fuente y disponibilidad.";
+}
+
 function render(){
  const scene=state.scene,pane=$("oaf-ux29-territory");if(!scene||!pane)return;
  const map=scene.svg;
+ updateLoadStatus();
  map.querySelectorAll(".oaf-ux30-layer").forEach(x=>x.remove());
  const defs=sv("defs",{class:"oaf-ux30-layer"});
  const clip=sv("clipPath",{id:"oaf-ux30-clip-region",clipPathUnits:"userSpaceOnUse"});
@@ -551,7 +572,7 @@ function metadata(){
  const section=node("section","oaf-ux30-metadata");section.id="oaf-ux30-metadatos";
  section.innerHTML='<h2>Fuentes del visor geográfico de Lambayeque</h2>'+
  '<p>Este apartado reúne las fuentes oficiales y las notas metodológicas de las capas de peligros, límites, infraestructura, agricultura y análisis agroclimático, con sus fechas y alcances.</p>'+
- '<ul><li><a href="'+SIGRID+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · límites políticos, cuencas, hidrografía e inventario histórico FENC 2017</a></li>'+
+ '<ul><li><a href="'+SIGRID+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · límites políticos e inventario de puntos históricos FENC 2017</a></li><li><a href="'+SIGRID_HYDRO+'/6030100" target="_blank" rel="noopener noreferrer">ANA/SIGRID · cuencas hidrográficas (servicio de cuencas verificado)</a></li><li><a href="'+SIGRID_HYDRO+'/6030200" target="_blank" rel="noopener noreferrer">IGN/SIGRID · ríos y quebradas, Carta Nacional 1:100 000 (capas vectoriales)</a></li>'+
  '<li><a href="'+HAZARD+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · susceptibilidad regional a inundaciones y movimientos en masa</a></li>'+
  '<li><a href="'+INGEMMET+'/0" target="_blank" rel="noopener noreferrer">INGEMMET · susceptibilidad fluvial representada por polígonos a escala 1:1 000 000</a></li>'+
  '<li><a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/MTC/MapServer" target="_blank" rel="noopener noreferrer">MTC/IDEP · carreteras nacionales, departamentales y vecinales</a></li>'+
@@ -559,7 +580,7 @@ function metadata(){
  '<li><a href="'+MINAM+'/1" target="_blank" rel="noopener noreferrer">MINAM · superficie agrícola nacional, referencia 2018</a></li>'+
  '<li><a href="https://www.senamhi.gob.pe/site/vigilancia-climatica/" target="_blank" rel="noopener noreferrer">SENAMHI · vigilancia climática, sequías y temperaturas</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6010100" target="_blank" rel="noopener noreferrer">INGEMMET/SIGRID · puntos 2017 de inundación fluvial, pluvial y erosión</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000" target="_blank" rel="noopener noreferrer">INDECI/SIGRID · emergencias de sequía (inventario 2003–2020)</a></li><li><a href="https://idesep.senamhi.gob.pe/portalidesep/wms.do" target="_blank" rel="noopener noreferrer">SENAMHI/IDESEP · WMS histórico de frecuencia de olas de calor</a></li><li><a href="https://www.senamhi.gob.pe/load/file/02221SENA-134.pdf" target="_blank" rel="noopener noreferrer">SENAMHI · registro térmico Jayanca–La Viña (marzo 2024)</a></li><li><a href="datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson" target="_blank" rel="noopener noreferrer">OAF · GeoJSON del punto histórico SENAMHI con metadatos</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EVENTOS_HISTORICOS_UX31.md" target="_blank" rel="noopener noreferrer">Metodología UX31 · fuentes y límites de las capas históricas</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EXPOSICION_INUNDACIONES_UX27.md" target="_blank" rel="noopener noreferrer">OAF UX27 · análisis cuantitativo agrícola y alcance de las 1 234 ha documentadas por CENEPRED</a></li><li><a href="datos/riesgos_ux27/indicadores_cenepred_2025.csv" download>Indicadores CENEPRED para nueve distritos de Lambayeque (CSV)</a></li></ul>'+
  '<p>Los datos de FENC 2017 son inventarios de lugares afectados, no mapas de inundación actual. La susceptibilidad regional es un raster, mientras que la capa INGEMMET de inundación fluvial utiliza polígonos de susceptibilidad. La exposición agrícola es visual y no una superficie calculada.</p>'+
- '<a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_VISOR_TERRITORIAL_UX30.md" target="_blank" rel="noopener noreferrer">Leer metodología detallada de la fase UX30 ↗</a>';
+ '<a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_VISOR_TERRITORIAL_UX30.md" target="_blank" rel="noopener noreferrer">Leer metodología detallada de la fase UX30 ↗</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_CORRECCIONES_VISOR_UX32.md" target="_blank" rel="noopener noreferrer">Corrección de capas geológicas, cuencas e hidrografía UX32 ↗</a>';
  tab.append(section);
 }
 function init(){
