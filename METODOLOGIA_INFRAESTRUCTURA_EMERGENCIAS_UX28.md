@@ -48,6 +48,8 @@ Se incorporan fichas documentales de dos oficinas con direcciones publicadas ofi
 
 Estas oficinas aparecen en un directorio con vínculo a su fuente, **sin marcadores en el mapa**: no se ha verificado un catálogo de coordenadas oficiales precisas para las sedes. Las distintas páginas oficiales de INDECI han publicado direcciones distintas en diferentes fechas; se privilegia la plataforma nacional `gob.pe` y debe comprobarse la sede antes de acudir.
 
+Los mismos registros documentales se publican como datos abiertos en `datos/riesgos_ux28/directorio_defensa_civil_lambayeque.json`, con coordenadas nulas explícitas.
+
 La lista de dos oficinas **no es un inventario exhaustivo** de las oficinas provinciales y distritales de Defensa Civil de Lambayeque.
 
 ## 4. Qué NO es la capa UX28
