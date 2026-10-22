@@ -256,6 +256,7 @@ async function loadBasins(){
 function styleAmount(mm){return mm>=scenario.threshold?"#c25d3b":mm>=scenario.threshold*.5?"#d9a042":"#257d96"}
 function rainSum(p){return p.rain.slice(0,scenario.days).reduce((s,v)=>s+v,0)}
 function renderScenario(){
+ if(typeof window.oafUx35Render==="function")return window.oafUx35Render();
  const scene=scenario.scene,target=$("oaf-ux29-forecast-map");
  if(!scene||!target)return;
  target.replaceChildren();
@@ -315,6 +316,7 @@ function highlightSelected(svgElement){
  }
 }
 function diagnosisScenario(){
+ if(typeof window.oafUx35Diagnosis==="function")return window.oafUx35Diagnosis();
  const pane=$("oaf-ux29-scenario");if(!pane)return;
  const d=pane.querySelector(".oaf-ux29-diagbody");if(!d)return;
  const selected=daily.items.find(i=>i.name===scenario.selected);
@@ -382,6 +384,11 @@ function mapToolbar(){
  });
 }
 function init(){
+ window.oafUx29ScenarioApi={
+  get:()=>({scene:scenario.scene,daily,locations:POINTS,days:scenario.days,threshold:scenario.threshold}),
+  loadRain:()=>loadRain(),
+  refresh:()=>renderScenario()
+ };
  mountTerritory();attachScenario();mapToolbar();watchScenario();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
