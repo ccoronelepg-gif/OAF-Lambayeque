@@ -1,11 +1,11 @@
 {
   "fase": "8U",
   "estado": "pronostico_marino_modelado_archivado",
-  "fecha_de_consulta_utc": "2026-10-21T15:12:38+00:00",
-  "archivo_fecha": "2026-10-21",
+  "fecha_de_consulta_utc": "2026-10-22T00:04:18+00:00",
+  "archivo_fecha": "2026-10-22",
   "periodo": "hasta 3 días de pronóstico, no climatología 1996–2025",
   "fuente": "Open-Meteo Marine / corrientes y SST modeladas MeteoFrance",
-  "sha256_respuesta_marina_original": "9cc32fff5f5530627c756ce0173bccceb572a4f43d84c88394b82befceed5e35",
+  "sha256_respuesta_marina_original": "fcb0d0de549286c5bff68d406a77feb448847f1f7ee25f1eeb12d460977e3ed4",
   "n_puntos_marinos": 3,
   "puntos": [
     {
