@@ -234,13 +234,16 @@ async function loadHistory(){
   if(!res.ok)throw Error("HTTP "+res.status);
   const data=await res.json();if(data.error||!Array.isArray(data.features))throw Error("Respuesta incompatible");
   const colors={fluvial:"#268ac4",pluvial:"#418bba",detritos:"#b8792b",erosion:"#ad4653"};
-  state.points=data.features.map(f=>{
+  const historicPoints=data.features.map(f=>{
     const p=f.properties||{},type=String(p.tipo_pel||"");
     const cat=classify(type),coords=f.geometry?.coordinates;
     if(!cat||f.geometry?.type!=="Point"||!Array.isArray(coords)||!coords.every(Number.isFinite))return null;
-    return {coords,category:cat,color:colors[cat],label:type,year:p.fecha_doc||"2017",type};
+    return {coords,category:cat,color:colors[cat],label:type,year:p.fecha_doc||"2017",type,
+     source:"INGEMMET, inventario geológico FENC 2017",sourceUrl:"https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6010100",
+     detail:"Punto geológico documentado; no equivale a área inundada."};
   }).filter(Boolean);
-  state.pointsStatus="cargados: "+state.points.length;
+  state.points=state.points.filter(p=>!["fluvial","pluvial","erosion","detritos"].includes(p.category)).concat(historicPoints);
+  state.pointsStatus="INGEMMET 2017: "+historicPoints.length+" puntos del ámbito consultado";
  }catch(e){state.pointsStatus="fuente no disponible";}finally{clearTimeout(timer);render()}
 }
 function adaptOriginal(){
