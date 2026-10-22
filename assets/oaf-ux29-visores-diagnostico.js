@@ -59,7 +59,8 @@ function mountTerritory(){
  const root=$("oaf-territorio-riesgos"),grid=root?.querySelector(".oaf-ux24-grid");
  if(!root||!grid||$("oaf-ux29-territory"))return;
  const pane=diagram("territory");
- grid.before(pane);
+ const introduction=root.querySelector(".oaf-ux24-intro");
+ if(introduction)introduction.after(pane);else grid.before(pane);
  const tree=pane.querySelector(".oaf-ux29-tree"),content=pane.querySelector(".oaf-ux29-mapcontent");
  const geo=details(tree,"Peligros y susceptibilidad",true);
  const layers=$("oaf-ux25-controls");if(layers)geo.append(layers);
@@ -125,7 +126,7 @@ function scenarioControls(workbench){
  const tree=workbench.querySelector(".oaf-ux29-tree");
  const met=details(tree,"Señales de lluvia pronosticada",true);
  met.innerHTML+='<label class="oaf-ux29-check"><input type="checkbox" data-ux29-layer="precip" checked> Lluvia acumulada prevista · Open-Meteo</label>'+
- '<label class="oaf-ux29-field" for="oaf-ux29-days">Ventana temporal<select id="oaf-ux29-days"><option value="3">Próximos 3 días</option><option value="7" selected>Próximos 7 días</option></select></label>'+
+ '<label class="oaf-ux29-field" for="oaf-ux29-days">Ventana temporal desde hoy<select id="oaf-ux29-days"><option value="3">Próximos 3 días</option><option value="7" selected>Próximos 7 días</option></select></label>'+
  '<label class="oaf-ux29-field" for="oaf-ux29-threshold">Umbral descriptivo de precipitación acumulada (mm)<select id="oaf-ux29-threshold"><option value="20">20 mm</option><option value="40" selected>40 mm</option><option value="70">70 mm</option><option value="100">100 mm</option></select></label>';
  const peril=details(tree,"Peligros preexistentes · SIGRID",true);
  peril.innerHTML+='<label class="oaf-ux29-check"><input type="checkbox" data-ux29-layer="suscept" checked> Susceptibilidad a inundaciones · CENEPRED</label>'+
@@ -255,7 +256,10 @@ function renderScenario(){
  if(!scene||!target)return;
  target.replaceChildren();
  target.append(svg("rect",{x:0,y:0,width:700,height:380,fill:"#ecf3ef"}));
- const g=svg("g",{});target.append(g);
+ const defs=svg("defs",{}),clip=svg("clipPath",{id:"oaf-ux29-region-clip",clipPathUnits:"userSpaceOnUse"});
+ for(const ring of scene.rings){const d=ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(1)+" "+scene.y(p[1]).toFixed(1)).join(" ")+" Z";clip.append(svg("path",{d,"fill-rule":"evenodd","clip-rule":"evenodd"}));}
+ defs.append(clip);target.append(defs);
+ const g=svg("g",{"clip-path":"url(#oaf-ux29-region-clip)"});target.append(g);
  if(scenario.layer.suscept)scenarioSvgImage(g,"5090024",SOURCES.cenepred,".68","oaf-ux29-hazard");
  if(scenario.layer.nino)scenarioSvgImage(g,"5090023",SOURCES.cenepred,".40","oaf-ux29-el-nino");
  if(scenario.layer.mass)scenarioSvgImage(g,"5090022",SOURCES.cenepred,".35","oaf-ux29-mass");
