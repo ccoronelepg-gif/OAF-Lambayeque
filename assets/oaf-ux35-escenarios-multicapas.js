@@ -191,9 +191,11 @@ function requestSharedData(){
   district:enabled("distrito")||enabled("provincia"),
   historical:enabled("fluvial")||enabled("pluvial")||enabled("erosion")||enabled("detritos")||state.on.pastFlood||state.on.pastMass,
   hydroRio:enabled("drain")||state.on.futureRiver,hydroQuebrada:enabled("quebradas"),
+  drought:enabled("drought")||state.on.futureDrought,heat:enabled("heat")||state.on.futureHeat,
  };
  window.oafUx35Wants=wanted;
  window.oafUx33Load?.();
+ window.oafUx30RequestHistoricalClimate?.();
 }
 async function loadCompanies(){
  if(state.companyStatus!=="pendiente")return;
@@ -341,12 +343,13 @@ function render(){
  };
  drawHydro("hydroRio",enabled("drain")||state.on.futureRiver,"#1265a0");
  drawHydro("hydroQuebrada",enabled("quebradas"),"#259bb8");
- const kinds={fluvial:"#277bc0",pluvial:"#4178bb",erosion:"#b84e46",detritos:"#ab792a"};
+ const kinds={fluvial:"#277bc0",pluvial:"#4178bb",erosion:"#b84e46",detritos:"#ab792a",movmasa:"#aa7534"};
  for(const f of shared?.features?.historical||[]){
   const p=f.properties||{},txt=String(p.tipo_pel||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
   const kind=txt.includes("inundacion fluvial")?"fluvial":txt.includes("inundacion pluvial")||txt.includes("precipitacion pluvial")?"pluvial":
-   txt.includes("erosion fluvial")?"erosion":txt.includes("detrito")||txt.includes("lodo")?"detritos":null;
-  if(!kind||!(enabled(kind)||state.on.pastFlood&&["fluvial","pluvial"].includes(kind)||state.on.pastMass&&kind==="detritos"))continue;
+   txt.includes("erosion fluvial")?"erosion":txt.includes("detrito")||txt.includes("lodo")?"detritos":
+   txt.includes("deslizamiento")||txt.includes("caida de rocas")?"movmasa":null;
+  if(!kind||!(enabled(kind)||state.on.pastFlood&&["fluvial","pluvial"].includes(kind)||state.on.pastMass&&["detritos","movmasa"].includes(kind)))continue;
   const coords=f.geometry?.coordinates;if(!coords||!inFilter(coords))continue;
   points.push({lon:coords[0],lat:coords[1],color:kinds[kind],label:p.tipo_pel||kind,
    detail:"Inventario histórico INGEMMET · El Niño Costero 2017. "+(p.fecha_doc||"")+" · Ubicación puntual, no área afectada.",type:"hist"});
