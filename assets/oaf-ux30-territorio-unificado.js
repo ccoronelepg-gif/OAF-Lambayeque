@@ -222,7 +222,7 @@ function render(){
  if(on("inundacionregion"))add(INGEMMET,0,.54,"Susceptibilidad fluvial en polígonos");
  if(on("agricola")||on("exposicion"))add(MINAM,1,.87,"Superficie agrícola 2018");
  const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
- if(political.length)add(SIGRID_HYDRO,political.filter(n=>n!==6020300).join(","),.8,"Límites departamentales y provinciales");
+ if(political.some(n=>n!==6020300))add(SIGRID_HYDRO,political.filter(n=>n!==6020300).join(","),.8,"Límites departamentales y provinciales");
  if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
  // UX33 incorpora los puntos oficiales, ríos, quebradas y límites distritales con etiquetas.
  // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
@@ -563,6 +563,7 @@ function metadata(){
 }
 function init(){
  makeTree();metadata();
+ window.oafUx30RequestDraw=()=>render();
  // Instalar primero el enlace de render: los filtros anteriores pueden redibujar el mapa de inmediato.
  window.oafUx30AfterDraw=function(context){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
