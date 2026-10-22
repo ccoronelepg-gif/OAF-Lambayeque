@@ -113,6 +113,9 @@ function updateTerritory(pane){
  const p=(head,body)=>{const section=mk("section","oaf-ux29-finding");const strong=mk("strong");strong.textContent=head;const text=mk("p");text.textContent=body;section.append(strong,text);d.append(section)};
  p("Ámbito seleccionado",territory.join(" · "));
  p("Cartografía de peligro",descriptions[layer]||"Consultar la ficha del servicio SIGRID.");
+ const hazard=document.querySelector("#oaf-ux24-hazard-list button[aria-pressed=\"true\"]");
+ if(hazard){const narrative=$("oaf-ux24-hazard-detail")?.textContent?.trim();
+ p("Evento seleccionado: "+hazard.textContent.trim(),narrative||"Consulta los inventarios y antecedentes históricos de esta categoría.");}
  p("Capas superpuestas",[
   geos+" inventarios de peligros",
   isOn("oaf-ux26-agricultura")?"superficie agrícola MINAM":"agricultura desactivada",
