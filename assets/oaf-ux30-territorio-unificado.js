@@ -260,7 +260,14 @@ function refreshDetailMap(){
  clearTimeout(state.highResTimer);
  state.highResTimer=setTimeout(()=>{
   const v=getView(map),b=scene.bounds;
-  if(v[2]>=699)return; // La imagen regional original ya tiene resolución suficiente.
+  if(v[2]>=699){
+   for(const img of map.querySelectorAll("image[data-ux30-server]")){
+    img.setAttribute("x","0");img.setAttribute("y","0");
+    img.setAttribute("width","700");img.setAttribute("height","340");
+    img.setAttribute("href",overlaySrc(img.dataset.ux30Server,img.dataset.ux30Ids));
+   }
+   return;
+  }
   const geo={
    minLon:b.minLon+(v[0]/700)*(b.maxLon-b.minLon),
    maxLon:b.minLon+((v[0]+v[2])/700)*(b.maxLon-b.minLon),
