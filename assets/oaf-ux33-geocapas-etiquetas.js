@@ -49,10 +49,10 @@ function featureCategory(props){
 }
 function needs(k){
  const on=S.ctx?.on;if(!on)return false;
- if(k==="historical")return ["fluvial","pluvial","erosion","detritos"].some(on);
- if(k==="hydroRio")return on("drain");
- if(k==="hydroQuebrada")return on("quebradas");
- if(k==="district")return on("distrito")||on("provincia")||on("departamento");
+ if(k==="historical")return ["fluvial","pluvial","erosion","detritos"].some(on)||!!window.oafUx35Wants?.historical;
+ if(k==="hydroRio")return on("drain")||!!window.oafUx35Wants?.hydroRio;
+ if(k==="hydroQuebrada")return on("quebradas")||!!window.oafUx35Wants?.hydroQuebrada;
+ if(k==="district")return on("distrito")||on("provincia")||on("departamento")||!!window.oafUx35Wants?.district;
  if(k==="agri")return on("agricola")||on("exposicion");
  return false;
 }
@@ -194,6 +194,7 @@ async function ensure(k){
   catch(e){S.phase[k]="error";S.note[k]="Error de carga: "+String(e).slice(0,120)}
   finally{
    S.started[k]=false;drawVectors();paintStatus();
+   window.dispatchEvent(new Event("oaf:geodata"));
    const d=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-diagbody");
    if(d){d.querySelectorAll('[data-ux33-status="true"]').forEach(x=>x.remove());appendDiagnosis(d)}
   }
@@ -233,6 +234,7 @@ async function ensure(k){
   }
  }finally{
   S.started[k]=false;drawVectors();paintStatus();
+  window.dispatchEvent(new Event("oaf:geodata"));
   const diagnosis=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-diagbody");
   if(diagnosis){diagnosis.querySelectorAll('[data-ux33-status="true"]').forEach(x=>x.remove());appendDiagnosis(diagnosis);}
  }
@@ -552,6 +554,8 @@ function retry(key){
  drawVectors();
 }
 function init(){
+ window.oafUx33Data=()=>({features:S.features,phase:S.phase,notes:S.note});
+ window.oafUx33Load=()=>loadAll();
  const toolbar=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-toolbar");
  if(toolbar&&!el("oaf-ux33-label-toggle")){
   const label=document.createElement("label");label.id="oaf-ux33-label-toggle";
