@@ -100,6 +100,7 @@ function makeTree(){
   state.on[key]=ev.target.checked;applyLegacy();render();
   if(key==="drought"&&on("drought"))loadDrought();
   if(key==="heat"&&on("heat"))loadHeat();
+  if((key==="drain"||key==="quebradas")&&(on("drain")||on("quebradas")))loadHydro();
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
@@ -131,6 +132,39 @@ function applyLegacy(){
  }
  const d=document.querySelector('[data-ux28-emergency="defensa"]');if(d?.checked){d.checked=false;d.dispatchEvent(new Event("change",{bubbles:true}))}
 }
+
+/* UX32: GeoJSON de la red IGN 1:100 000, con ríos y quebradas separados por "tipo".
+   Dibujar vectores evita que el mapa se quede vacío por límites de escala del MapServer. */
+async function loadHydro(){
+ if(state.hydroLoading||state.hydroStatus!=="pendiente"||!state.scene)return;
+ state.hydroLoading=true;state.hydroStatus="consultando trazos oficiales IGN";diagnosis();
+ const b=state.scene.bounds,controller=new AbortController(),timer=setTimeout(()=>controller.abort(),18000);
+ const where="tipo IN ('R','RN','RI','RS','Q','Q1','QB','QQ','QI','QS','AC')";
+ const q=new URLSearchParams({where,outFields:"objectid,tipo,r_q_text,nombre,fuente",returnGeometry:"true",
+   geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+   geometryType:"esriGeometryEnvelope",spatialRel:"esriSpatialRelIntersects",
+   inSR:"4326",outSR:"4326",geometryPrecision:"5",maxAllowableOffset:"0.003",
+   resultRecordCount:"2000",f:"geojson"});
+ try{
+  const r=await fetch(SIGRID_HYDRO+"/6030200/query?"+q,{signal:controller.signal,cache:"no-store"});
+  if(!r.ok)throw Error("HTTP "+r.status);
+  const data=await r.json();
+  if(data.error||!Array.isArray(data.features))throw Error("respuesta GeoJSON incompatible");
+  state.hydroLines=data.features.flatMap(f=>{
+   const g=f.geometry,props=f.properties||{},kind=String(props.tipo||"").toUpperCase();
+   if(!g||!["LineString","MultiLineString"].includes(g.type))return [];
+   const category=kind.startsWith("Q")?"quebradas":kind.startsWith("R")||kind==="AC"?"drain":null;
+   if(!category)return [];
+   const traces=g.type==="LineString"?[g.coordinates]:g.coordinates;
+   return traces.filter(t=>Array.isArray(t)&&t.length>=2).map(coords=>({category,coords,
+    name:props.r_q_text||props.nombre||kind}));
+  });
+  state.hydroStatus=state.hydroLines.length+" trazos IGN cargados"+(data.features.length===2000?" · consulta posiblemente parcial":"");
+ }catch(e){
+  state.hydroStatus="fuente IGN sin respuesta; comprueba la capa en Metadatos";
+ }finally{clearTimeout(timer);state.hydroLoading=false;render()}
+}
+
 function render(){
  const scene=state.scene,pane=$("oaf-ux29-territory");if(!scene||!pane)return;
  const map=scene.svg;
@@ -157,6 +191,18 @@ function render(){
  if(political.length)add(SIGRID,political.join(","),.8,"Límites administrativos");
  if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
  // Ríos y quebradas se dibujan desde GeoJSON, sin ocultarse por la escala mínima del MapServer.
+ for(const record of state.hydroLines){
+  if(!on(record.category))continue;
+  const coords=record.coords;
+  if(coords.length<2)continue;
+  const d=coords.map(([lon,lat],i)=>(i?"L":"M")+scene.x(lon).toFixed(2)+" "+scene.y(lat).toFixed(2)).join(" ");
+  const p=sv("path",{d,fill:"none",stroke:record.category==="quebradas"?"#258ac0":"#125fa8",
+   "stroke-width":record.category==="quebradas"?"1.35":"1.6",
+   "stroke-dasharray":record.category==="quebradas"?"5 3":"none","stroke-linecap":"round",
+   "stroke-linejoin":"round","pointer-events":"none"});
+  p.classList.add("oaf-ux32-hydroline");
+  back.append(p);
+ }
  // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
  // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
  if(on("heat")){
@@ -229,6 +275,8 @@ function diagnosis(){
    "La superficie de frecuencia estival, cuando se descarga del WMS SENAMHI, tiene escala estacional y no equivale a una anomalía diaria.",
    state.heatStatus);
  }
+ if(on("drain")||on("quebradas"))heading(box,"Estado de ríos y quebradas",
+  state.hydroStatus+". Ríos y quebradas provienen de categorías distintas del inventario IGN a escala 1:100 000; las líneas no representan caudal ni desbordamientos.");
  if(on("exposicion"))heading(box,"Importante sobre agricultura",
   "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
@@ -417,6 +465,9 @@ function setView(map,b){
 function adjustMarkerSizes(){
  const map=$("oaf-ux24-region-map");if(!map)return;
  const scale=getView(map)[2]/700;
+ for(const line of map.querySelectorAll("path.oaf-ux32-hydroline")){
+  line.setAttribute("stroke-width",Math.max(.14,(line.getAttribute("stroke-dasharray")==="none"?1.6:1.35)*scale).toFixed(2));
+ }
  for(const elem of map.querySelectorAll("circle.oaf-ux25-point,circle.oaf-ux28-emergency-marker,circle.oaf-ux30-feature")){
   const original=Number(elem.dataset.ux30Radius||elem.getAttribute("r")||4);
   if(!elem.dataset.ux30Radius)elem.dataset.ux30Radius=original;
@@ -492,6 +543,7 @@ function init(){
   if(state.pointsStatus==="pendiente")loadHistory();
   if(on("drought")&&state.droughtStatus==="pendiente")loadDrought();
   if(on("heat")&&state.heatStatus==="pendiente")loadHeat();
+  if((on("drain")||on("quebradas"))&&state.hydroStatus==="pendiente")loadHydro();
  };
  applyLegacy();adaptOriginal();
  const pane=$("oaf-ux29-territory");
