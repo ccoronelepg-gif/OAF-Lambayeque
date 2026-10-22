@@ -206,7 +206,7 @@ async function loadRain(){
    if(!r.ok)throw Error("HTTP "+r.status);
    const j=await r.json();
    if(j.error||!Array.isArray(j.daily?.precipitation_sum)||!Array.isArray(j.daily?.time))throw Error("series incompletas");
-   const rain=j.daily.precipitation_sum.map(Number);
+   const rain=j.daily.precipitation_sum.map(v=>v===null||v===undefined||v===""?NaN:Number(v));
    if(rain.length<3||rain.some(v=>!Number.isFinite(v)||v<0))throw Error("lluvia diaria no válida");
    return {...place,dates:j.daily.time.slice(0,7),rain:rain.slice(0,7),
     precipProbability:j.daily.precipitation_probability_max?.slice(0,7)||[],updated:Date.now()};
