@@ -176,6 +176,7 @@ async function loadHydro(){
  state.hydroLoading=false;render();
 }
 function updateLoadStatus(){
+ if(typeof window.oafUx33Diagnosis==="function"){const previous=document.getElementById("oaf-ux32-map-status");if(previous)previous.hidden=true;return;}
  const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");
  if(!container)return;
  let bar=$("oaf-ux32-map-status");
@@ -278,30 +279,7 @@ function diagnosis(){
    "Capa seleccionada";
   heading(box,def.title,def.meaning,status);
  }
- const types=["fluvial","pluvial","detritos","erosion"].filter(on);
- if(types.length){
-  const c=state.points.filter(p=>types.includes(p.category)&&(!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords)))).length;
-  heading(box,"Inventario histórico de peligros",
-   c+" puntos con geometría cargada para las categorías seleccionadas. Si la consulta de registros no responde, el mapa intenta mostrar las imágenes oficiales filtradas, que no permiten abrir fichas individuales. Son antecedentes de 2017, no alertas actuales.",
-   state.pointsStatus);
- }
- const inArea=p=>!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords));
- if(on("drought")){
-  const n=state.points.filter(p=>p.category==="drought"&&inArea(p)).length;
-  heading(box,"Sequías históricas · INDECI",
-   n+" emergencias de sequía con punto georreferenciado en el ámbito seleccionado. "+
-   "La capa contiene registros históricos 2003–2020, no una intensidad SPI ni zonas actuales de déficit hídrico.",
-   state.droughtStatus);
- }
- if(on("heat")){
-  const n=state.points.filter(p=>p.category==="heat"&&inArea(p)).length;
-  heading(box,"Calor histórico · SENAMHI",
-   n+" estación(es) con registros documentados en el ámbito seleccionado. "+
-   "La superficie de frecuencia estival, cuando se descarga del WMS SENAMHI, tiene escala estacional y no equivale a una anomalía diaria.",
-   state.heatStatus);
- }
- if(on("drain")||on("quebradas"))heading(box,"Estado de ríos y quebradas",
-  state.hydroStatus+". Ríos y quebradas provienen de categorías distintas del inventario IGN a escala 1:100 000; las líneas no representan caudal ni desbordamientos.");
+ // UX33 calcula los recuentos actuales de puntos y trazos vectoriales, sin mostrar estados antiguos.
  if(on("exposicion"))heading(box,"Importante sobre agricultura",
   "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
  if(typeof window.oafUx33Diagnosis==="function")window.oafUx33Diagnosis(box);
