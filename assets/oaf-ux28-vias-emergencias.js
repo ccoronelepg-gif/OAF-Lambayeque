@@ -135,6 +135,7 @@ async function loadGroup(key,id){
   state.loaded[key]=true;
  }
  showStatus();render();
+ window.dispatchEvent(new Event("oaf:emergencydata"));
 }
 function selectionContains(pt){
  return state.selection.every(s=>typeof state.contains!=="function"||state.contains(s.geo,pt));
@@ -246,6 +247,7 @@ function render(){
  showStatus();
 }
 function init(){
+ window.oafUx28Points=()=>({points:state.points,loaded:state.loaded});
  build();
  // Se invoca al final del redibujado del mapa principal; evita reconstruir su proyección.
  window.oafUx28AfterDraw=function(context){
