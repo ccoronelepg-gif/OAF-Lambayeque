@@ -277,7 +277,9 @@ function fallbackURL(service,layers,where){
  const b=bounds();if(!b)return "";
  const q=new URLSearchParams({
   bbox:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
-  bboxSR:"4326",imageSR:"4326",size:"1050,510",
+  bboxSR:"4326",imageSR:"4326",
+  size:String(layers)==="6030200"?"3900,1894":"1050,510",
+  dpi:String(layers)==="6030200"?"72":"110",
   layers:"show:"+layers,transparent:"true",format:"png32",f:"image"
  });
  if(where)q.set("layerDefs",JSON.stringify({[String(layers)]:where}));
