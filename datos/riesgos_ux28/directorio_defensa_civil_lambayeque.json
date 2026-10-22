@@ -1,0 +1,27 @@
+{
+  "fase": "UX28",
+  "fecha_consulta": "2026-10-22",
+  "ambito": "Lambayeque, Perú",
+  "tipo": "Directorio documental de oficinas vinculadas a Defensa Civil",
+  "nota": "Direcciones institucionales publicadas. No se han verificado coordenadas geoespaciales exactas; no se dibujan marcadores.",
+  "oficinas": [
+    {
+      "entidad": "INDECI",
+      "nombre": "Dirección Desconcentrada INDECI Lambayeque",
+      "direccion": "Calle Los Zapotes N.° 173, Urb. Santa Victoria, Chiclayo",
+      "fuente": "https://www.gob.pe/institucion/indeci/sedes?sheet=3",
+      "coordenadas": null,
+      "fecha_operacion_confirmada": null
+    },
+    {
+      "entidad": "Municipalidad Provincial de Chiclayo",
+      "nombre": "Defensa Civil (Biblioteca Municipal)",
+      "direccion": "Av. Grau N.° 152, Chiclayo",
+      "fuente": "https://www.gob.pe/institucion/munichiclayo/sedes",
+      "coordenadas": null,
+      "fecha_operacion_confirmada": null
+    }
+  ],
+  "senasa_incluido": false,
+  "completitud": "Directorio parcial; no contiene todas las municipalidades del departamento"
+}
