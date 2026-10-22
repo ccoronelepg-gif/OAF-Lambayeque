@@ -141,23 +141,30 @@ async function loadHydroPages(k){
  const observed=new Set(),assembled=[];
  S.phase[k]="cargando";S.note[k]="Consulta por sectores: formato EsriJSON/GeoJSON";paintStatus();
  let failed=0,limited=0;
- for(let i=0;i<tiles.length;i++){
-  if(!needs(k))break;
-  try{
-   let page=await requestHydroPage(k,tiles[i],0);
-   for(const f of page){
-    const p=f.properties||{},key=val(p,"objectid")||JSON.stringify(f.geometry?.coordinates?.[0]).slice(0,90);
-    if(observed.has(key))continue;
-    observed.add(key);assembled.push(f);
+ // Dos consultas simultáneas por categoría; el mapa muestra resultados conforme llegan.
+ await Promise.all([0,1].map(async worker=>{
+  for(let i=worker;i<tiles.length;i+=2){
+   if(!needs(k))break;
+   try{
+    const page=await requestHydroPage(k,tiles[i],0);
+    for(const f of page){
+     const p=f.properties||{},id=val(p,"objectid");
+     const identifier=id||JSON.stringify(f.geometry?.coordinates?.[0]).slice(0,120);
+     if(observed.has(identifier))continue;
+     observed.add(identifier);assembled.push(f);
+    }
+    if(page.length>=180)limited++;
+    S.features[k]=assembled.slice();
+    S.count[k]=assembled.length;S.phase[k]=assembled.length?"listo":"cargando";
+    S.partial[k]=true;
+    drawVectors();paintStatus();
+   }catch(e){
+    failed++;
+    S.note[k]="Problema de consulta en "+failed+" de "+tiles.length+" sectores: "+String(e).slice(0,90);
+    paintStatus();
    }
-   if(page.length>=180)limited++;
-   // Dibujar cada cuadrante apenas llega la respuesta, sin esperar toda la región.
-   S.features[k]=assembled.slice();
-   S.count[k]=assembled.length;S.phase[k]=assembled.length?"listo":"cargando";
-   S.partial[k]=true;
-   drawVectors();paintStatus();
-  }catch(e){failed++;S.note[k]="Error en "+failed+" de "+tiles.length+" sectores: "+String(e).slice(0,90)}
- }
+  }
+ }));
  if(!assembled.length){
   try{
    const backup=await requestHydroAlternative(k);
