@@ -56,11 +56,13 @@ const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPL
 const on=k=>!!state.on[k];
 function sv(tag,attrs){const e=document.createElementNS("http://www.w3.org/2000/svg",tag);Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,String(v)));return e}
 function text(el,content){el.textContent=String(content);return el}
-function overlaySrc(service,layers){
+function overlaySrc(service,layers,layerDefs){
  const b=state.scene?.bounds;if(!b)return "";
- return service+"/export?"+new URLSearchParams({bbox:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+ const query=new URLSearchParams({bbox:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
   bboxSR:"4326",imageSR:"4326",size:"1100,535",format:"png32",transparent:"true",dpi:"130",
   layers:"show:"+layers,f:"image"});
+ if(layerDefs)query.set("layerDefs",JSON.stringify(layerDefs));
+ return service+"/export?"+query;
 }
 function makeTree(){
  const pane=$("oaf-ux29-territory"),tree=pane?.querySelector(".oaf-ux29-tree");
@@ -177,10 +179,13 @@ function render(){
  defs.append(clip);map.append(defs);
  const back=sv("g",{class:"oaf-ux30-layer","clip-path":"url(#oaf-ux30-clip-region)"});
  const front=sv("g",{class:"oaf-ux30-layer"});
- const add=(service,layers,opacity,name)=>{
-  const image=sv("image",{href:overlaySrc(service,layers),x:0,y:0,width:700,height:340,opacity,
-   preserveAspectRatio:"none","pointer-events":"none"});image.dataset.title=name;image.dataset.ux30Server=service;image.dataset.ux30Ids=String(layers);
+ const add=(service,layers,opacity,name,layerDefs)=>{
+  const image=sv("image",{href:overlaySrc(service,layers,layerDefs),x:0,y:0,width:700,height:340,opacity,
+   preserveAspectRatio:"none","pointer-events":"none"});
+  image.dataset.title=name;image.dataset.ux30Server=service;image.dataset.ux30Ids=String(layers);
+  if(layerDefs)image.dataset.ux30Defs=JSON.stringify(layerDefs);
   image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
+  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});
   back.append(image);
  };
  if(on("regional")||on("exposicion"))add(HAZARD,5010502,.77,"Susceptibilidad regional");
@@ -190,6 +195,19 @@ function render(){
  const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
  if(political.length)add(SIGRID,political.join(","),.8,"Límites administrativos");
  if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
+ // Si la consulta GeoJSON de puntos INGEMMET falla o no devuelve una categoría,
+ // pedir sus símbolos directamente al MapServer (no depende de CORS para imágenes).
+ const geoTypes={
+  fluvial:"tipo_pel = 'Inundación fluvial'",
+  pluvial:"tipo_pel IN ('Inundación pluvial','Precipitación pluvial')",
+  detritos:"tipo_pel IN ('Flujo de detritos y lodo','Flujos')",
+  erosion:"tipo_pel = 'Erosión fluvial'"
+ };
+ for(const [category,filter] of Object.entries(geoTypes)){
+  if(!on(category)||state.points.some(p=>p.category===category))continue;
+  const selection="nom_dep LIKE '%LAMBAYEQUE%' AND "+filter;
+  add(SIGRID_HYDRO,6010100,.95,"INGEMMET 2017: "+category,{"6010100":selection});
+ }
  // Ríos y quebradas se dibujan desde GeoJSON, sin ocultarse por la escala mínima del MapServer.
  for(const record of state.hydroLines){
   if(!on(record.category))continue;
@@ -258,7 +276,9 @@ function diagnosis(){
  const types=["fluvial","pluvial","detritos","erosion"].filter(on);
  if(types.length){
   const c=state.points.filter(p=>types.includes(p.category)&&(!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords)))).length;
-  heading(box,"Inventario histórico de peligros","Hay "+c+" puntos descargados de las categorías seleccionadas dentro del filtro. Corresponden a registros históricos de 2017 y no necesariamente al total de puntos críticos actuales.",state.pointsStatus||state.pointsStatus);
+  heading(box,"Inventario histórico de peligros",
+   c+" puntos con geometría cargada para las categorías seleccionadas. Si la consulta de registros no responde, el mapa intenta mostrar las imágenes oficiales filtradas, que no permiten abrir fichas individuales. Son antecedentes de 2017, no alertas actuales.",
+   state.pointsStatus);
  }
  const inArea=p=>!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords));
  if(on("drought")){
@@ -420,7 +440,7 @@ function refreshDetailMap(){
    for(const img of map.querySelectorAll("image[data-ux30-server]")){
     img.setAttribute("x","0");img.setAttribute("y","0");
     img.setAttribute("width","700");img.setAttribute("height","340");
-    img.setAttribute("href",overlaySrc(img.dataset.ux30Server,img.dataset.ux30Ids));
+    img.setAttribute("href",overlaySrc(img.dataset.ux30Server,img.dataset.ux30Ids,img.dataset.ux30Defs?JSON.parse(img.dataset.ux30Defs):null));
    }
    for(const img of map.querySelectorAll('image[data-ux31-wms]')){
     img.setAttribute("x","0");img.setAttribute("y","0");
@@ -442,6 +462,7 @@ function refreshDetailMap(){
     bboxSR:"4326",imageSR:"4326",size:"1100,535",
     format:"png32",transparent:"true",dpi:"130",layers:"show:"+ids,f:"image"
    });
+   if(img.dataset.ux30Defs)query.set("layerDefs",img.dataset.ux30Defs);
    img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
    img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
    img.setAttribute("href",service+"/export?"+query);
