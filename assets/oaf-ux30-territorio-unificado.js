@@ -542,6 +542,9 @@ function metadata(){
 function init(){
  makeTree();metadata();
  window.oafUx30RequestDraw=()=>render();
+ window.oafUx30Catalog=()=>layerSpec.map(([id,title,entries])=>({id,title,entries:entries.map(([key,label,checked,meaning])=>({key,label,checked,meaning}))}));
+ window.oafUx30Context=()=>({scene:state.scene,selected:state.selected,contains:state.contains,points:state.points});
+ 
  // Instalar primero el enlace de render: los filtros anteriores pueden redibujar el mapa de inmediato.
  window.oafUx30AfterDraw=function(context){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
