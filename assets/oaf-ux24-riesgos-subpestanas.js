@@ -64,7 +64,7 @@ async function regionalOutline(){
   svg.replaceChildren(svgNode("rect",{x:0,y:0,width:700,height:340,fill:"#eef6f2"}));
   for(let x=70;x<700;x+=70)svg.append(svgNode("line",{x1:x,x2:x,y1:0,y2:340,stroke:"#dfeae3"}));
   for(let y=50;y<340;y+=50)svg.append(svgNode("line",{x1:0,x2:700,y1:y,y2:y,stroke:"#dfeae3"}));
-  for(const ring of rings)svg.append(svgNode("path",{d:ring.map((p,i)=>(i?"L":"M")+xx(p[0]).toFixed(2)+" "+yy(p[1]).toFixed(2)).join(" ")+" Z",fill:"#b9dec8",stroke:"#2c785b","stroke-width":2.5,"data-oaf-ux24-boundary":"true"}));
+  for(const ring of rings)svg.append(svgNode("path",{d:ring.map((p,i)=>(i?"L":"M")+xx(p[0]).toFixed(2)+" "+yy(p[1]).toFixed(2)).join(" ")+" Z",fill:"#b9dec8","fill-opacity":".13",stroke:"#2c785b","stroke-width":2.5,"data-oaf-ux24-boundary":"true"}));
   // Raster exportado por CENEPRED: el BBOX se calcula según esta misma proyección gráfica.
   const bounds={minLon:(minX+maxX)/2-350/(cos*factor),maxLon:(minX+maxX)/2+350/(cos*factor),minLat:(minY+maxY)/2-170/factor,maxLat:(minY+maxY)/2+170/factor};
   officialStart({svg,x:xx,y:yy,bounds});
@@ -163,6 +163,7 @@ function drawOfficial(){
    if(cx<0||cx>700||cy<0||cy>340)continue;
    const dot=svgNode("circle",{cx:cx.toFixed(2),cy:cy.toFixed(2),r:5,fill:color,stroke:"#fff","stroke-width":1.25,tabindex:"0",role:"button","aria-label":"Consultar ubicación oficial de "+(key==="minam"?"inundación":"peligro geológico")});
    dot.classList.add("oaf-ux25-maplayer","oaf-ux25-point");
+   dot.setAttribute("data-oaf-lon",String(pt[0]));dot.setAttribute("data-oaf-lat",String(pt[1]));
    const open=()=>officialTooltip(record,key);
    dot.addEventListener("click",open);
    dot.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open()}});
@@ -170,6 +171,7 @@ function drawOfficial(){
   }
  }
  officialStatus();
+ ux26Display();
 }
 function geometryPoint(feature){
  if(feature.geometry?.type==="Point")return feature;
@@ -201,10 +203,210 @@ async function officialPoints(which,layer,where){
  }catch(err){officialState.loaded[which]="error"}finally{clearTimeout(timer);drawOfficial()}
 }
 function officialStart(scene){
- officialState.scene=scene;officialStatus();drawOfficial();
+ officialState.scene=scene;ux26Init(scene);officialStatus();drawOfficial();
  // Las capas de puntos se obtienen directamente de proveedores oficiales; el visor solo las reproyecta para la pantalla.
  officialPoints("minam",GIS.minam+"/3","1=1");
  officialPoints("geologico",GIS.geologico+"/5020500","1=1");
+}
+
+
+/* UX26 · Filtros espaciales SERFOR/INEI + ANA, y superficie agrícola MINAM.
+ * Solo geometrías entregadas por los organismos; sin polígonos inventados.
+ * Los indicadores son conteos de puntos cargados, NO área inundable o hectáreas afectadas. */
+const ux26={
+ prov:[],dist:[],basin:[],province:"",district:"",watershed:"",
+ loaded:{prov:false,dist:false,basin:false},agriculture:false,agriStatus:"desactivada"
+};
+const UX26_SERVICES={
+ administracion:"https://geo.serfor.gob.pe/geoservicios/rest/services/Visor/Limites_Politicos_Administrativos/MapServer",
+ cuencas:"https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/FeatureServer",
+ agricultura:"https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer"
+};
+function ux26Panel(){
+ const root=$("oaf-territorio-riesgos");if(!root||$("oaf-ux26-filtros"))return;
+ const card=el("div","oaf-ux26-filter-box");card.id="oaf-ux26-filtros";
+ card.innerHTML='<div class="oaf-ux26-filter-head"><strong>Filtros territoriales y exposición agrícola</strong><p>Delimita provincias, distritos o unidades hidrográficas y visualiza la superficie agrícola oficial de referencia.</p></div>'+
+ '<div class="oaf-ux26-fields"><label for="oaf-ux26-prov">Provincia<select id="oaf-ux26-prov" disabled><option value="">Cargando provincias…</option></select></label>'+
+ '<label for="oaf-ux26-dist">Distrito<select id="oaf-ux26-dist" disabled><option value="">Cargando distritos…</option></select></label>'+
+ '<label for="oaf-ux26-basin">Unidad hidrográfica ANA<select id="oaf-ux26-basin" disabled><option value="">Cargando cuencas…</option></select></label></div>'+
+ '<div class="oaf-ux26-switches"><label><input type="checkbox" id="oaf-ux26-agricultura"> Superficie agrícola nacional MINAM (referencia 2018)</label>'+
+ '<button type="button" id="oaf-ux26-reset">Restablecer filtros</button></div>'+
+ '<p class="oaf-ux26-loadstatus" id="oaf-ux26-loadstatus" role="status">Consultando catálogos geográficos oficiales…</p>'+
+ '<div class="oaf-ux26-kpis" id="oaf-ux26-kpis" role="status"><span>Inventarios georreferenciados: esperando respuesta de fuentes oficiales.</span></div>'+
+ '<p class="oaf-ux26-note">Los polígonos sirven para enfocar el visor y filtrar puntos incluidos en las geometrías disponibles. El mapa no cuantifica superficie agrícola afectada ni pérdidas. La intersección de áreas requiere procesamiento SIG y validación cartográfica independiente.</p>'+
+ '<p class="oaf-ux26-provenance">Fuentes: <a href="https://geo.serfor.gob.pe/geoservicios/rest/services/Visor/Limites_Politicos_Administrativos/MapServer" target="_blank" rel="noopener noreferrer">SERFOR/INEI</a> · <a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/FeatureServer/7" target="_blank" rel="noopener noreferrer">ANA/IDEP</a> · <a href="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer/1" target="_blank" rel="noopener noreferrer">MINAM</a>.</p>';
+ const grid=root.querySelector(".oaf-ux24-grid");if(grid)grid.before(card);else root.append(card);
+ $("oaf-ux26-prov").addEventListener("change",e=>{
+  ux26.province=e.target.value;ux26.district="";ux26PopulateDistricts();drawOfficial();
+ });
+ $("oaf-ux26-dist").addEventListener("change",e=>{ux26.district=e.target.value;drawOfficial()});
+ $("oaf-ux26-basin").addEventListener("change",e=>{ux26.watershed=e.target.value;drawOfficial()});
+ $("oaf-ux26-agricultura").addEventListener("change",e=>{ux26.agriculture=e.target.checked;drawOfficial()});
+ $("oaf-ux26-reset").addEventListener("click",()=>{
+  ux26.province="";ux26.district="";ux26.watershed="";ux26.agriculture=false;
+  for(const id of ["oaf-ux26-prov","oaf-ux26-basin"])if($(id))$(id).value="";
+  $("oaf-ux26-agricultura").checked=false;ux26PopulateDistricts();drawOfficial();
+ });
+}
+function ux26Status(){
+ const x=$("oaf-ux26-loadstatus");if(!x)return;
+ const state=[["prov","Provincias"],["dist","Distritos"],["basin","Unidades ANA"]].map(([k,l])=>{
+  const st=ux26.loaded[k];return l+": "+(st===true?ux26[k].length+" geometrías":st==="error"?"no disponibles":"cargando");
+ });
+ x.textContent=state.join(" · ")+". Si un catálogo no responde, verifica sus enlaces oficiales.";
+}
+function ux26Options(id,items,placeholder,valueFn,labelFn){
+ const select=$(id);if(!select)return;select.replaceChildren();
+ const base=document.createElement("option");base.value="";base.textContent=placeholder;select.append(base);
+ items.forEach((item,i)=>{const o=document.createElement("option");o.value=valueFn(item,i);o.textContent=labelFn(item);select.append(o)});
+ select.disabled=!items.length;
+}
+function ux26PopulateDistricts(){
+ const provinces=ux26.province;
+ const list=ux26.dist.filter(f=>!provinces||String(f.properties?.IDPROV||"")===provinces)
+ .slice().sort((a,b)=>String(a.properties?.NOMBDIST||"").localeCompare(String(b.properties?.NOMBDIST||""),"es"));
+ ux26Options("oaf-ux26-dist",list,"Todos los distritos",f=>String(f.properties?.IDDIST||""),f=>f.properties?.NOMBDIST||"Sin nombre");
+ $("oaf-ux26-dist").value=ux26.district;
+}
+async function ux26Geoquery(url,params){
+ const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),19000);
+ try{
+  const u=url+"/query?"+new URLSearchParams({
+   f:"geojson",outSR:"4326",returnGeometry:"true",geometryPrecision:"5",
+   maxAllowableOffset:"0.001",...params
+  });
+  const r=await fetch(u,{cache:"no-store",signal:ctl.signal});
+  if(!r.ok)throw Error("HTTP "+r.status);
+  const j=await r.json();if(j.error||!Array.isArray(j.features))throw Error("Respuesta geográfica incompatible");
+  return j.features.filter(f=>f.geometry&&["Polygon","MultiPolygon"].includes(f.geometry.type));
+ }finally{clearTimeout(timer)}
+}
+function ux26Load(which,url,params){
+ ux26Geoquery(url,params).then(items=>{
+  ux26[which]=items;ux26.loaded[which]=true;
+  if(which==="prov"){
+   items.sort((a,b)=>String(a.properties?.NOMBPROV||"").localeCompare(String(b.properties?.NOMBPROV||""),"es"));
+   ux26Options("oaf-ux26-prov",items,"Todas las provincias",f=>String(f.properties?.IDPROV||""),f=>f.properties?.NOMBPROV||"Sin nombre");
+  }else if(which==="dist")ux26PopulateDistricts();
+  else if(which==="basin"){
+   items.sort((a,b)=>String(a.properties?.NOMBRE||"").localeCompare(String(b.properties?.NOMBRE||""),"es"));
+   ux26Options("oaf-ux26-basin",items,"Todas las unidades",(_,i)=>String(i),f=>(f.properties?.NOMBRE||"Unidad sin nombre")+" · "+(f.properties?.CODIGO||"ANA"));
+  }
+  ux26Status();if(officialState.scene)drawOfficial();
+ }).catch(()=>{ux26.loaded[which]="error";ux26Status()});
+}
+function ux26Init(sc){
+ ux26Panel();ux26Status();
+ ux26Load("prov",UX26_SERVICES.administracion+"/1",{where:"IDDPTO='14'",outFields:"IDPROV,NOMBPROV,IDDPTO"});
+ ux26Load("dist",UX26_SERVICES.administracion+"/2",{where:"IDDPTO='14'",outFields:"IDPROV,NOMBPROV,IDDIST,NOMBDIST,IDDPTO"});
+ ux26Load("basin",UX26_SERVICES.cuencas+"/7",{
+  where:"1=1",
+  outFields:"CODIGO,NOMBRE,AREA_KM2",
+  geometry:[sc.bounds.minLon,sc.bounds.minLat,sc.bounds.maxLon,sc.bounds.maxLat].join(","),
+  geometryType:"esriGeometryEnvelope",inSR:"4326",spatialRel:"esriSpatialRelIntersects",
+  resultRecordCount:"500"
+ });
+}
+function ux26Selected(){
+ const a=[];
+ if(ux26.province){
+  const p=ux26.prov.find(f=>String(f.properties?.IDPROV)===ux26.province);
+  if(p)a.push({geo:p.geometry,name:p.properties?.NOMBPROV||"Provincia",color:"#2c8b70"});
+ }
+ if(ux26.district){
+  const d=ux26.dist.find(f=>String(f.properties?.IDDIST)===ux26.district);
+  if(d)a.push({geo:d.geometry,name:d.properties?.NOMBDIST||"Distrito",color:"#ba7837"});
+ }
+ if(ux26.watershed!==""){
+  const b=ux26.basin[Number(ux26.watershed)];
+  if(b)a.push({geo:b.geometry,name:b.properties?.NOMBRE||"Unidad hidrográfica",color:"#427bcb"});
+ }
+ return a;
+}
+function ux26Polygons(geometry){
+ return geometry.type==="Polygon"?[geometry.coordinates]:geometry.type==="MultiPolygon"?geometry.coordinates:[];
+}
+function ux26PointInRing([x,y],ring){
+ let inside=false;
+ for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+  const a=ring[i],b=ring[j],cross=((a[1]>y)!==(b[1]>y))&&(x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]);
+  if(cross)inside=!inside;
+ }
+ return inside;
+}
+function ux26Contains(geometry,point){
+ return ux26Polygons(geometry).some(rings=>rings.length>0&&ux26PointInRing(point,rings[0])&&
+  !rings.slice(1).some(hole=>ux26PointInRing(point,hole)));
+}
+function ux26Path(geo,sc){
+ return ux26Polygons(geo).flatMap(rings=>rings.map(ring=>
+  ring.map((p,i)=>(i?"L":"M")+sc.x(p[0]).toFixed(1)+" "+sc.y(p[1]).toFixed(1)).join(" ")+" Z"
+ )).join(" ");
+}
+function ux26Display(){
+ const sc=officialState.scene;if(!sc)return;
+ const svg=sc.svg;
+ // Un render completo desde drawOfficial elimina previamente las imágenes anteriores.
+ svg.querySelectorAll(".oaf-ux26-overlay").forEach(n=>n.remove());
+ const selected=ux26Selected(),def=svgNode("defs",{});def.classList.add("oaf-ux26-overlay");
+ const clips=selected.map((entry,i)=>{
+  const id="oaf-ux26-clip-"+i;
+  const clip=svgNode("clipPath",{id,clipPathUnits:"userSpaceOnUse"});
+  clip.append(svgNode("path",{d:ux26Path(entry.geo,sc),"clip-rule":"evenodd","fill-rule":"evenodd"}));
+  def.append(clip);return id;
+ });
+ svg.append(def);
+ const original=svg.querySelector("image.oaf-ux25-maplayer");
+ if(ux26.agriculture){
+  ux26.agriStatus="solicitando la capa MINAM";
+  const agri=svgNode("image",{
+   x:0,y:0,width:700,height:340,href:mapRasterUrl("1",sc,UX26_SERVICES.agricultura),
+   opacity:".42","preserveAspectRatio":"none"
+  });
+  agri.classList.add("oaf-ux26-overlay","oaf-ux26-agriculture");
+  agri.addEventListener("load",()=>{if(agri.isConnected){ux26.agriStatus="capa de superficie agrícola mostrada";ux26Metrics()}});
+  agri.addEventListener("error",()=>{if(agri.isConnected){ux26.agriStatus="geoservicio agrícola no disponible";ux26Metrics()}});
+  const border=svg.querySelector('[data-oaf-ux24-boundary="true"]');
+  svg.insertBefore(agri,original||border||null);
+ }
+ function wrap(image){
+  if(!image)return;
+  for(const id of clips){
+   const g=svgNode("g",{"clip-path":"url(#"+id+")"});
+   g.classList.add("oaf-ux26-overlay");
+   image.parentNode.insertBefore(g,image);g.append(image);
+  }
+ }
+ const agri=svg.querySelector("image.oaf-ux26-agriculture");
+ if(agri)wrap(agri);
+ if(original)wrap(original);
+ for(const entry of selected){
+  const path=svgNode("path",{d:ux26Path(entry.geo,sc),fill:"none",stroke:entry.color,
+   "stroke-width":2.5,"stroke-linejoin":"round","stroke-dasharray":"6 3","pointer-events":"none"});
+  path.classList.add("oaf-ux26-overlay");svg.append(path);
+ }
+ // Ocultar exclusivamente los puntos que quedan fuera de TODAS las geometrías seleccionadas.
+ for(const item of svg.querySelectorAll("circle.oaf-ux25-point")){
+  const xy=[Number(item.getAttribute("data-oaf-lon")),Number(item.getAttribute("data-oaf-lat"))];
+  item.style.display=xy.every(Number.isFinite)&&selected.every(s=>ux26Contains(s.geo,xy))?"":"none";
+ }
+ ux26Metrics();
+}
+function ux26Metrics(){
+ const node=$("oaf-ux26-kpis");if(!node)return;
+ const sel=ux26Selected(),focus=sel.map(s=>s.name).join(" ∩ ")||"todo Lambayeque";
+ const counts=[["minam","inundación"],["geologico","peligros geológicos"]].map(([k,label])=>{
+  if(officialState.loaded[k]!==true)return label+": "+(officialState.loaded[k]==="error"?"fuente no disponible":"pendiente");
+  const total=officialState.points[k].filter(p=>sel.every(s=>ux26Contains(s.geo,p.geometry.coordinates))).length;
+  return label+": "+total+" puntos cargados";
+ });
+ node.replaceChildren();
+ const title=el("strong");title.textContent="Selección territorial: "+focus;
+ const count=el("p");count.textContent=counts.join(" · ")+". Son registros visibles procedentes de las consultas, no el inventario exhaustivo.";
+ const crop=el("p");crop.textContent=ux26.agriculture?
+  "Superficie agrícola nacional MINAM (base 2018): "+ux26.agriStatus+". No se estiman hectáreas expuestas.":
+  "La capa agrícola está desactivada; actívala para visualizar la referencia oficial.";
+ node.append(title,count,crop);
 }
 
 function init(){
