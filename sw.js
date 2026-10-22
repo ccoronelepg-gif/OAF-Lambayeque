@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-22-v12";
-const STATIC="oaf-pwa-static-2026-10-22-v12";
+const RELEASE="oaf-pwa-shell-2026-10-22-v13";
+const STATIC="oaf-pwa-static-2026-10-22-v13";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -18,7 +18,9 @@ const CORE=[
  "./assets/oaf-ux27-exposicion-agricola.css",
  "./assets/oaf-ux27-exposicion-agricola.js",
  "./assets/oaf-ux28-vias-emergencias.css",
- "./assets/oaf-ux28-vias-emergencias.js"
+ "./assets/oaf-ux28-vias-emergencias.js",
+ "./assets/oaf-ux29-visores-diagnostico.css",
+ "./assets/oaf-ux29-visores-diagnostico.js"
 ];
 const isInScope=url=>url.origin===SCOPE.origin&&url.pathname.startsWith(SCOPE.pathname);
 const isScientificData=url=>url.pathname.includes("/datos/")||
