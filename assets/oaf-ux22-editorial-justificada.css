@@ -65,3 +65,48 @@ main [data-page] :is(.oaf-agro-summary,.oaf-ux14-heading,.oaf-ux11-head){
 @media(max-width:360px){
  #inicio #oaf-home-summary-static .oaf-ux22-sintesis{font-size:12px!important;line-height:1.49!important;}
 }
+
+
+/* UX23 · Los encabezados y descripciones usan todo el ancho útil del cuadro.
+   El mismo CSS se aplica en la web y en la app PWA. No modifica gráficos,
+   indicadores, controles, leyendas ni texto científico. */
+main [data-page] :is(
+ .oaf-agro-block-head,
+ .oaf-ux14-heading,
+ .oaf-ux11-head
+){
+ width:100%!important;max-width:none!important;min-width:0;
+ box-sizing:border-box;
+}
+main [data-page] :is(
+ .oaf-agro-block-head>p,
+ .oaf-ux14-heading>p,
+ .oaf-ux11-head>p,
+ .oaf-agro-summary>p:not(.oaf-ux21-summary-link),
+ .oaf-quick-card>p,
+ .oaf-color-dash>p,
+ .oaf-plain-weather>p
+){
+ display:block;
+ width:100%!important;max-width:none!important;min-width:0;
+ margin-left:0!important;margin-right:0!important;
+ text-align:justify!important;text-align-last:left;
+ text-justify:inter-word!important;hyphens:auto;
+ overflow-wrap:break-word;white-space:normal;line-height:1.7;
+}
+@media(max-width:700px){
+ main [data-page] :is(
+  .oaf-agro-block-head>p,
+  .oaf-ux14-heading>p,
+  .oaf-ux11-head>p,
+  .oaf-agro-summary>p:not(.oaf-ux21-summary-link),
+  .oaf-quick-card>p,
+  .oaf-color-dash>p,
+  .oaf-plain-weather>p
+ ){
+  width:100%!important;max-width:none!important;
+  text-align:justify!important;text-align-last:left;
+  text-justify:inter-word!important;hyphens:auto;
+  line-height:1.64;
+ }
+}
