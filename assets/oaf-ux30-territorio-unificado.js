@@ -204,13 +204,30 @@ function diagnosis(){
  const chosen=[...spec].filter(([id])=>on(id));
  if(!chosen.length)heading(box,"Sin capas activas","Marca una o varias casillas para ver la explicación de cada fuente.");
  for(const [id,def] of chosen){
-  const status=["drought","heat"].includes(id)?"Sin geometría regional oficial integrada":"Capa seleccionada";
+  const status=id==="drought"?"Emergencias 2003–2020 · "+state.droughtStatus:
+   id==="heat"?"Punto SENAMHI 2024 · "+state.heatStatus+" · cartografía estacional":
+   "Capa seleccionada";
   heading(box,def.title,def.meaning,status);
  }
  const types=["fluvial","pluvial","detritos","erosion"].filter(on);
  if(types.length){
   const c=state.points.filter(p=>types.includes(p.category)&&(!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords)))).length;
   heading(box,"Inventario histórico de peligros","Hay "+c+" puntos descargados de las categorías seleccionadas dentro del filtro. Corresponden a registros históricos de 2017 y no necesariamente al total de puntos críticos actuales.",state.pointsStatus||state.pointsStatus);
+ }
+ const inArea=p=>!state.selected?.length||!state.contains||state.selected.every(k=>state.contains(k.geo,p.coords));
+ if(on("drought")){
+  const n=state.points.filter(p=>p.category==="drought"&&inArea(p)).length;
+  heading(box,"Sequías históricas · INDECI",
+   n+" emergencias de sequía con punto georreferenciado en el ámbito seleccionado. "+
+   "La capa contiene registros históricos 2003–2020, no una intensidad SPI ni zonas actuales de déficit hídrico.",
+   state.droughtStatus);
+ }
+ if(on("heat")){
+  const n=state.points.filter(p=>p.category==="heat"&&inArea(p)).length;
+  heading(box,"Calor histórico · SENAMHI",
+   n+" estación(es) con registros documentados en el ámbito seleccionado. "+
+   "La superficie de frecuencia estival, cuando se descarga del WMS SENAMHI, tiene escala estacional y no equivale a una anomalía diaria.",
+   state.heatStatus);
  }
  if(on("exposicion")||on("agroflood"))heading(box,"Importante sobre agricultura",
   "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
@@ -219,8 +236,10 @@ function diagnosis(){
   failed+" capa(s) no se pudieron cargar desde los geoservicios. Consulta la fuente oficial en Metadatos y trazabilidad.");
  if(state.activePoint){
   const p=state.activePoint;heading(box,"Punto consultado: "+p.label,
-   "Tipo: "+(p.type||"no consignado")+". Fuente: INGEMMET/CENEPRED, evaluación geológica de El Niño Costero 2017. "+
-   "Referencia: "+(p.year||"2017")+". Este punto no determina la extensión del peligro.");
+   "Tipo: "+(p.type||"no consignado")+". Fecha o periodo: "+(p.year||"sin fecha")+
+   ". Fuente: "+(p.source||"organismo oficial")+". "+
+   (p.detail||"Este punto indica una ubicación documentada, no la extensión completa del fenómeno."),
+   p.sourceUrl||"Consulta Metadatos y trazabilidad");
  }
  heading(box,"Lectura del mapa",
   "Un área susceptible puede necesitar evaluación preventiva. Las capas de puntos, polígonos y redes viales se levantaron en distintas fechas. La coincidencia espacial por sí sola no demuestra que un evento esté ocurriendo o vaya a ocurrir.");
