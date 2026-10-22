@@ -89,3 +89,22 @@
  #oaf-ux29-scenario .oaf-ux35-diagnosis-section{padding:9px}
  .oaf-ux35-metadatos{padding:13px 11px}
 }
+
+
+#oaf-ux29-scenario .oaf-ux35-outlook{
+ border:1px solid #c3dcd0;background:#f4faf6;color:#245d43;
+ border-radius:10px;padding:12px 14px;margin:0;font-size:12px;line-height:1.55
+}
+#oaf-ux29-scenario .oaf-ux35-outlook[hidden]{display:none!important}
+#oaf-ux29-scenario .oaf-ux35-outlook>strong{display:block;color:#1d5740;margin-bottom:8px}
+#oaf-ux29-scenario .oaf-ux35-outlook>div{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px
+}
+#oaf-ux29-scenario .oaf-ux35-outlook>div span{
+ background:#fff;border:1px solid #d3e6d9;padding:9px 10px;border-radius:8px;
+ color:#406454;font-size:11.5px;line-height:1.55;text-align:justify
+}
+#oaf-ux29-scenario .oaf-ux35-outlook small{display:block;color:#658070;margin-top:8px;line-height:1.55}
+@media(max-width:650px){
+ #oaf-ux29-scenario .oaf-ux35-outlook>div{grid-template-columns:1fr}
+}
