@@ -81,7 +81,7 @@ function makeTree(){
    const span=text(node("span"),title),tiny=node("small");
    if(key==="drought")tiny.textContent="INDECI · emergencias 2003–2020";
    if(key==="heat")tiny.textContent="SENAMHI · registro 2024 + frecuencia estacional";
-   if(key==="exposicion"||key==="agroflood")tiny.textContent="Cruce visual";
+   if(key==="exposicion")tiny.textContent="Cruce visual, sin cálculo de hectáreas";
    if(key==="fluvial"||key==="pluvial"||key==="detritos"||key==="erosion")tiny.textContent="Puntos históricos 2017";
    item.append(check,span);if(tiny.textContent)item.append(tiny);wrap.append(item);
   }
@@ -139,34 +139,42 @@ function applyLegacy(){
    Dibujar vectores evita que el mapa se quede vacío por límites de escala del MapServer. */
 async function loadHydro(){
  if(state.hydroLoading||state.hydroStatus!=="pendiente"||!state.scene)return;
- state.hydroLoading=true;state.hydroStatus="consultando trazos oficiales IGN";diagnosis();
- const b=state.scene.bounds,controller=new AbortController(),timer=setTimeout(()=>controller.abort(),18000);
- const where="tipo IN ('R','RN','RI','RS','Q','Q1','QB','QQ','QI','QS','AC')";
- const q=new URLSearchParams({where,outFields:"objectid,tipo,r_q_text,nombre,fuente",returnGeometry:"true",
-   geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
-   geometryType:"esriGeometryEnvelope",spatialRel:"esriSpatialRelIntersects",
-   inSR:"4326",outSR:"4326",geometryPrecision:"5",maxAllowableOffset:"0.003",
-   resultRecordCount:"2000",f:"geojson"});
- try{
-  const r=await fetch(SIGRID_HYDRO+"/6030200/query?"+q,{signal:controller.signal,cache:"no-store"});
-  if(!r.ok)throw Error("HTTP "+r.status);
-  const data=await r.json();
-  if(data.error||!Array.isArray(data.features))throw Error("respuesta GeoJSON incompatible");
-  state.hydroLines=data.features.flatMap(f=>{
-   const g=f.geometry,props=f.properties||{},kind=String(props.tipo||"").toUpperCase();
-   if(!g||!["LineString","MultiLineString"].includes(g.type))return [];
-   const category=kind.startsWith("Q")?"quebradas":kind.startsWith("R")||kind==="AC"?"drain":null;
-   if(!category)return [];
-   const traces=g.type==="LineString"?[g.coordinates]:g.coordinates;
-   return traces.filter(t=>Array.isArray(t)&&t.length>=2).map(coords=>({category,coords,
-    name:props.r_q_text||props.nombre||kind}));
-  });
-  state.hydroStatus=state.hydroLines.length+" trazos IGN cargados"+(data.features.length===2000?" · consulta posiblemente parcial":"");
- }catch(e){
-  state.hydroStatus="fuente IGN sin respuesta; comprueba la capa en Metadatos";
- }finally{clearTimeout(timer);state.hydroLoading=false;render()}
+ state.hydroLoading=true;state.hydroStatus="consultando ríos y quebradas del IGN";diagnosis();
+ const b=state.scene.bounds;
+ const groups=[
+  {type:"drain",where:"tipo IN ('R','RN','RI','RS','AC')"},
+  {type:"quebradas",where:"tipo IN ('Q','Q1','QB','QQ','QI','QS')"}
+ ];
+ // Consultas separadas: una clase no puede ocupar el límite de 2000 registros de la otra.
+ const outcomes=await Promise.all(groups.map(async group=>{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),16000);
+  try{
+   const params=new URLSearchParams({where:group.where,outFields:"objectid,tipo,r_q_text,nombre,fuente",
+    returnGeometry:"true",geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+    geometryType:"esriGeometryEnvelope",spatialRel:"esriSpatialRelIntersects",
+    inSR:"4326",outSR:"4326",geometryPrecision:"5",maxAllowableOffset:"0.003",
+    resultRecordCount:"2000",f:"geojson"});
+   const response=await fetch(SIGRID_HYDRO+"/6030200/query?"+params,{signal:controller.signal,cache:"no-store"});
+   if(!response.ok)throw Error("HTTP "+response.status);
+   const data=await response.json();
+   if(data.error||!Array.isArray(data.features))throw Error("respuesta GeoJSON inválida");
+   const lines=data.features.flatMap(feature=>{
+    const geom=feature.geometry,props=feature.properties||{};
+    if(!geom||!["LineString","MultiLineString"].includes(geom.type))return [];
+    const traces=geom.type==="LineString"?[geom.coordinates]:geom.coordinates;
+    return traces.filter(t=>Array.isArray(t)&&t.length>=2).map(coords=>({
+     category:group.type,coords,name:props.r_q_text||props.nombre||props.tipo||"Sin nombre"
+    }));
+   });
+   return {type:group.type,lines,partial:data.features.length===2000,error:null};
+  }catch(e){return {type:group.type,lines:[],partial:false,error:String(e)}}
+  finally{clearTimeout(timer)}
+ }));
+ state.hydroLines=outcomes.flatMap(r=>r.lines);
+ state.hydroStatus=outcomes.map(r=>(r.type==="drain"?"Ríos":"Quebradas")+": "+
+  (r.error?"servicio no disponible":r.lines.length+" trazos"+(r.partial?" (consulta parcial)":""))).join(" · ");
+ state.hydroLoading=false;render();
 }
-
 function render(){
  const scene=state.scene,pane=$("oaf-ux29-territory");if(!scene||!pane)return;
  const map=scene.svg;
