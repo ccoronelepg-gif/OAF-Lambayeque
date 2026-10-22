@@ -68,6 +68,9 @@ function activate(){
  if(map)map.innerHTML='<div class="oaf-ux35-mapintro">Selecciona los grupos de capas para comparar antecedentes, pronósticos y exposición agrícola. Haz clic en un punto para ver la información disponible.</div>'+
  '<div class="oaf-ux29-scenemap"><svg id="oaf-ux29-forecast-map" viewBox="0 0 700 380" role="img" aria-label="Visor geográfico de escenarios del Niño, pronósticos de lluvia y territorio de Lambayeque"></svg>'+
  '<p class="oaf-ux29-mapcaption">Capas históricas y de susceptibilidad superpuestas; los círculos de lluvia son consultas puntuales y no predicciones de polígonos afectados.</p></div>'+
+ '<div class="oaf-ux35-outlook" id="oaf-ux35-outlook"><strong>Perspectiva regional ENFEN · Comunicado 18-2026</strong>'+
+ '<div><span>Nov.–dic. 2026: lluvias sobre lo normal en costa norte</span><span>Verano 2027: lluvias sobre lo normal en costa norte</span><span>Río La Leche: caudales superiores a lo normal principalmente desde noviembre</span></div>'+
+ '<small>Escenarios regionales cualitativos: no son mm mensuales por distrito ni huellas futuras de inundación.</small></div>'+
  '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Consultando geocapas y pronósticos…</div>';
  const extraSlot=pane.querySelector(".oaf-ux29-diagextras");
  if(extraSlot)extraSlot.innerHTML='<div class="oaf-ux35-method"><strong>Interpretación científica</strong>'+
@@ -245,7 +248,23 @@ function render(){
   clip.append(SVG("path",{d:ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ")+" Z"}));
  }
  defs.append(clip);svg.append(defs);
+ const ctx=window.oafUx30Context?.();
+ const clipRoots=(ctx?.selected||[]).filter(e=>e.geo);
+ const polygonD=g=>{
+  const geom=g?.type==="Feature"?g.geometry:g;
+  const polygons=geom?.type==="Polygon"?[geom.coordinates]:geom?.type==="MultiPolygon"?geom.coordinates:[];
+  return polygons.flatMap(poly=>poly.map(r=>r.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+
+   " "+scene.y(p[1]).toFixed(2)).join(" ")+" Z")).join(" ");
+ };
  const base=SVG("g",{"clip-path":"url(#oaf-ux35-region-clip)"});svg.append(base);
+ let region=base;
+ clipRoots.forEach((v,i)=>{
+  const path=polygonD(v.geo);if(!path)return;
+  const c=SVG("clipPath",{id:"oaf-ux35-filter-"+i,clipPathUnits:"userSpaceOnUse"});
+  c.append(SVG("path",{d,"fill-rule":"evenodd","clip-rule":"evenodd"}));
+  defs.append(c);
+  const group=SVG("g",{"clip-path":"url(#oaf-ux35-filter-"+i+")"});region.append(group);region=group;
+ });
  const bound=scene.bounds;
  const raster=(service,ids,alpha,label,params={})=>{
   const q=new URLSearchParams({bbox:[bound.minLon,bound.minLat,bound.maxLon,bound.maxLat].join(","),
@@ -253,7 +272,7 @@ function render(){
    layers:"show:"+ids,f:"image",...params});
   const img=SVG("image",{href:service+"/export?"+q,x:0,y:0,width:700,height:340,opacity:alpha,
    preserveAspectRatio:"none","pointer-events":"none"});
-  const title=SVG("title");title.textContent=label;img.append(title);base.append(img);
+  const title=SVG("title");title.textContent=label;img.append(title);region.append(img);
  };
  if(enabled("regional")||state.on.futureFlood||enabled("exposicion"))raster(CEN,"5010502",.7,"Susceptibilidad regional a inundaciones");
  if(enabled("movmasa")||state.on.futureMass)raster(CEN,"5090022",.44,"Movimientos en masa");
@@ -269,9 +288,9 @@ function render(){
   const q=new URLSearchParams({SERVICE:"WMS",VERSION:"1.1.1",REQUEST:"GetMap",LAYERS:HEAT_WMS,STYLES:"",
    SRS:"EPSG:4326",BBOX:[bound.minLon,bound.minLat,bound.maxLon,bound.maxLat].join(","),
    WIDTH:"1050",HEIGHT:"510",FORMAT:"image/png",TRANSPARENT:"TRUE"});
-  base.append(SVG("image",{href:WMS+"?"+q,x:0,y:0,width:700,height:340,opacity:.4,preserveAspectRatio:"none","pointer-events":"none"}));
+  region.append(SVG("image",{href:WMS+"?"+q,x:0,y:0,width:700,height:340,opacity:.4,preserveAspectRatio:"none","pointer-events":"none"}));
  }
- const ctx=window.oafUx30Context?.(),shared=window.oafUx33Data?.();
+ const shared=window.oafUx33Data?.();
  const textCandidates=[];
  const points=[];
  const inFilter=coords=>!ctx?.selected?.length||!ctx.contains||ctx.selected.every(t=>ctx.contains(t.geo,coords));
@@ -281,7 +300,7 @@ function render(){
   const path=SVG("path",{d,fill:"none",stroke,"stroke-width":width,
    "stroke-dasharray":dash||"none","stroke-linecap":"round","pointer-events":"stroke"});
   if(title){const tt=SVG("title");tt.textContent=title;path.append(tt)}
-  base.append(path);
+  region.append(path);
  };
  const polyrings=g=>g?.type==="Polygon"?[g.coordinates]:g?.type==="MultiPolygon"?g.coordinates:[];
  const serviceDetails=(label,detail)=>{
@@ -364,6 +383,7 @@ function render(){
   for(const p of api.daily?.items||[]){
    const total=p.rain.slice(0,state.days).reduce((a,b)=>a+Number(b),0);
    const flag=total>=state.threshold;
+   if(!inFilter([p.lon,p.lat]))continue;
    points.push({lon:p.lon,lat:p.lat,label:p.name+" · "+total.toFixed(1)+" mm previstos",
     color:flag?"#c45b36":"#187eaa",type:"forecast",radius:11,
     detail:"Pronóstico Open-Meteo: "+total.toFixed(1)+" mm acumulados en "+state.days+" días. "+
@@ -373,6 +393,7 @@ function render(){
  if(state.on.pastRain){
   const hist=state.history.get(state.year);
   for(const p of hist?.records||[]){
+   if(!inFilter([p.lon,p.lat]))continue;
    points.push({lon:p.lon,lat:p.lat,label:p.name+" · "+Math.round(p.sum)+" mm · "+state.year,
     color:"#8171b8",type:"history",radius:8,
     detail:"Estimación histórica de reanálisis para enero–marzo "+state.year+": "+p.sum.toFixed(1)+
@@ -390,7 +411,7 @@ function render(){
   const title=SVG("title");title.textContent=p.label;dot.append(title);
   dot.addEventListener("click",()=>{state.active=p;serviceDetails(p.label,p.detail);diagnosis()});
   dot.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();dot.dispatchEvent(new Event("click"))}});
-  base.append(dot);
+  region.append(dot);
   textCandidates.push({name:p.label,x,y,rank:p.type==="company"?85:p.type==="forecast"?100:p.type==="history"?70:45});
  }
  const outline=SVG("g",{"pointer-events":"none"});
@@ -440,6 +461,7 @@ function applyZoomStyles(svg){
 }
 function status(){
  const display=$("oaf-ux35-mapstatus");if(!display)return;
+ const outlook=$("oaf-ux35-outlook");if(outlook)outlook.hidden=!state.on.seasonal;
  const shared=window.oafUx33Data?.()?.phase||{};
  const hist=state.history.get(state.year);
  const signals=[
