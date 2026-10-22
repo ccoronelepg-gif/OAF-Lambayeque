@@ -140,3 +140,8 @@
 .oaf-ux29-toolbar button[data-ux29-zoom="reset"]{font-size:11.5px;min-width:96px}
 .oaf-ux29-toolbar span{margin-left:auto;color:#5b776a;font-size:10.5px}
 @media(max-width:480px){.oaf-ux29-toolbar span{width:100%;margin:0}}
+
+
+/* Evitar espacios de SVG cuando el mapa se ve en pantallas estrechas. */
+.oaf-ux29-mainmapcard .oaf-ux24-mapframe svg,
+.oaf-ux29-scenemap svg{height:auto!important;min-height:0!important;max-width:100%;display:block}
