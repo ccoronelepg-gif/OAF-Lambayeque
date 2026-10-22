@@ -99,6 +99,7 @@ const descriptions={
  "none":"No se está mostrando una capa raster de peligro. El mapa mantiene límites y superposiciones seleccionadas."
 };
 function updateTerritory(pane){
+ if(pane?.dataset?.ux30Active==='true')return; // UX30 owns the diagnosis when the unified territorial viewer is mounted.
  const d=pane.querySelector(".oaf-ux29-diagbody");if(!d)return;
  const layer=$("oaf-ux25-raster")?.value||"none";
  const territory=[valueOf("oaf-ux26-prov"),valueOf("oaf-ux26-dist"),valueOf("oaf-ux26-basin")];
