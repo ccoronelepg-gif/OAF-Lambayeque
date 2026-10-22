@@ -158,6 +158,33 @@ function createSVG(name,attrs){
  const x=document.createElementNS("http://www.w3.org/2000/svg",name);
  Object.entries(attrs).forEach(([k,v])=>x.setAttribute(k,String(v)));return x;
 }
+function geometryToSvg(geometry,sc){
+ const polys=geometry?.type==="Polygon"?[geometry.coordinates]:
+  geometry?.type==="MultiPolygon"?geometry.coordinates:[];
+ return polys.flatMap(rings=>rings.map(ring=>ring.map((pt,i)=>
+  (i?"L":"M")+sc.x(pt[0]).toFixed(2)+" "+sc.y(pt[1]).toFixed(2)).join(" ")+" Z")).join(" ");
+}
+function roadClip(svg,sc,road,before){
+ const boundary=svg.querySelector('[data-oaf-ux24-boundary="true"]');
+ const paths=[];
+ if(boundary?.getAttribute("d"))paths.push(boundary.getAttribute("d"));
+ // Each successive clip is the intersection, not a union, of selected polygons.
+ for(const entry of state.selection){
+  const path=geometryToSvg(entry.geo,sc);if(path)paths.push(path);
+ }
+ if(!paths.length){svg.insertBefore(road,before||null);return}
+ const defs=createSVG("defs",{});defs.classList.add("oaf-ux28-overlay");
+ let wrapped=road;
+ paths.forEach((d,i)=>{
+  const id="oaf-ux28-clip-"+i,clip=createSVG("clipPath",{id,clipPathUnits:"userSpaceOnUse"});
+  clip.append(createSVG("path",{d,"fill-rule":"evenodd","clip-rule":"evenodd"}));defs.append(clip);
+  const g=createSVG("g",{"clip-path":"url(#"+id+")"});
+  g.classList.add("oaf-ux28-overlay");
+  g.append(wrapped);wrapped=g;
+ });
+ svg.insertBefore(defs,before||null);
+ svg.insertBefore(wrapped,before||null);
+}
 function render(){
  const sc=state.scene;
  if(!sc||!$("oaf-ux28-panel"))return;
@@ -183,7 +210,7 @@ function render(){
   road.addEventListener("load",()=>{if(road.isConnected){state.roadsStatus="capas del MTC recibidas";showStatus()}});
   road.addEventListener("error",()=>{if(road.isConnected){state.roadsStatus="capa no disponible; consulta servicio MTC";showStatus()}});
   const before=svg.querySelector("circle.oaf-ux25-point");
-  svg.insertBefore(road,before||null);
+  roadClip(svg,sc,road,before);
  }else state.roadsStatus="desactivada";
  let visible={hospital:0,posta:0,policia:0,bomberos:0};
  for(const key of Object.keys(categories)){
