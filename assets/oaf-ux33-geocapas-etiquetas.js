@@ -547,7 +547,7 @@ function start(ctx){
 }
 function retry(key){
  if(["district","historical","hydroRio","hydroQuebrada","agri"].includes(key) &&
-    S.phase[key]==="error"){S.phase[key]="pendiente";S.note[key]="";}
+    (S.phase[key]==="error"||S.phase[key]==="vacío")){S.phase[key]="pendiente";S.note[key]="";}
  loadAll();
  drawVectors();
 }
