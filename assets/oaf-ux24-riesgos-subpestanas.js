@@ -76,6 +76,8 @@ function init(){
  const nav=document.querySelector('#oaf-primary-nav a[data-tab="clima"]');if(nav)nav.textContent="Análisis de la región";
  hazardUI();sync();regionalOutline();
  window.addEventListener("hashchange",sync);
+ // Abrir también los enlaces directos cuando la página se carga por primera vez.
+ if(configs.some(c=>location.hash==="#"+c.risk||location.hash==="#"+c.base))window.dispatchEvent(new Event("hashchange"));
  document.querySelectorAll(".oaf-ux24-tab").forEach(a=>a.addEventListener("click",()=>{if(a.getAttribute("href")===location.hash){sync();a.closest(".oaf-ux24-subtabs").scrollIntoView({block:"start"})}}));
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
