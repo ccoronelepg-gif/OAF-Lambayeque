@@ -98,6 +98,8 @@ function makeTree(){
  tree.addEventListener("change",ev=>{
   const key=ev.target?.dataset?.ux30Layer;if(!key)return;
   state.on[key]=ev.target.checked;applyLegacy();render();
+  if(key==="drought"&&on("drought"))loadDrought();
+  if(key==="heat"&&on("heat"))loadHeat();
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
@@ -155,15 +157,25 @@ function render(){
  if(political.length)add(SIGRID,political.join(","),.8,"Límites administrativos");
  if(on("basin"))add(SIGRID,6030100,.55,"Cuencas hidrográficas ANA");
  if(on("drain")||on("quebradas"))add(SIGRID,6030200,.84,"Red hidrográfica IGN 1:100 000");
+ // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
+ // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
+ if(on("heat")){
+  const wms=sv("image",{href:heatWmsUrl(scene.bounds),x:0,y:0,width:700,height:340,
+   opacity:".45",preserveAspectRatio:"none","pointer-events":"none"});
+  wms.dataset.title="SENAMHI · frecuencia histórica de olas de calor, verano";
+  wms.dataset.ux31Wms="heat";
+  wms.addEventListener("error",()=>{wms.dataset.error="true";diagnosis()});
+  back.append(wms);
+ }
  for(const p of state.points){
   if(!on(p.category))continue;
   const [lon,lat]=p.coords;
   if(state.selected?.length&&state.contains&&!state.selected.every(k=>state.contains(k.geo,[lon,lat])))continue;
   const x=scene.x(lon),y=scene.y(lat);
   if(x<0||x>700||y<0||y>340)continue;
-  const circle=sv("circle",{cx:x,cy:y,r:4.3,fill:p.color,stroke:"#fff","stroke-width":1.2,
+  const circle=sv("circle",{cx:x,cy:y,r:p.category==="heat"?6:4.3,fill:p.color,stroke:"#fff","stroke-width":1.2,
    tabindex:"0",role:"button","aria-label":p.label});
-  circle.classList.add("oaf-ux30-feature");circle.dataset.ux30Radius="4.3";
+  circle.classList.add("oaf-ux30-feature","oaf-ux31-"+p.category);circle.dataset.ux30Radius=p.category==="heat"?"6":"4.3";
   circle.addEventListener("click",()=>{state.activePoint=p;diagnosis()});
   circle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();state.activePoint=p;diagnosis()}});
   const ttl=sv("title");ttl.textContent=p.label;circle.append(ttl);front.append(circle);
