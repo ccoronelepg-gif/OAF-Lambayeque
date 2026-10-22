@@ -450,7 +450,7 @@ function paintStatus(){
  if(!bar){bar=document.createElement("div");bar.id="oaf-ux33-status";bar.className="oaf-ux33-status";
   bar.setAttribute("role","status");host.prepend(bar)}
  const active=Object.keys(S.phase).filter(needs);
- if(!active.length){bar.hidden=true;const leg=el("oaf-ux33-agri-legend");if(leg)leg.hidden=true;return}
+ if(!active.length){bar.hidden=true;const leg=el("oaf-ux33-agri-legend");if(leg)leg.hidden=true;const retry=el("oaf-ux34-retry");if(retry)retry.hidden=true;return}
  bar.hidden=false;
  const labels={district:"Distritos",hydroRio:"Ríos",hydroQuebrada:"Quebradas",historical:"Puntos INGEMMET",agri:"Agricultura"};
  const messages=active.map(key=>{
@@ -458,7 +458,19 @@ function paintStatus(){
   return labels[key]+": "+(state==="listo"?S.count[key]+" registros":state==="cargando"?"consultando":
    state==="vacío"?"0 geometrías":state==="error"?"sin conexión":state);
  });
- bar.textContent=messages.join(" · ")+" — Etiquetas según atributos disponibles.";
+ bar.textContent=messages.join(" · ")+" — Se dibujan las geometrías oficiales recibidas.";
+ const trouble=active.some(k=>S.phase[k]==="error"||S.phase[k]==="vacío");
+ let reload=el("oaf-ux34-retry");
+ if(trouble){
+  if(!reload){reload=document.createElement("button");reload.id="oaf-ux34-retry";reload.type="button";
+   reload.textContent="Reintentar capas sin datos";reload.addEventListener("click",()=>{
+    for(const k of active)if(S.phase[k]==="error"||S.phase[k]==="vacío"){
+     S.phase[k]="pendiente";S.note[k]="";S.started[k]=false;S.features[k]=[];
+    }
+    loadAll();drawVectors();
+   });bar.after(reload);}
+  reload.hidden=false;
+ }else if(reload)reload.hidden=true;
  const mapcol=el("oaf-ux29-territory")?.querySelector(".oaf-ux29-mapcontent");
  let legend=el("oaf-ux33-agri-legend");
  if(mapcol&&!legend){legend=document.createElement("div");legend.id="oaf-ux33-agri-legend";
