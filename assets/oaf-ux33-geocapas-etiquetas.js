@@ -133,6 +133,26 @@ function view(){
  const m=S.ctx?.map;const v=(m?.getAttribute("viewBox")||"0 0 700 340").trim().split(/[\s,]+/).map(Number);
  return v.length===4&&v.every(Number.isFinite)?v:[0,0,700,340];
 }
+function fallbackURL(service,layers,where){
+ const b=bounds();if(!b)return "";
+ const q=new URLSearchParams({
+  bbox:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+  bboxSR:"4326",imageSR:"4326",size:"1050,510",
+  layers:"show:"+layers,transparent:"true",format:"png32",f:"image"
+ });
+ if(where)q.set("layerDefs",JSON.stringify({[String(layers)]:where}));
+ return service+"/export?"+q;
+}
+function fallbackImage(group,service,layers,where,aria){
+ const src=fallbackURL(service,layers,where);if(!src)return;
+ const img=tag("image",{x:0,y:0,width:700,height:340,
+  href:src,opacity:".9",preserveAspectRatio:"none","pointer-events":"none"});
+ img.dataset.title=aria;
+ img.dataset.ux30Server=service;img.dataset.ux30Ids=String(layers);
+ if(where)img.dataset.ux30Defs=JSON.stringify({[String(layers)]:where});
+ img.addEventListener("error",()=>{img.dataset.error="true";paintStatus()});
+ group.append(img);
+}
 function drawVectors(){
  const c=S.ctx;if(!c)return;const svg=c.map;
  svg.querySelectorAll(".oaf-ux33-svg").forEach(n=>n.remove());
@@ -151,6 +171,24 @@ function drawVectors(){
  const pointsG=tag("g",{class:"oaf-ux33-points"});
  const labelsG=tag("g",{class:"oaf-ux33-labels","pointer-events":"none"});
  const candidates=[];
+ // If vector requests are blocked, try official ArcGIS images as a read-only fallback.
+ if(c.on("distrito")&&S.phase.district!=="listo")fallbackImage(polygonG,SERFOR,2,"IDDPTO='14'","Límites distritales INEI");
+ if((c.on("drain")&&S.phase.hydroRio!=="listo")||
+    (c.on("quebradas")&&S.phase.hydroQuebrada!=="listo")){
+  const clauses=[];
+  if(c.on("drain")&&S.phase.hydroRio!=="listo")clauses.push("tipo IN ('R','RN','RI','RS','AC')");
+  if(c.on("quebradas")&&S.phase.hydroQuebrada!=="listo")clauses.push("tipo IN ('Q','Q1','QB','QQ','QI','QS')");
+  if(clauses.length)fallbackImage(hydroG,HOST,6030200,"("+clauses.join(" OR ")+")","Ríos y quebradas IGN");
+ }
+ if(S.phase.historical!=="listo"){
+  const clauses=[];
+  if(c.on("fluvial"))clauses.push("tipo_pel = 'Inundación fluvial'");
+  if(c.on("pluvial"))clauses.push("tipo_pel IN ('Inundación pluvial','Precipitación pluvial')");
+  if(c.on("erosion"))clauses.push("tipo_pel = 'Erosión fluvial'");
+  if(c.on("detritos"))clauses.push("tipo_pel IN ('Flujo de detritos y lodo','Flujos')");
+  if(clauses.length)fallbackImage(pointsG,HOST,6010100,"("+clauses.join(" OR ")+")",
+    "Inventario de puntos geológicos INGEMMET 2017");
+ }
  if((c.on("distrito")||c.on("provincia")||c.on("departamento"))&&S.features.district.length){
   for(const feature of S.features.district){
    const d=featurePath(feature);if(!d)continue;
