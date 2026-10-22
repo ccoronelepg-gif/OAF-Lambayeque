@@ -52,7 +52,7 @@ function needs(k){
  if(k==="historical")return ["fluvial","pluvial","erosion","detritos"].some(on);
  if(k==="hydroRio")return on("drain");
  if(k==="hydroQuebrada")return on("quebradas");
- if(k==="district")return on("distrito");
+ if(k==="district")return on("distrito")||on("provincia")||on("departamento");
  if(k==="agri")return on("agricola")||on("exposicion");
  return false;
 }
@@ -146,7 +146,7 @@ function drawVectors(){
  const pointsG=tag("g",{class:"oaf-ux33-points"});
  const labelsG=tag("g",{class:"oaf-ux33-labels","pointer-events":"none"});
  const candidates=[];
- if(c.on("distrito")&&S.features.district.length){
+ if((c.on("distrito")||c.on("provincia")||c.on("departamento"))&&S.features.district.length){
   for(const feature of S.features.district){
    const d=featurePath(feature);if(!d)continue;
    const props=feature.properties||{},name=val(props,"NOMBDIST","nombdist");
@@ -157,9 +157,31 @@ function drawVectors(){
    const title=tag("title");title.textContent=name?"Distrito: "+name:"Límite distrital INEI";polygon.append(title);
    polygon.addEventListener("click",()=>writeDetail("Distrito",name||"Sin nombre","INEI/SERFOR: límites censales referenciales"));
    polygon.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();polygon.dispatchEvent(new Event("click"))}});
-   polygonG.append(polygon);
+   if(c.on("distrito"))polygonG.append(polygon);
    const center=centerOf(feature);
-   if(name&&center)candidates.push({kind:"polygon",text:name,coord:center,priority:100,feature});
+   if(c.on("distrito")&&name&&center)candidates.push({kind:"polygon",text:name,coord:center,priority:100,feature});
+  }
+ }
+ // Provincial names are calculated from verified district polygons, not invented centroids.
+ if((c.on("provincia")||c.on("departamento"))&&S.features.district.length){
+  const provinceGroups=new Map();
+  for(const f of S.features.district){
+   const province=val(f.properties||{},"NOMBPROV","nombprov");
+   if(!province)continue;
+   const rings=polygonRings(f.geometry).flatMap(p=>p.filter(a=>Array.isArray(a)&&a.length>2));
+   const group=provinceGroups.get(province)||[];
+   group.push(...rings.flat());provinceGroups.set(province,group);
+  }
+  if(c.on("provincia")){
+   for(const [name,pts] of provinceGroups){
+    if(!pts.length)continue;
+    const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+    candidates.push({kind:"province",text:"Prov. "+name,coord:[(Math.min(...xs)+Math.max(...xs))/2,
+      (Math.min(...ys)+Math.max(...ys))/2],priority:140});
+   }
+  }
+  if(c.on("departamento")&&!c.on("provincia")){
+   candidates.push({kind:"province",text:"Lambayeque (región)",xy:[370,170],priority:140});
   }
  }
  for(const [key,color,dash] of [["hydroRio","#087cb6","none"],["hydroQuebrada","#259bb6","5 3"]]){
@@ -233,7 +255,7 @@ function drawLabels(){
  const ctx=S.ctx,group=S.labelGroup;if(!ctx||!group)return;
  group.replaceChildren();
  const [vx,vy,vw,vh]=view(),k=vw/700;
- const maxLabels=vw>500?18:vw>280?44:vw>120?88:160;
+ const maxLabels=vw>500?24:vw>280?52:vw>120?94:160;
  const occupied=[];
  const candidates=(S.labelCandidates||[]).slice().sort((a,b)=>b.priority-a.priority);
  let count=0;
@@ -302,7 +324,7 @@ function appendDiagnosis(box){
  const heading=document.createElement("strong");heading.textContent="Estado de geometrías y etiquetas";
  const desc=document.createElement("p");
  const name={district:"límites distritales",hydroRio:"ríos IGN",hydroQuebrada:"quebradas IGN",historical:"peligros INGEMMET",agri:"superficie agrícola MINAM"};
- desc.textContent=chosen.map(k=>name[k]+": "+(S.phase[k]==="listo"?S.count[k]+" registros":S.phase[k])+(S.note[k]?" ("+S.note[k]+")":"")).join(" · ")+
+ desc.textContent=chosen.map(k=>name[k]+": "+(S.phase[k]==="listo"?S.count[k]+" registros"+(S.partial[k]?" (solo muestra)":""):S.phase[k])+(S.note[k]?" ("+S.note[k]+")":"")).join(" · ")+
  ". Los nombres se muestran únicamente cuando forman parte de los atributos oficiales. La falta de datos se indica; no se inventan ubicaciones.";
  part.append(heading,desc);box.append(part);
 }
