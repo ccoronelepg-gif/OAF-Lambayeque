@@ -48,7 +48,7 @@ const layerSpec=[
 const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],group:g[1]}])));
 const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),scene:null,selected:[],contains:null,legacy:null,
  points:[],pointsStatus:"pendiente",hydroLines:[],hydroStatus:"pendiente",hydroLoading:false,droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
-const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
+const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
  SIGRID_HYDRO="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
  HAZARD="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
  INGEMMET="https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer",
@@ -102,7 +102,7 @@ function makeTree(){
   state.on[key]=ev.target.checked;applyLegacy();render();
   if(key==="drought"&&on("drought"))loadDrought();
   if(key==="heat"&&on("heat"))loadHeat();
-  if((key==="drain"||key==="quebradas")&&(on("drain")||on("quebradas")))loadHydro();
+  if(typeof window.oafUx33LayerChange==="function")window.oafUx33LayerChange(key);
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
@@ -220,36 +220,11 @@ function render(){
  if(on("regional")||on("exposicion"))add(HAZARD,5010502,.77,"Susceptibilidad regional");
  if(on("movmasa"))add(HAZARD,5090022,.42,"Movimientos en masa");
  if(on("inundacionregion"))add(INGEMMET,0,.54,"Susceptibilidad fluvial en polígonos");
- if(on("agricola")||on("exposicion"))add(MINAM,1,.35,"Superficie agrícola 2018");
+ if(on("agricola")||on("exposicion"))add(MINAM,1,.87,"Superficie agrícola 2018");
  const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
- if(political.length)add(SIGRID,political.join(","),.8,"Límites administrativos");
+ if(political.length)add(SIGRID_HYDRO,political.filter(n=>n!==6020300).join(","),.8,"Límites departamentales y provinciales");
  if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
- // Si la consulta GeoJSON de puntos INGEMMET falla o no devuelve una categoría,
- // pedir sus símbolos directamente al MapServer (no depende de CORS para imágenes).
- const geoTypes={
-  fluvial:"tipo_pel = 'Inundación fluvial'",
-  pluvial:"tipo_pel IN ('Inundación pluvial','Precipitación pluvial')",
-  detritos:"tipo_pel IN ('Flujo de detritos y lodo','Flujos')",
-  erosion:"tipo_pel = 'Erosión fluvial'"
- };
- for(const [category,filter] of Object.entries(geoTypes)){
-  if(!on(category)||state.points.some(p=>p.category===category))continue;
-  const selection="nom_dep LIKE '%LAMBAYEQUE%' AND "+filter;
-  add(SIGRID_HYDRO,6010100,.95,"INGEMMET 2017: "+category,{"6010100":selection});
- }
- // Ríos y quebradas se dibujan desde GeoJSON, sin ocultarse por la escala mínima del MapServer.
- for(const record of state.hydroLines){
-  if(!on(record.category))continue;
-  const coords=record.coords;
-  if(coords.length<2)continue;
-  const d=coords.map(([lon,lat],i)=>(i?"L":"M")+scene.x(lon).toFixed(2)+" "+scene.y(lat).toFixed(2)).join(" ");
-  const p=sv("path",{d,fill:"none",stroke:record.category==="quebradas"?"#258ac0":"#125fa8",
-   "stroke-width":record.category==="quebradas"?"1.35":"1.6",
-   "stroke-dasharray":record.category==="quebradas"?"5 3":"none","stroke-linecap":"round",
-   "stroke-linejoin":"round","pointer-events":"none"});
-  p.classList.add("oaf-ux32-hydroline");
-  back.append(p);
- }
+ // UX33 incorpora los puntos oficiales, ríos, quebradas y límites distritales con etiquetas.
  // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
  // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
  if(on("heat")){
@@ -278,6 +253,7 @@ function render(){
  const roads=[...map.children].find(e=>e.classList?.contains("oaf-ux28-overlay")&&e.querySelector?.(".oaf-ux28-roadimage"));
  map.insertBefore(back,roads||before||null);map.append(front);
  diagnosis();adjustMarkerSizes();
+ if(typeof window.oafUx33AfterDraw==="function")window.oafUx33AfterDraw({scene,state,on,map});
  refreshDetailMap();
 }
 function diagnoseItem(key){
@@ -328,6 +304,7 @@ function diagnosis(){
   state.hydroStatus+". Ríos y quebradas provienen de categorías distintas del inventario IGN a escala 1:100 000; las líneas no representan caudal ni desbordamientos.");
  if(on("exposicion"))heading(box,"Importante sobre agricultura",
   "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
+ if(typeof window.oafUx33Diagnosis==="function")window.oafUx33Diagnosis(box);
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
  if(failed)heading(box,"Algunas capas externas no respondieron",
   failed+" capa(s) no se pudieron cargar desde los geoservicios. Consulta la fuente oficial en Metadatos y trazabilidad.");
@@ -510,6 +487,7 @@ function setView(map,b){
  map.setAttribute("viewBox",[x,y,w,h].map(n=>n.toFixed(2)).join(" "));
  state.view=[x,y,w,h];
  adjustMarkerSizes();
+ if(typeof window.oafUx33OnZoom==="function")window.oafUx33OnZoom();
  refreshDetailMap();
 }
 function adjustMarkerSizes(){
@@ -590,10 +568,10 @@ function init(){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
   if(!state.mapInit){state.mapInit=true;navigation(state.scene.svg);}
   render();
-  if(state.pointsStatus==="pendiente")loadHistory();
+  // La versión UX33 gestiona los registros geológicos y sus nombres, sin duplicar consultas.
   if(on("drought")&&state.droughtStatus==="pendiente")loadDrought();
   if(on("heat")&&state.heatStatus==="pendiente")loadHeat();
-  if((on("drain")||on("quebradas"))&&state.hydroStatus==="pendiente")loadHydro();
+  // La versión UX33 gestiona líneas y etiquetas de la red hidrográfica.
  };
  applyLegacy();adaptOriginal();
  const pane=$("oaf-ux29-territory");
