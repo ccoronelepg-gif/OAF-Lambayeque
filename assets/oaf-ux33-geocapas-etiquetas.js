@@ -111,6 +111,31 @@ async function requestHydroPage(k,tile,offset){
  }
  throw firstError||Error("Sin respuesta oficial");
 }
+const HYDRO_ALT="https://gisem.osinergmin.gob.pe/serverdc/rest/services/DSGN/CARTOG/MapServer/10";
+async function requestHydroAlternative(k){
+ const b=bounds();if(!b)return [];
+ const q=new URLSearchParams({
+  where:"1=1",geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
+  geometryType:"esriGeometryEnvelope",spatialRel:"esriSpatialRelIntersects",
+  inSR:"4326",outSR:"4326",outFields:"OBJECTID,RASGO_PRIN,RASGO_SECU,NOMBRE",
+  returnGeometry:"true",geometryPrecision:"5",maxAllowableOffset:"0.0012",
+  resultRecordCount:"320",f:"json"
+ });
+ const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),14000);
+ try{
+  const r=await fetch(HYDRO_ALT+"/query?"+q,{signal:ctl.signal,cache:"no-store"});
+  if(!r.ok)throw Error("HTTP "+r.status);
+  const records=convertHydro(await r.json());
+  const result=records.filter(feature=>{
+   const p=feature.properties||{};
+   const kind=norm(val(p,"RASGO_PRIN")+" "+val(p,"RASGO_SECU"));
+   if(k==="hydroRio")return /\brio\b|\bríos?\b|\briver\b/.test(kind);
+   return kind.includes("quebrada")||kind.includes("arroyo");
+  });
+  return result;
+ }finally{clearTimeout(timer)}
+}
+
 async function loadHydroPages(k){
  const tiles=hydroTiles();if(!tiles.length)return;
  const observed=new Set(),assembled=[];
@@ -133,12 +158,24 @@ async function loadHydroPages(k){
    drawVectors();paintStatus();
   }catch(e){failed++;S.note[k]="Error en "+failed+" de "+tiles.length+" sectores: "+String(e).slice(0,90)}
  }
+ if(!assembled.length){
+  try{
+   const backup=await requestHydroAlternative(k);
+   if(backup.length){
+    assembled.push(...backup);
+    S.note[k]="Consulta alternativa: OSINERGMIN, cartografía de ríos y quebradas. No corresponde al inventario IGN/SIGRID original.";
+    limited=backup.length>=320?1:0;
+   }
+  }catch(err){
+   S.note[k]=(S.note[k]||"El servicio IGN no respondió.")+" Alternativa OSINERGMIN indisponible.";
+  }
+ }
  S.features[k]=assembled;
  S.count[k]=assembled.length;
  S.partial[k]=limited>0||failed>0;
  S.phase[k]=assembled.length?"listo":failed===tiles.length?"error":"vacío";
  S.note[k]=assembled.length?
-  "Se muestran "+assembled.length+" tramos oficiales recuperados en "+(tiles.length-failed)+" sectores; la consulta puede ser parcial.":
+  (S.note[k]||"Se muestran "+assembled.length+" tramos del IGN recuperados en "+(tiles.length-failed)+" sectores; la consulta puede ser parcial.") :
   "No se recuperaron tramos. Comprueba el enlace IGN/SIGRID y la conexión a los geoservicios.";
 }
 
