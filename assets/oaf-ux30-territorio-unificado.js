@@ -142,7 +142,7 @@ function render(){
  const front=sv("g",{class:"oaf-ux30-layer"});
  const add=(service,layers,opacity,name)=>{
   const image=sv("image",{href:overlaySrc(service,layers),x:0,y:0,width:700,height:340,opacity,
-   preserveAspectRatio:"none","pointer-events":"none"});image.dataset.title=name;
+   preserveAspectRatio:"none","pointer-events":"none"});image.dataset.title=name;image.dataset.ux30Server=service;image.dataset.ux30Ids=String(layers);
   image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
   back.append(image);
  };
@@ -171,6 +171,7 @@ function render(){
  const before=map.querySelector("circle.oaf-ux25-point, circle.oaf-ux28-emergency-marker");
  map.insertBefore(back,before||null);map.append(front);
  diagnosis();adjustMarkerSizes();
+ refreshDetailMap();
 }
 function diagnoseItem(key){
  const def=spec.get(key);return def?def.meaning:"No hay descripción disponible.";
@@ -253,6 +254,32 @@ function getView(map){
  const v=(map.getAttribute("viewBox")||"0 0 700 340").trim().split(/[\s,]+/).map(Number);
  return v.length===4&&v.every(Number.isFinite)?v:[0,0,700,340];
 }
+function refreshDetailMap(){
+ const map=$("oaf-ux24-region-map"),scene=state.scene;
+ if(!map||!scene)return;
+ clearTimeout(state.highResTimer);
+ state.highResTimer=setTimeout(()=>{
+  const v=getView(map),b=scene.bounds;
+  if(v[2]>=699)return; // La imagen regional original ya tiene resolución suficiente.
+  const geo={
+   minLon:b.minLon+(v[0]/700)*(b.maxLon-b.minLon),
+   maxLon:b.minLon+((v[0]+v[2])/700)*(b.maxLon-b.minLon),
+   maxLat:b.maxLat-(v[1]/340)*(b.maxLat-b.minLat),
+   minLat:b.maxLat-((v[1]+v[3])/340)*(b.maxLat-b.minLat)
+  };
+  for(const img of map.querySelectorAll("image[data-ux30-server]")){
+   const service=img.dataset.ux30Server,ids=img.dataset.ux30Ids;
+   const query=new URLSearchParams({
+    bbox:[geo.minLon,geo.minLat,geo.maxLon,geo.maxLat].join(","),
+    bboxSR:"4326",imageSR:"4326",size:"1100,535",
+    format:"png32",transparent:"true",dpi:"130",layers:"show:"+ids,f:"image"
+   });
+   img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
+   img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
+   img.setAttribute("href",service+"/export?"+query);
+  }
+ },450);
+}
 function setView(map,b){
  const maxW=700,minW=42,ratio=700/340;
  let w=Math.max(minW,Math.min(maxW,b[2]));let h=w/ratio;
@@ -260,6 +287,7 @@ function setView(map,b){
  map.setAttribute("viewBox",[x,y,w,h].map(n=>n.toFixed(2)).join(" "));
  state.view=[x,y,w,h];
  adjustMarkerSizes();
+ refreshDetailMap();
 }
 function adjustMarkerSizes(){
  const map=$("oaf-ux24-region-map");if(!map)return;
