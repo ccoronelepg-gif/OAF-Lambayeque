@@ -261,7 +261,7 @@ function render(){
  clipRoots.forEach((v,i)=>{
   const path=polygonD(v.geo);if(!path)return;
   const c=SVG("clipPath",{id:"oaf-ux35-filter-"+i,clipPathUnits:"userSpaceOnUse"});
-  c.append(SVG("path",{d,"fill-rule":"evenodd","clip-rule":"evenodd"}));
+  c.append(SVG("path",{d:path,"fill-rule":"evenodd","clip-rule":"evenodd"}));
   defs.append(c);
   const group=SVG("g",{"clip-path":"url(#oaf-ux35-filter-"+i+")"});region.append(group);region=group;
  });
@@ -404,7 +404,8 @@ function render(){
  for(const p of points){
   const x=scene.x(p.lon),y=scene.y(p.lat);
   if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>700||y<0||y>340)continue;
-  const dot=SVG("circle",{cx:x,cy:y,r:p.radius||4.5,fill:p.color,stroke:"#fff","stroke-width":1.5,tabindex:"0",role:"button",
+  const offset=p.type==="history"?8:0;
+  const dot=SVG("circle",{cx:x+offset,cy:y-offset,r:p.radius||4.5,fill:p.color,stroke:"#fff","stroke-width":1.5,tabindex:"0",role:"button",
    "aria-label":p.label});
   dot.dataset.ux35Radius=p.radius||4.5;
   dot.classList.add("oaf-ux35-point");
@@ -412,7 +413,7 @@ function render(){
   dot.addEventListener("click",()=>{state.active=p;serviceDetails(p.label,p.detail);diagnosis()});
   dot.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();dot.dispatchEvent(new Event("click"))}});
   region.append(dot);
-  textCandidates.push({name:p.label,x,y,rank:p.type==="company"?85:p.type==="forecast"?100:p.type==="history"?70:45});
+  textCandidates.push({name:p.label,x:x+offset,y:y-offset,rank:p.type==="company"?85:p.type==="forecast"?100:p.type==="history"?70:45});
  }
  const outline=SVG("g",{"pointer-events":"none"});
  for(const ring of scene.rings){
