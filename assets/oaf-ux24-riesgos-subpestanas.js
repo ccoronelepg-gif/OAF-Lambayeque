@@ -399,6 +399,8 @@ function ux26Display(){
   item.style.display=xy.every(Number.isFinite)&&selected.every(s=>ux26Contains(s.geo,xy))?"":"none";
  }
  ux26Metrics();
+ // UX28 conserva la proyección y filtros existentes sin alterar el visor original.
+ if(typeof window.oafUx28AfterDraw==='function')window.oafUx28AfterDraw({scene:sc,selected,contains:ux26Contains});
 }
 function ux26Metrics(){
  const node=$("oaf-ux26-kpis");if(!node)return;
