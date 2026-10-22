@@ -1,0 +1,20 @@
+{
+  "identificador": "OAF-UX27-CENEPRED-LAMBAYEQUE-2025",
+  "ambito": "Nueve distritos de Lambayeque incluidos en el escenario de riesgo MUY ALTO de inundación del Plan Multisectorial 2025-2027; NO toda la región",
+  "periodo_fonte": "CENEPRED 2025, reporte semanal 05-11 enero de 2026",
+  "peligro": "Inundaciones",
+  "riesgo_escenario_distrital": "muy alto",
+  "distritos": 9,
+  "superficie_agricola_considerada_ha": 1380,
+  "superficie_agricola_mayor_susceptibilidad_ha": 1234,
+  "superficie_agricola_otras_areas_ha_calculada": 146,
+  "porcentaje_mayor_susceptibilidad_calculado": 89.42028985507247,
+  "viviendas_mayor_susceptibilidad": 50299,
+  "vias_mayor_susceptibilidad_km": 374,
+  "origen": "Tabla CENEPRED escenario de riesgo de inundación, fila LAMBAYEQUE, documento 17791",
+  "fuente_url": "https://sigrid.cenepred.gob.pe/sigridv3/documento/17791",
+  "reporte_url": "https://sigrid.cenepred.gob.pe/sigridv3/storage/reporte_semanal/REPORTE_SEMANAL_202601_2.pdf",
+  "pdf_indice_pagina_desde_cero": 3,
+  "metodologico": "No confundir superficie agrícola en mayor susceptibilidad de estos 9 distritos con superficie agrícola regional ni hectáreas inundadas",
+  "geoservicio_regional_5090024": "https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024"
+}
