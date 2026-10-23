@@ -111,7 +111,7 @@ function iso(s){
 function decimal(s){
  if(s===null||s===undefined||String(s).trim()==="")return null;
  const text=String(s).trim().replace(",",".");
- if(!/^(?:\d+(?:\.\d+)?|\.\d+)$/.test(text))return NaN;
+ if(!/^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(text))return NaN;
  return Number(text);
 }
 function parseDateWithUTC(raw){
@@ -123,7 +123,7 @@ function parseDateWithUTC(raw){
 function riverName(raw){
  const n=normalize(raw);
  if(n==="leche"||n==="la leche"||n==="rio la leche")return "La Leche";
- if(n==="chancay"||n==="chancay-lambayeque"||n==="chancay lambayeque"||n==="rio chancay"||n==="rio chancay lambayeque")return "Chancay–Lambayeque";
+ if(n==="chancay"||n==="chancay-lambayeque"||n==="chancay–lambayeque"||n==="chancay lambayeque"||n==="rio chancay"||n==="rio chancay lambayeque")return "Chancay–Lambayeque";
  if(n==="zana"||n==="rio zana")return "Zaña";
  return null;
 }
@@ -227,8 +227,11 @@ function drawChart(records){
  svg.setAttribute("aria-label","Evolución de caudales observados y simulados para el archivo importado");
  const tag=(name,attrs)=>{const n=document.createElementNS("http://www.w3.org/2000/svg",name);
   for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));return n};
- const maxVal=Math.max(1,...records.flatMap(r=>[r.obs,r.sim]));
- const x=i=>margin.left+i/Math.max(1,records.length-1)*(width-margin.left-margin.right);
+ let maxVal=1;
+ for(const r of records)maxVal=Math.max(maxVal,r.obs,r.sim);
+ // Resumir solo trazado si el archivo es grande; las métricas usan todos los registros.
+ const visual=records.length>1100?records.filter((r,i)=>i%Math.ceil(records.length/1000)===0||i===records.length-1):records;
+ const x=i=>margin.left+i/Math.max(1,visual.length-1)*(width-margin.left-margin.right);
  const y=v=>height-margin.bottom-v/maxVal*(height-margin.top-margin.bottom);
  for(let i=0;i<=4;i++){
   const val=maxVal*i/4,yy=y(val);
@@ -237,7 +240,7 @@ function drawChart(records){
   label.textContent=fmt(val,0);svg.append(label);
  }
  function line(key,color){
-  const path=tag("path",{d:records.map((r,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(r[key]).toFixed(1)).join(" "),
+  const path=tag("path",{d:visual.map((r,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(r[key]).toFixed(1)).join(" "),
    fill:"none",stroke:color,"stroke-width":2,"stroke-linejoin":"round","stroke-linecap":"round"});
   svg.append(path);
  }
