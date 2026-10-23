@@ -59,6 +59,8 @@ function build(){
  file.addEventListener("change",async()=>{
   if(file.files?.length)await importFile(file.files[0]);file.value="";
  });
+ // Resolver enlaces directos cuando el panel se inserta dinámicamente.
+ if(location.hash==="#oaf-ux37-panel")window.dispatchEvent(new Event("hashchange"));
  $("oaf-ux37-clear").addEventListener("click",()=>{
   reset();$("oaf-ux37-status").textContent="Resultados y registros eliminados del navegador. No hay mediciones cargadas.";
  });
