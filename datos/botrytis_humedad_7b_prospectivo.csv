@@ -1,5 +1,13 @@
 emision_utc,fecha_emision,localidad,fecha_valida,horizonte_dias,episodio_pronosticado,episodio_era5,acierto
 2026-10-15T05:15:32+00:00,2026-10-15,Motupe,2026-10-16,1,False,False,True
+2026-10-15T05:15:32+00:00,2026-10-15,Motupe,2026-10-17,2,True,False,False
 2026-10-15T05:15:32+00:00,2026-10-15,Jayanca,2026-10-16,1,False,False,True
+2026-10-15T05:15:32+00:00,2026-10-15,Jayanca,2026-10-17,2,False,False,True
 2026-10-15T05:15:32+00:00,2026-10-15,Olmos,2026-10-16,1,False,False,True
+2026-10-15T05:15:32+00:00,2026-10-15,Olmos,2026-10-17,2,True,False,False
 2026-10-15T05:15:32+00:00,2026-10-15,Chiclayo,2026-10-16,1,False,False,True
+2026-10-15T05:15:32+00:00,2026-10-15,Chiclayo,2026-10-17,2,False,False,True
+2026-10-16T13:41:51+00:00,2026-10-16,Motupe,2026-10-17,1,True,False,False
+2026-10-16T13:41:51+00:00,2026-10-16,Jayanca,2026-10-17,1,False,False,True
+2026-10-16T13:41:51+00:00,2026-10-16,Olmos,2026-10-17,1,True,False,False
+2026-10-16T13:41:51+00:00,2026-10-16,Chiclayo,2026-10-17,1,False,False,True
