@@ -1,0 +1,14 @@
+{
+  "fase": "8U",
+  "componente": "pronostico_marino_archivado",
+  "date_utc": "2026-10-26",
+  "downloaded_utc": "2026-10-26T21:40:28+00:00",
+  "sha256_original": "9fbd811d0509ab4d87185b4b43ee34144b176f2b804ad74168d0a5e18e30270b",
+  "url": "https://marine-api.open-meteo.com/v1/marine?latitude=-6.1%2C-6.5%2C-6.9&longitude=-80.7%2C-80.7%2C-80.7&hourly=sea_surface_temperature%2Cocean_current_velocity%2Cocean_current_direction&forecast_days=3&timezone=America%2FLima&cell_selection=sea&velocity_unit=ms",
+  "periodo": "3_dias_pronosticados_no_30_anios",
+  "fuente": "Open-Meteo Marine Forecast SMOC MeteoFrance",
+  "modelo_no_corrientometro_ni_boya": true,
+  "ocean_current_direction_hacia_donde_fluye": true,
+  "corrientes_historicas_1996_2025_verificadas": false,
+  "no_admite_alerta_ni_habilidad_predictiva_demostrada": true
+}
