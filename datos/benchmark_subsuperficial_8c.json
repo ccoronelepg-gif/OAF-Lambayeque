@@ -1,6 +1,6 @@
 {
   "fase": "8C",
-  "fecha_procesamiento_utc": "2026-10-19T16:38:59+00:00",
+  "fecha_procesamiento_utc": "2026-10-26T16:47:51+00:00",
   "estado": "evaluacion_temporal_retrospectiva_no_operativa",
   "hipotesis_predefinida": "Si la anomalía T300 y el SOI/vientos retrasados 1 mes aportan habilidad predictiva adicional al SST de origen y su tendencia",
   "base_oceanica": "NOAA NCEI ERSSTv5 Niño1+2 anomalía reconstruida por OAF a 1991-2020",
@@ -144,7 +144,7 @@
       "habilidad_operativa_demostrada": false
     }
   },
-  "ultimo_mes_reanalisis_t300": "2026-08",
+  "ultimo_mes_reanalisis_t300": "2026-09",
   "ultimo_mes_oceanico": "2026-09",
   "ultimo_origen_con_predictores_retrasados": "2026-09",
   "se_ha_emitido_pronostico_prospectivo_8c": false,
