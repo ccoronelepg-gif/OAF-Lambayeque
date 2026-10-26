@@ -5,7 +5,7 @@ Cada valor corresponde a **precipitaciÃ³n mensual estimada de una celda de 0,05Â
 
 ## Periodo y disponibilidad verificada
 
-- Fecha de consulta UTC: 2026-10-19T15:49:59+00:00
+- Fecha de consulta UTC: 2026-10-26T16:09:25+00:00
 - Ventana de 12 meses calendarios CERRADOS: 2025-10 a 2026-09.
 - Meses con raster descargado y cinco valores revisados: **12**.
 - Meses con raster no disponible/fallido: **0**.
