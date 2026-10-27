@@ -82,3 +82,37 @@
  #inicio .oaf-ux42-minichart{height:104px;padding:4px}
  #inicio .oaf-ux42-bar small{font-size:8px!important}
 }
+
+/* UX43 · Barras comparativas semanales. La sección mensual mantiene líneas. */
+#oaf-ux14-weekchart{min-height:265px!important;overflow-x:auto!important;padding:9px 8px!important}
+#oaf-ux14-weekchart svg{display:block;width:100%;height:auto;min-width:400px;max-height:340px}
+#oaf-ux14-weekchart svg rect[role="img"]{transition:opacity .16s,stroke-width .16s;outline-offset:2px;cursor:help}
+#oaf-ux14-weekchart svg rect[role="img"]:hover,
+#oaf-ux14-weekchart svg rect[role="img"]:focus{opacity:.83;stroke:#173a32;stroke-width:2;outline:2px solid #306f57}
+#oaf-ux14-weekchart svg rect[height="0"]{stroke:none!important;outline:none}
+#oaf-ux43-week-summary{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:8px;margin:9px 0 12px;padding:0;align-items:stretch
+}
+#oaf-ux43-week-summary .oaf-ux43-stat{
+ border:1px solid #d7e6df;background:#f8fcfa;border-radius:9px;
+ padding:9px 11px;min-width:0;display:flex;flex-direction:column;gap:5px
+}
+#oaf-ux43-week-summary .oaf-ux43-stat small{font-size:11px;line-height:1.3;color:#526e61}
+#oaf-ux43-week-summary .oaf-ux43-stat strong{font-size:clamp(13px,1.7vw,18px);line-height:1.3;color:#175b49}
+#oaf-ux43-week-summary .oaf-ux43-stamp{grid-column:1/-1;font-size:11px;margin:1px 0;color:#5a6e63}
+#oaf-ux43-model-audit{margin:8px 0;padding:7px 11px;background:#f7faf8;border:1px solid #d5e3d9;border-radius:9px}
+#oaf-ux43-model-audit summary{font-size:12px;font-weight:750;color:#275d4b;cursor:pointer}
+#oaf-ux43-model-audit p{font-size:11px;line-height:1.5;color:#455f52}
+#oaf-ux43-model-audit table{width:100%;max-width:100%;display:block;overflow-x:auto;border-collapse:collapse;font-size:11px}
+#oaf-ux43-model-audit th,#oaf-ux43-model-audit td{text-align:left;padding:6px 9px;border-bottom:1px solid #dde9df}
+#oaf-ux43-model-audit th{background:#e8f1eb}
+@media(max-width:650px){
+ #oaf-ux43-week-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #oaf-ux43-week-summary .oaf-ux43-stat:last-of-type{grid-column:1/-1}
+ #oaf-ux14-weekchart{min-height:215px!important;padding:4px!important}
+}
+@media(max-width:430px){
+ #oaf-ux14-weekchart svg{min-width:340px}
+ #oaf-ux43-week-summary .oaf-ux43-stat{padding:8px 9px}
+}
