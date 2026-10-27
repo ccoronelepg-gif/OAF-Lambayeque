@@ -1,6 +1,6 @@
 {
   "fase": "8G",
-  "evaluado_con_corte_utc": "2026-10-19T17:50:23+00:00",
+  "evaluado_con_corte_utc": "2026-10-26T17:56:39+00:00",
   "clasificacion": "evaluador retrospectivo de emisiones archivadas, NO sistema operativo validado",
   "fuente_verificacion": "ERA5-Land via Open-Meteo; reanálisis no instrumental",
   "periodo_climatologia_entrenamiento": "1996–2022",
@@ -1469,6 +1469,6 @@
       }
     ],
     "sha256_csv_verificacion_8e": "0fd4d94ca526d6b79ba3a99e92550b83c86043de96e821c220fec2cb37fe9f45",
-    "sha256_reporte_verificacion_8e": "0f3c5e8366627d2b36921df3e26504a31a941ef02a8bcf7eb4a58ead8f22a684"
+    "sha256_reporte_verificacion_8e": "ae30d4df0e877aa0e815febdce87b8a3e08ec5aeb6cd1fc5b8d32b6ae994aa63"
   }
 }
