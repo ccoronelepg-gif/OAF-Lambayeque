@@ -15,6 +15,8 @@ on:
       - "sw.js"
       - "tests/test_ux39_parcelas.cjs"
       - "tests/test_ux41_semana.cjs"
+      - "tests/test_ux43_weekbars.cjs"
+      - "modelos/pronostico_rf_experimental_ux15.py"
       - "datos/estado_enso_verificado_ux9_2026.json"
       - "tests/test_ux39_browser.cjs"
       - "tests/auditoria_ux39_servicios.cjs"
@@ -37,6 +39,7 @@ jobs:
         run: |
           node tests/test_ux39_parcelas.cjs
           node tests/test_ux41_semana.cjs
+          node tests/test_ux43_weekbars.cjs
       - name: Auditar disponibilidad de geoservicios y ERA5-Land
         run: node tests/auditoria_ux39_servicios.cjs
       - name: Conservar evidencia fechada de cada auditoria
