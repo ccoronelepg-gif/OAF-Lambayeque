@@ -14,12 +14,18 @@ function plot(root,axis,series,unit){
  const all=series.flatMap(s=>s.values.filter(Number.isFinite));
  if(!all.length){root.textContent="No hay datos numéricos comprobados para este periodo.";return}
  const W=790,H=300,L=57,R=22,T=22,B=56;
- const low=unit.startsWith("mm")?0:Math.min(...all)-1.5;
- const top=Math.max(...all,low+.8)+(Math.max(...all)-low)*.12;
+ const rain=unit.startsWith("mm"),rawLow=rain?0:Math.min(...all)-.5;
+ const rawHigh=Math.max(...all,rain?.05:Math.min(...all)+.5);
+ const stepRaw=Math.max(.01,(rawHigh-rawLow)/4),mag=10**Math.floor(Math.log10(stepRaw)),part=stepRaw/mag;
+ const tickStep=(part<=1?1:part<=2?2:part<=2.5?2.5:part<=5?5:10)*mag;
+ const low=rain?0:Math.floor(rawLow/tickStep)*tickStep;
+ const top=Math.max(low+4*tickStep,Math.ceil(rawHigh/tickStep)*tickStep);
+ const tickCount=Math.round((top-low)/tickStep);
+ const tickText=v=>Number(v.toFixed(tickStep<.01?3:tickStep<1?2:tickStep<2?1:0)).toLocaleString("es-PE",{maximumFractionDigits:tickStep<.01?3:tickStep<1?2:tickStep<2?1:0});
  const x=i=>L+(i+.5)*(W-L-R)/axis.length,y=v=>T+(top-v)/(top-low)*(H-T-B);
  const tag=(name,attrs,txt)=>{const a=document.createElementNS(NS,name);for(const [k,v] of Object.entries(attrs||{}))a.setAttribute(k,String(v));if(txt!==undefined)a.textContent=txt;return a};
  const svg=tag("svg",{viewBox:"0 0 790 300",role:"img","aria-label":unit+" · "+series.map(s=>s.name).join(" frente a ")});
- for(let k=0;k<=4;k++){const v=low+(top-low)*k/4,Y=y(v);svg.append(tag("line",{x1:L,x2:W-R,y1:Y,y2:Y,stroke:"#dae7df","stroke-width":1}),tag("text",{x:L-8,y:Y+4,"text-anchor":"end",fill:"#536d62","font-size":12},fmt(v,0)))}
+ for(let k=0;k<=tickCount;k++){const v=low+tickStep*k,Y=y(v);svg.append(tag("line",{x1:L,x2:W-R,y1:Y,y2:Y,stroke:"#dae7df","stroke-width":1}),tag("text",{x:L-8,y:Y+4,"text-anchor":"end",fill:"#536d62","font-size":12},tickText(v)))}
  for(const s of series){
   let segment=[];const segments=[];
   s.values.forEach((v,i)=>{if(Number.isFinite(v))segment.push([x(i),y(v)]);else if(segment.length){segments.push(segment);segment=[]}});
@@ -37,8 +43,10 @@ function legend(root,entries){root.replaceChildren();for(const [color,name] of e
  * Se representa sólo si al menos 20 de 30 años aportan valores por variable y fecha.
  */
 function era5Reference(city){
- if(era5WeekCache.has(city))return era5WeekCache.get(city);
- const loc=geo[city];if(!loc)return Promise.reject(Error("Localidad no contemplada por ERA5"));
+ const custom=city&&typeof city==="object",loc=custom?[city.lat,city.lon]:geo[city];
+ const cacheKey=custom?city.lat.toFixed(5)+","+city.lon.toFixed(5):city;
+ if(!loc)return Promise.reject(Error("Localidad no contemplada por ERA5"));
+ if(era5WeekCache.has(cacheKey))return era5WeekCache.get(cacheKey);
  const args=new URLSearchParams({latitude:String(loc[0]),longitude:String(loc[1]),
   start_date:"1996-01-01",end_date:"2025-12-31",
   daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
@@ -60,20 +68,22 @@ function era5Reference(city){
    return {rain:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.rain)])),
     tmax:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.tmax)])),
     years:"1996–2025",cell:[j.latitude,j.longitude]};
-  }).catch(e=>{era5WeekCache.delete(city);throw e}).finally(()=>clearTimeout(timeout));
- era5WeekCache.set(city,task);
+  }).catch(e=>{era5WeekCache.delete(cacheKey);throw e}).finally(()=>clearTimeout(timeout));
+ era5WeekCache.set(cacheKey,task);
  return task;
 }
 function week(){
- const version=++weekVersion,city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
+ const version=++weekVersion,point=window.OAFTerritory?.getActivePoint?.("semanal");
+ const city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
+ const identity=point?point.lat.toFixed(5)+","+point.lon.toFixed(5):city;
  const output=$("oaf-ux14-weekchart"),status=$("oaf-ux14-weekstatus"),key=$("oaf-ux14-rf-semana")?.querySelector(".oaf-ux14-key");
  if(!output||!status)return;
- if(!external||external.localidad!==city){status.textContent="Consultando la referencia meteorológica para "+city+"…";return}
+ if(!external||(point?external.pointKey!==identity:external.localidad!==city)){status.textContent="Consultando pronóstico para "+(point?point.name:city)+"…";return}
  const data=external.dias,days=data.time||[];
  if(days.length!==7)return;
  const rainfall=variable==="rain",field=rainfall?"precipitacion_mm":"temperatura_max_c";
  const ext=rainfall?data.precipitation_sum:data.temperature_2m_max;
- let rows=rf?.pronostico_diario_rf_experimental?.[city]||[];
+ let rows=point?[]:rf?.pronostico_diario_rf_experimental?.[city]||[];
  if(rf?.estado!=="candidato_experimental_generado"||!Array.isArray(rows))rows=[];
  const map=new Map(rows.map(r=>[r.fecha,r[field]]));
  // Never shift the RF in time to make curves overlap. Missing days remain gaps.
@@ -83,17 +93,17 @@ function week(){
  if(matched)group.push({name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"});
  plot(output,days.map(d=>d.slice(5)),group,rainfall?"mm/día":"°C");
  if(key)legend(key,[["#278eb8","Open-Meteo · referencia externa"],["#aa65b4","Random Forest OAF · experimental (trazo discontinuo)"]]);
- let message="Comparación de "+city+" del "+days[0]+" al "+days.at(-1)+". ";
+ let message="Comparación de "+(point?point.name+" ("+identity+" WGS84)":city)+" del "+days[0]+" al "+days.at(-1)+". ";
  if(matched){
   const diffs=forest.map((v,i)=>Number.isFinite(v)&&Number.isFinite(ext[i])?Math.abs(v-ext[i]):NaN).filter(Number.isFinite);
   const mean=diffs.reduce((a,b)=>a+b,0)/diffs.length;
   message+="Coincidencia: "+matched+"/7 fechas; diferencia absoluta media entre pronósticos: "+fmt(mean)+(rainfall?" mm/día.":" °C.");
   message+=" Es una diferencia entre modelos, NO error comprobado contra lluvia o temperatura observadas.";
- } else message+="No hay una emisión RF con fechas coincidentes; no se desplaza artificialmente la línea.";
+ } else message+=point?"No hay RF calibrado para esta parcela; se consulta la coordenada indicada. ":"No hay una emisión RF con fechas coincidentes; no se desplaza artificialmente la línea.";
  if(rf?.fecha_generacion_utc)message+=" RF emitido: "+rf.fecha_generacion_utc.slice(0,16)+" UTC.";
  message+=" Referencia vigente: Open-Meteo. RF es una emisión archivada, no ajustada a fechas nuevas.";
  status.textContent=message+" Consultando promedio ERA5 1996–2025…";
- era5Reference(city).then(history=>{
+ era5Reference(point||city).then(history=>{
   if(version!==weekVersion||!output.isConnected)return;
   const averages=days.map(date=>history[variable==="rain"?"rain":"tmax"][date.slice(5)]??NaN);
   const valid=averages.filter(Number.isFinite).length;
@@ -200,6 +210,29 @@ function setup(){
  climatology();
  month();
 }
+let customRequest=0;
+async function weeklyPoint(point){
+ const token=++customRequest;
+ if(!point){external=null;const city=$("oaf-ux14-ciudad");city?.dispatchEvent(new Event("change",{bubbles:true}));return;}
+ const key=point.lat.toFixed(5)+","+point.lon.toFixed(5);
+ const params=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),
+  timezone:"America/Lima",forecast_days:"7",daily:"precipitation_sum,temperature_2m_max"});
+ const status=$("oaf-ux14-weekstatus");if(status)status.textContent="Consultando pronóstico para "+point.name+"…";
+ try{
+  const res=await fetch("https://api.open-meteo.com/v1/forecast?"+params,{cache:"no-store"});
+  if(!res.ok)throw Error("Open-Meteo HTTP "+res.status);
+  const d=(await res.json()).daily;
+  if(!Array.isArray(d?.time)||d.time.length!==7||!d.precipitation_sum?.every(Number.isFinite)||!d.temperature_2m_max?.every(Number.isFinite))throw Error("Respuesta diaria incompleta");
+  if(token!==customRequest||!window.OAFTerritory?.getActivePoint?.("semanal"))return;
+  external={localidad:"Punto personalizado",pointKey:key,dias:d};week();
+ }catch(err){if(token===customRequest&&status){$("oaf-ux14-weekchart").textContent="No se recuperaron datos para esta coordenada.";status.textContent="Consulta no disponible: "+err.message;}}
+}
+document.addEventListener("oaf:area-update",e=>{
+ if(e.detail?.scope!=="semanal")return;
+ if(e.detail.active&&e.detail.point)weeklyPoint(e.detail.point);
+ else {++customRequest;external=null;week();}
+});
+document.addEventListener("DOMContentLoaded",()=>{const p=window.OAFTerritory?.getActivePoint?.("semanal");if(p)weeklyPoint(p);});
 document.addEventListener("oaf:ux16-externo-diario",event=>{external=event.detail;week()});
 document.addEventListener("oaf:ux9-ready",()=>queueMicrotask(setup));
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setup,{once:true});else setup();
