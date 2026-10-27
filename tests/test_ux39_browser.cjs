@@ -24,15 +24,29 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    const column=root.querySelector(".oaf-ux29-mapcolumn"),children=[...column.children].map(x=>x.id||x.className);
    const area=column.querySelector("#oaf-area-"+k),map=column.querySelector(".oaf-ux29-mapcontent"),parcel=column.querySelector("#oaf-parcel-"+k);
    const diag=column.querySelector("#oaf-area-point-details-"+k);
-   return {k,afterArea:!!(area.compareDocumentPosition(map)&Node.DOCUMENT_POSITION_FOLLOWING),
+   const hydro=k==="escenarios"?column.querySelector("#oaf-ux36-panel"):null;
+   const forecastMap=k==="escenarios"?column.querySelector(".oaf-ux29-scenemap"):null;
+   return {k,hydroOrder:k==="territorio"||Boolean(hydro&&forecastMap&&
+      (forecastMap.compareDocumentPosition(parcel)&Node.DOCUMENT_POSITION_FOLLOWING)&&
+      (diag.compareDocumentPosition(hydro)&Node.DOCUMENT_POSITION_FOLLOWING)&&
+      (parcel.compareDocumentPosition(hydro)&Node.DOCUMENT_POSITION_FOLLOWING)&&
+      hydro.parentElement===map),
+    afterArea:!!(area.compareDocumentPosition(map)&Node.DOCUMENT_POSITION_FOLLOWING),
     afterMap:!!(map.compareDocumentPosition(parcel)&Node.DOCUMENT_POSITION_FOLLOWING),
     afterParcel:!!(parcel.compareDocumentPosition(diag)&Node.DOCUMENT_POSITION_FOLLOWING),
     parcelFold:parcel.querySelector(".oaf-parcel-fold")?.open===false,
     auditUnderMap:!!diag.querySelector(".oaf-area-data"),hasExpand:!!column.querySelector(".oaf-map-expand"),
     children};
   }));
-  assert(order.every(x=>x.afterArea&&x.afterMap&&x.afterParcel&&x.parcelFold&&x.auditUnderMap&&x.hasExpand),
+  assert(order.every(x=>x.afterArea&&x.afterMap&&x.afterParcel&&x.hydroOrder&&x.parcelFold&&x.auditUnderMap&&x.hasExpand),
    "Jerarquía visual incorrecta: "+JSON.stringify(order));
+  const weekly=await page.evaluate(()=>{
+    const week=document.getElementById("oaf-ux14-rf-semana"),monthly=document.getElementById("oaf-ux14-rf-mes");
+    return {weekly:!!week,monthly:!!monthly,first:!!(week&&monthly&&(week.compareDocumentPosition(monthly)&Node.DOCUMENT_POSITION_FOLLOWING)),
+      visible:week?getComputedStyle(week).display!=="none":false,controls:!!document.getElementById("oaf-ux14-ciudad")};
+  });
+  assert(weekly.weekly&&weekly.monthly&&weekly.first&&weekly.visible&&weekly.controls,
+    "Gráfico semanal RF/Open-Meteo/ERA5 no figura antes del horizonte mensual: "+JSON.stringify(weekly));
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";f.requestSubmit();
