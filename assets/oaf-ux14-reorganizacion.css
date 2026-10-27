@@ -67,10 +67,6 @@
 .oaf-ux14-probtrack i{display:block;height:100%;border-radius:8px}
 #oaf-ux14-home-prob strong{display:block;font-size:11px;color:#6a5130}
 #oaf-ux14-home-prob small{display:block;line-height:1.4;font-size:10px}
-.oaf-ux14-counter{border:1px solid #d3e4d8;background:#f1faf4;border-radius:12px;display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;margin:14px auto 0;padding:11px 18px;max-width:1160px}
-.oaf-ux14-counter strong{font-size:12px;color:#246354}
-.oaf-ux14-counter .counterapi{font-weight:800;min-height:30px;font-size:16px;color:#175b48}
-.oaf-ux14-counter small{font-size:11px;color:#607b6d}
 
 /* UX15: Imagen a izquierda y una sola tarjeta ENFEN a derecha, sin huecos blancos */
 #inicio .oaf-ux14-home-hero{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(320px,1fr)!important;gap:12px!important;align-items:stretch!important}
@@ -98,10 +94,6 @@
 .oaf-ux15-future-month span{font-size:11px;color:#677d73}
 .oaf-ux15-future-month a{font-size:11px;color:#25725c;font-weight:800}
 .oaf-ux15-future-badge{display:inline-block;padding:4px 8px;background:#fff3e2;color:#885c21;border:1px solid #edd9ba;border-radius:9px;font-size:10px}
-.oaf-ux15-counter-wrap{display:flex;flex-wrap:wrap;gap:10px 19px;align-items:center;width:100%;justify-content:center}
-.oaf-ux15-counter-figure{font-size:22px;font-variant-numeric:tabular-nums;font-weight:900;color:#155d48;letter-spacing:.3px}
-.oaf-ux15-counter-figure[data-unavailable]{font-size:12px;color:#7b6d51;font-weight:600}
-.oaf-ux15-counter-wrap a{font-size:11px;color:#246c59}
 @media(max-width:950px){
  #inicio .oaf-ux14-home-hero{grid-template-columns:1fr!important}
  #inicio .oaf-ux14-home-hero>.oaf-hero-2026{aspect-ratio:16/9;height:auto!important}
@@ -121,7 +113,6 @@
 #oaf-ux14-rf-mes .oaf-ux15-rf-out .oaf-ux15-future-month{min-width:0}
 .oaf-ux15-future-month .oaf-ux15-future-badge{font-size:10px;align-self:start}
 .oaf-ux15-rf-out .oaf-ux14-chart svg{display:block;width:100%;height:auto;max-height:330px}
-#oaf-ux15-counter{display:flex;align-items:center;justify-content:center;gap:8px 18px;flex-wrap:wrap;flex:1}
 @media(max-width:560px){.oaf-ux15-rf-out{padding:12px}.oaf-ux15-rf-out h3{font-size:17px}}
 
 /* UX16: solo dos graficas, vistas historica y futura, tarjetas mensuales por localidad */
