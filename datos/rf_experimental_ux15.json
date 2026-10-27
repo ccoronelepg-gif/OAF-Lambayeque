@@ -2,7 +2,7 @@
   "tipo": "RandomForestRegressor original reproducible de investigación, NO modelo operativo",
   "unidades_temperatura": "Diario Tmax; mensual temperatura media (no promedio de Tmax)",
   "estrategia_mejora": "Características de localidad explicitas; climatologia mensual local y prueba temporal para lluvia y temperatura.",
-  "fecha_generacion_utc": "2026-10-27T13:05:52+00:00",
+  "fecha_generacion_utc": "2026-10-27T20:14:04+00:00",
   "fecha_local": "2026-10-27",
   "fuente_historica": "ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
   "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
