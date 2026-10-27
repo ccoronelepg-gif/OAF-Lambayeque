@@ -1,0 +1,25 @@
+/* UX39 · Módulo de delimitación en visores multicapa OAF */
+.oaf-parcel-panel{margin:10px 12px 15px;padding:14px 15px;border:1px solid #bad3c7;background:#f7fbf9;border-radius:12px;color:#194c41;box-sizing:border-box;min-width:0}
+.oaf-parcel-panel details>summary{cursor:pointer;font-size:14px;font-weight:750;color:#175c47}
+.oaf-parcel-panel details>p{line-height:1.6;font-size:12px;color:#47665c}
+.oaf-parcel-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}
+.oaf-parcel-actions button{border:1px solid #9dbdaf;border-radius:8px;background:#fff;padding:9px 10px;color:#205f4e;font-size:12px;font-weight:750;cursor:pointer;max-width:100%;min-height:36px}
+.oaf-parcel-actions button:hover{background:#e8f4ed}
+.oaf-parcel-actions button:focus-visible{outline:3px solid #e6a350;outline-offset:2px}
+.oaf-parcel-actions button[disabled]{opacity:.5;cursor:not-allowed}
+.oaf-parcel-upload{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 0;font-size:12px;font-weight:750}
+.oaf-parcel-upload input{max-width:100%;font-size:12px}
+.oaf-parcel-results{margin:13px 0 0;padding:0;font-size:12px;max-width:100%;overflow-wrap:anywhere;line-height:1.6}
+.oaf-parcel-results:empty{display:none}
+.oaf-parcel-results:not(:empty){padding:12px;border:1px solid #d1e2d8;border-radius:9px;background:#fff}
+.oaf-parcel-results h4{margin:3px 0 8px;color:#185a4c;font-size:14px}
+.oaf-parcel-results p{margin:8px 0}
+.oaf-parcel-results table{display:block;overflow-x:auto;border-collapse:collapse;width:100%;white-space:normal;font-size:11px}
+.oaf-parcel-results tr{border-bottom:1px solid #dbe7df}
+.oaf-parcel-results th,.oaf-parcel-results td{padding:8px;text-align:left;min-width:90px;vertical-align:top}
+.oaf-parcel-results th{font-weight:800;background:#eaf5ee}
+.oaf-parcel-info{font-size:12px;line-height:1.55;color:#285a48;font-weight:650}
+.oaf-parcel-caveat{font-size:11px!important;line-height:1.6;color:#586c61!important}
+#oaf-ux29-territory .oaf-parcel-panel,#oaf-ux29-scenario .oaf-parcel-panel{width:calc(100% - 24px)}
+#oaf-ux29-territory .oaf-ux29-mapcolumn,#oaf-ux29-scenario .oaf-ux29-mapcolumn{min-width:0}
+@media(max-width:700px){.oaf-parcel-panel{padding:11px 10px;margin:8px 6px 12px}#oaf-ux29-territory .oaf-parcel-panel,#oaf-ux29-scenario .oaf-parcel-panel{width:calc(100% - 12px)}.oaf-parcel-actions button{flex:1 1 auto}}
