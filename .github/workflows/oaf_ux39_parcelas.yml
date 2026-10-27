@@ -4,6 +4,7 @@ on:
     paths:
       - "assets/oaf-parcelas-ux39.js"
       - "assets/oaf-parcelas-ux39.css"
+      - "assets/oaf-visores-ux40.css"
       - "assets/oaf-territorio-compartido.js"
       - "assets/oaf-area-ux38.js"
       - "index.html"
