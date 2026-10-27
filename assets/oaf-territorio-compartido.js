@@ -7,8 +7,8 @@ const dataFor=k=>els[k]?.querySelector(".oaf-area-data")||$("oaf-area-point-deta
 const cityNames=["Chiclayo","Jayanca","Motupe","Olmos"];
 const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
 const KEY="oaf-area-autonoma-20261027-";
-const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi zona productiva · territorio y riesgos",predicciones:"Mi área productora · análisis climático",escenarios:"Mi zona productiva · escenarios agroclimáticos",cultivos:"Mi zona productora · cultivos y sanidad"};
-const modes=["inicio","clima","territorio","predicciones","escenarios","cultivos"];
+const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi zona productiva · territorio y riesgos",predicciones:"Mi área productora · análisis climático",semanal:"Mi área productiva · análisis climático semanal",escenarios:"Mi zona productiva · escenarios agroclimáticos",cultivos:"Mi zona productora · cultivos y sanidad"};
+const modes=["inicio","clima","territorio","predicciones","semanal","escenarios","cultivos"];
 const states={},els={},revisions={},active={};
 function valid(lat,lon){
  if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)throw Error("Latitud o longitud inválida.");
@@ -70,10 +70,10 @@ function show(k){
  const out=wrap.querySelector(".oaf-area-output");
  if(!active[k]){out.hidden=true;return;}
  out.hidden=false;wrap.querySelector(".oaf-area-heading").textContent=p.name+" · "+p.lat.toFixed(5)+", "+p.lon.toFixed(5)+" · WGS84";
- const frame=wrap.querySelector(".oaf-area-preview");if(k!=="territorio"&&k!=="escenarios"){const url=mapURL(p);if(frame.getAttribute("src")!==url)frame.src=url;}
+ const frame=wrap.querySelector(".oaf-area-preview");if(k!=="territorio"&&k!=="escenarios"&&k!=="semanal"){const url=mapURL(p);if(frame.getAttribute("src")!==url)frame.src=url;}
  const data=dataFor(k);
  data.textContent=(k==="inicio")?"Ubicación de referencia para los indicadores actuales, sin pronóstico semanal duplicado.":
- (k==="clima"||k==="predicciones"||k==="cultivos")?"Los resultados de esta coordenada se presentan en el visor de análisis de esta pestaña.":
+ (k==="clima"||k==="predicciones"||k==="semanal"||k==="cultivos")?"Los resultados de esta coordenada se presentan en el visor de análisis de esta pestaña.":
  "Consultando las capas geográficas para el punto…";
  markers();
  if((k==="territorio"||k==="escenarios")&&!wrap.querySelector(".oaf-area-focus")){const button=document.createElement("button");button.type="button";button.className="btn oaf-area-focus";button.textContent="Enfocar mi punto en el visor";button.addEventListener("click",()=>focusMap(k));wrap.querySelector(".oaf-area-heading").after(button);}
@@ -198,6 +198,7 @@ function init(){
   clima:()=>$("oaf-history")?.querySelector(".oaf-filterline"),
   territorio:()=>$("oaf-ux29-territory")?.querySelector(".oaf-ux29-maphead")||$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
   predicciones:()=>$("oaf-ux16-future-controls")||$("oaf-ux14-rf-mes"),
+  semanal:()=>$("oaf-ux14-rf-semana")?.querySelector(".oaf-ux14-controls"),
   escenarios:()=>$("oaf-ux29-scenario")?.querySelector(".oaf-ux29-maphead")||$("oaf-ux29-scenario")||document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
   cultivos:()=>$("oaf-sm-localidad")?.closest(".oaf-ux11-controls")||$("oaf-sanidad-ux11")?.querySelector(".oaf-ux11-model")
  };
@@ -210,7 +211,9 @@ function init(){
  const site=$("oaf-home-location");
  const custom=site?.querySelector('option[value="Mi zona productora"]');custom?.remove();
  site?.addEventListener("change",()=>{active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));},true);
- const city=$("oaf-hist-place");
+ const weeklyCity=$("oaf-ux14-ciudad");
+  weeklyCity?.addEventListener("change",()=>{if(active.semanal){active.semanal=false;states.semanal=null;save("semanal");els.semanal?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"semanal",point:null,active:false}}));}},true);
+  const city=$("oaf-hist-place");
  city?.addEventListener("change",()=>{active.clima=false;els.clima?.querySelector(".oaf-area-output")?.setAttribute("hidden","");window.oafAreaUX38?.restoreHistoric?.();});
  ["oaf-hist-year","oaf-hist-variable"].forEach(id=>$(id)?.addEventListener("change",()=>{if(active.clima&&states.clima)window.oafAreaUX38?.update?.("clima",states.clima);}));
  $("oaf-sm-localidad")?.addEventListener("change",()=>{if(active.cultivos){active.cultivos=false;els.cultivos?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"cultivos",point:null,active:false}}));}},true);
@@ -232,6 +235,7 @@ function init(){
  '.oaf-area-heading{font-weight:800;color:#1d5c4c;margin:6px 0;font-size:12px}'+
  '.oaf-area-preview{width:100%;height:230px;border:1px solid #cbddd5;border-radius:11px}'+
  '.oaf-area-local [hidden]{display:none!important}'+
+  '#oaf-area-semanal{margin:6px 0 12px;padding:9px 12px}#oaf-area-semanal .oaf-area-preview,#oaf-area-semanal .oaf-area-data{display:none!important}'+
  '#oaf-area-clima .oaf-area-data,#oaf-area-cultivos .oaf-area-data,#oaf-area-predicciones .oaf-area-data{display:none!important}'+
  '.oaf-area-scientific{border:1px solid #c9ded4;border-radius:12px;background:#f6faf8;margin:14px 0;padding:15px}'+
  '.oaf-area-scientific h3{color:#1a5d49;font-size:17px}.oaf-area-interpretacion{font-style:italic;font-weight:750;color:#185441;line-height:1.65}.oaf-area-metodo{font-size:12px;color:#567068;line-height:1.7}'+
