@@ -37,7 +37,7 @@ const start=script.indexOf("/* UX43 · Barras agrupadas");
 const end=script.indexOf("function weeklyOverview(",start);
 assert(start>0&&end>start);
 const plot=vm.runInNewContext('(()=>{const fmt=(v,p=1)=>Number(v).toLocaleString("es-PE",{maximumFractionDigits:p,minimumFractionDigits:p});'+
- 'const document=this.document;'+script.slice(start,end)+'return weeklyBars})()',
+ 'const document=this.document; const window={};'+script.slice(start,end)+'return weeklyBars})()',
  {document}, {timeout:2500});
 const chart=new Node("div"),dates=["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"];
 plot(chart,dates,[
