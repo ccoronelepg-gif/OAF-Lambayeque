@@ -5,8 +5,9 @@ const root=path.resolve(__dirname,".."),read=x=>fs.readFileSync(path.join(root,x
 const index=read("index.html"),sw=read("sw.js"),css=read("assets/oaf-parcelas-ux39.css");
 const core=read("assets/oaf-territorio-compartido.js"),src=read("assets/oaf-parcelas-ux39.js"),hist=read("assets/oaf-area-ux38.js");
 for(const js of [src,core,sw,hist])new Function(js);
-assert(index.includes('oaf-parcelas-ux39.js?v=20261027-ux39'),"Script no activado en la web");
+assert(index.includes('oaf-parcelas-ux39.js?v=20261027-ux40'),"Script no activado en la web");
 assert(index.includes('oaf-parcelas-ux39.css?v=20261027-ux39'),"CSS no activado en la web");
+assert(index.includes('oaf-visores-ux40.css?v=20261027-ux40')&&sw.includes('"./assets/oaf-visores-ux40.css"'),"Diseño UX40 no incluido en web y PWA");
 assert(sw.includes('"./assets/oaf-parcelas-ux39.js"')&&sw.includes('"./assets/oaf-parcelas-ux39.css"'),"PWA no incluye módulo de parcelas");
 assert(core.includes('territorio:()=>$("oaf-ux29-territory")?.querySelector(".oaf-ux29-maphead")'),"Territorio no integrado dentro del visor");
 assert(core.includes('escenarios:()=>$("oaf-ux29-scenario")?.querySelector(".oaf-ux29-maphead")'),"Escenarios no integrados dentro del visor");
@@ -14,6 +15,11 @@ assert(core.includes('getActivePoint:k=>active[k]'),"Pérdida de independencia d
 assert(core.includes('setPoint:(k,point)=>'),"API pública para centrar parcelas no disponible");
 assert(src.includes("data-action=\"export\""),"No permite exportar GeoJSON");
 assert(css.includes("@media(max-width:700px)"),"Falta adaptación de pantalla táctil");
+const ux40=read("assets/oaf-visores-ux40.css");
+assert(ux40.includes("oaf-map-expanded")&&ux40.includes("@media(max-width:790px)"),"No se ajustaron visores a escritorio y móvil");
+assert(src.includes("content.after(wrapper)")&&src.includes("wrapper.after(pointDetails)"),"El mapa debe preceder a parcela y diagnóstico");
+assert(src.includes("oaf-parcel-fold")&&!src.includes('<details open><summary><strong>Delimitación'),"La delimitación debe iniciar plegada");
+assert(core.includes("dataFor(k)")&&core.includes("oaf-area-point-details-"),"Los resultados de punto deben conservarse debajo del mapa");
 const w={OAFTerritory:{validatePoint:(lat,lon)=>{
  if(!Number.isFinite(lat)||!Number.isFinite(lon)||lat< -7.3||lat> -5.1||lon< -80.8||lon> -79)throw Error("fuera de Lambayeque");
 }}};
