@@ -70,7 +70,16 @@ jobs:
             echo "Sin cambios en informe RF."
           else
             git commit -m "data(oaf): nuevo candidato RF experimental con estado y validacion"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main || { echo "Conflicto de rebase: revisión necesaria"; exit 1; }
+              if git push origin HEAD:main; then
+                echo "Modelo candidato publicado: intento $attempt"
+                exit 0
+              fi
+              echo "Main avanzó durante publicación RF, reintento $attempt/5"
+              sleep $((attempt * 2))
+            done
+            echo "Publicación pendiente: main siguió cambiando."
+            exit 1
           fi
