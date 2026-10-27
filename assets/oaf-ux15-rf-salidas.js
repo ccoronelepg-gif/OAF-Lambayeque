@@ -84,6 +84,7 @@ function weeklyBars(root,dates,series,unit){
  if(!rain)svg.append(tag("text",{x:W-R,y:H-8,"text-anchor":"end",fill:"#7b6950","font-size":"10"},"Eje vertical truncado; comparar alturas, no proporciones absolutas."));
  root.replaceChildren(svg);
 }
+window.OAFWeeklyBars=weeklyBars;
 function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  const chart=$("oaf-ux14-weekchart");if(!chart)return;
  let host=$("oaf-ux43-week-summary");
