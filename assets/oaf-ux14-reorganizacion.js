@@ -22,7 +22,7 @@ function moveStructure(){
  const own=$("oaf-clima-bloque-modelo");
  if(own){
    own.querySelector(".oaf-agro-block-head h2").textContent="Análisis predictivo propio: Random Forest y paisajes agroclimáticos";
-   own.querySelector(".oaf-agro-block-head p").textContent="El análisis cartográfico organiza sectores según relieve y condiciones agroclimáticas; permite comparar la lluvia histórica con las estimaciones mensuales Random Forest y una climatología de referencia. Los paisajes son agrupaciones exploratorias y no delimitaciones oficiales de riesgo agrícola.";
+   own.querySelector(".oaf-agro-block-head p").textContent="Compara paisajes agroclimáticos, precipitación histórica y estimaciones RF experimentales; no constituye delimitación oficial de riesgo.";
    const tiles=own.querySelectorAll(":scope > .oaf-agro-split > .oaf-agro-tile");
    if(tiles[1]){
       const archive=$("oaf-agro-archive-autor")?.querySelector("div")||$("oaf-meta-legacy");
@@ -45,7 +45,7 @@ function moveStructure(){
  if(oldHead){const tech=$("oaf-agro-archive-autor")?.querySelector("div");if(tech)tech.append(oldHead)}
  const nav=$("oaf-menu-autor");if(nav){const tech=$("oaf-agro-archive-autor")?.querySelector("div");if(tech)tech.append(nav)}
  const intro=E("div","oaf-ux14-intro");
- intro.innerHTML='<span>INTELIGENCIA ARTIFICIAL APLICADA AL CLIMA · LAMBAYEQUE</span><h1>Predicciones y Anomalías</h1><p>Esta sección analiza la variabilidad de la lluvia y la temperatura en Lambayeque mediante <strong>Python, Random Forest y análisis geoespacial</strong>. Reúne la comparación semanal de algoritmos, una evaluación mensual por paisaje y mapas de relieve para estudiar diferencias territoriales. Los errores retrospectivos ayudan a identificar dónde se requiere mejorar la predicción, pero no sustituyen su validación con observaciones nuevas. <strong>Modelo propio en investigación, entrenamiento y mejora continua.</strong></p>';
+ intro.innerHTML='<span>INTELIGENCIA ARTIFICIAL APLICADA AL CLIMA · LAMBAYEQUE</span><h1>Predicciones y Anomalías</h1><p>Compara predicciones diarias Open-Meteo y RF OAF, referencias ERA5 y escenarios mensuales por paisaje. <strong>Los modelos propios son experimentales y requieren validación externa.</strong></p>';
  autor.prepend(intro);
  const status=E("div","oaf-ux14-alert");
  status.append(E("strong",null,"Estado científico: modelo Random Forest en investigación y mejora continua"));
@@ -92,10 +92,10 @@ function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
  const parent=hero.parentElement,layout=E("div","oaf-ux14-home-hero");hero.before(layout);layout.append(hero);
  const side=E("aside","oaf-ux14-home-side");
- side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Las probabilidades por intensidad se presentan únicamente cuando procede de un boletín oficial y están fechadas.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Las categorías representan temperaturas oceánicas de la región Niño 1+2; no indican la probabilidad de lluvias intensas en Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN · boletín y figura oficial ↗</a></div></article>';
+ side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Probabilidad oficial del calentamiento oceánico, octubre de 2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN · boletín y figura oficial ↗</a></div></article>';
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
-   $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+". Condición costera; no indica lluvia diaria por sí sola.";
+   $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+".";
    const prob=$("oaf-ux14-home-prob");
    fetch("datos/enfen_probabilidades_portada_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No hay cuadro");return r.json()}).then(p=>{
      if(p.comunicado!==d.enfen.numero||p.fecha_publicacion!==d.enfen.fecha_emision)throw Error("Ediciones distintas");
@@ -109,8 +109,8 @@ function renderHome(){
        const bar=E("div","oaf-ux14-probtrack"),inner=E("i");inner.style.width=value+"%";inner.style.background=color;bar.append(inner);item.append(bar);bars.append(item);}
      prob.append(bars);
     const info=$("oaf-ux15-enfen-exp");
-    if(info)info.textContent="Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026, no la probabilidad de lluvia, inundación o afectación agrícola. El boletín fue emitido el 16/10/2026; consulta si existe uno posterior.";
-    const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation)citation.href=p.fuente;
+    if(info)info.textContent="Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026.";
+    const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation){citation.href=p.fuente;citation.textContent="ENFEN · Comunicado "+p.comunicado+", "+p.figura+" ↗";}
    }).catch(()=>{prob.replaceChildren(E("span",null,"Probabilidades no verificables para este comunicado; revisa el gráfico oficial."),L("ENFEN ↗",d.enfen?.fuente||"https://enfen.imarpe.gob.pe/comunicados/"))});
  }).catch(()=>$("oaf-ux14-home-enso").textContent="No se pudo verificar una actualización del organismo oficial. Consulta ENFEN.");
 
