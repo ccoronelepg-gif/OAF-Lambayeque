@@ -208,11 +208,11 @@ function init(){
  }
  const site=$("oaf-home-location");
  const custom=site?.querySelector('option[value="Mi zona productora"]');custom?.remove();
- site?.addEventListener("change",()=>{active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));});
+ site?.addEventListener("change",()=>{active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));},true);
  const city=$("oaf-hist-place");
  city?.addEventListener("change",()=>{active.clima=false;els.clima?.querySelector(".oaf-area-output")?.setAttribute("hidden","");window.oafAreaUX38?.restoreHistoric?.();});
  ["oaf-hist-year","oaf-hist-variable"].forEach(id=>$(id)?.addEventListener("change",()=>{if(active.clima&&states.clima)window.oafAreaUX38?.update?.("clima",states.clima);}));
- $("oaf-sm-localidad")?.addEventListener("change",()=>{if(active.cultivos){active.cultivos=false;els.cultivos?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"cultivos",point:null,active:false}}));}});
+ $("oaf-sm-localidad")?.addEventListener("change",()=>{if(active.cultivos){active.cultivos=false;els.cultivos?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"cultivos",point:null,active:false}}));}},true);
  observeMaps();markers();
  const weeklyTable=$("wx-days")?.closest(".scroller");if(weeklyTable)weeklyTable.hidden=true;
  const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
@@ -228,6 +228,9 @@ function init(){
  '.oaf-area-heading{font-weight:800;color:#1d5c4c;margin:12px 0}'+
  '.oaf-area-preview{width:100%;height:230px;border:1px solid #cbddd5;border-radius:11px}'+
  '.oaf-area-local [hidden]{display:none!important}'+
+ '#oaf-area-clima .oaf-area-data,#oaf-area-cultivos .oaf-area-data,#oaf-area-predicciones .oaf-area-data{display:none!important}'+
+ '.oaf-area-scientific{border:1px solid #c9ded4;border-radius:12px;background:#f6faf8;margin:14px 0;padding:15px}'+
+ '.oaf-area-scientific h3{color:#1a5d49;font-size:17px}.oaf-area-interpretacion{font-style:italic;font-weight:750;color:#185441;line-height:1.65}.oaf-area-metodo{font-size:12px;color:#567068;line-height:1.7}'+
  '#oaf-area-territorio .oaf-area-preview,#oaf-area-escenarios .oaf-area-preview{display:none!important}'+
  '.oaf-area-data{font-size:13px;line-height:1.65}.oaf-area-data li{margin:8px 0}'+
  '.oaf-area-scroll{overflow:auto}.oaf-area-scroll table{width:100%;min-width:440px;border-collapse:collapse}.oaf-area-scroll th,.oaf-area-scroll td{padding:8px;border-bottom:1px solid #d4e4dc;text-align:left}'+
