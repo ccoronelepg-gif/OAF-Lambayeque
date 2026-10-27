@@ -75,7 +75,7 @@ class Evaluacion9I(unittest.TestCase):
         self.assertIn("FASE_9I_CONTRASTE_MULTIANUAL.md",c)
         self.assertIn("modelos/visor_contraste_9i.js",html)
         self.assertIn("assets/oaf-contraste-9i.css",html)
-        self.assertEqual(html.count('<section data-page='),5)
+        self.assertEqual(html.count('<section data-page='),6)
 
     def test_salida_reproducible_si_publicada(self):
         if mod.FILE.exists():
