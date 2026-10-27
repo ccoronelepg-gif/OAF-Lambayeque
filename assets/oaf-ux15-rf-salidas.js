@@ -232,7 +232,7 @@ document.addEventListener("oaf:area-update",e=>{
  if(e.detail.active&&e.detail.point)weeklyPoint(e.detail.point);
  else {++customRequest;external=null;week();}
 });
-document.addEventListener("DOMContentLoaded",()=>{const p=window.OAFTerritory?.getActivePoint?.("semanal");if(p)weeklyPoint(p);});
+document.addEventListener("DOMContentLoaded",()=>setTimeout(()=>{const p=window.OAFTerritory?.getActivePoint?.("semanal");if(p)weeklyPoint(p);},300));
 document.addEventListener("oaf:ux16-externo-diario",event=>{external=event.detail;week()});
 document.addEventListener("oaf:ux9-ready",()=>queueMicrotask(setup));
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setup,{once:true});else setup();
