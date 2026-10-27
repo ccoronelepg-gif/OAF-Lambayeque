@@ -26,7 +26,7 @@ for(const id of ["oaf-home-location","oaf-home-refresh","oaf-live-temp","oaf-liv
  nodes[id]={value:id==="oaf-home-location"?"Chiclayo":"",textContent:"",disabled:false,
    events:{},addEventListener(name,cb){this.events[name]=cb;}};
 }
-const doc={readyState:"complete",getElementById(id){return nodes[id]||null;}};
+const doc={readyState:"complete",getElementById(id){return nodes[id]||null;},addEventListener(){}};
 let airFails=false,weatherFails=false;
 const fetchMock=async address=>{
  const u=new URL(address);
