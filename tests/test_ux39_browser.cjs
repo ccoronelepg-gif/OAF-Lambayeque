@@ -31,6 +31,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.locator("#oaf-parcel-territorio [data-ux39-file]").setInputFiles({
    name:"fundo.geojson",mimeType:"application/geo+json",buffer:Buffer.from(JSON.stringify(geo))
   });
+  await page.waitForFunction(()=>!!window.OAFParcelas?.get?.("territorio"),null,{timeout:10000});
   const p=await page.evaluate(()=>window.OAFParcelas?.get?.("territorio"));
   assert(p&&p.ha>1&&p.ha<1.4,"El importador no calculó un polígono de superficie aproximada válida");
   await page.waitForTimeout(350);
