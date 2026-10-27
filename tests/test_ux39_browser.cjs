@@ -47,6 +47,54 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   });
   assert(weekly.weekly&&weekly.monthly&&weekly.first&&weekly.visible&&weekly.controls,
     "Gráfico semanal RF/Open-Meteo/ERA5 no figura antes del horizonte mensual: "+JSON.stringify(weekly));
+  // UX42: Carrusel Inicio y lectura independiente en área semanal.
+  await page.waitForSelector("#oaf-ux42-slide-official",{state:"attached",timeout:12000});
+  const intro=await page.evaluate(()=>{
+    const c=document.querySelector("#inicio .oaf-ux42-carousel");
+    return {count:c?.querySelectorAll(".oaf-ux42-slide").length,
+      dots:c?.querySelectorAll(".oaf-ux42-dot").length,
+      official:c?.querySelector("#oaf-ux15-enfen-exp")?.textContent,
+      source:c?.querySelector(".oaf-ux15-source")?.textContent};
+  });
+  assert(intro.count===3&&intro.dots===3,"No hay tres láminas en carrusel: "+JSON.stringify(intro));
+  assert(intro.official?.includes("Interpretación:")&&!intro.official?.includes("inundación"),
+    "Interpretación ENFEN innecesariamente descriptiva: "+intro.official);
+  await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Próximos 7 días"]').click());
+  assert(await page.locator("#oaf-ux42-slide-week").evaluate(x=>!x.hidden),"Carrusel no muestra 7 días");
+  await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Horizonte mensual"]').click());
+  assert(await page.locator("#oaf-ux42-slide-month").evaluate(x=>!x.hidden),"Carrusel no muestra mensual");
+  const pointForecast={daily:{time:["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"],
+    precipitation_sum:[0.03,0.08,0.12,0.16,0.2,0.14,0.01],temperature_2m_max:[24,25,26,27,28,27,25]}};
+  const eraTime=[],eraRain=[],eraTemp=[];
+  for(let y=1996;y<=2025;y++)for(let t=Date.UTC(y,0,1);t<Date.UTC(y+1,0,1);t+=86400000){
+    eraTime.push(new Date(t).toISOString().slice(0,10));eraRain.push(0.1);eraTemp.push(26);
+  }
+  await page.route("https://api.open-meteo.com/**",async route=>{
+    const url=route.request().url();
+    if(url.includes("archive"))await route.fulfill({status:200,contentType:"application/json",
+      body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp}})});
+    else await route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(pointForecast)});
+  });
+  const formExists=await page.evaluate(()=>!!document.querySelector("#oaf-ux14-rf-semana #oaf-area-semanal form"));
+  assert(formExists,"No hay coordenadas UTM/WGS84 en horizonte semanal");
+  const outcome=await page.evaluate(()=>{
+    const f=document.querySelector("#oaf-area-semanal form");
+    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";
+    f.elements.namedItem("name").value="Sector piloto";f.requestSubmit();
+    return window.OAFTerritory.getActivePoint("semanal");
+  });
+  assert(outcome?.name==="Sector piloto"&&Math.abs(outcome.lat+6.15083)<.00001,"Consulta puntual semanal no guarda coordenadas");
+  await page.waitForFunction(()=>document.querySelector("#oaf-ux14-weekchart svg")?.querySelectorAll("text").length>=7,null,{timeout:18000});
+  const plotInfo=await page.evaluate(()=>{
+    const root=document.querySelector("#oaf-ux14-weekchart");
+    const ticks=[...root.querySelectorAll('svg text[text-anchor="end"]')].map(x=>x.textContent);
+    const desc=document.querySelector("#oaf-ux14-weekstatus")?.textContent;
+    return {ticks,desc,polylines:root.querySelectorAll("svg polyline").length};
+  });
+  assert(plotInfo.ticks.length>=4&&new Set(plotInfo.ticks).size===plotInfo.ticks.length,
+    "Escala con etiquetas repetidas: "+JSON.stringify(plotInfo));
+  assert(plotInfo.desc?.includes("Sector piloto")&&plotInfo.desc?.includes("ERA5"),
+    "Análisis por coordenada/ERA5 no disponible: "+JSON.stringify(plotInfo));
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";f.requestSubmit();
