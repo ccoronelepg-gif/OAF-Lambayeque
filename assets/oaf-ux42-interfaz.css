@@ -116,3 +116,12 @@
  #oaf-ux14-weekchart svg{min-width:340px}
  #oaf-ux43-week-summary .oaf-ux43-stat{padding:8px 9px}
 }
+
+/* UX44 · Nota de integridad para comparación mensual ECMWF SEAS5. */
+#oaf-ux44-seasonal-note{
+ font-size:11px;line-height:1.5;color:#466458;
+ background:#f2f8f9;border:1px solid #cde1e5;border-left:3px solid #237fb1;
+ border-radius:8px;padding:9px 12px;margin:8px 0 12px
+}
+#oaf-ux44-seasonal-note[hidden]{display:none!important}
+@media(max-width:650px){#oaf-ux44-seasonal-note{font-size:10px;padding:8px 9px}}
