@@ -58,9 +58,11 @@ class UXContract(unittest.TestCase):
 
     def test_six_routes_and_deep_categorization(self):
         self.assertEqual(tuple(self.dom.pages),ROUTES)
-        for id in ("oaf-ux-view-quick","oaf-ux-view-technical","oaf-mobile-menu",
-                   "oaf-current-city","oaf-trust-legend"):
+        for id in ("oaf-mobile-menu","oaf-trust-legend"):
             self.assertIn(id,self.dom.ids)
+        # Los controles vista rápida/técnica se retiraron por simplificación UX21.
+        for retired in ("oaf-ux-view-quick","oaf-ux-view-technical","oaf-current-city"):
+            self.assertNotIn(retired,self.dom.ids)
         for id in ("oaf-research-categories","oaf-research-deep"):
             self.assertEqual(self.dom.ids[id],"verificaciones")
         for term in ("Clima regional","Océano y El Niño","Sanidad vegetal","Validación científica"):
