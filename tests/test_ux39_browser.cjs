@@ -84,7 +84,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     return window.OAFTerritory.getActivePoint("semanal");
   });
   assert(outcome?.name==="Sector piloto"&&Math.abs(outcome.lat+6.15083)<.00001,"Consulta puntual semanal no guarda coordenadas");
-  await page.waitForFunction(()=>document.querySelector("#oaf-ux14-weekchart svg")?.querySelectorAll("text").length>=7,null,{timeout:18000});
+  await page.waitForFunction(()=>document.querySelector("#oaf-ux14-weekchart svg")?.querySelectorAll("rect[role=img]").length>=14 && document.querySelector("#oaf-ux14-weekstatus")?.textContent.includes("ERA5:"),null,{timeout:22000});
   const plotInfo=await page.evaluate(()=>{
     const root=document.querySelector("#oaf-ux14-weekchart");
     const ticks=[...root.querySelectorAll('svg text[text-anchor="end"]')].map(x=>x.textContent);
