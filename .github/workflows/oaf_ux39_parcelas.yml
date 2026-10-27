@@ -9,6 +9,7 @@ on:
       - "index.html"
       - "sw.js"
       - "tests/test_ux39_parcelas.cjs"
+      - "tests/test_ux39_browser.cjs"
       - "tests/auditoria_ux39_servicios.cjs"
       - ".github/workflows/oaf_ux39_parcelas.yml"
   workflow_dispatch:
@@ -36,3 +37,22 @@ jobs:
           name: ux39-servicios
           path: ux39-auditoria-servicios.json
           if-no-files-found: warn
+  browser-smoke:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Preparar Chromium para el visor GIS
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Servir version web/PWA en localhost
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/ux39-server.log 2>&1 &
+          sleep 2
+      - name: Verificar parcelario, puntos UTM y visores SVG en navegador
+        run: node tests/test_ux39_browser.cjs
