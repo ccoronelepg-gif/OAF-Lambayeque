@@ -74,6 +74,7 @@ function show(k){
  data.textContent=(k==="inicio")?"Ubicación de referencia en el mapa. Los indicadores actuales de Inicio se consultan para esta coordenada. No se repite el pronóstico semanal.":
  "Consultando datos para las coordenadas indicadas…";
  markers();
+ if((k==="territorio"||k==="escenarios")&&!wrap.querySelector(".oaf-area-focus")){const button=document.createElement("button");button.type="button";button.className="btn oaf-area-focus";button.textContent="Enfocar mi punto en el visor";button.addEventListener("click",()=>focusMap(k));wrap.querySelector(".oaf-area-heading").after(button);}
  const seq=++revisions[k];if(k==="inicio")return;
  if(k==="territorio"||k==="escenarios")checkRisk(k,p,seq);
  else if(k==="clima")archive(k,p,seq);
@@ -84,10 +85,21 @@ async function json(u){
  try{const r=await fetch(u,{cache:"no-store",signal:ctl.signal});if(!r.ok)throw Error("HTTP "+r.status);const j=await r.json();if(j.error)throw Error(j.error.message||"Servicio no disponible");return j;}
  finally{clearTimeout(timeout);}
 }
+function focusMap(k){
+ const p=states[k];if(!p)return;
+ const id=k==="territorio"?"oaf-ux24-region-map":"oaf-ux29-forecast-map";const svg=$(id);
+ const scene=k==="territorio"?window.oafUx30Context?.()?.scene:window.oafUx29ScenarioApi?.get?.()?.scene;
+ if(!svg||!scene?.bounds)return;
+ const x=scene.x(p.lon),y=scene.y(p.lat);
+ if(!Number.isFinite(x)||!Number.isFinite(y))return;
+ const w=230,h=112;
+ svg.setAttribute("viewBox",Math.max(0,Math.min(700-w,x-w/2))+" "+Math.max(0,Math.min(340-h,y-h/2))+" "+w+" "+h);
+ svg.scrollIntoView({behavior:"smooth",block:"center"});
+}
 async function current(k,p,seq){
  const data=els[k].querySelector(".oaf-area-data");
  try{
-  const url="https://api.open-meteo.com/v1/forecast?"+new URLSearchParams({latitude:String(p.lat),longitude:String(p.lon),timezone:"America/Lima",forecast_days:"1",current:"temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m"});
+  const url="https://api.open-meteo.com/v1/forecast?"+new URLSearchParams({latitude:String(p.lat),longitude:String(p.lon),timezone:"America/Lima",forecast_days:k==="predicciones"?"3":"1",current:"temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m",...(k==="predicciones"?{daily:"temperature_2m_max,precipitation_sum"}:{})});
   const j=await json(url);if(seq!==revisions[k])return;
   const v=j.current;if(!v||!Number.isFinite(v.temperature_2m))throw Error("Sin valores meteorológicos completos.");
   const t=v.temperature_2m,rh=v.relative_humidity_2m,vpd=Number.isFinite(rh)?Math.max(0,.6108*Math.exp(17.27*t/(t+237.3))*(1-rh/100)):NaN;
@@ -144,8 +156,9 @@ async function checkRisk(k,p,seq){
  markers();
 }
 function pin(svg,scene,p,id){
- if(!svg||!p)return;
+ if(!svg)return;
  const old=svg.querySelector("#"+id);
+ if(!p){old?.remove();return;}
  if(old?.dataset?.key===p.lat+","+p.lon)return;
  old?.remove();if(!scene||!scene.bounds)return;
  const b=scene.bounds;if(p.lon<b.minLon||p.lon>b.maxLon||p.lat<b.minLat||p.lat>b.maxLat)return;
@@ -173,12 +186,12 @@ function observeMaps(){
 }
 function init(){
  const locations={
-  inicio:document.querySelector("#oaf-zone-primary .oaf-home-controls"),
+  inicio:document.querySelector("#oaf-zone-primary .oaf-location-panel"),
   clima:$("oaf-ux24-tabs-clima"),
   territorio:document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
   predicciones:$("oaf-ux24-tabs-autor"),
   escenarios:document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
-  cultivos:document.querySelector("#cultivos .pred-controls")||document.querySelector("#cultivos .viewhead")
+  cultivos:document.querySelector("#cultivos .viewhead")
  };
  for(const k of modes){
   if(!locations[k])continue;
@@ -193,6 +206,8 @@ function init(){
  if(states.inicio&&select){select.value="Mi zona productora";select.dispatchEvent(new Event("change",{bubbles:true}));}
  for(const k of modes)if(k!=="inicio"&&states[k])show(k);
  observeMaps();markers();
+ const weeklyTable=$("wx-days")?.closest(".scroller");if(weeklyTable)weeklyTable.hidden=true;
+ const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
  const css=document.createElement("style");css.textContent=
  '.oaf-area-local{border:1px solid #c9ded4;border-radius:13px;background:#f5faf7;padding:13px 16px;margin:12px 0 21px;max-width:100%;box-sizing:border-box}'+
  '.oaf-area-local summary{cursor:pointer;color:#165745;padding:4px 0;font-size:15px}'+
@@ -206,7 +221,7 @@ function init(){
  '.oaf-area-preview{width:100%;height:230px;border:1px solid #cbddd5;border-radius:11px}'+
  '.oaf-area-data{font-size:13px;line-height:1.65}.oaf-area-data li{margin:8px 0}'+
  '.oaf-area-scroll{overflow:auto}.oaf-area-scroll table{width:100%;min-width:440px;border-collapse:collapse}.oaf-area-scroll th,.oaf-area-scroll td{padding:8px;border-bottom:1px solid #d4e4dc;text-align:left}'+
- '#oaf-forecast-home,#oaf-ux9-pronostico,#oaf-ux14-rf-semana{display:none!important}'+
+ '#oaf-forecast-home,#oaf-ux9-pronostico,#oaf-ux14-rf-semana,#oaf-anomaly-panel,#clima .oaf-dashboard-grid{display:none!important}'+
  '.oaf-ux35-check:has([data-ux35-key="rain7"]),.oaf-ux35-field:has(#oaf-ux35-horizon),.oaf-ux35-field:has(#oaf-ux35-threshold){display:none!important}'+
  '@media(max-width:590px){.oaf-area-fields{grid-template-columns:1fr}.oaf-area-preview{height:205px}}';
  document.head.append(css);
