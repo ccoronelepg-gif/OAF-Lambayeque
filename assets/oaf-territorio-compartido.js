@@ -8,7 +8,7 @@ const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6
 const KEY="oaf-area-autonoma-20261027-";
 const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi área productora · territorio y riesgos",predicciones:"Mi área productora · análisis climático",escenarios:"Mi área productora · escenarios de riesgo",cultivos:"Mi zona productora · cultivos y sanidad"};
 const modes=["inicio","clima","territorio","predicciones","escenarios","cultivos"];
-const states={},els={},revisions={};
+const states={},els={},revisions={},active={};
 function valid(lat,lon){
  if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)throw Error("Latitud o longitud inválida.");
  if(lat< -7.3||lat> -5.1||lon< -80.8||lon> -79)throw Error("El punto queda fuera del ámbito geográfico del visor de Lambayeque.");
@@ -50,35 +50,35 @@ function make(k){
    const num=n=>{const s=String(field(n).value||"").trim().replace(",",".");return s===""?NaN:Number(s);};
    const v=field("format").value==="utm"?utm(num("east"),num("north"),num("zone"),field("hemi").value):[num("lat"),num("lon")];
    const p=valid(v[0],v[1]);p.name=String(field("name").value||titles[k]).trim().slice(0,80)||titles[k];
-   states[k]=p;save(k);notice(k,"Coordenadas registradas en esta pestaña.");show(k);
-   if(k==="inicio"){const s=$("oaf-home-location");if(s){s.value="Mi zona productora";s.dispatchEvent(new Event("change",{bubbles:true}));}}
+   states[k]=p;active[k]=true;save(k);notice(k,"Coordenadas registradas en esta pestaña.");show(k);
+   document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:k,point:{...p},active:true}}));
   }catch(err){notice(k,err.message);}
  });
  wrap.querySelector(".oaf-area-clear").addEventListener("click",()=>{
-  states[k]=null;save(k);revisions[k]++;
+  states[k]=null;active[k]=false;save(k);revisions[k]++;
   wrap.querySelector(".oaf-area-output").hidden=true;
   notice(k,"Ubicación particular desactivada únicamente en esta pestaña.");
-  if(k==="inicio"){const s=$("oaf-home-location");if(s){s.value="Chiclayo";s.dispatchEvent(new Event("change",{bubbles:true}));}}
+  document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:k,point:null,active:false}}));
   markers(); 
  });
- const previous=load(k);if(previous){states[k]=previous;field("name").value=previous.name;field("lat").value=previous.lat;field("lon").value=previous.lon;}
+ const previous=load(k);active[k]=Boolean(previous);if(previous){states[k]=previous;field("name").value=previous.name;field("lat").value=previous.lat;field("lon").value=previous.lon;}
  return wrap;
 }
 function show(k){
  const p=states[k],wrap=els[k];if(!wrap||!p)return;
  const out=wrap.querySelector(".oaf-area-output");
- if(k==="inicio"&&$("oaf-home-location")?.value!=="Mi zona productora"){out.hidden=true;return;}
+ if(!active[k]){out.hidden=true;return;}
  out.hidden=false;wrap.querySelector(".oaf-area-heading").textContent=p.name+" · "+p.lat.toFixed(5)+", "+p.lon.toFixed(5)+" · WGS84";
  const frame=wrap.querySelector(".oaf-area-preview");const url=mapURL(p);if(frame.getAttribute("src")!==url)frame.src=url;
  const data=wrap.querySelector(".oaf-area-data");
- data.textContent=(k==="inicio")?"Ubicación de referencia en el mapa. Los indicadores actuales de Inicio se consultan para esta coordenada. No se repite el pronóstico semanal.":
- "Consultando datos para las coordenadas indicadas…";
+ data.textContent=(k==="inicio")?"Ubicación de referencia para los indicadores actuales, sin pronóstico semanal duplicado.":
+ (k==="clima"||k==="predicciones"||k==="cultivos")?"Los resultados de esta coordenada se presentan en el visor de análisis de esta pestaña.":
+ "Consultando las capas geográficas para el punto…";
  markers();
  if((k==="territorio"||k==="escenarios")&&!wrap.querySelector(".oaf-area-focus")){const button=document.createElement("button");button.type="button";button.className="btn oaf-area-focus";button.textContent="Enfocar mi punto en el visor";button.addEventListener("click",()=>focusMap(k));wrap.querySelector(".oaf-area-heading").after(button);}
  const seq=++revisions[k];if(k==="inicio")return;
  if(k==="territorio"||k==="escenarios")checkRisk(k,p,seq);
- else if(k==="clima")archive(k,p,seq);
- else current(k,p,seq);
+ else if(k!=="inicio")window.oafAreaUX38?.update?.(k,p);
 }
 async function json(u){
  const ctl=new AbortController(),timeout=setTimeout(()=>ctl.abort(),15000);
@@ -193,25 +193,26 @@ function observeMaps(){
 }
 function init(){
  const locations={
-  inicio:document.querySelector("#oaf-zone-primary .oaf-location-panel"),
-  clima:$("oaf-ux24-tabs-clima"),
-  territorio:document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
-  predicciones:$("oaf-ux24-tabs-autor"),
-  escenarios:document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
-  cultivos:document.querySelector("#cultivos .viewhead")
+  inicio:()=>document.querySelector("#oaf-zone-primary .oaf-location-panel"),
+  clima:()=>$("oaf-history")?.querySelector(".oaf-filterline"),
+  territorio:()=>$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
+  predicciones:()=>$("oaf-ux16-future-controls")||$("oaf-ux14-rf-mes"),
+  escenarios:()=>$("oaf-ux29-scenario")||document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
+  cultivos:()=>$("oaf-sm-localidad")?.closest(".oaf-ux11-controls")||$("oaf-sanidad-ux11")?.querySelector(".oaf-ux11-model")
  };
  for(const k of modes){
-  if(!locations[k])continue;
-  const el=make(k);
-  locations[k].after(el);
+  const el=make(k);let trials=0;
+  const locate=()=>{const anchor=locations[k]();if(anchor){anchor.after(el);if(states[k])show(k);}
+    else if(++trials<30)setTimeout(locate,300);};
+  locate();
  }
- const select=$("oaf-home-location");
- if(select&&!Array.from(select.options).some(o=>o.value==="Mi zona productora")){
-  const op=new Option("Mi zona productora","Mi zona productora");select.add(op);
- }
- if(select){select.addEventListener("change",()=>{if(states.inicio&&select.value==="Mi zona productora")show("inicio");else if(els.inicio)els.inicio.querySelector(".oaf-area-output").hidden=true;});}
- if(states.inicio&&select){select.value="Mi zona productora";select.dispatchEvent(new Event("change",{bubbles:true}));}
- for(const k of modes)if(k!=="inicio"&&states[k])show(k);
+ const site=$("oaf-home-location");
+ const custom=site?.querySelector('option[value="Mi zona productora"]');custom?.remove();
+ site?.addEventListener("change",()=>{active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));});
+ const city=$("oaf-hist-place");
+ city?.addEventListener("change",()=>{active.clima=false;els.clima?.querySelector(".oaf-area-output")?.setAttribute("hidden","");window.oafAreaUX38?.restoreHistoric?.();});
+ ["oaf-hist-year","oaf-hist-variable"].forEach(id=>$(id)?.addEventListener("change",()=>{if(active.clima&&states.clima)window.oafAreaUX38?.update?.("clima",states.clima);}));
+ $("oaf-sm-localidad")?.addEventListener("change",()=>{if(active.cultivos){active.cultivos=false;els.cultivos?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"cultivos",point:null,active:false}}));}});
  observeMaps();markers();
  const weeklyTable=$("wx-days")?.closest(".scroller");if(weeklyTable)weeklyTable.hidden=true;
  const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
@@ -226,6 +227,8 @@ function init(){
  '.oaf-area-help,.oaf-area-limite{font-size:12px;color:#506b62;line-height:1.65}'+
  '.oaf-area-heading{font-weight:800;color:#1d5c4c;margin:12px 0}'+
  '.oaf-area-preview{width:100%;height:230px;border:1px solid #cbddd5;border-radius:11px}'+
+ '.oaf-area-local [hidden]{display:none!important}'+
+ '#oaf-area-territorio .oaf-area-preview,#oaf-area-escenarios .oaf-area-preview{display:none!important}'+
  '.oaf-area-data{font-size:13px;line-height:1.65}.oaf-area-data li{margin:8px 0}'+
  '.oaf-area-scroll{overflow:auto}.oaf-area-scroll table{width:100%;min-width:440px;border-collapse:collapse}.oaf-area-scroll th,.oaf-area-scroll td{padding:8px;border-bottom:1px solid #d4e4dc;text-align:left}'+
  '#oaf-forecast-home,#oaf-ux9-pronostico,#oaf-ux14-rf-semana,#oaf-anomaly-panel,#clima .oaf-dashboard-grid{display:none!important}'+
@@ -233,6 +236,6 @@ function init(){
  '@media(max-width:590px){.oaf-area-fields{grid-template-columns:1fr}.oaf-area-preview{height:205px}}';
  document.head.append(css);
 }
-window.OAFTerritory={utmToGeographic:utm,validatePoint:valid,getPoint:k=>states[k]?{...states[k]}:null,getState:()=>Object.fromEntries(modes.map(k=>[k,states[k]||null]))};
+window.OAFTerritory={utmToGeographic:utm,validatePoint:valid,getPoint:k=>states[k]?{...states[k]}:null,getActivePoint:k=>active[k]&&states[k]?{...states[k]}:null,getState:()=>Object.fromEntries(modes.map(k=>[k,states[k]||null]))};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
