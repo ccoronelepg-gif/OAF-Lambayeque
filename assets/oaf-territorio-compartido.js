@@ -3,6 +3,7 @@
  */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
+const dataFor=k=>els[k]?.querySelector(".oaf-area-data")||$("oaf-area-point-details-"+k)?.querySelector(".oaf-area-data");
 const cityNames=["Chiclayo","Jayanca","Motupe","Olmos"];
 const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
 const KEY="oaf-area-autonoma-20261027-";
@@ -31,14 +32,14 @@ function mapURL(p){const params=new URLSearchParams({bbox:[p.lon-.027,p.lat-.020
 function make(k){
  const wrap=document.createElement("section");wrap.className="oaf-area-local";wrap.id="oaf-area-"+k;
  wrap.setAttribute("aria-label",titles[k]);
- wrap.innerHTML='<details class="oaf-area-accordion"><summary><strong>'+titles[k]+'</strong><span> · Coordenadas geográficas o UTM (WGS84)</span></summary>'+
+ wrap.innerHTML='<details class="oaf-area-accordion"><summary><strong>'+titles[k]+'</strong><span> · Coordenadas / UTM</span></summary>'+
  '<form class="oaf-area-form"><div class="oaf-area-fields"><label>Nombre de la parcela o fundo<input name="name" maxlength="80" placeholder="Ej.: Fundo El Mango" autocomplete="off"></label>'+
  '<label>Tipo de coordenadas<select name="format"><option value="geo">Geográficas · latitud / longitud</option><option value="utm">UTM WGS84 · metros</option></select></label></div>'+
  '<div class="oaf-area-fields" data-fields="geo"><label>Latitud decimal<input name="lat" inputmode="decimal" placeholder="-6.15083"></label><label>Longitud decimal<input name="lon" inputmode="decimal" placeholder="-79.7142"></label></div>'+
  '<div class="oaf-area-fields" data-fields="utm" hidden><label>Este (m)<input name="east" inputmode="decimal" placeholder="640000"></label><label>Norte (m)<input name="north" inputmode="decimal" placeholder="9310000"></label><label>Zona UTM<input name="zone" type="number" min="1" max="60" value="17"></label><label>Hemisferio<select name="hemi"><option value="S">Sur</option><option value="N">Norte</option></select></label></div>'+
  '<div class="oaf-area-actions"><button type="submit" class="btn dark">Consultar mi área</button><button type="button" class="btn oaf-area-clear">Quitar ubicación</button></div>'+
  '<p class="oaf-area-message" role="status" aria-live="polite"></p></form>'+
- '<p class="oaf-area-help">La coordenada identifica un <strong>punto</strong>, no el polígono ni la extensión de la parcela. Cada pestaña conserva su propia ubicación durante esta sesión. Solo se comparan capas cuyos servicios responden.</p></details>'+
+ '<p class="oaf-area-help">Ubica un punto WGS84; delimita la parcela debajo del mapa.</p></details>'+
  '<div class="oaf-area-output" hidden><div class="oaf-area-heading" role="status"></div><iframe class="oaf-area-preview" title="Mapa de la ubicación consultada" loading="lazy" referrerpolicy="no-referrer"></iframe><div class="oaf-area-data" aria-live="polite"></div></div>';
  els[k]=wrap;revisions[k]=0;
  const f=wrap.querySelector("form"),field=n=>f.elements.namedItem(n);
@@ -69,8 +70,8 @@ function show(k){
  const out=wrap.querySelector(".oaf-area-output");
  if(!active[k]){out.hidden=true;return;}
  out.hidden=false;wrap.querySelector(".oaf-area-heading").textContent=p.name+" · "+p.lat.toFixed(5)+", "+p.lon.toFixed(5)+" · WGS84";
- const frame=wrap.querySelector(".oaf-area-preview");const url=mapURL(p);if(frame.getAttribute("src")!==url)frame.src=url;
- const data=wrap.querySelector(".oaf-area-data");
+ const frame=wrap.querySelector(".oaf-area-preview");if(k!=="territorio"&&k!=="escenarios"){const url=mapURL(p);if(frame.getAttribute("src")!==url)frame.src=url;}
+ const data=dataFor(k);
  data.textContent=(k==="inicio")?"Ubicación de referencia para los indicadores actuales, sin pronóstico semanal duplicado.":
  (k==="clima"||k==="predicciones"||k==="cultivos")?"Los resultados de esta coordenada se presentan en el visor de análisis de esta pestaña.":
  "Consultando las capas geográficas para el punto…";
@@ -97,7 +98,7 @@ function focusMap(k){
  svg.scrollIntoView({behavior:"smooth",block:"center"});
 }
 async function current(k,p,seq){
- const data=els[k].querySelector(".oaf-area-data");
+ const data=dataFor(k);
  try{
   const url="https://api.open-meteo.com/v1/forecast?"+new URLSearchParams({latitude:String(p.lat),longitude:String(p.lon),timezone:"America/Lima",forecast_days:k==="predicciones"?"3":"1",current:"temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m",...(k==="predicciones"?{daily:"temperature_2m_max,precipitation_sum"}:{})});
   const j=await json(url);if(seq!==revisions[k])return;
@@ -113,7 +114,7 @@ async function current(k,p,seq){
  }catch(e){if(seq===revisions[k])data.textContent="No se pudo consultar la coordenada: "+e.message+" No se sustituye por datos de otra localidad.";}
 }
 async function archive(k,p,seq){
- const data=els[k].querySelector(".oaf-area-data");
+ const data=dataFor(k);
  const now=new Date(),end=new Date(now);end.setUTCDate(end.getUTCDate()-6);const start=new Date(end);start.setUTCFullYear(start.getUTCFullYear()-1);start.setUTCDate(start.getUTCDate()+1);
  const iso=d=>d.toISOString().slice(0,10);
  try{
@@ -134,7 +135,7 @@ async function archive(k,p,seq){
  }catch(e){if(seq===revisions[k])data.textContent="No hay serie histórica verificable para este punto: "+e.message+" Se mantienen, identificadas por separado, las series históricas regionales.";}
 }
 async function checkRisk(k,p,seq){
- const data=els[k].querySelector(".oaf-area-data");data.replaceChildren();
+ const data=dataFor(k);data.replaceChildren();
  const info=document.createElement("p");info.textContent="Consulta de intersección espacial del punto con cartografía oficial. La coincidencia no expresa magnitud, probabilidad de ocurrencia ni hectáreas afectadas.";data.append(info);
  const sources=[
   ["Susceptibilidad a inundaciones · CENEPRED","https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5010502/query"],
@@ -219,16 +220,16 @@ function init(){
  const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
  const css=document.createElement("style");css.textContent=
  '.oaf-area-local{border:1px solid #c9ded4;border-radius:13px;background:#f5faf7;padding:13px 16px;margin:12px 0 21px;max-width:100%;box-sizing:border-box}'+
- '#oaf-area-territorio,#oaf-area-escenarios{margin:10px 12px;position:relative;z-index:1}'+
+ '#oaf-area-territorio,#oaf-area-escenarios{margin:8px 12px 6px;padding:6px 10px;position:relative;z-index:1}'+
  '.oaf-ux29-mapcolumn .oaf-area-accordion{background:#eff8f3;border-radius:9px}'+
  '.oaf-area-local summary{cursor:pointer;color:#165745;padding:4px 0;font-size:15px}'+
  '.oaf-area-local summary span{color:#536e64;font-weight:400;font-size:12px}'+
- '.oaf-area-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}'+
+ '.oaf-area-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0}'+
  '.oaf-area-fields label{display:flex;flex-direction:column;gap:5px;font-weight:700;font-size:12px}'+
- '.oaf-area-fields input,.oaf-area-fields select{width:100%;padding:10px;border:1px solid #b8cec3;border-radius:8px;font:inherit;min-width:0;box-sizing:border-box}'+
- '.oaf-area-actions{display:flex;gap:9px;flex-wrap:wrap}.oaf-area-message{font-size:12px;font-weight:700;color:#275d4d;min-height:14px}'+
- '.oaf-area-help,.oaf-area-limite{font-size:12px;color:#506b62;line-height:1.65}'+
- '.oaf-area-heading{font-weight:800;color:#1d5c4c;margin:12px 0}'+
+ '.oaf-area-fields input,.oaf-area-fields select{width:100%;padding:7px 8px;border:1px solid #b8cec3;border-radius:8px;font:inherit;min-width:0;box-sizing:border-box}'+
+ '.oaf-area-actions{display:flex;gap:6px;flex-wrap:wrap}.oaf-area-actions .btn{padding:7px 10px;min-height:34px;font-size:12px}.oaf-area-message{font-size:11px;font-weight:700;color:#275d4d;min-height:0;margin:6px 0}'+
+ '.oaf-area-help,.oaf-area-limite{font-size:12px;color:#506b62;line-height:1.5}'+
+ '.oaf-area-heading{font-weight:800;color:#1d5c4c;margin:6px 0;font-size:12px}'+
  '.oaf-area-preview{width:100%;height:230px;border:1px solid #cbddd5;border-radius:11px}'+
  '.oaf-area-local [hidden]{display:none!important}'+
  '#oaf-area-clima .oaf-area-data,#oaf-area-cultivos .oaf-area-data,#oaf-area-predicciones .oaf-area-data{display:none!important}'+
