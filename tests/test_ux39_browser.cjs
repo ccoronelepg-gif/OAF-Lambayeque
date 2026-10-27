@@ -19,6 +19,20 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    polygon:!!document.querySelector("#oaf-ux29-"+(k==="territorio"?"territory":"scenario")+" .oaf-ux29-mapcolumn #oaf-parcel-"+k)
   })));
   assert(inside.every(x=>x.area&&x.polygon),"Los módulos deben estar DENTRO de la columna de mapas "+JSON.stringify(inside));
+  const order=await page.evaluate(()=>["territorio","escenarios"].map(k=>{
+   const root=document.getElementById(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
+   const column=root.querySelector(".oaf-ux29-mapcolumn"),children=[...column.children].map(x=>x.id||x.className);
+   const area=column.querySelector("#oaf-area-"+k),map=column.querySelector(".oaf-ux29-mapcontent"),parcel=column.querySelector("#oaf-parcel-"+k);
+   const diag=column.querySelector("#oaf-area-point-details-"+k);
+   return {k,afterArea:!!(area.compareDocumentPosition(map)&Node.DOCUMENT_POSITION_FOLLOWING),
+    afterMap:!!(map.compareDocumentPosition(parcel)&Node.DOCUMENT_POSITION_FOLLOWING),
+    afterParcel:!!(parcel.compareDocumentPosition(diag)&Node.DOCUMENT_POSITION_FOLLOWING),
+    parcelFold:parcel.querySelector(".oaf-parcel-fold")?.open===false,
+    auditUnderMap:!!diag.querySelector(".oaf-area-data"),hasExpand:!!column.querySelector(".oaf-map-expand"),
+    children};
+  }));
+  assert(order.every(x=>x.afterArea&&x.afterMap&&x.afterParcel&&x.parcelFold&&x.auditUnderMap&&x.hasExpand),
+   "Jerarquía visual incorrecta: "+JSON.stringify(order));
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";f.requestSubmit();
@@ -49,6 +63,18 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.waitForTimeout(350);
   assert(await page.locator("#oaf-ux29-forecast-map #oaf-area-pin-escenarios").count(),"El punto no se dibujó en el SVG del visor de escenarios");
   assert(await page.locator("#oaf-ux24-region-map #oaf-area-pin-territorio").count(),"Desapareció el punto territorial al definir escenario");
+  // Prueba responsive: el visor debe aparecer ANTES del listado de capas en móvil.
+  await page.setViewportSize({width:390,height:844});
+  const responsive=await page.evaluate(()=>{
+   const layout=document.querySelector("#oaf-ux29-territory .oaf-ux29-layout"),
+    map=document.querySelector("#oaf-ux29-territory .oaf-ux29-mapcolumn"),
+    side=document.querySelector("#oaf-ux29-territory .oaf-ux29-sidebar");
+   return {columns:getComputedStyle(layout).gridTemplateColumns,
+    mapOrder:getComputedStyle(map).order,sideOrder:getComputedStyle(side).order,
+    cssLoaded:[...document.styleSheets].some(x=>x.href?.includes("oaf-visores-ux40.css"))};
+  });
+  assert(responsive.cssLoaded&&responsive.mapOrder==="-1"&&responsive.sideOrder==="1",
+    "Mapa no prioritario en móvil: "+JSON.stringify(responsive));
   const importantErrors=errors.filter(x=>/ux39|oaf-parcel|oaf-area|Cannot read properties of undefined/.test(x));
   assert.deepEqual(importantErrors,[],"Errores JavaScript en los nuevos módulos: "+importantErrors.join(" | "));
   console.log("UX39 browser OK: visores integrados, independencia, GeoJSON, áreas, marcador y UTM WGS84");
