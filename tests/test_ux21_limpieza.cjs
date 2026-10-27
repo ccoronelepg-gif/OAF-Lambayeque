@@ -11,7 +11,7 @@ assert.ok(!html.includes('class="oaf-contextbar"'),"Zona redundante aún visible
 assert.ok(html.includes('id="oaf-home-summary-static"'),"Falta resumen central");
 // UX22: el objetivo, las fuentes y la metodología están sintetizados en un único párrafo,
  // sin exigir etiquetas largas redundantes que el usuario pidió eliminar.
-const summary=html.match(/<p class="oaf-ux22-sintesis">([^<]*)<\/p>/)?.[1];
+const summary=html.match(/<p class="oaf-ux22-sintesis"[^>]*>([^<]*)<\/p>/)?.[1];
 assert.ok(summary,"Falta síntesis editorial en Inicio");
 assert.ok(summary.includes("productores")&&summary.includes("especialistas"),"Falta propósito divulgativo");
 assert.ok(summary.includes("Python")&&summary.includes("SIG"),"Falta metodología propia");
