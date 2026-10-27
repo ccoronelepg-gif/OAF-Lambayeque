@@ -238,7 +238,7 @@ function init(){
  '#oaf-area-territorio .oaf-area-preview,#oaf-area-escenarios .oaf-area-preview{display:none!important}'+
  '.oaf-area-data{font-size:13px;line-height:1.65}.oaf-area-data li{margin:8px 0}'+
  '.oaf-area-scroll{overflow:auto}.oaf-area-scroll table{width:100%;min-width:440px;border-collapse:collapse}.oaf-area-scroll th,.oaf-area-scroll td{padding:8px;border-bottom:1px solid #d4e4dc;text-align:left}'+
- '#oaf-forecast-home,#oaf-ux9-pronostico,#oaf-ux14-rf-semana,#oaf-anomaly-panel,#clima .oaf-dashboard-grid{display:none!important}'+
+ '#oaf-forecast-home,#oaf-ux9-pronostico,#oaf-anomaly-panel,#clima .oaf-dashboard-grid{display:none!important}'+
  '.oaf-ux35-check:has([data-ux35-key="rain7"]),.oaf-ux35-field:has(#oaf-ux35-horizon),.oaf-ux35-field:has(#oaf-ux35-threshold){display:none!important}'+
  '@media(max-width:590px){.oaf-area-fields{grid-template-columns:1fr}.oaf-area-preview{height:205px}}';
  document.head.append(css);
