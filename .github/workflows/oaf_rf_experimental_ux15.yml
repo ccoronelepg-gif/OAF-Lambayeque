@@ -48,6 +48,12 @@ jobs:
               assert metric['mae_climatologia_local_mm']>=0
               assert metric['seleccion_solo_validacion'].startswith('2019-2020')
               assert 'as-issued' not in metric.get('seleccion_solo_validacion','')
+              back=j["metrica_diaria"].get("backtest_semanal_recursivo")
+              assert back and back["n_origenes"]>=40
+              assert [q["dias_adelante"] for q in back["por_horizonte"]]==list(range(1,8))
+              assert all(q["n"]>=40 and q["mae_rf_lluvia_mm"]>=0 for q in back["por_horizonte"])
+              assert j["control_nuevos_datos"]["series_pronosticos_emitidos_son_etiquetas_entrenamiento"] is False
+              assert j["entrenamiento_actualizado_con_era5_hasta"]<=j["control_nuevos_datos"]["limite_adquisicion_era5"]
               assert j['horizonte_semanal']==7
               assert all(len(v)==7 for v in j['pronostico_diario_rf_experimental'].values())
               assert all(len(v)==6 and v[0]['mes']>='2026-11' for v in j['escenarios_mensuales_rf_experimentales'].values())
