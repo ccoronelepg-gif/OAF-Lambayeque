@@ -42,7 +42,7 @@ function analysis(weather,air,locality){
   if(weather){
     if(finite(weather.temperature_2m))phrases.push("🌡️ Temperatura del aire: "+format(weather.temperature_2m)+" °C. Es un valor informativo modelado; no se determina si es inusual sin compararlo con una referencia climática local adecuada.");
     if(finite(weather.relative_humidity_2m))phrases.push("💧 Humedad relativa: "+format(weather.relative_humidity_2m,0)+" %. No demuestra que el follaje esté mojado ni permite diagnosticar enfermedades.");
-    if(finite(weather.precipitation))phrases.push("🌧️ Precipitación modelada del intervalo reciente: "+format(weather.precipitation)+" mm. Para los próximos días consulte las barras de pronóstico.");
+    if(finite(weather.precipitation))phrases.push("🌧️ Precipitación modelada del intervalo reciente: "+format(weather.precipitation)+" mm. Esta variable no predice la precipitación futura.");
     if(finite(weather.shortwave_radiation))phrases.push("☀️ Radiación de onda corta: "+format(weather.shortwave_radiation,0)+" W/m², valor informativo para la hora indicada, no índice UV.");
     if(finite(weather.wind_speed_10m))phrases.push("🌬️ Viento modelado a 10 m: "+format(weather.wind_speed_10m)+" km/h. No representa ráfagas ni exposición precisa en parcela.");
   }
@@ -61,14 +61,15 @@ async function update(){
   const site=ids("oaf-home-location");
   if(!site)return;
   const city=site.value;
-  if(!Object.prototype.hasOwnProperty.call(coords,city))return;
+  const custom=city==="Mi zona productora"?window.OAFTerritory?.getPoint?.("inicio"):null;
+   if(!Object.prototype.hasOwnProperty.call(coords,city)&&!custom)return;
   const seq=++requestSequence;
   const button=ids("oaf-home-refresh");
   if(button)button.disabled=true;
   reset();
   put("oaf-home-source","Actualizando información de "+city+"…");
   put("oaf-home-analysis","Consultando las condiciones actuales para elaborar una lectura breve y orientativa.");
-  const [lat,lon]=coords[city];
+  const [lat,lon]=custom?[custom.lat,custom.lon]:coords[city];
   const wUrl=url("https://api.open-meteo.com/v1/forecast",lat,lon,{
     current:"temperature_2m,relative_humidity_2m,precipitation,shortwave_radiation,wind_speed_10m",
     forecast_days:"1"
