@@ -32,7 +32,7 @@ function smallBars(host,series,unit){
  const max=Math.max(...vals,0.1);
  for(const point of series){const wrap=el("div","oaf-ux42-bar"),track=el("div","oaf-ux42-bartrack");
   const value=el("span","oaf-ux42-val",fmt(point.n,unit==="°C"?1:1));
-  const fill=el("i");fill.style.height=(Number.isFinite(point.n)?Math.max(3,Math.min(100,point.n/max*100)):0)+"%";
+  const fill=el("i");fill.style.height=(Number.isFinite(point.n)?(point.n>0?Math.max(3,Math.min(100,point.n/max*100)):0):0)+"%";
   track.append(fill);wrap.append(value,track,el("small",null,point.label));host.append(wrap);
  }
 }
