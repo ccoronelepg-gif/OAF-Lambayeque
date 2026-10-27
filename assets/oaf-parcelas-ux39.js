@@ -172,7 +172,7 @@ function mount(k){
  const wrapper=node("section","oaf-parcel-panel");wrapper.id="oaf-parcel-"+k;
  wrapper.innerHTML='<details open><summary><strong>Delimitación de mi parcela · Polígono y capas</strong></summary>'+
   '<p>Ubica primero un punto mediante coordenadas geográficas o UTM en «Mi zona productiva», o delimita una parcela para visualizarla encima de las capas del mapa. La delimitación no constituye un catastro.</p>'+
-  '<div class="oaf-parcel-actions"><button type="button" data-action="start">Dibujar parcela</button><button type="button" data-action="finish" disabled>Cerrar polígono</button><button type="button" data-action="undo" disabled>Deshacer vértice</button><button type="button" data-action="clear">Borrar polígono</button></div>'+
+  '<div class="oaf-parcel-actions"><button type="button" data-action="start">Dibujar parcela</button><button type="button" data-action="finish" disabled>Cerrar polígono</button><button type="button" data-action="undo" disabled>Deshacer vértice</button><button type="button" data-action="clear">Borrar polígono</button><button type="button" data-action="export">Exportar GeoJSON</button></div>'+
   '<label class="oaf-parcel-upload">Importar parcela GeoJSON / KML <input type="file" accept=".geojson,.json,.kml,application/geo+json" data-ux39-file></label>'+
   '<p class="oaf-parcel-info" data-ux39-report role="status" aria-live="polite">Puedes trazar sobre el mapa o importar un polígono WGS84.</p>'+
   '<p class="oaf-parcel-caveat">Área calculada con aproximación geográfica local: no es superficie catastral certificada ni área afectada por peligros.</p>'+
@@ -194,6 +194,12 @@ function mount(k){
   if(drafts[k].length<3){report(k,"Se necesitan al menos 3 vértices.");return;}
   try{setPolygon(k,{type:"Polygon",coordinates:[drafts[k]]},"Parcela trazada");get("start").disabled=false;get("finish").disabled=true;get("undo").disabled=true;}
   catch(e){report(k,e.message);}
+ });
+ get("export").addEventListener("click",()=>{
+  const parcel=parcels[k];if(!parcel){report(k,"Primero dibuja o importa un polígono.");return;}
+  const json=JSON.stringify({type:"FeatureCollection",features:[{type:"Feature",properties:{nombre:parcel.name,area_aproximada_ha:Number(parcel.ha.toFixed(4)),fuente:"usuario",sistema:"WGS84 EPSG:4326",aviso:"No es deslinde catastral"},geometry:parcel.geometry}]},null,2);
+  const blob=new Blob([json],{type:"application/geo+json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download="parcela-oaf-"+k+".geojson";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
  });
  get("clear").addEventListener("click",()=>{parcels[k]=null;drafts[k]=[];drawing[k]=false;get("start").disabled=false;get("finish").disabled=true;get("undo").disabled=true;save(k);draw(k);report(k,"Polígono borrado de este visor. El punto geográfico se conserva hasta pulsar «Quitar ubicación».");refresh(k);});
  wrapper.querySelector("[data-ux39-file]").addEventListener("change",async e=>{
@@ -256,7 +262,16 @@ async function risk(k){
  out.append(node("p",null,"Polígono aportado por el usuario · "+fmt(poly.ha,3)+" ha aproximadas. Consultando fuentes oficiales vectoriales…"));
  const bounds=limits(poly.polygons),query=new URLSearchParams({where:"1=1",geometry:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
   geometryType:"esriGeometryEnvelope",inSR:"4326",spatialRel:"esriSpatialRelIntersects",outFields:"*",returnGeometry:"true",outSR:"4326",resultRecordCount:"500",f:"geojson"});
- const results=await Promise.all(LAYERS.map(async layer=>{
+ const chosen=LAYERS.filter((layer,i)=>{
+  const name=i===0?"inundacionregion":i===1?"movmasa":"regional";
+  const src=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
+  const geo=src?.querySelectorAll("input:checked")||[];
+  const wanted=k==="territorio"?(i===0?["inundacionregion","regional"]:i===1?["movmasa"]:["regional","inundacionregion"]):
+   (i===1?["futureMass","mass"]:["futureFlood","regional","suscept"]);
+  return Array.from(geo).some(x=>wanted.includes(x.dataset.ux30Layer||x.dataset.ux35Key||x.dataset.ux29Layer));
+ });
+ if(!chosen.length){out.append(node("p",null,"No hay capas vectoriales de inundación o movimientos en masa seleccionadas. Actívalas en el árbol para realizar esta consulta. Las capas de vías y servicios se comparan visualmente."));return;}
+ const results=await Promise.all(chosen.map(async layer=>{
   try{
    const data=await fetched(layer.url+"?"+query,22000);
    if(!Array.isArray(data.features))throw Error("El servicio no devolvió entidades vectoriales");
@@ -275,7 +290,7 @@ async function risk(k){
  out.append(node("p","oaf-parcel-caveat",good?
   "Cuantificación EXPLORATORIA mediante muestreo de cuadrícula de 25 × 25 centros en la envolvente, en geometrías vectoriales verificadas. No es intersección topológica exacta ni porcentaje de daño/inundación. La resolución de la cartografía puede ser mucho menor que la parcela; no usar para licencias, seguros o protección civil.":
   "Ninguna fuente permitió calcular una superficie confiable. No se atribuyen hectáreas afectadas. Consulta los mapas oficiales y comprueba si sus capas vectoriales y escalas permiten análisis parcelario."));
- auditState(k,"Control de capa espacial",good+" de "+results.length+" fuentes devolvieron geometrías cuantificables.");
+ auditState(k,"Control de capa espacial",good+" de "+results.length+" capas activadas devolvieron geometrías cuantificables.");
 }
 let auditTimer={};
 function scheduleAudit(k){clearTimeout(auditTimer[k]);auditTimer[k]=setTimeout(()=>{if(ui(k)&&current(k).point)audit(k);},1000);}
