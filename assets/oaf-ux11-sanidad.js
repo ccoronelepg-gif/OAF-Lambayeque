@@ -77,11 +77,12 @@ function plot(rain,humidity,dates){
  humidity.forEach((v,i)=>{let cir=make("circle",{cx:x(i),cy:yh(v),r:4,fill:"#e39a4d",stroke:"#fff","stroke-width":1.3});cir.append(make("title",{},`${dates[i]}: humedad media ${nfmt(v,0)} %`));svg.append(cir)});
  out.replaceChildren(svg);
 }
-async function week(place){
- if(!state.forecast.has(place)){
-  const [latitude,longitude]=places[place];
+async function week(place,point){
+ const key=point?"p:"+point.lat.toFixed(6)+","+point.lon.toFixed(6):place;
+ if(!state.forecast.has(key)){
+  const [latitude,longitude]=point?[point.lat,point.lon]:places[place];
   const query=new URLSearchParams({latitude:String(latitude),longitude:String(longitude),timezone:"America/Lima",forecast_days:"7",daily:"precipitation_sum,temperature_2m_max",hourly:"relative_humidity_2m,temperature_2m"});
-  state.forecast.set(place,fetch("https://api.open-meteo.com/v1/forecast?"+query).then(r=>{if(!r.ok)throw Error("API "+r.status);return r.json()}).then(j=>{
+  state.forecast.set(key,fetch("https://api.open-meteo.com/v1/forecast?"+query).then(r=>{if(!r.ok)throw Error("API "+r.status);return r.json()}).then(j=>{
     const daily=j.daily,hourly=j.hourly;
     if(!daily||!hourly||daily.time?.length!==7||daily.precipitation_sum?.length!==7||!hourly.time||!hourly.relative_humidity_2m)throw Error("Serie diaria/horaria incompleta");
     const group=daily.time.map(day=>hourly.time.map((t,i)=>[t,hourly.relative_humidity_2m[i],hourly.temperature_2m[i]]).filter(x=>x[0].startsWith(day)));
@@ -89,9 +90,9 @@ async function week(place){
     const avgtemp=group.map(row=>{const nums=row.map(x=>x[2]).filter(Number.isFinite);return nums.length>=12?nums.reduce((a,b)=>a+b,0)/nums.length:NaN});
     if(!humid.every(Number.isFinite)||!avgtemp.every(Number.isFinite)||!daily.precipitation_sum.every(Number.isFinite)||!daily.temperature_2m_max.every(Number.isFinite))throw Error("Faltantes meteorológicos");
     return {days:daily.time,precip:daily.precipitation_sum,hum:humid,temp:avgtemp,max:daily.temperature_2m_max};
-  }).catch(e=>{state.forecast.delete(place);throw e}));
+  }).catch(e=>{state.forecast.delete(key);throw e}));
  }
- return state.forecast.get(place);
+ return state.forecast.get(key);
 }
 function renderConclusion(r,weekData,place){
  const rain=weekData.precip.reduce((a,v)=>a+v,0),wet=weekData.hum.filter(v=>v>=80).length,wetter=weekData.precip.filter(v=>v>=1).length,
@@ -110,10 +111,10 @@ function renderConclusion(r,weekData,place){
 }
 let sequence=0;
 async function renderModel(){
- const r=getCurrent("sm"),place=$("oaf-sm-localidad")?.value||"Chiclayo";if(!r)return;const q=++sequence;
+ const r=getCurrent("sm"),custom=window.OAFTerritory?.getActivePoint?.("cultivos"),place=custom?.name||$("oaf-sm-localidad")?.value||"Chiclayo";if(!r)return;const q=++sequence;
  set("oaf-sm-clase",(r.tipo==="plaga"?"Plaga":"Enfermedad")+" · "+r.crop_nombre);set("oaf-sm-titulo",r.nombre);set("oaf-sm-agente",r.agentes);set("oaf-sm-principio",r.modelo_nota);renderSource("oaf-sm-fuentes",r);drawIllustration(r);renderConditions(r);
  set("oaf-sm-conclusion","Consultando el pronóstico meteorológico para "+place+"…");
- try{const j=await week(place);if(q!==sequence)return;const total=j.precip.reduce((a,b)=>a+b,0),mean=j.hum.reduce((a,b)=>a+b,0)/7,tmax=Math.max(...j.max);
+ try{const j=await week(custom?null:place,custom);if(q!==sequence)return;const total=j.precip.reduce((a,b)=>a+b,0),mean=j.hum.reduce((a,b)=>a+b,0)/7,tmax=Math.max(...j.max);
   const ms=$("oaf-sm-datos");ms?.replaceChildren();
   for(const [lbl,n,unit] of [["Lluvia prevista 7 días",total,"mm"],["Humedad media",mean,"%"],["Temperatura máxima",tmax,"°C"]]){const d=element("div");d.append(element("small",null,lbl),element("strong",null,nfmt(n,1)+" "+unit));ms?.append(d)}
   plot(j.precip,j.hum,j.days);renderTable(j);renderConclusion(r,j,place);
@@ -129,6 +130,7 @@ function init(){
   refill("oaf-sm-localidad",Object.keys(places).map(s=>[s,s]),"Chiclayo");
   for(const k of ["sm","mg"]){refill("oaf-"+k+"-cultivo",d.cultivos.map(c=>[c.id,c.nombre]),"mango");refill("oaf-"+k+"-tipo",[["todos","Todas"],["plaga","Plagas"],["enfermedad","Enfermedades"]],"todos");dependent(k);}
   $("oaf-sm-localidad").addEventListener("change",renderModel);
+   document.addEventListener("oaf:area-update",e=>{if(e.detail?.scope==="cultivos")renderModel()});
   for(const k of ["sm","mg"]){for(const prop of ["cultivo","tipo"]){$(`oaf-${k}-${prop}`).addEventListener("change",()=>{dependent(k);k==="sm"?renderModel():renderManage()})}
    $(`oaf-${k}-patogeno`).addEventListener("change",k==="sm"?renderModel:renderManage);
   }
