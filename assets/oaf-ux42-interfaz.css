@@ -1,0 +1,84 @@
+/* UX42 · portada, gráfico georreferenciado y presentación concisa.
+   La tarjeta lateral conserva la altura de la imagen y nunca desplaza el inicio. */
+#inicio .oaf-ux14-home-side.oaf-ux42-carousel{
+ display:grid!important;grid-template-rows:minmax(0,1fr) auto!important;
+ gap:8px!important;align-self:stretch;height:100%!important;
+ min-height:305px;max-height:430px;overflow:hidden
+}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide{
+ height:auto!important;min-height:0;overflow:auto;justify-content:center;
+ padding:12px 15px!important;gap:6px!important;box-sizing:border-box;
+ margin:0!important
+}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide[hidden]{display:none!important}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide h2{
+ font-size:clamp(15px,1.7vw,20px)!important;margin:0 0 4px!important;
+ line-height:1.25
+}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide p{font-size:11px!important;line-height:1.4!important}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide .oaf-ux14-probline{font-size:10px}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide .oaf-ux14-prob-bars{margin:3px 0;gap:4px}
+#inicio .oaf-ux42-carousel .oaf-ux42-slide .oaf-ux15-source,
+#inicio .oaf-ux42-carousel .oaf-ux42-slide .oaf-ux15-explain{
+ font-size:10px!important;line-height:1.35!important;padding:4px 8px!important
+}
+#inicio .oaf-ux42-official-meta{font-size:10px!important;color:#516e62}
+#inicio .oaf-ux42-controls{
+ display:flex;align-items:center;justify-content:center;gap:9px;
+ border:1px solid #d1e2d6;border-radius:10px;background:#f8fbf9;padding:4px;
+ min-height:35px
+}
+#inicio .oaf-ux42-controls button{
+ min-width:29px;min-height:28px;border:1px solid #c8ddcf;border-radius:7px;
+ background:#fff;color:#28634f;cursor:pointer;font:inherit;font-size:13px;font-weight:800
+}
+#inicio .oaf-ux42-controls button[aria-current="true"]{
+ background:#246f58;color:#fff;border-color:#246f58
+}
+#inicio .oaf-ux42-controls button:focus-visible{
+ outline:2px solid #dca858;outline-offset:2px
+}
+#inicio .oaf-ux42-highlight{
+ color:#174f41!important;font-weight:750!important;font-size:12px!important
+}
+#inicio .oaf-ux42-minichart{
+ height:115px;min-height:85px;width:100%;display:flex;gap:5px;
+ align-items:end;justify-content:space-evenly;border:1px solid #d9e6e0;
+ border-radius:8px;background:#fff;padding:6px 8px;box-sizing:border-box
+}
+#inicio .oaf-ux42-bar{display:flex;flex:1 1 0;align-items:center;flex-direction:column;
+ justify-content:end;min-width:0;height:100%;gap:3px}
+#inicio .oaf-ux42-bartrack{width:min(100%,24px);height:100%;min-height:48px;display:flex;align-items:end;
+ border-bottom:1px solid #b7c6be}
+#inicio .oaf-ux42-bartrack i{width:100%;display:block;background:linear-gradient(#4aa7c2,#2581ac);border-radius:3px 3px 0 0}
+#inicio #oaf-ux42-month-plot .oaf-ux42-bartrack i{background:linear-gradient(#ad9ddd,#7862b4)}
+#inicio .oaf-ux42-bar small{font-size:9px!important;letter-spacing:0!important;color:#557366!important}
+#inicio .oaf-ux42-val{font-size:10px;font-weight:750;color:#246e65}
+#inicio .oaf-ux42-note{font-size:10px!important}
+#inicio .oaf-ux42-slide>a{font-size:11px!important}
+#oaf-ux14-rf-semana .oaf-ux14-chart svg{overflow:visible}
+#oaf-ux14-rf-semana .oaf-ux14-heading{margin-bottom:8px;padding-bottom:8px}
+#oaf-ux14-rf-semana .oaf-ux14-heading p{font-size:12px;line-height:1.48}
+#oaf-ux14-rf-semana .oaf-ux14-chart{min-height:205px}
+#oaf-area-semanal .oaf-area-accordion>summary{font-size:13px!important}
+#oaf-area-semanal .oaf-area-output{padding:3px 0}
+#oaf-area-semanal .oaf-area-fields{margin:5px 0;gap:7px}
+#oaf-area-semanal .oaf-area-help{font-size:10px;line-height:1.35;margin:3px 0}
+#oaf-ux14-rf-semana .oaf-ux14-source{font-size:11px;line-height:1.45}
+#inicio .oaf-ux22-sintesis{font-size:13px;line-height:1.55;text-align:justify}
+#oaf-ux14-rf-mes .oaf-ux14-heading p{line-height:1.5}
+@media(max-width:950px){
+ #inicio .oaf-ux14-home-side.oaf-ux42-carousel{min-height:310px;max-height:400px}
+}
+@media(max-width:650px){
+ #inicio .oaf-ux14-home-side.oaf-ux42-carousel{min-height:310px;max-height:420px}
+ #inicio .oaf-ux14-home-hero{gap:8px!important}
+ #oaf-ux14-rf-semana .oaf-ux14-heading h2{font-size:19px}
+ #oaf-area-semanal .oaf-area-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #oaf-area-semanal .oaf-area-actions .btn{flex:1 1 auto}
+}
+@media(max-width:400px){
+ #inicio .oaf-ux42-carousel .oaf-ux42-slide{padding:8px 10px!important}
+ #inicio .oaf-ux42-minichart{height:104px;padding:4px}
+ #inicio .oaf-ux42-bar small{font-size:8px!important}
+}
