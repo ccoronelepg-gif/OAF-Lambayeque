@@ -127,6 +127,8 @@ function weeklyModelAudit(){
   " mm; temperatura RF "+metric.mae_temperatura_c+" °C, climatología "+metric.mae_climatologia_local_temperatura_c+" °C."));
  if(backtest){
   target.append(E("p",null,"Backtest de 7 días encadenados (2025): "+backtest.n_origenes+" orígenes retrospectivos; MAE por horizonte, sin usar días futuros como retardos."));
+  const winners=(backtest.por_horizonte||[]).filter(row=>row.mae_rf_lluvia_mm<row.mae_climatologia_lluvia_mm).length;
+  target.append(E("p","oaf-ux43-model-warning","RF supera la climatología local en "+winners+"/7 horizontes de lluvia evaluados. "+(winners>=5?"Se mantiene como modelo de investigación, sin validación prospectiva.":"RF no supera de forma consistente la climatología en la prueba recursiva: NO promoverlo a modelo operativo.")));
   const table=E("table"),head=E("tr");
   for(const x of ["Día","MAE RF lluvia","MAE climatología","Sesgo RF"]){head.append(E("th",null,x))}
   table.append(head);
