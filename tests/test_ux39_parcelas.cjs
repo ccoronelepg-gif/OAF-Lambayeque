@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,".."),read=x=>fs.readFileSync(path.join(root,x
 const index=read("index.html"),sw=read("sw.js"),css=read("assets/oaf-parcelas-ux39.css");
 const core=read("assets/oaf-territorio-compartido.js"),src=read("assets/oaf-parcelas-ux39.js"),hist=read("assets/oaf-area-ux38.js");
 for(const js of [src,core,sw,hist])new Function(js);
-assert(index.includes('oaf-parcelas-ux39.js?v=20261027-ux40'),"Script no activado en la web");
+assert(index.includes('oaf-parcelas-ux39.js?v=20261027-ux41'),"Script no activado en la web");
 assert(index.includes('oaf-parcelas-ux39.css?v=20261027-ux39'),"CSS no activado en la web");
 assert(index.includes('oaf-visores-ux40.css?v=20261027-ux40')&&sw.includes('"./assets/oaf-visores-ux40.css"'),"Diseño UX40 no incluido en web y PWA");
 assert(sw.includes('"./assets/oaf-parcelas-ux39.js"')&&sw.includes('"./assets/oaf-parcelas-ux39.css"'),"PWA no incluye módulo de parcelas");
