@@ -61,13 +61,14 @@ async function update(){
   const site=ids("oaf-home-location");
   if(!site)return;
   const city=site.value;
-  const custom=city==="Mi zona productora"?window.OAFTerritory?.getPoint?.("inicio"):null;
+  const custom=window.OAFTerritory?.getActivePoint?.("inicio")||null;
+   const locationLabel=custom?.name||city;
    if(!Object.prototype.hasOwnProperty.call(coords,city)&&!custom)return;
   const seq=++requestSequence;
   const button=ids("oaf-home-refresh");
   if(button)button.disabled=true;
   reset();
-  put("oaf-home-source","Actualizando información de "+city+"…");
+  put("oaf-home-source","Actualizando información de "+locationLabel+"…");
   put("oaf-home-analysis","Consultando las condiciones actuales para elaborar una lectura breve y orientativa.");
   const [lat,lon]=custom?[custom.lat,custom.lon]:coords[city];
   const wUrl=url("https://api.open-meteo.com/v1/forecast",lat,lon,{
@@ -105,21 +106,22 @@ async function update(){
     put("oaf-meta-"+id,weather?wt:"Sin dato · Open-Meteo (modelo meteorológico)");
   put("oaf-meta-air",air?at:"Sin dato · Open-Meteo/CAMS global (modelo)");
   const time=wtime||atime;
-  put("oaf-home-source","Consulta de "+city+" · "+dateText(time)+". Son valores estimados, no mediciones locales.");
-  const outlook=analysis(weather,air,city);
+  put("oaf-home-source","Consulta de "+locationLabel+" · "+dateText(time)+". Son valores estimados, no mediciones locales.");
+  const outlook=analysis(weather,air,locationLabel);
   const pm=(air&&finite(air.pm2_5)&&finite(air.pm10))
     ? " PM₂.₅: "+format(air.pm2_5)+" µg/m³; PM₁₀: "+format(air.pm10)+" µg/m³ (estimaciones).":"";
   put("oaf-home-analysis", (!weather?"No se pudo obtener el modelo meteorológico en este momento. ":"")+outlook+pm);
   if(typeof CustomEvent==="function" && typeof document.dispatchEvent==="function")
     document.dispatchEvent(new CustomEvent("oaf:weather",{detail:{localidad:city,current:weather,air,time}}));
   if(!weather && !air){
-    put("oaf-home-source","No hay datos recientes disponibles para "+city+".");
+    put("oaf-home-source","No hay datos recientes disponibles para "+locationLabel+".");
   }
 }
 function init(){
   if(!ids("oaf-home-location"))return;
   ids("oaf-home-location").addEventListener("change",update);
   ids("oaf-home-refresh")?.addEventListener("click",update);
+   document.addEventListener("oaf:area-home-refresh",update);
   update();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);
