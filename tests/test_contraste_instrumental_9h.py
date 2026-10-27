@@ -105,6 +105,6 @@ class Contraste9H(unittest.TestCase):
         self.assertIn('href="assets/oaf-contraste-estaciones-9h.css?v=1"',h)
         self.assertEqual(h.count('id="oaf-9h-visor"'),1)
         self.assertEqual(h.count('id="oaf-altitudinal-map"'),1)
-        self.assertEqual(h.count('<section data-page='),5)
+        self.assertEqual(h.count('<section data-page='),6)
 
 if __name__=="__main__":unittest.main()
