@@ -49,9 +49,12 @@ class AgroExportacion(unittest.TestCase):
     def test_all_original_scientific_ids_and_scripts_remain(self):
         self.assertEqual(len(self.page.ids),len(set(self.page.ids)),"Duplicate DOM IDs")
         self.assertFalse(set(ORIGINAL["ids_conservar"])-set(self.page.ids))
-        for path in ORIGINAL["scripts_orden_de_carga"]:
-            self.assertIn(path,self.page.scripts)
-        old=[self.page.scripts.index(path) for path in ORIGINAL["scripts_orden_de_carga"]]
+        # El cambio de ?v invalida caché PWA pero no altera carga ni existencia.
+        actual_paths = [src.split("?", 1)[0] for src in self.page.scripts]
+        original_paths = [src.split("?", 1)[0] for src in ORIGINAL["scripts_orden_de_carga"]]
+        for path in original_paths:
+            self.assertIn(path,actual_paths)
+        old=[actual_paths.index(path) for path in original_paths]
         self.assertEqual(old,sorted(old))
         self.assertEqual(tuple(self.page.pages),("inicio","clima","nino","cultivos","autor","verificaciones"))
 
