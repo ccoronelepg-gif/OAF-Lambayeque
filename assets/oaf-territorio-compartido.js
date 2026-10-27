@@ -166,7 +166,7 @@ function pin(svg,scene,p,id){
  if(!svg)return;
  const old=svg.querySelector("#"+id);
  if(!p){old?.remove();return;}
- if(old?.dataset?.key===p.lat+","+p.lon)return;
+ if(old?.dataset?.key===p.lat+","+p.lon){if(svg.lastElementChild!==old)svg.append(old);return;}
  old?.remove();if(!scene||!scene.bounds)return;
  const b=scene.bounds;if(p.lon<b.minLon||p.lon>b.maxLon||p.lat<b.minLat||p.lat>b.maxLat)return;
  const x=typeof scene.x==="function"?scene.x(p.lon):700*(p.lon-b.minLon)/(b.maxLon-b.minLon);
@@ -193,7 +193,7 @@ function observeMaps(){
 }
 function init(){
  const locations={
-  inicio:()=>document.querySelector("#oaf-zone-primary .oaf-location-panel"),
+  inicio:()=>document.querySelector("#oaf-zone-primary .oaf-zone-picker")||document.querySelector("#oaf-zone-primary .oaf-location-panel"),
   clima:()=>$("oaf-history")?.querySelector(".oaf-filterline"),
   territorio:()=>$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
   predicciones:()=>$("oaf-ux16-future-controls")||$("oaf-ux14-rf-mes"),
