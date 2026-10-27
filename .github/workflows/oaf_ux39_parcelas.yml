@@ -1,0 +1,38 @@
+name: OAF UX39 - Parcelas y auditoria geoespacial
+on:
+  push:
+    paths:
+      - "assets/oaf-parcelas-ux39.js"
+      - "assets/oaf-parcelas-ux39.css"
+      - "assets/oaf-territorio-compartido.js"
+      - "assets/oaf-area-ux38.js"
+      - "index.html"
+      - "sw.js"
+      - "tests/test_ux39_parcelas.cjs"
+      - "tests/auditoria_ux39_servicios.cjs"
+      - ".github/workflows/oaf_ux39_parcelas.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "18 12 * * *"
+permissions:
+  contents: read
+jobs:
+  spatial-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verificar GeoJSON, superficies, sector climatico y app movil
+        run: node tests/test_ux39_parcelas.cjs
+      - name: Auditar disponibilidad de geoservicios y ERA5-Land
+        run: node tests/auditoria_ux39_servicios.cjs
+      - name: Conservar evidencia fechada de cada auditoria
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux39-servicios
+          path: ux39-auditoria-servicios.json
+          if-no-files-found: warn
