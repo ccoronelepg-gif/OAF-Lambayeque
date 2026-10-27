@@ -7,6 +7,23 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const context=await browser.newContext({viewport:{width:1365,height:850},locale:"es-PE"});
   await context.route("**/*",route=>route.request().url().startsWith("http://127.0.0.1:8765/")?route.continue():route.abort("blockedbyclient"));
   const page=await context.newPage();const errors=[];
+  // UX44: respuesta estacional simulada sin Internet, meses completos Nov26–Abr27.
+  const seasonalTime=[],seasonalRain=[],seasonalTemp=[];
+  for(let y=2026,m=11;y<2027||m<=4;){
+   const length=new Date(Date.UTC(y,m,0)).getUTCDate();
+   for(let d=1;d<=length;d++){
+    seasonalTime.push(y+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0"));
+    seasonalRain.push(1.25);seasonalTemp.push(24.5);
+   }
+   if(m===12){y++;m=1}else m++;
+  }
+  await page.route("https://seasonal-api.open-meteo.com/**",route=>route.fulfill({
+   status:200,contentType:"application/json",
+   body:JSON.stringify({latitude:-6.77,longitude:-79.84,
+    daily_units:{precipitation_sum:"mm",temperature_2m_mean:"°C"},
+    daily:{time:seasonalTime,precipitation_sum:seasonalRain,temperature_2m_mean:seasonalTemp}})
+  }));
+
   page.on("pageerror",err=>errors.push(err.message));
   await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:45000});
   await page.waitForSelector("#oaf-parcel-territorio",{state:"attached",timeout:20000});
@@ -47,6 +64,20 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   });
   assert(weekly.weekly&&weekly.monthly&&weekly.first&&weekly.visible&&weekly.controls,
     "Gráfico semanal RF/Open-Meteo/ERA5 no figura antes del horizonte mensual: "+JSON.stringify(weekly));
+  // UX44: los seis meses completos muestran tres curvas (RF, ERA5, SEAS5).
+  await page.waitForFunction(()=>{
+   const svg=document.querySelector("#oaf-ux14-monthchart svg");
+   return svg&&svg.querySelectorAll("polyline").length>=3 &&
+    document.querySelector("#oaf-ux44-seasonal-note")?.textContent.includes("6/6 meses");
+  },null,{timeout:20000});
+  const estacional=await page.evaluate(()=>{
+   const root=document.querySelector("#oaf-ux14-rf-mes");
+   return {polyline:root.querySelectorAll("#oaf-ux14-monthchart svg polyline").length,
+    openMeteo:[...root.querySelectorAll(".oaf-ux14-key span")].some(x=>x.textContent.includes("Open-Meteo")),
+    counter:!!document.querySelector("#oaf-ux15-counter"),message:document.querySelector("#oaf-ux44-seasonal-note")?.textContent};
+  });
+  assert(estacional.polyline===3&&estacional.openMeteo&&!estacional.counter,
+    "Gráfico mensual requiere tercera serie estacional verificable sin contador: "+JSON.stringify(estacional));
   // UX42: Carrusel Inicio y lectura independiente en área semanal.
   await page.waitForSelector("#oaf-ux42-slide-official",{state:"attached",timeout:12000});
   const intro=await page.evaluate(()=>{
