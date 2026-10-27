@@ -69,7 +69,7 @@ function limits(polys){
  const a=polys.flat(2);return {minLon:Math.min(...a.map(p=>p[0])),maxLon:Math.max(...a.map(p=>p[0])),minLat:Math.min(...a.map(p=>p[1])),maxLat:Math.max(...a.map(p=>p[1]))};
 }
 function ui(k){return $("oaf-parcel-"+k);}
-function report(k,msg){const r=ui(k)?.querySelector("[data-ux39-report]");if(r)r.textContent=msg;}
+function report(k,msg){const r=ui(k)?.querySelector("[data-ux39-report]");if(r)r.textContent=msg;const heading=ui(k)?.querySelector(".oaf-parcel-fold>summary strong");if(heading)heading.textContent=parcels[k]?"Parcela: "+parcels[k].name+" · "+fmt(parcels[k].ha,2)+" ha":"Delimitar parcela";}
 function save(k){try{sessionStorage.setItem(KEY+k,JSON.stringify(parcels[k]));}catch(_){report(k,"La geometría puede visualizarse, pero no pudo conservarse en esta sesión.");}}
 function restore(k){try{const raw=JSON.parse(sessionStorage.getItem(KEY+k));if(raw?.geometry){const polygons=parsePolygons(raw.geometry);parcels[k]={name:String(raw.name||"Parcela").slice(0,80),polygons,geometry:{type:"MultiPolygon",coordinates:polygons},ha:surface(polygons)};}}catch(_){}}
 function draw(k){
@@ -170,22 +170,40 @@ function mount(k){
  const anchor=$("oaf-area-"+k),pane=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
  if(!anchor||!pane||ui(k))return false;
  const wrapper=node("section","oaf-parcel-panel");wrapper.id="oaf-parcel-"+k;
- wrapper.innerHTML='<details open><summary><strong>Delimitación de mi parcela · Polígono y capas</strong></summary>'+
-  '<p>Ubica primero un punto mediante coordenadas geográficas o UTM en «Mi zona productiva», o delimita una parcela para visualizarla encima de las capas del mapa. La delimitación no constituye un catastro.</p>'+
+ wrapper.innerHTML='<details class="oaf-parcel-fold"><summary><strong>Delimitar parcela</strong><span> · Dibujar / GeoJSON / KML</span></summary>'+
   '<div class="oaf-parcel-actions"><button type="button" data-action="start">Dibujar parcela</button><button type="button" data-action="finish" disabled>Cerrar polígono</button><button type="button" data-action="undo" disabled>Deshacer vértice</button><button type="button" data-action="clear">Borrar polígono</button><button type="button" data-action="export">Exportar GeoJSON</button></div>'+
   '<label class="oaf-parcel-upload">Importar parcela GeoJSON / KML <input type="file" accept=".geojson,.json,.kml,application/geo+json" data-ux39-file></label>'+
-  '<p class="oaf-parcel-info" data-ux39-report role="status" aria-live="polite">Puedes trazar sobre el mapa o importar un polígono WGS84.</p>'+
-  '<p class="oaf-parcel-caveat">Área calculada con aproximación geográfica local: no es superficie catastral certificada ni área afectada por peligros.</p>'+
-  '<p class="oaf-parcel-info" data-ux39-layers></p>'+
+  '<p class="oaf-parcel-info" data-ux39-report role="status" aria-live="polite">Dibuja en el mapa o importa un archivo WGS84.</p>'+
+  '<p class="oaf-parcel-caveat">Superficie orientativa; no sustituye una delimitación catastral.</p>'+
+  '<details class="oaf-parcel-layers"><summary>Capas activas</summary><p class="oaf-parcel-info" data-ux39-layers></p></details>'+
+  '<details class="oaf-parcel-advanced"><summary>Herramientas de análisis</summary>'+
   '<div class="oaf-parcel-actions"><button type="button" data-action="risk">Evaluar intersecciones y superficie aproximada</button><button type="button" data-action="model">Modelo climático por sector · validar</button><button type="button" data-action="agro">Contexto agroclimático y fitosanitario</button><button type="button" data-action="audit">Auditar fuentes</button><button type="button" data-action="send">Usar punto en Cultivos y sanidad</button></div>'+
   '<div data-ux39-risk class="oaf-parcel-results" aria-live="polite"></div>'+
   '<div data-ux39-model class="oaf-parcel-results" aria-live="polite"></div>'+
   '<div data-ux39-agro class="oaf-parcel-results" aria-live="polite"></div>'+
   '<div data-ux39-audit class="oaf-parcel-results" aria-live="polite"></div>'+
-  '</details>';
- anchor.after(wrapper);
+  '</details></details>';
+ const mapcolumn=pane.querySelector(".oaf-ux29-mapcolumn");
+ const content=mapcolumn?.querySelector(".oaf-ux29-mapcontent");
+ if(!content)return false;
+ // El mapa queda arriba de la delimitación, tras la barra de coordenadas.
+ content.after(wrapper);
+ if(k==="territorio"){
+  const help=content.querySelector("#oaf-ux30-map-help"),map=content.querySelector(".oaf-ux29-mainmapcard");
+  if(help&&map)map.after(help);
+ }
+ // Evaluación de punto disponible bajo el mapa, sin saturar la cabecera.
+ const originalData=anchor.querySelector(".oaf-area-data");
+ if(originalData&&!$("oaf-area-point-details-"+k)){
+  const pointDetails=node("details","oaf-point-diagnosis");
+  pointDetails.id="oaf-area-point-details-"+k;
+  pointDetails.innerHTML='<summary>Diagnóstico espacial del punto</summary>';
+  pointDetails.append(originalData);
+  wrapper.after(pointDetails);
+ }
  const get=n=>wrapper.querySelector('[data-action="'+n+'"]');
  get("start").addEventListener("click",()=>{
+  wrapper.querySelector(".oaf-parcel-fold").open=true;
   drawing[k]=true;drafts[k]=[];get("start").disabled=true;get("finish").disabled=false;get("undo").disabled=false;
   report(k,"Haz clic en el mapa para colocar los vértices del perímetro, al menos tres. No arrastres para dibujar.");
  });
