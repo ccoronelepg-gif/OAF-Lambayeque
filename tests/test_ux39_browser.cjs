@@ -69,6 +69,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   for(let y=1996;y<=2025;y++)for(let t=Date.UTC(y,0,1);t<Date.UTC(y+1,0,1);t+=86400000){
     eraTime.push(new Date(t).toISOString().slice(0,10));eraRain.push(0.1);eraTemp.push(26);
   }
+  // El archivo histórico utiliza OTRO host: archive-api.open-meteo.com.
+  await page.route("https://archive-api.open-meteo.com/**",route=>route.fulfill({status:200,contentType:"application/json",
+    body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp}})}));
   await page.route("https://api.open-meteo.com/**",async route=>{
     const url=route.request().url();
     if(url.includes("archive"))await route.fulfill({status:200,contentType:"application/json",
