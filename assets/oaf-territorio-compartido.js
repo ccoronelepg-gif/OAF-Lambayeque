@@ -6,7 +6,7 @@ const $=id=>document.getElementById(id);
 const cityNames=["Chiclayo","Jayanca","Motupe","Olmos"];
 const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
 const KEY="oaf-area-autonoma-20261027-";
-const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi área productora · territorio y riesgos",predicciones:"Mi área productora · análisis climático",escenarios:"Mi área productora · escenarios de riesgo",cultivos:"Mi zona productora · cultivos y sanidad"};
+const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi zona productiva · territorio y riesgos",predicciones:"Mi área productora · análisis climático",escenarios:"Mi zona productiva · escenarios agroclimáticos",cultivos:"Mi zona productora · cultivos y sanidad"};
 const modes=["inicio","clima","territorio","predicciones","escenarios","cultivos"];
 const states={},els={},revisions={},active={};
 function valid(lat,lon){
