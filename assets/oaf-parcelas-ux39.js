@@ -190,7 +190,29 @@ function mount(k){
  content.after(wrapper);
  if(k==="territorio"){
   const help=content.querySelector("#oaf-ux30-map-help"),map=content.querySelector(".oaf-ux29-mainmapcard");
-  if(help&&map)map.after(help);
+  if(map){
+   const frame=map.querySelector(".oaf-ux24-mapframe");
+   if(frame)map.prepend(frame);
+   if(help)map.after(help);
+  }
+ }
+ // Permite consultar las capas con el mapa más grande sin alterar su SVG.
+ const toolbar=mapcolumn.querySelector(".oaf-ux29-toolbar");
+ if(toolbar&&!toolbar.querySelector(".oaf-map-expand")){
+  const enlarge=node("button","oaf-map-expand","Ampliar mapa");
+  enlarge.type="button";enlarge.setAttribute("aria-pressed","false");
+  enlarge.title="Ampliar el visor geográfico";
+  const reset=()=>{
+   mapcolumn.classList.remove("oaf-map-expanded");
+   enlarge.textContent="Ampliar mapa";enlarge.setAttribute("aria-pressed","false");
+  };
+  enlarge.addEventListener("click",()=>{
+   const expanded=mapcolumn.classList.toggle("oaf-map-expanded");
+   enlarge.textContent=expanded?"Cerrar vista ampliada":"Ampliar mapa";
+   enlarge.setAttribute("aria-pressed",String(expanded));
+  });
+  document.addEventListener("keydown",ev=>{if(ev.key==="Escape")reset();});
+  toolbar.append(enlarge);
  }
  // Evaluación de punto disponible bajo el mapa, sin saturar la cabecera.
  const originalData=anchor.querySelector(".oaf-area-data");
