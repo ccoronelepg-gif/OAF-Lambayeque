@@ -186,8 +186,22 @@ function mount(k){
  const mapcolumn=pane.querySelector(".oaf-ux29-mapcolumn");
  const content=mapcolumn?.querySelector(".oaf-ux29-mapcontent");
  if(!content)return false;
- // El mapa queda arriba de la delimitación, tras la barra de coordenadas.
- content.after(wrapper);
+ // Territorio: la parcela sigue bajo el bloque de mapa.
+ // Escenarios: el perímetro y el diagnóstico van inmediatamente tras el SVG,
+ // antes de UX36 (hidrología) y UX37 (validación de caudales).
+ if(k==="escenarios"){
+  const scenarioMap=content.querySelector(".oaf-ux29-scenemap");
+  if(scenarioMap)scenarioMap.after(wrapper);else content.prepend(wrapper);
+  const hydro=content.querySelector("#oaf-ux36-panel");
+  if(hydro){
+   const quality=content.querySelector("#oaf-ux37-panel");
+   let tail=quality||hydro;
+   for(const id of ["oaf-ux35-outlook","oaf-ux35-mapstatus"]){
+    const item=content.querySelector("#"+id);
+    if(item){tail.after(item);tail=item;}
+   }
+  }
+ }else content.after(wrapper);
  if(k==="territorio"){
   const help=content.querySelector("#oaf-ux30-map-help"),map=content.querySelector(".oaf-ux29-mainmapcard");
   if(map){
