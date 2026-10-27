@@ -41,7 +41,7 @@ const fetchMock=async address=>{
  return {ok:true,json:async()=>({current:{time:"2026-10-17T12:00",temperature_2m:34,
   relative_humidity_2m:85,precipitation:0,shortwave_radiation:550,wind_speed_10m:22}})};
 };
-const context={document:doc,fetch:fetchMock,URLSearchParams,
+const context={document:doc,window:{OAFTerritory:null},fetch:fetchMock,URLSearchParams,
   Object,Number,Math,Promise,RegExp,String,Error};
 vm.runInNewContext(fs.readFileSync("assets/oaf-inicio-climatico-2026.js","utf8"),context);
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
