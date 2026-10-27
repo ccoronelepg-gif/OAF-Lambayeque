@@ -148,7 +148,8 @@ function initDaily(){
  const city=$("oaf-ux14-ciudad"),variable=$("oaf-ux14-variable");if(!city||!variable)return;
  const call=async()=>{const q=++weekSeq,c=city.value;const out=$("oaf-ux14-weekstatus");if(window.OAFTerritory?.getActivePoint?.("semanal")){document.dispatchEvent(new Event("oaf:ux42-repaint-week"));return;}out.textContent="Consultando meteorología para "+c+"…";
  try{const d=await getForecast(c);if(q!==weekSeq||window.OAFTerritory?.getActivePoint?.("semanal"))return;const isRain=variable.value==="rain",values=isRain?d.precipitation_sum:d.temperature_2m_max;
- svgChart("oaf-ux14-weekchart",[{name:"Open-Meteo (externo)",values,color:isRain?"#419bd2":"#dc8555"}],d.time.map(x=>x.slice(5)),isRain?"mm/día":"°C",isRain);
+ if(window.OAFWeeklyBars)window.OAFWeeklyBars($("oaf-ux14-weekchart"),d.time,[{name:"Open-Meteo (externo)",values,color:"#278eb8"}],isRain?"mm/día":"°C");
+   else svgChart("oaf-ux14-weekchart",[{name:"Open-Meteo (externo)",values,color:"#278eb8"}],d.time.map(x=>x.slice(5)),isRain?"mm/día":"°C",isRain);
  out.textContent="Open-Meteo · referencia externa para "+c+" del "+d.time[0]+" al "+d.time[6]+". RF OAF se compara en esta misma gráfica cuando coinciden las fechas.";document.dispatchEvent(new CustomEvent("oaf:ux16-externo-diario",{detail:{localidad:c,dias:d}})); }
  catch(e){if(q!==weekSeq)return;$("oaf-ux14-weekchart").textContent="Referencia externa no disponible.";out.textContent="No se puede mostrar un pronóstico sin datos: "+e.message}};
  city.addEventListener("change",call);variable.addEventListener("change",call);call();
