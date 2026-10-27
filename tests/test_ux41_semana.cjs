@@ -15,9 +15,9 @@ assert(src.includes("map.has(d)"),"RF debe emparejarse exclusivamente por fecha 
 assert(!area.includes("#oaf-ux14-rf-semana,#oaf-anomaly-panel"),"El gráfico semanal sigue oculto");
 assert(structure.includes('section("Predicción a siete días'),"No se creó la cabecera del cuadro semanal");
 assert(structure.indexOf('const live=section("Predicción a siete días')<structure.indexOf('const month=section("Horizonte mensual'),"Gráfico no precede al mensual");
-assert(index.includes("oaf-ux15-rf-salidas.js?v=20261027-ux42"),"No se actualizó script semanal en web");
-assert(index.includes("oaf-ux14-reorganizacion.js?v=20261027-ux42"),"No se actualizó estructura semanal en web");
-assert(read("sw.js").includes("oaf-pwa-shell-2026-10-27-ux42"),"Cache PWA no versionado");
+assert(index.includes("oaf-ux15-rf-salidas.js?v=20261027-ux43"),"No se actualizó script semanal en web");
+assert(index.includes("oaf-ux14-reorganizacion.js?v=20261027-ux43"),"No se actualizó estructura semanal en web");
+assert(read("sw.js").includes("oaf-pwa-shell-2026-10-27-ux43"),"Cache PWA no versionado");
 const start=src.indexOf("/* Línea de base meteorológica"),end=src.indexOf("function week(){",start);
 assert(start>=0&&end>start,"Falta cálculo de promedio por día del año");
 const times=[],rain=[],temp=[];
