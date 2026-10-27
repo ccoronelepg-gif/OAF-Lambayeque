@@ -37,7 +37,7 @@ const addKeys=[
 ];
 const extra=new Map(addKeys.map(([id,name,meaning])=>[id,{name,meaning}]));
 const state={
- on:{pastRain:true,pastFlood:true,pastMass:false,past2023:false,rain7:true,seasonal:true,
+ on:{pastRain:true,pastFlood:true,pastMass:false,past2023:false,rain7:false,seasonal:true,
  futureFlood:true,futureMass:false,futureRiver:false,futureDrought:false,futureHeat:false,companies:true},
  territorial:{base:true,departamento:true,provincia:true,regional:true,agricola:true},
  year:2017,days:7,threshold:40,
