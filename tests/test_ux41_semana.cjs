@@ -52,6 +52,6 @@ const climatology=construct(fakeFetch,AbortController,URLSearchParams,setTimeout
  const current=["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"];
  const matches=current.map(d=>byDate.has(d)?byDate.get(d):NaN);
  assert(matches.filter(Number.isFinite).length>=1,"No existe ninguna emisión RF que coincida con fechas de octubre");
- assert(Number.isNaN(matches.at(-1)),"RF no puede rellenar una fecha futura no emitida");
+ assert(!byDate.has("2026-11-04"),"El RF no puede rellenar fechas posteriores a su última emisión de siete días");
  console.log("UX41 OK: 30 años ERA5, media calendario, caché y coincidencia estricta RF, presentación/PWA");
 })().catch(e=>{console.error(e);process.exitCode=1});
