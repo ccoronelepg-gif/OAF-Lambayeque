@@ -89,10 +89,14 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     const root=document.querySelector("#oaf-ux14-weekchart");
     const ticks=[...root.querySelectorAll('svg text[text-anchor="end"]')].map(x=>x.textContent);
     const desc=document.querySelector("#oaf-ux14-weekstatus")?.textContent;
-    return {ticks,desc,polylines:root.querySelectorAll("svg polyline").length};
+    return {ticks,desc,polylines:root.querySelectorAll("svg polyline").length,
+     bars:root.querySelectorAll("svg rect[role=img]").length,
+     days:new Set([...root.querySelectorAll("svg rect[role=img]")].map(x=>x.getAttribute("aria-label").slice(0,10))).size};
   });
   assert(plotInfo.ticks.length>=4&&new Set(plotInfo.ticks).size===plotInfo.ticks.length,
     "Escala con etiquetas repetidas: "+JSON.stringify(plotInfo));
+  assert(plotInfo.bars>=14&&plotInfo.days===7&&plotInfo.polylines===0,
+    "El gráfico de siete días debe usar barras agrupadas, no líneas: "+JSON.stringify(plotInfo));
   assert(plotInfo.desc?.includes("Sector piloto")&&plotInfo.desc?.includes("ERA5"),
     "Análisis por coordenada/ERA5 no disponible: "+JSON.stringify(plotInfo));
   const result=await page.evaluate(()=>{
