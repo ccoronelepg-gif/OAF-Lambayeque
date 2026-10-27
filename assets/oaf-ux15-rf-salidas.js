@@ -227,9 +227,75 @@ function week(){
   if(version===weekVersion&&output.isConnected)status.textContent=message+" ERA5 no disponible ("+e.message+"); no se reemplaza con cifras supuestas.";
  });
 }
+/* UX44 · Pronóstico estacional Open-Meteo / ECMWF SEAS5, media de ensamble.
+ * API diaria (mm/día y °C); lluvia sumada y temperatura media por MES COMPLETO.
+ * Los meses incompletos o sin cobertura nunca se estiman ni interpolan.
+ * Este pronóstico 36 km no está corregido por sesgo ni validado para la parcela.
+ */
+const seasonalCache=new Map();
+const seasonalEndpoint="https://seasonal-api.open-meteo.com/v1/seasonal";
+function seasonalMonthlyFromDaily(daily,months){
+ if(!Array.isArray(daily?.time)||!Array.isArray(daily?.precipitation_sum)||
+    !Array.isArray(daily?.temperature_2m_mean)||
+    daily.time.length!==daily.precipitation_sum.length||
+    daily.time.length!==daily.temperature_2m_mean.length)throw Error("Serie estacional diaria incompleta");
+ const byMonth=new Map(),seen=new Set();
+ for(let i=0;i<daily.time.length;i++){
+  const date=daily.time[i];
+  if(typeof date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(date))throw Error("Fecha estacional inválida");
+  if(seen.has(date))throw Error("Fechas estacionales repetidas");
+  seen.add(date);
+  const month=date.slice(0,7);
+  if(!months.includes(month))continue;
+  if(!byMonth.has(month))byMonth.set(month,[]);
+  byMonth.get(month).push({date,rain:daily.precipitation_sum[i],temp:daily.temperature_2m_mean[i]});
+ }
+ const rainfall=[],temperature=[],complete=[];
+ for(const key of months){
+  const rows=byMonth.get(key)||[],[year,month]=key.split("-").map(Number);
+  const days=new Date(Date.UTC(year,month,0)).getUTCDate();
+  const valid=rows.length===days&&rows.every(x=>Number.isFinite(x.rain)&&x.rain>=0&&Number.isFinite(x.temp));
+  rainfall.push(valid?rows.reduce((a,b)=>a+b.rain,0):NaN);
+  temperature.push(valid?rows.reduce((a,b)=>a+b.temp,0)/days:NaN);
+  complete.push(valid);
+ }
+ return {rainfall,temperature,complete};
+}
+function seasonalRequest(city){
+ if(seasonalCache.has(city))return seasonalCache.get(city);
+ const coords=geo[city];
+ if(!coords)return Promise.reject(Error("Localidad estacional sin coordenadas"));
+ const params=new URLSearchParams({latitude:String(coords[0]),longitude:String(coords[1]),
+  models:"ecmwf_seas5_ensemble_mean",daily:"precipitation_sum,temperature_2m_mean",
+  forecast_days:"217",timezone:"America/Lima",precipitation_unit:"mm"});
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
+ const task=fetch(seasonalEndpoint+"?"+params,{cache:"no-store",signal:controller.signal}).then(r=>{
+  if(!r.ok)throw Error("HTTP "+r.status);return r.json();
+ }).then(j=>{
+  if(j.error||!j.daily)throw Error(j.reason||"Sin datos estacionales");
+  if(j.daily_units?.precipitation_sum&&j.daily_units.precipitation_sum!=="mm")throw Error("Unidad de lluvia distinta de mm");
+  if(j.daily_units?.temperature_2m_mean&&j.daily_units.temperature_2m_mean!=="°C")throw Error("Unidad térmica distinta de °C");
+  return {daily:j.daily,cell:[j.latitude,j.longitude],model:"ECMWF SEAS5 · media de ensamble"};
+ }).catch(e=>{
+  return {error:e.message||"Sin respuesta del proveedor",model:"ECMWF SEAS5 · media de ensamble"};
+ }).finally(()=>clearTimeout(timeout));
+ seasonalCache.set(city,task);
+ return task;
+}
+let seasonToken=0;
+function seasonalStatus(){
+ let note=$("oaf-ux44-seasonal-note");
+ if(!note){const chart=$("oaf-ux14-monthchart");if(!chart)return null;
+  note=E("p","oaf-ux44-seasonal-note");note.id="oaf-ux44-seasonal-note";
+  note.setAttribute("role","status");note.setAttribute("aria-live","polite");
+  chart.after(note);
+ }
+ return note;
+}
 const MONTHS=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 function records(){return rf?.estado==="candidato_experimental_generado"&&rf?.unidades_temperatura==="Diario Tmax; mensual temperatura media (no promedio de Tmax)"}
 function future(){
+ const previousNote=$("oaf-ux44-seasonal-note");if(previousNote)previousNote.hidden=false;
  const city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo",variable=$("oaf-ux16-mes-variable")?.value||"rain";
  const root=$("oaf-ux14-monthchart"),status=$("oaf-ux14-monthstatus"),key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");
  const rows=records()?rf?.escenarios_mensuales_rf_experimentales?.[city]:null;
@@ -237,10 +303,42 @@ function future(){
  const f=variable==="rain"?"precipitacion_mm":"temperatura_media_c",unit=variable==="rain"?"mm/mes":"°C";
  const baseline=monthlyHistory?.[city];
  const climates=rows.slice(0,6).map(r=>baseline?.[Number(r.mes.slice(-2))] ? baseline[Number(r.mes.slice(-2))][variable==="rain"?"precipitacion_mm":"temperatura_c"] : NaN);
+ const months=rows.slice(0,6).map(r=>r.mes);
  const series=[{name:"RF 10O · proyección experimental",values:rows.slice(0,6).map(r=>r[f]),color:"#aa65b4",dash:"7 4"}];
- if(climates.some(Number.isFinite))series.push({name:"Climatología ERA5 1996–2020",values:climates,color:"#339878"});
- plot(root,rows.slice(0,6).map(r=>MONTHS[Number(r.mes.slice(-2))-1]+" "+r.mes.slice(2,4)),series,unit);
- if(key)legend(key,[["#aa65b4","Random Forest 10O · futuro experimental"],["#339878","Climatología ERA5 1996–2020 · referencia histórica"]]);
+ const legends=[["#aa65b4","Random Forest OAF · experimental"]];
+ if(climates.some(Number.isFinite)){
+  series.push({name:"Climatología ERA5 1996–2020",values:climates,color:"#339878"});
+  legends.push(["#339878","ERA5 1996–2020 · referencia histórica"]);
+ }
+ const note=seasonalStatus(),cached=seasonalCache.get(city);
+ if(cached?.data){
+  const values=cached.data[variable==="rain"?"rainfall":"temperature"];
+  if(values.some(Number.isFinite)){
+   series.push({name:"Open-Meteo / ECMWF SEAS5 · ensamble estacional",values,color:"#237fb1",dash:""});
+   legends.push(["#237fb1","Open-Meteo · ECMWF SEAS5 estacional (36 km)"]);
+  }
+  const count=values.filter(Number.isFinite).length;
+  if(note)note.textContent=count
+   ?"Open-Meteo estacional (ECMWF SEAS5, ensamble): "+count+"/6 meses completos; lluvia mensual=sumatoria diaria, temperatura=media diaria. Pronóstico de área de ~36 km, sin corrección local de sesgo. Meses sin cobertura quedan vacíos."
+   :"Open-Meteo estacional: no hay meses completos válidos en el horizonte consultado; no se dibujan cifras.";
+ }else if(cached?.error){
+  if(note)note.textContent="Open-Meteo estacional no disponible: "+cached.error+". Se conservan RF y ERA5, sin completar datos faltantes.";
+ }else{
+  if(note)note.textContent="Consultando Open-Meteo estacional / ECMWF SEAS5; sólo se mostrarán meses con datos completos.";
+  const request=++seasonToken;
+  seasonalRequest(city).then(payload=>{
+   const present=seasonalCache.get(city);
+   if(!present)return;
+   const next=payload.error?{error:payload.error}:{data:seasonalMonthlyFromDaily(payload.daily,months),cell:payload.cell};
+   seasonalCache.set(city,next);
+   if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future();
+  }).catch(e=>{
+   seasonalCache.set(city,{error:e.message||"Error de datos"});
+   if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future();
+  });
+ }
+ plot(root,months.map(r=>MONTHS[Number(r.slice(-2))-1]+" "+r.slice(2,4)),series,unit);
+ if(key)legend(key,legends);
  const mae=rf?.metrica_mensual;
  const multi=mae?.evaluacion_multihorizonte?.por_horizonte||[];
  const lead3=multi.find(x=>x.meses_adelante===3),lead6=multi.find(x=>x.meses_adelante===6);
@@ -261,7 +359,7 @@ function month(){
  if(historicalControls)historicalControls.hidden=vista==="futuro";
  if(futureControls)futureControls.hidden=vista!=="futuro";
  const historicalKpis=$("oaf-ux14-kpis");if(historicalKpis)historicalKpis.hidden=vista==="futuro";
- if(vista==="futuro")future();else hist();
+ if(vista==="futuro")future();else{const note=$("oaf-ux44-seasonal-note");if(note)note.hidden=true;hist();}
  
 }
 async function climatology(){
