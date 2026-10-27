@@ -6,6 +6,8 @@ const E=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=c
 const places=["Chiclayo","Jayanca","Motupe","Olmos"];
 const fmt=(v,p=1)=>Number(v).toLocaleString("es-PE",{minimumFractionDigits:p,maximumFractionDigits:p});
 let initialized=false,rf=null,external=null,monthlyReady=false,monthlyHistory=null;
+const geo={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
+const era5WeekCache=new Map();let weekVersion=0;
 const NS="http://www.w3.org/2000/svg";
 function plot(root,axis,series,unit){
  if(!root)return;
@@ -31,8 +33,39 @@ function plot(root,axis,series,unit){
  root.replaceChildren(svg);
 }
 function legend(root,entries){root.replaceChildren();for(const [color,name] of entries){const s=E("span"),i=E("i");i.style.background=color;s.append(i,document.createTextNode(name));root.append(s)}}
+/* Línea de base meteorológica, no predicción: media por día calendario ERA5 1996–2025.
+ * Se representa sólo si al menos 20 de 30 años aportan valores por variable y fecha.
+ */
+function era5Reference(city){
+ if(era5WeekCache.has(city))return era5WeekCache.get(city);
+ const loc=geo[city];if(!loc)return Promise.reject(Error("Localidad no contemplada por ERA5"));
+ const args=new URLSearchParams({latitude:String(loc[0]),longitude:String(loc[1]),
+  start_date:"1996-01-01",end_date:"2025-12-31",
+  daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
+ const task=fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(j=>{
+   const d=j.daily;if(j.error||!Array.isArray(d?.time)||d.time.length<10000)throw Error("Archivo ERA5 1996–2025 incompleto");
+   const groups=new Map();
+   d.time.forEach((date,i)=>{
+    if(!/^(?:199[6-9]|20(?:0\d|1\d|2[0-5]))-\d{2}-\d{2}$/.test(date))return;
+    const key=date.slice(5),rain=d.precipitation_sum?.[i],temp=d.temperature_2m_max?.[i];
+    if(!groups.has(key))groups.set(key,{rain:[],tmax:[]});
+    const a=groups.get(key);
+    if(Number.isFinite(rain)&&rain>=0)a.rain.push(rain);
+    if(Number.isFinite(temp))a.tmax.push(temp);
+   });
+   const average=values=>values?.length>=20?values.reduce((acc,v)=>acc+v,0)/values.length:NaN;
+   return {rain:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.rain)])),
+    tmax:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.tmax)])),
+    years:"1996–2025",cell:[j.latitude,j.longitude]};
+  }).catch(e=>{era5WeekCache.delete(city);throw e}).finally(()=>clearTimeout(timeout));
+ era5WeekCache.set(city,task);
+ return task;
+}
 function week(){
- const city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
+ const version=++weekVersion,city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
  const output=$("oaf-ux14-weekchart"),status=$("oaf-ux14-weekstatus"),key=$("oaf-ux14-rf-semana")?.querySelector(".oaf-ux14-key");
  if(!output||!status)return;
  if(!external||external.localidad!==city){status.textContent="Consultando la referencia meteorológica para "+city+"…";return}
@@ -58,8 +91,23 @@ function week(){
   message+=" Es una diferencia entre modelos, NO error comprobado contra lluvia o temperatura observadas.";
  } else message+="No hay una emisión RF con fechas coincidentes; no se desplaza artificialmente la línea.";
  if(rf?.fecha_generacion_utc)message+=" RF emitido: "+rf.fecha_generacion_utc.slice(0,16)+" UTC.";
- message+=" OpenWeather requiere credenciales y todavía no está conectado: la referencia actual es Open-Meteo.";
- status.textContent=message;
+ message+=" Referencia vigente: Open-Meteo. RF es una emisión archivada, no ajustada a fechas nuevas.";
+ status.textContent=message+" Consultando promedio ERA5 1996–2025…";
+ era5Reference(city).then(history=>{
+  if(version!==weekVersion||!output.isConnected)return;
+  const averages=days.map(date=>history[variable==="rain"?"rain":"tmax"][date.slice(5)]??NaN);
+  const valid=averages.filter(Number.isFinite).length;
+  if(!valid)throw Error("Sin registros históricos suficientes para estos días");
+  const lines=[...group,{name:"ERA5 1996–2025 · promedio histórico",color:"#31946e",values:averages,dash:"3 3"}];
+  plot(output,days.map(d=>d.slice(5)),lines,rainfall?"mm/día":"°C");
+  if(key)legend(key,[["#278eb8","Open-Meteo · pronóstico vigente"],["#aa65b4","RF OAF · emisión experimental"],["#31946e","ERA5 1996–2025 · promedio histórico, no pronóstico"]]);
+  const delta=ext.map((value,i)=>Number.isFinite(value)&&Number.isFinite(averages[i])?value-averages[i]:NaN).filter(Number.isFinite);
+  const mean=delta.length?delta.reduce((a,b)=>a+b,0)/delta.length:NaN;
+  const comment=Number.isFinite(mean)?" Open-Meteo se sitúa en promedio "+fmt(Math.abs(mean))+(rainfall?" mm/día":" °C")+(mean>=0?" por encima":" por debajo")+" de la referencia histórica en estos días.":"";
+  status.textContent=message+" ERA5: "+valid+"/7 fechas de referencia histórica disponibles; no son predicciones."+comment;
+ }).catch(e=>{
+  if(version===weekVersion&&output.isConnected)status.textContent=message+" ERA5 no disponible ("+e.message+"); no se reemplaza con cifras supuestas.";
+ });
 }
 const MONTHS=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 function records(){return rf?.estado==="candidato_experimental_generado"&&rf?.unidades_temperatura==="Diario Tmax; mensual temperatura media (no promedio de Tmax)"}
