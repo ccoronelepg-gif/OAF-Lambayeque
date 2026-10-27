@@ -11,6 +11,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:45000});
   await page.waitForSelector("#oaf-parcel-territorio",{timeout:20000});
   await page.waitForSelector("#oaf-parcel-escenarios",{timeout:20000});
+  await page.waitForFunction(()=>Boolean(window.oafUx30Context?.()?.scene?.bounds&&window.oafUx29ScenarioApi?.get?.()?.scene?.bounds),{timeout:20000});
   assert(await page.locator("#oaf-area-territorio").count(),"No se encuentra entrada de coordenadas del visor territorial");
   assert(await page.locator("#oaf-area-escenarios").count(),"No se encuentra entrada de coordenadas del visor de escenarios");
   const inside=await page.evaluate(()=>["territorio","escenarios"].map(k=>({
