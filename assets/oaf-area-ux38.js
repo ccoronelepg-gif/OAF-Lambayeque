@@ -63,11 +63,14 @@ function targetHistoric(){
  if(!original)return null;
  if(!root){root=el("section","oaf-area-scientific");root.id="oaf-area-clima-serie";original.after(root);}
  original.hidden=true;
+ const note=$("#oaf-history .oaf-figure-caption");if(note)note.hidden=true;
+ const status=$("#oaf-hist-status");if(status)status.hidden=true;
  return root;
 }
 function restoreHistoric(){
  $("oaf-area-clima-serie")?.remove();const plot=$("oaf-hist-plot");if(plot)plot.hidden=false;
  const status=$("oaf-hist-status");if(status)status.hidden=false;
+ const caption=$("#oaf-history .oaf-figure-caption");if(caption)caption.hidden=false;
 }
 async function climate(point){
  const q=++token.clima,root=targetHistoric();if(!root)return;
@@ -121,7 +124,8 @@ async function monthly(point){
   const grouped=monthRows(data),months=new Map();
   for(const [m,v] of grouped){
    const n=Number(m.slice(-2));
-   if(v.count[0]!==v.days||v.count[1]!==v.days||v.days<28)continue;
+   const [year,month]=m.split("-").map(Number),completeDays=new Date(year,month,0).getDate();
+   if(v.count[0]!==completeDays||v.count[1]!==completeDays||v.days!==completeDays)continue;
    const row=months.get(n)||[];row.push({temp:v.sum[0]/v.days,rain:v.sum[1]});months.set(n,row);
   }
   panel.replaceChildren(el("h3",null,"Contexto agroclimático de la zona productiva: "+point.name));
