@@ -93,7 +93,7 @@ function focusMap(k){
  const x=scene.x(p.lon),y=scene.y(p.lat);
  if(!Number.isFinite(x)||!Number.isFinite(y))return;
  const w=230,h=112;
- svg.setAttribute("viewBox",Math.max(0,Math.min(700-w,x-w/2))+" "+Math.max(0,Math.min(340-h,y-h/2))+" "+w+" "+h);
+ svg.setAttribute("viewBox",Math.max(0,Math.min(700-w,x-w/2))+" "+Math.max(0,Math.min((k==="escenarios"?380:340)-h,y-h/2))+" "+w+" "+h);
  svg.scrollIntoView({behavior:"smooth",block:"center"});
 }
 async function current(k,p,seq){
@@ -179,14 +179,14 @@ function pin(svg,scene,p,id){
 }
 function markers(){
  const territory=$("oaf-ux24-region-map"),sc=window.oafUx30Context?.()?.scene;
- pin(territory,sc,states.territorio,"oaf-area-pin-territorio");
+ pin(territory,sc,active.territorio?states.territorio:null,"oaf-area-pin-territorio");
  const scenario=$("oaf-ux29-forecast-map"),forecast=window.oafUx29ScenarioApi?.get?.()?.scene;
- pin(scenario,forecast,states.escenarios,"oaf-area-pin-escenarios");
+ pin(scenario,forecast,active.escenarios?states.escenarios:null,"oaf-area-pin-escenarios");
 }
 function observeMaps(){
  ["oaf-ux24-region-map","oaf-ux29-forecast-map"].forEach(id=>{
   const svg=$(id);if(!svg)return;
-  const obs=new MutationObserver(()=>{if(id==="oaf-ux24-region-map")pin(svg,window.oafUx30Context?.()?.scene,states.territorio,"oaf-area-pin-territorio");else pin(svg,window.oafUx29ScenarioApi?.get?.()?.scene,states.escenarios,"oaf-area-pin-escenarios");});
+  const obs=new MutationObserver(()=>{if(id==="oaf-ux24-region-map")pin(svg,window.oafUx30Context?.()?.scene,active.territorio?states.territorio:null,"oaf-area-pin-territorio");else pin(svg,window.oafUx29ScenarioApi?.get?.()?.scene,active.escenarios?states.escenarios:null,"oaf-area-pin-escenarios");});
   obs.observe(svg,{childList:true});
  });
  window.addEventListener("oaf:geodata",markers);
@@ -195,9 +195,9 @@ function init(){
  const locations={
   inicio:()=>document.querySelector("#oaf-zone-primary .oaf-zone-picker")||document.querySelector("#oaf-zone-primary .oaf-location-panel"),
   clima:()=>$("oaf-history")?.querySelector(".oaf-filterline"),
-  territorio:()=>$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
+  territorio:()=>$("oaf-ux29-territory")?.querySelector(".oaf-ux29-maphead")||$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
   predicciones:()=>$("oaf-ux16-future-controls")||$("oaf-ux14-rf-mes"),
-  escenarios:()=>$("oaf-ux29-scenario")||document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
+  escenarios:()=>$("oaf-ux29-scenario")?.querySelector(".oaf-ux29-maphead")||$("oaf-ux29-scenario")||document.querySelector("#oaf-escenarios-riesgo-agroclimatico .oaf-ux24-intro"),
   cultivos:()=>$("oaf-sm-localidad")?.closest(".oaf-ux11-controls")||$("oaf-sanidad-ux11")?.querySelector(".oaf-ux11-model")
  };
  for(const k of modes){
@@ -214,10 +214,13 @@ function init(){
  ["oaf-hist-year","oaf-hist-variable"].forEach(id=>$(id)?.addEventListener("change",()=>{if(active.clima&&states.clima)window.oafAreaUX38?.update?.("clima",states.clima);}));
  $("oaf-sm-localidad")?.addEventListener("change",()=>{if(active.cultivos){active.cultivos=false;els.cultivos?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"cultivos",point:null,active:false}}));}},true);
  observeMaps();markers();
+ document.addEventListener("oaf:area-update",e=>{if(["territorio","escenarios"].includes(e.detail?.scope))markers();});
  const weeklyTable=$("wx-days")?.closest(".scroller");if(weeklyTable)weeklyTable.hidden=true;
  const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
  const css=document.createElement("style");css.textContent=
  '.oaf-area-local{border:1px solid #c9ded4;border-radius:13px;background:#f5faf7;padding:13px 16px;margin:12px 0 21px;max-width:100%;box-sizing:border-box}'+
+ '#oaf-area-territorio,#oaf-area-escenarios{margin:10px 12px;position:relative;z-index:1}'+
+ '.oaf-ux29-mapcolumn .oaf-area-accordion{background:#eff8f3;border-radius:9px}'+
  '.oaf-area-local summary{cursor:pointer;color:#165745;padding:4px 0;font-size:15px}'+
  '.oaf-area-local summary span{color:#536e64;font-weight:400;font-size:12px}'+
  '.oaf-area-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}'+
@@ -239,6 +242,15 @@ function init(){
  '@media(max-width:590px){.oaf-area-fields{grid-template-columns:1fr}.oaf-area-preview{height:205px}}';
  document.head.append(css);
 }
-window.OAFTerritory={utmToGeographic:utm,validatePoint:valid,getPoint:k=>states[k]?{...states[k]}:null,getActivePoint:k=>active[k]&&states[k]?{...states[k]}:null,getState:()=>Object.fromEntries(modes.map(k=>[k,states[k]||null]))};
+window.OAFTerritory={utmToGeographic:utm,validatePoint:valid,getPoint:k=>states[k]?{...states[k]}:null,getActivePoint:k=>active[k]&&states[k]?{...states[k]}:null,
+ setPoint:(k,point)=>{
+  if(!modes.includes(k))throw Error("Pestaña no reconocida.");
+  const v=valid(Number(point.lat),Number(point.lon));v.name=String(point.name||titles[k]).trim().slice(0,80)||titles[k];
+  states[k]=v;active[k]=true;save(k);const f=els[k]?.querySelector("form");
+  if(f){if(f.elements.namedItem("name"))f.elements.namedItem("name").value=v.name;f.elements.namedItem("format").value="geo";f.elements.namedItem("lat").value=v.lat;f.elements.namedItem("lon").value=v.lon;els[k].querySelector('[data-fields="geo"]').hidden=false;els[k].querySelector('[data-fields="utm"]').hidden=true;}
+  if(els[k])show(k);
+  document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:k,point:{...v},active:true}}));
+  return {...v};
+ },getState:()=>Object.fromEntries(modes.map(k=>[k,states[k]||null]))};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
