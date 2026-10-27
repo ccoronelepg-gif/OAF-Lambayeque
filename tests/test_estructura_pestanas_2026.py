@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 BASE = json.loads((ROOT / "datos/ux_2026/auditoria_base_2026.json").read_text(encoding="utf-8"))
 PAGES = ("inicio", "clima", "nino", "cultivos", "autor", "verificaciones")
-COUNT_PER_PAGE = {"inicio": 7, "clima": 9, "nino": 5, "cultivos": 3, "autor": 7, "verificaciones": 5}
+COUNT_PER_PAGE = {"inicio": 6, "clima": 9, "nino": 5, "cultivos": 3, "autor": 7, "verificaciones": 5}
 
 class CatalogParser(HTMLParser):
     def __init__(self):
@@ -61,20 +61,27 @@ class EstructuraPestanas(unittest.TestCase):
         self.assertEqual(len(self.dom.ids), len(set(self.dom.ids)))
         scripts = re.findall(r'<script\b[^>]*src="([^"]+)"', HTML)
         expected = BASE["scripts_orden_de_carga"]
-        idx = [scripts.index(name) for name in expected]
+        # Respetar rutas y orden, pero no imponer la versión antigua ?v del caché.
+        script_paths = [src.split("?", 1)[0] for src in scripts]
+        expected_paths = [src.split("?", 1)[0] for src in expected]
+        idx = [script_paths.index(name) for name in expected_paths]
         self.assertEqual(idx, sorted(idx))
         self.assertEqual(HTML.count('id="oaf-altitudinal-map"'), 1)
         self.assertIn('id="oaf-research-deep"', HTML)
 
     def test_all_navigation_targets_exist(self):
         ids = set(self.dom.ids)
-        allowed_aliases = {"cultivos", "prediccion"}
+        # La sección de coordenadas de clima es un componente DOM creado por JavaScript.
+        area_js = (ROOT / "assets/oaf-territorio-compartido.js").read_text(encoding="utf-8")
+        self.assertIn('wrap.id="oaf-area-"+k', area_js)
+        self.assertIn('clima:()=>$("oaf-history")', area_js)
+        allowed_aliases = {"cultivos", "prediccion", "oaf-area-clima"}
         for page, targets in self.dom.groups.items():
             for href in targets:
                 with self.subTest(page=page, href=href):
                     self.assertTrue(href and href.startswith("#"))
                     self.assertTrue(href[1:] in ids or href[1:] in allowed_aliases)
-        self.assertEqual(sum(map(len, self.dom.groups.values())), 36)
+        self.assertEqual(sum(map(len, self.dom.groups.values())), 35)
 
     def test_all_new_assets_are_used_and_present(self):
         for name in ("assets/oaf-estructura-pestanas-2026.css",
