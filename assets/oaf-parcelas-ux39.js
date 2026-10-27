@@ -5,7 +5,7 @@
  */
 (()=>{"use strict";
 const $=id=>document.getElementById(id),KEY="oaf-ux39-parcela-20261027-",scopes=["territorio","escenarios"];
-const parcels={territorio:null,escenarios:null},drafts={territorio:[],escenarios:[]},drawing={territorio:false,escenarios:false},revision={territorio:0,escenarios:0};
+const parcels={territorio:null,escenarios:null},drafts={territorio:[],escenarios:[]},drawing={territorio:false,escenarios:false},revision={territorio:0,escenarios:0},tokens={territorio:{risk:0,model:0,agro:0,audit:0},escenarios:{risk:0,model:0,agro:0,audit:0}};
 const sv=(t,props={})=>{const e=document.createElementNS("http://www.w3.org/2000/svg",t);Object.entries(props).forEach(([k,v])=>e.setAttribute(k,String(v)));return e;};
 const node=(t,cls,txt)=>{const e=document.createElement(t);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e;};
 const fmt=(n,d=2)=>Number.isFinite(n)?n.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
@@ -47,7 +47,7 @@ function surface(polys){
  const meterLon=111320*cos,meterLat=110574;
  let total=0;
  for(const polygon of polys){const outer=Math.abs(signedArea(polygon[0],cos));const holes=polygon.slice(1).reduce((acc,r)=>acc+Math.abs(signedArea(r,cos)),0);total+=Math.max(0,outer-holes);}
- return total*111320*110574/Math.max(.000001,cos)/10000; // signedArea incluye factor cos
+ return total*111320*110574/10000; // signedArea ya incluye el factor coseno
 }
 function inRing(lon,lat,ring){
  let inside=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){
@@ -75,7 +75,7 @@ function restore(k){try{const raw=JSON.parse(sessionStorage.getItem(KEY+k));if(r
 function draw(k){
  const svg=image(k),scene=project(k);if(!svg||!scene?.bounds)return;
  const old=svg.querySelector("#oaf-ux39-geom-"+k);old?.remove();
- const points=parcels[k]?.polygons||(!drafts[k].length?null:[[ringclose(drafts[k])]]);
+ const points=drawing[k]&&drafts[k].length?[[ringclose(drafts[k])]]:parcels[k]?.polygons;
  if(!points)return;
  const d=points.flatMap(poly=>poly.map(ring=>ring.map((xy,i)=>(i?"L":"M")+scene.x(xy[0]).toFixed(2)+" "+scene.y(xy[1]).toFixed(2)).join(" ")+" Z")).join(" ");
  const g=sv("g",{id:"oaf-ux39-geom-"+k,"pointer-events":"none"});
@@ -90,7 +90,7 @@ function setPolygon(k,geometry,name){
  if(!Number.isFinite(ha)||ha<0.00005||ha>200000)throw Error("Superficie fuera del intervalo admitido (0,5 m² a 200 000 ha)");
  const title=String(name||"Parcela productiva").slice(0,80).trim()||"Parcela productiva";
  parcels[k]={name:title,polygons,geometry:{type:"MultiPolygon",coordinates:polygons},ha};
- drafts[k]=[];drawing[k]=false;save(k);draw(k);revision[k]++;
+ drafts[k]=[];drawing[k]=false;save(k);draw(k);revision[k]++;Object.keys(tokens[k]).forEach(q=>tokens[k][q]++);
  const p=interior(polygons);
  try{window.OAFTerritory?.setPoint?.(k,{lat:p.lat,lon:p.lon,name:title});}catch(e){report(k,"Polígono cargado; revisa la ubicación: "+e.message);}
  report(k,title+" · superficie aproximada "+fmt(ha,3)+" ha · "+countVertices(polygons)+" vértices. Se mantiene una geometría vectorial sobre las capas del visor.");
@@ -251,7 +251,7 @@ function fraction(poly,features){
 async function risk(k){
  const {poly,point}=current(k),out=setText(k,"risk","");
  if(!point){out.textContent="Ingresa un punto geográfico o importa/dibuja una parcela para evaluar el territorio.";return;}
- const seq=++revision[k];out.append(node("h4",null,"Evaluación espacial · "+point.name));
+ const seq=++tokens[k].risk;out.append(node("h4",null,"Evaluación espacial · "+point.name));
  if(!poly){out.append(node("p",null,"Hay un punto válido. Se ejecuta la evaluación puntual del visor original; para cuantificar superficies necesitas el polígono de la parcela."));return;}
  out.append(node("p",null,"Polígono aportado por el usuario · "+fmt(poly.ha,3)+" ha aproximadas. Consultando fuentes oficiales vectoriales…"));
  const bounds=limits(poly.polygons),query=new URLSearchParams({where:"1=1",geometry:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
@@ -266,7 +266,7 @@ async function risk(k){
    return {name:layer.name,frac,features:data.features.length,valid:true};
   }catch(e){return {name:layer.name,error:e.message,valid:false};}
  }));
- if(seq!==revision[k]||!ui(k))return;
+ if(seq!==tokens[k].risk||!ui(k))return;
  const table=node("table"),header=node("tr");["Geoservicio","Resultado","Área de superposición estimada"].forEach(x=>header.append(node("th",null,x)));table.append(header);
  results.forEach(row=>{const tr=node("tr");if(!row.valid)[row.name,"No verificable · "+row.error,"No calculable"].forEach(x=>tr.append(node("td",null,x)));
   else [row.name,row.features+" polígonos en el entorno",fmt(row.frac*poly.ha,3)+" ha · "+fmt(row.frac*100,1)+" % de celdas muestreadas"].forEach(x=>tr.append(node("td",null,x)));table.append(tr);});
@@ -288,9 +288,9 @@ async function audit(k){
  const checks=[["Archivo ERA5-Land","https://archive-api.open-meteo.com/v1/archive?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2025-01-01",end_date:"2025-01-03",daily:"precipitation_sum",timezone:"America/Lima",models:"era5_land"})],
  ["INGEMMET · metadatos","https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0?f=json"],
  ["CENEPRED · metadatos","https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024?f=json"]];
- const seq=++revision[k];
+ const seq=++tokens[k].audit;
  const checked=await Promise.all(checks.map(async ([name,url])=>{try{const j=await fetched(url,16000);return [name,"responde · "+(j.name||j.model||"datos JSON")];}catch(e){return [name,"no verificable ("+e.message+")"];}}));
- if(seq!==revision[k])return;
+ if(seq!==tokens[k].audit)return;
  for(const [name,value] of checked)out.append(node("p",null,name+": "+value));
  out.append(node("p","oaf-parcel-caveat","Control automático disparado al cambiar las capas o ubicación. El estado de la API no valida por sí solo resolución, vigencia temática ni exactitud del producto cartográfico."));
 }
@@ -344,11 +344,11 @@ async function model(k){
  if(!point){out.textContent="Primero ubica el punto o dibuja la parcela.";return;}
  out.append(node("h4",null,"Modelo exploratorio y validación temporal para "+point.name));
  out.append(node("p",null,"Consultando ERA5-Land 2001–2025 para entrenar una regresión estacional de rezago anual (AR-12), con comparación contra climatología y evaluación 2021–2025 fuera del periodo de entrenamiento…"));
- const seq=++revision[k],query=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2001-01-01",end_date:"2025-12-31",
+ const seq=++tokens[k].model,query=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2001-01-01",end_date:"2025-12-31",
   daily:"temperature_2m_mean,precipitation_sum",timezone:"America/Lima",models:"era5_land"});
  try{
   const result=await fetched("https://archive-api.open-meteo.com/v1/archive?"+query,30000);
-  if(seq!==revision[k])return;
+  if(seq!==tokens[k].model)return;
   const series=climDaily(result),rain=arModel(series,"rain"),temp=arModel(series,"t");
   out.replaceChildren(node("h4",null,"Validación espacial puntual · "+point.name));
   out.append(node("p",null,"Fuente ERA5-Land · "+point.lat.toFixed(5)+", "+point.lon.toFixed(5)+"; celda modelada "+fmt(result.latitude,4)+", "+fmt(result.longitude,4)+". Entrenamiento 2001–2020; prueba temporal 2021–2025. No hay variables ENSO ni predicción hidráulica."));
@@ -369,12 +369,12 @@ async function model(k){
 async function agro(k){
  const {point,poly}=current(k),out=setText(k,"agro","");
  if(!point){out.textContent="Indica una ubicación WGS84 o UTM para consultar el ambiente productivo.";return;}
- const seq=++revision[k],query=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),timezone:"America/Lima",forecast_days:"3",
+ const seq=++tokens[k].agro,query=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),timezone:"America/Lima",forecast_days:"3",
   daily:"precipitation_sum,temperature_2m_max,temperature_2m_min",hourly:"relative_humidity_2m"});
  out.textContent="Consultando meteorología para "+point.name+"…";
  try{
   const j=await fetched("https://api.open-meteo.com/v1/forecast?"+query);
-  if(seq!==revision[k])return;
+  if(seq!==tokens[k].agro)return;
   const d=j.daily,h=j.hourly;
   if(d?.time?.length<3||!Array.isArray(d.precipitation_sum)||!h?.time?.length)throw Error("Datos meteorológicos incompletos");
   const valid=d.precipitation_sum.slice(0,3).filter(Number.isFinite),max=d.temperature_2m_max.slice(0,3).filter(Number.isFinite),humid=h.relative_humidity_2m.filter(Number.isFinite);
@@ -393,7 +393,7 @@ async function agro(k){
 function init(){
  for(const k of scopes){let count=0;const tryMount=()=>{if(mount(k))return;if(++count<45)setTimeout(tryMount,250);};tryMount();}
  document.addEventListener("oaf:area-update",e=>{if(!scopes.includes(e.detail?.scope))return;const k=e.detail.scope;
-  if(e.detail?.active&&e.detail.point){if(ui(k)){updateActive(k);draw(k);scheduleAudit(k);}}else{++revision[k];if(ui(k))report(k,"Se quitó el punto. Puedes conservar o borrar la delimitación por separado.");}
+  if(e.detail?.active&&e.detail.point){if(ui(k)){updateActive(k);draw(k);scheduleAudit(k);}}else{++revision[k];Object.keys(tokens[k]).forEach(q=>tokens[k][q]++);if(ui(k))report(k,"Se quitó el punto. Puedes conservar o borrar la delimitación por separado.");}
  });
  window.addEventListener("oaf:geodata",()=>{for(const k of scopes)draw(k)});
 }
