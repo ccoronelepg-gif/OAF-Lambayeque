@@ -95,9 +95,65 @@ def fit_daily(data):
     base_t_loc=np.asarray([np.mean(local[sites[i],days[i].month]["t"]) for i in sample_idx])
     mae_local_r=float(np.mean(np.abs(observed_r-base_r_loc)))
     mae_local_t=float(np.mean(np.abs(np.asarray(y2)[test]-base_t_loc)))
+    # Validación más exigente para los NUEVOS candidatos: 7 días consecutivos
+    # con rezagos propios, sin introducir los valores reales de días futuros.
+    # El modelo permanece congelado (entrenado solamente 2021-2024).
+    # Orígenes separados ~28 días en 2025 y evaluados por localidad.
+    lead_rows=defaultdict(list)
+    origin_count=0
+    rain.set_params(n_jobs=1)
+    temp.set_params(n_jobs=1)
+    for site, archived in data.items():
+        origin=dt.date(2025,1,15)
+        while origin+dt.timedelta(days=6)<dt.date(2026,1,1):
+            working={k:dict(v) for k,v in archived.items() if k<origin.isoformat()}
+            simulated=0
+            for lead in range(1,8):
+                forecast_day=origin+dt.timedelta(days=lead-1)
+                key=forecast_day.isoformat()
+                actual=archived.get(key)
+                features=daily_features(working,forecast_day,site)
+                if actual is None or features is None:break
+                row=np.asarray([features],float)
+                pred_r=max(0,float(np.expm1(rain.predict(row)[0])))
+                pred_t=float(temp.predict(row)[0])
+                baseline=local.get((site,forecast_day.month))
+                if not baseline or not baseline["r"] or not baseline["t"]:break
+                base_r=float(np.mean(baseline["r"]))
+                base_t=float(np.mean(baseline["t"]))
+                lead_rows[lead].append({
+                    "lluvia_rf":pred_r-actual["rain"],
+                    "lluvia_clim":base_r-actual["rain"],
+                    "temperatura_rf":pred_t-actual["temp"],
+                    "temperatura_clim":base_t-actual["temp"]
+                })
+                working[key]={"rain":pred_r,"temp":pred_t}
+                simulated+=1
+            if simulated==7:origin_count+=1
+            origin+=dt.timedelta(days=28)
+    if any(len(lead_rows[n])<30 for n in range(1,8)):
+        raise ValueError("Prueba recursiva semanal 2025: cobertura insuficiente")
+    backtest={
+       "metodo":"origen cada 28 días por localidad en 2025; entrenamiento solo 2021–2024; 7 pasos de rezagos pronosticados",
+       "evaluacion":"prueba retrospectiva recursiva fuera de entrenamiento; no validación as-issued ni instrumental",
+       "n_origenes":origin_count,
+       "fuentes_entrenamiento":"ERA5 histórico por Open-Meteo; la serie emitida Open-Meteo no se introduce como etiqueta de entrenamiento",
+       "por_horizonte":[{
+            "dias_adelante":n,
+            "n":len(lead_rows[n]),
+            "mae_rf_lluvia_mm":round(float(np.mean([abs(row["lluvia_rf"]) for row in lead_rows[n]])),2),
+            "mae_climatologia_lluvia_mm":round(float(np.mean([abs(row["lluvia_clim"]) for row in lead_rows[n]])),2),
+            "rmse_rf_lluvia_mm":round(float(np.sqrt(np.mean([row["lluvia_rf"]**2 for row in lead_rows[n]]))),2),
+            "sesgo_rf_lluvia_mm":round(float(np.mean([row["lluvia_rf"] for row in lead_rows[n]])),2),
+            "mae_rf_temperatura_c":round(float(np.mean([abs(row["temperatura_rf"]) for row in lead_rows[n]])),2),
+            "mae_climatologia_temperatura_c":round(float(np.mean([abs(row["temperatura_clim"]) for row in lead_rows[n]])),2)
+       } for n in range(1,8)]
+    }
+    rain.set_params(n_jobs=2)
+    temp.set_params(n_jobs=2)
     # Refit through all available observed archive ONLY after closed holdout.
     rain.fit(X,np.asarray(y1));temp.fit(X,np.asarray(y2))
-    return rain,temp,{"mae_lluvia_mm":round(er,2),"mae_temperatura_c":round(et,2),
+    return rain,temp,{"backtest_semanal_recursivo":backtest,"mae_lluvia_mm":round(er,2),"mae_temperatura_c":round(et,2),
                       "mae_climatologia_local_lluvia_mm":round(mae_local_r,2),
                       "mae_climatologia_local_temperatura_c":round(mae_local_t,2),
                       "rf_supera_climatologia_local_diaria":bool(er<mae_local_r),
@@ -327,7 +383,14 @@ def main():
            "documentacion":"https://open-meteo.com/en/docs/historical-weather-api",
            "interpretacion":"Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas. Los meses Nov-Abr parten de una base ERA5 en septiembre 2026; octubre es un paso puente del modelo.",
            "alertas_automaticas":False,"operativo_certificado":False,
-           "horizonte_semanal":7,"horizonte_mensual_inicio":"2026-11","estado":"en_calculo"}
+           "horizonte_semanal":7,"horizonte_mensual_inicio":"2026-11","estado":"en_calculo",
+           "control_nuevos_datos":{
+              "limite_adquisicion_era5":(TODAY-dt.timedelta(days=7)).isoformat(),
+              "series_pronosticos_emitidos_son_etiquetas_entrenamiento":False,
+              "fuentes_2026_incorporadas":"solo ERA5 diario disponible hasta fecha completa por localidad; no se imputan pluviómetros ni CHIRPS diarios",
+              "test_diario_2025_congelado":True,
+              "nuevos_datos_sin_validacion_instrumental":True
+           }}
     try:
         data={};urls={}
         for name in PLACES:
@@ -342,6 +405,8 @@ def main():
         audit.update({"estado":"candidato_experimental_generado","metrica_diaria":models[2],
                       "metrica_mensual":monthskill,"datos_fuente":urls,"sha256_matriz_mensual":sha,
                       "ultimo_mes_con_datos":lastdates,"ultimos_dias_era5":{name:max(d) for name,d in data.items()},
+                      "entrenamiento_actualizado_con_era5_hasta":min(max(d) for d in data.values()),
+                      "n_registros_entrenamiento_disponibles":{name:len(series) for name,series in data.items()},
                       "pronostico_diario_rf_experimental":daily,"escenarios_mensuales_rf_experimentales":monthly})
     except Exception as exc:
         audit["estado"]="no_disponible";audit["error"]=str(exc)[:400]
