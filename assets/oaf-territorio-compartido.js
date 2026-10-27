@@ -144,10 +144,17 @@ async function checkRisk(k,p,seq){
  const results=await Promise.all(sources.map(async ([name,endpoint])=>{
   try{
    const query=new URLSearchParams({geometry:JSON.stringify({x:p.lon,y:p.lat,spatialReference:{wkid:4326}}),geometryType:"esriGeometryPoint",spatialRel:"esriSpatialRelIntersects",inSR:"4326",outFields:"*",returnGeometry:"false",f:"json"});
-   const j=await json(endpoint+"?"+query);
-   if(!Array.isArray(j.features))throw Error("sin resultados verificables");
-   const attrs=j.features.slice(0,3).map(x=>Object.entries(x.attributes||{}).filter(([key,v])=>v!==null&&typeof v!=="object"&&/(nivel|suscept|grado|clase|tipo|desc|peligro)/i.test(key)).slice(0,2).map(([,v])=>String(v).slice(0,65)).join(" · ")).filter(Boolean);
-   return [name,j.features.length?"Intersección con "+j.features.length+" entidad(es) cartográficas"+(attrs.length?" · "+attrs.join("; "):""):"Sin intersección reportada a la escala de este servicio; no descarta el peligro."];
+   let features;
+   try{const j=await json(endpoint+"?"+query);if(!Array.isArray(j.features))throw Error("consulta vectorial no disponible");features=j.features;}
+   catch(first){
+    const base=endpoint.replace(/\/\d+\/query$/,""),layer=endpoint.match(/\/(\d+)\/query$/)?.[1];if(!layer)throw first;
+    const b={minLon:p.lon-.04,minLat:p.lat-.04,maxLon:p.lon+.04,maxLat:p.lat+.04};
+    const q=new URLSearchParams({geometry:JSON.stringify({x:p.lon,y:p.lat,spatialReference:{wkid:4326}}),geometryType:"esriGeometryPoint",sr:"4326",layers:"all:"+layer,tolerance:"2",mapExtent:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),imageDisplay:"700,340,96",returnGeometry:"false",f:"json"});
+    const other=await json(base+"/identify?"+q);if(!Array.isArray(other.results))throw first;
+    features=other.results.map(x=>({attributes:x.attributes||{}}));
+   }
+   const attrs=features.slice(0,3).map(x=>Object.entries(x.attributes||{}).filter(([key,v])=>v!==null&&typeof v!=="object"&&/(nivel|suscept|grado|clase|tipo|desc|peligro)/i.test(key)).slice(0,2).map(([,v])=>String(v).slice(0,65)).join(" · ")).filter(Boolean);
+   return [name,features.length?"Intersección con "+features.length+" entidad(es) cartográficas"+(attrs.length?" · "+attrs.join("; "):""):"Sin intersección reportada a la escala de este servicio; no descarta el peligro."];
   }catch(e){return [name,"No verificable: el geoservicio no respondió con una intersección válida."];}
  }));
  if(seq!==revisions[k])return;
