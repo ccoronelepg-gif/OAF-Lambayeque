@@ -5,6 +5,10 @@
 const $=id=>document.getElementById(id);
 const dataFor=k=>els[k]?.querySelector(".oaf-area-data")||$("oaf-area-point-details-"+k)?.querySelector(".oaf-area-data");
 const cityNames=["Chiclayo","Jayanca","Motupe","Olmos"];
+ const HOME_CUSTOM="Mi zona productora",HOME_CHOICE_KEY="oaf-home-choice-20261027";
+ let lastHomeCity="Chiclayo";
+ const readHomeChoice=()=>{try{return sessionStorage.getItem(HOME_CHOICE_KEY)||HOME_CUSTOM;}catch(_){return HOME_CUSTOM;}};
+ const saveHomeChoice=v=>{try{sessionStorage.setItem(HOME_CHOICE_KEY,v);}catch(_){}};
 const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
 const KEY="oaf-area-autonoma-20261027-";
 const titles={inicio:"Mi zona productora",clima:"Mi área productora · clima regional",territorio:"Mi zona productiva · territorio y riesgos",predicciones:"Mi área productora · análisis climático",semanal:"Mi área productiva · análisis climático semanal",escenarios:"Mi zona productiva · escenarios agroclimáticos",cultivos:"Mi zona productora · cultivos y sanidad"};
@@ -51,7 +55,9 @@ function make(k){
    const num=n=>{const s=String(field(n).value||"").trim().replace(",",".");return s===""?NaN:Number(s);};
    const v=field("format").value==="utm"?utm(num("east"),num("north"),num("zone"),field("hemi").value):[num("lat"),num("lon")];
    const p=valid(v[0],v[1]);p.name=String(field("name").value||titles[k]).trim().slice(0,80)||titles[k];
-   states[k]=p;active[k]=true;save(k);notice(k,"Coordenadas registradas en esta pestaña.");show(k);
+   states[k]=p;active[k]=true;save(k);notice(k,"Coordenadas registradas en esta pestaña.");
+    if(k==="inicio"){saveHomeChoice(HOME_CUSTOM);const site=$("oaf-home-location");if(site)site.value=HOME_CUSTOM;const heading=$("oaf-current-city");if(heading)heading.textContent=p.name;document.querySelectorAll("[data-oaf-set-city]").forEach(button=>button.setAttribute("aria-pressed","false"));}
+    show(k);
    document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:k,point:{...p},active:true}}));
   }catch(err){notice(k,err.message);}
  });
@@ -59,10 +65,11 @@ function make(k){
   states[k]=null;active[k]=false;save(k);revisions[k]++;
   wrap.querySelector(".oaf-area-output").hidden=true;
   notice(k,"Ubicación particular desactivada únicamente en esta pestaña.");
+   if(k==="inicio"){const site=$("oaf-home-location");saveHomeChoice(lastHomeCity);if(site?.value===HOME_CUSTOM){site.value=lastHomeCity;site.dispatchEvent(new Event("change",{bubbles:true}));}}
   document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:k,point:null,active:false}}));
   markers(); 
  });
- const previous=load(k);active[k]=Boolean(previous);if(previous){states[k]=previous;field("name").value=previous.name;field("lat").value=previous.lat;field("lon").value=previous.lon;}
+ const previous=load(k);active[k]=Boolean(previous)&&(k!=="inicio"||readHomeChoice()===HOME_CUSTOM);if(previous){states[k]=previous;field("name").value=previous.name;field("lat").value=previous.lat;field("lon").value=previous.lon;}
  return wrap;
 }
 function show(k){
@@ -194,7 +201,7 @@ function observeMaps(){
 }
 function init(){
  const locations={
-  inicio:()=>document.querySelector("#oaf-zone-primary .oaf-zone-picker")||document.querySelector("#oaf-zone-primary .oaf-location-panel"),
+  inicio:()=>document.querySelector("#oaf-zone-primary .oaf-location-panel")||document.querySelector("#oaf-zone-primary .oaf-zone-picker"),
   clima:()=>$("oaf-history")?.querySelector(".oaf-filterline"),
   territorio:()=>$("oaf-ux29-territory")?.querySelector(".oaf-ux29-maphead")||$("oaf-ux29-territory")||document.querySelector("#oaf-territorio-riesgos .oaf-ux24-intro"),
   predicciones:()=>$("oaf-ux16-future-controls")||$("oaf-ux14-rf-mes"),
@@ -204,13 +211,37 @@ function init(){
  };
  for(const k of modes){
   const el=make(k);let trials=0;
-  const locate=()=>{const anchor=locations[k]();if(anchor){anchor.after(el);if(states[k])show(k);}
+  const locate=()=>{const anchor=locations[k]();if(anchor){anchor.after(el);if(active[k]&&states[k])show(k);}
     else if(++trials<30)setTimeout(locate,300);};
   locate();
  }
  const site=$("oaf-home-location");
- const custom=site?.querySelector('option[value="Mi zona productora"]');custom?.remove();
- site?.addEventListener("change",()=>{active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));},true);
+ if(site){
+   let custom=site.querySelector('option[value="'+HOME_CUSTOM+'"]');
+   if(!custom){custom=document.createElement("option");custom.value=HOME_CUSTOM;custom.textContent="Mi zona productora · coordenadas / UTM";site.append(custom);}
+   const choice=readHomeChoice();
+   if(cityNames.includes(choice)){lastHomeCity=choice;site.value=choice;active.inicio=false;}
+   else if(states.inicio){
+     site.value=HOME_CUSTOM;active.inicio=true;
+     const heading=$("oaf-current-city");if(heading)heading.textContent=states.inicio.name;
+     document.querySelectorAll("[data-oaf-set-city]").forEach(button=>button.setAttribute("aria-pressed","false"));
+     document.dispatchEvent(new Event("oaf:area-home-refresh"));
+   }
+   site.addEventListener("change",()=>{
+     if(site.value===HOME_CUSTOM){
+       saveHomeChoice(HOME_CUSTOM);
+       const details=els.inicio?.querySelector("details");if(details)details.open=true;
+       if(states.inicio){active.inicio=true;show("inicio");const heading=$("oaf-current-city");if(heading)heading.textContent=states.inicio.name;}
+       else {active.inicio=false;els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");notice("inicio","Introduce coordenadas geográficas o UTM para consultar tu área.");const heading=$("oaf-current-city");if(heading)heading.textContent=HOME_CUSTOM;}
+       document.querySelectorAll("[data-oaf-set-city]").forEach(button=>button.setAttribute("aria-pressed","false"));
+       return;
+     }
+     if(cityNames.includes(site.value)){lastHomeCity=site.value;saveHomeChoice(site.value);}
+     active.inicio=false;
+     els.inicio?.querySelector(".oaf-area-output")?.setAttribute("hidden","");
+     document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"inicio",point:null,active:false}}));
+   },true);
+  }
  const weeklyCity=$("oaf-ux14-ciudad");
   weeklyCity?.addEventListener("change",()=>{if(active.semanal){active.semanal=false;states.semanal=null;save("semanal");els.semanal?.querySelector(".oaf-area-output")?.setAttribute("hidden","");document.dispatchEvent(new CustomEvent("oaf:area-update",{detail:{scope:"semanal",point:null,active:false}}));}},true);
   const city=$("oaf-hist-place");
@@ -223,7 +254,8 @@ function init(){
  const weeklyHeading=Array.from($("wx-data")?.querySelectorAll("h2")||[]).find(e=>/siete días/i.test(e.textContent));if(weeklyHeading)weeklyHeading.hidden=true;
  const css=document.createElement("style");css.textContent=
  '.oaf-area-local{border:1px solid #c9ded4;border-radius:13px;background:#f5faf7;padding:13px 16px;margin:12px 0 21px;max-width:100%;box-sizing:border-box}'+
- '#oaf-area-territorio,#oaf-area-escenarios{margin:8px 12px 6px;padding:6px 10px;position:relative;z-index:1}'+
+ '#oaf-area-inicio{margin:8px 0 14px;max-width:100%;}'+
+  '#oaf-area-territorio,#oaf-area-escenarios{margin:8px 12px 6px;padding:6px 10px;position:relative;z-index:1}'+
  '.oaf-ux29-mapcolumn .oaf-area-accordion{background:#eff8f3;border-radius:9px}'+
  '.oaf-area-local summary{cursor:pointer;color:#165745;padding:4px 0;font-size:15px}'+
  '.oaf-area-local summary span{color:#536e64;font-weight:400;font-size:12px}'+
