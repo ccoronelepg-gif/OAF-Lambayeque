@@ -1,0 +1,895 @@
+{
+  "version": "1.6",
+  "reviewDate": "2026-10-28",
+  "criterion": "Fotos reales específicas preferidas; esquemas originales solo de estructuras genéricas; sin inferencia taxonómica por esquemas.",
+  "references": [
+    {
+      "id": "m-cer-ad",
+      "title": "EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x"
+    },
+    {
+      "id": "m-cer-eg",
+      "title": "EPPO PM 7/104 · Huevo, sin identificación morfológica concluyente",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x"
+    },
+    {
+      "id": "m-cer-lar",
+      "title": "EPPO PM 7/104 · Larva, identificación con limitaciones",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x"
+    },
+    {
+      "id": "m-ana",
+      "title": "Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+      "url": "https://doi.org/10.3389/finsc.2026.1789891"
+    },
+    {
+      "id": "p-trips",
+      "title": "UC IPM · Avocado thrips, Scirtothrips perseae",
+      "url": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/"
+    },
+    {
+      "id": "a-ds",
+      "title": "Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+      "url": "https://ask.ifas.ufl.edu/publication/IN887"
+    },
+    {
+      "id": "v-pf",
+      "title": "UC IPM · Vine mealybug, Planococcus ficus",
+      "url": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/"
+    },
+    {
+      "id": "b-cos",
+      "title": "ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+      "url": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3"
+    },
+    {
+      "id": "c-hh",
+      "title": "Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+      "url": "https://doi.org/10.3390/insects11120882"
+    },
+    {
+      "id": "c-hh-sem",
+      "title": "Johnson et al. (2020), Insects 11(12):882, fig. 4",
+      "url": "https://doi.org/10.3390/insects11120882"
+    },
+    {
+      "id": "r-dj",
+      "title": "Área de Conservación Guanacaste · Dione juno",
+      "url": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae"
+    }
+  ],
+  "insects": {
+    "m-cer-ad": {
+      "crop": "Mango",
+      "scientific": "Ceratitis capitata",
+      "stage": "Adulto",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "reference": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+      "reference_title": "EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adulto de C. capitata: cabeza, tórax, alas y abdomen reconocibles según el ángulo.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_adult.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_adult.jpg",
+          "author": "Daniel Feliciano · CC BY-SA 4.0",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scope": "Fotografía documental del adulto, no muestra peruana."
+        },
+        {
+          "title": "Cabeza del adulto, fotografía ampliada",
+          "desc": "Vista macroscópica de la cabeza documentada para C. capitata; buscar antenas, ojos y setas. No todas las setas son visibles en cada fotografía.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_head_in_detail.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_head_in_detail.jpg",
+          "author": "Daniel Feliciano · CC BY-SA 4.0",
+          "kind": "real",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza y ojos compuestos",
+          "desc": "Ojos prominentes, antenas cortas y piezas bucales lamedoras.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza y ojos compuestos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza y ojos compuestos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · vista aislada",
+          "desc": "Antena con arista; su posición, inserción y forma se inspeccionan con estereomicroscopio.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · vista aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · vista aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"260\" cy=\"280\" rx=\"75\" ry=\"95\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"4\"/><path d=\"M317 285 L402 270 Q420 268 442 245\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"12\"/><path d=\"M435 249 Q505 199 572 189\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"6\"/><path d=\"M456 240L444 216\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M466 237L454 212\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M476 234L464 208\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M486 231L474 204\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M496 228L484 200\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M506 225L494 196\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M516 222L504 192\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M526 219L514 188\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M536 216L524 184\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M546 213L534 180\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"266\" y=\"437\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena corta y arista (Diptera)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Tórax y escutelo",
+          "desc": "Dibujos torácicos claros y oscuros; observar el escutelo en vista dorsal.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Tórax y escutelo; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Tórax y escutelo</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M302 219 Q448 140 592 219 L643 347 Q480 441 305 360Z\" fill=\"#2a403b\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M330 342 Q457 365 609 346\" stroke=\"#eac78d\" stroke-width=\"12\" fill=\"none\"/><text x=\"285\" y=\"473\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Tórax / pronoto / escutelo según el grupo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas y venación",
+          "desc": "Patrones de bandas amarillas-pardas y puntos; comparar venas en lupa.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas y venación; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas y venación</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M178 335 C375 145 676 190 758 287 C602 401 350 434 178 335Z\" fill=\"#22392f\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M183 335 Q372 226 698 282\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M187 336 Q410 305 759 287\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 363 Q410 380 669 347\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 293Q380 297 621 393\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M298 274Q370 240 442 215\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M300 284 Q380 300 443 349 M512 262 Q587 284 627 353\" fill=\"none\" stroke=\"#cba26d\" stroke-width=\"18\" opacity=\".75\"/><text x=\"247\" y=\"452\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Patrón alar esquemático, no diagnóstico</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Abdomen · segmentos",
+          "desc": "Segmentos del abdomen y estructuras terminales, evaluables según sexo y estadio.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Abdomen · segmentos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Abdomen · segmentos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M217 275 Q435 153 740 268 Q688 434 447 429 Q297 414 217 275Z\" fill=\"#263d35\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M310 234 Q354 316 316 401\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M385 223 Q425 316 392 398\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M460 212 Q496 316 468 395\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M535 201 Q567 316 544 392\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M610 190 Q638 316 620 389\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><text x=\"271\" y=\"469\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Segmentos abdominales / tergitos</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas · segmento torácico",
+          "desc": "Tres pares torácicos, con proporciones variables entre grupos de insectos.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas · segmento torácico; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas · segmento torácico</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas: coxa, fémur, tibia y tarsos",
+          "desc": "Tres pares insertados en el tórax; observar tarsos, articulaciones y sexado en preparaciones.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas: coxa, fémur, tibia y tarsos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas: coxa, fémur, tibia y tarsos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 (1) · Diagnóstico de Ceratitis capitata",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "m-cer-eg": {
+      "crop": "Mango",
+      "scientific": "Ceratitis capitata",
+      "stage": "Huevo",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "reference": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+      "reference_title": "EPPO PM 7/104 · Huevo, sin identificación morfológica concluyente",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Huevos documentados; solo se identifican forma general y corion.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_eggs_5193030.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_eggs_5193030.jpg",
+          "author": "Florida Division of Plant Industry / Bugwood · CC BY 3.0 US",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scope": "Se necesita confirmación con adultos o laboratorio."
+        },
+        {
+          "kind": "diagram",
+          "title": "Corion",
+          "desc": "Envoltura del huevo de superficie lisa; requiere lupa.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Corion; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Corion</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 327 Q250 213 495 208 Q706 198 744 279 Q763 365 566 383 Q348 404 215 327Z\" fill=\"#233a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><circle cx=\"690\" cy=\"279\" r=\"9\" fill=\"#eac78d\"/><path d=\"M700 264L759 226\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"630\" y=\"209\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Polo</text><text x=\"314\" y=\"464\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Corion = cubierta externa del huevo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Huevo, sin identificación morfológica concluyente",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Forma",
+          "desc": "Alargada, clara, con polos diferenciados.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Forma; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Forma</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 327 Q250 213 495 208 Q706 198 744 279 Q763 365 566 383 Q348 404 215 327Z\" fill=\"#233a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><circle cx=\"690\" cy=\"279\" r=\"9\" fill=\"#eac78d\"/><path d=\"M700 264L759 226\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"630\" y=\"209\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Polo</text><text x=\"314\" y=\"464\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Corion = cubierta externa del huevo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Huevo, sin identificación morfológica concluyente",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Región micropilar",
+          "desc": "No identificar sin preparación y equipo adecuados.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Región micropilar; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Región micropilar</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 327 Q250 213 495 208 Q706 198 744 279 Q763 365 566 383 Q348 404 215 327Z\" fill=\"#233a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><circle cx=\"690\" cy=\"279\" r=\"9\" fill=\"#eac78d\"/><path d=\"M700 264L759 226\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"630\" y=\"209\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Polo</text><text x=\"314\" y=\"464\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Corion = cubierta externa del huevo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Huevo, sin identificación morfológica concluyente",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "m-cer-lar": {
+      "crop": "Mango",
+      "scientific": "Ceratitis capitata",
+      "stage": "Larva",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "reference": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+      "reference_title": "EPPO PM 7/104 · Larva, identificación con limitaciones",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Larva ápoda: regiones anterior, media y posterior; los espiráculos requieren microscopia.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_larva.jpeg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_larva.jpeg",
+          "author": "Janos Bodor / CalPhotos · Dominio público (según ficha Commons)",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scope": "No es fotografía de microestructuras diagnósticas."
+        },
+        {
+          "kind": "diagram",
+          "title": "Extremo anterior",
+          "desc": "Ganchos bucales y esqueleto cefalofaríngeo se observan bajo preparación.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Extremo anterior; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Extremo anterior</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M193 333 Q278 236 521 244 Q714 250 769 337 Q690 397 455 400 Q287 390 193 333Z\" fill=\"#273c37\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M285 258 Q275 326 282 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M327 258 Q317 326 324 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M369 258 Q359 326 366 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M411 258 Q401 326 408 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M453 258 Q443 326 450 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M495 258 Q485 326 492 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M537 255 Q527 326 534 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M579 255 Q569 326 576 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M621 255 Q611 326 618 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M225 315L185 336L226 351\" fill=\"none\" stroke=\"#eac78d\" stroke-width=\"5\"/><text x=\"257\" y=\"460\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Cuerpo blando, segmentado, sin patas torácicas</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Larva, identificación con limitaciones",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Segmentos",
+          "desc": "Cuerpo ápodo, blando y anillado.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Segmentos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Segmentos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M193 333 Q278 236 521 244 Q714 250 769 337 Q690 397 455 400 Q287 390 193 333Z\" fill=\"#273c37\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M285 258 Q275 326 282 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M327 258 Q317 326 324 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M369 258 Q359 326 366 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M411 258 Q401 326 408 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M453 258 Q443 326 450 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M495 258 Q485 326 492 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M537 255 Q527 326 534 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M579 255 Q569 326 576 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M621 255 Q611 326 618 391\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M225 315L185 336L226 351\" fill=\"none\" stroke=\"#eac78d\" stroke-width=\"5\"/><text x=\"257\" y=\"460\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Cuerpo blando, segmentado, sin patas torácicas</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Larva, identificación con limitaciones",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Espiráculos posteriores",
+          "desc": "Estructuras respiratorias importantes para diagnosticar tefrítidos con equipo óptico.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Espiráculos posteriores; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Espiráculos posteriores</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"459\" cy=\"300\" rx=\"184\" ry=\"119\" fill=\"#273d36\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><rect x=\"382\" y=\"252\" width=\"25\" height=\"95\" rx=\"11\" fill=\"#7caaa0\" stroke=\"#dce8dc\" stroke-width=\"3\"/><rect x=\"456\" y=\"252\" width=\"25\" height=\"95\" rx=\"11\" fill=\"#7caaa0\" stroke=\"#dce8dc\" stroke-width=\"3\"/><rect x=\"531\" y=\"252\" width=\"25\" height=\"95\" rx=\"11\" fill=\"#7caaa0\" stroke=\"#dce8dc\" stroke-width=\"3\"/><text x=\"263\" y=\"463\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Espiráculos posteriores (modelo anatómico general)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "scientific": "https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2338.2011.02519.x",
+          "author": "Elaboración original a partir de EPPO PM 7/104 · Larva, identificación con limitaciones",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "m-ana": {
+      "crop": "Mango",
+      "scientific": "Anastrepha fraterculus",
+      "stage": "Adulto",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "reference": "https://doi.org/10.3389/finsc.2026.1789891",
+      "reference_title": "Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adulto atribuido a A. fraterculus: revisar alas y caracteres sexuales.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anastrepha-fraterculus.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Anastrepha-fraterculus.jpg",
+          "author": "Gerson Tavares · CC BY 2.0",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scope": "La identidad del complejo taxonómico puede requerir examen especializado."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza · vista frontal",
+          "desc": "Cabeza, ojos compuestos y región frontal; forma y setas requieren claves específicas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza · vista frontal; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza · vista frontal</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "author": "Elaboración original a partir de Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · estructura aislada",
+          "desc": "Ojos compuestos y antenas cortas; examinar frente.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · estructura aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · estructura aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"260\" cy=\"280\" rx=\"75\" ry=\"95\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"4\"/><path d=\"M317 285 L402 270 Q420 268 442 245\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"12\"/><path d=\"M435 249 Q505 199 572 189\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"6\"/><path d=\"M456 240L444 216\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M466 237L454 212\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M476 234L464 208\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M486 231L474 204\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M496 228L484 200\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M506 225L494 196\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M516 222L504 192\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M526 219L514 188\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M536 216L524 184\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M546 213L534 180\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"266\" y=\"437\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena corta y arista (Diptera)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "author": "Elaboración original a partir de Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Tórax",
+          "desc": "Patrón de color y setas como referencia, no carácter único.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Tórax; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Tórax</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M302 219 Q448 140 592 219 L643 347 Q480 441 305 360Z\" fill=\"#2a403b\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M330 342 Q457 365 609 346\" stroke=\"#eac78d\" stroke-width=\"12\" fill=\"none\"/><text x=\"285\" y=\"473\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Tórax / pronoto / escutelo según el grupo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "author": "Elaboración original a partir de Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas",
+          "desc": "Bandas costal, en S y V; revisar variación entre especies.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M178 335 C375 145 676 190 758 287 C602 401 350 434 178 335Z\" fill=\"#22392f\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M183 335 Q372 226 698 282\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M187 336 Q410 305 759 287\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 363 Q410 380 669 347\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 293Q380 297 621 393\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M298 274Q370 240 442 215\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M270 319 Q354 258 459 300 T636 305 M391 263 Q540 351 660 267\" fill=\"none\" stroke=\"#d2a270\" stroke-width=\"22\" opacity=\".7\"/><text x=\"260\" y=\"458\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Bandas alares C, S y V (esquema orientativo)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "author": "Elaboración original a partir de Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Ovipositor de hembra",
+          "desc": "Acúleo, longitud y punta requieren examen taxonómico para complejo fraterculus.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Ovipositor de hembra; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Ovipositor de hembra</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M199 267 Q398 188 567 281 L560 354 Q399 401 203 350Z\" fill=\"#26372e\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M549 305 Q635 260 745 308 L636 371 L554 345\" fill=\"#253830\" stroke=\"#eac78d\" stroke-width=\"5\"/><text x=\"285\" y=\"463\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Acúleo: forma y extremo requieren clave</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3389/finsc.2026.1789891",
+          "scientific": "https://doi.org/10.3389/finsc.2026.1789891",
+          "author": "Elaboración original a partir de Reyna-Rivera et al. (2026), claves alares y acúleo, Amazonas, Perú",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "p-trips": {
+      "crop": "Palto",
+      "scientific": "Scirtothrips perseae",
+      "stage": "Adulto",
+      "family": "Thripidae",
+      "order": "Thysanoptera",
+      "reference": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+      "reference_title": "UC IPM · Avocado thrips, Scirtothrips perseae",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Ejemplar preparado de S. perseae; antenas, alas con flecos y abdomen.",
+          "src": "https://keys.lucidcentral.org/keys/v3/thrips_of_california_2019/the_key/key/california_thysanoptera_2019/Media/Images/entities/scirtothrips_perseae/scirtpersfull.jpg",
+          "link": "https://keys.lucidcentral.org/keys/v3/thrips_of_california_2019/the_key/key/california_thysanoptera_2019/Media/Html/entities/scirtothrips_perseae.htm",
+          "author": "Thrips of California / Lucid diagnostic key · Imagen editorial de clave técnica: consultar condiciones del sitio",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scope": "Uso como enlace técnico externo; no se distribuye copia en el ZIP."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza · vista frontal",
+          "desc": "Cabeza, ojos compuestos y región frontal; forma y setas requieren claves específicas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza · vista frontal; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza · vista frontal</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "author": "Elaboración original a partir de UC IPM · Avocado thrips, Scirtothrips perseae",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · estructura aislada",
+          "desc": "Antenas de ocho segmentos y caracteres sensoriales bajo microscopio.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · estructura aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · estructura aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"290\" cy=\"270\" rx=\"30.0\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 290 270)\"/><ellipse cx=\"336\" cy=\"265\" rx=\"28.1\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 336 265)\"/><ellipse cx=\"382\" cy=\"260\" rx=\"26.2\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 382 260)\"/><ellipse cx=\"428\" cy=\"255\" rx=\"24.3\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 428 255)\"/><ellipse cx=\"474\" cy=\"250\" rx=\"22.4\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 474 250)\"/><ellipse cx=\"520\" cy=\"245\" rx=\"20.5\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 520 245)\"/><ellipse cx=\"566\" cy=\"240\" rx=\"18.6\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 566 240)\"/><ellipse cx=\"612\" cy=\"235\" rx=\"16.700000000000003\" ry=\"14\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"4\" transform=\"rotate(-8 612 235)\"/><text x=\"265\" y=\"415\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena de 8 artejos · Thysanoptera</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "author": "Elaboración original a partir de UC IPM · Avocado thrips, Scirtothrips perseae",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas",
+          "desc": "Alas angostas con franjas de flecos marginales.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M190 320 Q335 190 744 253 Q485 300 190 320Z\" fill=\"#233a35\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M230 307 l15 -34 M230 307 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M250 306 l15 -34 M250 307 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M270 304 l15 -34 M270 306 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M290 302 l15 -34 M290 305 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M310 300 l15 -34 M310 304 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M330 298 l15 -34 M330 303 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M350 296 l15 -34 M350 302 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M370 294 l15 -34 M370 302 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M390 292 l15 -34 M390 301 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M410 291 l15 -34 M410 300 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M430 289 l15 -34 M430 299 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M450 287 l15 -34 M450 298 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M470 285 l15 -34 M470 297 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M490 283 l15 -34 M490 297 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M510 281 l15 -34 M510 296 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M530 279 l15 -34 M530 295 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M550 277 l15 -34 M550 294 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M570 276 l15 -34 M570 293 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M590 274 l15 -34 M590 292 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M610 272 l15 -34 M610 292 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M630 270 l15 -34 M630 291 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M650 268 l15 -34 M650 290 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M670 266 l15 -34 M670 289 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><path d=\"M690 264 l15 -34 M690 288 l18 38\" stroke=\"#dce8dc\" stroke-width=\"2.1\"/><text x=\"205\" y=\"438\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Alas estrechas con flecos marginales</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "author": "Elaboración original a partir de UC IPM · Avocado thrips, Scirtothrips perseae",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Tórax",
+          "desc": "Pronoto y metanoto con setas diagnósticas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Tórax; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Tórax</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M302 219 Q448 140 592 219 L643 347 Q480 441 305 360Z\" fill=\"#2a403b\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M330 342 Q457 365 609 346\" stroke=\"#eac78d\" stroke-width=\"12\" fill=\"none\"/><text x=\"285\" y=\"473\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Tórax / pronoto / escutelo según el grupo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "author": "Elaboración original a partir de UC IPM · Avocado thrips, Scirtothrips perseae",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Abdomen",
+          "desc": "Segmentos y manchas variables; comprobar con clave específica.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Abdomen; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Abdomen</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M217 275 Q435 153 740 268 Q688 434 447 429 Q297 414 217 275Z\" fill=\"#263d35\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M310 234 Q354 316 316 401\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M385 223 Q425 316 392 398\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M460 212 Q496 316 468 395\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M535 201 Q567 316 544 392\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M610 190 Q638 316 620 389\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><text x=\"271\" y=\"469\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Segmentos abdominales / tergitos</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+          "author": "Elaboración original a partir de UC IPM · Avocado thrips, Scirtothrips perseae",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "a-ds": {
+      "crop": "Arándano",
+      "scientific": "Drosophila suzukii",
+      "stage": "Adulto",
+      "family": "Drosophilidae",
+      "order": "Diptera",
+      "reference": "https://ask.ifas.ufl.edu/publication/IN887",
+      "reference_title": "Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adultos macho y hembra con escala: observación de alas, abdomen y ovipositor.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/DrosophilasuzukiiphotoMcEvey.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:DrosophilasuzukiiphotoMcEvey.jpg",
+          "author": "Shane F. McEvey / Australian Museum · CC BY 4.0",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scope": "Material de museo; no se fotografió sobre arándano."
+        },
+        {
+          "title": "Cabeza de adulto · fotografía frontal",
+          "desc": "Ojos compuestos, arista y antenas en una vista frontal real de D. suzukii; fotografía original de M. Hauser.",
+          "src": "https://ask.ifas.ufl.edu/image/IN887/700079/12759971/12759971-2048.webp",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Martin Hauser · California Department of Food and Agriculture / UF IFAS · consultar condiciones de uso",
+          "kind": "real",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "title": "Ala del macho · fotografía aislada",
+          "desc": "Ala real de macho con mancha oscura anterior distal. Las hembras normalmente carecen de esa mancha; la fotografía por sí sola no determina todas las especies.",
+          "src": "https://ask.ifas.ufl.edu/image/IN887/700079/600018/600018-2048.webp",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Martin Hauser · California Department of Food and Agriculture / UF IFAS · consultar condiciones de uso",
+          "kind": "real",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "title": "Ovipositor femenino · detalle fotográfico",
+          "desc": "La zona terminal aserrada de la hembra permite ovipositar en frutos; examen de caracteres y sexado con aumento.",
+          "src": "https://ask.ifas.ufl.edu/image/IN887/700079/13036552/13036552-2048.webp",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Martin Hauser · California Department of Food and Agriculture / UF IFAS · consultar condiciones de uso",
+          "kind": "real",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "title": "Ovipositor femenino · micrografía electrónica",
+          "desc": "Microscopía electrónica que permite observar el borde dentado lateral. La imagen procede de UF/IFAS y no es una muestra recogida en Perú.",
+          "src": "https://ask.ifas.ufl.edu/image/IN887/700079/1326430/1326430-2048.webp",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Martin Hauser · California Department of Food and Agriculture / UF IFAS · consultar condiciones de uso",
+          "kind": "real",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza",
+          "desc": "Ojos compuestos rojos y antenas con arista plumosa.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Elaboración original a partir de Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · vista aislada",
+          "desc": "Antena corta con arista plumosa; consultar fotografía frontal y clave de UF/IFAS.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · vista aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · vista aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"260\" cy=\"280\" rx=\"75\" ry=\"95\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"4\"/><path d=\"M317 285 L402 270 Q420 268 442 245\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"12\"/><path d=\"M435 249 Q505 199 572 189\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"6\"/><path d=\"M456 240L444 216\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M466 237L454 212\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M476 234L464 208\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M486 231L474 204\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M496 228L484 200\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M506 225L494 196\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M516 222L504 192\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M526 219L514 188\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M536 216L524 184\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M546 213L534 180\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><text x=\"266\" y=\"437\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena corta y arista (Diptera)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Elaboración original a partir de Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas en machos",
+          "desc": "Mancha oscura cerca del extremo; ausente normalmente en hembras.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas en machos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas en machos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M178 335 C375 145 676 190 758 287 C602 401 350 434 178 335Z\" fill=\"#22392f\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M183 335 Q372 226 698 282\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M187 336 Q410 305 759 287\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 363 Q410 380 669 347\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M243 293Q380 297 621 393\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M298 274Q370 240 442 215\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><ellipse cx=\"676\" cy=\"273\" rx=\"40\" ry=\"23\" fill=\"#705741\"/><text x=\"390\" y=\"455\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Mancha subapical del ala masculina</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Elaboración original a partir de Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas anteriores de macho",
+          "desc": "Peines sexuales: se examinan con ampliación.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas anteriores de macho; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas anteriores de macho</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text><text x=\"297\" y=\"489\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"18\" font-weight=\"600\">Macho: peines sexuales del tarso anterior</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Elaboración original a partir de Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Ovipositor de hembra",
+          "desc": "Oviscapto aserrado, importante para diferenciar especies.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Ovipositor de hembra; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Ovipositor de hembra</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M199 267 Q398 188 567 281 L560 354 Q399 401 203 350Z\" fill=\"#26372e\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M549 305 Q635 260 745 308 L636 371 L554 345\" fill=\"#253830\" stroke=\"#eac78d\" stroke-width=\"5\"/><path d=\"M630 351 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M638 349 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M646 346 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M654 344 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M662 341 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M670 338 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M678 336 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M686 333 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M694 330 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M702 328 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M710 325 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><path d=\"M718 322 l-8 12\" stroke=\"#eac78d\" stroke-width=\"3\"/><text x=\"277\" y=\"460\" fill=\"#eac78d\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Margen dentado del oviscapto femenino</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ask.ifas.ufl.edu/publication/IN887",
+          "scientific": "https://ask.ifas.ufl.edu/publication/IN887",
+          "author": "Elaboración original a partir de Mann & Stelinski · UF/IFAS, Drosophila suzukii (EENY-492)",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "v-pf": {
+      "crop": "Vid",
+      "scientific": "Planococcus ficus",
+      "stage": "Hembra adulta",
+      "family": "Pseudococcidae",
+      "order": "Hemiptera",
+      "reference": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+      "reference_title": "UC IPM · Vine mealybug, Planococcus ficus",
+      "slides": [
+        {
+          "kind": "external",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Fotografía oficial de dos hembras adultas en corteza de vid.",
+          "src": null,
+          "link": "https://ipm.ucanr.edu/PMG/P/I-HO-PFIC-AD.010.html",
+          "author": "Jack Kelly Clark / UC IPM · Imagen institucional: enlace al registro original",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scope": "La fotografía se consulta en UC IPM; no se inserta un archivo de licencia no comprobada."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza y aparato bucal",
+          "desc": "Estiletes picadores-chupadores; no siempre visibles en foto.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza y aparato bucal; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza y aparato bucal</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "author": "Elaboración original a partir de UC IPM · Vine mealybug, Planococcus ficus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cuerpo y abdomen",
+          "desc": "Hembra ovalada y segmentada, cubierta de secreción cérea blanca.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cuerpo y abdomen; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cuerpo y abdomen</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M217 275 Q435 153 740 268 Q688 434 447 429 Q297 414 217 275Z\" fill=\"#263d35\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M310 234 Q354 316 316 401\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M385 223 Q425 316 392 398\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M460 212 Q496 316 468 395\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M535 201 Q567 316 544 392\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M610 190 Q638 316 620 389\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><text x=\"271\" y=\"469\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Segmentos abdominales / tergitos</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "author": "Elaboración original a partir de UC IPM · Vine mealybug, Planococcus ficus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Filamentos marginales",
+          "desc": "Cortos; comparar el extremo posterior con Pseudococcus spp.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Filamentos marginales; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Filamentos marginales</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<ellipse cx=\"458\" cy=\"305\" rx=\"175\" ry=\"110\" fill=\"#364b43\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M633 305L668 305\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M622 343L655 353\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M592 376L619 394\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M546 400L563 425\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M488 413L494 442\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M428 413L422 442\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M371 400L353 425\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M324 376L297 394\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M294 343L261 353\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M283 305L248 305\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M294 267L261 257\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M324 234L297 216\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M370 210L353 185\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M428 197L422 168\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M488 197L494 168\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M545 210L563 185\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M592 234L619 216\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M622 267L655 257\" stroke=\"#8dbb9d\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M328 211 Q330 302 330 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M375 211 Q377 302 377 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M422 211 Q424 302 424 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M469 211 Q471 302 471 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M516 211 Q518 302 518 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><path d=\"M563 211 Q565 302 565 404\" fill=\"none\" stroke=\"#7caaa0\" stroke-width=\"3\"/><text x=\"284\" y=\"481\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Hembra: filamentos céreos marginales</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "author": "Elaboración original a partir de UC IPM · Vine mealybug, Planococcus ficus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas · segmentos torácicos",
+          "desc": "Coxas, fémures, tibias y tarsos observables en preparaciones adecuadas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas · segmentos torácicos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas · segmentos torácicos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "author": "Elaboración original a partir de UC IPM · Vine mealybug, Planococcus ficus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · estructura aislada",
+          "desc": "Examen con lupa ayuda a distinguir estadios y especies.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · estructura aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · estructura aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M268 355 Q321 300 389 272 Q435 247 505 245\" stroke=\"#dce8dc\" stroke-width=\"8\" fill=\"none\"/><circle cx=\"356\" cy=\"283\" r=\"12\" fill=\"#0f1d17\" stroke=\"#9dd6a8\" stroke-width=\"3\"/><circle cx=\"383\" cy=\"280\" r=\"12\" fill=\"#0f1d17\" stroke=\"#9dd6a8\" stroke-width=\"3\"/><circle cx=\"410\" cy=\"277\" r=\"12\" fill=\"#0f1d17\" stroke=\"#9dd6a8\" stroke-width=\"3\"/><circle cx=\"437\" cy=\"274\" r=\"12\" fill=\"#0f1d17\" stroke=\"#9dd6a8\" stroke-width=\"3\"/><circle cx=\"464\" cy=\"271\" r=\"12\" fill=\"#0f1d17\" stroke=\"#9dd6a8\" stroke-width=\"3\"/><text x=\"270\" y=\"414\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena corta segmentada · hembra adulta</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "scientific": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+          "author": "Elaboración original a partir de UC IPM · Vine mealybug, Planococcus ficus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "b-cos": {
+      "crop": "Banano",
+      "scientific": "Cosmopolites sordidus",
+      "stage": "Adulto",
+      "family": "Curculionidae",
+      "order": "Coleoptera",
+      "reference": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+      "reference_title": "ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adulto de C. sordidus con rostro, pronoto y élitros.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg",
+          "author": "Obsidian Soul · CC0 1.0",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scope": "Ejemplar de Filipinas; no evidencia de plaga en parcelas peruanas."
+        },
+        {
+          "kind": "diagram",
+          "title": "Rostro · aparato cefálico",
+          "desc": "Prolongación cefálica característica del curculiónido; la inserción antenal debe observarse con aumento.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Rostro · aparato cefálico; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Rostro · aparato cefálico</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M277 230 Q365 180 426 230 L475 300 Q583 315 694 402 L657 441 Q561 405 458 348 L285 361Z\" fill=\"#263e36\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M495 338 L559 274 L606 258\" stroke=\"#eac78d\" stroke-width=\"8\" fill=\"none\"/><text x=\"260\" y=\"489\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Rostro y posición de inserción antenal</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "author": "Elaboración original a partir de ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · estructura aislada",
+          "desc": "Rostro proyectado y antenas acodadas en la región cefálica.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · estructura aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · estructura aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M245 360 L345 278 L445 245 L550 220\" stroke=\"#dce8dc\" stroke-width=\"13\" fill=\"none\" stroke-linejoin=\"round\"/><path d=\"M343 275 L360 215\" stroke=\"#dce8dc\" stroke-width=\"8\"/><ellipse cx=\"570\" cy=\"217\" rx=\"35\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"620\" cy=\"213\" rx=\"38\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"667\" cy=\"214\" rx=\"44\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><text x=\"265\" y=\"420\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Escapo · funículo · maza antenal</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "author": "Elaboración original a partir de ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Pronoto",
+          "desc": "Placa dorsal del protórax, distinta de élitros.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Pronoto; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Pronoto</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M302 219 Q448 140 592 219 L643 347 Q480 441 305 360Z\" fill=\"#2a403b\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M330 342 Q457 365 609 346\" stroke=\"#eac78d\" stroke-width=\"12\" fill=\"none\"/><text x=\"285\" y=\"473\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Tórax / pronoto / escutelo según el grupo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "author": "Elaboración original a partir de ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Élitros",
+          "desc": "Cubiertas endurecidas de alas posteriores; observar estrías.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Élitros; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Élitros</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 200 Q475 156 709 196 Q745 305 680 408 Q469 460 221 409Z\" fill=\"#263c39\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M236 207 Q224 300 236 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M281 207 Q269 300 281 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M326 207 Q314 300 326 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M371 207 Q359 300 371 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M416 207 Q404 300 416 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M461 207 Q449 300 461 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M506 207 Q494 300 506 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M551 207 Q539 300 551 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M596 207 Q584 300 596 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M641 207 Q629 300 641 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><text x=\"260\" y=\"465\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Élitro = ala anterior endurecida</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "author": "Elaboración original a partir de ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas",
+          "desc": "Tres pares torácicos para desplazamiento; larvas sin patas visibles requieren inspección del cormo.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "scientific": "https://databases.nbair.res.in/weevils_new/notories_detail.php?id=3",
+          "author": "Elaboración original a partir de ICAR-NBAIR · Banana weevil, Cosmopolites sordidus",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "c-hh": {
+      "crop": "Café",
+      "scientific": "Hypothenemus hampei",
+      "stage": "Adulto",
+      "family": "Curculionidae · Scolytinae",
+      "order": "Coleoptera",
+      "reference": "https://doi.org/10.3390/insects11120882",
+      "reference_title": "Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adulto de H. hampei; superficie de élitros y pronoto observables.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hypothenemus.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Hypothenemus.jpg",
+          "author": "L. Shyamal · CC BY-SA 3.0",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "scope": "Ejemplar documentado en India. La referencia científica incluye microfotografías con escala."
+        },
+        {
+          "title": "Anatomía externa publicada · microfotografía SEM",
+          "desc": "Figura 4 con vistas lateral, dorsal y de cabeza rotuladas; consultar escala y las letras originales (Pr, El, Fr, Ac, etc.).",
+          "src": "https://www.mdpi.com/insects/insects-11-00882/article_deploy/html/images/insects-11-00882-g004.png",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "author": "Johnson et al. (2020) · Insects, Fig. 4 · CC BY 4.0",
+          "kind": "real",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "scope": "Imagen anatómica del taxón identificado por el autor; conservar referencia y condiciones originales."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza y mandíbulas",
+          "desc": "Cabeza inclinada; mandíbulas implicadas en perforación.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza y mandíbulas; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza y mandíbulas</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · vista aislada",
+          "desc": "Antena con escapo, funículo y maza; la cantidad de artejos requiere preparación y clave.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · vista aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · vista aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M245 360 L345 278 L445 245 L550 220\" stroke=\"#dce8dc\" stroke-width=\"13\" fill=\"none\" stroke-linejoin=\"round\"/><path d=\"M343 275 L360 215\" stroke=\"#dce8dc\" stroke-width=\"8\"/><ellipse cx=\"570\" cy=\"217\" rx=\"35\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"620\" cy=\"213\" rx=\"38\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"667\" cy=\"214\" rx=\"44\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><text x=\"265\" y=\"420\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Escapo · funículo · maza antenal</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Pronoto",
+          "desc": "Escudo convexo con estructuras anteriores rugosas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Pronoto; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Pronoto</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M302 219 Q448 140 592 219 L643 347 Q480 441 305 360Z\" fill=\"#2a403b\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M330 342 Q457 365 609 346\" stroke=\"#eac78d\" stroke-width=\"12\" fill=\"none\"/><text x=\"285\" y=\"473\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Tórax / pronoto / escutelo según el grupo</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Élitros",
+          "desc": "Cubiertas dorsales con filas de puntos, setas y estrías.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Élitros; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Élitros</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 200 Q475 156 709 196 Q745 305 680 408 Q469 460 221 409Z\" fill=\"#263c39\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M236 207 Q224 300 236 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M281 207 Q269 300 281 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M326 207 Q314 300 326 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M371 207 Q359 300 371 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M416 207 Q404 300 416 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M461 207 Q449 300 461 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M506 207 Q494 300 506 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M551 207 Q539 300 551 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M596 207 Q584 300 596 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M641 207 Q629 300 641 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><text x=\"260\" y=\"465\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Élitro = ala anterior endurecida</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas",
+          "desc": "Coxas, fémures, tibias y tarsos visibles con aumento.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, anatomía externa",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "r-dj": {
+      "crop": "Maracuyá",
+      "scientific": "Dione juno",
+      "stage": "Adulto",
+      "family": "Nymphalidae",
+      "order": "Lepidoptera",
+      "reference": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+      "reference_title": "Área de Conservación Guanacaste · Dione juno",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Adulto de Dione juno: alas, antenas y abdomen.",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Borboleta_Dione_juno.jpg?width=900",
+          "link": "https://commons.wikimedia.org/wiki/File:Borboleta_Dione_juno.jpg",
+          "author": "Jessica Moreira · CC BY-SA 4.0",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scope": "Adulto en hoja; la fase defoliadora es la larva."
+        },
+        {
+          "kind": "diagram",
+          "title": "Cabeza · vista frontal",
+          "desc": "Cabeza, ojos compuestos y región frontal; forma y setas requieren claves específicas.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Cabeza · vista frontal; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Cabeza · vista frontal</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · estructura aislada",
+          "desc": "Antenas claviformes, ojos compuestos y espiritrompa.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · estructura aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · estructura aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M255 345 Q350 285 520 225 Q618 205 695 168\" fill=\"none\" stroke=\"#dce8dc\" stroke-width=\"10\"/><path d=\"M687 171 Q740 157 718 145 Q700 137 687 171\" fill=\"#9dd6a8\"/><text x=\"265\" y=\"421\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Antena claviforme · mariposas</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas anteriores",
+          "desc": "Nervaduras, manchas y borde alar para comparación taxonómica.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas anteriores; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas anteriores</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M451 284 Q290 110 187 181 Q138 277 367 318 Q202 440 348 451 Q440 443 451 284\" fill=\"#2a4a3b\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M451 284 Q617 108 734 182 Q781 258 524 319 Q684 462 542 451 Q464 432 451 284\" fill=\"#2a4a3b\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M451 283L209 183M451 283L370 439M451 283L712 186M451 283L529 437\" stroke=\"#eac78d\" stroke-width=\"3\"/><text x=\"240\" y=\"478\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Dos pares de alas con escamas · Lepidoptera</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Alas posteriores",
+          "desc": "Patrones dorsal y ventral diferentes; fotografiar ambos lados.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Alas posteriores; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Alas posteriores</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M451 284 Q290 110 187 181 Q138 277 367 318 Q202 440 348 451 Q440 443 451 284\" fill=\"#2a4a3b\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M451 284 Q617 108 734 182 Q781 258 524 319 Q684 462 542 451 Q464 432 451 284\" fill=\"#2a4a3b\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><path d=\"M451 283L209 183M451 283L370 439M451 283L712 186M451 283L529 437\" stroke=\"#eac78d\" stroke-width=\"3\"/><text x=\"240\" y=\"478\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"20\" font-weight=\"600\">Dos pares de alas con escamas · Lepidoptera</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Abdomen · segmentos",
+          "desc": "Segmentos del abdomen y estructuras terminales, evaluables según sexo y estadio.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Abdomen · segmentos; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Abdomen · segmentos</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M217 275 Q435 153 740 268 Q688 434 447 429 Q297 414 217 275Z\" fill=\"#263d35\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M310 234 Q354 316 316 401\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M385 223 Q425 316 392 398\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M460 212 Q496 316 468 395\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M535 201 Q567 316 544 392\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M610 190 Q638 316 620 389\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><text x=\"271\" y=\"469\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Segmentos abdominales / tergitos</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Patas · segmento torácico",
+          "desc": "Tres pares torácicos, con proporciones variables entre grupos de insectos.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Patas · segmento torácico; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Patas · segmento torácico</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M240 196 L375 279 L530 215 L643 317 L698 404\" stroke=\"#dce8dc\" stroke-width=\"19\" fill=\"none\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"375\" cy=\"279\" r=\"14\" fill=\"#eac78d\"/><circle cx=\"530\" cy=\"215\" r=\"14\" fill=\"#eac78d\"/><text x=\"204\" y=\"455\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Coxa · fémur · tibia · tarso (simplificado)</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "scientific": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+          "author": "Elaboración original a partir de Área de Conservación Guanacaste · Dione juno",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    },
+    "c-hh-sem": {
+      "crop": "Café",
+      "scientific": "Hypothenemus hampei",
+      "stage": "Adulto",
+      "family": "Curculionidae · Scolytinae",
+      "order": "Coleoptera",
+      "reference": "https://doi.org/10.3390/insects11120882",
+      "reference_title": "Johnson et al. (2020), Insects 11(12):882, fig. 4",
+      "slides": [
+        {
+          "kind": "real",
+          "title": "Vista general · fotografía de referencia",
+          "desc": "Microfotografías electrónicas originales con estructuras anatómicas rotuladas A, B y C; etiquetas Pr, El, Fr y Ce explicadas en la ficha.",
+          "src": "https://www.mdpi.com/insects/insects-11-00882/article_deploy/html/images/insects-11-00882-g004.png",
+          "link": "https://www.mdpi.com/2075-4450/11/12/882",
+          "author": "Johnson et al. (2020), Insects 11(12), 882 · Figura 4 · CC BY 4.0",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "scope": "Figura de investigación publicada, no fotografía de campo. Las etiquetas y barras de escala forman parte del trabajo original."
+        },
+        {
+          "kind": "diagram",
+          "title": "A · Vista lateral",
+          "desc": "Pr: pronoto; Eb: base elitral; He: cabeza; Cx: coxa; Fe: fémur; Ti: tibia; Ta: tarso.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter A · Vista lateral; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">A · Vista lateral</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M217 275 Q435 153 740 268 Q688 434 447 429 Q297 414 217 275Z\" fill=\"#263d35\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M310 234 Q354 316 316 401\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M385 223 Q425 316 392 398\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M460 212 Q496 316 468 395\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M535 201 Q567 316 544 392\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><path d=\"M610 190 Q638 316 620 389\" stroke=\"#7caaa0\" stroke-width=\"4\" fill=\"none\"/><text x=\"271\" y=\"469\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Segmentos abdominales / tergitos</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, fig. 4",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Antenas · vista aislada",
+          "desc": "Detalle de cabeza con escapo, funículo y maza en la microfotografía original; el esquema no representa número de artejos.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Antenas · vista aislada; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Antenas · vista aislada</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M245 360 L345 278 L445 245 L550 220\" stroke=\"#dce8dc\" stroke-width=\"13\" fill=\"none\" stroke-linejoin=\"round\"/><path d=\"M343 275 L360 215\" stroke=\"#dce8dc\" stroke-width=\"8\"/><ellipse cx=\"570\" cy=\"217\" rx=\"35\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"620\" cy=\"213\" rx=\"38\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><ellipse cx=\"667\" cy=\"214\" rx=\"44\" ry=\"29\" fill=\"none\" stroke=\"#9dd6a8\" stroke-width=\"4\"/><text x=\"265\" y=\"420\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Escapo · funículo · maza antenal</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, fig. 4",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "B · Vista dorsal y élitros",
+          "desc": "El: élitro; Ss: setas estriales; Ib: cerdas interestriales; observar escala de 200 µm.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter B · Vista dorsal y élitros; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">B · Vista dorsal y élitros</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 200 Q475 156 709 196 Q745 305 680 408 Q469 460 221 409Z\" fill=\"#263c39\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M236 207 Q224 300 236 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M281 207 Q269 300 281 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M326 207 Q314 300 326 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M371 207 Q359 300 371 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M416 207 Q404 300 416 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M461 207 Q449 300 461 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M506 207 Q494 300 506 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M551 207 Q539 300 551 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M596 207 Q584 300 596 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M641 207 Q629 300 641 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><text x=\"260\" y=\"465\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Élitro = ala anterior endurecida</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, fig. 4",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "C · Detalle de la cabeza",
+          "desc": "Fr: frente; M: mandíbulas; Ce: ojo compuesto; Sc: escapo; Pe: pedicelo; Sf: funículo; Ac: maza antenal.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter C · Detalle de la cabeza; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">C · Detalle de la cabeza</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<circle cx=\"475\" cy=\"300\" r=\"138\" fill=\"#243a33\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><ellipse cx=\"401\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><ellipse cx=\"557\" cy=\"294\" rx=\"45\" ry=\"75\" fill=\"#586d60\" stroke=\"#dce8dc\" stroke-width=\"4\"/><path d=\"M432 430 L450 495 M521 428 L511 495\" stroke=\"#7caaa0\" stroke-width=\"5\"/><text x=\"285\" y=\"488\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"19\" font-weight=\"600\">Ojos compuestos y antenas: vista frontal idealizada</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, fig. 4",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        },
+        {
+          "kind": "diagram",
+          "title": "Escala y resolución",
+          "desc": "La micrografía incluye barras de 100 y 200 µm; permite comparar microestructuras del adulto.",
+          "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 960 560\" role=\"img\" aria-label=\"Esquema didáctico del carácter Escala y resolución; no es diagnóstico de especie\">\n<rect width=\"960\" height=\"560\" fill=\"#0a1412\"/><rect x=\"27\" y=\"27\" width=\"906\" height=\"505\" rx=\"22\" fill=\"#101f1b\" stroke=\"#315a4d\" stroke-width=\"2\"/><path d=\"M50 116H910M50 502H910\" stroke=\"#25463a\"/>\n<text x=\"63\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#f1f5e9\">Escala y resolución</text><text x=\"64\" y=\"102\" font-family=\"Arial,sans-serif\" font-size=\"15\" fill=\"#b0c7bb\">ESQUEMA DIDÁCTICO ORIGINAL · CARÁCTER ANATÓMICO DEL GRUPO · NO A ESCALA</text>\n<path d=\"M215 200 Q475 156 709 196 Q745 305 680 408 Q469 460 221 409Z\" fill=\"#263c39\" stroke=\"#9dd6a8\" stroke-width=\"5\"/><path d=\"M236 207 Q224 300 236 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M281 207 Q269 300 281 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M326 207 Q314 300 326 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M371 207 Q359 300 371 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M416 207 Q404 300 416 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M461 207 Q449 300 461 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M506 207 Q494 300 506 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M551 207 Q539 300 551 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M596 207 Q584 300 596 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><path d=\"M641 207 Q629 300 641 407\" stroke=\"#7caaa0\" opacity=\".9\" stroke-width=\"3\" fill=\"none\"/><text x=\"260\" y=\"465\" fill=\"#9dd6a8\" font-family=\"Arial, sans-serif\" font-size=\"21\" font-weight=\"600\">Élitro = ala anterior endurecida</text>\n<text x=\"66\" y=\"527\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#b9cdbf\">NO es fotografía, clave de identificación ni representación exacta de la especie.</text></svg>",
+          "link": "https://doi.org/10.3390/insects11120882",
+          "scientific": "https://doi.org/10.3390/insects11120882",
+          "author": "Elaboración original a partir de Johnson et al. (2020), Insects 11(12):882, fig. 4",
+          "scope": "Esquema no a escala: explica una estructura del grupo taxonómico. No reproduce el patrón particular, medidas ni caracteres diagnósticos de la especie."
+        }
+      ]
+    }
+  }
+}
