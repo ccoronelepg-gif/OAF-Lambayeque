@@ -1,0 +1,110 @@
+name: OAF UX45 - Auditoria integral web, PWA, ciencia y fuentes
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/oaf_ux45_auditoria_integral.yml"
+      - "tests/test_ux45_verificacion_general.cjs"
+      - "tests/auditoria_ux45_fuentes_live.cjs"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  estructura_y_ciencia:
+    name: "6 areas + integridad cientifica + PWA"
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Inventario y coherencia general
+        run: node tests/test_ux45_verificacion_general.cjs
+      - name: Regresion de navegacion, produccion y sanidad
+        run: |
+          python -m unittest discover -s tests -p 'test_ux_oaf_2026.py' -v
+          python -m unittest discover -s tests -p 'test_redisenio_oaf_2026.py' -v
+          python -m unittest discover -s tests -p 'test_estructura_pestanas_2026.py' -v
+          python -m unittest discover -s tests -p 'test_agroexportacion_2026.py' -v
+          python -m unittest discover -s tests -p 'test_ux9_refinamiento_2026.py' -v
+          python -m unittest discover -s tests -p 'test_ux11_sanidad_boletines_2026.py' -v
+          python -m unittest discover -s tests -p 'test_divulgacion_seo_2026.py' -v
+      - name: Datos predictivos, visores SIG, modelo y PWA
+        run: |
+          node tests/test_ux39_parcelas.cjs
+          node tests/test_ux41_semana.cjs
+          node tests/test_ux43_weekbars.cjs
+          node tests/test_ux44_estacional.cjs
+          node tests/test_pwa_ux20.cjs
+          node tests/test_movil_ux19.js
+          node tests/test_ux21_limpieza.cjs
+          node tests/test_portada_2026.js
+          node tests/test_sanidad_imagenes_2026.js
+      - name: Comprobar sintaxis de módulos
+        run: |
+          for file in assets/*.js modelos/*.js; do node --check "$file"; done
+      - name: Guardar hallazgos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux45-estructura
+          path: artifacts/auditoria_ux45_estructura.json
+          if-no-files-found: warn
+
+  navegacion_escritorio_y_movil:
+    name: "Chromium web + PWA + mapas + sanidad"
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Instalar navegador de pruebas
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Servir version web/PWA del repositorio
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/oaf_ux45.log 2>&1 &
+          sleep 2
+      - name: Visores, poligonos, coordenadas, escenarios y RF/ERA5/Open-Meteo
+        run: node tests/test_ux39_browser.cjs
+      - name: Pantallas 320 a 768 px y navegacion movil
+        run: node tests/test_movil_ux19_browser.cjs
+      - name: Instalacion, manifiesto y service worker PWA
+        run: node tests/test_pwa_ux20_browser.cjs
+      - name: Legibilidad editorial y textos del portal
+        run: |
+          node tests/test_editorial_ux22_browser.cjs
+          node tests/test_ux21_browser.cjs
+      - name: Conservar capturas de dispositivos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux45-capturas-moviles
+          path: artifacts/mobile-ux19/
+          if-no-files-found: warn
+
+  fuentes_externas:
+    name: "Comprobacion en vivo: Open-Meteo, ERA5 y ENFEN"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probar endpoints reales con limites de tiempo
+        run: node tests/auditoria_ux45_fuentes_live.cjs
+      - name: Conservar evidencias y errores sin ocultarlos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ux45-fuentes-vigentes
+          path: artifacts/auditoria_ux45_fuentes_live.json
+          if-no-files-found: warn
