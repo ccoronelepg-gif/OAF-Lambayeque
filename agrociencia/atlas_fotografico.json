@@ -1,0 +1,117 @@
+{
+  "version": "1.3",
+  "review_date": "2026-10-28",
+  "policy": "Fotos reales con fuente, autor y licencia; identidad según página original; no son diagnósticos propios ni geolocalizaciones de Perú.",
+  "photos": {
+    "m01": {
+      "file": "Ceratitis capitata - adult.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_adult.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_adult.jpg",
+      "author": "Daniel Feliciano",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "caption": "Ceratitis capitata adulta; foto de campo, Portugal",
+      "scope": "Adulto de la especie descrita. No acredita presencia local ni hospedero.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "m02": {
+      "file": "Anastrepha-fraterculus.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Anastrepha-fraterculus.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Anastrepha-fraterculus.jpg",
+      "author": "Gerson Tavares",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "caption": "Anastrepha fraterculus adulta; ejemplo dentro del género Anastrepha",
+      "scope": "Ejemplo de A. fraterculus: NO representa todas las especies de Anastrepha spp.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "m03": {
+      "file": "Mango anthracnose 1a.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango_anthracnose_1a.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Mango_anthracnose_1a.jpg",
+      "author": "Scot Nelson",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "caption": "Antracnosis en tejidos de mango, atribuida a Colletotrichum gloeosporioides",
+      "scope": "Síntomas en mango. No confirma el aislamiento o especie causal de otros casos.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "a01": {
+      "file": "DrosophilasuzukiiphotoMcEvey.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DrosophilasuzukiiphotoMcEvey.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:DrosophilasuzukiiphotoMcEvey.jpg",
+      "author": "Shane F. McEvey, Australian Museum",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "caption": "Ejemplares macho y hembra de Drosophila suzukii",
+      "scope": "Ejemplares documentados; imagen de museo, no capturada en arándano.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "v02": {
+      "file": "Oidium vigne.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Oidium_vigne.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Oidium_vigne.jpg",
+      "author": "Olivier Lemoine",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "caption": "Oídio Erysiphe necator en racimo de vid",
+      "scope": "Síntomas compatibles en vid; el diagnóstico de campo requiere confirmación.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "v03": {
+      "file": "Botrytis on grapes.png",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Botrytis_on_grapes.png?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Botrytis_on_grapes.png",
+      "author": "Ninjatacoshell",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "caption": "Botrytis cinerea recuperada de uvas, con identificación micológica referenciada",
+      "scope": "Hongo identificado en uva según bibliografía citada por el autor de la foto.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "b01": {
+      "file": "Cosmopolites sordidus, banana weevil (Mindanao, Philippines) 01.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg",
+      "author": "Obsidian Soul",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "caption": "Adulto de Cosmopolites sordidus fotografiado en Mindanao (Filipinas)",
+      "scope": "Ejemplar de la especie; lugar de captura no es Perú.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "b02": {
+      "file": "Black Sigatoka (detail).jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Black_Sigatoka_(detail).jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Black_Sigatoka_(detail).jpg",
+      "author": "Scot Nelson",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "caption": "Lesiones foliares de sigatoka negra en banano",
+      "scope": "Síntomas en hojas documentados; no medir severidad desde esta foto.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "c01": {
+      "file": "Hypothenemus.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hypothenemus.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Hypothenemus.jpg",
+      "author": "L. Shyamal",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "caption": "Adulto de Hypothenemus hampei, Mudigere (India)",
+      "scope": "Ejemplar identificado; no se atribuye a cultivo ni parcela del usuario.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    },
+    "c02": {
+      "file": "Hemileia vastatrix - coffee leaf rust.jpg",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hemileia_vastatrix_-_coffee_leaf_rust.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Hemileia_vastatrix_-_coffee_leaf_rust.jpg",
+      "author": "Smartse",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "caption": "Hoja de café con roya Hemileia vastatrix, Rwanda (2011)",
+      "scope": "Síntoma foliar en café; la fotografía no cuantifica incidencia ni severidad.",
+      "type": "Fotografía real documentada en Wikimedia Commons"
+    }
+  }
+}
