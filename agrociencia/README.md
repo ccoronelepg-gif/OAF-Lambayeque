@@ -1,17 +1,18 @@
-# AgroCiencia Aplicada · v1.3 — Atlas fotográfico y rigor científico
+# AgroCiencia Aplicada v1.4 — Atlas morfológico / Contacto / OAF
 
-Actualización de la plataforma consultiva: se retiran fotografías genéricas de las fichas y portadas, el mapa simulado de la vista de inicio y la cabecera creada mediante IA, sustituyéndolos por fotos auténticas de organismos y síntomas con identificación y fuente documentada.
+**Despliegue GitHub Pages:** `https://ccoronelepg-gif.github.io/OAF-Lambayeque/agrociencia/`.
 
-## Evidencia fotográfica
-Se incorporan 10 imágenes acreditadas mediante fichas de Wikimedia Commons, con nombre científico del organismo o enfermedad, autor, licencia, URL a la obra original y advertencia de ámbito. El atlas se filtra junto a las 21 fichas sanitarias. Para organismos sin fotografía específica revisada no se publica ninguna imagen. No se usa material generado para representar especies o sintomatología.
+## Qué cambia
+- Identidad de OAF Lambayeque: copia exacta de `assets/oaf-app-icon.svg` del repositorio del observatorio, enlazada a su sitio oficial. No se modifica el proyecto OAF.
+- Navegación con módulo «Atlas morfológico» y apartado «Contacte con nosotros», correo y teléfono en enlaces `mailto:` / `tel:` sin backend.
+- Seis registros fotográficos verificables, cinco de morfología de `Ceratitis capitata` y uno de roya del cafeto; cada uno documenta autor, licencia, estadio, caracteres observables, incertidumbre, URL de la foto y referencia científica.
+- Filtro de estadio, buscador anatómico y vista detallada, con referencias EPPO, USDA APHIS y APS.
 
-Las fotos se cargan de Wikimedia Commons en línea; para licencia y descripción exacta de cada fotografía véase `atlas_fotografico.json`, o «Fuentes y metodología» en la web. Una fotografía no implica identificación de una muestra aportada por el usuario, presencia regional ni prueba epidemiológica. Los síntomas pueden requerir confirmación microscópica o de laboratorio.
+## Límites / control de rigor
+La información y las fotografías son documentales, no diagnósticos de muestras locales. EPPO advierte que la determinación morfológica fiable de *C. capitata* se realiza con adultos; los estadios inmaduros deben confirmarse mediante diagnóstico especializado. Las fotos se sirven desde Wikimedia Commons: pueden no cargar offline; se mantienen los vínculos de atribución y licencia. Ningún dato de campo se inventa. Esta web no es un organismo estatal.
 
-## Funcionamiento
-Abrir `index.html` desde un servidor web estático o publicar en GitHub Pages; `AgroCiencia_Aplicada_v1_3_autonomo.html` incluye el CSS y JavaScript de la web, pero las fotografías, los mapas y los datos externos requieren internet. Se conservan funciones de Open-Meteo, localización geográfica y UTM, búsqueda, favoritos y exportación CSV. Los datos meteorológicos siguen siendo modelados y requieren verificación en el navegador con conexión.
+## Instalar
+- Opción 1: abrir el HTML autónomo. Meteorología, mapas y fotografías externas requieren conexión.
+- Opción 2: publicar `index.html`, archivos `.css`, `.js` y `assets/` en la raíz de un repositorio GitHub Pages independiente, sin modificar rutas de carpetas.
 
-## Licencias
-Código del proyecto: pendiente de elección de licencia por el titular. Las imágenes de terceros **no** se relicencian con el código: respetar las licencias específicas enlazadas en el manifiesto. En el frontend se usa recorte visual CSS sin modificar los originales remotos.
-
-## Revisión
-La revisión de las fichas originales y condiciones de Commons se realizó el 28/10/2026. Las URL de fotografías dependen de Wikimedia Commons y pueden variar; si la imagen no carga, se informa y se enlaza la fuente. Antes de un uso científico formal, validar la taxonomía con fuentes especializadas y, si procede, especialistas locales.
+**Contacto público autorizado:** `karlozcg10@gmail.com`, `+51 929 304 528`.
