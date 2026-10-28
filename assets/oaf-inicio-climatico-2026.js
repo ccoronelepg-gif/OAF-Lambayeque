@@ -31,11 +31,14 @@ function url(base, lat, lon, attrs){
   },attrs));
 }
 async function getJson(url){
-  const response=await fetch(url,{cache:"no-store"});
-  if(!response.ok)throw Error("HTTP "+response.status);
-  const data=await response.json();
-  if(!data || data.error || !data.current || !data.current.time)throw Error("Datos actuales no disponibles");
-  return data;
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),15000);
+  try{
+    const response=await fetch(url,{cache:"no-store",signal:controller.signal});
+    if(!response.ok)throw Error("HTTP "+response.status);
+    const data=await response.json();
+    if(!data || data.error || !data.current || !data.current.time)throw Error("Datos actuales no disponibles");
+    return data;
+  }finally{clearTimeout(timeout);}
 }
 function analysis(weather,air,locality){
   const phrases=[];
@@ -63,7 +66,13 @@ async function update(){
   const city=site.value;
   const custom=window.OAFTerritory?.getActivePoint?.("inicio")||null;
    const locationLabel=custom?.name||city;
-   if(!Object.prototype.hasOwnProperty.call(coords,city)&&!custom)return;
+   if(!Object.prototype.hasOwnProperty.call(coords,city)&&!custom){
+     ++requestSequence;reset();
+     const button=ids("oaf-home-refresh");if(button)button.disabled=false;
+     put("oaf-home-source","Selecciona una localidad o introduce las coordenadas de tu área productiva.");
+     put("oaf-home-analysis","Para consultar datos puntuales, selecciona «Mi zona productora», introduce coordenadas geográficas o UTM WGS84 y pulsa «Consultar mi área». No se mostrarán resultados de otra localidad.");
+     return;
+   }
   const seq=++requestSequence;
   const button=ids("oaf-home-refresh");
   if(button)button.disabled=true;
@@ -112,7 +121,7 @@ async function update(){
     ? " PM₂.₅: "+format(air.pm2_5)+" µg/m³; PM₁₀: "+format(air.pm10)+" µg/m³ (estimaciones).":"";
   put("oaf-home-analysis", (!weather?"No se pudo obtener el modelo meteorológico en este momento. ":"")+outlook+pm);
   if(typeof CustomEvent==="function" && typeof document.dispatchEvent==="function")
-    document.dispatchEvent(new CustomEvent("oaf:weather",{detail:{localidad:city,current:weather,air,time}}));
+    document.dispatchEvent(new CustomEvent("oaf:weather",{detail:{localidad:city,point:custom?{...custom}:null,current:weather,air,time}}));
   if(!weather && !air){
     put("oaf-home-source","No hay datos recientes disponibles para "+locationLabel+".");
   }
