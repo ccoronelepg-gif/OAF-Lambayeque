@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+<title id="title">OAF Lambayeque · clima, territorio y sanidad vegetal</title>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#113e45"/><stop offset="1" stop-color="#188778"/></linearGradient>
+ <linearGradient id="field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#abdcaa"/><stop offset="1" stop-color="#4eaa83"/></linearGradient>
+</defs>
+<rect width="512" height="512" rx="106" fill="url(#bg)"/>
+<circle cx="357" cy="146" r="54" fill="#edc979"/>
+<path d="M60 312Q142 241 227 290Q325 326 451 229V404H60Z" fill="#a2d4af"/>
+<path d="M60 347Q170 307 248 349Q357 404 451 314V419H60Z" fill="url(#field)"/>
+<path d="M63 398Q196 354 298 396Q359 424 448 372" stroke="#e2edce" stroke-width="13" fill="none" stroke-linecap="round"/>
+<path d="M151 271Q181 208 226 190Q238 253 207 284Q181 311 151 271Z" fill="#e5f4de"/>
+<path d="M157 268Q188 252 220 203" stroke="#488b71" stroke-width="8" stroke-linecap="round"/>
+<path d="M94 155H244" stroke="#f7fff4" stroke-width="20" stroke-linecap="round"/>
+<path d="M94 187H206" stroke="#b6e3d6" stroke-width="12" stroke-linecap="round"/>
+<text x="256" y="461" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-weight="800" font-size="64" letter-spacing="8" fill="#fff">OAF</text>
+</svg>
