@@ -433,7 +433,7 @@ async function model(k){
   }
   out.append(node("h4",null,"Escenario de referencia Nov 2026–Abr 2027 (NO pronóstico operativo)"),t);
   out.append(node("p","oaf-parcel-caveat","Regla reproducible: AR-12 con efecto estacional entrenado en 2001–2020, contrastado en 2021–2025; si no mejora el MAE climatológico, usa climatología. Proyección recursiva, NO entrenamiento Random Forest, sin observaciones de finca y sin validación de anticipaciones a 3–7 meses. El error temporal mostrado corresponde a 1 paso, no a ese horizonte; usar solo para exploración científica."));
- }catch(e){if(seq===revision[k])out.textContent="Sin resultado verificable del modelo para esta coordenada: "+e.message+". No se rellenan datos faltantes con cifras supuestas.";}
+ }catch(e){if(seq===tokens[k].model)out.textContent="Sin resultado verificable del modelo para esta coordenada: "+e.message+". No se rellenan datos faltantes con cifras supuestas.";}
 }
 async function agro(k){
  const {point,poly}=current(k),out=setText(k,"agro","");
@@ -457,7 +457,7 @@ async function agro(k){
   const crop=$("oaf-sm-cultivo")?.selectedOptions?.[0]?.textContent,organism=$("oaf-sm-patogeno")?.selectedOptions?.[0]?.textContent;
   if(crop)out.append(node("p",null,"Consulta fitosanitaria del portal: "+crop+(organism?" · "+organism:"")+". Puedes pulsar «Usar punto en Cultivos y sanidad» para recalcular allí con estas coordenadas."));
   out.append(node("p","oaf-parcel-caveat","Umbrales ambientales de revisión, no modelos de probabilidad de infestación o infección. Sin fenología, riego, historial de trampas ni incidencia observada no se estima el riesgo sanitario real ni se prescriben pesticidas."));
- }catch(e){if(seq===revision[k])out.textContent="Contexto climático no verificable: "+e.message;}
+ }catch(e){if(seq===tokens[k].agro)out.textContent="Contexto climático no verificable: "+e.message;}
 }
 function init(){
  for(const k of scopes){let count=0;const tryMount=()=>{if(mount(k))return;if(++count<45)setTimeout(tryMount,250);};tryMount();}
