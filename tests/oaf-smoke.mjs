@@ -43,7 +43,7 @@ test("PWA: manifiesto, iconos, ruta offline y recursos precargados disponibles",
   assert.ok(manifest.icons.length>=3);
   for(const icon of manifest.icons)assert.ok(exists(icon.src),"icono inexistente: "+icon.src);
   const sw=read("sw.js");
-  assert.match(sw,/oaf-pwa-shell-2026-10-27-ux46/);
+  assert.match(sw,/oaf-pwa-shell-2026-10-27-ux47/);
   const core=sw.match(/const CORE=\[([\s\S]*?)\];/);
   assert.ok(core,"falta catálogo de recursos PWA");
   const paths=[...core[1].matchAll(/"(\.\/[^"]+)"/g)].map(x=>x[1].slice(2)).filter(Boolean);
@@ -114,6 +114,7 @@ test("Los archivos científicos base mantienen estructura válida y advertencias
   assert.ok(sanidad.organismos.every(o=>ids.has(o.crop_id)));
   const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
   assert.equal(rf.operativo_certificado,false);
+  assert.match(read("assets/oaf-ux15-rf-salidas.js"),/Precaución: en la prueba retrospectiva de lluvia a siete días/);
   for(const [city,forecast] of Object.entries(rf.pronostico_diario_rf_experimental)){
     assert.equal(forecast.length,rf.horizonte_semanal,city);
     assert.ok(forecast.every(x=>typeof x.fecha==="string"));
