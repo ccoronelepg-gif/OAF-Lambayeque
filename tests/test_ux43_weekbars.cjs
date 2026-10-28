@@ -5,9 +5,9 @@ const script=fs.readFileSync("assets/oaf-ux15-rf-salidas.js","utf8");
 const python=fs.readFileSync("modelos/pronostico_rf_experimental_ux15.py","utf8");
 const rf=JSON.parse(fs.readFileSync("datos/rf_experimental_ux15.json","utf8"));
 const html=fs.readFileSync("index.html","utf8"),sw=fs.readFileSync("sw.js","utf8");
-assert(html.includes("oaf-ux15-rf-salidas.js?v=20261027-ux44"));
+assert(html.includes("oaf-ux15-rf-salidas.js?v=20261027-ux45"));
 assert(html.includes("oaf-ux14-reorganizacion.js?v=20261027-ux43"));
-assert(sw.includes("oaf-pwa-shell-2026-10-27-ux44"));
+assert(sw.includes("oaf-pwa-shell-2026-10-27-ux45"));
 for(const piece of [script,fs.readFileSync("assets/oaf-ux14-reorganizacion.js","utf8")])new Function(piece);
 assert(script.includes("weeklyBars(output,days,group")&&script.includes("weeklyBars(output,days,lines"),"El pronóstico no usa barras al cargar modelos");
 assert(python.includes("backtest_semanal_recursivo")&&python.includes("origin+dt.timedelta(days=6)")&&python.includes('k<origin.isoformat()'),
