@@ -107,6 +107,16 @@ function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  if(point||matched<7){
   const note=E("p","oaf-ux43-stamp",point?"RF: sin entrenamiento parcelario validado.":"RF: sólo las fechas efectivamente emitidas; no se extrapolan valores.");host.append(note);
  }
+ if(!point){
+  const check=rf?.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte||[];
+  if(check.length===7){
+   const better=check.filter(row=>Number.isFinite(row.mae_rf_lluvia_mm)&&Number.isFinite(row.mae_climatologia_lluvia_mm)&&row.mae_rf_lluvia_mm<row.mae_climatologia_lluvia_mm).length;
+   const message=better<5
+    ?"Precaución: en la prueba retrospectiva de lluvia a siete días, Random Forest sólo mejora la climatología en "+better+"/7 horizontes. No es un pronóstico operativo validado; contrasta con Open-Meteo."
+    :"Random Forest permanece experimental ("+better+"/7 horizontes mejores que climatología); no tiene validación prospectiva ni instrumental.";
+   host.append(E("p","oaf-ux43-model-warning",message));
+  }
+ }
 }
 function weeklyModelAudit(){
  let target=$("oaf-ux43-model-audit");
