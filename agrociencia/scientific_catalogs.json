@@ -1,0 +1,543 @@
+{
+  "version": "1.5",
+  "review_date": "2026-10-28",
+  "scope": "Catálogo de referencia organizado por cultivo; la fotografía no constituye diagnóstico ni prueba presencia en el Perú.",
+  "morphology": [
+    {
+      "id": "m-cer-ad",
+      "crop": "Mango",
+      "common": "Mosca mediterránea de la fruta",
+      "scientific": "Ceratitis capitata",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza y ojos compuestos",
+          "Ojos prominentes, antenas cortas y piezas bucales lamedoras."
+        ],
+        [
+          "Tórax y escutelo",
+          "Dibujos torácicos claros y oscuros; observar el escutelo en vista dorsal."
+        ],
+        [
+          "Alas y venación",
+          "Patrones de bandas amarillas-pardas y puntos; comparar venas en lupa."
+        ],
+        [
+          "Abdomen y patas",
+          "Segmentos abdominales, tres pares de patas torácicas y sexado del adulto."
+        ]
+      ],
+      "watch": "Comparar patrón alar, tórax y escutelo con claves; no confirmar especie por fruta dañada.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_-_adult.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_-_adult.jpg",
+      "author": "Daniel Feliciano",
+      "license": "CC BY-SA 4.0",
+      "reference": "https://gd.eppo.int/taxon/CERTCA",
+      "caption": "Adulto de C. capitata: cabeza, tórax, alas y abdomen reconocibles según el ángulo.",
+      "scope_note": "Fotografía documental del adulto, no muestra peruana."
+    },
+    {
+      "id": "m-cer-eg",
+      "crop": "Mango",
+      "common": "Mosca mediterránea de la fruta",
+      "scientific": "Ceratitis capitata",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "stage": "Huevo",
+      "parts": [
+        [
+          "Corion",
+          "Envoltura del huevo de superficie lisa; requiere lupa."
+        ],
+        [
+          "Forma",
+          "Alargada, clara, con polos diferenciados."
+        ],
+        [
+          "Región micropilar",
+          "No identificar sin preparación y equipo adecuados."
+        ]
+      ],
+      "watch": "Los huevos de tefrítidos no permiten por sí solos asignación segura de especie.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_eggs_5193030.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_eggs_5193030.jpg",
+      "author": "Florida Division of Plant Industry / Bugwood",
+      "license": "CC BY 3.0 US",
+      "reference": "https://gd.eppo.int/taxon/CERTCA",
+      "caption": "Huevos documentados; solo se identifican forma general y corion.",
+      "scope_note": "Se necesita confirmación con adultos o laboratorio."
+    },
+    {
+      "id": "m-cer-lar",
+      "crop": "Mango",
+      "common": "Mosca mediterránea de la fruta",
+      "scientific": "Ceratitis capitata",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "stage": "Larva",
+      "parts": [
+        [
+          "Extremo anterior",
+          "Ganchos bucales y esqueleto cefalofaríngeo se observan bajo preparación."
+        ],
+        [
+          "Segmentos",
+          "Cuerpo ápodo, blando y anillado."
+        ],
+        [
+          "Espiráculos posteriores",
+          "Estructuras respiratorias importantes para diagnosticar tefrítidos con equipo óptico."
+        ]
+      ],
+      "watch": "Fotografía externa no confirma el detalle de espiráculos; criar adultos o remitir muestra.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceratitis_capitata_larva.jpeg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratitis_capitata_larva.jpeg",
+      "author": "Janos Bodor / CalPhotos",
+      "license": "Dominio público (según ficha Commons)",
+      "reference": "https://gd.eppo.int/taxon/CERTCA",
+      "caption": "Larva ápoda: regiones anterior, media y posterior; los espiráculos requieren microscopia.",
+      "scope_note": "No es fotografía de microestructuras diagnósticas."
+    },
+    {
+      "id": "m-ana",
+      "crop": "Mango",
+      "common": "Moscas sudamericanas de la fruta",
+      "scientific": "Anastrepha fraterculus",
+      "family": "Tephritidae",
+      "order": "Diptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza y antenas",
+          "Ojos compuestos y antenas cortas; examinar frente."
+        ],
+        [
+          "Tórax",
+          "Patrón de color y setas como referencia, no carácter único."
+        ],
+        [
+          "Alas",
+          "Bandas costal, en S y V; revisar variación entre especies."
+        ],
+        [
+          "Ovipositor de hembra",
+          "Acúleo, longitud y punta requieren examen taxonómico para complejo fraterculus."
+        ]
+      ],
+      "watch": "Fotografía representa A. fraterculus, no todas las Anastrepha spp. El complejo exige confirmación especializada.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Anastrepha-fraterculus.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Anastrepha-fraterculus.jpg",
+      "author": "Gerson Tavares",
+      "license": "CC BY 2.0",
+      "reference": "https://gd.eppo.int/taxon/ANSTFR",
+      "caption": "Adulto atribuido a A. fraterculus: revisar alas y caracteres sexuales.",
+      "scope_note": "La identidad del complejo taxonómico puede requerir examen especializado."
+    },
+    {
+      "id": "p-trips",
+      "crop": "Palto",
+      "common": "Trips del palto",
+      "scientific": "Scirtothrips perseae",
+      "family": "Thripidae",
+      "order": "Thysanoptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza y antenas",
+          "Antenas de ocho segmentos y caracteres sensoriales bajo microscopio."
+        ],
+        [
+          "Alas",
+          "Alas angostas con franjas de flecos marginales."
+        ],
+        [
+          "Tórax",
+          "Pronoto y metanoto con setas diagnósticas."
+        ],
+        [
+          "Abdomen",
+          "Segmentos y manchas variables; comprobar con clave específica."
+        ]
+      ],
+      "watch": "No asumir presencia en Perú. La foto de clave es un ejemplar preparado bajo microscopio.",
+      "image": "https://keys.lucidcentral.org/keys/v3/thrips_of_california_2019/the_key/key/california_thysanoptera_2019/Media/Images/entities/scirtothrips_perseae/scirtpersfull.jpg",
+      "source": "https://keys.lucidcentral.org/keys/v3/thrips_of_california_2019/the_key/key/california_thysanoptera_2019/Media/Html/entities/scirtothrips_perseae.htm",
+      "author": "Thrips of California / Lucid diagnostic key",
+      "license": "Imagen editorial de clave técnica: consultar condiciones del sitio",
+      "reference": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+      "caption": "Ejemplar preparado de S. perseae; antenas, alas con flecos y abdomen.",
+      "scope_note": "Uso como enlace técnico externo; no se distribuye copia en el ZIP."
+    },
+    {
+      "id": "a-ds",
+      "crop": "Arándano",
+      "common": "Mosca de alas manchadas",
+      "scientific": "Drosophila suzukii",
+      "family": "Drosophilidae",
+      "order": "Diptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza",
+          "Ojos compuestos rojos y antenas con arista plumosa."
+        ],
+        [
+          "Alas en machos",
+          "Mancha oscura cerca del extremo; ausente normalmente en hembras."
+        ],
+        [
+          "Patas anteriores de macho",
+          "Peines sexuales: se examinan con ampliación."
+        ],
+        [
+          "Ovipositor de hembra",
+          "Oviscapto aserrado, importante para diferenciar especies."
+        ]
+      ],
+      "watch": "La mancha alar no sirve para sexar todas las hembras; comparar ovipositor y otros caracteres.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/DrosophilasuzukiiphotoMcEvey.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:DrosophilasuzukiiphotoMcEvey.jpg",
+      "author": "Shane F. McEvey / Australian Museum",
+      "license": "CC BY 4.0",
+      "reference": "https://gd.eppo.int/taxon/DROSSU",
+      "caption": "Adultos macho y hembra con escala: observación de alas, abdomen y ovipositor.",
+      "scope_note": "Material de museo; no se fotografió sobre arándano."
+    },
+    {
+      "id": "v-pf",
+      "crop": "Vid",
+      "common": "Cochinilla harinosa de la vid",
+      "scientific": "Planococcus ficus",
+      "family": "Pseudococcidae",
+      "order": "Hemiptera",
+      "stage": "Hembra adulta",
+      "parts": [
+        [
+          "Cabeza y aparato bucal",
+          "Estiletes picadores-chupadores; no siempre visibles en foto."
+        ],
+        [
+          "Cuerpo y abdomen",
+          "Hembra ovalada y segmentada, cubierta de secreción cérea blanca."
+        ],
+        [
+          "Filamentos marginales",
+          "Cortos; comparar el extremo posterior con Pseudococcus spp."
+        ],
+        [
+          "Patas y antenas",
+          "Examen con lupa ayuda a distinguir estadios y especies."
+        ]
+      ],
+      "watch": "Evitar confundir hongo superficial y cochinillas; confirmación con caracteres taxonómicos.",
+      "image": "https://ipm.ucanr.edu/PMG/P/I-HO-PFIC-AD.010.html",
+      "image_is_page": true,
+      "source": "https://ipm.ucanr.edu/PMG/P/I-HO-PFIC-AD.010.html",
+      "author": "Jack Kelly Clark / UC IPM",
+      "license": "Imagen institucional: enlace al registro original",
+      "reference": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+      "caption": "Fotografía oficial de dos hembras adultas en corteza de vid.",
+      "scope_note": "La fotografía se consulta en UC IPM; no se inserta un archivo de licencia no comprobada."
+    },
+    {
+      "id": "b-cos",
+      "crop": "Banano",
+      "common": "Picudo negro del banano",
+      "scientific": "Cosmopolites sordidus",
+      "family": "Curculionidae",
+      "order": "Coleoptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Rostro y antenas",
+          "Rostro proyectado y antenas acodadas en la región cefálica."
+        ],
+        [
+          "Pronoto",
+          "Placa dorsal del protórax, distinta de élitros."
+        ],
+        [
+          "Élitros",
+          "Cubiertas endurecidas de alas posteriores; observar estrías."
+        ],
+        [
+          "Patas",
+          "Tres pares torácicos para desplazamiento; larvas sin patas visibles requieren inspección del cormo."
+        ]
+      ],
+      "watch": "El daño al cormo por sí solo no determina especie; recolectar adultos para confirmación.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Cosmopolites_sordidus,_banana_weevil_(Mindanao,_Philippines)_01.jpg",
+      "author": "Obsidian Soul",
+      "license": "CC0 1.0",
+      "reference": "https://www.cabi.org/isc/datasheet/15831",
+      "caption": "Adulto de C. sordidus con rostro, pronoto y élitros.",
+      "scope_note": "Ejemplar de Filipinas; no evidencia de plaga en parcelas peruanas."
+    },
+    {
+      "id": "c-hh",
+      "crop": "Café",
+      "common": "Broca del café",
+      "scientific": "Hypothenemus hampei",
+      "family": "Curculionidae · Scolytinae",
+      "order": "Coleoptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza y mandíbulas",
+          "Cabeza inclinada; mandíbulas implicadas en perforación."
+        ],
+        [
+          "Pronoto",
+          "Escudo convexo con estructuras anteriores rugosas."
+        ],
+        [
+          "Élitros",
+          "Cubiertas dorsales con filas de puntos, setas y estrías."
+        ],
+        [
+          "Patas",
+          "Coxas, fémures, tibias y tarsos visibles con aumento."
+        ]
+      ],
+      "watch": "Usar lupa y clave para separarla de escolitinos similares.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hypothenemus.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Hypothenemus.jpg",
+      "author": "L. Shyamal",
+      "license": "CC BY-SA 3.0",
+      "reference": "https://www.mdpi.com/2075-4450/11/12/882",
+      "caption": "Adulto de H. hampei; superficie de élitros y pronoto observables.",
+      "scope_note": "Ejemplar documentado en India. La referencia científica incluye microfotografías con escala."
+    },
+    {
+      "id": "r-dj",
+      "crop": "Maracuyá",
+      "common": "Mariposa defoliadora",
+      "scientific": "Dione juno",
+      "family": "Nymphalidae",
+      "order": "Lepidoptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "Cabeza y antenas",
+          "Antenas claviformes, ojos compuestos y espiritrompa."
+        ],
+        [
+          "Alas anteriores",
+          "Nervaduras, manchas y borde alar para comparación taxonómica."
+        ],
+        [
+          "Alas posteriores",
+          "Patrones dorsal y ventral diferentes; fotografiar ambos lados."
+        ],
+        [
+          "Abdomen y patas",
+          "Abdomen segmentado y patas torácicas."
+        ]
+      ],
+      "watch": "La larva es defoliadora; esta foto es del adulto, no representa el estadio que consume hojas.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Borboleta_Dione_juno.jpg?width=900",
+      "source": "https://commons.wikimedia.org/wiki/File:Borboleta_Dione_juno.jpg",
+      "author": "Jessica Moreira",
+      "license": "CC BY-SA 4.0",
+      "reference": "https://www.acguanacaste.ac.cr/galeria/fotografias/programa-de-educacion-biologica/1215-i-dione-juno-i-nymphalidae",
+      "caption": "Adulto de Dione juno: alas, antenas y abdomen.",
+      "scope_note": "Adulto en hoja; la fase defoliadora es la larva."
+    },
+    {
+      "id": "c-hh-sem",
+      "crop": "Café",
+      "common": "Broca del café · anatomía externa señalada",
+      "scientific": "Hypothenemus hampei",
+      "family": "Curculionidae · Scolytinae",
+      "order": "Coleoptera",
+      "stage": "Adulto",
+      "parts": [
+        [
+          "A · Vista lateral",
+          "Pr: pronoto; Eb: base elitral; He: cabeza; Cx: coxa; Fe: fémur; Ti: tibia; Ta: tarso."
+        ],
+        [
+          "B · Vista dorsal y élitros",
+          "El: élitro; Ss: setas estriales; Ib: cerdas interestriales; observar escala de 200 µm."
+        ],
+        [
+          "C · Detalle de la cabeza",
+          "Fr: frente; M: mandíbulas; Ce: ojo compuesto; Sc: escapo; Pe: pedicelo; Sf: funículo; Ac: maza antenal."
+        ],
+        [
+          "Escala y resolución",
+          "La micrografía incluye barras de 100 y 200 µm; permite comparar microestructuras del adulto."
+        ]
+      ],
+      "watch": "Interpretar etiquetas originales de la figura y la morfología comparativa descrita por Johnson et al. (2020); los caracteres requieren microscopía y claves de confirmación.",
+      "image": "https://www.mdpi.com/insects/insects-11-00882/article_deploy/html/images/insects-11-00882-g004.png",
+      "source": "https://www.mdpi.com/2075-4450/11/12/882",
+      "author": "Johnson et al. (2020), Insects 11(12), 882 · Figura 4",
+      "license": "CC BY 4.0",
+      "reference": "https://doi.org/10.3390/insects11120882",
+      "caption": "Microfotografías electrónicas originales con estructuras anatómicas rotuladas A, B y C; etiquetas Pr, El, Fr y Ce explicadas en la ficha.",
+      "scope_note": "Figura de investigación publicada, no fotografía de campo. Las etiquetas y barras de escala forman parte del trabajo original."
+    }
+  ],
+  "pathology_images": {
+    "m03": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango_anthracnose_1a.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Mango_anthracnose_1a.jpg",
+      "author": "Scot Nelson",
+      "license": "CC0 1.0",
+      "caption": "Lesiones de antracnosis en tejidos de mango; la especie del hongo requiere confirmación.",
+      "science": "https://edis.ifas.ufl.edu/publication/MG216"
+    },
+    "p02": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Phytophthora_cinnamomi_under_microscope.png?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Phytophthora_cinnamomi_under_microscope.png",
+      "author": "Tong, Wu, Mei y Wang; artículo PLOS ONE",
+      "license": "CC BY 4.0",
+      "caption": "Micrografías de P. cinnamomi (aislado experimental): esporangios, gametangios y oospora. No representa raíces de palto.",
+      "science": "https://doi.org/10.1371/journal.pone.0257785"
+    },
+    "v02": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Oidium_vigne.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Oidium_vigne.jpg",
+      "author": "Olivier Lemoine",
+      "license": "CC BY-SA 4.0",
+      "caption": "Oídio en racimo de vid: crecimiento superficial compatible con Erysiphe necator.",
+      "science": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+    },
+    "v03": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Botrytis_on_grapes.png?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Botrytis_on_grapes.png",
+      "author": "Ninjatacoshell",
+      "license": "CC BY-SA 3.0",
+      "caption": "Material de Botrytis de uvas documentado por fuente; no confirma la identidad de otras muestras.",
+      "science": "https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/"
+    },
+    "b02": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Black_Sigatoka_(detail).jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Black_Sigatoka_(detail).jpg",
+      "author": "Scot Nelson",
+      "license": "CC0 1.0",
+      "caption": "Estrías y necrosis de sigatoka negra en hoja de banano.",
+      "science": "https://www.promusa.org/Black+leaf+streak"
+    },
+    "c02": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hemileia_vastatrix_-_coffee_leaf_rust.jpg?width=960",
+      "source": "https://commons.wikimedia.org/wiki/File:Hemileia_vastatrix_-_coffee_leaf_rust.jpg",
+      "author": "Smartse",
+      "license": "CC BY-SA 3.0",
+      "caption": "Pústulas anaranjadas compatibles con roya en hoja de café; envés.",
+      "science": "https://www.apsnet.org/edcenter/pdlessons/Pages/CoffeeRustspan.aspx"
+    },
+    "r03": {
+      "image": "https://www.mdpi.com/pathogens/pathogens-11-00006/article_deploy/html/images/pathogens-11-00006-g001.png",
+      "source": "https://www.mdpi.com/2076-0817/11/1/6",
+      "author": "Autores del estudio de Colletotrichum fructicola en Passiflora edulis (MDPI)",
+      "license": "CC BY 4.0 · artículo de acceso abierto",
+      "caption": "Fotografía científica de síntomas de antracnosis en maracuyá del estudio; no extrapolar especie causal a Perú.",
+      "science": "https://doi.org/10.3390/pathogens11010006"
+    }
+  },
+  "additional_diseases": [
+    {
+      "id": "m04",
+      "crop": "Mango",
+      "name": "Oídio en mango",
+      "scientific": "Oidium mangiferae / complejo Erysiphaceae",
+      "desc": "Micelio blanquecino sobre panículas, brotes tiernos y flores; posibles fallas de cuajado.",
+      "watch": "Diferenciar de residuos de aspersión y documentar florecimiento; confirmar agente causal.",
+      "manage": [
+        "Manejar ventilación y exceso de tejido tierno.",
+        "Inspeccionar panículas de forma sistemática.",
+        "Confirmar diagnóstico y verificar etiqueta de todo producto antes de intervenir."
+      ],
+      "science": "https://edis.ifas.ufl.edu/publication/MG216"
+    },
+    {
+      "id": "p04",
+      "crop": "Palto",
+      "name": "Antracnosis del palto",
+      "scientific": "Colletotrichum spp.",
+      "desc": "Lesiones oscuras en frutos; las infecciones latentes pueden expresarse en poscosecha.",
+      "watch": "Registrar tejido, madurez y condiciones poscosecha; descartar daño mecánico.",
+      "manage": [
+        "Minimizar heridas y contaminación en cosecha.",
+        "Mejorar manejo de humedad y sanidad de frutos.",
+        "Confirmar etiología antes del control."
+      ],
+      "science": "https://ipm.ucanr.edu/agriculture/avocado/anthracnose/"
+    },
+    {
+      "id": "a04",
+      "crop": "Arándano",
+      "name": "Antracnosis del fruto",
+      "scientific": "Colletotrichum spp.",
+      "desc": "Pudriciones de frutos con lesiones hundidas y posibles masas de esporas, según agente.",
+      "watch": "Distinguir de moho gris; enviar muestras de frutos y de poscosecha.",
+      "manage": [
+        "Reducir heridas, mejorar ventilación y manejo de cosecha.",
+        "Utilizar material vegetal sano y monitorear durante maduración.",
+        "Confirmar el complejo de especies causales."
+      ],
+      "science": "https://ask.ifas.ufl.edu/units/plant_pathology"
+    },
+    {
+      "id": "v04",
+      "crop": "Vid",
+      "name": "Mildiu de la vid",
+      "scientific": "Plasmopara viticola",
+      "desc": "Manchas de aceite en haz y esporulación blanquecina en envés bajo condiciones favorables.",
+      "watch": "Examinar haz/envés, lluvia y tiempo de humectación; diferenciar oídio.",
+      "manage": [
+        "Vigilar brotes susceptibles y mejorar aireación.",
+        "Registrar focos y clima para decisiones de manejo.",
+        "Verificar productos autorizados y rotaciones FRAC."
+      ],
+      "science": "https://ipm.ucanr.edu/agriculture/grape/downy-mildew/"
+    },
+    {
+      "id": "b04",
+      "crop": "Banano",
+      "name": "Fusariosis vascular del banano",
+      "scientific": "Fusarium oxysporum f. sp. cubense (complejo)",
+      "desc": "Marchitez y pardeamiento vascular. La variante R4T es plaga cuarentenaria de alto impacto.",
+      "watch": "No diagnosticar raza R4T por fotografía; ante sospecha seguir protocolo oficial SENASA.",
+      "manage": [
+        "Utilizar material de propagación de origen verificado.",
+        "Aplicar bioseguridad y evitar trasladar suelo y plantas sospechosas.",
+        "Notificar a la autoridad ante síntomas compatibles con foco cuarentenario."
+      ],
+      "science": "https://www.senasa.gob.pe/"
+    },
+    {
+      "id": "c04",
+      "crop": "Café",
+      "name": "Ojo de gallo",
+      "scientific": "Mycena citricolor",
+      "desc": "Lesiones foliares circulares y defoliación, favorecidas por elevada humedad en algunos sistemas.",
+      "watch": "Revisar centro, borde de lesiones y presencia de cuerpos fructíferos; confirmar diferencial.",
+      "manage": [
+        "Vigilar humedad y microclima del cafetal.",
+        "Considerar manejo de sombra y ventilación.",
+        "Mantener identificación correcta y registro de severidad."
+      ],
+      "science": "https://www.cabi.org/plantwiseplus/"
+    },
+    {
+      "id": "r04",
+      "crop": "Maracuyá",
+      "name": "Mancha bacteriana de pasifloras",
+      "scientific": "Xanthomonas spp. (según región y hospedero)",
+      "desc": "Manchas y lesiones foliares en pasifloras; distintas bacterias pueden producir síntomas parecidos.",
+      "watch": "Solicitar aislamiento/diagnóstico para identificar patógeno a nivel de especie.",
+      "manage": [
+        "Mantener semilla y plántulas sanas.",
+        "Reducir heridas y diseminación con agua y herramientas.",
+        "Aplicar higiene, drenaje y manejo preventivo."
+      ],
+      "science": "https://www.cabi.org/plantwiseplus/"
+    }
+  ]
+}
