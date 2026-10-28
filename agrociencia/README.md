@@ -1,18 +1,26 @@
-# AgroCiencia Aplicada v1.4 — Atlas morfológico / Contacto / OAF
+# AgroCiencia Aplicada · Versión 1.5
 
-**Despliegue GitHub Pages:** `https://ccoronelepg-gif.github.io/OAF-Lambayeque/agrociencia/`.
+Plataforma consultiva agrícola de tema oscuro, publicada de forma separada en `/agrociencia/` del repositorio OAF-Lambayeque.
 
-## Qué cambia
-- Identidad de OAF Lambayeque: copia exacta de `assets/oaf-app-icon.svg` del repositorio del observatorio, enlazada a su sitio oficial. No se modifica el proyecto OAF.
-- Navegación con módulo «Atlas morfológico» y apartado «Contacte con nosotros», correo y teléfono en enlaces `mailto:` / `tel:` sin backend.
-- Seis registros fotográficos verificables, cinco de morfología de `Ceratitis capitata` y uno de roya del cafeto; cada uno documenta autor, licencia, estadio, caracteres observables, incertidumbre, URL de la foto y referencia científica.
-- Filtro de estadio, buscador anatómico y vista detallada, con referencias EPPO, USDA APHIS y APS.
+## Cambios
 
-## Límites / control de rigor
-La información y las fotografías son documentales, no diagnósticos de muestras locales. EPPO advierte que la determinación morfológica fiable de *C. capitata* se realiza con adultos; los estadios inmaduros deben confirmarse mediante diagnóstico especializado. Las fotos se sirven desde Wikimedia Commons: pueden no cargar offline; se mantienen los vínculos de atribución y licencia. Ningún dato de campo se inventa. Esta web no es un organismo estatal.
+- Portada de manejo sanitario y tecnología: fotografía real de un dron agrícola, autor Hugonurk (CC BY-SA 4.0), desde [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DJI_0017_HJN.jpg); no se presenta como evidencia de detección de una enfermedad. La fotografía requiere conexión.
+- Sección «Manejo integrado de plagas» con **10 fichas** en siete cultivos, organizadas mediante navegación por cultivo; sin buscador interno en este apartado. El catálogo incluye insectos, ácaros y nematodos, etiquetados por grupo taxonómico; no confundirlos a todos con insectos.
+- Atlas «Morfología de insectos», con **11 registros** documentales para siete cultivos, filtro por cultivo, estadio, familia y término. Fotografías reales, autor, licencia, fuente, explicación de estructuras anatómicas; incorpora microfotografías SEM originales de *Hypothenemus hampei* con rótulos anatómicos (Johnson et al., 2020).
+- Nueva sección «Fitopatología agrícola» con **18 fichas** de enfermedades agrupadas en los siete cultivos; **7 referencias fotográficas específicas**, otras fichas indican expresamente que no hay fotografía validada. Fotos con créditos, enlace y breve explicación del síntoma y órgano afectado.
+- Se conserva OAF Lambayeque, contacto público y observatorio.
 
-## Instalar
-- Opción 1: abrir el HTML autónomo. Meteorología, mapas y fotografías externas requieren conexión.
-- Opción 2: publicar `index.html`, archivos `.css`, `.js` y `assets/` en la raíz de un repositorio GitHub Pages independiente, sin modificar rutas de carpetas.
+## Rigor y limitaciones
 
-**Contacto público autorizado:** `karlozcg10@gmail.com`, `+51 929 304 528`.
+Las imágenes son de referencia científica, no determinan una especie por sí solas, no acreditan la presencia de una plaga en Perú, no prueban un diagnóstico de campo ni autorizan aplicación de productos. Las fotografías externas pueden requerir conexión o abrirse directamente en sus fuentes por restricciones editoriales. Los créditos, licencias y URL se consignan por registro en `scientific_catalogs.json`. La ausencia de una imagen específica nunca se sustituye por una especie diferente. Algunos registros corresponden a patógenos de importancia internacional y se deben contrastar con distribución y regulación de SENASA. Para el monitoreo climático se requiere verificar la disponibilidad de Open-Meteo.
+
+## Estructura
+
+- `index.html` más `styles.css`, `dark-overrides.css`, `scientific-next.css`, `catalogos-v15.css`, `data.js`, `morphology.js`, `catalogos-v15.js`, `app.js` para edición modular.
+- `AgroCiencia_Aplicada_v1_5_autonomo.html`: versión con estilos, lógica, SVG OAF y recursos locales insertados; usa imágenes documentales externas y API meteorológica.
+- `scientific_catalogs.json`: manifiesto de los 11 registros entomológicos y enfermedades adicionales.
+- `tests/test_v15.py`: prueba automatizada de navegación y filtros en escritorio y móvil con datos meteorológicos simulados.
+
+## Instalación de GitHub Pages
+
+En el repositorio, colocar el contenido de `index.html` autónomo bajo `/agrociencia/index.html`. No sobrescribir `/index.html` del observatorio.
