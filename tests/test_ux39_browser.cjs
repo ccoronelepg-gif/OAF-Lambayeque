@@ -11,18 +11,24 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const seasonalTime=[],seasonalRain=[],seasonalTemp=[];
   for(let y=2026,m=11;y<2027||m<=4;){
    const length=new Date(Date.UTC(y,m,0)).getUTCDate();
-   for(let d=1;d<=length;d++){
-    seasonalTime.push(y+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0"));
-    seasonalRain.push(1.25);seasonalTemp.push(24.5);
+   for(let d=1;d<=length;d++)for(const hour of ["00","06","12","18"]){
+    seasonalTime.push(y+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0")+"T"+hour+":00");
+    seasonalRain.push(.3125);seasonalTemp.push(24.5);
    }
    if(m===12){y++;m=1}else m++;
   }
-  await page.route("https://seasonal-api.open-meteo.com/**",route=>route.fulfill({
-   status:200,contentType:"application/json",
-   body:JSON.stringify({latitude:-6.77,longitude:-79.84,
-    daily_units:{precipitation_sum:"mm",temperature_2m_mean:"°C"},
-    daily:{time:seasonalTime,precipitation_sum:seasonalRain,temperature_2m_mean:seasonalTemp}})
-  }));
+  await page.route("https://seasonal-api.open-meteo.com/**",route=>{
+   const target=new URL(route.request().url());
+   assert.equal(target.searchParams.get("models"),"ecmwf_seas5_ensemble_mean");
+   assert.equal(target.searchParams.get("hourly"),"precipitation,temperature_2m");
+   assert.equal(target.searchParams.get("daily"),null,"El proveedor estacional no admite precipitación diaria");
+   return route.fulfill({
+    status:200,contentType:"application/json",
+    body:JSON.stringify({latitude:-6.77,longitude:-79.84,
+     hourly_units:{precipitation:"mm",temperature_2m:"°C"},
+     hourly:{time:seasonalTime,precipitation:seasonalRain,temperature_2m:seasonalTemp}})
+   });
+  });
 
   page.on("pageerror",err=>errors.push(err.message));
   await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:45000});
