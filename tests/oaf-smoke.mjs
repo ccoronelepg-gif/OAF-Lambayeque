@@ -43,11 +43,16 @@ test("PWA: manifiesto, iconos, ruta offline y recursos precargados disponibles",
   assert.ok(manifest.icons.length>=3);
   for(const icon of manifest.icons)assert.ok(exists(icon.src),"icono inexistente: "+icon.src);
   const sw=read("sw.js");
-  assert.match(sw,/oaf-pwa-shell-2026-10-27-ux47/);
+  assert.match(sw,/const RELEASE="oaf-pwa-shell-[^"]+"/);
   const core=sw.match(/const CORE=\[([\s\S]*?)\];/);
   assert.ok(core,"falta catálogo de recursos PWA");
   const paths=[...core[1].matchAll(/"(\.\/[^"]+)"/g)].map(x=>x[1].slice(2)).filter(Boolean);
+  assert.equal(paths.length,new Set(paths).size,"hay recursos repetidos en el precaché");
   for(const file of paths)assert.ok(exists(file),"precaché inexistente: "+file);
+  for(const file of ["assets/oaf-ux14-reorganizacion.css","assets/oaf-ux14-reorganizacion.js",
+   "assets/oaf-ux15-rf-salidas.js","assets/oaf-responsive-celulares-ux19.js",
+   "assets/oaf-ux21-editorial.js","assets/oaf-ux17-fotos-mapas.css"])
+   assert.ok(paths.includes(file),"recurso esencial no precargado: "+file);
   assert.ok(exists("offline.html"));
   assert.match(sw,/if\(isScientificData\(url\)\)return/,"los datos científicos deben consultarse en red");
 });
