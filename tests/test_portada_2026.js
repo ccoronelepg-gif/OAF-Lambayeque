@@ -15,7 +15,12 @@ assert.match(home,/id="oaf-home-analysis"/);
 assert.match(home,/OAF-Lambayeque/);
 assert.match(home,/id="oaf-news-chirps"/);
 assert.match(home,/id="oaf-altitudinal-map"/);
-assert.match(home,/id="oaf-forecast-grid"/);
+assert.doesNotMatch(home,/id="oaf-forecast-grid"/,"El pronóstico semanal no debe duplicarse en Inicio");
+const forecast=fs.readFileSync("assets/oaf-ux14-reorganizacion.js","utf8");
+assert.match(forecast,/section\("Predicción a siete días/);
+assert.match(forecast,/section\("Horizonte mensual/);
+assert.ok(forecast.indexOf('section("Predicción a siete días')<forecast.indexOf('section("Horizonte mensual'),
+ "La predicción semanal debe aparecer antes de la mensual en Predicciones");
 assert.match(html,/assets\/oaf-inicio-climatico-2026\.js\?v=[^"\s]+/);
 assert.match(html,/assets\/oaf-interfaz-clara-2026\.css\?v=1/);
 assert.doesNotMatch(html.match(/<summary\b[^>]*>[\s\S]*?<\/summary>/gi)?.join("\n")||"",/\bFase\s+\d+[A-Z]?/i,"Títulos públicos sin códigos");
