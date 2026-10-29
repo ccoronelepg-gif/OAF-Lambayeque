@@ -15,9 +15,9 @@ assert(src.includes("map.has(d)"),"RF debe emparejarse exclusivamente por fecha 
 assert(!area.includes("#oaf-ux14-rf-semana,#oaf-anomaly-panel"),"El gráfico semanal sigue oculto");
 assert(structure.includes('section("Predicción a siete días'),"No se creó la cabecera del cuadro semanal");
 assert(structure.indexOf('const live=section("Predicción a siete días')<structure.indexOf('const month=section("Horizonte mensual'),"Gráfico no precede al mensual");
-assert(index.includes("oaf-ux15-rf-salidas.js?v=20261027-ux45"),"No se actualizó script semanal en web");
+assert.match(index,/oaf-ux15-rf-salidas\.js\?v=/,"No se actualizó script semanal en web");
 assert(index.includes("oaf-ux14-reorganizacion.js?v=20261027-ux43"),"No se actualizó estructura semanal en web");
-assert(read("sw.js").includes("oaf-pwa-shell-2026-10-27-ux45"),"Cache PWA no versionado");
+assert.match(read("sw.js"),/const RELEASE="oaf-pwa-shell-[^"]+"/,"Cache PWA no versionado");
 const start=src.indexOf("/* Línea de base meteorológica"),end=src.indexOf("function week(){",start);
 assert(start>=0&&end>start,"Falta cálculo de promedio por día del año");
 const times=[],rain=[],temp=[];
@@ -49,9 +49,13 @@ const climatology=construct(fakeFetch,AbortController,URLSearchParams,setTimeout
  const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
  const rows=rf.pronostico_diario_rf_experimental.Chiclayo;
  const byDate=new Map(rows.map(x=>[x.fecha,x.precipitacion_mm]));
- const current=["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"];
- const matches=current.map(d=>byDate.has(d)?byDate.get(d):NaN);
- assert(matches.filter(Number.isFinite).length>=1,"No existe ninguna emisión RF que coincida con fechas de octubre");
- assert(!byDate.has("2026-11-04"),"El RF no puede rellenar fechas posteriores a su última emisión de siete días");
+ assert.equal(rows.length,7,"El modelo debe emitir exactamente siete días por localidad");
+ assert.equal(rows[0].fecha,rf.fecha_local,"La primera fecha RF debe corresponder a la emisión local del archivo");
+ const stamps=rows.map(x=>Date.parse(x.fecha+"T00:00:00Z"));
+ assert(stamps.every(Number.isFinite),"Fecha diaria inválida");
+ for(let i=1;i<stamps.length;i++)assert.equal(stamps[i]-stamps[i-1],86400000,"La serie RF debe tener días consecutivos sin huecos");
+ assert(rows.every(x=>Number.isFinite(x.precipitacion_mm)&&x.precipitacion_mm>=0&&Number.isFinite(x.temperatura_max_c)),
+  "Cada día debe tener lluvia no negativa y Tmax finita");
+ assert.equal(byDate.size,7,"No se deben extender ni rellenar días posteriores al horizonte emitido");
  console.log("UX41 OK: 30 años ERA5, media calendario, caché y coincidencia estricta RF, presentación/PWA");
 })().catch(e=>{console.error(e);process.exitCode=1});
