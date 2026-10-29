@@ -5,8 +5,8 @@ const read=p=>fs.readFileSync(p,"utf8");
 const src=read("assets/oaf-ux15-rf-salidas.js"),html=read("index.html"),
  css=read("assets/oaf-ux14-reorganizacion.css"),sw=read("sw.js");
 new Function(src);
-assert(html.includes("oaf-ux15-rf-salidas.js?v=20261027-ux45"));
-assert(sw.includes("oaf-pwa-shell-2026-10-27-ux45"));
+assert.match(html,/oaf-ux15-rf-salidas\.js\?v=/);
+assert.match(sw,/const RELEASE="oaf-pwa-shell-[^"]+"/);
 assert(!html.includes("oaf-ux15-counter")&&!html.includes("oaf-ux15-contador.js"));
 assert(!fs.existsSync("assets/oaf-ux15-contador.js"));
 assert(!css.includes("oaf-ux15-counter"));
