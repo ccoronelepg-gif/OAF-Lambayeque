@@ -25,9 +25,18 @@ const sources=[
   base:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",layer:"5010502"},
  {fuente:"CENEPRED SIGRID · susceptibilidad a movimientos en masa · capa 5090022",kind:"arcgis",timeout:20000,
   base:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",layer:"5090022"},
+ {fuente:"CENEPRED SIGRID · susceptibilidad a inundación fluvial · capa 5090024",kind:"arcgis",timeout:20000,
+  base:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",layer:"5090024"},
  {fuente:"INGEMMET · susceptibilidad a inundación fluvial 1:1 000 000 · capa 0",kind:"arcgis",timeout:20000,
   base:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer",layer:"0"}
 ];
+const parcelBounds={minLon:point.lon-.0008,maxLon:point.lon+.0008,minLat:point.lat-.0008,maxLat:point.lat+.0008};
+const polygonSources=[
+ {fuente:"Polígono de parcela · CENEPRED capa 5090022",url:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090022/query"},
+ {fuente:"Polígono de parcela · CENEPRED capa 5090024",url:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024/query"},
+ {fuente:"Polígono de parcela · INGEMMET capa 0",url:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0/query"}
+];
+
 async function get(url,timeout){
  const controller=new AbortController(),id=setTimeout(()=>controller.abort(),timeout);
  try{
@@ -65,15 +74,35 @@ async function check(item){
  }catch(error){return {fuente:item.fuente,estado:"no_verificable",fecha_utc:timestamp,motivo:String(error.message).slice(0,300)};}
 }
 (async()=>{
- const results=await Promise.all(sources.map(check));
- const obj={revision:"UX49b",fecha_utc:new Date().toISOString(),
+ const pointResults=await Promise.all(sources.map(check));
+ const polygonResults=await Promise.all(polygonSources.map(async item=>{
+  const timestamp=new Date().toISOString(),controller=new AbortController(),id=setTimeout(()=>controller.abort(),25000);
+  try{
+   const q=new URLSearchParams({where:"1=1",geometry:[parcelBounds.minLon,parcelBounds.minLat,parcelBounds.maxLon,parcelBounds.maxLat].join(","),
+    geometryType:"esriGeometryEnvelope",inSR:"4326",spatialRel:"esriSpatialRelIntersects",outFields:"*",
+    returnGeometry:"true",outSR:"4326",resultRecordCount:"500",f:"geojson"});
+   const response=await fetch(item.url+"?"+q,{signal:controller.signal,headers:{accept:"application/json"}});
+   if(!response.ok)throw Error("HTTP "+response.status);
+   const body=await response.json();if(body.error)throw Error(body.error.message||"Servicio devolvió error");
+   if(!Array.isArray(body.features))throw Error("Respuesta sin arreglo features");
+   if(body.exceededTransferLimit||body.features.length>=500)throw Error("Límite de registros: cobertura incompleta");
+   const polygons=body.features.filter(f=>["Polygon","MultiPolygon"].includes(f.geometry?.type));
+   const invalid=body.features.length-polygons.length;
+   return {fuente:item.fuente,estado:invalid?"responde_sin_geometria_poligonal_completa":"responde",
+    fecha_utc:timestamp,metadatos:{entidades:body.features.length,geometrias_poligonales:polygons.length,
+     sin_geometria_o_tipo_no_poligonal:invalid,consulta:"bbox WGS84; mismo contrato que la evaluación parcelaria"}};
+  }catch(error){return {fuente:item.fuente,estado:"no_verificable",fecha_utc:timestamp,motivo:String(error.message).slice(0,300)};}
+  finally{clearTimeout(id);}
+ }));
+ const results=[...pointResults,...polygonResults];
+ const obj={revision:"UX49c",fecha_utc:new Date().toISOString(),
   coordenada_muestra:point,
   alcance:"Disponibilidad técnica de las fuentes y respuesta de consulta puntual. No valida la precisión espacial, peligros, probabilidad ni pronóstico de una parcela.",
   fuentes:results};
  fs.writeFileSync(path.resolve("ux39-auditoria-servicios.json"),JSON.stringify(obj,null,2)+"\n");
  for(const r of results)console.log(r.fuente,":",r.estado,r.motivo||JSON.stringify(r.metadatos));
  const summary=process.env.GITHUB_STEP_SUMMARY;
- if(summary)fs.appendFileSync(summary,["## Auditoría UX49b: servicios de datos","",
+ if(summary)fs.appendFileSync(summary,["## Auditoría UX49c: servicios de datos y consultas de parcela","",
   ...results.map(r=>"- "+r.fuente+": **"+r.estado+"**"+(r.motivo?" ("+r.motivo+")":"")),
   "","Una consulta sin intersección no equivale a ausencia de peligro. La conectividad tampoco valida la exactitud temática de la capa."].join("\n"));
 })().catch(error=>{console.error(error);process.exitCode=1});
