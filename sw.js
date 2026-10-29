@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-27-ux47";
-const STATIC="oaf-pwa-static-2026-10-27-ux47";
+const RELEASE="oaf-pwa-shell-2026-10-29-ux48";
+const STATIC="oaf-pwa-static-2026-10-29-ux48";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -15,6 +15,26 @@ const CORE=[
  "./assets/oaf-visores-ux40.css",
  "./assets/oaf-ux42-interfaz.css",
  "./assets/oaf-ux42-portada-carrusel.js",
+ "./assets/oaf-ux14-reorganizacion.css",
+ "./assets/oaf-ux14-reorganizacion.js",
+ "./assets/oaf-ux15-rf-salidas.js",
+ "./assets/oaf-responsive-celulares-ux19.js",
+ "./assets/oaf-ux21-editorial.js",
+ "./assets/oaf-pwa.js",
+ "./assets/oaf-ux9-estructura.js",
+ "./assets/oaf-ux9-lectura-clima.js",
+ "./assets/oaf-ux9-predicciones.js",
+ "./assets/oaf-ux11-estructura.js",
+ "./assets/oaf-ux11-boletines.js",
+ "./assets/oaf-agroexportacion-2026.js",
+ "./assets/oaf-agro-charts-2026.js",
+ "./assets/oaf-agro-crops-2026.js",
+ "./assets/oaf-agro-evidencia-2026.js",
+ "./assets/oaf-galeria-mecanismos-2026.js",
+ "./assets/oaf-app-icon-192.png",
+ "./assets/oaf-app-icon-512.png",
+ "./assets/oaf-app-maskable-512.png",
+ "./assets/oaf-apple-touch-icon-180.png",
  "./assets/oaf-ux11-sanidad.js",
  "./assets/oaf-inicio-climatico-2026.js",
  "./","./offline.html","./manifest.webmanifest",
