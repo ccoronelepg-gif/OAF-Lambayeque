@@ -82,8 +82,11 @@ class UXContract(unittest.TestCase):
         # y una lectura orientativa; el pronóstico semanal vive en Predicciones.
         self.assertNotIn("oaf-forecast-grid",self.dom.ids)
         self.assertIn('class="oaf-home-metrics"',HTML)
-        self.assertIn("oaf-ux14-weekchart",self.dom.ids)
-        self.assertIn("oaf-ux14-monthchart",self.dom.ids)
+        forecast=(ROOT/"assets/oaf-ux14-reorganizacion.js").read_text(encoding="utf8")
+        self.assertIn('section("Predicción a siete días',forecast)
+        self.assertIn('section("Horizonte mensual',forecast)
+        self.assertLess(forecast.index('section("Predicción a siete días'),
+                        forecast.index('section("Horizonte mensual'))
         home=HTML.split('<section data-page="inicio" id="inicio">')[1].split('<section data-page="clima"')[0]
         self.assertLess(home.index('id="oaf-zone-primary"'),home.index('id="oaf-main-indicators"'))
         self.assertLess(home.index('id="oaf-home-nino"'),home.index('id="oaf-regional-map-heading"'))
