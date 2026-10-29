@@ -40,6 +40,8 @@ assert(api.surface(two)>area*1.9,"MultiPolygon no contabiliza los dos polígonos
 assert.throws(()=>api.parsePolygons({type:"Polygon",coordinates:[outer.map(x=>[x[0]+5,x[1]])]}),/fuera/,"No rechazó coordenadas fuera de región");
 assert.throws(()=>api.parsePolygons({type:"Point",coordinates:[-79.7,-6.2]}),/polígono/,"No rechazó geometría puntual");
 assert(src.includes("exceededTransferLimit"),"La cuantificación debe detectar truncamiento de capa");
+assert(src.includes("data.features.length&&data.features.some(f=>!f.geometry"),"No se deben convertir entidades sin geometría en cero hectáreas");
+assert(src.includes("Una superposición cero no descarta el peligro"),"Falta advertencia de interpretación para superposición nula");
 assert(src.includes("no es intersección topológica exacta")||src.includes("No es intersección topológica exacta"),"Advertencia de incertidumbre científica ausente");
 assert(src.includes("2021;y<=2025"),"Falta backtesting fuera del entrenamiento");
 const start=src.indexOf("function arModel("),end=src.indexOf("async function model(",start);
