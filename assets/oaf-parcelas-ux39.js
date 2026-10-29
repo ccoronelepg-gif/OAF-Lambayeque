@@ -330,7 +330,7 @@ async function risk(k){
    const data=await fetched(layer.url+"?"+query,22000);
    if(!Array.isArray(data.features))throw Error("El servicio no devolvió entidades vectoriales");
    if(data.exceededTransferLimit||data.features.length>=500)throw Error("Cobertura incompleta: límite de registros");
-   if(data.features.some(f=>f.geometry&&!["Polygon","MultiPolygon"].includes(f.geometry.type)))throw Error("La fuente no contiene polígonos de susceptibilidad para calcular superficie");
+   if(data.features.length&&data.features.some(f=>!f.geometry||!["Polygon","MultiPolygon"].includes(f.geometry.type)))throw Error("La fuente no devolvió geometrías poligonales completas para calcular superficie");
    const frac=fraction(poly.polygons,data.features);if(!Number.isFinite(frac))throw Error("Polígono insuficiente para muestreo");
    return {name:layer.name,frac,features:data.features.length,valid:true};
   }catch(e){return {name:layer.name,error:e.message,valid:false};}
@@ -342,7 +342,7 @@ async function risk(k){
  out.append(table);
  const good=results.filter(v=>v.valid).length;
  out.append(node("p","oaf-parcel-caveat",good?
-  "Cuantificación EXPLORATORIA mediante muestreo de cuadrícula de 25 × 25 centros en la envolvente, en geometrías vectoriales verificadas. No es intersección topológica exacta ni porcentaje de daño/inundación. La resolución de la cartografía puede ser mucho menor que la parcela; no usar para licencias, seguros o protección civil.":
+  "Cuantificación EXPLORATORIA mediante muestreo de cuadrícula de 25 × 25 centros en la envolvente, en geometrías vectoriales verificadas. No es intersección topológica exacta ni porcentaje de daño/inundación. Una superposición cero no descarta el peligro: puede depender de escala, cobertura y geometría disponible. La resolución de la cartografía puede ser mucho menor que la parcela; no usar para licencias, seguros o protección civil.":
   "Ninguna fuente permitió calcular una superficie confiable. No se atribuyen hectáreas afectadas. Consulta los mapas oficiales y comprueba si sus capas vectoriales y escalas permiten análisis parcelario."));
  auditState(k,"Control de capa espacial",good+" de "+results.length+" capas activadas devolvieron geometrías cuantificables.");
 }
