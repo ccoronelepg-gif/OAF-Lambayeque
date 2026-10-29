@@ -72,7 +72,7 @@ class UXContract(unittest.TestCase):
         for id in ("oaf-zone-primary","oaf-home-location","oaf-home-phytosanitary",
                    "oaf-home-nino","oaf-regional-map-heading","oaf-altitudinal-map",
                    "oaf-home-news-title","oaf-home-data-source","oaf-home-technology",
-                   "oaf-home-metrics","oaf-home-analysis","oaf-home-refresh"):
+                   "oaf-home-analysis","oaf-home-refresh"):
             self.assertEqual(self.dom.ids[id],"inicio",id)
         self.assertEqual(HTML.count('id="oaf-altitudinal-map"'),1)
         for id in ("temp","prec","hum","vpd","wind","rad","air"):
@@ -81,6 +81,7 @@ class UXContract(unittest.TestCase):
         # UX46: la portada concentra las condiciones actuales en indicadores
         # y una lectura orientativa; el pronóstico semanal vive en Predicciones.
         self.assertNotIn("oaf-forecast-grid",self.dom.ids)
+        self.assertIn('class="oaf-home-metrics"',HTML)
         self.assertIn("oaf-ux14-weekchart",self.dom.ids)
         self.assertIn("oaf-ux14-monthchart",self.dom.ids)
         home=HTML.split('<section data-page="inicio" id="inicio">')[1].split('<section data-page="clima"')[0]
