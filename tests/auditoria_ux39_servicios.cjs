@@ -13,6 +13,14 @@ const sources=[
   url:"https://api.open-meteo.com/v1/forecast?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),timezone:"America/Lima",forecast_days:"7",daily:"precipitation_sum,temperature_2m_max"}),
   valid:j=>Array.isArray(j.daily?.time)&&j.daily.time.length===7&&j.daily.precipitation_sum?.length===7&&j.daily.temperature_2m_max?.length===7,
   details:j=>({dias:j.daily.time.length,celda:[j.latitude,j.longitude]})},
+ {fuente:"Open-Meteo · condiciones actuales de portada",timeout:20000,
+  url:"https://api.open-meteo.com/v1/forecast?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),timezone:"America/Lima",forecast_days:"1",current:"temperature_2m,relative_humidity_2m,precipitation,shortwave_radiation,wind_speed_10m"}),
+  valid:j=>Boolean(j.current?.time)&&Number.isFinite(j.current?.temperature_2m)&&Number.isFinite(j.current?.relative_humidity_2m),
+  details:j=>({hora:j.current.time,variables:["temperature_2m","relative_humidity_2m","precipitation","shortwave_radiation","wind_speed_10m"]})},
+ {fuente:"Open-Meteo Air Quality · CAMS global",timeout:20000,
+  url:"https://air-quality-api.open-meteo.com/v1/air-quality?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),timezone:"America/Lima",forecast_days:"1",current:"european_aqi,pm2_5,pm10",domains:"cams_global"}),
+  valid:j=>Boolean(j.current?.time)&&[j.current?.european_aqi,j.current?.pm2_5,j.current?.pm10].some(Number.isFinite),
+  details:j=>({hora:j.current.time,dominio:"cams_global",aqi:j.current.european_aqi,pm25:j.current.pm2_5,pm10:j.current.pm10})},
  {fuente:"Open-Meteo Archive · ERA5-Land",timeout:20000,
   url:"https://archive-api.open-meteo.com/v1/archive?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2025-01-01",end_date:"2025-01-03",daily:"temperature_2m_mean,precipitation_sum",timezone:"America/Lima",models:"era5_land"}),
   valid:j=>Array.isArray(j.daily?.time)&&j.daily.time.length===3,
@@ -95,14 +103,14 @@ async function check(item){
   finally{clearTimeout(id);}
  }));
  const results=[...pointResults,...polygonResults];
- const obj={revision:"UX49c",fecha_utc:new Date().toISOString(),
+ const obj={revision:"UX49d",fecha_utc:new Date().toISOString(),
   coordenada_muestra:point,
   alcance:"Disponibilidad técnica de las fuentes y respuesta de consulta puntual. No valida la precisión espacial, peligros, probabilidad ni pronóstico de una parcela.",
   fuentes:results};
  fs.writeFileSync(path.resolve("ux39-auditoria-servicios.json"),JSON.stringify(obj,null,2)+"\n");
  for(const r of results)console.log(r.fuente,":",r.estado,r.motivo||JSON.stringify(r.metadatos));
  const summary=process.env.GITHUB_STEP_SUMMARY;
- if(summary)fs.appendFileSync(summary,["## Auditoría UX49c: servicios de datos y consultas de parcela","",
+ if(summary)fs.appendFileSync(summary,["## Auditoría UX49d: servicios de datos, portada y consultas de parcela","",
   ...results.map(r=>"- "+r.fuente+": **"+r.estado+"**"+(r.motivo?" ("+r.motivo+")":"")),
   "","Una consulta sin intersección no equivale a ausencia de peligro. La conectividad tampoco valida la exactitud temática de la capa."].join("\n"));
 })().catch(error=>{console.error(error);process.exitCode=1});
