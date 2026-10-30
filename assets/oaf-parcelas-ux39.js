@@ -285,83 +285,215 @@ function auditState(k,name,result){
  const report=ui(k)?.querySelector("[data-ux39-audit]");if(!report)return;
  const line=node("p",null,name+": "+result);report.append(line);
 }
+const CENEPRED_BASE="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer";
 const LAYERS=[
- {name:"Susceptibilidad fluvial INGEMMET · Mapa 1:1 000 000",url:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0/query"},
- {name:"Movimientos en masa CENEPRED",url:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090022/query"},
- {name:"Inundaciones CENEPRED",url:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024/query"}
+ {name:"INGEMMET · susceptibilidad a inundación fluvial (vector, 1:1 000 000)",kind:"vector",
+  url:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0/query",
+  metadataUrl:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0?f=json",
+  territorio:["inundacionregion","regional"],escenarios:["futureFlood","regional","suscept"]},
+ {name:"CENEPRED · susceptibilidad a movimientos en masa por lluvias fuertes (ráster)",kind:"raster",layerId:5090022,
+  url:CENEPRED_BASE+"/identify",metadataUrl:CENEPRED_BASE+"/5090022?f=json",
+  territorio:["movmasa"],escenarios:["futureMass","mass"]},
+ {name:"CENEPRED · susceptibilidad a inundaciones por lluvias fuertes (ráster)",kind:"raster",layerId:5090024,
+  url:CENEPRED_BASE+"/identify",metadataUrl:CENEPRED_BASE+"/5090024?f=json",
+  territorio:["regional","inundacionregion"],escenarios:["futureFlood","regional","suscept"]}
 ];
 async function fetched(url,timeout=18000){
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);
  try{const res=await fetch(url,{signal:controller.signal,cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);const v=await res.json();if(v.error)throw Error(v.error.message||"error del servicio");return v;}
  finally{clearTimeout(timer);}
 }
+async function posted(url,params,timeout=30000){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);
+ try{
+  const res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+   body:params.toString(),signal:controller.signal,cache:"no-store"});
+  if(!res.ok)throw Error("HTTP "+res.status);
+  const v=await res.json();if(v.error)throw Error(v.error.message||"error del servicio");return v;
+ }finally{clearTimeout(timer);}
+}
+function webMercatorToWgs84(point,sr){
+ const wkid=Number(sr?.latestWkid||sr?.wkid||4326),x=Number(point[0]),y=Number(point[1]);
+ if([3857,102100,102113].includes(wkid)){
+  const lon=x/6378137*180/Math.PI,lat=(2*Math.atan(Math.exp(y/6378137))-Math.PI/2)*180/Math.PI;
+  return [lon,lat];
+ }
+ return [x,y];
+}
+function esriRingsToPolygons(rings,sr){
+ const clean=(rings||[]).filter(r=>Array.isArray(r)&&r.length>=4).map(raw=>ringclose(raw.map(p=>webMercatorToWgs84(p,sr))));
+ if(!clean.length)return [];
+ let outers=clean.filter(r=>signedArea(r,1)<0),holes=clean.filter(r=>signedArea(r,1)>=0);
+ if(!outers.length){
+  const ordered=[...clean].sort((a,b)=>Math.abs(signedArea(b,1))-Math.abs(signedArea(a,1)));
+  outers=ordered.slice(0,1);holes=ordered.slice(1);
+ }
+ const polygons=outers.map(r=>[r]);
+ for(const hole of holes){
+  const p=hole[0],candidates=polygons.filter(poly=>inRing(p[0],p[1],poly[0]))
+   .sort((a,b)=>Math.abs(signedArea(a[0],1))-Math.abs(signedArea(b[0],1)));
+  if(candidates.length)candidates[0].push(hole);else polygons.push([hole]);
+ }
+ return polygons;
+}
+function normalizeArcGISFeature(feature){
+ const g=feature?.geometry;
+ if(g?.rings){
+  const polygons=esriRingsToPolygons(g.rings,g.spatialReference);
+  if(!polygons.length)throw Error("Geometría ArcGIS sin anillos válidos");
+  return {...feature,geometry:{type:polygons.length===1?"Polygon":"MultiPolygon",
+   coordinates:polygons.length===1?polygons[0]:polygons,spatialReference:{wkid:4326}}};
+ }
+ if(g&&["Polygon","MultiPolygon"].includes(g.type))return feature;
+ throw Error("La fuente devolvió una entidad sin geometría poligonal completa");
+}
 function geoContains(feature,lon,lat){
  const g=feature.geometry;if(!g||!["Polygon","MultiPolygon"].includes(g.type))return false;
  const shapes=g.type==="Polygon"?[g.coordinates]:g.coordinates;
  return contains(shapes,lon,lat);
 }
-function fraction(poly,features){
- const {minLon,maxLon,minLat,maxLat}=limits(poly),steps=25;let inside=0,overlap=0;
+function samplePoints(poly,steps=15){
+ const {minLon,maxLon,minLat,maxLat}=limits(poly),points=[];
  for(let i=0;i<steps;i++)for(let j=0;j<steps;j++){
   const lon=minLon+(i+.5)*(maxLon-minLon)/steps,lat=minLat+(j+.5)*(maxLat-minLat)/steps;
-  if(!contains(poly,lon,lat))continue;inside++;if(features.some(f=>geoContains(f,lon,lat)))overlap++;
+  if(contains(poly,lon,lat))points.push({lon,lat});
  }
- return inside?overlap/inside:NaN;
+ if(!points.length){
+  const p=interior(poly);
+  if(Number.isFinite(p.lon)&&Number.isFinite(p.lat)&&contains(poly,p.lon,p.lat))points.push(p);
+ }
+ return points;
+}
+function fraction(poly,features,steps=40){
+ const points=samplePoints(poly,steps);if(!points.length)return {fraction:NaN,sampleCount:0,overlapCount:0};
+ let overlap=0;
+ for(const point of points)if(features.some(feature=>geoContains(feature,point.lon,point.lat)))overlap++;
+ return {fraction:overlap/points.length,sampleCount:points.length,overlapCount:overlap};
+}
+function orientEsriRing(ring,clockwise){
+ const closed=ringclose(ring.map(p=>[Number(p[0]),Number(p[1])])),isClockwise=signedArea(closed,1)<0;
+ return isClockwise===clockwise?closed:closed.slice().reverse();
+}
+function esriPolygon(polygons){
+ const rings=[];
+ for(const polygon of polygons){
+  if(!polygon?.length)continue;
+  rings.push(orientEsriRing(polygon[0],true));
+  for(const hole of polygon.slice(1))rings.push(orientEsriRing(hole,false));
+ }
+ return {rings,spatialReference:{wkid:4326}};
+}
+function vectorQueryParams(polygons){
+ return new URLSearchParams({where:"1=1",geometry:JSON.stringify(esriPolygon(polygons)),
+  geometryType:"esriGeometryPolygon",inSR:"4326",spatialRel:"esriSpatialRelIntersects",
+  outFields:"OBJECTID,GRIDCODE,LEYENDA,REGION,NM_DEPA,NM_PROV,NM_DIST",
+  returnGeometry:"true",outSR:"4326",resultRecordCount:"2000",f:"json"});
+}
+function rasterIdentifyParams(layerId,points,bounds){
+ return new URLSearchParams({geometryType:"esriGeometryMultipoint",
+  geometry:JSON.stringify({points:points.map(p=>[p.lon,p.lat]),spatialReference:{wkid:4326}}),
+  sr:"4326",layers:"all:"+layerId,tolerance:"1",
+  mapExtent:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
+  imageDisplay:"1000,1000,96",returnGeometry:"false",f:"json"});
+}
+function cenepredClass(result){
+ const attributes=result?.attributes||{},keys=["n_peligro","n_pelig_mm","niv_sus","leyenda","value","gridcode","grid_code","class","nivel"];
+ let raw;
+ for(const key of keys){if(attributes[key]!==undefined&&attributes[key]!==null&&String(attributes[key]).trim()!==""){raw=attributes[key];break;}}
+ if(raw===undefined)raw=result?.value??result?.name;
+ if(raw===undefined||raw===null||String(raw).trim()==="")return "Sin clasificar";
+ const value=String(raw),normalized=value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+ if(normalized.includes("muy")&&normalized.includes("alto"))return "Muy alto";
+ if(normalized.includes("alto"))return "Alto";
+ if(normalized.includes("medio"))return "Medio";
+ if(normalized.includes("bajo"))return "Bajo";
+ return value.slice(0,60);
+}
+function parseRasterClasses(results,sampleCount){
+ const counts={};
+ for(const result of results||[]){const label=cenepredClass(result);counts[label]=(counts[label]||0)+1;}
+ const identified=(results||[]).length,total=Number(sampleCount)||0;
+ return {counts,identified,sampleCount:total,coverage:total?Math.min(1,identified/total):0,
+  complete:total>0&&identified===total};
+}
+async function vectorIntersection(layer,polygons,areaHa){
+ const params=vectorQueryParams(polygons),data=await fetched(layer.url+"?"+params,30000);
+ if(!Array.isArray(data.features))throw Error("El servicio no devolvió un arreglo de entidades");
+ if(data.exceededTransferLimit||data.features.length>=2000)throw Error("Límite de 2 000 entidades; consulta incompleta, no se calculan hectáreas");
+ if(data.features.length&&data.features.some(f=>!f.geometry||(!f.geometry.rings&&!["Polygon","MultiPolygon"].includes(f.geometry.type))))
+  throw Error("La fuente devolvió entidades sin geometría poligonal completa");
+ if(!data.features.length)return {name:layer.name,kind:"vector",responded:true,hasData:false,features:0};
+ const features=data.features.map(normalizeArcGISFeature),stats=fraction(polygons,features,40);
+ return {name:layer.name,kind:"vector",responded:true,hasData:true,features:features.length,stats,areaHa};
+}
+async function rasterIntersection(layer,polygons){
+ const points=samplePoints(polygons,15);if(!points.length)throw Error("No se generaron puntos interiores para el muestreo");
+ const params=rasterIdentifyParams(layer.layerId,points,limits(polygons)),data=await posted(layer.url,params,30000);
+ if(!Array.isArray(data.results))throw Error("Identify no devolvió el arreglo results");
+ const summary=parseRasterClasses(data.results,points.length);
+ return {name:layer.name,kind:"raster",responded:true,hasData:summary.identified>0,samples:points.length,summary};
 }
 async function risk(k){
  const {poly,point}=current(k),out=setText(k,"risk","");
  if(!point){out.textContent="Ingresa un punto geográfico o importa/dibuja una parcela para evaluar el territorio.";return;}
  const seq=++tokens[k].risk;out.append(node("h4",null,"Evaluación espacial · "+point.name));
- if(!poly){out.append(node("p",null,"Hay un punto válido. Se ejecuta la evaluación puntual del visor original; para cuantificar superficies necesitas el polígono de la parcela."));return;}
- out.append(node("p",null,"Polígono aportado por el usuario · "+fmt(poly.ha,3)+" ha aproximadas. Consultando fuentes oficiales vectoriales…"));
- const bounds=limits(poly.polygons),query=new URLSearchParams({where:"1=1",geometry:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
-  geometryType:"esriGeometryEnvelope",inSR:"4326",spatialRel:"esriSpatialRelIntersects",outFields:"*",returnGeometry:"true",outSR:"4326",resultRecordCount:"500",f:"geojson"});
- const chosen=LAYERS.filter((layer,i)=>{
-  const name=i===0?"inundacionregion":i===1?"movmasa":"regional";
-  const src=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
-  const geo=src?.querySelectorAll("input:checked")||[];
-  const wanted=k==="territorio"?(i===0?["inundacionregion","regional"]:i===1?["movmasa"]:["regional","inundacionregion"]):
-   (i===1?["futureMass","mass"]:["futureFlood","regional","suscept"]);
-  return Array.from(geo).some(x=>wanted.includes(x.dataset.ux30Layer||x.dataset.ux35Key||x.dataset.ux29Layer));
- });
- if(!chosen.length){out.append(node("p",null,"No hay capas vectoriales de inundación o movimientos en masa seleccionadas. Actívalas en el árbol para realizar esta consulta. Las capas de vías y servicios se comparan visualmente."));return;}
+ if(!poly){out.append(node("p",null,"Hay un punto válido. Se ejecuta la evaluación puntual del visor original; para analizar superficies necesitas delimitar o importar el polígono de la parcela."));return;}
+ out.append(node("p",null,"Parcela: "+fmt(poly.ha,3)+" ha aproximadas. Se consultan las capas seleccionadas usando el polígono real y, para CENEPRED, puntos de identificación dentro de la parcela."));
+ const src=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
+ const selected=Array.from(src?.querySelectorAll("input:checked")||[]).map(x=>x.dataset.ux30Layer||x.dataset.ux35Key||x.dataset.ux29Layer).filter(Boolean);
+ const chosen=LAYERS.filter(layer=>selected.some(value=>(layer[k]||[]).includes(value)));
+ if(!chosen.length){out.append(node("p",null,"No hay capas de inundación o movimientos en masa seleccionadas. Activa las capas correspondientes en el árbol del visor y vuelve a evaluar."));return;}
  const results=await Promise.all(chosen.map(async layer=>{
-  try{
-   const data=await fetched(layer.url+"?"+query,22000);
-   if(!Array.isArray(data.features))throw Error("El servicio no devolvió entidades vectoriales");
-   if(data.exceededTransferLimit||data.features.length>=500)throw Error("Cobertura incompleta: límite de registros");
-   if(data.features.length&&data.features.some(f=>!f.geometry||!["Polygon","MultiPolygon"].includes(f.geometry.type)))throw Error("La fuente no devolvió geometrías poligonales completas para calcular superficie");
-   const frac=fraction(poly.polygons,data.features);if(!Number.isFinite(frac))throw Error("Polígono insuficiente para muestreo");
-   return {name:layer.name,frac,features:data.features.length,valid:true};
-  }catch(e){return {name:layer.name,error:e.message,valid:false};}
+  try{return layer.kind==="vector"?await vectorIntersection(layer,poly.polygons,poly.ha):await rasterIntersection(layer,poly.polygons);}
+  catch(error){return {name:layer.name,kind:layer.kind,responded:false,error:error.message};}
  }));
  if(seq!==tokens[k].risk||!ui(k))return;
- const table=node("table"),header=node("tr");["Geoservicio","Resultado","Área de superposición estimada"].forEach(x=>header.append(node("th",null,x)));table.append(header);
- results.forEach(row=>{const tr=node("tr");if(!row.valid)[row.name,"No verificable · "+row.error,"No calculable"].forEach(x=>tr.append(node("td",null,x)));
-  else [row.name,row.features+" polígonos en el entorno",fmt(row.frac*poly.ha,3)+" ha · "+fmt(row.frac*100,1)+" % de celdas muestreadas"].forEach(x=>tr.append(node("td",null,x)));table.append(tr);});
+ const table=node("table"),header=node("tr");
+ ["Fuente y tipo","Cobertura de la consulta","Resultado zonal"].forEach(x=>header.append(node("th",null,x)));table.append(header);
+ results.forEach(row=>{
+  const tr=node("tr");
+  let coverage="",result="";
+  if(!row.responded){coverage="No verificable";result=row.error||"Servicio sin respuesta";}
+  else if(row.kind==="vector"){
+   coverage=row.features+" polígonos devueltos por la consulta de intersección";
+   if(!row.features)result="Sin intersección devuelta. No se asignan 0 ha y esto no descarta peligro.";
+   else if(!row.stats||!Number.isFinite(row.stats.fraction)||!row.stats.sampleCount)
+    result="El servicio encontró polígonos, pero el muestreo no permite cuantificar la superficie.";
+   else if(!row.stats.overlapCount)
+    result="Intersección vectorial confirmada; la malla no resolvió una superficie cuantificable a esta escala.";
+   else result=fmt(row.stats.fraction*row.areaHa,3)+" ha aproximadas · "+fmt(row.stats.fraction*100,1)+" % de puntos muestreados";
+  }else{
+   const s=row.summary;coverage=s.identified+"/"+s.sampleCount+" puntos con valor identificable ("+fmt(s.coverage*100,1)+" % de cobertura de respuesta)";
+   if(!s.identified)result="Sin valores ráster identificables; no equivale a susceptibilidad baja ni a ausencia de peligro.";
+   else result=Object.entries(s.counts).map(([label,count])=>label+": "+count+" ("+fmt(count/s.identified*100,1)+" %)").join(" · ");
+  }
+  [row.name,coverage,result].forEach(value=>tr.append(node("td",null,value)));table.append(tr);
+ });
  out.append(table);
- const good=results.filter(v=>v.valid).length;
- out.append(node("p","oaf-parcel-caveat",good?
-  "Cuantificación EXPLORATORIA mediante muestreo de cuadrícula de 25 × 25 centros en la envolvente, en geometrías vectoriales verificadas. No es intersección topológica exacta ni porcentaje de daño/inundación. Una superposición cero no descarta el peligro: puede depender de escala, cobertura y geometría disponible. La resolución de la cartografía puede ser mucho menor que la parcela; no usar para licencias, seguros o protección civil.":
-  "Ninguna fuente permitió calcular una superficie confiable. No se atribuyen hectáreas afectadas. Consulta los mapas oficiales y comprueba si sus capas vectoriales y escalas permiten análisis parcelario."));
- auditState(k,"Control de capa espacial",good+" de "+results.length+" capas activadas devolvieron geometrías cuantificables.");
+ const good=results.filter(v=>v.responded).length;
+ out.append(node("p","oaf-parcel-caveat",
+  "Interpretación: INGEMMET consulta polígonos vectoriales contra la geometría de la parcela y estima el solapamiento mediante una cuadrícula de 40 × 40 centros; las hectáreas son aproximadas, no una intersección topológica exacta. CENEPRED consulta capas ráster mediante Identify multipunto: los porcentajes describen la distribución de puntos muestreados, no hectáreas exactas. Sus capas representan susceptibilidad cartográfica y no el peligro actual ni un pronóstico. Una consulta vacía, parcial o bloqueada por CORS no demuestra ausencia de peligro."));
+ auditState(k,"Control de capas geoespaciales",good+" de "+results.length+" consultas respondieron; la cobertura y resolución se informan por separado.");
 }
 let auditTimer={};
 function scheduleAudit(k){clearTimeout(auditTimer[k]);auditTimer[k]=setTimeout(()=>{if(ui(k)&&current(k).point)audit(k);},1000);}
 async function audit(k){
  const out=setText(k,"audit",""),point=current(k).point,poly=current(k).poly;
  out.append(node("h4",null,"Auditoría de disponibilidad y trazabilidad"));
- out.append(node("p",null,"Fecha local de la consulta: "+new Date().toLocaleString("es-PE",{timeZone:"America/Lima"})+". Las capas activas son distintas de sus pruebas de intersección. No se interpreta un fallo CORS como ausencia de peligro."));
+ out.append(node("p",null,"Fecha local: "+new Date().toLocaleString("es-PE",{timeZone:"America/Lima"})+". La respuesta de un servicio no valida por sí sola la precisión temática, la escala ni la vigencia de una capa."));
  out.append(node("p",null,"Entrada: "+(point?"WGS84 "+point.lat.toFixed(5)+", "+point.lon.toFixed(5):"sin punto")+"; "+(poly?"polígono "+fmt(poly.ha,3)+" ha":"sin polígono")+". "+activeLayers(k).length+" capas marcadas."));
  if(!point)return;
- const checks=[["Archivo ERA5-Land","https://archive-api.open-meteo.com/v1/archive?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2025-01-01",end_date:"2025-01-03",daily:"precipitation_sum",timezone:"America/Lima",models:"era5_land"})],
- ["INGEMMET · metadatos","https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0?f=json"],
- ["CENEPRED · metadatos","https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024?f=json"]];
+ const checks=[
+  {name:"Archivo ERA5-Land",url:"https://archive-api.open-meteo.com/v1/archive?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2025-01-01",end_date:"2025-01-03",daily:"precipitation_sum",timezone:"America/Lima",models:"era5_land"}),describe:j=>j.daily?.time?.length===3?"serie diaria · 3 días · celda "+fmt(j.latitude,4)+", "+fmt(j.longitude,4):"respuesta sin tres días"},
+  {name:"INGEMMET · capa 0",url:LAYERS[0].metadataUrl,describe:j=>j.type==="Feature Layer"?"vectorial · "+j.geometryType+" · "+(j.supportedQueryFormats||"formatos no informados"):"tipo de capa: "+(j.type||"no informado")},
+  {name:"CENEPRED · capa 5090022",url:LAYERS[1].metadataUrl,describe:j=>j.type==="Raster Layer"?"ráster · requiere Identify, no consulta vectorial":("tipo de capa: "+(j.type||"no informado"))},
+  {name:"CENEPRED · capa 5090024",url:LAYERS[2].metadataUrl,describe:j=>j.type==="Raster Layer"?"ráster · requiere Identify, no consulta vectorial":("tipo de capa: "+(j.type||"no informado"))}
+ ];
  const seq=++tokens[k].audit;
- const checked=await Promise.all(checks.map(async ([name,url])=>{try{const j=await fetched(url,16000);return [name,"responde · "+(j.name||j.model||"datos JSON")];}catch(e){return [name,"no verificable ("+e.message+")"];}}));
+ const checked=await Promise.all(checks.map(async item=>{try{const j=await fetched(item.url,18000);return [item.name,item.describe(j)];}catch(e){return [item.name,"no verificable desde este navegador ("+e.message+")"];}}));
  if(seq!==tokens[k].audit)return;
  for(const [name,value] of checked)out.append(node("p",null,name+": "+value));
- out.append(node("p","oaf-parcel-caveat","Control automático disparado al cambiar las capas o ubicación. El estado de la API no valida por sí solo resolución, vigencia temática ni exactitud del producto cartográfico."));
+ out.append(node("p","oaf-parcel-caveat","Las capas CENEPRED 5090022 y 5090024 son ráster; la aplicación las consulta con Identify y no con Query de polígonos. INGEMMET es una capa vectorial poligonal. Si el navegador bloquea una petición por CORS, la fuente queda como no verificable desde esta sesión; consulta su visor oficial."));
 }
 function climDaily(payload){
  const daily=payload.daily;if(!daily?.time?.length)throw Error("Datos climáticos diarios ausentes");
@@ -466,6 +598,6 @@ function init(){
  });
  window.addEventListener("oaf:geodata",()=>{for(const k of scopes)draw(k)});
 }
-window.OAFParcelas={get:k=>parcels[k]?{name:parcels[k].name,ha:parcels[k].ha,geometry:parcels[k].geometry}:null,parsePolygons,contains,surface};
+window.OAFParcelas={get:k=>parcels[k]?{name:parcels[k].name,ha:parcels[k].ha,geometry:parcels[k].geometry}:null,parsePolygons,contains,surface,limits,samplePoints,esriPolygon,esriRingsToPolygons,normalizeArcGISFeature,vectorQueryParams,rasterIdentifyParams,parseRasterClasses,fraction};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
