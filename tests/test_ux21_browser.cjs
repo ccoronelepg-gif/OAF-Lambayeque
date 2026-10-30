@@ -22,17 +22,17 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    }));
    console.log("UX21_BOOT_DEBUG",JSON.stringify({width,bootDebug}));
    await page.waitForFunction(() => {
-    const value=document.querySelector("#oaf-ux14-monthstatus")?.textContent?.trim()||"";
+    const value=document.querySelector("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent?.trim()||"";
     return value.length>0&&!/Cargando|Preparando/i.test(value);
    }, {timeout:10000});
-  await page.locator("#oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
+  await page.locator("#oaf-ux14-rf-mes #oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
    await page.waitForTimeout(350);
    const status=await page.evaluate(()=>{
     const q=s=>document.querySelector(s);
     return {
      viewSwitches:document.querySelectorAll(".oaf-view-switch").length,
      cityBar:document.querySelectorAll(".oaf-contextbar").length,
-     monthlyChart:!!q("#oaf-ux14-monthchart svg"),monthlyStatus:q("#oaf-ux14-monthstatus")?.textContent,
+     monthlyChart:!!q("#oaf-ux14-rf-mes #oaf-ux14-monthchart svg"),monthlyStatus:q("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent,
      futureNote:q("#oaf-ux14-rf-mes .oaf-ux14-no-forecast")?.textContent,
      extraCards:document.querySelectorAll("#oaf-ux16-months").length,
      oldHomeBlock:document.querySelectorAll('#inicio #oaf-bloque-prediccion-inicio').length,
