@@ -396,10 +396,21 @@ function rasterIdentifyParams(layerId,points,bounds){
   mapExtent:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
   imageDisplay:"1000,1000,96",returnGeometry:"false",f:"json"});
 }
-function cenepredClass(result){
+function rasterClassInfo(metadata){
+ const renderer=metadata?.drawingInfo?.renderer||metadata?.renderer||{},unique={},breaks=[];
+ for(const item of renderer.uniqueValueInfos||[])if(item?.value!==undefined)unique[String(item.value)]=item.label||String(item.value);
+ for(const item of renderer.classBreakInfos||[])if(Number.isFinite(Number(item.classMaxValue)))breaks.push({
+  min:Number(item.classMinValue??-Infinity),max:Number(item.classMaxValue),label:item.label||String(item.classMaxValue)});
+ return {unique,breaks};
+}
+function cenepredClass(result,classInfo={}){
  const attributes=result?.attributes||{},keys=["n_peligro","n_pelig_mm","niv_sus","leyenda","value","gridcode","grid_code","class","nivel"];
  let raw;
  for(const key of keys){if(attributes[key]!==undefined&&attributes[key]!==null&&String(attributes[key]).trim()!==""){raw=attributes[key];break;}}
+ if(raw===undefined){
+  const entry=Object.entries(attributes).find(([key,value])=>/(value|pixel|grid|pelig|suscep|class|nivel|code)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!=="");
+  if(entry)raw=entry[1];
+ }
  if(raw===undefined)raw=result?.value??result?.name;
  if(raw===undefined||raw===null||String(raw).trim()==="")return "Sin clasificar";
  const value=String(raw),normalized=value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
@@ -407,11 +418,18 @@ function cenepredClass(result){
  if(normalized.includes("alto"))return "Alto";
  if(normalized.includes("medio"))return "Medio";
  if(normalized.includes("bajo"))return "Bajo";
+ if(Number.isFinite(Number(value))){
+  const code=String(Number(value));
+  if(classInfo.unique?.[code])return classInfo.unique[code];
+  const match=(classInfo.breaks||[]).find(item=>Number(value)>item.min&&Number(value)<=item.max);
+  if(match)return match.label;
+  return "Código "+code;
+ }
  return value.slice(0,60);
 }
-function parseRasterClasses(results,sampleCount){
+function parseRasterClasses(results,sampleCount,classInfo={}){
  const counts={};
- for(const result of results||[]){const label=cenepredClass(result);counts[label]=(counts[label]||0)+1;}
+ for(const result of results||[]){const label=cenepredClass(result,classInfo);counts[label]=(counts[label]||0)+1;}
  const identified=(results||[]).length,total=Number(sampleCount)||0;
  return {counts,identified,sampleCount:total,coverage:total?Math.min(1,identified/total):0,
   complete:total>0&&identified===total};
@@ -426,11 +444,17 @@ async function vectorIntersection(layer,polygons,areaHa){
  const features=data.features.map(normalizeArcGISFeature),stats=fraction(polygons,features,40);
  return {name:layer.name,kind:"vector",responded:true,hasData:true,features:features.length,stats,areaHa};
 }
+const rasterMetadataCache=new Map();
+async function rasterMetadata(layer){
+ if(!rasterMetadataCache.has(layer.layerId))rasterMetadataCache.set(layer.layerId,fetched(layer.metadataUrl,18000));
+ return rasterMetadataCache.get(layer.layerId);
+}
 async function rasterIntersection(layer,polygons){
  const points=samplePoints(polygons,15);if(!points.length)throw Error("No se generaron puntos interiores para el muestreo");
- const params=rasterIdentifyParams(layer.layerId,points,limits(polygons)),data=await posted(layer.url,params,30000);
+ const params=rasterIdentifyParams(layer.layerId,points,limits(polygons));
+ const [data,metadata]=await Promise.all([posted(layer.url,params,30000),rasterMetadata(layer)]);
  if(!Array.isArray(data.results))throw Error("Identify no devolvió el arreglo results");
- const summary=parseRasterClasses(data.results,points.length);
+ const summary=parseRasterClasses(data.results,points.length,rasterClassInfo(metadata));
  return {name:layer.name,kind:"raster",responded:true,hasData:summary.identified>0,samples:points.length,summary};
 }
 async function risk(k){
@@ -598,6 +622,6 @@ function init(){
  });
  window.addEventListener("oaf:geodata",()=>{for(const k of scopes)draw(k)});
 }
-window.OAFParcelas={get:k=>parcels[k]?{name:parcels[k].name,ha:parcels[k].ha,geometry:parcels[k].geometry}:null,parsePolygons,contains,surface,limits,samplePoints,esriPolygon,esriRingsToPolygons,normalizeArcGISFeature,vectorQueryParams,rasterIdentifyParams,parseRasterClasses,fraction};
+window.OAFParcelas={get:k=>parcels[k]?{name:parcels[k].name,ha:parcels[k].ha,geometry:parcels[k].geometry}:null,parsePolygons,contains,surface,limits,samplePoints,esriPolygon,esriRingsToPolygons,normalizeArcGISFeature,vectorQueryParams,rasterIdentifyParams,parseRasterClasses,rasterClassInfo,fraction};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
