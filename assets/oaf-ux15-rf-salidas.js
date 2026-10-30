@@ -151,6 +151,7 @@ function weeklyModelAudit(){
   target.append(E("p",null,"Backtest de siete días encadenados (2025): "+backtest.n_origenes+" orígenes retrospectivos; evaluación por horizonte sin utilizar días futuros como rezagos."));
   target.append(E("p","oaf-ux43-model-warning","Habilidad comparada con climatología: lluvia "+rain.wins+"/7 horizontes mejores; temperatura máxima "+temp.wins+"/7. "+
    ((!rain.eligible||!temp.eligible)?"El candidato no se promueve a pronóstico operativo ni se muestra como serie predictiva en la gráfica.":"Aun con este resultado, permanece experimental y no tiene validación prospectiva ni instrumental.")));
+  target.append(E("p",null,"MAE medio del backtest: lluvia RF "+fmt(rain.meanRF,2)+" mm frente a climatología "+fmt(rain.meanBase,2)+" mm; temperatura máxima RF "+fmt(temp.meanRF,2)+" °C frente a climatología "+fmt(temp.meanBase,2)+" °C."));
   const table=E("table"),head=E("tr");
   for(const x of ["Día","MAE RF lluvia","MAE clim. lluvia","MAE RF Tmax","MAE clim. Tmax"]){head.append(E("th",null,x))}
   table.append(head);
