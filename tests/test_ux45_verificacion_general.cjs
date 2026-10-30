@@ -35,7 +35,8 @@ assert(html.includes("oaf-parcelas-ux39.js?v=20261029-ux51b"),"Análisis parcela
 const parcel=read("assets/oaf-parcelas-ux39.js");
 assert(parcel.includes("esriGeometryPolygon")&&parcel.includes("esriGeometryMultipoint")&&parcel.includes("layerId:5090024"),"Falta consulta espacial vectorial/ráster correcta");
 const weekly=read("assets/oaf-ux15-rf-salidas.js");
-assert(weekly.includes("function rfEvidence(rain)")&&weekly.includes("wins>=5"),"No se aplica puerta de habilidad al RF");
+assert(weekly.includes("function rfEvidence(rain)")&&weekly.includes("wins>=5"),"No se aplica puerta de habilidad al RF semanal");
+assert(weekly.includes("function monthlyRfEvidence(model)")&&weekly.includes("RF no publicado como pronóstico operativo"),"No se aplica puerta de habilidad al RF mensual");
 assert(weekly.includes("relative_humidity_2m_mean")&&weekly.includes("et0_fao_evapotranspiration"),"Faltan variables agroclimáticas por coordenadas");
 const seasonal=read("assets/oaf-ux15-rf-salidas.js");
 assert(seasonal.includes('hourly:"precipitation,temperature_2m"')&&!seasonal.includes('daily:"precipitation_sum,temperature_2m_mean"'),
