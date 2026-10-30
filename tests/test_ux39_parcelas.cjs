@@ -65,6 +65,11 @@ const classes=api.parseRasterClasses([
 ],4);
 assert.equal(classes.identified,4);assert.equal(classes.coverage,1);
 assert.deepEqual({...classes.counts},{"Muy alto":1,Alto:1,Medio:1,Bajo:1});
+const prefixedClasses=api.parseRasterClasses([
+ {attributes:{"UniqueValue.Pixel Value":"4","Raster.n_peligro":"Muy Alto","Raster.gridcode":"1"}},
+ {attributes:{"UniqueValue.Pixel Value":"2","Raster.n_pelig_mm":"Bajo","Raster.gridcode":"4"}}
+],2);
+assert.deepEqual({...prefixedClasses.counts},{"Muy alto":1,Bajo:1},"Debe priorizar el campo temático ráster sobre el código del píxel");
 const namedClasses=api.parseRasterClasses([{attributes:{n_pelig_mm:"Bajo"}},{attributes:{n_peligro:"Muy Alto"}}],2);
 assert.deepEqual({...namedClasses.counts},{Bajo:1,"Muy alto":1},"No se interpretan las categorías de susceptibilidad CENEPRED");
 const numericClasses=api.parseRasterClasses([{attributes:{"Pixel Value":3}},{value:2}],2,{unique:{"3":"Alto","2":"Medio"}});
