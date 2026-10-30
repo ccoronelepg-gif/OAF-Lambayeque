@@ -16,7 +16,7 @@ assert(!area.includes("#oaf-ux14-rf-semana,#oaf-anomaly-panel"),"El gráfico sem
 assert(structure.includes('section("Predicción a siete días'),"No se creó la cabecera del cuadro semanal");
 assert(structure.indexOf('const live=section("Predicción a siete días')<structure.indexOf('const month=section("Horizonte mensual'),"Gráfico no precede al mensual");
 assert.match(index,/oaf-ux15-rf-salidas\.js\?v=/,"No se actualizó script semanal en web");
-assert(index.includes("oaf-ux14-reorganizacion.js?v=20261029-ux51"),"No se actualizó estructura semanal en web");
+assert(index.includes("oaf-ux14-reorganizacion.js?v=20261029-ux51b"),"No se actualizó estructura semanal en web");
 assert.match(read("sw.js"),/const RELEASE="oaf-pwa-shell-[^"]+"/,"Cache PWA no versionado");
 assert(src.includes("relative_humidity_2m_mean")&&src.includes("shortwave_radiation_sum"),"Faltan indicadores diarios para área productiva");
 assert(src.includes("et0_fao_evapotranspiration")&&src.includes("vapour_pressure_deficit_max"),"Faltan ET0 y DPV del pronóstico puntual");
