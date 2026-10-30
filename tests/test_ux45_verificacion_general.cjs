@@ -20,7 +20,7 @@ for(const icon of manifest.icons){
  assert(fs.existsSync(path.join(root,icon.src)),"Ícono no disponible "+icon.src);
 }
 assert(sw.includes("Network-first")&&sw.includes('isScientificData(url)'),"PWA no distingue avisos y datos de caché");
-assert(sw.includes("oaf-pwa-shell-2026-10-27-ux45"));
+assert(sw.includes("oaf-pwa-shell-2026-10-29-ux51"),"PWA no invalida el shell UX51");
 assert(!html.includes("oaf-ux15-contador.js")&&!html.includes('id="oaf-ux15-counter"'),"El contador de visitas permanece");
 const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
 assert.equal(rf.operativo_certificado,false,"RF no debe marcarse operativo sin validación");
@@ -30,13 +30,19 @@ assert(Object.keys(rf.pronostico_diario_rf_experimental||{}).length>=4,"Pronóst
 const enfen=JSON.parse(read("datos/estado_enso_verificado_ux9_2026.json"));
 assert(enfen.enfen?.fuente?.startsWith("https://"),"Falta procedencia de ENFEN");
 assert(/^\d{4}-\d\d-\d\d$/.test(enfen.enfen?.fecha_emision||""),"Fecha de emisión ENFEN inválida");
-assert(html.includes("oaf-ux15-rf-salidas.js?v=20261027-ux45"));
+assert(html.includes("oaf-ux15-rf-salidas.js?v=20261029-ux51"),"Pronóstico UX51 no activado");
+assert(html.includes("oaf-parcelas-ux39.js?v=20261029-ux51"),"Análisis parcelario UX51 no activado");
+const parcel=read("assets/oaf-parcelas-ux39.js");
+assert(parcel.includes("esriGeometryPolygon")&&parcel.includes("esriGeometryMultipoint")&&parcel.includes("layerId:5090024"),"Falta consulta espacial vectorial/ráster correcta");
+const weekly=read("assets/oaf-ux15-rf-salidas.js");
+assert(weekly.includes("function rfEvidence(rain)")&&weekly.includes("wins>=5"),"No se aplica puerta de habilidad al RF");
+assert(weekly.includes("relative_humidity_2m_mean")&&weekly.includes("et0_fao_evapotranspiration"),"Faltan variables agroclimáticas por coordenadas");
 const seasonal=read("assets/oaf-ux15-rf-salidas.js");
 assert(seasonal.includes('hourly:"precipitation,temperature_2m"')&&!seasonal.includes('daily:"precipitation_sum,temperature_2m_mean"'),
  "El pronóstico estacional usa variable no permitida por Open-Meteo");
 const crop=JSON.parse(read("datos/sanidad_agroexportadora_2026.json"));
 assert(typeof crop==="object"&&Object.keys(crop).length>0,"Catálogo fitosanitario vacío");
-const output={fecha_auditoria:new Date().toISOString(),paginas:pages,
+const output={revision:"UX51",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
  iconos_pwa:manifest.icons.length,localidades_rf:Object.keys(rf.pronostico_diario_rf_experimental||{}).length,
  ultima_emision_rf:rf.fecha_generacion_utc,ultima_emision_enfen:enfen.enfen.fecha_emision,
