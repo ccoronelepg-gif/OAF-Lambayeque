@@ -76,7 +76,7 @@ function multipointIdentifyParams(layer){
 }
 function polygonQueryParams(){
  return new URLSearchParams({where:"1=1",geometry:JSON.stringify(polygon),geometryType:"esriGeometryPolygon",
-  inSR:"4326",spatialRel:"esriSpatialRelIntersects",outFields:"OBJECTID,GRIDCODE,LEYENDA",
+  inSR:"4326",spatialRel:"esriSpatialRelIntersects",outFields:"*",
   returnGeometry:"true",outSR:"4326",resultRecordCount:"2000",f:"json"});
 }
 async function checkWeather(item){
