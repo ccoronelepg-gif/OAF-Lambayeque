@@ -30,6 +30,7 @@ assert.equal(monthlyEvidence.horizons,6,"Se requieren seis horizontes mensuales 
 assert.equal(monthlyEvidence.wins,1,"El RF mensual sólo mejora un horizonte en el backtest");
 assert.equal(monthlyEvidence.eligible,false,"RF mensual no debe publicarse si no supera la climatología");
 assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura mensual carece de comparación suficiente");
+assert(src.includes('variable==="rain"||evidence.temperatureValidated'),"RF mensual de temperatura debe tener validación independiente");
 assert(src.includes("RF no publicado como pronóstico operativo"),"Falta advertencia de publicación mensual");
 
 assert(src.includes("RF no se muestra porque mejora"),"RF sin habilidad no debe aparecer como pronóstico");
