@@ -60,7 +60,7 @@ function weeklyBars(root,dates,series,unit){
   if(str!==undefined)a.textContent=str;return a};
  const tickText=v=>Number(v.toFixed(step<.01?3:step<1?2:step<2?1:0)).toLocaleString("es-PE",{maximumFractionDigits:step<.01?3:step<1?2:step<2?1:0});
  const svg=tag("svg",{viewBox:"0 0 840 315",role:"img","aria-label":"Barras comparativas de "+unit+" para siete días"});
- svg.append(tag("title",{},"Pronóstico diario: Open-Meteo, Random Forest experimental y climatología ERA5 de referencia"));
+ svg.append(tag("title",{},"Pronóstico diario y referencia histórica para siete días"));
  for(let k=0;k<=n;k++){
   const v=bottom+step*k,y=scale(v);
   svg.append(tag("line",{x1:L,x2:W-R,y1:y,y2:y,stroke:"#dbe7df","stroke-width":"1"}));
@@ -85,6 +85,17 @@ function weeklyBars(root,dates,series,unit){
  root.replaceChildren(svg);
 }
 window.OAFWeeklyBars=weeklyBars;
+function rfEvidence(rain){
+ const rows=rf?.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte||[];
+ const keyRF=rain?"mae_rf_lluvia_mm":"mae_rf_temperatura_c";
+ const keyBase=rain?"mae_climatologia_lluvia_mm":"mae_climatologia_temperatura_c";
+ const valid=rows.filter(row=>Number.isFinite(row[keyRF])&&Number.isFinite(row[keyBase]));
+ const wins=valid.filter(row=>row[keyRF]<row[keyBase]).length;
+ const meanRF=valid.length?valid.reduce((sum,row)=>sum+row[keyRF],0)/valid.length:NaN;
+ const meanBase=valid.length?valid.reduce((sum,row)=>sum+row[keyBase],0)/valid.length:NaN;
+ return {rows:valid,wins,meanRF,meanBase,eligible:valid.length===7&&wins>=5&&meanRF<meanBase};
+}
+window.OAFWeeklyEvidence=rfEvidence;
 function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  const chart=$("oaf-ux14-weekchart");if(!chart)return;
  let host=$("oaf-ux43-week-summary");
@@ -93,29 +104,29 @@ function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  const valid=externalValues.every(Number.isFinite);
  if(!valid)return;
  const total=externalValues.reduce((a,b)=>a+b,0),max=Math.max(...externalValues);
- const peak=externalValues.indexOf(max),matched=rfValues.filter(Number.isFinite).length;
+ const peak=externalValues.indexOf(max),matched=rfValues.filter(Number.isFinite).length,evidence=rfEvidence(rain);
+ const rfLabel=point?"No validado para parcela":evidence.eligible?matched+"/7 fechas coincidentes":"Retirado del gráfico · "+evidence.wins+"/7 mejoras";
  const labels=rain?[
   ["Lluvia prevista (7 días)",fmt(total,2)+" mm"],
   ["Día de mayor lluvia",days[peak].slice(8,10)+"/"+days[peak].slice(5,7)+" · "+fmt(max,2)+" mm"],
-  ["RF OAF",matched+"/7 días coincidentes"]
+  ["RF OAF",rfLabel]
  ]:[
   ["Temperatura máxima prevista",fmt(max,1)+" °C"],
   ["Día más cálido",days[peak].slice(8,10)+"/"+days[peak].slice(5,7)],
-  ["RF OAF",matched+"/7 días coincidentes"]
+  ["RF OAF",rfLabel]
  ];
  for(const [title,value] of labels){const cell=E("div","oaf-ux43-stat");cell.append(E("small",null,title),E("strong",null,value));host.append(cell);}
- if(point||matched<7){
-  const note=E("p","oaf-ux43-stamp",point?"RF: sin entrenamiento parcelario validado.":"RF: sólo las fechas efectivamente emitidas; no se extrapolan valores.");host.append(note);
+ if(point||!evidence.eligible){
+  const note=E("p","oaf-ux43-stamp",point?
+   "RF: sin entrenamiento parcelario validado; el pronóstico de este punto procede de Open-Meteo.":
+   "RF: permanece en el panel de auditoría y no se presenta como pronóstico cuando no demuestra ventaja consistente frente a la climatología.");
+  host.append(note);
  }
- if(!point){
-  const check=rf?.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte||[];
-  if(check.length===7){
-   const better=check.filter(row=>Number.isFinite(row.mae_rf_lluvia_mm)&&Number.isFinite(row.mae_climatologia_lluvia_mm)&&row.mae_rf_lluvia_mm<row.mae_climatologia_lluvia_mm).length;
-   const message=better<5
-    ?"Precaución: en la prueba retrospectiva de lluvia a siete días, Random Forest sólo mejora la climatología en "+better+"/7 horizontes. No es un pronóstico operativo validado; contrasta con Open-Meteo."
-    :"Random Forest permanece experimental ("+better+"/7 horizontes mejores que climatología); no tiene validación prospectiva ni instrumental.";
-   host.append(E("p","oaf-ux43-model-warning",message));
-  }
+ if(!point&&evidence.rows.length===7){
+  const message=evidence.eligible?
+   "RF supera el criterio retrospectivo mínimo de 5/7 horizontes y menor MAE medio, pero sigue siendo experimental y requiere validación prospectiva e instrumental.":
+   "RF no supera el criterio de publicación: mejora "+evidence.wins+"/7 horizontes de "+(rain?"lluvia":"temperatura máxima")+". Se omite de la gráfica comparativa; consulta la auditoría para ver el detalle.";
+  host.append(E("p","oaf-ux43-model-warning",message));
  }
 }
 function weeklyModelAudit(){
@@ -136,14 +147,17 @@ function weeklyModelAudit(){
  target.append(E("p",null,"Prueba 2025 a un día: MAE lluvia RF "+metric.mae_lluvia_mm+" mm, climatología "+metric.mae_climatologia_local_lluvia_mm+
   " mm; temperatura RF "+metric.mae_temperatura_c+" °C, climatología "+metric.mae_climatologia_local_temperatura_c+" °C."));
  if(backtest){
-  target.append(E("p",null,"Backtest de 7 días encadenados (2025): "+backtest.n_origenes+" orígenes retrospectivos; MAE por horizonte, sin usar días futuros como retardos."));
-  const winners=(backtest.por_horizonte||[]).filter(row=>row.mae_rf_lluvia_mm<row.mae_climatologia_lluvia_mm).length;
-  target.append(E("p","oaf-ux43-model-warning","RF supera la climatología local en "+winners+"/7 horizontes de lluvia evaluados. "+(winners>=5?"Se mantiene como modelo de investigación, sin validación prospectiva.":"RF no supera de forma consistente la climatología en la prueba recursiva: NO promoverlo a modelo operativo.")));
+  const rows=backtest.por_horizonte||[],rain=rfEvidence(true),temp=rfEvidence(false);
+  target.append(E("p",null,"Backtest de siete días encadenados (2025): "+backtest.n_origenes+" orígenes retrospectivos; evaluación por horizonte sin utilizar días futuros como rezagos."));
+  target.append(E("p","oaf-ux43-model-warning","Habilidad comparada con climatología: lluvia "+rain.wins+"/7 horizontes mejores; temperatura máxima "+temp.wins+"/7. "+
+   ((!rain.eligible||!temp.eligible)?"El candidato no se promueve a pronóstico operativo ni se muestra como serie predictiva en la gráfica.":"Aun con este resultado, permanece experimental y no tiene validación prospectiva ni instrumental.")));
   const table=E("table"),head=E("tr");
-  for(const x of ["Día","MAE RF lluvia","MAE climatología","Sesgo RF"]){head.append(E("th",null,x))}
+  for(const x of ["Día","MAE RF lluvia","MAE clim. lluvia","MAE RF Tmax","MAE clim. Tmax"]){head.append(E("th",null,x))}
   table.append(head);
-  for(const row of backtest.por_horizonte||[]){
-   const tr=E("tr");for(const cell of [row.dias_adelante,fmt(row.mae_rf_lluvia_mm,2)+" mm",fmt(row.mae_climatologia_lluvia_mm,2)+" mm",fmt(row.sesgo_rf_lluvia_mm,2)+" mm"]){tr.append(E("td",null,cell))}
+  for(const row of rows){
+   const tr=E("tr");
+   for(const cell of [row.dias_adelante,fmt(row.mae_rf_lluvia_mm,2)+" mm",fmt(row.mae_climatologia_lluvia_mm,2)+" mm",
+    fmt(row.mae_rf_temperatura_c,2)+" °C",fmt(row.mae_climatologia_temperatura_c,2)+" °C"]){tr.append(E("td",null,cell))}
    table.append(tr);
   }
   target.append(table);
@@ -153,72 +167,47 @@ function weeklyModelAudit(){
  target.append(E("p","oaf-ux43-stamp","Modelo experimental; el reanálisis no es observación instrumental. La evaluación retrospectiva no acredita pronósticos emitidos en tiempo real."));
  target.open=active;
 }
-function legend(root,entries){root.replaceChildren();for(const [color,name] of entries){const s=E("span"),i=E("i");i.style.background=color;s.append(i,document.createTextNode(name));root.append(s)}}
-/* Línea de base meteorológica, no predicción: media por día calendario ERA5 1996–2025.
- * Se representa sólo si al menos 20 de 30 años aportan valores por variable y fecha.
- */
-function era5Reference(city){
- const custom=city&&typeof city==="object",loc=custom?[city.lat,city.lon]:geo[city];
- const cacheKey=custom?city.lat.toFixed(5)+","+city.lon.toFixed(5):city;
- if(!loc)return Promise.reject(Error("Localidad no contemplada por ERA5"));
- if(era5WeekCache.has(cacheKey))return era5WeekCache.get(cacheKey);
- const args=new URLSearchParams({latitude:String(loc[0]),longitude:String(loc[1]),
-  start_date:"1996-01-01",end_date:"2025-12-31",
-  daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
- const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
- const task=fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
-  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
-  .then(j=>{
-   const d=j.daily;if(j.error||!Array.isArray(d?.time)||d.time.length<10000)throw Error("Archivo ERA5 1996–2025 incompleto");
-   const groups=new Map();
-   d.time.forEach((date,i)=>{
-    if(!/^(?:199[6-9]|20(?:0\d|1\d|2[0-5]))-\d{2}-\d{2}$/.test(date))return;
-    const key=date.slice(5),rain=d.precipitation_sum?.[i],temp=d.temperature_2m_max?.[i];
-    if(!groups.has(key))groups.set(key,{rain:[],tmax:[]});
-    const a=groups.get(key);
-    if(Number.isFinite(rain)&&rain>=0)a.rain.push(rain);
-    if(Number.isFinite(temp))a.tmax.push(temp);
-   });
-   const average=values=>values?.length>=20?values.reduce((acc,v)=>acc+v,0)/values.length:NaN;
-   return {rain:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.rain)])),
-    tmax:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.tmax)])),
-    years:"1996–2025",cell:[j.latitude,j.longitude]};
-  }).catch(e=>{era5WeekCache.delete(cacheKey);throw e}).finally(()=>clearTimeout(timeout));
- era5WeekCache.set(cacheKey,task);
- return task;
-}
 function week(){
  const version=++weekVersion,point=window.OAFTerritory?.getActivePoint?.("semanal");
  const city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
  const identity=point?point.lat.toFixed(5)+","+point.lon.toFixed(5):city;
  const output=$("oaf-ux14-weekchart"),status=$("oaf-ux14-weekstatus"),key=$("oaf-ux14-rf-semana")?.querySelector(".oaf-ux14-key");
  if(!output||!status)return;
+ if(!point)renderPointDetails(null);
  if(!external||(point?external.pointKey!==identity:external.localidad!==city)){status.textContent="Consultando pronóstico para "+(point?point.name:city)+"…";return}
  const data=external.dias,days=data.time||[];
  if(days.length!==7)return;
  const rainfall=variable==="rain",field=rainfall?"precipitacion_mm":"temperatura_max_c";
  const ext=rainfall?data.precipitation_sum:data.temperature_2m_max;
- let rows=point?[]:rf?.pronostico_diario_rf_experimental?.[city]||[];
+ const evidence=rfEvidence(rainfall);
+ const canPlotRF=!point&&evidence.eligible;
+ let rows=canPlotRF?rf?.pronostico_diario_rf_experimental?.[city]||[]:[];
  if(rf?.estado!=="candidato_experimental_generado"||!Array.isArray(rows))rows=[];
  const map=new Map(rows.map(r=>[r.fecha,r[field]]));
- // Never shift the RF in time to make curves overlap. Missing days remain gaps.
- const forest=days.map(d=>map.has(d)&&Number.isFinite(map.get(d))?map.get(d):NaN);
+ // No desplazar fechas: RF solo se grafica si supera el criterio de habilidad y coincide con la emisión.
+ const forest=days.map(d=>canPlotRF&&map.has(d)&&Number.isFinite(map.get(d))?map.get(d):NaN);
  const matched=forest.filter(Number.isFinite).length;
  const group=[{name:"Open-Meteo · externo",color:"#278eb8",values:ext}];
- if(matched)group.push({name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"});
+ if(canPlotRF&&matched)group.push({name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"});
  weeklyBars(output,days,group,rainfall?"mm/día":"°C");
  weeklyOverview(days,ext,forest,null,rainfall,point);
  weeklyModelAudit();
- if(key)legend(key,[["#278eb8","Open-Meteo · pronóstico vigente"],["#aa65b4","Random Forest OAF · candidato experimental"]]);
- let message="Comparación de "+(point?point.name+" ("+identity+" WGS84)":city)+" del "+days[0]+" al "+days.at(-1)+". ";
- if(matched){
+ if(key){
+  const items=[["#278eb8","Open-Meteo · pronóstico vigente"]];
+  if(canPlotRF&&matched)items.push(["#aa65b4","Random Forest OAF · candidato experimental"]);
+  legend(key,items);
+ }
+ if(point)renderPointDetails(point,data,external.metadata);
+ let message="Pronóstico de "+(point?point.name+" ("+identity+" WGS84)":city)+" del "+days[0]+" al "+days.at(-1)+". ";
+ if(canPlotRF&&matched){
   const diffs=forest.map((v,i)=>Number.isFinite(v)&&Number.isFinite(ext[i])?Math.abs(v-ext[i]):NaN).filter(Number.isFinite);
   const mean=diffs.reduce((a,b)=>a+b,0)/diffs.length;
-  message+="Coincidencia: "+matched+"/7 fechas; diferencia absoluta media entre pronósticos: "+fmt(mean)+(rainfall?" mm/día.":" °C.");
-  message+=" Es una diferencia entre modelos, NO error comprobado contra lluvia o temperatura observadas.";
- } else message+=point?"No hay RF calibrado para esta parcela; se consulta la coordenada indicada. ":"No hay una emisión RF con fechas coincidentes; no se desplaza artificialmente la línea.";
+  message+="RF coincide en "+matched+"/7 fechas; diferencia absoluta media entre pronósticos: "+fmt(mean)+(rainfall?" mm/día.":" °C.")+
+   " Es una diferencia entre modelos, NO error comprobado contra observaciones.";
+ }else if(point)message+="El punto utiliza Open-Meteo; no se extrapola RF desde otra localidad ni se afirma entrenamiento parcelario.";
+ else message+="RF no se muestra porque mejora "+evidence.wins+"/7 horizontes de "+(rainfall?"lluvia":"temperatura máxima")+" frente a climatología; queda disponible solo en auditoría.";
  if(rf?.fecha_generacion_utc)message+=" RF emitido: "+rf.fecha_generacion_utc.slice(0,16)+" UTC.";
- message+=" Referencia vigente: Open-Meteo. RF es una emisión archivada, no ajustada a fechas nuevas.";
+ message+=" Referencia vigente: Open-Meteo. ERA5 es referencia histórica, no pronóstico.";
  status.textContent=message+" Consultando promedio ERA5 1996–2025…";
  era5Reference(point||city).then(history=>{
   if(version!==weekVersion||!output.isConnected)return;
@@ -228,7 +217,12 @@ function week(){
   const lines=[...group,{name:"ERA5 1996–2025 · promedio histórico",color:"#31946e",values:averages,dash:"3 3"}];
   weeklyBars(output,days,lines,rainfall?"mm/día":"°C");
   weeklyOverview(days,ext,forest,averages,rainfall,point);
-  if(key)legend(key,[["#278eb8","Open-Meteo · pronóstico vigente"],["#aa65b4","RF OAF · emisión experimental"],["#31946e","ERA5 1996–2025 · promedio histórico, no pronóstico"]]);
+  if(key){
+   const items=[["#278eb8","Open-Meteo · pronóstico vigente"]];
+   if(canPlotRF&&matched)items.push(["#aa65b4","RF OAF · emisión experimental"]);
+   items.push(["#31946e","ERA5 1996–2025 · promedio histórico, no pronóstico"]);
+   legend(key,items);
+  }
   const delta=ext.map((value,i)=>Number.isFinite(value)&&Number.isFinite(averages[i])?value-averages[i]:NaN).filter(Number.isFinite);
   const mean=delta.length?delta.reduce((a,b)=>a+b,0)/delta.length:NaN;
   const comment=Number.isFinite(mean)?" Open-Meteo se sitúa en promedio "+fmt(Math.abs(mean))+(rainfall?" mm/día":" °C")+(mean>=0?" por encima":" por debajo")+" de la referencia histórica en estos días.":"";
@@ -434,22 +428,76 @@ function setup(){
  month();
 }
 let customRequest=0;
+function renderPointDetails(point,daily,metadata){
+ const existing=$("oaf-ux51-point-details");
+ if(!point||!daily){if(existing)existing.hidden=true;return;}
+ let panel=existing;
+ if(!panel){
+  panel=E("section","oaf-ux51-point-details");panel.id="oaf-ux51-point-details";
+  const anchor=$("oaf-ux14-weekstatus")||$("oaf-ux14-weekchart");
+  if(anchor)anchor.after(panel);
+ }
+ if(!panel)return;
+ panel.hidden=false;
+ if(!document.getElementById("oaf-ux51-point-style")){
+  const style=E("style");style.id="oaf-ux51-point-style";
+  style.textContent=".oaf-ux51-point-details{margin:14px 0;padding:14px;border:1px solid #c8ddd2;border-radius:12px;background:#f5faf7;overflow:auto}.oaf-ux51-point-details h3{margin:0 0 8px;color:#185b49;font-size:16px}.oaf-ux51-point-details p{font-size:12px;line-height:1.55;color:#536d62}.oaf-ux51-point-details table{width:100%;min-width:760px;border-collapse:collapse;font-size:12px}.oaf-ux51-point-details th,.oaf-ux51-point-details td{padding:7px;border-bottom:1px solid #d8e6de;text-align:right}.oaf-ux51-point-details th:first-child,.oaf-ux51-point-details td:first-child{text-align:left}.oaf-ux51-point-details th{color:#185b49;background:#eaf4ee}";
+  document.head.append(style);
+ }
+ panel.replaceChildren(E("h3",null,"Indicadores agroclimáticos · área productiva"));
+ const cellLat=metadata?.latitude,cellLon=metadata?.longitude;
+ const cellText=Number.isFinite(cellLat)&&Number.isFinite(cellLon)?
+  "Celda de modelo devuelta: "+cellLat.toFixed(4)+", "+cellLon.toFixed(4)+".":
+  "El proveedor no informó la coordenada central de la celda.";
+ panel.append(E("p",null,"Coordenada solicitada WGS84: "+point.lat.toFixed(5)+", "+point.lon.toFixed(5)+". "+cellText+
+  " Pronóstico externo Open-Meteo; no es una medición de sensor dentro del predio."));
+ const columns=[
+  ["precipitation_sum","Lluvia","mm"],["temperature_2m_max","T. máx.","°C"],["temperature_2m_min","T. mín.","°C"],
+  ["relative_humidity_2m_mean","HR media","%"],["shortwave_radiation_sum","Radiación","MJ/m²"],
+  ["wind_speed_10m_max","Viento máx.","km/h"],["et0_fao_evapotranspiration","ET₀ FAO","mm"],
+  ["vapour_pressure_deficit_max","DPV máx.","kPa"]
+ ];
+ const table=E("table"),head=E("tr");head.append(E("th",null,"Día"));
+ for(const col of columns)head.append(E("th",null,col[1]+" ("+col[2]+")"));
+ const thead=E("thead");thead.append(head);table.append(thead);
+ const body=E("tbody");
+ daily.time.forEach((date,i)=>{
+  const tr=E("tr");tr.append(E("td",null,date));
+  for(const [key,label,unit] of columns){
+   const value=daily[key]?.[i];
+   tr.append(E("td",null,Number.isFinite(value)?fmt(value,1):"—"));
+  }
+  body.append(tr);
+ });
+ table.append(body);panel.append(table);
+ panel.append(E("p",null,"Lectura: la lluvia y la temperatura describen el pronóstico diario; humedad, radiación, viento, evapotranspiración de referencia y DPV ayudan a contextualizar la demanda atmosférica. Los campos sin dato se muestran como —, nunca se imputan."));
+}
 async function weeklyPoint(point){
  const token=++customRequest;
- if(!point){external=null;const city=$("oaf-ux14-ciudad");city?.dispatchEvent(new Event("change",{bubbles:true}));return;}
+ if(!point){external=null;renderPointDetails(null);const city=$("oaf-ux14-ciudad");city?.dispatchEvent(new Event("change",{bubbles:true}));return;}
  const key=point.lat.toFixed(5)+","+point.lon.toFixed(5);
  const params=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),
-  timezone:"America/Lima",forecast_days:"7",daily:"precipitation_sum,temperature_2m_max"});
- const status=$("oaf-ux14-weekstatus");if(status)status.textContent="Consultando pronóstico para "+point.name+"…";
+  timezone:"America/Lima",forecast_days:"7",
+  daily:"precipitation_sum,temperature_2m_max,temperature_2m_min,relative_humidity_2m_mean,shortwave_radiation_sum,wind_speed_10m_max,et0_fao_evapotranspiration,vapour_pressure_deficit_max"});
+ const status=$("oaf-ux14-weekstatus");if(status)status.textContent="Consultando pronóstico e indicadores agroclimáticos para "+point.name+"…";
  try{
   const res=await fetch("https://api.open-meteo.com/v1/forecast?"+params,{cache:"no-store"});
   if(!res.ok)throw Error("Open-Meteo HTTP "+res.status);
-  const d=(await res.json()).daily;
-  if(!Array.isArray(d?.time)||d.time.length!==7||!d.precipitation_sum?.every(Number.isFinite)||!d.temperature_2m_max?.every(Number.isFinite))throw Error("Respuesta diaria incompleta");
+  const payload=await res.json(),d=payload.daily;
+  if(!Array.isArray(d?.time)||d.time.length!==7||!d.precipitation_sum?.every(Number.isFinite)||!d.temperature_2m_max?.every(Number.isFinite))
+   throw Error("Respuesta diaria incompleta en lluvia o temperatura máxima");
   if(token!==customRequest||!window.OAFTerritory?.getActivePoint?.("semanal"))return;
-  external={localidad:"Punto personalizado",pointKey:key,dias:d};week();
- }catch(err){if(token===customRequest&&status){$("oaf-ux14-weekchart").textContent="No se recuperaron datos para esta coordenada.";status.textContent="Consulta no disponible: "+err.message;}}
+  external={localidad:"Punto personalizado",pointKey:key,dias:d,metadata:{latitude:payload.latitude,longitude:payload.longitude,dailyUnits:payload.daily_units||{}}};
+  week();
+ }catch(err){
+  if(token===customRequest&&status){
+   renderPointDetails(null);
+   $("oaf-ux14-weekchart").textContent="No se recuperaron datos para esta coordenada.";
+   status.textContent="Consulta no disponible: "+err.message;
+  }
+ }
 }
+
 document.addEventListener("oaf:area-update",e=>{
  if(e.detail?.scope!=="semanal")return;
  if(e.detail.active&&e.detail.point)weeklyPoint(e.detail.point);
