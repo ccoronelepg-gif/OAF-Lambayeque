@@ -1,4 +1,4 @@
-name: OAF UX39 - Parcelas y auditoria geoespacial
+name: OAF UX51 - Análisis zonal y pronóstico por coordenadas
 on:
   push:
     paths:
@@ -42,14 +42,14 @@ jobs:
           node tests/test_ux41_semana.cjs
           node tests/test_ux43_weekbars.cjs
           node tests/test_ux44_estacional.cjs
-      - name: Auditar disponibilidad de geoservicios y ERA5-Land
+      - name: Auditar servicios ráster/vectoriales, ERA5-Land y Open-Meteo
         run: node tests/auditoria_ux39_servicios.cjs
       - name: Conservar evidencia fechada de cada auditoria
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ux39-servicios
-          path: ux39-auditoria-servicios.json
+          name: ux51-geoservicios
+          path: ux51-auditoria-geoservicios.json
           if-no-files-found: warn
   browser-smoke:
     if: github.event_name != 'schedule'
