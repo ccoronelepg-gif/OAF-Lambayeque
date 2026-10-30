@@ -5,6 +5,14 @@
 **Sitio público:** https://ccoronelepg-gif.github.io/OAF-Lambayeque/
 
 
+## UX51 · mejoras de análisis zonal, pronóstico por coordenadas y control RF (29/10/2026)
+
+Se corrigió la consulta parcelaria para diferenciar capas vectoriales INGEMMET de capas ráster CENEPRED; el pronóstico de siete días por coordenadas incorpora humedad, radiación, viento, ET₀ y DPV; y el RF experimental se retira de la gráfica predictiva cuando no demuestra habilidad frente a la climatología. Se conserva la política PWA de datos científicos en red para no mostrar avisos desactualizados.
+
+[**Informe de implementación, pruebas y límites UX51**](AUDITORIA_UX51_RECOMENDACIONES.md).
+
+
+
 
 
 
