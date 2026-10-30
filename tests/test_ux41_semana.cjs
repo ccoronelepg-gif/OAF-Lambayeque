@@ -22,7 +22,7 @@ assert(src.includes("relative_humidity_2m_mean")&&src.includes("shortwave_radiat
 assert(src.includes("et0_fao_evapotranspiration")&&src.includes("vapour_pressure_deficit_max"),"Faltan ET0 y DPV del pronóstico puntual");
 assert(src.includes("function rfEvidence(rain)")&&src.includes("wins>=5"),"RF debe superar 5/7 horizontes y MAE medio para mostrarse");
 assert(src.includes("RF no se muestra porque mejora"),"RF sin habilidad no debe aparecer como pronóstico");
-assert(src.includes("MAE RF Tmax")&&src.includes("MAE clim. Tmax"),"La auditoría debe comparar también temperatura máxima");
+assert(src.includes("MAE RF Tmax")&&src.includes("MAE clim. Tmax")&&src.includes("MAE medio del backtest"),"La auditoría debe comparar temperatura y MAE medio");
 
 const start=src.indexOf("/* Línea de base meteorológica"),end=src.indexOf("function week(){",start);
 assert(start>=0&&end>start,"Falta cálculo de promedio por día del año");
