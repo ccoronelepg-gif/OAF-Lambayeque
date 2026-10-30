@@ -6,10 +6,11 @@ const python=fs.readFileSync("modelos/pronostico_rf_experimental_ux15.py","utf8"
 const rf=JSON.parse(fs.readFileSync("datos/rf_experimental_ux15.json","utf8"));
 const html=fs.readFileSync("index.html","utf8"),sw=fs.readFileSync("sw.js","utf8");
 assert.match(html,/oaf-ux15-rf-salidas\.js\?v=/);
-assert(html.includes("oaf-ux14-reorganizacion.js?v=20261027-ux43"));
+assert(html.includes("oaf-ux14-reorganizacion.js?v=20261029-ux51"));
 assert.match(sw,/const RELEASE="oaf-pwa-shell-[^"]+"/);
 for(const piece of [script,fs.readFileSync("assets/oaf-ux14-reorganizacion.js","utf8")])new Function(piece);
 assert(script.includes("weeklyBars(output,days,group")&&script.includes("weeklyBars(output,days,lines"),"El pronóstico no usa barras al cargar modelos");
+assert(script.includes("function rfEvidence(rain)")&&script.includes("wins>=5"),"El RF sin habilidad debe quedar fuera de la gráfica operativa");
 assert(python.includes("backtest_semanal_recursivo")&&python.includes("origin+dt.timedelta(days=6)")&&python.includes('k<origin.isoformat()'),
  "Falta backtest temporal con historia truncada al inicio del horizonte");
 assert(python.includes("test_diario_2025_congelado"),"Falta anotación de test congelado");
