@@ -23,8 +23,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    console.log("UX21_BOOT_DEBUG",JSON.stringify({width,bootDebug}));
    await page.waitForFunction(() => {
     const value=document.querySelector("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent?.trim()||"";
-    return value.length>0&&!/Cargando|Preparando/i.test(value);
-   }, {timeout:10000});
+    return value.includes("RF no publicado como pronóstico operativo");
+   }, {timeout:30000});
   await page.locator("#oaf-ux14-rf-mes #oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
    await page.waitForTimeout(350);
    const status=await page.evaluate(()=>{
@@ -33,6 +33,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
      viewSwitches:document.querySelectorAll(".oaf-view-switch").length,
      cityBar:document.querySelectorAll(".oaf-contextbar").length,
      monthlyChart:!!q("#oaf-ux14-rf-mes #oaf-ux14-monthchart svg"),monthlyStatus:q("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent,
+     monthlyView:q("#oaf-ux14-rf-mes #oaf-ux16-vista")?.value,
+     monthlyLegend:q("#oaf-ux14-rf-mes .oaf-ux14-key")?.textContent,
      futureNote:q("#oaf-ux14-rf-mes .oaf-ux14-no-forecast")?.textContent,
      extraCards:document.querySelectorAll("#oaf-ux16-months").length,
      oldHomeBlock:document.querySelectorAll('#inicio #oaf-bloque-prediccion-inicio').length,
@@ -46,8 +48,16 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    assert.equal(status.oldHomeBlock,0,"Evolución histórica duplicada en Inicio");
    assert.equal(status.extraCards,0,"Tarjetas RF redundantes continúan");
    assert.equal(status.monthlyChart,true,"La evaluación mensual retrospectiva no se dibuja");
-   assert.ok(status.monthlyStatus?.includes("Prueba retrospectiva 2021–2025"),"El gráfico mensual no declara su periodo retrospectivo");
-   assert.ok(status.futureNote?.includes("no se publica como pronóstico operativo"),"El texto mensual confunde evaluación histórica con pronóstico futuro");
+   assert.equal(status.monthlyView,"futuro","La vista mensual debe abrir en horizonte futuro");
+   assert.ok(status.monthlyStatus?.includes("RF no publicado como pronóstico operativo")&&status.monthlyStatus?.includes("1/6 horizontes"),"El RF mensual no está bloqueado por su baja habilidad");
+   assert.ok(status.monthlyLegend?.includes("ERA5")&&!status.monthlyLegend?.includes("Random Forest OAF"),"El gráfico futuro debe mostrar climatología y no RF no validado");
+   assert.ok(status.futureNote?.includes("1 de 6 horizontes recursivos"),"El texto mensual no explica la evidencia del bloqueo");
+   await page.locator("#oaf-ux14-rf-mes #oaf-ux16-vista").selectOption("historico");
+   await page.waitForFunction(()=>document.querySelector("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent?.includes("Prueba retrospectiva 2021–2025"),{timeout:30000});
+   const historical=await page.locator("#oaf-ux14-rf-mes #oaf-ux14-monthstatus").textContent();
+   assert.ok(historical?.includes("Prueba retrospectiva 2021–2025"),"La vista histórica no se conserva");
+   await page.locator("#oaf-ux14-rf-mes #oaf-ux16-vista").selectOption("futuro");
+   await page.waitForFunction(()=>document.querySelector("#oaf-ux14-rf-mes #oaf-ux14-monthstatus")?.textContent?.includes("RF no publicado como pronóstico operativo"),{timeout:30000});
    assert.ok(status.summarySources?.includes("Open-Meteo")&&status.summarySources.includes("ENFEN"),"Fuentes no centralizadas");
    assert.equal(status.enfenStyle,"italic","Interpretación del Niño Costero no está en cursiva");
    await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').evaluate(el=>el.click());
