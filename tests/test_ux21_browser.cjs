@@ -12,6 +12,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    });
    const page=await context.newPage();
    await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:60000});
+   if(width===390)await page.locator("#oaf-mobile-menu").click();
+   await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
    await page.waitForFunction(() => document.querySelector("#oaf-ux14-monthstatus")?.textContent?.includes("Prueba retrospectiva 2021–2025"), {timeout:30000});
   await page.locator("#oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
    await page.waitForTimeout(350);
