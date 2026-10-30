@@ -406,7 +406,9 @@ function rasterClassInfo(metadata){
 function cenepredClass(result,classInfo={}){
  const attributes=result?.attributes||{},keys=["n_peligro","n_pelig_mm","niv_sus","leyenda","value","gridcode","grid_code","class","nivel"];
  let raw;
- for(const key of keys){if(attributes[key]!==undefined&&attributes[key]!==null&&String(attributes[key]).trim()!==""){raw=attributes[key];break;}}
+ const thematic=Object.entries(attributes).find(([key,value])=>/(n_peligro|n_pelig_mm|leyenda)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!=="");
+ if(thematic)raw=thematic[1];
+ if(raw===undefined)for(const key of keys){if(attributes[key]!==undefined&&attributes[key]!==null&&String(attributes[key]).trim()!==""){raw=attributes[key];break;}}
  if(raw===undefined){
   const entry=Object.entries(attributes).find(([key,value])=>/(value|pixel|grid|pelig|suscep|class|nivel|code)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!=="");
   if(entry)raw=entry[1];
