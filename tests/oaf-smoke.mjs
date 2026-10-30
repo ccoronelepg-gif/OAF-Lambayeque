@@ -119,7 +119,7 @@ test("Los archivos científicos base mantienen estructura válida y advertencias
   assert.ok(sanidad.organismos.every(o=>ids.has(o.crop_id)));
   const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
   assert.equal(rf.operativo_certificado,false);
-  assert.match(read("assets/oaf-ux15-rf-salidas.js"),/Precaución: en la prueba retrospectiva de lluvia a siete días/);
+  assert.match(read("assets/oaf-ux15-rf-salidas.js"),/RF no se muestra porque mejora/);
   for(const [city,forecast] of Object.entries(rf.pronostico_diario_rf_experimental)){
     assert.equal(forecast.length,rf.horizonte_semanal,city);
     assert.ok(forecast.every(x=>typeof x.fecha==="string"));
