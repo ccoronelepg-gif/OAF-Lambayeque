@@ -8,6 +8,8 @@ on:
       - "tests/auditoria_ux45_fuentes_live.cjs"
       - "assets/oaf-parcelas-ux39.js"
       - "assets/oaf-ux15-rf-salidas.js"
+      - "assets/oaf-ux14-reorganizacion.js"
+      - "tests/test_ux21_browser.cjs"
       - "index.html"
       - "sw.js"
       - "tests/test_ux39_parcelas.cjs"
