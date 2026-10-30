@@ -65,6 +65,10 @@ const classes=api.parseRasterClasses([
 ],4);
 assert.equal(classes.identified,4);assert.equal(classes.coverage,1);
 assert.deepEqual({...classes.counts},{"Muy alto":1,Alto:1,Medio:1,Bajo:1});
+const numericClasses=api.parseRasterClasses([{attributes:{"Pixel Value":3}},{value:2}],2,{unique:{"3":"Alto","2":"Medio"}});
+assert.deepEqual({...numericClasses.counts},{Alto:1,Medio:1},"No se traducen valores numéricos de raster según la leyenda");
+const rawCodes=api.parseRasterClasses([{attributes:{"Pixel Value":7}}],1);
+assert.equal(rawCodes.counts["Código 7"],1,"Un valor raster numérico debe conservarse como código y no perderse como sin clasificar");
 const noData=api.parseRasterClasses([],9);
 assert.equal(noData.identified,0);assert.equal(noData.coverage,0);
 const normalized=api.normalizeArcGISFeature({attributes:{LEYENDA:"Alto"},geometry:{rings:esri.rings,spatialReference:{wkid:4326}}});
