@@ -42,6 +42,8 @@ assert(seasonal.includes('hourly:"precipitation,temperature_2m"')&&!seasonal.inc
  "El pronóstico estacional usa variable no permitida por Open-Meteo");
 const crop=JSON.parse(read("datos/sanidad_agroexportadora_2026.json"));
 assert(typeof crop==="object"&&Object.keys(crop).length>0,"Catálogo fitosanitario vacío");
+const boletines=JSON.parse(read("datos/boletines_institucionales_2026.json"));
+assert(boletines.boletines.some(b=>b.id==="enfen18"&&b.url.includes("repositorio.imarpe.gob.pe/items/0980a018-d5e0-4583-b028-7bebbbb8e7d7")),"El comunicado ENFEN debe apuntar al repositorio oficial IMARPE");
 const output={revision:"UX51",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
  iconos_pwa:manifest.icons.length,localidades_rf:Object.keys(rf.pronostico_diario_rf_experimental||{}).length,
