@@ -10,6 +10,8 @@ on:
       - "assets/oaf-ux15-rf-salidas.js"
       - "assets/oaf-ux14-reorganizacion.js"
       - "tests/test_ux21_browser.cjs"
+      - "tests/test_ux43_weekbars.cjs"
+      - "tests/test_ux45_verificacion_general.cjs"
       - "index.html"
       - "sw.js"
       - "tests/test_ux39_parcelas.cjs"
