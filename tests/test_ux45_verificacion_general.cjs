@@ -20,7 +20,7 @@ for(const icon of manifest.icons){
  assert(fs.existsSync(path.join(root,icon.src)),"Ícono no disponible "+icon.src);
 }
 assert(sw.includes("Network-first")&&sw.includes('isScientificData(url)'),"PWA no distingue avisos y datos de caché");
-assert(sw.includes("oaf-pwa-shell-2026-10-29-ux51b"),"PWA no invalida el shell UX51");
+assert(sw.includes("oaf-pwa-shell-2026-10-29-ux51c"),"PWA no invalida el shell UX51");
 assert(!html.includes("oaf-ux15-contador.js")&&!html.includes('id="oaf-ux15-counter"'),"El contador de visitas permanece");
 const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
 assert.equal(rf.operativo_certificado,false,"RF no debe marcarse operativo sin validación");
@@ -30,8 +30,8 @@ assert(Object.keys(rf.pronostico_diario_rf_experimental||{}).length>=4,"Pronóst
 const enfen=JSON.parse(read("datos/estado_enso_verificado_ux9_2026.json"));
 assert(enfen.enfen?.fuente?.startsWith("https://"),"Falta procedencia de ENFEN");
 assert(/^\d{4}-\d\d-\d\d$/.test(enfen.enfen?.fecha_emision||""),"Fecha de emisión ENFEN inválida");
-assert(html.includes("oaf-ux15-rf-salidas.js?v=20261029-ux51b"),"Pronóstico UX51 no activado");
-assert(html.includes("oaf-parcelas-ux39.js?v=20261029-ux51b"),"Análisis parcelario UX51 no activado");
+assert(html.includes("oaf-ux15-rf-salidas.js?v=20261029-ux51c"),"Pronóstico UX51 no activado");
+assert(html.includes("oaf-parcelas-ux39.js?v=20261029-ux51c"),"Análisis parcelario UX51 no activado");
 const parcel=read("assets/oaf-parcelas-ux39.js");
 assert(parcel.includes("esriGeometryPolygon")&&parcel.includes("esriGeometryMultipoint")&&parcel.includes("layerId:5090024"),"Falta consulta espacial vectorial/ráster correcta");
 const weekly=read("assets/oaf-ux15-rf-salidas.js");
