@@ -100,8 +100,11 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(await page.locator("#oaf-ux42-slide-week").evaluate(x=>!x.hidden),"Carrusel no muestra 7 días");
   await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Horizonte mensual"]').click());
   assert(await page.locator("#oaf-ux42-slide-month").evaluate(x=>!x.hidden),"Carrusel no muestra mensual");
-  const pointForecast={daily:{time:["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"],
-    precipitation_sum:[0.03,0.08,0.12,0.16,0.2,0.14,0.01],temperature_2m_max:[24,25,26,27,28,27,25]}};
+  const pointForecast={latitude:-6.15,longitude:-79.71,daily:{time:["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"],
+    precipitation_sum:[0.03,0.08,0.12,0.16,0.2,0.14,0.01],temperature_2m_max:[24,25,26,27,28,27,25],
+    temperature_2m_min:[17,18,18,19,20,19,18],relative_humidity_2m_mean:[72,70,68,74,76,75,71],
+    shortwave_radiation_sum:[18,19,20,21,19,18,17],wind_speed_10m_max:[12,13,11,14,15,12,10],
+    et0_fao_evapotranspiration:[3.2,3.4,3.5,3.6,3.3,3.1,3.0],vapour_pressure_deficit_max:[1.1,1.2,1.3,1.0,0.9,1.0,1.2]}};
   const eraTime=[],eraRain=[],eraTemp=[];
   for(let y=1996;y<=2025;y++)for(let t=Date.UTC(y,0,1);t<Date.UTC(y+1,0,1);t+=86400000){
     eraTime.push(new Date(t).toISOString().slice(0,10));eraRain.push(0.1);eraTemp.push(26);
@@ -139,6 +142,15 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     "El gráfico de siete días debe usar barras agrupadas, no líneas: "+JSON.stringify(plotInfo));
   assert(plotInfo.desc?.includes("Sector piloto")&&plotInfo.desc?.includes("ERA5"),
     "Análisis por coordenada/ERA5 no disponible: "+JSON.stringify(plotInfo));
+  const pointTable=await page.evaluate(()=>{
+    const root=document.querySelector("#oaf-ux51-point-details");
+    return {visible:!!root&&!root.hidden,rows:root?.querySelectorAll("tbody tr").length||0,
+      text:root?.textContent||"",headers:[...root?.querySelectorAll("thead th")||[]].map(x=>x.textContent)};
+  });
+  assert(pointTable.visible&&pointTable.rows===7,"No aparece la tabla agroclimática diaria de la parcela: "+JSON.stringify(pointTable));
+  for(const field of ["HR media (%)","Radiación (MJ/m²)","ET₀ FAO (mm)","DPV máx. (kPa)"])
+    assert(pointTable.headers.includes(field),"Falta el indicador "+field+": "+JSON.stringify(pointTable.headers));
+
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";f.requestSubmit();
