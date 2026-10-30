@@ -167,6 +167,40 @@ function weeklyModelAudit(){
  target.append(E("p","oaf-ux43-stamp","Modelo experimental; el reanálisis no es observación instrumental. La evaluación retrospectiva no acredita pronósticos emitidos en tiempo real."));
  target.open=active;
 }
+function legend(root,entries){root.replaceChildren();for(const [color,name] of entries){const s=E("span"),i=E("i");i.style.background=color;s.append(i,document.createTextNode(name));root.append(s)}}
+/* Línea de base meteorológica, no predicción: media por día calendario ERA5 1996–2025.
+ * Se representa sólo si al menos 20 de 30 años aportan valores por variable y fecha.
+ */
+function era5Reference(city){
+ const custom=city&&typeof city==="object",loc=custom?[city.lat,city.lon]:geo[city];
+ const cacheKey=custom?city.lat.toFixed(5)+","+city.lon.toFixed(5):city;
+ if(!loc)return Promise.reject(Error("Localidad no contemplada por ERA5"));
+ if(era5WeekCache.has(cacheKey))return era5WeekCache.get(cacheKey);
+ const args=new URLSearchParams({latitude:String(loc[0]),longitude:String(loc[1]),
+  start_date:"1996-01-01",end_date:"2025-12-31",
+  daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
+ const task=fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(j=>{
+   const d=j.daily;if(j.error||!Array.isArray(d?.time)||d.time.length<10000)throw Error("Archivo ERA5 1996–2025 incompleto");
+   const groups=new Map();
+   d.time.forEach((date,i)=>{
+    if(!/^(?:199[6-9]|20(?:0\d|1\d|2[0-5]))-\d{2}-\d{2}$/.test(date))return;
+    const key=date.slice(5),rain=d.precipitation_sum?.[i],temp=d.temperature_2m_max?.[i];
+    if(!groups.has(key))groups.set(key,{rain:[],tmax:[]});
+    const a=groups.get(key);
+    if(Number.isFinite(rain)&&rain>=0)a.rain.push(rain);
+    if(Number.isFinite(temp))a.tmax.push(temp);
+   });
+   const average=values=>values?.length>=20?values.reduce((acc,v)=>acc+v,0)/values.length:NaN;
+   return {rain:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.rain)])),
+    tmax:Object.fromEntries([...groups].map(([k,v])=>[k,average(v.tmax)])),
+    years:"1996–2025",cell:[j.latitude,j.longitude]};
+  }).catch(e=>{era5WeekCache.delete(cacheKey);throw e}).finally(()=>clearTimeout(timeout));
+ era5WeekCache.set(cacheKey,task);
+ return task;
+}
 function week(){
  const version=++weekVersion,point=window.OAFTerritory?.getActivePoint?.("semanal");
  const city=$("oaf-ux14-ciudad")?.value||"Chiclayo",variable=$("oaf-ux14-variable")?.value||"rain";
