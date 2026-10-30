@@ -21,6 +21,17 @@ assert.match(read("sw.js"),/const RELEASE="oaf-pwa-shell-[^"]+"/,"Cache PWA no v
 assert(src.includes("relative_humidity_2m_mean")&&src.includes("shortwave_radiation_sum"),"Faltan indicadores diarios para área productiva");
 assert(src.includes("et0_fao_evapotranspiration")&&src.includes("vapour_pressure_deficit_max"),"Faltan ET0 y DPV del pronóstico puntual");
 assert(src.includes("function rfEvidence(rain)")&&src.includes("wins>=5"),"RF debe superar 5/7 horizontes y MAE medio para mostrarse");
+const monthlyStart=src.indexOf("function monthlyRfEvidence(model)"),monthlyEnd=src.indexOf("window.OAFMonthlyEvidence",monthlyStart);
+assert(monthlyStart>=0&&monthlyEnd>monthlyStart,"Falta puerta de habilidad para RF mensual");
+const monthlyEvidenceFn=new Function("model",src.slice(monthlyStart,monthlyEnd)+";return monthlyRfEvidence(model);");
+const monthlyModel=JSON.parse(read("datos/rf_experimental_ux15.json"));
+const monthlyEvidence=monthlyEvidenceFn(monthlyModel);
+assert.equal(monthlyEvidence.horizons,6,"Se requieren seis horizontes mensuales evaluados");
+assert.equal(monthlyEvidence.wins,1,"El RF mensual sólo mejora un horizonte en el backtest");
+assert.equal(monthlyEvidence.eligible,false,"RF mensual no debe publicarse si no supera la climatología");
+assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura mensual carece de comparación suficiente");
+assert(src.includes("RF no publicado como pronóstico operativo"),"Falta advertencia de publicación mensual");
+
 assert(src.includes("RF no se muestra porque mejora"),"RF sin habilidad no debe aparecer como pronóstico");
 assert(src.includes("MAE RF Tmax")&&src.includes("MAE clim. Tmax")&&src.includes("MAE medio del backtest"),"La auditoría debe comparar temperatura y MAE medio");
 
