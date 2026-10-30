@@ -175,8 +175,10 @@ function initMonth(){
     const show=metric.value,series=[{name:"Observado",values:agg.map(x=>x.obs),color:"#2e8ab8"}];
     if(show!=="ref")series.push({name:"RF retrospectivo",values:agg.map(x=>x.rf),color:"#e49d4d"});
     if(show!=="rf")series.push({name:"Climatología",values:agg.map(x=>x.clim),color:"#43977a"});
-    svgChart("oaf-ux14-monthchart",series,["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],"mm/mes");
-    $("oaf-ux14-monthstatus").textContent="Prueba retrospectiva 2021–2025 (10K), "+rows.length+" registros sector-mes; MAE RF "+fmt(maeRF)+" mm frente a climatología "+fmt(maeClim)+" mm. No es una proyección futura.";
+    if($("oaf-ux16-vista")?.value!=="futuro"){
+     svgChart("oaf-ux14-monthchart",series,["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],"mm/mes");
+     $("oaf-ux14-monthstatus").textContent="Prueba retrospectiva 2021–2025 (10K), "+rows.length+" registros sector-mes; MAE RF "+fmt(maeRF)+" mm frente a climatología "+fmt(maeClim)+" mm. No es una proyección futura.";
+    }
    };
    sel.addEventListener("change",redraw);metric.addEventListener("change",redraw);redraw();
  }).catch(e=>{$("oaf-ux14-monthstatus").textContent="Modelo por paisaje no disponible: "+e.message;$("oaf-ux14-monthchart").textContent="Sin cifras: revisa el archivo técnico."});
