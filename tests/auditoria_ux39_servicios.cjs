@@ -122,6 +122,11 @@ async function checkRasterParcel(item){
    estado:body.results.length?"responde_con_valores":"responde_sin_valores",fecha_utc:timestamp,
    metadatos:{tipo:metadata.type,metodo:"Identify multipunto",muestras:samples.length,
     resultados:body.results.length,categorias:categories,
+    resultado_muestra:body.results[0]||null,
+    renderer:{tipo:metadata.drawingInfo?.renderer?.type||null,
+     uniqueValueInfos:metadata.drawingInfo?.renderer?.uniqueValueInfos||[],
+     classBreakInfos:metadata.drawingInfo?.renderer?.classBreakInfos||[]},
+    rasterInfo:metadata.rasterInfo||null,
     alcance:"distribución de valores devueltos; no equivale a hectáreas exactas"}};
  }catch(error){return {fuente:"CENEPRED · prueba zonal multipunto · capa "+item.layer,
   estado:"no_verificable",fecha_utc:timestamp,motivo:String(error.message).slice(0,300)};}
@@ -136,7 +141,7 @@ async function checkRasterParcel(item){
   alcance:"Disponibilidad técnica, metadata y respuesta de fuentes. CENEPRED es ráster y se consulta mediante Identify multipunto; INGEMMET es vectorial y se consulta con el polígono real. Una consulta vacía no equivale a ausencia de peligro ni a riesgo cero.",
   fuentes:results};
  fs.writeFileSync(path.resolve("ux51-auditoria-geoservicios.json"),JSON.stringify(obj,null,2)+"\n");
- for(const r of results)console.log(r.fuente,":",r.estado,r.motivo||JSON.stringify(r.metadatos));
+ for(const r of results)console.log(r.fuente,":",r.estado,r.motivo||JSON.stringify(r.metadatos).slice(0,1800));
  const summary=process.env.GITHUB_STEP_SUMMARY;
  if(summary)fs.appendFileSync(summary,["## Auditoría UX51: geoservicios y pronóstico agroclimático","",
   ...results.map(r=>"- "+r.fuente+": **"+r.estado+"**"+(r.motivo?" ("+r.motivo+")":"")),
