@@ -12,14 +12,15 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    });
    const page=await context.newPage();
    await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:60000});
-   await page.locator("#oaf-ux16-vista").waitFor({state:"attached",timeout:30000});
+   await page.locator("#oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
    await page.waitForTimeout(350);
    const status=await page.evaluate(()=>{
     const q=s=>document.querySelector(s);
     return {
      viewSwitches:document.querySelectorAll(".oaf-view-switch").length,
      cityBar:document.querySelectorAll(".oaf-contextbar").length,
-     monthlyValue:q("#oaf-ux16-vista")?.value,
+     monthlyChart:!!q("#oaf-ux14-monthchart svg"),monthlyStatus:q("#oaf-ux14-monthstatus")?.innerText,
+     futureNote:q("#oaf-ux14-rf-mes .oaf-ux14-no-forecast")?.innerText,
      extraCards:document.querySelectorAll("#oaf-ux16-months").length,
      oldHomeBlock:document.querySelectorAll('#inicio #oaf-bloque-prediccion-inicio').length,
      summarySources:q("#oaf-home-summary-static")?.innerText,
@@ -31,7 +32,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    assert.equal(status.cityBar,0,"Barra Cambiar zona permanece");
    assert.equal(status.oldHomeBlock,0,"Evolución histórica duplicada en Inicio");
    assert.equal(status.extraCards,0,"Tarjetas RF redundantes continúan");
-   assert.equal(status.monthlyValue,"futuro","El gráfico mensual no abre noviembre 2026");
+   assert.equal(status.monthlyChart,true,"La evaluación mensual retrospectiva no se dibuja");
+   assert.ok(status.monthlyStatus?.includes("Prueba retrospectiva 2021–2025"),"El gráfico mensual no declara su periodo retrospectivo");
+   assert.ok(status.futureNote?.includes("no se publica como pronóstico operativo"),"El texto mensual confunde evaluación histórica con pronóstico futuro");
    assert.ok(status.summarySources?.includes("Open-Meteo")&&status.summarySources.includes("ENFEN"),"Fuentes no centralizadas");
    assert.equal(status.enfenStyle,"italic","Interpretación del Niño Costero no está en cursiva");
    if(width===390){
