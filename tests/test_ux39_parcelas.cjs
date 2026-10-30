@@ -65,6 +65,8 @@ const classes=api.parseRasterClasses([
 ],4);
 assert.equal(classes.identified,4);assert.equal(classes.coverage,1);
 assert.deepEqual({...classes.counts},{"Muy alto":1,Alto:1,Medio:1,Bajo:1});
+const namedClasses=api.parseRasterClasses([{attributes:{n_pelig_mm:"Bajo"}},{attributes:{n_peligro:"Muy Alto"}}],2);
+assert.deepEqual({...namedClasses.counts},{Bajo:1,"Muy alto":1},"No se interpretan las categorías de susceptibilidad CENEPRED");
 const numericClasses=api.parseRasterClasses([{attributes:{"Pixel Value":3}},{value:2}],2,{unique:{"3":"Alto","2":"Medio"}});
 assert.deepEqual({...numericClasses.counts},{Alto:1,Medio:1},"No se traducen valores numéricos de raster según la leyenda");
 const rawCodes=api.parseRasterClasses([{attributes:{"Pixel Value":7}}],1);
