@@ -364,7 +364,8 @@ function future(){
  const climates=rows.slice(0,6).map(r=>baseline?.[Number(r.mes.slice(-2))] ? baseline[Number(r.mes.slice(-2))][variable==="rain"?"precipitacion_mm":"temperatura_c"] : NaN);
  const months=rows.slice(0,6).map(r=>r.mes);
  const evidence=monthlyRfEvidence(rf),series=[],legends=[];
- if(evidence.eligible){
+ const rfEligibleForVariable=evidence.eligible&&(variable==="rain"||evidence.temperatureValidated);
+ if(rfEligibleForVariable){
   series.push({name:"RF mensual validado",values:rows.slice(0,6).map(r=>r[f]),color:"#aa65b4",dash:"7 4"});
   legends.push(["#aa65b4","Random Forest OAF · habilidad validada"]);
  }
@@ -404,7 +405,7 @@ function future(){
  const mae=rf?.metrica_mensual;
  const multi=mae?.evaluacion_multihorizonte?.por_horizonte||[];
  const lead3=multi.find(x=>x.meses_adelante===3),lead6=multi.find(x=>x.meses_adelante===6);
- status.textContent="Localidad: "+city+". Horizonte mensual "+rows[0].mes+"–"+rows[5].mes+", desde último mes ERA5 completo: "+(rf.ultimo_mes_con_datos?.[city]||"sin fecha")+". "+(evidence.eligible?"RF supera la puerta de habilidad y puede mostrarse.":"RF no publicado como pronóstico operativo: MAE de 1 paso "+fmt(evidence.oneStepRF,2)+" mm/mes frente a climatología "+fmt(evidence.oneStepBase,2)+" mm/mes; backtest recursivo "+evidence.wins+"/"+evidence.horizons+" horizontes mejores; MAE medio multihorizonte RF "+fmt(evidence.meanRF,2)+" mm/mes frente a climatología "+fmt(evidence.meanBase,2)+" mm/mes. "+(evidence.temperatureValidated?"":"Tampoco se publica RF de temperatura mensual: falta un backtest comparativo suficiente."));
+ status.textContent="Localidad: "+city+". Horizonte mensual "+rows[0].mes+"–"+rows[5].mes+", desde último mes ERA5 completo: "+(rf.ultimo_mes_con_datos?.[city]||"sin fecha")+". "+(rfEligibleForVariable?"RF supera la puerta de habilidad para esta variable.":"RF no publicado como pronóstico operativo: MAE de lluvia a un paso "+fmt(evidence.oneStepRF,2)+" mm/mes frente a climatología "+fmt(evidence.oneStepBase,2)+" mm/mes; backtest recursivo "+evidence.wins+"/"+evidence.horizons+" horizontes mejores; MAE medio multihorizonte RF "+fmt(evidence.meanRF,2)+" mm/mes frente a climatología "+fmt(evidence.meanBase,2)+" mm/mes. "+(evidence.temperatureValidated?"":"La temperatura mensual tampoco se publica con RF: falta un backtest comparativo suficiente."));
 }
 function hist(){
  const current=$("oaf-ux14-metric");if(current)current.dispatchEvent(new Event("change",{bubbles:true}));
