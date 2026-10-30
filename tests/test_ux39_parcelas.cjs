@@ -41,9 +41,36 @@ assert.throws(()=>api.parsePolygons({type:"Polygon",coordinates:[outer.map(x=>[x
 assert.throws(()=>api.parsePolygons({type:"Point",coordinates:[-79.7,-6.2]}),/polígono/,"No rechazó geometría puntual");
 assert(src.includes("exceededTransferLimit"),"La cuantificación debe detectar truncamiento de capa");
 assert(src.includes("data.features.length&&data.features.some(f=>!f.geometry"),"No se deben convertir entidades sin geometría en cero hectáreas");
-assert(src.includes("Una superposición cero no descarta el peligro"),"Falta advertencia de interpretación para superposición nula");
-assert(src.includes("no es intersección topológica exacta")||src.includes("No es intersección topológica exacta"),"Advertencia de incertidumbre científica ausente");
+assert(src.includes("Una consulta vacía, parcial o bloqueada por CORS no demuestra ausencia de peligro"),"Falta advertencia ante consulta vacía o bloqueada");
+assert(src.includes("no una intersección topológica exacta")&&src.includes("porcentajes describen la distribución de puntos muestreados"),"Advertencia de incertidumbre científica ausente");
 assert(src.includes("2021;y<=2025"),"Falta backtesting fuera del entrenamiento");
+const esri=api.esriPolygon(polygon);
+assert.equal(esri.spatialReference.wkid,4326,"La consulta vectorial debe enviar WGS84");
+assert.equal(esri.rings.length,1,"La geometría Esri debe conservar el anillo exterior");
+const signed=ring=>ring.slice(0,-1).reduce((sum,p,i)=>{
+ const q=ring[(i+1)%(ring.length-1)];return sum+p[0]*q[1]-q[0]*p[1];
+},0)/2;
+assert(signed(esri.rings[0])<0,"El anillo exterior Esri debe estar orientado en sentido horario");
+const vectorParams=api.vectorQueryParams(polygon);
+assert.equal(vectorParams.get("geometryType"),"esriGeometryPolygon","INGEMMET debe recibir la geometría real, no una envolvente");
+assert.equal(vectorParams.get("spatialRel"),"esriSpatialRelIntersects");
+const samples=api.samplePoints(polygon,5);
+assert(samples.length>0&&samples.every(p=>api.contains(polygon,p.lon,p.lat)),"El muestreo debe excluir puntos externos y huecos");
+const identify=api.rasterIdentifyParams(5090024,samples,api.limits(polygon));
+assert.equal(identify.get("geometryType"),"esriGeometryMultipoint","CENEPRED ráster debe consultarse con Identify multipunto");
+assert.equal(identify.get("layers"),"all:5090024");
+const classes=api.parseRasterClasses([
+ {attributes:{n_peligro:"Muy Alto"}},{attributes:{n_peligro:"Alto"}},
+ {attributes:{n_peligro:"Medio"}},{attributes:{n_peligro:"Bajo"}}
+],4);
+assert.equal(classes.identified,4);assert.equal(classes.coverage,1);
+assert.deepEqual({...classes.counts},{"Muy alto":1,Alto:1,Medio:1,Bajo:1});
+const noData=api.parseRasterClasses([],9);
+assert.equal(noData.identified,0);assert.equal(noData.coverage,0);
+const normalized=api.normalizeArcGISFeature({attributes:{LEYENDA:"Alto"},geometry:{rings:esri.rings,spatialReference:{wkid:4326}}});
+assert.equal(normalized.geometry.type,"Polygon");
+assert(api.contains([normalized.geometry.coordinates],-79.6995,-6.1995),"Conversión de geometría Esri a GeoJSON incorrecta");
+
 const start=src.indexOf("function arModel("),end=src.indexOf("async function model(",start);
 const arModel=new Function(src.slice(start,end)+";return arModel;")();
 const rows=new Map();
@@ -54,4 +81,4 @@ const predictor=arModel(rows,"rain");
 assert.equal(predictor.scores.n,60,"Validación de 60 meses esperada");
 assert(Math.abs(predictor.scores.mae)<.001,"MAE incorrecto en climatología perfecta");
 assert.equal(predictor.projections.get("2027-04"),8,"Modelo de referencia mensual incorrecto");
-console.log("UX39 OK · GeoJSON/MultiPolygon/huecos/ha/zonas/AR-12/PWA/avisos científicos");
+console.log("UX51 OK · GeoJSON/MultiPolygon/huecos/ha/consulta vectorial exacta/Identify ráster/zonas/AR-12/PWA");
