@@ -1,4 +1,4 @@
-name: OAF UX45 - Auditoria integral web, PWA, ciencia y fuentes
+name: OAF UX51 - Auditoria integral web, PWA, ciencia y fuentes
 on:
   push:
     branches: [main]
@@ -6,6 +6,15 @@ on:
       - ".github/workflows/oaf_ux45_auditoria_integral.yml"
       - "tests/test_ux45_verificacion_general.cjs"
       - "tests/auditoria_ux45_fuentes_live.cjs"
+      - "assets/oaf-parcelas-ux39.js"
+      - "assets/oaf-ux15-rf-salidas.js"
+      - "index.html"
+      - "sw.js"
+      - "tests/test_ux39_parcelas.cjs"
+      - "tests/test_ux41_semana.cjs"
+      - "tests/test_ux39_browser.cjs"
+      - "tests/auditoria_ux39_servicios.cjs"
+      - ".github/workflows/oaf_ux39_parcelas.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -51,7 +60,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ux45-estructura
+          name: ux51-estructura
           path: artifacts/auditoria_ux45_estructura.json
           if-no-files-found: warn
 
@@ -86,7 +95,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ux45-capturas-moviles
+          name: ux51-capturas-moviles
           path: artifacts/mobile-ux19/
           if-no-files-found: warn
 
@@ -105,6 +114,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ux45-fuentes-vigentes
+          name: ux51-fuentes-vigentes
           path: artifacts/auditoria_ux45_fuentes_live.json
           if-no-files-found: warn
