@@ -446,7 +446,13 @@ async function vectorIntersection(layer,polygons,areaHa){
 }
 const rasterMetadataCache=new Map();
 async function rasterMetadata(layer){
- if(!rasterMetadataCache.has(layer.layerId))rasterMetadataCache.set(layer.layerId,fetched(layer.metadataUrl,18000));
+ if(!rasterMetadataCache.has(layer.layerId)){
+  const pending=fetched(layer.metadataUrl,18000).then(metadata=>{
+   if(metadata.type!=="Raster Layer")throw Error("La capa "+layer.layerId+" no está publicada como ráster");
+   return metadata;
+  }).catch(error=>{rasterMetadataCache.delete(layer.layerId);throw error;});
+  rasterMetadataCache.set(layer.layerId,pending);
+ }
  return rasterMetadataCache.get(layer.layerId);
 }
 async function rasterIntersection(layer,polygons){
