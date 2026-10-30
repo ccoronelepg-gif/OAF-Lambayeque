@@ -386,7 +386,7 @@ function esriPolygon(polygons){
 function vectorQueryParams(polygons){
  return new URLSearchParams({where:"1=1",geometry:JSON.stringify(esriPolygon(polygons)),
   geometryType:"esriGeometryPolygon",inSR:"4326",spatialRel:"esriSpatialRelIntersects",
-  outFields:"OBJECTID,GRIDCODE,LEYENDA,REGION,NM_DEPA,NM_PROV,NM_DIST",
+  outFields:"*",
   returnGeometry:"true",outSR:"4326",resultRecordCount:"2000",f:"json"});
 }
 function rasterIdentifyParams(layerId,points,bounds){
