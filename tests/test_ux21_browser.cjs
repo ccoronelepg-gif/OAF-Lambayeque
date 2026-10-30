@@ -20,7 +20,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
       .map(id=>[id,!!document.getElementById(id)]),
     monthly:document.getElementById("oaf-ux14-monthstatus")?.textContent||""
    }));
-   console.log("UX21_BOOT_DEBUG",JSON.stringify({width,bootDebug,browserErrors}));
+   console.log("UX21_BOOT_DEBUG",JSON.stringify({width,bootDebug}));
    await page.waitForFunction(() => {
     const value=document.querySelector("#oaf-ux14-monthstatus")?.textContent?.trim()||"";
     return value.length>0&&!/Cargando|Preparando/i.test(value);
@@ -36,7 +36,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
      futureNote:q("#oaf-ux14-rf-mes .oaf-ux14-no-forecast")?.textContent,
      extraCards:document.querySelectorAll("#oaf-ux16-months").length,
      oldHomeBlock:document.querySelectorAll('#inicio #oaf-bloque-prediccion-inicio').length,
-     summarySources:q("#oaf-home-summary-static")?.innerText,
+     summarySources:q("#oaf-home-summary-static")?.textContent,
      enfenStyle:q("#oaf-ux15-enfen-exp")?getComputedStyle(q("#oaf-ux15-enfen-exp")).fontStyle:null,
      mobileButton:!!q("#oaf-mobile-menu")
     };
