@@ -12,7 +12,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    });
    const page=await context.newPage();
    await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:60000});
-   if(width===390)await page.locator("#oaf-mobile-menu").click();
+   const mobileMenu=page.locator("#oaf-mobile-menu");
+   if(await mobileMenu.isVisible())await mobileMenu.click();
    await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
    await page.waitForTimeout(1500);
    const bootDebug=await page.evaluate(()=>({
@@ -51,11 +52,11 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    assert.ok(status.futureNote?.includes("no se publica como pronóstico operativo"),"El texto mensual confunde evaluación histórica con pronóstico futuro");
    assert.ok(status.summarySources?.includes("Open-Meteo")&&status.summarySources.includes("ENFEN"),"Fuentes no centralizadas");
    assert.equal(status.enfenStyle,"italic","Interpretación del Niño Costero no está en cursiva");
-   if(width===390){
-    const expanded=await page.locator("#oaf-mobile-menu").getAttribute("aria-expanded");
-    if(expanded!=="true")await page.locator("#oaf-mobile-menu").click();
-    await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').click();
-   }else await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').click();
+   if(await mobileMenu.isVisible()){
+    const expanded=await mobileMenu.getAttribute("aria-expanded");
+    if(expanded!=="true")await mobileMenu.click();
+   }
+   await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').click();
    await page.locator("#oaf-mg-fuentes a").waitFor({state:"attached",timeout:30000});
    const sources=await page.locator("#oaf-mg-fuentes a").allTextContents();
    assert.equal(sources.length,1,"Sanidad tiene enlaces de investigación duplicados");
