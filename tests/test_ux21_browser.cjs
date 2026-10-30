@@ -14,7 +14,18 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    await page.goto("http://127.0.0.1:8765/",{waitUntil:"domcontentloaded",timeout:60000});
    if(width===390)await page.locator("#oaf-mobile-menu").click();
    await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
-   await page.waitForFunction(() => document.querySelector("#oaf-ux14-monthstatus")?.textContent?.includes("Prueba retrospectiva 2021–2025"), {timeout:30000});
+   await page.waitForTimeout(1500);
+   const bootDebug=await page.evaluate(()=>({
+    className:document.documentElement.className,
+    ids:["oaf-agro-home","oaf-agro-clima","oaf-agro-autor","oaf-ux9-predicciones","oaf-ux14-monthchart","oaf-ux14-monthstatus"]
+      .map(id=>[id,!!document.getElementById(id)]),
+    monthly:document.getElementById("oaf-ux14-monthstatus")?.textContent||""
+   }));
+   console.log("UX21_BOOT_DEBUG",JSON.stringify({width,bootDebug,browserErrors}));
+   await page.waitForFunction(() => {
+    const value=document.querySelector("#oaf-ux14-monthstatus")?.textContent?.trim()||"";
+    return value.length>0&&!/Cargando|Preparando/i.test(value);
+   }, {timeout:10000});
   await page.locator("#oaf-ux14-monthchart svg").waitFor({state:"attached",timeout:30000});
    await page.waitForTimeout(350);
    const status=await page.evaluate(()=>{
