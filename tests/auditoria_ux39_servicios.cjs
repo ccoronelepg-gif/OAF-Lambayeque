@@ -115,7 +115,9 @@ async function checkRasterParcel(item){
   if(!Array.isArray(body.results))throw Error("Identify multipunto sin arreglo results");
   const categories={};
   for(const result of body.results){
-   const a=result.attributes||{},entry=Object.entries(a).find(([key,value])=>/(n_peligro|n_pelig_mm|leyenda|pixel|gridcode|value)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!==""),
+   const a=result.attributes||{},entries=Object.entries(a),
+    thematic=entries.find(([key,value])=>/(n_peligro|n_pelig_mm|leyenda)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!==""),
+    entry=thematic||entries.find(([key,value])=>/(pixel|gridcode|value)/i.test(key)&&value!==undefined&&value!==null&&String(value).trim()!==""),
     raw=a.n_peligro??a.n_pelig_mm??a.LEYENDA??entry?.[1]??result.value??"Sin clasificar";
    const key=String(raw);categories[key]=(categories[key]||0)+1;
   }
