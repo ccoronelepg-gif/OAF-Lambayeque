@@ -41,7 +41,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    assert.ok(status.summarySources?.includes("Open-Meteo")&&status.summarySources.includes("ENFEN"),"Fuentes no centralizadas");
    assert.equal(status.enfenStyle,"italic","Interpretación del Niño Costero no está en cursiva");
    if(width===390){
-    await page.locator("#oaf-mobile-menu").click();
+    const expanded=await page.locator("#oaf-mobile-menu").getAttribute("aria-expanded");
+    if(expanded!=="true")await page.locator("#oaf-mobile-menu").click();
     await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').click();
    }else await page.locator('#oaf-primary-nav a[data-tab="cultivos"]').click();
    await page.locator("#oaf-mg-fuentes a").waitFor({state:"attached",timeout:30000});
