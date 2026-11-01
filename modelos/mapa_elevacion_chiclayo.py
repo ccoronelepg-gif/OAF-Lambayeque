@@ -85,6 +85,14 @@ elev_float = np.where(np.isfinite(a),a,-32768).astype("<f4")
 payload = base64.b64encode(zlib.compress(elev_float.tobytes(),9)).decode("ascii")
 (OUT/"payload_dem_b64.txt").write_text(payload+"\n","utf8")
 
+# Semáforo de tres clases sin elevar precisión; formato compacto para cartel local.
+class_chars = "".join(str(int(v)) for v in classes.reshape(-1))
+(OUT/"semaforo_clases_b64.txt").write_text(
+    base64.b64encode(zlib.compress(class_chars.encode("ascii"),9)).decode("ascii")+"\n",
+    "utf8"
+)
+
+
 
 plt.rcParams["font.family"] = "DejaVu Sans"
 fig=plt.figure(figsize=(9,11.25),dpi=160,facecolor="#eff6fb")
