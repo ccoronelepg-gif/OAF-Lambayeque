@@ -79,6 +79,13 @@ meta = {
 }
 (OUT/"metadatos_elevacion.json").write_text(json.dumps(meta,ensure_ascii=False,indent=2)+"\n","utf8")
 
+# Celdas reales comprimidas para permitir auditoría/reproducción fuera de GitHub.
+import base64, zlib
+elev_float = np.where(np.isfinite(a),a,-32768).astype("<f4")
+payload = base64.b64encode(zlib.compress(elev_float.tobytes(),9)).decode("ascii")
+(OUT/"payload_dem_b64.txt").write_text(payload+"\n","utf8")
+
+
 plt.rcParams["font.family"] = "DejaVu Sans"
 fig=plt.figure(figsize=(9,11.25),dpi=160,facecolor="#eff6fb")
 fig.text(.07,.963,"OAF  Lambayeque",fontsize=29,weight="bold",color="#073b60")
