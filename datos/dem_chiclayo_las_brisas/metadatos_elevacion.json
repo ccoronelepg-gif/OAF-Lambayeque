@@ -1,0 +1,33 @@
+{
+  "titulo": "Elevaciones relativas del modelo Copernicus alrededor de Las Brisas, Chiclayo",
+  "tipo": "MODELO DIGITAL DE SUPERFICIE (DSM), no DTM bare-earth",
+  "fuente": "Copernicus DEM GLO-90 2021; archivo original auditado en OAF 9L",
+  "doi": "10.5270/ESA-c5d3d65",
+  "sha256_original": "c4d78e481f80927d72886787e422ed02214ffb0d5739e67a25facd2c874f7532",
+  "codigo_plus_corto": "64CP+476 Chiclayo",
+  "ubicacion_reconstruida_lat": -6.7797125,
+  "ubicacion_reconstruida_lon": -79.864359375,
+  "bbox_wgs84": {
+    "west": -79.88875,
+    "south": -6.800416666666667,
+    "east": -79.84041666666667,
+    "north": -6.758750000000001
+  },
+  "dimension_celdas": [
+    50,
+    58
+  ],
+  "n_celdas_validas": 2900,
+  "celdas_sin_dato": 0,
+  "min_m": 16.79,
+  "p33_m": 23.4,
+  "p67_m": 27.24,
+  "max_m": 62.22,
+  "ubicacion_celda_m": 27.87,
+  "zonas": {
+    "rojo": "tercio inferior de altitud en ventana cartográfica",
+    "amarillo": "tercio intermedio de altitud",
+    "verde": "tercio superior de altitud, NO significa ausencia de riesgo"
+  },
+  "advertencia": "Los colores son alturas relativas del DSM ~90m, no depresiones medidas ni riesgo hidráulico. Requiere DTM <=1-2m y validación de drenaje."
+}
