@@ -63,3 +63,8 @@
  #oaf-ux29-territory .oaf-ux29-diagbody,#oaf-ux29-scenario .oaf-ux29-diagbody{grid-template-columns:1fr!important}
  #oaf-ux29-territory #oaf-ux24-region-map,#oaf-ux29-scenario #oaf-ux29-forecast-map{min-height:200px!important}
 }
+
+/* Mantener accesible la capa de lluvia prevista de 2026, oculta en el estilo previo. */
+#oaf-ux29-scenario .oaf-ux35-check:has([data-ux35-key="rain7"]){display:grid!important}
+#oaf-ux29-scenario .oaf-ux35-field:has(#oaf-ux35-horizon),
+#oaf-ux29-scenario .oaf-ux35-field:has(#oaf-ux35-threshold){display:block!important}
