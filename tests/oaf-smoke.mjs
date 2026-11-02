@@ -64,6 +64,20 @@ function mockSvg(tag){
     replaceChildren(...children){this.children=[...children];}};
 }
 
+test("PWA: actualización atómica, sin almacenar pronósticos o avisos caducados",()=>{
+  const sw=read("sw.js");
+  assert.match(sw,/const REQUIRED=\[/,"falta la lista de recursos críticos");
+  for(const file of ["./","./offline.html","./manifest.webmanifest",
+    "./assets/oaf-pwa.js","./assets/oaf-territorio-compartido.js",
+    "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js"]){
+    assert.ok(sw.includes(JSON.stringify(file)),"recurso crítico no exigido: "+file);
+  }
+  assert.match(sw,/if\(missing\.length\)throw new Error/,"una instalación parcial no debe activarse");
+  assert.match(sw,/if\(isScientificData\(url\)\)return/,"datos científicos siempre en red");
+  assert.match(sw,/if\(!isInScope\(url\)\)return/,"los proveedores externos no deben interceptarse");
+  assert.match(sw,/fetch\(req,\{cache:"no-store"\}\)/,"HTML debe revalidarse en la red");
+});
+
 test("El gráfico semanal usa barras y ejes continuos incluso con lluvia fraccionaria y ceros",()=>{
   const window={};
   const document={readyState:"loading",addEventListener(){},getElementById(){return null},
