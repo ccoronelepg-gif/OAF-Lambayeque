@@ -67,25 +67,43 @@ function trimScenario(){
  }
 }
 function syncStructure(type){
- const pane=$("oaf-ux29-"+type),col=pane?.querySelector(".oaf-ux29-mapcolumn");
+ const pane=$("oaf-ux29-"+type),layout=pane?.querySelector(".oaf-ux29-layout");
+ const col=layout?.querySelector(".oaf-ux29-mapcolumn");
  if(!col)return;
- const content=col.querySelector(".oaf-ux29-mapcontent");
+ const header=col.querySelector(".oaf-ux29-maphead");
  const toolbar=col.querySelector(".oaf-ux29-toolbar");
- const area=col.querySelector("#oaf-area-"+(type==="territory"?"territorio":"escenarios"));
+ const area=pane.querySelector("#oaf-area-"+(type==="territory"?"territorio":"escenarios"));
+ const parcel=pane.querySelector("#oaf-parcel-"+(type==="territory"?"territorio":"escenarios"));
+ const content=col.querySelector(".oaf-ux29-mapcontent");
  const bottom=col.querySelector(".oaf-ux29-bottom");
- if(content&&toolbar&&content.nextElementSibling!==toolbar)content.after(toolbar);
- if(toolbar&&area&&toolbar.nextElementSibling!==area)toolbar.after(area);
- if(bottom){
-  const anchor=area||toolbar||content;
-  if(anchor&&anchor.nextElementSibling!==bottom)anchor.after(bottom);
+ // Cabecera > controles de zoom y ampliación > coordenadas/UTM > parcela > mapa.
+ // Reubicar nodos existentes conserva escuchadores, datos y controles originales.
+ let previous=header;
+ for(const child of [toolbar,area,parcel,content,bottom]){
+  if(!child||!previous)continue;
+  if(child.parentElement!==col||child.previousElementSibling!==previous)previous.after(child);
+  previous=child;
  }
- if(type==="scenario"){
-  const diag=pane.querySelector(".oaf-ux29-diagnosis"),hydro=$("oaf-ux36-panel");
-  if(diag&&hydro&&diag.nextElementSibling!==hydro)diag.after(hydro);
+ const diagnosis=layout.querySelector(".oaf-ux29-diagnosis");
+ if(diagnosis){
+  diagnosis.querySelector(".oaf-ux29-diagnosishead span")?.replaceChildren(document.createTextNode("ANÁLISIS CONTEXTUAL"));
+  diagnosis.querySelector(".oaf-ux29-diagnosishead h3")?.replaceChildren(document.createTextNode("Diagnóstico del territorio"));
+ }
+ if(type==="scenario"&&diagnosis){
+  // El panel puntual es redundante: la evaluación consolidada se presenta en el diagnóstico general.
+  // Mantener su nodo técnico oculto para no romper las consultas de coordenadas de UX39.
+  const point=pane.querySelector("#oaf-area-point-details-escenarios");
+  const extras=diagnosis.querySelector(".oaf-ux29-diagextras");
+  if(point&&extras&&point.parentElement!==extras)extras.append(point);
+  const hydro=$("oaf-ux36-panel"),validation=$("oaf-ux37-panel");
+  if(hydro&&(hydro.parentElement!==layout||hydro.previousElementSibling!==diagnosis))diagnosis.after(hydro);
+  const anchor=hydro||diagnosis;
+  if(validation&&(validation.parentElement!==layout||validation.previousElementSibling!==anchor))anchor.after(validation);
   const hg=$("oaf-ux36-hydrogroup");
   if(hg){
    hg.open=false;
-   const summary=hg.querySelector("summary");if(summary)summary.textContent="5 · Análisis hidrológico";
+   const summary=hg.querySelector("summary");
+   if(summary&&summary.textContent!=="5 · Análisis hidrológico")summary.textContent="5 · Análisis hidrológico";
   }
  }
 }
@@ -189,6 +207,17 @@ function init(){
   if(col&&col.dataset.ux52Observe!=="true"){
    col.dataset.ux52Observe="true";
    new MutationObserver(()=>syncStructure(kind)).observe(col,{childList:true});
+  }
+  const content=col?.querySelector(".oaf-ux29-mapcontent");
+  if(content&&content.dataset.ux53Observe!=="true"){
+   // UX39 inserta la parcela dentro del mapa de escenarios; detectar esa inserción.
+   content.dataset.ux53Observe="true";
+   new MutationObserver(mutations=>{
+    if(mutations.some(m=>[...m.addedNodes].some(n=>n.nodeType===1&&(
+     n.id==="oaf-parcel-escenarios"||n.id==="oaf-area-point-details-escenarios"||
+     n.id==="oaf-ux36-panel"||n.id==="oaf-ux37-panel"
+    ))))syncStructure(kind);
+   }).observe(content,{childList:true});
   }
  }
  const pane=$("oaf-ux29-scenario"),layout=pane?.querySelector(".oaf-ux29-layout");

@@ -2,21 +2,38 @@
 #oaf-ux29-territory .oaf-ux29-layout,
 #oaf-ux29-scenario .oaf-ux29-layout{
  display:grid!important;
- grid-template-columns:clamp(235px,25%,305px) minmax(0,1fr)!important;
- grid-template-areas:"layers map" "layers diagnosis"!important;
+ grid-template-columns:clamp(235px,24%,310px) minmax(0,1fr)!important;
+ grid-template-areas:"layers map" "diagnosis diagnosis"!important;
  gap:12px!important;align-items:start!important
 }
-#oaf-ux29-scenario .oaf-ux29-layout{grid-template-areas:"layers map" "layers diagnosis" "layers hydrology"!important}
+#oaf-ux29-scenario .oaf-ux29-layout{
+ grid-template-areas:"layers map" "diagnosis diagnosis" "hydrology hydrology" "validation validation"!important
+}
 #oaf-ux29-territory .oaf-ux29-sidebar,#oaf-ux29-scenario .oaf-ux29-sidebar{grid-area:layers!important;grid-column:auto!important;grid-row:auto!important}
 #oaf-ux29-territory .oaf-ux29-mapcolumn,#oaf-ux29-scenario .oaf-ux29-mapcolumn{grid-area:map!important;grid-column:auto!important;grid-row:auto!important;width:100%;min-height:0!important}
 #oaf-ux29-territory .oaf-ux29-diagnosis,#oaf-ux29-scenario .oaf-ux29-diagnosis{
  grid-area:diagnosis!important;grid-column:auto!important;grid-row:auto!important;
  width:100%;overflow:visible;min-height:0
 }
-#oaf-ux29-scenario #oaf-ux36-panel{grid-area:hydrology!important;grid-column:auto!important;grid-row:auto!important;margin:0!important;width:100%!important;max-width:none!important}
-#oaf-ux29-territory .oaf-ux29-mapcontent,#oaf-ux29-scenario .oaf-ux29-mapcontent{
- width:100%;max-width:none;min-width:0;box-sizing:border-box;order:0;flex:0 0 auto
+#oaf-ux29-scenario #oaf-ux36-panel{
+ grid-area:hydrology!important;grid-column:1/-1!important;grid-row:auto!important;
+ margin:0!important;width:100%!important;max-width:none!important
 }
+#oaf-ux29-scenario #oaf-ux37-panel{
+ grid-area:validation!important;grid-column:1/-1!important;grid-row:auto!important;
+ margin:0!important;width:100%!important;max-width:none!important
+}
+#oaf-ux29-territory .oaf-ux29-mapcontent,#oaf-ux29-scenario .oaf-ux29-mapcontent{
+ width:100%;max-width:none;min-width:0;box-sizing:border-box;flex:0 0 auto
+}
+/* Los controles, ubicación y parcela quedan justo debajo de la cabecera del mapa. */
+#oaf-ux29-territory .oaf-ux29-mapcolumn,#oaf-ux29-scenario .oaf-ux29-mapcolumn{display:flex!important;flex-direction:column!important}
+#oaf-ux29-territory .oaf-ux29-maphead,#oaf-ux29-scenario .oaf-ux29-maphead{order:0}
+#oaf-ux29-territory .oaf-ux29-toolbar,#oaf-ux29-scenario .oaf-ux29-toolbar{order:1}
+#oaf-ux29-territory #oaf-area-territorio,#oaf-ux29-scenario #oaf-area-escenarios{order:2}
+#oaf-ux29-territory #oaf-parcel-territorio,#oaf-ux29-scenario #oaf-parcel-escenarios{order:3}
+#oaf-ux29-territory .oaf-ux29-mapcontent,#oaf-ux29-scenario .oaf-ux29-mapcontent{order:4}
+#oaf-ux29-territory .oaf-ux29-bottom,#oaf-ux29-scenario .oaf-ux29-bottom{order:5}
 #oaf-ux29-territory .oaf-ux29-maphead,#oaf-ux29-scenario .oaf-ux29-maphead{padding:10px 14px}
 #oaf-ux29-territory .oaf-ux29-toolbar,#oaf-ux29-scenario .oaf-ux29-toolbar{
  display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:42px;
@@ -29,9 +46,23 @@
  display:block!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;min-height:330px!important
 }
 #oaf-ux29-territory .oaf-ux29-diagbody,#oaf-ux29-scenario .oaf-ux29-diagbody{
- display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:9px!important;max-height:none!important;overflow:visible!important;padding:12px!important
+ display:block!important;grid-template-columns:none!important;
+ max-height:none!important;overflow:visible!important;
+ padding:16px clamp(14px,2vw,28px)!important
 }
+/* Lectura horizontal continua, sin cuadros estrechos en dos columnas. */
+#oaf-ux29-territory .oaf-ux30-diagnosis-item,#oaf-ux29-scenario .oaf-ux35-diagnosis-section{
+ border:0!important;border-bottom:1px solid #dce9e0!important;border-radius:0!important;
+ background:transparent!important;padding:12px 0!important;margin:0!important;max-width:none
+}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item:last-child,#oaf-ux29-scenario .oaf-ux35-diagnosis-section:last-child{border-bottom:0!important}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item p,#oaf-ux29-scenario .oaf-ux35-diagnosis-section p{
+ font-size:13px!important;line-height:1.75!important;text-align:justify;max-width:none
+}
+#oaf-ux29-territory .oaf-ux29-diagnosis,#oaf-ux29-scenario .oaf-ux29-diagnosis{
+ grid-column:1/-1!important;grid-row:auto!important;width:100%!important;max-width:none!important
+}
+#oaf-ux29-scenario #oaf-area-point-details-escenarios{display:none!important}
 #oaf-ux29-territory .oaf-ux30-diagnosis-item,#oaf-ux29-scenario .oaf-ux35-diagnosis-section{
  min-width:0;margin:0!important;padding:12px!important
 }
@@ -60,6 +91,9 @@
  #oaf-ux29-territory .oaf-ux29-sidebar,#oaf-ux29-scenario .oaf-ux29-sidebar{order:1!important;width:100%}
  #oaf-ux29-territory .oaf-ux29-diagnosis,#oaf-ux29-scenario .oaf-ux29-diagnosis{order:2!important;width:100%}
  #oaf-ux29-scenario #oaf-ux36-panel{order:3!important}
+ #oaf-ux29-scenario #oaf-ux37-panel{order:4!important}
+ #oaf-ux29-territory .oaf-ux29-diagnosis,#oaf-ux29-scenario .oaf-ux29-diagnosis{width:100%!important}
+ #oaf-ux29-territory .oaf-ux29-diagbody,#oaf-ux29-scenario .oaf-ux29-diagbody{display:block!important}
  #oaf-ux29-territory .oaf-ux29-diagbody,#oaf-ux29-scenario .oaf-ux29-diagbody{grid-template-columns:1fr!important}
  #oaf-ux29-territory #oaf-ux24-region-map,#oaf-ux29-scenario #oaf-ux29-forecast-map{min-height:200px!important}
 }
