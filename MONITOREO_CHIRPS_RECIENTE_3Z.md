@@ -5,10 +5,10 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 ## Periodo y disponibilidad verificada
 
-- Fecha de consulta UTC: 2026-10-26T16:09:25+00:00
-- Ventana de 12 meses calendarios CERRADOS: 2025-10 a 2026-09.
-- Meses con raster descargado y cinco valores revisados: **12**.
-- Meses con raster no disponible/fallido: **0**.
+- Fecha de consulta UTC: 2026-11-02T23:06:30+00:00
+- Ventana de 12 meses calendarios CERRADOS: 2025-11 a 2026-10.
+- Meses con raster descargado y cinco valores revisados: **11**.
+- Meses con raster no disponible/fallido: **1**.
 - Último mes CHIRPS realmente accesible: **2026-09**.
 - Estado de actualización: disponible_para_ventana_consultada.
 - La clasificación final/preliminar exacta del archivo no se afirma hasta consultar su metadato oficial; puede revisarse posteriormente.
@@ -17,7 +17,6 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 | Mes | Jayanca | Cayaltí | Reque | Lambayeque | Cueva Blanca |
 |---|---:|---:|---:|---:|---:|
-| 2025-10 | 5.103 | 5.247 | 0.000 | 0.000 | 56.923 |
 | 2025-11 | 6.878 | 3.913 | 8.297 | 8.201 | 42.300 |
 | 2025-12 | 0.000 | 0.000 | 0.000 | 0.000 | 3.089 |
 | 2026-01 | 1.887 | 4.776 | 5.697 | 1.628 | 20.879 |
@@ -32,7 +31,7 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 ## Meses no disponibles
 
-No se encontraron faltantes en los doce meses cerrados consultados.
+- **2026-10**: FileNotFoundError: Archivo no publicado HTTP 404 (https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.10.tif)
 
 ## Condiciones científicas
 
