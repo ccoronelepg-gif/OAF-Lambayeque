@@ -15,7 +15,7 @@ const MTC="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/MTC/M
 const WMS="https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms";
 const HEAT_WMS="g_01_06:01_06_001_03_001_512_0000_00_00";
 const COMPANIES="datos/riesgos_ux35/ubicaciones_agroindustriales_referenciales.geojson";
-const YEARS=[1983,1998,2017,2023];
+const YEARS=[1983,1993,1998,2007,2017,2023];
 const FALLBACK_PAGES={
  old2017:"https://sigrid.cenepred.gob.pe/sigridv3/documento/16310",
  climate:"https://enfen.imarpe.gob.pe/comunicados/",
@@ -549,7 +549,7 @@ function diagnosis(){
    past?.records?.length?past.records.map(p=>p.name+": "+p.sum.toFixed(0)+" mm").join(" · ")+
     ". Fuente: reanálisis meteorológico; período de tres meses, NO comparable directamente con el acumulado a 7 días.":
    "Sin datos históricos aún para el año seleccionado. La consulta intenta obtener reanálisis de cuatro localidades.",
-   "Antecedentes 1983, 1998, 2017 y 2023 · Open-Meteo Archive");
+   "Antecedentes 1983, 1993, 1998, 2007, 2017 y 2023 · Open-Meteo Archive");
  }
  if(state.on.past2023)section("Escenario oficial de El Niño 2023",
   "CENEPRED evaluó potenciales afectaciones considerando lluvias de 1983, 1998, 2017 y 2023. Este es un estudio de escenarios de riesgo, no un polígono de eventos realmente inundados.",
