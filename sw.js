@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-10-29-ux51c";
-const STATIC="oaf-pwa-static-2026-10-29-ux51c";
+const RELEASE="oaf-pwa-shell-2026-11-02-ux52";
+const STATIC="oaf-pwa-static-2026-11-02-ux52";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -93,7 +93,16 @@ async function precacheCore(){
   if(!result.ok)throw new Error("Sin recurso "+url.pathname);
   await cache.put(url.href,result);
  }));
- if(!(await cache.match(ROOT)))throw new Error("No se pudo guardar la portada de OAF.");
+ // La aplicación no debe declararse instalable sin sus piezas esenciales.
+ // Si la red falla en una pieza crítica, se conserva el service worker anterior.
+ const REQUIRED=["./","./offline.html","./manifest.webmanifest",
+  "./assets/oaf-pwa.js","./assets/oaf-territorio-compartido.js",
+  "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js"];
+ const missing=[];
+ for(const local of REQUIRED){
+  if(!(await cache.match(new URL(local,SCOPE).href)))missing.push(local);
+ }
+ if(missing.length)throw new Error("Instalación PWA incompleta: "+missing.join(", "));
 }
 self.addEventListener("install",event=>{
  event.waitUntil(precacheCore());
