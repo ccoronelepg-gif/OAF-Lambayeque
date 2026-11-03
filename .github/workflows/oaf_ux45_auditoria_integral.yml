@@ -25,7 +25,7 @@ permissions:
 jobs:
   estructura_y_ciencia:
     name: "6 areas + integridad cientifica + PWA"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
@@ -70,7 +70,7 @@ jobs:
 
   navegacion_escritorio_y_movil:
     name: "Chromium web + PWA + mapas + sanidad"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
@@ -105,7 +105,7 @@ jobs:
 
   fuentes_externas:
     name: "Comprobacion en vivo: Open-Meteo, ERA5 y ENFEN"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4

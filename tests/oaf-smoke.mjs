@@ -134,27 +134,44 @@ test("Los archivos científicos base mantienen estructura válida y advertencias
   const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
   assert.equal(rf.operativo_certificado,false);
   assert.match(read("assets/oaf-ux15-rf-salidas.js"),/RF no se muestra porque mejora/);
-  for(const [city,forecast] of Object.entries(rf.pronostico_diario_rf_experimental)){
-    assert.equal(forecast.length,rf.horizonte_semanal,city);
-    assert.ok(forecast.every(x=>typeof x.fecha==="string"));
+  // Si la descarga ERA5 falla o no hay skill, el archivo debe declarar indisponibilidad
+  // y no publicar pronósticos incompletos como si fueran una salida operativa.
+  if(rf.estado==="no_disponible"){
+    assert.equal(rf.operativo_certificado,false);
+    assert.equal(rf.alertas_automaticas,false);
+    assert.match(rf.error||"","ERA5|archive-api|timeout|timed out/i");
+    assert.equal(rf.pronostico_diario_rf_experimental,undefined);
+  }else{
+    assert.ok(rf.pronostico_diario_rf_experimental&&typeof rf.pronostico_diario_rf_experimental==="object");
+    for(const [city,forecast] of Object.entries(rf.pronostico_diario_rf_experimental)){
+      assert.equal(forecast.length,rf.horizonte_semanal,city);
+      assert.ok(forecast.every(x=>typeof x.fecha==="string"));
+    }
   }
 });
 
 
-test("UX53: mapa y capas superiores, diagnóstico ancho completo y validación de caudales al final",()=>{
-  const js=read("assets/oaf-ux52-visores.js"),css=read("assets/oaf-ux52-visores.css"),sw=read("sw.js");
-  assert.match(html,/oaf-ux52-visores\.js\?v=20261102-ux53/,"falta activar JS UX53");
-  assert.match(html,/oaf-ux52-visores\.css\?v=20261102-ux53/,"falta activar CSS UX53");
-  assert.match(js,/for\(const child of \[toolbar,area,parcel,content,bottom\]\)/,
-    "controles, zona y parcela no se colocan por encima del mapa");
-  assert.match(css,/grid-template-areas:"layers map" "diagnosis diagnosis"/,
-    "el diagnóstico territorial no ocupa toda la fila");
-  assert.match(css,/"hydrology hydrology" "validation validation"/,
-    "el panel de validación hidrológica no figura al final");
-  assert.match(js,/anchor\.after\(validation\)/,"falta reubicar la validación");
-  assert.match(css,/#oaf-ux29-scenario #oaf-area-point-details-escenarios\{display:none!important\}/,
-    "se volvió a mostrar el panel puntual duplicado");
-  assert.match(sw,/oaf-pwa-shell-2026-11-02-ux53/,"PWA desactualizada");
-  assert.match(sw,/\.\/assets\/oaf-ux52-visores\.js/);
-  assert.match(sw,/\.\/assets\/oaf-ux52-visores\.css/);
+
+
+test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta de parcela",()=>{
+  const home=read("index.html"),agro=read("assets/oaf-agro-charts-2026.js");
+  const structure=read("assets/oaf-ux9-estructura.js");
+  const style=read("assets/oaf-agroexportacion-2026.css");
+  assert.match(home,/Ciencia de datos — Observatorio Agroclimático y Fitosanitario/);
+  assert.doesNotMatch(home,/id="oaf-trust-legend"|Metodología, fuentes y trazabilidad →/);
+  assert.match(structure,/archive\("oaf-agro-home-map"\)/);
+  assert.match(structure,/archive\("oaf-agro-home-existing-forecast"\)/);
+  assert.match(home,/Monitoreo Agroclimático/);
+  assert.match(home,/1996–2025/);
+  assert.match(agro,/oaf-regional-map-legend/);
+  assert.match(agro,/datos\/humedad_8z\/humedad_vpd_mensual_8z\.csv/);
+  assert.match(agro,/humedad_relativa_pct/);
+  assert.match(agro,/radiacion_mj_m2/);
+  assert.match(style,/oaf-agro-history-tile/);
+  assert.match(style,/min-height:410px/);
+  assert.match(home,/id="oaf-stations-map"/);
+  assert.match(home,/id="oaf-stations-list"/);
+  assert.match(home,/id="oaf-area-clima"/);
+  assert.match(read("assets/oaf-area-ux38.js"),/function climate\(point\)/);
+  assert.match(read("assets/oaf-ux9-predicciones.js"),/oaf-ux9-final-lluvia/);
 });

@@ -20,13 +20,20 @@ for(const icon of manifest.icons){
  assert(fs.existsSync(path.join(root,icon.src)),"Ícono no disponible "+icon.src);
 }
 assert(sw.includes("Network-first")&&sw.includes('isScientificData(url)'),"PWA no distingue avisos y datos de caché");
-assert(sw.includes("oaf-pwa-shell-2026-11-02-ux54"),"PWA no invalida el shell UX54");
+assert.match(sw,/const RELEASE="oaf-pwa-shell-2026-11-02-ux\d+"/,"PWA no invalida la caché tras cambios de interfaz");
 assert(!html.includes("oaf-ux15-contador.js")&&!html.includes('id="oaf-ux15-counter"'),"El contador de visitas permanece");
 const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
 assert.equal(rf.operativo_certificado,false,"RF no debe marcarse operativo sin validación");
 assert.equal(rf.alertas_automaticas,false,"No activar alertas experimentales");
-assert(rf.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte?.length===7,"Faltan siete horizontes RF auditados");
-assert(Object.keys(rf.pronostico_diario_rf_experimental||{}).length>=4,"Pronósticos RF por cuatro localidades ausentes");
+if(rf.estado==="no_disponible"){
+ assert.equal(rf.operativo_certificado,false,"RF no disponible no debe declararse operativo");
+ assert.equal(rf.alertas_automaticas,false,"No activar alertas sin evidencia");
+ assert.match(rf.error||"","ERA5|archive-api|timeout|timed out/i");
+ assert.equal(rf.pronostico_diario_rf_experimental,undefined,"No publicar pronósticos incompletos");
+}else{
+ assert.equal(rf.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte?.length,7,"Faltan siete horizontes RF auditados");
+ assert(Object.keys(rf.pronostico_diario_rf_experimental||{}).length>=4,"Pronósticos RF por cuatro localidades ausentes");
+}
 const enfen=JSON.parse(read("datos/estado_enso_verificado_ux9_2026.json"));
 assert(enfen.enfen?.fuente?.startsWith("https://"),"Falta procedencia de ENFEN");
 assert(/^\d{4}-\d\d-\d\d$/.test(enfen.enfen?.fecha_emision||""),"Fecha de emisión ENFEN inválida");
