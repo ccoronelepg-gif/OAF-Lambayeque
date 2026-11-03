@@ -430,7 +430,7 @@ function setup(){
  // Se conservan las proyecciones en el gráfico mensual con filtros; se elimina la cuadrícula repetida de seis tarjetas.
  const redraw=()=>month();
  selector.addEventListener("change",month);
- citySel.addEventListener("change",redraw);
+ citySel.addEventListener("change",()=>{redraw();document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:citySel.value,source:"oaf-ux16-mes-ciudad"}}))});
  varSel.addEventListener("change",month);
  const varWeek=$("oaf-ux14-variable");
  varWeek?.addEventListener("change",()=>queueMicrotask(week));
