@@ -25,7 +25,7 @@ class UX9(unittest.TestCase):
         structure=(ROOT/"assets/oaf-ux9-estructura.js").read_text("utf-8")
         css=(ROOT/"assets/oaf-ux9-refinamiento.css").read_text("utf-8")
         self.assertIn('const intro=node("div","oaf-agro-summary"',agro)
-        self.assertIn('Ciencia de datos y agricultura de agroexportación',agro)
+        self.assertIn('Ciencia de datos — Observatorio Agroclimático y Fitosanitario',agro)
         self.assertNotIn("const ten=[",agro)
         self.assertNotIn("oaf-intro-columns",structure)
         self.assertNotIn("column-count:2",css)
@@ -34,6 +34,9 @@ class UX9(unittest.TestCase):
         self.assertEqual(paragraph.count("<p>"),1)
         self.assertLessEqual(len(paragraph.split()),75)
         self.assertIn('id="oaf-home-summary-static"',PAGE)
+        self.assertNotIn('id="oaf-trust-legend"',PAGE)
+        self.assertNotIn('class="oaf-home-deep"',PAGE)
+        self.assertNotIn("Metodología, fuentes y trazabilidad →",PAGE)
 
     def test_all_ux9_assets_exist_and_loaded(self):
         for f in FILES:
@@ -52,8 +55,8 @@ class UX9(unittest.TestCase):
             self.assertIn(text,js)
         self.assertNotIn("Math.random(",js)
         doc=json.loads((ROOT/"datos/estado_enso_verificado_ux9_2026.json").read_text("utf-8"))
-        self.assertEqual(doc["enfen"]["numero"],"18-2026")
-        self.assertEqual(doc["enfen"]["fecha_emision"],"2026-10-16")
+        self.assertEqual(doc["enfen"]["numero"],"19-2026")
+        self.assertEqual(doc["enfen"]["fecha_emision"],"2026-10-30")
         self.assertEqual(doc["noaa"]["fecha_emision"],"2026-10-08")
         self.assertIn("enfen.imarpe.gob.pe/",doc["enfen"]["fuente"])
         self.assertIn("cpc.ncep.noaa.gov/",doc["noaa"]["fuente"])
@@ -79,6 +82,7 @@ class UX9(unittest.TestCase):
         self.assertIn("archivedHome.append",structure)
         self.assertIn("archivedAutor.append",structure)
         self.assertIn("oaf:ux9-ready",structure)
+        self.assertNotIn("<h3>Consulta científica</h3>",structure)
 
 if __name__=="__main__":
     unittest.main()
