@@ -169,9 +169,10 @@ test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta
   assert.match(agro,/radiacion_mj_m2/);
   assert.match(style,/oaf-agro-history-tile/);
   assert.match(style,/min-height:410px/);
-  assert.match(agro,/id:"oaf-stations-map"/);
-  assert.match(agro,/id:"oaf-stations-list"/);
-  assert.match(home,/id="oaf-area-clima"/);
+  const exportUI=read("assets/oaf-agroexportacion-2026.js");
+  assert.match(exportUI,/id="oaf-stations-map"/);
+  assert.match(exportUI,/id="oaf-stations-list"/);
+  assert.match(read("assets/oaf-territorio-compartido.js"),/clima:\(\)=>/);
   assert.match(read("assets/oaf-area-ux38.js"),/function climate\(point\)/);
   assert.match(read("assets/oaf-ux9-predicciones.js"),/oaf-ux9-final-lluvia/);
 });
