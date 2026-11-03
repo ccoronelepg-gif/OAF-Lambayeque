@@ -130,7 +130,7 @@ function initDaily(){
    else svgChart("oaf-ux14-weekchart",[{name:"Open-Meteo (externo)",values,color:"#278eb8"}],d.time.map(x=>x.slice(5)),isRain?"mm/día":"°C",isRain);
  out.textContent="Open-Meteo · referencia externa para "+c+" del "+d.time[0]+" al "+d.time[6]+". RF OAF se compara en esta misma gráfica cuando coinciden las fechas.";document.dispatchEvent(new CustomEvent("oaf:ux16-externo-diario",{detail:{localidad:c,dias:d}})); }
  catch(e){if(q!==weekSeq)return;$("oaf-ux14-weekchart").textContent="Referencia externa no disponible.";out.textContent="No se puede mostrar un pronóstico sin datos: "+e.message}};
- city.addEventListener("change",call);variable.addEventListener("change",call);call();
+ city.addEventListener("change",()=>{call();document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:city.value,source:"oaf-ux14-ciudad"}}))});variable.addEventListener("change",call);call();
 }
 function initMonth(){
  const sel=$("oaf-ux14-paisaje"),metric=$("oaf-ux14-metric");if(!sel||!metric)return;
