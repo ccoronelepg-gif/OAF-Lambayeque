@@ -305,14 +305,24 @@ function diagnosis(){
  const district=$("oaf-ux26-dist")?.selectedOptions?.[0]?.textContent?.trim()||"Todos los distritos";
  const watershed=$("oaf-ux26-basin")?.selectedOptions?.[0]?.textContent?.trim()||"Todas las cuencas";
  heading(box,"Ámbito",area+" · "+district+" · "+watershed+". Los filtros se aplican cuando la fuente dispone de geometrías.");
+ const layerLoadStatus=id=>{
+  const rasterIds={regional:"5090024",ninoFlood:"5090023",movmasa:"5090022"};
+  const image=id==="satellite"?pane.querySelector("image[data-ux30-satellite]"):
+   id==="basin"?[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids==="7,8"):
+   rasterIds[id]?[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids===rasterIds[id]):null;
+  if(!image)return "Capa pendiente de solicitud";
+  if(image.dataset.error==="true")return "El geoservicio no respondió";
+  if(image.dataset.loaded==="true")return "Capa cargada correctamente";
+  return "Solicitando geoservicio";
+ };
  const chosen=[...spec].filter(([id])=>on(id));
  if(!chosen.length)heading(box,"Sin capas activas","Selecciona las capas que deseas consultar.");
  for(const [id,def] of chosen){
   const status=id==="drought"?"INDECI 2003–2020 · "+state.droughtStatus:
    id==="heat"?"SENAMHI 2024 · "+state.heatStatus:
-   id==="satellite"?"Esri World Imagery · fecha variable por zona":
-   id==="regional"||id==="ninoFlood"||id==="movmasa"?"CENEPRED 2021 · susceptibilidad":
-   id==="basin"?"ANA · GeoIDEP · unidades hidrográficas":
+   id==="satellite"?"Esri World Imagery · "+layerLoadStatus(id):
+   id==="regional"||id==="ninoFlood"||id==="movmasa"?"CENEPRED 2021 · "+layerLoadStatus(id):
+   id==="basin"?"ANA · GeoIDEP · "+layerLoadStatus(id):
    ["fluvial","pluvial","erosion","detritos"].includes(id)?"INGEMMET · inventario FENC 2017":
    "Capa seleccionada";
   heading(box,def.title,def.meaning,status);

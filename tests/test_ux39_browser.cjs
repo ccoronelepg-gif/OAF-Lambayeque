@@ -42,7 +42,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.route("https://seasonal-api.open-meteo.com/**",route=>{
    const target=new URL(route.request().url());
    assert.equal(target.searchParams.get("models"),"ecmwf_seas5_ensemble_mean");
-   assert.equal(target.searchParams.get("hourly"),"precipitation");
+   assert(target.searchParams.get("hourly")?.split(",").includes("precipitation"),"El pronóstico estacional debe solicitar precipitación horaria");
    assert.equal(target.searchParams.get("daily"),null,"El proveedor estacional no admite precipitación diaria");
    return route.fulfill({
     status:200,contentType:"application/json",
