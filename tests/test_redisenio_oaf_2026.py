@@ -103,7 +103,7 @@ class Redisenio(unittest.TestCase):
         self.assertGreaterEqual(HTML.count('class="oaf-figure-caption"'),15)
         for link in ('https://enfen.imarpe.gob.pe/comunicados/',
           'https://open-meteo.com/en/docs','https://www.cpc.ncep.noaa.gov/',
-          'https://www.chc.ucsb.edu/data/chirps','https://atmosphere.copernicus.eu/'):
+          'https://www.chc.ucsb.edu/data/chirps','https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land'):
             self.assertIn(link,HTML)
         self.assertIn('Los resultados experimentales no sustituyen',HTML)
         self.assertIn('no son mediciones de SENAMHI',HTML)
