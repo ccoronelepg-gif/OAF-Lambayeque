@@ -10,38 +10,20 @@ const csv=t=>{const rows=t.trim().replace(/^\uFEFF/,"").split(/\r?\n/).map(r=>r.
 const fmt=(v,d=1)=>Number(v).toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d});
 function error(id,message){const target=$(id);if(target){target.replaceChildren();const p=document.createElement("p");p.className="oaf-agro-progress";p.textContent=message;target.append(p)}}
 function plot(id,values,labels,{mode="bar",unit="mm",source="",baseline=null}={}){
- const el=$(id);if(!el||!values.length||values.every(v=>!Number.isFinite(v))){error(id,"Serie no disponible: faltan datos verificables.");return}
- const nums=values.filter(Number.isFinite),W=760,H=300,top=29,left=57,right=15,bottom=55;
- const ymin=Math.min(0,...nums),ymax=Math.max(...nums),span=Math.max(1,ymax-ymin),y0=ymin-span*.10,y1=ymax+span*.14,ph=H-top-bottom,pw=W-left-right;
- const x=i=>left+(i+.5)*pw/values.length,y=v=>top+(y1-v)/(y1-y0)*ph;
- const graph=svg("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":`${source}. Serie: ${unit}`});
- for(let i=0;i<=4;i++){let v=y0+(y1-y0)*i/4,Y=y(v);graph.append(svg("line",{x1:left,y1:Y,x2:W-right,y2:Y,class:"oaf-chart-grid"}));graph.append(svg("text",{x:4,y:Y+4,class:"oaf-chart-axis"},fmt(v,1)))}
- graph.append(svg("line",{x1:left,y1:y(0),x2:W-right,y2:y(0),stroke:"#a9c8b5","stroke-width":1.3}));
- if(mode==="line"){
-  let coords=values.map((v,i)=>Number.isFinite(v)?`${x(i)},${y(v)}`:null).filter(Boolean);
-  graph.append(svg("polyline",{points:coords.join(" "),class:"oaf-chart-line"}));
-  values.forEach((v,i)=>{if(!Number.isFinite(v))return;const circle=svg("circle",{cx:x(i),cy:y(v),r:values.length>15?3:5,class:"oaf-chart-dot"});circle.append(svg("title",{},`${labels[i]} · ${fmt(v,1)} ${unit}`));graph.append(circle)})
- }else{
-  const bw=Math.min(39,pw/values.length*.71);
-  values.forEach((v,i)=>{if(!Number.isFinite(v))return;const rect=svg("rect",{x:x(i)-bw/2,y:Math.min(y(0),y(v)),width:bw,height:Math.max(1,Math.abs(y(0)-y(v))),rx:2,class:"oaf-chart-bar"});rect.append(svg("title",{},`${labels[i]} · ${fmt(v,1)} ${unit}`));graph.append(rect)})
- }
- const step=Math.max(1,Math.ceil(labels.length/7));
- labels.forEach((lbl,i)=>{if(i%step!==0&&i!==labels.length-1)return;graph.append(svg("text",{x:x(i),y:H-22,"text-anchor":"middle",class:"oaf-chart-axis"},String(lbl).slice(0,10)))});
- const caption=document.createElement("figcaption");caption.textContent=`${source} · ${unit} · ${labels[0]}–${labels.at(-1)}. Pasa el cursor sobre barras o puntos para consultar valores.`;
- el.replaceChildren(graph,caption);
+ const host=$(id);if(!host||!values.length||values.every(v=>!Number.isFinite(v))){error(id,"Serie no disponible: faltan datos verificables.");return}
+ const nums=values.filter(Number.isFinite),W=1040,H=390,top=28,left=76,right=24,bottom=58,zero=mode!=="line",rawMin=Math.min(...nums),rawMax=Math.max(...nums),span=Math.max(1,rawMax-rawMin);
+ const y0=zero?0:rawMin-span*.12,y1=rawMax+span*.16,ph=H-top-bottom,pw=W-left-right,x=i=>left+(i+.5)*pw/values.length,y=v=>top+(y1-v)/(y1-y0)*ph;
+ const graph=svg("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":source+". Serie anual: "+unit});
+ for(let i=0;i<=4;i++){const v=y0+(y1-y0)*i/4,Y=y(v);graph.append(svg("line",{x1:left,y1:Y,x2:W-right,y2:Y,class:"oaf-chart-grid"}));graph.append(svg("text",{x:left-10,y:Y+4,"text-anchor":"end",class:"oaf-chart-axis"},fmt(v,unit==="%"?0:1)))}
+ if(y0<=0&&y1>=0)graph.append(svg("line",{x1:left,y1:y(0),x2:W-right,y2:y(0),stroke:"#a9c8b5","stroke-width":1.3}));
+ if(mode==="line"){let segment=[];const flush=()=>{if(segment.length>1)graph.append(svg("polyline",{points:segment.join(" "),class:"oaf-chart-line"}));segment=[]};values.forEach((v,i)=>{if(!Number.isFinite(v)){flush();return}segment.push(x(i)+","+y(v))});flush();values.forEach((v,i)=>{if(!Number.isFinite(v))return;const d=svg("circle",{cx:x(i),cy:y(v),r:values.length>15?3.8:5,class:"oaf-chart-dot"});d.append(svg("title",{},labels[i]+" · "+fmt(v,1)+" "+unit));graph.append(d)})}
+ else{const bw=Math.min(39,pw/values.length*.71);values.forEach((v,i)=>{if(!Number.isFinite(v))return;const r=svg("rect",{x:x(i)-bw/2,y:Math.min(y(0),y(v)),width:bw,height:Math.max(1,Math.abs(y(0)-y(v))),rx:2,class:"oaf-chart-bar"});r.append(svg("title",{},labels[i]+" · "+fmt(v,1)+" "+unit));graph.append(r)})}
+ const step=Math.max(1,Math.ceil(labels.length/8));labels.forEach((lbl,i)=>{if(i%step!==0&&i!==labels.length-1)return;graph.append(svg("text",{x:x(i),y:H-22,"text-anchor":"middle",class:"oaf-chart-axis"},String(lbl).slice(0,10)))});const caption=document.createElement("figcaption");caption.textContent=source+" · "+unit+" · "+labels[0]+"–"+labels.at(-1)+". Pasa el cursor sobre puntos o barras para consultar valores.";host.replaceChildren(graph,caption);
 }
-let historic;
+let historic,humidity;
 async function loadHistoric(){if(historic)return historic;historic=req("datos/lambayeque_mensual_era5_8d.csv").then(r=>r.text()).then(csv);return historic}
-async function annual(id,placeId,varId){
- const place=$(placeId)?.value,kind=$(varId)?.value; if(!place||!kind)return;
- try{
- const rows=(await loadHistoric()).filter(r=>r.localidad===place&&/^(199[6-9]|20[0-2]\d)-\d\d$/.test(r.mes));
- const grouped=new Map();
- for(const r of rows){const yr=r.mes.slice(0,4);if(!grouped.has(yr))grouped.set(yr,[]);grouped.get(yr).push(r[kind]!==""?Number(r[kind]):NaN)}
- const years=[...grouped.keys()].sort().filter(y=>Number(y)<=2025), vals=years.map(y=>{const a=grouped.get(y);return a.length===12&&a.every(Number.isFinite)?(kind==="precipitacion_mm"?a.reduce((x,z)=>x+z,0):a.reduce((x,z)=>x+z,0)/12):NaN});
- plot(id,vals,years,{mode:"line",unit:kind==="precipitacion_mm"?"mm/año":"°C",source:`Análisis OAF de ERA5 · ${place} · datos históricos`});
- }catch(e){error(id,"No se pudo leer la serie histórica: "+e.message)}
-}
+async function loadHumidity(){if(humidity)return humidity;humidity=req("datos/humedad_8z/humedad_vpd_mensual_8z.csv").then(r=>r.text()).then(csv);return humidity}
+async function annual(id,placeId,varId){const place=$(placeId)?.value,kind=$(varId)?.value;if(!place||!kind)return;try{const isHumidity=kind==="humedad_relativa_pct",rows=(isHumidity?await loadHumidity():await loadHistoric()).filter(r=>r.localidad===place&&/^\\d{4}-\\d{2}$/.test(r.mes)),field=isHumidity?"rh_2m_media_pct":kind,grouped=new Map();for(const r of rows){const year=r.mes.slice(0,4);if(!grouped.has(year))grouped.set(year,[]);grouped.get(year).push(r[field]!==""?Number(r[field]):NaN)}const years=Array.from({length:30},(_,i)=>String(1996+i)),values=years.map(year=>{const a=grouped.get(year)||[];if(a.length!==12||!a.every(Number.isFinite))return NaN;return kind==="precipitacion_mm"||kind==="radiacion_mj_m2"?a.reduce((x,z)=>x+z,0):a.reduce((x,z)=>x+z,0)/12}),unit={precipitacion_mm:"mm/año",temperatura_c:"°C",humedad_relativa_pct:"%",radiacion_mj_m2:"MJ/m²/año"}[kind],name={precipitacion_mm:"Precipitación acumulada",temperatura_c:"Temperatura media",humedad_relativa_pct:"Humedad relativa media a 2 m",radiacion_mj_m2:"Radiación solar acumulada"}[kind];plot(id,values,years,{mode:"line",unit,source:"ERA5 · "+place+" · "+name+" · 1996–2025"})}catch(e){error(id,"No se pudo leer la serie histórica: "+e.message)}}
 const days=new Map();
 async function daily(place){if(!days.has(place)){
 const [lat,lon]=city[place]||city.Chiclayo;
@@ -109,11 +91,13 @@ async function ninoSignal(){
  }catch(e){box.textContent="Serie oceánica no disponible: "+e.message}
 }
 function setup(){
+ const emit=id=>{const s=$(id);if(s&&s.dataset.oafSync!=="true")document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:s.value,source:id}}));if(s)delete s.dataset.oafSync};
  const configs=[["oaf-historical-chart","oaf-historical-place","oaf-historical-var"],["oaf-regional-hist-chart","oaf-regional-place","oaf-regional-var"]];
- for(const [id,p,v] of configs){const cb=()=>annual(id,p,v);$(p)?.addEventListener("change",cb);$(v)?.addEventListener("change",cb);cb()}
- for(const [id,p,status] of [["oaf-h7-chart","oaf-h7-place","oaf-h7-status"],["oaf-autor-7chart","oaf-autor-7place","oaf-autor-7status"]]){const cb=()=>weekly(id,p,status);$(p)?.addEventListener("change",cb);cb()}
- document.addEventListener("oaf:localidad",e=>{const next=e.detail?.localidad;if(!city[next])return;for(const id of ["oaf-h7-place","oaf-autor-7place","oaf-historical-place","oaf-regional-place"]){const s=$(id);if(s&&s.value!==next){s.value=next;s.dispatchEvent(new Event("change"))}}});
+ for(const [id,p,v] of configs){const cb=()=>annual(id,p,v);$(p)?.addEventListener("change",()=>{cb();emit(p)});$(v)?.addEventListener("change",cb);cb()}
+ for(const [id,p,status] of [["oaf-h7-chart","oaf-h7-place","oaf-h7-status"],["oaf-autor-7chart","oaf-autor-7place","oaf-autor-7status"]]){const cb=()=>weekly(id,p,status);$(p)?.addEventListener("change",()=>{cb();emit(p)});cb()}
+ for(const id of ["oaf-ux14-ciudad","oaf-ux16-mes-ciudad"])$(id)?.addEventListener("change",()=>emit(id));
+ document.addEventListener("oaf:localidad",e=>{const next=e.detail?.localidad;if(!city[next])return;for(const id of ["oaf-ux9-localidad","oaf-h7-place","oaf-autor-7place","oaf-historical-place","oaf-regional-place","oaf-ux14-ciudad","oaf-ux16-mes-ciudad"]){const s=$(id);if(s&&s.value!==next){s.value=next;s.dataset.oafSync="true";s.dispatchEvent(new Event("change",{bubbles:true}))}}});
  regionMap();stationMap();ninoSignal();
-}
+ }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setup,{once:true});else setup();
 })();
