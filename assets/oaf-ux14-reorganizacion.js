@@ -73,20 +73,9 @@ function moveStructure(){
 }
 function highlightStations(){
  const target=$("oaf-stations-map");if(!target)return;
- const palette=["#c34e55","#1c8fbc","#d98b29","#6e68c9","#268c67","#a74e9f","#ae7732","#3c79c8","#cc667c","#008d91","#b28a39","#667d30","#dd6660","#505fa7","#6e9363","#923e7f"];
- const colors=new Map();let next=0;
- function paint(){
-   const svg=target.querySelector("svg");if(!svg)return;
-   const dots=[...svg.querySelectorAll("circle.oaf-map-symbol")];
-   for(const dot of dots){
-     const name=(dot.getAttribute("aria-label")||"").replace(/\s+-?\d+(?:\.\d+)?\s+metros.*$/,"");
-     if(!colors.has(name))colors.set(name,palette[next++%palette.length]);
-     const color=colors.get(name);dot.setAttribute("fill",color);dot.style.fill=color;dot.setAttribute("stroke","#fff");dot.setAttribute("stroke-width","2.5");dot.setAttribute("r","8");}
-   let legend=$("oaf-ux14-station-legend");if(!legend){legend=E("div","oaf-ux14-station-legend");legend.id="oaf-ux14-station-legend";target.after(legend);}
-   legend.replaceChildren();for(const [name,color] of colors){const chip=E("span");const sw=E("i");sw.style.backgroundColor=color;chip.append(sw,document.createTextNode(name));legend.append(chip)}
- }
- const ob=new MutationObserver(()=>paint());ob.observe(target,{childList:true});
- paint();
+ const palette={llanura_costa:"#3186b7",valle_bajo:"#1b9e77",piedemonte:"#83b94e",montana_baja:"#e4b63d",montana_media:"#e47b36",montana_alta:"#8762b8",cota_negativa_revisar:"#6b7280"};
+ function paint(){const map=target.querySelector("svg");if(!map)return;for(const dot of map.querySelectorAll("circle.oaf-map-symbol")){const color=palette[dot.dataset.floor]||"#64748b";dot.setAttribute("fill",color);dot.style.fill=color;dot.setAttribute("stroke","#fff");dot.setAttribute("stroke-width","2.5");dot.setAttribute("r","8")}}
+ const observer=new MutationObserver(paint);observer.observe(target,{childList:true,subtree:true});paint();
 }
 function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
