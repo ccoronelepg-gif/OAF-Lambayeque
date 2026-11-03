@@ -208,16 +208,19 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   for(const field of ["HR media (%)","Radiación (MJ/m²)","ET₀ FAO (mm)","DPV máx. (kPa)"])
     assert(pointTable.headers.includes(field),"Falta el indicador "+field+": "+JSON.stringify(pointTable.headers));
 
-  await page.locator('#oaf-primary-nav a[data-tab="verificaciones"]').click();
-  await page.waitForFunction(()=>document.querySelector('#verificaciones')&&!document.querySelector('#verificaciones').hidden,{timeout:10000});
+  await page.locator('#oaf-primary-nav a[data-tab="clima"]').click();
+  await page.waitForFunction(()=>document.querySelector('#clima')&&!document.querySelector('#clima').hidden,{timeout:10000});
+  await page.locator('#oaf-ux24-tabs-clima a[href="#oaf-territorio-riesgos"]').click();
+  await page.waitForFunction(()=>document.querySelector("#oaf-territorio-riesgos")&&!document.querySelector("#oaf-territorio-riesgos").hidden,{timeout:10000});
   await page.waitForFunction(()=>document.querySelector("#oaf-ux29-territory .oaf-ux29-mapcolumn .oaf-ux29-mapcontent svg"),{timeout:20000});
   const massTerritory=page.locator('#oaf-ux29-territory [data-ux30-layer="movmasa"]');
+  const massTerritoryLabel=page.locator('#oaf-ux29-territory label:has([data-ux30-layer="movmasa"])');
   await massTerritory.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
-  await massTerritory.check();
+  await massTerritoryLabel.click();
   await page.waitForSelector('#oaf-ux29-territory .oaf-ux30-layer image[data-title="Movimientos en masa"]',{timeout:10000});
   const layerDiagnosis=await page.locator("#oaf-ux29-territory .oaf-ux29-diagbody").textContent();
   assert(layerDiagnosis?.includes("Movimientos en masa"),"El diagnóstico no explica la capa geográfica seleccionada");
-  await massTerritory.uncheck();
+  await massTerritoryLabel.click();
   await page.waitForFunction(()=>!document.querySelector('#oaf-ux29-territory .oaf-ux30-layer image[data-title="Movimientos en masa"]'),{timeout:10000});
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
@@ -238,11 +241,14 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(await page.locator("#oaf-ux24-region-map #oaf-ux39-geom-territorio").count(),"El polígono no se dibujó en el SVG territorial");
   await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
   await page.waitForFunction(()=>document.querySelector('#autor')&&!document.querySelector('#autor').hidden,{timeout:10000});
+  await page.locator('#oaf-ux24-tabs-autor a[href="#oaf-escenarios-riesgo-agroclimatico"]').click();
+  await page.waitForFunction(()=>document.querySelector("#oaf-escenarios-riesgo-agroclimatico")&&!document.querySelector("#oaf-escenarios-riesgo-agroclimatico").hidden,{timeout:10000});
   const massScenario=page.locator('#oaf-ux29-scenario [data-ux29-layer="mass"]');
+  const massScenarioLabel=page.locator('#oaf-ux29-scenario label:has([data-ux29-layer="mass"])');
   await massScenario.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
-  await massScenario.check();
+  await massScenarioLabel.click();
   await page.waitForSelector("#oaf-ux29-scenario .oaf-ux29-mass",{timeout:10000});
-  await massScenario.uncheck();
+  await massScenarioLabel.click();
   await page.waitForFunction(()=>!document.querySelector("#oaf-ux29-scenario .oaf-ux29-mass"),{timeout:10000});
   const escenario=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-escenarios form");
@@ -258,8 +264,10 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(await page.locator("#oaf-ux29-forecast-map #oaf-area-pin-escenarios").count(),"El punto no se dibujó en el SVG del visor de escenarios");
   assert(await page.locator("#oaf-ux24-region-map #oaf-area-pin-territorio").count(),"Desapareció el punto territorial al definir escenario");
   // Prueba responsive: el visor debe aparecer ANTES del listado de capas en móvil.
-  await page.locator('#oaf-primary-nav a[data-tab="verificaciones"]').click();
-  await page.waitForFunction(()=>document.querySelector('#verificaciones')&&!document.querySelector('#verificaciones').hidden,{timeout:10000});
+  await page.locator('#oaf-primary-nav a[data-tab="clima"]').click();
+  await page.waitForFunction(()=>document.querySelector('#clima')&&!document.querySelector('#clima').hidden,{timeout:10000});
+  await page.locator('#oaf-ux24-tabs-clima a[href="#oaf-territorio-riesgos"]').click();
+  await page.waitForFunction(()=>document.querySelector("#oaf-territorio-riesgos")&&!document.querySelector("#oaf-territorio-riesgos").hidden,{timeout:10000});
   await page.setViewportSize({width:390,height:844});
   const responsive=await page.evaluate(()=>{
    const layout=document.querySelector("#oaf-ux29-territory .oaf-ux29-layout"),

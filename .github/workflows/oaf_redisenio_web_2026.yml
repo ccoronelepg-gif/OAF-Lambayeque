@@ -39,6 +39,6 @@ jobs:
                       'oaf-regional-8s','oaf-8m-neighbour'):
               if mod=='oaf-8m-neighbour':continue
               assert src.count('id="'+mod+'"')==1,mod
-          assert src.count('<section data-page=')==5
+          assert src.count('<section data-page=')==6
           print('Conservación de paneles, fuentes y diseño cinco pestañas comprobada')
           PY

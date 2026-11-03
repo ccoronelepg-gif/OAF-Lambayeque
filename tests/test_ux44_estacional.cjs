@@ -39,7 +39,7 @@ const shortened={time:time.filter((_,i)=>i!==remove),
  precipitation:rain.filter((_,i)=>i!==remove),
  temperature_2m:temp.filter((_,i)=>i!==remove)};
 const partial=parse(shortened,months);
-assert(partial.complete[3]===false&&Number.isNaN(partial.rainfall[3])&&Number.isNaN(partial.temperature[3]),
+assert(partial.complete[2]===false&&Number.isNaN(partial.rainfall[2])&&Number.isNaN(partial.temperature[2]),
  "Un mes con una medición 6h faltante debe quedar vacío");
 assert(partial.rainfall.filter(Number.isFinite).length===5);
 let dup;try{parse({time:[...time,time[0]],precipitation:[...rain,.5],temperature_2m:[...temp,25]},months)}catch(e){dup=e}

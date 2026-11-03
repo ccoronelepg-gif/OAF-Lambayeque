@@ -65,7 +65,7 @@ class ValidacionGCNvsRF(unittest.TestCase):
   self.assertIn("val_mae_mm",j["modelo_GCN"])
  def test_ui_no_elimina_rutas_ni_comparaciones(self):
   html=(ROOT/"index.html").read_text("utf8")
-  self.assertEqual(html.count("<section data-page="),5)
+  self.assertEqual(html.count("<section data-page="),6)
   for id in ("oaf-9r-visor","oaf-9r-winner","oaf-9r-chart",
              "oaf-9r-score-table","oaf-9r-floors","oaf-9r-groups",
              "oaf-9r-anomalies","oaf-9r-years","oaf-9r-status"):
