@@ -312,6 +312,7 @@ function render(){
   const title=SVG("title");title.textContent=label;img.append(title);region.append(img);
  };
  if(enabled("regional")||state.on.futureFlood||enabled("exposicion"))raster(CEN,"5010502",.7,"Susceptibilidad regional a inundaciones");
+ if(state.on.past2023)raster(CEN,"5090023",.54,"Susceptibilidad asociada a lluvias de eventos El Niño · CENEPRED 2021");
  if(enabled("movmasa")||state.on.futureMass)raster(CEN,"5090022",.44,"Movimientos en masa");
  if(enabled("inundacionregion"))raster("https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer","0",.42,"Susceptibilidad fluvial en polígonos");
  if(enabled("agricola")||enabled("exposicion")||enabled("agroflood")){
