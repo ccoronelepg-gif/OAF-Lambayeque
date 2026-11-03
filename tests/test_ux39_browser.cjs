@@ -7,6 +7,20 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const context=await browser.newContext({viewport:{width:1365,height:850},locale:"es-PE"});
   await context.route("**/*",route=>route.request().url().startsWith("http://127.0.0.1:8765/")?route.continue():route.abort("blockedbyclient"));
   const page=await context.newPage();const errors=[];
+  const homeForecast={latitude:-6.7714,longitude:-79.8409,daily:{
+   time:["2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],
+   precipitation_sum:[0,1.2,0,2.4,0,0.3,0],temperature_2m_max:[27,28,29,28,27,26,27],
+   temperature_2m_min:[18,18,19,18,17,17,18],shortwave_radiation_sum:[20,21,22,21,20,19,20]
+  }};
+  await page.route("https://api.open-meteo.com/v1/forecast?*",route=>route.fulfill({
+   status:200,contentType:"application/json",body:JSON.stringify(homeForecast)
+  }));
+  await page.route("https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6010100/query?*",route=>route.fulfill({
+   status:200,contentType:"application/geo+json",body:JSON.stringify({type:"FeatureCollection",features:[
+    {type:"Feature",id:1,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Inundación fluvial",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},
+     geometry:{type:"Point",coordinates:[-79.7142,-6.15083]}}
+   ]})
+  }));
   // UX54: respuesta estacional simulada sin Internet, seis meses completos Dic26–May27.
   const seasonalTime=[],seasonalRain=[],seasonalTemp=[];
   for(let y=2026,m=12;y<2027||m<=5;){
@@ -20,7 +34,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.route("https://seasonal-api.open-meteo.com/**",route=>{
    const target=new URL(route.request().url());
    assert.equal(target.searchParams.get("models"),"ecmwf_seas5_ensemble_mean");
-   assert.equal(target.searchParams.get("hourly"),"precipitation,temperature_2m");
+   assert.equal(target.searchParams.get("hourly"),"precipitation");
    assert.equal(target.searchParams.get("daily"),null,"El proveedor estacional no admite precipitación diaria");
    return route.fulfill({
     status:200,contentType:"application/json",
@@ -97,17 +111,24 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    for(let parent=el;parent;parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;
   });
   await page.waitForSelector("#oaf-clima-bloque-historico #oaf-area-clima form",{timeout:20000});
-  const climateMaps=await page.evaluate(()=>({
+  await page.waitForSelector("#oaf-ux55-historical",{timeout:15000});
+   await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux55-hist-chart .oaf-ux55-bar").length===30,{timeout:15000});
+   const climateMaps=await page.evaluate(()=>({
    dem:document.querySelectorAll("#oaf-regional-hist-map svg circle").length,
    demColors:new Set([...document.querySelectorAll("#oaf-regional-hist-map svg circle")].map(x=>x.getAttribute("fill"))).size,
    stations:document.querySelectorAll("#oaf-stations-list tbody tr").length,
+   stationColumns:document.querySelectorAll("#oaf-stations-list table thead th").length,
    mapped:document.querySelectorAll("#oaf-stations-map svg circle.oaf-map-symbol").length,
+   historicalBars:document.querySelectorAll("#oaf-ux55-hist-chart .oaf-ux55-bar").length,
+   historicalVariables:[...document.querySelectorAll("#oaf-ux55-hist-variable option")].map(x=>x.value),
    humidity:[...document.querySelectorAll("#oaf-regional-var option")].some(x=>x.value==="humedad_relativa_pct"),
    radiation:[...document.querySelectorAll("#oaf-regional-var option")].some(x=>x.value==="radiacion_mj_m2"),
    areaForm:!!document.querySelector("#oaf-clima-bloque-historico #oaf-area-clima form")
   }));
   assert(climateMaps.dem>=420&&climateMaps.demColors>=7,"El DEM debe distinguir las franjas altitudinales: "+JSON.stringify(climateMaps));
-  assert(climateMaps.stations===13&&climateMaps.mapped===3,"El inventario debe listar 13 estaciones y mapear solo las georreferenciadas: "+JSON.stringify(climateMaps));
+  assert(climateMaps.stations===13&&climateMaps.mapped===5,"El inventario debe listar 13 estaciones y mapear solo las cinco con coordenadas documentales: "+JSON.stringify(climateMaps));
+   assert(climateMaps.stationColumns===3,"La lista debe mostrar únicamente estación, código y altitud: "+JSON.stringify(climateMaps));
+   assert(climateMaps.historicalBars===30&&climateMaps.historicalVariables.join(",")==="temperatura_c,precipitacion_mm,radiacion_mj_m2","El histograma debe mostrar 30 años y solo temperatura, precipitación y radiación: "+JSON.stringify(climateMaps));
   assert(climateMaps.humidity&&climateMaps.radiation&&climateMaps.areaForm,"Faltan variables o consulta de zona productora en data histórica: "+JSON.stringify(climateMaps));
   // Simular una respuesta ERA5 diaria completa para probar el cálculo 1996–2025 sin depender de Internet.
   const areaEraTime=[],areaEraTemp=[],areaEraRain=[],areaEraSolar=[],areaEraHumidity=[];
@@ -130,9 +151,12 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const filteredDem=await page.locator('#oaf-regional-hist-map svg circle[opacity=".94"]').count();
   assert(filteredDem>0&&filteredDem<420,"El filtro altitudinal del DEM no actualiza los puntos visibles: "+filteredDem);
   await page.locator("#oaf-regional-map-filter").selectOption("all");
-  await page.locator("#oaf-stations-floor").selectOption("montana_alta");
-  const highStations=await page.locator("#oaf-stations-list tbody tr").count();
+  const allMapped=await page.locator("#oaf-stations-map svg circle.oaf-map-symbol").count();
+   await page.locator("#oaf-stations-floor").selectOption("montana_alta");
+  const highMapped=await page.locator("#oaf-stations-map svg circle.oaf-map-symbol").count();
+   const highStations=await page.locator("#oaf-stations-list tbody tr").count();
   assert(highStations>0&&highStations<13,"El filtro altitudinal de estaciones no filtra el inventario: "+highStations);
+   assert(highMapped>0&&highMapped<allMapped,"El filtro altitudinal debe cambiar también los puntos del mapa: "+highMapped+"/"+allMapped);
   await page.locator("#oaf-stations-floor").selectOption("all");
   await page.locator("#oaf-stations-map svg circle.oaf-map-symbol").first().click();
   const selectedStation=await page.locator("#oaf-stations-selected").textContent();
@@ -140,22 +164,29 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   // UX42: Carrusel Inicio y lectura independiente en área semanal.
   await page.locator('#oaf-primary-nav a[data-tab="inicio"]').click();
   await page.waitForFunction(()=>document.querySelector('#inicio')&&!document.querySelector('#inicio').hidden,{timeout:10000});
-  await page.waitForSelector("#oaf-ux42-slide-official",{state:"attached",timeout:12000});
-  const intro=await page.evaluate(()=>{
-    const c=document.querySelector("#inicio .oaf-ux42-carousel");
-    return {count:c?.querySelectorAll(".oaf-ux42-slide").length,
-      dots:c?.querySelectorAll(".oaf-ux42-dot").length,
-      official:c?.querySelector("#oaf-ux15-enfen-exp")?.textContent,
-      source:c?.querySelector(".oaf-ux15-source")?.textContent};
-  });
-  assert(intro.count===3&&intro.dots===3,"No hay tres láminas en carrusel: "+JSON.stringify(intro));
-  assert(intro.official?.includes("Interpretación:")&&!intro.official?.includes("inundación"),
-    "Interpretación ENFEN innecesariamente descriptiva: "+intro.official);
-  await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Próximos 7 días"]').click());
-  assert(await page.locator("#oaf-ux42-slide-week").evaluate(x=>!x.hidden),"Carrusel no muestra 7 días");
-  await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Horizonte mensual"]').click());
-  assert(await page.locator("#oaf-ux42-slide-month").evaluate(x=>!x.hidden),"Carrusel no muestra mensual");
-  const pointForecast={latitude:-6.15,longitude:-79.71,daily:{time:["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"],
+  await page.waitForSelector("#oaf-ux55-enfen",{state:"attached",timeout:12000});
+   await page.waitForFunction(()=>document.querySelector("#oaf-ux55-enfen-chart")?.textContent.includes("98 %")&&document.querySelectorAll("#oaf-ux55-week-chart .oaf-ux55-bar").length===7&&document.querySelectorAll("#oaf-ux55-season-chart .oaf-ux55-bar").length===6,{timeout:20000});
+   const intro=await page.evaluate(()=>{
+     const c=document.querySelector("#inicio .oaf-ux55-carousel");
+     return {count:c?.querySelectorAll(".oaf-ux55-slide").length,
+       dots:c?.querySelectorAll(".oaf-ux42-dot").length,
+       official:c?.querySelector("#oaf-ux55-enfen-note")?.textContent,
+       source:c?.querySelector("#oaf-ux55-enfen-note a")?.textContent,
+       probability:c?.querySelector("#oaf-ux55-enfen-chart")?.textContent,
+       weekBars:c?.querySelectorAll("#oaf-ux55-week-chart .oaf-ux55-bar").length,
+       seasonBars:c?.querySelectorAll("#oaf-ux55-season-chart .oaf-ux55-bar").length,
+       science:document.querySelector("#oaf-ux55-science")?.textContent};
+   });
+   assert(intro.count===3&&intro.dots===3,"No hay tres láminas en carrusel: "+JSON.stringify(intro));
+   assert(intro.official?.includes("probabilidades de lluvia")&&intro.probability?.includes("98 %")&&intro.source?.includes("boletín y figura oficial"),
+     "La tarjeta ENFEN debe mostrar la probabilidad oficial y su advertencia: "+JSON.stringify(intro));
+   assert(intro.weekBars===7&&intro.seasonBars===6,"El carrusel debe cargar siete días y seis meses completos: "+JSON.stringify(intro));
+   assert(intro.science?.includes("Random Forest")&&intro.science?.includes("pequeños agricultores"),"Falta la explicación del propósito científico del observatorio");
+   await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Pronóstico 7 días"]').click());
+   assert(await page.locator("#oaf-ux55-week").evaluate(x=>!x.hidden),"Carrusel no muestra 7 días");
+   await page.evaluate(()=>document.querySelector('#inicio button[aria-label="Perspectiva estacional"]').click());
+   assert(await page.locator("#oaf-ux55-season").evaluate(x=>!x.hidden),"Carrusel no muestra la perspectiva estacional");
+   const pointForecast={latitude:-6.15,longitude:-79.71,daily:{time:["2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02"],
     precipitation_sum:[0.03,0.08,0.12,0.16,0.2,0.14,0.01],temperature_2m_max:[24,25,26,27,28,27,25],
     temperature_2m_min:[17,18,18,19,20,19,18],relative_humidity_2m_mean:[72,70,68,74,76,75,71],
     shortwave_radiation_sum:[18,19,20,21,19,18,17],wind_speed_10m_max:[12,13,11,14,15,12,10],
@@ -213,7 +244,17 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.locator('#oaf-ux24-tabs-clima a[href="#oaf-territorio-riesgos"]').click();
   await page.waitForFunction(()=>document.querySelector("#oaf-territorio-riesgos")&&!document.querySelector("#oaf-territorio-riesgos").hidden,{timeout:10000});
   await page.waitForFunction(()=>document.querySelector("#oaf-ux29-territory .oaf-ux29-mapcolumn .oaf-ux29-mapcontent svg"),{timeout:20000});
-  const massTerritory=page.locator('#oaf-ux29-territory [data-ux30-layer="movmasa"]');
+  await page.waitForFunction(()=>window.oafUx33Data?.()?.features?.historical?.length>0,{timeout:15000});
+   const floodTerritory=page.locator('#oaf-ux29-territory label:has([data-ux30-layer="fluvial"])');
+   const floodControl=page.locator('#oaf-ux29-territory [data-ux30-layer="fluvial"]');
+   await floodControl.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
+   await floodTerritory.click();
+   await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-territory .oaf-ux33-historic-point").length>0,{timeout:10000});
+   await floodTerritory.click();
+   await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-territory .oaf-ux33-historic-point").length===0,{timeout:10000});
+   const cleanTerritory=await page.evaluate(()=>({counters:document.querySelectorAll("#oaf-ux29-territory #oaf-ux33-status,#oaf-ux29-territory #oaf-ux32-map-status").length,pointPanel:[...document.querySelectorAll("#oaf-ux29-territory #oaf-area-point-details-territorio")].every(x=>x.hidden||getComputedStyle(x).display==="none")}));
+   assert(cleanTerritory.counters===0&&cleanTerritory.pointPanel,"Deben ocultarse contadores redundantes y diagnóstico espacial del punto: "+JSON.stringify(cleanTerritory));
+   const massTerritory=page.locator('#oaf-ux29-territory [data-ux30-layer="movmasa"]');
   const massTerritoryLabel=page.locator('#oaf-ux29-territory label:has([data-ux30-layer="movmasa"])');
   await massTerritory.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
   await massTerritoryLabel.click();
@@ -243,7 +284,22 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.waitForFunction(()=>document.querySelector('#autor')&&!document.querySelector('#autor').hidden,{timeout:10000});
   await page.locator('#oaf-ux24-tabs-autor a[href="#oaf-escenarios-riesgo-agroclimatico"]').click();
   await page.waitForFunction(()=>document.querySelector("#oaf-escenarios-riesgo-agroclimatico")&&!document.querySelector("#oaf-escenarios-riesgo-agroclimatico").hidden,{timeout:10000});
-  const massScenario=page.locator('#oaf-ux29-scenario [data-ux35-key="futureMass"]');
+  await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-forecast-map .oaf-ux35-point[data-ux35-type=hist]").length>0,{timeout:15000});
+   const pastFloodLabel=page.locator('#oaf-ux29-scenario label:has([data-ux35-key="pastFlood"])');
+   await pastFloodLabel.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
+   await pastFloodLabel.click();
+   await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-forecast-map .oaf-ux35-point[data-ux35-type=hist]").length===0,{timeout:10000});
+   await pastFloodLabel.click();
+   await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-forecast-map .oaf-ux35-point[data-ux35-type=hist]").length>0,{timeout:10000});
+   const past2023Label=page.locator('#oaf-ux29-scenario label:has([data-ux35-key="past2023"])');
+   await past2023Label.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
+   await past2023Label.click();
+   await page.waitForSelector("#oaf-ux29-forecast-map .oaf-ux35-evidence-note",{timeout:10000});
+   const note2023=await page.locator("#oaf-ux29-forecast-map .oaf-ux35-evidence-note").textContent();
+   assert(note2023?.includes("CENEPRED 2023")&&note2023?.includes("geometría"),"El antecedente CENEPRED debe actualizar el mapa sin inventar polígonos: "+note2023);
+   const pointPanel=await page.locator("#oaf-ux29-scenario #oaf-area-point-details-escenarios").evaluate(x=>x.hidden||getComputedStyle(x).display==="none").catch(()=>true);
+   assert(pointPanel,"El diagnóstico espacial puntual redundante debe permanecer oculto");
+   const massScenario=page.locator('#oaf-ux29-scenario [data-ux35-key="futureMass"]');
   const massScenarioLabel=page.locator('#oaf-ux29-scenario label:has([data-ux35-key="futureMass"])');
   await massScenario.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
   await massScenarioLabel.click();

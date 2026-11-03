@@ -84,6 +84,8 @@ function syncStructure(type){
   if(child.parentElement!==col||child.previousElementSibling!==previous)previous.after(child);
   previous=child;
  }
+ const pointDetails=pane.querySelector("#oaf-area-point-details-territorio,#oaf-area-point-details-escenarios");
+ if(pointDetails){pointDetails.hidden=true;pointDetails.setAttribute("aria-hidden","true");pointDetails.style.display="none";}
  const diagnosis=layout.querySelector(".oaf-ux29-diagnosis");
  if(diagnosis){
   diagnosis.querySelector(".oaf-ux29-diagnosishead span")?.replaceChildren(document.createTextNode("ANÁLISIS CONTEXTUAL"));

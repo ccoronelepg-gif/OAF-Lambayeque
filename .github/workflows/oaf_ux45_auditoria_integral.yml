@@ -9,6 +9,13 @@ on:
       - "assets/oaf-parcelas-ux39.js"
       - "assets/oaf-ux15-rf-salidas.js"
       - "assets/oaf-ux14-reorganizacion.js"
+      - "assets/oaf-ux55-correcciones.js"
+      - "assets/oaf-ux55-correcciones.css"
+      - "assets/oaf-ux35-escenarios-multicapas.js"
+      - "assets/oaf-ux52-visores.js"
+      - "assets/oaf-agro-charts-2026.js"
+      - "datos/enfen_probabilidades_portada_2026.json"
+      - "tests/test_ux55_correcciones.cjs"
       - "tests/test_ux21_browser.cjs"
       - "tests/test_ux43_weekbars.cjs"
       - "tests/test_ux45_verificacion_general.cjs"
@@ -48,6 +55,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_divulgacion_seo_2026.py' -v
       - name: Datos predictivos, visores SIG, modelo y PWA
         run: |
+          node tests/test_ux55_correcciones.cjs
           node tests/test_ux39_parcelas.cjs
           node tests/test_ux41_semana.cjs
           node tests/test_ux43_weekbars.cjs

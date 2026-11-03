@@ -1,41 +1,41 @@
 {
   "tipo": "probabilidades_mensuales_oficiales_ENFEN_ICEN_2026",
   "institucion": "ENFEN",
-  "comunicado": "18-2026",
-  "fecha_publicacion": "2026-10-16",
-  "fuente": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/",
-  "fuente_pdf": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-18-2026/?ind=1792527447290&wpdmdl=2165",
-  "figura": "Figura 2a, página 1. Región Niño 1+2, pronóstico probabilístico ICEN por mes.",
-  "region": "Niño 1+2: costa peruana, no Niño 3.4 global",
+  "comunicado": "19-2026",
+  "fecha_publicacion": "2026-10-30",
+  "fuente": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/",
+  "fuente_pdf": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/",
+  "figura": "Figura 2, página 1. Probabilidades mensuales estimadas por ENFEN según el índice ICEN para la región Niño 1+2 (El Niño Costero).",
+  "region": "Niño 1+2 (El Niño Costero)",
   "meses": [
     {
-      "mes": "2026-10",
-      "extraordinaria": 98,
-      "fuerte": 2,
-      "moderada": 0,
-      "debil": 0,
-      "neutral": 0,
-      "fria": 0
-    },
-    {
       "mes": "2026-11",
-      "extraordinaria": 95,
-      "fuerte": 5,
+      "extraordinaria": 98,
+      "fuerte": 0,
       "moderada": 0,
       "debil": 0,
-      "neutral": 0,
+      "neutral": 2,
       "fria": 0
     },
     {
       "mes": "2026-12",
-      "extraordinaria": 80,
-      "fuerte": 20,
+      "extraordinaria": 90,
+      "fuerte": 10,
       "moderada": 0,
+      "debil": 0,
+      "neutral": 0,
+      "fria": 0
+    },
+    {
+      "mes": "2027-01",
+      "extraordinaria": 75,
+      "fuerte": 23,
+      "moderada": 2,
       "debil": 0,
       "neutral": 0,
       "fria": 0
     }
   ],
-  "advertencia": "Probabilidades oficiales ICEN para las categorías de temperatura oceánica; NO representan probabilidades de lluvia, inundación, daños agrícolas ni condiciones diarias de Lambayeque. No es cálculo del OAF; consultar nuevo comunicado después del 30/10/2026.",
-  "revisar_despues": "2026-10-30"
+  "advertencia": "Probabilidades de categoría de magnitud del índice ICEN para Niño 1+2; no representan la probabilidad de ocurrencia del fenómeno en general, ni probabilidades de lluvia, inundación, daños agrícolas o condiciones diarias en Lambayeque. El evento ya se encuentra bajo Alerta de El Niño Costero.",
+  "revisar_despues": "2026-11-13"
 }

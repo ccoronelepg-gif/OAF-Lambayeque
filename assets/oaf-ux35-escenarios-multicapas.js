@@ -18,7 +18,7 @@ const COMPANIES="datos/riesgos_ux35/ubicaciones_agroindustriales_referenciales.g
 const YEARS=[1983,1993,1998,2007,2017,2023];
 const FALLBACK_PAGES={
  old2017:"https://sigrid.cenepred.gob.pe/sigridv3/documento/16310",
- climate:"https://enfen.imarpe.gob.pe/comunicados/",
+ climate:"https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/",
  senamhi:"https://www.senamhi.gob.pe/"
 };
 const addKeys=[
@@ -27,7 +27,7 @@ const addKeys=[
  ["pastMass","Deslizamientos y flujos documentados · 2017","Registros geológicos de flujos de detritos y movimientos en masa del Niño Costero 2017 cuando el inventario tiene esa clasificación."],
  ["past2023","Escenario de riesgo de El Niño · CENEPRED 2023","Estudio oficial de 2023 que considera 1983, 1998, 2017 y 2023 para analizar riesgos de inundación y movimientos en masa. La ficha enlaza el estudio; no se dibuja una geometría no verificada."],
  ["rain7","Lluvia pronosticada · próximos siete días","Pronóstico puntual Open-Meteo para Chiclayo, Jayanca, Motupe y Olmos. Se acumula en la ventana seleccionada; no representa toda la región."],
- ["seasonal","Perspectiva noviembre 2026–verano 2027 · ENFEN","ENFEN N.º 18-2026 (16/10) anticipa lluvias sobre lo normal en costa norte, caudales altos en el río La Leche desde noviembre y altas temperaturas. Es una perspectiva cualitativa, sin mm mensuales por distrito."],
+ ["seasonal","Perspectiva noviembre 2026–verano 2027 · ENFEN","ENFEN N.º 19-2026 (30/10) prevé lluvias sobre lo normal en la costa norte entre noviembre y enero, y durante el verano 2027; caudales superiores a lo normal en Tumbes, Chira, Piura, La Leche y Jequetepeque. Tinajones mantiene niveles bajos. Es una perspectiva regional cualitativa, no mm por distrito."],
  ["futureFlood","Escenario orientativo: lluvia + susceptibilidad a inundación","Permite contrastar señales meteorológicas con zonas susceptibles cartografiadas. No predice dónde se inundará, ni niveles o probabilidades."],
  ["futureMass","Escenario orientativo: movimientos en masa","Contrasta la susceptibilidad de laderas con señales de lluvia. No calcula la probabilidad ni los lugares exactos de deslizamientos."],
  ["futureRiver","Vigilancia de crecidas y desbordes","Muestra ríos y zonas susceptibles. Sin caudal hidrométrico calibrado no es posible afirmar que un río se desbordará."],
@@ -68,9 +68,9 @@ function activate(){
  if(map)map.innerHTML='<div class="oaf-ux35-mapintro">Selecciona los grupos de capas para comparar antecedentes, pronósticos y exposición agrícola. Haz clic en un punto para ver la información disponible.</div>'+
  '<div class="oaf-ux29-scenemap"><svg id="oaf-ux29-forecast-map" viewBox="0 0 700 380" role="img" aria-label="Visor geográfico de escenarios del Niño, pronósticos de lluvia y territorio de Lambayeque"></svg>'+
  '<p class="oaf-ux29-mapcaption">Capas históricas y de susceptibilidad superpuestas; los círculos de lluvia son consultas puntuales y no predicciones de polígonos afectados.</p></div>'+
- '<div class="oaf-ux35-outlook" id="oaf-ux35-outlook"><strong>Perspectiva regional ENFEN · Comunicado 18-2026</strong>'+
- '<div><span>Nov.–dic. 2026: lluvias sobre lo normal en costa norte</span><span>Verano 2027: lluvias sobre lo normal en costa norte</span><span>Río La Leche: caudales superiores a lo normal principalmente desde noviembre</span></div>'+
- '<small>Escenarios regionales cualitativos: no son mm mensuales por distrito ni huellas futuras de inundación.</small></div>'+
+ '<div class="oaf-ux35-outlook" id="oaf-ux35-outlook"><strong>Perspectiva regional ENFEN · Comunicado 19-2026</strong>'+
+ '<div><span>Nov. 2026–ene. 2027: lluvias sobre lo normal en la costa norte</span><span>Verano 2027: lluvias sobre lo normal y más frecuentes en la costa norte</span><span>Tumbes, Chira, Piura, La Leche y Jequetepeque: caudales superiores; Tinajones con nivel bajo</span></div>'+
+ '<small>Escenarios regionales cualitativos: no son mm mensuales por distrito ni huellas futuras de inundación. Fuente: ENFEN 19-2026, 30/10/2026.</small></div>'+
  '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Consultando geocapas y pronósticos…</div>';
  const extraSlot=pane.querySelector(".oaf-ux29-diagextras");
  if(extraSlot)extraSlot.innerHTML='<div class="oaf-ux35-method"><strong>Interpretación científica</strong>'+
@@ -229,8 +229,9 @@ function requestSharedData(){
   drought:enabled("drought")||state.on.futureDrought,heat:enabled("heat")||state.on.futureHeat,
  };
  window.oafUx35Wants=wanted;
- window.oafUx33Load?.();
- window.oafUx30RequestHistoricalClimate?.();
+  window.oafUx30RequestDraw?.();
+  window.oafUx33Load?.();
+  window.oafUx30RequestHistoricalClimate?.();
 }
 async function loadCompanies(){
  if(state.companyStatus!=="pendiente")return;
@@ -329,6 +330,18 @@ function render(){
   region.append(SVG("image",{href:WMS+"?"+q,x:0,y:0,width:700,height:340,opacity:.4,preserveAspectRatio:"none","pointer-events":"none"}));
  }
  const shared=window.oafUx33Data?.();
+ const historicalFeatures=shared?.features?.historical||[];
+ const historicalOn=state.on.pastFlood||state.on.pastMass;
+ if(historicalOn||state.on.past2023){
+  const phase=shared?.phase?.historical||"pendiente";
+  const note=SVG("g",{class:"oaf-ux35-evidence-note","pointer-events":"none"});
+  note.append(SVG("rect",{x:12,y:12,width:450,height:50,rx:8,fill:"#ffffff",stroke:"#8eaa9a","stroke-width":1,opacity:.96}));
+  const title=SVG("text",{x:23,y:31,fill:"#1d5140","font-size":12,"font-weight":700});
+  title.textContent=state.on.past2023?"CENEPRED 2023 · escenario documental":"Antecedentes INGEMMET · El Niño Costero 2017";
+  const detail=SVG("text",{x:23,y:49,fill:"#48665a","font-size":10});
+  detail.textContent=state.on.past2023?"Estudio de riesgo; no se dibujan polígonos sin geometría de eventos verificada.":phase==="listo"?historicalFeatures.length+" puntos históricos disponibles; son ubicaciones puntuales, no áreas inundadas.":phase==="cargando"?"Consultando inventario geológico histórico oficial…":phase==="pendiente"?"Esperando geodatos oficiales; no se generan puntos simulados.":"Inventario histórico no disponible en esta consulta; no se generan puntos simulados.";
+  note.append(title,detail);region.append(note);
+ }
  const textCandidates=[];
  const points=[];
  const inFilter=coords=>!ctx?.selected?.length||!ctx.contains||ctx.selected.every(t=>ctx.contains(t.geo,coords));
@@ -446,7 +459,7 @@ function render(){
   const offset=p.type==="history"?8:0;
   const dot=SVG("circle",{cx:x+offset,cy:y-offset,r:p.radius||4.5,fill:p.color,stroke:"#fff","stroke-width":1.5,tabindex:"0",role:"button",
    "aria-label":p.label});
-  dot.dataset.ux35Radius=p.radius||4.5;
+  dot.dataset.ux35Radius=p.radius||4.5;dot.dataset.ux35Type=p.type;
   dot.classList.add("oaf-ux35-point");
   const title=SVG("title");title.textContent=p.label;dot.append(title);
   dot.addEventListener("click",()=>{state.active=p;serviceDetails(p.label,p.detail);diagnosis()});
@@ -555,12 +568,12 @@ function diagnosis(){
  if(state.on.past2023)section("Escenario oficial de El Niño 2023",
   "CENEPRED evaluó potenciales afectaciones considerando lluvias de 1983, 1998, 2017 y 2023. Este es un estudio de escenarios de riesgo, no un polígono de eventos realmente inundados.",
   "La ficha original se encuentra en Metadatos y trazabilidad.");
- if(state.on.seasonal)section("Perspectiva de noviembre 2026 en adelante",
-  "ENFEN (16/10/2026) prevé lluvias superiores a lo normal en la costa norte durante el resto de 2026 y el verano de 2027, y caudales sobre lo normal en el río La Leche principalmente desde noviembre. "+
-  "También señala temperaturas del aire muy elevadas en la costa y niveles bajos del reservorio Tinajones para la época. "+
-  "Es una perspectiva cualitativa regional: no son milímetros mensuales por distrito ni fechas precisas de desborde.",
-  "Perspectiva cualitativa institucional · no alerta operativa por distrito");
- if(state.on.futureFlood||enabled("regional")||enabled("inundacionregion"))
+ if(state.on.seasonal)section("Perspectiva de noviembre 2026 a verano 2027",
+   "ENFEN (30/10/2026, Comunicado 19-2026) prevé lluvias por encima de lo normal entre noviembre de 2026 y enero de 2027 en la costa norte, con episodios moderados a fuertes. Para el verano de 2027 prevé lluvias superiores a lo normal y más frecuentes e intensas en la costa norte. "+
+   "También proyecta caudales superiores a lo normal en los ríos Tumbes, Chira, Piura, La Leche y Jequetepeque, y advierte que Tinajones mantendría niveles bajos. "+
+   "Es una perspectiva regional cualitativa: no son milímetros mensuales por distrito ni fechas precisas de desborde.",
+   "Fuente: ENFEN 19-2026 · 30/10/2026 · no es alerta operativa por distrito");
+  if(state.on.futureFlood||enabled("regional")||enabled("inundacionregion"))
   section("Inundaciones y anegamientos potenciales",
   "Si coinciden lluvias importantes con terrenos de alta susceptibilidad, pueden presentarse anegamientos en sectores urbanos y agrícolas. "+
   "El mapa muestra predisposición, no la huella futura de inundación ni su profundidad.");
@@ -597,7 +610,7 @@ function meta(){
  div.innerHTML='<h2>Fuentes y trazabilidad de escenarios agroclimáticos</h2>'+
  '<p>Se comparan tres productos diferentes: reanálisis histórico, pronóstico meteorológico puntual y cartografía oficial de susceptibilidad. No se convierten automáticamente en estimaciones de caudal o zonas inundadas futuras.</p>'+
  '<ul><li><a href="https://sigrid.cenepred.gob.pe/sigridv3/documento/16310" target="_blank" rel="noopener noreferrer">CENEPRED 2023 · escenarios El Niño 1983/1998/2017/2023</a></li>'+
- '<li><a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN · comunicado oficial más reciente, 18-2026 (16/10/2026)</a></li>'+
+ '<li><a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN · Comunicado Oficial 19-2026 (30/10/2026)</a></li>'+
  '<li><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">SENAMHI · avisos y escenarios estacionales</a></li>'+
  '<li><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Open-Meteo Archive · datos históricos modelados, no estaciones</a></li>'+
  '<li><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast · precipitación pronosticada 7 días</a></li>'+

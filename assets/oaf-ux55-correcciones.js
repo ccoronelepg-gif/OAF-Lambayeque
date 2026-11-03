@@ -1,6 +1,6 @@
 /* OAF UX55 · Correcciones solicitadas: inicio, series históricas y visores */
 (()=>{"use strict";
-const $=id=>document.getElementById(id),ns="http://www.w3.org/2000/svg";
+const $=selector=>document.querySelector(selector),ns="http://www.w3.org/2000/svg";let mapsWired=false;
 const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6.15083,-79.7142],Olmos:[-5.98825,-79.74723]};
 const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
 const fmt=(v,d=1)=>Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
@@ -12,6 +12,8 @@ function drawBars(host,rows,unit,color="#278eb8"){
 }
 async function fetchJSON(url){const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()}
 function monthKeys(){const p=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit"}).formatToParts(new Date());let y=+p.find(x=>x.type==="year").value,m=+p.find(x=>x.type==="month").value+1;if(m===13){m=1;y++}return Array.from({length:6},()=>{const k=y+"-"+String(m).padStart(2,"0");if(++m===13){m=1;y++}return k})}
+function currentMonthKey(){const p=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit"}).formatToParts(new Date());return p.find(x=>x.type==="year").value+"-"+p.find(x=>x.type==="month").value}
+function monthLabel(key){const [y,m]=key.split("-").map(Number);return new Date(Date.UTC(y,m-1,1)).toLocaleDateString("es-PE",{month:"long",year:"numeric",timeZone:"UTC"})}
 function buildCarousel(){
  const side=$("#inicio .oaf-ux14-home-side");if(!side||side.dataset.ux55Ready)return false;side.dataset.ux55Ready="1";
  side.classList.add("oaf-ux42-carousel","oaf-ux55-carousel");side.replaceChildren();
@@ -35,12 +37,17 @@ function buildCarousel(){
  const load=async()=>{
   const p=selected(),enfenBody=$("#oaf-ux55-enfen-body"),enfenChart=$("#oaf-ux55-enfen-chart"),enfenNote=$("#oaf-ux55-enfen-note");
   try{
-   const d=await fetchJSON("datos/estado_enfen_3z.json");
-   enfenBody.textContent=(d.estado_institucional||"Estado no verificado")+" · Comunicado N.º "+d.numero+"-"+d.anio+" · "+d.fecha_emision+".";
-   const percent=el("div","oaf-ux55-probability");percent.append(el("strong","", "N/D"),el("span","","Probabilidad porcentual de magnitud: no cuantificada en el registro verificable del Comunicado 19-2026 · Niño 1+2"));
-   enfenChart.replaceChildren(percent);
-   enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero y prevé que la magnitud extraordinaria persista hasta febrero de 2027, con debilitamiento gradual posterior. El comunicado consultado no aporta en el registro verificado un porcentaje numérico que permita asignar una certeza; por rigor no se inventa una cifra ni se confunde la probabilidad de magnitud con la probabilidad de lluvia local. Próximo comunicado previsto: 13/11/2026. Fuente: ENFEN, Comunicado Oficial 19-2026.";
-   const link=el("a","","Abrir comunicado oficial ENFEN ↗");link.href=d.url_comunicado||"https://enfen.imarpe.gob.pe/comunicados/";link.target="_blank";link.rel="noopener noreferrer";enfenNote.append(" ",link);
+   const [d,probability]=await Promise.all([fetchJSON("datos/estado_enfen_3z.json"),fetchJSON("datos/enfen_probabilidades_portada_2026.json")]);
+    enfenBody.textContent=(d.estado_institucional||"Estado no verificado")+" · Comunicado N.º "+d.numero+"-"+d.anio+" · "+d.fecha_emision+".";
+    const matches=probability.institucion==="ENFEN"&&probability.comunicado===String(d.numero)+"-"+String(d.anio)&&Array.isArray(probability.meses);
+    const current=currentMonthKey(),selected=matches?probability.meses.find(x=>x.mes>=current&&Number.isFinite(Number(x.extraordinaria))):null;
+    enfenChart.replaceChildren();
+    if(selected){const percent=el("div","oaf-ux55-probability");percent.append(el("strong","",fmt(Number(selected.extraordinaria),0)+" %"),el("span","","Probabilidad ENFEN de magnitud extraordinaria · "+monthLabel(selected.mes)+" · "+(probability.region||"Niño 1+2")));enfenChart.append(percent)}
+    else enfenChart.textContent="Probabilidad no publicada para el mes actual en el comunicado verificado.";
+    const outlook=matches?probability.meses.filter(x=>x.mes>=(selected?.mes||current)).slice(0,3):[];
+    const probabilities=outlook.map(x=>monthLabel(x.mes)+": "+x.extraordinaria+" % extraordinaria").join(" · ");
+    enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero y prevé magnitud extraordinaria en la región Niño 1+2 hasta febrero de 2027, con disminución gradual posterior. "+(probabilities?"Probabilidades mensuales de magnitud publicadas: "+probabilities+". ":"")+"Son probabilidades de categoría del índice ICEN, no probabilidades de lluvia, inundación ni daños en Lambayeque. Próximo comunicado previsto: 13/11/2026. Fuente: ENFEN, Comunicado Oficial 19-2026, Figura 2.";
+    const link=el("a","","ENFEN · boletín y figura oficial ↗");link.href=probability.fuente||d.url_comunicado||"https://enfen.imarpe.gob.pe/comunicados/";link.target="_blank";link.rel="noopener noreferrer";enfenNote.append(" ",link);
   }catch(e){enfenBody.textContent="No se pudo comprobar el estado oficial ENFEN.";enfenNote.textContent="Consulta los comunicados originales del organismo. No se mostrará una probabilidad sin fuente verificable."}
   const wb=$("#oaf-ux55-week-body"),wc=$("#oaf-ux55-week-chart"),wn=$("#oaf-ux55-week-note");wb.textContent="Consultando Open-Meteo para "+p.name+"…";wc.replaceChildren();
   try{
@@ -84,7 +91,7 @@ function historicalPanel(){
   const lines=raw.trim().split(/\r?\n/),head=lines.shift().split(","),records=lines.map(line=>Object.fromEntries(head.map((k,i)=>[k,line.split(",")[i]])));
   const draw=()=>{const name=city.value,key=variable.value,rows=records.filter(r=>r.localidad===name&&/^\d{4}-\d{2}$/.test(r.mes)),by=new Map();rows.forEach(r=>{const y=r.mes.slice(0,4);if(!by.has(y))by.set(y,[]);by.get(y).push(Number(r[key]))});
    const annual=Array.from({length:30},(_,i)=>{const y=String(1996+i),a=by.get(y)||[],ok=a.length===12&&a.every(Number.isFinite);return {label:y.slice(2),value:ok?(key==="temperatura_c"?a.reduce((s,x)=>s+x,0)/12:a.reduce((s,x)=>s+x,0)):NaN}});
-   const valid=annual.filter(x=>Number.isFinite(x.value));drawBars(chart,valid,"",key==="temperatura_c"?"#258b74":key==="precipitacion_mm"?"#278eb8":"#c58a42");
+   const valid=annual.filter(x=>Number.isFinite(x.value));drawBars(chart,annual,"",key==="temperatura_c"?"#258b74":key==="precipitacion_mm"?"#278eb8":"#c58a42");
    status.textContent=name+" · "+valid.length+"/30 años completos · "+({temperatura_c:"media anual de 12 medias mensuales",precipitacion_mm:"suma de 12 acumulados mensuales",radiacion_mj_m2:"suma de 12 acumulados mensuales"}[key])+". Fuente: ERA5, archivo mensual OAF. No equivale a medición de estación.";
   };city.addEventListener("change",draw);variable.addEventListener("change",draw);draw();
  }).catch(e=>{chart.textContent="No se pudo cargar el histórico: "+e.message;status.textContent="Se conservan las fuentes y datos originales en Metadatos y trazabilidad."});
@@ -96,23 +103,33 @@ function scienceNote(){
  const hero=home.querySelector(".oaf-ux14-home-hero")||home.querySelector(".oaf-hero-2026");if(hero)hero.after(box);else home.prepend(box);
 }
 function trimStations(){
- const list=$("#oaf-stations-list");if(list&&!list.dataset.ux55Trim){list.dataset.ux55Trim="1";const table=list.querySelector("table");if(table){table.querySelectorAll("tr").forEach(row=>[...row.children].slice(3).forEach(cell=>cell.remove()));}}
+ const list=$("#oaf-stations-list"),table=list?.querySelector("table");if(!table)return;
+ table.querySelectorAll("tr").forEach(row=>{while(row.children.length>3)row.lastElementChild.remove()});
 }
 function removeNoise(){
  const scopes=[$("#oaf-ux29-territory"),$("#oaf-ux29-scenario")].filter(Boolean);
- for(const root of scopes){for(const node of [...root.querySelectorAll("h1,h2,h3,h4,p,small,strong,span,div,section,article")]){const t=(node.textContent||"").replace(/\s+/g," ").trim().toLowerCase();if(t==="diagnóstico espacial del punto"||t.includes("138 registros")||t.includes("148 puntos igm")){const target=node.closest(".oaf-ux29-diagnosis-item,.oaf-ux29-stat,.oaf-ux29-metric,.oaf-ux29-diagextras,article,section")||node;target.remove();}}}
+ for(const root of scopes){
+  root.querySelectorAll("#oaf-area-point-details-territorio,#oaf-area-point-details-escenarios,.oaf-area-point-details").forEach(node=>{node.hidden=true;node.setAttribute("aria-hidden","true");node.style.display="none"});
+  root.querySelectorAll("#oaf-ux33-status,#oaf-ux32-map-status,.oaf-ux33-status").forEach(node=>node.remove());
+  for(const node of [...root.querySelectorAll("h1,h2,h3,h4,p,small,strong,span,div,section,article")]){
+   if(node.children.length&&!node.matches(".oaf-ux29-stat,.oaf-ux29-metric,.oaf-ux29-kpi"))continue;
+   const t=(node.textContent||"").replace(/\s+/g," ").trim().toLowerCase();
+   if(t==="diagnóstico espacial del punto"){const target=node.closest(".oaf-ux29-diagnosis-item,.oaf-ux29-stat,.oaf-ux29-metric,.oaf-ux29-kpi")||node;target.hidden=true;target.setAttribute("aria-hidden","true");target.style.display="none"}
+   else if(t.includes("138 registros")||t.includes("148 puntos igm")){const target=node.closest(".oaf-ux29-stat,.oaf-ux29-metric,.oaf-ux29-kpi,.oaf-ux33-status")||node;if(target!==root)target.remove()}
+  }
+ }
 }
 function reinforceMaps(){
- const redrawTerritory=()=>requestAnimationFrame(()=>{window.oafUx30RequestDraw?.();window.oafUx35Render?.();});
- const redrawScenario=()=>requestAnimationFrame(()=>{window.oafUx35Render?.();window.oafUx35Diagnosis?.();});
+ if(mapsWired)return;mapsWired=true;
+ const redrawTerritory=()=>requestAnimationFrame(()=>window.oafUx30RequestDraw?.());
+ const redrawScenario=()=>requestAnimationFrame(()=>{window.oafUx35Render?.();window.oafUx35Diagnosis?.()});
  document.addEventListener("change",e=>{
   const t=e.target;
-  if(t?.closest("#oaf-ux29-territory")&&(t.matches("[data-ux30-layer],#oaf-ux26-prov,#oaf-ux26-dist,#oaf-ux26-basin")||t.matches("select,input[type=checkbox]")))redrawTerritory();
+  if(t?.closest("#oaf-ux29-territory")&&(t.matches("[data-ux30-layer],#oaf-ux26-prov,#oaf-ux26-dist,#oaf-ux26-basin,select,input[type=checkbox]")))redrawTerritory();
   if(t?.closest("#oaf-ux29-scenario")&&(t.matches("[data-ux35-key],#oaf-ux35-histyear,#oaf-ux35-horizon,#oaf-ux35-threshold,[data-ux35-filter]")||t.dataset.ux35Filter))redrawScenario();
  });
- document.addEventListener("oaf:geodata",()=>{redrawTerritory();redrawScenario()});
+ window.addEventListener("oaf:geodata",()=>{redrawTerritory();redrawScenario()});
  document.addEventListener("oaf:area-update",e=>{if(e.detail?.scope==="territorio")redrawTerritory();if(e.detail?.scope==="escenarios")redrawScenario()});
- // Si los visores se construyen después de este script, volver a dibujar cuando su API esté lista.
  let tries=0;const wait=()=>{if(window.oafUx30RequestDraw||window.oafUx35Render){redrawTerritory();redrawScenario();return}if(++tries<40)setTimeout(wait,250)};wait();
 }
 function init(){let n=0;const probe=()=>{const ready=buildCarousel();historicalPanel();scienceNote();trimStations();removeNoise();reinforceMaps();if(!ready&&n++<80)setTimeout(probe,250)};probe();const observer=new MutationObserver(()=>{trimStations();removeNoise()});observer.observe(document.body,{childList:true,subtree:true});}

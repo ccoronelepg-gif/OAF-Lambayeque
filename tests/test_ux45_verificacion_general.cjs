@@ -20,7 +20,7 @@ for(const icon of manifest.icons){
  assert(fs.existsSync(path.join(root,icon.src)),"Ícono no disponible "+icon.src);
 }
 assert(sw.includes("Network-first")&&sw.includes('isScientificData(url)'),"PWA no distingue avisos y datos de caché");
-assert.match(sw,/const RELEASE="oaf-pwa-shell-2026-11-02-ux\d+"/,"PWA no invalida la caché tras cambios de interfaz");
+assert.match(sw,/const RELEASE="oaf-pwa-shell-2026-11-\d{2}-ux\d+"/,"PWA no invalida la caché tras cambios de interfaz");
 assert(!html.includes("oaf-ux15-contador.js")&&!html.includes('id="oaf-ux15-counter"'),"El contador de visitas permanece");
 const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
 assert.equal(rf.operativo_certificado,false,"RF no debe marcarse operativo sin validación");
@@ -89,7 +89,7 @@ const agro=read("assets/oaf-agro-charts-2026.js");
 assert(agro.includes("oaf-regional-map-legend")||read("assets/oaf-agroexportacion-2026.js").includes("oaf-regional-map-legend"),"Falta leyenda altitudinal del DEM");
 assert(agro.includes("datos/humedad_8z/humedad_vpd_mensual_8z.csv"),"La humedad histórica debe proceder del CSV mensual regional verificado");
 
-const output={revision:"UX54",fecha_auditoria:new Date().toISOString(),paginas:pages,
+const output={revision:"UX57",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
  iconos_pwa:manifest.icons.length,localidades_rf:Object.keys(rf.pronostico_diario_rf_experimental||{}).length,
  ultima_emision_rf:rf.fecha_generacion_utc,ultima_emision_enfen:enfen.enfen.fecha_emision,

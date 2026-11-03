@@ -81,7 +81,7 @@ function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
  const parent=hero.parentElement,layout=E("div","oaf-ux14-home-hero");hero.before(layout);layout.append(hero);
  const side=E("aside","oaf-ux14-home-side");
- side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Próximo comunicado institucional: 13/11/2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: el comunicado más reciente mantiene la Alerta de El Niño Costero; no fija lluvias concretas para Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN · Comunicado 19-2026 ↗</a></div></article>';
+ side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Próximo comunicado institucional: 13/11/2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: el comunicado más reciente mantiene la Alerta de El Niño Costero; no fija lluvias concretas para Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN · boletín y figura oficial ↗</a></div></article>';
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
    $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+".";
@@ -89,7 +89,7 @@ function renderHome(){
    prob.textContent="Próximo comunicado previsto: "+(d.enfen?.fecha_proximo_comunicado_prevista||"fecha no informada")+".";
    const info=$("oaf-ux15-enfen-exp");
    if(info)info.textContent="Interpretación: "+(d.enfen?.nota||"Consulta el comunicado original para conocer el alcance de la alerta.");
-   const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation&&d.enfen?.fuente){citation.href=d.enfen.fuente;citation.textContent="ENFEN · Comunicado "+d.enfen.numero+" ↗";}
+   const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation&&d.enfen?.fuente){citation.href=d.enfen.fuente;citation.textContent="ENFEN · boletín y figura oficial ↗";}
  }).catch(()=>$("oaf-ux14-home-enso").textContent="No se pudo verificar una actualización del organismo oficial. Consulta ENFEN.");
 
 }
