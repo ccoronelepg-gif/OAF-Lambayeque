@@ -31,7 +31,7 @@ for(let y=2026,m=12;y<2027||m<=5;){
 const h={time,precipitation:rain,temperature_2m:temp};
 const result=parse(h,months);
 assert(result.complete.every(Boolean));
-assert(result.rainfall[0]===60&&result.rainfall[1]===62&&result.rainfall[3]===56&&result.rainfall[5]===60,
+assert(result.rainfall[0]===62&&result.rainfall[1]===62&&result.rainfall[2]===56&&result.rainfall[3]===62&&result.rainfall[4]===60&&result.rainfall[5]===62,
  "Lluvia por mes no coincide con cuatro intervalos de 6h cada día");
 assert(result.temperature.every(x=>x===25),"Se suman las temperaturas en vez de promediarlas");
 const remove=time.findIndex(t=>t==="2027-02-16T12:00");

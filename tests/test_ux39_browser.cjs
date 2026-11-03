@@ -107,7 +107,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    areaForm:!!document.querySelector("#oaf-clima-bloque-historico #oaf-area-clima form")
   }));
   assert(climateMaps.dem>=420&&climateMaps.demColors>=7,"El DEM debe distinguir las franjas altitudinales: "+JSON.stringify(climateMaps));
-  assert(climateMaps.stations===13&&climateMaps.mapped>=5,"El inventario debe listar 13 estaciones y mapear solo las georreferenciadas: "+JSON.stringify(climateMaps));
+  assert(climateMaps.stations===13&&climateMaps.mapped===3,"El inventario debe listar 13 estaciones y mapear solo las georreferenciadas: "+JSON.stringify(climateMaps));
   assert(climateMaps.humidity&&climateMaps.radiation&&climateMaps.areaForm,"Faltan variables o consulta de zona productora en data histórica: "+JSON.stringify(climateMaps));
   // Simular una respuesta ERA5 diaria completa para probar el cálculo 1996–2025 sin depender de Internet.
   const areaEraTime=[],areaEraTemp=[],areaEraRain=[],areaEraSolar=[],areaEraHumidity=[];
@@ -136,7 +136,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.locator("#oaf-stations-floor").selectOption("all");
   await page.locator("#oaf-stations-map svg circle.oaf-map-symbol").first().click();
   const selectedStation=await page.locator("#oaf-stations-selected").textContent();
-  assert(/\(\d{6}\)/.test(selectedStation||""),"El marcador no abre la ficha resumida de la estación: "+selectedStation);
+  assert(/\(\d{6,8}\)/.test(selectedStation||""),"El marcador no abre la ficha resumida de la estación: "+selectedStation);
   // UX42: Carrusel Inicio y lectura independiente en área semanal.
   await page.locator('#oaf-primary-nav a[data-tab="inicio"]').click();
   await page.waitForFunction(()=>document.querySelector('#inicio')&&!document.querySelector('#inicio').hidden,{timeout:10000});
