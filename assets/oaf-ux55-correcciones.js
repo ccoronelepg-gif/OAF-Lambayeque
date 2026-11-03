@@ -5,7 +5,6 @@ const cities={Chiclayo:[-6.7714,-79.8409],Jayanca:[-6.39278,-79.8228],Motupe:[-6
 const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
 const fmt=(v,d=1)=>Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
 const svg=(tag,attrs={},txt)=>{const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(txt!==undefined)n.textContent=txt;return n};
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function drawBars(host,rows,unit,color="#278eb8"){
  host.replaceChildren();if(!rows.length){host.textContent="No hay datos completos para representar.";return}
  const max=Math.max(1,...rows.map(x=>Number(x.value)||0));
@@ -38,9 +37,9 @@ function buildCarousel(){
   try{
    const d=await fetchJSON("datos/estado_enfen_3z.json");
    enfenBody.textContent=(d.estado_institucional||"Estado no verificado")+" · Comunicado N.º "+d.numero+"-"+d.anio+" · "+d.fecha_emision+".";
-   const percent=el("div","oaf-ux55-probability");percent.append(el("strong","", "98 %"),el("span","","Probabilidad estimada de magnitud extraordinaria · noviembre 2026 · Niño 1+2"));
+   const percent=el("div","oaf-ux55-probability");percent.append(el("strong","", "N/D"),el("span","","Probabilidad porcentual de magnitud: no cuantificada en el registro verificable del Comunicado 19-2026 · Niño 1+2"));
    enfenChart.replaceChildren(percent);
-   enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero y estima que la magnitud extraordinaria persistiría hasta febrero de 2027. El 98 % corresponde a la categoría extraordinaria para noviembre, no a la probabilidad de lluvia en Lambayeque. Próximo comunicado previsto: 13/11/2026. Fuente: ENFEN, Comunicado Oficial 19-2026.";
+   enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero y prevé que la magnitud extraordinaria persista hasta febrero de 2027, con debilitamiento gradual posterior. El comunicado consultado no aporta en el registro verificado un porcentaje numérico que permita asignar una certeza; por rigor no se inventa una cifra ni se confunde la probabilidad de magnitud con la probabilidad de lluvia local. Próximo comunicado previsto: 13/11/2026. Fuente: ENFEN, Comunicado Oficial 19-2026.";
    const link=el("a","","Abrir comunicado oficial ENFEN ↗");link.href=d.url_comunicado||"https://enfen.imarpe.gob.pe/comunicados/";link.target="_blank";link.rel="noopener noreferrer";enfenNote.append(" ",link);
   }catch(e){enfenBody.textContent="No se pudo comprobar el estado oficial ENFEN.";enfenNote.textContent="Consulta los comunicados originales del organismo. No se mostrará una probabilidad sin fuente verificable."}
   const wb=$("#oaf-ux55-week-body"),wc=$("#oaf-ux55-week-chart"),wn=$("#oaf-ux55-week-note");wb.textContent="Consultando Open-Meteo para "+p.name+"…";wc.replaceChildren();
@@ -55,7 +54,7 @@ function buildCarousel(){
   }catch(e){wb.textContent="Pronóstico de siete días no disponible para "+p.name+".";wn.textContent="No se reemplazan datos ausentes por valores simulados. Detalle: "+e.message}
   const sb=$("#oaf-ux55-season-body"),sc=$("#oaf-ux55-season-chart"),sn=$("#oaf-ux55-season-note");sb.textContent="Consultando ECMWF SEAS5 para "+p.name+"…";sc.replaceChildren();
   try{
-   const months=monthKeys(),q=new URLSearchParams({latitude:p.lat,longitude:p.lon,models:"ecmwf_seas5_ensemble_mean",hourly:"precipitation",forecast_days:"217",timezone:"America/Lima",precipitation_unit:"mm"});
+   const months=monthKeys(),q=new URLSearchParams({latitude:p.lat,longitude:p.lon,models:"ecmwf_seas5_ensemble_mean",hourly:"precipitation",forecast_days:"215",timezone:"America/Lima",precipitation_unit:"mm"});
    const d=await fetchJSON("https://seasonal-api.open-meteo.com/v1/seasonal?"+q);
    const h=d.hourly;if(!Array.isArray(h?.time)||!Array.isArray(h?.precipitation)||h.time.length!==h.precipitation.length)throw Error("Serie estacional incompatible");
    const groups=new Map();for(let i=0;i<h.time.length;i++){const t=h.time[i];if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(t))continue;const m=t.slice(0,7);if(!months.includes(m))continue;if(!groups.has(m))groups.set(m,[]);groups.get(m).push({time:t,rain:h.precipitation[i]})}
@@ -104,12 +103,17 @@ function removeNoise(){
  for(const root of scopes){for(const node of [...root.querySelectorAll("h1,h2,h3,h4,p,small,strong,span,div,section,article")]){const t=(node.textContent||"").replace(/\s+/g," ").trim().toLowerCase();if(t==="diagnóstico espacial del punto"||t.includes("138 registros")||t.includes("148 puntos igm")){const target=node.closest(".oaf-ux29-diagnosis-item,.oaf-ux29-stat,.oaf-ux29-metric,.oaf-ux29-diagextras,article,section")||node;target.remove();}}}
 }
 function reinforceMaps(){
- const run=()=>{window.oafUx30RequestDraw?.();window.oafUx35Render?.()};
+ const redrawTerritory=()=>requestAnimationFrame(()=>{window.oafUx30RequestDraw?.();window.oafUx35Render?.();});
+ const redrawScenario=()=>requestAnimationFrame(()=>{window.oafUx35Render?.();window.oafUx35Diagnosis?.();});
  document.addEventListener("change",e=>{
-  const t=e.target;if(t?.closest("#oaf-ux29-territory")&&t.matches("[data-ux30-layer],#oaf-ux26-prov,#oaf-ux26-dist,#oaf-ux26-basin"))setTimeout(run,0);
-  if(t?.closest("#oaf-ux29-scenario")&&(t.matches("[data-ux35-key],#oaf-ux35-histyear,#oaf-ux35-horizon,#oaf-ux35-threshold")||t.dataset.ux35Filter))setTimeout(()=>{window.oafUx35Render?.();window.oafUx35Diagnosis?.()},0);
+  const t=e.target;
+  if(t?.closest("#oaf-ux29-territory")&&(t.matches("[data-ux30-layer],#oaf-ux26-prov,#oaf-ux26-dist,#oaf-ux26-basin")||t.matches("select,input[type=checkbox]")))redrawTerritory();
+  if(t?.closest("#oaf-ux29-scenario")&&(t.matches("[data-ux35-key],#oaf-ux35-histyear,#oaf-ux35-horizon,#oaf-ux35-threshold,[data-ux35-filter]")||t.dataset.ux35Filter))redrawScenario();
  });
- document.addEventListener("oaf:geodata",()=>{run()});document.addEventListener("oaf:area-update",e=>{if(["territorio","escenarios"].includes(e.detail?.scope))run()});
+ document.addEventListener("oaf:geodata",()=>{redrawTerritory();redrawScenario()});
+ document.addEventListener("oaf:area-update",e=>{if(e.detail?.scope==="territorio")redrawTerritory();if(e.detail?.scope==="escenarios")redrawScenario()});
+ // Si los visores se construyen después de este script, volver a dibujar cuando su API esté lista.
+ let tries=0;const wait=()=>{if(window.oafUx30RequestDraw||window.oafUx35Render){redrawTerritory();redrawScenario();return}if(++tries<40)setTimeout(wait,250)};wait();
 }
 function init(){let n=0;const probe=()=>{const ready=buildCarousel();historicalPanel();scienceNote();trimStations();removeNoise();reinforceMaps();if(!ready&&n++<80)setTimeout(probe,250)};probe();const observer=new MutationObserver(()=>{trimStations();removeNoise()});observer.observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
