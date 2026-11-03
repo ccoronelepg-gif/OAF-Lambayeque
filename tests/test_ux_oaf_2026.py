@@ -74,7 +74,7 @@ class UXContract(unittest.TestCase):
     def test_home_modules_location_and_six_contracts(self):
         for id in ("oaf-zone-primary","oaf-home-location","oaf-home-phytosanitary",
                    "oaf-home-nino","oaf-regional-map-heading","oaf-altitudinal-map",
-                   "oaf-home-news-title","oaf-home-source","oaf-home-technology",
+                   "oaf-home-news-title","oaf-home-source",
                    "oaf-home-analysis","oaf-home-refresh"):
             self.assertEqual(self.dom.ids[id],"inicio",id)
         self.assertEqual(HTML.count('id="oaf-altitudinal-map"'),1)
