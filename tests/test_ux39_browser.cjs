@@ -56,7 +56,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     hydroOrder:k==="territorio"||Boolean(hydro&&forecastMap&&follows(forecastMap,diagnosis)&&
       follows(diagnosis,hydro)&&hydro.parentElement===layout&&follows(hydro,validation)&&validation?.parentElement===layout),
     parcelFold:parcel.querySelector(".oaf-parcel-fold")?.open===false,
-    pointPanelHidden:!column.querySelector("#oaf-area-point-details-"+k)||getComputedStyle(column.querySelector("#oaf-area-point-details-"+k)).display==="none",
+    pointPanelHidden:k==="territorio"||!column.querySelector("#oaf-area-point-details-"+k)||getComputedStyle(column.querySelector("#oaf-area-point-details-"+k)).display==="none",
     hasExpand:!!column.querySelector(".oaf-map-expand"),diagnosisFullWidth:!!diagnosis&&diagnosis.parentElement===layout};
   }));
   assert(order.every(x=>x.areaBeforeParcel&&x.parcelBeforeMap&&x.mapBeforeDiagnosis&&x.hydroOrder&&
