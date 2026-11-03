@@ -25,7 +25,7 @@ fs.mkdirSync(snapshots,{recursive:true});
     viewport:window.innerWidth,
     body:document.body.scrollWidth,
     html:document.documentElement.scrollWidth,
-    cssLoaded:[...document.styleSheets].some(s=>s.href?.includes("responsive-celulares-ux19.css")),
+    cssLoaded:Boolean(document.querySelector('link[href*="responsive-celulares-ux19.css"]')?.sheet),
     menu:document.getElementById("oaf-mobile-menu")?.getBoundingClientRect().width,
     navVisible:(()=>{
       const e=document.getElementById("oaf-primary-nav");return e?getComputedStyle(e).display!=="none":false;
