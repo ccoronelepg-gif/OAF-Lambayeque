@@ -78,18 +78,22 @@ function initMap(geo,report){
   $("oaf-9k-visible").textContent=shown+" sectores de influencia en la vista; "+
     similar+" con hipótesis multicelda conectada";
  }
- selector.addEventListener("change",draw);
- $("oaf-9k-only-core").addEventListener("change",draw);
- draw();
- const body=$("oaf-9k-families");body.replaceChildren();
- for(const fam of report.familias){
-  const row=document.createElement("tr");
-  for(const v of [fam.id,labels[fam.estrato]||fam.estrato,
-     fam.ids_testigos.join(", "),String(fam.enlaces_celdas_ambos_modelos_distintas)]){
-   const cell=document.createElement("td");cell.textContent=v;row.append(cell);
+ const body=$("oaf-9k-families");
+ function drawFamilies(){
+  body.replaceChildren();
+  for(const fam of report.familias){
+   if(selector.value!=="todos"&&selector.value!==fam.estrato)continue;
+   const row=document.createElement("tr");
+   for(const v of [fam.id,labels[fam.estrato]||fam.estrato,
+      fam.ids_testigos.join(", "),String(fam.enlaces_celdas_ambos_modelos_distintas)]){
+    const cell=document.createElement("td");cell.textContent=v;row.append(cell);
+   }
+   body.append(row);
   }
-  body.append(row);
  }
+ selector.addEventListener("change",()=>{draw();drawFamilies()});
+ $("oaf-9k-only-core").addEventListener("change",draw);
+ draw();drawFamilies();
  $("oaf-9k-geom-note").textContent=
    report.n_nodos_dem+" puntos con DEM; "+report.n_testigos_con_360_meses+
    " testigos con climatologías 1996–2025; "+report.n_familias_multicelda_exploratorias+
