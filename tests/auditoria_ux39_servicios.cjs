@@ -33,7 +33,7 @@ const sources=[
   valid:j=>Array.isArray(j.daily?.time)&&j.daily.time.length===3,
   details:j=>({modelo:"era5_land",dias:j.daily.time.length,celda:[j.latitude,j.longitude]})},
  {fuente:"Open-Meteo · ECMWF SEAS5 estacional",timeout:30000,
-  url:"https://seasonal-api.open-meteo.com/v1/seasonal?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),models:"ecmwf_seas5_ensemble_mean",hourly:"precipitation,temperature_2m",forecast_days:"217",timezone:"America/Lima",precipitation_unit:"mm"}),
+  url:"https://seasonal-api.open-meteo.com/v1/seasonal?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),models:"ecmwf_seas5_ensemble_mean",hourly:"precipitation,temperature_2m",forecast_days:"215",timezone:"America/Lima",precipitation_unit:"mm"}),
   valid:j=>Array.isArray(j.hourly?.time)&&j.hourly.time.length>0&&j.hourly.precipitation?.length===j.hourly.time.length&&j.hourly.temperature_2m?.length===j.hourly.time.length,
   details:j=>({modelo:"ecmwf_seas5_ensemble_mean",intervalos_6h:j.hourly.time.length,celda:[j.latitude,j.longitude],unidades:j.hourly_units})}
 ];
