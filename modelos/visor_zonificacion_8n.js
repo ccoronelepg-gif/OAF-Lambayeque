@@ -16,7 +16,7 @@ const classes=[
  ["cota_negativa_dem_verificar","Cota DEM negativa (verificar)","#727f88"]
 ];
 const byId=new Map(classes.map(x=>[x[0],x]));
-let records=[],stats=null,shape=null;
+let records=[],stats=null,shape=null,stations=[],stationFilter=null,stationTable=null;
 const n=v=>Number.isFinite(v)?Number(v).toLocaleString("es-PE",{maximumFractionDigits:0}):"—";
 const svg=(tag,attrs,text)=>{
  const node=document.createElementNS("http://www.w3.org/2000/svg",tag);
@@ -29,6 +29,7 @@ function render(){
  if(!shape||!stats)return;
  canvas.replaceChildren();tbody.replaceChildren();legend.replaceChildren();
  for(const [name,label,color] of classes){
+   if(filter.value!=="all"&&filter.value!==name)continue;
    const item=document.createElement("span");
    item.style.cssText="display:inline-flex;align-items:center;gap:6px;font-size:12px;margin:4px 10px 4px 0";
    const marker=document.createElement("span");
@@ -76,7 +77,27 @@ function render(){
    ring.append(svg("title",{},name+" · punto de referencia histórico 8M, NO sensor"));
    view.append(ring);
  }
+ const band=stationFilter?.value||"all";
+ const visibleStations=stations.filter(st=>band==="all"||(band==="100-299"&&st.altitude>=100&&st.altitude<300)||
+   (band==="300-799"&&st.altitude>=300&&st.altitude<800)||(band==="800-1599"&&st.altitude>=800&&st.altitude<1600)||
+   (band==="1600-2499"&&st.altitude>=1600&&st.altitude<2500)||(band==="2500+"&&st.altitude>=2500));
+ for(const st of visibleStations){
+   const cx=x(st.lon),cy=y(st.lat);
+   const marker=svg("circle",{cx,cy,r:6.5,fill:"#c45d35",stroke:"#fff","stroke-width":2});
+   marker.append(svg("title",{},st.name+" · "+st.code+" · "+n(st.altitude)+" m (altitud documental de referencia; no ubicación instrumental certificada)"));
+   view.append(marker);
+   const label=svg("text",{x:cx+8,y:cy-7,"font-size":10,"font-weight":700,fill:"#7c3f28"},st.name);
+   view.append(label);
+ }
  canvas.append(view);
+ if(stationTable){
+  stationTable.replaceChildren();
+  for(const st of visibleStations){
+   const tr=document.createElement("tr");
+   for(const value of [st.name,st.code,n(st.altitude)+" m"]){const td=document.createElement("td");td.textContent=value;tr.append(td)}
+   stationTable.append(tr);
+  }
+ }
  const note=document.createElement("p");note.className="small";
  note.textContent="Puntos coloreados: elevaciones estimadas de un DEM. Círculos discontinuos: los cuatro puntos históricos de referencia 8M (no estaciones meteorológicas). La malla es una muestra de centros, no un mapa continuo ni parcelas con clasificación confirmada.";
  canvas.append(note);
@@ -86,10 +107,32 @@ async function load(){
  try{
   const paths=["datos/zonificacion_8n/estado_8n.json",
                "datos/zonificacion_8n/nodos_altitudinales_8n.csv",
-               "datos/zonificacion_8n/limite_lambayeque_referencial.geojson"];
+               "datos/zonificacion_8n/limite_lambayeque_referencial.geojson",
+               "datos/validacion_estaciones_9f/identificacion_territorial_9f.json"];
   const resp=await Promise.all(paths.map(p=>fetch(p,{cache:"no-store"})));
-  if(resp.some(r=>!r.ok))throw Error("La fuente geográfica o DEM no se encuentra publicada");
-  const [report,csv,geometry]=await Promise.all([resp[0].json(),resp[1].text(),resp[2].json()]);
+  if(resp.some(r=>!r.ok))throw Error("La fuente geográfica, DEM o inventario de estaciones no se encuentra publicada");
+  const [report,csv,geometry,stationData]=await Promise.all([resp[0].json(),resp[1].text(),resp[2].json(),resp[3].json()]);
+  if(stationData.fase!=="9F"||stationData.estaciones?.length!==3)throw Error("Inventario de estaciones no verificable");
+  stations=stationData.estaciones.map(st=>({name:st.nombre,code:st.codigo_catalogo,altitude:Number(st.altitud_de_referencia_m),
+    lat:Number(st.coordenadas_dereferencia?.[0]),lon:Number(st.coordenadas_dereferencia?.[1])}));
+  if(stations.some(st=>!st.name||!st.code||![st.altitude,st.lat,st.lon].every(Number.isFinite)))throw Error("Metadatos de estación incompletos");
+  stationTable=el("oaf-8n-stations-table");
+  if(!stationTable){
+   const box=document.createElement("section");box.className="panel oaf-8n-stations";
+   const title=document.createElement("h3");title.textContent="Estaciones meteorológicas · inventario disponible";
+   const table=document.createElement("table");table.innerHTML="<thead><tr><th>Estación</th><th>Código</th><th>Altitud</th></tr></thead><tbody id='oaf-8n-stations-table'></tbody>";
+   const note=document.createElement("p");note.className="small";note.textContent="Altitud documental de referencia; algunas publicaciones reportan valores distintos. Los puntos son referencias cartográficas aproximadas, no coordenadas instrumentales certificadas.";
+   box.append(title,table,note);canvas.after(box);stationTable=el("oaf-8n-stations-table");
+  }
+  const controls=filter.closest(".tools");
+  if(controls&&!el("oaf-8n-station-alt-filter")){
+   const label=document.createElement("label");label.htmlFor="oaf-8n-station-alt-filter";label.textContent="Estaciones por altitud";
+   stationFilter=document.createElement("select");stationFilter.id="oaf-8n-station-alt-filter";
+   for(const [value,labelText] of [["all","Todas"],["100-299","100–299 m"],["300-799","300–799 m"],["800-1599","800–1599 m"],["1600-2499","1600–2499 m"],["2500+","≥ 2500 m"]]){
+    const option=document.createElement("option");option.value=value;option.textContent=labelText;stationFilter.append(option);
+   }
+   controls.append(label,stationFilter);stationFilter.addEventListener("change",render);
+  } else stationFilter=el("oaf-8n-station-alt-filter");
   const lines=csv.trim().split(/\r?\n/),columns=lines.shift().split(",");
   if(report.fase!=="8N"||report.homogeneidad_climatica_estadistica_demostrada!==false||
     report.pronosticos_8e_recalibrados!==false||report.validacion_instrumental_SENAMHI!==false||
