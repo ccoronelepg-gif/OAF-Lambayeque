@@ -1,4 +1,5 @@
 name: OAF UX51 - Análisis zonal y pronóstico por coordenadas
+# Revalidación UX54: pruebas Chromium del selector de capas futureMass y series históricas.
 on:
   push:
     paths:
