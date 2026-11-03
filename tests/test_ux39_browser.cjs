@@ -7,9 +7,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const context=await browser.newContext({viewport:{width:1365,height:850},locale:"es-PE"});
   await context.route("**/*",route=>route.request().url().startsWith("http://127.0.0.1:8765/")?route.continue():route.abort("blockedbyclient"));
   const page=await context.newPage();const errors=[];
-  // UX44: respuesta estacional simulada sin Internet, meses completos Nov26–Abr27.
+  // UX54: respuesta estacional simulada sin Internet, seis meses completos Dic26–May27.
   const seasonalTime=[],seasonalRain=[],seasonalTemp=[];
-  for(let y=2026,m=11;y<2027||m<=4;){
+  for(let y=2026,m=12;y<2027||m<=5;){
    const length=new Date(Date.UTC(y,m,0)).getUTCDate();
    for(let d=1;d<=length;d++)for(const hour of ["00","06","12","18"]){
     seasonalTime.push(y+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0")+"T"+hour+":00");
@@ -70,10 +70,10 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   });
   assert(weekly.weekly&&weekly.monthly&&weekly.first&&weekly.visible&&weekly.controls,
     "Gráfico semanal RF/Open-Meteo/ERA5 no figura antes del horizonte mensual: "+JSON.stringify(weekly));
-  // UX44: los seis meses completos muestran tres curvas (RF, ERA5, SEAS5).
+  // UX54: RF no validado se excluye; se muestran ERA5 y SEAS5 cuando están completos.
   await page.waitForFunction(()=>{
    const svg=document.querySelector("#oaf-ux14-monthchart svg");
-   return svg&&svg.querySelectorAll("polyline").length>=3 &&
+   return svg&&svg.querySelectorAll("polyline").length>=2 &&
     document.querySelector("#oaf-ux44-seasonal-note")?.textContent.includes("6/6 meses");
   },null,{timeout:20000});
   const estacional=await page.evaluate(()=>{
@@ -82,8 +82,30 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     openMeteo:[...root.querySelectorAll(".oaf-ux14-key span")].some(x=>x.textContent.includes("Open-Meteo")),
     counter:!!document.querySelector("#oaf-ux15-counter"),message:document.querySelector("#oaf-ux44-seasonal-note")?.textContent};
   });
-  assert(estacional.polyline===3&&estacional.openMeteo&&!estacional.counter,
-    "Gráfico mensual requiere tercera serie estacional verificable sin contador: "+JSON.stringify(estacional));
+  assert(estacional.polyline===2&&estacional.openMeteo&&!estacional.counter,
+    "Gráfico mensual debe mostrar climatología y SEAS5, sin presentar RF no validado: "+JSON.stringify(estacional));
+
+  // UX54: mapas DEM por pisos, estaciones inventariadas y variables históricas adicionales.
+  await page.waitForSelector("#oaf-regional-hist-map svg",{timeout:20000});
+  await page.waitForSelector("#oaf-stations-map svg",{timeout:20000});
+  await page.waitForSelector("#oaf-clima-bloque-historico #oaf-area-clima form",{timeout:20000});
+  const climateMaps=await page.evaluate(()=>({
+   dem:document.querySelectorAll("#oaf-regional-hist-map svg circle").length,
+   demColors:new Set([...document.querySelectorAll("#oaf-regional-hist-map svg circle")].map(x=>x.getAttribute("fill"))).size,
+   stations:document.querySelectorAll("#oaf-stations-list tbody tr").length,
+   mapped:document.querySelectorAll("#oaf-stations-map svg circle.oaf-map-symbol").length,
+   humidity:[...document.querySelectorAll("#oaf-regional-var option")].some(x=>x.value==="humedad_relativa_pct"),
+   radiation:[...document.querySelectorAll("#oaf-regional-var option")].some(x=>x.value==="radiacion_mj_m2"),
+   areaForm:!!document.querySelector("#oaf-clima-bloque-historico #oaf-area-clima form")
+  }));
+  assert(climateMaps.dem>=420&&climateMaps.demColors>=7,"El DEM debe distinguir las franjas altitudinales: "+JSON.stringify(climateMaps));
+  assert(climateMaps.stations===13&&climateMaps.mapped>=5,"El inventario debe listar 13 estaciones y mapear solo las georreferenciadas: "+JSON.stringify(climateMaps));
+  assert(climateMaps.humidity&&climateMaps.radiation&&climateMaps.areaForm,"Faltan variables o consulta de zona productora en data histórica: "+JSON.stringify(climateMaps));
+  await page.evaluate(()=>{const f=document.querySelector("#oaf-area-clima form");f.elements.namedItem("lat").value="-6.7714";f.elements.namedItem("lon").value="-79.8409";f.elements.namedItem("name").value="Punto histórico de prueba";f.requestSubmit()});
+  await page.waitForSelector("#oaf-area-clima-serie svg",{timeout:45000});
+  const customHistory=await page.evaluate(()=>({points:document.querySelectorAll("#oaf-area-clima-serie svg circle").length,title:document.querySelector("#oaf-area-clima-serie h3")?.textContent,source:document.querySelector("#oaf-area-clima-serie .oaf-area-metodo")?.textContent}));
+  assert(customHistory.points===30&&customHistory.title?.includes("Punto histórico de prueba")&&customHistory.source?.includes("ERA5"),"No se construyó la serie histórica de la parcela: "+JSON.stringify(customHistory));
+
   // UX42: Carrusel Inicio y lectura independiente en área semanal.
   await page.waitForSelector("#oaf-ux42-slide-official",{state:"attached",timeout:12000});
   const intro=await page.evaluate(()=>{
@@ -105,17 +127,17 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
     temperature_2m_min:[17,18,18,19,20,19,18],relative_humidity_2m_mean:[72,70,68,74,76,75,71],
     shortwave_radiation_sum:[18,19,20,21,19,18,17],wind_speed_10m_max:[12,13,11,14,15,12,10],
     et0_fao_evapotranspiration:[3.2,3.4,3.5,3.6,3.3,3.1,3.0],vapour_pressure_deficit_max:[1.1,1.2,1.3,1.0,0.9,1.0,1.2]}};
-  const eraTime=[],eraRain=[],eraTemp=[];
+  const eraTime=[],eraRain=[],eraTemp=[],eraHumidity=[],eraRadiation=[];
   for(let y=1996;y<=2025;y++)for(let t=Date.UTC(y,0,1);t<Date.UTC(y+1,0,1);t+=86400000){
-    eraTime.push(new Date(t).toISOString().slice(0,10));eraRain.push(0.1);eraTemp.push(26);
+    eraTime.push(new Date(t).toISOString().slice(0,10));eraRain.push(0.1);eraTemp.push(26);eraHumidity.push(70);eraRadiation.push(18);
   }
   // El archivo histórico utiliza OTRO host: archive-api.open-meteo.com.
   await page.route("https://archive-api.open-meteo.com/**",route=>route.fulfill({status:200,contentType:"application/json",
-    body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp}})}));
+    body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp,temperature_2m_mean:eraTemp,relative_humidity_2m_mean:eraHumidity,shortwave_radiation_sum:eraRadiation}})}));
   await page.route("https://api.open-meteo.com/**",async route=>{
     const url=route.request().url();
     if(url.includes("archive"))await route.fulfill({status:200,contentType:"application/json",
-      body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp}})});
+      body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp,temperature_2m_mean:eraTemp,relative_humidity_2m_mean:eraHumidity,shortwave_radiation_sum:eraRadiation}})});
     else await route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(pointForecast)});
   });
   const formExists=await page.evaluate(()=>!!document.querySelector("#oaf-ux14-rf-semana #oaf-area-semanal form"));
