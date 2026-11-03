@@ -20,7 +20,7 @@ for(const icon of manifest.icons){
  assert(fs.existsSync(path.join(root,icon.src)),"Ícono no disponible "+icon.src);
 }
 assert(sw.includes("Network-first")&&sw.includes('isScientificData(url)'),"PWA no distingue avisos y datos de caché");
-assert(sw.includes("oaf-pwa-shell-2026-10-29-ux51c"),"PWA no invalida el shell UX51");
+assert(sw.includes("oaf-pwa-shell-2026-11-02-ux54"),"PWA no invalida el shell UX54");
 assert(!html.includes("oaf-ux15-contador.js")&&!html.includes('id="oaf-ux15-counter"'),"El contador de visitas permanece");
 const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
 assert.equal(rf.operativo_certificado,false,"RF no debe marcarse operativo sin validación");
@@ -30,7 +30,7 @@ assert(Object.keys(rf.pronostico_diario_rf_experimental||{}).length>=4,"Pronóst
 const enfen=JSON.parse(read("datos/estado_enso_verificado_ux9_2026.json"));
 assert(enfen.enfen?.fuente?.startsWith("https://"),"Falta procedencia de ENFEN");
 assert(/^\d{4}-\d\d-\d\d$/.test(enfen.enfen?.fecha_emision||""),"Fecha de emisión ENFEN inválida");
-assert(html.includes("oaf-ux15-rf-salidas.js?v=20261029-ux51c"),"Pronóstico UX51 no activado");
+assert(html.includes("oaf-ux15-rf-salidas.js?v=20261102-ux54"),"Pronóstico UX54 no activado");
 assert(html.includes("oaf-parcelas-ux39.js?v=20261029-ux51c"),"Análisis parcelario UX51 no activado");
 const parcel=read("assets/oaf-parcelas-ux39.js");
 assert(parcel.includes("esriGeometryPolygon")&&parcel.includes("esriGeometryMultipoint")&&parcel.includes("layerId:5090024"),"Falta consulta espacial vectorial/ráster correcta");
@@ -44,8 +44,13 @@ assert(seasonal.includes('hourly:"precipitation,temperature_2m"')&&!seasonal.inc
 const crop=JSON.parse(read("datos/sanidad_agroexportadora_2026.json"));
 assert(typeof crop==="object"&&Object.keys(crop).length>0,"Catálogo fitosanitario vacío");
 const boletines=JSON.parse(read("datos/boletines_institucionales_2026.json"));
-assert(boletines.boletines.some(b=>b.id==="enfen18"&&b.url.includes("repositorio.imarpe.gob.pe/items/0980a018-d5e0-4583-b028-7bebbbb8e7d7")),"El comunicado ENFEN debe apuntar al repositorio oficial IMARPE");
-const output={revision:"UX51",fecha_auditoria:new Date().toISOString(),paginas:pages,
+assert(boletines.boletines.some(b=>b.id==="enfen19"&&b.url.includes("comunicado-oficial-enfen-n-19-2026")),"El comunicado ENFEN vigente debe apuntar a la publicación oficial N.º 19-2026");
+
+const agro=read("assets/oaf-agro-charts-2026.js");
+assert(agro.includes("oaf-regional-map-legend")||read("assets/oaf-agroexportacion-2026.js").includes("oaf-regional-map-legend"),"Falta leyenda altitudinal del DEM");
+assert(agro.includes("relative_humidity_2m_mean")===false,"La humedad histórica debe proceder del CSV mensual verificado, no de una variable diaria inventada en el archivo regional");
+
+const output={revision:"UX54",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
  iconos_pwa:manifest.icons.length,localidades_rf:Object.keys(rf.pronostico_diario_rf_experimental||{}).length,
  ultima_emision_rf:rf.fecha_generacion_utc,ultima_emision_enfen:enfen.enfen.fecha_emision,
