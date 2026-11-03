@@ -110,12 +110,14 @@ function update(scope,point){
  else if(scope==="predicciones")monthly(point);
 }
 function init(){
+ const placeClimateForm=()=>{const form=$("oaf-area-clima"),anchor=$("oaf-clima-bloque-historico")?.querySelector(".oaf-agro-controls");if(form&&anchor&&form.parentElement!==anchor.parentElement){anchor.after(form);observer?.disconnect()}};
+ let observer=new MutationObserver(placeClimateForm);observer.observe(document.body,{childList:true,subtree:true});placeClimateForm();
  window.oafAreaUX38={update,restoreHistoric,resetMonthly};
  for(const scope of ["clima","predicciones"]){
   const p=window.OAFTerritory?.getActivePoint?.(scope);
   if(p)update(scope,p);
  }
- document.addEventListener("oaf:area-update",e=>{
+ document.addEventListener("oaf:area-update",e=>{placeClimateForm();
   const {scope,point,active}=e.detail||{};
   if(scope==="clima"){if(active&&point)climate(point);else{++token.clima;restoreHistoric();}}
   if(scope==="predicciones"){if(active&&point)monthly(point);else{++token.predicciones;resetMonthly();}}
