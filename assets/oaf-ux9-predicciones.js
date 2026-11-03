@@ -104,8 +104,9 @@ async function enso(){
 function init(){
  if(!$("oaf-ux9-predicciones")||$("oaf-ux9-predicciones").dataset.initialized)return;
  $("oaf-ux9-predicciones").dataset.initialized="true";
- $("oaf-ux9-localidad")?.addEventListener("change",forecast);
- document.addEventListener("oaf:localidad",e=>{const name=e.detail?.localidad,sel=$("oaf-ux9-localidad");if(sel&&places[name]&&sel.value!==name){sel.value=name;forecast()}});
+ const locality=$("oaf-ux9-localidad");
+ locality?.addEventListener("change",()=>{forecast();if(locality.dataset.oafSync!=="true")document.dispatchEvent(new CustomEvent("oaf:localidad",{detail:{localidad:locality.value,source:"oaf-ux9-localidad"}}));delete locality.dataset.oafSync;});
+ document.addEventListener("oaf:localidad",e=>{const name=e.detail?.localidad,sel=$("oaf-ux9-localidad");if(sel&&places[name]&&sel.value!==name){sel.value=name;sel.dataset.oafSync="true";sel.dispatchEvent(new Event("change",{bubbles:true}))}});
  forecast();enso();
 }
 document.addEventListener("oaf:ux9-ready",init);
