@@ -40,7 +40,7 @@ function moveStructure(){
    autor.append(own);
  }
  const stations=$("oaf-clima-bloque-estaciones");
- if(stations){climate.append(stations);const label=stations.querySelector("h2");if(label)label.textContent="Trazabilidad instrumental · estaciones y pisos altitudinales";}
+ if(stations){climate.append(stations);const label=stations.querySelector("h2");if(label)label.textContent="Relieve regional y trazabilidad instrumental";}
  const oldHead=$("autor")?.querySelector(".oaf-forecast-split");
  if(oldHead){const tech=$("oaf-agro-archive-autor")?.querySelector("div");if(tech)tech.append(oldHead)}
  const nav=$("oaf-menu-autor");if(nav){const tech=$("oaf-agro-archive-autor")?.querySelector("div");if(tech)tech.append(nav)}
@@ -60,7 +60,7 @@ function moveStructure(){
  // The old parent has no visible forecast after moving its contents.
  if(old&&!old.children.length)old.remove();
  const climIntro=$("clima")?.querySelector(".viewhead p");
- if(climIntro)climIntro.textContent="Consulta mapas, datos históricos y el pronóstico semanal. Los modelos propios están en Predicciones y Anomalías.";
+ if(climIntro)climIntro.textContent="Consulta la data histórica del clima 1996–2025, el relieve regional y el inventario de estaciones. El seguimiento meteorológico semanal y el análisis de El Niño se presentan en bloques independientes.";
  const menu=$("oaf-menu-clima");
  if(menu){const links=menu.querySelectorAll('a[href^="#"]');for(const l of links)if(l.getAttribute("href")==="#oaf-clima-bloque-modelo")l.setAttribute("href","#autor")}
  const ninoLabel=$("oaf-ux9-pronostico")?.querySelector(".oaf-agro-block-head p");
