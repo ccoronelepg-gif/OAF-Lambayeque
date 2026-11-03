@@ -9,7 +9,7 @@ const E=(name,cls)=>{const a=document.createElement(name);if(cls)a.className=cls
 const SVG=(name,props={})=>{const a=document.createElementNS("http://www.w3.org/2000/svg",name);
  Object.entries(props).forEach(([k,v])=>a.setAttribute(k,String(v)));return a};
 const CEN="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer";
-const SIG="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer";
+const SIG="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer";
 const MINAM="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
 const MTC="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/MTC/MapServer";
 const WMS="https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms";
@@ -614,7 +614,7 @@ function meta(){
  '<li><a href="https://www.senamhi.gob.pe/" target="_blank" rel="noopener noreferrer">SENAMHI · avisos y escenarios estacionales</a></li>'+
  '<li><a href="https://open-meteo.com/en/docs/historical-weather-api" target="_blank" rel="noopener noreferrer">Open-Meteo Archive · datos históricos modelados, no estaciones</a></li>'+
  '<li><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Forecast · precipitación pronosticada 7 días</a></li>'+
- '<li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6010100" target="_blank" rel="noopener noreferrer">INGEMMET · inventario 2017</a></li>'+
+ '<li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6010100" target="_blank" rel="noopener noreferrer">INGEMMET · inventario 2017</a></li>'+
  '<li><a href="'+COMPANIES+'" target="_blank" rel="noopener noreferrer">Agroindustrias y fundos referenciales · GeoJSON OpenStreetMap (no padrón SUNAT)</a></li>'+
  '<li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_ESCENARIOS_AGROCLIMATICOS_UX35.md" target="_blank" rel="noopener noreferrer">Metodología UX35 · uso e incertidumbre del visor</a></li></ul>';
  area.append(div);
