@@ -43,8 +43,40 @@ const parcel=read("assets/oaf-parcelas-ux39.js");
 assert(parcel.includes("esriGeometryPolygon")&&parcel.includes("esriGeometryMultipoint")&&parcel.includes("layerId:5090024"),"Falta consulta espacial vectorial/ráster correcta");
 const weekly=read("assets/oaf-ux15-rf-salidas.js");
 assert(weekly.includes("function rfEvidence(rain)")&&weekly.includes("wins>=5"),"No se aplica puerta de habilidad al RF semanal");
-assert(weekly.includes("function monthlyRfEvidence(model)")&&weekly.includes("RF no publicado como pronóstico operativo")&&weekly.includes('variable==="rain"||evidence.temperatureValidated'),"No se aplica puerta de habilidad al RF mensual y su temperatura");
+assert(weekly.includes("function monthlyRfEvidence(model)")&&weekly.includes("RF no se publica como pronóstico operativo")&&weekly.includes('variable==="rain"||evidence.temperatureValidated'),"No se aplica puerta de habilidad al RF mensual y su temperatura");
 assert(weekly.includes("relative_humidity_2m_mean")&&weekly.includes("et0_fao_evapotranspiration"),"Faltan variables agroclimáticas por coordenadas");
+
+// Integridad científica: procedencia, limitaciones y puertas de publicación de los modelos.
+const rfPub=JSON.parse(read("datos/rf_robusto_10j/estado_publicacion_10j.json"));
+const rf10j=JSON.parse(read("datos/rf_robusto_10j/auditoria_y_seleccion_10j.json"));
+const rfManifest=JSON.parse(read("datos/rf_robusto_10j/manifest_modelo_candidato_10j.json"));
+const rf10n=JSON.parse(read("datos/senamhi_10n/evaluacion_rf_estacion_10n.json"));
+const humidityState=JSON.parse(read("datos/humedad_8z/estado_humedad_8z.json"));
+const demState=JSON.parse(read("datos/muestreo_8o/estado_muestreo_8o.json"));
+const stationState=JSON.parse(read("datos/estaciones_9d/auditoria_estaciones_9d.json"));
+assert.equal(rfPub.puede_emitir_predicciones_operativas,false,"RF 10J no debe emitir pronóstico operativo");
+assert.equal(rfPub.promocion_a_produccion_automatica,false,"RF 10J no debe promoverse automáticamente");
+assert.equal(rfManifest.no_as_issued,true,"RF 10J debe conservar la limitación as-issued");
+assert.equal(rfManifest.sin_estaciones_independientes,true,"RF 10J requiere validación instrumental independiente");
+const rfRain=rf10j.resultados.lluvia.global;
+assert(rfRain.mae_rf_mm>rfRain.mae_climatologia_mm,"RF 10J no debe presentarse como superior a climatología en MAE");
+assert(rfRain.pr_auc_rf_p90<rfRain.pr_auc_ref_p90,"La PR-AUC P90 de RF no supera la referencia climatológica");
+assert(rfRain.brier_rf_p95>rfRain.brier_ref_p95,"La calibración P95 de RF no supera la referencia");
+assert.equal(rf10n.seleccion_validacion.peso_rf,0,"El RF de estaciones 10N debe conservar peso cero al no mejorar climatología");
+assert.equal(rf10n.pronosticos_actuales_habilitados,false,"RF 10N no debe habilitar pronósticos actuales");
+assert.equal(rf10n.QC_instrumental_formal_aprobado,false,"Los datos SENAMHI aportados no tienen QC formal aprobado");
+assert.equal(humidityState.registros_mes_sitio,1440,"Humedad ERA5 debe conservar 1.440 registros mensuales");
+assert.equal(humidityState.datos_reanalisis_no_sensor,true,"La humedad debe identificarse como reanálisis y no sensor");
+assert.equal(humidityState.no_mide_humedad_dosel,true,"La humedad ERA5 no debe etiquetarse como humedad de dosel");
+assert.equal(demState.nodos_dem_verificados,420,"El visor DEM debe usar el inventario auditado de 420 puntos");
+assert.equal(demState.limite_administrativo_validado_inei_ign,false,"El límite regional no debe presentarse como validado INEI/IGN");
+assert.equal(demState.zonas_homogeneas_demostradas,0,"El muestreo DEM no acredita zonas climáticas homogéneas");
+assert.equal(demState.pronosticos_zonales_certificados,false,"No hay pronósticos zonales certificados");
+assert(stationState.estaciones.every(x=>x.metadatos_senamhi_verificados===false),
+ "Las tres series históricas 9D no deben mostrarse como estaciones oficiales georreferenciadas");
+assert(stationState.estaciones.every(x=>x.latitud===null&&x.longitud===null),
+ "No se deben inventar coordenadas para las estaciones 9D");
+
 const seasonal=read("assets/oaf-ux15-rf-salidas.js");
 assert(seasonal.includes('hourly:"precipitation,temperature_2m"')&&!seasonal.includes('daily:"precipitation_sum,temperature_2m_mean"'),
  "El pronóstico estacional usa variable no permitida por Open-Meteo");

@@ -38,7 +38,7 @@ if(monthlyModel.estado==="no_disponible"){
  assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura mensual carece de comparación suficiente");
 }
 assert(src.includes('variable==="rain"||evidence.temperatureValidated'),"RF mensual de temperatura debe tener validación independiente");
-assert(src.includes("RF no publicado como pronóstico operativo"),"Falta advertencia de publicación mensual");
+assert(src.includes("RF no se publica como pronóstico operativo"),"Falta advertencia de publicación mensual");
 
 assert(src.includes("RF no se muestra porque mejora"),"RF sin habilidad no debe aparecer como pronóstico");
 assert(src.includes("MAE RF Tmax")&&src.includes("MAE clim. Tmax")&&src.includes("MAE medio del backtest"),"La auditoría debe comparar temperatura y MAE medio");

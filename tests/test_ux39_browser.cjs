@@ -84,6 +84,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(estacional.polyline===2&&estacional.openMeteo&&!estacional.counter,
     "Gráfico mensual debe mostrar climatología y SEAS5, sin presentar RF no validado: "+JSON.stringify(estacional));
 
+  // Activar la pestaña de clima: el mapa está correctamente oculto mientras Inicio está activo.
+  await page.locator('#oaf-primary-nav a[data-tab="clima"]').click();
+  await page.waitForFunction(()=>document.querySelector('#clima')&&!document.querySelector('#clima').hidden,{timeout:10000});
   // UX54: mapas DEM por pisos, estaciones inventariadas y variables históricas adicionales.
   await page.waitForSelector("#oaf-regional-hist-map svg",{timeout:20000});
   await page.waitForSelector("#oaf-stations-map svg",{timeout:20000});
@@ -100,12 +103,37 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(climateMaps.dem>=420&&climateMaps.demColors>=7,"El DEM debe distinguir las franjas altitudinales: "+JSON.stringify(climateMaps));
   assert(climateMaps.stations===13&&climateMaps.mapped>=5,"El inventario debe listar 13 estaciones y mapear solo las georreferenciadas: "+JSON.stringify(climateMaps));
   assert(climateMaps.humidity&&climateMaps.radiation&&climateMaps.areaForm,"Faltan variables o consulta de zona productora en data histórica: "+JSON.stringify(climateMaps));
+  // Simular una respuesta ERA5 diaria completa para probar el cálculo 1996–2025 sin depender de Internet.
+  const areaEraTime=[],areaEraTemp=[],areaEraRain=[],areaEraSolar=[],areaEraHumidity=[];
+  for(let y=1996;y<=2025;y++)for(let t=Date.UTC(y,0,1);t<Date.UTC(y+1,0,1);t+=86400000){
+   areaEraTime.push(new Date(t).toISOString().slice(0,10));
+   areaEraTemp.push(24+(y-1996)/100);areaEraRain.push(0.1);
+   areaEraSolar.push(18);areaEraHumidity.push(70);
+  }
+  await page.route("https://archive-api.open-meteo.com/**",route=>route.fulfill({status:200,contentType:"application/json",
+   body:JSON.stringify({latitude:-6.77,longitude:-79.84,daily:{time:areaEraTime,
+    temperature_2m_mean:areaEraTemp,precipitation_sum:areaEraRain,
+    shortwave_radiation_sum:areaEraSolar,relative_humidity_2m_mean:areaEraHumidity}})}));
   await page.evaluate(()=>{const f=document.querySelector("#oaf-area-clima form");f.elements.namedItem("lat").value="-6.7714";f.elements.namedItem("lon").value="-79.8409";f.elements.namedItem("name").value="Punto histórico de prueba";f.requestSubmit()});
   await page.waitForSelector("#oaf-area-clima-serie svg",{timeout:45000});
   const customHistory=await page.evaluate(()=>({points:document.querySelectorAll("#oaf-area-clima-serie svg circle").length,title:document.querySelector("#oaf-area-clima-serie h3")?.textContent,source:document.querySelector("#oaf-area-clima-serie .oaf-area-metodo")?.textContent}));
   assert(customHistory.points===30&&customHistory.title?.includes("Punto histórico de prueba")&&customHistory.source?.includes("ERA5"),"No se construyó la serie histórica de la parcela: "+JSON.stringify(customHistory));
 
+  // Probar los filtros DEM y de estaciones, además de la selección de un marcador.
+  await page.locator("#oaf-regional-map-filter").selectOption("montana_alta");
+  const filteredDem=await page.locator('#oaf-regional-hist-map svg circle[opacity=".94"]').count();
+  assert(filteredDem>0&&filteredDem<420,"El filtro altitudinal del DEM no actualiza los puntos visibles: "+filteredDem);
+  await page.locator("#oaf-regional-map-filter").selectOption("all");
+  await page.locator("#oaf-stations-floor").selectOption("montana_alta");
+  const highStations=await page.locator("#oaf-stations-list tbody tr").count();
+  assert(highStations>0&&highStations<13,"El filtro altitudinal de estaciones no filtra el inventario: "+highStations);
+  await page.locator("#oaf-stations-floor").selectOption("all");
+  await page.locator("#oaf-stations-map svg circle.oaf-map-symbol").first().click();
+  const selectedStation=await page.locator("#oaf-stations-selected").textContent();
+  assert(/\(\d{6}\)/.test(selectedStation||""),"El marcador no abre la ficha resumida de la estación: "+selectedStation);
   // UX42: Carrusel Inicio y lectura independiente en área semanal.
+  await page.locator('#oaf-primary-nav a[data-tab="inicio"]').click();
+  await page.waitForFunction(()=>document.querySelector('#inicio')&&!document.querySelector('#inicio').hidden,{timeout:10000});
   await page.waitForSelector("#oaf-ux42-slide-official",{state:"attached",timeout:12000});
   const intro=await page.evaluate(()=>{
     const c=document.querySelector("#inicio .oaf-ux42-carousel");
@@ -139,6 +167,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
       body:JSON.stringify({latitude:-6.15,longitude:-79.71,daily:{time:eraTime,precipitation_sum:eraRain,temperature_2m_max:eraTemp,temperature_2m_mean:eraTemp,relative_humidity_2m_mean:eraHumidity,shortwave_radiation_sum:eraRadiation}})});
     else await route.fulfill({status:200,contentType:"application/json",body:JSON.stringify(pointForecast)});
   });
+  await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
+  await page.waitForFunction(()=>document.querySelector('#autor')&&!document.querySelector('#autor').hidden,{timeout:10000});
   const formExists=await page.evaluate(()=>!!document.querySelector("#oaf-ux14-rf-semana #oaf-area-semanal form"));
   assert(formExists,"No hay coordenadas UTM/WGS84 en horizonte semanal");
   const outcome=await page.evaluate(()=>{
@@ -172,6 +202,17 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   for(const field of ["HR media (%)","Radiación (MJ/m²)","ET₀ FAO (mm)","DPV máx. (kPa)"])
     assert(pointTable.headers.includes(field),"Falta el indicador "+field+": "+JSON.stringify(pointTable.headers));
 
+  await page.locator('#oaf-primary-nav a[data-tab="verificaciones"]').click();
+  await page.waitForFunction(()=>document.querySelector('#verificaciones')&&!document.querySelector('#verificaciones').hidden,{timeout:10000});
+  await page.waitForFunction(()=>document.querySelector("#oaf-ux29-territory .oaf-ux29-mapcolumn .oaf-ux29-mapcontent svg"),{timeout:20000});
+  const massTerritory=page.locator('#oaf-ux29-territory [data-ux30-layer="movmasa"]');
+  await massTerritory.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
+  await massTerritory.check();
+  await page.waitForSelector('#oaf-ux29-territory .oaf-ux30-layer image[data-title="Movimientos en masa"]',{timeout:10000});
+  const layerDiagnosis=await page.locator("#oaf-ux29-territory .oaf-ux29-diagbody").textContent();
+  assert(layerDiagnosis?.includes("Movimientos en masa"),"El diagnóstico no explica la capa geográfica seleccionada");
+  await massTerritory.uncheck();
+  await page.waitForFunction(()=>!document.querySelector('#oaf-ux29-territory .oaf-ux30-layer image[data-title="Movimientos en masa"]'),{timeout:10000});
   const result=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-territorio form");f.elements.namedItem("name").value="Parcela de prueba";
    f.elements.namedItem("lat").value="-6.15083";f.elements.namedItem("lon").value="-79.7142";f.requestSubmit();
@@ -189,6 +230,14 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(p&&p.ha>1&&p.ha<1.4,"El importador no calculó un polígono de superficie aproximada válida");
   await page.waitForTimeout(350);
   assert(await page.locator("#oaf-ux24-region-map #oaf-ux39-geom-territorio").count(),"El polígono no se dibujó en el SVG territorial");
+  await page.locator('#oaf-primary-nav a[data-tab="autor"]').click();
+  await page.waitForFunction(()=>document.querySelector('#autor')&&!document.querySelector('#autor').hidden,{timeout:10000});
+  const massScenario=page.locator('#oaf-ux29-scenario [data-ux29-layer="mass"]');
+  await massScenario.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
+  await massScenario.check();
+  await page.waitForSelector("#oaf-ux29-scenario .oaf-ux29-mass",{timeout:10000});
+  await massScenario.uncheck();
+  await page.waitForFunction(()=>!document.querySelector("#oaf-ux29-scenario .oaf-ux29-mass"),{timeout:10000});
   const escenario=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-escenarios form");
    f.elements.namedItem("format").value="utm";
@@ -203,6 +252,8 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(await page.locator("#oaf-ux29-forecast-map #oaf-area-pin-escenarios").count(),"El punto no se dibujó en el SVG del visor de escenarios");
   assert(await page.locator("#oaf-ux24-region-map #oaf-area-pin-territorio").count(),"Desapareció el punto territorial al definir escenario");
   // Prueba responsive: el visor debe aparecer ANTES del listado de capas en móvil.
+  await page.locator('#oaf-primary-nav a[data-tab="verificaciones"]').click();
+  await page.waitForFunction(()=>document.querySelector('#verificaciones')&&!document.querySelector('#verificaciones').hidden,{timeout:10000});
   await page.setViewportSize({width:390,height:844});
   const responsive=await page.evaluate(()=>{
    const layout=document.querySelector("#oaf-ux29-territory .oaf-ux29-layout"),
