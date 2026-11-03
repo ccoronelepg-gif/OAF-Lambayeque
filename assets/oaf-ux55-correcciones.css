@@ -1,0 +1,29 @@
+/* OAF UX55 · visualización clara de portada e histórico */
+#inicio .oaf-ux55-carousel{display:grid!important;grid-template-rows:minmax(0,1fr) auto!important;gap:8px!important;min-height:305px;max-height:430px;overflow:hidden}
+#inicio .oaf-ux55-slide{display:flex;flex-direction:column;justify-content:center;gap:7px;overflow:auto;padding:13px 16px!important}
+#inicio .oaf-ux55-slide[hidden]{display:none!important}
+#inicio .oaf-ux55-slide h2{font-size:clamp(16px,1.7vw,20px)!important;line-height:1.2;margin:0!important}
+#inicio .oaf-ux55-slide p{font-size:11px;line-height:1.45;margin:0}
+#inicio .oaf-ux55-chart{height:112px;min-height:90px;display:flex;align-items:stretch;gap:5px;padding:7px 5px;border:1px solid #d8e6df;border-radius:9px;background:#fff;overflow-x:auto}
+#inicio .oaf-ux55-bar{flex:1 0 28px;min-width:28px;display:flex;flex-direction:column;align-items:center;justify-content:end;gap:3px}
+#inicio .oaf-ux55-bar strong{font-size:9px;color:#315c50}
+#inicio .oaf-ux55-track{height:65px;width:100%;display:flex;align-items:end;border-bottom:1px solid #c9d8d1}
+#inicio .oaf-ux55-track i{display:block;width:100%;min-height:2px;border-radius:3px 3px 0 0}
+#inicio .oaf-ux55-bar small{font-size:9px;color:#526d63;white-space:nowrap}
+#inicio .oaf-ux55-probability{display:flex;align-items:center;gap:13px;padding:8px 12px;background:#fff4e8;border:1px solid #ecd3b3;border-radius:9px}
+#inicio .oaf-ux55-probability strong{font-size:31px;color:#9b4d21;line-height:1}
+#inicio .oaf-ux55-probability span{font-size:11px;line-height:1.4;color:#60452f}
+#oaf-ux55-historical,#oaf-ux55-science{background:#fff;border:1px solid #dce8e5;border-radius:15px;padding:22px;margin:18px 0;box-shadow:0 8px 22px #10384208}
+.oaf-ux55-eyebrow{display:block;color:#177d72;font-size:11px;font-weight:850;letter-spacing:1px}
+#oaf-ux55-historical h2,#oaf-ux55-science h2{color:#103842;font-size:22px;margin:7px 0}
+#oaf-ux55-historical p,#oaf-ux55-science p{color:#526d70;font-size:13px;line-height:1.7}
+.oaf-ux55-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.oaf-ux55-controls label{font-size:12px;font-weight:750;color:#31575a}
+.oaf-ux55-controls select{min-width:170px}
+#oaf-ux55-hist-chart{height:210px;display:flex;align-items:stretch;gap:4px;overflow-x:auto;padding:8px 3px;border-bottom:1px solid #dce8e5}
+#oaf-ux55-hist-chart .oaf-ux55-bar{flex:1 0 24px;min-width:24px}
+#oaf-ux55-hist-chart .oaf-ux55-track{height:150px}
+#oaf-ux55-hist-chart .oaf-ux55-bar strong{font-size:8px}
+#oaf-ux55-hist-chart .oaf-ux55-bar small{font-size:8px}
+#oaf-ux55-hist-status{font-size:11px!important}
+@media(max-width:650px){#oaf-ux55-historical,#oaf-ux55-science{padding:16px}#inicio .oaf-ux55-carousel{min-height:315px;max-height:420px}}
