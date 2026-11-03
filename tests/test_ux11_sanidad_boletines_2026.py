@@ -64,10 +64,11 @@ class SanidadBoletinesUX11(unittest.TestCase):
         self.assertIn("NaN" if "NaN" in SAN else "Number.isFinite",SAN)
 
     def test_official_bulletins_evidence(self):
-        self.assertEqual(len(BUL["boletines"]),5)
-        self.assertEqual(BUL["boletines"][0]["fecha"],"2026-10-16")
+        self.assertEqual(len(BUL["boletines"]),7)
+        self.assertEqual(BUL["boletines"][0]["fecha"],"2026-10-30")
         self.assertEqual(BUL["boletines"][0]["institucion"],"ENFEN")
-        self.assertEqual(BUL["boletines"][2]["institucion"],"NOAA CPC")
+        self.assertEqual(BUL["boletines"][4]["institucion"],"NOAA CPC")
+        self.assertEqual(BUL["boletines"][1]["fecha"],"2026-11-01")
         for b in BUL["boletines"]:
             self.assertTrue(b["resumen"] and b["implicacion"])
             self.assertEqual(urlparse(b["url"]).scheme,"https")

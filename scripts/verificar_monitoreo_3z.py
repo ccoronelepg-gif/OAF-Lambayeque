@@ -67,9 +67,9 @@ def verify():
         raise ValueError("La extracción CHIRPS no certifica datos de estación")
     if enfen.get("alerta_emitida_por_oaf") is not False or enfen.get("prediccion_oaf") is not False:
         raise ValueError("El OAF no emite aviso ENSO propio")
-    if enfen["verificacion"]!="identificado_en_comunicado" and enfen.get("estado_institucional") is not None:
+    if enfen["verificacion"] not in {"verificada","identificado_en_comunicado"} and enfen.get("estado_institucional") is not None:
         raise ValueError("ENFEN declaró un estado sin haberlo confirmado en comunicado")
-    if enfen["verificacion"]=="identificado_en_comunicado":
+    if enfen["verificacion"] in {"verificada","identificado_en_comunicado"}:
         if not all((enfen.get("fecha_emision"),enfen.get("numero"),enfen.get("url_comunicado"),
                     enfen.get("estado_institucional"))):
             raise ValueError("Falta fecha o fuente en ENFEN verificado")
