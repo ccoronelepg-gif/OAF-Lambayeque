@@ -28,7 +28,7 @@
 
 ## Pendiente antes de declarar estable
 
-**El visor todavía no debe etiquetarse como estable.** En este entorno no se pudo ejecutar un navegador real contra GitHub Pages ni lanzar la prueba de consultas desde Node con acceso de red. Por tanto, quedan pendientes:
+**El visor todavía no debe etiquetarse como estable.** En este entorno no se pudo ejecutar un navegador real contra GitHub Pages. Se añadió el workflow `.github/workflows/auditoria-ux64.yml` para ejecutar automáticamente las pruebas de sintaxis y consultas SIGRID en GitHub Actions; al redactar esta actualización todavía no había un resultado de ejecución disponible. Por tanto, quedan pendientes:
 
 1. Ejecutar `node tests/auditoria_ux64_sigrid.cjs` desde un entorno con acceso a Internet y revisar los conteos/errores devueltos por cada geoservicio.
 2. Abrir el portal publicado y comprobar visualmente cada capa activada por separado y en combinación: límites, satélite Esri, CENEPRED, INGEMMET, ANA, ríos/quebradas, MTC y servicios de emergencia.
