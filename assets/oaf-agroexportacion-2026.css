@@ -83,7 +83,25 @@
 @media(max-width:620px){.oaf-agro-block{padding:16px 13px}.oaf-agro-summary{padding:18px 16px}.oaf-agro-crop-grid,.oaf-agro-crop-columns,.oaf-agro-facts{grid-template-columns:1fr}.oaf-agro-chart{min-height:205px}.oaf-agro-crop-card{min-height:100px}.oaf-agro-map-frame{min-height:205px}}
 @media(prefers-reduced-motion:reduce){.oaf-agro-crop-card{transition:none}}
 
-/* UX54 historical graph layout */
+
+/* UX54 · Data histórica en ancho completo y paquete integrado de relieve/estaciones. */
 #oaf-clima-bloque-historico .oaf-agro-history-tile{width:100%;max-width:none;padding:22px 24px}
+#oaf-clima-bloque-historico .oaf-agro-block-head p{max-width:none}
 #oaf-clima-bloque-historico .oaf-agro-chart{min-height:410px}
 #oaf-clima-bloque-historico .oaf-agro-chart svg{max-height:none;min-height:370px}
+#oaf-clima-bloque-estaciones .oaf-agro-terrain-stations{align-items:start}
+#oaf-clima-bloque-estaciones .oaf-agro-map-frame{min-height:330px}
+.oaf-floor-legend{display:flex;flex-wrap:wrap;gap:7px 12px;padding:9px 2px}
+.oaf-floor-legend span{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#49675a}
+.oaf-floor-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;border:1px solid #ffffff;box-shadow:0 0 0 1px #b9cfc2}
+.oaf-stations-table-wrap{width:100%;overflow:auto;border:1px solid #dce8df;border-radius:10px;margin-top:10px}
+.oaf-stations-table{width:100%;min-width:720px;border-collapse:collapse;font-size:11px;background:#fff}
+.oaf-stations-table th,.oaf-stations-table td{padding:8px 9px;border-bottom:1px solid #e2ece5;text-align:left;vertical-align:top;line-height:1.45}
+.oaf-stations-table th{background:#edf5ef;color:#285b47;position:sticky;top:0}
+.oaf-stations-table tr:last-child td{border-bottom:0}
+.oaf-stations-table .oaf-station-pending{color:#7b6540}
+.oaf-area-scientific.oaf-area-climate-history{margin:16px 0;padding:18px;border:1px solid #cddfd5;border-radius:13px;background:#f8fcf9}
+.oaf-area-climate-history h3{font-size:18px;color:#1a5946;margin:0 0 8px}
+.oaf-area-climate-history p{font-size:12px;line-height:1.65;color:#4c695d}
+.oaf-area-climate-history svg{display:block;width:100%;height:auto;min-height:300px}
+@media(max-width:620px){#oaf-clima-bloque-historico .oaf-agro-history-tile{padding:14px 10px}#oaf-clima-bloque-historico .oaf-agro-chart{min-height:290px}#oaf-clima-bloque-historico .oaf-agro-chart svg{min-height:270px}.oaf-stations-table{min-width:650px}}
