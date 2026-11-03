@@ -28,7 +28,7 @@ assert.equal(rf.alertas_automaticas,false,"No activar alertas experimentales");
 if(rf.estado==="no_disponible"){
  assert.equal(rf.operativo_certificado,false,"RF no disponible no debe declararse operativo");
  assert.equal(rf.alertas_automaticas,false,"No activar alertas sin evidencia");
- assert.match(rf.error||"","ERA5|archive-api|timeout|timed out/i");
+ assert.match(rf.error||"",/ERA5|archive-api|timeout|timed out/i);
  assert.equal(rf.pronostico_diario_rf_experimental,undefined,"No publicar pronósticos incompletos");
 }else{
  assert.equal(rf.metrica_diaria?.backtest_semanal_recursivo?.por_horizonte?.length,7,"Faltan siete horizontes RF auditados");

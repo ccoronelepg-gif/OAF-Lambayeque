@@ -26,10 +26,17 @@ assert(monthlyStart>=0&&monthlyEnd>monthlyStart,"Falta puerta de habilidad para 
 const monthlyEvidenceFn=new Function("model",src.slice(monthlyStart,monthlyEnd)+";return monthlyRfEvidence(model);");
 const monthlyModel=JSON.parse(read("datos/rf_experimental_ux15.json"));
 const monthlyEvidence=monthlyEvidenceFn(monthlyModel);
-assert.equal(monthlyEvidence.horizons,6,"Se requieren seis horizontes mensuales evaluados");
-assert.equal(monthlyEvidence.wins,1,"El RF mensual sólo mejora un horizonte en el backtest");
-assert.equal(monthlyEvidence.eligible,false,"RF mensual no debe publicarse si no supera la climatología");
-assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura mensual carece de comparación suficiente");
+if(monthlyModel.estado==="no_disponible"){
+ assert.equal(monthlyEvidence.horizons,0,"Sin datos de evaluación no se cuentan horizontes");
+ assert.equal(monthlyEvidence.wins,0,"Sin datos no se atribuyen aciertos al RF");
+ assert.equal(monthlyEvidence.eligible,false,"RF sin evidencia no debe publicarse");
+ assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura sin evidencia no debe publicarse");
+}else{
+ assert.equal(monthlyEvidence.horizons,6,"Se requieren seis horizontes mensuales evaluados");
+ assert.equal(monthlyEvidence.wins,1,"El RF mensual sólo mejora un horizonte en el backtest");
+ assert.equal(monthlyEvidence.eligible,false,"RF mensual no debe publicarse si no supera la climatología");
+ assert.equal(monthlyEvidence.temperatureValidated,false,"Temperatura mensual carece de comparación suficiente");
+}
 assert(src.includes('variable==="rain"||evidence.temperatureValidated'),"RF mensual de temperatura debe tener validación independiente");
 assert(src.includes("RF no publicado como pronóstico operativo"),"Falta advertencia de publicación mensual");
 
