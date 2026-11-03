@@ -8,7 +8,7 @@ const S={
  phase:{district:"pendiente",hydroRio:"pendiente",hydroQuebrada:"pendiente",historical:"pendiente",agri:"pendiente"},
  note:{},count:{},partial:{},started:{},names:{},current:0
 };
-const HOST="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer";
+const HOST="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer";
 const SERFOR="https://geo.serfor.gob.pe/geoservicios/rest/services/Visor/Limites_Politicos_Administrativos/MapServer";
 const AGRI="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
 const el=id=>document.getElementById(id);
