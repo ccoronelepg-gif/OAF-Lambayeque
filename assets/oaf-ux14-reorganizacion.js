@@ -81,12 +81,17 @@ function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
  const parent=hero.parentElement,layout=E("div","oaf-ux14-home-hero");hero.before(layout);layout.append(hero);
  const side=E("aside","oaf-ux14-home-side");
- side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Próximo comunicado institucional: 13/11/2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: el comunicado más reciente mantiene la Alerta de El Niño Costero; no fija lluvias concretas para Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN · boletín y figura oficial ↗</a></div></article>';
+ side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: el comunicado más reciente mantiene la Alerta de El Niño Costero; no fija lluvias concretas para Lambayeque.</div><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><div class="oaf-ux14-probability" aria-live="polite"><span>Probabilidad NOAA de El Niño fuerte a muy fuerte</span><strong id="oaf-ux14-home-prob-pct">—</strong><small id="oaf-ux14-home-prob-label">ENSO global · Pacífico ecuatorial</small></div><p id="oaf-ux14-home-prob">Próxima actualización oficial: 12/11/2026 (NOAA).</p><div class="oaf-ux15-source"><strong>Fuentes:</strong> <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN ↗</a> · <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc_Sp.shtml" target="_blank" rel="noopener noreferrer">NOAA CPC ↗</a></div></article>';
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
    $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+".";
    const prob=$("oaf-ux14-home-prob");
-   prob.textContent="Próximo comunicado previsto: "+(d.enfen?.fecha_proximo_comunicado_prevista||"fecha no informada")+".";
+   prob.textContent="Próximo comunicado ENFEN previsto: "+(d.enfen?.fecha_proximo_comunicado_prevista||"fecha no informada")+".";
+   const probability=Number(d.noaa?.probabilidad_fuerte_muy_fuerte_pct);
+   const probabilityNode=$("oaf-ux14-home-prob-pct");
+   if(probabilityNode)probabilityNode.textContent=Number.isFinite(probability)?">"+probability+"%":"No disponible";
+   const probabilityLabel=$("oaf-ux14-home-prob-label");
+   if(probabilityLabel)probabilityLabel.textContent="NOAA · hasta enero–marzo de 2027 · ENSO global, no probabilidad local de lluvias costeras";
    const info=$("oaf-ux15-enfen-exp");
    if(info)info.textContent="Interpretación: "+(d.enfen?.nota||"Consulta el comunicado original para conocer el alcance de la alerta.");
    const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation&&d.enfen?.fuente){citation.href=d.enfen.fuente;citation.textContent="ENFEN · boletín y figura oficial ↗";}

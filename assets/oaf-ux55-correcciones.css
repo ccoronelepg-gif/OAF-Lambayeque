@@ -95,3 +95,34 @@
  #oaf-ux29-territory .oaf-ux29-diagbody{grid-template-columns:minmax(0,1fr)!important;padding:8px!important;gap:7px!important}
  #oaf-ux29-territory .oaf-ux30-diagnosis-item{padding:8px!important}
 }
+
+
+/* UX62 · tarjeta ENFEN: lectura primero y probabilidad claramente contextualizada */
+#inicio .oaf-ux14-home-side .oaf-ux14-nino{
+ display:flex!important;flex-direction:column!important;gap:9px!important;
+ min-width:0!important;box-sizing:border-box!important;overflow:hidden!important;
+}
+#inicio .oaf-ux14-nino h2{margin:0!important;font-size:clamp(18px,2vw,23px)!important;line-height:1.2!important}
+#inicio .oaf-ux14-nino .oaf-ux15-explain{
+ order:1!important;margin:0!important;padding:9px 11px!important;
+ border-left:3px solid #4b8b70!important;border-radius:6px!important;
+ background:#f1f6f2!important;font-size:12px!important;line-height:1.45!important;
+}
+#inicio .oaf-ux14-nino #oaf-ux14-home-enso{order:2!important;margin:0!important;font-size:12px!important;line-height:1.4!important}
+#inicio .oaf-ux14-nino .oaf-ux14-probability{
+ order:3!important;display:flex!important;flex-direction:column!important;
+ align-items:flex-start!important;gap:2px!important;margin:2px 0 0!important;
+ padding:10px 12px!important;border:1px solid #d9e6de!important;
+ border-radius:9px!important;background:#f8fbf9!important;box-sizing:border-box!important;
+ width:100%!important;min-width:0!important;
+}
+#inicio .oaf-ux14-probability span{font-size:11px!important;line-height:1.35!important;color:#4d6559!important}
+#inicio .oaf-ux14-probability strong{font-size:clamp(26px,3vw,34px)!important;line-height:1!important;color:#235b43!important;font-weight:750!important}
+#inicio .oaf-ux14-probability small{font-size:10px!important;line-height:1.35!important;color:#62756b!important}
+#inicio .oaf-ux14-nino #oaf-ux14-home-prob{order:4!important;margin:0!important;font-size:10.5px!important;line-height:1.35!important;color:#5c6e64!important}
+#inicio .oaf-ux14-nino .oaf-ux15-source{order:5!important;margin-top:0!important;font-size:10px!important;line-height:1.4!important}
+#inicio .oaf-ux14-nino .oaf-ux42-official-meta{order:2!important;margin:0!important;font-size:10px!important;color:#65766d!important}
+@media(max-width:790px){
+ #inicio .oaf-ux14-home-side .oaf-ux14-nino{gap:7px!important;padding:12px!important}
+ #inicio .oaf-ux14-probability strong{font-size:28px!important}
+}

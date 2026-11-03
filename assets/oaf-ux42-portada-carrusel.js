@@ -33,8 +33,9 @@ function construct(){
  const official=side?.querySelector(".oaf-ux14-nino");if(!official||started)return false;
  started=true;side.classList.add("oaf-ux42-carousel");
  official.id="oaf-ux42-slide-official";official.classList.add("oaf-ux42-slide");slides.push(official);
- const officialDate=el("p","oaf-ux42-official-meta","Emitido: 30/10/2026 · Fuente: ENFEN, Comunicado Oficial 19-2026.");
- official.append(officialDate);
+ const officialDate=el("p","oaf-ux42-official-meta","ENFEN · Comunicado Oficial 19-2026 · 30/10/2026");
+ const interpretation=official.querySelector("#oaf-ux15-enfen-exp");
+ if(interpretation)interpretation.after(officialDate);else official.prepend(officialDate);
  for(const [id,kicker,heading,bodyId,plotId,noteId,note] of [
   ["week","PRÓXIMOS 7 DÍAS","Pronóstico meteorológico", "oaf-ux42-week-body","oaf-ux42-week-plot","oaf-ux42-week-note","Precipitación diaria (mm). Fuente: Open-Meteo Forecast API."],
   ["month","PRÓXIMOS SEIS MESES COMPLETOS","Perspectiva estacional de precipitación","oaf-ux42-month-body","oaf-ux42-month-plot","oaf-ux42-month-note","Fuente: Open-Meteo Seasonal API · ECMWF SEAS5."]]){

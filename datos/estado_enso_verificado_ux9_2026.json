@@ -16,7 +16,10 @@
     "fuente": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc_Sp.shtml",
     "probabilidades": "https://cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities/",
     "nota": "La perspectiva NOAA describe el ENSO global del Pacífico ecuatorial. No es una categoría de magnitud para El Niño Costero peruano ni determina lluvias locales. La siguiente discusión mensual estaba programada para el 12/11/2026.",
-    "proxima_discusion_prevista": "2026-11-12"
+    "proxima_discusion_prevista": "2026-11-12",
+    "probabilidad_fuerte_muy_fuerte_pct": 83,
+    "periodo_probabilidad": "hasta enero–marzo de 2027",
+    "alcance_probabilidad": "ENSO global del Pacífico ecuatorial; no es probabilidad de lluvia local ni categoría del Niño Costero"
   },
   "fuente_series_noaa": "datos/noaa_ncei_ersstv5_nino12_rebase_1991_2020.csv",
   "limite": "Verificación documental fechada al 02/11/2026. El archivo mensual ERSSTv5 local llega a 2026-09; no se inventa un dato mensual de octubre. Consultar los portales emisores para nuevas actualizaciones."
