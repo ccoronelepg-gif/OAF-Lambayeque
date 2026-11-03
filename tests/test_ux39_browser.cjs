@@ -44,24 +44,23 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   assert(inside.every(x=>x.area&&x.polygon),"Los módulos deben estar DENTRO de la columna de mapas "+JSON.stringify(inside));
   const order=await page.evaluate(()=>["territorio","escenarios"].map(k=>{
    const root=document.getElementById(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
-   const column=root.querySelector(".oaf-ux29-mapcolumn"),children=[...column.children].map(x=>x.id||x.className);
+   const layout=root.querySelector(".oaf-ux29-layout"),column=root.querySelector(".oaf-ux29-mapcolumn");
    const area=column.querySelector("#oaf-area-"+k),map=column.querySelector(".oaf-ux29-mapcontent"),parcel=column.querySelector("#oaf-parcel-"+k);
-   const diag=column.querySelector("#oaf-area-point-details-"+k);
-   const hydro=k==="escenarios"?column.querySelector("#oaf-ux36-panel"):null;
+   const diagnosis=layout.querySelector(".oaf-ux29-diagnosis");
+   const hydro=k==="escenarios"?layout.querySelector("#oaf-ux36-panel"):null;
+   const validation=k==="escenarios"?layout.querySelector("#oaf-ux37-panel"):null;
    const forecastMap=k==="escenarios"?column.querySelector(".oaf-ux29-scenemap"):null;
-   return {k,hydroOrder:k==="territorio"||Boolean(hydro&&forecastMap&&
-      (forecastMap.compareDocumentPosition(parcel)&Node.DOCUMENT_POSITION_FOLLOWING)&&
-      (diag.compareDocumentPosition(hydro)&Node.DOCUMENT_POSITION_FOLLOWING)&&
-      (parcel.compareDocumentPosition(hydro)&Node.DOCUMENT_POSITION_FOLLOWING)&&
-      hydro.parentElement===map),
-    afterArea:!!(area.compareDocumentPosition(map)&Node.DOCUMENT_POSITION_FOLLOWING),
-    afterMap:!!(map.compareDocumentPosition(parcel)&Node.DOCUMENT_POSITION_FOLLOWING),
-    afterParcel:!!(parcel.compareDocumentPosition(diag)&Node.DOCUMENT_POSITION_FOLLOWING),
+   const follows=(a,b)=>!!(a&&b&&(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING));
+   return {k,areaBeforeParcel:follows(area,parcel),parcelBeforeMap:follows(parcel,map),
+    mapBeforeDiagnosis:follows(map,diagnosis),
+    hydroOrder:k==="territorio"||Boolean(hydro&&forecastMap&&follows(forecastMap,diagnosis)&&
+      follows(diagnosis,hydro)&&hydro.parentElement===layout&&follows(hydro,validation)&&validation?.parentElement===layout),
     parcelFold:parcel.querySelector(".oaf-parcel-fold")?.open===false,
-    auditUnderMap:!!diag.querySelector(".oaf-area-data"),hasExpand:!!column.querySelector(".oaf-map-expand"),
-    children};
+    pointPanelHidden:!column.querySelector("#oaf-area-point-details-"+k)||getComputedStyle(column.querySelector("#oaf-area-point-details-"+k)).display==="none",
+    hasExpand:!!column.querySelector(".oaf-map-expand"),diagnosisFullWidth:!!diagnosis&&diagnosis.parentElement===layout};
   }));
-  assert(order.every(x=>x.afterArea&&x.afterMap&&x.afterParcel&&x.hydroOrder&&x.parcelFold&&x.auditUnderMap&&x.hasExpand),
+  assert(order.every(x=>x.areaBeforeParcel&&x.parcelBeforeMap&&x.mapBeforeDiagnosis&&x.hydroOrder&&
+    x.parcelFold&&x.pointPanelHidden&&x.hasExpand&&x.diagnosisFullWidth),
    "Jerarquía visual incorrecta: "+JSON.stringify(order));
   const weekly=await page.evaluate(()=>{
     const week=document.getElementById("oaf-ux14-rf-semana"),monthly=document.getElementById("oaf-ux14-rf-mes");

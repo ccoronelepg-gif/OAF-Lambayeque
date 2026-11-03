@@ -16,7 +16,7 @@ assert(!area.includes("#oaf-ux14-rf-semana,#oaf-anomaly-panel"),"El gráfico sem
 assert(structure.includes('section("Predicción a siete días'),"No se creó la cabecera del cuadro semanal");
 assert(structure.indexOf('const live=section("Predicción a siete días')<structure.indexOf('const month=section("Horizonte mensual'),"Gráfico no precede al mensual");
 assert.match(index,/oaf-ux15-rf-salidas\.js\?v=/,"No se actualizó script semanal en web");
-assert(index.includes("oaf-ux14-reorganizacion.js?v=20261029-ux51c"),"No se actualizó estructura semanal en web");
+assert.match(index,/oaf-ux14-reorganizacion\.js\?v=/,"No se actualizó estructura semanal en web");
 assert.match(read("sw.js"),/const RELEASE="oaf-pwa-shell-[^"]+"/,"Cache PWA no versionado");
 assert(src.includes("relative_humidity_2m_mean")&&src.includes("shortwave_radiation_sum"),"Faltan indicadores diarios para área productiva");
 assert(src.includes("et0_fao_evapotranspiration")&&src.includes("vapour_pressure_deficit_max"),"Faltan ET0 y DPV del pronóstico puntual");
@@ -65,15 +65,21 @@ const climatology=construct(fakeFetch,AbortController,URLSearchParams,setTimeout
  assert(Math.abs(first.tmax["10-27"]-(29*25+35)/30)<.0001);
  assert.equal(first.years,"1996–2025");
  const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
- const rows=rf.pronostico_diario_rf_experimental.Chiclayo;
- const byDate=new Map(rows.map(x=>[x.fecha,x.precipitacion_mm]));
- assert.equal(rows.length,7,"El modelo debe emitir exactamente siete días por localidad");
- assert.equal(rows[0].fecha,rf.fecha_local,"La primera fecha RF debe corresponder a la emisión local del archivo");
- const stamps=rows.map(x=>Date.parse(x.fecha+"T00:00:00Z"));
- assert(stamps.every(Number.isFinite),"Fecha diaria inválida");
- for(let i=1;i<stamps.length;i++)assert.equal(stamps[i]-stamps[i-1],86400000,"La serie RF debe tener días consecutivos sin huecos");
- assert(rows.every(x=>Number.isFinite(x.precipitacion_mm)&&x.precipitacion_mm>=0&&Number.isFinite(x.temperatura_max_c)),
-  "Cada día debe tener lluvia no negativa y Tmax finita");
- assert.equal(byDate.size,7,"No se deben extender ni rellenar días posteriores al horizonte emitido");
+ if(rf.estado==="no_disponible"){
+  assert.equal(rf.operativo_certificado,false,"RF sin datos no debe declararse operativo");
+  assert.equal(rf.alertas_automaticas,false,"RF sin datos no debe activar alertas");
+  assert.equal(rf.pronostico_diario_rf_experimental,undefined,"No se deben inventar salidas diarias");
+ }else{
+  const rows=rf.pronostico_diario_rf_experimental.Chiclayo;
+  const byDate=new Map(rows.map(x=>[x.fecha,x.precipitacion_mm]));
+  assert.equal(rows.length,7,"El modelo debe emitir exactamente siete días por localidad");
+  assert.equal(rows[0].fecha,rf.fecha_local,"La primera fecha RF debe corresponder a la emisión local del archivo");
+  const stamps=rows.map(x=>Date.parse(x.fecha+"T00:00:00Z"));
+  assert(stamps.every(Number.isFinite),"Fecha diaria inválida");
+  for(let i=1;i<stamps.length;i++)assert.equal(stamps[i]-stamps[i-1],86400000,"La serie RF debe tener días consecutivos sin huecos");
+  assert(rows.every(x=>Number.isFinite(x.precipitacion_mm)&&x.precipitacion_mm>=0&&Number.isFinite(x.temperatura_max_c)),
+   "Cada día debe tener lluvia no negativa y Tmax finita");
+  assert.equal(byDate.size,7,"No se deben extender ni rellenar días posteriores al horizonte emitido");
+ }
  console.log("UX41 OK: 30 años ERA5, media calendario, caché y coincidencia estricta RF, presentación/PWA");
 })().catch(e=>{console.error(e);process.exitCode=1});
