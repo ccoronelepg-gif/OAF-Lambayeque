@@ -58,8 +58,11 @@ class UXContract(unittest.TestCase):
 
     def test_six_routes_and_deep_categorization(self):
         self.assertEqual(tuple(self.dom.pages),ROUTES)
-        for id in ("oaf-mobile-menu","oaf-trust-legend"):
-            self.assertIn(id,self.dom.ids)
+        self.assertIn("oaf-mobile-menu",self.dom.ids)
+        # UX54 retira la tarjeta de confiabilidad de Inicio porque su explicación
+        # ya se conserva en Metadatos y trazabilidad.
+        self.assertNotIn("oaf-trust-legend",self.dom.ids)
+        self.assertIn('id="oaf-meta-hub"',HTML)
         # Los controles vista rápida/técnica se retiraron por simplificación UX21.
         for retired in ("oaf-ux-view-quick","oaf-ux-view-technical","oaf-current-city"):
             self.assertNotIn(retired,self.dom.ids)
@@ -71,7 +74,7 @@ class UXContract(unittest.TestCase):
     def test_home_modules_location_and_six_contracts(self):
         for id in ("oaf-zone-primary","oaf-home-location","oaf-home-phytosanitary",
                    "oaf-home-nino","oaf-regional-map-heading","oaf-altitudinal-map",
-                   "oaf-home-news-title","oaf-home-data-source","oaf-home-technology",
+                   "oaf-home-news-title","oaf-home-source","oaf-home-technology",
                    "oaf-home-analysis","oaf-home-refresh"):
             self.assertEqual(self.dom.ids[id],"inicio",id)
         self.assertEqual(HTML.count('id="oaf-altitudinal-map"'),1)
@@ -128,6 +131,8 @@ class UXContract(unittest.TestCase):
         self.assertIn("Fuente",HTML)
         self.assertIn("MAE",HTML)
         self.assertIn("RMSE",HTML)
-        self.assertIn("Machine Learning",HTML)
+        agro=(ROOT/"assets/oaf-agroexportacion-2026.js").read_text(encoding="utf8")
+        self.assertIn("Random Forest",agro)
+        self.assertIn("inteligencia artificial",agro)
 
 if __name__=="__main__":unittest.main()

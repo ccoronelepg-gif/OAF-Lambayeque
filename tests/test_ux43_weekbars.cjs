@@ -6,7 +6,7 @@ const python=fs.readFileSync("modelos/pronostico_rf_experimental_ux15.py","utf8"
 const rf=JSON.parse(fs.readFileSync("datos/rf_experimental_ux15.json","utf8"));
 const html=fs.readFileSync("index.html","utf8"),sw=fs.readFileSync("sw.js","utf8");
 assert.match(html,/oaf-ux15-rf-salidas\.js\?v=/);
-assert(html.includes("oaf-ux14-reorganizacion.js?v=20261029-ux51c"));
+assert.match(html,/oaf-ux14-reorganizacion\\.js\\?v=/);
 assert.match(sw,/const RELEASE="oaf-pwa-shell-[^"]+"/);
 for(const piece of [script,fs.readFileSync("assets/oaf-ux14-reorganizacion.js","utf8")])new Function(piece);
 assert(script.includes("weeklyBars(output,days,group")&&script.includes("weeklyBars(output,days,lines"),"El pronóstico no usa barras al cargar modelos");
@@ -14,16 +14,22 @@ assert(script.includes("function rfEvidence(rain)")&&script.includes("wins>=5"),
 assert(python.includes("backtest_semanal_recursivo")&&python.includes("origin+dt.timedelta(days=6)")&&python.includes('k<origin.isoformat()'),
  "Falta backtest temporal con historia truncada al inicio del horizonte");
 assert(python.includes("test_diario_2025_congelado"),"Falta anotación de test congelado");
-assert(rf.estado==="candidato_experimental_generado"&&rf.alertas_automaticas===false&&rf.operativo_certificado===false,"RF no es un pronóstico operativo certificado");
 assert(rf.control_nuevos_datos?.series_pronosticos_emitidos_son_etiquetas_entrenamiento===false,"No se deben incluir pronósticos emitidos como observaciones");
-const daily=rf.metrica_diaria?.backtest_semanal_recursivo;
-assert(daily?.n_origenes>=40,"Faltan orígenes de predicción recursiva sin filtración de futuro");
-assert(daily.por_horizonte.length===7);
-for(let lead=1;lead<=7;lead++){
- const r=daily.por_horizonte[lead-1];
- assert(r.dias_adelante===lead&&r.n>=40);
- for(const field of ["mae_rf_lluvia_mm","mae_climatologia_lluvia_mm","rmse_rf_lluvia_mm","sesgo_rf_lluvia_mm","mae_rf_temperatura_c"]){
-  assert(Number.isFinite(r[field]),"Falta métrica "+field+" del día "+lead);
+if(rf.estado==="no_disponible"){
+ assert.equal(rf.alertas_automaticas,false,"RF sin datos no debe activar alertas");
+ assert.equal(rf.operativo_certificado,false,"RF sin datos no debe certificarse");
+ assert.equal(rf.pronostico_diario_rf_experimental,undefined,"No se deben inventar pronósticos cuando la fuente no responde");
+}else{
+ assert(rf.estado==="candidato_experimental_generado"&&rf.alertas_automaticas===false&&rf.operativo_certificado===false,"RF no es un pronóstico operativo certificado");
+ const daily=rf.metrica_diaria?.backtest_semanal_recursivo;
+ assert(daily?.n_origenes>=40,"Faltan orígenes de predicción recursiva sin filtración de futuro");
+ assert(daily.por_horizonte.length===7);
+ for(let lead=1;lead<=7;lead++){
+  const r=daily.por_horizonte[lead-1];
+  assert(r.dias_adelante===lead&&r.n>=40);
+  for(const field of ["mae_rf_lluvia_mm","mae_climatologia_lluvia_mm","rmse_rf_lluvia_mm","sesgo_rf_lluvia_mm","mae_rf_temperatura_c"]){
+   assert(Number.isFinite(r[field]),"Falta métrica "+field+" del día "+lead);
+  }
  }
 }
 // Verificar renderizado SVG sin Playwright y sin servicios externos.
