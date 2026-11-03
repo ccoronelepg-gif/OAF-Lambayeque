@@ -7,24 +7,25 @@ const $=id=>document.getElementById(id),node=(tag,cls)=>{const v=document.create
 const layerSpec=[
  ["base","Mapa base y límites políticos",[
   ["base","Mapa base de Lambayeque",true,"Visualiza el contorno regional simplificado de Lambayeque que sirve como referencia para ubicar las demás capas. No sustituye límites políticos oficiales ni mapas catastrales."],
+  ["satellite","Imagen satelital de Lambayeque · Esri",false,"Imagen satelital de referencia de Esri World Imagery. La fecha y resolución de las imágenes pueden variar según el sector."],
   ["departamento","Límite departamental",true,"Límite político referencial de Lambayeque del INEI (2013). Ayuda a reconocer el territorio; no es una delimitación legal para un predio."],
   ["provincia","Límites provinciales",true,"Delimitaciones de las tres provincias de Lambayeque publicadas en SIGRID con base INEI. Sirven para estudiar la ubicación de los peligros."],
   ["distrito","Límites distritales",false,"Separa distritos y muestra nombres donde el servicio oficial lo permite. La precisión depende de la escala cartográfica INEI (2018)."]
  ]],
  ["peligros","Peligros y susceptibilidad",[
-  ["regional","Susceptibilidad regional a inundaciones",true,"Muestra las zonas más o menos propensas a inundarse, según la cartografía regional elaborada por INGEMMET. No representa inundaciones actuales ni caudales pronosticados."],
-  ["movmasa","Movimientos en masa por lluvia fuerte",false,"Señala laderas y vertientes susceptibles a deslizamientos y otros movimientos durante lluvias intensas. Es información de predisposición territorial de CENEPRED."],
+  ["regional","Susceptibilidad a inundaciones por lluvias fuertes · CENEPRED",true,"Capa ráster oficial 5090024. Representa predisposición a inundaciones por lluvias fuertes, con referencia del estudio CENEPRED 2021; no es una inundación actual ni un pronóstico."],
+  ["ninoFlood","Susceptibilidad a inundaciones asociadas a El Niño · CENEPRED",false,"Capa ráster oficial 5090023. Representa predisposición a inundaciones asociadas a lluvias de eventos El Niño, con referencia CENEPRED 2021; no es una alerta vigente."],
+  ["movmasa","Susceptibilidad a movimientos en masa por lluvias fuertes · CENEPRED",false,"Capa ráster oficial 5090022. Representa predisposición a movimientos en masa por lluvias fuertes, con referencia CENEPRED 2021; no identifica deslizamientos activos."],
   ["fluvial","Inundación fluvial · puntos INGEMMET 2017",false,"Ubica registros históricos de inundación ocasionada por el desborde de ríos y cauces; los puntos proceden de evaluaciones geológicas del Niño Costero 2017."],
   ["pluvial","Inundación pluvial · puntos INGEMMET 2017",false,"Ubica registros de acumulación o anegamiento asociado a lluvias, incluso sin desbordamiento de ríos. Son observaciones históricas, no polígonos de inundación futura."],
   ["detritos","Quebradas y flujos de detritos · puntos",false,"Muestra registros geológicos de flujos de detritos y lodo. En quebradas, las lluvias intensas pueden movilizar piedras, tierra y agua; requiere vigilancia local."],
   ["erosion","Erosión fluvial · puntos INGEMMET 2017",false,"Señala lugares con antecedentes de desgaste o socavación de riberas, potencialmente relevantes para terrenos agrícolas, puentes y canales."],
   ["floodpoints","Puntos críticos de inundación · MINAM",false,"Inventario georreferenciado de puntos críticos publicado por MINAM. Un punto es un lugar identificado para revisión; no representa la superficie completa del peligro."],
-  ["geopoints","Zonas críticas geológicas · INGEMMET",false,"Inventario de zonas críticas geológicas de INGEMMET difundido por SIGRID. Permite identificar sectores documentados de inestabilidad."],
   ["drought","Sequías históricas · puntos INDECI 2003–2020",false,"Muestra ubicaciones de emergencias históricas por sequía documentadas por INDECI entre 2003 y 2020. No es un mapa de sequía actual, ni representa el área afectada por cada evento. Los registros dependen de la disponibilidad del inventario." ],
   ["heat","Calor histórico · SENAMHI",false,"Muestra un registro de la estación Jayanca–La Viña (37,8 °C el 18/03/2024 y anomalía media de máximas de +2,9 °C en marzo) y una capa estacional de frecuencia de olas de calor del SENAMHI cuando el servicio responde. No son pronósticos." ]
  ]],
  ["hidro","Cuencas, ríos y drenajes",[
-  ["basin","Cuencas hidrográficas ANA",false,"Las cuencas agrupan superficies cuyo escurrimiento se dirige hacia una red de drenaje común. Son útiles para relacionar lluvias aguas arriba con sectores aguas abajo."],
+  ["basin","Cuencas hidrográficas ANA · GeoIDEP",false,"Unidades hidrográficas oficiales de la ANA publicadas en GeoIDEP, capa poligonal 8. Permiten reconocer las cuencas y su jerarquía; no muestran caudales actuales."],
   ["drain","Ríos y drenajes IGN",false,"Trazos de ríos y acequias de la Carta Nacional del IGN 1:100 000. La geometría se dibuja directamente para que permanezca visible al cambiar el zoom; no representa caudal actual."],
   ["quebradas","Quebradas y cauces estacionales IGN",false,"Dibuja los trazos de quebradas de la cartografía IGN 1:100 000, diferenciados de los ríos. No equivale a una activación actual ni predice flujos de detritos."]
  ]],
@@ -42,7 +43,6 @@ const layerSpec=[
  ["agri","Territorio agrícola y exposición",[
   ["agricola","Superficie agrícola · MINAM 2018",false,"Representa áreas agrícolas cartografiadas por MINAM con referencia de 2018. No identifica el cultivo sembrado actualmente."],
   ["exposicion","Superposición agrícola y susceptibilidad a inundaciones",false,"Superpone la cartografía agrícola MINAM 2018 con la susceptibilidad regional a inundaciones. La coincidencia es visual; no representa hectáreas afectadas ni una predicción de daños."],
-  ["inundacionregion","Susceptibilidad fluvial · polígonos INGEMMET",false,"Capa vectorial de polígonos de susceptibilidad fluvial a escala nacional 1:1 000 000. Cubre el ámbito regional por consulta; representa predisposición, no área que se inundará en un evento próximo."]
  ]]
 ];
 const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],group:g[1]}])));
@@ -51,7 +51,8 @@ const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),scene:
 const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
  SIGRID_HYDRO="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer",
  HAZARD="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
- INGEMMET="https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer",
+ ANA="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/MapServer",
+ WORLD_IMAGERY="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
  MINAM="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
 const on=k=>!!state.on[k];
 function sv(tag,attrs){const e=document.createElementNS("http://www.w3.org/2000/svg",tag);Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,String(v)));return e}
@@ -63,6 +64,12 @@ function overlaySrc(service,layers,layerDefs){
   layers:"show:"+layers,f:"image"});
  if(layerDefs)query.set("layerDefs",JSON.stringify(layerDefs));
  return service+"/export?"+query;
+}
+function satelliteSrc(bounds){
+ if(!bounds)return "";
+ const query=new URLSearchParams({bbox:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
+  bboxSR:"4326",imageSR:"4326",size:"1100,535",format:"jpg",transparent:"false",dpi:"120",f:"image"});
+ return WORLD_IMAGERY+"/export?"+query;
 }
 function makeTree(){
  const pane=$("oaf-ux29-territory"),tree=pane?.querySelector(".oaf-ux29-tree");
@@ -79,6 +86,11 @@ function makeTree(){
   for(const [key,title,checked] of entries){
    const item=node("label","oaf-ux30-option"),check=node("input");check.type="checkbox";check.dataset.ux30Layer=key;check.checked=checked;
    const span=text(node("span"),title),tiny=node("small");
+   if(key==="satellite")tiny.textContent="Esri World Imagery · fecha variable por zona";
+   if(key==="regional")tiny.textContent="CENEPRED · ráster 2021 · lluvias fuertes";
+   if(key==="ninoFlood")tiny.textContent="CENEPRED · ráster 2021 · El Niño";
+   if(key==="movmasa")tiny.textContent="CENEPRED · ráster 2021 · lluvias fuertes";
+   if(key==="basin")tiny.textContent="ANA · GeoIDEP · capas poligonales 7 y 8";
    if(key==="drought")tiny.textContent="INDECI · emergencias 2003–2020";
    if(key==="heat")tiny.textContent="SENAMHI · registro 2024 + frecuencia estacional";
    if(key==="exposicion")tiny.textContent="Cruce visual, sin cálculo de hectáreas";
@@ -108,9 +120,14 @@ function makeTree(){
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
  const lead=pane.querySelector(".oaf-ux29-top p");if(lead)lead.textContent="Selecciona las capas en el panel izquierdo y explora el mapa. El diagnóstico explica cada selección en lenguaje sencillo y diferencia peligros documentados de estimaciones pendientes.";
  const board=pane.querySelector(".oaf-ux29-diagbody");if(board)board.setAttribute("aria-live","polite");
+ const content=pane.querySelector(".oaf-ux29-mapcolumn .oaf-ux29-mapcontent");
  if(!pane.querySelector("#oaf-ux30-map-help")){
-  const help=text(node("p","oaf-ux30-map-help"),"Navegación: arrastra para mover, usa la rueda para acercar y dos dedos para ampliar en celular. Selecciona los puntos para consultar su información.");
-  pane.querySelector(".oaf-ux29-mapcolumn .oaf-ux29-mapcontent")?.prepend(help);
+  const help=text(node("p","oaf-ux30-map-help"),"Navegación: arrastra para mover, usa la rueda para acercar y dos dedos para ampliar en celular.");
+  content?.prepend(help);
+ }
+ if(content&&!content.querySelector("#oaf-ux30-satellite-credit")){
+  const credit=text(node("small","oaf-ux30-satellite-credit"),"Imagen satelital: © Esri, Vantor, Earthstar Geographics y la comunidad GIS. La fecha y resolución varían por zona.");
+  credit.id="oaf-ux30-satellite-credit";credit.hidden=true;content.append(credit);
  }
 }
 function refreshControls(){
@@ -124,7 +141,7 @@ function applyLegacy(){
  // La lógica previa sigue a cargo de consultas MINAM/INGEMMET y los puntos de emergencia.
  const layer=$("oaf-ux25-raster");if(layer&&layer.value!=="none"){layer.value="none";layer.dispatchEvent(new Event("change",{bubbles:true}))}
  setCheck("oaf-ux25-minam",on("floodpoints"));
- setCheck("oaf-ux25-geologico",on("geopoints"));
+ setCheck("oaf-ux25-geologico",false);
  setCheck("oaf-ux26-agricultura",false); // Geocapa agrícola gestionada aquí para evitar duplicaciones.
  for(const [id,key] of [["national","nacional"],["regional","departamental"],["vecinal","vecinal"]]){
   const e=document.querySelector('[data-ux28-road="'+id+'"]');if(e&&e.checked!==on(key)){e.checked=on(key);e.dispatchEvent(new Event("change",{bubbles:true}))}
@@ -191,7 +208,7 @@ function updateLoadStatus(){
  bar.hidden=false;
  const status=[];
  if(activeGeo.length)status.push("Puntos INGEMMET 2017: "+state.pointsStatus);
- if(on("basin"))status.push("Cuencas: capa oficial ANA consultada en SIGRID");
+ if(on("basin"))status.push("Cuencas: ANA · GeoIDEP · unidades hidrográficas");
  if(on("drain")||on("quebradas"))status.push("Hidrografía IGN: "+state.hydroStatus);
  bar.textContent=status.join(" · ")+". Al activar una capa, el diagnóstico indica su fuente y disponibilidad.";
 }
@@ -200,11 +217,13 @@ function render(){
  const scene=state.scene,pane=$("oaf-ux29-territory");if(!scene||!pane)return;
  const map=scene.svg;
  updateLoadStatus();
+ const satelliteCredit=pane.querySelector("#oaf-ux30-satellite-credit");
+ if(satelliteCredit)satelliteCredit.hidden=!on("satellite");
  map.querySelectorAll(".oaf-ux30-layer").forEach(x=>x.remove());
  const defs=sv("defs",{class:"oaf-ux30-layer"});
  const clip=sv("clipPath",{id:"oaf-ux30-clip-region",clipPathUnits:"userSpaceOnUse"});
  const boundary=map.querySelector('[data-oaf-ux24-boundary="true"]');
- if(boundary){boundary.style.opacity=on("base")?"1":"0";}
+ if(boundary){boundary.style.opacity=(on("base")||on("satellite"))?"1":"0";}
  if(boundary)clip.append(sv("path",{d:boundary.getAttribute("d")}));
  defs.append(clip);map.append(defs);
  const back=sv("g",{class:"oaf-ux30-layer","clip-path":"url(#oaf-ux30-clip-region)"});
@@ -218,13 +237,21 @@ function render(){
   image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});
   back.append(image);
  };
- if(on("regional")||on("exposicion"))add(HAZARD,5010502,.77,"Susceptibilidad regional");
- if(on("movmasa"))add(HAZARD,5090022,.42,"Movimientos en masa");
- if(on("inundacionregion"))add(INGEMMET,0,.54,"Susceptibilidad fluvial en polígonos");
+ if(on("satellite")){
+  const image=sv("image",{href:satelliteSrc(scene.bounds),x:0,y:0,width:700,height:340,opacity:"1",
+   preserveAspectRatio:"none","pointer-events":"none"});
+  image.dataset.title="Imagen satelital · Esri World Imagery";image.dataset.ux30Satellite="true";
+  image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
+  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});
+  back.append(image);
+ }
+ if(on("regional")||on("exposicion"))add(HAZARD,5090024,.78,"Susceptibilidad a inundaciones por lluvias fuertes");
+ if(on("ninoFlood"))add(HAZARD,5090023,.72,"Susceptibilidad a inundaciones asociadas a El Niño");
+ if(on("movmasa"))add(HAZARD,5090022,.72,"Movimientos en masa");
  if(on("agricola")||on("exposicion"))add(MINAM,1,.87,"Superficie agrícola 2018");
  const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
  if(political.some(n=>n!==6020300))add(SIGRID_HYDRO,political.filter(n=>n!==6020300).join(","),.8,"Límites departamentales y provinciales");
- if(on("basin"))add(SIGRID_HYDRO,6030100,.68,"Cuencas hidrográficas ANA, nivel 4");
+ if(on("basin"))add(ANA,"7,8",.88,"Cuencas hidrográficas ANA · GeoIDEP");
  // UX33 incorpora los puntos oficiales, ríos, quebradas y límites distritales con etiquetas.
  // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
  // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
@@ -250,6 +277,13 @@ function render(){
   const ttl=sv("title");ttl.textContent=p.label;circle.append(ttl);front.append(circle);
  }
  // Insert underneath independent road and emergency point markers.
+ if(boundary&&(on("base")||on("satellite"))){
+  const outline=boundary.cloneNode(true);outline.removeAttribute("id");outline.removeAttribute("data-oaf-ux24-boundary");
+  outline.setAttribute("fill","none");outline.setAttribute("stroke","#1d634b");outline.setAttribute("stroke-width","2.2");
+  outline.setAttribute("vector-effect","non-scaling-stroke");outline.setAttribute("pointer-events","none");
+  outline.style.fill="none";outline.style.stroke="#1d634b";outline.style.strokeWidth="2.2";outline.style.pointerEvents="none";
+  front.append(outline);
+ }
  const before=map.querySelector("circle.oaf-ux25-point, circle.oaf-ux28-emergency-marker");
  const roads=[...map.children].find(e=>e.classList?.contains("oaf-ux28-overlay")&&e.querySelector?.(".oaf-ux28-roadimage"));
  map.insertBefore(back,roads||before||null);map.append(front);
@@ -270,18 +304,33 @@ function diagnosis(){
  const area=$("oaf-ux26-prov")?.selectedOptions?.[0]?.textContent?.trim()||"Todas las provincias";
  const district=$("oaf-ux26-dist")?.selectedOptions?.[0]?.textContent?.trim()||"Todos los distritos";
  const watershed=$("oaf-ux26-basin")?.selectedOptions?.[0]?.textContent?.trim()||"Todas las cuencas";
- heading(box,"Ámbito de consulta",area+" · "+district+" · "+watershed+". Las capas y recuentos reflejan este filtro cuando su fuente dispone de geometrías.");
+ heading(box,"Ámbito",area+" · "+district+" · "+watershed+". Los filtros se aplican cuando la fuente dispone de geometrías.");
  const chosen=[...spec].filter(([id])=>on(id));
- if(!chosen.length)heading(box,"Sin capas activas","Marca una o varias casillas para ver la explicación de cada fuente.");
+ if(!chosen.length)heading(box,"Sin capas activas","Selecciona las capas que deseas consultar.");
  for(const [id,def] of chosen){
-  const status=id==="drought"?"Emergencias 2003–2020 · "+state.droughtStatus:
-   id==="heat"?"Punto SENAMHI 2024 · "+state.heatStatus+" · cartografía estacional":
+  const status=id==="drought"?"INDECI 2003–2020 · "+state.droughtStatus:
+   id==="heat"?"SENAMHI 2024 · "+state.heatStatus:
+   id==="satellite"?"Esri World Imagery · fecha variable por zona":
+   id==="regional"||id==="ninoFlood"||id==="movmasa"?"CENEPRED 2021 · susceptibilidad":
+   id==="basin"?"ANA · GeoIDEP · unidades hidrográficas":
+   ["fluvial","pluvial","erosion","detritos"].includes(id)?"INGEMMET · inventario FENC 2017":
    "Capa seleccionada";
   heading(box,def.title,def.meaning,status);
  }
- // UX33 calcula los recuentos actuales de puntos y trazos vectoriales, sin mostrar estados antiguos.
- if(on("exposicion"))heading(box,"Importante sobre agricultura",
-  "La superposición de los mapas de agricultura y susceptibilidad identifica coincidencias visuales. No es una intersección vectorial calibrada ni calcula hectáreas en riesgo o posibles pérdidas.");
+ if(on("regional")||on("ninoFlood")||on("movmasa")){
+  const recent=node("section","oaf-ux30-diagnosis-item oaf-ux30-recent-source");
+  recent.append(text(node("strong"),"Cartografía complementaria más reciente · 2026"));
+  recent.append(text(node("p"),"CENEPRED publicó el escenario de lluvias octubre–diciembre de 2026 (Informe Técnico N.º 12-2026/SENAMHI-DMA-SVC) y un estudio nacional de inundaciones y movimientos en masa asociados a El Niño actualizado con el Informe Técnico N.º 69-2026. Ambos ofrecen cartografía descargable; sus SHAPE se enlazan como referencia y no se dibujan hasta validar proyección, cobertura y geometría. Las capas ráster visibles arriba corresponden al estudio CENEPRED 2021."));
+  const links=node("div","oaf-ux30-source-links");
+  const addLink=(href,label)=>{const a=node("a");a.href=href;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;links.append(a)};
+  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22910","Escenario CENEPRED · lluvias oct–dic 2026 ↗");
+  addLink("https://sigrid.cenepred.gob.pe/sigridv3/storage/escenario_trimestral/101_shape.zip","Descargar SHAPE · oct–dic 2026 ↗");
+  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22169","Estudio CENEPRED · inundaciones y movimientos en masa FEN 2026 ↗");
+  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22600","Fichas ANA 2026 · puntos críticos de Lambayeque ↗");
+  recent.append(links);box.append(recent);
+ }
+ if(on("exposicion"))heading(box,"Exposición agrícola",
+  "La superposición es visual; no calcula hectáreas expuestas ni pérdidas.");
  if(typeof window.oafUx33Diagnosis==="function")window.oafUx33Diagnosis(box);
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
  if(failed)heading(box,"Algunas capas externas no respondieron",
@@ -294,7 +343,7 @@ function diagnosis(){
    p.sourceUrl||"Consulta Metadatos y trazabilidad");
  }
  heading(box,"Lectura del mapa",
-  "Un área susceptible puede necesitar evaluación preventiva. Las capas de puntos, polígonos y redes viales se levantaron en distintas fechas. La coincidencia espacial por sí sola no demuestra que un evento esté ocurriendo o vaya a ocurrir.");
+  "Susceptibilidad indica predisposición, no un evento actual. Los puntos históricos son registros localizados, no delimitan toda el área afectada.");
 }
 function classify(value){
  const v=String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
@@ -322,8 +371,8 @@ async function loadHistory(){
     const cat=classify(type),coords=f.geometry?.coordinates;
     if(!cat||f.geometry?.type!=="Point"||!Array.isArray(coords)||!coords.every(Number.isFinite))return null;
     return {coords,category:cat,color:colors[cat],label:type,year:p.fecha_doc||"2017",type,
-     source:"INGEMMET, inventario geológico FENC 2017",sourceUrl:"https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6010100",
-     detail:"Punto geológico documentado; no equivale a área inundada."};
+     source:"INGEMMET, inventario geológico FENC 2017",sourceUrl:SIGRID+"/6010100",
+     detail:"Registro histórico de peligro; no equivale a área inundada."};
   }).filter(Boolean);
   state.points=state.points.filter(p=>!["fluvial","pluvial","erosion","detritos"].includes(p.category)).concat(historicPoints);
   state.pointsStatus="INGEMMET 2017: "+historicPoints.length+" puntos del ámbito consultado";
@@ -331,7 +380,7 @@ async function loadHistory(){
 }
 
 /* UX31 · Inventarios históricos verificados y climatología SENAMHI */
-const INDECI="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000";
+const INDECI="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6040000";
 const SENAMHI_WMS="https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms";
 const SENAMHI_LAYER="g_01_06:01_06_001_03_001_512_0000_00_00"; // frecuencia de olas de calor, verano
 function heatWmsUrl(bounds){
@@ -431,6 +480,10 @@ function refreshDetailMap(){
     img.setAttribute("width","700");img.setAttribute("height","340");
     img.setAttribute("href",heatWmsUrl(b));
    }
+   for(const img of map.querySelectorAll("image[data-ux30-satellite]")){
+    img.setAttribute("x","0");img.setAttribute("y","0");img.setAttribute("width","700");img.setAttribute("height","340");
+    img.setAttribute("href",satelliteSrc(b));
+   }
    return;
   }
   const geo={
@@ -455,6 +508,11 @@ function refreshDetailMap(){
    img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
    img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
    img.setAttribute("href",heatWmsUrl(geo));
+  }
+  for(const img of map.querySelectorAll("image[data-ux30-satellite]")){
+   img.setAttribute("x",v[0]);img.setAttribute("y",v[1]);
+   img.setAttribute("width",v[2]);img.setAttribute("height",v[3]);
+   img.setAttribute("href",satelliteSrc(geo));
   }
  },450);
 }
@@ -528,13 +586,17 @@ function metadata(){
  const section=node("section","oaf-ux30-metadata");section.id="oaf-ux30-metadatos";
  section.innerHTML='<h2>Fuentes del visor geográfico de Lambayeque</h2>'+
  '<p>Este apartado reúne las fuentes oficiales y las notas metodológicas de las capas de peligros, límites, infraestructura, agricultura y análisis agroclimático, con sus fechas y alcances.</p>'+
- '<ul><li><a href="'+SIGRID+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · límites políticos e inventario de puntos históricos FENC 2017</a></li><li><a href="'+SIGRID_HYDRO+'/6030100" target="_blank" rel="noopener noreferrer">ANA/SIGRID · cuencas hidrográficas (servicio de cuencas verificado)</a></li><li><a href="'+SIGRID_HYDRO+'/6030200" target="_blank" rel="noopener noreferrer">IGN/SIGRID · ríos y quebradas, Carta Nacional 1:100 000 (capas vectoriales)</a></li>'+
- '<li><a href="'+HAZARD+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · susceptibilidad regional a inundaciones y movimientos en masa</a></li>'+
- '<li><a href="'+INGEMMET+'/0" target="_blank" rel="noopener noreferrer">INGEMMET · susceptibilidad fluvial representada por polígonos a escala 1:1 000 000</a></li>'+
+ '<ul><li><a href="'+SIGRID+'" target="_blank" rel="noopener noreferrer">SIGRID/CENEPRED · límites políticos e inventario de puntos históricos FENC 2017</a></li><li><a href="'+ANA+'/8" target="_blank" rel="noopener noreferrer">ANA/GeoIDEP · unidades hidrográficas (polígonos y límites de cuenca)</a> · <a href="'+ANA+'/7" target="_blank" rel="noopener noreferrer">capa de límites y rótulos</a></li><li><a href="'+SIGRID_HYDRO+'/6030200" target="_blank" rel="noopener noreferrer">IGN/SIGRID · ríos y quebradas, Carta Nacional 1:100 000 (capas vectoriales)</a></li>'+
+ '<li><a href="'+HAZARD+'/5090024" target="_blank" rel="noopener noreferrer">CENEPRED · susceptibilidad a inundaciones por lluvias fuertes (2021)</a> · <a href="'+HAZARD+'/5090023" target="_blank" rel="noopener noreferrer">El Niño (2021)</a> · <a href="'+HAZARD+'/5090022" target="_blank" rel="noopener noreferrer">movimientos en masa (2021)</a></li>'+
+ '<li><a href="https://sigrid.cenepred.gob.pe/sigridv3/documento/22910" target="_blank" rel="noopener noreferrer">CENEPRED · escenario de riesgo por lluvias octubre–diciembre 2026, con mapa y SHAPE</a></li>'+
+ '<li><a href="https://sigrid.cenepred.gob.pe/sigridv3/storage/escenario_trimestral/101_shape.zip" target="_blank" rel="noopener noreferrer">Descarga SHAPE del escenario octubre–diciembre 2026</a></li>'+
+ '<li><a href="https://sigrid.cenepred.gob.pe/sigridv3/documento/22169" target="_blank" rel="noopener noreferrer">CENEPRED · estudio nacional de inundaciones y movimientos en masa asociados a El Niño, actualización 2026</a></li>'+
+ '<li><a href="https://sigrid.cenepred.gob.pe/sigridv3/documento/22600" target="_blank" rel="noopener noreferrer">ANA · fichas técnicas referenciales de puntos críticos 2026 para Lambayeque</a></li>'+
+ '<li><a href="'+WORLD_IMAGERY+'" target="_blank" rel="noopener noreferrer">Esri · World Imagery, imágenes satelitales de fecha variable por zona</a></li>'+
  '<li><a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/MTC/MapServer" target="_blank" rel="noopener noreferrer">MTC/IDEP · carreteras nacionales, departamentales y vecinales</a></li>'+
  '<li><a href="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/INFRAESTRUCTURA_SOCIAL/FeatureServer" target="_blank" rel="noopener noreferrer">IGN/IDEP · hospitales, puestos de salud, comisarías y bomberos</a></li>'+
  '<li><a href="'+MINAM+'/1" target="_blank" rel="noopener noreferrer">MINAM · superficie agrícola nacional, referencia 2018</a></li>'+
- '<li><a href="https://www.senamhi.gob.pe/site/vigilancia-climatica/" target="_blank" rel="noopener noreferrer">SENAMHI · vigilancia climática, sequías y temperaturas</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6010100" target="_blank" rel="noopener noreferrer">INGEMMET/SIGRID · puntos 2017 de inundación fluvial, pluvial y erosión</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000" target="_blank" rel="noopener noreferrer">INDECI/SIGRID · emergencias de sequía (inventario 2003–2020)</a></li><li><a href="https://idesep.senamhi.gob.pe/portalidesep/wms.do" target="_blank" rel="noopener noreferrer">SENAMHI/IDESEP · WMS histórico de frecuencia de olas de calor</a></li><li><a href="https://www.senamhi.gob.pe/load/file/02221SENA-134.pdf" target="_blank" rel="noopener noreferrer">SENAMHI · registro térmico Jayanca–La Viña (marzo 2024)</a></li><li><a href="datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson" target="_blank" rel="noopener noreferrer">OAF · GeoJSON del punto histórico SENAMHI con metadatos</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EVENTOS_HISTORICOS_UX31.md" target="_blank" rel="noopener noreferrer">Metodología UX31 · fuentes y límites de las capas históricas</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EXPOSICION_INUNDACIONES_UX27.md" target="_blank" rel="noopener noreferrer">OAF UX27 · análisis cuantitativo agrícola y alcance de las 1 234 ha documentadas por CENEPRED</a></li><li><a href="datos/riesgos_ux27/indicadores_cenepred_2025.csv" download>Indicadores CENEPRED para nueve distritos de Lambayeque (CSV)</a></li></ul>'+
+ '<li><a href="https://www.senamhi.gob.pe/site/vigilancia-climatica/" target="_blank" rel="noopener noreferrer">SENAMHI · vigilancia climática, sequías y temperaturas</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6010100" target="_blank" rel="noopener noreferrer">INGEMMET/SIGRID · puntos 2017 de inundación fluvial, pluvial y erosión</a></li><li><a href="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000" target="_blank" rel="noopener noreferrer">INDECI/SIGRID · emergencias de sequía (inventario 2003–2020)</a></li><li><a href="https://idesep.senamhi.gob.pe/portalidesep/wms.do" target="_blank" rel="noopener noreferrer">SENAMHI/IDESEP · WMS histórico de frecuencia de olas de calor</a></li><li><a href="https://www.senamhi.gob.pe/load/file/02221SENA-134.pdf" target="_blank" rel="noopener noreferrer">SENAMHI · registro térmico Jayanca–La Viña (marzo 2024)</a></li><li><a href="datos/riesgos_ux31/calor_historico_senamhi_lambayeque.geojson" target="_blank" rel="noopener noreferrer">OAF · GeoJSON del punto histórico SENAMHI con metadatos</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EVENTOS_HISTORICOS_UX31.md" target="_blank" rel="noopener noreferrer">Metodología UX31 · fuentes y límites de las capas históricas</a></li><li><a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_EXPOSICION_INUNDACIONES_UX27.md" target="_blank" rel="noopener noreferrer">OAF UX27 · análisis cuantitativo agrícola y alcance de las 1 234 ha documentadas por CENEPRED</a></li><li><a href="datos/riesgos_ux27/indicadores_cenepred_2025.csv" download>Indicadores CENEPRED para nueve distritos de Lambayeque (CSV)</a></li></ul>'+
  '<p>Los datos de FENC 2017 son inventarios de lugares afectados, no mapas de inundación actual. La susceptibilidad regional es un raster, mientras que la capa INGEMMET de inundación fluvial utiliza polígonos de susceptibilidad. La exposición agrícola es visual y no una superficie calculada.</p>'+
  '<a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_VISOR_TERRITORIAL_UX30.md" target="_blank" rel="noopener noreferrer">Leer metodología detallada de la fase UX30 ↗</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_CORRECCIONES_VISOR_UX32.md" target="_blank" rel="noopener noreferrer">Corrección de capas geológicas, cuencas e hidrografía UX32 ↗</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_GEOCAPAS_ETIQUETAS_UX33.md" target="_blank" rel="noopener noreferrer">Geocapas etiquetadas, distritos y contraste agrícola UX33 ↗</a> · <a href="https://github.com/ccoronelepg-gif/OAF-Lambayeque/blob/main/METODOLOGIA_REPARACION_HIDROGRAFIA_UX34.md" target="_blank" rel="noopener noreferrer">Corrección de ríos y quebradas UX34 ↗</a>';
  tab.append(section);

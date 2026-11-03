@@ -40,14 +40,36 @@ function buildCarousel(){
    const [d,probability]=await Promise.all([fetchJSON("datos/estado_enfen_3z.json"),fetchJSON("datos/enfen_probabilidades_portada_2026.json")]);
     enfenBody.textContent=(d.estado_institucional||"Estado no verificado")+" · Comunicado N.º "+d.numero+"-"+d.anio+" · "+d.fecha_emision+".";
     const matches=probability.institucion==="ENFEN"&&probability.comunicado===String(d.numero)+"-"+String(d.anio)&&Array.isArray(probability.meses);
-    const current=currentMonthKey(),selected=matches?probability.meses.find(x=>x.mes>=current&&Number.isFinite(Number(x.extraordinaria))):null;
+    const current=currentMonthKey(),categories=[
+     {key:"extraordinaria",label:"Extraordinaria",color:"#b52d25"},
+     {key:"fuerte",label:"Fuerte",color:"#d45b38"},
+     {key:"moderada",label:"Moderada",color:"#e5a344"},
+     {key:"debil",label:"Débil",color:"#e6c75d"},
+     {key:"neutral",label:"Neutral",color:"#9eaaa8"},
+     {key:"fria",label:"Fría",color:"#5b9db5"}
+    ];
+    const selected=matches?probability.meses.find(x=>x.mes>=current&&categories.some(c=>Number.isFinite(Number(x[c.key])))):null;
     enfenChart.replaceChildren();
-    if(selected){const percent=el("div","oaf-ux55-probability");percent.append(el("strong","",fmt(Number(selected.extraordinaria),0)+" %"),el("span","","Probabilidad ENFEN de magnitud extraordinaria · "+monthLabel(selected.mes)+" · "+(probability.region||"Niño 1+2")));enfenChart.append(percent)}
-    else enfenChart.textContent="Probabilidad no publicada para el mes actual en el comunicado verificado.";
-    const outlook=matches?probability.meses.filter(x=>x.mes>=(selected?.mes||current)).slice(0,3):[];
-    const probabilities=outlook.map(x=>monthLabel(x.mes)+": "+x.extraordinaria+" % extraordinaria").join(" · ");
-    enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero y prevé magnitud extraordinaria en la región Niño 1+2 hasta febrero de 2027, con disminución gradual posterior. "+(probabilities?"Probabilidades mensuales de magnitud publicadas: "+probabilities+". ":"")+"Son probabilidades de categoría del índice ICEN, no probabilidades de lluvia, inundación ni daños en Lambayeque. Próximo comunicado previsto: 13/11/2026. Fuente: ENFEN, Comunicado Oficial 19-2026, Figura 2.";
-    const link=el("a","","ENFEN · boletín y figura oficial ↗");link.href=probability.fuente||d.url_comunicado||"https://enfen.imarpe.gob.pe/comunicados/";link.target="_blank";link.rel="noopener noreferrer";enfenNote.append(" ",link);
+    if(selected){
+     const month=el("strong","oaf-ux55-enfen-month","Probabilidad por categoría · "+monthLabel(selected.mes)+" · "+(probability.region||"Niño 1+2"));
+     const rows=el("div","oaf-ux55-enfen-rows");
+     for(const category of categories){
+      const value=Number(selected[category.key]);
+      if(!Number.isFinite(value)||value<=0)continue;
+      const row=el("div","oaf-ux55-enfen-row");
+      const label=el("span","",category.label);
+      const track=el("span","oaf-ux55-enfen-track");
+      const fill=el("i");fill.style.width=Math.max(0,Math.min(100,value))+"%";fill.style.background=category.color;track.append(fill);
+      const percent=el("strong","",fmt(value,0)+" %");
+      row.append(label,track,percent);rows.append(row);
+     }
+     enfenChart.append(month,rows);
+     enfenChart.append(el("small","oaf-ux55-enfen-foot","Probabilidades de magnitud del índice ICEN para Niño 1+2; no son probabilidades de lluvia, inundación ni daños locales."));
+    }else{
+     enfenChart.textContent="No hay una probabilidad mensual verificable para el periodo actual en el comunicado consultado.";
+    }
+    enfenNote.textContent="Interpretación: ENFEN mantiene la Alerta de El Niño Costero. Para Niño 1+2 prevé magnitud extraordinaria hasta febrero de 2027 y descenso gradual hasta junio. Proyecta lluvias por encima de lo normal en la costa norte entre noviembre de 2026 y enero de 2027 y caudales superiores a lo normal desde diciembre en los ríos Tumbes, Chira, Piura, La Leche y Jequetepeque. En Lambayeque conviene vigilar especialmente La Leche. Es una perspectiva regional, no una predicción de inundación para una parcela.";
+    const link=el("a","","ENFEN · comunicado oficial y Figura 2 ↗");link.href=probability.fuente||d.url_comunicado||"https://enfen.imarpe.gob.pe/comunicados/";link.target="_blank";link.rel="noopener noreferrer";enfenNote.append(" ",link);
   }catch(e){enfenBody.textContent="No se pudo comprobar el estado oficial ENFEN.";enfenNote.textContent="Consulta los comunicados originales del organismo. No se mostrará una probabilidad sin fuente verificable."}
   const wb=$("#oaf-ux55-week-body"),wc=$("#oaf-ux55-week-chart"),wn=$("#oaf-ux55-week-note");wb.textContent="Consultando Open-Meteo para "+p.name+"…";wc.replaceChildren();
   try{

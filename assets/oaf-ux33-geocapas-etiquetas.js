@@ -204,7 +204,7 @@ async function ensure(k){
  if(k==="district"){where="IDDPTO='14'";fields="IDDPTO,IDPROV,NOMBPROV,IDDIST,NOMBDIST";max=220}
  else if(k==="hydroRio"){where="tipo IN ('R','RN','RI','RS','AC')";fields="tipo,nombre,r_q_text";max=2000}
  else if(k==="hydroQuebrada"){where="tipo IN ('Q','Q1','QB','QQ','QI','QS')";fields="tipo,nombre,r_q_text";max=2000}
- else if(k==="historical"){where="1=1";fields="objectid,nom_dep,tipo_pel,fecha_doc,fuente,url";max=2000}
+ else if(k==="historical"){where="nom_dep LIKE '%LAMBAYEQUE%'";fields="objectid,nom_dep,tipo_pel,fecha_doc,fuente,url";max=2000}
  else if(k==="agri"){where="1=1";fields="OBJECTID_1,NOMBDIST,CATEGORIA,USO";max=300}
  try{
   let results=await fetchJSON(queryUrl(k,where,fields,max));
@@ -330,8 +330,9 @@ function drawVectors(){
   if(c.on("pluvial"))clauses.push("tipo_pel IN ('Inundación pluvial','Precipitación pluvial')");
   if(c.on("erosion"))clauses.push("tipo_pel = 'Erosión fluvial'");
   if(c.on("detritos"))clauses.push("tipo_pel IN ('Flujo de detritos y lodo','Flujos')");
-  if(clauses.length)fallbackImage(pointsG,HOST,6010100,"("+clauses.join(" OR ")+")",
-    "Inventario de puntos geológicos INGEMMET 2017");
+  const regional="nom_dep LIKE '%LAMBAYEQUE%'";
+  const filter=clauses.length?regional+" AND ("+clauses.join(" OR ")+")":regional;
+  fallbackImage(pointsG,HOST,6010100,filter,"Inventario histórico de peligros INGEMMET 2017");
  }
  if((c.on("distrito")||c.on("provincia")||c.on("departamento"))&&S.features.district.length){
   for(const feature of S.features.district){
@@ -406,7 +407,7 @@ function drawVectors(){
     "aria-label":label+" (INGEMMET 2017)"});
    dot.classList.add("oaf-ux33-historic-point");
    const title=tag("title");title.textContent=label+" · "+(val(p,"fecha_doc")||"2017");dot.append(title);
-   dot.addEventListener("click",()=>writeDetail("Punto geológico histórico",label,val(p,"fecha_doc")||"2017",val(p,"fuente")||"INGEMMET"));
+   dot.addEventListener("click",()=>writeDetail("Registro histórico de peligro",label,val(p,"fecha_doc")||"2017",val(p,"fuente")||"INGEMMET"));
    dot.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();dot.dispatchEvent(new Event("click"))}});
    pointsG.append(dot);
    candidates.push({kind:"point",text:label,coord:coords,priority:50,increment:index});

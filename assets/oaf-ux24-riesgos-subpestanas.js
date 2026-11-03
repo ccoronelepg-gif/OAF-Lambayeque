@@ -77,7 +77,7 @@ async function regionalOutline(){
 
 /* UX25 · capas oficiales en vivo: raster CENEPRED 2021 y puntos MINAM/INGEMMET.
    Los datos se solicitan a sus geoservicios; OAF no produce las geometrías de peligros. */
-const officialState={scene:null,layers:"5090024",minam:true,geologico:true,points:{minam:[],geologico:[]},loaded:{minam:false,geologico:false},valid:false};
+const officialState={scene:null,layers:"5090024",minam:true,geologico:false,points:{minam:[],geologico:[]},loaded:{minam:false,geologico:false},valid:false};
 const GIS={
  raster:"https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
  minam:"https://geoservidorperu.minam.gob.pe/arcgis/rest/services/hiroambienplanificacion/caracterizacion_territorio_riesgo_desastres/MapServer",
@@ -206,7 +206,6 @@ function officialStart(scene){
  officialState.scene=scene;ux26Init(scene);officialStatus();drawOfficial();
  // Las capas de puntos se obtienen directamente de proveedores oficiales; el visor solo las reproyecta para la pantalla.
  officialPoints("minam",GIS.minam+"/3","1=1");
- officialPoints("geologico",GIS.geologico+"/5020500","1=1");
 }
 
 

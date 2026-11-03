@@ -27,3 +27,71 @@
 #oaf-ux55-hist-chart .oaf-ux55-bar small{font-size:8px}
 #oaf-ux55-hist-status{font-size:11px!important}
 @media(max-width:650px){#oaf-ux55-historical,#oaf-ux55-science{padding:16px}#inicio .oaf-ux55-carousel{min-height:315px;max-height:420px}}
+
+
+/* UX60 · composición compacta de ENFEN, capas satelitales y diagnóstico territorial */
+#inicio .oaf-ux55-slide{justify-content:flex-start;gap:5px;padding:12px 14px!important}
+#inicio #oaf-ux55-enfen-note{order:1;font-size:11px!important;line-height:1.43!important;color:#3f5f52}
+#inicio #oaf-ux55-enfen-body{order:2;font-size:10.7px!important;line-height:1.35!important;font-weight:750}
+#inicio #oaf-ux55-enfen-chart{
+ order:3;height:auto!important;min-height:0!important;max-height:175px;
+ display:flex!important;flex-direction:column!important;align-items:stretch!important;
+ gap:5px!important;padding:8px 10px!important;overflow:hidden!important
+}
+#inicio .oaf-ux55-enfen-month{font-size:11px;line-height:1.3;color:#284f40}
+#inicio .oaf-ux55-enfen-rows{display:flex;flex-direction:column;gap:5px;min-width:0}
+#inicio .oaf-ux55-enfen-row{
+ display:grid;grid-template-columns:88px minmax(35px,1fr) 38px;
+ align-items:center;gap:7px;min-width:0;font-size:10.5px;line-height:1.2
+}
+#inicio .oaf-ux55-enfen-row>span:first-child{color:#52665e;white-space:nowrap}
+#inicio .oaf-ux55-enfen-track{display:block;height:7px;background:#edf1ef;border-radius:8px;overflow:hidden}
+#inicio .oaf-ux55-enfen-track i{display:block;height:100%;min-width:1px;border-radius:8px}
+#inicio .oaf-ux55-enfen-row>strong{font-size:10.5px;color:#304b3e;text-align:right;font-variant-numeric:tabular-nums}
+#inicio .oaf-ux55-enfen-foot{font-size:9px;line-height:1.3;color:#65776f}
+#inicio #oaf-ux55-enfen-note a{white-space:nowrap;font-weight:700}
+@media(max-width:650px){
+ #inicio #oaf-ux55-enfen-chart{max-height:185px}
+ #inicio .oaf-ux55-enfen-row{grid-template-columns:78px minmax(30px,1fr) 36px;gap:5px;font-size:10px}
+ #inicio .oaf-ux55-enfen-row>strong{font-size:10px}
+}
+
+/* Diagnóstico territorial: una columna en panel lateral, varias al ocupar ancho completo */
+#oaf-ux29-territory .oaf-ux29-diagnosis{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+#oaf-ux29-territory .oaf-ux29-diagbody{
+ display:grid!important;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important;
+ gap:8px!important;padding:9px 10px!important;max-height:none!important;overflow:visible!important;
+ min-width:0!important;box-sizing:border-box!important
+}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item{
+ min-width:0!important;max-width:100%!important;margin:0!important;padding:9px 10px!important;
+ border:1px solid #dce7e2!important;border-radius:9px!important;background:#fff!important;
+ box-sizing:border-box!important;overflow-wrap:anywhere!important
+}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item strong{
+ display:block!important;font-size:11.8px!important;line-height:1.3!important;color:#245d46!important;
+ overflow-wrap:anywhere!important
+}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item p{
+ margin:4px 0 0!important;font-size:11px!important;line-height:1.43!important;
+ text-align:left!important;color:#4b6658!important;overflow-wrap:anywhere!important;hyphens:auto!important
+}
+#oaf-ux29-territory .oaf-ux30-diagnosis-item small{
+ display:block!important;margin-top:4px!important;font-size:9.8px!important;line-height:1.3!important;
+ color:#637a6d!important;overflow-wrap:anywhere!important
+}
+#oaf-ux29-territory .oaf-ux30-source-links{display:flex!important;flex-wrap:wrap!important;gap:4px 10px!important;margin-top:6px!important}
+#oaf-ux29-territory .oaf-ux30-source-links a{font-size:10px!important;line-height:1.3!important;overflow-wrap:anywhere!important}
+#oaf-ux29-territory .oaf-ux30-satellite-credit{
+ display:block;padding:4px 8px;color:#526b5f;background:#f6faf7;
+ font-size:9.5px;line-height:1.35;overflow-wrap:anywhere
+}
+#oaf-ux29-territory .oaf-ux30-satellite-credit[hidden]{display:none!important}
+#oaf-ux29-territory #oaf-ux25-controls,
+#oaf-ux29-territory #oaf-ux25-detail,
+#oaf-ux29-territory .oaf-ux25-source-detail,
+#oaf-ux29-territory .oaf-ux24-source{display:none!important}
+@media(max-width:790px){
+ #oaf-ux29-territory .oaf-ux29-diagbody{grid-template-columns:minmax(0,1fr)!important;padding:8px!important;gap:7px!important}
+ #oaf-ux29-territory .oaf-ux30-diagnosis-item{padding:8px!important}
+}

@@ -7,6 +7,11 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const context=await browser.newContext({viewport:{width:1365,height:850},locale:"es-PE"});
   await context.route("**/*",route=>route.request().url().startsWith("http://127.0.0.1:8765/")?route.continue():route.abort("blockedbyclient"));
   const page=await context.newPage();const errors=[];
+  const imagePng=Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLttAAAAABJRU5ErkJggg==","base64");
+  await page.route("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?*",route=>route.fulfill({status:200,contentType:"image/png",body:imagePng}));
+  await page.route("https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/export?*",route=>route.fulfill({status:200,contentType:"image/png",body:imagePng}));
+  await page.route("https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/MapServer/export?*",route=>route.fulfill({status:200,contentType:"image/png",body:imagePng}));
+  let historicWhere="";
   const homeForecast={latitude:-6.7714,longitude:-79.8409,daily:{
    time:["2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"],
    precipitation_sum:[0,1.2,0,2.4,0,0.3,0],temperature_2m_max:[27,28,29,28,27,26,27],
@@ -15,12 +20,15 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.route("https://api.open-meteo.com/v1/forecast?*",route=>route.fulfill({
    status:200,contentType:"application/json",body:JSON.stringify(homeForecast)
   }));
-  await page.route("https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6010100/query?*",route=>route.fulfill({
-   status:200,contentType:"application/geo+json",body:JSON.stringify({type:"FeatureCollection",features:[
-    {type:"Feature",id:1,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Inundación fluvial",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},
-     geometry:{type:"Point",coordinates:[-79.7142,-6.15083]}}
-   ]})
-  }));
+  await page.route("https://sig.cenepred.gob.pe/sigrid/rest/services/sigrid/Informacion_Complementaria/MapServer/6010100/query?*",route=>{
+   const requestUrl=new URL(route.request().url());historicWhere=requestUrl.searchParams.get("where")||"";
+   return route.fulfill({status:200,contentType:"application/geo+json",body:JSON.stringify({type:"FeatureCollection",features:[
+    {type:"Feature",id:1,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Inundación fluvial",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},geometry:{type:"Point",coordinates:[-79.7142,-6.15083]}},
+    {type:"Feature",id:2,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Inundación pluvial",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},geometry:{type:"Point",coordinates:[-79.7200,-6.1600]}},
+    {type:"Feature",id:3,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Erosión fluvial",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},geometry:{type:"Point",coordinates:[-79.7300,-6.1700]}},
+    {type:"Feature",id:4,properties:{nom_dep:"LAMBAYEQUE",tipo_pel:"Flujo de detritos y lodo",fecha_doc:"2017",fuente:"INGEMMET",url:"https://sigrid.cenepred.gob.pe/"},geometry:{type:"Point",coordinates:[-79.7400,-6.1800]}}
+   ]})});
+  });
   // UX54: respuesta estacional simulada sin Internet, seis meses completos Dic26–May27.
   const seasonalTime=[],seasonalRain=[],seasonalTemp=[];
   for(let y=2026,m=12;y<2027||m<=5;){
@@ -49,6 +57,21 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.waitForSelector("#oaf-parcel-territorio",{state:"attached",timeout:20000});
   await page.waitForSelector("#oaf-parcel-escenarios",{state:"attached",timeout:20000});
   await page.waitForFunction(()=>Boolean(window.oafUx30Context?.()?.scene?.bounds&&window.oafUx29ScenarioApi?.get?.()?.scene?.bounds),{timeout:20000});
+  await page.waitForFunction(()=>{
+   const note=document.querySelector("#oaf-ux55-enfen-note"),chart=document.querySelector("#oaf-ux55-enfen-chart");
+   return note?.textContent.includes("Interpretación:")&&chart?.querySelector(".oaf-ux55-enfen-row");
+  },null,{timeout:20000});
+  const enfenLayout=await page.evaluate(()=>{
+   const note=document.querySelector("#oaf-ux55-enfen-note"),chart=document.querySelector("#oaf-ux55-enfen-chart");
+   const percent=chart?.querySelector(".oaf-ux55-enfen-row strong");
+   return {note:note?.textContent,chart:chart?.textContent,orderNote:getComputedStyle(note).order,
+    orderChart:getComputedStyle(chart).order,percentSize:percent?parseFloat(getComputedStyle(percent).fontSize):null};
+  });
+  assert(enfenLayout.note?.includes("Interpretación:")&&enfenLayout.chart?.includes("Extraordinaria")&&
+   enfenLayout.chart?.includes("98 %")&&Number(enfenLayout.orderNote)<Number(enfenLayout.orderChart)&&
+   enfenLayout.percentSize<=12,
+   "La tarjeta ENFEN debe mostrar interpretación arriba y porcentajes compactos debajo: "+JSON.stringify(enfenLayout));
+
   assert(await page.locator("#oaf-area-territorio").count(),"No se encuentra entrada de coordenadas del visor territorial");
   assert(await page.locator("#oaf-area-escenarios").count(),"No se encuentra entrada de coordenadas del visor de escenarios");
   const inside=await page.evaluate(()=>["territorio","escenarios"].map(k=>({
@@ -245,6 +268,38 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.waitForFunction(()=>document.querySelector("#oaf-territorio-riesgos")&&!document.querySelector("#oaf-territorio-riesgos").hidden,{timeout:10000});
   await page.waitForFunction(()=>document.querySelector("#oaf-ux29-territory .oaf-ux29-mapcolumn .oaf-ux29-mapcontent svg"),{timeout:20000});
   await page.waitForFunction(()=>window.oafUx33Data?.()?.features?.historical?.length>0,{timeout:15000});
+  assert(historicWhere.toUpperCase().includes("LAMBAYEQUE"),
+    "La consulta de puntos INGEMMET debe filtrar el departamento de Lambayeque: "+historicWhere);
+  await page.waitForFunction(()=>document.querySelector('#oaf-ux29-territory image[data-ux30-server][data-ux30-ids="5090024"]')?.dataset.loaded==="true",{timeout:10000});
+  const legacyPanels=await page.evaluate(()=>{
+   const root=document.querySelector("#oaf-territorio-riesgos")||document;
+   const text=[...root.querySelectorAll("*")].filter(x=>!x.children.length).map(x=>(x.textContent||"").replace(/\s+/g," ").trim().toLowerCase());
+   return {controls:!!root.querySelector("#oaf-ux25-controls"),detail:!!root.querySelector("#oaf-ux25-detail"),
+    consultation:text.some(x=>/^consulta ubicaciones?\.?$/.test(x)),
+    placeholder:text.some(x=>/^selecciona un punto (del|de) mapa para consultar sus atributos/.test(x)),
+    geologic:!!root.querySelector('[data-ux30-layer="geopoints"]'),
+    obsoleteFlood:!!root.querySelector('[data-ux30-layer="inundacionregion"]')};
+  });
+  assert(!legacyPanels.controls&&!legacyPanels.detail&&!legacyPanels.consultation&&!legacyPanels.placeholder&&
+   !legacyPanels.geologic&&!legacyPanels.obsoleteFlood,"Deben retirarse controles y capas obsoletos: "+JSON.stringify(legacyPanels));
+  const satellite=page.locator('#oaf-ux29-territory [data-ux30-layer="satellite"]');
+  await satellite.check();
+  await page.waitForFunction(()=>document.querySelector('#oaf-ux29-territory image[data-ux30-satellite]')?.dataset.loaded==="true",{timeout:10000});
+  const satelliteInfo=await page.locator('#oaf-ux29-territory image[data-ux30-satellite]').evaluate(x=>({href:x.getAttribute("href"),loaded:x.dataset.loaded==="true"}));
+  assert(satelliteInfo.href?.includes("World_Imagery/MapServer/export"),"La capa satelital debe solicitar Esri World Imagery: "+JSON.stringify(satelliteInfo));
+  await satellite.uncheck();
+  await page.waitForFunction(()=>!document.querySelector('#oaf-ux29-territory image[data-ux30-satellite]'),{timeout:10000});
+  const ninoFlood=page.locator('#oaf-ux29-territory [data-ux30-layer="ninoFlood"]');
+  await ninoFlood.check();
+  await page.waitForFunction(()=>document.querySelector('#oaf-ux29-territory image[data-ux30-server][data-ux30-ids="5090023"]')?.dataset.loaded==="true",{timeout:10000});
+  await ninoFlood.uncheck();
+  const basin=page.locator('#oaf-ux29-territory [data-ux30-layer="basin"]');
+  await basin.check();
+  await page.waitForFunction(()=>document.querySelector('#oaf-ux29-territory image[data-ux30-server][data-ux30-ids="7,8"]')?.dataset.loaded==="true",{timeout:10000});
+  const basinInfo=await page.locator('#oaf-ux29-territory image[data-ux30-server][data-ux30-ids="8"]').evaluate(x=>x.dataset.ux30Server);
+  assert(basinInfo?.includes("ANA_WMS/MapServer"),"Cuencas debe usar el servicio oficial ANA/GeoIDEP: "+basinInfo);
+  await basin.uncheck();
+
    const floodTerritory=page.locator('#oaf-ux29-territory label:has([data-ux30-layer="fluvial"])');
    const floodControl=page.locator('#oaf-ux29-territory [data-ux30-layer="fluvial"]');
    await floodControl.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
@@ -252,6 +307,14 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-territory .oaf-ux33-historic-point").length>0,{timeout:10000});
    await floodTerritory.click();
    await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux29-territory .oaf-ux33-historic-point").length===0,{timeout:10000});
+   for(const [key,label] of [["pluvial","Inundación pluvial"],["erosion","Erosión fluvial"]]){
+    const input=page.locator('#oaf-ux29-territory [data-ux30-layer="'+key+'"]');
+    const selector='#oaf-ux29-territory .oaf-ux33-historic-point[aria-label*="'+label+'"]';
+    await input.check();
+    await page.waitForSelector(selector,{timeout:10000});
+    await input.uncheck();
+    await page.waitForFunction(sel=>!document.querySelector(sel),selector,{timeout:10000});
+   }
    const cleanTerritory=await page.evaluate(()=>({counters:document.querySelectorAll("#oaf-ux29-territory #oaf-ux33-status,#oaf-ux29-territory #oaf-ux32-map-status").length,pointPanel:[...document.querySelectorAll("#oaf-ux29-territory #oaf-area-point-details-territorio")].every(x=>x.hidden||getComputedStyle(x).display==="none")}));
    assert(cleanTerritory.counters===0&&cleanTerritory.pointPanel,"Deben ocultarse contadores redundantes y diagnóstico espacial del punto: "+JSON.stringify(cleanTerritory));
    const massTerritory=page.locator('#oaf-ux29-territory [data-ux30-layer="movmasa"]');

@@ -5,11 +5,11 @@ const $=id=>document.getElementById(id);
 const SVG_NS="http://www.w3.org/2000/svg";
 const create=(tag)=>document.createElementNS(SVG_NS,tag);
 const layouts=["territory","scenario"];
-const allowed=new Set(["base","departamento","provincia","distrito","regional","movmasa",
- "fluvial","pluvial","detritos","erosion","floodpoints","geopoints","basin","drain",
+const allowed=new Set(["base","satellite","departamento","provincia","distrito","regional","ninoFlood","movmasa",
+ "fluvial","pluvial","detritos","erosion","floodpoints","basin","drain",
  "quebradas","nacional","departamental","vecinal"]);
 const TERRITORY_NAMES=[
- ["Mapa base","1 · Límites políticos"],
+ ["Mapa base","1 · Límites políticos y satélite"],
  ["Peligros y susceptibilidad","2 · Peligros y susceptibilidades"],
  ["Cuencas, ríos","3 · Cuencas y ríos"],
  ["Red vial","4 · Red vial"]
@@ -26,7 +26,6 @@ function trimTerritory(){
   for(const label of section.querySelectorAll("label.oaf-ux30-option")){
    const key=label.querySelector("input")?.dataset.ux30Layer;
    if(!allowed.has(key)||key==="base"){label.hidden=true;label.classList.add("oaf-ux52-hidden-layer");}
-   if(key==="geopoints"){const span=label.querySelector("span");if(span)span.textContent="Zonas críticas geológicas · INGEMMET";}
    if(key==="vecinal"){const span=label.querySelector("span");if(span)span.textContent="Vías distritales, vecinales y rurales · MTC";}
   }
  }
@@ -36,6 +35,31 @@ function trimTerritory(){
   label.innerHTML='<input id="oaf-ux52-relief-toggle" type="checkbox"><span>Relieve topográfico · sombreado de elevación</span><small>Vista de apoyo. No mide depresiones, cotas ni profundidad de inundación.</small>';
   const opts=hazard.querySelector(".oaf-ux30-options");opts?.insertBefore(label,opts.firstElementChild||null);
   label.querySelector("input").addEventListener("change",()=>{relief();});
+ }
+}
+function removeRedundantTools(){
+ const roots=[$("oaf-ux29-territory"),$("oaf-territorio-riesgos")].filter(Boolean);
+ for(const pane of roots){
+  const selectors=["#oaf-ux25-controls","#oaf-ux25-detail",".oaf-ux25-source-detail",
+   ".oaf-ux24-source","#oaf-ux25-map-status",".oaf-ux25-map-status"];
+  for(const selector of selectors)pane.querySelectorAll(selector).forEach(el=>el.remove());
+  for(const leaf of [...pane.querySelectorAll("*")]){
+   if(leaf.children.length)continue;
+   const value=(leaf.textContent||"").replace(/\s+/g," ").trim();
+   if(!/^consulta ubicaciones?\.?$/i.test(value)&&
+      !/^selecciona un punto (?:del|de) mapa para consultar sus atributos.*$/i.test(value))continue;
+   let target=leaf;
+   for(let parent=leaf.parentElement;parent&&parent!==pane;parent=parent.parentElement){
+    if(parent.textContent.trim().length>260||parent.querySelector("input,button,select,svg"))break;
+    target=parent;
+    if(parent.matches("section,article,.oaf-ux24-card,.oaf-ux29-card"))break;
+   }
+   target.remove();
+  }
+  if(!pane.dataset.ux52CleanObserve){
+   pane.dataset.ux52CleanObserve="true";
+   new MutationObserver(()=>removeRedundantTools()).observe(pane,{childList:true,subtree:true});
+  }
  }
 }
 function trimScenario(){
@@ -202,7 +226,7 @@ function relief(){
  },280);
 }
 function init(){
- trimTerritory();trimScenario();
+ trimTerritory();removeRedundantTools();trimScenario();
  for(const kind of layouts){
   syncStructure(kind);prepareMap(kind);
   const col=$("oaf-ux29-"+kind)?.querySelector(".oaf-ux29-mapcolumn");

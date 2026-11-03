@@ -10,11 +10,10 @@
 |---|---|---|---|
 | CENEPRED/SIGRID — S05CP MapServer | 5090024 | Susceptibilidad a inundaciones por lluvias fuertes (raster) | Informe CENEPRED 2021 |
 | CENEPRED/SIGRID — S05CP MapServer | 5090023 | Susceptibilidad a inundaciones asociadas a El Niño (raster) | Informe CENEPRED 2021 |
-| CENEPRED/SIGRID — S05CP MapServer | 5010502 | Susceptibilidad regional a inundación, fuente INGEMMET (raster) | Metadatos del servicio |
+| CENEPRED/SIGRID — S05CP MapServer | 5010502 | Capa regional antigua, retirada del árbol activo UX60 | No se utiliza |
 | CENEPRED/SIGRID — S05CP MapServer | 5090022 | Susceptibilidad a movimientos en masa por lluvias fuertes (raster) | Metadatos del servicio |
 | MINAM — caracterizacion_territorio_riesgo_desastres MapServer | 3 | Puntos críticos por inundaciones (puntos) | Fechas por registro, según fuente |
-| CENEPRED/SIGRID — S05CP MapServer | 5020500 | Zonas críticas geológicas, fuente INGEMMET (puntos) | Inventario actualizado a 2022 |
-| INGEMMET — Informe Técnico A7456 | Inventario 2023 | 172 zonas críticas documentadas en Lambayeque | 11/12/2023 |
+| CENEPRED/SIGRID — S05CP MapServer | 5020500 | Zonas críticas geológicas, fuente INGEMMET (puntos) | Capa retirada del visor UX60 a solicitud de diseño |
 
 Enlaces técnicos:
 
@@ -22,7 +21,9 @@ Enlaces técnicos:
 - https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/legend
 - https://geoservidorperu.minam.gob.pe/arcgis/rest/services/hiroambienplanificacion/caracterizacion_territorio_riesgo_desastres/MapServer/3
 - https://www.gob.pe/institucion/ingemmet/noticias/879706-lambayeque-ingemmet-identifica-172-zonas-criticas-ante-el-fenomeno-el-nino
-- https://sigrid.cenepred.gob.pe/sigridv3/documento/22715 (fichas ANA 2026 como consulta complementaria; no son una geocapa incluida en el visor)
+- https://sigrid.cenepred.gob.pe/sigridv3/documento/22169 (estudio nacional CENEPRED 2026 actualizado con Informe Técnico N.º 69-2026/SENAMHI-DMA-SPC; incluye SHAPE descargable)
+- https://sigrid.cenepred.gob.pe/sigridv3/documento/22910 (escenario CENEPRED de lluvias octubre–diciembre 2026, basado en el Informe Técnico N.º 12-2026/SENAMHI-DMA-SVC; incluye mapa y SHAPE)
+- https://sigrid.cenepred.gob.pe/sigridv3/documento/22600 (fichas técnicas referenciales ANA 2026 para puntos críticos de Lambayeque; consulta documental, no capa vectorial validada)
 
 ## Procedimiento geoespacial
 
@@ -46,3 +47,16 @@ Enlaces técnicos:
 - Incorporar el inventario 2026 de ANA mediante una fuente geográfica descargable y trazable si está públicamente disponible.
 - Añadir hidrografía oficial, filtros por cuenca/provincia, polígono oficial y leyenda raster completa.
 - Integrar cartografía confiable de infraestructura y cultivos, con métricas de exposición y metodología reproducible.
+
+
+## Actualización de capas y fuentes · UX60 (03/11/2026)
+
+- La capa activa de susceptibilidad a inundaciones por lluvias fuertes es `5090024`; la capa para inundaciones asociadas a El Niño es `5090023`; la capa de movimientos en masa por lluvias fuertes es `5090022`. Las tres se consumen desde `S05CP/MapServer` y su cartografía tiene referencia del estudio CENEPRED 2021. La leyenda oficial clasifica susceptibilidad muy alta, alta, media y baja.
+- Se retira la capa `5010502` del árbol por ser una capa regional anterior que no estaba resolviendo correctamente el caso de uso; no se debe presentar como información más reciente.
+- Se retiran del árbol los puntos de zonas críticas geológicas `5020500` y los polígonos fluviales INGEMMET `MapServer/0`, evitando duplicaciones y capas que no aportan una geometría fiable en el visor actual.
+- El visor incorpora la imagen satelital Esri World Imagery como referencia visual. Es un mosaico con fechas y resoluciones heterogéneas; no equivale a una imagen tomada en una fecha única ni a cartografía catastral.
+- Se encontró el estudio nacional CENEPRED 2026 sobre inundaciones y movimientos en masa asociados a El Niño, actualizado con el Informe Técnico N.º 69-2026/SENAMHI-DMA-SPC. La ficha ofrece mapa, Excel y SHAPE. El SHAPE se enlaza para consulta, pero no se integra como geometría hasta validar CRS, campos, cobertura de Lambayeque y topología.
+- La ANA ha publicado fichas técnicas referenciales 2026 de puntos críticos en Lambayeque. Son documentos técnicos de puntos propuestos para intervenciones preventivas; no se transforman en coordenadas inventadas ni se dibujan sin una fuente espacial validada.
+- Las unidades hidrográficas se consultan desde ANA/GeoIDEP `INSTITUCIONALES/ANA_WMS/MapServer/7,8`, `Feature Layer` poligonal con referencia espacial 3857. El servicio ArcGIS exporta la imagen a la extensión geográfica del visor.
+
+- Descarga directa del SHAPE CENEPRED OND 2026: https://sigrid.cenepred.gob.pe/sigridv3/storage/escenario_trimestral/101_shape.zip
