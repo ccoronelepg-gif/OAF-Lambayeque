@@ -89,7 +89,7 @@ const agro=read("assets/oaf-agro-charts-2026.js");
 assert(agro.includes("oaf-regional-map-legend")||read("assets/oaf-agroexportacion-2026.js").includes("oaf-regional-map-legend"),"Falta leyenda altitudinal del DEM");
 assert(agro.includes("datos/humedad_8z/humedad_vpd_mensual_8z.csv"),"La humedad histórica debe proceder del CSV mensual regional verificado");
 
-const output={revision:"UX57",fecha_auditoria:new Date().toISOString(),paginas:pages,
+const output={revision:"UX58",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
  iconos_pwa:manifest.icons.length,localidades_rf:Object.keys(rf.pronostico_diario_rf_experimental||{}).length,
  ultima_emision_rf:rf.fecha_generacion_utc,ultima_emision_enfen:enfen.enfen.fecha_emision,
