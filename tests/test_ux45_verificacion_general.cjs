@@ -48,7 +48,7 @@ assert(boletines.boletines.some(b=>b.id==="enfen19"&&b.url.includes("comunicado-
 
 const agro=read("assets/oaf-agro-charts-2026.js");
 assert(agro.includes("oaf-regional-map-legend")||read("assets/oaf-agroexportacion-2026.js").includes("oaf-regional-map-legend"),"Falta leyenda altitudinal del DEM");
-assert(agro.includes("relative_humidity_2m_mean")===false,"La humedad histórica debe proceder del CSV mensual verificado, no de una variable diaria inventada en el archivo regional");
+assert(agro.includes("datos/humedad_8z/humedad_vpd_mensual_8z.csv"),"La humedad histórica debe proceder del CSV mensual regional verificado");
 
 const output={revision:"UX54",fecha_auditoria:new Date().toISOString(),paginas:pages,
  enlaces_internos_comprobados:refs.length,recursos_pwa_comprobados:core.length,
