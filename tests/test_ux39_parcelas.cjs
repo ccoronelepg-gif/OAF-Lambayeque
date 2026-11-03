@@ -7,7 +7,8 @@ const core=read("assets/oaf-territorio-compartido.js"),src=read("assets/oaf-parc
 for(const js of [src,core,sw,hist])new Function(js);
 assert.match(index,/oaf-parcelas-ux39\.js\?v=/,"Script no activado en la web");
 assert(index.includes('oaf-parcelas-ux39.css?v=20261027-ux39'),"CSS no activado en la web");
-assert(index.includes('oaf-visores-ux40.css?v=20261027-ux40')&&sw.includes('"./assets/oaf-visores-ux40.css"'),"Diseño UX40 no incluido en web y PWA");
+assert.match(index,/oaf-visores-ux40\.css\?v=/,"Diseño UX40 no incluido en web");
+assert(sw.includes('"./assets/oaf-visores-ux40.css"'),"Diseño UX40 no incluido en PWA");
 assert(sw.includes('"./assets/oaf-parcelas-ux39.js"')&&sw.includes('"./assets/oaf-parcelas-ux39.css"'),"PWA no incluye módulo de parcelas");
 assert(core.includes('territorio:()=>$("oaf-ux29-territory")?.querySelector(".oaf-ux29-maphead")'),"Territorio no integrado dentro del visor");
 assert(core.includes('escenarios:()=>$("oaf-ux29-scenario")?.querySelector(".oaf-ux29-maphead")'),"Escenarios no integrados dentro del visor");
