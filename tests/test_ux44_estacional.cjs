@@ -18,9 +18,9 @@ const end=src.indexOf("function seasonalRequest(",start);
 assert(start>=0&&end>start,"Falta agregado de lluvia 6h y media térmica");
 const parse=vm.runInNewContext('(()=>{'+src.slice(start,end)+';return seasonalMonthlyFromSixHourly})()',
  {Date,Map,Set,Number,Error},{timeout:2500});
-const months=["2026-11","2026-12","2027-01","2027-02","2027-03","2027-04"];
+const months=["2026-12","2027-01","2027-02","2027-03","2027-04","2027-05"];
 const time=[],rain=[],temp=[];
-for(let y=2026,m=11;y<2027||m<=4;){
+for(let y=2026,m=12;y<2027||m<=5;){
  const count=new Date(Date.UTC(y,m,0)).getUTCDate();
  for(let d=1;d<=count;d++)for(const h of ["00","06","12","18"]){
   time.push(y+"-"+String(m).padStart(2,"0")+"-"+String(d).padStart(2,"0")+"T"+h+":00");
