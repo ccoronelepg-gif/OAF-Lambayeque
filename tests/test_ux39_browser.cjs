@@ -134,7 +134,7 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
    for(let parent=el;parent;parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;
   });
   await page.waitForSelector("#oaf-clima-bloque-historico #oaf-area-clima form",{timeout:20000});
-  await page.waitForSelector("#oaf-ux55-historical",{timeout:15000});
+  await page.waitForSelector("#oaf-ux55-historical",{state:"attached",timeout:15000});
    await page.waitForFunction(()=>document.querySelectorAll("#oaf-ux55-hist-chart .oaf-ux55-bar").length===30,{timeout:15000});
    const climateMaps=await page.evaluate(()=>({
    dem:document.querySelectorAll("#oaf-regional-hist-map svg circle").length,
