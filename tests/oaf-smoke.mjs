@@ -139,7 +139,7 @@ test("Los archivos científicos base mantienen estructura válida y advertencias
   if(rf.estado==="no_disponible"){
     assert.equal(rf.operativo_certificado,false);
     assert.equal(rf.alertas_automaticas,false);
-    assert.match(rf.error||"","ERA5|archive-api|timeout|timed out/i");
+    assert.match(rf.error||"",/ERA5|archive-api|timeout|timed out/i);
     assert.equal(rf.pronostico_diario_rf_experimental,undefined);
   }else{
     assert.ok(rf.pronostico_diario_rf_experimental&&typeof rf.pronostico_diario_rf_experimental==="object");
@@ -169,8 +169,8 @@ test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta
   assert.match(agro,/radiacion_mj_m2/);
   assert.match(style,/oaf-agro-history-tile/);
   assert.match(style,/min-height:410px/);
-  assert.match(home,/id="oaf-stations-map"/);
-  assert.match(home,/id="oaf-stations-list"/);
+  assert.match(agro,/id:"oaf-stations-map"/);
+  assert.match(agro,/id:"oaf-stations-list"/);
   assert.match(home,/id="oaf-area-clima"/);
   assert.match(read("assets/oaf-area-ux38.js"),/function climate\(point\)/);
   assert.match(read("assets/oaf-ux9-predicciones.js"),/oaf-ux9-final-lluvia/);
