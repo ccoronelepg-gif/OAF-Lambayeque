@@ -1,6 +1,6 @@
 /* OAF UX38 · Consultas independientes de coordenadas en series científicas.
    Nunca convertir una localidad RF preentrenada en estimación puntual certificada.
-   Open-Meteo: ERA5-Land 0,1 grados; no equivale a sensor de parcela. */
+   Open-Meteo Archive: ERA5 0,25 grados; no equivale a sensor de parcela. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
 const cached=new Map(),token={clima:0,predicciones:0};
@@ -9,7 +9,7 @@ const num=(x,d=1)=>Number.isFinite(x)?x.toLocaleString("es-PE",{minimumFractionD
 const el=(tag,cls,content)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(content!==undefined)x.textContent=content;return x;};
 function monthRows(payload){
  const d=payload?.daily;if(!d||!Array.isArray(d.time))throw Error("Serie histórica sin fechas verificables");
- const groups=new Map(),fields=["temperature_2m_mean","precipitation_sum","shortwave_radiation_sum"];
+ const groups=new Map(),fields=["temperature_2m_mean","precipitation_sum","shortwave_radiation_sum","relative_humidity_2m_mean"];
  d.time.forEach((date,i)=>{
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return;
   const m=date.slice(0,7),row=groups.get(m)||{days:0,count:[0,0,0],sum:[0,0,0]};row.days++;
@@ -19,10 +19,10 @@ function monthRows(payload){
 }
 async function archive(point,start,end){
  const args=new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:start,end_date:end,
-  daily:"temperature_2m_mean,precipitation_sum,shortwave_radiation_sum",models:"era5_land",timezone:"America/Lima"});
+  daily:"temperature_2m_mean,precipitation_sum,shortwave_radiation_sum,relative_humidity_2m_mean",models:"era5",timezone:"America/Lima"});
  const key=[point.lat.toFixed(6),point.lon.toFixed(6),start,end].join("|");
  if(!cached.has(key)){
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),22000);
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000);
   const task=fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
    .then(async response=>{if(!response.ok)throw Error("HTTP "+response.status);return response.json()})
    .then(j=>{if(j.error)throw Error(j.reason||"Servicio histórico no disponible");return j;})
@@ -58,52 +58,10 @@ function statsPoint(payload,point){
  (Number.isFinite(payload.latitude)?payload.latitude.toFixed(4):"no informado")+", "+
  (Number.isFinite(payload.longitude)?payload.longitude.toFixed(4):"no informado")+".";
 }
-function targetHistoric(){
- let root=$("oaf-area-clima-serie");const original=$("oaf-hist-plot");
- if(!original)return null;
- if(!root){root=el("section","oaf-area-scientific");root.id="oaf-area-clima-serie";original.after(root);}
- original.hidden=true;
- const note=$("#oaf-history .oaf-figure-caption");if(note)note.hidden=true;
- const status=$("#oaf-hist-status");if(status)status.hidden=true;
- return root;
-}
-function restoreHistoric(){
- $("oaf-area-clima-serie")?.remove();const plot=$("oaf-hist-plot");if(plot)plot.hidden=false;
- const status=$("oaf-hist-status");if(status)status.hidden=false;
- const caption=$("#oaf-history .oaf-figure-caption");if(caption)caption.hidden=false;
-}
-async function climate(point){
- const q=++token.clima,root=targetHistoric();if(!root)return;
- const yearValue=Number($("oaf-hist-year")?.value);
- const year=Number.isInteger(yearValue)&&yearValue>=1996&&yearValue<=2025?yearValue:2025;
- const kind=$("oaf-hist-variable")?.value||"precipitacion_mm";
- const idx=kind==="temperatura_c"?0:kind==="radiacion_mj_m2"?2:1;
- const units=["°C","mm","MJ/m²"],names=["Temperatura media","Precipitación acumulada","Radiación solar acumulada"];
- root.textContent="Consultando la serie del año "+year+" para la coordenada introducida…";
- try{
-  const payload=await archive(point,year+"-01-01",year+"-12-31");
-  if(q!==token.clima||!window.OAFTerritory?.getActivePoint?.("clima"))return;
-  const months=monthRows(payload),labels=[],values=[],rows=[];
-  for(let month=1;month<=12;month++){
-   const name=year+"-"+String(month).padStart(2,"0"),r=months.get(name);
-   const val=r?.count[idx]>0?(idx===0?r.sum[idx]/r.count[idx]:r.sum[idx]):NaN;
-   labels.push(name);values.push(val);rows.push([name,Number.isFinite(val)?num(val)+" "+units[idx]:"Sin datos",String(r?.count[idx]||0)]);
-  }
-  root.replaceChildren(el("h3",null,"Serie histórica georreferenciada · "+point.name+" · "+year));
-  root.append(el("p",null,names[idx]+" · "+statsPoint(payload,point)));
-  barChart(root,labels,values,units[idx]);
-  table(root,["Mes","Valor mensual","Días con datos"],rows);
-  const finite=values.filter(Number.isFinite);
-  let interpretation="Los datos no permiten interpretar una serie anual completa.";
-  if(finite.length===12){
-   const max=Math.max(...finite),min=Math.min(...finite);
-   const maxMonth=labels[values.indexOf(max)],minMonth=labels[values.indexOf(min)];
-   interpretation="Durante "+year+", el valor mensual mayor de "+names[idx].toLowerCase()+" fue "+num(max)+" "+units[idx]+" en "+maxMonth+" y el menor "+num(min)+" "+units[idx]+" en "+minMonth+". Son diferencias temporales modeladas en la celda del punto solicitado.";
-  }
-  root.append(el("p","oaf-area-interpretacion","Interpretación agroclimática: "+interpretation+" La información no demuestra presencia de plagas o enfermedades ni cuantifica pérdidas."));
-  root.append(el("p","oaf-area-metodo","Fuente: Open-Meteo Archive · ERA5-Land, consulta puntual WGS84. No se calculan anomalías respecto a 1996–2025 hasta construir una normal de esa misma celda. El visor histórico predeterminado permanece disponible al elegir Chiclayo, Jayanca, Motupe u Olmos."));
- }catch(err){if(q===token.clima)root.textContent="La serie del punto no está disponible: "+err.message+". No se sustituye por otra localidad.";}
-}
+function targetHistoric(){let root=$("oaf-area-clima-serie"),original=$("oaf-regional-hist-chart");if(!original)return null;if(!root){root=el("section","oaf-area-scientific oaf-area-climate-history");root.id="oaf-area-clima-serie";original.after(root)}return root}
+function restoreHistoric(){$("oaf-area-clima-serie")?.remove()}
+function annualLine(target,years,values,unit){const valid=values.filter(Number.isFinite);if(!valid.length){target.append(el("p",null,"No hay años con cobertura diaria completa para esta variable."));return}const W=1040,H=330,L=72,R=24,T=24,B=48,min=Math.min(...valid),max=Math.max(...valid),span=Math.max(1,max-min),lo=unit==="mm/año"||unit==="MJ/m²/año"?0:min-span*.12,hi=max+span*.16,pw=W-L-R,ph=H-T-B,x=i=>L+(i+.5)*pw/values.length,y=v=>T+(hi-v)/(hi-lo)*ph,svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.setAttribute("role","img");svg.setAttribute("aria-label","Serie anual 1996 a 2025 del punto productivo");for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,Y=y(v),line=document.createElementNS(svg.namespaceURI,"line");line.setAttribute("x1",L);line.setAttribute("x2",W-R);line.setAttribute("y1",Y);line.setAttribute("y2",Y);line.setAttribute("stroke","#dce9e1");svg.append(line);const t=document.createElementNS(svg.namespaceURI,"text");t.setAttribute("x",L-10);t.setAttribute("y",Y+4);t.setAttribute("text-anchor","end");t.setAttribute("font-size","12");t.setAttribute("fill","#5d796b");t.textContent=num(v,1);svg.append(t)}let segment=[];const flush=()=>{if(segment.length>1){const p=document.createElementNS(svg.namespaceURI,"polyline");p.setAttribute("points",segment.join(" "));p.setAttribute("fill","none");p.setAttribute("stroke","#287b61");p.setAttribute("stroke-width","3");p.setAttribute("stroke-linejoin","round");svg.append(p)}segment=[]};values.forEach((v,i)=>{if(!Number.isFinite(v)){flush();return}segment.push(x(i)+","+y(v))});flush();values.forEach((v,i)=>{if(!Number.isFinite(v))return;const dot=document.createElementNS(svg.namespaceURI,"circle");dot.setAttribute("cx",x(i));dot.setAttribute("cy",y(v));dot.setAttribute("r","4");dot.setAttribute("fill","#287b61");const tip=document.createElementNS(svg.namespaceURI,"title");tip.textContent=years[i]+": "+num(v,1)+" "+unit;dot.append(tip);svg.append(dot)});years.forEach((year,i)=>{if(i%5!==0&&i!==years.length-1)return;const t=document.createElementNS(svg.namespaceURI,"text");t.setAttribute("x",x(i));t.setAttribute("y",H-16);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","12");t.setAttribute("fill","#5d796b");t.textContent=year;svg.append(t)});target.append(svg)}
+async function climate(point){const q=++token.clima,root=targetHistoric();if(!root)return;const kind=$("oaf-regional-var")?.value||"precipitacion_mm",def={temperatura_c:{idx:0,unit:"°C",label:"Temperatura media diaria anual",agg:"mean"},precipitacion_mm:{idx:1,unit:"mm/año",label:"Precipitación anual acumulada",agg:"sum"},radiacion_mj_m2:{idx:2,unit:"MJ/m²/año",label:"Radiación solar anual acumulada",agg:"sum"},humedad_relativa_pct:{idx:3,unit:"%",label:"Humedad relativa media a 2 m",agg:"mean"}}[kind]||{idx:1,unit:"mm/año",label:"Precipitación anual acumulada",agg:"sum"};root.replaceChildren(el("h3",null,"Data histórica de mi zona productora · "+point.name),el("p",null,"Consultando ERA5 para 1996–2025; se mostrarán únicamente años con cobertura diaria completa…"));try{const payload=await archive(point,"1996-01-01","2025-12-31");if(q!==token.clima||!window.OAFTerritory?.getActivePoint?.("clima"))return;const d=payload.daily,fields=["temperature_2m_mean","precipitation_sum","shortwave_radiation_sum","relative_humidity_2m_mean"],field=fields[def.idx],groups=new Map();if(!Array.isArray(d?.time)||!Array.isArray(d[field]))throw Error("Faltan variables diarias de ERA5");d.time.forEach((date,i)=>{const year=String(date).slice(0,4),value=d[field]?.[i];if(!/^199[6-9]$|^20[0-2][0-9]$/.test(year)||!Number.isFinite(value))return;const z=groups.get(year)||{sum:0,count:0};z.sum+=value;z.count++;groups.set(year,z)});const years=Array.from({length:30},(_,i)=>String(1996+i)),values=years.map(year=>{const z=groups.get(year),days=(new Date(Number(year)+1,0,1)-new Date(Number(year),0,1))/86400000;if(!z||z.count!==days)return NaN;return def.agg==="sum"?z.sum:z.sum/z.count}),good=values.filter(Number.isFinite).length;root.replaceChildren(el("h3",null,"Data histórica de mi zona productora · "+point.name),el("p",null,def.label+" · "+statsPoint(payload,point)));annualLine(root,years,values,def.unit);root.append(el("p","oaf-area-interpretacion",good+" de 30 años con cobertura diaria completa. "+(def.idx===3?"La humedad es relativa del aire a 2 m; no representa humedad del dosel ni mojado foliar.":"Los acumulados y promedios se calculan con datos diarios del mismo reanálisis.")));root.append(el("p","oaf-area-metodo","Fuente: Open-Meteo Historical Weather API · ERA5 (reanálisis, ~25 km), 1996–2025. No es una estación dentro del predio. No se imputan días ni se sustituye el punto por una localidad cercana."))}catch(err){if(q===token.clima)root.textContent="La serie histórica de la coordenada no está disponible: "+err.message+". No se sustituye por otra localidad."}}
 function dist(p,a){
  const r=Math.PI/180,dLat=(a[0]-p.lat)*r,dLon=(a[1]-p.lon)*r;
  const t=Math.sin(dLat/2)**2+Math.cos(p.lat*r)*Math.cos(a[0]*r)*Math.sin(dLon/2)**2;
@@ -165,6 +123,7 @@ function init(){
  });
  const hist=$("oaf-hist-place");
  hist?.addEventListener("change",()=>{++token.clima;restoreHistoric();});
+ $("oaf-regional-var")?.addEventListener("change",()=>{const p=window.OAFTerritory?.getActivePoint?.("clima");if(p)climate(p)});
  const pred=$("oaf-ux16-mes-ciudad");
  // La selección manual sigue funcionando; una elección propia de localidad no altera otras pestañas.
  pred?.addEventListener("change",()=>{});
