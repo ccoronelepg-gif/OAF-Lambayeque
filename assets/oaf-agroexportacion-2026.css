@@ -82,3 +82,8 @@
 @media(max-width:960px){.oaf-agro-split{grid-template-columns:1fr}.oaf-agro-crop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.oaf-agro-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.oaf-agro-block{padding:16px 13px}.oaf-agro-summary{padding:18px 16px}.oaf-agro-crop-grid,.oaf-agro-crop-columns,.oaf-agro-facts{grid-template-columns:1fr}.oaf-agro-chart{min-height:205px}.oaf-agro-crop-card{min-height:100px}.oaf-agro-map-frame{min-height:205px}}
 @media(prefers-reduced-motion:reduce){.oaf-agro-crop-card{transition:none}}
+
+/* UX54 historical graph layout */
+#oaf-clima-bloque-historico .oaf-agro-history-tile{width:100%;max-width:none;padding:22px 24px}
+#oaf-clima-bloque-historico .oaf-agro-chart{min-height:410px}
+#oaf-clima-bloque-historico .oaf-agro-chart svg{max-height:none;min-height:370px}
