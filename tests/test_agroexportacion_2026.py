@@ -1,4 +1,4 @@
-"""Regresión científica de la fase agroexportadora OAF — octubre 2026."""
+"""Regresión científica de la fase agroexportadora OAF — noviembre 2026."""
 import json
 import re
 import unittest
@@ -86,5 +86,20 @@ class AgroExportacion(unittest.TestCase):
         self.assertIn("NaN",charts)
         self.assertNotIn("Math.random",charts)
         self.assertNotIn("datos simulados",charts.lower())
+
+    def test_historical_climate_and_altitude_station_package(self):
+        charts=(ROOT/"assets/oaf-agro-charts-2026.js").read_text("utf-8")
+        page=(ROOT/"assets/oaf-agroexportacion-2026.js").read_text("utf-8")
+        humidity=json.loads((ROOT/"datos/humedad_8z/estado_humedad_8z.json").read_text("utf-8"))
+        self.assertIn("Data histórica del clima",page)
+        self.assertIn("humedad_relativa_pct",page)
+        self.assertIn("radiacion_mj_m2",page)
+        self.assertTrue(humidity["cobertura_regional_cuatro_sitios_completa"])
+        self.assertIn("datos/humedad_8z/humedad_vpd_mensual_8z.csv",charts)
+        self.assertIn("resumen_mensual_senamhi_observado.csv",charts)
+        self.assertIn("420 puntos DEM visibles",charts)
+        self.assertIn("cota_negativa_revisar",charts)
+        self.assertIn("oaf-stations-list",page)
+        self.assertIn("oaf-regional-map-legend",page)
 
 if __name__=="__main__":unittest.main()
