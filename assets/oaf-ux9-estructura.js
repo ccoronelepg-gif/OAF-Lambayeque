@@ -50,7 +50,7 @@ function attach(){
 <section><h3>¿Se esperan lluvias?</h3><p id="oaf-ux9-final-lluvia" aria-live="polite">Consultando los próximos siete días para identificar las fechas con precipitación prevista.</p></section>
 <section><h3>¿Qué pasa con la temperatura?</h3><p id="oaf-ux9-final-temperatura">Revisando las máximas previstas para la localidad elegida.</p></section>
 <section><h3>¿Cómo evoluciona El Niño?</h3><p id="oaf-ux9-final-enso">Revisando información fechada de ENFEN y NOAA y las anomalías del océano.</p></section>
-<section><h3>Consulta científica</h3><p>Para conocer las fuentes, cómo se construyen los modelos en Python/Random Forest, sus límites y la metodología completa, visita <a href="#verificaciones">Metadatos y trazabilidad →</a>. Los pronósticos cambian con cada actualización y deben interpretarse para cada localidad.</p></section>
+
 </section>`;
  autor.append(newUI);
  document.documentElement.dataset.oafUx9="activo";
