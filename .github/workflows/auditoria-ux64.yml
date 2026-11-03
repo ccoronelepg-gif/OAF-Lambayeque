@@ -1,0 +1,39 @@
+name: Auditoría del visor territorial UX64
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux30-territorio-unificado.js"
+      - "assets/oaf-ux33-geocapas-etiquetas.js"
+      - "assets/oaf-ux35-escenarios-multicapas.js"
+      - "sw.js"
+      - "index.html"
+      - "tests/auditoria_ux64_sigrid.cjs"
+      - ".github/workflows/auditoria-ux64.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditoria:
+    name: Sintaxis y servicios SIGRID
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validar sintaxis JavaScript
+        run: |
+          node --check assets/oaf-ux30-territorio-unificado.js
+          node --check assets/oaf-ux33-geocapas-etiquetas.js
+          node --check assets/oaf-ux35-escenarios-multicapas.js
+          node --check sw.js
+          node --check tests/auditoria_ux64_sigrid.cjs
+      - name: Comprobar metadatos y consultas SIGRID
+        run: node tests/auditoria_ux64_sigrid.cjs
