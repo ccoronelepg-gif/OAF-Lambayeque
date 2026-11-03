@@ -93,6 +93,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   await page.locator("#oaf-clima-bloque-historico #oaf-area-clima form").evaluate(el=>{
    for(let parent=el;parent;parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;
   });
+  await page.locator("#oaf-clima-bloque-historico #oaf-area-clima form").evaluate(el=>{
+   for(let parent=el;parent;parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;
+  });
   await page.waitForSelector("#oaf-clima-bloque-historico #oaf-area-clima form",{timeout:20000});
   const climateMaps=await page.evaluate(()=>({
    dem:document.querySelectorAll("#oaf-regional-hist-map svg circle").length,

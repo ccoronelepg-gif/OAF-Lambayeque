@@ -133,6 +133,7 @@ class UXContract(unittest.TestCase):
         self.assertIn("RMSE",HTML)
         agro=(ROOT/"assets/oaf-agroexportacion-2026.js").read_text(encoding="utf8")
         self.assertIn("Random Forest",agro)
-        self.assertIn("inteligencia artificial",agro)
+        self.assertIn("pruebas temporales y espaciales",agro)
+        self.assertIn("validación independiente",agro)
 
 if __name__=="__main__":unittest.main()
