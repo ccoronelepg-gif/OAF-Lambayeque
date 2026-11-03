@@ -247,9 +247,9 @@ const {chromium}=require("playwright"),assert=require("node:assert/strict");
   const massScenarioLabel=page.locator('#oaf-ux29-scenario label:has([data-ux35-key="futureMass"])');
   await massScenario.evaluate(el=>{for(let p=el;p;p=p.parentElement)if(p.tagName==="DETAILS")p.open=true;});
   await massScenarioLabel.click();
-  await page.waitForSelector("#oaf-ux29-scenario .oaf-ux29-mass",{timeout:10000});
+  await page.waitForFunction(()=>[...document.querySelectorAll("#oaf-ux29-forecast-map image title")].some(x=>x.textContent==="Movimientos en masa"),{timeout:10000});
   await massScenarioLabel.click();
-  await page.waitForFunction(()=>!document.querySelector("#oaf-ux29-scenario .oaf-ux29-mass"),{timeout:10000});
+  await page.waitForFunction(()=>![...document.querySelectorAll("#oaf-ux29-forecast-map image title")].some(x=>x.textContent==="Movimientos en masa"),{timeout:10000});
   const escenario=await page.evaluate(()=>{
    const f=document.querySelector("#oaf-area-escenarios form");
    f.elements.namedItem("format").value="utm";
