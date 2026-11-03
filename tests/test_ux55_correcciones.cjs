@@ -1,4 +1,4 @@
-/* OAF UX58 · regresión estática de portada, trazabilidad y visores. */
+/* OAF UX59 · regresión estática de portada, trazabilidad y visores. */
 "use strict";
 const assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path");
 const root=path.resolve(__dirname,".."),read=p=>fs.readFileSync(path.join(root,p),"utf8");
@@ -28,5 +28,5 @@ assert(scenario.includes("oaf-ux35-evidence-note")&&scenario.includes("CENEPRED 
 assert(scenario.includes("window.oafUx30RequestDraw?.();"),"Los escenarios deben solicitar contexto geográfico antes de cargar puntos históricos");
 assert(scenario.includes("Comunicado 19-2026")&&scenario.includes("30/10/2026"),"La perspectiva de riesgos debe usar el último comunicado ENFEN");
 assert(ux52.includes('pointDetails.hidden=true')&&ux52.includes('pointDetails.style.display="none"'),"El diagnóstico espacial puntual debe ocultarse sin romper herramientas");
-assert(html.includes("oaf-ux55-correcciones.js?v=20261103-ux58")&&html.includes("oaf-ux55-correcciones.css?v=20261103-ux57"),"La web debe cargar la revisión UX57");
-console.log(JSON.stringify({revision:"UX58",resultado:"PASA",probabilidades:probabilities.meses.map(x=>({mes:x.mes,extraordinaria:x.extraordinaria})),variables_historicas:3,campos_inventario_estaciones:3},null,2));
+assert(html.includes("oaf-ux55-correcciones.js?v=20261103-ux59")&&html.includes("oaf-ux55-correcciones.css?v=20261103-ux59"),"La web debe cargar la revisión UX59");
+console.log(JSON.stringify({revision:"UX59",resultado:"PASA",probabilidades:probabilities.meses.map(x=>({mes:x.mes,extraordinaria:x.extraordinaria})),variables_historicas:3,campos_inventario_estaciones:3},null,2));
