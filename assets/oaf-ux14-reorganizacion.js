@@ -81,26 +81,15 @@ function renderHome(){
  const hero=$("inicio")?.querySelector(".oaf-home-shell>.oaf-hero-2026");if(!hero)return;
  const parent=hero.parentElement,layout=E("div","oaf-ux14-home-hero");hero.before(layout);layout.append(hero);
  const side=E("aside","oaf-ux14-home-side");
- side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Probabilidad oficial del calentamiento oceánico, octubre de 2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/comunicados/" target="_blank" rel="noopener noreferrer">ENFEN · boletín y figura oficial ↗</a></div></article>';
+ side.innerHTML='<article class="oaf-ux14-tile oaf-ux14-nino"><small>SEGUIMIENTO DE EL NIÑO COSTERO</small><h2>Estado oficial ENFEN</h2><p id="oaf-ux14-home-enso">Leyendo el último comunicado documentado…</p><p id="oaf-ux14-home-prob">Próximo comunicado institucional: 13/11/2026.</p><div class="oaf-ux15-explain" id="oaf-ux15-enfen-exp">Interpretación: el comunicado más reciente mantiene la Alerta de El Niño Costero; no fija lluvias concretas para Lambayeque.</div><div class="oaf-ux15-source"><strong>Fuente:</strong> <a href="https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-19-2026/" target="_blank" rel="noopener noreferrer">ENFEN · Comunicado 19-2026 ↗</a></div></article>';
  layout.append(side);
  fetch("datos/estado_enso_verificado_ux9_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{
    $("oaf-ux14-home-enso").textContent=(d.enfen?.estado||"No verificado")+" · comunicado "+(d.enfen?.numero||"sin número")+" del "+(d.enfen?.fecha_emision||"sin fecha")+".";
    const prob=$("oaf-ux14-home-prob");
-   fetch("datos/enfen_probabilidades_portada_2026.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No hay cuadro");return r.json()}).then(p=>{
-     if(p.comunicado!==d.enfen.numero||p.fecha_publicacion!==d.enfen.fecha_emision)throw Error("Ediciones distintas");
-     const row=p.meses.find(x=>x.mes==="2026-10");if(!row)throw Error("Mes faltante");
-     prob.replaceChildren();
-     prob.append(E("strong",null,"Probabilidades oficiales ICEN · octubre 2026"));
-     const bars=E("div","oaf-ux14-prob-bars");
-     for(const [key,label,color] of [["extraordinaria","Extraordinaria","#ac3f38"],["fuerte","Fuerte","#d88248"],["moderada","Moderada","#e3b952"]]){
-       const value=row[key],item=E("div","oaf-ux14-probline");
-       item.append(E("span",null,label),E("b",null,value+" %"));
-       const bar=E("div","oaf-ux14-probtrack"),inner=E("i");inner.style.width=value+"%";inner.style.background=color;bar.append(inner);item.append(bar);bars.append(item);}
-     prob.append(bars);
-    const info=$("oaf-ux15-enfen-exp");
-    if(info)info.textContent="Interpretación: esta probabilidad expresa la categoría de calentamiento oceánico prevista para octubre de 2026.";
-    const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation){citation.href=p.fuente;citation.textContent="ENFEN · Comunicado "+p.comunicado+", "+p.figura+" ↗";}
-   }).catch(()=>{prob.replaceChildren(E("span",null,"Probabilidades no verificables para este comunicado; revisa el gráfico oficial."),L("ENFEN ↗",d.enfen?.fuente||"https://enfen.imarpe.gob.pe/comunicados/"))});
+   prob.textContent="Próximo comunicado previsto: "+(d.enfen?.fecha_proximo_comunicado_prevista||"fecha no informada")+".";
+   const info=$("oaf-ux15-enfen-exp");
+   if(info)info.textContent="Interpretación: "+(d.enfen?.nota||"Consulta el comunicado original para conocer el alcance de la alerta.");
+   const citation=$("inicio")?.querySelector(".oaf-ux15-source a");if(citation&&d.enfen?.fuente){citation.href=d.enfen.fuente;citation.textContent="ENFEN · Comunicado "+d.enfen.numero+" ↗";}
  }).catch(()=>$("oaf-ux14-home-enso").textContent="No se pudo verificar una actualización del organismo oficial. Consulta ENFEN.");
 
 }
