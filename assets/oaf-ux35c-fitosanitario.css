@@ -26,3 +26,7 @@
 #oaf-ux29-scenario .oaf-ux35c-source{display:block;font-size:10px;line-height:1.5;color:#73877a;margin:8px 0}
 #oaf-ux29-scenario #oaf-ux29-forecast-map #oaf-ux35c-result-marker{pointer-events:all}
 @media(max-width:790px){#oaf-ux29-scenario .oaf-ux35c-controls{padding:10px}#oaf-ux29-scenario .oaf-ux35c-result dl{grid-template-columns:1fr 1fr}}
+
+#oaf-ux29-scenario .oaf-ux35c-admin{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#oaf-ux29-scenario .oaf-ux35c-admin label{font-size:10.5px;color:#607b69}
+#oaf-ux29-scenario .oaf-ux35c-coords small{grid-column:1/-1;font-size:10px;color:#6c8273;line-height:1.45}
