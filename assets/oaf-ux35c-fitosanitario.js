@@ -107,8 +107,10 @@ function controlsMarkup(){
  '<label>Cultivo<select id="oaf-ux35c-crop">'+CROPS.map(c=>'<option value="'+c.id+'">'+c.name+'</option>').join("")+'</select></label>'+
  '<label>Plaga o enfermedad<select id="oaf-ux35c-organism"></select></label>'+
  '<p class="oaf-ux35c-note" id="oaf-ux35c-model-note" role="status"></p>'+
- '<label>Localidad<select id="oaf-ux35c-site">'+Object.keys(SITES).map(n=>'<option value="'+n+'" '+(n==="Motupe"?"selected":"")+'>'+n+'</option>').join("")+'<option value="parcel">Mi parcela · coordenadas</option></select></label>'+
- '<div class="oaf-ux35c-coords" id="oaf-ux35c-coords" hidden><label>Latitud<input id="oaf-ux35c-lat" inputmode="decimal" placeholder="-6.15083"></label><label>Longitud<input id="oaf-ux35c-lon" inputmode="decimal" placeholder="-79.71420"></label></div>'+
+ '<label>Departamento<input value="Lambayeque" readonly></label>'+
+ '<label>Localidad<select id="oaf-ux35c-site">'+Object.keys(SITES).map(n=>'<option value="'+n+'" '+(n==="Motupe"?"selected":"")+'>'+n+'</option>').join("")+'<option value="parcel">Mi parcela · coordenadas o punto en el mapa</option></select></label>'+
+ '<div class="oaf-ux35c-admin" id="oaf-ux35c-admin"><label>Provincia<input id="oaf-ux35c-province" value="Lambayeque" readonly></label><label>Distrito<input id="oaf-ux35c-district" value="Motupe" readonly></label></div>'+
+ '<div class="oaf-ux35c-coords" id="oaf-ux35c-coords" hidden><label>Latitud<input id="oaf-ux35c-lat" inputmode="decimal" placeholder="-6.15083"></label><label>Longitud<input id="oaf-ux35c-lon" inputmode="decimal" placeholder="-79.71420"></label><small>También puedes pulsar directamente sobre el mapa para capturar el punto.</small></div>'+
  '<label>Periodo de evaluación<select id="oaf-ux35c-period"><option value="current">Condiciones actuales · últimas 24 h</option><option value="forecast" selected>Pronóstico a 7 días</option><option value="history">Análisis histórico · ERA5</option></select></label>'+
  '<div class="oaf-ux35c-history" id="oaf-ux35c-history" hidden><label>Desde<input type="date" id="oaf-ux35c-start"></label><label>Hasta<input type="date" id="oaf-ux35c-end"></label></div>'+
  '<label>Fenología del cultivo<select id="oaf-ux35c-phenology"><option value="unknown">No confirmada</option><option value="flowering">Floración</option><option value="fruit">Fructificación / cosecha</option><option value="vegetative">Desarrollo vegetativo</option></select></label>'+
@@ -210,7 +212,30 @@ function init(){
  setOrganisms();updatePeriod();
  $("oaf-ux35c-crop").addEventListener("change",setOrganisms);
  $("oaf-ux35c-period").addEventListener("change",updatePeriod);
- $("oaf-ux35c-site").addEventListener("change",()=>{$("oaf-ux35c-coords").hidden=$("oaf-ux35c-site").value!=="parcel"});
+ const updateLocation=()=>{
+  const name=$("oaf-ux35c-site").value,custom=name==="parcel",site=SITES[name];
+  $("oaf-ux35c-coords").hidden=!custom;
+  $("oaf-ux35c-province").value=site?.province||"No determinada";
+  $("oaf-ux35c-district").value=site?.district||"Punto de parcela";
+  if(site){$("oaf-ux35c-lat").value=site.lat;$("oaf-ux35c-lon").value=site.lon}
+ };
+ $("oaf-ux35c-site").addEventListener("change",updateLocation);
+ updateLocation();
+ const map=$("oaf-ux29-forecast-map");
+ if(map&&!map.dataset.ux35cPointPick){
+  map.dataset.ux35cPointPick="true";
+  map.addEventListener("click",e=>{
+   if(e.target.closest("circle"))return;
+   const rect=map.getBoundingClientRect(),vb=(map.getAttribute("viewBox")||"0 0 700 380").split(/[\\s,]+/).map(Number);
+   const scene=window.oafUx29ScenarioApi?.get?.()?.scene;if(!scene?.bounds||vb.length!==4||rect.width<=0||rect.height<=0)return;
+   const px=vb[0]+(e.clientX-rect.left)/rect.width*vb[2],py=vb[1]+(e.clientY-rect.top)/rect.height*vb[3];
+   const b=scene.bounds,lon=b.minLon+px/700*(b.maxLon-b.minLon),lat=b.maxLat-py/380*(b.maxLat-b.minLat);
+   if(lat< -7.3||lat> -5.1||lon< -80.8||lon> -79)return;
+   $("oaf-ux35c-site").value="parcel";updateLocation();
+   $("oaf-ux35c-lat").value=lat.toFixed(6);$("oaf-ux35c-lon").value=lon.toFixed(6);
+   $("oaf-ux35c-status").textContent="Punto WGS84 seleccionado en el mapa: "+lat.toFixed(5)+", "+lon.toFixed(5)+". Ejecuta el escenario.";
+  });
+ }
  $("oaf-ux35c-run").addEventListener("click",run);
  $("oaf-ux35c-phenology").addEventListener("change",()=>{if(state.result)renderOutput(state.result,$("oaf-ux35c-phenology").value)});
  const original=window.oafUx35Render;
