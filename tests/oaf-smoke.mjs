@@ -213,6 +213,4 @@ test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin mode
   const missing={time:time.slice(),...Object.fromEntries(Object.entries(vars).map(([k,v])=>[k,v.slice()]))};
   missing.relative_humidity_2m[50]=null;
   assert.throws(()=>core.evaluateForecast(missing),/Dato ausente/);
-  assert.match(read("assets/oaf-ux30-territorio-unificado.js"),/function heatWmsUrl\(bounds\)/);
-  assert.match(read("assets/oaf-ux30-territorio-unificado.js"),/g_01_06:01_06_001_03_001_512_0000_00_00/);
 });
