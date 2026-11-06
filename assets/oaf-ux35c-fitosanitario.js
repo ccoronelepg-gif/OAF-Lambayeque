@@ -56,7 +56,7 @@ function validateDay(days,date){
  const rows=[];for(let h=0;h<24;h++){const r=day.get(h);if(!r)throw Error("Falta la hora "+h+" de "+date);rows.push({...r,time:date+"T"+String(h).padStart(2,"0")+":00"})}return rows;
 }
 function evaluateForecast(hourly){
- const days=groupHourly(hourly),today=hourly.time[0].slice(0,10),rows=[];
+ const days=groupHourly(hourly),today=localDate(),rows=[];
  for(let i=1;i<=7;i++)rows.push(...validateDay(days,addDays(today,i)));
  const result=scanEpisodes(rows),daily=[];
  for(let i=1;i<=7;i++){
@@ -159,7 +159,7 @@ function renderOutput(result,phenology){
  '<div class="oaf-ux35c-tablewrap"><table><thead><tr><th>Fecha</th><th>HR >90%</th><th>Temp. media</th><th>HR media</th><th>Lluvia</th><th>Viento medio</th></tr></thead><tbody>'+
  result.daily.map(d=>'<tr><td>'+esc(d.date)+'</td><td>'+d.high+' h</td><td>'+fmt(d.tmean)+' °C</td><td>'+fmt(d.rhmean)+' %</td><td>'+fmt(d.rain)+' mm</td><td>'+fmt(d.wind)+' km/h</td></tr>').join("")+
  '</tbody></table></div>'+
- '<p class="oaf-ux35c-warning"><b>Alcance:</b> este resultado expresa favorabilidad meteorológica, no riesgo fitosanitario confirmado, probabilidad de infección, diagnóstico ni recomendación de aplicación. La HR a 2 m no sustituye la medición de humedad foliar.</p>'+
+ '<p class="oaf-ux35c-warning"><b>Alcance:</b> este resultado expresa favorabilidad meteorológica, no riesgo fitosanitario confirmado, probabilidad de infección, diagnóstico ni recomendación de aplicación. La HR a 2 m no sustituye la medición de humedad foliar. <a href="https://ipm.ucanr.edu/home-and-landscape/botrytis-blight-or-gray-mold/" target="_blank" rel="noopener noreferrer">Referencia biológica UC IPM</a>.</p>'+
  '<p class="oaf-ux35c-provenance">Fuente: '+esc(result.source)+' · '+esc(result.modelledAt)+' · Coordenada solicitada '+fmt(result.coords.lat,5)+', '+fmt(result.coords.lon,5)+' · Celda devuelta por proveedor '+fmt(result.returned.lat,4)+', '+fmt(result.returned.lon,4)+'. '+esc(result.method)+'</p>';
  out.hidden=false;
 }
