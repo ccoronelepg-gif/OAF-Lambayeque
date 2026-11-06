@@ -36,19 +36,6 @@ function overlaySrc(service,layers,layerDefs){
  if(layerDefs)query.set("layerDefs",JSON.stringify(layerDefs));
  return service+"/export?"+query;
 }
-function heatWmsUrl(bounds){
- if(!bounds)return "";
- // Capa oficial WFS/WMS IDESEP: frecuencia de olas de calor, verano.
- // El nombre exacto del feature type está publicado por el catálogo WFS de SENAMHI.
- const query=new URLSearchParams({
-  service:"WMS",version:"1.1.1",request:"GetMap",
-  layers:"g_01_06:01_06_001_03_001_512_0000_00_00",styles:"",
-  format:"image/png",transparent:"true",srs:"EPSG:4326",
-  bbox:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
-  width:"1100",height:"535"
- });
- return "https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms?"+query.toString();
-}
 function satelliteSrc(bounds){
  if(!bounds)return "";
  const query=new URLSearchParams({bbox:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
