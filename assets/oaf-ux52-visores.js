@@ -21,7 +21,7 @@ function trimTerritory(){
  }
  // Retirar del DOM, no ocultar, el árbol anterior y sus controles duplicados.
  $("oaf-ux30-legacy")?.remove();
- const actions=tree.querySelector(".oaf-ux30-layer-actions");
+ const actions=$("oaf-ux29-territory")?.querySelector(".oaf-ux30-layer-actions");
  if(actions&&!$("oaf-ux52-relief-toggle")){
   const label=document.createElement("label");label.className="oaf-ux30-option oaf-ux30-basemap-option oaf-ux52-elevation";
   label.innerHTML='<input id="oaf-ux52-relief-toggle" type="checkbox"><span>Relieve topográfico · sombreado de elevación</span><small>Fondo cartográfico. No mide depresiones, cotas ni profundidad de inundación.</small>';
