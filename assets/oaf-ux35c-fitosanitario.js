@@ -136,7 +136,8 @@ function updatePeriod(){
 }
 function renderMarker(){
  const svg=$("oaf-ux29-forecast-map"),scene=window.oafUx29ScenarioApi?.get?.()?.scene;
- if(!svg||!scene||!state.result?.coords)return;
+ if(!svg||!scene)return;
+ if(!state.result?.coords||!$( "oaf-ux35c-enable")?.checked){svg.querySelector("#oaf-ux35c-result-marker")?.remove();return;}
  svg.querySelector("#oaf-ux35c-result-marker")?.remove();
  const x=scene.x(state.result.coords.lon),y=scene.y(state.result.coords.lat);
  if(!Number.isFinite(x)||!Number.isFinite(y))return;
@@ -200,8 +201,12 @@ async function run(){
 function init(){
  const pane=$("oaf-ux29-scenario"),tree=pane?.querySelector(".oaf-ux29-tree");if(!pane||!tree||$("oaf-ux35c-controls"))return;
  const old=tree.querySelector('[data-ux35-key="phytosanitary"]')?.closest("details");
- if(old){const lab=old.querySelector('[data-ux35-key="phytosanitary"]')?.closest("label");if(lab){lab.remove();}old.remove()}
- tree.insertAdjacentHTML("beforeend",controlsMarkup());
+ if(!old)return;
+ const toggle=old.querySelector('[data-ux35-key="phytosanitary"]');
+ if(toggle){toggle.id="oaf-ux35c-enable";const label=toggle.closest("label");const hint=label?.querySelector("small");if(hint)hint.textContent="Activa esta capa para configurar y calcular el escenario fitosanitario.";}
+ old.insertAdjacentHTML("beforeend",controlsMarkup());
+ const controls=$("oaf-ux35c-controls");if(controls)controls.hidden=!toggle?.checked;
+ toggle?.addEventListener("change",()=>{if(controls)controls.hidden=!toggle.checked;renderMarker()});
  setOrganisms();updatePeriod();
  $("oaf-ux35c-crop").addEventListener("change",setOrganisms);
  $("oaf-ux35c-period").addEventListener("change",updatePeriod);
