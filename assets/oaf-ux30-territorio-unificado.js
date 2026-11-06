@@ -12,7 +12,7 @@ const layerSpec=[
   ["heat","Temperaturas extremas",false,"Frecuencia histórica de olas de calor del SENAMHI/IDESEP y registro térmico puntual documentado en Jayanca (2024). La capa disponible representa extremos cálidos históricos; no es un pronóstico ni cubre por sí sola extremos fríos.","SENAMHI/IDESEP · WMS frecuencia histórica de olas de calor"]
  ]],
  ["agroclimatic","B. Condiciones agroclimáticas",[
-  ["humidity","Exceso de humedad y condiciones favorables para enfermedades",false,"Pendiente de conexión. La humedad relativa ambiental a 2 m no equivale a horas reales de humedad foliar; todavía no existe una superficie geoespacial validada de mojado foliar y condiciones epidemiológicas.",null],
+  ["humidity","Exceso de humedad y condiciones favorables para enfermedades (humedad relativa y horas de humedad foliar)",false,"Pendiente de conexión. La humedad relativa ambiental a 2 m no equivale a horas reales de humedad foliar; todavía no existe una superficie geoespacial validada de mojado foliar y condiciones epidemiológicas.",null],
   ["wind","Vientos fuertes",false,"Pendiente de conexión. Los datos meteorológicos puntuales disponibles no constituyen una capa espacial regional validada de intensidad y peligro por vientos fuertes.",null]
  ]]
 ];
@@ -81,12 +81,12 @@ function makeTree(){
  const all=node("button");all.type="button";all.textContent="Limpiar selección";
  all.addEventListener("click",()=>{
   for(const key of Object.keys(state.on))state.on[key]=false;
-  refreshControls();applyLegacy();render();
+  state.activePoint=null;refreshControls();applyLegacy();render();
  });
  const reset=node("button");reset.type="button";reset.textContent="Mapa base";
  reset.addEventListener("click",()=>{
   for(const key of Object.keys(state.on))state.on[key]=false;
-  state.basemap.satellite=false;
+  state.activePoint=null;state.basemap.satellite=false;
   const relief=$("oaf-ux52-relief-toggle");
   if(relief?.checked){relief.checked=false;relief.dispatchEvent(new Event("change",{bubbles:true}))}
   refreshControls();applyLegacy();render();
@@ -101,7 +101,7 @@ function makeTree(){
   const basemap=ev.target?.dataset?.ux30Basemap;
   if(basemap==="satellite"){state.basemap.satellite=ev.target.checked;render();return;}
   const key=ev.target?.dataset?.ux30Layer;if(!key||!spec.has(key))return;
-  state.on[key]=ev.target.checked;applyLegacy();render();
+  state.on[key]=ev.target.checked;if(!ev.target.checked&&state.activePoint?.category===key)state.activePoint=null;applyLegacy();render();
   if(key==="heat"&&on("heat"))loadHeat();
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
