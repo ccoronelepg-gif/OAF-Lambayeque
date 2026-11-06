@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-11-03-ux64";
-const STATIC="oaf-pwa-static-2026-11-03-ux64";
+const RELEASE="oaf-pwa-shell-2026-11-06-ux65";
+const STATIC="oaf-pwa-static-2026-11-06-ux65";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -139,19 +139,26 @@ async function navigate(req){
 async function staticFirst(req,event){
  const cache=await caches.open(STATIC);
  const shell=await caches.open(RELEASE);
- // HTML references versioned URLs (?v=...), while CORE is precached without a query.
- // Resolve the current shell first, ignoring only the cache key's query string.
- const saved=(await shell.match(req,{ignoreSearch:true}))||
-  (await cache.match(req,{ignoreSearch:true}));
- const refresh=fetch(req).then(async res=>{
-  if(res.ok)await save(cache,req,res);
-  return res;
- }).catch(()=>null);
- if(saved){
+ // Prefer an exact versioned cache hit. A new ?v= URL must fetch its new asset,
+ // not receive an older unversioned CORE file; ignoreSearch is offline fallback only.
+ const exact=(await cache.match(req))||(await shell.match(req));
+ if(exact){
+  const refresh=fetch(req).then(async res=>{
+   if(res.ok)await save(cache,req,res);
+   return res;
+  }).catch(()=>null);
   event.waitUntil(refresh);
-  return saved;
+  return exact;
  }
- return (await refresh)||Response.error();
+ const fallback=(await shell.match(req,{ignoreSearch:true}))||
+  (await cache.match(req,{ignoreSearch:true}));
+ try{
+  const fresh=await fetch(req);
+  if(fresh.ok)await save(cache,req,fresh);
+  return fresh;
+ }catch(_error){
+  return fallback||Response.error();
+ }
 }
 self.addEventListener("fetch",event=>{
  const req=event.request;
