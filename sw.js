@@ -103,7 +103,7 @@ async function precacheCore(){
  // Si la red falla en una pieza crítica, se conserva el service worker anterior.
  const REQUIRED=["./","./offline.html","./manifest.webmanifest",
   "./assets/oaf-pwa.js","./assets/oaf-territorio-compartido.js",
-  "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js"];
+  "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js","./assets/oaf-ux35c-fitosanitario.js","./assets/oaf-ux35c-fitosanitario.css"];
  const missing=[];
  for(const local of REQUIRED){
   if(!(await cache.match(new URL(local,SCOPE).href)))missing.push(local);
