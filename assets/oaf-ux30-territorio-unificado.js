@@ -47,6 +47,8 @@ function makeTree(){
  if(!tree||$("oaf-ux30-layer-tree"))return;
  // Apagar los controles heredados antes de retirarlos del DOM: no se conservan capas antiguas ocultas.
  applyLegacy();
+  // Retirar el selector heredado de capas de inundación que UX27 insertaba fuera del árbol.
+  document.querySelector("#oaf-ux27-exposicion .oaf-ux27-riskmap")?.remove();
  pane.querySelector("#oaf-ux30-legacy")?.remove();
  tree.replaceChildren();state.legacy=null;
  pane.dataset.ux30Active="true";
