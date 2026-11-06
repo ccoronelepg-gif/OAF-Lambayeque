@@ -18,7 +18,7 @@ const layerSpec=[
 ];
 const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],source:a[4]||"",available:Boolean(a[4]),group:g[1]}])));
 const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),basemap:{satellite:false},scene:null,selected:[],contains:null,legacy:null,
- points:[],pointsStatus:"pendiente",hydroLines:[],hydroStatus:"pendiente",hydroLoading:false,droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
+ points:[],heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
 const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
  SIGRID_HYDRO="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
  HAZARD="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer",
@@ -143,44 +143,6 @@ function applyLegacy(){
 
 /* UX32: GeoJSON de la red IGN 1:100 000, con ríos y quebradas separados por "tipo".
    Dibujar vectores evita que el mapa se quede vacío por límites de escala del MapServer. */
-async function loadHydro(){
- if(state.hydroLoading||state.hydroStatus!=="pendiente"||!state.scene)return;
- state.hydroLoading=true;state.hydroStatus="consultando ríos y quebradas del IGN";diagnosis();
- const b=state.scene.bounds;
- const groups=[
-  {type:"drain",where:"tipo IN ('R','RN','RI','RS','AC')"},
-  {type:"quebradas",where:"tipo IN ('Q','Q1','QB','QQ','QI','QS')"}
- ];
- // Consultas separadas: una clase no puede ocupar el límite de 2000 registros de la otra.
- const outcomes=await Promise.all(groups.map(async group=>{
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),16000);
-  try{
-   const params=new URLSearchParams({where:group.where,outFields:"objectid,tipo,r_q_text,nombre,fuente",
-    returnGeometry:"true",geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
-    geometryType:"esriGeometryEnvelope",spatialRel:"esriSpatialRelIntersects",
-    inSR:"4326",outSR:"4326",geometryPrecision:"5",maxAllowableOffset:"0.003",
-    resultRecordCount:"2000",f:"geojson"});
-   const response=await fetch(SIGRID_HYDRO+"/6030200/query?"+params,{signal:controller.signal,cache:"no-store"});
-   if(!response.ok)throw Error("HTTP "+response.status);
-   const data=await response.json();
-   if(data.error||!Array.isArray(data.features))throw Error("respuesta GeoJSON inválida");
-   const lines=data.features.flatMap(feature=>{
-    const geom=feature.geometry,props=feature.properties||{};
-    if(!geom||!["LineString","MultiLineString"].includes(geom.type))return [];
-    const traces=geom.type==="LineString"?[geom.coordinates]:geom.coordinates;
-    return traces.filter(t=>Array.isArray(t)&&t.length>=2).map(coords=>({
-     category:group.type,coords,name:props.r_q_text||props.nombre||props.tipo||"Sin nombre"
-    }));
-   });
-   return {type:group.type,lines,partial:data.features.length===2000,error:null};
-  }catch(e){return {type:group.type,lines:[],partial:false,error:String(e)}}
-  finally{clearTimeout(timer)}
- }));
- state.hydroLines=outcomes.flatMap(r=>r.lines);
- state.hydroStatus=outcomes.map(r=>(r.type==="drain"?"Ríos":"Quebradas")+": "+
-  (r.error?"servicio no disponible":r.lines.length+" trazos"+(r.partial?" (consulta parcial)":""))).join(" · ");
- state.hydroLoading=false;render();
-}
 function updateLoadStatus(){
  if(typeof window.oafUx33Diagnosis==="function"){const previous=document.getElementById("oaf-ux32-map-status");if(previous)previous.hidden=true;return;}
  const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");if(!container)return;
@@ -291,89 +253,6 @@ function diagnosis(){
  heading(box,"Lectura del mapa","La susceptibilidad indica predisposición y no un evento actual. Las capas pendientes no generan polígonos, puntos ni niveles de riesgo.");
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
  if(failed)heading(box,"Una fuente cartográfica no respondió",failed+" servicio(s) no se pudieron cargar. Comprueba la disponibilidad del organismo de origen.");
-}
-function classify(value){
- const v=String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
- if(v.includes("inundacion fluvial"))return "fluvial";
- if(v.includes("inundacion pluvial")||v.includes("precipitacion pluvial"))return "pluvial";
- if(v.includes("erosion fluvial"))return "erosion";
- if(v.includes("flujo")||v.includes("detrito")||v.includes("lodo"))return "detritos";
- return null;
-}
-async function loadHistory(){
- if(state.pointsStatus&&state.pointsStatus!=="pendiente")return;
- state.pointsStatus="cargando";
- const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),16000);
- try{
-  const b=state.scene?.bounds;if(!b)return;
-  const q=new URLSearchParams({where:"nom_dep LIKE '%LAMBAYEQUE%'",outFields:"objectid,nom_dep,tipo_pel,fecha_doc,fuente",
-   geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),geometryType:"esriGeometryEnvelope",
-   spatialRel:"esriSpatialRelIntersects",inSR:"4326",outSR:"4326",returnGeometry:"true",resultRecordCount:"1800",f:"geojson"});
-  const res=await fetch(SIGRID+"/6010100/query?"+q,{signal:ctl.signal,cache:"no-store"});
-  if(!res.ok)throw Error("HTTP "+res.status);
-  const data=await res.json();if(data.error||!Array.isArray(data.features))throw Error("Respuesta incompatible");
-  const colors={fluvial:"#268ac4",pluvial:"#418bba",detritos:"#b8792b",erosion:"#ad4653"};
-  const historicPoints=data.features.map(f=>{
-    const p=f.properties||{},type=String(p.tipo_pel||"");
-    const cat=classify(type),coords=f.geometry?.coordinates;
-    if(!cat||f.geometry?.type!=="Point"||!Array.isArray(coords)||!coords.every(Number.isFinite))return null;
-    return {coords,category:cat,color:colors[cat],label:type,year:p.fecha_doc||"2017",type,
-     source:"INGEMMET, inventario geológico FENC 2017",sourceUrl:SIGRID+"/6010100",
-     detail:"Registro histórico de peligro; no equivale a área inundada."};
-  }).filter(Boolean);
-  state.points=state.points.filter(p=>!["fluvial","pluvial","erosion","detritos"].includes(p.category)).concat(historicPoints);
-  state.pointsStatus="INGEMMET 2017: "+historicPoints.length+" puntos del ámbito consultado";
- }catch(e){state.pointsStatus="fuente no disponible";}finally{clearTimeout(timer);render()}
-}
-
-/* UX31 · Inventarios históricos verificados y climatología SENAMHI */
-const INDECI="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer/6040000";
-const SENAMHI_WMS="https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms";
-const SENAMHI_LAYER="g_01_06:01_06_001_03_001_512_0000_00_00"; // frecuencia de olas de calor, verano
-function heatWmsUrl(bounds){
- if(!bounds)return "";
- return SENAMHI_WMS+"?"+new URLSearchParams({
-  SERVICE:"WMS",VERSION:"1.1.1",REQUEST:"GetMap",LAYERS:SENAMHI_LAYER,STYLES:"",
-  SRS:"EPSG:4326",BBOX:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
-  WIDTH:"1100",HEIGHT:"535",FORMAT:"image/png",TRANSPARENT:"TRUE"
- });
-}
-function historicNorm(value){
- return String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-}
-async function loadDrought(){
- if(state.droughtStatus!=="pendiente")return;
- const b=state.scene?.bounds;if(!b)return;
- state.droughtStatus="consultando inventario INDECI 2003–2020";diagnosis();
- const query=new URLSearchParams({
-  where:"nom_dep LIKE '%LAMBAYEQUE%' AND (fenomeno LIKE '%equ%' OR fenomeno LIKE '%EQU%')",
-  outFields:"objectid_1,nom_dep,nom_prov,nom_dist,fecha,fenomeno,descrip,observ,fuente",
-  geometry:[b.minLon,b.minLat,b.maxLon,b.maxLat].join(","),
-  geometryType:"esriGeometryEnvelope",inSR:"4326",outSR:"4326",
-  spatialRel:"esriSpatialRelIntersects",returnGeometry:"true",f:"geojson",resultRecordCount:"2000"
- });
- const controller=new AbortController(),limit=setTimeout(()=>controller.abort(),17500);
- try{
-  const response=await fetch(INDECI+"/query?"+query,{signal:controller.signal,cache:"no-store"});
-  if(!response.ok)throw Error("HTTP "+response.status);
-  const data=await response.json();
-  if(data.error||!Array.isArray(data.features))throw Error("GeoJSON inválido");
-  const unique=new Set();
-  const events=data.features.map(feature=>{
-   const props=feature.properties||{},c=feature.geometry?.coordinates;
-   if(feature.geometry?.type!=="Point"||!Array.isArray(c)||!c.every(Number.isFinite))return null;
-   if(!historicNorm(props.fenomeno).includes("sequi"))return null;
-   const id=props.objectid_1||[c.join(","),props.fecha,props.fenomeno].join("|");
-   if(unique.has(id))return null;unique.add(id);
-   return {coords:c,category:"drought",color:"#c9892c",label:"Sequía histórica · "+(props.nom_dist||props.nom_prov||"Lambayeque"),
-    year:props.fecha||"2003–2020",type:String(props.fenomeno||"Sequía"),
-    detail:String(props.descrip||props.observ||"Emergencia histórica registrada").slice(0,300),
-    source:"INDECI, registro de emergencias 2003–2020",sourceUrl:INDECI};
-  }).filter(Boolean);
-  state.points=state.points.filter(p=>p.category!=="drought").concat(events);
-  state.droughtStatus=events.length+" emergencias históricas con geometría"+(data.features.length>=2000?" (consulta limitada por el servidor)":"");
- }catch(e){state.droughtStatus="La consulta de INDECI no respondió; revisar enlace original."}
- finally{clearTimeout(limit);render();window.dispatchEvent(new Event("oaf:geodata"))}
 }
 async function loadHeat(){
  if(state.heatStatus!=="pendiente")return;
@@ -553,18 +432,14 @@ function init(){
  window.oafUx30RequestDraw=()=>render();
  window.oafUx30Catalog=()=>layerSpec.map(([id,title,entries])=>({id,title,entries:entries.map(([key,label,checked,meaning])=>({key,label,checked,meaning}))}));
  window.oafUx30Context=()=>({scene:state.scene,selected:state.selected,contains:state.contains,points:state.points});
- window.oafUx30RequestHistoricalClimate=()=>{
-  if(window.oafUx35Wants?.drought&&state.droughtStatus==="pendiente")loadDrought();
-  if(window.oafUx35Wants?.heat&&state.heatStatus==="pendiente")loadHeat();
- };
+ window.oafUx30RequestHistoricalClimate=()=>{if(on("heat")&&state.heatStatus==="pendiente")loadHeat();};
  
  // Instalar primero el enlace de render: los filtros anteriores pueden redibujar el mapa de inmediato.
  window.oafUx30AfterDraw=function(context){
   state.scene=context.scene;state.selected=context.selected||[];state.contains=context.contains||null;
   if(!state.mapInit){state.mapInit=true;navigation(state.scene.svg);}
   render();
-  // La versión UX33 gestiona los registros geológicos y sus nombres, sin duplicar consultas.
-  if(on("drought")&&state.droughtStatus==="pendiente")loadDrought();
+  // Solo se carga la capa histórica de temperaturas extremas cuando se activa su control.
   if(on("heat")&&state.heatStatus==="pendiente")loadHeat();
   // Comparte eventos de sequía y calor con el visor de escenarios si están seleccionados.
   window.oafUx30RequestHistoricalClimate?.();
