@@ -5,48 +5,19 @@
 (function(){"use strict";
 const $=id=>document.getElementById(id),node=(tag,cls)=>{const v=document.createElement(tag);if(cls)v.className=cls;return v};
 const layerSpec=[
- ["base","Mapa base y límites políticos",[
-  ["base","Mapa base de Lambayeque",true,"Visualiza el contorno regional simplificado de Lambayeque que sirve como referencia para ubicar las demás capas. No sustituye límites políticos oficiales ni mapas catastrales."],
-  ["satellite","Imagen satelital de Lambayeque · Esri",false,"Imagen satelital de referencia de Esri World Imagery. La fecha y resolución de las imágenes pueden variar según el sector."],
-  ["departamento","Límite departamental",true,"Límite político referencial de Lambayeque del INEI (2013). Ayuda a reconocer el territorio; no es una delimitación legal para un predio."],
-  ["provincia","Límites provinciales",true,"Delimitaciones de las tres provincias de Lambayeque publicadas en SIGRID con base INEI. Sirven para estudiar la ubicación de los peligros."],
-  ["distrito","Límites distritales",false,"Separa distritos y muestra nombres donde el servicio oficial lo permite. La precisión depende de la escala cartográfica INEI (2018)."]
+ ["peligros","A. Peligros climáticos e hidrometeorológicos",[
+  ["flood","Peligro de inundaciones",true,"Cartografía de susceptibilidad a inundaciones por lluvias fuertes publicada por CENEPRED (2021), capa 5090024. Representa predisposición territorial; no es una huella de inundación actual ni una alerta vigente.","CENEPRED · S05CP/MapServer/5090024"],
+  ["rainIntense","Peligro de lluvias intensas",false,"Pendiente de conexión. Los productos históricos de precipitación y los pronósticos puntuales disponibles no constituyen por sí solos una capa espacial validada de peligro de lluvias intensas.",null],
+  ["drought","Sequía y déficit hídrico",false,"Pendiente de conexión. El inventario histórico de emergencias por sequía no representa el déficit hídrico actual ni una superficie de sequía validada para Lambayeque.",null],
+  ["heat","Temperaturas extremas",false,"Frecuencia histórica de olas de calor del SENAMHI/IDESEP y registro térmico puntual documentado en Jayanca (2024). La capa disponible representa extremos cálidos históricos; no es un pronóstico ni cubre por sí sola extremos fríos.","SENAMHI/IDESEP · WMS frecuencia histórica de olas de calor"]
  ]],
- ["peligros","Peligros y susceptibilidad",[
-  ["regional","Susceptibilidad a inundaciones por lluvias fuertes · CENEPRED",true,"Capa ráster oficial 5090024. Representa predisposición a inundaciones por lluvias fuertes, con referencia del estudio CENEPRED 2021; no es una inundación actual ni un pronóstico."],
-  ["ninoFlood","Susceptibilidad a inundaciones asociadas a El Niño · CENEPRED",false,"Capa ráster oficial 5090023. Representa predisposición a inundaciones asociadas a lluvias de eventos El Niño, con referencia CENEPRED 2021; no es una alerta vigente."],
-  ["movmasa","Susceptibilidad a movimientos en masa por lluvias fuertes · CENEPRED",false,"Capa ráster oficial 5090022. Representa predisposición a movimientos en masa por lluvias fuertes, con referencia CENEPRED 2021; no identifica deslizamientos activos."],
-  ["fluvial","Inundación fluvial · puntos INGEMMET 2017",false,"Ubica registros históricos de inundación ocasionada por el desborde de ríos y cauces; los puntos proceden de evaluaciones geológicas del Niño Costero 2017."],
-  ["pluvial","Inundación pluvial · puntos INGEMMET 2017",false,"Ubica registros de acumulación o anegamiento asociado a lluvias, incluso sin desbordamiento de ríos. Son observaciones históricas, no polígonos de inundación futura."],
-  ["detritos","Quebradas y flujos de detritos · puntos",false,"Muestra registros geológicos de flujos de detritos y lodo. En quebradas, las lluvias intensas pueden movilizar piedras, tierra y agua; requiere vigilancia local."],
-  ["erosion","Erosión fluvial · puntos INGEMMET 2017",false,"Señala lugares con antecedentes de desgaste o socavación de riberas, potencialmente relevantes para terrenos agrícolas, puentes y canales."],
-  ["floodpoints","Puntos críticos de inundación · MINAM",false,"Inventario georreferenciado de puntos críticos publicado por MINAM. Un punto es un lugar identificado para revisión; no representa la superficie completa del peligro."],
-  ["drought","Sequías históricas · puntos INDECI 2003–2020",false,"Muestra ubicaciones de emergencias históricas por sequía documentadas por INDECI entre 2003 y 2020. No es un mapa de sequía actual, ni representa el área afectada por cada evento. Los registros dependen de la disponibilidad del inventario." ],
-  ["heat","Calor histórico · SENAMHI",false,"Muestra un registro de la estación Jayanca–La Viña (37,8 °C el 18/03/2024 y anomalía media de máximas de +2,9 °C en marzo) y una capa estacional de frecuencia de olas de calor del SENAMHI cuando el servicio responde. No son pronósticos." ]
- ]],
- ["hidro","Cuencas, ríos y drenajes",[
-  ["basin","Cuencas hidrográficas ANA · GeoIDEP",false,"Unidades hidrográficas oficiales de la ANA publicadas en GeoIDEP, capa poligonal 8. Permiten reconocer las cuencas y su jerarquía; no muestran caudales actuales."],
-  ["drain","Ríos y drenajes IGN",false,"Trazos de ríos y acequias de la Carta Nacional del IGN 1:100 000. La geometría se dibuja directamente para que permanezca visible al cambiar el zoom; no representa caudal actual."],
-  ["quebradas","Quebradas y cauces estacionales IGN",false,"Dibuja los trazos de quebradas de la cartografía IGN 1:100 000, diferenciados de los ríos. No equivale a una activación actual ni predice flujos de detritos."]
- ]],
- ["vias","Red vial MTC",[
-  ["nacional","Carreteras nacionales",false,"Carreteras de la red vial nacional registrada por el MTC. La línea dibujada no confirma que una carretera sea transitable durante una emergencia."],
-  ["departamental","Carreteras departamentales",false,"Vías que conectan centros y territorios provinciales según el inventario oficial del MTC. No contiene cortes o bloqueos en tiempo real."],
-  ["vecinal","Caminos vecinales y rurales",false,"Red vecinal o rural que conecta localidades y espacios productivos. Su disponibilidad efectiva puede cambiar por lluvias, erosión o deslizamientos."]
- ]],
- ["emergencias","Respuesta ante emergencias",[
-  ["hospital","Hospitales",false,"Establecimientos clasificados como hospitales en la cartografía institucional. El mapa no confirma disponibilidad actual de camas ni atención de urgencias."],
-  ["posta","Centros y puestos de salud",false,"Establecimientos de salud del primer nivel de atención, según los registros disponibles. Su clasificación debe contrastarse con la institución prestadora."],
-  ["policia","Comisarías y Policía",false,"Puntos de comisarías georreferenciados. Su ubicación no indica efectivos disponibles ni tiempos de respuesta."],
-  ["bomberos","Compañías de bomberos",false,"Ubicaciones referenciales de compañías de bomberos. La cartografía no acredita dotación, operatividad ni tiempo estimado de atención."]
- ]],
- ["agri","Territorio agrícola y exposición",[
-  ["agricola","Superficie agrícola · MINAM 2018",false,"Representa áreas agrícolas cartografiadas por MINAM con referencia de 2018. No identifica el cultivo sembrado actualmente."],
-  ["exposicion","Superposición agrícola y susceptibilidad a inundaciones",false,"Superpone la cartografía agrícola MINAM 2018 con la susceptibilidad regional a inundaciones. La coincidencia es visual; no representa hectáreas afectadas ni una predicción de daños."],
+ ["agroclimatic","B. Condiciones agroclimáticas",[
+  ["humidity","Exceso de humedad y condiciones favorables para enfermedades",false,"Pendiente de conexión. La humedad relativa ambiental a 2 m no equivale a horas reales de humedad foliar; todavía no existe una superficie geoespacial validada de mojado foliar y condiciones epidemiológicas.",null],
+  ["wind","Vientos fuertes",false,"Pendiente de conexión. Los datos meteorológicos puntuales disponibles no constituyen una capa espacial regional validada de intensidad y peligro por vientos fuertes.",null]
  ]]
 ];
-const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],group:g[1]}])));
-const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),scene:null,selected:[],contains:null,legacy:null,
+const spec=new Map(layerSpec.flatMap(g=>g[2].map(a=>[a[0],{id:a[0],title:a[1],default:a[2],meaning:a[3],source:a[4]||"",available:Boolean(a[4]),group:g[1]}])));
+const state={on:Object.fromEntries([...spec].map(([k,v])=>[k,v.default])),basemap:{satellite:false},scene:null,selected:[],contains:null,legacy:null,
  points:[],pointsStatus:"pendiente",hydroLines:[],hydroStatus:"pendiente",hydroLoading:false,droughtStatus:"pendiente",heatStatus:"pendiente",activePoint:null, dragging:new Map(),gesture:null,view:[0,0,700,340],lastZoom:1};
 const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
  SIGRID_HYDRO="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPLEMENTARIA/MapServer",
@@ -74,51 +45,66 @@ function satelliteSrc(bounds){
 function makeTree(){
  const pane=$("oaf-ux29-territory"),tree=pane?.querySelector(".oaf-ux29-tree");
  if(!tree||$("oaf-ux30-layer-tree"))return;
+ // Apagar los controles heredados antes de retirarlos del DOM: no se conservan capas antiguas ocultas.
+ applyLegacy();
+ pane.querySelector("#oaf-ux30-legacy")?.remove();
+ tree.replaceChildren();state.legacy=null;
  pane.dataset.ux30Active="true";
- const legacy=node("div","oaf-ux30-legacy");legacy.id="oaf-ux30-legacy";
- while(tree.firstChild)legacy.append(tree.firstChild);
- pane.append(legacy);state.legacy=legacy;
  const groups=node("div","oaf-ux30-layer-tree");groups.id="oaf-ux30-layer-tree";
  for(const [id,label,entries] of layerSpec){
-  const d=node("details","oaf-ux30-section");d.open=id==="base"||id==="peligros";
+  const d=node("details","oaf-ux30-section");d.open=id==="peligros";
   const head=node("summary");head.append(text(node("span"),label));d.append(head);
   const wrap=node("div","oaf-ux30-options");
   for(const [key,title,checked] of entries){
-   const item=node("label","oaf-ux30-option"),check=node("input");check.type="checkbox";check.dataset.ux30Layer=key;check.checked=checked;
+   const def=spec.get(key),item=node("label","oaf-ux30-option"),check=node("input");
+   check.type="checkbox";check.dataset.ux30Layer=key;check.checked=checked;
    const span=text(node("span"),title),tiny=node("small");
-   if(key==="satellite")tiny.textContent="Esri World Imagery · fecha variable por zona";
-   if(key==="regional")tiny.textContent="CENEPRED · ráster 2021 · lluvias fuertes";
-   if(key==="ninoFlood")tiny.textContent="CENEPRED · ráster 2021 · El Niño";
-   if(key==="movmasa")tiny.textContent="CENEPRED · ráster 2021 · lluvias fuertes";
-   if(key==="basin")tiny.textContent="ANA · GeoIDEP · capas poligonales 7 y 8";
-   if(key==="drought")tiny.textContent="INDECI · emergencias 2003–2020";
-   if(key==="heat")tiny.textContent="SENAMHI · registro 2024 + frecuencia estacional";
-   if(key==="exposicion")tiny.textContent="Cruce visual, sin cálculo de hectáreas";
-   if(key==="fluvial"||key==="pluvial"||key==="detritos"||key==="erosion")tiny.textContent="Puntos históricos 2017";
-   item.append(check,span);if(tiny.textContent)item.append(tiny);wrap.append(item);
+   tiny.textContent=!def.available?"Pendiente de conexión · no se representa información ficticia":
+    key==="flood"?"CENEPRED 2021 · susceptibilidad, no inundación observada":
+    "SENAMHI/IDESEP · frecuencia histórica de olas de calor; no es pronóstico";
+   item.append(check,span,tiny);wrap.append(item);
   }
   d.append(wrap);groups.append(d);
  }
  tree.replaceChildren(groups);
  const filters=$("oaf-ux26-filtros"),area=node("details","oaf-ux30-section oaf-ux30-area");area.open=true;
  const head=node("summary");head.textContent="Filtrar por provincia, distrito y cuenca";area.append(head);
- if(filters){area.append(filters);filters.classList.add("oaf-ux30-filter-widget");}
+ if(filters){
+  // La superficie agrícola era una capa temática adicional; se retira solo ese selector y se conservan los filtros territoriales.
+  filters.querySelector("#oaf-ux26-agricultura")?.closest("label")?.remove();
+  area.append(filters);filters.classList.add("oaf-ux30-filter-widget");
+ }
  tree.prepend(area);
  const controls=node("div","oaf-ux30-layer-actions");
  const all=node("button");all.type="button";all.textContent="Limpiar selección";
- all.addEventListener("click",()=>{for(const k in state.on)state.on[k]=["base","departamento","provincia"].includes(k);refreshControls();applyLegacy();render();});
- const reset=node("button");reset.type="button";reset.textContent="Mapa base";reset.addEventListener("click",()=>{state.on=Object.fromEntries([...spec].map(([k])=>[k,["base","departamento","provincia"].includes(k)]));refreshControls();applyLegacy();render();});
- controls.append(all,reset);tree.prepend(controls);
+ all.addEventListener("click",()=>{
+  for(const key of Object.keys(state.on))state.on[key]=false;
+  refreshControls();applyLegacy();render();
+ });
+ const reset=node("button");reset.type="button";reset.textContent="Mapa base";
+ reset.addEventListener("click",()=>{
+  for(const key of Object.keys(state.on))state.on[key]=false;
+  state.basemap.satellite=false;
+  const relief=$("oaf-ux52-relief-toggle");
+  if(relief?.checked){relief.checked=false;relief.dispatchEvent(new Event("change",{bubbles:true}))}
+  refreshControls();applyLegacy();render();
+ });
+ const satellite=node("label","oaf-ux30-option oaf-ux30-basemap-option"),satCheck=node("input");
+ satCheck.type="checkbox";satCheck.id="oaf-ux30-satellite-toggle";satCheck.dataset.ux30Basemap="satellite";
+ const satText=text(node("span"),"Imagen satelital · Esri World Imagery");
+ const satHint=text(node("small"),"Fondo cartográfico; no es una capa temática adicional.");
+ satellite.append(satCheck,satText,satHint);
+ controls.append(all,reset,satellite);tree.prepend(controls);
  tree.addEventListener("change",ev=>{
-  const key=ev.target?.dataset?.ux30Layer;if(!key)return;
+  const basemap=ev.target?.dataset?.ux30Basemap;
+  if(basemap==="satellite"){state.basemap.satellite=ev.target.checked;render();return;}
+  const key=ev.target?.dataset?.ux30Layer;if(!key||!spec.has(key))return;
   state.on[key]=ev.target.checked;applyLegacy();render();
-  if(key==="drought"&&on("drought"))loadDrought();
   if(key==="heat"&&on("heat"))loadHeat();
-  if(typeof window.oafUx33LayerChange==="function")window.oafUx33LayerChange(key);
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
- const lead=pane.querySelector(".oaf-ux29-top p");if(lead)lead.textContent="Selecciona las capas en el panel izquierdo y explora el mapa. El diagnóstico explica cada selección en lenguaje sencillo y diferencia peligros documentados de estimaciones pendientes.";
+ const lead=pane.querySelector(".oaf-ux29-top p");if(lead)lead.textContent="Activa las capas climáticas e hidrometeorológicas y las condiciones agroclimáticas disponibles. Las capas sin fuente espacial validada se identifican como pendientes de conexión.";
  const board=pane.querySelector(".oaf-ux29-diagbody");if(board)board.setAttribute("aria-live","polite");
  const content=pane.querySelector(".oaf-ux29-mapcolumn .oaf-ux29-mapcontent");
  if(!pane.querySelector("#oaf-ux30-map-help")){
@@ -132,6 +118,7 @@ function makeTree(){
 }
 function refreshControls(){
  document.querySelectorAll("[data-ux30-layer]").forEach(c=>c.checked=on(c.dataset.ux30Layer));
+ const satellite=$("oaf-ux30-satellite-toggle");if(satellite)satellite.checked=!!state.basemap.satellite;
 }
 function setCheck(id,checked){
  const e=$(id);if(!e||e.checked===checked)return;
@@ -194,37 +181,31 @@ async function loadHydro(){
 }
 function updateLoadStatus(){
  if(typeof window.oafUx33Diagnosis==="function"){const previous=document.getElementById("oaf-ux32-map-status");if(previous)previous.hidden=true;return;}
- const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");
- if(!container)return;
+ const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");if(!container)return;
  let bar=$("oaf-ux32-map-status");
- if(!bar){
-  bar=node("div","oaf-ux32-map-status");bar.id="oaf-ux32-map-status";
-  bar.setAttribute("role","status");bar.setAttribute("aria-live","polite");
-  container.prepend(bar);
- }
- const activeGeo=["fluvial","pluvial","erosion","detritos"].filter(on);
- const activeHydro=["basin","drain","quebradas"].filter(on);
- if(!activeGeo.length&&!activeHydro.length){bar.hidden=true;return}
+ if(!bar){bar=node("div","oaf-ux32-map-status");bar.id="oaf-ux32-map-status";bar.setAttribute("role","status");bar.setAttribute("aria-live","polite");container.prepend(bar);}
+ const active=[...spec.keys()].filter(on);
+ if(!active.length){bar.hidden=true;return;}
  bar.hidden=false;
- const status=[];
- if(activeGeo.length)status.push("Puntos INGEMMET 2017: "+state.pointsStatus);
- if(on("basin"))status.push("Cuencas: ANA · GeoIDEP · unidades hidrográficas");
- if(on("drain")||on("quebradas"))status.push("Hidrografía IGN: "+state.hydroStatus);
- bar.textContent=status.join(" · ")+". Al activar una capa, el diagnóstico indica su fuente y disponibilidad.";
+ const messages=[];
+ if(on("flood")){
+  const image=[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids==="5090024");
+  messages.push("Inundaciones · "+(image?.dataset.error==="true"?"CENEPRED no respondió":image?.dataset.loaded==="true"?"CENEPRED cargado":"consultando CENEPRED"));
+ }
+ if(on("heat"))messages.push("Temperaturas extremas · "+state.heatStatus);
+ for(const key of active){const def=spec.get(key);if(!def.available)messages.push(def.title+": pendiente de conexión");}
+ bar.textContent=messages.join(" · ")+". Las capas pendientes no dibujan datos ni asignan niveles de riesgo.";
 }
-
 function render(){
  const scene=state.scene,pane=$("oaf-ux29-territory");if(!scene||!pane)return;
- const map=scene.svg;
- updateLoadStatus();
+ const map=scene.svg;updateLoadStatus();
  const satelliteCredit=pane.querySelector("#oaf-ux30-satellite-credit");
- if(satelliteCredit)satelliteCredit.hidden=!on("satellite");
+ if(satelliteCredit)satelliteCredit.hidden=!state.basemap.satellite;
  map.querySelectorAll(".oaf-ux30-layer").forEach(x=>x.remove());
  const defs=sv("defs",{class:"oaf-ux30-layer"});
  const clip=sv("clipPath",{id:"oaf-ux30-clip-region",clipPathUnits:"userSpaceOnUse"});
  const boundary=map.querySelector('[data-oaf-ux24-boundary="true"]');
- if(boundary){boundary.style.opacity=(on("base")||on("satellite"))?"1":"0";}
- if(boundary)clip.append(sv("path",{d:boundary.getAttribute("d")}));
+ if(boundary){boundary.style.opacity="1";clip.append(sv("path",{d:boundary.getAttribute("d")}));}
  defs.append(clip);map.append(defs);
  const back=sv("g",{class:"oaf-ux30-layer","clip-path":"url(#oaf-ux30-clip-region)"});
  const front=sv("g",{class:"oaf-ux30-layer"});
@@ -234,59 +215,41 @@ function render(){
   image.dataset.title=name;image.dataset.ux30Server=service;image.dataset.ux30Ids=String(layers);
   if(layerDefs)image.dataset.ux30Defs=JSON.stringify(layerDefs);
   image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
-  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});
-  back.append(image);
+  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});back.append(image);
  };
- if(on("satellite")){
+ if(state.basemap.satellite){
   const image=sv("image",{href:satelliteSrc(scene.bounds),x:0,y:0,width:700,height:340,opacity:"1",
    preserveAspectRatio:"none","pointer-events":"none"});
   image.dataset.title="Imagen satelital · Esri World Imagery";image.dataset.ux30Satellite="true";
   image.addEventListener("error",()=>{image.dataset.error="true";diagnosis()});
-  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});
-  back.append(image);
+  image.addEventListener("load",()=>{image.dataset.loaded="true";diagnosis()});back.append(image);
  }
- if(on("regional")||on("exposicion"))add(HAZARD,5090024,.78,"Susceptibilidad a inundaciones por lluvias fuertes");
- if(on("ninoFlood"))add(HAZARD,5090023,.72,"Susceptibilidad a inundaciones asociadas a El Niño");
- if(on("movmasa"))add(HAZARD,5090022,.72,"Movimientos en masa");
- if(on("agricola")||on("exposicion"))add(MINAM,1,.87,"Superficie agrícola 2018");
- const political=["departamento","provincia","distrito"].filter(on).map(k=>({departamento:6020100,provincia:6020200,distrito:6020300}[k]));
- if(political.some(n=>n!==6020300))add(SIGRID_HYDRO,political.filter(n=>n!==6020300).join(","),.8,"Límites departamentales y provinciales");
- if(on("basin"))add(ANA,"7,8",.88,"Cuencas hidrográficas ANA · GeoIDEP");
- // UX33 incorpora los puntos oficiales, ríos, quebradas y límites distritales con etiquetas.
- // SENAMHI publica una superficie cartográfica de frecuencia estacional de olas de calor.
- // La fecha/periodo del producto es el definido por su catálogo, no una observación del día.
+ if(on("flood"))add(HAZARD,5090024,.78,"Peligro de inundaciones · susceptibilidad CENEPRED 2021");
  if(on("heat")){
   const wms=sv("image",{href:heatWmsUrl(scene.bounds),x:0,y:0,width:700,height:340,
    opacity:".45",preserveAspectRatio:"none","pointer-events":"none"});
-  wms.dataset.title="SENAMHI · frecuencia histórica de olas de calor, verano";
-  wms.dataset.ux31Wms="heat";
+  wms.dataset.title="SENAMHI · frecuencia histórica de olas de calor, verano";wms.dataset.ux31Wms="heat";
   wms.addEventListener("error",()=>{wms.dataset.error="true";diagnosis()});
-  back.append(wms);
+  wms.addEventListener("load",()=>{wms.dataset.loaded="true";diagnosis()});back.append(wms);
  }
  for(const p of state.points){
   if(!on(p.category))continue;
   const [lon,lat]=p.coords;
   if(state.selected?.length&&state.contains&&!state.selected.every(k=>state.contains(k.geo,[lon,lat])))continue;
-  const x=scene.x(lon),y=scene.y(lat);
-  if(x<0||x>700||y<0||y>340)continue;
-  const circle=sv("circle",{cx:x,cy:y,r:p.category==="heat"?6:4.3,fill:p.color,stroke:"#fff","stroke-width":1.2,
-   tabindex:"0",role:"button","aria-label":p.label});
-  circle.classList.add("oaf-ux30-feature","oaf-ux31-"+p.category);circle.dataset.ux30Radius=p.category==="heat"?"6":"4.3";
+  const x=scene.x(lon),y=scene.y(lat);if(x<0||x>700||y<0||y>340)continue;
+  const circle=sv("circle",{cx:x,cy:y,r:6,fill:p.color,stroke:"#fff","stroke-width":1.2,tabindex:"0",role:"button","aria-label":p.label});
+  circle.classList.add("oaf-ux30-feature","oaf-ux31-heat");circle.dataset.ux30Radius="6";
   circle.addEventListener("click",()=>{state.activePoint=p;diagnosis()});
   circle.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();state.activePoint=p;diagnosis()}});
   const ttl=sv("title");ttl.textContent=p.label;circle.append(ttl);front.append(circle);
  }
- // Insert underneath independent road and emergency point markers.
- if(boundary&&(on("base")||on("satellite"))){
+ if(boundary){
   const outline=boundary.cloneNode(true);outline.removeAttribute("id");outline.removeAttribute("data-oaf-ux24-boundary");
   outline.setAttribute("fill","none");outline.setAttribute("stroke","#1d634b");outline.setAttribute("stroke-width","2.2");
   outline.setAttribute("vector-effect","non-scaling-stroke");outline.setAttribute("pointer-events","none");
-  outline.style.fill="none";outline.style.stroke="#1d634b";outline.style.strokeWidth="2.2";outline.style.pointerEvents="none";
-  front.append(outline);
+  outline.style.fill="none";outline.style.stroke="#1d634b";outline.style.strokeWidth="2.2";outline.style.pointerEvents="none";front.append(outline);
  }
- const before=map.querySelector("circle.oaf-ux25-point, circle.oaf-ux28-emergency-marker");
- const roads=[...map.children].find(e=>e.classList?.contains("oaf-ux28-overlay")&&e.querySelector?.(".oaf-ux28-roadimage"));
- map.insertBefore(back,roads||before||null);map.append(front);
+ map.insertBefore(back,null);map.append(front);
  diagnosis();adjustMarkerSizes();
  if(typeof window.oafUx33AfterDraw==="function")window.oafUx33AfterDraw({scene,state,on,map});
  refreshDetailMap();
@@ -305,55 +268,27 @@ function diagnosis(){
  const district=$("oaf-ux26-dist")?.selectedOptions?.[0]?.textContent?.trim()||"Todos los distritos";
  const watershed=$("oaf-ux26-basin")?.selectedOptions?.[0]?.textContent?.trim()||"Todas las cuencas";
  heading(box,"Ámbito",area+" · "+district+" · "+watershed+". Los filtros se aplican cuando la fuente dispone de geometrías.");
- const layerLoadStatus=id=>{
-  const rasterIds={regional:"5090024",ninoFlood:"5090023",movmasa:"5090022"};
-  const image=id==="satellite"?pane.querySelector("image[data-ux30-satellite]"):
-   id==="basin"?[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids==="7,8"):
-   rasterIds[id]?[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids===rasterIds[id]):null;
-  if(!image)return "Capa pendiente de solicitud";
-  if(image.dataset.error==="true")return "El geoservicio no respondió";
-  if(image.dataset.loaded==="true")return "Capa cargada correctamente";
-  return "Solicitando geoservicio";
- };
  const chosen=[...spec].filter(([id])=>on(id));
- if(!chosen.length)heading(box,"Sin capas activas","Selecciona las capas que deseas consultar.");
+ if(!chosen.length)heading(box,"Sin capas activas","Selecciona una de las seis capas temáticas disponibles.");
  for(const [id,def] of chosen){
-  const status=id==="drought"?"INDECI 2003–2020 · "+state.droughtStatus:
-   id==="heat"?"SENAMHI 2024 · "+state.heatStatus:
-   id==="satellite"?"Esri World Imagery · "+layerLoadStatus(id):
-   id==="regional"||id==="ninoFlood"||id==="movmasa"?"CENEPRED 2021 · "+layerLoadStatus(id):
-   id==="basin"?"ANA · GeoIDEP · "+layerLoadStatus(id):
-   ["fluvial","pluvial","erosion","detritos"].includes(id)?"INGEMMET · inventario FENC 2017":
-   "Capa seleccionada";
+  let status=def.available?"Fuente espacial disponible":"Pendiente de conexión · no se representa información ficticia";
+  if(id==="flood"){
+   const image=[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids==="5090024");
+   status="CENEPRED 2021 · "+(image?.dataset.error==="true"?"geoservicio no disponible":image?.dataset.loaded==="true"?"capa cargada correctamente":"solicitando geoservicio");
+  }else if(id==="heat"){
+   const image=pane.querySelector('image[data-ux31-wms="heat"]');
+   status="SENAMHI/IDESEP · "+(image?.dataset.error==="true"?"WMS no disponible":image?.dataset.loaded==="true"?"WMS cargado":"consultando WMS")+" · "+state.heatStatus;
+  }
   heading(box,def.title,def.meaning,status);
  }
- if(on("regional")||on("ninoFlood")||on("movmasa")){
-  const recent=node("section","oaf-ux30-diagnosis-item oaf-ux30-recent-source");
-  recent.append(text(node("strong"),"Cartografía complementaria más reciente · 2026"));
-  recent.append(text(node("p"),"CENEPRED publicó el escenario de lluvias octubre–diciembre de 2026 (Informe Técnico N.º 12-2026/SENAMHI-DMA-SVC) y un estudio nacional de inundaciones y movimientos en masa asociados a El Niño actualizado con el Informe Técnico N.º 69-2026. Ambos ofrecen cartografía descargable; sus SHAPE se enlazan como referencia y no se dibujan hasta validar proyección, cobertura y geometría. Las capas ráster visibles arriba corresponden al estudio CENEPRED 2021."));
-  const links=node("div","oaf-ux30-source-links");
-  const addLink=(href,label)=>{const a=node("a");a.href=href;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;links.append(a)};
-  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22910","Escenario CENEPRED · lluvias oct–dic 2026 ↗");
-  addLink("https://sigrid.cenepred.gob.pe/sigridv3/storage/escenario_trimestral/101_shape.zip","Descargar SHAPE · oct–dic 2026 ↗");
-  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22169","Estudio CENEPRED · inundaciones y movimientos en masa FEN 2026 ↗");
-  addLink("https://sigrid.cenepred.gob.pe/sigridv3/documento/22600","Fichas ANA 2026 · puntos críticos de Lambayeque ↗");
-  recent.append(links);box.append(recent);
- }
- if(on("exposicion"))heading(box,"Exposición agrícola",
-  "La superposición es visual; no calcula hectáreas expuestas ni pérdidas.");
- if(typeof window.oafUx33Diagnosis==="function")window.oafUx33Diagnosis(box);
- const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
- if(failed)heading(box,"Algunas capas externas no respondieron",
-  failed+" capa(s) no se pudieron cargar desde los geoservicios. Consulta la fuente oficial en Metadatos y trazabilidad.");
  if(state.activePoint){
-  const p=state.activePoint;heading(box,"Punto consultado: "+p.label,
-   "Tipo: "+(p.type||"no consignado")+". Fecha o periodo: "+(p.year||"sin fecha")+
-   ". Fuente: "+(p.source||"organismo oficial")+". "+
-   (p.detail||"Este punto indica una ubicación documentada, no la extensión completa del fenómeno."),
-   p.sourceUrl||"Consulta Metadatos y trazabilidad");
+  const p=state.activePoint;
+  heading(box,"Punto consultado: "+p.label,"Tipo: "+(p.type||"no consignado")+". Fecha o periodo: "+(p.year||"sin fecha")+
+   ". Fuente: "+(p.source||"organismo oficial")+". "+(p.detail||"Registro puntual documentado; no representa toda el área afectada."));
  }
- heading(box,"Lectura del mapa",
-  "Susceptibilidad indica predisposición, no un evento actual. Los puntos históricos son registros localizados, no delimitan toda el área afectada.");
+ heading(box,"Lectura del mapa","La susceptibilidad indica predisposición y no un evento actual. Las capas pendientes no generan polígonos, puntos ni niveles de riesgo.");
+ const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
+ if(failed)heading(box,"Una fuente cartográfica no respondió",failed+" servicio(s) no se pudieron cargar. Comprueba la disponibilidad del organismo de origen.");
 }
 function classify(value){
  const v=String(value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
