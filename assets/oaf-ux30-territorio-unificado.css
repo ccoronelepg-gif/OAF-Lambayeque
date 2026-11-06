@@ -80,6 +80,17 @@
  #oaf-ux29-territory .oaf-ux29-diagbody{grid-template-columns:1fr}
  #oaf-ux29-territory .oaf-ux29-mapcontent{padding:9px}
 }
+/* UX65 · Fondos cartográficos fuera del inventario de capas temáticas. */
+#oaf-ux29-territory .oaf-ux30-layer-actions>.oaf-ux30-basemap-option{
+ flex:1 1 100%;min-width:0;margin:0;padding:7px 9px;
+ border:1px solid #cbded1;border-radius:8px;background:#fff;
+}
+#oaf-ux29-territory .oaf-ux30-layer-actions>.oaf-ux30-basemap-option>span{
+ font-size:11px;font-weight:750;color:#315c48;
+}
+#oaf-ux29-territory .oaf-ux30-layer-actions>.oaf-ux30-basemap-option>small{
+ font-size:10px;color:#708578;line-height:1.35;
+}
 @media(max-width:500px){
  #oaf-ux29-territory .oaf-ux29-diagbody{display:block!important}
  #oaf-ux29-territory .oaf-ux30-diagnosis-item{margin-bottom:8px}
