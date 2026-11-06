@@ -176,3 +176,43 @@ test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta
   assert.match(read("assets/oaf-area-ux38.js"),/function climate\(point\)/);
   assert.match(read("assets/oaf-ux9-predicciones.js"),/oaf-ux9-final-lluvia/);
 });
+
+test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin modelos genéricos",()=>{
+  const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
+  assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux66/);
+  assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux66/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux66/);
+  assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
+  assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
+  assert.match(js,/Botrytis cinerea/);
+  assert.match(js,/No hay todavía un modelo específico documentado/);
+  assert.doesNotMatch(js,/probabilidad de infección calibrada|riskScore\s*=/i);
+  const window={};
+  const document={readyState:"loading",addEventListener(){}};
+  runInNewContext(js,{window,document,console,Intl,Date,URLSearchParams,Map,Set,Number,Array,Error,Math},{filename:"oaf-ux35c-fitosanitario.js"});
+  const core=window.OAFPhytosanitaryCore;
+  assert.equal(typeof core.evaluateForecast,"function");
+  const start="2026-11-06",time=[],vars={
+    temperature_2m:[],relative_humidity_2m:[],precipitation:[],
+    shortwave_radiation:[],vapour_pressure_deficit:[],wind_speed_10m:[]
+  };
+  for(let d=0;d<9;d++){
+    const date=new Date(start+"T12:00:00Z");date.setUTCDate(date.getUTCDate()+d);
+    const day=date.toISOString().slice(0,10);
+    for(let h=0;h<24;h++){
+      time.push(day+"T"+String(h).padStart(2,"0")+":00");
+      vars.temperature_2m.push(22);vars.relative_humidity_2m.push(d===2&&h>=2&&h<10?95:70);
+      vars.precipitation.push(0);vars.shortwave_radiation.push(150);
+      vars.vapour_pressure_deficit.push(.5);vars.wind_speed_10m.push(10);
+    }
+  }
+  const result=core.evaluateForecast({time,...vars});
+  assert.equal(result.daily.length,7);
+  assert.equal(result.episodes,1);
+  assert.equal(result.longest,8);
+  const missing={time:time.slice(),...Object.fromEntries(Object.entries(vars).map(([k,v])=>[k,v.slice()]))};
+  missing.relative_humidity_2m[50]=null;
+  assert.throws(()=>core.evaluateForecast(missing),/Dato ausente/);
+  assert.match(read("assets/oaf-ux30-territorio-unificado.js"),/function heatWmsUrl\(bounds\)/);
+  assert.match(read("assets/oaf-ux30-territorio-unificado.js"),/g_01_06:01_06_001_03_001_512_0000_00_00/);
+});
