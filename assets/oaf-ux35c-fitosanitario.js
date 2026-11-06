@@ -226,7 +226,7 @@ function init(){
   map.dataset.ux35cPointPick="true";
   map.addEventListener("click",e=>{
    if(e.target.closest("circle"))return;
-   const rect=map.getBoundingClientRect(),vb=(map.getAttribute("viewBox")||"0 0 700 380").split(/[\\s,]+/).map(Number);
+   const rect=map.getBoundingClientRect(),vb=(map.getAttribute("viewBox")||"0 0 700 380").split(/[\s,]+/).map(Number);
    const scene=window.oafUx29ScenarioApi?.get?.()?.scene;if(!scene?.bounds||vb.length!==4||rect.width<=0||rect.height<=0)return;
    const px=vb[0]+(e.clientX-rect.left)/rect.width*vb[2],py=vb[1]+(e.clientY-rect.top)/rect.height*vb[3];
    const b=scene.bounds,lon=b.minLon+px/700*(b.maxLon-b.minLon),lat=b.maxLat-py/380*(b.maxLat-b.minLat);
