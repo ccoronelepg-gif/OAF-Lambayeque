@@ -1,0 +1,42 @@
+name: Auditoría del inventario de capas UX65
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux30-territorio-unificado.js"
+      - "assets/oaf-ux30-territorio-unificado.css"
+      - "assets/oaf-ux35-escenarios-multicapas.js"
+      - "assets/oaf-ux52-visores.js"
+      - "assets/oaf-parcelas-ux39.js"
+      - "sw.js"
+      - "index.html"
+      - "tests/auditoria_capas_ux65.cjs"
+      - ".github/workflows/auditoria-ux65.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditoria:
+    name: Sintaxis y estructura exacta de capas
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validar sintaxis JavaScript
+        run: |
+          node --check assets/oaf-ux30-territorio-unificado.js
+          node --check assets/oaf-ux35-escenarios-multicapas.js
+          node --check assets/oaf-ux52-visores.js
+          node --check assets/oaf-parcelas-ux39.js
+          node --check sw.js
+          node --check tests/auditoria_capas_ux65.cjs
+      - name: Comprobar inventario y controles retirados
+        run: node tests/auditoria_capas_ux65.cjs
