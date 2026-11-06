@@ -5,36 +5,28 @@ const $=id=>document.getElementById(id);
 const SVG_NS="http://www.w3.org/2000/svg";
 const create=(tag)=>document.createElementNS(SVG_NS,tag);
 const layouts=["territory","scenario"];
-const allowed=new Set(["base","satellite","departamento","provincia","distrito","regional","ninoFlood","movmasa",
- "fluvial","pluvial","detritos","erosion","floodpoints","basin","drain",
- "quebradas","nacional","departamental","vecinal"]);
-const TERRITORY_NAMES=[
- ["Mapa base","1 · Límites políticos y satélite"],
- ["Peligros y susceptibilidad","2 · Peligros y susceptibilidades"],
- ["Cuencas, ríos","3 · Cuencas y ríos"],
- ["Red vial","4 · Red vial"]
-];
+const allowed=new Set(["flood","rainIntense","drought","heat","humidity","wind"]);
 function trimTerritory(){
  const tree=$("oaf-ux30-layer-tree");if(!tree||tree.dataset.ux52Trimmed)return;
  tree.dataset.ux52Trimmed="true";
+ // Solo permanecen los dos grupos temáticos autorizados y el filtro territorial existente.
  for(const section of [...tree.querySelectorAll(":scope > details.oaf-ux30-section")]){
-  const head=section.querySelector("summary");
-  const text=head?.textContent||"";
-  const match=TERRITORY_NAMES.find(([prefix])=>text.includes(prefix));
-  if(!match){section.remove();continue;}
-  head.textContent=match[1];
-  for(const label of section.querySelectorAll("label.oaf-ux30-option")){
-   const key=label.querySelector("input")?.dataset.ux30Layer;
-   if(!allowed.has(key)||key==="base"){label.hidden=true;label.classList.add("oaf-ux52-hidden-layer");}
-   if(key==="vecinal"){const span=label.querySelector("span");if(span)span.textContent="Vías distritales, vecinales y rurales · MTC";}
-  }
+  if(section.classList.contains("oaf-ux30-area"))continue;
+  const title=section.querySelector("summary")?.textContent||"";
+  if(!title.startsWith("A. Peligros climáticos e hidrometeorológicos")&&
+     !title.startsWith("B. Condiciones agroclimáticas"))section.remove();
  }
- const hazard=[...tree.querySelectorAll("details")].find(d=>d.querySelector("summary")?.textContent?.includes("Peligros y susceptibilidades"));
- if(hazard&&!$("oaf-ux52-relief-toggle")){
-  const label=document.createElement("label");label.className="oaf-ux30-option oaf-ux52-elevation";
-  label.innerHTML='<input id="oaf-ux52-relief-toggle" type="checkbox"><span>Relieve topográfico · sombreado de elevación</span><small>Vista de apoyo. No mide depresiones, cotas ni profundidad de inundación.</small>';
-  const opts=hazard.querySelector(".oaf-ux30-options");opts?.insertBefore(label,opts.firstElementChild||null);
-  label.querySelector("input").addEventListener("change",()=>{relief();});
+ for(const input of [...tree.querySelectorAll("[data-ux30-layer]")]){
+  if(!allowed.has(input.dataset.ux30Layer))input.closest("label")?.remove();
+ }
+ // Retirar del DOM, no ocultar, el árbol anterior y sus controles duplicados.
+ $("oaf-ux30-legacy")?.remove();
+ const actions=tree.querySelector(".oaf-ux30-layer-actions");
+ if(actions&&!$("oaf-ux52-relief-toggle")){
+  const label=document.createElement("label");label.className="oaf-ux30-option oaf-ux30-basemap-option oaf-ux52-elevation";
+  label.innerHTML='<input id="oaf-ux52-relief-toggle" type="checkbox"><span>Relieve topográfico · sombreado de elevación</span><small>Fondo cartográfico. No mide depresiones, cotas ni profundidad de inundación.</small>';
+  actions.append(label);
+  label.querySelector("input").addEventListener("change",()=>relief());
  }
 }
 function removeRedundantTools(){
@@ -66,29 +58,17 @@ function trimScenario(){
  const pane=$("oaf-ux29-scenario"),tree=pane?.querySelector(".oaf-ux29-tree");
  if(!tree||tree.dataset.ux52Trimmed)return;
  tree.dataset.ux52Trimmed="true";
- // Desactivar la superposición agrícola heredada antes de ocultar controles duplicados.
- for(const key of ["agricola","exposicion","agroflood","inundacionregion"]){
-  const input=tree.querySelector('[data-ux35-key="territory:'+key+'"]');
-  if(input?.checked){input.checked=false;input.dispatchEvent(new Event("change",{bubbles:true}));}
- }
- for(const details of [...tree.querySelectorAll(":scope > details.oaf-ux35-group")]){
-  const label=details.querySelector("summary")?.textContent||"";
-  if(label.startsWith("Territorio ·")||label.includes("Filtros geográficos"))details.remove();
-  else if(label.startsWith("4 ·")){details.open=false;}
-  else if(label.includes("Vigilancia hidrológica")){details.open=false;details.querySelector("summary").textContent="5 · Análisis hidrológico";}
- }
- const intro=tree.querySelector(".oaf-ux35-tree-intro");
- if(intro)intro.textContent="Superpón antecedentes, lluvias y escenarios. Selecciona tu zona en el panel Mi zona productiva, debajo del mapa.";
- const historic=tree.querySelector("#oaf-ux35-histyear");
- if(historic){
-  historic.title="Años de referencia; la disponibilidad de reanálisis varía por año";
-  for(const year of [1993,2007])if(![...historic.options].some(o=>Number(o.value)===year)){
-   const option=document.createElement("option");option.value=String(year);option.textContent=String(year);
-   historic.append(option);
+ const prune=()=>{
+  const keep=[...tree.querySelectorAll(":scope > details")].find(d=>d.querySelector('[data-ux35-key="phytosanitary"]'));
+  for(const child of [...tree.children])if(child!==keep)child.remove();
+  if(keep){
+   for(const input of [...keep.querySelectorAll("[data-ux35-key]")])
+    if(input.dataset.ux35Key!=="phytosanitary")input.closest("label")?.remove();
   }
-  const options=[...historic.options].sort((a,b)=>Number(a.value)-Number(b.value));
-  historic.replaceChildren(...options);
- }
+ };
+ prune();
+ // UX36/UX37 pueden insertar controles auxiliares después del arranque; no se permiten capas/grupos extra.
+ new MutationObserver(prune).observe(tree,{childList:true,subtree:true});
 }
 function syncStructure(type){
  const pane=$("oaf-ux29-"+type),layout=pane?.querySelector(".oaf-ux29-layout");
