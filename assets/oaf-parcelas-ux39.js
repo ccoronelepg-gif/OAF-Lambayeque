@@ -159,7 +159,7 @@ function listenLayers(k){
 }
 function activeLayers(k){
  const root=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
- const all=[...root?.querySelectorAll("input:checked")||[]].filter(input=>input.closest(".oaf-ux29-sidebar"));
+ const all=[...root?.querySelectorAll("input:checked")||[]].filter(input=>input.closest(".oaf-ux29-sidebar")&&!input.matches("[data-ux30-basemap],#oaf-ux52-relief-toggle"));
  return all.map(input=>input.closest("label")?.textContent?.trim()?.replace(/\s+/g," ").slice(0,65)).filter(Boolean).slice(0,35);
 }
 function updateActive(k){
@@ -290,13 +290,10 @@ const LAYERS=[
  {name:"INGEMMET · susceptibilidad a inundación fluvial (vector, 1:1 000 000)",kind:"vector",
   url:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0/query",
   metadataUrl:"https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer/0?f=json",
-  territorio:["inundacionregion","regional"],escenarios:["futureFlood","regional","suscept"]},
- {name:"CENEPRED · susceptibilidad a movimientos en masa por lluvias fuertes (ráster)",kind:"raster",layerId:5090022,
-  url:CENEPRED_BASE+"/identify",metadataUrl:CENEPRED_BASE+"/5090022?f=json",
-  territorio:["movmasa"],escenarios:["futureMass","mass"]},
+  territorio:["flood"],escenarios:[]},
  {name:"CENEPRED · susceptibilidad a inundaciones por lluvias fuertes (ráster)",kind:"raster",layerId:5090024,
   url:CENEPRED_BASE+"/identify",metadataUrl:CENEPRED_BASE+"/5090024?f=json",
-  territorio:["regional","inundacionregion"],escenarios:["futureFlood","regional","suscept"]}
+  territorio:["flood"],escenarios:[]}
 ];
 async function fetched(url,timeout=18000){
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);
@@ -474,7 +471,13 @@ async function risk(k){
  const src=$(k==="territorio"?"oaf-ux29-territory":"oaf-ux29-scenario");
  const selected=Array.from(src?.querySelectorAll("input:checked")||[]).map(x=>x.dataset.ux30Layer||x.dataset.ux35Key||x.dataset.ux29Layer).filter(Boolean);
  const chosen=LAYERS.filter(layer=>selected.some(value=>(layer[k]||[]).includes(value)));
- if(!chosen.length){out.append(node("p",null,"No hay capas de inundación o movimientos en masa seleccionadas. Activa las capas correspondientes en el árbol del visor y vuelve a evaluar."));return;}
+ if(!chosen.length){
+   const pending=k==="escenarios"&&selected.includes("phytosanitary");
+   out.append(node("p",null,pending?
+    "La capa C. Riesgo agroclimático fitosanitario está pendiente de conexión. No existe una fuente espacial validada para evaluar intersecciones por cultivo y organismo perjudicial.":
+    "No hay una fuente espacial compatible seleccionada. La evaluación parcelaria disponible corresponde a Peligro de inundaciones; las demás capas sin geodato validado no generan resultados."));
+   return;
+  }
  const results=await Promise.all(chosen.map(async layer=>{
   try{return layer.kind==="vector"?await vectorIntersection(layer,poly.polygons,poly.ha):await rasterIntersection(layer,poly.polygons);}
   catch(error){return {name:layer.name,kind:layer.kind,responded:false,error:error.message};}
@@ -517,15 +520,14 @@ async function audit(k){
  if(!point)return;
  const checks=[
   {name:"Archivo ERA5-Land",url:"https://archive-api.open-meteo.com/v1/archive?"+new URLSearchParams({latitude:String(point.lat),longitude:String(point.lon),start_date:"2025-01-01",end_date:"2025-01-03",daily:"precipitation_sum",timezone:"America/Lima",models:"era5_land"}),describe:j=>j.daily?.time?.length===3?"serie diaria · 3 días · celda "+fmt(j.latitude,4)+", "+fmt(j.longitude,4):"respuesta sin tres días"},
-  {name:"INGEMMET · capa 0",url:LAYERS[0].metadataUrl,describe:j=>j.type==="Feature Layer"?"vectorial · "+j.geometryType+" · "+(j.supportedQueryFormats||"formatos no informados"):"tipo de capa: "+(j.type||"no informado")},
-  {name:"CENEPRED · capa 5090022",url:LAYERS[1].metadataUrl,describe:j=>j.type==="Raster Layer"?"ráster · requiere Identify, no consulta vectorial":("tipo de capa: "+(j.type||"no informado"))},
-  {name:"CENEPRED · capa 5090024",url:LAYERS[2].metadataUrl,describe:j=>j.type==="Raster Layer"?"ráster · requiere Identify, no consulta vectorial":("tipo de capa: "+(j.type||"no informado"))}
+  {name:"INGEMMET · susceptibilidad a inundación fluvial",url:LAYERS[0].metadataUrl,describe:j=>j.type==="Feature Layer"?"vectorial · "+j.geometryType+" · "+(j.supportedQueryFormats||"formatos no informados"):"tipo de capa: "+(j.type||"no informado")},
+  {name:"CENEPRED · capa 5090024",url:LAYERS[1].metadataUrl,describe:j=>j.type==="Raster Layer"?"ráster · requiere Identify, no consulta vectorial":("tipo de capa: "+(j.type||"no informado"))}
  ];
  const seq=++tokens[k].audit;
  const checked=await Promise.all(checks.map(async item=>{try{const j=await fetched(item.url,18000);return [item.name,item.describe(j)];}catch(e){return [item.name,"no verificable desde este navegador ("+e.message+")"];}}));
  if(seq!==tokens[k].audit)return;
  for(const [name,value] of checked)out.append(node("p",null,name+": "+value));
- out.append(node("p","oaf-parcel-caveat","Las capas CENEPRED 5090022 y 5090024 son ráster; la aplicación las consulta con Identify y no con Query de polígonos. INGEMMET es una capa vectorial poligonal. Si el navegador bloquea una petición por CORS, la fuente queda como no verificable desde esta sesión; consulta su visor oficial."));
+ out.append(node("p","oaf-parcel-caveat","La capa CENEPRED 5090024 es ráster y se consulta con Identify, no con Query de polígonos. INGEMMET es una capa vectorial poligonal. Ambas se consideran únicamente dentro de Peligro de inundaciones. Si el navegador bloquea una petición por CORS, la fuente queda como no verificable desde esta sesión; consulta su visor oficial."));
 }
 function climDaily(payload){
  const daily=payload.daily;if(!daily?.time?.length)throw Error("Datos climáticos diarios ausentes");
