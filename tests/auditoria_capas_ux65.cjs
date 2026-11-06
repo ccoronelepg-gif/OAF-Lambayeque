@@ -75,7 +75,7 @@ assert.deepEqual([...parcelLayers.matchAll(/territorio:\["([^"]+)"\]/g)].map(m =
 assert.doesNotMatch(parcelLayers, /5090022|futureMass|movimientos en masa/);
 assert.match(ux39, /!input\.matches\("\[data-ux30-basemap\],#oaf-ux52-relief-toggle"\)/,
   "Satélite y relieve no deben contarse como capas temáticas");
-assert.match(ux39, /phytosanitary está pendiente de conexión/);
+assert.match(ux39, /Riesgo agroclimático fitosanitario está pendiente de conexión/);
 
 for (const asset of [
   "assets/oaf-ux30-territorio-unificado.js?v=20261106-ux65",
