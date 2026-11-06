@@ -22,29 +22,16 @@ const FALLBACK_PAGES={
  senamhi:"https://www.senamhi.gob.pe/"
 };
 const addKeys=[
- ["pastRain","Lluvia histórica · comparación 1983/1998/2017/2023","Estimación de lluvia acumulada enero–marzo por localidad de Open-Meteo Archive (reconstrucción modelada). No son datos medidos por una estación ni un mapa continuo."],
- ["pastFlood","Puntos históricos de inundación fluvial y pluvial · 2017","Registros geológicos históricos INGEMMET del Niño Costero 2017. Un punto señala un sitio registrado, no la superficie inundada."],
- ["pastMass","Deslizamientos y flujos documentados · 2017","Registros geológicos de flujos de detritos y movimientos en masa del Niño Costero 2017 cuando el inventario tiene esa clasificación."],
- ["past2023","Escenario de riesgo de El Niño · CENEPRED 2023","Estudio oficial de 2023 que considera 1983, 1998, 2017 y 2023 para analizar riesgos de inundación y movimientos en masa. La ficha enlaza el estudio; no se dibuja una geometría no verificada."],
- ["rain7","Lluvia pronosticada · próximos siete días","Pronóstico puntual Open-Meteo para Chiclayo, Jayanca, Motupe y Olmos. Se acumula en la ventana seleccionada; no representa toda la región."],
- ["seasonal","Perspectiva noviembre 2026–verano 2027 · ENFEN","ENFEN N.º 19-2026 (30/10) prevé lluvias sobre lo normal en la costa norte entre noviembre y enero, y durante el verano 2027; caudales superiores a lo normal en Tumbes, Chira, Piura, La Leche y Jequetepeque. Tinajones mantiene niveles bajos. Es una perspectiva regional cualitativa, no mm por distrito."],
- ["futureFlood","Escenario orientativo: lluvia + susceptibilidad a inundación","Permite contrastar señales meteorológicas con zonas susceptibles cartografiadas. No predice dónde se inundará, ni niveles o probabilidades."],
- ["futureMass","Escenario orientativo: movimientos en masa","Contrasta la susceptibilidad de laderas con señales de lluvia. No calcula la probabilidad ni los lugares exactos de deslizamientos."],
- ["futureRiver","Vigilancia de crecidas y desbordes","Muestra ríos y zonas susceptibles. Sin caudal hidrométrico calibrado no es posible afirmar que un río se desbordará."],
- ["futureDrought","Posible sequía y déficit hídrico","La lluvia insuficiente sostenida puede originar déficit hídrico agrícola. Se requiere SPI, suelo y reservas; no se dibuja un polígono futuro de sequía."],
- ["futureHeat","Mapas históricos de calor · SENAMHI","Frecuencia estacional de olas de calor y un antecedente térmico puntual. No es un pronóstico de temperatura extrema para una fecha específica."],
- ["companies","Empresas agroindustriales y fundos referenciales","Muestra oficinas y algunos terrenos agroindustriales con coordenadas públicas de OpenStreetMap. La formalidad tributaria de cada empresa debe verificarse con SUNAT; no es censo regional."]
+ ["phytosanitary","C. Riesgo agroclimático fitosanitario","Pendiente de conexión: todavía no existe una capa geoespacial validada que integre cultivo, organismo perjudicial y condiciones agroclimáticas. No se dibujan polígonos ni puntos simulados."]
 ];
 const extra=new Map(addKeys.map(([id,name,meaning])=>[id,{name,meaning}]));
 const state={
- on:{pastRain:true,pastFlood:true,pastMass:false,past2023:false,rain7:false,seasonal:true,
- futureFlood:true,futureMass:false,futureRiver:false,futureDrought:false,futureHeat:false,companies:true},
- territorial:{base:true,departamento:true,provincia:true,regional:true,agricola:true},
+ on:{phytosanitary:false},territorial:{},
  year:2017,days:7,threshold:40,
  comp:[],companyStatus:"pendiente",
  history:new Map(),historyStatus:"pendiente",historyError:"",historyRequested:new Set(),
  histLocations:[],loaded:false,active:null,ready:false,current:[],
- zoomObserver:null,selectionName:"Todo Lambayeque"
+ zoomObserver:null,selectionName:"Todo Lambayeque",scene:null
 };
 const stations=[
  {name:"Chiclayo",lat:-6.7714,lon:-79.8409},{name:"Jayanca",lat:-6.39278,lon:-79.8228},
@@ -54,27 +41,20 @@ const enabled=k=>!!(state.on[k]??state.territorial[k]);
 function activate(){
  const pane=$("oaf-ux29-scenario");if(!pane||pane.dataset.ux35Active==="true")return;
  pane.dataset.ux35Active="true";
- const root=$("oaf-escenarios-riesgo-agroclimatico");
- root?.classList.add("oaf-ux35-only-visor");
+ const root=$("oaf-escenarios-riesgo-agroclimatico");root?.classList.add("oaf-ux35-only-visor");
  const intro=pane.querySelector(".oaf-ux29-top");
- if(intro)intro.innerHTML='<span class="oaf-ux29-kicker">OAF-LAMBAYEQUE · ANÁLISIS RETROSPECTIVO Y ESCENARIOS</span>'+
+ if(intro)intro.innerHTML='<span class="oaf-ux29-kicker">OAF-LAMBAYEQUE · ESCENARIOS DE RIESGO AGROCLIMÁTICO</span>'+
   '<h2>Visor de escenarios de riesgo agroclimático</h2>'+
-  '<p>Superpón antecedentes de El Niño, pronósticos meteorológicos y capas territoriales para identificar ámbitos que merecen vigilancia preventiva. El diagnóstico diferencia evidencia histórica, señales actuales y escenarios no validados.</p>';
+  '<p>Este visor conserva un único módulo temático para representar el riesgo fitosanitario por cultivo y organismo perjudicial. La conexión espacial está pendiente de validación.</p>';
  const maphead=pane.querySelector(".oaf-ux29-maphead");
- if(maphead)maphead.querySelector("strong").textContent="Mapa multicapa · Lambayeque";
+ if(maphead?.querySelector("strong"))maphead.querySelector("strong").textContent="Riesgo agroclimático fitosanitario · Lambayeque";
  const tree=pane.querySelector(".oaf-ux29-tree");
  if(tree){tree.replaceChildren();buildTree(tree)}
  const map=pane.querySelector(".oaf-ux29-mapcontent");
- if(map)map.innerHTML='<div class="oaf-ux35-mapintro">Selecciona los grupos de capas para comparar antecedentes, pronósticos y exposición agrícola. Haz clic en un punto para ver la información disponible.</div>'+
- '<div class="oaf-ux29-scenemap"><svg id="oaf-ux29-forecast-map" viewBox="0 0 700 380" role="img" aria-label="Visor geográfico de escenarios del Niño, pronósticos de lluvia y territorio de Lambayeque"></svg>'+
- '<p class="oaf-ux29-mapcaption">Capas históricas y de susceptibilidad superpuestas; los círculos de lluvia son consultas puntuales y no predicciones de polígonos afectados.</p></div>'+
- '<div class="oaf-ux35-outlook" id="oaf-ux35-outlook"><strong>Perspectiva regional ENFEN · Comunicado 19-2026</strong>'+
- '<div><span>Nov. 2026–ene. 2027: lluvias sobre lo normal en la costa norte</span><span>Verano 2027: lluvias sobre lo normal y más frecuentes en la costa norte</span><span>Tumbes, Chira, Piura, La Leche y Jequetepeque: caudales superiores; Tinajones con nivel bajo</span></div>'+
- '<small>Escenarios regionales cualitativos: no son mm mensuales por distrito ni huellas futuras de inundación. Fuente: ENFEN 19-2026, 30/10/2026.</small></div>'+
- '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Consultando geocapas y pronósticos…</div>';
- const extraSlot=pane.querySelector(".oaf-ux29-diagextras");
- if(extraSlot)extraSlot.innerHTML='<div class="oaf-ux35-method"><strong>Interpretación científica</strong>'+
-  '<p>La susceptibilidad es una propiedad territorial. Una lluvia prevista no demuestra inundación. Las estimaciones históricas, la perspectiva estacional y la predicción a siete días son fuentes distintas.</p></div>';
+ if(map)map.innerHTML='<div class="oaf-ux35-mapintro">La única capa temática de esta subpestaña es el riesgo agroclimático fitosanitario. Su representación espacial se habilitará cuando exista una fuente geográfica validada.</div>'+
+ '<div class="oaf-ux29-scenemap"><svg id="oaf-ux29-forecast-map" viewBox="0 0 700 380" role="img" aria-label="Mapa referencial de Lambayeque para el módulo de riesgo agroclimático fitosanitario"></svg>'+
+ '<p class="oaf-ux29-mapcaption">Contorno regional de referencia. No se representan zonas, puntos ni niveles de riesgo fitosanitario mientras la capa esté pendiente de conexión.</p></div>'+
+ '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Riesgo agroclimático fitosanitario · pendiente de conexión.</div>';
  pane.addEventListener("change",handleChange);
  pane.addEventListener("click",handleClick);
  const svg=$("oaf-ux29-forecast-map");
@@ -84,9 +64,6 @@ function activate(){
   navigation(svg);
  }
  window.addEventListener("oaf:geodata",()=>{if(state.ready)render()});
- window.addEventListener("oaf:emergencydata",()=>{if(state.ready)render()});
- loadCompanies();
- attachTerritoryFilters();
  meta();
 }
 function group(parent,title,open){
@@ -106,39 +83,13 @@ function field(parent,label,id,choices,value){
  select.value=String(value);container.append(select);parent.append(container);
 }
 function buildTree(tree){
- const overview=E("div","oaf-ux35-tree-intro");overview.textContent="Activa cada capa con su casilla. Las categorías se pueden combinar sin perder su procedencia.";
- tree.append(overview);
- const historic=group(tree,"1 · Antecedentes del Fenómeno El Niño",true);
- for(const key of ["pastRain","pastFlood","pastMass","past2023"]){
-  const e=extra.get(key);check(historic,key,e.name,state.on[key],key==="pastRain"?"Reanálisis histórico; cuatro localidades":key==="past2023"?"Estudio oficial; enlace en Metadatos":"Inventario geológico 2017");
- }
- field(historic,"Año para comparar acumulados enero–marzo","oaf-ux35-histyear",YEARS.map(y=>[y,String(y)]),state.year);
- const forecast=group(tree,"2 · Lluvias pronosticadas y perspectivas",true);
- for(const key of ["rain7","seasonal"]){const e=extra.get(key);check(forecast,key,e.name,state.on[key])}
- field(forecast,"Horizonte del pronóstico","oaf-ux35-horizon",[[3,"Próximos 3 días"],[7,"Próximos 7 días"]],state.days);
- field(forecast,"Umbral descriptivo de lluvia acumulada","oaf-ux35-threshold",[[20,"20 mm"],[40,"40 mm"],[70,"70 mm"],[100,"100 mm"]],state.threshold);
- const possible=group(tree,"3 · Consecuencias y peligros potenciales",true);
- for(const key of ["futureFlood","futureMass","futureRiver","futureDrought","futureHeat"]){
-  const e=extra.get(key);check(possible,key,e.name,state.on[key],["futureFlood","futureRiver","futureDrought"].includes(key)?"Vigilancia, no alerta confirmada":null);
- }
- const companies=group(tree,"4 · Agricultura y empresas agroindustriales",true);
- check(companies,"companies",extra.get("companies").name,state.on.companies,"Muestra georreferenciada OSM · sin padrón completo");
- const catalog=window.oafUx30Catalog?.()||[];
- for(const grp of catalog){
-  const sec=group(tree,"Territorio · "+grp.title,false);
-  for(const entry of grp.entries){
-   if(entry.key==="agroflood")continue;
-   if(state.territorial[entry.key]===undefined)state.territorial[entry.key]=false;
-   check(sec,"territory:"+entry.key,entry.label,state.territorial[entry.key],
-    ["exposicion","agroflood"].includes(entry.key)?"Cruce visual, no hectáreas":null);
-  }
- }
- const regional=group(tree,"5 · Filtros geográficos",true);
- regional.innerHTML+='<div class="oaf-ux35-sync-note">Los filtros se comparten con el visor territorial para utilizar sus límites oficiales.</div>';
- for(const [id,label] of [["prov","Provincia"],["dist","Distrito"],["basin","Cuenca"]]){
-  const wrap=E("label","oaf-ux35-field");wrap.textContent=label;
-  const input=E("select");input.id="oaf-ux35-"+id;input.dataset.ux35Filter=id;wrap.append(input);regional.append(wrap);
- }
+ const group=E("details","oaf-ux35-group");group.open=true;
+ const title=E("summary");title.textContent="C. Riesgo agroclimático fitosanitario";group.append(title);
+ const lab=E("label","oaf-ux35-check"),input=E("input");input.type="checkbox";
+ input.dataset.ux35Key="phytosanitary";input.checked=false;
+ const span=E("span");span.textContent="Riesgo agroclimático fitosanitario";
+ const hint=E("small");hint.textContent="Pendiente de conexión · no existe todavía una superficie espacial validada por cultivo y organismo perjudicial.";
+ lab.append(input,span,hint);group.append(lab);tree.append(group);
 }
 function attachTerritoryFilters(){
  for(const key of ["prov","dist","basin"]){
@@ -191,35 +142,12 @@ function navigation(svg){
 
 function handleChange(e){
  const target=e.target;
- if(target.dataset.ux35Key){
-  const key=target.dataset.ux35Key;
-  if(key.startsWith("territory:"))state.territorial[key.slice(10)]=target.checked;
-  else state.on[key]=target.checked;
-  requestSharedData();
-  if(key==="pastRain"&&state.on.pastRain)loadHistory(state.year);
-  if(key==="rain7"&&state.on.rain7)window.oafUx29ScenarioApi?.loadRain();
-  render();return;
- }
- if(target.id==="oaf-ux35-histyear"){
-  state.year=Number(target.value);state.active=null;
-  if(state.on.pastRain)loadHistory(state.year);render();return;
- }
- if(target.id==="oaf-ux35-horizon"){state.days=Number(target.value);render();return}
- if(target.id==="oaf-ux35-threshold"){state.threshold=Number(target.value);render();return}
- if(target.dataset.ux35Filter){
-  const ref=$("oaf-ux26-"+target.dataset.ux35Filter);
-  if(ref&&[...ref.options].some(opt=>opt.value===target.value)){
-   ref.value=target.value;ref.dispatchEvent(new Event("change",{bubbles:true}));
-   setTimeout(render,500);
-  }
+ if(target?.dataset?.ux35Key==="phytosanitary"){
+  state.on.phytosanitary=target.checked;render();return;
  }
 }
 function handleClick(e){
- const action=e.target.closest("[data-ux35-action]");
- if(!action)return;
- const command=action.dataset.ux35Action;
- if(command==="retry-history"){state.history.delete(state.year);loadHistory(state.year);render()}
- if(command==="retry-companies"){state.companyStatus="pendiente";loadCompanies();}
+ const action=e.target.closest("[data-ux35-action]");if(!action)return;
 }
 function requestSharedData(){
  const wanted={
@@ -274,213 +202,34 @@ async function loadHistory(year){
 function data(){
  return window.oafUx29ScenarioApi?.get()||{};
 }
-function render(){ 
+function render(){
  const pane=$("oaf-ux29-scenario"),svg=$("oaf-ux29-forecast-map"),api=data(),scene=api.scene;
  if(!pane||!svg||!scene)return;
- state.ready=true;
+ state.ready=true;state.scene=scene;state.current=[];
  const viewBox=svg.getAttribute("viewBox")||"0 0 700 380";
  svg.replaceChildren();svg.setAttribute("viewBox",viewBox);
  svg.append(SVG("rect",{x:0,y:0,width:700,height:380,fill:"#f0f7f2"}));
  const defs=SVG("defs"),clip=SVG("clipPath",{id:"oaf-ux35-region-clip",clipPathUnits:"userSpaceOnUse"});
  for(const ring of scene.rings){
-  clip.append(SVG("path",{d:ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ")+" Z"}));
+  const d=ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ")+" Z";
+  clip.append(SVG("path",{d,"fill-rule":"evenodd","clip-rule":"evenodd"}));
  }
  defs.append(clip);svg.append(defs);
- const ctx=window.oafUx30Context?.();
- const clipRoots=(ctx?.selected||[]).filter(e=>e.geo);
- const polygonD=g=>{
-  const geom=g?.type==="Feature"?g.geometry:g;
-  const polygons=geom?.type==="Polygon"?[geom.coordinates]:geom?.type==="MultiPolygon"?geom.coordinates:[];
-  return polygons.flatMap(poly=>poly.map(r=>r.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+
-   " "+scene.y(p[1]).toFixed(2)).join(" ")+" Z")).join(" ");
- };
- const base=SVG("g",{"clip-path":"url(#oaf-ux35-region-clip)"});svg.append(base);
- let region=base;
- clipRoots.forEach((v,i)=>{
-  const path=polygonD(v.geo);if(!path)return;
-  const c=SVG("clipPath",{id:"oaf-ux35-filter-"+i,clipPathUnits:"userSpaceOnUse"});
-  c.append(SVG("path",{d:path,"fill-rule":"evenodd","clip-rule":"evenodd"}));
-  defs.append(c);
-  const group=SVG("g",{"clip-path":"url(#oaf-ux35-filter-"+i+")"});region.append(group);region=group;
- });
- const bound=scene.bounds;
- const raster=(service,ids,alpha,label,params={})=>{
-  const q=new URLSearchParams({bbox:[bound.minLon,bound.minLat,bound.maxLon,bound.maxLat].join(","),
-   bboxSR:"4326",imageSR:"4326",size:"1000,515",format:"png32",transparent:"true",dpi:"110",
-   layers:"show:"+ids,f:"image",...params});
-  const img=SVG("image",{href:service+"/export?"+q,x:0,y:0,width:700,height:340,opacity:alpha,
-   preserveAspectRatio:"none","pointer-events":"none"});
-  const title=SVG("title");title.textContent=label;img.append(title);region.append(img);
- };
- if(enabled("regional")||state.on.futureFlood||enabled("exposicion"))raster(CEN,"5010502",.7,"Susceptibilidad regional a inundaciones");
- if(state.on.past2023)raster(CEN,"5090023",.54,"Susceptibilidad asociada a lluvias de eventos El Niño · CENEPRED 2021");
- if(enabled("movmasa")||state.on.futureMass)raster(CEN,"5090022",.44,"Movimientos en masa");
- if(enabled("inundacionregion"))raster("https://geocatmin.ingemmet.gob.pe/arcgis/rest/services/SERV_SUSCEPTIBILIDAD_INUNDACION_FLUVIAL_MIL1/MapServer","0",.42,"Susceptibilidad fluvial en polígonos");
- if(enabled("agricola")||enabled("exposicion")||enabled("agroflood")){
-  raster(MINAM,"1",.87,"Superficie agrícola MINAM 2018");
- }
- if(enabled("departamento")||enabled("provincia"))raster(SIG,[enabled("departamento")?"6020100":null,enabled("provincia")?"6020200":null].filter(Boolean).join(","),.68,"Límites políticos");
- if(enabled("basin"))raster(SIG,"6030100",.52,"Cuencas ANA");
- const rds=[enabled("vecinal")?"8":null,enabled("departamental")?"9":null,enabled("nacional")?"10":null].filter(Boolean);
- if(rds.length)raster(MTC,rds.join(","),.84,"Red vial MTC");
- if(enabled("heat")||state.on.futureHeat){
-  const q=new URLSearchParams({SERVICE:"WMS",VERSION:"1.1.1",REQUEST:"GetMap",LAYERS:HEAT_WMS,STYLES:"",
-   SRS:"EPSG:4326",BBOX:[bound.minLon,bound.minLat,bound.maxLon,bound.maxLat].join(","),
-   WIDTH:"1050",HEIGHT:"510",FORMAT:"image/png",TRANSPARENT:"TRUE"});
-  region.append(SVG("image",{href:WMS+"?"+q,x:0,y:0,width:700,height:340,opacity:.4,preserveAspectRatio:"none","pointer-events":"none"}));
- }
- const shared=window.oafUx33Data?.();
- const historicalFeatures=shared?.features?.historical||[];
- const historicalOn=state.on.pastFlood||state.on.pastMass;
- if(historicalOn||state.on.past2023){
-  const phase=shared?.phase?.historical||"pendiente";
-  const note=SVG("g",{class:"oaf-ux35-evidence-note","pointer-events":"none"});
-  note.append(SVG("rect",{x:12,y:12,width:450,height:50,rx:8,fill:"#ffffff",stroke:"#8eaa9a","stroke-width":1,opacity:.96}));
-  const title=SVG("text",{x:23,y:31,fill:"#1d5140","font-size":12,"font-weight":700});
-  title.textContent=state.on.past2023?"CENEPRED 2023 · escenario documental":"Antecedentes INGEMMET · El Niño Costero 2017";
-  const detail=SVG("text",{x:23,y:49,fill:"#48665a","font-size":10});
-  detail.textContent=state.on.past2023?"Estudio de riesgo; no se dibujan polígonos sin geometría de eventos verificada.":phase==="listo"?historicalFeatures.length+" puntos históricos disponibles; son ubicaciones puntuales, no áreas inundadas.":phase==="cargando"?"Consultando inventario geológico histórico oficial…":phase==="pendiente"?"Esperando geodatos oficiales; no se generan puntos simulados.":"Inventario histórico no disponible en esta consulta; no se generan puntos simulados.";
-  note.append(title,detail);region.append(note);
- }
- const textCandidates=[];
- const points=[];
- const inFilter=coords=>!ctx?.selected?.length||!ctx.contains||ctx.selected.every(t=>ctx.contains(t.geo,coords));
- const line=(pts,stroke,dash,width,title)=>{
-  const d=pts.filter(p=>p?.length>=2).map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ");
-  if(!d)return;
-  const path=SVG("path",{d,fill:"none",stroke,"stroke-width":width,
-   "stroke-dasharray":dash||"none","stroke-linecap":"round","pointer-events":"stroke"});
-  if(title){const tt=SVG("title");tt.textContent=title;path.append(tt)}
-  region.append(path);
- };
- const polyrings=g=>g?.type==="Polygon"?[g.coordinates]:g?.type==="MultiPolygon"?g.coordinates:[];
- const serviceDetails=(label,detail)=>{
-  const body=pane.querySelector(".oaf-ux29-diagextras");if(!body)return;
-  let box=$("oaf-ux35-selection");
-  if(!box){box=E("div","oaf-ux35-selected");box.id="oaf-ux35-selection";body.prepend(box)}
-  box.replaceChildren();
-  const strong=E("strong");strong.textContent=label;
-  const p=E("p");p.textContent=detail;
-  box.append(strong,p);
- };
- // Shared cartography from geographic visor, with exact class and date.
- const drawPolygon=f=>{
-  const rings=polyrings(f.geometry);
-  for(const poly of rings)for(const ring of poly)line(ring,"#67438f","4 2",1.3,"Límite distrital INEI");
- };
- if(shared&&enabled("distrito")){
-  for(const f of shared.features?.district||[]){
-   if(!f.geometry)continue;drawPolygon(f);
-   const p=f.properties||{},name=p.NOMBDIST||p.nombdist;
-   if(name){const ring=polyrings(f.geometry)?.[0]?.[0];if(ring?.length>2){
-    const x=ring.reduce((a,v)=>a+v[0],0)/ring.length,y=ring.reduce((a,v)=>a+v[1],0)/ring.length;
-    textCandidates.push({name,x:scene.x(x),y:scene.y(y),rank:90});
-   }}
-  }
- }
- const hydro=shared?.features||{};
- const drawHydro=(key,show,color)=>{
-  if(!show)return;
-  for(const f of hydro[key]||[]){
-   const g=f.geometry,lines=g?.type==="MultiLineString"?g.coordinates:g?.type==="LineString"?[g.coordinates]:[];
-   const p=f.properties||{},name=p.r_q_text||p.nombre||"";
-   for(const coords of lines){
-    line(coords,color,key==="hydroQuebrada"?"5 3":null,1.55,name);
-    if(name&&coords.length)textCandidates.push({name,x:scene.x(coords[Math.floor(coords.length/2)][0]),y:scene.y(coords[Math.floor(coords.length/2)][1]),rank:70});
-   }
-  }
- };
- drawHydro("hydroRio",enabled("drain")||state.on.futureRiver,"#1265a0");
- drawHydro("hydroQuebrada",enabled("quebradas"),"#259bb8");
- const kinds={fluvial:"#277bc0",pluvial:"#4178bb",erosion:"#b84e46",detritos:"#ab792a",movmasa:"#aa7534"};
- for(const f of shared?.features?.historical||[]){
-  const p=f.properties||{},txt=String(p.tipo_pel||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-  const kind=txt.includes("inundacion fluvial")?"fluvial":txt.includes("inundacion pluvial")||txt.includes("precipitacion pluvial")?"pluvial":
-   txt.includes("erosion fluvial")?"erosion":txt.includes("detrito")||txt.includes("lodo")?"detritos":
-   txt.includes("deslizamiento")||txt.includes("caida de rocas")?"movmasa":null;
-  if(!kind||!(enabled(kind)||state.on.pastFlood&&["fluvial","pluvial"].includes(kind)||state.on.pastMass&&["detritos","movmasa"].includes(kind)))continue;
-  const coords=f.geometry?.coordinates;if(!coords||!inFilter(coords))continue;
-  points.push({lon:coords[0],lat:coords[1],color:kinds[kind],label:p.tipo_pel||kind,
-   detail:"Inventario histórico INGEMMET · El Niño Costero 2017. "+(p.fecha_doc||"")+" · Ubicación puntual, no área afectada.",type:"hist"});
- }
- for(const p of ctx?.points||[]){
-  if(!["drought","heat"].includes(p.category)||!enabled(p.category)&&!(p.category==="heat"&&state.on.futureHeat)&&!(p.category==="drought"&&state.on.futureDrought))continue;
-  if(!inFilter(p.coords))continue;
-  points.push({lon:p.coords[0],lat:p.coords[1],label:p.label,color:p.color,detail:p.detail||p.source,type:"climate"});
- }
- // Servicios de emergencia: mismas capas de IGN/IDEP que el visor territorial.
- const services=window.oafUx28Points?.()?.points||{};
- const colors={hospital:"#c24b49",posta:"#3e9f77",policia:"#315f9c",bomberos:"#ef9236"};
- for(const kind of Object.keys(colors)){
-  if(!enabled(kind))continue;
-  for(const feature of services[kind]||[]){
-   const coords=feature.geometry?.coordinates;
-   if(!Array.isArray(coords)||!inFilter(coords))continue;
-   const p=feature.properties||{};
-   const name=p.NOMBRE||p.nombre||("Establecimiento "+kind);
-   points.push({lon:coords[0],lat:coords[1],label:name,color:colors[kind],type:"emergency",
-    detail:"Infraestructura IGN/IDEP: "+kind+". La posición cartográfica no confirma atención, horarios ni capacidad de emergencia."});
-  }
- }
- for(const f of state.comp){
-  if(!state.on.companies)break;
-  const p=f.properties||{},coords=f.geometry.coordinates;
-  if(!inFilter(coords))continue;
-  points.push({lon:coords[0],lat:coords[1],label:p.nombre,color:"#8754a3",type:"company",
-   detail:(p.tipo==="oficina"?"Oficina":"Área agrícola referencial")+" · "+p.distrito+". "+
-     p.observacion+" · "+p.estatus_formal_verificado+". Fuente geográfica: OpenStreetMap / Mapcarta."});
- }
- // Forecast is not spatially interpolated.
- if(state.on.rain7){
-  for(const p of api.daily?.items||[]){
-   const total=p.rain.slice(0,state.days).reduce((a,b)=>a+Number(b),0);
-   const flag=total>=state.threshold;
-   if(!inFilter([p.lon,p.lat]))continue;
-   points.push({lon:p.lon,lat:p.lat,label:p.name+" · "+total.toFixed(1)+" mm previstos",
-    color:flag?"#c45b36":"#187eaa",type:"forecast",radius:11,
-    detail:"Pronóstico Open-Meteo: "+total.toFixed(1)+" mm acumulados en "+state.days+" días. "+
-     (flag?"Supera el umbral descriptivo seleccionado; NO equivale a alerta oficial.":"Por debajo del umbral descriptivo seleccionado.")});
-  }
- }
- if(state.on.pastRain){
-  const hist=state.history.get(state.year);
-  for(const p of hist?.records||[]){
-   if(!inFilter([p.lon,p.lat]))continue;
-   points.push({lon:p.lon,lat:p.lat,label:p.name+" · "+Math.round(p.sum)+" mm · "+state.year,
-    color:"#8171b8",type:"history",radius:8,
-    detail:"Estimación histórica de reanálisis para enero–marzo "+state.year+": "+p.sum.toFixed(1)+
-     " mm. No es medición de pluviómetro ni mapa de lluvia continua."});
-  }
- }
- // Symbols are interactive and their sizes are corrected on zoom.
- for(const p of points){
-  const x=scene.x(p.lon),y=scene.y(p.lat);
-  if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>700||y<0||y>340)continue;
-  const offset=p.type==="history"?8:0;
-  const dot=SVG("circle",{cx:x+offset,cy:y-offset,r:p.radius||4.5,fill:p.color,stroke:"#fff","stroke-width":1.5,tabindex:"0",role:"button",
-   "aria-label":p.label});
-  dot.dataset.ux35Radius=p.radius||4.5;dot.dataset.ux35Type=p.type;
-  dot.classList.add("oaf-ux35-point");
-  const title=SVG("title");title.textContent=p.label;dot.append(title);
-  dot.addEventListener("click",()=>{state.active=p;serviceDetails(p.label,p.detail);diagnosis()});
-  dot.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();dot.dispatchEvent(new Event("click"))}});
-  region.append(dot);
-  textCandidates.push({name:p.label,x:x+offset,y:y-offset,rank:p.type==="company"?85:p.type==="forecast"?100:p.type==="history"?70:45});
+ const region=SVG("g",{"clip-path":"url(#oaf-ux35-region-clip)"});svg.append(region);
+ for(const ring of scene.rings){
+  const d=ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ")+" Z";
+  region.append(SVG("path",{d,fill:"#dcefe2","fill-opacity":".48",stroke:"none","pointer-events":"none"}));
  }
  const outline=SVG("g",{"pointer-events":"none"});
  for(const ring of scene.rings){
-  outline.append(SVG("path",{d:ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(1)+" "+scene.y(p[1]).toFixed(1)).join(" ")+" Z",
-   fill:"none",stroke:"#28644e","stroke-width":2}));
+  const d=ring.map((p,i)=>(i?"L":"M")+scene.x(p[0]).toFixed(2)+" "+scene.y(p[1]).toFixed(2)).join(" ")+" Z";
+  outline.append(SVG("path",{d,fill:"none",stroke:"#28644e","stroke-width":2.2}));
  }
  svg.append(outline);
  const labels=SVG("g",{id:"oaf-ux35-labels","pointer-events":"none"});svg.append(labels);
  const footer=SVG("text",{x:350,y:361,fill:"#3b5b50","font-size":12,"text-anchor":"middle"});
- footer.textContent="Antecedentes y susceptibilidad ≠ pronóstico hidráulico de inundación";svg.append(footer);
- state.current=textCandidates;
- renderLabels();
- if(typeof window.oafUx36AfterRender==="function")window.oafUx36AfterRender({scene,svg});
- status();
- diagnosis();
+ footer.textContent="Lambayeque · contorno regional referencial";svg.append(footer);
+ status();diagnosis();
 }
 function renderLabels(){
  const svg=$("oaf-ux29-forecast-map"),group=$("oaf-ux35-labels");if(!svg||!group)return;
@@ -515,18 +264,9 @@ function applyZoomStyles(svg){
 }
 function status(){
  const display=$("oaf-ux35-mapstatus");if(!display)return;
- const outlook=$("oaf-ux35-outlook");if(outlook)outlook.hidden=!state.on.seasonal;
- const shared=window.oafUx33Data?.()?.phase||{};
- const hist=state.history.get(state.year);
- const signals=[
-  "Lluvia prevista: "+(data().daily?.state||"pendiente"),
-  state.on.pastRain?"Lluvia histórica "+state.year+": "+(hist?hist.records.length+" de 4 puntos":state.historyRequested.has(state.year)?"consultando":"sin consultar"):null,
-  state.on.companies?"Agroindustrias: "+state.companyStatus:null,
-  (enabled("drain")||state.on.futureRiver)?"Ríos: "+(shared.hydroRio||"sin respuesta"):null,
-  enabled("quebradas")?"Quebradas: "+(shared.hydroQuebrada||"sin respuesta"):null,
-  (state.on.pastFlood||state.on.pastMass)?"Puntos INGEMMET: "+(shared.historical||"sin respuesta"):null
- ].filter(Boolean);
- display.textContent=signals.join(" · ");
+ display.textContent=state.on.phytosanitary?
+  "C. Riesgo agroclimático fitosanitario: pendiente de conexión. No existe un geodato validado para dibujar riesgo por cultivo y organismo perjudicial.":
+  "La única capa temática está desactivada. Su conexión geoespacial permanece pendiente.";
 }
 function diagnosis(){
  const pane=$("oaf-ux29-scenario"),target=pane?.querySelector(".oaf-ux29-diagbody");if(!target)return;
@@ -538,70 +278,12 @@ function diagnosis(){
   target.append(box);
  };
  const selected=(window.oafUx30Context?.()?.selected||[]).map(p=>p.name).join(" ∩ ");
- section("Ámbito territorial",selected||"Región Lambayeque · mapa referencial",
-  "Los filtros dependen de la cartografía oficial disponible.");
- const current=data(),daily=current.daily;
- if(state.on.rain7){
-  if(!daily||daily.state==="pendiente"||daily.state==="cargando")section("Lluvia de los próximos "+state.days+" días","Consultando pronóstico meteorológico externo.");
-  else if(daily.items?.length){
-   const found=daily.items.map(p=>({name:p.name,amount:p.rain.slice(0,state.days).reduce((a,b)=>a+Number(b),0)}))
-    .sort((a,b)=>b.amount-a.amount);
-   section("Lluvias pronosticadas · "+state.days+" días",
-    found.map(p=>p.name+": "+p.amount.toFixed(1)+" mm").join(" · ")+
-    ". Son cuatro localidades puntuales; no permiten deducir lluvia continua sobre cada cuenca.");
-   const high=found.filter(p=>p.amount>=state.threshold);
-   section("Posible señal de acumulación",
-    high.length?"El acumulado supera "+state.threshold+" mm en "+high.map(i=>i.name).join(", ")+
-     ". Esto justifica revisar avisos oficiales, no constituye una predicción de inundación.":
-     "Ninguna localidad consultada supera el umbral orientativo de "+state.threshold+
-     " mm. No se descartan lluvias fuertes en otros sectores.");
-  }else section("Lluvia prevista","El proveedor no devolvió datos meteorológicos suficientes. No se realizan estimaciones.");
- }
- if(state.on.pastRain){
-  const past=state.history.get(state.year);
-  section("Comparación histórica · enero a marzo "+state.year,
-   past?.records?.length?past.records.map(p=>p.name+": "+p.sum.toFixed(0)+" mm").join(" · ")+
-    ". Fuente: reanálisis meteorológico; período de tres meses, NO comparable directamente con el acumulado a 7 días.":
-   "Sin datos históricos aún para el año seleccionado. La consulta intenta obtener reanálisis de cuatro localidades.",
-   "Antecedentes 1983, 1993, 1998, 2007, 2017 y 2023 · Open-Meteo Archive");
- }
- if(state.on.past2023)section("Escenario oficial de El Niño 2023",
-  "CENEPRED evaluó potenciales afectaciones considerando lluvias de 1983, 1998, 2017 y 2023. Este es un estudio de escenarios de riesgo, no un polígono de eventos realmente inundados.",
-  "La ficha original se encuentra en Metadatos y trazabilidad.");
- if(state.on.seasonal)section("Perspectiva de noviembre 2026 a verano 2027",
-   "ENFEN (30/10/2026, Comunicado 19-2026) prevé lluvias por encima de lo normal entre noviembre de 2026 y enero de 2027 en la costa norte, con episodios moderados a fuertes. Para el verano de 2027 prevé lluvias superiores a lo normal y más frecuentes e intensas en la costa norte. "+
-   "También proyecta caudales superiores a lo normal en los ríos Tumbes, Chira, Piura, La Leche y Jequetepeque, y advierte que Tinajones mantendría niveles bajos. "+
-   "Es una perspectiva regional cualitativa: no son milímetros mensuales por distrito ni fechas precisas de desborde.",
-   "Fuente: ENFEN 19-2026 · 30/10/2026 · no es alerta operativa por distrito");
-  if(state.on.futureFlood||enabled("regional")||enabled("inundacionregion"))
-  section("Inundaciones y anegamientos potenciales",
-  "Si coinciden lluvias importantes con terrenos de alta susceptibilidad, pueden presentarse anegamientos en sectores urbanos y agrícolas. "+
-  "El mapa muestra predisposición, no la huella futura de inundación ni su profundidad.");
- if(state.on.futureRiver)section("Posibles crecidas y desbordamientos",
-  "La respuesta de un río depende de lluvia aguas arriba, suelo, reservorios y estado del cauce. "+
-  "Sin mediciones hidrométricas y un modelo calibrado NO puede confirmarse el aumento de caudal ni señalar un punto futuro de desborde.");
- if(state.on.futureMass||enabled("movmasa"))section("Deslizamientos y quebradas",
-  "Las lluvias intensas sobre pendientes y depósitos inestables pueden favorecer movimientos en masa y activación de quebradas. "+
-  "Las capas históricas ayudan a priorizar sectores de revisión, sin representar la ocurrencia próxima.");
- if(state.on.futureDrought||enabled("drought"))section("Sequía y déficit hídrico",
-  "La persistencia de pocas lluvias puede reducir la humedad disponible para cultivos. Para estimar sequía se necesitan anomalías respecto a normales climáticas, SPI y disponibilidad de riego.");
- if(state.on.futureHeat||enabled("heat"))section("Calor y estrés térmico",
-  "Las temperaturas anómalas pueden elevar la demanda evaporativa y afectar a cultivos y poblaciones vulnerables. El mapa histórico de SENAMHI no es pronóstico del próximo episodio.");
- if(state.on.companies)section("Infraestructura agroindustrial documentada",
-  state.comp.length+" ubicaciones referenciales visibles al activar la casilla. Son oficinas y terrenos mapeados en OpenStreetMap, "+
-  "con información sobre su procedencia. No es inventario de todos los establecimientos formales ni se han calculado sus daños.",
-  "Verificar vigencia y formalidad comercial en SUNAT, y la ubicación detallada con cada empresa.");
- const catalog=window.oafUx30Catalog?.()||[];
- for(const group of catalog)for(const info of group.entries)if(state.territorial[info.key])
-  section(info.label,info.meaning);
- if(state.on.pastFlood||state.on.pastMass)section("Antecedentes de daños documentados",
-  "Los puntos de INGEMMET corresponden a lugares geológicos inspeccionados por el evento de 2017; no deben extrapolarse como extensión de daños en 1983, 1998 o 2023.");
- const interactions=[state.on.futureFlood,state.on.futureMass,state.on.futureRiver,state.on.futureDrought,state.on.futureHeat].filter(Boolean).length;
- if(interactions)section("Lectura integrada para ciudades y agricultura",
-  "Prioriza la revisión de drenes urbanos, pasos por quebradas, accesos rurales, parcelas y sistemas de riego "+
-  "cuando coexistan señales de lluvia con antecedentes o susceptibilidad. "+
-  "Para avisos de emergencia consulta a SENAMHI, ANA, CENEPRED e INDECI; este visor no emite alertas automáticas.");
- if(typeof window.oafUx36Diagnosis==="function")window.oafUx36Diagnosis(target);
+ section("Ámbito territorial",selected||"Región Lambayeque · mapa referencial");
+ section("C. Riesgo agroclimático fitosanitario",state.on.phytosanitary?
+  "Pendiente de conexión. No se asigna nivel de riesgo ni se dibuja una superficie hasta disponer de datos espaciales validados por cultivo, organismo perjudicial y periodo.":
+  "Capa desactivada. No se representa ningún escenario fitosanitario.");
+ section("Disponibilidad de datos","Los indicadores meteorológicos puntuales existentes no constituyen una capa regional de riesgo fitosanitario. La humedad relativa ambiental no equivale a horas reales de humedad foliar ni confirma infección.");
+ section("Criterio de representación","No se generan polígonos, puntos, probabilidades ni semáforos artificiales. La capa se habilitará cuando exista una fuente geoespacial verificable y una metodología validada para relacionar cultivo, plaga o enfermedad y condiciones agroclimáticas.");
 }
 function meta(){
  const area=$("oaf-ux30-metadatos")||document.querySelector('[data-page="verificaciones"]');
@@ -622,15 +304,13 @@ function meta(){
 function init(){
  window.oafUx35Render=()=>render();
  window.oafUx35Diagnosis=()=>diagnosis();
+ window.oafUx35Wants={district:false,historical:false,hydroRio:false,hydroQuebrada:false,drought:false,heat:false};
  activate();
- requestSharedData();
- if(state.on.pastRain)loadHistory(state.year);
  const api=window.oafUx29ScenarioApi;
- if(api?.get()?.scene){render();if(state.on.rain7)api.loadRain()}
+ if(api?.get()?.scene)render();
  else{
-  // El contorno geojson se carga de manera asíncrona; no bloquear la página.
   let cycles=0;const probe=()=>{
-   if(api?.get()?.scene){render();if(state.on.rain7)api.loadRain();return}
+   if(api?.get()?.scene){render();return;}
    if(++cycles<25)setTimeout(probe,300);
    else status();
   };setTimeout(probe,250);
