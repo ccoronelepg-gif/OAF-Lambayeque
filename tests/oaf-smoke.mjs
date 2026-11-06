@@ -179,13 +179,15 @@ test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta
 
 test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin modelos genéricos",()=>{
   const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
-  assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux66/);
-  assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux66/);
-  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux66/);
+  assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux67/);
+  assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux67/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux67/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
   assert.match(js,/Botrytis cinerea/);
   assert.match(js,/No hay todavía un modelo específico documentado/);
+  assert.match(js,/ux35cPointPick/);
+  assert.match(js,/oaf-ux35c-province/);
   assert.doesNotMatch(js,/probabilidad de infección calibrada|riskScore\s*=/i);
   const window={};
   const document={readyState:"loading",addEventListener(){}};
