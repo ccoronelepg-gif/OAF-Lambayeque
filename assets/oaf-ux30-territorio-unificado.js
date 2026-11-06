@@ -127,11 +127,11 @@ function setCheck(id,checked){
  e.checked=checked;e.dispatchEvent(new Event("change",{bubbles:true}));
 }
 function applyLegacy(){
- // La lógica previa sigue a cargo de consultas MINAM/INGEMMET y los puntos de emergencia.
+ // Apagar selectores heredados que ya no forman parte del inventario visible del visor.
  const layer=$("oaf-ux25-raster");if(layer&&layer.value!=="none"){layer.value="none";layer.dispatchEvent(new Event("change",{bubbles:true}))}
  setCheck("oaf-ux25-minam",on("floodpoints"));
  setCheck("oaf-ux25-geologico",false);
- setCheck("oaf-ux26-agricultura",false); // Geocapa agrícola gestionada aquí para evitar duplicaciones.
+ setCheck("oaf-ux26-agricultura",false); // Selector agrícola retirado del inventario temático.
  for(const [id,key] of [["national","nacional"],["regional","departamental"],["vecinal","vecinal"]]){
   const e=document.querySelector('[data-ux28-road="'+id+'"]');if(e&&e.checked!==on(key)){e.checked=on(key);e.dispatchEvent(new Event("change",{bubbles:true}))}
  }
