@@ -181,7 +181,7 @@ test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin mode
   const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
   assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux69/);
   assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux68/);
-  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux72/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux73/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
   assert.match(js,/Botrytis cinerea/);
