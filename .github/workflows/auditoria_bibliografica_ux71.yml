@@ -1,0 +1,31 @@
+name: OAF - Validacion bibliografica fitosanidad UX71
+on:
+  push:
+    branches: [main]
+    paths:
+      - "datos/bibliografia_validada_fitosanidad_ux71.json"
+      - "datos/sanidad_agroexportadora_2026.json"
+      - "datos/validacion_cientifica_fitosanidad_ux70.json"
+      - "tests/auditoria_bibliografica_ux71.cjs"
+      - ".github/workflows/auditoria_bibliografica_ux71.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bibliografia:
+    name: Integridad de 23 fichas y 35 fuentes con límites explícitos
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Auditoría de referencias y límites predictivos
+        run: |
+          node --check tests/auditoria_bibliografica_ux71.cjs
+          node tests/auditoria_bibliografica_ux71.cjs
