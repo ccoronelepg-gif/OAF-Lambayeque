@@ -191,7 +191,7 @@
           {
             "mes": "2027-02",
             "precipitacion_mm": 48.7,
-            "temperatura_media_c": 26.0,
+            "temperatura_media_c": 26,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 5,
             "horizonte_evaluado_hasta_meses": 6,
@@ -209,7 +209,7 @@
           {
             "mes": "2027-04",
             "precipitacion_mm": 34.5,
-            "temperatura_media_c": 25.0,
+            "temperatura_media_c": 25,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 7,
             "horizonte_evaluado_hasta_meses": 6,
@@ -293,7 +293,7 @@
           },
           {
             "mes": "2027-01",
-            "precipitacion_mm": 87.0,
+            "precipitacion_mm": 87,
             "temperatura_media_c": 25.7,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 4,
@@ -390,36 +390,36 @@
           {
             "fecha": "2026-11-06",
             "precipitacion_mm": 2.4,
-            "temperatura_max_c": 29.0
+            "temperatura_max_c": 29
           },
           {
             "fecha": "2026-11-07",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.2
           },
           {
             "fecha": "2026-11-08",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.7
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.5
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.1
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.6
           },
           {
             "fecha": "2026-11-12",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.3
           }
         ],
@@ -427,7 +427,7 @@
           {
             "fecha": "2026-11-06",
             "precipitacion_mm": 1.9,
-            "temperatura_max_c": 30.0
+            "temperatura_max_c": 30
           },
           {
             "fecha": "2026-11-07",
@@ -436,27 +436,27 @@
           },
           {
             "fecha": "2026-11-08",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 33.9
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 33.1
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 36.2
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.8
           },
           {
             "fecha": "2026-11-12",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 35.1
           }
         ],
@@ -484,7 +484,7 @@
           {
             "fecha": "2026-11-10",
             "precipitacion_mm": 0.5,
-            "temperatura_max_c": 32.0
+            "temperatura_max_c": 32
           },
           {
             "fecha": "2026-11-11",
@@ -505,7 +505,7 @@
           },
           {
             "fecha": "2026-11-07",
-            "precipitacion_mm": 4.0,
+            "precipitacion_mm": 4,
             "temperatura_max_c": 28.6
           },
           {
@@ -515,17 +515,17 @@
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 28.8
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.4
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 29.9
           },
           {
@@ -613,7 +613,7 @@
           1.31,
           0.9,
           0.7,
-          1.0,
+          1,
           0.95
         ],
         "mensual_lluvia_mae_rf_mm": [
@@ -805,7 +805,7 @@
           },
           {
             "mes": "2026-12",
-            "precipitacion_mm": 15.0,
+            "precipitacion_mm": 15,
             "temperatura_media_c": 26.2,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 2,
@@ -842,7 +842,7 @@
           {
             "mes": "2027-04",
             "precipitacion_mm": 34.9,
-            "temperatura_media_c": 25.0,
+            "temperatura_media_c": 25,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 6,
             "horizonte_evaluado_hasta_meses": 6,
@@ -852,7 +852,7 @@
         "Jayanca": [
           {
             "mes": "2026-11",
-            "precipitacion_mm": 48.0,
+            "precipitacion_mm": 48,
             "temperatura_media_c": 26.2,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 1,
@@ -898,7 +898,7 @@
           {
             "mes": "2027-04",
             "precipitacion_mm": 68.4,
-            "temperatura_media_c": 25.0,
+            "temperatura_media_c": 25,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 6,
             "horizonte_evaluado_hasta_meses": 6,
@@ -954,7 +954,7 @@
           {
             "mes": "2027-04",
             "precipitacion_mm": 73.9,
-            "temperatura_media_c": 25.0,
+            "temperatura_media_c": 25,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 6,
             "horizonte_evaluado_hasta_meses": 6,
@@ -1000,7 +1000,7 @@
           },
           {
             "mes": "2027-03",
-            "precipitacion_mm": 85.0,
+            "precipitacion_mm": 85,
             "temperatura_media_c": 26.1,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 5,
@@ -1010,7 +1010,7 @@
           {
             "mes": "2027-04",
             "precipitacion_mm": 52.9,
-            "temperatura_media_c": 25.0,
+            "temperatura_media_c": 25,
             "recursivo": true,
             "adelanto_desde_ultimo_mes_observado": 6,
             "horizonte_evaluado_hasta_meses": 6,
@@ -1022,32 +1022,32 @@
         "Chiclayo": [
           {
             "fecha": "2026-11-07",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.2
           },
           {
             "fecha": "2026-11-08",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.7
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.5
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.1
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 30.6
           },
           {
             "fecha": "2026-11-12",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.3
           },
           {
@@ -1064,32 +1064,32 @@
           },
           {
             "fecha": "2026-11-08",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 33.9
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 33.1
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 36.2
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.8
           },
           {
             "fecha": "2026-11-12",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 35.1
           },
           {
             "fecha": "2026-11-13",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 28.8
           }
         ],
@@ -1112,7 +1112,7 @@
           {
             "fecha": "2026-11-10",
             "precipitacion_mm": 0.5,
-            "temperatura_max_c": 32.0
+            "temperatura_max_c": 32
           },
           {
             "fecha": "2026-11-11",
@@ -1133,7 +1133,7 @@
         "Olmos": [
           {
             "fecha": "2026-11-07",
-            "precipitacion_mm": 4.0,
+            "precipitacion_mm": 4,
             "temperatura_max_c": 28.6
           },
           {
@@ -1143,17 +1143,17 @@
           },
           {
             "fecha": "2026-11-09",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 28.8
           },
           {
             "fecha": "2026-11-10",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 31.4
           },
           {
             "fecha": "2026-11-11",
-            "precipitacion_mm": 0.0,
+            "precipitacion_mm": 0,
             "temperatura_max_c": 29.9
           },
           {
@@ -1186,7 +1186,7 @@
           "razon": "HTTPSConnectionPool(host='archive-api.open-meteo.com', port=443): Read timed out. (read timeout=15)"
         }
       },
-      "era5_periodo_referencia": "1996-2025; solo promedio historico, no prediccion",
+      "era5_periodo_referencia": "no disponible al emitir: timeout del archivo ERA5 (no se reconstruye as-issued)",
       "ajuste_2024": {
         "entrenamiento": "2021-2023",
         "validacion": "2024",
@@ -1265,7 +1265,7 @@
           1.31,
           0.9,
           0.7,
-          1.0,
+          1,
           0.95
         ],
         "mensual_lluvia_mae_rf_mm": [
