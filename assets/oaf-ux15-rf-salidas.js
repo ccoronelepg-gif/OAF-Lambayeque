@@ -74,7 +74,8 @@ function weeklyBars(root,dates,series,unit){
    if(!Number.isFinite(value))continue;
    const xx=xc-(slots*barWidth)/2+j*barWidth;
    const yy=scale(value),height=Math.max(0,baseline-yy);
-   const rect=tag("rect",{x:xx,y:Math.min(baseline,yy),width:Math.max(3,barWidth-3),height:height,fill:item.color,rx:2,
+   const experimental=/Random Forest|RF OAF/i.test(item.name);
+   const rect=tag("rect",{x:xx,y:Math.min(baseline,yy),width:Math.max(3,barWidth-3),height:height,fill:item.color,"fill-opacity":experimental?".56":"1",stroke:experimental?"#704580":"none","stroke-width":experimental?"1.2":"0","stroke-dasharray":experimental?"3 2":"",rx:2,
       tabindex:0,role:"img","aria-label":dates[i]+" · "+item.name+": "+fmt(value,2)+" "+unit});
    rect.append(tag("title",{},dates[i]+" · "+item.name+": "+fmt(value,2)+" "+unit));
    svg.append(rect);
@@ -105,7 +106,7 @@ function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  if(!valid)return;
  const total=externalValues.reduce((a,b)=>a+b,0),max=Math.max(...externalValues);
  const peak=externalValues.indexOf(max),matched=rfValues.filter(Number.isFinite).length,evidence=rfEvidence(rain);
- const rfLabel=point?"No validado para parcela":evidence.eligible?matched+"/7 fechas coincidentes":"Retirado del gráfico · "+evidence.wins+"/7 mejoras";
+ const rfLabel=point?"No entrenado para parcela":matched?matched+"/7 · experimental ("+evidence.wins+"/7 mejoras)":"Sin emision RF coincidente";
  const labels=rain?[
   ["Lluvia prevista (7 días)",fmt(total,2)+" mm"],
   ["Día de mayor lluvia",days[peak].slice(8,10)+"/"+days[peak].slice(5,7)+" · "+fmt(max,2)+" mm"],
@@ -119,13 +120,13 @@ function weeklyOverview(days,externalValues,rfValues,eraValues,rain,point){
  if(point||!evidence.eligible){
   const note=E("p","oaf-ux43-stamp",point?
    "RF: sin entrenamiento parcelario validado; el pronóstico de este punto procede de Open-Meteo.":
-   "RF: permanece en el panel de auditoría y no se presenta como pronóstico cuando no demuestra ventaja consistente frente a la climatología.");
+   "RF experimental: se muestra solo para comparacion, sin declarar precision operativa; la climatologia es la referencia de habilidad.");
   host.append(note);
  }
  if(!point&&evidence.rows.length===7){
   const message=evidence.eligible?
    "RF supera el criterio retrospectivo mínimo de 5/7 horizontes y menor MAE medio, pero sigue siendo experimental y requiere validación prospectiva e instrumental.":
-   "RF no supera el criterio de publicación: mejora "+evidence.wins+"/7 horizontes de "+(rain?"lluvia":"temperatura máxima")+". Se omite de la gráfica comparativa; consulta la auditoría para ver el detalle.";
+   "RF no supera el criterio operativo: mejora "+evidence.wins+"/7 horizontes de "+(rain?"lluvia":"temperatura maxima")+". Aparece unicamente como comparacion experimental cuando hay fechas coincidentes.";
   host.append(E("p","oaf-ux43-model-warning",message));
  }
 }
@@ -150,7 +151,7 @@ function weeklyModelAudit(){
   const rows=backtest.por_horizonte||[],rain=rfEvidence(true),temp=rfEvidence(false);
   target.append(E("p",null,"Backtest de siete días encadenados (2025): "+backtest.n_origenes+" orígenes retrospectivos; evaluación por horizonte sin utilizar días futuros como rezagos."));
   target.append(E("p","oaf-ux43-model-warning","Habilidad comparada con climatología: lluvia "+rain.wins+"/7 horizontes mejores; temperatura máxima "+temp.wins+"/7. "+
-   ((!rain.eligible||!temp.eligible)?"El candidato no se promueve a pronóstico operativo ni se muestra como serie predictiva en la gráfica.":"Aun con este resultado, permanece experimental y no tiene validación prospectiva ni instrumental.")));
+   ((!rain.eligible||!temp.eligible)?"El candidato no se promueve a pronostico operativo; solo se grafica en modo comparativo, con etiqueta experimental.":"Aun con este resultado, permanece experimental y no tiene validación prospectiva ni instrumental.")));
   target.append(E("p",null,"MAE medio del backtest: lluvia RF "+fmt(rain.meanRF,2)+" mm frente a climatología "+fmt(rain.meanBase,2)+" mm; temperatura máxima RF "+fmt(temp.meanRF,2)+" °C frente a climatología "+fmt(temp.meanBase,2)+" °C."));
   const table=E("table"),head=E("tr");
   for(const x of ["Día","MAE RF lluvia","MAE clim. lluvia","MAE RF Tmax","MAE clim. Tmax"]){head.append(E("th",null,x))}
@@ -215,11 +216,11 @@ function week(){
  const rainfall=variable==="rain",field=rainfall?"precipitacion_mm":"temperatura_max_c";
  const ext=rainfall?data.precipitation_sum:data.temperature_2m_max;
  const evidence=rfEvidence(rainfall);
- const canPlotRF=!point&&evidence.eligible;
+ const canPlotRF=!point; // Solo comparacion experimental; no pronostico operativo.
  let rows=canPlotRF?rf?.pronostico_diario_rf_experimental?.[city]||[]:[];
  if(rf?.estado!=="candidato_experimental_generado"||!Array.isArray(rows))rows=[];
  const map=new Map(rows.map(r=>[r.fecha,r[field]]));
- // No desplazar fechas: RF solo se grafica si supera el criterio de habilidad y coincide con la emisión.
+ // No desplazar fechas: RF solo se grafica si las fechas coinciden exactamente con la emision.
  const forest=days.map(d=>canPlotRF&&map.has(d)&&Number.isFinite(map.get(d))?map.get(d):NaN);
  const matched=forest.filter(Number.isFinite).length;
  const group=[{name:"Open-Meteo · externo",color:"#278eb8",values:ext}];
@@ -240,7 +241,7 @@ function week(){
   message+="RF coincide en "+matched+"/7 fechas; diferencia absoluta media entre pronósticos: "+fmt(mean)+(rainfall?" mm/día.":" °C.")+
    " Es una diferencia entre modelos, NO error comprobado contra observaciones.";
  }else if(point)message+="El punto utiliza Open-Meteo; no se extrapola RF desde otra localidad ni se afirma entrenamiento parcelario.";
- else message+="RF no se muestra porque mejora "+evidence.wins+"/7 horizontes de "+(rainfall?"lluvia":"temperatura máxima")+" frente a climatología; queda disponible solo en auditoría.";
+ else message+="RF no se grafica porque no tiene una emision que coincida con estas siete fechas; no se rellenan ausencias.";
  if(rf?.fecha_generacion_utc)message+=" RF emitido: "+rf.fecha_generacion_utc.slice(0,16)+" UTC.";
  message+=" Referencia vigente: Open-Meteo. ERA5 es referencia histórica, no pronóstico.";
  status.textContent=message+" Consultando promedio ERA5 1996–2025…";
@@ -359,15 +360,15 @@ function future(){
  const city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo",variable=$("oaf-ux16-mes-variable")?.value||"rain",root=$("oaf-ux14-monthchart"),status=$("oaf-ux14-monthstatus"),key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");if(!root||!status)return;
  const months=nextFullMonths(),rows=records()?rf?.escenarios_mensuales_rf_experimentales?.[city]||[]:[],byMonth=new Map(rows.map(r=>[r.mes,r])),rfRows=months.map(m=>byMonth.get(m)),field=variable==="rain"?"precipitacion_mm":"temperatura_media_c",unit=variable==="rain"?"mm/mes":"°C",baseline=monthlyHistory?.[city];
  const climates=months.map(m=>baseline?.[Number(m.slice(-2))]?.[variable==="rain"?"precipitacion_mm":"temperatura_c"]??NaN),evidence=monthlyRfEvidence(rf),series=[],legends=[],rfEligible=evidence.eligible&&(variable==="rain"||evidence.temperatureValidated);
- if(rfEligible&&rfRows.every(row=>Number.isFinite(row?.[field]))){series.push({name:"RF mensual validado",values:rfRows.map(row=>row[field]),color:"#aa65b4",dash:"7 4"});legends.push(["#aa65b4","Random Forest OAF · habilidad validada"])}
+ if(rf?.estado==="candidato_experimental_generado"&&rfRows.some(row=>Number.isFinite(row?.[field]))){series.push({name:"RF OAF mensual · experimental",values:rfRows.map(row=>Number.isFinite(row?.[field])?row[field]:NaN),color:"#aa65b4",dash:"7 4"});legends.push(["#aa65b4","Random Forest OAF · experimental, no validado"])}
  if(climates.some(Number.isFinite)){series.push({name:"Climatología ERA5 1996–2020",values:climates,color:"#339878"});legends.push(["#339878","ERA5 1996–2020 · referencia histórica"])}
  const cached=seasonalCache.get(city);
  if(cached?.data){const values=cached.data[variable==="rain"?"rainfall":"temperature"];if(values.some(Number.isFinite)){series.push({name:"Open-Meteo / ECMWF SEAS5 · ensamble estacional",values,color:"#237fb1"});legends.push(["#237fb1","Open-Meteo · ECMWF SEAS5 estacional (~36 km)"])}const count=values.filter(Number.isFinite).length;if(note)note.textContent=count?"Open-Meteo estacional (ECMWF SEAS5): "+count+"/6 meses completos; lluvia mensual=sumatoria de intervalos de 6 h y temperatura=media de 6 h. Pronóstico regional, sin corrección local; meses incompletos quedan vacíos.":"Open-Meteo estacional: no hay meses completos válidos en este horizonte."}
  else if(cached?.error){if(note)note.textContent="Open-Meteo estacional no disponible: "+cached.error+". Se conserva la climatología ERA5; RF no se publica sin habilidad validada."}
  else{if(note)note.textContent="Consultando Open-Meteo estacional / ECMWF SEAS5. Solo se mostrarán meses completos.";const request=++seasonToken;seasonalRequest(city).then(payload=>{if(!seasonalCache.get(city))return;const next=payload.error?{error:payload.error}:{data:seasonalMonthlyFromSixHourly(payload.hourly,months),cell:payload.cell};seasonalCache.set(city,next);if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future()}).catch(error=>{seasonalCache.set(city,{error:error.message||"Error de datos"});if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future()})}
  plot(root,months.map(m=>MONTHS[Number(m.slice(-2))-1]+" "+m.slice(2,4)),series,unit);if(key)legend(key,legends);
- const rfStatus=rfEligible?"RF superó la puerta de habilidad para la variable solicitada.":"RF no se publica como pronóstico operativo: la serie mensual no supera o no completa el backtest frente a climatología.";
- status.textContent="Localidad: "+city+". Horizonte de seis meses completos: "+months[0]+"–"+months[5]+". "+rfStatus+" Se muestran únicamente la referencia ERA5 y los meses SEAS5 que pasan control de cobertura.";
+ const rfStatus=rfEligible?"RF cumple el criterio retrospectivo minimo pero sigue siendo experimental.":"RF no supera la validacion recursiva; la curva morada es solo comparacion experimental cuando existe una emision coincidente.";
+ status.textContent="Localidad: "+city+". Horizonte de seis meses completos: "+months[0]+"–"+months[5]+". "+rfStatus+" Se muestran RF como candidato comparativo, ERA5 como referencia historica y los meses SEAS5 con cobertura completa.";
  if(!series.length)root.textContent="No hay una serie mensual completa disponible en esta consulta; no se dibujan cifras estimadas.";
 }
 function hist(){
