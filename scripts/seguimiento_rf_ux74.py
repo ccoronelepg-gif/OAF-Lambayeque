@@ -245,6 +245,11 @@ def main():
         print("SIN EMISION NUEVA: RF no disponible; se conserva el historico.")
         return
     OUT.parent.mkdir(parents=True,exist_ok=True)
+    # Crear y persistir la referencia fija aun si hoy ya existe una emision.
+    # Un fallo de descarga no debe adulterar las emisiones existentes.
+    try:daily_climatology()
+    except (requests.RequestException,OSError,ValueError,TypeError,KeyError) as err:
+        print("CLIMATOLOGIA_UX76_PENDIENTE",str(err)[:200],flush=True)
     data=json.loads(OUT.read_text(encoding="utf8")) if OUT.exists() else {
         "version":"UX74","modelo":"RF experimental","evaluacion":"as-issued diferida versus ERA5; no instrumental",
         "fuente_externa":"Open-Meteo Forecast archivado al emitir","emisiones":[]}
