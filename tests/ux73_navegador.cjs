@@ -78,6 +78,7 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
     fs.copyFileSync(file,"/tmp/oaf_ux74_"+tag+".pdf");
     return {file:download.suggestedFilename(),bytes:raw.length};
   }
+  console.log("PDF_MODULE_DIAGNOSTIC",await page.evaluate(()=>({pdfModule:typeof window.OAFReportPDF,apiA:typeof window.OAFTerritoryClimate?.toGeoJSON,geoA:window.OAFTerritoryClimate?.toGeoJSON?.()?.features?.length,scripts:[...document.scripts].filter(x=>x.src.includes("ux74")).map(x=>x.src),pageErrors:[]})),pageErrors);
   assert.ok(await page.locator("#oaf-ux74a-points").isEnabled());
   assert.ok(await page.locator("#oaf-ux74a-polygons").isEnabled());
   const aPoints=await verifyPdf("#oaf-ux74a-points","a_puntos");
