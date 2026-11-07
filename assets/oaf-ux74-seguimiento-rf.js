@@ -79,7 +79,7 @@ function render(){
   target.append(element("p","Líder PROVISIONAL en "+city+": "+name+" (MAE "+n(best[1])+unit+"). Mismo conjunto de "+complete.length+" emisiones; no es certificación instrumental."));
  }else target.append(element("p","Todavía NO se puede determinar cuál de los tres es más certero: se requieren al menos 14 emisiones completas comparables."));
  const graph=chart(rows);
- if(graph){target.append(graph);target.append(element("p","Verde: referencia climatológica ERA5 1996–2025; azul: Open-Meteo; morado discontinuo: RF. Menor MAE = menor diferencia frente a ERA5 posterior (no estaciones)."));}
+ if(graph){target.append(graph);target.append(element("p","Verde: referencia climatológica ERA5 (1996–2025 o respaldo 2021–2025 suavizado, según emisión); azul: Open-Meteo; morado discontinuo: RF. Menor MAE = menor diferencia frente a ERA5 posterior (no estaciones)."));}
  else target.append(element("p","El gráfico de las tres fuentes aparecerá al verificar al menos dos emisiones completas con los siete días. La referencia ERA5 emitida se incorpora a partir de UX76; no se inventan emisiones anteriores."));
  const table=element("table"),header=element("tr");
  for(const x of ["Emisión","MAE ERA5 clima","MAE Open-Meteo","MAE RF","Líder de emisión"]){header.append(element("th",x));}table.append(header);
