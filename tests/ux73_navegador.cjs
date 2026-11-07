@@ -69,7 +69,9 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
   // UX74 - Exportacion real de PDF bajo navegador (datos simulados SOLO en pruebas).
   async function verifyPdf(selector,tag){
     console.log("PDF_VERIFY_START",selector,tag,await page.locator(selector).isEnabled());
-    const [download]=await Promise.all([page.waitForEvent("download",{timeout:12000}),page.locator(selector).click()]);
+    let download;
+    try{[download]=await Promise.all([page.waitForEvent("download",{timeout:10000}),page.locator(selector).click()]);}
+    catch(e){console.log("PDF_DOWNLOAD_DEBUG",await page.evaluate(()=>({debug:window.__pdfDebug,reportApi:typeof window.OAFReportPDF?.export,button:document.querySelector("#oaf-ux74a-points")?.outerHTML.slice(0,600)})));throw e;}
     assert.ok(download.suggestedFilename().endsWith(".pdf"),"El enlace debe producir PDF y no GeoJSON");
     const file=await download.path(),raw=fs.readFileSync(file);
     assert.equal(raw.subarray(0,8).toString("ascii"),"%PDF-1.4");
@@ -78,6 +80,16 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
     fs.copyFileSync(file,"/tmp/oaf_ux74_"+tag+".pdf");
     return {file:download.suggestedFilename(),bytes:raw.length};
   }
+  await page.evaluate(()=>{
+    window.__pdfDebug=[];
+    const original=window.OAFReportPDF.export;
+    window.OAFReportPDF.export=async(...args)=>{
+      window.__pdfDebug.push("export: "+JSON.stringify(args));
+      try{const result=await original(...args);window.__pdfDebug.push("result "+JSON.stringify(result));return result;}
+      catch(e){window.__pdfDebug.push("error "+e.stack);throw e;}
+    };
+    document.querySelector("#oaf-ux74a-points").addEventListener("click",()=>window.__pdfDebug.push("button click event"));
+  });
   console.log("PDF_MODULE_DIAGNOSTIC",await page.evaluate(()=>({pdfModule:typeof window.OAFReportPDF,apiA:typeof window.OAFTerritoryClimate?.toGeoJSON,geoA:window.OAFTerritoryClimate?.toGeoJSON?.()?.features?.length,scripts:[...document.scripts].filter(x=>x.src.includes("ux74")).map(x=>x.src),pageErrors:[]})),pageErrors);
   assert.ok(await page.locator("#oaf-ux74a-points").isEnabled());
   assert.ok(await page.locator("#oaf-ux74a-polygons").isEnabled());
