@@ -1,0 +1,25 @@
+/* OAF UX72: leyenda y puntos de muestreo climático del módulo C */
+#oaf-ux29-scenario .oaf-ux35d-panel{padding:12px;margin:7px 0 0;border:1px solid #c3d9ce;border-radius:10px;background:#fbfdfb;color:#244a39;font-size:11.5px;line-height:1.6}
+#oaf-ux29-scenario .oaf-ux35d-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#oaf-ux29-scenario .oaf-ux35d-heading strong{font-size:12.5px;color:#17523b}
+#oaf-ux29-scenario #oaf-ux35d-refresh{padding:7px 10px;border:1px solid #a8cbb6;color:#16563c;background:#edf6f0;border-radius:7px;font-size:11px;font-weight:750;cursor:pointer}
+#oaf-ux29-scenario #oaf-ux35d-refresh:hover{background:#e2f0e7}
+#oaf-ux29-scenario #oaf-ux35d-mapstatus{padding:8px 0;color:#375e49;margin:5px 0;line-height:1.6}
+#oaf-ux29-scenario .oaf-ux35d-legend{display:flex;flex-wrap:wrap;gap:6px 12px;background:#f0f5f1;border:1px solid #deebe2;border-radius:8px;padding:9px;margin-top:6px}
+#oaf-ux29-scenario .oaf-ux35d-legend>div{width:100%;font-size:11.5px;font-weight:800;color:#275a42}
+#oaf-ux29-scenario .oaf-ux35d-legend span{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:#426553}
+#oaf-ux29-scenario .oaf-ux35d-legend i{width:12px;height:12px;border-radius:100%;border:1px solid rgba(35,75,54,.25);flex-shrink:0}
+#oaf-ux29-scenario .oaf-ux35d-legend p{width:100%;margin:5px 0 0;font-size:10.5px;color:#506d5d}
+#oaf-ux29-scenario .oaf-ux35d-point-detail{margin-top:8px;border:1px solid #d5e5dc;border-radius:8px;padding:9px;background:#fff;color:#375b48}
+#oaf-ux29-scenario .oaf-ux35d-point-detail strong{color:#145a3b;display:block;font-size:12px;margin-bottom:5px}
+#oaf-ux29-scenario .oaf-ux35d-point-detail p{margin:3px 0;font-size:10.7px;line-height:1.5}
+#oaf-ux29-scenario .oaf-ux35d-panel small{display:block;margin-top:9px;font-size:10.5px;line-height:1.55;color:#637e70}
+#oaf-ux29-scenario .oaf-ux35d-legend[hidden],#oaf-ux29-scenario .oaf-ux35d-point-detail[hidden]{display:none!important}
+#oaf-ux29-scenario #oaf-ux35d-points circle{cursor:pointer;stroke-linecap:round;paint-order:stroke}
+#oaf-ux29-scenario #oaf-ux35d-points circle:hover{stroke:#1f3e2f;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+#oaf-ux29-scenario #oaf-ux35d-points circle:focus-visible{outline:2px solid #102e22;outline-offset:3px}
+@media(max-width:650px){
+ #oaf-ux29-scenario .oaf-ux35d-panel{padding:10px}
+ #oaf-ux29-scenario .oaf-ux35d-heading{align-items:flex-start}
+ #oaf-ux29-scenario #oaf-ux35d-refresh{max-width:100%}
+}
