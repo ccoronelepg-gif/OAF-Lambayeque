@@ -17,6 +17,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 INPUT=ROOT/"datos"/"rf_experimental_ux15.json"
 OUT=ROOT/"datos"/"seguimiento_rf_ux74"/"emisiones.json"
 CLIM=ROOT/"datos"/"seguimiento_rf_ux74"/"climatologia_diaria_era5_ux76.json"
+CLIM_SHORT=ROOT/"datos"/"seguimiento_rf_ux74"/"climatologia_diaria_era5_2021_2025_ux76.json"
 ARCHIVE="https://archive-api.open-meteo.com/v1/archive"
 FORECAST="https://api.open-meteo.com/v1/forecast"
 PLACES={"Chiclayo":(-6.7714,-79.8409),"Jayanca":(-6.39278,-79.8228),
@@ -68,8 +69,15 @@ def daily_climatology():
             if data.get("periodo")=="1996-2025" and all(
                c in data.get("localidades",{}) and len(data["localidades"][c])>=365
                for c in PLACES):
-                return data["localidades"]
+                return data["localidades"],"1996-2025"
         except (OSError,ValueError,TypeError,KeyError):pass
+    if CLIM_SHORT.exists():
+        fallback=json.loads(CLIM_SHORT.read_text(encoding="utf8"))
+        if fallback.get("version")=="UX76" and fallback.get("periodo")=="2021-2025" and all(
+           c in fallback.get("localidades",{}) and len(fallback["localidades"][c])>=365
+           for c in PLACES):
+            print("ERA5_FALLBACK_EXPLORATORIO_2021_2025",flush=True)
+            return fallback["localidades"],"2021-2025 (media suavizada +/-15 dias; NO normal 30 anos)"
     output={}
     for city,(lat,lon) in PLACES.items():
         groups={}
@@ -106,12 +114,12 @@ def daily_climatology():
     CLIM.write_text(json.dumps({"version":"UX76","periodo":"1996-2025",
         "fuente":"ERA5 reanalisis, no prediccion meteorologica futura",
         "localidades":output},ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf8")
-    return output
+    return output,"1996-2025"
 
 def issued_era5_reference(forecast_dates):
     """Valores de climatologia fijados en fecha de emision para un cotejo 3-vias."""
     try:
-        histories=daily_climatology()
+        histories,periodo=daily_climatology()
     except (requests.RequestException,OSError,TypeError,ValueError,KeyError) as err:
         print("CLIMATOLOGIA_INDISPONIBLE",str(err)[:200],flush=True)
         return {city:{"estado":"no_disponible","razon":str(err)[:120]} for city in PLACES}
@@ -124,6 +132,7 @@ def issued_era5_reference(forecast_dates):
             rows.append({"fecha":date,"precipitacion_mm":val["precipitacion_mm"],
                          "temperatura_max_c":val["temperatura_max_c"]})
         result[city]=rows if len(rows)==7 else {"estado":"no_disponible","razon":"Faltan dias de referencia"}
+    result["_periodo"]=periodo
     return result
 
 def archivable(payload):
@@ -149,6 +158,7 @@ def create_entry(payload):
     dates={city:[v["fecha"] for v in values] for city,values in daily.items()}
     horizons=payload.get("metrica_diaria",{}).get("backtest_semanal_recursivo",{}).get("por_horizonte",[])
     monthly=payload.get("metrica_mensual",{}).get("evaluacion_multihorizonte",{}).get("por_horizonte",[])
+    era5_issued=issued_era5_reference(dates)
     return {
         "fecha_local":payload["fecha_local"],
         "fecha_generacion_utc":payload["fecha_generacion_utc"],
@@ -157,8 +167,8 @@ def create_entry(payload):
         "rf_diario":daily,
         "rf_mensual":payload.get("escenarios_mensuales_rf_experimentales",{}),
         "open_meteo_diario_emitido":issued_open_meteo(dates),
-        "era5_climatologia_diaria_emitida":issued_era5_reference(dates),
-        "era5_periodo_referencia":"1996-2025; solo promedio historico, no prediccion",
+        "era5_climatologia_diaria_emitida":era5_issued,
+        "era5_periodo_referencia":era5_issued.get("_periodo","no disponible; no pronostico"),
         "ajuste_2024":payload.get("metrica_diaria",{}).get("seleccion_hiperparametros_2024"),
         "resumen_backtest": {
            "lluvia_mae_rf_mm":[r.get("mae_rf_lluvia_mm") for r in horizons],
