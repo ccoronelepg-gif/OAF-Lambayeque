@@ -2,8 +2,8 @@
  * No guardar predicciones, JSON operativos ni avisos meteorológicos en CacheStorage.
  * Sitio en GitHub Pages: todo URL se resuelve relativo al scope /OAF-Lambayeque/. */
 "use strict";
-const RELEASE="oaf-pwa-shell-2026-11-06-ux68";
-const STATIC="oaf-pwa-static-2026-11-06-ux68";
+const RELEASE="oaf-pwa-shell-2026-11-06-ux69";
+const STATIC="oaf-pwa-static-2026-11-06-ux69";
 const SCOPE=new URL("./",self.registration.scope);
 const ROOT=new URL("./",SCOPE).href;
 const OFFLINE=new URL("offline.html",SCOPE).href;
@@ -15,7 +15,8 @@ const CORE=[
  "./assets/oaf-visores-ux40.css",
  "./assets/oaf-ux52-visores.js",
  "./assets/oaf-ux35c-fitosanitario.js",
- "./assets/oaf-ux35c-fitosanitario.css",
+ "./modelos/ceratitis_mango_termico_ux69.js",
+ "./assets/oaf-ux35c-fitosanitario.css","./modelos/ceratitis_mango_termico_ux69.js",
  "./assets/oaf-ux55-correcciones.js",
  "./assets/oaf-ux55-correcciones.css",
  "./assets/oaf-ux52-visores.css",
