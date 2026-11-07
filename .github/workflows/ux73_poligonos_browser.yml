@@ -1,0 +1,53 @@
+name: OAF UX73 - Poligonos A y C navegador y ciencia
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux30-territorio-unificado.js"
+      - "assets/oaf-ux73-peligros-poligonos.js"
+      - "assets/oaf-ux35d-mapa-potencial.js"
+      - "modelos/poligonos_potenciales_ux73.js"
+      - "tests/ux73_navegador.cjs"
+      - "tests/poligonos_ux73.cjs"
+      - ".github/workflows/ux73_poligonos_browser.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  polygons:
+    name: GIS, A cuatro capas, C y GeoJSON
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validar sintaxis de codigo nuevo
+        run: |
+          node --check modelos/poligonos_potenciales_ux73.js
+          node --check assets/oaf-ux73-peligros-poligonos.js
+          node --check assets/oaf-ux35d-mapa-potencial.js
+          node --check assets/oaf-ux30-territorio-unificado.js
+      - name: Tests cientificos de poligonos y precipitacion
+        run: node tests/poligonos_ux73.cjs
+      - name: Instalar Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Servir sitio entero
+        run: |
+          python3 -m http.server 8765 > /tmp/ux73-http.log 2>&1 &
+          sleep 2
+          curl -fsS http://127.0.0.1:8765/index.html >/dev/null
+      - name: Verificar cuatro capas A y superficies C en Chromium
+        run: node tests/ux73_navegador.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ux73-capturas-poligonos
+          path: |
+            /tmp/oaf_ux73_peligros_a.png
+            /tmp/oaf_ux73_fitosanitario_c.png
+          if-no-files-found: ignore
+          retention-days: 7
