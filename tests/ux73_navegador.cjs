@@ -42,6 +42,24 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
    await route.fulfill({status:200,contentType:"application/json",headers:{"access-control-allow-origin":"*"},body:JSON.stringify(response)});
   });
   await page.goto("http://127.0.0.1:8765/index.html",{waitUntil:"domcontentloaded",timeout:90000});
+  // UX76 · navegador: tres modelos presentes y precision sujeta a verificacion.
+  await page.waitForFunction(()=>window.OAFModelCompareUX76?.getStatus().benchmark===true,null,{timeout:15000});
+  const compare=await page.evaluate(()=>{
+   const api=window.OAFModelCompareUX76;
+   api.renderWeekly({city:"Chiclayo",variable:"rain",point:false,
+    dates:["2026-11-07","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13"],
+    era5:[1,1,1,1,1,1,1],open:[2,2,2,2,2,2,2],rf:[3,3,3,3,3,3,3]});
+   api.renderMonthly({city:"Chiclayo",variable:"rain",
+    months:["2026-12","2027-01","2027-02","2027-03","2027-04","2027-05"],
+    era5:[1,2,3,4,5,6],open:[4,5,6,7,8,9],rf:[3,4,5,6,7,8]});
+   return {weekly:[...document.querySelectorAll("#oaf-ux76-weekly-ranking-cards strong")].map(x=>x.textContent),
+    monthly:[...document.querySelectorAll("#oaf-ux76-monthly-ranking-cards strong")].map(x=>x.textContent),
+    warning:document.getElementById("oaf-ux76-weekly-ranking-result")?.textContent};
+  });
+  for(const names of [compare.weekly,compare.monthly])
+   assert.deepEqual(names,["ERA5","Open-Meteo","Random Forest"],"UX76: siempre las tres fuentes");
+  assert.match(compare.warning,/aún no determinable|Liderazgo provisional/i);
+  console.log("OAF_UX76_BROWSER_VERIFIED",JSON.stringify(compare));
   await page.waitForSelector("#oaf-ux30-layer-tree",{state:"attached",timeout:45000});
   await page.waitForFunction(()=>window.OAFTerritoryClimate?.getState()?.points===30&&window.OAFTerritoryClimate?.getState()?.zones>0,null,{timeout:45000});
   let summary=await page.evaluate(()=>({mode:window.OAFTerritoryClimate.getState().mode,zones:document.querySelectorAll("#oaf-ux73a-zones polygon").length,status:document.getElementById("oaf-ux73a-status")?.textContent}));
