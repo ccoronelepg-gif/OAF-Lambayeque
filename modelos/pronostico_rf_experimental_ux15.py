@@ -400,6 +400,41 @@ def predict_month(model,series,city):
     if len(horizon)!=6:raise ValueError("No se pudo obtener Nov-Abr")
     return horizon,latest
 
+def export_era5_short_reference_ux76(data):
+    """Normal diaria exploratoria ERA5 2021-2025 con ventana circular +/-15 dias.
+    Se calcula exclusivamente del histórico observado antes de 2026.
+    No implica normal OMM de 30 anos, ni pronostico numerico ERA5.
+    """
+    baseline={}
+    ref=dt.date(2000,1,1)
+    canonical=[(ref+dt.timedelta(days=i)).strftime("%m-%d") for i in range(366)]
+    def doy(md):return (dt.date(2000,int(md[:2]),int(md[3:]))-ref).days
+    for city,series in data.items():
+        rows=[]
+        for stamp,vals in series.items():
+            if "2021-01-01"<=stamp<="2025-12-31":
+                rows.append((doy(stamp[5:]),vals))
+        if len(rows)<1750:
+            raise ValueError("Faltan suficientes anos ERA5 para normal corta "+city)
+        daily={}
+        for md in canonical:
+            k=doy(md)
+            sample=[v for d,v in rows if min(abs(d-k),366-abs(d-k))<=15]
+            rain=[v["rain"] for v in sample if math.isfinite(v["rain"])]
+            tmax=[v["temp"] for v in sample if math.isfinite(v["temp"])]
+            if len(rain)<120 or len(tmax)<120:raise ValueError("Climatologia corta insuficiente "+city+" "+md)
+            daily[md]={"precipitacion_mm":round(sum(rain)/len(rain),5),
+                       "temperatura_max_c":round(sum(tmax)/len(tmax),5),
+                       "muestras_lluvia":len(rain),"muestras_tmax":len(tmax)}
+        baseline[city]=daily
+    out=ROOT/"datos"/"seguimiento_rf_ux74"/"climatologia_diaria_era5_2021_2025_ux76.json"
+    out.parent.mkdir(parents=True,exist_ok=True)
+    out.write_text(json.dumps({"version":"UX76","periodo":"2021-2025",
+      "metodo":"ERA5 diario; media movil circular +/-15 dias en 5 anos, referencia EXPLORATORIA; no normal OMM",
+      "fuente":"ERA5 reanalisis Open-Meteo, mismas series historicas descargadas por RF",
+      "localidades":baseline},ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf8")
+    print("UX76_REFERENCIA_ERA5_5_ANOS",len(baseline),flush=True)
+
 def main():
     now=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     audit={"tipo":"RandomForestRegressor original reproducible de investigación, NO modelo operativo",
@@ -422,6 +457,7 @@ def main():
         data={};urls={}
         for name in PLACES:
             data[name],urls[name]=source(name)
+        export_era5_short_reference_ux76(data)
         models=fit_daily(data)
         history,sha=from_csv()
         history=latest_monthly_era5(history,data)
