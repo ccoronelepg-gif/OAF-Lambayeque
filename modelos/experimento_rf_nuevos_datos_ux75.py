@@ -101,7 +101,7 @@ def new_features(series,origin,lead,city):
     return out+seasonal(day,city)+[lead,lead/7.0]
 
 def rows_direct(data,target_start,target_end,step):
-    x=[],yr=[],yt=[],n=0
+    x=[];yr=[];yt=[];n=0
     for city,series in data.items():
         for origin in dates_of(series,step):
             for lead in range(1,8):
@@ -117,7 +117,7 @@ def rows_direct(data,target_start,target_end,step):
     return np.asarray(x,float),np.asarray(yr,float),np.asarray(yt,float)
 
 def rows_old(data,end):
-    x=[],yr=[],yt=[]
+    x=[];yr=[];yt=[]
     for city,series in data.items():
         for day in dates_of(series):
             if day>=end:break
@@ -302,6 +302,8 @@ def main():
     except Exception as exc:
         report["estado"]="sin_validacion"
         report["error"]=str(exc)[:400]
+        import traceback
+        traceback.print_exc()
         print("ERROR",repr(exc),flush=True)
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
