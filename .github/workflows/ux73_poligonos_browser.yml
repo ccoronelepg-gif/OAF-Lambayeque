@@ -6,6 +6,10 @@ on:
       - "assets/oaf-ux30-territorio-unificado.js"
       - "assets/oaf-ux73-peligros-poligonos.js"
       - "assets/oaf-ux35d-mapa-potencial.js"
+      - "assets/oaf-ux74-reportes-pdf.js"
+      - "assets/oaf-ux74-seguimiento-rf.js"
+      - "assets/oaf-ux74.css"
+      - "assets/oaf-ux15-rf-salidas.js"
       - "modelos/poligonos_potenciales_ux73.js"
       - "tests/ux73_navegador.cjs"
       - "tests/poligonos_ux73.cjs"
@@ -28,6 +32,9 @@ jobs:
           node --check modelos/poligonos_potenciales_ux73.js
           node --check assets/oaf-ux73-peligros-poligonos.js
           node --check assets/oaf-ux35d-mapa-potencial.js
+          node --check assets/oaf-ux74-reportes-pdf.js
+          node --check assets/oaf-ux74-seguimiento-rf.js
+          node --check assets/oaf-ux15-rf-salidas.js
           node --check assets/oaf-ux30-territorio-unificado.js
       - name: Tests cientificos de poligonos y precipitacion
         run: node tests/poligonos_ux73.cjs
@@ -42,6 +49,22 @@ jobs:
           curl -fsS http://127.0.0.1:8765/index.html >/dev/null
       - name: Verificar cuatro capas A y superficies C en Chromium
         run: node tests/ux73_navegador.cjs
+      - name: Validar documentos PDF con lector independiente
+        run: |
+          python3 -m pip install pypdf
+          python3 - <<'PY'
+          import pathlib
+          from pypdf import PdfReader
+          names=("a_puntos","a_poligonos","c_puntos","c_poligonos")
+          for name in names:
+              path=pathlib.Path("/tmp/oaf_ux74_"+name+".pdf")
+              assert path.is_file() and path.stat().st_size>10000, name
+              reader=PdfReader(path)
+              assert len(reader.pages)>=2,(name,len(reader.pages))
+              page=reader.pages[0].extract_text()
+              assert "OAF" in page and "NO es un mapa oficial" in page, name
+              print("PDF_UX74_VALIDO",name,"paginas",len(reader.pages),"bytes",path.stat().st_size)
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -49,5 +72,9 @@ jobs:
           path: |
             /tmp/oaf_ux73_peligros_a.png
             /tmp/oaf_ux73_fitosanitario_c.png
+            /tmp/oaf_ux74_a_puntos.pdf
+            /tmp/oaf_ux74_a_poligonos.pdf
+            /tmp/oaf_ux74_c_puntos.pdf
+            /tmp/oaf_ux74_c_poligonos.pdf
           if-no-files-found: ignore
           retention-days: 7
