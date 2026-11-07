@@ -246,8 +246,19 @@ function init(){
  const controls=$("oaf-ux35c-controls");if(controls)controls.hidden=!toggle?.checked;
  toggle?.addEventListener("change",()=>{if(controls)controls.hidden=!toggle.checked;renderMarker()});
  setOrganisms();updatePeriod();
- $("oaf-ux35c-crop").addEventListener("change",()=>{setOrganisms();state.request++;state.result=null;$("oaf-ux35c-output").hidden=true;renderMarker()});
- $("oaf-ux35c-period").addEventListener("change",()=>{updatePeriod();state.request++;state.result=null;$("oaf-ux35c-output").hidden=true;renderMarker()});
+ const invalidate=()=>{
+  state.request++;state.result=null;
+  const output=$("oaf-ux35c-output");if(output)output.hidden=true;
+  const status=$("oaf-ux35c-status");if(status)status.textContent="Configuración modificada. Ejecuta nuevamente el escenario.";
+  const button=$("oaf-ux35c-run");if(button)button.disabled=false;
+  renderMarker();
+ };
+ $("oaf-ux35c-crop").addEventListener("change",()=>{setOrganisms();invalidate()});
+ $("oaf-ux35c-organism").addEventListener("change",invalidate);
+ $("oaf-ux35c-period").addEventListener("change",()=>{updatePeriod();invalidate()});
+ for(const id of ["oaf-ux35c-lat","oaf-ux35c-lon","oaf-ux35c-start","oaf-ux35c-end"]){
+  $(id)?.addEventListener("change",invalidate);
+ }
  const updateLocation=()=>{
   const name=$("oaf-ux35c-site").value,custom=name==="parcel",site=SITES[name];
   $("oaf-ux35c-coords").hidden=!custom;
@@ -255,7 +266,7 @@ function init(){
   $("oaf-ux35c-district").value=site?.district||"Punto de parcela";
   if(site){$("oaf-ux35c-lat").value=site.lat;$("oaf-ux35c-lon").value=site.lon}
  };
- $("oaf-ux35c-site").addEventListener("change",updateLocation);
+ $("oaf-ux35c-site").addEventListener("change",()=>{updateLocation();invalidate()});
  updateLocation();
  const map=$("oaf-ux29-forecast-map");
  if(map&&!map.dataset.ux35cPointPick){
@@ -269,6 +280,7 @@ function init(){
    if(lat< -7.3||lat> -5.1||lon< -80.8||lon> -79)return;
    $("oaf-ux35c-site").value="parcel";updateLocation();
    $("oaf-ux35c-lat").value=lat.toFixed(6);$("oaf-ux35c-lon").value=lon.toFixed(6);
+   invalidate();
    $("oaf-ux35c-status").textContent="Punto WGS84 seleccionado en el mapa: "+lat.toFixed(5)+", "+lon.toFixed(5)+". Ejecuta el escenario.";
   });
  }
