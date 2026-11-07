@@ -46,7 +46,7 @@ for(const a of ["modelos/poligonos_potenciales_ux73.js","assets/oaf-ux73-peligro
  assert.ok(idx.includes(a+"?v=20261106-ux73")||idx.includes(a+"?v=20261106-ux74"),"Falta en index "+a);
  assert.ok(sw.includes("./"+a),"Falta en PWA "+a);
 }
-assert.match(sw,/oaf-pwa-shell-2026-11-06-ux74/);
+assert.match(sw,/oaf-pwa-shell-2026-11-07-ux76/);
 assert.match(c,/oaf-ux35d-zones/);
 assert.match(c,/function polygonsGeoJSON/);
 assert.match(c,/es_riesgo_calibrado:false/);
