@@ -45,16 +45,16 @@ function activate(){
  const intro=pane.querySelector(".oaf-ux29-top");
  if(intro)intro.innerHTML='<span class="oaf-ux29-kicker">OAF-LAMBAYEQUE · ESCENARIOS DE RIESGO AGROCLIMÁTICO</span>'+
   '<h2>Visor de escenarios de riesgo agroclimático</h2>'+
-  '<p>Este visor conserva un único módulo temático para representar el riesgo fitosanitario por cultivo y organismo perjudicial. La conexión espacial está pendiente de validación.</p>';
+  '<p>Este visor conserva un único módulo temático para representar el riesgo fitosanitario por cultivo y organismo perjudicial. Su salida cartográfica es un indicador climático exploratorio, no presencia o incidencia confirmada.</p>';
  const maphead=pane.querySelector(".oaf-ux29-maphead");
  if(maphead?.querySelector("strong"))maphead.querySelector("strong").textContent="Riesgo agroclimático fitosanitario · Lambayeque";
  const tree=pane.querySelector(".oaf-ux29-tree");
  if(tree){tree.replaceChildren();buildTree(tree)}
  const map=pane.querySelector(".oaf-ux29-mapcontent");
- if(map)map.innerHTML='<div class="oaf-ux35-mapintro">La única capa temática de esta subpestaña es el riesgo agroclimático fitosanitario. Su representación espacial se habilitará cuando exista una fuente geográfica validada.</div>'+
+ if(map)map.innerHTML='<div class="oaf-ux35-mapintro">Capa C: consulta de meteorología horaria por puntos georreferenciados y cultivos seleccionados. Sin polígonos de incidencia ni riesgos calibrados.</div>'+
  '<div class="oaf-ux29-scenemap"><svg id="oaf-ux29-forecast-map" viewBox="0 0 700 380" role="img" aria-label="Mapa referencial de Lambayeque para el módulo de riesgo agroclimático fitosanitario"></svg>'+
- '<p class="oaf-ux29-mapcaption">Contorno regional de referencia. No se representan zonas, puntos ni niveles de riesgo fitosanitario mientras la capa esté pendiente de conexión.</p></div>'+
- '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Riesgo agroclimático fitosanitario · pendiente de conexión.</div>';
+ '<p class="oaf-ux29-mapcaption">Contorno regional simplificado. Los puntos indican condiciones meteorológicas potenciales; no prueban presencia del cultivo, plagas o enfermedades.</p></div>'+
+ '<div id="oaf-ux35-mapstatus" role="status" class="oaf-ux35-mapstatus">Riesgo agroclimático fitosanitario · consulta de puntos climáticos disponible.</div>';
  pane.addEventListener("change",handleChange);
  pane.addEventListener("click",handleClick);
  const svg=$("oaf-ux29-forecast-map");
@@ -88,7 +88,7 @@ function buildTree(tree){
  const lab=E("label","oaf-ux35-check"),input=E("input");input.type="checkbox";
  input.dataset.ux35Key="phytosanitary";input.checked=false;
  const span=E("span");span.textContent="Riesgo agroclimático fitosanitario";
- const hint=E("small");hint.textContent="Pendiente de conexión · no existe todavía una superficie espacial validada por cultivo y organismo perjudicial.";
+ const hint=E("small");hint.textContent="Puntos climáticos modelados; sin superficie de incidencia ni semáforo epidemiológico validado.";
  lab.append(input,span,hint);group.append(lab);tree.append(group);
 }
 function attachTerritoryFilters(){
@@ -230,6 +230,7 @@ function render(){
  const footer=SVG("text",{x:350,y:361,fill:"#3b5b50","font-size":12,"text-anchor":"middle"});
  footer.textContent="Lambayeque · contorno regional referencial";svg.append(footer);
  status();diagnosis();
+ document.dispatchEvent(new CustomEvent("oaf:scenario-map-redrawn"));
 }
 function renderLabels(){
  const svg=$("oaf-ux29-forecast-map"),group=$("oaf-ux35-labels");if(!svg||!group)return;
@@ -265,8 +266,8 @@ function applyZoomStyles(svg){
 function status(){
  const display=$("oaf-ux35-mapstatus");if(!display)return;
  display.textContent=state.on.phytosanitary?
-  "C. Riesgo agroclimático fitosanitario: pendiente de conexión. No existe un geodato validado para dibujar riesgo por cultivo y organismo perjudicial.":
-  "La única capa temática está desactivada. Su conexión geoespacial permanece pendiente.";
+  "C. Modelo de condiciones climáticas potencialmente favorables: consulta de puntos meteorológicos. No es probabilidad ni diagnóstico fitosanitario.":
+  "La capa C de condiciones climáticas está desactivada. Actívala para consultar puntos de Lambayeque.";
 }
 function diagnosis(){
  const pane=$("oaf-ux29-scenario"),target=pane?.querySelector(".oaf-ux29-diagbody");if(!target)return;
@@ -280,10 +281,10 @@ function diagnosis(){
  const selected=(window.oafUx30Context?.()?.selected||[]).map(p=>p.name).join(" ∩ ");
  section("Ámbito territorial",selected||"Región Lambayeque · mapa referencial");
  section("C. Riesgo agroclimático fitosanitario",state.on.phytosanitary?
-  "Pendiente de conexión. No se asigna nivel de riesgo ni se dibuja una superficie hasta disponer de datos espaciales validados por cultivo, organismo perjudicial y periodo.":
+  "Indicadores espaciales a partir de meteorología horaria modelada; no hay calibración de incidencia por cultivo/organismo para cada distrito.":
   "Capa desactivada. No se representa ningún escenario fitosanitario.");
- section("Disponibilidad de datos","Los indicadores meteorológicos puntuales existentes no constituyen una capa regional de riesgo fitosanitario. La humedad relativa ambiental no equivale a horas reales de humedad foliar ni confirma infección.");
- section("Criterio de representación","No se generan polígonos, puntos, probabilidades ni semáforos artificiales. La capa se habilitará cuando exista una fuente geoespacial verificable y una metodología validada para relacionar cultivo, plaga o enfermedad y condiciones agroclimáticas.");
+ section("Disponibilidad de datos","Los indicadores corresponden a coordenadas consultadas a Open-Meteo; HR del aire a 2 m no equivale a mojado foliar y grados-día de Ceratitis no demuestran presencia o infestación.");
+ section("Criterio de representación","Se representan puntos de muestreo climático, no superficies interpoladas, polígonos de infección, probabilidades ni semáforos de riesgo no calibrados.");
 }
 function meta(){
  const area=$("oaf-ux30-metadatos")||document.querySelector('[data-page="verificaciones"]');
