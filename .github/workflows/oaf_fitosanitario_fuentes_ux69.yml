@@ -1,0 +1,29 @@
+name: OAF - Verificar fuentes reales del modulo C
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "modelos/ceratitis_mango_termico_ux69.js"
+      - "assets/oaf-ux35c-fitosanitario.js"
+      - "tests/consulta_meteorologica_ux69.cjs"
+      - ".github/workflows/oaf_fitosanitario_fuentes_ux69.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proveedores:
+    name: Motupe, Olmos y ERA5-Land
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+      - name: Instalar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verificar respuestas reales de los proveedores
+        run: node tests/consulta_meteorologica_ux69.cjs
