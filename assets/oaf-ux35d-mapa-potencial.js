@@ -29,15 +29,15 @@ function showPanel(){
   const panel=document.createElement("section");
   panel.id="oaf-ux35d-panel";panel.className="oaf-ux35d-panel";
   panel.innerHTML='<div class="oaf-ux35d-heading"><strong>Mapa de condiciones potencialmente favorables · 7 días</strong>'+
-   '<div class="oaf-ux35d-actions"><button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button><button id="oaf-ux35d-export" type="button" disabled>Exportar puntos</button><button id="oaf-ux35d-polygons-export" type="button" disabled>Exportar polígonos</button></div></div>'+
+   '<div class="oaf-ux35d-actions"><button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button><button id="oaf-ux35d-export" type="button" disabled>Descargar puntos PDF</button><button id="oaf-ux35d-polygons-export" type="button" disabled>Descargar polígonos PDF</button></div></div>'+
    '<p id="oaf-ux35d-mapstatus" role="status" aria-live="polite">Marca la capa C para consultar la malla de puntos meteorológicos.</p>'+
    '<div id="oaf-ux35d-legend" class="oaf-ux35d-legend" hidden></div>'+
    '<div id="oaf-ux35d-point-detail" class="oaf-ux35d-point-detail" hidden></div>'+
    '<small>Fuente: Open-Meteo Forecast (temperatura y HR a 2 m), coordenadas WGS84. El contorno está simplificado; los polígonos representan cobertura meteorológica aproximada, no delimitaciones validadas de infección o cultivo.</small>';
   const mapNode=mapcol.querySelector(".oaf-ux29-scenemap");if(mapNode)mapNode.after(panel);else mapcol.append(panel);
   $("oaf-ux35d-refresh").addEventListener("click",()=>refresh(true));
-  $("oaf-ux35d-export").addEventListener("click",exportGeoJSON);
-   $("oaf-ux35d-polygons-export").addEventListener("click",exportPolygons);
+  $("oaf-ux35d-export").addEventListener("click",()=>window.OAFReportPDF?.export("C","puntos"));
+   $("oaf-ux35d-polygons-export").addEventListener("click",()=>window.OAFReportPDF?.export("C","poligonos"));
  }
  return true
 }
