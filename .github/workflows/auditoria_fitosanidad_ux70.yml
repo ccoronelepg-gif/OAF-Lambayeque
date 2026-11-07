@@ -1,0 +1,30 @@
+name: OAF - Integridad auditoria cientifica fitosanitaria UX70
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "datos/sanidad_agroexportadora_2026.json"
+      - "datos/fitosanitario_modelos_ux69.json"
+      - "datos/validacion_cientifica_fitosanidad_ux70.json"
+      - "tests/auditoria_fitosanidad_ux70.cjs"
+      - ".github/workflows/auditoria_fitosanidad_ux70.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integridad:
+    name: Correspondencia del inventario 6 cultivos / 23 fichas
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Comprobar JSON y consistencia de identidades, taxones y registros
+        run: |
+          node --check tests/auditoria_fitosanidad_ux70.cjs
+          node tests/auditoria_fitosanidad_ux70.cjs
