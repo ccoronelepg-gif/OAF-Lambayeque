@@ -23,3 +23,7 @@
  #oaf-ux29-scenario .oaf-ux35d-heading{align-items:flex-start}
  #oaf-ux29-scenario #oaf-ux35d-refresh{max-width:100%}
 }
+
+#oaf-ux29-scenario .oaf-ux35d-actions{display:flex;gap:7px;flex-wrap:wrap}
+#oaf-ux29-scenario #oaf-ux35d-export{padding:7px 10px;border:1px solid #a7c6df;border-radius:7px;background:#edf6fc;color:#1e536b;font-size:11px;font-weight:750;cursor:pointer}
+#oaf-ux29-scenario #oaf-ux35d-export:disabled{opacity:.45;cursor:not-allowed}
