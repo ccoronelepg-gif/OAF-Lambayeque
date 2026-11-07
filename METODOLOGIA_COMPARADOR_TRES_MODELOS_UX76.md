@@ -12,6 +12,12 @@
 
 Las tres aparecen en leyendas y tarjetas de la web y de su instalación PWA. Cuando un origen falla o la fecha no coincide con la emisión, se indica **sin dato** y no se inventan curvas. Los gráficos semanales son de **7 días**, los mensuales de **6 meses completos**.
 
+### Disponibilidad de la referencia ERA5 diaria
+
+El proveedor de archivo ERA5 no respondió dentro del tiempo de consulta para la referencia completa de **1996–2025**. Para no inventar datos ni retirar la comparación, UX76 publica una **referencia exploratoria de respaldo de 2021–2025**, calculada directamente de los 1.826 días de ERA5 por localidad ya descargados en el entrenamiento, con una ventana circular de **±15 días calendario** (cinco años). Se muestran el período y el método cuando se utiliza ese respaldo; **no es una normal OMM de 30 años**. El archivo de respaldo tiene **366 valores por localidad** y está en `datos/seguimiento_rf_ux74/climatologia_diaria_era5_2021_2025_ux76.json`.
+
+Para el cálculo posterior de errores, los valores climatológicos se congelan al momento de las nuevas emisiones y se registran con su período exacto. Se conserva como prioridad el archivo 1996–2025 cuando llegue a estar disponible. El comparador nunca debe rotular el respaldo 2021–2025 como una normal de 30 años.
+
 ## 2. ¿Cuál es el modelo más certero?
 
 Se distingue entre **precisión retrospectiva** y **precisión prospectiva de emisiones originales**:
