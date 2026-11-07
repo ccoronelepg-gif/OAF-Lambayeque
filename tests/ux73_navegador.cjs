@@ -1,14 +1,14 @@
 /* UX73: prueba del mapa REAL A y C con API Open-Meteo simulada,
  * para separar visualización de disponibilidad de terceros. */
 "use strict";
-const assert=require("node:assert/strict"),{chromium}=require("playwright");
+const assert=require("node:assert/strict"),{chromium}=require("playwright"),fs=require("node:fs");
 const fmt=x=>String(x).padStart(2,"0");
 const date=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
 (async()=>{
  const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
  try{
-  const page=await browser.newPage({viewport:{width:1400,height:1000}});
+  const page=await browser.newPage({viewport:{width:1400,height:1000},acceptDownloads:true});
   const pageErrors=[];page.on("pageerror",e=>pageErrors.push(e.message));
   await page.route("https://sig.cenepred.gob.pe/**",route=>route.abort("failed"));
   await page.route("https://idesep.senamhi.gob.pe/**",route=>route.abort("failed"));
@@ -64,6 +64,21 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
   });
   await page.waitForFunction(()=>window.OAFTerritoryClimate?.getState()?.mode==="heat"&&document.querySelectorAll("#oaf-ux73a-zones polygon").length>30,null,{timeout:25000});
   assert.match(await page.locator("#oaf-ux73a-legend").innerText(),/Temperatura máxima/i);
+  // UX74 - Exportacion real de PDF bajo navegador (datos simulados SOLO en pruebas).
+  async function verifyPdf(selector,tag){
+    const [download]=await Promise.all([page.waitForEvent("download",{timeout:30000}),page.locator(selector).click()]);
+    assert.ok(download.suggestedFilename().endsWith(".pdf"),"El enlace debe producir PDF y no GeoJSON");
+    const file=await download.path(),raw=fs.readFileSync(file);
+    assert.equal(raw.subarray(0,8).toString("ascii"),"%PDF-1.4");
+    assert.ok(raw.toString("latin1").includes("startxref")&&raw.toString("latin1").includes("%%EOF"));
+    assert.ok(raw.length>10000,"PDF incompleto");
+    fs.copyFileSync(file,"/tmp/oaf_ux74_"+tag+".pdf");
+    return {file:download.suggestedFilename(),bytes:raw.length};
+  }
+  assert.ok(await page.locator("#oaf-ux74a-points").isEnabled());
+  assert.ok(await page.locator("#oaf-ux74a-polygons").isEnabled());
+  const aPoints=await verifyPdf("#oaf-ux74a-points","a_puntos");
+  const aZones=await verifyPdf("#oaf-ux74a-polygons","a_poligonos");
   assert.ok(pageErrors.every(e=>!e.includes("heatWmsUrl")),"El mapa no debe arrojar ReferenceError por WMS");
   await page.screenshot({path:"/tmp/oaf_ux73_peligros_a.png",fullPage:true});
   // Activar módulo C dentro del portal, sin fixture.
@@ -80,9 +95,12 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
   assert.ok(collection.features.every(f=>f.geometry.type==="Polygon"&&f.properties.es_riesgo_calibrado===false));
   assert.ok(await page.locator("#oaf-ux35d-polygons-export").isEnabled());
   assert.equal(await page.locator("#oaf-ux35d-zones polygon").count(),collection.features.length);
+  const cPoints=await verifyPdf("#oaf-ux35d-export","c_puntos");
+  const cZones=await verifyPdf("#oaf-ux35d-polygons-export","c_poligonos");
   await page.screenshot({path:"/tmp/oaf_ux73_fitosanitario_c.png",fullPage:true});
   console.log(JSON.stringify({version:"UX73",page:"index.html integral",
    floodContextPolygons:summary.zones,areaA_modes:["flood","rainIntense","drought","heat"],
+   pdfDownloads:{aPoints,aZones,cPoints,cZones},
    fitosanitaryPolygons:collection.features.length,dailyCalls,hourlyCalls,
    geojsonNoValidatedRisks:collection.features.every(x=>x.properties.es_riesgo_calibrado===false),
    heatWmsReferenceError:pageErrors.some(x=>x.includes("heatWmsUrl")),
