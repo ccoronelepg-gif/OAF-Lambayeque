@@ -1,0 +1,334 @@
+{
+  "fase": "UX75",
+  "fecha": "2026-11-07T05:15:05.257878+00:00",
+  "fecha_maxima_solicitada_era5": "2026-10-31",
+  "estado": "evaluacion_completa",
+  "operativo_certificado": false,
+  "alertas_automaticas": false,
+  "descripcion": "Benchmark nuevo RF directo multivariable contra RF incumbente autoregresivo y climatologia",
+  "admisibilidad": "Solo candidatatura investigacion; no recalibra mapa fitosanitario ni activa decisiones.",
+  "fuente": "ERA5 reanalisis Open-Meteo, NO observacion de estacion.",
+  "separacion_temporal": "Hiperparametros validados en 2024, pruebas en 2025 y 2026, sin variables futuras",
+  "ultimas_fechas": {
+    "Chiclayo": "2026-10-31",
+    "Jayanca": "2026-10-31",
+    "Motupe": "2026-10-31",
+    "Olmos": "2026-10-31"
+  },
+  "n_registros": {
+    "Chiclayo": 2130,
+    "Jayanca": 2130,
+    "Motupe": 2130,
+    "Olmos": 2130
+  },
+  "url_fuente": {
+    "Chiclayo": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714&longitude=-79.8409&start_date=2021-01-01&end_date=2026-10-31&timezone=America%2FLima&models=era5&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum",
+    "Jayanca": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278&longitude=-79.8228&start_date=2021-01-01&end_date=2026-10-31&timezone=America%2FLima&models=era5&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum",
+    "Motupe": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083&longitude=-79.7142&start_date=2021-01-01&end_date=2026-10-31&timezone=America%2FLima&models=era5&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum",
+    "Olmos": "https://archive-api.open-meteo.com/v1/archive?latitude=-5.98825&longitude=-79.74723&start_date=2021-01-01&end_date=2026-10-31&timezone=America%2FLima&models=era5&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean%2Crelative_humidity_2m_mean%2Cwind_speed_10m_mean%2Cshortwave_radiation_sum"
+  },
+  "seleccion_2024": {
+    "candidatos": [
+      {
+        "params": {
+          "n_estimators": 120,
+          "max_depth": 10,
+          "min_samples_leaf": 12
+        },
+        "mae_lluvia_2024": 1.2326960527162065,
+        "mae_tmax_2024": 1.03800136498879
+      },
+      {
+        "params": {
+          "n_estimators": 160,
+          "max_depth": 12,
+          "min_samples_leaf": 9
+        },
+        "mae_lluvia_2024": 1.2513223043088677,
+        "mae_tmax_2024": 1.0368414388516165
+      },
+      {
+        "params": {
+          "n_estimators": 180,
+          "max_depth": 8,
+          "min_samples_leaf": 16
+        },
+        "mae_lluvia_2024": 1.2513257705789576,
+        "mae_tmax_2024": 1.039919699366962
+      }
+    ],
+    "mejor_lluvia": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 12
+    },
+    "mejor_tmax": {
+      "n_estimators": 160,
+      "max_depth": 12,
+      "min_samples_leaf": 9
+    }
+  },
+  "pruebas": {
+    "2025": {
+      "ano_prueba": 2025,
+      "origenes": 52,
+      "pares": 364,
+      "metodo": "siete dias sin variables futuras, modelado directo vs incumbente recursivo",
+      "metricas": {
+        "direct": {
+          "rain": {
+            "mae": 2.4935,
+            "rmse": 6.2775,
+            "sesgo": -1.2992,
+            "mae_por_horizonte": [
+              3.6349,
+              2.9304,
+              2.7898,
+              1.4483,
+              1.7117,
+              3.0285,
+              1.9112
+            ]
+          },
+          "temp": {
+            "mae": 1.0113,
+            "rmse": 1.2942,
+            "sesgo": 0.1709,
+            "mae_por_horizonte": [
+              0.8786,
+              1.1719,
+              1.4516,
+              1.0303,
+              0.6682,
+              0.9679,
+              0.9103
+            ]
+          }
+        },
+        "incumbente": {
+          "rain": {
+            "mae": 2.3568,
+            "rmse": 5.953,
+            "sesgo": -1.1928,
+            "mae_por_horizonte": [
+              3.6228,
+              2.7385,
+              2.6557,
+              1.2378,
+              1.6289,
+              2.8831,
+              1.7307
+            ]
+          },
+          "temp": {
+            "mae": 1.0787,
+            "rmse": 1.3658,
+            "sesgo": 0.1949,
+            "mae_por_horizonte": [
+              0.9368,
+              1.3123,
+              1.4415,
+              1.119,
+              0.7756,
+              1.0411,
+              0.9244
+            ]
+          }
+        },
+        "climatologia": {
+          "rain": {
+            "mae": 2.1829,
+            "rmse": 5.2339,
+            "sesgo": -0.2899,
+            "mae_por_horizonte": [
+              3.266,
+              2.2012,
+              2.0262,
+              1.4739,
+              1.7177,
+              2.8074,
+              1.7878
+            ]
+          },
+          "temp": {
+            "mae": 0.9528,
+            "rmse": 1.2242,
+            "sesgo": 0.2556,
+            "mae_por_horizonte": [
+              0.7215,
+              1.0738,
+              1.3176,
+              0.9014,
+              0.7021,
+              1.0018,
+              0.9518
+            ]
+          }
+        }
+      },
+      "comparacion": {
+        "rain": {
+          "reduccion_mae_vs_incumbente_pct": -5.8,
+          "reduccion_mae_vs_climatologia_pct": -14.23,
+          "horizontes_ganados_vs_incumbente": 0,
+          "horizontes_ganados_vs_climatologia": 2,
+          "mejora_robusta": false
+        },
+        "temp": {
+          "reduccion_mae_vs_incumbente_pct": 6.25,
+          "reduccion_mae_vs_climatologia_pct": -6.14,
+          "horizontes_ganados_vs_incumbente": 6,
+          "horizontes_ganados_vs_climatologia": 3,
+          "mejora_robusta": false
+        }
+      }
+    },
+    "2026": {
+      "ano_prueba": 2026,
+      "origenes": 44,
+      "pares": 308,
+      "metodo": "siete dias sin variables futuras, modelado directo vs incumbente recursivo",
+      "metricas": {
+        "direct": {
+          "rain": {
+            "mae": 4.1142,
+            "rmse": 11.2735,
+            "sesgo": -3.2737,
+            "mae_por_horizonte": [
+              3.6454,
+              4.7054,
+              5.1839,
+              1.9686,
+              5.428,
+              4.5394,
+              3.3287
+            ]
+          },
+          "temp": {
+            "mae": 1.1088,
+            "rmse": 1.4396,
+            "sesgo": -0.027,
+            "mae_por_horizonte": [
+              1.3647,
+              1.1336,
+              1.1206,
+              1.1092,
+              0.8212,
+              1.2509,
+              0.9615
+            ]
+          }
+        },
+        "incumbente": {
+          "rain": {
+            "mae": 4.1042,
+            "rmse": 11.3423,
+            "sesgo": -3.3275,
+            "mae_por_horizonte": [
+              3.6762,
+              4.9735,
+              5.2733,
+              1.8667,
+              5.4155,
+              4.3431,
+              3.1808
+            ]
+          },
+          "temp": {
+            "mae": 1.3043,
+            "rmse": 1.6298,
+            "sesgo": -0.4015,
+            "mae_por_horizonte": [
+              1.4766,
+              1.3332,
+              1.1597,
+              1.4156,
+              1.0203,
+              1.3315,
+              1.393
+            ]
+          }
+        },
+        "climatologia": {
+          "rain": {
+            "mae": 4.3487,
+            "rmse": 10.7434,
+            "sesgo": -2.0951,
+            "mae_por_horizonte": [
+              3.5188,
+              4.8376,
+              5.9718,
+              2.43,
+              5.1913,
+              4.4456,
+              4.0457
+            ]
+          },
+          "temp": {
+            "mae": 2.8549,
+            "rmse": 3.2137,
+            "sesgo": -2.026,
+            "mae_por_horizonte": [
+              3.4046,
+              3.0159,
+              2.7685,
+              2.8162,
+              2.5169,
+              2.6424,
+              2.8199
+            ]
+          }
+        }
+      },
+      "comparacion": {
+        "rain": {
+          "reduccion_mae_vs_incumbente_pct": -0.24,
+          "reduccion_mae_vs_climatologia_pct": 5.39,
+          "horizontes_ganados_vs_incumbente": 3,
+          "horizontes_ganados_vs_climatologia": 4,
+          "mejora_robusta": false
+        },
+        "temp": {
+          "reduccion_mae_vs_incumbente_pct": 14.99,
+          "reduccion_mae_vs_climatologia_pct": 61.16,
+          "horizontes_ganados_vs_incumbente": 7,
+          "horizontes_ganados_vs_climatologia": 7,
+          "mejora_robusta": true
+        }
+      }
+    }
+  },
+  "reentrenamiento_final": {
+    "ultimo_dato_incorporado": "2026-10-31",
+    "ejemplos_supervisados": 11836,
+    "dimensiones_predictoras": 55,
+    "modelo_guardado_en_artefacto": "rf_candidato_multivariable_ux75.joblib",
+    "sha256_modelo": "b16479cdaf4a5daed07c625b3515ac18637d881efd8e0aeb124cb515ea3a934f",
+    "publicado_como_operativo": false,
+    "caracteristicas": {
+      "variables": [
+        "precipitacion",
+        "temperatura_maxima",
+        "temperatura_media",
+        "humedad_relativa_media",
+        "viento_medio",
+        "radiacion_solar_diaria"
+      ],
+      "restriccion": "Solo variables del dia origen y previas"
+    }
+  },
+  "comparacion_final": {
+    "rain": {
+      "mejora_2025": false,
+      "mejora_2026": false,
+      "habilitar_piloto": false,
+      "criterio": "MAE inferior a RF actual y climatologia; 5/7 horizontes mejores que RF actual en ambos anos"
+    },
+    "temp": {
+      "mejora_2025": false,
+      "mejora_2026": true,
+      "habilitar_piloto": false,
+      "criterio": "MAE inferior a RF actual y climatologia; 5/7 horizontes mejores que RF actual en ambos anos"
+    }
+  }
+}
