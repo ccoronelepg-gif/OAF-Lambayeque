@@ -1,0 +1,32 @@
+name: OAF - UX72 mapa potencial climático fitosanitario
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux35d-mapa-potencial.js"
+      - "assets/oaf-ux35d-mapa-potencial.css"
+      - "modelos/mapa_potencial_fitosanitario_ux72.js"
+      - "tests/mapa_potencial_ux72.cjs"
+      - ".github/workflows/mapa_potencial_ux72.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cartografia:
+    name: GIS, cálculo fisiológico y Open-Meteo múltiple
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validar sintaxis de la capa y del motor
+        run: |
+          node --check modelos/mapa_potencial_fitosanitario_ux72.js
+          node --check assets/oaf-ux35d-mapa-potencial.js
+          node --check tests/mapa_potencial_ux72.cjs
+      - name: Geometría y reglas científicas
+        run: node tests/mapa_potencial_ux72.cjs
+      - name: Comprobar la API real de pronóstico para los 30 puntos
+        run: node tests/mapa_potencial_ux72.cjs --live
