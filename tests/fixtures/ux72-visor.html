@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prueba independiente OAF C · UX72</title>
+<link rel="stylesheet" href="../../assets/oaf-ux35-escenarios-multicapas.css">
+<link rel="stylesheet" href="../../assets/oaf-ux35c-fitosanitario.css">
+<link rel="stylesheet" href="../../assets/oaf-ux35d-mapa-potencial.css">
+<style>body{font-family:system-ui,Arial,sans-serif;margin:0;padding:16px;background:#f5faf8}#oaf-ux29-scenario{max-width:1000px;margin:auto;background:white;padding:12px;border-radius:12px}#oaf-ux29-scenario .oaf-ux29-tree{max-width:280px}#oaf-ux29-scenario .oaf-ux29-mapcontent{max-width:680px}</style>
+</head><body>
+<div id="oaf-escenarios-riesgo-agroclimatico"><div id="oaf-ux29-scenario">
+ <div class="oaf-ux29-top"></div>
+ <div class="oaf-ux29-maphead"><strong>Mapa de prueba</strong></div>
+ <div class="oaf-ux29-layout"><div class="oaf-ux29-tree"></div><div class="oaf-ux29-mapcontent"></div><div class="oaf-ux29-diagbody"></div></div>
+</div></div>
+<script>
+// Contorno de prueba: no representa el límite administrativo real.
+// El mapa real utiliza el archivo WGS84 simplificado del repositorio.
+const box={minLon:-80.6,maxLon:-79.2,minLat:-7.2,maxLat:-5.6};
+const s={bounds:box,rings:[[[-80.5,-5.7],[-79.3,-5.7],[-79.3,-7.1],[-80.5,-7.1],[-80.5,-5.7]]],
+ x(lon){return 100+(lon+80.5)/1.2*490},y(lat){return 38+(-5.7-lat)/1.4*280}};
+window.oafUx29ScenarioApi={get(){return{scene:s}}};
+</script>
+<script src="../../assets/oaf-ux35-escenarios-multicapas.js"></script>
+<script src="../../modelos/ceratitis_mango_termico_ux69.js"></script>
+<script src="../../assets/oaf-ux35c-fitosanitario.js"></script>
+<script src="../../modelos/mapa_potencial_fitosanitario_ux72.js"></script>
+<script src="../../assets/oaf-ux35d-mapa-potencial.js"></script>
+</body></html>
