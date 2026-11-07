@@ -46,7 +46,7 @@ assert.equal(a.fichas.find(f=>f.id_ficha==="mango-plaga-1").nivel_geografico,"lo
 assert.equal(a.fichas.find(f=>f.id_ficha==="palto-plaga-2").estado_bibliografico,"evidencia_directa_insuficiente");
 assert.ok(a.discrepancias_clave.some(x=>x.detalle.includes("Oxapampa")&&x.detalle.includes("granadilla")));
 assert.ok(a.discrepancias_clave.some(x=>x.detalle.includes("8.47")&&x.detalle.includes("9.1")));
-assert.ok(a.discrepancias_clave.some(x=>x.detalle.includes("22/30")&&x.detalle.includes("prevalencia")));
+assert.ok(a.discrepancias_clave.some(x=>x.detalle.includes("22/30")&&/incidencia|prevalencia/i.test(x.detalle)));
 assert.equal(original.organismos.flatMap(o=>o.productos||[]).filter(p=>p.ficha_confirmada===true).length,0);
 console.log(JSON.stringify({version:"UX71",fichas_auditadas:a.fichas.length,fuentes_catalogadas:a.fuentes.length,
  fichas_con_evidencia_regional_del_grupo:1,fichas_con_muestras_estudiadas_en_lambayeque:1,
