@@ -72,21 +72,26 @@ def daily_climatology():
         except (OSError,ValueError,TypeError,KeyError):pass
     output={}
     for city,(lat,lon) in PLACES.items():
-        payload=get(ARCHIVE,{"latitude":lat,"longitude":lon,
-           "start_date":"1996-01-01","end_date":"2025-12-31",
-           "daily":",".join(FIELDS),"models":"era5","timezone":"America/Lima"})
-        daily=payload.get("daily",{})
-        dates=daily.get("time",[])
-        rain=daily.get("precipitation_sum",[])
-        temp=daily.get("temperature_2m_max",[])
-        if not(len(dates)==len(rain)==len(temp)) or len(dates)<10000:
-            raise ValueError("Climatologia historica incompleta en "+city)
         groups={}
-        for date,p,t in zip(dates,rain,temp):
-            if date<"1996-01-01" or date>"2025-12-31":continue
-            g=groups.setdefault(date[5:],{"rain":[],"temp":[]})
-            if is_number(p) and p>=0:g["rain"].append(float(p))
-            if is_number(t):g["temp"].append(float(t))
+        # Evitar timeout de ERA5 de 30 anos en una unica llamada HTTPS.
+        # Bloques de cinco anos; 1996–2025 permanece fijo y no hay 2026.
+        for year_start in (1996,2001,2006,2011,2016,2021):
+            first=f"{year_start}-01-01"
+            last=f"{year_start+4}-12-31"
+            payload=get(ARCHIVE,{"latitude":lat,"longitude":lon,
+               "start_date":first,"end_date":last,
+               "daily":",".join(FIELDS),"models":"era5","timezone":"America/Lima"})
+            daily=payload.get("daily",{})
+            dates=daily.get("time",[])
+            rain=daily.get("precipitation_sum",[])
+            temp=daily.get("temperature_2m_max",[])
+            if not(len(dates)==len(rain)==len(temp)) or len(dates)<1800:
+                raise ValueError("Climatologia historica incompleta en "+city+" periodo "+str(year_start))
+            for date,p,t in zip(dates,rain,temp):
+                if not(first<=date<=last):continue
+                g=groups.setdefault(date[5:],{"rain":[],"temp":[]})
+                if is_number(p) and p>=0:g["rain"].append(float(p))
+                if is_number(t):g["temp"].append(float(t))
         city_values={}
         for md,g in groups.items():
             if len(g["rain"])<20 or len(g["temp"])<20:continue
