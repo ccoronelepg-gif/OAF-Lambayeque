@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "modelos/pronostico_rf_experimental_ux15.py"
+      - "scripts/seguimiento_rf_ux74.py"
       - ".github/workflows/oaf_rf_experimental_ux15.yml"
 permissions:
   contents: write
@@ -25,7 +26,7 @@ jobs:
       - name: Instalar herramientas NumPy, scikit-learn y solicitudes HTTPS
         run: python -m pip install numpy scikit-learn requests
       - name: Verificación estática de la implementación en Python
-        run: python -m py_compile modelos/pronostico_rf_experimental_ux15.py
+        run: python -m py_compile modelos/pronostico_rf_experimental_ux15.py scripts/seguimiento_rf_ux74.py
       - name: Entrenar RF y comprobar pronósticos solo como candidatos
         run: python modelos/pronostico_rf_experimental_ux15.py
       - name: Verificar procedencia y que nunca se activen alertas
@@ -61,11 +62,14 @@ jobs:
               assert j['estado']=='no_disponible'
           print("ESTADO_CANDIDATO_RF:",j['estado'])
           PY
+      - name: Conservar emisiones para auditoria as-issued y contraste posterior
+        run: python scripts/seguimiento_rf_ux74.py
       - name: Publicar resultado experimental fechado sin promover modelo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add datos/rf_experimental_ux15.json
+          if [ -f datos/seguimiento_rf_ux74/emisiones.json ]; then git add datos/seguimiento_rf_ux74/emisiones.json; fi
           if git diff --cached --quiet; then
             echo "Sin cambios en informe RF."
           else
