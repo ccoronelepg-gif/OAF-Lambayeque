@@ -179,9 +179,9 @@ test("UX54: portada concisa, histórico ampliado, estaciones, relieve y consulta
 
 test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin modelos genéricos",()=>{
   const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
-  assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux68/);
+  assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux69/);
   assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux68/);
-  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux68/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux69/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
   assert.match(js,/Botrytis cinerea/);
@@ -215,4 +215,52 @@ test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin mode
   const missing={time:time.slice(),...Object.fromEntries(Object.entries(vars).map(([k,v])=>[k,v.slice()]))};
   missing.relative_humidity_2m[50]=null;
   assert.throws(()=>core.evaluateForecast(missing),/Dato ausente/);
+});
+
+test("UX69: Ceratitis capitata en mango usa grados-día propios, sin semáforo de infestación",()=>{
+ const html=read("index.html"),sw=read("sw.js"),src=read("modelos/ceratitis_mango_termico_ux69.js");
+ const main=read("assets/oaf-ux35c-fitosanitario.js");
+ const registry=JSON.parse(read("datos/fitosanitario_modelos_ux69.json"));
+ assert.match(html,/ceratitis_mango_termico_ux69\\.js\\?v=20261106-ux69/);
+ assert.ok(html.indexOf("modelos/ceratitis_mango_termico_ux69.js")<html.indexOf("assets/oaf-ux35c-fitosanitario.js"),
+   "El núcleo térmico debe cargarse antes del módulo C");
+ assert.match(sw,/\.\/modelos\/ceratitis_mango_termico_ux69\.js/);
+ assert.equal(registry.crops.length,7);
+ assert.equal(registry.models.length,2);
+ assert.ok(registry.models.every(m=>m.calibration.status.includes("sin_")&&m.sources.length));
+ assert.ok(registry.pending.some(m=>m.crop_id==="cafe"&&m.taxon==="Hemileia vastatrix"));
+ assert.match(main,/id:"ceratitis"/);
+ assert.match(main,/hourlyVariables:isThermal\?\["temperature_2m"\]:VARS/);
+ assert.match(main,/renderThermalOutput/);
+ assert.match(main,/Información insuficiente para clasificar el riesgo/);
+ const context={window:{},Date,Map,Number,Array,Math};
+ runInNewContext(src,context,{filename:"modelos/ceratitis_mango_termico_ux69.js"});
+ const core=context.window.OAFCeratitisThermal;
+ assert.equal(core.MODEL.baseC,9.1);
+ assert.equal(core.MODEL.referenceDD,341);
+ assert.equal(core.MODEL.calibratedInLambayeque,false);
+ const time=[],temperature_2m=[];
+ for(let d=0;d<9;d++){
+  const dt=new Date("2026-11-06T12:00:00Z");dt.setUTCDate(dt.getUTCDate()+d);
+  const day=dt.toISOString().slice(0,10);
+  for(let hour=0;hour<24;hour++){
+   time.push(day+"T"+String(hour).padStart(2,"0")+":00");
+   temperature_2m.push(25);
+  }
+ }
+ const week=core.evaluate({time,temperature_2m},{mode:"forecast",today:"2026-11-06"});
+ assert.equal(week.indicator,"thermal");
+ assert.equal(week.days,7);
+ assert.ok(Math.abs(week.accumulatedDD-111.3)<1e-8);
+ assert.ok(week.daily.every(d=>Math.abs(d.gdd-15.9)<1e-8));
+ assert.equal(week.risk,undefined,"No se debe fabricar riesgo de infestación");
+ const historical=core.evaluate({time,temperature_2m},{mode:"history",today:"2026-11-20",start:"2026-11-07",end:"2026-11-09"});
+ assert.equal(historical.days,3);
+ assert.ok(Math.abs(historical.accumulatedDD-47.7)<1e-8);
+ const nullSeries=temperature_2m.slice();nullSeries[35]=null;
+ assert.throws(()=>core.evaluate({time,temperature_2m:nullSeries},{mode:"forecast",today:"2026-11-06"}),/Temperatura faltante/);
+ const hotSeries=temperature_2m.slice();for(let h=24;h<48;h++)hotSeries[h]=35;
+ assert.throws(()=>core.evaluate({time,temperature_2m:hotSeries},{mode:"forecast",today:"2026-11-06"}),/fuera del intervalo experimental/);
+ const incomplete={time:time.slice(1),temperature_2m:temperature_2m.slice(1)};
+ assert.throws(()=>core.evaluate(incomplete,{mode:"history",today:"2026-11-20",start:"2026-11-06",end:"2026-11-08"}),/Faltan horas/);
 });
