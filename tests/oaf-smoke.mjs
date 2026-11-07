@@ -221,7 +221,7 @@ test("UX69: Ceratitis capitata en mango usa grados-día propios, sin semáforo d
  const html=read("index.html"),sw=read("sw.js"),src=read("modelos/ceratitis_mango_termico_ux69.js");
  const main=read("assets/oaf-ux35c-fitosanitario.js");
  const registry=JSON.parse(read("datos/fitosanitario_modelos_ux69.json"));
- assert.match(html,/ceratitis_mango_termico_ux69\\.js\\?v=20261106-ux69/);
+ assert.match(html,/ceratitis_mango_termico_ux69\.js\?v=20261106-ux69/);
  assert.ok(html.indexOf("modelos/ceratitis_mango_termico_ux69.js")<html.indexOf("assets/oaf-ux35c-fitosanitario.js"),
    "El núcleo térmico debe cargarse antes del módulo C");
  assert.match(sw,/\.\/modelos\/ceratitis_mango_termico_ux69\.js/);
