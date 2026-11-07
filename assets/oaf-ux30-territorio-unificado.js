@@ -396,7 +396,7 @@ function navigation(map){
  map.addEventListener("wheel",e=>{e.preventDefault();zoom(map,e.deltaY<0?.81:1.23,screenXY(map,e))},{passive:false});
  map.addEventListener("pointerdown",e=>{
   if(e.pointerType==="mouse"&&e.button!==0)return;
-  if(e.target.closest("circle[role=button]"))return;
+  if(e.target.closest("circle[role=button],polygon[data-ux73a-zone]"))return;
   try{map.setPointerCapture(e.pointerId)}catch{}
   state.dragging.set(e.pointerId,{x:e.clientX,y:e.clientY});
  },true);
