@@ -223,16 +223,18 @@ function week(){
  // No desplazar fechas: RF solo se grafica si las fechas coinciden exactamente con la emision.
  const forest=days.map(d=>canPlotRF&&map.has(d)&&Number.isFinite(map.get(d))?map.get(d):NaN);
  const matched=forest.filter(Number.isFinite).length;
- const group=[{name:"Open-Meteo · externo",color:"#278eb8",values:ext}];
- if(canPlotRF&&matched)group.push({name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"});
+ const group=[{name:"Open-Meteo · pronóstico",color:"#278eb8",values:ext},
+  {name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"},
+  {name:"ERA5 1996–2025 · climatología histórica",color:"#31946e",values:days.map(()=>NaN),dash:"3 3"}];
  weeklyBars(output,days,group,rainfall?"mm/día":"°C");
  weeklyOverview(days,ext,forest,null,rainfall,point);
  weeklyModelAudit();
  if(key){
-  const items=[["#278eb8","Open-Meteo · pronóstico vigente"]];
-  if(canPlotRF&&matched)items.push(["#aa65b4","Random Forest OAF · candidato experimental"]);
-  legend(key,items);
+  legend(key,[["#31946e","ERA5 · promedio histórico (no pronóstico)"],
+   ["#278eb8","Open-Meteo · pronóstico vigente"],
+   ["#aa65b4","Random Forest OAF · "+(matched?"candidato experimental":"sin emisión coincidente")]]);
  }
+ window.OAFModelCompareUX76?.renderWeekly({city,variable,point:!!point,dates:days,era5:days.map(()=>NaN),open:ext,rf:forest});
  if(point)renderPointDetails(point,data,external.metadata);
  let message="Pronóstico de "+(point?point.name+" ("+identity+" WGS84)":city)+" del "+days[0]+" al "+days.at(-1)+". ";
  if(canPlotRF&&matched){
@@ -250,14 +252,14 @@ function week(){
   const averages=days.map(date=>history[variable==="rain"?"rain":"tmax"][date.slice(5)]??NaN);
   const valid=averages.filter(Number.isFinite).length;
   if(!valid)throw Error("Sin registros históricos suficientes para estos días");
-  const lines=[...group,{name:"ERA5 1996–2025 · promedio histórico",color:"#31946e",values:averages,dash:"3 3"}];
+  const lines=[group[0],group[1],{...group[2],values:averages}];
   weeklyBars(output,days,lines,rainfall?"mm/día":"°C");
   weeklyOverview(days,ext,forest,averages,rainfall,point);
+  window.OAFModelCompareUX76?.renderWeekly({city,variable,point:!!point,dates:days,era5:averages,open:ext,rf:forest});
   if(key){
-   const items=[["#278eb8","Open-Meteo · pronóstico vigente"]];
-   if(canPlotRF&&matched)items.push(["#aa65b4","RF OAF · emisión experimental"]);
-   items.push(["#31946e","ERA5 1996–2025 · promedio histórico, no pronóstico"]);
-   legend(key,items);
+   legend(key,[["#31946e","ERA5 1996–2025 · promedio histórico (no pronóstico)"],
+    ["#278eb8","Open-Meteo · pronóstico vigente"],
+    ["#aa65b4","Random Forest OAF · "+(matched?"candidato experimental":"sin emisión coincidente")]]);
   }
   const delta=ext.map((value,i)=>Number.isFinite(value)&&Number.isFinite(averages[i])?value-averages[i]:NaN).filter(Number.isFinite);
   const mean=delta.length?delta.reduce((a,b)=>a+b,0)/delta.length:NaN;
@@ -357,19 +359,50 @@ window.OAFMonthlyEvidence=monthlyRfEvidence;
 
 function future(){
  const note=seasonalStatus();if(note)note.hidden=false;
- const city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo",variable=$("oaf-ux16-mes-variable")?.value||"rain",root=$("oaf-ux14-monthchart"),status=$("oaf-ux14-monthstatus"),key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");if(!root||!status)return;
- const months=nextFullMonths(),rows=records()?rf?.escenarios_mensuales_rf_experimentales?.[city]||[]:[],byMonth=new Map(rows.map(r=>[r.mes,r])),rfRows=months.map(m=>byMonth.get(m)),field=variable==="rain"?"precipitacion_mm":"temperatura_media_c",unit=variable==="rain"?"mm/mes":"°C",baseline=monthlyHistory?.[city];
- const climates=months.map(m=>baseline?.[Number(m.slice(-2))]?.[variable==="rain"?"precipitacion_mm":"temperatura_c"]??NaN),evidence=monthlyRfEvidence(rf),series=[],legends=[],rfEligible=evidence.eligible&&(variable==="rain"||evidence.temperatureValidated);
- if(rf?.estado==="candidato_experimental_generado"&&rfRows.some(row=>Number.isFinite(row?.[field]))){series.push({name:"RF OAF mensual · experimental",values:rfRows.map(row=>Number.isFinite(row?.[field])?row[field]:NaN),color:"#aa65b4",dash:"7 4"});legends.push(["#aa65b4","Random Forest OAF · experimental, no validado"])}
- if(climates.some(Number.isFinite)){series.push({name:"Climatología ERA5 1996–2020",values:climates,color:"#339878"});legends.push(["#339878","ERA5 1996–2020 · referencia histórica"])}
- const cached=seasonalCache.get(city);
- if(cached?.data){const values=cached.data[variable==="rain"?"rainfall":"temperature"];if(values.some(Number.isFinite)){series.push({name:"Open-Meteo / ECMWF SEAS5 · ensamble estacional",values,color:"#237fb1"});legends.push(["#237fb1","Open-Meteo · ECMWF SEAS5 estacional (~36 km)"])}const count=values.filter(Number.isFinite).length;if(note)note.textContent=count?"Open-Meteo estacional (ECMWF SEAS5): "+count+"/6 meses completos; lluvia mensual=sumatoria de intervalos de 6 h y temperatura=media de 6 h. Pronóstico regional, sin corrección local; meses incompletos quedan vacíos.":"Open-Meteo estacional: no hay meses completos válidos en este horizonte."}
- else if(cached?.error){if(note)note.textContent="Open-Meteo estacional no disponible: "+cached.error+". Se conserva la climatología ERA5; RF no se publica sin habilidad validada."}
- else{if(note)note.textContent="Consultando Open-Meteo estacional / ECMWF SEAS5. Solo se mostrarán meses completos.";const request=++seasonToken;seasonalRequest(city).then(payload=>{if(!seasonalCache.get(city))return;const next=payload.error?{error:payload.error}:{data:seasonalMonthlyFromSixHourly(payload.hourly,months),cell:payload.cell};seasonalCache.set(city,next);if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future()}).catch(error=>{seasonalCache.set(city,{error:error.message||"Error de datos"});if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future()})}
- plot(root,months.map(m=>MONTHS[Number(m.slice(-2))-1]+" "+m.slice(2,4)),series,unit);if(key)legend(key,legends);
- const rfStatus=rfEligible?"RF cumple el criterio retrospectivo minimo pero sigue siendo experimental.":"RF no supera la validacion recursiva; la curva morada es solo comparacion experimental cuando existe una emision coincidente.";
- status.textContent="Localidad: "+city+". Horizonte de seis meses completos: "+months[0]+"–"+months[5]+". "+rfStatus+" Se muestran RF como candidato comparativo, ERA5 como referencia historica y los meses SEAS5 con cobertura completa.";
- if(!series.length)root.textContent="No hay una serie mensual completa disponible en esta consulta; no se dibujan cifras estimadas.";
+ const city=$("oaf-ux16-mes-ciudad")?.value||"Chiclayo",variable=$("oaf-ux16-mes-variable")?.value||"rain",
+  root=$("oaf-ux14-monthchart"),status=$("oaf-ux14-monthstatus"),key=$("oaf-ux14-rf-mes")?.querySelector(".oaf-ux14-key");
+ if(!root||!status)return;
+ const months=nextFullMonths(),rows=records()?rf?.escenarios_mensuales_rf_experimentales?.[city]||[]:[],
+  byMonth=new Map(rows.map(r=>[r.mes,r])),rfRows=months.map(m=>byMonth.get(m)),
+  field=variable==="rain"?"precipitacion_mm":"temperatura_media_c",unit=variable==="rain"?"mm/mes":"°C",baseline=monthlyHistory?.[city];
+ const climates=months.map(m=>baseline?.[Number(m.slice(-2))]?.[variable==="rain"?"precipitacion_mm":"temperatura_c"]??NaN);
+ const rfValues=rfRows.map(row=>Number.isFinite(row?.[field])?row[field]:NaN);
+ const evidence=monthlyRfEvidence(rf),cached=seasonalCache.get(city);
+ const seasonalValues=cached?.data?.[variable==="rain"?"rainfall":"temperature"]||months.map(()=>NaN);
+ // La ausencia de datos no elimina un modelo del comparador. Ningun valor se simula.
+ const series=[
+   {name:"ERA5 1996–2020 · climatología histórica",values:climates,color:"#31946e",dash:"3 3"},
+   {name:"Open-Meteo / ECMWF SEAS5 · estacional",values:seasonalValues,color:"#278eb8"},
+   {name:"Random Forest OAF · experimental",values:rfValues,color:"#aa65b4",dash:"7 4"}
+ ];
+ if(key)legend(key,[["#31946e","ERA5 1996–2020 · referencia histórica (no pronóstico)"],
+   ["#278eb8","Open-Meteo / ECMWF SEAS5 · pronóstico estacional"],
+   ["#aa65b4","Random Forest OAF · candidato experimental"+(rfValues.some(Number.isFinite)?"":" (sin emisión)")]]);
+
+ if(cached?.data){
+  const valid=seasonalValues.filter(Number.isFinite).length;
+  if(note)note.textContent=valid?"Open-Meteo / ECMWF SEAS5: "+valid+"/6 meses completos; lluvia mensual=suma de intervalos 6 h y temperatura=media de intervalos 6 h; sin corrección local.":"Open-Meteo estacional: no hay meses completos verificables.";
+ }else if(cached?.error){
+  if(note)note.textContent="Open-Meteo estacional no disponible: "+cached.error+". Se conservan ERA5 y RF sin inventar valores.";
+ }else{
+  if(note)note.textContent="Consultando Open-Meteo / ECMWF SEAS5; se mostrarán solo meses completos.";
+  const request=++seasonToken;
+  seasonalRequest(city).then(payload=>{
+   if(!seasonalCache.get(city))return;
+   const next=payload.error?{error:payload.error}:{data:seasonalMonthlyFromSixHourly(payload.hourly,months),cell:payload.cell};
+   seasonalCache.set(city,next);
+   if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future();
+  }).catch(error=>{
+   seasonalCache.set(city,{error:error.message||"Error de datos"});
+   if(request===seasonToken&&$("oaf-ux16-vista")?.value==="futuro"&&$("oaf-ux16-mes-ciudad")?.value===city)future();
+  });
+ }
+ plot(root,months.map(m=>MONTHS[Number(m.slice(-2))-1]+" "+m.slice(2,4)),series,unit);
+ window.OAFModelCompareUX76?.renderMonthly({city,variable,months,era5:climates,open:seasonalValues,rf:rfValues});
+ const rfStatus=evidence.eligible?"RF supera el umbral retrospectivo mínimo de lluvia, pero continúa experimental.":"RF continúa experimental; no existe validación comparable contra los tres modelos para este horizonte.";
+ status.textContent="Localidad: "+city+". Próximos seis meses completos: "+months[0]+"–"+months[5]+". "+
+   rfStatus+" ERA5 es una climatología, Open-Meteo un pronóstico estacional y RF una proyección experimental.";
+ if(!series.some(a=>a.values.some(Number.isFinite)))root.textContent="Ninguna de las tres fuentes tiene datos válidos para este período; se indican los estados sin simular valores.";
 }
 function hist(){
  const current=$("oaf-ux14-metric");if(current)current.dispatchEvent(new Event("change",{bubbles:true}));
