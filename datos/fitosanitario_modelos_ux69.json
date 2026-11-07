@@ -1,0 +1,158 @@
+{
+  "schema": "oaf-fitosanidad-modelos/1.0",
+  "version": "UX69-2026-11-06",
+  "region": "Lambayeque, Perú",
+  "scope": "Catálogo científico de modelos por cultivo y organismo. Un modelo no validado no se habilita automáticamente.",
+  "crops": [
+    {
+      "id": "arandano",
+      "name": "Arándano"
+    },
+    {
+      "id": "mango",
+      "name": "Mango"
+    },
+    {
+      "id": "palto",
+      "name": "Palto"
+    },
+    {
+      "id": "vid",
+      "name": "Vid"
+    },
+    {
+      "id": "banano",
+      "name": "Banano"
+    },
+    {
+      "id": "maracuya",
+      "name": "Maracuyá"
+    },
+    {
+      "id": "cafe",
+      "name": "Café"
+    }
+  ],
+  "models": [
+    {
+      "id": "botrytis_arandano_7a",
+      "crop_id": "arandano",
+      "organism_id": "botrytis",
+      "taxon": "Botrytis cinerea",
+      "type": "hongo",
+      "status": "proxy_meteorologico_exploratorio",
+      "variables": [
+        "relative_humidity_2m",
+        "temperature_2m",
+        "precipitation",
+        "shortwave_radiation",
+        "vapour_pressure_deficit",
+        "wind_speed_10m"
+      ],
+      "key_parameters": {
+        "relative_humidity_above_percent": 90,
+        "consecutive_hours_minimum": 6
+      },
+      "method": "Episodios HR aire a 2m>90% durante >=6 h; no humectación foliar.",
+      "output": "Episodios meteorológicos, no probabilidad ni severidad de enfermedad.",
+      "calibration": {
+        "location": "Lambayeque",
+        "date": null,
+        "status": "sin_validacion_epidemiologica_de_campo"
+      },
+      "sources": [
+        {
+          "title": "UC IPM, Botrytis blight / gray mold",
+          "url": "https://ipm.ucanr.edu/home-and-landscape/botrytis-blight-or-gray-mold/"
+        }
+      ],
+      "local_code": "modelos/botrytis_arandano_humedad_7a.js"
+    },
+    {
+      "id": "ceratitis_mango_ux69",
+      "crop_id": "mango",
+      "organism_id": "ceratitis",
+      "taxon": "Ceratitis capitata",
+      "type": "insecto",
+      "status": "indicador_termico_exploratorio",
+      "variables": [
+        "temperature_2m"
+      ],
+      "key_parameters": {
+        "lower_development_threshold_C": 9.1,
+        "reference_egg_to_adult_DD": 341,
+        "lab_thermal_range_C": [
+          15,
+          30
+        ],
+        "lab_population": "Petrolina (Brasil)"
+      },
+      "method": "GD por día = max(media diaria T2m - 9.1 °C,0); suma del intervalo evaluado.",
+      "output": "Grados-día de referencia; no población, fecha de emergencia ni daño.",
+      "calibration": {
+        "location": "Lambayeque",
+        "date": null,
+        "status": "sin_calibracion_ni_validacion_local"
+      },
+      "source_discrepancy": "Resumen del artículo: base 8.47 °C para Petrolina; texto de resultados y Tabla 4: 9.1 °C. Se usa 9.1 °C con cautela; requerirá revisión documental.",
+      "sources": [
+        {
+          "title": "Ricalde et al. (2012), Journal of Insect Science 12:33",
+          "doi": "10.1673/031.012.3301",
+          "url": "https://doi.org/10.1673/031.012.3301"
+        }
+      ],
+      "local_code": "modelos/ceratitis_mango_termico_ux69.js"
+    }
+  ],
+  "pending": [
+    {
+      "crop_id": "mango",
+      "organism_id": "colletotrichum",
+      "taxon": "Colletotrichum spp.",
+      "reason": "Faltan parámetros específicos e identificación del complejo de especies."
+    },
+    {
+      "crop_id": "palto",
+      "organism_id": "phytophthora",
+      "taxon": "Phytophthora cinnamomi",
+      "reason": "Faltan datos y calibración de humedad, temperatura y drenaje del suelo."
+    },
+    {
+      "crop_id": "vid",
+      "organism_id": "plasmopara",
+      "taxon": "Plasmopara viticola",
+      "reason": "Faltan horas de mojado foliar y modelo de infección validado."
+    },
+    {
+      "crop_id": "vid",
+      "organism_id": "botrytis",
+      "taxon": "Botrytis cinerea",
+      "reason": "No transferir automáticamente el proxy de arándano a vid."
+    },
+    {
+      "crop_id": "banano",
+      "organism_id": "pseudocercospora",
+      "taxon": "Pseudocercospora fijiensis",
+      "reason": "Faltan observaciones de humedad foliar y calibración local."
+    },
+    {
+      "crop_id": "maracuya",
+      "organism_id": "sin_modelo",
+      "taxon": null,
+      "reason": "Identificar organismos prioritarios y revisar modelos específicos disponibles."
+    },
+    {
+      "crop_id": "cafe",
+      "organism_id": "hemileia",
+      "taxon": "Hemileia vastatrix",
+      "reason": "La infección necesita agua libre; HR por sí sola no permite un diagnóstico ni una superficie de riesgo."
+    },
+    {
+      "crop_id": "cafe",
+      "organism_id": "leucoptera",
+      "taxon": "Leucoptera coffeella",
+      "reason": "Faltan parámetros térmicos específicos y registros de campo."
+    }
+  ]
+}
