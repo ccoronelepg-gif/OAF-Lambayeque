@@ -7,8 +7,8 @@ const $=id=>document.getElementById(id),node=(tag,cls)=>{const v=document.create
 const layerSpec=[
  ["peligros","A. Peligros climáticos e hidrometeorológicos",[
   ["flood","Peligro de inundaciones",true,"Cartografía de susceptibilidad a inundaciones por lluvias fuertes publicada por CENEPRED (2021), capa 5090024. Representa predisposición territorial; no es una huella de inundación actual ni una alerta vigente.","CENEPRED · S05CP/MapServer/5090024"],
-  ["rainIntense","Peligro de lluvias intensas",false,"Indicador pronosticado de precipitación máxima diaria (mm/24 h) durante siete días; zonas de proximidad a puntos de Open-Meteo. NO es cartografía oficial de peligro ni umbral SENAMHI de aviso.",null],
-  ["drought","Sequía y déficit hídrico",false,"Lluvia acumulada modelada de los 30 días anteriores (mm). Un total bajo NO equivale a sequía: sin climatología normal, balance hídrico, SPEI/SPI o demanda del cultivo no hay índice de déficit validado.",null],
+  ["rainIntense","Peligro de lluvias intensas",false,"Indicador pronosticado de precipitación máxima diaria (mm/24 h) durante siete días; zonas de proximidad a puntos de Open-Meteo. NO es cartografía oficial de peligro ni umbral SENAMHI de aviso.","Open-Meteo Forecast · lluvia prevista 7 días"],
+  ["drought","Sequía y déficit hídrico",false,"Lluvia acumulada modelada de los 30 días anteriores (mm). Un total bajo NO equivale a sequía: sin climatología normal, balance hídrico, SPEI/SPI o demanda del cultivo no hay índice de déficit validado.","Open-Meteo Forecast · lluvia modelada 30 días anteriores"],
   ["heat","Temperaturas extremas",false,"Temperatura máxima pronosticada a 2 m de los próximos siete días (Open-Meteo), junto con WMS histórico de calor SENAMHI/IDESEP si responde. No es un aviso de ola de calor ni predicción de daños.","SENAMHI/IDESEP · WMS histórico y Open-Meteo Forecast 7 días"]
  ]],
  ["agroclimatic","B. Condiciones agroclimáticas",[
