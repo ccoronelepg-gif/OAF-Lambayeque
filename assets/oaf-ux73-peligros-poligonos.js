@@ -5,15 +5,15 @@
  */
 (function(){"use strict";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg";
-const keys=["rainIntense","drought","heat"];
-const names={rainIntense:"Precipitación diaria máxima pronosticada",drought:"Lluvia acumulada 30 días anteriores",heat:"Temperatura máxima pronosticada"};
+const keys=["rainIntense","drought","heat","flood"],climateKeys=["rainIntense","drought","heat"];
+const names={rainIntense:"Precipitación diaria máxima pronosticada",drought:"Lluvia acumulada 30 días anteriores",heat:"Temperatura máxima pronosticada",flood:"Lluvia pronosticada como contexto de inundación (NO susceptibilidad oficial)"};
 const state={ready:false,loading:false,request:0,abort:null,points:[],zones:[],data:[],
  latest:null,mode:"rainIntense",today:null,error:"",timer:null,observer:null};
 const context=()=>window.oafUx30Context?.();
 const fmt=(n,d=1)=>Number.isFinite(n)?n.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
 const localDate=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-function activeKeys(){return keys.filter(k=>document.querySelector('[data-ux30-layer="'+k+'"]')?.checked)}
-function mode(){return activeKeys().at(-1)||null}
+function activeKeys(){return climateKeys.filter(k=>document.querySelector('[data-ux30-layer="'+k+'"]')?.checked)}
+function mode(){return activeKeys().at(-1)||(document.querySelector('[data-ux30-layer="flood"]')?.checked?"flood":null)}
 function status(t){const e=$("oaf-ux73a-status");if(e)e.textContent=t}
 function renderPanel(){
  const pane=$("oaf-ux29-territory"),container=pane?.querySelector(".oaf-ux29-mapcontent");if(!container)return false;
@@ -36,7 +36,7 @@ function clear(){state.request++;if(state.abort){state.abort.abort();state.abort
 function scheme(key,row){
  if(!row)return{color:"#b5c1bf",label:"Sin serie válida"};
  const value=row.value;
- if(key==="rainIntense"){
+ if(key==="rainIntense"||key==="flood"){
   if(value<1)return{color:"#a3c7b9",label:"Menos de 1 mm/24 h"};
   if(value<10)return{color:"#7ab3d4",label:"1–10 mm/24 h"};
   if(value<30)return{color:"#2e84b8",label:"10–30 mm/24 h"};
@@ -74,7 +74,7 @@ function evaluateRow(raw,key,today){
  if([...rain,...past].some(x=>x<0||x>700)||heat.some(x=>x< -30||x>55))
   throw Error("Valores meteorológicos fuera de rango");
  const maxRain=Math.max(...rain),total7=rain.reduce((a,b)=>a+b,0),past30=past.reduce((a,b)=>a+b,0),maxTemp=Math.max(...heat);
- return {value:key==="rainIntense"?maxRain:key==="drought"?past30:maxTemp,
+ return {value:key==="rainIntense"||key==="flood"?maxRain:key==="drought"?past30:maxTemp,
   maxRain,maxTemp,total7,past30,dryDays:past.filter(x=>x<1).length,
   dateFrom:key==="drought"?days.time[ix-30]:days.time[ix+1],
   dateTo:key==="drought"?days.time[ix-1]:days.time[ix+7],
@@ -94,7 +94,7 @@ function paint(){
   const v=scheme(key,value),element=document.createElementNS(NS,"polygon");
   element.setAttribute("points",geo.map(pair=>scene.x(pair[0]).toFixed(2)+","+scene.y(pair[1]).toFixed(2)).join(" "));
   element.setAttribute("data-ux73a-zone",zone.id);
-  element.setAttribute("fill",v.color);element.setAttribute("fill-opacity",value?".55":".16");
+  element.setAttribute("fill",v.color);element.setAttribute("fill-opacity",value?(key==="flood"?".32":".55"):".16");
   element.setAttribute("stroke","#4c665e");element.setAttribute("stroke-opacity",".5");element.setAttribute("stroke-width",".55");
   element.setAttribute("role","button");element.setAttribute("tabindex","0");
   element.setAttribute("aria-label",zone.id+": "+v.label+". Estimación meteorológica, no peligro oficial");
@@ -120,13 +120,14 @@ function legend(){
  const key=mode(),box=$("oaf-ux73a-legend");if(!box||!key)return;
  box.replaceChildren();box.hidden=false;
  const title=document.createElement("strong");title.textContent=names[key]+" · magnitud meteorológica (NO riesgo oficial)";box.append(title);
- const vals=key==="rainIntense"?[0,2,15,45]:key==="drought"?[0,18,40,90]:[20,27,32,37];
+ const vals=(key==="rainIntense"||key==="flood")?[0,2,15,45]:key==="drought"?[0,18,40,90]:[20,27,32,37];
  for(const x of vals){
   const chip=document.createElement("span"),mark=document.createElement("i");
   const style=scheme(key,{value:x});mark.style.background=style.color;chip.append(mark,document.createTextNode(style.label));box.append(chip);
  }
  const small=document.createElement("p");
- small.textContent="Teselas de proximidad ≤28 km; contorno y cobertura aproximados. Cero lluvia en 30 días NO es diagnóstico de sequía: falta climatología de referencia y balance de demanda de agua.";
+ small.textContent=key==="flood"?"Estos polígonos muestran SOLO lluvia pronosticada como contexto. El raster oficial CENEPRED 2021 es una capa independiente; sin él NO se conoce susceptibilidad ni riesgo de inundación.":
+ "Teselas de proximidad ≤28 km; contorno aproximado. Escasa lluvia en 30 días NO es diagnóstico de sequía sin climatología de referencia." ;
  box.append(small);
 }
 function getToday(){return localDate()}
@@ -182,18 +183,15 @@ function setup(){
  pane.addEventListener("change",e=>{
   const key=e.target?.dataset?.ux30Layer;
   if(!key)return;
-  if(keys.includes(key)){
+  if(climateKeys.includes(key)){
    if(e.target.checked){
     // Una sola variable climática poligonal a la vez; mantener inundación independiente.
-    for(const other of keys)if(other!==key){const el=pane.querySelector('[data-ux30-layer="'+other+'"]');if(el?.checked){el.checked=false;el.dispatchEvent(new Event("change",{bubbles:true}))}}
+    for(const other of climateKeys)if(other!==key){const el=pane.querySelector('[data-ux30-layer="'+other+'"]');if(el?.checked){el.checked=false;el.dispatchEvent(new Event("change",{bubbles:true}))}}
     state.mode=key;refresh();
    }else if(!mode()){clear();status("Indicadores meteorológicos desactivados.")}
    else refresh();
   }else if(key==="flood"){
-   const info=$("oaf-ux73a-status");
-   if(info&&!mode())info.textContent=e.target.checked?
-    "Inundaciones: mapa oficial CENEPRED 2021 (raster de susceptibilidad); no representa inundación actual.":
-    "No hay capas meteorológicas poligonales activas.";
+   refresh();
   }
  });
  document.addEventListener("oaf:territory-map-redrawn",()=>{
