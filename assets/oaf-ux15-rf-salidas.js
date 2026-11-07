@@ -182,9 +182,20 @@ function era5Reference(city){
   start_date:"1996-01-01",end_date:"2025-12-31",
   daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
- const task=fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
-  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+ const localTask=custom?Promise.reject(Error("Parcela sin ERA5 precomputado")):
+  fetch("datos/seguimiento_rf_ux74/climatologia_diaria_era5_ux76.json",{cache:"no-store"})
+   .then(r=>{if(!r.ok)throw Error("ERA5 local "+r.status);return r.json()})
+   .then(j=>{
+    if(j.version!=="UX76"||j.periodo!=="1996-2025")throw Error("ERA5 sin version");
+    const daily=j.localidades?.[city];
+    if(!daily||Object.keys(daily).length<365)throw Error("ERA5 local incompleto");
+    return {localUX76:true,rain:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.precipitacion_mm])),
+     tmax:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.temperatura_max_c])),years:"1996–2025",cell:loc};
+   });
+ const task=localTask.catch(()=>fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
   .then(j=>{
+   if(j.localUX76)return j;
    const d=j.daily;if(j.error||!Array.isArray(d?.time)||d.time.length<10000)throw Error("Archivo ERA5 1996–2025 incompleto");
    const groups=new Map();
    d.time.forEach((date,i)=>{
