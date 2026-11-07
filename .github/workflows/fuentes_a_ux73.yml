@@ -1,0 +1,23 @@
+name: OAF UX73 - Verificar fuentes oficiales e indicadores A
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux30-territorio-unificado.js"
+      - "assets/oaf-ux73-peligros-poligonos.js"
+      - "tests/verificar_fuentes_peligros_a_ux73.cjs"
+      - ".github/workflows/fuentes_a_ux73.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proveedores:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Consultar CENEPRED SIGRID, IDESEP SENAMHI, Open-Meteo
+        run: node tests/verificar_fuentes_peligros_a_ux73.cjs
