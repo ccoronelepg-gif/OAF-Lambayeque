@@ -1,0 +1,11 @@
+/* OAF UX76 · tres modelos presentes incluso cuando falta alguna salida */
+.oaf-ux76-ranking{margin:13px 0 16px;padding:15px 16px;border:1px solid #c7dbd1;border-radius:13px;background:#f6faf8;color:#234b3c;max-width:100%}
+.oaf-ux76-ranking h3{margin:0 0 12px;font-size:clamp(15px,1.8vw,19px);line-height:1.25;font-weight:800;color:#174c3b}
+.oaf-ux76-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.oaf-ux76-model{display:flex;flex-direction:column;gap:4px;padding:10px 11px;background:white;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.05);min-width:0;overflow-wrap:break-word}
+.oaf-ux76-model strong{font-size:14px;color:#174c3b}
+.oaf-ux76-model small{font-size:11px;color:#567265;line-height:1.35}
+.oaf-ux76-reading{font-size:12px;font-weight:600}
+.oaf-ux76-result{margin:11px 0 5px;font-weight:760;color:#174d3a;line-height:1.45}
+.oaf-ux76-method{margin:4px 0 0;color:#4b665b;font-size:12px;line-height:1.58}
+@media (max-width:620px){.oaf-ux76-ranking{padding:11px}.oaf-ux76-cards{grid-template-columns:1fr;gap:7px}.oaf-ux76-model{padding:8px 10px}.oaf-ux76-ranking h3{font-size:15px}}
