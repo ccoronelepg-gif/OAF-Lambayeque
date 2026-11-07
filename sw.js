@@ -16,7 +16,7 @@ const CORE=[
  "./assets/oaf-ux52-visores.js",
  "./assets/oaf-ux35c-fitosanitario.js",
  "./modelos/ceratitis_mango_termico_ux69.js",
- "./assets/oaf-ux35c-fitosanitario.css","./modelos/ceratitis_mango_termico_ux69.js",
+ "./assets/oaf-ux35c-fitosanitario.css",
  "./assets/oaf-ux55-correcciones.js",
  "./assets/oaf-ux55-correcciones.css",
  "./assets/oaf-ux52-visores.css",
@@ -104,7 +104,7 @@ async function precacheCore(){
  // Si la red falla en una pieza crítica, se conserva el service worker anterior.
  const REQUIRED=["./","./offline.html","./manifest.webmanifest",
   "./assets/oaf-pwa.js","./assets/oaf-territorio-compartido.js",
-  "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js","./assets/oaf-ux35c-fitosanitario.js","./assets/oaf-ux35c-fitosanitario.css"];
+  "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js","./assets/oaf-ux35c-fitosanitario.js","./assets/oaf-ux35c-fitosanitario.css","./modelos/ceratitis_mango_termico_ux69.js"];
  const missing=[];
  for(const local of REQUIRED){
   if(!(await cache.match(new URL(local,SCOPE).href)))missing.push(local);
