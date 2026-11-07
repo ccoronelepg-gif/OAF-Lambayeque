@@ -117,6 +117,7 @@ function paint(){
   point.setAttribute("opacity",r.indicator?"0.96":"0.68");
   point.setAttribute("role","button");point.setAttribute("tabindex","0");
   point.setAttribute("aria-label",r.id+" "+props.label);
+  point.addEventListener("pointerdown",e=>e.stopPropagation());
   point.addEventListener("click",e=>{e.stopPropagation();onPick(r)});
   point.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();onPick(r)}});
   const title=document.createElementNS(NS,"title");title.textContent=r.id+" · "+props.label;point.append(title);
