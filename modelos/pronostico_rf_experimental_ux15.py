@@ -75,9 +75,35 @@ def fit_daily(data):
     train=d<np.datetime64("2025-01-01")
     test=(d>=np.datetime64("2025-01-01"))&(d<np.datetime64("2026-01-01"))
     if train.sum()<3500 or test.sum()<1000:raise ValueError("Sin datos suficientes o test temporal")
-    opt={"n_estimators":120,"max_depth":14,"min_samples_leaf":7,"n_jobs":2,"random_state":20261021}
-    rain=RandomForestRegressor(**opt).fit(X[train],np.asarray(y1)[train])
-    temp=RandomForestRegressor(**opt).fit(X[train],np.asarray(y2)[train])
+    # UX74 - Seleccion estrictamente temporal: 2021-23 entrena,
+    # 2024 selecciona hiperparametros y 2025 queda TEST ciego e independiente.
+    subtrain=d<np.datetime64("2024-01-01")
+    validation=(d>=np.datetime64("2024-01-01"))&(d<np.datetime64("2025-01-01"))
+    if subtrain.sum()<3000 or validation.sum()<1000:
+        raise ValueError("No hay cobertura para ajuste diario separado temporalmente")
+    candidates=[
+        {"n_estimators":120,"max_depth":14,"min_samples_leaf":7},
+        {"n_estimators":160,"max_depth":10,"min_samples_leaf":12},
+        {"n_estimators":180,"max_depth":16,"min_samples_leaf":5},
+    ]
+    yy_r=np.asarray(y1);yy_t=np.asarray(y2)
+    ranking=[]
+    for params in candidates:
+        provisional_r=RandomForestRegressor(**params,n_jobs=2,random_state=20261021)
+        provisional_t=RandomForestRegressor(**params,n_jobs=2,random_state=20261021)
+        provisional_r.fit(X[subtrain],yy_r[subtrain])
+        provisional_t.fit(X[subtrain],yy_t[subtrain])
+        pred_r=np.maximum(0,np.expm1(provisional_r.predict(X[validation])))
+        pred_t=provisional_t.predict(X[validation])
+        obs_r=np.expm1(yy_r[validation])
+        mae_r=float(np.mean(np.abs(pred_r-obs_r)))
+        mae_t=float(np.mean(np.abs(pred_t-yy_t[validation])))
+        ranking.append({"config":params,"mae_lluvia_2024":round(mae_r,4),
+                        "mae_tmax_2024":round(mae_t,4)})
+    best_r=min(ranking,key=lambda row:(row["mae_lluvia_2024"],row["config"]["max_depth"]))["config"]
+    best_t=min(ranking,key=lambda row:(row["mae_tmax_2024"],row["config"]["max_depth"]))["config"]
+    rain=RandomForestRegressor(**best_r,n_jobs=2,random_state=20261021).fit(X[train],yy_r[train])
+    temp=RandomForestRegressor(**best_t,n_jobs=2,random_state=20261021).fit(X[train],yy_t[train])
     observed_r=np.expm1(np.asarray(y1)[test])
     er=float(np.mean(np.abs(observed_r-np.maximum(0,np.expm1(rain.predict(X[test]))))))
     et=float(np.mean(np.abs(np.asarray(y2)[test]-temp.predict(X[test]))))
@@ -153,7 +179,8 @@ def fit_daily(data):
     temp.set_params(n_jobs=2)
     # Refit through all available observed archive ONLY after closed holdout.
     rain.fit(X,np.asarray(y1));temp.fit(X,np.asarray(y2))
-    return rain,temp,{"backtest_semanal_recursivo":backtest,"mae_lluvia_mm":round(er,2),"mae_temperatura_c":round(et,2),
+    return rain,temp,{"seleccion_hiperparametros_2024":{"entrenamiento":"2021-2023","validacion":"2024","test_intocable":"2025","candidatos":ranking,"mejor_lluvia":best_r,"mejor_temperatura":best_t},
+                      "backtest_semanal_recursivo":backtest,"mae_lluvia_mm":round(er,2),"mae_temperatura_c":round(et,2),
                       "mae_climatologia_local_lluvia_mm":round(mae_local_r,2),
                       "mae_climatologia_local_temperatura_c":round(mae_local_t,2),
                       "rf_supera_climatologia_local_diaria":bool(er<mae_local_r),
@@ -377,7 +404,7 @@ def main():
     now=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     audit={"tipo":"RandomForestRegressor original reproducible de investigación, NO modelo operativo",
            "unidades_temperatura":"Diario Tmax; mensual temperatura media (no promedio de Tmax)",
-           "estrategia_mejora":"Características de localidad explicitas; climatologia mensual local y prueba temporal para lluvia y temperatura.",
+           "estrategia_mejora":"Ajuste de hiperparametros diario 2021-2023/validacion 2024/test 2025, separado para lluvia y Tmax; ajuste mensual congelado 2019-2020; sin promocion automatica.",
            "fecha_generacion_utc":now,"fecha_local":TODAY.isoformat(),
            "fuente_historica":"ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
            "documentacion":"https://open-meteo.com/en/docs/historical-weather-api",
