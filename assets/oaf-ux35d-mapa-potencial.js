@@ -5,7 +5,7 @@
 (function(){"use strict";
 const NS="http://www.w3.org/2000/svg",$=id=>document.getElementById(id);
 const core=()=>window.OAFClimaticPotentialCore;
-const state={enabled:false,model:"botrytis",points:[],data:[],today:null,request:0,abort:null,loading:false,ready:false,
+const state={enabled:false,model:"botrytis",points:[],data:[],zones:[],today:null,request:0,abort:null,loading:false,ready:false,
  lastError:"",selected:null,viewObserver:null,overlayObserver:null,fetchedAt:null};
 const fmt=(v,d=1)=>Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
 const localDate=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
@@ -24,19 +24,20 @@ function textStatus(message){
 function showPanel(){
  const pane=$("oaf-ux29-scenario"),intro=pane?.querySelector(".oaf-ux35-mapintro"),mapcol=pane?.querySelector(".oaf-ux29-mapcontent");
  if(!pane||!mapcol||!$("oaf-ux35c-controls"))return false;
- if(intro)intro.textContent="Mapa de puntos meteorológicos consultados. Los colores indican condiciones climáticas, NO presencia, incidencia ni riesgo calibrado. El contorno regional es referencial.";
+ if(intro)intro.textContent="Mapa de polígonos aproximados por proximidad a una muestra meteorológica (≤28 km). NO son áreas de infección, incidencia ni probabilidad fitosanitaria.";
  if(!$("oaf-ux35d-panel")){
   const panel=document.createElement("section");
   panel.id="oaf-ux35d-panel";panel.className="oaf-ux35d-panel";
   panel.innerHTML='<div class="oaf-ux35d-heading"><strong>Mapa de condiciones potencialmente favorables · 7 días</strong>'+
-   '<div class="oaf-ux35d-actions"><button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button><button id="oaf-ux35d-export" type="button" disabled>Exportar GeoJSON</button></div></div>'+
+   '<div class="oaf-ux35d-actions"><button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button><button id="oaf-ux35d-export" type="button" disabled>Exportar puntos</button><button id="oaf-ux35d-polygons-export" type="button" disabled>Exportar polígonos</button></div></div>'+
    '<p id="oaf-ux35d-mapstatus" role="status" aria-live="polite">Marca la capa C para consultar la malla de puntos meteorológicos.</p>'+
    '<div id="oaf-ux35d-legend" class="oaf-ux35d-legend" hidden></div>'+
    '<div id="oaf-ux35d-point-detail" class="oaf-ux35d-point-detail" hidden></div>'+
-   '<small>Fuente: Open-Meteo Forecast (temperatura y HR a 2 m), coordenadas WGS84. El contorno está simplificado; los puntos NO son parcelas ni polígonos de infección. Leyenda válida solo para el modelo seleccionado.</small>';
+   '<small>Fuente: Open-Meteo Forecast (temperatura y HR a 2 m), coordenadas WGS84. El contorno está simplificado; los polígonos representan cobertura meteorológica aproximada, no delimitaciones validadas de infección o cultivo.</small>';
   const mapNode=mapcol.querySelector(".oaf-ux29-scenemap");if(mapNode)mapNode.after(panel);else mapcol.append(panel);
   $("oaf-ux35d-refresh").addEventListener("click",()=>refresh(true));
   $("oaf-ux35d-export").addEventListener("click",exportGeoJSON);
+   $("oaf-ux35d-polygons-export").addEventListener("click",exportPolygons);
  }
  return true
 }
@@ -101,7 +102,29 @@ function paint(){
  const svg=$("oaf-ux29-forecast-map"),s=scene();
  if(!svg)return;
  svg.querySelector("#oaf-ux35d-points")?.remove();
+ svg.querySelector("#oaf-ux35d-zones")?.remove();
  if(!state.enabled||!state.data.length||!s||!$("oaf-ux35c-enable")?.checked)return;
+ const zones=document.createElementNS(NS,"g");zones.id="oaf-ux35d-zones";
+ zones.setAttribute("aria-label","Polígonos meteorológicos aproximados, no riesgo fitosanitario validado");
+ const lookup=new Map(state.data.map(p=>[p.id,p]));
+ for(const z of state.zones){
+  const point=lookup.get(z.pointId),coords=z.geometry?.coordinates?.[0];
+  if(!point||!coords)continue;
+  const props=meterValue(point),poly=document.createElementNS(NS,"polygon");
+  poly.setAttribute("points",coords.map(v=>s.x(v[0]).toFixed(2)+","+s.y(v[1]).toFixed(2)).join(" "));
+  poly.setAttribute("data-ux35d-zone",z.id);
+  poly.setAttribute("fill",props.fill);poly.setAttribute("fill-opacity",point.indicator?".62":".20");
+  poly.setAttribute("stroke","#315344");poly.setAttribute("stroke-opacity",".5");
+  poly.setAttribute("stroke-width",".5");poly.setAttribute("role","button");poly.setAttribute("tabindex","0");
+  poly.setAttribute("aria-label",z.id+": "+props.label+". Polígono climático aproximado");
+  poly.addEventListener("pointerdown",e=>e.stopPropagation());
+  poly.addEventListener("click",e=>{e.stopPropagation();onPick(point)});
+  poly.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();onPick(point)}});
+  const title=document.createElementNS(NS,"title");
+  title.textContent=z.id+" · "+props.label+" · distancia máxima de referencia "+z.representativeDistanceKm+" km. No riesgo comprobado";
+  poly.append(title);zones.append(poly);
+ }
+ svg.append(zones);
  const group=document.createElementNS(NS,"g");group.id="oaf-ux35d-points";
  group.setAttribute("aria-label","Puntos de muestreo meteorológico del modelo seleccionado");
  const existing=svg.querySelector("#oaf-ux35c-result-marker");
@@ -127,10 +150,11 @@ function paint(){
 }
 function reset(abort=true){
  state.request++;if(abort&&state.abort){state.abort.abort();state.abort=null}
- state.data=[];state.points=[];state.selected=null;state.today=null;state.lastError="";state.loading=false;
+ state.data=[];state.points=[];state.zones=[];state.selected=null;state.today=null;state.lastError="";state.loading=false;
  const detail=$("oaf-ux35d-point-detail");if(detail)detail.hidden=true;
  const legendEl=$("oaf-ux35d-legend");if(legendEl)legendEl.hidden=true;
  const exp=$("oaf-ux35d-export");if(exp)exp.disabled=true;
+ const exportZones=$("oaf-ux35d-polygons-export");if(exportZones)exportZones.disabled=true;
  state.fetchedAt=null;paint()
 }
 function buildUrl(points,model){
@@ -155,7 +179,10 @@ async function refresh(force=false){
  let points;
  try{points=coreApi.sampleGrid(s.rings,{columns:10,rows:8,max:30})}
  catch(e){textStatus("No hay un límite regional válido para muestrear: "+e.message);return}
- state.points=points;state.loading=true;
+ state.points=points;
+ try{state.zones=window.OAFPotentialPolygons?.zones(s.rings,points,{step:.055,maxKm:28})||[]}
+ catch(e){state.zones=[];textStatus("No se generaron polígonos interiores: "+e.message)}
+ state.loading=true;
  textStatus("Consultando datos horarios reales de "+points.length+" puntos dentro del contorno regional…");
  const abort=new AbortController();state.abort=abort;
  const timer=setTimeout(()=>abort.abort(),35000);
@@ -171,10 +198,11 @@ async function refresh(force=false){
   const providerCells=new Set(data.filter(p=>p.indicator).map(p=>p.modelledLat.toFixed(3)+","+p.modelledLon.toFixed(3)));
   if(!ok)throw Error("No se recibieron series completas y aplicables del periodo.");
   const exportBtn=$("oaf-ux35d-export");if(exportBtn)exportBtn.disabled=false;
+  const ez=$("oaf-ux35d-polygons-export");if(ez)ez.disabled=!state.zones.length;
   paint();textStatus(
    "Capa climática consultada: "+ok+" de "+points.length+" puntos válidos, "+providerCells.size+
    " celdas meteorológicas devueltas · "+coreApi.requiredDates(today)[0]+" al "+coreApi.requiredDates(today).at(-1)+
-   ". Puntos de muestra, NO superficies continuas de riesgo. Selecciona un punto para sus valores."
+   ". "+state.zones.length+" polígonos climáticos aproximados de proximidad, NO áreas de infección. Selecciona un polígono para sus valores."
   )
  }catch(e){
   if(seq!==state.request)return;
@@ -212,6 +240,25 @@ function toGeoJSON(){
    disclaimer:"Puntos de muestreo. Sin interpolación, distribución de hospedantes, incidencia ni calibración local."},
   features};
 }
+function polygonsGeoJSON(){
+ const src=toGeoJSON(),byId=new Map(src.features.map(f=>[f.id,f.properties]));
+ return {type:"FeatureCollection",name:"OAF_poligonos_potencial_climatico_NO_RIESGO",
+  metadata:{...src.metadata,version:"ux73",
+   method:"Teselas geométricas completamente interiores al contorno simplificado, asignadas al punto meteorológico más próximo (≤28 km). Representatividad no calibrada.",
+   disclaimer:"No son áreas de incidencia, presencia, infección o riesgo fitosanitario validado."},
+  features:state.zones.map(z=>({type:"Feature",id:z.id,geometry:z.geometry,
+   properties:{...byId.get(z.pointId),zone_id:z.id,point_id:z.pointId,
+    distancia_representativa_km:z.representativeDistanceKm,
+    metodo:"vecino_mas_cercano_sin_validacion_espacial",
+    es_riesgo_calibrado:false,probabilidad_infeccion:null,incidencia:null}}))};
+}
+function exportPolygons(){
+ if(!state.zones.length||!state.today)return;
+ const blob=new Blob([JSON.stringify(polygonsGeoJSON(),null,2)],{type:"application/geo+json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="OAF_poligonos_potencial_"+state.model+"_"+state.today+".geojson";
+ document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
 function exportGeoJSON(){
  if(!state.data.length||!state.today)return;
  const file=new Blob([JSON.stringify(toGeoJSON(),null,2)],{type:"application/geo+json"});
@@ -238,7 +285,7 @@ function init(){
  }
  if(svg&&!state.overlayObserver){
   state.overlayObserver=new MutationObserver(()=>{
-   if(state.enabled&&state.data.length&&!svg.querySelector("#oaf-ux35d-points"))paint()
+   if(state.enabled&&state.data.length&&(!svg.querySelector("#oaf-ux35d-points")||!svg.querySelector("#oaf-ux35d-zones")))paint()
   });
   state.overlayObserver.observe(svg,{childList:true})
  }
@@ -249,5 +296,5 @@ function init(){
  if(toggle.checked)refresh(true)
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
-window.OAFPotentialLayer={refresh:()=>refresh(true),toGeoJSON,getState:()=>({enabled:state.enabled,model:state.model,total:state.data.length,valid:state.data.filter(p=>p.indicator).length,error:state.lastError}),paint};
+window.OAFPotentialLayer={refresh:()=>refresh(true),toGeoJSON,polygonsGeoJSON,getState:()=>({enabled:state.enabled,model:state.model,total:state.data.length,polygons:state.zones.length,valid:state.data.filter(p=>p.indicator).length,error:state.lastError}),paint};
 })();
