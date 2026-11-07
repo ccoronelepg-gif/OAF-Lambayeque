@@ -10,6 +10,8 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
  try{
   const page=await browser.newPage({viewport:{width:1400,height:1000},acceptDownloads:true});
   const pageErrors=[];page.on("pageerror",e=>pageErrors.push(e.message));
+  page.on("console",msg=>{if(msg.type()==="error")console.error("PAGE_CONSOLE_ERROR",msg.text())});
+  page.on("dialog",async dialog=>{console.error("PAGE_DIALOG",dialog.message());await dialog.dismiss()});
   await page.route("https://sig.cenepred.gob.pe/**",route=>route.abort("failed"));
   await page.route("https://idesep.senamhi.gob.pe/**",route=>route.abort("failed"));
   let dailyCalls=0,hourlyCalls=0;
@@ -66,7 +68,8 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
   assert.match(await page.locator("#oaf-ux73a-legend").innerText(),/Temperatura máxima/i);
   // UX74 - Exportacion real de PDF bajo navegador (datos simulados SOLO en pruebas).
   async function verifyPdf(selector,tag){
-    const [download]=await Promise.all([page.waitForEvent("download",{timeout:30000}),page.locator(selector).click()]);
+    console.log("PDF_VERIFY_START",selector,tag,await page.locator(selector).isEnabled());
+    const [download]=await Promise.all([page.waitForEvent("download",{timeout:12000}),page.locator(selector).click()]);
     assert.ok(download.suggestedFilename().endsWith(".pdf"),"El enlace debe producir PDF y no GeoJSON");
     const file=await download.path(),raw=fs.readFileSync(file);
     assert.equal(raw.subarray(0,8).toString("ascii"),"%PDF-1.4");
