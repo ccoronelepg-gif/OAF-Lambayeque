@@ -20,15 +20,18 @@ function renderPanel(){
  if(!$("oaf-ux73a-panel")){
   const div=document.createElement("section");div.id="oaf-ux73a-panel";div.className="oaf-ux73a-panel";
   div.innerHTML='<strong>Capas A · verificación y leyenda</strong>'+
+   '<div class="oaf-ux74-actions"><button id="oaf-ux74a-points" type="button" disabled>Descargar puntos PDF</button> <button id="oaf-ux74a-polygons" type="button" disabled>Descargar polígonos PDF</button></div>'+
    '<p id="oaf-ux73a-status" role="status">Activa una capa de lluvias, sequía o temperatura para mostrar los indicadores meteorológicos.</p>'+
    '<div id="oaf-ux73a-legend" hidden></div>'+
    '<div id="oaf-ux73a-selected" hidden></div>'+
    '<p>Cartografía CENEPRED 2021: <a href="https://sig.cenepred.gob.pe/sigrid/rest/services/S05CP/MapServer/5090024" target="_blank" rel="noopener noreferrer">consultar susceptibilidad oficial a inundaciones</a>. Lluvias, sequía y temperatura: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo</a>, polígonos de representatividad aproximada de modelos meteorológicos. Las clases indican magnitudes, no peligros validados por SENAMHI.</p>';
   container.append(div);
+  $("oaf-ux74a-points").addEventListener("click",()=>window.OAFReportPDF?.export("A","puntos"));
+  $("oaf-ux74a-polygons").addEventListener("click",()=>window.OAFReportPDF?.export("A","poligonos"));
  }
  return true;
 }
-function clear(){state.request++;if(state.abort){state.abort.abort();state.abort=null}state.loading=false;state.data=[];state.zones=[];state.error="";
+function clear(){const p=$("oaf-ux74a-points"),z=$("oaf-ux74a-polygons");if(p)p.disabled=true;if(z)z.disabled=true;state.request++;if(state.abort){state.abort.abort();state.abort=null}state.loading=false;state.data=[];state.zones=[];state.error="";
  const map=$("oaf-ux24-region-map");map?.querySelector("#oaf-ux73a-zones")?.remove();
  const legend=$("oaf-ux73a-legend");if(legend){legend.hidden=true;legend.replaceChildren()}
  const details=$("oaf-ux73a-selected");if(details)details.hidden=true;
@@ -168,6 +171,7 @@ async function refresh(force=false){
   if(current!==state.request)return;
   state.points=points;state.zones=zones;state.data=data;state.latest=new Date().toISOString();
   state.error="";paint();
+  const bp=$("oaf-ux74a-points"),bz=$("oaf-ux74a-polygons");if(bp)bp.disabled=!data.length;if(bz)bz.disabled=!zones.length;
   const valid=data.filter(x=>x.indicators[key]).length;
   status(key+" · "+valid+" de "+points.length+" muestras completas; "+zones.length+" polígonos climáticos aproximados. Fuente: Open-Meteo; consulta "+new Date().toLocaleString("es-PE",{timeZone:"America/Lima"})+". No sustituye mapas oficiales SENAMHI/CENEPRED.");
  }catch(e){
@@ -205,7 +209,32 @@ function setup(){
   });
   state.observer.observe(svg,{childList:true});
  }
- window.OAFTerritoryClimate={refresh:()=>refresh(true),evaluateRow,getState:()=>({mode:mode(),zones:state.zones.length,points:state.points.length,error:state.error})};
+ function pointsGeoJSON(){
+ const key=mode(),features=state.data.map(p=>{
+  const i=p.indicators?.[key]||null;
+  return {type:"Feature",id:p.id,geometry:{type:"Point",coordinates:[p.lon,p.lat]},properties:{
+   id:p.id,variable:key,valor:i?.value??null,unidad:key==="heat"?"°C":key==="drought"?"mm/30d":"mm/24h",
+   periodo_inicio:i?.dateFrom||null,periodo_fin:i?.dateTo||null,
+   lluvia_maxima_mm:i?.maxRain??null,temperatura_max_c:i?.maxTemp??null,
+   lluvia_total_7d_mm:i?.total7??null,precipitacion_30d_mm:i?.past30??null,
+   celda_modelada_lat:i?.modelledLat??null,celda_modelada_lon:i?.modelledLon??null,
+   datos_completos:Boolean(i),fuente:"Open-Meteo Forecast",es_peligro_oficial:false,
+   observacion:"Muestra meteorologica; no verifica amenaza oficial ni afectacion agricola."}};
+ });
+ return {type:"FeatureCollection",metadata:{model:key,generated:state.latest||new Date().toISOString(),
+  source:"Open-Meteo Forecast",method:"muestreo puntual modelado; no amenaza oficial",
+  disclaimer:"NO susceptibilidad CENEPRED, sequia SPI ni ola de calor oficial."},features};
+}
+function polygonsGeoJSON(){
+ const source=pointsGeoJSON(),byId=new Map(source.features.map(p=>[p.id,p.properties]));
+ return {type:"FeatureCollection",metadata:{...source.metadata,method:"Celdas interiores asignadas al vecino mas cercano <=28 km; sin validacion espacial."},
+ features:state.zones.map(z=>({type:"Feature",id:z.id,geometry:z.geometry,properties:{
+  ...(byId.get(z.pointId)||{}),id:z.id,zone_id:z.id,point_id:z.pointId,
+  distancia_representativa_km:z.representativeDistanceKm,
+  geometria_aproximada:true,es_peligro_oficial:false
+ }}))};
+}
+ window.OAFTerritoryClimate={refresh:()=>refresh(true),evaluateRow,toGeoJSON:pointsGeoJSON,polygonsGeoJSON,getState:()=>({mode:mode(),zones:state.zones.length,points:state.points.length,error:state.error})};
  if(mode())refresh()
 }
 function init(){if(setup())return;let tries=0;const tick=()=>{setup();if(!state.ready&&++tries<20)setTimeout(tick,350)};tick()}
