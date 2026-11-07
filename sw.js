@@ -20,6 +20,8 @@ const CORE=[
  "./modelos/poligonos_potenciales_ux73.js",
  "./assets/oaf-ux73-peligros-poligonos.js",
  "./assets/oaf-ux74-reportes-pdf.js",
+ "./assets/oaf-ux74-seguimiento-rf.js",
+ "./assets/oaf-ux74.css",
  "./assets/oaf-ux73-poligonos.css",
  "./assets/oaf-ux35d-mapa-potencial.js",
  "./assets/oaf-ux35d-mapa-potencial.css",
