@@ -285,8 +285,8 @@ test("UX76: web/PWA muestran ERA5, Open-Meteo y RF siempre sin inventar pronosti
   const monitor=read("scripts/seguimiento_rf_ux74.py");
   assert.match(monitor,/issued_era5_reference\(dates\)/);
   assert.match(monitor,/era5_climatologia/);
-  assert.match(monitor,/1996-01-01/);
-  assert.match(monitor,/2025-12-31/);
+  assert.match(monitor,/1996,2001,2006,2011,2016,2021/);
+  assert.match(monitor,/year_start\+4/);
 });
 
 test("UX76: liderazgo sin promocion falsa y 3-vias estrictamente comparables",async()=>{
