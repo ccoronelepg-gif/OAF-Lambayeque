@@ -126,7 +126,7 @@ function navigation(svg){
  },{passive:false});
  svg.addEventListener("pointerdown",e=>{
   if(e.pointerType==="mouse"&&e.button!==0)return;
-  if(e.target.closest("circle.oaf-ux35-point"))return;
+  if(e.target.closest("circle.oaf-ux35-point,[data-ux35d-point],#oaf-ux35c-result-marker"))return;
   pointer={id:e.pointerId,x:e.clientX,y:e.clientY,start:bounds()};
   try{svg.setPointerCapture(e.pointerId)}catch{}
  });
