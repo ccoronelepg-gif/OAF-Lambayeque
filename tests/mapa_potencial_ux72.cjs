@@ -50,7 +50,7 @@ assert.match(html,/modelos\/mapa_potencial_fitosanitario_ux72\.js\?v=20261106-ux
 assert.match(html,/assets\/oaf-ux35d-mapa-potencial\.js\?v=20261106-ux72/);
 assert.match(html,/assets\/oaf-ux35d-mapa-potencial\.css\?v=20261106-ux72/);
 assert.ok(html.indexOf("modelos/mapa_potencial_fitosanitario_ux72.js")<html.indexOf("assets/oaf-ux35d-mapa-potencial.js"));
-assert.match(sw,/oaf-pwa-shell-2026-11-06-ux72/);
+assert.match(sw,/oaf-pwa-shell-2026-11-06-ux73/);
 for(const asset of ["modelos/mapa_potencial_fitosanitario_ux72.js","assets/oaf-ux35d-mapa-potencial.js","assets/oaf-ux35d-mapa-potencial.css"]){
  assert.ok(sw.includes("./"+asset),"Falta caché "+asset);
 }
