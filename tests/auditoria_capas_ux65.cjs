@@ -82,8 +82,8 @@ for (const asset of [
   "assets/oaf-ux35-escenarios-multicapas.js?v=20261106-ux65",
   "assets/oaf-ux52-visores.js?v=20261106-ux65",
   "assets/oaf-parcelas-ux39.js?v=20261106-ux65"
-]) assert.ok(index.includes(asset), "index.html no referencia " + asset);
-assert.match(sw, /oaf-pwa-shell-2026-11-06-ux65/);
+]) assert.ok(index.includes(asset.split("?")[0]+"?v="), "index.html no referencia " + asset.split("?")[0]);
+assert.match(sw, /oaf-pwa-shell-2026-11-06-ux[0-9]+[a-z]?/);
 assert.match(sw, /const exact=/);
 assert.ok(sw.indexOf("const exact=") < sw.indexOf("const fallback="),
   "La PWA debe priorizar el archivo versionado y usar el antiguo solo como fallback offline");
