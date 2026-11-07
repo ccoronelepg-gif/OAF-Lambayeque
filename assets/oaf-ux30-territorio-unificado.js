@@ -7,9 +7,9 @@ const $=id=>document.getElementById(id),node=(tag,cls)=>{const v=document.create
 const layerSpec=[
  ["peligros","A. Peligros climáticos e hidrometeorológicos",[
   ["flood","Peligro de inundaciones",true,"Cartografía de susceptibilidad a inundaciones por lluvias fuertes publicada por CENEPRED (2021), capa 5090024. Representa predisposición territorial; no es una huella de inundación actual ni una alerta vigente.","CENEPRED · S05CP/MapServer/5090024"],
-  ["rainIntense","Peligro de lluvias intensas",false,"Pendiente de conexión. Los productos históricos de precipitación y los pronósticos puntuales disponibles no constituyen por sí solos una capa espacial validada de peligro de lluvias intensas.",null],
-  ["drought","Sequía y déficit hídrico",false,"Pendiente de conexión. El inventario histórico de emergencias por sequía no representa el déficit hídrico actual ni una superficie de sequía validada para Lambayeque.",null],
-  ["heat","Temperaturas extremas",false,"Frecuencia histórica de olas de calor del SENAMHI/IDESEP y registro térmico puntual documentado en Jayanca (2024). La capa disponible representa extremos cálidos históricos; no es un pronóstico ni cubre por sí sola extremos fríos.","SENAMHI/IDESEP · WMS frecuencia histórica de olas de calor"]
+  ["rainIntense","Peligro de lluvias intensas",false,"Indicador pronosticado de precipitación máxima diaria (mm/24 h) durante siete días; zonas de proximidad a puntos de Open-Meteo. NO es cartografía oficial de peligro ni umbral SENAMHI de aviso.",null],
+  ["drought","Sequía y déficit hídrico",false,"Lluvia acumulada modelada de los 30 días anteriores (mm). Un total bajo NO equivale a sequía: sin climatología normal, balance hídrico, SPEI/SPI o demanda del cultivo no hay índice de déficit validado.",null],
+  ["heat","Temperaturas extremas",false,"Temperatura máxima pronosticada a 2 m de los próximos siete días (Open-Meteo), junto con WMS histórico de calor SENAMHI/IDESEP si responde. No es un aviso de ola de calor ni predicción de daños.","SENAMHI/IDESEP · WMS histórico y Open-Meteo Forecast 7 días"]
  ]],
  ["agroclimatic","B. Condiciones agroclimáticas",[
   ["humidity","Exceso de humedad y condiciones favorables para enfermedades (humedad relativa y horas de humedad foliar)",false,"Pendiente de conexión. La humedad relativa ambiental a 2 m no equivale a horas reales de humedad foliar; todavía no existe una superficie geoespacial validada de mojado foliar y condiciones epidemiológicas.",null],
@@ -25,6 +25,20 @@ const SIGRID="https://sig.cenepred.gob.pe/sigrid/rest/services/INFORMACION_COMPL
  ANA="https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/ANA_WMS/MapServer",
  WORLD_IMAGERY="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
  MINAM="https://geoservidorperu.minam.gob.pe/arcgis/rest/services/ServicioGeoINEA/MapServer";
+// Servicio WMS oficial de frecuencia histórica de olas de calor (SENAMHI IDESEP).
+// El servicio puede estar temporalmente fuera de línea; las condiciones pronosticadas
+// de temperatura del módulo A se obtienen por separado de Open-Meteo (UX73).
+function heatWmsUrl(bounds){
+ if(!bounds||![bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].every(Number.isFinite))return "";
+ const p=new URLSearchParams({
+  service:"WMS",version:"1.1.1",request:"GetMap",
+  layers:"g_01_06:01_06_001_03_001_512_0000_00_00",
+  styles:"",srs:"EPSG:4326",
+  bbox:[bounds.minLon,bounds.minLat,bounds.maxLon,bounds.maxLat].join(","),
+  width:"1100",height:"535",format:"image/png",transparent:"TRUE"
+ });
+ return "https://idesep.senamhi.gob.pe/geoserver/g_01_06/wms?"+p;
+}
 const on=k=>!!state.on[k];
 function sv(tag,attrs){const e=document.createElementNS("http://www.w3.org/2000/svg",tag);Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,String(v)));return e}
 function text(el,content){el.textContent=String(content);return el}
@@ -63,7 +77,10 @@ function makeTree(){
    const span=text(node("span"),title),tiny=node("small");
    tiny.textContent=!def.available?"Pendiente de conexión · no se representa información ficticia":
     key==="flood"?"CENEPRED 2021 · susceptibilidad, no inundación observada":
-    "SENAMHI/IDESEP · frecuencia histórica de olas de calor; no es pronóstico";
+    key==="heat"?"Open-Meteo 7 días · T máxima; WMS histórico adicional":
+    key==="rainIntense"?"Open-Meteo 7 días · máxima precipitación diaria (mm), no alerta":
+    key==="drought"?"Open-Meteo · lluvia modelada 30 días anteriores, no SPI/SPEI":
+    "Datos meteorológicos, sin riesgo oficial";
    item.append(check,span,tiny);wrap.append(item);
   }
   d.append(wrap);groups.append(d);
@@ -106,7 +123,7 @@ function makeTree(){
  });
  const p=pane.querySelector(".oaf-ux29-maphead strong");if(p)p.textContent="Mapa político y temático de Lambayeque";
  const title=pane.querySelector(".oaf-ux29-top h2");if(title)title.textContent="Visor geográfico de Lambayeque";
- const lead=pane.querySelector(".oaf-ux29-top p");if(lead)lead.textContent="Activa las capas climáticas e hidrometeorológicas y las condiciones agroclimáticas disponibles. Las capas sin fuente espacial validada se identifican como pendientes de conexión.";
+ const lead=pane.querySelector(".oaf-ux29-top p");if(lead)lead.textContent="Activa las capas climáticas e hidrometeorológicas y las condiciones agroclimáticas disponibles. Los indicadores meteorológicos muestran áreas de influencia aproximadas; las susceptibilidades oficiales se identifican por fuente y año.";
  const board=pane.querySelector(".oaf-ux29-diagbody");if(board)board.setAttribute("aria-live","polite");
  const content=pane.querySelector(".oaf-ux29-mapcolumn .oaf-ux29-mapcontent");
  if(!pane.querySelector("#oaf-ux30-map-help")){
@@ -216,6 +233,7 @@ function render(){
  map.insertBefore(back,null);map.append(front);
  diagnosis();adjustMarkerSizes();
  if(typeof window.oafUx33AfterDraw==="function")window.oafUx33AfterDraw({scene,state,on,map});
+ document.dispatchEvent(new CustomEvent("oaf:territory-map-redrawn"));
  refreshDetailMap();
 }
 function diagnoseItem(key){
@@ -236,6 +254,7 @@ function diagnosis(){
  if(!chosen.length)heading(box,"Sin capas activas","Selecciona una de las seis capas temáticas disponibles.");
  for(const [id,def] of chosen){
   let status=def.available?"Fuente espacial disponible":"Pendiente de conexión · no se representa información ficticia";
+  if(["rainIntense","drought","heat"].includes(id))status="Indicador climático UX73 · consulta en el mapa, ver leyenda (no es nivel oficial de peligro).";
   if(id==="flood"){
    const image=[...pane.querySelectorAll("image[data-ux30-server]")].find(x=>x.dataset.ux30Ids==="5090024");
    status="CENEPRED 2021 · "+(image?.dataset.error==="true"?"geoservicio no disponible":image?.dataset.loaded==="true"?"capa cargada correctamente":"solicitando geoservicio");
@@ -250,7 +269,7 @@ function diagnosis(){
   heading(box,"Punto consultado: "+p.label,"Tipo: "+(p.type||"no consignado")+". Fecha o periodo: "+(p.year||"sin fecha")+
    ". Fuente: "+(p.source||"organismo oficial")+". "+(p.detail||"Registro puntual documentado; no representa toda el área afectada."));
  }
- heading(box,"Lectura del mapa","La susceptibilidad indica predisposición y no un evento actual. Las capas pendientes no generan polígonos, puntos ni niveles de riesgo.");
+ heading(box,"Lectura del mapa","La susceptibilidad indica predisposición y no un evento actual. Los polígonos climáticos son áreas de proximidad a muestras meteorológicas, no niveles oficiales de peligro o riesgo. Las susceptibilidades oficiales se interpretan por separado.");
  const failed=pane.querySelectorAll(".oaf-ux30-layer image[data-error=true]").length;
  if(failed)heading(box,"Una fuente cartográfica no respondió",failed+" servicio(s) no se pudieron cargar. Comprueba la disponibilidad del organismo de origen.");
 }
