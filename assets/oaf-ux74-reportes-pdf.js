@@ -153,6 +153,17 @@ async function exportReport(layer,geometry){
  a.href=url;a.download="OAF_"+layer+"_"+geometry+"_"+model+"_"+date.slice(0,10)+".pdf";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
  return {pages:1+Math.ceil(fc.features.length/36),count:fc.features.length};
 }
+/* Delegacion: los visores pueden recrear botones al cambiar pestañas,
+ * y los eventos registrados en nodos originales no sobreviven al reemplazo. */
+document.addEventListener("click",event=>{
+ const button=event.target?.closest?.("#oaf-ux74a-points,#oaf-ux74a-polygons,#oaf-ux35d-export,#oaf-ux35d-polygons-export");
+ if(!button||button.disabled)return;
+ event.preventDefault();
+ event.stopImmediatePropagation();
+ const layer=button.id.startsWith("oaf-ux74a")?"A":"C";
+ const geometry=button.id.includes("polygons")?"poligonos":"puntos";
+ window.OAFReportPDF.export(layer,geometry);
+},true);
 window.OAFReportPDF={export:async(layer,geometry)=>{
  try{return await exportReport(layer,geometry)}catch(e){console.error("OAF PDF",e);alert("No se pudo generar el PDF: "+(e.message||e));throw e;}
 },_test:{pdf,desc,style}};
