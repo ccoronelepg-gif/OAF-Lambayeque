@@ -133,7 +133,7 @@ test("Los archivos científicos base mantienen estructura válida y advertencias
   assert.ok(sanidad.organismos.every(o=>ids.has(o.crop_id)));
   const rf=JSON.parse(read("datos/rf_experimental_ux15.json"));
   assert.equal(rf.operativo_certificado,false);
-  assert.match(read("assets/oaf-ux15-rf-salidas.js"),/RF no se muestra porque mejora/);
+  assert.match(read("assets/oaf-ux15-rf-salidas.js"),/RF no se grafica porque no tiene una emision|RF no supera el criterio operativo/);
   // Si la descarga ERA5 falla o no hay skill, el archivo debe declarar indisponibilidad
   // y no publicar pronósticos incompletos como si fueran una salida operativa.
   if(rf.estado==="no_disponible"){
@@ -181,7 +181,7 @@ test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin mode
   const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
   assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux69/);
   assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux68/);
-  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux73/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux74/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
   assert.match(js,/Botrytis cinerea/);
