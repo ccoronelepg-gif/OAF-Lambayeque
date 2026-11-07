@@ -254,6 +254,12 @@ test("UX69: Ceratitis capitata en mango usa grados-día propios, sin semáforo d
  assert.ok(Math.abs(week.accumulatedDD-111.3)<1e-8);
  assert.ok(week.daily.every(d=>Math.abs(d.gdd-15.9)<1e-8));
  assert.equal(week.risk,undefined,"No se debe fabricar riesgo de infestación");
+ const nowMs=Date.parse("2026-11-07T23:30:00-05:00");
+ const current=core.evaluate({time,temperature_2m},{mode:"current",nowMs});
+ assert.equal(current.days,1);
+ assert.ok(Math.abs(current.accumulatedDD-15.9)<1e-8);
+ assert.equal(current.indicator,"thermal");
+
  const historical=core.evaluate({time,temperature_2m},{mode:"history",today:"2026-11-20",start:"2026-11-07",end:"2026-11-09"});
  assert.equal(historical.days,3);
  assert.ok(Math.abs(historical.accumulatedDD-47.7)<1e-8);
