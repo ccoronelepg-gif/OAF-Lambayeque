@@ -1,0 +1,45 @@
+name: OAF - UX72 capa C visible en navegador
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/oaf-ux35-escenarios-multicapas.js"
+      - "assets/oaf-ux35c-fitosanitario.js"
+      - "assets/oaf-ux35d-mapa-potencial.js"
+      - "assets/oaf-ux35d-mapa-potencial.css"
+      - "tests/visor_potencial_browser_ux72.cjs"
+      - "tests/fixtures/ux72-visor.html"
+      - ".github/workflows/visor_potencial_browser_ux72.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  navegador:
+    name: Comprobar marcadores y paneles en Chromium
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Instalar navegador de pruebas
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Servir fixture de la capa C
+        run: |
+          python3 -m http.server 8765 > /tmp/ux72-http.log 2>&1 &
+          sleep 2
+          curl -fsS http://127.0.0.1:8765/tests/fixtures/ux72-visor.html >/dev/null
+      - name: Activar capa, revisar mapa, leyendas, GeoJSON y desactivación
+        run: node tests/visor_potencial_browser_ux72.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: capturas-capa-C-ux72
+          path: |
+            /tmp/oaf_ux72_botrytis.png
+            /tmp/oaf_ux72_ceratitis.png
+          if-no-files-found: ignore
+          retention-days: 7
