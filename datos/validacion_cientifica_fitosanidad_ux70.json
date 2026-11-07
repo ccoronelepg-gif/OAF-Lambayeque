@@ -38,17 +38,17 @@
       "evidencia_geografica": "regional_lambayeque",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
-      "fuentes_contraste_verificadas": [
-        "https://www.gob.pe/institucion/senasa/noticias/1230976-lambayeque-intensifica-lucha-contra-la-mosca-de-la-fruta-para-proteger-la-competitividad-del-mango",
-        "https://cmtd.senasa.gob.pe/consulta-lp/mtd",
-        "https://academic.oup.com/jinsectscience/article/12/1/33/881238"
-      ],
       "observacion_cientifica": "Separar Ceratitis capitata de Anastrepha spp.; capturas MTD SENASA, identificación taxonómica y estado de frutos. El modelo térmico brasileño solo refiere a C. capitata.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.gob.pe/institucion/senasa/noticias/1230976-lambayeque-intensifica-lucha-contra-la-mosca-de-la-fruta-para-proteger-la-competitividad-del-mango",
+        "https://cmtd.senasa.gob.pe/consulta-lp/mtd",
+        "https://academic.oup.com/jinsectscience/article/12/1/33/881238"
+      ]
     },
     {
       "id_catalogo": "mango-plaga-2",
@@ -61,13 +61,13 @@
       "evidencia_geografica": "sin_identificacion_local",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
-      "fuentes_contraste_verificadas": [],
       "observacion_cientifica": "Identificar cochinilla/queresa a familia y especie y sustituir la referencia primaria: la nota SENASA adjunta se centra en moscas de la fruta.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": []
     },
     {
       "id_catalogo": "mango-enfermedad-1",
@@ -80,15 +80,15 @@
       "evidencia_geografica": "literatura_externa_no_local",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/amazonas-senasa-capacito-a-productores-de-mango-para-la-ejecucion-de-labores-de-control-integrado-de-moscas-de-la-fruta/",
-      "fuentes_contraste_verificadas": [
-        "https://pubmed.ncbi.nlm.nih.gov/41765617/"
-      ],
       "observacion_cientifica": "Colletotrichum spp. requiere identificación (complejos de especies) y datos de mojado de flores/frutos; reemplazar fuente principal no específica sobre mosca de fruta.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 5,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://pubmed.ncbi.nlm.nih.gov/41765617/"
+      ]
     },
     {
       "id_catalogo": "vid-plaga-1",
@@ -101,15 +101,15 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/"
-      ],
       "observacion_cientifica": "Separar Planococcus ficus de Pseudococcus spp.; identificación taxonómica, inspección de racimos/corteza y hormigas.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/"
+      ]
     },
     {
       "id_catalogo": "vid-plaga-2",
@@ -122,15 +122,15 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://ipm.ucanr.edu/agriculture/grape/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/agriculture/grape/"
-      ],
       "observacion_cientifica": "No usar un único modelo para trips y ácaros; confirmar especie y diferenciar umbrales y enemigos naturales.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/agriculture/grape/"
+      ]
     },
     {
       "id_catalogo": "vid-enfermedad-1",
@@ -143,15 +143,15 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
-      ],
       "observacion_cientifica": "Índice de oídio exige fenología y condiciones de infección primaria; no inferirlo solo con HR o lluvia.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 5,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/"
+      ]
     },
     {
       "id_catalogo": "vid-enfermedad-2",
@@ -164,16 +164,16 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://ipm.ucanr.edu/agriculture/grape/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/",
-        "https://ipm.ucanr.edu/disease/database/grapebotrytis.html"
-      ],
       "observacion_cientifica": "Necesita duración de humectación real del racimo, temperatura y etapa de floración/envero; no transferir proxy de arándano.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/",
+        "https://ipm.ucanr.edu/disease/database/grapebotrytis.html"
+      ]
     },
     {
       "id_catalogo": "arandano-plaga-1",
@@ -186,15 +186,15 @@
       "evidencia_geografica": "evidencia_peru_huaral",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-      "fuentes_contraste_verificadas": [
-        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
-      ],
       "observacion_cientifica": "Confirmar Frankliniella y Thrips a especie y fenología; la fuente INIA es Huaral, no validación Lambayeque.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+      ]
     },
     {
       "id_catalogo": "arandano-plaga-2",
@@ -207,15 +207,15 @@
       "evidencia_geografica": "evidencia_peru_huaral",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-      "fuentes_contraste_verificadas": [
-        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
-      ],
       "observacion_cientifica": "Separar Bemisia tabaci de pseudocóccidos y su vigilancia; no agrupar en un modelo térmico.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25"
+      ]
     },
     {
       "id_catalogo": "arandano-enfermedad-1",
@@ -228,16 +228,16 @@
       "evidencia_geografica": "evidencia_peru_huaral_e_internacional",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-      "fuentes_contraste_verificadas": [
-        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://ask.ifas.ufl.edu/publication/HS380"
-      ],
       "observacion_cientifica": "El criterio HR aire >90 % por 6 h es proxy experimental, no humedad foliar medida ni riesgo de infección validado; registrar floración y tejidos mojados.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": "botrytis_arandano_7a",
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://ask.ifas.ufl.edu/publication/HS380"
+      ]
     },
     {
       "id_catalogo": "arandano-enfermedad-2",
@@ -250,16 +250,16 @@
       "evidencia_geografica": "evidencia_peru_huaral",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-      "fuentes_contraste_verificadas": [
-        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
-        "https://ipm.ucanr.edu/agriculture/avocado/phytophthora-root-rot/"
-      ],
       "observacion_cientifica": "Phytophthora es oomiceto, no hongo verdadero; requiere humedad/saturación y drenaje del sustrato y diagnóstico radicular.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+        "https://ipm.ucanr.edu/agriculture/avocado/phytophthora-root-rot/"
+      ]
     },
     {
       "id_catalogo": "palto-plaga-1",
@@ -272,15 +272,15 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/"
-      ],
       "observacion_cientifica": "Identificar trips regionales antes de adoptar parámetros de Scirtothrips perseae de California; validar especies presentes en Perú.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/"
+      ]
     },
     {
       "id_catalogo": "palto-plaga-2",
@@ -293,15 +293,15 @@
       "evidencia_geografica": "literatura_internacional",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-      "fuentes_contraste_verificadas": [
-        "https://ipm.ucanr.edu/home-and-landscape/avocado/"
-      ],
       "observacion_cientifica": "Separar queresas de ácaros e identificar especies; no hay una única respuesta térmica para ambos.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://ipm.ucanr.edu/home-and-landscape/avocado/"
+      ]
     },
     {
       "id_catalogo": "palto-enfermedad-1",
@@ -314,16 +314,16 @@
       "evidencia_geografica": "evidencia_peru_fuera_lambayeque",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-      "fuentes_contraste_verificadas": [
-        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
-        "https://ipm.ucanr.edu/agriculture/avocado/phytophthora-root-rot/"
-      ],
       "observacion_cientifica": "Faltan humedad y drenaje del suelo, estado sanitario de raíces y datos locales de riego; Phytophthora cinnamomi es oomiceto.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-la-tristeza-del-palto-y-recomendaciones-para-su-control/",
+        "https://ipm.ucanr.edu/agriculture/avocado/phytophthora-root-rot/"
+      ]
     },
     {
       "id_catalogo": "palto-enfermedad-2",
@@ -336,15 +336,15 @@
       "evidencia_geografica": "evidencia_peru_multirregional",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-evalua-condicion-sanitaria-de-cultivos-de-palta-naranja-papa-y-haba/",
-      "fuentes_contraste_verificadas": [
-        "https://pubmed.ncbi.nlm.nih.gov/41177999/"
-      ],
       "observacion_cientifica": "Estudio peruano 2026 identifica varias especies Lasiodiplodia; no atribuir toda muerte regresiva a L. theobromae sin aislamiento/diagnóstico.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://pubmed.ncbi.nlm.nih.gov/41177999/"
+      ]
     },
     {
       "id_catalogo": "maracuya-plaga-1",
@@ -357,17 +357,17 @@
       "evidencia_geografica": "evidencia_peru_otros_cultivos_y_lima",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
-      "fuentes_contraste_verificadas": [
-        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
-        "https://revistas.unfv.edu.pe/rtb/article/view/1341",
-        "https://repositorio.usanpedro.edu.pe/items/dfd465f8-2c2a-489d-96f8-7e84bb90c3be"
-      ],
       "observacion_cientifica": "Confirmar Dasiops inedulis u otra especie y revisar botón floral/ovario; el trabajo climático de Oxapampa trata granadilla, no maracuyá en Lambayeque.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 1,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+        "https://revistas.unfv.edu.pe/rtb/article/view/1341",
+        "https://repositorio.usanpedro.edu.pe/items/dfd465f8-2c2a-489d-96f8-7e84bb90c3be"
+      ]
     },
     {
       "id_catalogo": "maracuya-plaga-2",
@@ -380,15 +380,15 @@
       "evidencia_geografica": "literatura_externa_no_local",
       "prioridad_revision": "media",
       "fuente_actual_en_web": "https://repositorio.inia.gob.pe/bitstreams/c335afc1-2062-4ee4-8e84-4d958539d7c6/download",
-      "fuentes_contraste_verificadas": [
-        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
-      ],
       "observacion_cientifica": "Dione juno y Agraulis spp. requieren identificación por larva/adulto; no inventar dinámica poblacional regional.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext"
+      ]
     },
     {
       "id_catalogo": "maracuya-enfermedad-1",
@@ -401,16 +401,16 @@
       "evidencia_geografica": "literatura_secundaria_no_local",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
-      "fuentes_contraste_verificadas": [
-        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
-        "https://apsjournals.apsnet.org/doi/full/10.1094/PDIS-06-24-1161-RE"
-      ],
       "observacion_cientifica": "Colletotrichum spp. es complejo; requiere diagnóstico y datos de mojado antes de parametrizar antracnosis.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
+        "https://apsjournals.apsnet.org/doi/full/10.1094/PDIS-06-24-1161-RE"
+      ]
     },
     {
       "id_catalogo": "maracuya-enfermedad-2",
@@ -423,16 +423,16 @@
       "evidencia_geografica": "investigacion_muestras_lambayeque",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://www.scielo.org.pe/scielo.php?pid=S2077-99172023000400011&script=sci_arttext",
-      "fuentes_contraste_verificadas": [
-        "https://repositorio.unprg.edu.pe/handle/20.500.12893/15980",
-        "https://apsjournals.apsnet.org/doi/full/10.1094/PDIS-06-24-1161-RE"
-      ],
       "observacion_cientifica": "La tesis UNPRG describe Fusarium solani FmOlmt5 en muestras de Lambayeque; distinguir del agente de marchitez Fusarium oxysporum f.sp. passiflorae. Confirmar aislamiento y pruebas de patogenicidad.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://repositorio.unprg.edu.pe/handle/20.500.12893/15980",
+        "https://apsjournals.apsnet.org/doi/full/10.1094/PDIS-06-24-1161-RE"
+      ]
     },
     {
       "id_catalogo": "banano-plaga-1",
@@ -445,15 +445,15 @@
       "evidencia_geografica": "fuente_senasa_san_martin_no_local",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
-      "fuentes_contraste_verificadas": [
-        "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/"
-      ],
       "observacion_cientifica": "Muestrear rizomas/pseudotallo y trampas; fuente original SENASA documenta San Martín, no ocurrencia en Lambayeque.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 2,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/"
+      ]
     },
     {
       "id_catalogo": "banano-plaga-2",
@@ -466,15 +466,15 @@
       "evidencia_geografica": "guia_senasa_peru_no_local",
       "prioridad_revision": "alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf",
-      "fuentes_contraste_verificadas": [
-        "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf"
-      ],
       "observacion_cientifica": "Diferenciar Radopholus similis de otros nematodos con muestras de raíces/suelo y laboratorio; no usar temperatura sola.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://www.senasa.gob.pe/senasa/descargasarchivos/2020/07/Guia-BPA-PLATANO.pdf"
+      ]
     },
     {
       "id_catalogo": "banano-enfermedad-1",
@@ -487,16 +487,16 @@
       "evidencia_geografica": "presencia_peru_piura_control_oficial",
       "prioridad_revision": "critica_bioseguridad",
       "fuente_actual_en_web": "https://www.gob.pe/institucion/senasa/noticias/967156-senasa-trabaja-en-la-contencion-de-plaga-que-afecta-a-bananos-y-platanos",
-      "fuentes_contraste_verificadas": [
-        "https://gd.eppo.int/taxon/FUSAC4/distribution/PE",
-        "https://doi.org/10.2903/j.efsa.2022.7092"
-      ],
       "observacion_cientifica": "Foc R4T es enfermedad cuarentenaria: confirmar diagnóstico oficial y medidas SENASA. La denominación Fusarium odoratissimum existe, pero su adopción taxonómica es debatida; mantener nomenclatura oficial R4T.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://gd.eppo.int/taxon/FUSAC4/distribution/PE",
+        "https://doi.org/10.2903/j.efsa.2022.7092"
+      ]
     },
     {
       "id_catalogo": "banano-enfermedad-2",
@@ -509,15 +509,15 @@
       "evidencia_geografica": "evidencia_latinoamerica_no_local",
       "prioridad_revision": "muy_alta",
       "fuente_actual_en_web": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
-      "fuentes_contraste_verificadas": [
-        "https://revistas.tec.ac.cr/index.php/agroinn/article/view/6612"
-      ],
       "observacion_cientifica": "Modelo específico necesita duración de humedad foliar, lluvia, temperatura, radiación, susceptibilidad varietal y datos de infección; no basta HR media.",
       "viable_para_prediccion_de_riesgo_local": false,
       "indicador_exploratorio": null,
       "productos_en_ficha": 0,
       "productos_con_etiqueta_ficha_confirmada": 0,
-      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar"
+      "accion": "mantener_ficha_con_advertencia_y_validar_antes_de_modelar",
+      "fuentes_documentales_para_contraste": [
+        "https://revistas.tec.ac.cr/index.php/agroinn/article/view/6612"
+      ]
     }
   ],
   "complemento_cafe": [
