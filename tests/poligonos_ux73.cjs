@@ -43,10 +43,10 @@ assert.match(ux30,/5090024/);
 assert.match(ux30,/polygon\[data-ux73a-zone\]/);
 const idx=read("index.html"),sw=read("sw.js"),c=read("assets/oaf-ux35d-mapa-potencial.js");
 for(const a of ["modelos/poligonos_potenciales_ux73.js","assets/oaf-ux73-peligros-poligonos.js","assets/oaf-ux73-poligonos.css"]){
- assert.ok(idx.includes(a+"?v=20261106-ux73"),"Falta en index "+a);
+ assert.ok(idx.includes(a+"?v=20261106-ux73")||idx.includes(a+"?v=20261106-ux74"),"Falta en index "+a);
  assert.ok(sw.includes("./"+a),"Falta en PWA "+a);
 }
-assert.match(sw,/oaf-pwa-shell-2026-11-06-ux73/);
+assert.match(sw,/oaf-pwa-shell-2026-11-06-ux74/);
 assert.match(c,/oaf-ux35d-zones/);
 assert.match(c,/function polygonsGeoJSON/);
 assert.match(c,/es_riesgo_calibrado:false/);
