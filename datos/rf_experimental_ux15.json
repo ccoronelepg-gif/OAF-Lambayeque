@@ -2,7 +2,7 @@
   "tipo": "RandomForestRegressor original reproducible de investigación, NO modelo operativo",
   "unidades_temperatura": "Diario Tmax; mensual temperatura media (no promedio de Tmax)",
   "estrategia_mejora": "Ajuste de hiperparametros diario 2021-2023/validacion 2024/test 2025, separado para lluvia y Tmax; ajuste mensual congelado 2019-2020; sin promocion automatica.",
-  "fecha_generacion_utc": "2026-11-07T05:40:57+00:00",
+  "fecha_generacion_utc": "2026-11-07T05:43:57+00:00",
   "fecha_local": "2026-11-07",
   "fuente_historica": "ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
   "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
