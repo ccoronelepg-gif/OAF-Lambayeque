@@ -50,7 +50,7 @@ test("PWA: manifiesto, iconos, ruta offline y recursos precargados disponibles",
   assert.equal(paths.length,new Set(paths).size,"hay recursos repetidos en el precaché");
   for(const file of paths)assert.ok(exists(file),"precaché inexistente: "+file);
   for(const file of ["assets/oaf-ux14-reorganizacion.css","assets/oaf-ux14-reorganizacion.js",
-   "assets/oaf-ux15-rf-salidas.js","assets/oaf-responsive-celulares-ux19.js",
+   "assets/oaf-ux15-rf-salidas.js","assets/oaf-ux76-ranking-modelos.js","assets/oaf-ux76-ranking-modelos.css","assets/oaf-responsive-celulares-ux19.js",
    "assets/oaf-ux21-editorial.js","assets/oaf-ux17-fotos-mapas.css"])
    assert.ok(paths.includes(file),"recurso esencial no precargado: "+file);
   assert.ok(exists("offline.html"));
@@ -69,7 +69,7 @@ test("PWA: actualización atómica, sin almacenar pronósticos o avisos caducado
   assert.match(sw,/const REQUIRED=\[/,"falta la lista de recursos críticos");
   for(const file of ["./","./offline.html","./manifest.webmanifest",
     "./assets/oaf-pwa.js","./assets/oaf-territorio-compartido.js",
-    "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js"]){
+    "./assets/oaf-parcelas-ux39.js","./assets/oaf-ux15-rf-salidas.js","./assets/oaf-ux76-ranking-modelos.js","./assets/oaf-ux76-ranking-modelos.css"]){
     assert.ok(sw.includes(JSON.stringify(file)),"recurso crítico no exigido: "+file);
   }
   assert.match(sw,/if\(missing\.length\)throw new Error/,"una instalación parcial no debe activarse");
@@ -181,7 +181,7 @@ test("UX66: módulo C fitosanitario enlazado, con motor independiente y sin mode
   const html=read("index.html"),sw=read("sw.js"),js=read("assets/oaf-ux35c-fitosanitario.js");
   assert.match(html,/oaf-ux35c-fitosanitario\.js\?v=20261106-ux69/);
   assert.match(html,/oaf-ux35c-fitosanitario\.css\?v=20261106-ux68/);
-  assert.match(sw,/oaf-pwa-shell-2026-11-06-ux74/);
+  assert.match(sw,/oaf-pwa-shell-2026-11-07-ux76/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.js/);
   assert.match(sw,/\.\/assets\/oaf-ux35c-fitosanitario\.css/);
   assert.match(js,/Botrytis cinerea/);
@@ -269,4 +269,61 @@ test("UX69: Ceratitis capitata en mango usa grados-día propios, sin semáforo d
  assert.throws(()=>core.evaluate({time,temperature_2m:hotSeries},{mode:"forecast",today:"2026-11-06"}),/fuera del intervalo experimental/);
  const incomplete={time:time.slice(1),temperature_2m:temperature_2m.slice(1)};
  assert.throws(()=>core.evaluate(incomplete,{mode:"history",today:"2026-11-20",start:"2026-11-06",end:"2026-11-08"}),/Faltan horas/);
+});
+
+
+test("UX76: web/PWA muestran ERA5, Open-Meteo y RF siempre sin inventar pronosticos",()=>{
+  assert.match(html,/oaf-ux76-ranking-modelos\.js\?v=20261107-ux76/);
+  assert.match(html,/oaf-ux76-ranking-modelos\.css\?v=20261107-ux76/);
+  const js=read("assets/oaf-ux15-rf-salidas.js");
+  assert.match(js,/const group=\[/);
+  assert.match(js,/ERA5 1996–2025 · climatología histórica/);
+  assert.match(js,/Open-Meteo \/ ECMWF SEAS5 · estacional/);
+  assert.match(js,/renderWeekly\(\{city,variable/);
+  assert.match(js,/renderMonthly\(\{city,variable/);
+  assert.match(js,/sin emisión coincidente/);
+  const monitor=read("scripts/seguimiento_rf_ux74.py");
+  assert.match(monitor,/issued_era5_reference\(dates\)/);
+  assert.match(monitor,/era5_climatologia/);
+  assert.match(monitor,/1996-01-01/);
+  assert.match(monitor,/2025-12-31/);
+});
+
+test("UX76: liderazgo sin promocion falsa y 3-vias estrictamente comparables",async()=>{
+ const json=JSON.parse(read("datos/rf_experimento_ux75/evaluacion_reentrenamiento.json"));
+ const emit=(i,hasEra)=>({
+   fecha_local:"2026-11-"+String(i+10).padStart(2,"0"),
+   verificacion_era5:{por_localidad:{
+      Chiclayo:{dias:7,rf:{mae_lluvia_mm:2,mae_tmax_c:1},
+       open_meteo:{mae_lluvia_mm:1.5,mae_tmax_c:.9},
+       era5_climatologia:hasEra?{mae_lluvia_mm:3,mae_tmax_c:1.4}:null}
+   }}
+ });
+ const dates=Array.from({length:14},(_,i)=>emit(i,i!==13));
+ const history={version:"UX74",emisiones:dates};
+ const window={};
+ const listeners={};
+ const document={readyState:"loading",addEventListener:(name,callback)=>{listeners[name]=callback;},getElementById:()=>null};
+ const mockedFetch=async path=>({
+   ok:true,json:async()=>path.includes("experimento")?json:history
+ });
+ runInNewContext(read("assets/oaf-ux76-ranking-modelos.js"),
+   {window,document,fetch:mockedFetch,console},{filename:"ux76.js"});
+ assert.equal(typeof window.OAFModelCompareUX76?.prospective,"function");
+ await window.OAFModelCompareUX76.load();
+ assert.equal(window.OAFModelCompareUX76.getStatus().benchmark,true);
+ assert.equal(window.OAFModelCompareUX76.dailyBenchmark("rain",2025).leader,"ERA5 (climatología)");
+ assert.equal(window.OAFModelCompareUX76.dailyBenchmark("rain",2026).leader,"RF incumbente");
+ const first=window.OAFModelCompareUX76.prospective("Chiclayo","rain");
+ assert.equal(first.n,13);
+ assert.equal(first.eligible,false,"No afirmar ganador con menos de 14 emisiones completas");
+ history.emisiones[13]=emit(13,true);
+ await window.OAFModelCompareUX76.load();
+ const second=window.OAFModelCompareUX76.prospective("Chiclayo","rain");
+ assert.equal(second.n,14);
+ assert.equal(second.eligible,true);
+ assert.equal(second.leader,"Open-Meteo");
+ history.emisiones[13]=emit(13,false);
+ await window.OAFModelCompareUX76.load();
+ assert.equal(window.OAFModelCompareUX76.prospective("Chiclayo","rain").eligible,false);
 });
