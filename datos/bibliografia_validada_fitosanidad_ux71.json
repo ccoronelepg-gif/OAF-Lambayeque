@@ -1,0 +1,1083 @@
+{
+  "esquema": "OAF-Lambayeque/bibliografia-fitosanidad/ux71",
+  "fecha_revision": "2026-11-06",
+  "version": "UX71",
+  "alcance": "6 cultivos de web y 23 fichas; extensión café se documenta aparte",
+  "fuente_catalogo": "datos/sanidad_agroexportadora_2026.json",
+  "fuente_auditoria_anterior": "datos/validacion_cientifica_fitosanidad_ux70.json",
+  "regla": "La vinculación hospedante-organismo sustentada NO implica presencia actual por distrito, calibración, predicción ni registro de producto.",
+  "metodo": "Rastreo de fuentes bibliográficas e institucionales; verificación por páginas publicadas/resúmenes/metadatos; no lectura íntegra de todos los documentos ni prueba de patogenicidad nueva.",
+  "calificacion": "Local = SENASA comunica problema de grupo en Lambayeque o tesis analiza muestras de Lambayeque. País = Perú en otra región o guía nacional. Exterior = evidencia extranjera aplicable sólo a la relación hospedante. Indirecta = documentación actual insuficiente. Son grados de procedencia, NO puntuaciones de calidad editorial ni riesgo.",
+  "inventario": {
+    "fichas": 23,
+    "bibliografia_citada": 35,
+    "geografia": {
+      "local_grupo": 1,
+      "exterior": 10,
+      "peru_otra_region": 9,
+      "indirecta": 1,
+      "peru_general": 1,
+      "muestras_lambayeque": 1
+    },
+    "estatus": {
+      "evidencia_local_grupo": 1,
+      "hospedante_documentado_fuera_peru": 10,
+      "hospedante_documentado_peru_otra_region": 9,
+      "evidencia_directa_insuficiente": 1,
+      "hospedante_documentado_peru_sin_localidad": 1,
+      "evidencia_local_muestras_sin_prevalencia": 1
+    }
+  },
+  "fuentes": [
+    {
+      "id": "SENASA-MANGO-2025",
+      "autor_institucion": "SENASA",
+      "titulo": "Nota oficial: Lambayeque intensifica lucha contra mosca de fruta en mango",
+      "anio": 2025,
+      "doi": null,
+      "url": "https://www.gob.pe/institucion/senasa/noticias/1230976-lambayeque-intensifica-lucha-contra-la-mosca-de-la-fruta-para-proteger-la-competitividad-del-mango",
+      "tipo_evidencia": "oficial_regional",
+      "alcance_y_limitacion": "Confirma importancia del grupo en Motupe/Jayanca/Olmos/Zaña; no separa abundancias de Ceratitis y Anastrepha.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "SENASA-MANGO-2021",
+      "autor_institucion": "SENASA",
+      "titulo": "Acciones de control integrado de mosca de fruta en cosecha de mango, Lambayeque",
+      "anio": 2021,
+      "doi": null,
+      "url": "https://www.senasa.gob.pe/senasacontigo/lambayeque-acciones-de-control-integrado-de-moscas-de-la-fruta-contribuye-con-la-sanidad-en-la-cosecha-de-mango/",
+      "tipo_evidencia": "oficial_regional",
+      "alcance_y_limitacion": "Control y trampas; las cifras son históricas, no estado 2026.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "RICALDE-2012",
+      "autor_institucion": "Ricalde et al.",
+      "titulo": "Temperature-dependent development and survival of Brazilian populations of Ceratitis capitata",
+      "anio": 2012,
+      "doi": "10.1673/031.012.3301",
+      "url": "https://doi.org/10.1673/031.012.3301",
+      "tipo_evidencia": "articulo_original_laboratorio",
+      "alcance_y_limitacion": "Petrolina: resumen 8,47 °C/341 GD; cuerpo de resultados 9,1 °C/341 GD, discrepancia interna sin resolver; laboratorio Brasil.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MANGO-SCALE-2023",
+      "autor_institucion": "Dako",
+      "titulo": "White Mango Scale (Aulacaspis tubercularis) infestation on mango: distinct scenarios in Ethiopia and Kenya",
+      "anio": 2023,
+      "doi": "10.1016/j.heliyon.2023.e19054",
+      "url": "https://doi.org/10.1016/j.heliyon.2023.e19054",
+      "tipo_evidencia": "articulo_original_extranjero",
+      "alcance_y_limitacion": "Valida hospedante–queresa ejemplar; no prueba A. tubercularis en Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MANGO-ANTH-PERU-2023",
+      "autor_institucion": "Vilcarromero-Ramos et al.",
+      "titulo": "First Report of Anthracnose Caused by Colletotrichum asianum on Mango in Peru",
+      "anio": 2023,
+      "doi": "10.1094/PDIS-10-22-2357-PDN",
+      "url": "https://doi.org/10.1094/PDIS-10-22-2357-PDN",
+      "tipo_evidencia": "articulo_original_peru",
+      "alcance_y_limitacion": "Reporte en Amazonas, no Lambayeque; no define todas las especies presentes.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MANGO-ANTH-2025",
+      "autor_institucion": "Nguyen et al.",
+      "titulo": "Identification, characterization and pathogenicity of C. asianum, C. fructicola and C. laticiphilum in mango Vietnam",
+      "anio": 2025,
+      "doi": "10.1139/cjm-2025-0069",
+      "url": "https://doi.org/10.1139/cjm-2025-0069",
+      "tipo_evidencia": "articulo_original_extranjero",
+      "alcance_y_limitacion": "Complejo de especies; Vietnam, no Perú.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-MEALY-2024",
+      "autor_institucion": "UC IPM",
+      "titulo": "Vine Mealybug — Planococcus ficus",
+      "anio": 2024,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/vine-mealybug/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Planococcus ficus; requiere identificación local.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-PSEUD",
+      "autor_institucion": "UC IPM",
+      "titulo": "Mealybugs (Pseudococcus) in grape",
+      "anio": 2015,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/mealybugs-pseudococcus/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Especies distintas de Planococcus ficus, con ciclos diferentes.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-THRIPS",
+      "autor_institucion": "UC IPM",
+      "titulo": "Thrips on grape",
+      "anio": 2015,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/thrips/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Drepanothrips reuteri y Frankliniella occidentalis en California; no supone ocurrencia en Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-MITES",
+      "autor_institucion": "UC IPM",
+      "titulo": "Identifying Spider Mites and Their Damage in Grape",
+      "anio": 2016,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/invertebratesidentifying-spider-mites-and-their-damage/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Diferenciar ácaros foliares, no agrupar con trips.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-PM",
+      "autor_institucion": "UC IPM",
+      "titulo": "Powdery mildew of grape — Erysiphe necator",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/powdery-mildew/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Modelo requiere fenología, condiciones de infección y temperatura horaria.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-PM-MODEL",
+      "autor_institucion": "UC IPM archivo",
+      "titulo": "Disease model of grape powdery mildew (archived)",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/DISEASE/DATABASE/grapepowderymildew.html",
+      "tipo_evidencia": "guia_historica_archivada",
+      "alcance_y_limitacion": "El sitio avisa que es contenido archivado; no trasladar índices sin validación local.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "GRAPE-BOT",
+      "autor_institucion": "UC IPM",
+      "titulo": "Botrytis Bunch Rot in Grape",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/grape/botrytis-bunch-rot/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Requiere agua libre en racimos y fenología; clima 2 m no da infección.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "INIA-BLUEBERRY-2020",
+      "autor_institucion": "Velásquez Ochoa y Meza / INIA",
+      "titulo": "Desarrollo de alternativas de MIP para arándano en Huaral",
+      "anio": 2020,
+      "doi": null,
+      "url": "https://repositorio.inia.gob.pe/items/70ccf99b-a81b-4782-b2c6-07c4c7dabb25",
+      "tipo_evidencia": "informe_institucional_peru",
+      "alcance_y_limitacion": "Documento de Huaral; resumen lista trips, Bemisia, pseudocóccidos, Botrytis, Phytophthora; no demuestra incidencia Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BOT-GENERAL",
+      "autor_institucion": "UC IPM",
+      "titulo": "Botrytis blight or gray mold",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/home-and-landscape/botrytis-blight-or-gray-mold/",
+      "tipo_evidencia": "guia_tecnica_general",
+      "alcance_y_limitacion": "HR >90 % ≥6 h y/o mojado; no umbral clínicamente calibrado para arándano peruano.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BOT-REVIEW-2024",
+      "autor_institucion": "Revisión en Food Microbiology",
+      "titulo": "Botrytis fruit rot management: What have we achieved so far?",
+      "anio": 2024,
+      "doi": "10.1016/j.fm.2024.104564",
+      "url": "https://doi.org/10.1016/j.fm.2024.104564",
+      "tipo_evidencia": "revision_cientifica",
+      "alcance_y_limitacion": "Manejo y diagnóstico global, no parámetros de incidencia local.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "AVOCADO-PHYTO",
+      "autor_institucion": "UC IPM",
+      "titulo": "Phytophthora Root Rot / Avocado",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/avocado/phytophthora-root-rot/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "P. cinnamomi = oomiceto; humedad y drenaje del suelo determinantes.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "AVOCADO-THRIPS",
+      "autor_institucion": "UC IPM",
+      "titulo": "Avocado Thrips — Scirtothrips perseae",
+      "anio": 2016,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/avocado/avocado-thrips/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Espécimen guía de California; no valida presencia peruana.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "AVOCADO-PERSEA",
+      "autor_institucion": "UC IPM",
+      "titulo": "Persea Mite / Avocado",
+      "anio": null,
+      "doi": null,
+      "url": "https://ipm.ucanr.edu/agriculture/avocado/persea-mite/",
+      "tipo_evidencia": "guia_tecnica_especializada",
+      "alcance_y_limitacion": "Ácaros tienen diagnóstico diferente de queresas; identificar especie Perú.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "AVOCADO-LASIO-2026",
+      "autor_institucion": "Llanos et al.",
+      "titulo": "Identification, Distribution, and Pathogenicity of Lasiodiplodia Species Causing Avocado Stem-End Rot in Peru",
+      "anio": 2026,
+      "doi": "10.1094/PDIS-08-25-1691-RE",
+      "url": "https://doi.org/10.1094/PDIS-08-25-1691-RE",
+      "tipo_evidencia": "articulo_original_peru",
+      "alcance_y_limitacion": "Aislamientos de 7 regiones; varias especies de Lasiodiplodia, confirma pudrición peduncular y cancro de ramas, no todos los casos de muerte regresiva.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MARACUYA-INIA",
+      "autor_institucion": "INIA Perú",
+      "titulo": "Guía técnica: el cultivo de maracuyá, sección plagas",
+      "anio": null,
+      "doi": null,
+      "url": "https://repositorio.inia.gob.pe/bitstreams/c335afc1-2062-4ee4-8e84-4d958539d7c6/download",
+      "tipo_evidencia": "guia_institucional_peru",
+      "alcance_y_limitacion": "Extracto indexado menciona Dione juno y Agraulis sp.; revisar edición y diagnóstico, no se evaluó el PDF completo en esta fase.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MARACUYA-REVIEW-2023",
+      "autor_institucion": "Campos-Rodríguez et al.",
+      "titulo": "Maracuyá: composición nutricional, bioactivos, biocontrol y fertilización orgánica",
+      "anio": 2023,
+      "doi": "10.17268/sci.agropecu.2023.040",
+      "url": "https://doi.org/10.17268/sci.agropecu.2023.040",
+      "tipo_evidencia": "revision_cientifica_indirecta",
+      "alcance_y_limitacion": "No es estudio primario de infección/antracnosis/Fusarium o Dasiops en Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "DASIOPS-GRANADILLA-2022",
+      "autor_institucion": "Orihuela et al.",
+      "titulo": "Dasiops sp. in flower buds of Passiflora ligularis in Oxapampa",
+      "anio": 2022,
+      "doi": "10.24039/rtb20222021341",
+      "url": "https://doi.org/10.24039/rtb20222021341",
+      "tipo_evidencia": "articulo_original_hospedante_diferente",
+      "alcance_y_limitacion": "El hospedante del trabajo es GRANADILLA, no maracuyá; su correlación humedad–incidencia no se puede transferir.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "DASIOPS-MARACUYA-2026",
+      "autor_institucion": "Rojas Meza / Universidad San Pedro",
+      "titulo": "Dasiops inedulis en botón floral de maracuyá, ensayo en INIA La Molina",
+      "anio": 2026,
+      "doi": null,
+      "url": "https://repositorio.usanpedro.edu.pe/items/dfd465f8-2c2a-489d-96f8-7e84bb90c3be",
+      "tipo_evidencia": "tesis_peru",
+      "alcance_y_limitacion": "Estudio experimental 2024 en Lima, depositado 2026; no detección Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MARACUYA-ANTH-2025",
+      "autor_institucion": "Zhao et al.",
+      "titulo": "Identification and characterization of Colletotrichum species associated with anthracnose of passion fruit in China",
+      "anio": 2025,
+      "doi": "10.1080/07060661.2025.2505482",
+      "url": "https://doi.org/10.1080/07060661.2025.2505482",
+      "tipo_evidencia": "articulo_original_extranjero",
+      "alcance_y_limitacion": "Passiflora edulis con múltiples especies; estudio Guangxi, no localidad Perú.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "MARACUYA-FUS-2025",
+      "autor_institucion": "Tesen Elorreaga / UNPRG",
+      "titulo": "Evaluación de tolerancia de Passiflora frente Fusarium spp., Lambayeque",
+      "anio": 2025,
+      "doi": null,
+      "url": "https://repositorio.unprg.edu.pe/handle/20.500.12893/15980",
+      "tipo_evidencia": "tesis_muestras_lambayeque",
+      "alcance_y_limitacion": "22 de 30 MUESTRAS de tejidos afectados positivas, cinco sectores; NO prevalencia poblacional. F. solani cepa FmOlmt5 y pruebas de patogenicidad.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BANANA-PICUDO",
+      "autor_institucion": "SENASA",
+      "titulo": "Monitoreo de parcelas de plátano en San Martín",
+      "anio": null,
+      "doi": null,
+      "url": "https://www.senasa.gob.pe/senasacontigo/senasa-monitoreo-parcelas-de-platano-en-san-martin/",
+      "tipo_evidencia": "nota_oficial_otra_region",
+      "alcance_y_limitacion": "No demuestra ocurrencia en Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BANANA-NEMA-2024",
+      "autor_institucion": "Sousa et al.",
+      "titulo": "Phytoparasitic Nematodes of Musa spp. with Emphasis on Genetic Resistance: a Systematic Review",
+      "anio": 2024,
+      "doi": "10.3390/plants13101299",
+      "url": "https://doi.org/10.3390/plants13101299",
+      "tipo_evidencia": "revision_sistematica",
+      "alcance_y_limitacion": "Radopholus similis, Helicotylenchus, Pratylenchus, Meloidogyne; identidad requiere laboratorio.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BANANA-TR4-EPPO",
+      "autor_institucion": "EPPO",
+      "titulo": "Foc Tropical Race 4 distribution, Peru",
+      "anio": 2023,
+      "doi": null,
+      "url": "https://gd.eppo.int/taxon/FUSAC4/distribution/PE",
+      "tipo_evidencia": "registro_fitosanitario_oficial",
+      "alcance_y_limitacion": "Situación oficial de 2023: Perú, Piura (2021), restringida bajo control; no confirma presencia 2026 Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "BANANA-TR4-SENASA",
+      "autor_institucion": "SENASA",
+      "titulo": "Confirmación del brote Foc R4T en Piura",
+      "anio": 2021,
+      "doi": null,
+      "url": "https://www.gob.pe/institucion/senasa/noticias/429832-senasa-confirma-brote-de-fusarium-raza-4-tropical-en-piura",
+      "tipo_evidencia": "oficial_peru",
+      "alcance_y_limitacion": "Lugar del reporte = Piura, no Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "SIGATOKA-2025",
+      "autor_institucion": "de Jesus et al.",
+      "titulo": "Pseudocercospora fijiensis and P. musae biology and epidemiology",
+      "anio": 2025,
+      "doi": "10.1016/j.fbr.2024.100408",
+      "url": "https://doi.org/10.1016/j.fbr.2024.100408",
+      "tipo_evidencia": "revision_cientifica",
+      "alcance_y_limitacion": "Revisión, sin calibración epidemiológica Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "SIGATOKA-2023",
+      "autor_institucion": "Delatouche et al.",
+      "titulo": "Dynamic of Pseudocercospora fijiensis: weather, fungicide and landscape effects",
+      "anio": 2023,
+      "doi": "10.1094/PHYTO-04-22-0132-R",
+      "url": "https://doi.org/10.1094/PHYTO-04-22-0132-R",
+      "tipo_evidencia": "articulo_original_extranjero",
+      "alcance_y_limitacion": "Modelo en Antillas francesas; no transferir pesos a Lambayeque.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "COFFEE-RUST-2024",
+      "autor_institucion": "Salazar-Navarro et al.",
+      "titulo": "Coffee Leaf Rust in Coffee Plants and Perspectives by the Disease Control",
+      "anio": 2024,
+      "doi": "10.32604/phyton.2024.049612",
+      "url": "https://doi.org/10.32604/phyton.2024.049612",
+      "tipo_evidencia": "revision_cientifica",
+      "alcance_y_limitacion": "Requiere agua libre en hoja; literatura externa.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "COFFEE-MINER-2026",
+      "autor_institucion": "Jean-Baptiste et al.",
+      "titulo": "Systematic review of biocontrol, extracts and cover crops for Leucoptera coffeella",
+      "anio": 2026,
+      "doi": "10.3390/insects17060636",
+      "url": "https://doi.org/10.3390/insects17060636",
+      "tipo_evidencia": "revision_sistematica",
+      "alcance_y_limitacion": "Revisión 130 publicaciones examinadas, 28 incluidas; no calibra desarrollo local.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    },
+    {
+      "id": "SENASA-SIGIA",
+      "autor_institucion": "SENASA",
+      "titulo": "SIGIA consulta de registros de plaguicidas por cultivo y plaga",
+      "anio": null,
+      "doi": null,
+      "url": "https://servicios.senasa.gob.pe/SIGIAWeb/sigia_consulta_cultivo.html",
+      "tipo_evidencia": "registro_oficial",
+      "alcance_y_limitacion": "Consulta exacta de producto, cultivo, plaga, formulación y vigencia; no equivale a etiqueta aprobada.",
+      "verificacion": "metadatos_o_resumen_publicado; no lectura integral de todos los textos",
+      "estado_url": "localizada_en_consulta_web; no garantia_de_disponibilidad_futura"
+    }
+  ],
+  "fichas": [
+    {
+      "id_ficha": "mango-plaga-1",
+      "cultivo_id": "mango",
+      "tipo": "plaga",
+      "nombre_ficha": "Moscas de la fruta",
+      "nombre_actual": "Ceratitis capitata y Anastrepha spp.",
+      "referencias_especificas": [
+        "SENASA-MANGO-2025",
+        "SENASA-MANGO-2021",
+        "RICALDE-2012"
+      ],
+      "nivel_geografico": "local_grupo",
+      "alcance_taxonomico": "combinacion_dos_generos",
+      "estado_bibliografico": "evidencia_local_grupo",
+      "accion_prioritaria": "separar_especies",
+      "nota_revision": "SENASA confirma importancia de mosca de la fruta en mango de Lambayeque, pero las notas no aportan recuento desagregado C. capitata/Anastrepha. Parámetros de Petrolina tienen discrepancia (8.47 vs 9.1).",
+      "variables_y_verificaciones_requeridas": [
+        "capturas_MTD_por_especie",
+        "frutos_infestados",
+        "madurez_frutos",
+        "temperatura_aire_y_suelo"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "mango-plaga-2",
+      "cultivo_id": "mango",
+      "tipo": "plaga",
+      "nombre_ficha": "Cochinillas o queresas",
+      "nombre_actual": "Diversas especies de hemípteros",
+      "referencias_especificas": [
+        "MANGO-SCALE-2023"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "grupo_de_queresas_no_identificado",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "reemplazar_fuente_no_especifica",
+      "nota_revision": "Aulacaspis tubercularis es ejemplo internacional en mango, NO especie demostrada en Lambayeque. La fuente principal actual de SENASA refiere a mosca de la fruta, no a queresas.",
+      "variables_y_verificaciones_requeridas": [
+        "identificacion_especie",
+        "conteo_focos",
+        "hormigas_y_enemigos_naturales",
+        "fenologia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "mango-enfermedad-1",
+      "cultivo_id": "mango",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Antracnosis",
+      "nombre_actual": "Colletotrichum spp.",
+      "referencias_especificas": [
+        "MANGO-ANTH-PERU-2023",
+        "MANGO-ANTH-2025"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "complejo_especies",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "sustituir_fuente_principal_y_especificar_complejo",
+      "nota_revision": "C. asianum demostrado en mango de Amazonas (Perú, 2023). Diferentes Colletotrichum causan antracnosis; no extrapolar especies y umbrales a Lambayeque.",
+      "variables_y_verificaciones_requeridas": [
+        "identidad_aislado",
+        "mojado_inflorescencias_frutos",
+        "temperatura",
+        "fenologia",
+        "incidencia_campo"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "vid-plaga-1",
+      "cultivo_id": "vid",
+      "tipo": "plaga",
+      "nombre_ficha": "Cochinilla harinosa de la vid",
+      "nombre_actual": "Planococcus ficus y Pseudococcus spp.",
+      "referencias_especificas": [
+        "GRAPE-MEALY-2024",
+        "GRAPE-PSEUD"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "Planococcus_y_Pseudococcus_distintos",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "desagregar_especies",
+      "nota_revision": "Fuentes UC IPM detallan distintas especies y biología; sus especies presentes no están verificadas en Lambayeque.",
+      "variables_y_verificaciones_requeridas": [
+        "identificacion_especie",
+        "conteos_por_racimo",
+        "hormigas",
+        "fenologia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "vid-plaga-2",
+      "cultivo_id": "vid",
+      "tipo": "plaga",
+      "nombre_ficha": "Trips y ácaros",
+      "nombre_actual": "Diversos Thysanoptera y Acari",
+      "referencias_especificas": [
+        "GRAPE-THRIPS",
+        "GRAPE-MITES"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "dos_grupos_artrópodos",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "desagregar_trips_y_acaros",
+      "nota_revision": "Trips y ácaros requieren muestreos y modelos independientes, no un indicador único de T.",
+      "variables_y_verificaciones_requeridas": [
+        "especie",
+        "monitoreo_foliar_y_racimos",
+        "enemigos_naturales",
+        "temperatura"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "vid-enfermedad-1",
+      "cultivo_id": "vid",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Oídio",
+      "nombre_actual": "Erysiphe necator",
+      "referencias_especificas": [
+        "GRAPE-PM",
+        "GRAPE-PM-MODEL"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "especie_clara",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "mantener_y_calibrar",
+      "nota_revision": "Oídio Erysiphe necator; el modelo UC IPM archivado exige validación por localidad y revisión de fenología/infección primaria. No confundir con Plasmopara viticola, que NO figura en las 23 fichas.",
+      "variables_y_verificaciones_requeridas": [
+        "temperatura_horaria_dosel",
+        "fenologia",
+        "infeccion_primaria",
+        "incidencia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "vid-enfermedad-2",
+      "cultivo_id": "vid",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Botrytis del racimo",
+      "nombre_actual": "Botrytis cinerea",
+      "referencias_especificas": [
+        "GRAPE-BOT"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "especie_clara",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "mantener_no_extrapolar_modelo_arandano",
+      "nota_revision": "Botrytis del racimo depende de humedad libre/fruto y etapas de floración/envero; no reutilizar proxy de arándano.",
+      "variables_y_verificaciones_requeridas": [
+        "mojado_racimo",
+        "temperatura_dosel",
+        "floracion_envero",
+        "inoculo"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "arandano-plaga-1",
+      "cultivo_id": "arandano",
+      "tipo": "plaga",
+      "nombre_ficha": "Trips",
+      "nombre_actual": "Frankliniella spp. y Thrips spp.",
+      "referencias_especificas": [
+        "INIA-BLUEBERRY-2020"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "dos_generos",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "identificar_especies_regionales",
+      "nota_revision": "INIA enumera trips en arándano, pero el informe es Huaral; no acredita población de Lambayeque.",
+      "variables_y_verificaciones_requeridas": [
+        "identidad_trips",
+        "poblaciones_por_flor",
+        "fenologia",
+        "enemigos_naturales"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "arandano-plaga-2",
+      "cultivo_id": "arandano",
+      "tipo": "plaga",
+      "nombre_ficha": "Mosca blanca y cochinillas",
+      "nombre_actual": "Bemisia tabaci y pseudocóccidos",
+      "referencias_especificas": [
+        "INIA-BLUEBERRY-2020"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "Bemisia_y_pseudococcidos",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "separar_grupos",
+      "nota_revision": "INIA cita Bemisia y pseudocóccidos; no comparten un modelo térmico ni un umbral de manejo.",
+      "variables_y_verificaciones_requeridas": [
+        "especie",
+        "muestras_hojas_frutos",
+        "enemigos_naturales",
+        "fenologia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "arandano-enfermedad-1",
+      "cultivo_id": "arandano",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Moho gris",
+      "nombre_actual": "Botrytis cinerea",
+      "referencias_especificas": [
+        "INIA-BLUEBERRY-2020",
+        "BOT-GENERAL",
+        "BOT-REVIEW-2024"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "especie_clara",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "mantener_solo_proxy",
+      "nota_revision": "Moho gris por B. cinerea documentado. HR aire >90% por 6h es proxy inspirado en guía GENERAL UC IPM, no humectación medida ni modelo arándano Lambayeque.",
+      "variables_y_verificaciones_requeridas": [
+        "mojado_flores_frutos",
+        "temperatura_dosel",
+        "floracion",
+        "incidencia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "arandano-enfermedad-2",
+      "cultivo_id": "arandano",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Pudrición radicular",
+      "nombre_actual": "Phytophthora cinnamomi",
+      "referencias_especificas": [
+        "INIA-BLUEBERRY-2020",
+        "AVOCADO-PHYTO"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "especie_oomiceto",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "corregir_taxonomia_y_parametros_suelo",
+      "nota_revision": "INIA cita P. cinnamomi en arándano; guía UC IPM de palto es analogía sobre suelo, no ensayo de arándano.",
+      "variables_y_verificaciones_requeridas": [
+        "diagnostico_radicular",
+        "humedad_sustrato",
+        "drenaje",
+        "temperatura_suelo"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "palto-plaga-1",
+      "cultivo_id": "palto",
+      "tipo": "plaga",
+      "nombre_ficha": "Trips",
+      "nombre_actual": "Diversas especies de trips",
+      "referencias_especificas": [
+        "AVOCADO-THRIPS"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "trips_sin_especie",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "identificar_especies_peru",
+      "nota_revision": "Guía UC IPM aborda S. perseae en California. No afirmar que esa especie esté presente en predios peruanos basándose en esta fuente.",
+      "variables_y_verificaciones_requeridas": [
+        "identificacion_especie",
+        "cicatrices_frutos",
+        "trips_por_hoja",
+        "fenologia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "palto-plaga-2",
+      "cultivo_id": "palto",
+      "tipo": "plaga",
+      "nombre_ficha": "Queresas y ácaros",
+      "nombre_actual": "Hemípteros fitófagos y ácaros",
+      "referencias_especificas": [
+        "AVOCADO-PERSEA"
+      ],
+      "nivel_geografico": "indirecta",
+      "alcance_taxonomico": "queresas_y_acaros",
+      "estado_bibliografico": "evidencia_directa_insuficiente",
+      "accion_prioritaria": "reemplazar_fuentes_genericas_y_separar",
+      "nota_revision": "Fuente específica avala ácaro persea en aguacate extranjero, NO identifica queresas locales; agruparlos confunde dos tipos de plagas.",
+      "variables_y_verificaciones_requeridas": [
+        "identificacion_especie",
+        "conteos_por_hoja",
+        "enemigos_naturales"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "palto-enfermedad-1",
+      "cultivo_id": "palto",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Tristeza / pudrición de raíces",
+      "nombre_actual": "Phytophthora cinnamomi",
+      "referencias_especificas": [
+        "AVOCADO-PHYTO"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "especie_oomiceto",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "mantener_y_integrar_suelo",
+      "nota_revision": "Phytophthora cinnamomi es un oomiceto; saturación y drenaje son indispensables; no modelar con HR aire solamente.",
+      "variables_y_verificaciones_requeridas": [
+        "humedad_suelo",
+        "drenaje",
+        "riego",
+        "diagnostico_raices",
+        "temperatura_suelo"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "palto-enfermedad-2",
+      "cultivo_id": "palto",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Muerte regresiva",
+      "nombre_actual": "Lasiodiplodia theobromae (según diagnóstico)",
+      "referencias_especificas": [
+        "AVOCADO-LASIO-2026"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "complejo_Lasiodiplodia",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "corregir_especie_unica_a_complejo",
+      "nota_revision": "Estudio peruano con 12 huertos y 7 regiones documenta múltiples Lasiodiplodia en pudrición peduncular y cancro de ramas. No todo síntoma de muerte regresiva puede atribuirse a este género sin aislamiento.",
+      "variables_y_verificaciones_requeridas": [
+        "diagnostico_lesiones",
+        "aislamiento_multilocus",
+        "estres",
+        "fenologia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "maracuya-plaga-1",
+      "cultivo_id": "maracuya",
+      "tipo": "plaga",
+      "nombre_ficha": "Mosca del ovario",
+      "nombre_actual": "Dasiops spp.",
+      "referencias_especificas": [
+        "DASIOPS-MARACUYA-2026",
+        "DASIOPS-GRANADILLA-2022"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "Dasiops_spp",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "reemplazar_fuente_de_granadilla_por_maracuya",
+      "nota_revision": "Tesis en La Molina estudia Dasiops inedulis sobre maracuyá. El artículo de Oxapampa estudió granadilla (Passiflora ligularis), no P. edulis. El dato de correlación HR no es transferible.",
+      "variables_y_verificaciones_requeridas": [
+        "identificacion_especie",
+        "botones_danados_y_larvas",
+        "densidad_plantas",
+        "clima"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "maracuya-plaga-2",
+      "cultivo_id": "maracuya",
+      "tipo": "plaga",
+      "nombre_ficha": "Gusano defoliador",
+      "nombre_actual": "Dione juno y Agraulis spp.",
+      "referencias_especificas": [
+        "MARACUYA-INIA"
+      ],
+      "nivel_geografico": "peru_general",
+      "alcance_taxonomico": "Dione_juno_y_Agraulis_sp",
+      "estado_bibliografico": "hospedante_documentado_peru_sin_localidad",
+      "accion_prioritaria": "identificacion_taxonomica",
+      "nota_revision": "Guía técnica INIA indexada menciona Dione juno y Agraulis sp. como defoliadores; falta validación de incidencia local.",
+      "variables_y_verificaciones_requeridas": [
+        "conteos_larvas",
+        "defoliacion",
+        "fenologia",
+        "enemigos_naturales"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "maracuya-enfermedad-1",
+      "cultivo_id": "maracuya",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Antracnosis",
+      "nombre_actual": "Colletotrichum spp.",
+      "referencias_especificas": [
+        "MARACUYA-ANTH-2025",
+        "MARACUYA-REVIEW-2023"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "complejo_Colletotrichum",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "sustituir_fuente_indirecta_por_articulo_patogeno",
+      "nota_revision": "Artículo 2025 confirma diversas especies de Colletotrichum en Passiflora edulis China, no Lambayeque. La revisión 2023 es nutrición/biocontrol, no estudio local de antracnosis.",
+      "variables_y_verificaciones_requeridas": [
+        "aislamiento_multilocus",
+        "mojado_foliar",
+        "temperatura",
+        "incidencia"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "maracuya-enfermedad-2",
+      "cultivo_id": "maracuya",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Marchitez / secadera",
+      "nombre_actual": "Fusarium spp. (confirmar aislamiento)",
+      "referencias_especificas": [
+        "MARACUYA-FUS-2025"
+      ],
+      "nivel_geografico": "muestras_lambayeque",
+      "alcance_taxonomico": "complejo_Fusarium_solani",
+      "estado_bibliografico": "evidencia_local_muestras_sin_prevalencia",
+      "accion_prioritaria": "anotar_denominacion_y_no_confundir_tasa_de_muestras",
+      "nota_revision": "Tesis UNPRG: 22/30 muestras sintomáticas de 5 sectores fueron positivas; NO es incidencia ni prevalencia de todas las parcelas. Identifica F. solani FmOlmt5 y ensayos de patogenicidad.",
+      "variables_y_verificaciones_requeridas": [
+        "aislamiento_organismo",
+        "diagnostico_raices_tallos",
+        "frecuencia_campo",
+        "humedad_suelo",
+        "patogenicidad"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "banano-plaga-1",
+      "cultivo_id": "banano",
+      "tipo": "plaga",
+      "nombre_ficha": "Picudo negro",
+      "nombre_actual": "Cosmopolites sordidus",
+      "referencias_especificas": [
+        "BANANA-PICUDO"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "especie_clara",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "priorizar_vigilancia",
+      "nota_revision": "SENASA documenta picudo en San Martín, no incidencia Lambayeque. Trampas/rizoma necesarios.",
+      "variables_y_verificaciones_requeridas": [
+        "trampas_adultos",
+        "larvas_cormo",
+        "material_siembra"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "banano-plaga-2",
+      "cultivo_id": "banano",
+      "tipo": "plaga",
+      "nombre_ficha": "Nematodos fitoparásitos",
+      "nombre_actual": "Radopholus similis y otros nematodos",
+      "referencias_especificas": [
+        "BANANA-NEMA-2024"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "especie_y_grupo",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "diagnostico_laboratorio",
+      "nota_revision": "Revisión sistemática 2024 enumera Radopholus, Helicotylenchus, Pratylenchus, Meloidogyne en Musa. Muestrear raíces/suelo para identidad de especies.",
+      "variables_y_verificaciones_requeridas": [
+        "analisis_nematodos",
+        "densidad_por_g_raiz",
+        "suelo",
+        "cultivar"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "banano-enfermedad-1",
+      "cultivo_id": "banano",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Fusariosis Raza 4 Tropical",
+      "nombre_actual": "Fusarium oxysporum f. sp. cubense R4T",
+      "referencias_especificas": [
+        "BANANA-TR4-EPPO",
+        "BANANA-TR4-SENASA"
+      ],
+      "nivel_geografico": "peru_otra_region",
+      "alcance_taxonomico": "raza_fisiologica_cuarentenaria",
+      "estado_bibliografico": "hospedante_documentado_peru_otra_region",
+      "accion_prioritaria": "solo_vigilancia_oficial_no_calcular_riesgo_climatico",
+      "nota_revision": "EPPO registra Foc R4T en Piura 2021, distribución restringida bajo control. No se confirma aquí en Lambayeque. Alertas requieren laboratorio y SENASA.",
+      "variables_y_verificaciones_requeridas": [
+        "notificacion_SENASA",
+        "diagnostico_laboratorio",
+        "trazabilidad_material"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    },
+    {
+      "id_ficha": "banano-enfermedad-2",
+      "cultivo_id": "banano",
+      "tipo": "enfermedad",
+      "nombre_ficha": "Sigatoka negra",
+      "nombre_actual": "Pseudocercospora fijiensis",
+      "referencias_especificas": [
+        "SIGATOKA-2025",
+        "SIGATOKA-2023"
+      ],
+      "nivel_geografico": "exterior",
+      "alcance_taxonomico": "especie_clara",
+      "estado_bibliografico": "hospedante_documentado_fuera_peru",
+      "accion_prioritaria": "mantener_sin_calibracion",
+      "nota_revision": "Epidemiología P. fijiensis revisada 2025 y estudio clima/territorio 2023, no calibrado para Lambayeque.",
+      "variables_y_verificaciones_requeridas": [
+        "humectacion_foliar",
+        "temperatura",
+        "lluvia",
+        "variedad",
+        "estado_hojas"
+      ],
+      "habilitar_mapa_riesgo": false,
+      "calibrado_lambayeque": false,
+      "registro_SENASA_producto_verificado": false
+    }
+  ],
+  "extension_cafe": [
+    {
+      "cultivo": "cafe",
+      "organismo": "Hemileia vastatrix",
+      "fuentes": [
+        "COFFEE-RUST-2024"
+      ],
+      "estatus": "cientificamente_documentado_fuera_del_inventario_original",
+      "riesgo_local_habilitado": false
+    },
+    {
+      "cultivo": "cafe",
+      "organismo": "Leucoptera coffeella",
+      "fuentes": [
+        "COFFEE-MINER-2026"
+      ],
+      "estatus": "cientificamente_documentado_fuera_del_inventario_original",
+      "riesgo_local_habilitado": false
+    }
+  ],
+  "discrepancias_clave": [
+    {
+      "tema": "Fuentes cruzadas",
+      "detalle": "En mango, las fichas de queresas y antracnosis citan noticias SENASA sobre mosca de fruta; no son evidencia específica para el organismo."
+    },
+    {
+      "tema": "Maracuyá Dasiops",
+      "detalle": "Correlación con HR de estudio Oxapampa 2022 corresponde granadilla; no a maracuyá ni Lambayeque."
+    },
+    {
+      "tema": "Fusarium local",
+      "detalle": "UNPRG 2025 22/30 muestras sintomáticas; no incidencia fitosanitaria de toda la región."
+    },
+    {
+      "tema": "Mango mosca térmica",
+      "detalle": "Ricalde 2012 Petrolina: abstract 8.47 °C/341 GD, cuerpo resultados 9.1 °C/341 GD. Contradicción en fuente. Indicador actual UX69 usa 9.1 y NO es calibración local; futura decisión requiere revisar original Tab 4 y sensibilidad."
+    },
+    {
+      "tema": "Palto muerte regresiva",
+      "detalle": "Llanos et al. 2026 demuestra varias especies Lasiodiplodia en SER/BC de aguacate peruano; no todos los casos de muerte regresiva son L. theobromae."
+    },
+    {
+      "tema": "Banano TR4",
+      "detalle": "Evidencia oficial peruana inicial en Piura. No se presupone presencia distrital en Lambayeque ni mapa clima → infección."
+    },
+    {
+      "tema": "Productos",
+      "detalle": "31 entradas documentales en fuente, ninguna con ficha_confirmada=true. No se han contrastado individualmente las etiquetas vigentes de SENASA, no autoriza recomendaciones."
+    },
+    {
+      "tema": "Oídio vs mildiu",
+      "detalle": "El inventario principal tiene oídio Erysiphe necator, no Plasmopara viticola (listado como pendiente en módulo C)."
+    },
+    {
+      "tema": "Taxones",
+      "detalle": "No mezclar plagas de géneros/especies distintas; p.ej. Planococcus/Pseudococcus, moscas Tephritidae, trips/ácaros, mosca blanca/cochinillas."
+    },
+    {
+      "tema": "Patología",
+      "detalle": "P. cinnamomi es oomiceto y requiere medición de humedad/saturación del suelo."
+    }
+  ]
+}
