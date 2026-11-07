@@ -182,16 +182,21 @@ function era5Reference(city){
   start_date:"1996-01-01",end_date:"2025-12-31",
   daily:"precipitation_sum,temperature_2m_max",models:"era5",timezone:"America/Lima"});
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),28000);
- const localTask=custom?Promise.reject(Error("Parcela sin ERA5 precomputado")):
-  fetch("datos/seguimiento_rf_ux74/climatologia_diaria_era5_ux76.json",{cache:"no-store"})
-   .then(r=>{if(!r.ok)throw Error("ERA5 local "+r.status);return r.json()})
-   .then(j=>{
-    if(j.version!=="UX76"||j.periodo!=="1996-2025")throw Error("ERA5 sin version");
-    const daily=j.localidades?.[city];
-    if(!daily||Object.keys(daily).length<365)throw Error("ERA5 local incompleto");
-    return {localUX76:true,rain:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.precipitacion_mm])),
-     tmax:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.temperatura_max_c])),years:"1996–2025",cell:loc};
-   });
+ const readLocal=(path,period,years)=>fetch(path,{cache:"no-store"})
+  .then(r=>{if(!r.ok)throw Error("ERA5 local "+r.status);return r.json()})
+  .then(j=>{
+   if(j.version!=="UX76"||j.periodo!==period)throw Error("ERA5 local version");
+   const daily=j.localidades?.[city];
+   if(!daily||Object.keys(daily).length<365)throw Error("ERA5 local incompleto");
+   return {localUX76:true,
+    rain:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.precipitacion_mm])),
+    tmax:Object.fromEntries(Object.entries(daily).map(([k,v])=>[k,v.temperatura_max_c])),
+    years,cell:loc};
+  });
+ const localTask=custom?Promise.reject(Error("Parcela sin ERA5 precalculado")):
+  readLocal("datos/seguimiento_rf_ux74/climatologia_diaria_era5_ux76.json","1996-2025","1996–2025")
+   .catch(()=>readLocal("datos/seguimiento_rf_ux74/climatologia_diaria_era5_2021_2025_ux76.json",
+     "2021-2025","2021–2025 · media diaria suavizada ±15 días, exploratoria (no normal de 30 años)"));
  const task=localTask.catch(()=>fetch("https://archive-api.open-meteo.com/v1/archive?"+args,{signal:controller.signal,cache:"no-store"})
   .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
   .then(j=>{
@@ -236,7 +241,7 @@ function week(){
  const matched=forest.filter(Number.isFinite).length;
  const group=[{name:"Open-Meteo · pronóstico",color:"#278eb8",values:ext},
   {name:"Random Forest OAF · experimental",color:"#aa65b4",values:forest,dash:"7 4"},
-  {name:"ERA5 1996–2025 · climatología histórica",color:"#31946e",values:days.map(()=>NaN),dash:"3 3"}];
+  {name:"ERA5 · referencia climatológica",color:"#31946e",values:days.map(()=>NaN),dash:"3 3"}];
  weeklyBars(output,days,group,rainfall?"mm/día":"°C");
  weeklyOverview(days,ext,forest,null,rainfall,point);
  weeklyModelAudit();
@@ -257,25 +262,25 @@ function week(){
  else message+="RF no se grafica porque no tiene una emision que coincida con estas siete fechas; no se rellenan ausencias.";
  if(rf?.fecha_generacion_utc)message+=" RF emitido: "+rf.fecha_generacion_utc.slice(0,16)+" UTC.";
  message+=" Referencia vigente: Open-Meteo. ERA5 es referencia histórica, no pronóstico.";
- status.textContent=message+" Consultando promedio ERA5 1996–2025…";
+ status.textContent=message+" Consultando referencia histórica ERA5…";
  era5Reference(point||city).then(history=>{
   if(version!==weekVersion||!output.isConnected)return;
   const averages=days.map(date=>history[variable==="rain"?"rain":"tmax"][date.slice(5)]??NaN);
   const valid=averages.filter(Number.isFinite).length;
   if(!valid)throw Error("Sin registros históricos suficientes para estos días");
-  const lines=[group[0],group[1],{...group[2],values:averages}];
+  const lines=[group[0],group[1],{...group[2],name:"ERA5 "+history.years+" · promedio histórico",values:averages}];
   weeklyBars(output,days,lines,rainfall?"mm/día":"°C");
   weeklyOverview(days,ext,forest,averages,rainfall,point);
   window.OAFModelCompareUX76?.renderWeekly({city,variable,point:!!point,dates:days,era5:averages,open:ext,rf:forest});
   if(key){
-   legend(key,[["#31946e","ERA5 1996–2025 · promedio histórico (no pronóstico)"],
+   legend(key,[["#31946e","ERA5 "+history.years+" · climatología histórica (no pronóstico)"],
     ["#278eb8","Open-Meteo · pronóstico vigente"],
     ["#aa65b4","Random Forest OAF · "+(matched?"candidato experimental":"sin emisión coincidente")]]);
   }
   const delta=ext.map((value,i)=>Number.isFinite(value)&&Number.isFinite(averages[i])?value-averages[i]:NaN).filter(Number.isFinite);
   const mean=delta.length?delta.reduce((a,b)=>a+b,0)/delta.length:NaN;
   const comment=Number.isFinite(mean)?" Open-Meteo se sitúa en promedio "+fmt(Math.abs(mean))+(rainfall?" mm/día":" °C")+(mean>=0?" por encima":" por debajo")+" de la referencia histórica en estos días.":"";
-  status.textContent=message+" ERA5: "+valid+"/7 fechas de referencia histórica disponibles; no son predicciones."+comment;
+  status.textContent=message+" ERA5 "+history.years+": "+valid+"/7 fechas de referencia histórica disponibles; no son predicciones."+comment;
  }).catch(e=>{
   if(version===weekVersion&&output.isConnected)status.textContent=message+" ERA5 no disponible ("+e.message+"); no se reemplaza con cifras supuestas.";
  });
