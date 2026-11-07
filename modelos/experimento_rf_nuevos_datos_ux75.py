@@ -264,6 +264,31 @@ def main():
             tests[str(year)]=backtest(data,year,rconf,tconf)
             print("BACKTEST",year,json.dumps(tests[str(year)]["comparacion"]),flush=True)
         report["pruebas"]=tests
+        # Reentrenamiento final REAL hasta la ultima observacion ERA5.
+        # Se guarda modelo de INVESTIGACION como artefacto CI, no se publica operativo.
+        from joblib import dump
+        last=min(max(rows) for rows in data.values())
+        until=dt.date.fromisoformat(last)+dt.timedelta(days=1)
+        FX,Fyr,Fyt=rows_direct(data,dt.date(2021,1,15),until,5)
+        final_models=fit_separately(FX,Fyr,Fyt,rconf,tconf)
+        from hashlib import sha256
+        artifact=OUT.parent/"rf_candidato_multivariable_ux75.joblib"
+        artifact.parent.mkdir(parents=True,exist_ok=True)
+        dump({"lluvia":final_models[0],"temperatura_maxima":final_models[1],
+              "fecha_ultimo_era5":last,"calidad":"experimental_no_operativo",
+              "configuracion_lluvia":rconf,"configuracion_temperatura":tconf},artifact,compress=3)
+        report["reentrenamiento_final"]={
+           "ultimo_dato_incorporado":last,"ejemplos_supervisados":len(FX),
+           "dimensiones_predictoras":int(FX.shape[1]),
+           "modelo_guardado_en_artefacto":"rf_candidato_multivariable_ux75.joblib",
+           "sha256_modelo":sha256(artifact.read_bytes()).hexdigest(),
+           "publicado_como_operativo":False,
+           "caracteristicas":{"variables":["precipitacion","temperatura_maxima",
+                    "temperatura_media","humedad_relativa_media",
+                    "viento_medio","radiacion_solar_diaria"],
+                    "restriccion":"Solo variables del dia origen y previas"}
+        }
+        print("MODELO_FINAL",last,"filas",len(FX),"sha256",report["reentrenamiento_final"]["sha256_modelo"],flush=True)
         report["comparacion_final"]={}
         for var in ("rain","temp"):
             p2025=tests["2025"]["comparacion"][var]
