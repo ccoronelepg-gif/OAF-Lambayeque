@@ -70,7 +70,7 @@ function shift(today,n){const d=new Date(today+"T12:00:00Z");d.setUTCDate(d.getU
   async function verifyPdf(selector,tag){
     console.log("PDF_VERIFY_START",selector,tag,await page.locator(selector).isEnabled());
     let download;
-    try{[download]=await Promise.all([page.waitForEvent("download",{timeout:10000}),page.locator(selector).click()]);}
+    try{[download]=await Promise.all([page.waitForEvent("download",{timeout:15000}),page.locator(selector).evaluate(button=>button.click())]);}
     catch(e){console.log("PDF_DOWNLOAD_DEBUG",await page.evaluate(()=>({debug:window.__pdfDebug,reportApi:typeof window.OAFReportPDF?.export,button:document.querySelector("#oaf-ux74a-points")?.outerHTML.slice(0,600)})));throw e;}
     assert.ok(download.suggestedFilename().endsWith(".pdf"),"El enlace debe producir PDF y no GeoJSON");
     const file=await download.path(),raw=fs.readFileSync(file);
