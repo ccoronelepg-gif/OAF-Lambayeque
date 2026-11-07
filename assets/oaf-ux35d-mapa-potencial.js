@@ -6,7 +6,7 @@
 const NS="http://www.w3.org/2000/svg",$=id=>document.getElementById(id);
 const core=()=>window.OAFClimaticPotentialCore;
 const state={enabled:false,model:"botrytis",points:[],data:[],today:null,request:0,abort:null,loading:false,ready:false,
- lastError:"",selected:null,viewObserver:null};
+ lastError:"",selected:null,viewObserver:null,fetchedAt:null};
 const fmt=(v,d=1)=>Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
 const localDate=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 function displayModel(){
@@ -29,13 +29,14 @@ function showPanel(){
   const panel=document.createElement("section");
   panel.id="oaf-ux35d-panel";panel.className="oaf-ux35d-panel";
   panel.innerHTML='<div class="oaf-ux35d-heading"><strong>Mapa de condiciones potencialmente favorables · 7 días</strong>'+
-   '<button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button></div>'+
+   '<div class="oaf-ux35d-actions"><button id="oaf-ux35d-refresh" type="button">Actualizar mapa</button><button id="oaf-ux35d-export" type="button" disabled>Exportar GeoJSON</button></div></div>'+
    '<p id="oaf-ux35d-mapstatus" role="status" aria-live="polite">Marca la capa C para consultar la malla de puntos meteorológicos.</p>'+
    '<div id="oaf-ux35d-legend" class="oaf-ux35d-legend" hidden></div>'+
    '<div id="oaf-ux35d-point-detail" class="oaf-ux35d-point-detail" hidden></div>'+
    '<small>Fuente: Open-Meteo Forecast (temperatura y HR a 2 m), coordenadas WGS84. El contorno está simplificado; los puntos NO son parcelas ni polígonos de infección. Leyenda válida solo para el modelo seleccionado.</small>';
   const mapNode=mapcol.querySelector(".oaf-ux29-scenemap");if(mapNode)mapNode.after(panel);else mapcol.append(panel);
   $("oaf-ux35d-refresh").addEventListener("click",()=>refresh(true));
+  $("oaf-ux35d-export").addEventListener("click",exportGeoJSON);
  }
  return true
 }
@@ -128,7 +129,8 @@ function reset(abort=true){
  state.data=[];state.points=[];state.selected=null;state.today=null;state.lastError="";state.loading=false;
  const detail=$("oaf-ux35d-point-detail");if(detail)detail.hidden=true;
  const legendEl=$("oaf-ux35d-legend");if(legendEl)legendEl.hidden=true;
- paint()
+ const exp=$("oaf-ux35d-export");if(exp)exp.disabled=true;
+ state.fetchedAt=null;paint()
 }
 function buildUrl(points,model){
  const params=new URLSearchParams({
@@ -163,10 +165,11 @@ async function refresh(force=false){
   if(raw.error)throw Error(raw.reason||"El proveedor devolvió error");
   const data=coreApi.assessBatch(Array.isArray(raw)?raw:[raw],points,model,today);
   if(seq!==state.request)return;
-  state.data=data;
+  state.data=data;state.fetchedAt=new Date().toISOString();
   const ok=data.filter(p=>p.indicator).length;
   const providerCells=new Set(data.filter(p=>p.indicator).map(p=>p.modelledLat.toFixed(3)+","+p.modelledLon.toFixed(3)));
   if(!ok)throw Error("No se recibieron series completas y aplicables del periodo.");
+  const exportBtn=$("oaf-ux35d-export");if(exportBtn)exportBtn.disabled=false;
   paint();textStatus(
    "Capa climática consultada: "+ok+" de "+points.length+" puntos válidos, "+providerCells.size+
    " celdas meteorológicas devueltas · "+coreApi.requiredDates(today)[0]+" al "+coreApi.requiredDates(today).at(-1)+
@@ -180,6 +183,40 @@ async function refresh(force=false){
   clearTimeout(timer);
   if(seq===state.request){state.loading=false;state.abort=null}
  }
+}
+function toGeoJSON(){
+ const features=state.data.map(p=>{
+  const i=p.indicator;
+  return {type:"Feature",id:p.id,geometry:{type:"Point",coordinates:[p.lon,p.lat]},
+   properties:{
+    id:p.id,cultivo:state.model==="botrytis"?"Arándano":"Mango",
+    organismo:state.model==="botrytis"?"Botrytis cinerea":"Ceratitis capitata",
+    indicador:state.model,modelo_estado:"teorico_sin_calibracion_local",
+    fechas_periodo:i?.dates||core()?.requiredDates(state.today)||null,
+    episodios_hr_sobre_90_6h:i?.kind==="humedad_favorable"?i.episodes:null,
+    horas_hr_sobre_90:i?.kind==="humedad_favorable"?i.hoursOver90:null,
+    grados_dia_base_9_1:i?.kind==="acumulacion_termica"?i.degreesDaysMin:null,
+    grados_dia_base_8_47:i?.kind==="acumulacion_termica"?i.degreesDaysMax:null,
+    datos_completos:Boolean(i),error:p.error||null,
+    modelled_lat:p.modelledLat??null,modelled_lon:p.modelledLon??null,
+    fuente_meteorologica:"https://open-meteo.com/en/docs",fecha_consulta:state.fetchedAt,
+    es_riesgo_calibrado:false,
+    observacion:"Punto meteorológico, no distribución del cultivo, abundancia ni zona continua de riesgo."
+   }};
+ });
+ return {type:"FeatureCollection",name:"OAF_Lambayeque_favorabilidad_climatica_no_riesgo",
+  metadata:{version:"ux72",source:"Open-Meteo Forecast",model:state.model,generated:state.fetchedAt,
+   reference:core()?.MODEL[state.model]?.reference,
+   boundary:"datos/zonificacion_8n/limite_lambayeque_referencial.geojson (simplificado, no oficial)",
+   disclaimer:"Puntos de muestreo. Sin interpolación, distribución de hospedantes, incidencia ni calibración local."},
+  features};
+}
+function exportGeoJSON(){
+ if(!state.data.length||!state.today)return;
+ const file=new Blob([JSON.stringify(toGeoJSON(),null,2)],{type:"application/geo+json"});
+ const url=URL.createObjectURL(file),a=document.createElement("a");
+ a.href=url;a.download="OAF_potencial_climatico_"+state.model+"_"+state.today+".geojson";
+ document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 function init(){
  if(state.ready||!showPanel())return;
@@ -201,5 +238,5 @@ function init(){
  if(toggle.checked)refresh(true)
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
-window.OAFPotentialLayer={refresh:()=>refresh(true),getState:()=>({enabled:state.enabled,model:state.model,total:state.data.length,valid:state.data.filter(p=>p.indicator).length,error:state.lastError}),paint};
+window.OAFPotentialLayer={refresh:()=>refresh(true),toGeoJSON,getState:()=>({enabled:state.enabled,model:state.model,total:state.data.length,valid:state.data.filter(p=>p.indicator).length,error:state.lastError}),paint};
 })();
