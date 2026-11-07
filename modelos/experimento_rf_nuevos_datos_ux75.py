@@ -113,7 +113,7 @@ def rows_direct(data,target_start,target_end,step):
                 if f is None:continue
                 x.append(f);yr.append(math.log1p(actual["rain"]))
                 yt.append(actual["temp"]);n+=1
-    if n<1000:raise ValueError("Sin suficientes ejemplos directos para "+str(target_start))
+    if n<350:raise ValueError("Sin suficientes ejemplos directos para "+str(target_start))
     return np.asarray(x,float),np.asarray(yr,float),np.asarray(yt,float)
 
 def rows_old(data,end):
