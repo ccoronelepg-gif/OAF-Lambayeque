@@ -277,7 +277,8 @@ test("UX76: web/PWA muestran ERA5, Open-Meteo y RF siempre sin inventar pronosti
   assert.match(html,/oaf-ux76-ranking-modelos\.css\?v=20261107-ux76/);
   const js=read("assets/oaf-ux15-rf-salidas.js");
   assert.match(js,/const group=\[/);
-  assert.match(js,/ERA5 1996–2025 · climatología histórica/);
+  assert.match(js,/ERA5 · referencia climatológica/);
+  assert.match(js,/2021–2025 · media diaria suavizada/);
   assert.match(js,/Open-Meteo \/ ECMWF SEAS5 · estacional/);
   assert.match(js,/renderWeekly\(\{city,variable/);
   assert.match(js,/renderMonthly\(\{city,variable/);
