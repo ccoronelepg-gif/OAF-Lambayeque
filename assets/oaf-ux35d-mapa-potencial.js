@@ -6,7 +6,7 @@
 const NS="http://www.w3.org/2000/svg",$=id=>document.getElementById(id);
 const core=()=>window.OAFClimaticPotentialCore;
 const state={enabled:false,model:"botrytis",points:[],data:[],today:null,request:0,abort:null,loading:false,ready:false,
- lastError:"",selected:null,viewObserver:null,fetchedAt:null};
+ lastError:"",selected:null,viewObserver:null,overlayObserver:null,fetchedAt:null};
 const fmt=(v,d=1)=>Number.isFinite(v)?v.toLocaleString("es-PE",{maximumFractionDigits:d,minimumFractionDigits:d}):"—";
 const localDate=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Lima",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 function displayModel(){
@@ -236,6 +236,16 @@ function init(){
   state.viewObserver=new MutationObserver(()=>sizeMarkers());
   state.viewObserver.observe(svg,{attributes:true,attributeFilter:["viewBox"]})
  }
+ if(svg&&!state.overlayObserver){
+  state.overlayObserver=new MutationObserver(()=>{
+   if(state.enabled&&state.data.length&&!svg.querySelector("#oaf-ux35d-points"))paint()
+  });
+  state.overlayObserver.observe(svg,{childList:true})
+ }
+ window.addEventListener("oaf:geodata",()=>{
+  paint();
+  if(toggle.checked&&!state.data.length&&!state.loading&&!state.lastError)refresh()
+ });
  if(toggle.checked)refresh(true)
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
