@@ -2,7 +2,7 @@
 
 **Esta fuente informa del ESTADO INSTITUCIONAL de El Niño Costero. No es un pronóstico propio, ni una alerta del observatorio.**
 
-- Fecha de consulta UTC: 2026-11-02T23:13:43+00:00
+- Fecha de consulta UTC: 2026-11-09T23:51:31+00:00
 - Número: None
 - Fecha de emisión: None
 - Estado institucional confirmado textualmente: no_verificado
