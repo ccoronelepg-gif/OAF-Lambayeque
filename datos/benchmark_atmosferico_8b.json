@@ -1,6 +1,6 @@
 {
   "fase": "8B",
-  "generado_utc": "2026-10-26T16:39:16+00:00",
+  "generado_utc": "2026-11-12T22:01:56+00:00",
   "estado": "comparacion_historica_sin_habilidad_operativa",
   "predictores_mes_origen": [
     "soi_estandarizado",
@@ -8,9 +8,9 @@
     "alisios_pacifico_oriental"
   ],
   "inicio_datos_atmosfericos": "1979-01",
-  "origen_ultimo_comun": "2026-09",
-  "mes_ultimo_oceanico": "2026-09",
-  "num_meses_comunes": 573,
+  "origen_ultimo_comun": "2026-10",
+  "mes_ultimo_oceanico": "2026-10",
+  "num_meses_comunes": 574,
   "objetivo": "Anomalía Niño1+2 NOAA NCEI ERSSTv5 reajustada por OAF a 1991-2020; NO ICEN oficial",
   "entrenamiento": "ventana expansiva con solo objetivos cronológicamente disponibles",
   "primer_origen_de_prueba": "2010-01",
@@ -24,174 +24,174 @@
   "cobertura_prediccion_actual": true,
   "predicciones_exploratorias_actuales": {
     "1": {
-      "mes_objetivo": "2026-10",
+      "mes_objetivo": "2026-11",
       "horizonte_meses": 1,
-      "ar1_solo_tsm_c": 3.9781,
-      "tsm_mas_atmosfera_c": 4.06,
-      "persistencia_c": 4.3887,
+      "ar1_solo_tsm_c": 4.3094,
+      "tsm_mas_atmosfera_c": 4.4612,
+      "persistencia_c": 4.7337,
       "emision_prospectiva": false,
       "no_operativo": true
     },
     "2": {
-      "mes_objetivo": "2026-11",
+      "mes_objetivo": "2026-12",
       "horizonte_meses": 2,
-      "ar1_solo_tsm_c": 3.5482,
-      "tsm_mas_atmosfera_c": 3.7252,
-      "persistencia_c": 4.3887,
+      "ar1_solo_tsm_c": 3.8688,
+      "tsm_mas_atmosfera_c": 4.1548,
+      "persistencia_c": 4.7337,
       "emision_prospectiva": false,
       "no_operativo": true
     },
     "3": {
-      "mes_objetivo": "2026-12",
+      "mes_objetivo": "2027-01",
       "horizonte_meses": 3,
-      "ar1_solo_tsm_c": 3.0664,
-      "tsm_mas_atmosfera_c": 3.2953,
-      "persistencia_c": 4.3887,
+      "ar1_solo_tsm_c": 3.3635,
+      "tsm_mas_atmosfera_c": 3.6458,
+      "persistencia_c": 4.7337,
       "emision_prospectiva": false,
       "no_operativo": true
     }
   },
   "resultados_por_horizonte": {
     "1": {
+      "n_origenes_evaluados": 201,
+      "desde": "2010-01",
+      "hasta": "2026-09",
+      "metricas": {
+        "persistencia": {
+          "n": 201,
+          "mae_c": 0.3375,
+          "rmse_c": 0.4161,
+          "sesgo_c": -0.0221
+        },
+        "ar1_solo_tsm": {
+          "n": 201,
+          "mae_c": 0.3372,
+          "rmse_c": 0.4252,
+          "sesgo_c": -0.0346
+        },
+        "tsm_mas_atmosfera": {
+          "n": 201,
+          "mae_c": 0.3553,
+          "rmse_c": 0.4591,
+          "sesgo_c": -0.0668
+        }
+      },
+      "ultimos12": {
+        "ar1_solo_tsm": {
+          "n": 12,
+          "mae_c": 0.6194,
+          "rmse_c": 0.7026,
+          "sesgo_c": -0.565
+        },
+        "tsm_mas_atmosfera": {
+          "n": 12,
+          "mae_c": 0.6176,
+          "rmse_c": 0.7038,
+          "sesgo_c": -0.5813
+        }
+      },
+      "beneficio_vs_ar1": -0.0537,
+      "beneficio_vs_persistencia": -0.0527,
+      "beneficio_ultimos12_vs_ar1": 0.0029,
+      "intervalo_descriptivo_bloques_12m_95": [
+        -0.1237,
+        0.0001
+      ],
+      "mejora_retrospectiva_robusta_provisional": false,
+      "validacion_prospectiva": false
+    },
+    "2": {
       "n_origenes_evaluados": 200,
       "desde": "2010-01",
       "hasta": "2026-08",
       "metricas": {
         "persistencia": {
           "n": 200,
-          "mae_c": 0.3375,
-          "rmse_c": 0.4164,
-          "sesgo_c": -0.0205
+          "mae_c": 0.5127,
+          "rmse_c": 0.6539,
+          "sesgo_c": -0.0432
         },
         "ar1_solo_tsm": {
           "n": 200,
-          "mae_c": 0.3351,
-          "rmse_c": 0.4229,
-          "sesgo_c": -0.031
+          "mae_c": 0.4932,
+          "rmse_c": 0.6591,
+          "sesgo_c": -0.0629
         },
         "tsm_mas_atmosfera": {
           "n": 200,
-          "mae_c": 0.3537,
-          "rmse_c": 0.4578,
-          "sesgo_c": -0.0637
+          "mae_c": 0.5135,
+          "rmse_c": 0.7037,
+          "sesgo_c": -0.1361
         }
       },
       "ultimos12": {
         "ar1_solo_tsm": {
           "n": 12,
-          "mae_c": 0.5594,
-          "rmse_c": 0.6683,
-          "sesgo_c": -0.5051
+          "mae_c": 1.1035,
+          "rmse_c": 1.2787,
+          "sesgo_c": -1.0322
         },
         "tsm_mas_atmosfera": {
           "n": 12,
-          "mae_c": 0.5652,
-          "rmse_c": 0.6765,
-          "sesgo_c": -0.529
+          "mae_c": 1.1384,
+          "rmse_c": 1.2973,
+          "sesgo_c": -1.0884
         }
       },
-      "beneficio_vs_ar1": -0.0555,
-      "beneficio_vs_persistencia": -0.048,
-      "beneficio_ultimos12_vs_ar1": -0.0104,
+      "beneficio_vs_ar1": -0.0412,
+      "beneficio_vs_persistencia": -0.0016,
+      "beneficio_ultimos12_vs_ar1": -0.0316,
       "intervalo_descriptivo_bloques_12m_95": [
-        -0.1248,
-        0.0019
+        -0.1483,
+        0.0519
       ],
       "mejora_retrospectiva_robusta_provisional": false,
       "validacion_prospectiva": false
     },
-    "2": {
+    "3": {
       "n_origenes_evaluados": 199,
       "desde": "2010-01",
       "hasta": "2026-07",
       "metricas": {
         "persistencia": {
           "n": 199,
-          "mae_c": 0.5105,
-          "rmse_c": 0.652,
-          "sesgo_c": -0.0386
+          "mae_c": 0.6712,
+          "rmse_c": 0.846,
+          "sesgo_c": -0.0615
         },
         "ar1_solo_tsm": {
           "n": 199,
-          "mae_c": 0.4871,
-          "rmse_c": 0.6496,
-          "sesgo_c": -0.0547
+          "mae_c": 0.6217,
+          "rmse_c": 0.833,
+          "sesgo_c": -0.0857
         },
         "tsm_mas_atmosfera": {
           "n": 199,
-          "mae_c": 0.5084,
-          "rmse_c": 0.697,
-          "sesgo_c": -0.1291
+          "mae_c": 0.6405,
+          "rmse_c": 0.8894,
+          "sesgo_c": -0.1936
         }
       },
       "ultimos12": {
         "ar1_solo_tsm": {
           "n": 12,
-          "mae_c": 0.9931,
-          "rmse_c": 1.1851,
-          "sesgo_c": -0.8587
+          "mae_c": 1.4943,
+          "rmse_c": 1.7457,
+          "sesgo_c": -1.3591
         },
         "tsm_mas_atmosfera": {
           "n": 12,
-          "mae_c": 1.03,
-          "rmse_c": 1.2209,
-          "sesgo_c": -0.9406
+          "mae_c": 1.5575,
+          "rmse_c": 1.811,
+          "sesgo_c": -1.4747
         }
       },
-      "beneficio_vs_ar1": -0.0437,
-      "beneficio_vs_persistencia": 0.0041,
-      "beneficio_ultimos12_vs_ar1": -0.0372,
+      "beneficio_vs_ar1": -0.0302,
+      "beneficio_vs_persistencia": 0.0457,
+      "beneficio_ultimos12_vs_ar1": -0.0423,
       "intervalo_descriptivo_bloques_12m_95": [
-        -0.1604,
-        0.0529
-      ],
-      "mejora_retrospectiva_robusta_provisional": false,
-      "validacion_prospectiva": false
-    },
-    "3": {
-      "n_origenes_evaluados": 198,
-      "desde": "2010-01",
-      "hasta": "2026-06",
-      "metricas": {
-        "persistencia": {
-          "n": 198,
-          "mae_c": 0.667,
-          "rmse_c": 0.8414,
-          "sesgo_c": -0.0543
-        },
-        "ar1_solo_tsm": {
-          "n": 198,
-          "mae_c": 0.6121,
-          "rmse_c": 0.8155,
-          "sesgo_c": -0.0734
-        },
-        "tsm_mas_atmosfera": {
-          "n": 198,
-          "mae_c": 0.6322,
-          "rmse_c": 0.8767,
-          "sesgo_c": -0.1831
-        }
-      },
-      "ultimos12": {
-        "ar1_solo_tsm": {
-          "n": 12,
-          "mae_c": 1.3237,
-          "rmse_c": 1.5917,
-          "sesgo_c": -1.1095
-        },
-        "tsm_mas_atmosfera": {
-          "n": 12,
-          "mae_c": 1.374,
-          "rmse_c": 1.6865,
-          "sesgo_c": -1.2773
-        }
-      },
-      "beneficio_vs_ar1": -0.0328,
-      "beneficio_vs_persistencia": 0.0522,
-      "beneficio_ultimos12_vs_ar1": -0.038,
-      "intervalo_descriptivo_bloques_12m_95": [
-        -0.1397,
-        0.0622
+        -0.1362,
+        0.0602
       ],
       "mejora_retrospectiva_robusta_provisional": false,
       "validacion_prospectiva": false
