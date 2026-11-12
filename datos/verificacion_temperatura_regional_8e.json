@@ -1,15 +1,15 @@
 {
   "fase": "8E",
-  "estado": "esperando_cierre_y_reanalisis",
-  "generado_utc": "2026-10-26T17:56:39+00:00",
-  "numero_emisiones_originales": 1,
-  "pronosticos_originales_archivados": 12,
-  "pronosticos_anteriores_al_mes": 8,
-  "estimaciones_intramensuales": 4,
-  "pronosticos_comparados": 0,
+  "estado": "con_comparaciones_prospectivas_experimentales",
+  "generado_utc": "2026-11-12T22:46:02+00:00",
+  "numero_emisiones_originales": 2,
+  "pronosticos_originales_archivados": 24,
+  "pronosticos_anteriores_al_mes": 16,
+  "estimaciones_intramensuales": 8,
+  "pronosticos_comparados": 4,
   "comparados_realmente_previos_al_mes": 0,
   "primera_verificacion_posible": "2026-11-10",
-  "ultima_emision": "2026-09",
+  "ultima_emision": "2026-10",
   "mae_previo_por_localidad_horizonte": {
     "Chiclayo": {
       "1": {

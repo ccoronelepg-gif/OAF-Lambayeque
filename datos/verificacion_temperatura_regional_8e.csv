@@ -1,1 +1,5 @@
 emision_utc,mes_origen,mes_objetivo,localidad,horizonte_meses,tipo_emision,pronostico_local_c,pronostico_nino_t300_c,observacion_era5_land_c,error_local_c,error_nino_t300_c
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Chiclayo,1,estimacion_intramensual,23.66283,23.98175,25.75806,-2.09523,-1.77631
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Jayanca,1,estimacion_intramensual,24.15749,24.49581,25.50645,-1.34896,-1.01064
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Motupe,1,estimacion_intramensual,23.51175,23.78559,24.60645,-1.0947,-0.82086
+2026-10-15T06:41:18+00:00,2026-09,2026-10,Olmos,1,estimacion_intramensual,23.88896,24.17598,24.70323,-0.81427,-0.52725
