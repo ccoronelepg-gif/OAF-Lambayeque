@@ -1,6 +1,6 @@
 {
   "fase": "6D",
-  "fecha_procesamiento_utc": "2026-10-19T14:42:46+00:00",
+  "fecha_procesamiento_utc": "2026-11-12T15:04:37+00:00",
   "fuente": "NOAA NCEI",
   "url_fuente": "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/index/ersst.v5.el_nino.dat",
   "producto": "ERSSTv5 Niño 1+2 NOAA NCEI: rebajado 1971-2000 -> 1991-2020 por OAF",
@@ -13,157 +13,157 @@
   "prediccion_actual_disponible": true,
   "desfase_meses": 1,
   "mes_inicial": "1950-01",
-  "mes_ultimo_observado": "2026-09",
-  "ultima_anomalia_ersstv5_c": 4.389,
+  "mes_ultimo_observado": "2026-10",
+  "ultima_anomalia_ersstv5_c": 4.734,
   "promedio_3m_indicativo": {
-    "mes_central": "2026-08",
-    "mes_publicacion_ultimo_dato": "2026-09",
-    "promedio_trimestral_ersstv5_c": 3.795,
+    "mes_central": "2026-09",
+    "mes_publicacion_ultimo_dato": "2026-10",
+    "promedio_trimestral_ersstv5_c": 4.294,
     "es_icen_oficial": false
   },
   "modelos_horizontes": {
     "1": {
       "origen_inicial": "2010-01",
-      "origen_final": "2026-08",
+      "origen_final": "2026-09",
       "metricas": {
         "ar1": {
-          "n": 200,
-          "mae_c": 0.3336,
-          "rmse_c": 0.4199
+          "n": 201,
+          "mae_c": 0.3353,
+          "rmse_c": 0.4216
         },
         "persistencia": {
-          "n": 200,
+          "n": 201,
           "mae_c": 0.3375,
-          "rmse_c": 0.4164
+          "rmse_c": 0.4161
         },
         "cero": {
-          "n": 200,
-          "mae_c": 0.8383,
-          "rmse_c": 1.1121
+          "n": 201,
+          "mae_c": 0.8575,
+          "rmse_c": 1.1581
         }
       },
       "metricas_ultimos_12": {
         "ar1": {
           "n": 12,
-          "mae_c": 0.5438,
-          "rmse_c": 0.647
+          "mae_c": 0.5953,
+          "rmse_c": 0.6756
         },
         "persistencia": {
           "n": 12,
-          "mae_c": 0.4404,
-          "rmse_c": 0.5247
+          "mae_c": 0.4629,
+          "rmse_c": 0.5332
         }
       },
-      "habilidad_mae_relativa": 0.0116,
-      "habilidad_ultimos_12": -0.2348,
+      "habilidad_mae_relativa": 0.0065,
+      "habilidad_ultimos_12": -0.286,
       "intervalo_bootstrap_skill_95": [
-        -0.0054,
-        0.0588
+        -0.0146,
+        0.0575
       ],
       "mejora_consistente_demostrada": false,
       "patron_retrospectivo_favorable": false,
       "validacion_prospectiva": false,
-      "pronostico_ar1_c": 4.054,
-      "pronostico_persistencia_c": 4.389,
-      "mes_objetivo": "2026-10"
+      "pronostico_ar1_c": 4.388,
+      "pronostico_persistencia_c": 4.734,
+      "mes_objetivo": "2026-11"
     },
     "2": {
+      "origen_inicial": "2010-01",
+      "origen_final": "2026-08",
+      "metricas": {
+        "ar1": {
+          "n": 200,
+          "mae_c": 0.4921,
+          "rmse_c": 0.6533
+        },
+        "persistencia": {
+          "n": 200,
+          "mae_c": 0.5127,
+          "rmse_c": 0.6539
+        },
+        "cero": {
+          "n": 200,
+          "mae_c": 0.8608,
+          "rmse_c": 1.1609
+        }
+      },
+      "metricas_ultimos_12": {
+        "ar1": {
+          "n": 12,
+          "mae_c": 1.0636,
+          "rmse_c": 1.2261
+        },
+        "persistencia": {
+          "n": 12,
+          "mae_c": 0.8663,
+          "rmse_c": 0.9901
+        }
+      },
+      "habilidad_mae_relativa": 0.0402,
+      "habilidad_ultimos_12": -0.2278,
+      "intervalo_bootstrap_skill_95": [
+        0.0163,
+        0.1104
+      ],
+      "mejora_consistente_demostrada": false,
+      "patron_retrospectivo_favorable": false,
+      "validacion_prospectiva": false,
+      "pronostico_ar1_c": 4.067,
+      "pronostico_persistencia_c": 4.734,
+      "mes_objetivo": "2026-12"
+    },
+    "3": {
       "origen_inicial": "2010-01",
       "origen_final": "2026-07",
       "metricas": {
         "ar1": {
           "n": 199,
-          "mae_c": 0.4869,
-          "rmse_c": 0.6458
+          "mae_c": 0.6223,
+          "rmse_c": 0.827
         },
         "persistencia": {
           "n": 199,
-          "mae_c": 0.5105,
-          "rmse_c": 0.652
+          "mae_c": 0.6712,
+          "rmse_c": 0.846
         },
         "cero": {
           "n": 199,
-          "mae_c": 0.8415,
-          "rmse_c": 1.1148
+          "mae_c": 0.8643,
+          "rmse_c": 1.1638
         }
       },
       "metricas_ultimos_12": {
         "ar1": {
           "n": 12,
-          "mae_c": 0.9647,
-          "rmse_c": 1.1473
+          "mae_c": 1.4449,
+          "rmse_c": 1.6737
         },
         "persistencia": {
           "n": 12,
-          "mae_c": 0.8199,
-          "rmse_c": 0.9579
+          "mae_c": 1.2408,
+          "rmse_c": 1.4023
         }
       },
-      "habilidad_mae_relativa": 0.0462,
-      "habilidad_ultimos_12": -0.1766,
+      "habilidad_mae_relativa": 0.0729,
+      "habilidad_ultimos_12": -0.1645,
       "intervalo_bootstrap_skill_95": [
-        0.021,
-        0.1118
+        0.0337,
+        0.1527
       ],
       "mejora_consistente_demostrada": false,
       "patron_retrospectivo_favorable": false,
       "validacion_prospectiva": false,
-      "pronostico_ar1_c": 3.744,
-      "pronostico_persistencia_c": 4.389,
-      "mes_objetivo": "2026-11"
-    },
-    "3": {
-      "origen_inicial": "2010-01",
-      "origen_final": "2026-06",
-      "metricas": {
-        "ar1": {
-          "n": 198,
-          "mae_c": 0.6141,
-          "rmse_c": 0.8135
-        },
-        "persistencia": {
-          "n": 198,
-          "mae_c": 0.667,
-          "rmse_c": 0.8414
-        },
-        "cero": {
-          "n": 198,
-          "mae_c": 0.8449,
-          "rmse_c": 1.1176
-        }
-      },
-      "metricas_ultimos_12": {
-        "ar1": {
-          "n": 12,
-          "mae_c": 1.2949,
-          "rmse_c": 1.5476
-        },
-        "persistencia": {
-          "n": 12,
-          "mae_c": 1.1619,
-          "rmse_c": 1.343
-        }
-      },
-      "habilidad_mae_relativa": 0.0793,
-      "habilidad_ultimos_12": -0.1145,
-      "intervalo_bootstrap_skill_95": [
-        0.0399,
-        0.1512
-      ],
-      "mejora_consistente_demostrada": false,
-      "patron_retrospectivo_favorable": false,
-      "validacion_prospectiva": false,
-      "pronostico_ar1_c": 3.456,
-      "pronostico_persistencia_c": 4.389,
-      "mes_objetivo": "2026-12"
+      "pronostico_ar1_c": 3.769,
+      "pronostico_persistencia_c": 4.734,
+      "mes_objetivo": "2027-01"
     }
   },
   "comparacion_oisst": {
     "estado": "comparacion_exploratoria_no_validacion",
-    "meses_comunes": 537,
-    "mae_entre_productos_c": 0.2065,
-    "ultimo_mes_comun": "2026-09",
-    "diferencia_ultimo_mes_c": -0.301,
+    "meses_comunes": 538,
+    "mae_entre_productos_c": 0.2072,
+    "ultimo_mes_comun": "2026-10",
+    "diferencia_ultimo_mes_c": -0.516,
     "nota": "Diferencias entre productos no son error de predicción ni validación instrumental"
   },
   "advertencias": [
@@ -201,10 +201,10 @@
     "estado": "contraste_rebases_1991_2020",
     "meses_comunes": 918,
     "ultima_fecha_comun": "2026-06",
-    "media_abs_diferencias_todos_c": 0.041,
-    "media_abs_diferencias_ultimos24_c": 0.0397,
-    "max_abs_diferencia_ultimos24_c": 0.1127,
-    "dif_ultimo_c": -0.1127,
+    "media_abs_diferencias_todos_c": 0.0411,
+    "media_abs_diferencias_ultimos24_c": 0.0405,
+    "max_abs_diferencia_ultimos24_c": 0.1227,
+    "dif_ultimo_c": -0.1227,
     "umbral_operativo_comparacion": "MAE últimos 24 <=0.4 °C y diferencia absoluta máxima <=0.75 °C",
     "calidad_suficiente": true,
     "no_es_validacion_independiente": true
