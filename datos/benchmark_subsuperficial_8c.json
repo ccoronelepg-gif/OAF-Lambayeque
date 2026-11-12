@@ -1,6 +1,6 @@
 {
   "fase": "8C",
-  "fecha_procesamiento_utc": "2026-10-26T16:47:51+00:00",
+  "fecha_procesamiento_utc": "2026-11-12T22:12:50+00:00",
   "estado": "evaluacion_temporal_retrospectiva_no_operativa",
   "hipotesis_predefinida": "Si la anomalía T300 y el SOI/vientos retrasados 1 mes aportan habilidad predictiva adicional al SST de origen y su tendencia",
   "base_oceanica": "NOAA NCEI ERSSTv5 Niño1+2 anomalía reconstruida por OAF a 1991-2020",
@@ -16,137 +16,137 @@
   "evaluacion_meses_1_2_3": {
     "1": {
       "n_entrenamiento": 514,
+      "n_prueba": 45,
+      "primer_origen_prueba": "2023-01",
+      "ultimo_origen_prueba": "2026-09",
+      "metricas": {
+        "persistencia_c": {
+          "n": 45,
+          "mae_c": 0.4357,
+          "rmse_c": 0.5194,
+          "sesgo_c": -0.117
+        },
+        "sst_tendencia_c": {
+          "n": 45,
+          "mae_c": 0.4588,
+          "rmse_c": 0.5737,
+          "sesgo_c": -0.2264
+        },
+        "sst_tendencia_t300_c": {
+          "n": 45,
+          "mae_c": 0.4204,
+          "rmse_c": 0.512,
+          "sesgo_c": -0.181
+        },
+        "sst_tendencia_t300_atmosfera_c": {
+          "n": 45,
+          "mae_c": 0.4957,
+          "rmse_c": 0.6265,
+          "sesgo_c": -0.3294
+        }
+      },
+      "mejora_t300_vs_tendencia": 0.0837,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.0804,
+      "intervalo_exploratorio_t300_vs_tendencia": [
+        -0.048,
+        0.1382
+      ],
+      "intervalo_exploratorio_completo_vs_tendencia": [
+        -0.195,
+        0.0014
+      ],
+      "habilidad_operativa_demostrada": false
+    },
+    "2": {
+      "n_entrenamiento": 513,
       "n_prueba": 44,
       "primer_origen_prueba": "2023-01",
       "ultimo_origen_prueba": "2026-08",
       "metricas": {
         "persistencia_c": {
           "n": 44,
-          "mae_c": 0.4378,
-          "rmse_c": 0.5228,
-          "sesgo_c": -0.1118
+          "mae_c": 0.7187,
+          "rmse_c": 0.8757,
+          "sesgo_c": -0.2087
         },
         "sst_tendencia_c": {
           "n": 44,
-          "mae_c": 0.45,
-          "rmse_c": 0.5659,
-          "sesgo_c": -0.2122
+          "mae_c": 0.7198,
+          "rmse_c": 0.9486,
+          "sesgo_c": -0.4032
         },
         "sst_tendencia_t300_c": {
           "n": 44,
-          "mae_c": 0.4168,
-          "rmse_c": 0.5105,
-          "sesgo_c": -0.172
+          "mae_c": 0.669,
+          "rmse_c": 0.8547,
+          "sesgo_c": -0.344
         },
         "sst_tendencia_t300_atmosfera_c": {
           "n": 44,
-          "mae_c": 0.4917,
-          "rmse_c": 0.6255,
-          "sesgo_c": -0.3216
+          "mae_c": 0.7939,
+          "rmse_c": 1.0329,
+          "sesgo_c": -0.5587
         }
       },
-      "mejora_t300_vs_tendencia": 0.0738,
-      "mejora_t300_y_atmosfera_vs_tendencia": -0.0927,
+      "mejora_t300_vs_tendencia": 0.0706,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.1029,
       "intervalo_exploratorio_t300_vs_tendencia": [
-        -0.0475,
-        0.1263
+        -0.061,
+        0.1129
       ],
       "intervalo_exploratorio_completo_vs_tendencia": [
-        -0.1932,
-        0.0013
+        -0.2382,
+        -0.0153
       ],
       "habilidad_operativa_demostrada": false
     },
-    "2": {
-      "n_entrenamiento": 513,
+    "3": {
+      "n_entrenamiento": 512,
       "n_prueba": 43,
       "primer_origen_prueba": "2023-01",
       "ultimo_origen_prueba": "2026-07",
       "metricas": {
         "persistencia_c": {
           "n": 43,
-          "mae_c": 0.7132,
-          "rmse_c": 0.8738,
-          "sesgo_c": -0.1914
+          "mae_c": 0.9413,
+          "rmse_c": 1.1505,
+          "sesgo_c": -0.2675
         },
         "sst_tendencia_c": {
           "n": 43,
-          "mae_c": 0.6951,
-          "rmse_c": 0.92,
-          "sesgo_c": -0.3711
+          "mae_c": 0.9171,
+          "rmse_c": 1.2237,
+          "sesgo_c": -0.5357
         },
         "sst_tendencia_t300_c": {
           "n": 43,
-          "mae_c": 0.6519,
-          "rmse_c": 0.8376,
-          "sesgo_c": -0.3194
+          "mae_c": 0.8594,
+          "rmse_c": 1.122,
+          "sesgo_c": -0.4742
         },
         "sst_tendencia_t300_atmosfera_c": {
           "n": 43,
-          "mae_c": 0.7782,
-          "rmse_c": 1.0206,
-          "sesgo_c": -0.5375
+          "mae_c": 0.9671,
+          "rmse_c": 1.2951,
+          "sesgo_c": -0.6939
         }
       },
-      "mejora_t300_vs_tendencia": 0.0621,
-      "mejora_t300_y_atmosfera_vs_tendencia": -0.1196,
+      "mejora_t300_vs_tendencia": 0.0629,
+      "mejora_t300_y_atmosfera_vs_tendencia": -0.0545,
       "intervalo_exploratorio_t300_vs_tendencia": [
-        -0.0719,
-        0.1031
+        -0.0631,
+        0.109
       ],
       "intervalo_exploratorio_completo_vs_tendencia": [
-        -0.2454,
-        -0.0218
-      ],
-      "habilidad_operativa_demostrada": false
-    },
-    "3": {
-      "n_entrenamiento": 512,
-      "n_prueba": 42,
-      "primer_origen_prueba": "2023-01",
-      "ultimo_origen_prueba": "2026-06",
-      "metricas": {
-        "persistencia_c": {
-          "n": 42,
-          "mae_c": 0.928,
-          "rmse_c": 1.1408,
-          "sesgo_c": -0.2382
-        },
-        "sst_tendencia_c": {
-          "n": 42,
-          "mae_c": 0.878,
-          "rmse_c": 1.1731,
-          "sesgo_c": -0.4875
-        },
-        "sst_tendencia_t300_c": {
-          "n": 42,
-          "mae_c": 0.8285,
-          "rmse_c": 1.0851,
-          "sesgo_c": -0.4341
-        },
-        "sst_tendencia_t300_atmosfera_c": {
-          "n": 42,
-          "mae_c": 0.9345,
-          "rmse_c": 1.2596,
-          "sesgo_c": -0.6548
-        }
-      },
-      "mejora_t300_vs_tendencia": 0.0564,
-      "mejora_t300_y_atmosfera_vs_tendencia": -0.0644,
-      "intervalo_exploratorio_t300_vs_tendencia": [
-        -0.0656,
-        0.1075
-      ],
-      "intervalo_exploratorio_completo_vs_tendencia": [
-        -0.1932,
-        0.0726
+        -0.1726,
+        0.0652
       ],
       "habilidad_operativa_demostrada": false
     }
   },
   "ultimo_mes_reanalisis_t300": "2026-09",
-  "ultimo_mes_oceanico": "2026-09",
-  "ultimo_origen_con_predictores_retrasados": "2026-09",
+  "ultimo_mes_oceanico": "2026-10",
+  "ultimo_origen_con_predictores_retrasados": "2026-10",
   "se_ha_emitido_pronostico_prospectivo_8c": false,
   "es_icen_oficial": false,
   "es_alerta_enfen": false,
