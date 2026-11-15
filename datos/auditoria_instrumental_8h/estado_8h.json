@@ -43,7 +43,7 @@
     "catalogo_estaciones_sha256": "cecfa3040c1dfb4b0dc1cbdb2a33ab84ab00cf9c67ba0d907d5c6f8ff42a8f1e",
     "lluvia_historica_sha256": "b6db111e1df101994778b2d49c68de09a16855ff3d78101c9ebdacb650236596",
     "metadatos_cobertura_sha256": "27aee49ed6d8183531f9eaa0742fdccce48249cc9cb76ef08c5937826a74fe05",
-    "informe_8g_sha256": "4cf6886b27da10b27d1e98bb260881555f66bb8aeb0c3174082ec33485dedeaa"
+    "informe_8g_sha256": "04973cb5e2e7a75810268368555a00980132ad7058969828b01b2899093aee0b"
   },
   "fuentes_oficiales": {
     "senamhi": "https://www.senamhi.gob.pe/?p=descarga-datos-hidrometeorologicos",
