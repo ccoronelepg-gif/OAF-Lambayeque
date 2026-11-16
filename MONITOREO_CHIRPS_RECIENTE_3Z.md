@@ -5,11 +5,11 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 ## Periodo y disponibilidad verificada
 
-- Fecha de consulta UTC: 2026-11-09T23:46:10+00:00
+- Fecha de consulta UTC: 2026-11-16T23:44:37+00:00
 - Ventana de 12 meses calendarios CERRADOS: 2025-11 a 2026-10.
-- Meses con raster descargado y cinco valores revisados: **11**.
-- Meses con raster no disponible/fallido: **1**.
-- Último mes CHIRPS realmente accesible: **2026-09**.
+- Meses con raster descargado y cinco valores revisados: **12**.
+- Meses con raster no disponible/fallido: **0**.
+- Último mes CHIRPS realmente accesible: **2026-10**.
 - Estado de actualización: disponible_para_ventana_consultada.
 - La clasificación final/preliminar exacta del archivo no se afirma hasta consultar su metadato oficial; puede revisarse posteriormente.
 
@@ -17,21 +17,22 @@ Cada valor corresponde a **precipitación mensual estimada de una celda de 0,05�
 
 | Mes | Jayanca | Cayaltí | Reque | Lambayeque | Cueva Blanca |
 |---|---:|---:|---:|---:|---:|
-| 2025-11 | 6.878 | 3.913 | 8.297 | 8.201 | 42.300 |
-| 2025-12 | 0.000 | 0.000 | 0.000 | 0.000 | 3.089 |
-| 2026-01 | 1.887 | 4.776 | 5.697 | 1.628 | 20.879 |
-| 2026-02 | 36.929 | 41.169 | 15.482 | 18.676 | 150.912 |
-| 2026-03 | 17.322 | 7.480 | 4.196 | 2.462 | 83.691 |
-| 2026-04 | 33.522 | 18.887 | 6.974 | 3.525 | 222.854 |
-| 2026-05 | 0.000 | 0.000 | 1.430 | 0.256 | 15.079 |
-| 2026-06 | 0.000 | 0.140 | 0.000 | 0.106 | 0.000 |
-| 2026-07 | 0.000 | 1.287 | 0.224 | 0.454 | 0.000 |
-| 2026-08 | 2.376 | 1.269 | 1.497 | 2.211 | 9.385 |
-| 2026-09 | 0.000 | 0.000 | 0.000 | 0.000 | 13.935 |
+| 2025-11 | 5.312 | 2.586 | 6.844 | 6.878 | 51.263 |
+| 2025-12 | 0.000 | 0.000 | 0.000 | 0.000 | 3.110 |
+| 2026-01 | 1.852 | 4.695 | 5.619 | 1.600 | 18.557 |
+| 2026-02 | 31.528 | 42.785 | 13.868 | 16.768 | 122.729 |
+| 2026-03 | 15.726 | 5.247 | 2.534 | 1.008 | 84.072 |
+| 2026-04 | 26.913 | 16.191 | 6.072 | 2.276 | 181.427 |
+| 2026-05 | 0.000 | 0.000 | 1.401 | 0.252 | 14.863 |
+| 2026-06 | 0.000 | 0.140 | 0.000 | 0.107 | 0.000 |
+| 2026-07 | 0.000 | 1.299 | 0.225 | 0.458 | 0.000 |
+| 2026-08 | 2.394 | 1.275 | 1.525 | 2.281 | 9.419 |
+| 2026-09 | 0.000 | 0.000 | 0.000 | 0.000 | 13.067 |
+| 2026-10 | 0.000 | 0.000 | 0.000 | 0.000 | 9.584 |
 
 ## Meses no disponibles
 
-- **2026-10**: FileNotFoundError: Archivo no publicado HTTP 404 (https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/latam/tifs/chirps-v3.0.2026.10.tif)
+No se encontraron faltantes en los doce meses cerrados consultados.
 
 ## Condiciones científicas
 
