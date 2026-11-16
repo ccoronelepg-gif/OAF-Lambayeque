@@ -4,20 +4,20 @@
   "tipo_dato": "ESTADO_OFICIAL_ENSO",
   "fuente_archivo": "https://enfen.imarpe.gob.pe/comunicados/",
   "pagina_comunicados": "https://enfen.imarpe.gob.pe/comunicados/",
-  "fecha_consulta_utc": "2026-11-09T23:51:31+00:00",
-  "numero": null,
-  "anio": null,
+  "fecha_consulta_utc": "2026-11-16T23:51:01+00:00",
+  "numero": 20,
+  "anio": 2026,
   "fecha_emision": null,
-  "titulo": null,
-  "url_comunicado": null,
+  "titulo": "Comunicado Oficial ENFEN N.º 20-2026",
+  "url_comunicado": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6afb8890744471794869392",
   "estado_institucional": null,
-  "verificacion": "consulta_fallida",
+  "verificacion": "estado_no_verificado",
   "edad_comunicado_dias": null,
   "fuente_publica": true,
   "prediccion_oaf": false,
   "alerta_emitida_por_oaf": false,
   "errores": [
-    "ConnectionError: HTTPSConnectionPool(host='enfen.imarpe.gob.pe', port=443): Max retries exceeded with url: /comunicados/ (Caused by NameResolutionError(\"HTTPSConnection(host='enfen.imarpe.gob.pe', port=443): Failed to resolve 'enfen.imarpe.gob.pe' ([Errno -3] Temporary failure in name resolution)\"))"
+    "El texto consultado no permitió confirmar el rótulo oficial del estado de alerta"
   ],
   "nota": "El estado oficial es responsabilidad de ENFEN, nunca una alerta propia del OAF. Se requiere leer fecha y fuente original."
 }
