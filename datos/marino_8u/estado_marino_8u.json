@@ -1,11 +1,11 @@
 {
   "fase": "8U",
   "estado": "pronostico_marino_modelado_archivado",
-  "fecha_de_consulta_utc": "2026-11-17T00:52:06+00:00",
-  "archivo_fecha": "2026-11-17",
+  "fecha_de_consulta_utc": "2026-11-18T23:26:04+00:00",
+  "archivo_fecha": "2026-11-18",
   "periodo": "hasta 3 días de pronóstico, no climatología 1996–2025",
   "fuente": "Open-Meteo Marine / corrientes y SST modeladas MeteoFrance",
-  "sha256_respuesta_marina_original": "e324d2126a3638403d12918845d8ece52f5b553d6d6a84b6d04c2742753dd9c8",
+  "sha256_respuesta_marina_original": "611c263109e5b33514cc80a2565a21979def1c1fc8d2792ec3ad8aca6611a8e7",
   "n_puntos_marinos": 3,
   "puntos": [
     {
@@ -17,12 +17,12 @@
       "unidad_entrada_velocidad_corriente": "km/h",
       "n_horas_con_las_3_variables": 72,
       "n_horas_totales": 72,
-      "sst_media_modelada_c": 27.4583,
-      "velocidad_media_modelada_ms": 0.1871,
-      "u_media_modelada_ms": -0.1011,
-      "v_media_modelada_ms": 0.1539,
-      "primer_horario": "2026-11-16T00:00",
-      "ultimo_horario": "2026-11-18T23:00"
+      "sst_media_modelada_c": 27.7111,
+      "velocidad_media_modelada_ms": 0.1397,
+      "u_media_modelada_ms": -0.0573,
+      "v_media_modelada_ms": 0.122,
+      "primer_horario": "2026-11-18T00:00",
+      "ultimo_horario": "2026-11-20T23:00"
     },
     {
       "id": "Centro_mar_abierto",
@@ -33,12 +33,12 @@
       "unidad_entrada_velocidad_corriente": "km/h",
       "n_horas_con_las_3_variables": 72,
       "n_horas_totales": 72,
-      "sst_media_modelada_c": 26.9333,
-      "velocidad_media_modelada_ms": 0.2747,
-      "u_media_modelada_ms": -0.2043,
-      "v_media_modelada_ms": 0.1792,
-      "primer_horario": "2026-11-16T00:00",
-      "ultimo_horario": "2026-11-18T23:00"
+      "sst_media_modelada_c": 27.1986,
+      "velocidad_media_modelada_ms": 0.1736,
+      "u_media_modelada_ms": -0.0775,
+      "v_media_modelada_ms": 0.1299,
+      "primer_horario": "2026-11-18T00:00",
+      "ultimo_horario": "2026-11-20T23:00"
     },
     {
       "id": "Sur_mar_abierto",
@@ -49,12 +49,12 @@
       "unidad_entrada_velocidad_corriente": "km/h",
       "n_horas_con_las_3_variables": 72,
       "n_horas_totales": 72,
-      "sst_media_modelada_c": 27.1361,
-      "velocidad_media_modelada_ms": 0.1601,
-      "u_media_modelada_ms": -0.0791,
-      "v_media_modelada_ms": 0.1233,
-      "primer_horario": "2026-11-16T00:00",
-      "ultimo_horario": "2026-11-18T23:00"
+      "sst_media_modelada_c": 27.2667,
+      "velocidad_media_modelada_ms": 0.1593,
+      "u_media_modelada_ms": -0.1184,
+      "v_media_modelada_ms": 0.0804,
+      "primer_horario": "2026-11-18T00:00",
+      "ultimo_horario": "2026-11-20T23:00"
     }
   ],
   "corrientes_historicas_30_anios_integradas": false,
