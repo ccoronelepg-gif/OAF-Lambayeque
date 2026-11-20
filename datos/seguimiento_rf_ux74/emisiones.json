@@ -10444,6 +10444,791 @@
       "verificacion_era5": null,
       "evaluacion_instrumental": false,
       "habilitado_operativo": false
+    },
+    {
+      "fecha_local": "2026-11-20",
+      "fecha_generacion_utc": "2026-11-20T22:20:59+00:00",
+      "fecha_era5_ultimo_dato": "2026-11-13",
+      "fuente_entrenamiento": "ERA5 - reanalisis por Open-Meteo",
+      "rf_diario": {
+        "Chiclayo": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 1.02,
+            "temperatura_max_c": 31.61
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 1.0,
+            "temperatura_max_c": 31.69
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 1.05,
+            "temperatura_max_c": 31.5
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 1.02,
+            "temperatura_max_c": 31.37
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 1.01,
+            "temperatura_max_c": 31.47
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 0.97,
+            "temperatura_max_c": 31.35
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 0.95,
+            "temperatura_max_c": 31.26
+          }
+        ],
+        "Jayanca": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 2.17,
+            "temperatura_max_c": 31.48
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 2.25,
+            "temperatura_max_c": 31.31
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 2.25,
+            "temperatura_max_c": 31.2
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 2.2,
+            "temperatura_max_c": 31.25
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 2.13,
+            "temperatura_max_c": 31.29
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 2.18,
+            "temperatura_max_c": 31.17
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 1.97,
+            "temperatura_max_c": 31.18
+          }
+        ],
+        "Motupe": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 2.08,
+            "temperatura_max_c": 31.5
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 2.18,
+            "temperatura_max_c": 31.18
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 2.24,
+            "temperatura_max_c": 31.2
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 2.22,
+            "temperatura_max_c": 31.27
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 2.16,
+            "temperatura_max_c": 31.29
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 2.18,
+            "temperatura_max_c": 31.19
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 2.03,
+            "temperatura_max_c": 31.18
+          }
+        ],
+        "Olmos": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 2.05,
+            "temperatura_max_c": 31.56
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 2.25,
+            "temperatura_max_c": 31.41
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 2.13,
+            "temperatura_max_c": 31.36
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 2.02,
+            "temperatura_max_c": 31.3
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 2.16,
+            "temperatura_max_c": 31.28
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 2.08,
+            "temperatura_max_c": 31.34
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 1.98,
+            "temperatura_max_c": 31.23
+          }
+        ]
+      },
+      "rf_mensual": {
+        "Chiclayo": [
+          {
+            "mes": "2026-11",
+            "precipitacion_mm": 18.4,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 1,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2026-12",
+            "precipitacion_mm": 15.0,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 2,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-01",
+            "precipitacion_mm": 31.1,
+            "temperatura_media_c": 26.3,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 3,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-02",
+            "precipitacion_mm": 49.7,
+            "temperatura_media_c": 26.3,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 4,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-03",
+            "precipitacion_mm": 52.9,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 5,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-04",
+            "precipitacion_mm": 34.9,
+            "temperatura_media_c": 25.0,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 6,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          }
+        ],
+        "Jayanca": [
+          {
+            "mes": "2026-11",
+            "precipitacion_mm": 48.0,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 1,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2026-12",
+            "precipitacion_mm": 22.2,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 2,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-01",
+            "precipitacion_mm": 76.2,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 3,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-02",
+            "precipitacion_mm": 83.2,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 4,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-03",
+            "precipitacion_mm": 86.4,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 5,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-04",
+            "precipitacion_mm": 68.4,
+            "temperatura_media_c": 25.0,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 6,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          }
+        ],
+        "Motupe": [
+          {
+            "mes": "2026-11",
+            "precipitacion_mm": 50.6,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 1,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2026-12",
+            "precipitacion_mm": 22.7,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 2,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-01",
+            "precipitacion_mm": 76.1,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 3,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-02",
+            "precipitacion_mm": 83.1,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 4,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-03",
+            "precipitacion_mm": 85.2,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 5,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-04",
+            "precipitacion_mm": 73.9,
+            "temperatura_media_c": 25.0,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 6,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          }
+        ],
+        "Olmos": [
+          {
+            "mes": "2026-11",
+            "precipitacion_mm": 47.8,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 1,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2026-12",
+            "precipitacion_mm": 22.1,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 2,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-01",
+            "precipitacion_mm": 76.4,
+            "temperatura_media_c": 26.3,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 3,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-02",
+            "precipitacion_mm": 82.8,
+            "temperatura_media_c": 26.2,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 4,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-03",
+            "precipitacion_mm": 85.0,
+            "temperatura_media_c": 26.1,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 5,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          },
+          {
+            "mes": "2027-04",
+            "precipitacion_mm": 52.9,
+            "temperatura_media_c": 25.0,
+            "recursivo": true,
+            "adelanto_desde_ultimo_mes_observado": 6,
+            "horizonte_evaluado_hasta_meses": 6,
+            "requiere_validacion_prospectiva": true
+          }
+        ]
+      },
+      "open_meteo_diario_emitido": {
+        "Chiclayo": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 0.3,
+            "temperatura_max_c": 32.7
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 1.4,
+            "temperatura_max_c": 32.9
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 0.9,
+            "temperatura_max_c": 31.8
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 0.0,
+            "temperatura_max_c": 32.7
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 0.3,
+            "temperatura_max_c": 32.9
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 0.3,
+            "temperatura_max_c": 33.2
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 0.0,
+            "temperatura_max_c": 33.1
+          }
+        ],
+        "Jayanca": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 15.6,
+            "temperatura_max_c": 33.4
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 8.8,
+            "temperatura_max_c": 32.4
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 2.2,
+            "temperatura_max_c": 32.8
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 0.0,
+            "temperatura_max_c": 34.1
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 0.0,
+            "temperatura_max_c": 34.8
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 1.5,
+            "temperatura_max_c": 35.1
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 9.8,
+            "temperatura_max_c": 34.9
+          }
+        ],
+        "Motupe": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 16.1,
+            "temperatura_max_c": 31.1
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 2.9,
+            "temperatura_max_c": 29.8
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 7.3,
+            "temperatura_max_c": 30.1
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 0.7,
+            "temperatura_max_c": 32.4
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 0.3,
+            "temperatura_max_c": 32.0
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 1.8,
+            "temperatura_max_c": 33.2
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 7.6,
+            "temperatura_max_c": 33.0
+          }
+        ],
+        "Olmos": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 13.2,
+            "temperatura_max_c": 31.1
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 3.8,
+            "temperatura_max_c": 29.8
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 5.9,
+            "temperatura_max_c": 29.5
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 1.7,
+            "temperatura_max_c": 32.7
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 0.9,
+            "temperatura_max_c": 31.8
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 7.2,
+            "temperatura_max_c": 33.0
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 18.4,
+            "temperatura_max_c": 32.4
+          }
+        ]
+      },
+      "era5_climatologia_diaria_emitida": {
+        "Chiclayo": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 0.25419,
+            "temperatura_max_c": 27.50516
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 0.25419,
+            "temperatura_max_c": 27.54581
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 0.25419,
+            "temperatura_max_c": 27.6129
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 0.25871,
+            "temperatura_max_c": 27.67032
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 0.25806,
+            "temperatura_max_c": 27.72129
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 0.28,
+            "temperatura_max_c": 27.74387
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 0.28452,
+            "temperatura_max_c": 27.79806
+          }
+        ],
+        "Jayanca": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 1.27742,
+            "temperatura_max_c": 28.80516
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 1.24323,
+            "temperatura_max_c": 28.85032
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 1.22581,
+            "temperatura_max_c": 28.91355
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 1.25742,
+            "temperatura_max_c": 28.95548
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 1.25419,
+            "temperatura_max_c": 28.99871
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 1.27613,
+            "temperatura_max_c": 29.01097
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 1.31097,
+            "temperatura_max_c": 29.04194
+          }
+        ],
+        "Motupe": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 1.3671,
+            "temperatura_max_c": 29.18129
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 1.33742,
+            "temperatura_max_c": 29.23226
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 1.31742,
+            "temperatura_max_c": 29.28258
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 1.34839,
+            "temperatura_max_c": 29.32323
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 1.3471,
+            "temperatura_max_c": 29.36065
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 1.37419,
+            "temperatura_max_c": 29.37484
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 1.41742,
+            "temperatura_max_c": 29.38452
+          }
+        ],
+        "Olmos": [
+          {
+            "fecha": "2026-11-20",
+            "precipitacion_mm": 1.22387,
+            "temperatura_max_c": 29.3929
+          },
+          {
+            "fecha": "2026-11-21",
+            "precipitacion_mm": 1.24194,
+            "temperatura_max_c": 29.4471
+          },
+          {
+            "fecha": "2026-11-22",
+            "precipitacion_mm": 1.21742,
+            "temperatura_max_c": 29.4929
+          },
+          {
+            "fecha": "2026-11-23",
+            "precipitacion_mm": 1.22129,
+            "temperatura_max_c": 29.52323
+          },
+          {
+            "fecha": "2026-11-24",
+            "precipitacion_mm": 1.21806,
+            "temperatura_max_c": 29.55161
+          },
+          {
+            "fecha": "2026-11-25",
+            "precipitacion_mm": 1.22774,
+            "temperatura_max_c": 29.56839
+          },
+          {
+            "fecha": "2026-11-26",
+            "precipitacion_mm": 1.24323,
+            "temperatura_max_c": 29.59548
+          }
+        ],
+        "_periodo": "2021-2025 (media suavizada +/-15 dias; NO normal 30 anos)"
+      },
+      "era5_periodo_referencia": "2021-2025 (media suavizada +/-15 dias; NO normal 30 anos)",
+      "ajuste_2024": {
+        "entrenamiento": "2021-2023",
+        "validacion": "2024",
+        "test_intocable": "2025",
+        "candidatos": [
+          {
+            "config": {
+              "n_estimators": 120,
+              "max_depth": 14,
+              "min_samples_leaf": 7
+            },
+            "mae_lluvia_2024": 1.3418,
+            "mae_tmax_2024": 0.8848
+          },
+          {
+            "config": {
+              "n_estimators": 160,
+              "max_depth": 10,
+              "min_samples_leaf": 12
+            },
+            "mae_lluvia_2024": 1.3207,
+            "mae_tmax_2024": 0.8809
+          },
+          {
+            "config": {
+              "n_estimators": 180,
+              "max_depth": 16,
+              "min_samples_leaf": 5
+            },
+            "mae_lluvia_2024": 1.344,
+            "mae_tmax_2024": 0.8871
+          }
+        ],
+        "mejor_lluvia": {
+          "n_estimators": 160,
+          "max_depth": 10,
+          "min_samples_leaf": 12
+        },
+        "mejor_temperatura": {
+          "n_estimators": 160,
+          "max_depth": 10,
+          "min_samples_leaf": 12
+        }
+      },
+      "resumen_backtest": {
+        "lluvia_mae_rf_mm": [
+          3.61,
+          2.73,
+          2.66,
+          1.23,
+          1.63,
+          2.9,
+          1.76
+        ],
+        "lluvia_mae_climatologia_mm": [
+          3.28,
+          2.21,
+          2.04,
+          1.49,
+          1.73,
+          2.82,
+          1.8
+        ],
+        "tmax_mae_rf_c": [
+          0.92,
+          1.3,
+          1.44,
+          1.11,
+          0.75,
+          1.04,
+          0.92
+        ],
+        "tmax_mae_climatologia_c": [
+          0.72,
+          1.07,
+          1.31,
+          0.9,
+          0.7,
+          1.0,
+          0.95
+        ],
+        "mensual_lluvia_mae_rf_mm": [
+          27.36,
+          44.96,
+          110.5,
+          99.92,
+          15.33,
+          24.18
+        ],
+        "mensual_lluvia_mae_climatologia_mm": [
+          22.53,
+          54.72,
+          61.32,
+          81.92,
+          12.77,
+          21.7
+        ]
+      },
+      "verificacion_era5": null,
+      "evaluacion_instrumental": false,
+      "habilitado_operativo": false
     }
   ]
 }
