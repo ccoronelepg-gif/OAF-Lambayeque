@@ -2,8 +2,8 @@
   "tipo": "RandomForestRegressor original reproducible de investigación, NO modelo operativo",
   "unidades_temperatura": "Diario Tmax; mensual temperatura media (no promedio de Tmax)",
   "estrategia_mejora": "Ajuste de hiperparametros diario 2021-2023/validacion 2024/test 2025, separado para lluvia y Tmax; ajuste mensual congelado 2019-2020; sin promocion automatica.",
-  "fecha_generacion_utc": "2026-11-20T22:20:59+00:00",
-  "fecha_local": "2026-11-20",
+  "fecha_generacion_utc": "2026-11-21T21:07:44+00:00",
+  "fecha_local": "2026-11-21",
   "fuente_historica": "ERA5 reanálisis por Open-Meteo; histórico mensual ERA5 8D del OAF",
   "documentacion": "https://open-meteo.com/en/docs/historical-weather-api",
   "interpretacion": "Candidatos autoregresivos propios; sin skill as-issued, sin validación instrumental, sin probabilidades de ocurrencia certificadas. Los meses Nov-Abr parten de una base ERA5 en septiembre 2026; octubre es un paso puente del modelo.",
@@ -13,7 +13,7 @@
   "horizonte_mensual_inicio": "2026-11",
   "estado": "candidato_experimental_generado",
   "control_nuevos_datos": {
-    "limite_adquisicion_era5": "2026-11-13",
+    "limite_adquisicion_era5": "2026-11-14",
     "series_pronosticos_emitidos_son_etiquetas_entrenamiento": false,
     "fuentes_2026_incorporadas": "solo ERA5 diario disponible hasta fecha completa por localidad; no se imputan pluviómetros ni CHIRPS diarios",
     "test_diario_2025_congelado": true,
@@ -228,10 +228,10 @@
     }
   },
   "datos_fuente": {
-    "Chiclayo": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714&longitude=-79.8409&start_date=2021-01-01&end_date=2026-11-13&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
-    "Jayanca": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278&longitude=-79.8228&start_date=2021-01-01&end_date=2026-11-13&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
-    "Motupe": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083&longitude=-79.7142&start_date=2021-01-01&end_date=2026-11-13&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
-    "Olmos": "https://archive-api.open-meteo.com/v1/archive?latitude=-5.98825&longitude=-79.74723&start_date=2021-01-01&end_date=2026-11-13&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5"
+    "Chiclayo": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.7714&longitude=-79.8409&start_date=2021-01-01&end_date=2026-11-14&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
+    "Jayanca": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.39278&longitude=-79.8228&start_date=2021-01-01&end_date=2026-11-14&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
+    "Motupe": "https://archive-api.open-meteo.com/v1/archive?latitude=-6.15083&longitude=-79.7142&start_date=2021-01-01&end_date=2026-11-14&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5",
+    "Olmos": "https://archive-api.open-meteo.com/v1/archive?latitude=-5.98825&longitude=-79.74723&start_date=2021-01-01&end_date=2026-11-14&daily=precipitation_sum%2Ctemperature_2m_max%2Ctemperature_2m_mean&timezone=America%2FLima&models=era5"
   },
   "sha256_matriz_mensual": "d325d83475b65a4843d089566c627070108276d114221e5ad3a498c26654ccda",
   "ultimo_mes_con_datos": {
@@ -241,165 +241,165 @@
     "Olmos": "2026-10"
   },
   "ultimos_dias_era5": {
-    "Chiclayo": "2026-11-13",
-    "Jayanca": "2026-11-13",
-    "Motupe": "2026-11-13",
-    "Olmos": "2026-11-13"
+    "Chiclayo": "2026-11-14",
+    "Jayanca": "2026-11-14",
+    "Motupe": "2026-11-14",
+    "Olmos": "2026-11-14"
   },
-  "entrenamiento_actualizado_con_era5_hasta": "2026-11-13",
+  "entrenamiento_actualizado_con_era5_hasta": "2026-11-14",
   "n_registros_entrenamiento_disponibles": {
-    "Chiclayo": 2143,
-    "Jayanca": 2143,
-    "Motupe": 2143,
-    "Olmos": 2143
+    "Chiclayo": 2144,
+    "Jayanca": 2144,
+    "Motupe": 2144,
+    "Olmos": 2144
   },
   "pronostico_diario_rf_experimental": {
     "Chiclayo": [
       {
-        "fecha": "2026-11-20",
-        "precipitacion_mm": 1.02,
-        "temperatura_max_c": 31.61
-      },
-      {
         "fecha": "2026-11-21",
-        "precipitacion_mm": 1.0,
-        "temperatura_max_c": 31.69
+        "precipitacion_mm": 0.83,
+        "temperatura_max_c": 32.01
       },
       {
         "fecha": "2026-11-22",
-        "precipitacion_mm": 1.05,
-        "temperatura_max_c": 31.5
+        "precipitacion_mm": 0.98,
+        "temperatura_max_c": 31.87
       },
       {
         "fecha": "2026-11-23",
-        "precipitacion_mm": 1.02,
-        "temperatura_max_c": 31.37
+        "precipitacion_mm": 1.01,
+        "temperatura_max_c": 31.52
       },
       {
         "fecha": "2026-11-24",
-        "precipitacion_mm": 1.01,
-        "temperatura_max_c": 31.47
+        "precipitacion_mm": 1.09,
+        "temperatura_max_c": 31.62
       },
       {
         "fecha": "2026-11-25",
-        "precipitacion_mm": 0.97,
-        "temperatura_max_c": 31.35
+        "precipitacion_mm": 1.09,
+        "temperatura_max_c": 31.38
       },
       {
         "fecha": "2026-11-26",
-        "precipitacion_mm": 0.95,
-        "temperatura_max_c": 31.26
+        "precipitacion_mm": 1.04,
+        "temperatura_max_c": 31.34
+      },
+      {
+        "fecha": "2026-11-27",
+        "precipitacion_mm": 1.08,
+        "temperatura_max_c": 31.3
       }
     ],
     "Jayanca": [
       {
-        "fecha": "2026-11-20",
-        "precipitacion_mm": 2.17,
-        "temperatura_max_c": 31.48
-      },
-      {
         "fecha": "2026-11-21",
-        "precipitacion_mm": 2.25,
-        "temperatura_max_c": 31.31
+        "precipitacion_mm": 4.0,
+        "temperatura_max_c": 31.86
       },
       {
         "fecha": "2026-11-22",
-        "precipitacion_mm": 2.25,
-        "temperatura_max_c": 31.2
+        "precipitacion_mm": 3.35,
+        "temperatura_max_c": 31.52
       },
       {
         "fecha": "2026-11-23",
-        "precipitacion_mm": 2.2,
-        "temperatura_max_c": 31.25
+        "precipitacion_mm": 3.44,
+        "temperatura_max_c": 31.37
       },
       {
         "fecha": "2026-11-24",
-        "precipitacion_mm": 2.13,
-        "temperatura_max_c": 31.29
+        "precipitacion_mm": 3.59,
+        "temperatura_max_c": 31.43
       },
       {
         "fecha": "2026-11-25",
-        "precipitacion_mm": 2.18,
-        "temperatura_max_c": 31.17
+        "precipitacion_mm": 3.5,
+        "temperatura_max_c": 31.29
       },
       {
         "fecha": "2026-11-26",
-        "precipitacion_mm": 1.97,
-        "temperatura_max_c": 31.18
+        "precipitacion_mm": 3.55,
+        "temperatura_max_c": 31.2
+      },
+      {
+        "fecha": "2026-11-27",
+        "precipitacion_mm": 3.48,
+        "temperatura_max_c": 31.25
       }
     ],
     "Motupe": [
       {
-        "fecha": "2026-11-20",
-        "precipitacion_mm": 2.08,
-        "temperatura_max_c": 31.5
-      },
-      {
         "fecha": "2026-11-21",
-        "precipitacion_mm": 2.18,
-        "temperatura_max_c": 31.18
+        "precipitacion_mm": 2.78,
+        "temperatura_max_c": 31.57
       },
       {
         "fecha": "2026-11-22",
-        "precipitacion_mm": 2.24,
-        "temperatura_max_c": 31.2
+        "precipitacion_mm": 2.6,
+        "temperatura_max_c": 31.28
       },
       {
         "fecha": "2026-11-23",
-        "precipitacion_mm": 2.22,
-        "temperatura_max_c": 31.27
+        "precipitacion_mm": 2.54,
+        "temperatura_max_c": 31.25
       },
       {
         "fecha": "2026-11-24",
-        "precipitacion_mm": 2.16,
-        "temperatura_max_c": 31.29
+        "precipitacion_mm": 2.46,
+        "temperatura_max_c": 31.44
       },
       {
         "fecha": "2026-11-25",
-        "precipitacion_mm": 2.18,
-        "temperatura_max_c": 31.19
+        "precipitacion_mm": 2.47,
+        "temperatura_max_c": 31.23
       },
       {
         "fecha": "2026-11-26",
-        "precipitacion_mm": 2.03,
-        "temperatura_max_c": 31.18
+        "precipitacion_mm": 2.55,
+        "temperatura_max_c": 31.07
+      },
+      {
+        "fecha": "2026-11-27",
+        "precipitacion_mm": 2.67,
+        "temperatura_max_c": 31.17
       }
     ],
     "Olmos": [
       {
-        "fecha": "2026-11-20",
-        "precipitacion_mm": 2.05,
-        "temperatura_max_c": 31.56
-      },
-      {
         "fecha": "2026-11-21",
-        "precipitacion_mm": 2.25,
-        "temperatura_max_c": 31.41
+        "precipitacion_mm": 2.18,
+        "temperatura_max_c": 31.93
       },
       {
         "fecha": "2026-11-22",
-        "precipitacion_mm": 2.13,
-        "temperatura_max_c": 31.36
+        "precipitacion_mm": 2.03,
+        "temperatura_max_c": 31.53
       },
       {
         "fecha": "2026-11-23",
-        "precipitacion_mm": 2.02,
-        "temperatura_max_c": 31.3
+        "precipitacion_mm": 1.89,
+        "temperatura_max_c": 31.44
       },
       {
         "fecha": "2026-11-24",
-        "precipitacion_mm": 2.16,
-        "temperatura_max_c": 31.28
+        "precipitacion_mm": 2.27,
+        "temperatura_max_c": 31.5
       },
       {
         "fecha": "2026-11-25",
-        "precipitacion_mm": 2.08,
-        "temperatura_max_c": 31.34
+        "precipitacion_mm": 2.25,
+        "temperatura_max_c": 31.46
       },
       {
         "fecha": "2026-11-26",
-        "precipitacion_mm": 1.98,
-        "temperatura_max_c": 31.23
+        "precipitacion_mm": 2.08,
+        "temperatura_max_c": 31.35
+      },
+      {
+        "fecha": "2026-11-27",
+        "precipitacion_mm": 2.22,
+        "temperatura_max_c": 31.39
       }
     ]
   },
