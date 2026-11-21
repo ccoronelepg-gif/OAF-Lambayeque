@@ -1,24 +1,24 @@
 {
   "esquema": "OAF-fuentes-operativas-2026-v1",
-  "fecha_comprobacion_utc": "2026-11-20T21:24:25+00:00",
+  "fecha_comprobacion_utc": "2026-11-21T20:11:40+00:00",
   "metodo": "Solicitudes HTTPS a páginas oficiales; respuesta HTTP no implica actualización editorial ni disponibilidad de avisos para cada distrito.",
   "fuentes": {
     "enfen": {
       "organismo": "ENFEN",
-      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6b00b27e1a00f1795207806",
+      "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6b01f5d5a8e361795290581",
       "tipo": "Comunicados institucionales",
       "estado_consulta": "indice_oficial_verificado",
-      "ultima_consulta_utc": "2026-11-20T21:24:25+00:00",
+      "ultima_consulta_utc": "2026-11-21T20:11:40+00:00",
       "fecha_ultimo_documento": null,
       "ultimo_documento": {
         "numero": 20,
         "anio": 2026,
         "titulo": "Comunicado Oficial ENFEN N.º 20-2026",
-        "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6b00b27e1a00f1795207806"
+        "url": "https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6b01f5d5a8e361795290581"
       },
       "error": null,
       "respuesta_http": 200,
-      "huella_sha256_html": "8574a89dab3b4746862ae0cfd9c78f9bc070314692775961f21e540c46d1b59f",
+      "huella_sha256_html": "aadb95eecdc8bd6c897f307fd05af3ae2025f6055dfe9af1ad8c0c969624d482",
       "cambio_html_desde_ultima_consulta": true,
       "no_equivale_a_pronostico_local": true,
       "url_alternativa_oficial": "https://enfen.imarpe.gob.pe/archivo-enfen/"
@@ -28,7 +28,7 @@
       "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc_Sp.shtml",
       "tipo": "Discusión oficial ENOS",
       "estado_consulta": "sitio_accesible_fecha_aviso_no_verificada",
-      "ultima_consulta_utc": "2026-11-20T21:24:25+00:00",
+      "ultima_consulta_utc": "2026-11-21T20:11:40+00:00",
       "fecha_ultimo_documento": null,
       "ultimo_documento": null,
       "error": null,
@@ -43,7 +43,7 @@
       "url": "https://www.senamhi.gob.pe/main.php?dp=lambayeque&p=aviso-meteorologico-vigente",
       "tipo": "Portal de avisos regionales; vigencia de cada aviso no inferida",
       "estado_consulta": "consulta_fallida",
-      "ultima_consulta_utc": "2026-11-20T21:24:25+00:00",
+      "ultima_consulta_utc": "2026-11-21T20:11:40+00:00",
       "fecha_ultimo_documento": null,
       "ultimo_documento": null,
       "error": "ConnectTimeout: HTTPSConnectionPool(host='www.senamhi.gob.pe', port=443): Max retries exceeded with url: /main.php?dp=lambayeque&p=aviso-meteorologico-vigente (Caused by Connec",
@@ -58,12 +58,12 @@
       "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
       "tipo": "Escenarios de riesgo; su edición se consulta en el documento",
       "estado_consulta": "cambio_html_requiere_lectura",
-      "ultima_consulta_utc": "2026-11-20T21:24:25+00:00",
+      "ultima_consulta_utc": "2026-11-21T20:11:40+00:00",
       "fecha_ultimo_documento": null,
       "ultimo_documento": null,
       "error": null,
       "respuesta_http": 200,
-      "huella_sha256_html": "34898db399225fd5ea8a4ae146e1da37a8afe20cb96c19248fdecff0ca4e2bb5",
+      "huella_sha256_html": "5bf462dbe8a406bb4f310551ae98cd50d0f1fe604e584eea87f9b758e444dddf",
       "cambio_html_desde_ultima_consulta": true,
       "no_equivale_a_pronostico_local": true,
       "url_alternativa_oficial": null
