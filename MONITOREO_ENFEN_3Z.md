@@ -2,12 +2,12 @@
 
 **Esta fuente informa del ESTADO INSTITUCIONAL de El Niño Costero. No es un pronóstico propio, ni una alerta del observatorio.**
 
-- Fecha de consulta UTC: 2026-11-16T23:51:01+00:00
+- Fecha de consulta UTC: 2026-11-24T02:35:47+00:00
 - Número: 20
 - Fecha de emisión: None
 - Estado institucional confirmado textualmente: no_verificado
 - Control de calidad: estado_no_verificado
-- Documento oficial: https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6afb8890744471794869392
+- Documento oficial: https://enfen.imarpe.gob.pe/download/comunicado-oficial-enfen-n-20-2026/?wpdmdl=2218&refresh=6b04df3b800c01795481403
 - Última edad comprobada (días): None
 - Archivo de comunicados: https://enfen.imarpe.gob.pe/comunicados/
 
